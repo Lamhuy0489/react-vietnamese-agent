@@ -1,6 +1,6 @@
 # Phase 1 Design — A0 Vertical Slice
 
-Status: local CPU vertical slice implemented; frozen Kaggle run package ready.
+Status: accepted on 2026-09-05; local and Kaggle vertical slices complete.
 
 ## Objective
 
@@ -58,7 +58,20 @@ make kaggle-bundle
 - Eight of eight tools executed.
 - Zero crashes.
 - One intentionally malformed output recovered.
-- 32 automated tests pass; measured package coverage is 89%.
+- 35 automated tests pass; measured package coverage is 89%.
+
+## Kaggle evidence
+
+- Authoritative kernel v4 completed on T4 with internet disabled.
+- 20/20 trajectories reached a terminal status; zero model/runtime crashes.
+- 262 trace events passed schema and event-order validation.
+- The A0 model achieved 3/20 smoke-task success and 78.87% schema validity.
+- Real-model coverage was 6/8 tools; deterministic Replay coverage was 8/8.
+- Credential-value scan over downloaded run artifacts found zero matches.
+
+This low model accuracy is recorded as an A0 limitation, not retried or tuned
+away. Full identities and hashes are in
+`experiments/manifests/phase1_kaggle_v4.json`.
 
 These are infrastructure checks, not thesis results.
 

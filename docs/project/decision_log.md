@@ -50,3 +50,19 @@ and are not inferred here.
 - Attempt v3 reached local environment construction, then stopped because
   Kaggle subprocesses did not inherit a source-package import path. The wrapper
   now fixes `PYTHONPATH` to the frozen bundle's `src` directory.
+
+## 2026-09-05 — Phase 1 accepted
+
+- Before the next upload, added regression tests for expanded Dataset mounts,
+  case-insensitive model framework paths, and frozen-file tampering; added a
+  local Kaggle-mount simulation with per-file hashes and credential guards.
+- Authoritative attempt v4 used source commit `2138dc8`, private Dataset v5,
+  Qwen2.5-3B-Instruct v1, NVIDIA T4, and internet disabled.
+- The run produced 20/20 terminal trajectories, zero crashes, 262 valid trace
+  events, 3/20 semantic task success, and 78.87% schema validity.
+- Low semantic performance is retained as A0 evidence. No quality-based retry
+  or prompt tuning was performed after observing the full run.
+- Minh's review remains deferred by explicit owner instruction. This is an
+  owner-approved collaboration-gate waiver, not a claim that review occurred.
+- Phase 1 is accepted; Phase 2 remains not started and held-out Test remains
+  uncreated/unaccessed.

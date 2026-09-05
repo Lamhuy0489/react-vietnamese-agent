@@ -5,10 +5,11 @@ công cụ trong môi trường tiếng Việt giả lập (hành chính–học
 
 ## Trạng thái
 
-- Giai đoạn hiện tại: **Phase 1 — A0 baseline**.
+- Trạng thái hiện tại: **Phase 1 hoàn thành; Phase 2 chưa bắt đầu**.
 - Kế hoạch gốc: file Word ở root và thư mục `plan/`.
 - Contract triển khai đã chuẩn hóa: `docs/`.
-- Chưa triển khai A0 hay chạy thí nghiệm chính.
+- A0 và simulated environment đã hoàn thành; real-model smoke đã chạy trên
+  Kaggle. Đây chưa phải thí nghiệm chính của luận văn.
 
 ## Nguyên tắc cốt lõi
 
@@ -54,6 +55,20 @@ ruff check .
 mypy src scripts
 ```
 
+## Kaggle Phase 1
+
+Run được chấp nhận dùng Qwen2.5-3B-Instruct v1, Dataset v5 và kernel v4 trên
+NVIDIA T4 với internet tắt. Trước mọi lần upload phải chạy:
+
+```bash
+make kaggle-bundle
+make kaggle-bundle-validate
+```
+
+Xem trạng thái dễ đọc tại [knowledge/current_status.md](knowledge/current_status.md)
+và manifest bằng chứng tại
+[experiments/manifests/phase1_kaggle_v4.json](experiments/manifests/phase1_kaggle_v4.json).
+
 ## Tài liệu
 
 - [Research contract](docs/project/research_contract.md)
@@ -61,6 +76,7 @@ mypy src scripts
 - [Project invariants](docs/project/invariants.md)
 - [Architecture](ARCHITECTURE.md)
 - [Team workflow](docs/project/team_workflow.md)
+- [Project knowledge index](knowledge/README.md)
 
 Không commit credential. Các file Kaggle hiện có trong `credential kaggle/` được
 giữ ở local và bị `.gitignore` loại trừ toàn bộ.
