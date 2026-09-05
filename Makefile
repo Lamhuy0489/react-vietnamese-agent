@@ -1,6 +1,6 @@
 PYTHON ?= .venv/bin/python
 
-.PHONY: setup verify phase1-validate smoke kaggle-bundle kaggle-bundle-validate test lint typecheck check code-map
+.PHONY: setup verify phase1-validate smoke kaggle-bundle kaggle-bundle-validate phase2-validate phase2-kaggle-bundle phase2-kaggle-bundle-validate test lint typecheck check code-map
 
 setup:
 	python3 -m venv .venv
@@ -23,6 +23,17 @@ kaggle-bundle:
 
 kaggle-bundle-validate:
 	$(PYTHON) scripts/validate_kaggle_bundle.py
+
+phase2-validate:
+	$(PYTHON) scripts/validate_clean_environment.py
+	$(PYTHON) scripts/validate_clean_pool.py
+	$(PYTHON) scripts/validate_clean_split.py
+
+phase2-kaggle-bundle:
+	$(PYTHON) scripts/prepare_kaggle_phase2.py --owner huylmhuhu --dataset-version 2
+
+phase2-kaggle-bundle-validate:
+	$(PYTHON) scripts/validate_kaggle_phase2_bundle.py
 
 test:
 	$(PYTHON) -m pytest
