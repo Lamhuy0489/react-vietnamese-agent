@@ -18,6 +18,7 @@ GIT = shutil.which("git")
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--owner", required=True)
+    parser.add_argument("--dataset-version", required=True, type=int)
     parser.add_argument("--output", type=Path, default=ROOT / "build" / "kaggle" / "phase1")
     return parser.parse_args()
 
@@ -82,7 +83,7 @@ def main() -> int:
         "archive_sha256": archive_hash,
         "model_source": MODEL_SOURCE,
         "dataset": f"{args.owner}/{dataset_slug}",
-        "dataset_version": 2,
+        "dataset_version": args.dataset_version,
         "kernel": f"{args.owner}/react-vietnamese-agent-phase-1-real-model-smoke",
     }
     (dataset_dir / "frozen_manifest.json").write_text(

@@ -43,3 +43,7 @@ and are not inferred here.
 - Kaggle attempt v1 stopped before model loading because Kaggle expanded the
   uploaded source archive into Dataset files. This infrastructure failure is
   retained; the wrapper now supports Kaggle's expanded mount representation.
+- Attempt v2 confirmed the expanded archive is placed under a generated
+  subdirectory rather than the Dataset mount root. It also stopped before model
+  loading; the wrapper now discovers the single packaged `src/react_agent`
+  directory instead of assuming its parent path.

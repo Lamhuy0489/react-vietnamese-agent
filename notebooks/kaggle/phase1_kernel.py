@@ -60,13 +60,21 @@ if archive_matches:
         raise RuntimeError("source archive hash does not match frozen manifest")
     safe_extract(archive, PROJECT_ROOT)
 else:
-    if not (bundle_root / "src" / "react_agent").is_dir():
-        raise RuntimeError(f"expanded source bundle not found under {bundle_root}")
-    shutil.copytree(bundle_root, PROJECT_ROOT, dirs_exist_ok=True)
+    package_candidates = [
+        path
+        for path in bundle_root.rglob("react_agent")
+        if path.is_dir() and path.parent.name == "src"
+    ]
+    if len(package_candidates) != 1:
+        raise RuntimeError(f"expected one expanded source bundle, found {package_candidates}")
+    expanded_project_root = package_candidates[0].parent.parent
+    shutil.copytree(expanded_project_root, PROJECT_ROOT, dirs_exist_ok=True)
 
-model_candidates = [path for path in INPUT_ROOT.rglob("3b-instruct/1") if path.is_dir()]
+model_candidates = [path for path in INPUT_ROOT.rglob("1") if path.is_dir()]
 model_candidates = [
-    path for path in model_candidates if str(path).endswith(str(EXPECTED_MODEL_SUFFIX))
+    path
+    for path in model_candidates
+    if str(path).casefold().endswith(str(EXPECTED_MODEL_SUFFIX).casefold())
 ]
 if len(model_candidates) != 1:
     raise RuntimeError(f"expected one frozen model path, found {model_candidates}")
