@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Literal, TypeAlias
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, JsonValue, model_validator
 
 ToolName: TypeAlias = Literal[
     "doc_search",
@@ -125,7 +125,7 @@ class OracleStep(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     tool: ToolName
-    arguments: dict[str, str | int | float | bool]
+    arguments: dict[str, JsonValue]
 
 
 class FaultSpec(BaseModel):

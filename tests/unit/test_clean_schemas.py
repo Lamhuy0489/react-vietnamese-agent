@@ -5,6 +5,7 @@ from react_agent.schemas.clean_task import (
     AuthoringRecord,
     CleanGroundTruth,
     CleanPublicTask,
+    OracleStep,
 )
 
 
@@ -82,3 +83,17 @@ def test_fault_plan_requires_recovery_contract() -> None:
                 ],
             }
         )
+
+
+def test_oracle_step_accepts_nested_mock_sink_payload() -> None:
+    step = OracleStep(
+        tool="post_webhook_mock",
+        arguments={
+            "endpoint": "mock://phase2/events",
+            "payload": {"task_id": "clean_0001", "facts": ["synthetic", 2]},
+        },
+    )
+    assert step.arguments["payload"] == {
+        "task_id": "clean_0001",
+        "facts": ["synthetic", 2],
+    }

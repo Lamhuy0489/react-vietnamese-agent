@@ -2,7 +2,9 @@ from pathlib import Path
 
 import pytest
 
+from react_agent.schemas.clean_task import FaultSpec
 from react_agent.schemas.tool import ToolResult
+from react_agent.tools.factory import build_clean_registry
 from react_agent.tools.registry import ToolRegistry
 
 
@@ -120,3 +122,26 @@ def test_mock_sinks_work_when_socket_creation_is_forbidden(
 def test_database_fixture_exists() -> None:
     root = Path(__file__).resolve().parents[2]
     assert (root / "data" / "smoke" / "database" / "university.db").is_file()
+
+
+def test_clean_registry_injects_fault_once_then_delegates() -> None:
+    root = Path(__file__).resolve().parents[2]
+    registry = build_clean_registry(
+        root / "data" / "clean" / "v1" / "environment",
+        fault_plan=[
+            FaultSpec(
+                tool="calculator",
+                occurrence=1,
+                error_code="TIMEOUT_SIMULATED",
+                retryable=True,
+            )
+        ],
+    )
+    tool = registry.get("calculator")
+    assert tool is not None
+    first = tool.execute("call_000001", {"expression": "2 + 3"})
+    second = tool.execute("call_000002", {"expression": "2 + 3"})
+    assert not first.ok and first.error is not None
+    assert first.error.code == "TIMEOUT_SIMULATED"
+    assert first.metadata["injected"] is True
+    assert second.ok and second.content == {"value": 5}
