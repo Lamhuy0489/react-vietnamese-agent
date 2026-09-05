@@ -48,8 +48,8 @@ decision log and data card.
 - Environment: `clean_env_v1`
 - Schema: `clean_task_v1` / `clean_ground_truth_v1`
 - Split: stratified group, seed 2026
-- Dataset hash: `77a5a7279842fcdf297dc36932f53390b2dcbe7a53d283192117e554c91e56a8`
-- Frozen source commit: `9828c1483f9003fada624a611efee29435750dae`
+- Dataset hash: `2a98633481ac82ae77dbbbe96877d67a3353894ce869e54947e0cf5335371c62`
+- Frozen source commit: `5354c0e00faf7ea77ab7063b4c583e9783c0a1ec`
 
 The complete component list and hashes are in
 `data/clean/v1/manifests/benchmark_manifest.json`.
