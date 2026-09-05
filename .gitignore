@@ -1,0 +1,35 @@
+.DS_Store
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+.venv/
+venv/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credential kaggle/
+kaggle.json
+
+# Runtime artifacts (selected frozen releases may be force-added deliberately)
+logs/*
+!logs/.gitkeep
+results/*
+!results/.gitkeep
+
+# Notebooks
+.ipynb_checkpoints/

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Benchmark Authoring"
+  short_description: "Build and review benchmark data safely."

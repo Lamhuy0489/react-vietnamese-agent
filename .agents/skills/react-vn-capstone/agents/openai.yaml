@@ -1,0 +1,3 @@
+interface:
+  display_name: "Project Phase Guide"
+  short_description: "Implement project phases without scope drift."
