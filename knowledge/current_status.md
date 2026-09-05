@@ -27,5 +27,5 @@ Thứ tự bắt buộc: khóa schema → tạo environment → tạo/QA pool 25
 150/100 → niêm phong Test → chỉ chạy pilot trên Dev.
 
 Huy và Minh dùng chung máy nên chủ dự án bỏ peer review. Dataset không ghi giả
-reviewer; thay vào đó dùng automated QA 100% và owner acceptance, đồng thời ghi
+reviewer; thay vào đó dùng automated QA 100% theo owner waiver, đồng thời ghi
 rõ hạn chế thiếu independent human review trong data card.

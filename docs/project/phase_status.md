@@ -46,8 +46,8 @@ recorded limitation, not a completion blocker.
 
 - [x] Phase 2 explicitly authorized on 2026-09-05.
 - [x] 250 total / 150 Dev / 100 Test and category quotas retained.
-- [x] Same-machine workflow recorded; peer review replaced by automated QA and
-  owner acceptance without fabricated reviewer metadata.
+- [x] Same-machine workflow recorded; review replaced by automated QA under the
+  owner waiver without fabricated reviewer metadata.
 - [ ] Clean task/ground-truth/review schemas frozen.
 - [ ] Frozen synthetic environment built and validated.
 - [ ] Reviewed 250-task pool completed.

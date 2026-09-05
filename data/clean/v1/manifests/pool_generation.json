@@ -16,11 +16,11 @@
   "files": {
     "pool/tasks.jsonl": "0110983f8b0e6744f2c55cadd114ef6495ca03d2bbf8795f3e4e549c14bae87a",
     "private/pool_ground_truth.jsonl": "917d2dade8fb56aa89c6abab69b81b20ef221ff1ac11d4777ae020605f50ccb5",
-    "reviews/review_log.jsonl": "cd86cff0b5f8272f87684865ba09fe0b93cb55110f185bbf371a66fae5b70bf3"
+    "reviews/review_log.jsonl": "f89788d5b0c00774162677334526197bf3885cfcdd39d47a3a877aadcd830119"
   },
   "generated_by": "codex",
   "independent_human_review": false,
-  "review_mode": "automated_owner_accepted",
+  "review_mode": "automated_checks_owner_waiver",
   "seed": 2026,
   "split": "pool",
   "total_tasks": 250

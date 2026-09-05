@@ -202,7 +202,7 @@ def main() -> int:
         "frozen": True,
         "test_model_runs": 0,
         "test_tuning_prohibited": True,
-        "review_mode": "automated_owner_accepted",
+        "review_mode": "automated_checks_owner_waiver",
         "independent_human_review": False,
         "dataset_hash": dataset_hash,
         "component_hashes": component_hashes,

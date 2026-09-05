@@ -218,8 +218,8 @@ def validate_clean_pool(clean_root: Path = CLEAN_ROOT) -> dict[str, Any]:
             continue
         checks = review.checks.model_dump()
         if review.decision != "approved" or not all(checks.values()):
-            failures.append(f"task {task.task_id} lacks complete owner acceptance")
-        if review.review_mode != "automated_owner_accepted":
+            failures.append(f"task {task.task_id} lacks complete automated QA acceptance")
+        if review.review_mode != "automated_checks_owner_waiver":
             failures.append(f"task {task.task_id} has an unauthorized review mode")
 
     exact_duplicates = _duplicate_groups(tasks, strip_accents=False)
@@ -357,7 +357,7 @@ def write_clean_pool_reports(result: dict[str, Any], report_root: Path) -> None:
         duplicate_writer.writeheader()
         duplicate_writer.writerows(result["near_duplicates"])
     review_summary = {
-        "mode": "automated_owner_accepted",
+        "mode": "automated_checks_owner_waiver",
         "independent_human_review": False,
         "approved": result["review_coverage"],
         "total": result["total_tasks"],

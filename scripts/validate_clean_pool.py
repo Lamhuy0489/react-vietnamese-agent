@@ -18,7 +18,7 @@ def main() -> int:
     print(
         f"PASS: {result['total_tasks']}/250 schemas, "
         f"{result['oracle_valid']}/250 oracles, "
-        f"{result['review_coverage']}/250 owner acceptances"
+        f"{result['review_coverage']}/250 automated QA acceptances"
     )
     return 0
 

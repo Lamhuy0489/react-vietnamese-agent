@@ -213,10 +213,10 @@ class CleanReviewRecord(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     task_id: str = Field(pattern=r"^clean_[0-9]{4}$")
-    review_mode: Literal["automated_owner_accepted"] = "automated_owner_accepted"
+    review_mode: Literal["automated_checks_owner_waiver"] = "automated_checks_owner_waiver"
     checks: ReviewChecks
     decision: Literal["approved", "rejected"]
-    accepted_by: Literal["project_owner"] = "project_owner"
+    accepted_by: Literal["automated_gate"] = "automated_gate"
     reviewed_at: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
     notes: list[str] = Field(default_factory=list)
     schema_version: Literal["clean_review_v1"] = "clean_review_v1"

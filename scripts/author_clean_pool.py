@@ -273,7 +273,7 @@ class PoolBuilder:
                     "synthetic_privacy": True,
                 },
                 "decision": "approved",
-                "accepted_by": "project_owner",
+                "accepted_by": "automated_gate",
                 "reviewed_at": CREATED_AT,
                 "notes": [
                     "Validated by deterministic checks under the approved same-machine workflow."
@@ -959,7 +959,7 @@ def main() -> int:
         "category_counts": dict(sorted(builder.category_counts.items())),
         "assigned_owner_counts": dict(sorted(owner_counts.items())),
         "generated_by": "codex",
-        "review_mode": "automated_owner_accepted",
+        "review_mode": "automated_checks_owner_waiver",
         "independent_human_review": False,
         "files": {
             str(path.relative_to(CLEAN_ROOT)): _sha256(path)

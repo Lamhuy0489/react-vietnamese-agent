@@ -72,10 +72,11 @@ and are not inferred here.
 - The project owner confirmed Huy and Minh use the same machine and explicitly
   removed the peer-review requirement for ongoing work.
 - Do not fabricate cross-review metadata. Phase 2 tasks use
-  `review_mode=automated_owner_accepted` and must pass deterministic schema,
+  `review_mode=automated_checks_owner_waiver` and must pass deterministic schema,
   oracle, duplicate/leakage, consistency, split, and checksum validation.
-- This replaces Phase 2 DoD-5 peer-review coverage with 100% automated QA plus
-  explicit owner acceptance. Impact: there is no independent human-review
-  evidence; reports and the data card must disclose that limitation.
+- This replaces Phase 2 DoD-5 peer-review coverage with 100% automated QA under
+  the explicit owner waiver. It does not claim task-by-task owner inspection.
+  Impact: there is no independent human-review evidence; reports and the data
+  card must disclose that limitation.
 - Phase 2 clean-benchmark work is authorized. Create the 250-task pool before
   splitting; do not run a model on held-out Test or modify Test after sealing.

@@ -5,7 +5,7 @@ Phase 2 stores three strict records keyed by `task_id`:
 - `CleanPublicTask`: model-safe instruction and grouping metadata.
 - `CleanGroundTruth`: private evaluator facts, paths, arguments, evidence, and
   deterministic fault plans.
-- `CleanReviewRecord`: automated QA result and explicit owner acceptance.
+- `CleanReviewRecord`: automated QA result under the explicit owner review waiver.
 
 Only `CleanPublicTask.prompt_payload()` may enter the agent context; it returns
 exactly `task_id` and `instruction`. Ground truth and review records are never
