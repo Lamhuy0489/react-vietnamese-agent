@@ -20,8 +20,12 @@ Cập nhật: 2026-09-05.
 - Test: 35/35 pass; package coverage 89%; Ruff và mypy strict pass.
 - Held-out Test: chưa tạo và chưa truy cập.
 
-## Tiếp theo
+## Đang thực hiện
 
-Phase 2 chưa bắt đầu. Khi chủ dự án cho phép, đọc `plan/phase2.md` và xây clean
-benchmark theo contract; không dùng kết quả held-out Test để chỉnh prompt,
-policy, threshold hay kiến trúc.
+Phase 2 đã được cho phép bắt đầu trên branch `phase-2/clean-benchmark-v1`.
+Thứ tự bắt buộc: khóa schema → tạo environment → tạo/QA pool 250 → group split
+150/100 → niêm phong Test → chỉ chạy pilot trên Dev.
+
+Huy và Minh dùng chung máy nên chủ dự án bỏ peer review. Dataset không ghi giả
+reviewer; thay vào đó dùng automated QA 100% và owner acceptance, đồng thời ghi
+rõ hạn chế thiếu independent human review trong data card.

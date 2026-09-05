@@ -66,3 +66,16 @@ and are not inferred here.
   owner-approved collaboration-gate waiver, not a claim that review occurred.
 - Phase 1 is accepted; Phase 2 remains not started and held-out Test remains
   uncreated/unaccessed.
+
+## 2026-09-05 — Same-machine workflow and Phase 2 authorization
+
+- The project owner confirmed Huy and Minh use the same machine and explicitly
+  removed the peer-review requirement for ongoing work.
+- Do not fabricate cross-review metadata. Phase 2 tasks use
+  `review_mode=automated_owner_accepted` and must pass deterministic schema,
+  oracle, duplicate/leakage, consistency, split, and checksum validation.
+- This replaces Phase 2 DoD-5 peer-review coverage with 100% automated QA plus
+  explicit owner acceptance. Impact: there is no independent human-review
+  evidence; reports and the data card must disclose that limitation.
+- Phase 2 clean-benchmark work is authorized. Create the 250-task pool before
+  splitting; do not run a model on held-out Test or modify Test after sealing.
