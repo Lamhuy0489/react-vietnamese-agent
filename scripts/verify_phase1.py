@@ -34,6 +34,9 @@ REQUIRED_FILES = (
     "docs/tool_contracts.md",
     "docs/trace_schema.md",
     "docs/phase1_report.md",
+    "notebooks/kaggle/phase1_kernel.py",
+    "scripts/prepare_kaggle_phase1.py",
+    "scripts/run_hf_smoke.py",
 )
 
 

@@ -118,6 +118,7 @@ def main() -> int:
     covered = sorted({tool for result in results for tool in result["tool_sequence"]})
     summary = {
         "total_tasks": len(tasks),
+        "terminal_runs": len(results),
         "completed_runs": sum(result["status"] == "completed" for result in results),
         "crashed_runs": sum(result["status"] == "model_error" for result in results),
         "task_successes": sum(bool(result["success"]) for result in results),

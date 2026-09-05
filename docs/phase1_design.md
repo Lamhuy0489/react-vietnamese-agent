@@ -1,6 +1,6 @@
 # Phase 1 Design — A0 Vertical Slice
 
-Status: local CPU vertical slice implemented; real-model Kaggle smoke pending.
+Status: local CPU vertical slice implemented; frozen Kaggle run package ready.
 
 ## Objective
 
@@ -26,6 +26,22 @@ or final-answer security filter.
 
 The runtime depends on the `LLMBackend` protocol, not Transformers. Dummy and
 Replay backends run on CPU; `HFBackend` adapts a preloaded Kaggle generator.
+
+## Frozen Kaggle smoke condition
+
+- Model: `qwen-lm/qwen2.5/transformers/3b-instruct/1`.
+- Runtime: private Kaggle script, NVIDIA T4, internet disabled.
+- Source transport: private Kaggle Dataset made only from `git archive HEAD`.
+- Execution order: one-task preflight, then a fresh full 20-task run.
+- Retry rule: rerun only for an infrastructure failure; never select outputs by
+  answer quality.
+- Secrets: credentials remain local and are never copied into the bundle.
+
+Create the upload folders from a clean committed worktree with:
+
+```bash
+make kaggle-bundle
+```
 
 ## Limits
 

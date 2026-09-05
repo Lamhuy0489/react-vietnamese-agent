@@ -1,6 +1,6 @@
 PYTHON ?= .venv/bin/python
 
-.PHONY: setup verify phase1-validate smoke test lint typecheck check code-map
+.PHONY: setup verify phase1-validate smoke kaggle-bundle test lint typecheck check code-map
 
 setup:
 	python3 -m venv .venv
@@ -17,6 +17,9 @@ phase1-validate:
 
 smoke: phase1-validate
 	$(PYTHON) scripts/run_smoke.py --backend replay
+
+kaggle-bundle:
+	$(PYTHON) scripts/prepare_kaggle_phase1.py --owner huylmhuhu
 
 test:
 	$(PYTHON) -m pytest

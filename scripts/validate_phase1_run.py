@@ -22,8 +22,10 @@ def main() -> int:
     for event in events:
         runs[event["run_id"]].append(event)
 
-    if len(runs) != 20 or summary.get("completed_runs") != 20:
-        failures.append("run must contain exactly 20 completed trajectories")
+    if len(runs) != 20 or summary.get("terminal_runs", len(runs)) != 20:
+        failures.append("run must contain exactly 20 terminal trajectories")
+    if summary.get("crashed_runs") != 0:
+        failures.append("run must contain zero model/runtime crashes")
     for run_id, run_events in runs.items():
         if run_events[0]["event"] != "run_start" or run_events[-1]["event"] != "run_end":
             failures.append(f"{run_id}: trace must start/end correctly")
@@ -41,7 +43,7 @@ def main() -> int:
         for failure in failures:
             print(f"FAIL: {failure}")
         return 1
-    print(f"PASS: {len(runs)} complete traces, {len(events)} events, valid tool-call order")
+    print(f"PASS: {len(runs)} terminal traces, {len(events)} events, valid tool-call order")
     return 0
 
 
