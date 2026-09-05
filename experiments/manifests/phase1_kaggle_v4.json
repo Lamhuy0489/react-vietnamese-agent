@@ -1,0 +1,94 @@
+{
+  "manifest_version": "1.0",
+  "phase": "phase1",
+  "status": "accepted",
+  "accepted_at": "2026-09-05",
+  "source": {
+    "git_commit": "2138dc83bfbbe5d38885418255a72238f5c33357",
+    "branch": "phase-1/a0-vertical-slice",
+    "pull_request": "https://github.com/Lamhuy0489/react-vietnamese-agent/pull/1",
+    "bundle_sha256": "39f1e63ddca56e4dd8cf4b5949927b250017e7f2875e55cbf0b1f7b4422dddc9"
+  },
+  "execution": {
+    "platform": "kaggle",
+    "account": "huylmhuhu",
+    "kernel": "huylmhuhu/react-vietnamese-agent-phase-1-real-model-smoke",
+    "kernel_version": 4,
+    "kernel_status": "COMPLETE",
+    "dataset": "huylmhuhu/react-vietnamese-agent-phase1-bundle",
+    "dataset_version": 5,
+    "accelerator": "NvidiaTeslaT4",
+    "internet_enabled": false,
+    "model_source": "qwen-lm/qwen2.5/transformers/3b-instruct/1",
+    "temperature": 0.0,
+    "max_new_tokens": 512,
+    "seed": 42,
+    "evaluator_id": "phase1_smoke_v1"
+  },
+  "full_run": {
+    "suite_id": "phase1_hf_20260905T114722Z",
+    "total_tasks": 20,
+    "terminal_runs": 20,
+    "completed_runs": 16,
+    "max_steps_runs": 2,
+    "parse_failure_runs": 2,
+    "crashed_runs": 0,
+    "task_successes": 3,
+    "schema_validity_rate": 0.7887323943661971,
+    "trace_events": 262,
+    "real_model_tools_covered": [
+      "cached_fetch",
+      "cached_search",
+      "calculator",
+      "db_query",
+      "doc_read",
+      "doc_search"
+    ],
+    "successful_task_ids": [
+      "smoke_002",
+      "smoke_012",
+      "smoke_020"
+    ]
+  },
+  "phase1_acceptance": {
+    "replay_task_successes": 20,
+    "replay_terminal_runs": 20,
+    "replay_tools_covered": 8,
+    "real_model_terminal_runs": 20,
+    "real_model_crashes": 0,
+    "trace_schema_valid": true,
+    "tool_event_order_valid": true,
+    "credential_secret_matches": 0,
+    "held_out_test_accessed": false,
+    "minh_review": "deferred_by_owner"
+  },
+  "artifact_sha256": {
+    "kaggle_bundle_info.json": "125c25df603ba723d80ae5bd77fc763d1f3dca91db8dfdec7a130e84755ccd8c",
+    "phase1_preflight/summary.json": "155dada80aedc162629289fce63f0bfddd2449c1b73763ba60f1047e47fcf6ff",
+    "phase1_preflight/run_metadata.json": "4e9ab6fbf5774b1e993b6ef99a977f1193c21b90ec87623656ce726b9f239c89",
+    "phase1_preflight/traces.jsonl": "7729c042921d4bb06e3bd87908f7906fc46dfbe56949c60da4291476d5247403",
+    "phase1_real_model/summary.json": "4a95693f659ca8f2a11343ec348d4710ad82f61274c0577614941882ed43d6d2",
+    "phase1_real_model/run_metadata.json": "528b85646e488c3a698957f5c13ce310d0e6d1e3f700a465a5013b2aa8ecf0d1",
+    "phase1_real_model/traces.jsonl": "3c5fde9e56370631c1a6d54daa8d0056aeb0ac858e1b18939aa2398fbc3445bc",
+    "phase1_real_model/failures.json": "4b969c729ec73c549c83ed7b3cb0aff235df0c5e2acf18d04797e391a3955c33"
+  },
+  "failed_infrastructure_attempts": [
+    {
+      "kernel_version": 1,
+      "reason": "Kaggle expanded the uploaded source archive"
+    },
+    {
+      "kernel_version": 2,
+      "reason": "expanded source lived under a generated subdirectory"
+    },
+    {
+      "kernel_version": 3,
+      "reason": "subprocess PYTHONPATH did not include the source package"
+    }
+  ],
+  "raw_artifacts": {
+    "committed": false,
+    "local_ignored_path": "results/phase1/kaggle_v4",
+    "download_command": "kaggle kernels output huylmhuhu/react-vietnamese-agent-phase-1-real-model-smoke -p results/phase1/kaggle_v4 -o"
+  }
+}

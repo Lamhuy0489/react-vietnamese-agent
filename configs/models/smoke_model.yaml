@@ -1,0 +1,7 @@
+backend: huggingface
+model_id: qwen-lm/qwen2.5
+model_revision: transformers/3b-instruct/1
+kaggle_model_source: qwen-lm/qwen2.5/transformers/3b-instruct/1
+temperature: 0.0
+max_new_tokens: 512
+seed: 42
