@@ -48,3 +48,11 @@ check: verify phase1-validate lint typecheck test
 
 code-map:
 	$(PYTHON) scripts/generate_code_map.py
+
+.PHONY: phase2-v11-validate phase2-v11-preflight
+
+phase2-v11-validate:
+	$(PYTHON) scripts/validate_clean_v11.py
+
+phase2-v11-preflight: phase2-v11-validate
+	$(PYTHON) scripts/preflight_clean_worker.py

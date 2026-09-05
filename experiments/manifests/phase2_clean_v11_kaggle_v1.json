@@ -1,0 +1,65 @@
+{
+  "manifest_version": "1.0",
+  "phase": "phase2",
+  "benchmark": "clean_v1.1",
+  "status": "complete_artifacts_audited_dev_diagnostic",
+  "audit_receipt": "experiments/manifests/phase2_clean_v11_audit.json",
+  "source_commit": "42c1d45ebf349884496dd9f3029b640027f8622d",
+  "dataset_hash": "692ca92a214b0da87245ca7d11a074a74d416558f377bc448c125bd7d387be38",
+  "archive_sha256": "8bad55d20e95da4734962cd306479f409ae01e4c6bcb84168c51370bfb518110",
+  "wrapper_sha256": "976f7efdc5faf22f8fdfb17a69fffcb1c901f06a40765cbaeca4ad845d2ceb42",
+  "execution": {
+    "account": "huylmhuhu",
+    "dataset": "huylmhuhu/react-vn-clean-v11-dev",
+    "dataset_version": 1,
+    "dataset_ready_verified": true,
+    "requested_kernel": "huylmhuhu/react-vn-clean-v11-dev-pilot",
+    "actual_kernel": "huylmhuhu/react-vietnamese-clean-v1-1-dev-pilot",
+    "kernel_version": 1,
+    "kernel_status": "COMPLETE",
+    "accelerator": "NvidiaTeslaT4",
+    "internet_enabled": false,
+    "private": true,
+    "model_source": "qwen-lm/qwen2.5/transformers/3b-instruct/1",
+    "temperature": 0.0,
+    "max_new_tokens": 512,
+    "seed": 42,
+    "timeout_seconds": 3600,
+    "selected_dev_tasks": 21
+  },
+  "local_preflight": {
+    "archive_mount": true,
+    "expanded_mount": true,
+    "runtime_tools_exercised": 8,
+    "fault_adapter_parser": true,
+    "dummy_tasks_per_layout": 21,
+    "missing_only_resume": true,
+    "worker_files": 72,
+    "forbidden_worker_paths": 0,
+    "credential_secret_matches": 0,
+    "receipt_path": "build/kaggle/v11_20260906_a/preflight_receipt.json"
+  },
+  "attempt_history": [
+    {
+      "kernel_version": 1,
+      "event": "push_succeeded",
+      "note": "Kaggle derived actual kernel slug from title; follow returned handle, no duplicate push."
+    }
+  ],
+  "raw_artifacts": {
+    "committed": false,
+    "local_path": "results/phase2/clean_v11_kaggle_v1"
+  },
+  "observed_results": {
+    "terminal_runs": 21,
+    "completed": 18,
+    "parse_failures": 2,
+    "max_steps": 1,
+    "model_errors": 0,
+    "trace_events": 318,
+    "dev_diagnostic_successes": 5,
+    "schema_validity_rate": 0.7931034482758621,
+    "inference_retries": 0,
+    "test_model_runs": 0
+  }
+}

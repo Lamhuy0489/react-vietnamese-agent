@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 2: clean_v1.1 sealed, Dev experiment pending; v1 quarantined**
+- Current stage: **Phase 2: clean_v1.1 sealed and Dev pilot audited; closure pending**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-06
 
@@ -76,13 +76,20 @@ Owner approved clean_v1.1 replacement and Dev experiments. Replacement progress:
 - [x] Typed numeric/date/set checks and SQL/calculator result equivalence with
   negative-control tests; no fabricated human review claims.
 - [x] Public-only 21-task Dummy run and identity-safe checkpoint/resume tests.
-- [ ] Exact Git-bundle mount simulations and frozen real-model Dev pilot.
-- [ ] Evidence audit, remaining benchmark-quality limitations and final acceptance.
+- [x] Exact Git-bundle archive/expanded mount simulations, eight runtime tools,
+  fault adapter, 21-task Dummy and missing-only resume in both layouts.
+- [x] Kaggle v1 COMPLETE on first push: 21 terminal, 0 model errors, 318 valid
+  trace events, 5/21 Dev diagnostic success; all checkpoint/input hashes audited.
+- [x] Frozen evidence receipt, four credential-secret checks with zero matches.
+- [ ] Full Phase 2 closure: document/check remaining annotation coverage and
+  equivalent-answer/path limitations; no final Test experiment or Phase 3 start.
 
 v1.1 dataset hash: `692ca92a214b0da87245ca7d11a074a74d416558f377bc448c125bd7d387be38`.
 Do not move tasks or rewrite either frozen version. Language-quality review is
 waived, not claimed to be proven by the structural tests. Low-level QA is not
-equivalent to full Phase 2 closure before the pilot audit.
+equivalent to full Phase 2 closure. Pilot evidence is in
+`experiments/manifests/phase2_clean_v11_kaggle_v1.json`; audit hashes are in
+`experiments/manifests/phase2_clean_v11_audit.json`.
 The review waiver still applies; no peer review or new account is requested.
 
 Do not begin Phase 3 or access held-out clean Test without explicit scope.

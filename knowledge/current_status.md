@@ -3,8 +3,9 @@
 ## Cập nhật mới nhất — 2026-09-06
 
 Owner đã phê duyệt bản thay thế. v1.1 đã qua QA thực thi 250/250 và khóa split
-150/100 không tách nhóm ngữ nghĩa; CPU Dummy 21/21 terminal. Đang chuẩn bị
-bundle preflight và pilot Kaggle, chưa đóng Phase 2. Đọc
+150/100 không tách nhóm ngữ nghĩa. Kaggle v1.1 COMPLETE ngay lần đầu: 21/21
+terminal, 0 crash, 318 trace hợp lệ, 5/21 Dev diagnostic. 96 test pass; chưa
+đóng toàn bộ Phase 2 vì còn kiểm tra độ đầy đủ annotation/cách trả lời tương đương. Đọc
 [clean_v11_progress.md](clean_v11_progress.md) trước phần audit lịch sử bên dưới.
 
 Cập nhật: 2026-09-05, sau audit lại. **Phase 2 chưa đạt acceptance; kết luận

@@ -20,6 +20,22 @@ Cập nhật 2026-09-06. Phase 2 còn đang thực hiện, chưa phải thí ngh
 
 ## Thực nghiệm
 
+- Source cố định: `42c1d45`; 92 tests, Ruff/mypy/setup pass. Bundle đã qua cả
+  hai mount và chạy/resume Dummy đủ 21 task mỗi mount. Scan 72 worker files:
+  không Test/private/credential, không khớp secret.
+- Kaggle Dataset `huylmhuhu/react-vn-clean-v11-dev` v1 ready. Kernel thực tế
+  `huylmhuhu/react-vietnamese-clean-v1-1-dev-pilot` v1 **COMPLETE lần đầu**.
+  Không push lại vì cảnh báo slug khác tiêu đề; theo handle server trả về.
+- Manifest: `experiments/manifests/phase2_clean_v11_kaggle_v1.json`; audit receipt
+  và SHA-256 từng artifact: `experiments/manifests/phase2_clean_v11_audit.json`.
+- Kết quả thật: 21 terminal, 18 completed, 2 parse failure, 1 max steps, 0 model
+  error; 318 trace events hợp lệ, schema validity 79,31%; Dev diagnostic 5/21.
+  Không so trực tiếp 5/21 với 7/21 v1 vì dataset/evaluator đã thay đổi.
+- 21 checkpoint khớp hash, source/config/dev/fault/env identity khớp; scan 4
+  secret values vào toàn bộ output tải về: 0 match. Không inference retry.
+- Tổng test hiện tại: 96 pass; Ruff/mypy/setup pass. Các cảnh báo Transformers
+  về `torch_dtype`/`max_length` không gây crash; giữ nguyên frozen run.
+
 - CPU: public-only Dummy 21/21 terminal, 0 crash. Stub không chứng minh model
   trả lời đúng; đánh giá bằng private Dev GT ở local sau khi worker kết thúc.
 - Checkpoint lưu trace/result mỗi task, checksum và input identity; resume
@@ -49,4 +65,6 @@ python scripts/prepare_kaggle_v11.py --owner huylmhuhu --output build/kaggle/<fr
 ```
 
 Không chạy generator/seal lại trên version đã khóa. Tiến trình dài hạn ghi
-trong `docs/project/phase_status.md`; kết quả Kaggle sẽ bổ sung sau khi audit.
+trong `docs/project/phase_status.md`. Chưa chốt toàn bộ Phase 2: còn kiểm tra
+độ đầy đủ của annotation và các cách trả lời/tool path tương đương trước khi
+diễn giải điểm benchmark. Không sửa Test sau seal dựa trên kết quả Dev.

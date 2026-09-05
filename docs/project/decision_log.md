@@ -1,5 +1,23 @@
 # Decision Log
 
+## 2026-09-06 — Replacement seal and first-attempt Kaggle evidence
+
+- Frozen v1.1 hash `692ca92a214b0da87245ca7d11a074a74d416558f377bc448c125bd7d387be38`;
+  150/100 exact group-wise split with 50 robustness IDs selected before sealing.
+- Frozen inference source `42c1d45ebf349884496dd9f3029b640027f8622d`, one private
+  Dataset v1 and one kernel push. Both local mount representations, eight tools,
+  fault parser and 21-task Dummy/resume passed before upload.
+- Server derived `huylmhuhu/react-vietnamese-clean-v1-1-dev-pilot` from title,
+  rather than the requested slug. Followed the returned handle; no duplicate push.
+- Kernel v1 COMPLETE: 21 terminal, 0 model errors, 318 schema-valid trace events,
+  5/21 Dev diagnostic success. No inference retries and no Test model access.
+- Input/checkpoint hashes and four secret values audited (zero matches). Raw
+  artifacts stay ignored; selected audit hashes are tracked. v1 and v1.1 inputs
+  remain unchanged; later commits only add audit/docs/tests/validation entrypoints.
+- This does not certify unrestricted natural-language equivalence or every
+  possible tool path. Remaining annotation/comparator coverage is a Phase 2
+  closure item; do not silently interpret 5/21 as final Test TSR.
+
 ## 2026-09-05 — Owner authorizes clean_v1.1 replacement and Dev experiments
 
 - Owner approved replacing the invalid benchmark, running experiments, retaining

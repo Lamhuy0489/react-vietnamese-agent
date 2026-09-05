@@ -9,6 +9,7 @@ from pathlib import Path
 
 from react_agent.validation.clean_split import DEV_QUOTAS
 from react_agent.validation.clean_v11 import load_pool, validate_pool
+from react_agent.validation.clean_v11_seal import validate_seal
 from react_agent.validation.group_split import assign_groups
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,6 +17,10 @@ CLEAN_ROOT = ROOT / "data/clean/v1_1"
 
 
 def main() -> int:
+    if (CLEAN_ROOT / "manifests/benchmark_manifest.json").exists():
+        failures = validate_seal(CLEAN_ROOT)
+        print(json.dumps({"valid": not failures, "failures": failures, "mode": "sealed_read_only"}))
+        return int(bool(failures))
     result = validate_pool(CLEAN_ROOT)
     tasks, _ = load_pool(CLEAN_ROOT)
     assignments = assign_groups(tasks, DEV_QUOTAS, seed=2026)

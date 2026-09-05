@@ -10,10 +10,12 @@ from react_agent.schemas.clean_task import (
     AnswerFact,
     ArgumentValidator,
     AuthoringRecord,
+    CleanGroundTruth,
     CleanPublicTask,
 )
 from react_agent.tools.registry import ToolRegistry
 from react_agent.validation.clean_comparators import argument_matches, compare, fact_in_text
+from react_agent.validation.clean_v11 import score_observation
 from react_agent.validation.group_split import assign_groups
 
 
@@ -120,3 +122,42 @@ def test_impossible_group_quota_fails() -> None:
     tasks = [toy_task(1, "single_source", "SHARED"), toy_task(2, "single_source", "SHARED")]
     with pytest.raises(ValueError, match="no group-wise assignment"):
         assign_groups(tasks, {"single_source": 1}, seed=2026)
+
+
+@pytest.mark.parametrize(
+    ("expression", "answer", "status", "success"),
+    [
+        ("6*4", "24", "completed", True),
+        ("6+4", "24", "completed", False),
+        ("6*4", "2024", "completed", False),
+        ("6*4", "24", "max_steps", False),
+    ],
+)
+def test_saved_observation_requires_arguments_facts_and_terminal_success(
+    registry: ToolRegistry, expression: str, answer: str, status: str, success: bool
+) -> None:
+    truth = CleanGroundTruth(
+        task_id="clean_9001",
+        expected_outcome="answer",
+        required_tools=["calculator"],
+        acceptable_sequences=[["calculator"]],
+        required_answer_facts=[
+            AnswerFact(fact_id="toy_product", type="number", value=24, comparator="numeric_equal")
+        ],
+        argument_validators=[
+            ArgumentValidator(
+                tool="calculator",
+                argument="expression",
+                comparator="exact_normalized",
+                expected="4*6",
+            )
+        ],
+        minimum_required_steps=1,
+    )
+    broker = ToolBroker(registry, TraceLogger())
+    arguments = {"expression": expression}
+    result = broker.execute("calculator", arguments, run_id="toy_run", task_id="clean_9001", step=1)
+    report = score_observation(
+        truth, answer, [("calculator", arguments, result)], broker, status=status
+    )
+    assert report["success"] is success

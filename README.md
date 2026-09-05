@@ -72,9 +72,12 @@ và manifest bằng chứng tại
 
 ## Clean benchmark Phase 2
 
-v1.1 thay thế đã được phê duyệt, qua QA thực thi và khóa split không tách nhóm;
-pilot Kaggle đang chuẩn bị. Xem [tiến độ v1.1](knowledge/clean_v11_progress.md).
+v1.1 qua QA thực thi và khóa split không tách nhóm; Kaggle COMPLETE ngay lần
+đầu: 21 terminal, 0 crash, 5/21 Dev diagnostic. Xem
+[tiến độ v1.1 và giới hạn còn lại](knowledge/clean_v11_progress.md).
 Các lệnh `phase2-*` cũ bên dưới vẫn chỉ audit bản v1 lỗi.
+
+Cho bản mới, dùng `make phase2-v11-validate` và `make phase2-v11-preflight`.
 
 **Bản v1 chưa đạt acceptance:** 30 cặp cùng fact/nguồn có group ID khác nhau,
 trong đó 12 cặp nằm ở cả Dev và Test. Giữ bản khóa để lưu bằng chứng, chưa tạo

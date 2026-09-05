@@ -2,6 +2,10 @@
 
 ## Cập nhật v1.1 — 2026-09-06
 
+Khi tạo kernel mới, `id` và slug sinh từ `title` cần nhất quán. Lần v1.1 đầu
+server cảnh báo rồi tạo handle theo title. Đó không phải inference failure:
+dùng handle từ output push cho status/logs/output, không push lại để đổi tên.
+
 Phase 2 còn gặp lỗi fault adapter không delegate `validate_arguments`, khiến
 parser dùng generic BaseModel dù unit test execute trực tiếp vẫn pass. Vì vậy
 preflight mới gọi tool qua AgentRuntime/parser/Broker và có recovery case.
