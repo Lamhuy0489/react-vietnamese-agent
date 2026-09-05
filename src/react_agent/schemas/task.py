@@ -2,7 +2,16 @@
 
 from __future__ import annotations
 
+from typing import Protocol
+
 from pydantic import BaseModel, ConfigDict, Field
+
+
+class RuntimeTask(Protocol):
+    """Minimal public task view accepted by the model-facing runtime."""
+
+    task_id: str
+    instruction: str
 
 
 class ExpectedBehavior(BaseModel):
