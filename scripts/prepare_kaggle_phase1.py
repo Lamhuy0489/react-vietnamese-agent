@@ -44,6 +44,16 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def tracked_file_hashes() -> dict[str, str]:
+    relative_paths = git_output("ls-tree", "-r", "--name-only", "HEAD").splitlines()
+    hashes: dict[str, str] = {}
+    for relative in relative_paths:
+        path = ROOT / relative
+        if path.is_file():
+            hashes[relative] = sha256(path)
+    return hashes
+
+
 def main() -> int:
     args = parse_args()
     if GIT is None:
@@ -85,6 +95,7 @@ def main() -> int:
         "dataset": f"{args.owner}/{dataset_slug}",
         "dataset_version": args.dataset_version,
         "kernel": f"{args.owner}/react-vietnamese-agent-phase-1-real-model-smoke",
+        "file_sha256": tracked_file_hashes(),
     }
     (dataset_dir / "frozen_manifest.json").write_text(
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"

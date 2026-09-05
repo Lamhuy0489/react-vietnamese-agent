@@ -37,6 +37,7 @@ REQUIRED_FILES = (
     "notebooks/kaggle/phase1_kernel.py",
     "scripts/prepare_kaggle_phase1.py",
     "scripts/run_hf_smoke.py",
+    "scripts/validate_kaggle_bundle.py",
 )
 
 

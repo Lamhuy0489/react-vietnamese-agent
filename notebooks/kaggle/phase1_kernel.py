@@ -10,18 +10,18 @@ import subprocess
 import sys
 import tarfile
 from pathlib import Path
+from typing import Any
 
-INPUT_ROOT = Path("/kaggle/input")
-WORK_ROOT = Path("/kaggle/working")
-PROJECT_ROOT = WORK_ROOT / "react-vietnamese-agent"
+DEFAULT_INPUT_ROOT = Path("/kaggle/input")
+DEFAULT_WORK_ROOT = Path("/kaggle/working")
 MODEL_SOURCE = "qwen-lm/qwen2.5/transformers/3b-instruct/1"
 EXPECTED_MODEL_SUFFIX = Path("qwen2.5/transformers/3b-instruct/1")
 
 
-def find_unique(name: str) -> Path:
-    matches = list(INPUT_ROOT.rglob(name))
+def find_unique(root: Path, name: str) -> Path:
+    matches = list(root.rglob(name))
     if len(matches) != 1:
-        raise RuntimeError(f"expected one {name!r} under {INPUT_ROOT}, found {matches}")
+        raise RuntimeError(f"expected one {name!r} under {root}, found {matches}")
     return matches[0]
 
 
@@ -44,73 +44,124 @@ def safe_extract(archive: Path, destination: Path) -> None:
         tar.extractall(destination)  # noqa: S202 - paths validated immediately above
 
 
-def run(*arguments: str) -> None:
+def verify_frozen_files(project_root: Path, manifest: dict[str, Any]) -> None:
+    expected = manifest.get("file_sha256")
+    if not isinstance(expected, dict) or not expected:
+        raise RuntimeError("frozen manifest is missing file_sha256 entries")
+    failures: list[str] = []
+    for relative, expected_hash in expected.items():
+        path = project_root / relative
+        if not path.is_file():
+            failures.append(f"missing:{relative}")
+        elif sha256(path) != expected_hash:
+            failures.append(f"hash:{relative}")
+    if failures:
+        raise RuntimeError(f"frozen source verification failed: {failures[:10]}")
+
+
+def prepare_project(input_root: Path, project_root: Path) -> dict[str, Any]:
+    manifest_path = find_unique(input_root, "frozen_manifest.json")
+    manifest: dict[str, Any] = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if manifest.get("model_source") != MODEL_SOURCE:
+        raise RuntimeError("manifest model source does not match the frozen condition")
+    bundle_root = manifest_path.parent
+    archive_matches = list(bundle_root.glob("react-vietnamese-agent-phase1.tar.gz"))
+    if archive_matches:
+        archive = archive_matches[0]
+        if sha256(archive) != manifest["archive_sha256"]:
+            raise RuntimeError("source archive hash does not match frozen manifest")
+        safe_extract(archive, project_root)
+    else:
+        package_candidates = [
+            path
+            for path in bundle_root.rglob("react_agent")
+            if path.is_dir() and path.parent.name == "src"
+        ]
+        if len(package_candidates) != 1:
+            raise RuntimeError(f"expected one expanded source bundle, found {package_candidates}")
+        expanded_project_root = package_candidates[0].parent.parent
+        shutil.copytree(expanded_project_root, project_root, dirs_exist_ok=True)
+    verify_frozen_files(project_root, manifest)
+    return manifest
+
+
+def find_model_path(input_root: Path) -> Path:
+    candidates = [path for path in input_root.rglob("1") if path.is_dir()]
+    candidates = [
+        path
+        for path in candidates
+        if str(path).casefold().endswith(str(EXPECTED_MODEL_SUFFIX).casefold())
+    ]
+    if len(candidates) != 1:
+        raise RuntimeError(f"expected one frozen model path, found {candidates}")
+    required = ("config.json", "tokenizer.json", "model.safetensors.index.json")
+    missing = [name for name in required if not (candidates[0] / name).is_file()]
+    if missing:
+        raise RuntimeError(f"frozen model is missing required files: {missing}")
+    return candidates[0]
+
+
+def run(project_root: Path, frozen_commit: str, *arguments: str) -> None:
     environment = os.environ.copy()
-    environment["PYTHONPATH"] = str(PROJECT_ROOT / "src")
+    environment["PYTHONPATH"] = str(project_root / "src")
+    environment["FROZEN_GIT_COMMIT"] = frozen_commit
     subprocess.run(  # noqa: S603 - fixed interpreter and repository scripts
-        [sys.executable, *arguments], cwd=PROJECT_ROOT, env=environment, check=True
+        [sys.executable, *arguments], cwd=project_root, env=environment, check=True
     )
 
 
-manifest_path = find_unique("frozen_manifest.json")
-manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-bundle_root = manifest_path.parent
-archive_matches = list(bundle_root.glob("react-vietnamese-agent-phase1.tar.gz"))
-if archive_matches:
-    archive = archive_matches[0]
-    if sha256(archive) != manifest["archive_sha256"]:
-        raise RuntimeError("source archive hash does not match frozen manifest")
-    safe_extract(archive, PROJECT_ROOT)
-else:
-    package_candidates = [
-        path
-        for path in bundle_root.rglob("react_agent")
-        if path.is_dir() and path.parent.name == "src"
-    ]
-    if len(package_candidates) != 1:
-        raise RuntimeError(f"expected one expanded source bundle, found {package_candidates}")
-    expanded_project_root = package_candidates[0].parent.parent
-    shutil.copytree(expanded_project_root, PROJECT_ROOT, dirs_exist_ok=True)
+def main(
+    input_root: Path = DEFAULT_INPUT_ROOT,
+    work_root: Path = DEFAULT_WORK_ROOT,
+) -> None:
+    project_root = work_root / "react-vietnamese-agent"
+    manifest = prepare_project(input_root, project_root)
+    model_path = find_model_path(input_root)
+    frozen_commit = str(manifest["git_commit"])
 
-model_candidates = [path for path in INPUT_ROOT.rglob("1") if path.is_dir()]
-model_candidates = [
-    path
-    for path in model_candidates
-    if str(path).casefold().endswith(str(EXPECTED_MODEL_SUFFIX).casefold())
-]
-if len(model_candidates) != 1:
-    raise RuntimeError(f"expected one frozen model path, found {model_candidates}")
-model_path = model_candidates[0]
+    bundle_info = {
+        "git_commit": frozen_commit,
+        "archive_sha256": manifest["archive_sha256"],
+        "dataset": manifest["dataset"],
+        "dataset_version": manifest["dataset_version"],
+        "model_source": MODEL_SOURCE,
+        "model_path": str(model_path),
+    }
+    (work_root / "kaggle_bundle_info.json").write_text(
+        json.dumps(bundle_info, indent=2) + "\n", encoding="utf-8"
+    )
 
-bundle_info = {
-    "git_commit": manifest["git_commit"],
-    "archive_sha256": manifest["archive_sha256"],
-    "model_source": MODEL_SOURCE,
-    "model_path": str(model_path),
-}
-(WORK_ROOT / "kaggle_bundle_info.json").write_text(
-    json.dumps(bundle_info, indent=2) + "\n", encoding="utf-8"
-)
-os.environ["FROZEN_GIT_COMMIT"] = manifest["git_commit"]
+    run(project_root, frozen_commit, "scripts/build_smoke_environment.py")
+    run(project_root, frozen_commit, "scripts/validate_smoke_data.py")
+    run(project_root, frozen_commit, "scripts/verify_phase1.py")
+    run(
+        project_root,
+        frozen_commit,
+        "scripts/run_hf_smoke.py",
+        "--model-path",
+        str(model_path),
+        "--task-id",
+        "smoke_001",
+        "--output",
+        str(work_root / "phase1_preflight"),
+    )
+    run(
+        project_root,
+        frozen_commit,
+        "scripts/run_hf_smoke.py",
+        "--model-path",
+        str(model_path),
+        "--output",
+        str(work_root / "phase1_real_model"),
+    )
+    run(
+        project_root,
+        frozen_commit,
+        "scripts/validate_phase1_run.py",
+        str(work_root / "phase1_real_model"),
+    )
+    print("PHASE1_KAGGLE_SMOKE_COMPLETE")
 
-run("scripts/build_smoke_environment.py")
-run("scripts/validate_smoke_data.py")
-run("scripts/verify_phase1.py")
-run(
-    "scripts/run_hf_smoke.py",
-    "--model-path",
-    str(model_path),
-    "--task-id",
-    "smoke_001",
-    "--output",
-    str(WORK_ROOT / "phase1_preflight"),
-)
-run(
-    "scripts/run_hf_smoke.py",
-    "--model-path",
-    str(model_path),
-    "--output",
-    str(WORK_ROOT / "phase1_real_model"),
-)
-run("scripts/validate_phase1_run.py", str(WORK_ROOT / "phase1_real_model"))
-print("PHASE1_KAGGLE_SMOKE_COMPLETE")
+
+if __name__ == "__main__":
+    main()
