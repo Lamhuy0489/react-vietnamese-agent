@@ -10,6 +10,7 @@ chi tiết nằm trong `plan/`, và kế hoạch gốc là file Word ở root.
 2. `phase1_evidence.md` — bằng chứng đóng Phase 1.
 3. `runbook.md` — lệnh kiểm tra/chạy lại thường dùng.
 4. `kaggle_lessons.md` — các lỗi Kaggle đã gặp và cách tránh lặp lại.
+5. `phase2_evidence.md` — bằng chứng dataset, split và Dev pilot Phase 2.
 
 Cập nhật `current_status.md` khi một acceptance gate thực sự thay đổi. Không
 ghi credential, API key, token hoặc dữ liệu held-out Test vào thư mục này.

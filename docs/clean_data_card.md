@@ -63,6 +63,13 @@ pool, review log, or private ground truth.
 - Near-duplicate disposition is deterministic semantic-signature QA, not human
   linguistic judgment.
 
+## Baseline Dev pilot
+
+The Qwen2.5-3B-Instruct Kaggle v2 pilot used 21 public Dev tasks (three per
+category): 21/21 terminal, 17 completed, zero model crashes, one parse failure,
+three max-step exits, 334 valid trace events, and 7/21 strict task successes.
+These are baseline diagnostics, not benchmark selection or Test results.
+
 ## Reproducibility
 
 Run `python scripts/validate_clean_environment.py`,

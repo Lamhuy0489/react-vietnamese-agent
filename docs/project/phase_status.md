@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 2 — clean benchmark v1 authoring infrastructure**
+- Current stage: **Phase 2 accepted; Phase 3 not started**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-05
 
@@ -48,11 +48,15 @@ recorded limitation, not a completion blocker.
 - [x] 250 total / 150 Dev / 100 Test and category quotas retained.
 - [x] Same-machine workflow recorded; review replaced by automated QA under the
   owner waiver without fabricated reviewer metadata.
-- [ ] Clean task/ground-truth/review schemas frozen.
-- [ ] Frozen synthetic environment built and validated.
-- [ ] Reviewed 250-task pool completed.
-- [ ] Group-wise 150/100 split created and held-out Test sealed.
-- [ ] Dev-only pilot completed without Test access.
-- [ ] Phase 2 acceptance checks and frozen manifest complete.
+- [x] Clean task/ground-truth/automated-QA schemas frozen.
+- [x] Frozen synthetic environment built and validated.
+- [x] Automated-QA 250-task pool completed; 250/250 oracle-valid.
+- [x] Group-wise 150/100 split created and held-out Test sealed.
+- [x] Dev-only Kaggle pilot completed without Test/private GT access.
+- [x] Phase 2 acceptance checks and frozen manifests complete.
 
-Held-out Test does not exist yet and must not be created before pool QA passes.
+Phase 2 was **accepted on 2026-09-05** under the recorded review waiver. The
+Kaggle Dev pilot produced 21/21 terminal runs, 0 crashes, 334 valid trace events,
+and 7/21 task successes. Low A0 performance is evidence, not a dataset blocker.
+
+Do not begin Phase 3 or access held-out clean Test without explicit scope.

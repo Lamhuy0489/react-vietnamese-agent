@@ -17,6 +17,9 @@
   Dev model pilot.
 - Added a Kaggle public-Dev-only pilot workflow that excludes Test and all
   private ground truth from the worker bundle.
+- Accepted Kaggle kernel v2 evidence: 21/21 terminal Dev runs, zero crashes,
+  334 valid trace events, and 7/21 strict task successes. Kernel v1 failure and
+  the fault-adapter fix are retained in the evidence manifest.
 
 No rejected task was carried into the frozen dataset. The generator history and
 QA reports preserve the reproducible transformation from pool to split.

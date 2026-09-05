@@ -5,7 +5,7 @@ công cụ trong môi trường tiếng Việt giả lập (hành chính–học
 
 ## Trạng thái
 
-- Trạng thái hiện tại: **Phase 1 hoàn thành; Phase 2 đang ở cổng Dev pilot cuối**.
+- Trạng thái hiện tại: **Phase 1 và Phase 2 hoàn thành; Phase 3 chưa bắt đầu**.
 - Kế hoạch gốc: file Word ở root và thư mục `plan/`.
 - Contract triển khai đã chuẩn hóa: `docs/`.
 - A0, smoke environment và clean benchmark 250 task đã hoàn thành; real-model

@@ -1,6 +1,6 @@
 # Clean Benchmark v1 Design
 
-Status: frozen candidate on 2026-09-05; Dev pilot evidence pending.
+Status: accepted on 2026-09-05.
 
 Clean v1 contains 250 Vietnamese tasks grounded only in `clean_env_v1`. Public
 task records and evaluator-only ground truth are physically separate. The
@@ -53,3 +53,11 @@ decision log and data card.
 
 The complete component list and hashes are in
 `data/clean/v1/manifests/benchmark_manifest.json`.
+
+## Dev pilot
+
+The accepted Kaggle v2 pilot ran Qwen2.5-3B-Instruct on 21 public Dev tasks,
+three per category. It produced 21/21 terminal runs, zero model crashes, 334
+schema-valid trace events, and 7/21 strict task successes. The worker bundle
+contained no Test or private ground truth. Low baseline performance was retained
+without changing frozen Test, prompt, policy, architecture, or thresholds.

@@ -1,0 +1,95 @@
+{
+  "evidence_version": "phase2_kaggle_v2",
+  "accepted_at": "2026-09-05",
+  "scope": "clean_v1.0_dev_pilot_only",
+  "source": {
+    "git_commit": "aa333024c74f08213255d7b580cbfbb521426ed5",
+    "public_dev_sha256": "9aa5627e2db8ce8bd616f9146f8cbae327cbb03e4ce5d7f565b3a3448cd6138b",
+    "archive_sha256": "7c66277063cff74d34b2b099684975c59eeea5a3957ce77d72bde3b826877d32"
+  },
+  "platform": {
+    "name": "kaggle",
+    "account": "huylmhuhu",
+    "dataset": "huylmhuhu/react-vietnamese-agent-phase2-dev-bundle",
+    "dataset_version": 2,
+    "kernel": "huylmhuhu/react-vietnamese-agent-phase-2-clean-dev-pilot",
+    "kernel_version": 2,
+    "accelerator": "NvidiaTeslaT4",
+    "internet_enabled": false,
+    "model_source": "qwen-lm/qwen2.5/transformers/3b-instruct/1",
+    "model_id": "qwen-lm/qwen2.5",
+    "model_revision": "transformers/3b-instruct/1"
+  },
+  "isolation": {
+    "test_in_bundle": false,
+    "private_ground_truth_in_bundle": false,
+    "test_tasks_loaded": 0,
+    "private_ground_truth_loaded": 0,
+    "local_bundle_simulation_passed": true
+  },
+  "inference": {
+    "suite_id": "phase2_dev_hf_20260905T134851Z",
+    "selected_tasks": 21,
+    "tasks_per_category": 3,
+    "terminal_runs": 21,
+    "completed_runs": 17,
+    "parse_failures": 1,
+    "max_steps": 3,
+    "model_crashes": 0,
+    "schema_validity_rate": 0.8735632183908046,
+    "tools_covered": [
+      "cached_fetch",
+      "cached_search",
+      "calculator",
+      "db_query",
+      "doc_read",
+      "doc_search"
+    ]
+  },
+  "evaluation": {
+    "task_successes": 7,
+    "evaluated_tasks": 21,
+    "trace_events_valid": 334,
+    "tool_broker_order_valid": true,
+    "sequence_labels_usable": 7,
+    "argument_labels_usable": 21,
+    "answer_fact_labels_usable": 10,
+    "failure_taxonomy": {
+      "error_recovery_observation": 1,
+      "required_answer_facts": 11,
+      "terminal_max_steps": 3,
+      "terminal_parse_failure": 1,
+      "tool_sequence": 14
+    }
+  },
+  "artifact_sha256": {
+    "kaggle_bundle_info.json": "640e6ee58e43b6687cb1eeef20190228352f4929f7ff2b2f338a438d5f3b81c5",
+    "run_metadata.json": "279a4b85751f126e2ee5f93379389d646ecf2620882fd0885f5e206946a4edcd",
+    "summary.json": "44c875dd3dd840f6b3700ec9986d9798f7f98f4b6cf54a660074368c54f6ad96",
+    "results.json": "84bc5d45ca8110d630b2e22ca353e14ec0acafcff2f69e99c33d18c652914466",
+    "traces.jsonl": "0a5a0257afb762a0f6f8c07d932fc1840cda7a46993c26bb71e9a68f5787c739",
+    "evaluation.json": "95facf4cf5f903a93faeb109d736ddacbb2afe696be5c60b51cc650ef00199d2"
+  },
+  "secret_audit": {
+    "credential_files_checked": 4,
+    "secret_key_values_checked": 4,
+    "secret_artifact_matches": 0,
+    "public_username_match_excluded_from_secret_count": true
+  },
+  "attempt_history": [
+    {
+      "kernel_version": 1,
+      "status": "error",
+      "cause": "fault adapter inherited BaseModel argument validation instead of delegating to the wrapped tool",
+      "resolution_commit": "aa333024c74f08213255d7b580cbfbb521426ed5"
+    },
+    {
+      "kernel_version": 2,
+      "status": "complete"
+    }
+  ],
+  "local_raw_artifacts": {
+    "path": "results/phase2/kaggle_v2",
+    "tracked": false
+  }
+}
