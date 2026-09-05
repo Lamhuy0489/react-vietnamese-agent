@@ -43,6 +43,12 @@ Last updated: 2026-09-05.
 
 The project owner deferred Minh's review. With that explicit waiver, all eight
 technical Definition-of-Done checks in `plan/phase1.md` pass. Phase 1 is
-accepted on 2026-09-05; Phase 2 remains not started.
+accepted on 2026-09-05. Follow-up audit reconfirmed the smoke DoD gates;
+current Phase 2 status is recorded separately in `project/phase_status.md`.
 
-No held-out Test data has been created or accessed.
+Original Phase 1 work did not create or access held-out Test. Follow-up audit:
+two fresh CPU runs per Replay/Dummy had identical normalized traces (218/80
+events), and eight stored Kaggle v4 hashes matched. Strengthened validation
+checks task identity, terminal/tool payloads and trace-derived summaries. See
+`../knowledge/integrity_audit_20260905.md` for evidence and remaining edge-case
+limitations. No model inference was repeated.
