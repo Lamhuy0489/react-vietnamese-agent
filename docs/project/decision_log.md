@@ -40,3 +40,6 @@ and are not inferred here.
 - Freeze Qwen2.5-3B-Instruct at Kaggle model source
   `qwen-lm/qwen2.5/transformers/3b-instruct/1`.
 - Run on an NVIDIA T4 with internet disabled and a private source-bundle Dataset.
+- Kaggle attempt v1 stopped before model loading because Kaggle expanded the
+  uploaded source archive into Dataset files. This infrastructure failure is
+  retained; the wrapper now supports Kaggle's expanded mount representation.

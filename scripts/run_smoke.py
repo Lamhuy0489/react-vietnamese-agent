@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import tempfile
@@ -48,6 +49,9 @@ def data_hash() -> str:
 
 
 def git_commit() -> str:
+    frozen_commit = os.environ.get("FROZEN_GIT_COMMIT")
+    if frozen_commit:
+        return frozen_commit
     git = shutil.which("git")
     if git is None:
         return "unavailable"

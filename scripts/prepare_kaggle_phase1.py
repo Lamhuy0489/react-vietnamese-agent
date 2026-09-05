@@ -77,12 +77,24 @@ def main() -> int:
         json.dumps(dataset_metadata, indent=2) + "\n", encoding="utf-8"
     )
 
+    manifest = {
+        "git_commit": commit,
+        "archive_sha256": archive_hash,
+        "model_source": MODEL_SOURCE,
+        "dataset": f"{args.owner}/{dataset_slug}",
+        "dataset_version": 2,
+        "kernel": f"{args.owner}/react-vietnamese-agent-phase-1-real-model-smoke",
+    }
+    (dataset_dir / "frozen_manifest.json").write_text(
+        json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
+    )
+
     kernel_source = (ROOT / "notebooks" / "kaggle" / "phase1_kernel.py").read_text(
         encoding="utf-8"
     )
     (kernel_dir / "phase1_kernel.py").write_text(kernel_source, encoding="utf-8")
     kernel_metadata = {
-        "id": f"{args.owner}/react-vietnamese-agent-phase1-smoke",
+        "id": manifest["kernel"],
         "title": "ReAct Vietnamese Agent - Phase 1 Real Model Smoke",
         "code_file": "phase1_kernel.py",
         "language": "python",
@@ -100,13 +112,6 @@ def main() -> int:
     (kernel_dir / "kernel-metadata.json").write_text(
         json.dumps(kernel_metadata, indent=2) + "\n", encoding="utf-8"
     )
-    manifest = {
-        "git_commit": commit,
-        "archive_sha256": archive_hash,
-        "model_source": MODEL_SOURCE,
-        "dataset": f"{args.owner}/{dataset_slug}",
-        "kernel": kernel_metadata["id"],
-    }
     (output / "bundle_manifest.json").write_text(
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
     )
