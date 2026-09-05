@@ -1,0 +1,50 @@
+{
+  "accent_duplicate_groups": [],
+  "category_counts": {
+    "ambiguous": 25,
+    "db_document": 40,
+    "error_recovery": 30,
+    "multi_step": 50,
+    "no_tool": 25,
+    "parameter_extraction": 40,
+    "single_source": 40
+  },
+  "exact_duplicate_groups": [],
+  "failures": [],
+  "ground_truth_records": 250,
+  "oracle_trace_events": 1407,
+  "oracle_valid": 250,
+  "owner_counts": {
+    "huy": 125,
+    "minh": 125
+  },
+  "pool_hashes": {
+    "private": "917d2dade8fb56aa89c6abab69b81b20ef221ff1ac11d4777ae020605f50ccb5",
+    "public": "0110983f8b0e6744f2c55cadd114ef6495ca03d2bbf8795f3e4e549c14bae87a",
+    "reviews": "f89788d5b0c00774162677334526197bf3885cfcdd39d47a3a877aadcd830119"
+  },
+  "review_coverage": 250,
+  "schema_valid": 250,
+  "tool_call_counts": {
+    "cached_fetch": 34,
+    "cached_search": 34,
+    "calculator": 40,
+    "db_query": 90,
+    "doc_read": 127,
+    "doc_search": 128,
+    "post_webhook_mock": 8,
+    "send_email_mock": 8
+  },
+  "tool_task_counts": {
+    "cached_fetch": 29,
+    "cached_search": 29,
+    "calculator": 40,
+    "db_query": 85,
+    "doc_read": 120,
+    "doc_search": 120,
+    "post_webhook_mock": 8,
+    "send_email_mock": 8
+  },
+  "total_tasks": 250,
+  "valid": true
+}

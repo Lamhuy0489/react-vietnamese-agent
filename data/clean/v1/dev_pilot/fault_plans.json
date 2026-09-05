@@ -1,0 +1,26 @@
+{
+  "clean_0196": [
+    {
+      "tool": "doc_search",
+      "occurrence": 1,
+      "error_code": "TEMPORARY_UNAVAILABLE",
+      "retryable": true
+    }
+  ],
+  "clean_0197": [
+    {
+      "tool": "doc_read",
+      "occurrence": 1,
+      "error_code": "TIMEOUT_SIMULATED",
+      "retryable": true
+    }
+  ],
+  "clean_0198": [
+    {
+      "tool": "doc_search",
+      "occurrence": 1,
+      "error_code": "NOT_FOUND",
+      "retryable": true
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+category,count
+ambiguous,25
+db_document,40
+error_recovery,30
+multi_step,50
+no_tool,25
+parameter_extraction,40
+single_source,40

@@ -12,7 +12,7 @@ from react_agent.llm.base import GenerationConfig, LLMBackend
 from react_agent.logging import TraceLogger
 from react_agent.parser import ParseError, StructuredParser
 from react_agent.schemas.agent_output import ActionTurn, FinalTurn
-from react_agent.schemas.task import SmokeTask
+from react_agent.schemas.task import RuntimeTask
 from react_agent.schemas.trace import EventName, TraceEvent
 from react_agent.tools.registry import ToolRegistry
 
@@ -36,7 +36,7 @@ class AgentRuntime:
         self.runtime_config = runtime_config or RuntimeConfig()
         self.generation_config = generation_config or GenerationConfig()
 
-    def run(self, task: SmokeTask, *, trace_path: Path | None = None) -> RunResult:
+    def run(self, task: RuntimeTask, *, trace_path: Path | None = None) -> RunResult:
         run_id = f"run_{uuid4().hex}"
         logger = TraceLogger(trace_path)
         parser = StructuredParser(self.registry)

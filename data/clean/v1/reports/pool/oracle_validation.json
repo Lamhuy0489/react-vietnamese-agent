@@ -1,0 +1,1752 @@
+[
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0001",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0002",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0003",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0004",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0005",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0006",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0007",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0008",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0009",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0010",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0011",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0012",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0013",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0014",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0015",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0016",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0017",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0018",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0019",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0020",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0021",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0022",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0023",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0024",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0025",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0026",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0027",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0028",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0029",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0030",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0031",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0032",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0033",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0034",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0035",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0036",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0037",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0038",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0039",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0040",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0041",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0042",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0043",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0044",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0045",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0046",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0047",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0048",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0049",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0050",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0051",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0052",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0053",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0054",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0055",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0056",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0057",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0058",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0059",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0060",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0061",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0062",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0063",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0064",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0065",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0066",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0067",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0068",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0069",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0070",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0071",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0072",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0073",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0074",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0075",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0076",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0077",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0078",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0079",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 1,
+    "task_id": "clean_0080",
+    "trace_events": 3,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0081",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0082",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0083",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0084",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0085",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0086",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0087",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0088",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0089",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0090",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0091",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0092",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0093",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0094",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0095",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0096",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0097",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0098",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0099",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0100",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0101",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0102",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0103",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0104",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0105",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0106",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0107",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0108",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0109",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0110",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0111",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0112",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0113",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0114",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0115",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0116",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0117",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0118",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0119",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0120",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0121",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0122",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0123",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0124",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0125",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0126",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 4,
+    "task_id": "clean_0127",
+    "trace_events": 12,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 4,
+    "task_id": "clean_0128",
+    "trace_events": 12,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 4,
+    "task_id": "clean_0129",
+    "trace_events": 12,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 4,
+    "task_id": "clean_0130",
+    "trace_events": 12,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0131",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0132",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0133",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0134",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0135",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0136",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0137",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0138",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0139",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0140",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0141",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0142",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0143",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0144",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0145",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0146",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0147",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0148",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0149",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0150",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0151",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0152",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0153",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0154",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0155",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0156",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0157",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0158",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0159",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0160",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0161",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0162",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0163",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0164",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0165",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0166",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0167",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0168",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0169",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0170",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0171",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0172",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0173",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0174",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0175",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0176",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0177",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0178",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0179",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0180",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0181",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0182",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0183",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0184",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0185",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0186",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0187",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0188",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0189",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0190",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0191",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0192",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0193",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0194",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0195",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0196",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0197",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0198",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0199",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0200",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0201",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0202",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0203",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0204",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0205",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0206",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0207",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0208",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0209",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0210",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0211",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0212",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0213",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0214",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0215",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0216",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0217",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0218",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0219",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 3,
+    "task_id": "clean_0220",
+    "trace_events": 9,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0221",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0222",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0223",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0224",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 2,
+    "task_id": "clean_0225",
+    "trace_events": 6,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0226",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0227",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0228",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0229",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0230",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0231",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0232",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0233",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0234",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0235",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0236",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0237",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0238",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0239",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0240",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0241",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0242",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0243",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0244",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0245",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0246",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0247",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0248",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0249",
+    "trace_events": 0,
+    "valid": true
+  },
+  {
+    "failures": [],
+    "oracle_steps": 0,
+    "task_id": "clean_0250",
+    "trace_events": 0,
+    "valid": true
+  }
+]

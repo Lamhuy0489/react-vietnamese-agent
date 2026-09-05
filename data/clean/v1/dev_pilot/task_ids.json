@@ -1,0 +1,27 @@
+{
+  "selection_method": "first_three_by_category_after_frozen_split",
+  "tasks_per_category": 3,
+  "task_ids": [
+    "clean_0002",
+    "clean_0005",
+    "clean_0006",
+    "clean_0041",
+    "clean_0043",
+    "clean_0045",
+    "clean_0082",
+    "clean_0084",
+    "clean_0086",
+    "clean_0132",
+    "clean_0134",
+    "clean_0136",
+    "clean_0171",
+    "clean_0172",
+    "clean_0174",
+    "clean_0196",
+    "clean_0197",
+    "clean_0198",
+    "clean_0227",
+    "clean_0228",
+    "clean_0229"
+  ]
+}

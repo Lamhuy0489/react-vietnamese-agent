@@ -5,11 +5,12 @@ công cụ trong môi trường tiếng Việt giả lập (hành chính–học
 
 ## Trạng thái
 
-- Trạng thái hiện tại: **Phase 1 hoàn thành; Phase 2 chưa bắt đầu**.
+- Trạng thái hiện tại: **Phase 1 và Phase 2 hoàn thành; Phase 3 chưa bắt đầu**.
 - Kế hoạch gốc: file Word ở root và thư mục `plan/`.
 - Contract triển khai đã chuẩn hóa: `docs/`.
-- A0 và simulated environment đã hoàn thành; real-model smoke đã chạy trên
-  Kaggle. Đây chưa phải thí nghiệm chính của luận văn.
+- A0, smoke environment và clean benchmark 250 task đã hoàn thành; real-model
+  smoke Phase 1 và Dev pilot Phase 2 chạy trên Kaggle. Đây chưa phải thí nghiệm
+  chính của luận văn.
 
 ## Nguyên tắc cốt lõi
 
@@ -68,6 +69,22 @@ make kaggle-bundle-validate
 Xem trạng thái dễ đọc tại [knowledge/current_status.md](knowledge/current_status.md)
 và manifest bằng chứng tại
 [experiments/manifests/phase1_kaggle_v4.json](experiments/manifests/phase1_kaggle_v4.json).
+
+## Clean benchmark Phase 2
+
+Clean v1 có 250 task tổng hợp, chia group-wise thành 150 Dev và 100 Test bằng
+seed 2026. Test đã niêm phong trước Dev pilot; Kaggle bundle chỉ chứa public Dev,
+không chứa Test hoặc private ground truth.
+
+```bash
+make phase2-validate
+make phase2-kaggle-bundle
+make phase2-kaggle-bundle-validate
+```
+
+Thiết kế và hạn chế dữ liệu được mô tả tại
+[docs/clean_benchmark_design.md](docs/clean_benchmark_design.md) và
+[docs/clean_data_card.md](docs/clean_data_card.md).
 
 ## Tài liệu
 

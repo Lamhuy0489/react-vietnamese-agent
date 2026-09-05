@@ -1,0 +1,9 @@
+tool,task_coverage,oracle_calls
+cached_fetch,29,34
+cached_search,29,34
+calculator,40,40
+db_query,85,90
+doc_read,120,127
+doc_search,120,128
+post_webhook_mock,8,8
+send_email_mock,8,8

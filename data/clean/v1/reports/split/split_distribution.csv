@@ -1,0 +1,8 @@
+category,dev,test
+ambiguous,15,10
+db_document,24,16
+error_recovery,18,12
+multi_step,30,20
+no_tool,15,10
+parameter_extraction,24,16
+single_source,24,16

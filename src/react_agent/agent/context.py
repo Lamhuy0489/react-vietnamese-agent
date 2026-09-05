@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 
 from react_agent.prompts import A0_SYSTEM_PROMPT
-from react_agent.schemas.task import SmokeTask
+from react_agent.schemas.task import RuntimeTask
 
 
 class ContextBuilder:
@@ -14,7 +14,7 @@ class ContextBuilder:
 
     def build(
         self,
-        task: SmokeTask,
+        task: RuntimeTask,
         history: list[tuple[str, str]],
         correction: str | None = None,
     ) -> list[dict[str, str]]:

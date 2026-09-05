@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 1 complete — Phase 2 not started**
+- Current stage: **Phase 2 accepted; Phase 3 not started**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-05
 
@@ -40,5 +40,23 @@ pending. Held-out benchmark data must not be created or accessed in this phase.
 - [x] Frozen run manifest and artifact SHA-256 values recorded.
 
 Phase 1 was **accepted on 2026-09-05**. The low A0 semantic score (3/20) is a
-recorded limitation, not a completion blocker. Phase 2 requires a new explicit
-start decision and must preserve held-out Test protection.
+recorded limitation, not a completion blocker.
+
+## Phase 2 progress
+
+- [x] Phase 2 explicitly authorized on 2026-09-05.
+- [x] 250 total / 150 Dev / 100 Test and category quotas retained.
+- [x] Same-machine workflow recorded; review replaced by automated QA under the
+  owner waiver without fabricated reviewer metadata.
+- [x] Clean task/ground-truth/automated-QA schemas frozen.
+- [x] Frozen synthetic environment built and validated.
+- [x] Automated-QA 250-task pool completed; 250/250 oracle-valid.
+- [x] Group-wise 150/100 split created and held-out Test sealed.
+- [x] Dev-only Kaggle pilot completed without Test/private GT access.
+- [x] Phase 2 acceptance checks and frozen manifests complete.
+
+Phase 2 was **accepted on 2026-09-05** under the recorded review waiver. The
+Kaggle Dev pilot produced 21/21 terminal runs, 0 crashes, 334 valid trace events,
+and 7/21 task successes. Low A0 performance is evidence, not a dataset blocker.
+
+Do not begin Phase 3 or access held-out clean Test without explicit scope.
