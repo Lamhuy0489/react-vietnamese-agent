@@ -45,8 +45,10 @@ def safe_extract(archive: Path, destination: Path) -> None:
 
 
 def run(*arguments: str) -> None:
+    environment = os.environ.copy()
+    environment["PYTHONPATH"] = str(PROJECT_ROOT / "src")
     subprocess.run(  # noqa: S603 - fixed interpreter and repository scripts
-        [sys.executable, *arguments], cwd=PROJECT_ROOT, check=True
+        [sys.executable, *arguments], cwd=PROJECT_ROOT, env=environment, check=True
     )
 
 

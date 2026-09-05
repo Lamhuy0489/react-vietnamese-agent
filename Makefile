@@ -19,7 +19,7 @@ smoke: phase1-validate
 	$(PYTHON) scripts/run_smoke.py --backend replay
 
 kaggle-bundle:
-	$(PYTHON) scripts/prepare_kaggle_phase1.py --owner huylmhuhu --dataset-version 3
+	$(PYTHON) scripts/prepare_kaggle_phase1.py --owner huylmhuhu --dataset-version 4
 
 test:
 	$(PYTHON) -m pytest

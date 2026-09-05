@@ -47,3 +47,6 @@ and are not inferred here.
   subdirectory rather than the Dataset mount root. It also stopped before model
   loading; the wrapper now discovers the single packaged `src/react_agent`
   directory instead of assuming its parent path.
+- Attempt v3 reached local environment construction, then stopped because
+  Kaggle subprocesses did not inherit a source-package import path. The wrapper
+  now fixes `PYTHONPATH` to the frozen bundle's `src` directory.
