@@ -1,0 +1,17 @@
+{
+  "failures": [],
+  "oracle_valid": 250,
+  "qualitative_review": "waived; automated structural/behavioral checks only",
+  "tasks": 250,
+  "tool_coverage": {
+    "cached_fetch": 29,
+    "cached_search": 29,
+    "calculator": 84,
+    "db_query": 85,
+    "doc_read": 120,
+    "doc_search": 120,
+    "post_webhook_mock": 8,
+    "send_email_mock": 8
+  },
+  "valid": true
+}

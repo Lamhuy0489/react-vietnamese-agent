@@ -1,5 +1,12 @@
 # Trạng thái hiện tại
 
+## Cập nhật mới nhất — 2026-09-06
+
+Owner đã phê duyệt bản thay thế. v1.1 đã qua QA thực thi 250/250 và khóa split
+150/100 không tách nhóm ngữ nghĩa; CPU Dummy 21/21 terminal. Đang chuẩn bị
+bundle preflight và pilot Kaggle, chưa đóng Phase 2. Đọc
+[clean_v11_progress.md](clean_v11_progress.md) trước phần audit lịch sử bên dưới.
+
 Cập nhật: 2026-09-05, sau audit lại. **Phase 2 chưa đạt acceptance; kết luận
 hoàn thành trước đó đã được rút lại.** Xem `integrity_audit_20260905.md`.
 
@@ -29,7 +36,7 @@ hoàn thành trước đó đã được rút lại.** Xem `integrity_audit_2026
   provisional diagnostic success, chưa phải strict TSR; worker đọc 0 Test/GT.
 - Held-out Test: đã niêm phong, chưa chạy model và không được dùng để tuning.
 
-## Trạng thái phase
+## Trạng thái phase tại thời điểm audit v1 (lịch sử)
 
 Phase 2 mở lại, v1 giữ nguyên làm lịch sử. Đã sửa signature/group/hash validator,
 chặn ghi đè bản khóa và chặn đóng gói split lỗi. Không đổi task/GT/môi trường/

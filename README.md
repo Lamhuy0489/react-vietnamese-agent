@@ -72,6 +72,10 @@ và manifest bằng chứng tại
 
 ## Clean benchmark Phase 2
 
+v1.1 thay thế đã được phê duyệt, qua QA thực thi và khóa split không tách nhóm;
+pilot Kaggle đang chuẩn bị. Xem [tiến độ v1.1](knowledge/clean_v11_progress.md).
+Các lệnh `phase2-*` cũ bên dưới vẫn chỉ audit bản v1 lỗi.
+
 **Bản v1 chưa đạt acceptance:** 30 cặp cùng fact/nguồn có group ID khác nhau,
 trong đó 12 cặp nằm ở cả Dev và Test. Giữ bản khóa để lưu bằng chứng, chưa tạo
 tag hay bắt đầu Phase 3. Xem [báo cáo audit](knowledge/integrity_audit_20260905.md).

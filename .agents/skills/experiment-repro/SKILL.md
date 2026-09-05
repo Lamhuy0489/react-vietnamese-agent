@@ -25,3 +25,10 @@ an explicit rerun scope.
 
 Never use held-out Test failures to modify prompts, policies, thresholds,
 architecture, model choice, or dataset content.
+
+## Kaggle runs in this repository
+
+Before packaging, uploading, or resuming a Kaggle run, read
+`references/kaggle-preflight.md`. Use the installed `kaggle-cli` skill for CLI
+syntax, and this project reference for bundle/runtime acceptance. Local source
+tests alone are not evidence that the uploaded bundle imports or executes.

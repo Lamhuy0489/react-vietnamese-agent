@@ -1,0 +1,26 @@
+{
+  "method": "first_three_per_category_before_inference",
+  "task_ids": [
+    "clean_0002",
+    "clean_0004",
+    "clean_0005",
+    "clean_0042",
+    "clean_0046",
+    "clean_0047",
+    "clean_0081",
+    "clean_0082",
+    "clean_0083",
+    "clean_0132",
+    "clean_0134",
+    "clean_0135",
+    "clean_0171",
+    "clean_0173",
+    "clean_0174",
+    "clean_0197",
+    "clean_0199",
+    "clean_0200",
+    "clean_0226",
+    "clean_0228",
+    "clean_0229"
+  ]
+}

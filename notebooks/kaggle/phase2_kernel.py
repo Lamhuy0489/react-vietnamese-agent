@@ -38,6 +38,8 @@ def safe_extract(archive: Path, destination: Path) -> None:
     resolved_destination = destination.resolve()
     with tarfile.open(archive, "r:gz") as tar:
         for member in tar.getmembers():
+            if not member.isfile() and not member.isdir():
+                raise RuntimeError(f"unsafe archive member type: {member.name}")
             target = (destination / member.name).resolve()
             if resolved_destination not in target.parents and target != resolved_destination:
                 raise RuntimeError(f"unsafe archive member: {member.name}")
@@ -51,6 +53,8 @@ def verify_frozen_files(project_root: Path, manifest: dict[str, Any]) -> None:
     failures = []
     for relative, expected_hash in expected.items():
         path = project_root / relative
+        if project_root.resolve() not in path.resolve().parents or path.is_symlink():
+            raise RuntimeError(f"unsafe manifest file: {relative}")
         if not path.is_file():
             failures.append(f"missing:{relative}")
         elif sha256(path) != expected_hash:
@@ -81,12 +85,12 @@ def prepare_project(input_root: Path, project_root: Path) -> dict[str, Any]:
             raise RuntimeError(f"expected one expanded source bundle, found {candidates}")
         shutil.copytree(candidates[0].parent.parent, project_root, dirs_exist_ok=True)
     verify_frozen_files(project_root, manifest)
-    forbidden = (
-        project_root / "data" / "clean" / "v1" / "splits" / "test.jsonl",
-        project_root / "data" / "clean" / "v1" / "private",
-        project_root / "data" / "clean" / "v1" / "pool",
-    )
-    if any(path.exists() for path in forbidden):
+    forbidden = [
+        path
+        for path in (project_root / "data").rglob("*")
+        if path.name in {"private", "pool", "reviews", "test.jsonl"}
+    ]
+    if forbidden:
         raise RuntimeError("Kaggle worker bundle contains Test or private ground truth")
     return manifest
 
@@ -141,11 +145,31 @@ def main(
         + "\n",
         encoding="utf-8",
     )
-    run(project_root, frozen_commit, "scripts/validate_clean_environment.py")
+    replacement = manifest.get("benchmark") == "clean_v1.1"
+    if replacement:
+        run(project_root, frozen_commit, "scripts/preflight_clean_worker.py")
+        run(
+            project_root,
+            frozen_commit,
+            "scripts/run_clean_v11_dev.py",
+            "--backend",
+            "dummy",
+            "--output",
+            str(work_root / "phase2_v11_dummy_preflight"),
+        )
+        import torch
+
+        if not torch.cuda.is_available():
+            raise RuntimeError("GPU unavailable for the frozen real-model condition")
+        if (torch.ones(2, device="cuda") + 1).sum().item() != 4:
+            raise RuntimeError("actual CUDA operation failed")
+    else:
+        run(project_root, frozen_commit, "scripts/validate_clean_environment.py")
     run(
         project_root,
         frozen_commit,
-        "scripts/run_hf_clean_dev.py",
+        "scripts/run_clean_v11_dev.py" if replacement else "scripts/run_hf_clean_dev.py",
+        *(["--backend", "hf"] if replacement else []),
         "--model-path",
         str(model_path),
         "--output",

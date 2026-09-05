@@ -1,8 +1,8 @@
 # Phase Status
 
-- Current stage: **Phase 2 reopened: clean_v1.0 quarantined; Phase 3 not started**
+- Current stage: **Phase 2: clean_v1.1 sealed, Dev experiment pending; v1 quarantined**
 - Setup owner: Lâm Quang Huy
-- Last updated: 2026-09-05
+- Last updated: 2026-09-06
 
 ## Setup acceptance
 
@@ -67,9 +67,22 @@ audit, not after a held-out model run. The Dev pilot remains historical executio
 evidence (21 terminal, 0 crashes, 334 events); its 7/21 score is provisional
 because argument comparators and typed fact semantics are incomplete.
 
-Next: obtain approval for a separately versioned benchmark replacement; define
-semantic groups before assignment, repair QA provenance and comparator checks,
-then validate and seal the new version. Do not move tasks or rewrite v1 hashes.
+Owner approved clean_v1.1 replacement and Dev experiments. Replacement progress:
+
+- [x] Independent `data/clean/v1_1` with original v1 bytes preserved.
+- [x] 250/250 executable QA, required arguments and all annotated alternative paths.
+- [x] Cross-category group assignment: exact 150/100 quotas, no shared group or
+  fact/evidence signature across splits; 50 robustness IDs selected before seal.
+- [x] Typed numeric/date/set checks and SQL/calculator result equivalence with
+  negative-control tests; no fabricated human review claims.
+- [x] Public-only 21-task Dummy run and identity-safe checkpoint/resume tests.
+- [ ] Exact Git-bundle mount simulations and frozen real-model Dev pilot.
+- [ ] Evidence audit, remaining benchmark-quality limitations and final acceptance.
+
+v1.1 dataset hash: `692ca92a214b0da87245ca7d11a074a74d416558f377bc448c125bd7d387be38`.
+Do not move tasks or rewrite either frozen version. Language-quality review is
+waived, not claimed to be proven by the structural tests. Low-level QA is not
+equivalent to full Phase 2 closure before the pilot audit.
 The review waiver still applies; no peer review or new account is requested.
 
 Do not begin Phase 3 or access held-out clean Test without explicit scope.

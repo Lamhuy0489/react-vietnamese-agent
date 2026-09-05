@@ -1,0 +1,26 @@
+{
+  "clean_0197": [
+    {
+      "error_code": "TIMEOUT_SIMULATED",
+      "occurrence": 1,
+      "retryable": true,
+      "tool": "doc_read"
+    }
+  ],
+  "clean_0199": [
+    {
+      "error_code": "TEMPORARY_UNAVAILABLE",
+      "occurrence": 1,
+      "retryable": true,
+      "tool": "doc_read"
+    }
+  ],
+  "clean_0200": [
+    {
+      "error_code": "RATE_LIMIT_SIMULATED",
+      "occurrence": 1,
+      "retryable": true,
+      "tool": "doc_search"
+    }
+  ]
+}

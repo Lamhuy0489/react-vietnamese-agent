@@ -1,0 +1,1507 @@
+{
+  "assignments": [
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_BD975600CA00DE4B",
+      "split": "test",
+      "task_id": "clean_0001"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_F53F3DD46DE1EDD6",
+      "split": "dev",
+      "task_id": "clean_0002"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_E8A0017C496B587D",
+      "split": "test",
+      "task_id": "clean_0003"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_14B816690FCBF7FC",
+      "split": "dev",
+      "task_id": "clean_0004"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_210DE3196F5CC926",
+      "split": "dev",
+      "task_id": "clean_0005"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_BE058C35F2FE4C99",
+      "split": "dev",
+      "task_id": "clean_0006"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_F66581F4A1E8029A",
+      "split": "dev",
+      "task_id": "clean_0007"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_0437DCE7D00DB9A7",
+      "split": "dev",
+      "task_id": "clean_0008"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_3632D81B63928872",
+      "split": "dev",
+      "task_id": "clean_0009"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_612CEA674A38137E",
+      "split": "dev",
+      "task_id": "clean_0010"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_15FF0E1E4386554E",
+      "split": "test",
+      "task_id": "clean_0011"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_B5838DD0AFF93EDF",
+      "split": "dev",
+      "task_id": "clean_0012"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_A9FA840EE5BB2AFA",
+      "split": "test",
+      "task_id": "clean_0013"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_19D5823BEC3934DE",
+      "split": "dev",
+      "task_id": "clean_0014"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_D51C1E2FFE1CEFBD",
+      "split": "dev",
+      "task_id": "clean_0015"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_C2DC4F1742058B18",
+      "split": "test",
+      "task_id": "clean_0016"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_B7DEF40FACFA9828",
+      "split": "dev",
+      "task_id": "clean_0017"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_0FC68BF9F89BB86F",
+      "split": "dev",
+      "task_id": "clean_0018"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_4EC2AEF1F9D80FBD",
+      "split": "test",
+      "task_id": "clean_0019"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_4E6DDD499209232F",
+      "split": "test",
+      "task_id": "clean_0020"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_5806CBE1A9A48F51",
+      "split": "test",
+      "task_id": "clean_0021"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_8F9CFB3884C79881",
+      "split": "dev",
+      "task_id": "clean_0022"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_F5035BA69ADEDAE1",
+      "split": "dev",
+      "task_id": "clean_0023"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_8F7C61178373CD4E",
+      "split": "dev",
+      "task_id": "clean_0024"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_9253273257E23C75",
+      "split": "test",
+      "task_id": "clean_0025"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_D6557FEF7DD2D8B4",
+      "split": "dev",
+      "task_id": "clean_0026"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_EDBD4078C060AD38",
+      "split": "dev",
+      "task_id": "clean_0027"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_9E70DB6487B97B68",
+      "split": "dev",
+      "task_id": "clean_0028"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_EEABBE5AAD3674FD",
+      "split": "test",
+      "task_id": "clean_0029"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_A464C1D1189A865F",
+      "split": "dev",
+      "task_id": "clean_0030"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_6E30FB3B8EE3E0C4",
+      "split": "test",
+      "task_id": "clean_0031"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_A2342737B18B94B2",
+      "split": "test",
+      "task_id": "clean_0032"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_8D3DC146BB5CFC41",
+      "split": "test",
+      "task_id": "clean_0033"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_6BC0BEDC6258ECBB",
+      "split": "dev",
+      "task_id": "clean_0034"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_57E395DE311F9181",
+      "split": "dev",
+      "task_id": "clean_0035"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_A5070AA71038F5B5",
+      "split": "test",
+      "task_id": "clean_0036"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_81F8820D607EAE89",
+      "split": "test",
+      "task_id": "clean_0037"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_2EB34B6065E4EA37",
+      "split": "test",
+      "task_id": "clean_0038"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_D95880D72646BC90",
+      "split": "dev",
+      "task_id": "clean_0039"
+    },
+    {
+      "category": "single_source",
+      "instance_group_id": "INSTANCE_ADBD9E05EBB7AA41",
+      "split": "dev",
+      "task_id": "clean_0040"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_8F3CEE126D43B7CD",
+      "split": "test",
+      "task_id": "clean_0041"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_FFC2BFB5AA2E4765",
+      "split": "dev",
+      "task_id": "clean_0042"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_2CA84F9D25732673",
+      "split": "test",
+      "task_id": "clean_0043"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_268D8CC86EDE91DF",
+      "split": "test",
+      "task_id": "clean_0044"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_D6E4E7691B969272",
+      "split": "test",
+      "task_id": "clean_0045"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_8BC7FCAB6EBB03F6",
+      "split": "dev",
+      "task_id": "clean_0046"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_D380B16D31E7CB65",
+      "split": "dev",
+      "task_id": "clean_0047"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_490D001864CFE7EC",
+      "split": "dev",
+      "task_id": "clean_0048"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_FBF49FEAA4E7758F",
+      "split": "dev",
+      "task_id": "clean_0049"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_29178E8E4CA78653",
+      "split": "test",
+      "task_id": "clean_0050"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_3B5D2F8FF0781EEF",
+      "split": "dev",
+      "task_id": "clean_0051"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_63AD17774691D84C",
+      "split": "dev",
+      "task_id": "clean_0052"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_B2195DDA8E1D4CF2",
+      "split": "test",
+      "task_id": "clean_0053"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_AFF46BAFE2EEB319",
+      "split": "dev",
+      "task_id": "clean_0054"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_1B47C965F115F8C3",
+      "split": "dev",
+      "task_id": "clean_0055"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_CA511E18E461370D",
+      "split": "dev",
+      "task_id": "clean_0056"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_E4E73E4D377AF90A",
+      "split": "test",
+      "task_id": "clean_0057"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_6765051591BAF1E2",
+      "split": "test",
+      "task_id": "clean_0058"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_87792AA7E7F47063",
+      "split": "test",
+      "task_id": "clean_0059"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_7E7CE36A29357619",
+      "split": "test",
+      "task_id": "clean_0060"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_F8439B113DB9F60A",
+      "split": "dev",
+      "task_id": "clean_0061"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_8B26E07632E971FA",
+      "split": "dev",
+      "task_id": "clean_0062"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_803E7F24D72DC75D",
+      "split": "test",
+      "task_id": "clean_0063"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_08A2E99A6A95BD62",
+      "split": "dev",
+      "task_id": "clean_0064"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_5CECEA50E194F2DB",
+      "split": "dev",
+      "task_id": "clean_0065"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_73F2B54A7A2FF7B6",
+      "split": "dev",
+      "task_id": "clean_0066"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_28ED636D316298E7",
+      "split": "dev",
+      "task_id": "clean_0067"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_3728ED78397815BA",
+      "split": "dev",
+      "task_id": "clean_0068"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_618D16BE6C5F2FFE",
+      "split": "dev",
+      "task_id": "clean_0069"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_E15CB27FB41B649C",
+      "split": "dev",
+      "task_id": "clean_0070"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_215534EA5BA37048",
+      "split": "test",
+      "task_id": "clean_0071"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_365F06397FBD9214",
+      "split": "dev",
+      "task_id": "clean_0072"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_1B14A260CC8CEB54",
+      "split": "dev",
+      "task_id": "clean_0073"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_A040D27AE48D6BF3",
+      "split": "test",
+      "task_id": "clean_0074"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_5BAB1842359A8FC1",
+      "split": "dev",
+      "task_id": "clean_0075"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_9949BBE06A2BECFE",
+      "split": "dev",
+      "task_id": "clean_0076"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_1EB9928580683D38",
+      "split": "test",
+      "task_id": "clean_0077"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_E089DA1A8E55CEF8",
+      "split": "test",
+      "task_id": "clean_0078"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_02A8BB3ACAEDD6C6",
+      "split": "test",
+      "task_id": "clean_0079"
+    },
+    {
+      "category": "parameter_extraction",
+      "instance_group_id": "INSTANCE_4AB0C10303017EA7",
+      "split": "dev",
+      "task_id": "clean_0080"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_926AF6930428B049",
+      "split": "dev",
+      "task_id": "clean_0081"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_7A6F328DA327653C",
+      "split": "dev",
+      "task_id": "clean_0082"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_BA87D0344103B11C",
+      "split": "dev",
+      "task_id": "clean_0083"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_360397C0B4020F2B",
+      "split": "dev",
+      "task_id": "clean_0084"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_AD5E8D67421A642B",
+      "split": "test",
+      "task_id": "clean_0085"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_73042EBC6D4C166B",
+      "split": "dev",
+      "task_id": "clean_0086"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_CC34CF62520CDEBE",
+      "split": "dev",
+      "task_id": "clean_0087"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_C83074EF27809BB9",
+      "split": "dev",
+      "task_id": "clean_0088"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_97CAD46B0EA9550D",
+      "split": "dev",
+      "task_id": "clean_0089"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_E0DAF3C420618EFF",
+      "split": "dev",
+      "task_id": "clean_0090"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_970B6A4AEDE18F3F",
+      "split": "test",
+      "task_id": "clean_0091"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_23EAA460A317D7D1",
+      "split": "test",
+      "task_id": "clean_0092"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_F886D5ECEEC3F832",
+      "split": "test",
+      "task_id": "clean_0093"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_2FEC2EDF5CEDE4D5",
+      "split": "dev",
+      "task_id": "clean_0094"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_1CF3CE784DCBA594",
+      "split": "dev",
+      "task_id": "clean_0095"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_D4ECBFFF430F912A",
+      "split": "test",
+      "task_id": "clean_0096"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_E38AEF6772309D39",
+      "split": "test",
+      "task_id": "clean_0097"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_FC2C2FC0D40BD1CE",
+      "split": "test",
+      "task_id": "clean_0098"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_6D25E531C398F1B2",
+      "split": "dev",
+      "task_id": "clean_0099"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_9E380B6C4CA1FC67",
+      "split": "test",
+      "task_id": "clean_0100"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_AA984F30FE6C5120",
+      "split": "dev",
+      "task_id": "clean_0101"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_C320BE1446E2E5F6",
+      "split": "dev",
+      "task_id": "clean_0102"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_60BC62918C9EC558",
+      "split": "dev",
+      "task_id": "clean_0103"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_E10402500253F836",
+      "split": "dev",
+      "task_id": "clean_0104"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_C6599C52359F2598",
+      "split": "test",
+      "task_id": "clean_0105"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_26A1F05BE6F63609",
+      "split": "test",
+      "task_id": "clean_0106"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_D8E5FB2B7A9BF29A",
+      "split": "dev",
+      "task_id": "clean_0107"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_D02445226408B012",
+      "split": "dev",
+      "task_id": "clean_0108"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_A67DFCE60FF916E4",
+      "split": "dev",
+      "task_id": "clean_0109"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_330C8E92416A4676",
+      "split": "dev",
+      "task_id": "clean_0110"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_BC215F1874812F7F",
+      "split": "dev",
+      "task_id": "clean_0111"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_CCD45D3D00BA0EDD",
+      "split": "test",
+      "task_id": "clean_0112"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_87FF3A59A89BAA8B",
+      "split": "dev",
+      "task_id": "clean_0113"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_6091EFD8C430E2D3",
+      "split": "dev",
+      "task_id": "clean_0114"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_9ADCBCDC55ABC62F",
+      "split": "dev",
+      "task_id": "clean_0115"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_74DFFB1849DA20DC",
+      "split": "dev",
+      "task_id": "clean_0116"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_873CFF28125C9809",
+      "split": "test",
+      "task_id": "clean_0117"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_28C2896381A8B6E0",
+      "split": "test",
+      "task_id": "clean_0118"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_FBC076AC0F16E891",
+      "split": "dev",
+      "task_id": "clean_0119"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_B2A9EFFCF19F9CC8",
+      "split": "test",
+      "task_id": "clean_0120"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_1FF1D7FB594B70D6",
+      "split": "test",
+      "task_id": "clean_0121"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_B915E52AD6E3B16E",
+      "split": "test",
+      "task_id": "clean_0122"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_45BD4F24D448892C",
+      "split": "dev",
+      "task_id": "clean_0123"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_C0B37CEA4127BE65",
+      "split": "test",
+      "task_id": "clean_0124"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_E7A42930B048851D",
+      "split": "test",
+      "task_id": "clean_0125"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_28B0D5AD744B0CDF",
+      "split": "dev",
+      "task_id": "clean_0126"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_FDC05FBCD6AE25A6",
+      "split": "dev",
+      "task_id": "clean_0127"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_9287A149ECAE7182",
+      "split": "test",
+      "task_id": "clean_0128"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_C4444CAF203DE9F8",
+      "split": "test",
+      "task_id": "clean_0129"
+    },
+    {
+      "category": "multi_step",
+      "instance_group_id": "INSTANCE_FF01C6579CB89A93",
+      "split": "dev",
+      "task_id": "clean_0130"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_5CC3BCFC2BA1890A",
+      "split": "test",
+      "task_id": "clean_0131"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_BA76D94C7F2F24C0",
+      "split": "dev",
+      "task_id": "clean_0132"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_8FB56872ACB31E4A",
+      "split": "test",
+      "task_id": "clean_0133"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_8A1CA722A6CFF038",
+      "split": "dev",
+      "task_id": "clean_0134"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_76412CECC9C66262",
+      "split": "dev",
+      "task_id": "clean_0135"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_D12EEBE7D26D7BA1",
+      "split": "dev",
+      "task_id": "clean_0136"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_257056CDAF3A6DEB",
+      "split": "dev",
+      "task_id": "clean_0137"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_C95BDB749457C87C",
+      "split": "test",
+      "task_id": "clean_0138"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_861CD17A8095CE28",
+      "split": "dev",
+      "task_id": "clean_0139"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_2936F715FFB74A05",
+      "split": "test",
+      "task_id": "clean_0140"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_B8592291263B0BBD",
+      "split": "test",
+      "task_id": "clean_0141"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_6C3F2B1A5E118A48",
+      "split": "dev",
+      "task_id": "clean_0142"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_C14AED2470DFAB46",
+      "split": "test",
+      "task_id": "clean_0143"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_6DA2A97303E29A65",
+      "split": "test",
+      "task_id": "clean_0144"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_622C5C99A05FA5B0",
+      "split": "dev",
+      "task_id": "clean_0145"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_0AF4391AC3E449D8",
+      "split": "dev",
+      "task_id": "clean_0146"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_2DEB3F0A0CFB3521",
+      "split": "test",
+      "task_id": "clean_0147"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_BC0979A3CFEFA56F",
+      "split": "test",
+      "task_id": "clean_0148"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_B1C0054EEBAAFA80",
+      "split": "test",
+      "task_id": "clean_0149"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_D6D510BA00F86209",
+      "split": "dev",
+      "task_id": "clean_0150"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_EE71505BAAD45023",
+      "split": "dev",
+      "task_id": "clean_0151"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_4940016666F590EC",
+      "split": "dev",
+      "task_id": "clean_0152"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_4ABC56BEA7AA7F14",
+      "split": "test",
+      "task_id": "clean_0153"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_74F4C71A2B1E78DA",
+      "split": "test",
+      "task_id": "clean_0154"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_2E0FF7FE1E1C0F6E",
+      "split": "dev",
+      "task_id": "clean_0155"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_FABB4083465CDCA8",
+      "split": "dev",
+      "task_id": "clean_0156"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_0733945B3CE52EF2",
+      "split": "dev",
+      "task_id": "clean_0157"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_4E11AC4B95325012",
+      "split": "dev",
+      "task_id": "clean_0158"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_DD6BF539AA6AACF0",
+      "split": "test",
+      "task_id": "clean_0159"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_2A53D618B7A51165",
+      "split": "dev",
+      "task_id": "clean_0160"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_0B9448AB46D07DB0",
+      "split": "dev",
+      "task_id": "clean_0161"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_CD2201F277CFB487",
+      "split": "dev",
+      "task_id": "clean_0162"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_E3954B3F7CDAFF68",
+      "split": "test",
+      "task_id": "clean_0163"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_86478D4CE3D55A81",
+      "split": "dev",
+      "task_id": "clean_0164"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_457C5D070CD8761B",
+      "split": "dev",
+      "task_id": "clean_0165"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_0C0BA98849D3606C",
+      "split": "dev",
+      "task_id": "clean_0166"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_49B99EBB7D1E9A59",
+      "split": "test",
+      "task_id": "clean_0167"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_B4D1D7BF2164977E",
+      "split": "test",
+      "task_id": "clean_0168"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_1B4012090B8DFB5F",
+      "split": "dev",
+      "task_id": "clean_0169"
+    },
+    {
+      "category": "db_document",
+      "instance_group_id": "INSTANCE_82BE2408446822D4",
+      "split": "dev",
+      "task_id": "clean_0170"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_85DE3096818976A0",
+      "split": "dev",
+      "task_id": "clean_0171"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_B7AEA8B47415E335",
+      "split": "test",
+      "task_id": "clean_0172"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_C415F28CAADFFC9F",
+      "split": "dev",
+      "task_id": "clean_0173"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_CA4C702271B55860",
+      "split": "dev",
+      "task_id": "clean_0174"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_570604651EF93706",
+      "split": "dev",
+      "task_id": "clean_0175"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_91B0E4B77C340F65",
+      "split": "dev",
+      "task_id": "clean_0176"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_B4A0A1BFEE1900E0",
+      "split": "dev",
+      "task_id": "clean_0177"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_D2F3C5794FA2884B",
+      "split": "dev",
+      "task_id": "clean_0178"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_19A393FA035A4A98",
+      "split": "dev",
+      "task_id": "clean_0179"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_B5F0635CCA4F9B8E",
+      "split": "test",
+      "task_id": "clean_0180"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_C296932FD93AECB1",
+      "split": "test",
+      "task_id": "clean_0181"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_FC486DA5426BA9B4",
+      "split": "test",
+      "task_id": "clean_0182"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_ABB6FD1B47682BCB",
+      "split": "dev",
+      "task_id": "clean_0183"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_E9BC253E689EC965",
+      "split": "test",
+      "task_id": "clean_0184"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_A7C88ECE3CD430E7",
+      "split": "dev",
+      "task_id": "clean_0185"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_7E39E7A737C8A5E1",
+      "split": "dev",
+      "task_id": "clean_0186"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_CBFBE38C2F08B13A",
+      "split": "dev",
+      "task_id": "clean_0187"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_992A7BD637314859",
+      "split": "dev",
+      "task_id": "clean_0188"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_3AF7BB8375CD82C2",
+      "split": "dev",
+      "task_id": "clean_0189"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_CC341D58C10E96A6",
+      "split": "test",
+      "task_id": "clean_0190"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_F8B95DFBB8CCC46A",
+      "split": "dev",
+      "task_id": "clean_0191"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_7E18FED4A2A1DE7E",
+      "split": "test",
+      "task_id": "clean_0192"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_A3C626791A4584CE",
+      "split": "test",
+      "task_id": "clean_0193"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_6E6868723C7A4C92",
+      "split": "test",
+      "task_id": "clean_0194"
+    },
+    {
+      "category": "ambiguous",
+      "instance_group_id": "INSTANCE_0616A52A4B990286",
+      "split": "test",
+      "task_id": "clean_0195"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_BD975600CA00DE4B",
+      "split": "test",
+      "task_id": "clean_0196"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_F53F3DD46DE1EDD6",
+      "split": "dev",
+      "task_id": "clean_0197"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_E8A0017C496B587D",
+      "split": "test",
+      "task_id": "clean_0198"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_14B816690FCBF7FC",
+      "split": "dev",
+      "task_id": "clean_0199"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_210DE3196F5CC926",
+      "split": "dev",
+      "task_id": "clean_0200"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_BE058C35F2FE4C99",
+      "split": "dev",
+      "task_id": "clean_0201"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_F66581F4A1E8029A",
+      "split": "dev",
+      "task_id": "clean_0202"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_0437DCE7D00DB9A7",
+      "split": "dev",
+      "task_id": "clean_0203"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_3632D81B63928872",
+      "split": "dev",
+      "task_id": "clean_0204"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_612CEA674A38137E",
+      "split": "dev",
+      "task_id": "clean_0205"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_15FF0E1E4386554E",
+      "split": "test",
+      "task_id": "clean_0206"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_B5838DD0AFF93EDF",
+      "split": "dev",
+      "task_id": "clean_0207"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_A9FA840EE5BB2AFA",
+      "split": "test",
+      "task_id": "clean_0208"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_19D5823BEC3934DE",
+      "split": "dev",
+      "task_id": "clean_0209"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_D51C1E2FFE1CEFBD",
+      "split": "dev",
+      "task_id": "clean_0210"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_D6557FEF7DD2D8B4",
+      "split": "dev",
+      "task_id": "clean_0211"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_EDBD4078C060AD38",
+      "split": "dev",
+      "task_id": "clean_0212"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_9E70DB6487B97B68",
+      "split": "dev",
+      "task_id": "clean_0213"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_EEABBE5AAD3674FD",
+      "split": "test",
+      "task_id": "clean_0214"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_A464C1D1189A865F",
+      "split": "dev",
+      "task_id": "clean_0215"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_6E30FB3B8EE3E0C4",
+      "split": "test",
+      "task_id": "clean_0216"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_A2342737B18B94B2",
+      "split": "test",
+      "task_id": "clean_0217"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_8D3DC146BB5CFC41",
+      "split": "test",
+      "task_id": "clean_0218"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_6BC0BEDC6258ECBB",
+      "split": "dev",
+      "task_id": "clean_0219"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_57E395DE311F9181",
+      "split": "dev",
+      "task_id": "clean_0220"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_8F3CEE126D43B7CD",
+      "split": "test",
+      "task_id": "clean_0221"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_FFC2BFB5AA2E4765",
+      "split": "dev",
+      "task_id": "clean_0222"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_2CA84F9D25732673",
+      "split": "test",
+      "task_id": "clean_0223"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_268D8CC86EDE91DF",
+      "split": "test",
+      "task_id": "clean_0224"
+    },
+    {
+      "category": "error_recovery",
+      "instance_group_id": "INSTANCE_D6E4E7691B969272",
+      "split": "test",
+      "task_id": "clean_0225"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_97159DA27468B14C",
+      "split": "dev",
+      "task_id": "clean_0226"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_5F296E27EE148366",
+      "split": "test",
+      "task_id": "clean_0227"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_9E1D3B0295F4CF80",
+      "split": "dev",
+      "task_id": "clean_0228"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_807870D50B7F1FFC",
+      "split": "dev",
+      "task_id": "clean_0229"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_30686C5F5E78C353",
+      "split": "dev",
+      "task_id": "clean_0230"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_D01861765ED52B51",
+      "split": "test",
+      "task_id": "clean_0231"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_3FC32513C133930F",
+      "split": "test",
+      "task_id": "clean_0232"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_CD265E4A0EA67000",
+      "split": "dev",
+      "task_id": "clean_0233"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_E79240DBAF5408ED",
+      "split": "dev",
+      "task_id": "clean_0234"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_6D8B9C4F7ECB1DAA",
+      "split": "dev",
+      "task_id": "clean_0235"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_776FAF779F978368",
+      "split": "test",
+      "task_id": "clean_0236"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_C8DE78D9EAF8EFD7",
+      "split": "dev",
+      "task_id": "clean_0237"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_90A838FAAF14488F",
+      "split": "test",
+      "task_id": "clean_0238"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_5C0D77FDF260AFAD",
+      "split": "dev",
+      "task_id": "clean_0239"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_7D1DF2CB0B99B469",
+      "split": "test",
+      "task_id": "clean_0240"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_6BA2963D481F4FC0",
+      "split": "test",
+      "task_id": "clean_0241"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_08D17DCCB60DA53D",
+      "split": "dev",
+      "task_id": "clean_0242"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_CB27684AA3E0F118",
+      "split": "dev",
+      "task_id": "clean_0243"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_0A55E9F22950CAD4",
+      "split": "test",
+      "task_id": "clean_0244"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_C5AF1814D9BB5937",
+      "split": "test",
+      "task_id": "clean_0245"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_8C66D0346AB6F273",
+      "split": "test",
+      "task_id": "clean_0246"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_D973CD901D3D3E29",
+      "split": "dev",
+      "task_id": "clean_0247"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_7D4042D908D4E6A7",
+      "split": "dev",
+      "task_id": "clean_0248"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_440A30D20FD3484F",
+      "split": "dev",
+      "task_id": "clean_0249"
+    },
+    {
+      "category": "no_tool",
+      "instance_group_id": "INSTANCE_40BE242B5E937101",
+      "split": "dev",
+      "task_id": "clean_0250"
+    }
+  ],
+  "benchmark": "clean_v1.1",
+  "manual_moves": [],
+  "seed": 2026
+}

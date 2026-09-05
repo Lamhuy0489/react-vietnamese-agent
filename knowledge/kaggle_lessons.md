@@ -1,5 +1,20 @@
 # Ghi chú Kaggle Phase 1
 
+## Cập nhật v1.1 — 2026-09-06
+
+Phase 2 còn gặp lỗi fault adapter không delegate `validate_arguments`, khiến
+parser dùng generic BaseModel dù unit test execute trực tiếp vẫn pass. Vì vậy
+preflight mới gọi tool qua AgentRuntime/parser/Broker và có recovery case.
+
+Runner cũ chỉ ghi results cuối suite nên mất danh sách task hoàn thành khi lỗi
+giữa chừng. Runner v1.1 lưu checkpoint mỗi task, từ chối identity/hash mismatch,
+và không retry semantic failure. Bundle preflight kiểm tra cả archive/expanded
+mount, 8 tool, Dummy đủ 21 task và resume trước upload. GPU kiểm tra bằng phép
+tính tensor thực, không chỉ `cuda.is_available()`.
+
+Skill `.agents/skills/experiment-repro/references/kaggle-preflight.md` đã lưu
+quy trình; không sửa skill global để tránh áp điều kiện repo lên dự án khác.
+
 Ba attempt đầu là lỗi hạ tầng và đều dừng trước inference:
 
 1. Kaggle tự bung file `tar.gz` của Dataset thay vì mount nguyên archive.

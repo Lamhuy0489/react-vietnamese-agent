@@ -6,6 +6,8 @@ chi tiết nằm trong `plan/`, và kế hoạch gốc là file Word ở root.
 
 Đọc theo thứ tự:
 
+Đang làm bản thay thế: đọc `clean_v11_progress.md` cho tiến độ mới nhất.
+
 1. `current_status.md` — trạng thái hiện tại và việc tiếp theo.
 2. `phase1_evidence.md` — bằng chứng đóng Phase 1.
 3. `runbook.md` — lệnh kiểm tra/chạy lại thường dùng.

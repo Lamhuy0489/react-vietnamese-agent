@@ -1,5 +1,19 @@
 # Decision Log
 
+## 2026-09-05 — Owner authorizes clean_v1.1 replacement and Dev experiments
+
+- Owner approved replacing the invalid benchmark, running experiments, retaining
+  knowledge, and improving Kaggle skills/preflight after repeated packaging errors.
+- Preserve v1 and both historical Kaggle runs byte-for-byte. Author v1.1 from
+  the synthetic environment/templates, not by selecting tasks based on old scores.
+- Retain 250/150/100 and category quotas. Repair cross-category instance grouping,
+  dependent DB/document tasks, executable QA and typed argument/fact comparators.
+- Experiment scope: CPU oracle/replay/negative controls, mount/import/fault/resume
+  preflight, then one frozen Qwen2.5-3B Dev pilot on the existing Kaggle account.
+  No held-out model run or Phase 3 work is authorized by this implementation.
+- Update project-scoped experiment skill and runbook with observed Kaggle lessons;
+  do not silently alter global skill behavior for unrelated projects.
+
 ## 2026-09-05 — Initial operational contract
 
 - Use the existing Word document as approved scope and `docs/` as the concise
