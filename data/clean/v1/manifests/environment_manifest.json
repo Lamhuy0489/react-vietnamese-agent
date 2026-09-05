@@ -1,0 +1,26 @@
+{
+  "environment_version": "clean_env_v1",
+  "generator_version": "clean_env_generator_v1",
+  "seed": 2026,
+  "synthetic": true,
+  "internet_required": false,
+  "documents": 50,
+  "cached_pages": 25,
+  "database_tables": {
+    "departments": 10,
+    "courses": 60,
+    "rooms": 30,
+    "course_sections": 80,
+    "students": 100,
+    "registrations": 200,
+    "scholarships": 40,
+    "staff_directory": 40
+  },
+  "files": {
+    "environment/documents/documents.json": "431a7b8cbcd271c98f08adc61cdd83c0e1ed34f944f86c43fad8dca2526cacbe",
+    "environment/cached_pages/pages.json": "4ce56c270a4d96117ba14cde6d070e56a59817d774401f71372fa9f2c2fab34a",
+    "environment/database/seed.json": "51b5f8980984f8905bbee557906c677cca449aa16a83fb7de645cb375b0a2b31",
+    "environment/database/university.db": "85bc7a259438b89f8f86fdf09965aa46e9ef9b4749564795aab7f43e582c10c3",
+    "manifests/source_catalog.json": "f9d8621762d016aefca05d1eff24f52ea39fc2034d4122889c5b7f1127588b49"
+  }
+}
