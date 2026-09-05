@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 2 accepted; Phase 3 not started**
+- Current stage: **Phase 2 reopened: clean_v1.0 quarantined; Phase 3 not started**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-05
 
@@ -42,6 +42,11 @@ pending. Held-out benchmark data must not be created or accessed in this phase.
 Phase 1 was **accepted on 2026-09-05**. The low A0 semantic score (3/20) is a
 recorded limitation, not a completion blocker.
 
+Follow-up audit reconfirmed the eight Phase 1 DoD gates on the smoke scope:
+two independent Replay/Dummy CPU runs, normalized trace determinism, and all
+eight frozen Kaggle artifact hashes. See `knowledge/integrity_audit_20260905.md`.
+This is not a claim that every edge case has an individual regression test.
+
 ## Phase 2 progress
 
 - [x] Phase 2 explicitly authorized on 2026-09-05.
@@ -50,13 +55,21 @@ recorded limitation, not a completion blocker.
   owner waiver without fabricated reviewer metadata.
 - [x] Clean task/ground-truth/automated-QA schemas frozen.
 - [x] Frozen synthetic environment built and validated.
-- [x] Automated-QA 250-task pool completed; 250/250 oracle-valid.
-- [x] Group-wise 150/100 split created and held-out Test sealed.
+- [ ] Pool acceptance: 250 schemas/oracle fixtures pass, but 30 same-instance
+  pairs have different group IDs; review booleans are not independent QA evidence.
+- [ ] Split acceptance: sealed hashes intact, but 12 semantic instances cross
+  Dev/Test. Original v1 files are preserved, not repaired in place.
 - [x] Dev-only Kaggle pilot completed without Test/private GT access.
-- [x] Phase 2 acceptance checks and frozen manifests complete.
+- [ ] Phase 2 acceptance and release tag: blocked by benchmark-integrity defects.
 
-Phase 2 was **accepted on 2026-09-05** under the recorded review waiver. The
-Kaggle Dev pilot produced 21/21 terminal runs, 0 crashes, 334 valid trace events,
-and 7/21 task successes. Low A0 performance is evidence, not a dataset blocker.
+The earlier Phase 2 acceptance claim is **withdrawn** after a static integrity
+audit, not after a held-out model run. The Dev pilot remains historical execution
+evidence (21 terminal, 0 crashes, 334 events); its 7/21 score is provisional
+because argument comparators and typed fact semantics are incomplete.
+
+Next: obtain approval for a separately versioned benchmark replacement; define
+semantic groups before assignment, repair QA provenance and comparator checks,
+then validate and seal the new version. Do not move tasks or rewrite v1 hashes.
+The review waiver still applies; no peer review or new account is requested.
 
 Do not begin Phase 3 or access held-out clean Test without explicit scope.

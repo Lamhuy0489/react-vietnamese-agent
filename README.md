@@ -5,10 +5,10 @@ công cụ trong môi trường tiếng Việt giả lập (hành chính–học
 
 ## Trạng thái
 
-- Trạng thái hiện tại: **Phase 1 và Phase 2 hoàn thành; Phase 3 chưa bắt đầu**.
+- Trạng thái hiện tại: **Phase 1 qua kiểm tra lại; Phase 2 cần sửa lỗi benchmark**.
 - Kế hoạch gốc: file Word ở root và thư mục `plan/`.
 - Contract triển khai đã chuẩn hóa: `docs/`.
-- A0, smoke environment và clean benchmark 250 task đã hoàn thành; real-model
+- A0, smoke environment và clean benchmark 250 task đã được tạo; real-model
   smoke Phase 1 và Dev pilot Phase 2 chạy trên Kaggle. Đây chưa phải thí nghiệm
   chính của luận văn.
 
@@ -72,15 +72,21 @@ và manifest bằng chứng tại
 
 ## Clean benchmark Phase 2
 
+**Bản v1 chưa đạt acceptance:** 30 cặp cùng fact/nguồn có group ID khác nhau,
+trong đó 12 cặp nằm ở cả Dev và Test. Giữ bản khóa để lưu bằng chứng, chưa tạo
+tag hay bắt đầu Phase 3. Xem [báo cáo audit](knowledge/integrity_audit_20260905.md).
+
 Clean v1 có 250 task tổng hợp, chia group-wise thành 150 Dev và 100 Test bằng
 seed 2026. Test đã niêm phong trước Dev pilot; Kaggle bundle chỉ chứa public Dev,
 không chứa Test hoặc private ground truth.
 
 ```bash
 make phase2-validate
-make phase2-kaggle-bundle
-make phase2-kaggle-bundle-validate
 ```
+
+Lệnh trên hiện **phải FAIL** vì v1 không hợp lệ. Test phần mềm pass nghĩa là
+validator bắt đúng lỗi, không phải benchmark đạt acceptance. Đóng gói Kaggle
+bị chặn cho đến khi có bản dữ liệu hợp lệ được phê duyệt.
 
 Thiết kế và hạn chế dữ liệu được mô tả tại
 [docs/clean_benchmark_design.md](docs/clean_benchmark_design.md) và

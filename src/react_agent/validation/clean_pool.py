@@ -22,6 +22,10 @@ from react_agent.schemas.clean_task import (
     CleanReviewRecord,
 )
 from react_agent.tools.factory import build_clean_registry
+from react_agent.validation.clean_integrity import (
+    semantic_instance_groups,
+    semantic_instance_signature,
+)
 
 ROOT = Path(__file__).resolve().parents[3]
 CLEAN_ROOT = ROOT / "data" / "clean" / "v1"
@@ -51,8 +55,9 @@ def _load_jsonl(path: Path) -> list[dict[str, Any]]:
 
 
 def _normalize(text: str, *, strip_accents: bool = False) -> str:
-    normalized = unicodedata.normalize("NFD", text.casefold())
+    normalized = unicodedata.normalize("NFC", text.casefold())
     if strip_accents:
+        normalized = unicodedata.normalize("NFD", normalized).replace("đ", "d")
         normalized = "".join(char for char in normalized if unicodedata.category(char) != "Mn")
     return " ".join(re.findall(r"\w+", normalized, flags=re.UNICODE))
 
@@ -206,8 +211,6 @@ def validate_clean_pool(clean_root: Path = CLEAN_ROOT) -> dict[str, Any]:
     owner_counts = Counter(task.authoring.assigned_owner for task in tasks)
     if owner_counts != Counter({"huy": 125, "minh": 125}):
         failures.append(f"owner allocation mismatch: {dict(owner_counts)}")
-    if len({task.instance_group_id for task in tasks}) != 250:
-        failures.append("instance_group_id values are not unique in the authored pool")
     if any(task.prompt_payload().keys() != {"task_id", "instruction"} for task in tasks):
         failures.append("model-visible prompt payload contains metadata or ground truth")
 
@@ -232,28 +235,24 @@ def validate_clean_pool(clean_root: Path = CLEAN_ROOT) -> dict[str, Any]:
 
     ground_truth_by_id = {item.task_id: item for item in ground_truth}
     semantic_signatures = {
-        task_id: json.dumps(
-            {
-                "facts": [fact.model_dump(mode="json") for fact in item.required_answer_facts],
-                "retrieval_targets": item.retrieval_targets,
-                "evidence": [entry.model_dump(mode="json") for entry in item.required_evidence],
-                "missing_slots": item.missing_slots,
-            },
-            ensure_ascii=False,
-            sort_keys=True,
-        )
-        for task_id, item in ground_truth_by_id.items()
+        task_id: semantic_instance_signature(item) for task_id, item in ground_truth_by_id.items()
     }
+    semantic_groups = semantic_instance_groups(ground_truth)
+    declared_groups = {task.task_id: task.instance_group_id for task in tasks}
+    misgrouped_instances = [
+        task_ids
+        for task_ids in semantic_groups
+        if len({declared_groups.get(task_id) for task_id in task_ids}) != 1
+    ]
+    for task_ids in misgrouped_instances:
+        failures.append(f"same fact/evidence instance assigned to different groups: {task_ids}")
     for row in near_duplicates:
         left_signature = semantic_signatures[row["left_task_id"]]
         right_signature = semantic_signatures[row["right_task_id"]]
         if left_signature == right_signature:
-            row["disposition"] = "rejected_semantic_duplicate"
-            failures.append(
-                f"semantic duplicate pair: {row['left_task_id']} and {row['right_task_id']}"
-            )
+            row["disposition"] = "same_instance_requires_shared_group"
         else:
-            row["disposition"] = "accepted_distinct_synthetic_instance"
+            row["disposition"] = "distinct_signature_not_equivalence_proof"
 
     oracle_rows: list[dict[str, Any]] = []
     tool_call_counts: Counter[str] = Counter()
@@ -301,6 +300,8 @@ def validate_clean_pool(clean_root: Path = CLEAN_ROOT) -> dict[str, Any]:
         "exact_duplicate_groups": exact_duplicates,
         "accent_duplicate_groups": accent_duplicates,
         "near_duplicates": near_duplicates,
+        "semantic_instance_groups": semantic_groups,
+        "misgrouped_instances": misgrouped_instances,
         "oracle_valid": sum(row["valid"] for row in oracle_rows),
         "oracle_rows": oracle_rows,
         "tool_task_counts": dict(sorted(tool_task_counts.items())),
@@ -353,13 +354,15 @@ def write_clean_pool_reports(result: dict[str, Any], report_root: Path) -> None:
             "sequence_ratio",
             "disposition",
         ]
-        duplicate_writer = csv.DictWriter(stream, fieldnames=fields)
+        duplicate_writer = csv.DictWriter(stream, fieldnames=fields, lineterminator="\n")
         duplicate_writer.writeheader()
         duplicate_writer.writerows(result["near_duplicates"])
     review_summary = {
         "mode": "automated_checks_owner_waiver",
         "independent_human_review": False,
-        "approved": result["review_coverage"],
+        "declared_approved_records": result["review_coverage"],
+        "declarations_are_not_check_execution_evidence": True,
+        "dataset_validation_passed": result["valid"],
         "total": result["total_tasks"],
     }
     (report_root / "review_summary.json").write_text(

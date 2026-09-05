@@ -1,6 +1,8 @@
 # Clean Benchmark v1 Design
 
-Status: accepted on 2026-09-05.
+Status: **v1 quarantined; not accepted**. Thirty equivalent fact/evidence
+pairs have different group IDs; 12 cross Dev/Test. This is the historical
+design, not proof that its gates passed. See `../knowledge/integrity_audit_20260905.md`.
 
 Clean v1 contains 250 Vietnamese tasks grounded only in `clean_env_v1`. Public
 task records and evaluator-only ground truth are physically separate. The
@@ -37,8 +39,8 @@ are log-only mocks; cached-page tools never use HTTP.
 5. Seal 100 Test tasks and their private ground truth with component hashes.
 6. Run model pilots only on selected public Dev tasks.
 
-The approved same-machine workflow replaces independent peer review with all
-ten automated checks under the explicit project-owner review waiver. No
+The approved same-machine workflow requires automated QA instead of independent
+peer review. Generator-assigned flags do not prove all ten checks ran. No
 reviewer name or task-by-task owner inspection is fabricated. This deviation is recorded in the
 decision log and data card.
 
@@ -56,8 +58,8 @@ The complete component list and hashes are in
 
 ## Dev pilot
 
-The accepted Kaggle v2 pilot ran Qwen2.5-3B-Instruct on 21 public Dev tasks,
+The historical Kaggle v2 pilot ran Qwen2.5-3B-Instruct on 21 public Dev tasks,
 three per category. It produced 21/21 terminal runs, zero model crashes, 334
-schema-valid trace events, and 7/21 strict task successes. The worker bundle
+schema-valid trace events, and 7/21 provisional diagnostic successes. The worker bundle
 contained no Test or private ground truth. Low baseline performance was retained
 without changing frozen Test, prompt, policy, architecture, or thresholds.

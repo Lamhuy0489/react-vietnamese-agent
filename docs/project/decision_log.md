@@ -80,3 +80,30 @@ and are not inferred here.
   card must disclose that limitation.
 - Phase 2 clean-benchmark work is authorized. Create the 250-task pool before
   splitting; do not run a model on held-out Test or modify Test after sealing.
+
+## 2026-09-05 — Integrity audit and Phase 2 acceptance withdrawal
+
+- User requested continuation and an additional Phase 1 check. Static audit
+  found a generation/validation defect, not model-driven evidence: 30 pairs
+  share facts/evidence with different groups, and 12 cross Dev/Test. The old
+  signature included task-local `fact_id` labels.
+- Reopen Phase 2 and quarantine `clean_v1.0`; no release tag or Phase 3 work.
+  Quotas, research scope and review waiver remain unchanged. Hash consistency
+  is not proof of semantic split independence.
+- Preserve task/GT/environment/schema/manifest bytes and raw Kaggle outputs.
+  Refreshed QA reports are derived audit outputs, not input repairs. Static
+  split reads were for integrity only; no Test model output, prompt/policy
+  tuning, model selection, or in-place data repair occurred.
+- Seal guards stop generators before writes; packaging rejects invalid splits.
+  Group allocation, evidence-backed QA and comparator work need a separately
+  versioned replacement with defined rerun scope. This is proposed, not
+  recorded as owner-approved. Do not regenerate existing v1.
+- Generator-assigned booleans do not satisfy the waiver's QA requirement;
+  7/21 pilot score remains historical provisional output, not validated TSR.
+- Earlier post-seal review-metadata corrections changed the dataset identity
+  to `2a98633481ac82ae77dbbbe96877d67a3353894ce869e54947e0cf5335371c62`
+  at commit `37e121f`. This was not a Test-content repair; lack of a separate
+  contemporaneous deviation entry is a provenance limitation. This audit
+  performs no further resealing.
+- Phase 1 smoke evidence revalidated: repeatable CPU runs and eight original
+  Kaggle hashes; no runtime changes or new model inference.

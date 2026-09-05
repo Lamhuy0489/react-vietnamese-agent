@@ -13,3 +13,11 @@ changelog/report when they occur.
 
 This provides reproducible QA but is not independent human review. The final
 data card must disclose that limitation.
+
+## Follow-up audit finding
+
+The v1 generator assigned all flags before running validators. These are
+historical declarations, not sufficient evidence. The replacement version
+needs check-specific outputs and rejection reasons; schema presence and
+oracle fixtures alone cannot certify clarity, category, distractors,
+alternative paths, or argument correctness.

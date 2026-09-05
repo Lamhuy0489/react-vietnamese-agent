@@ -10,8 +10,161 @@
     "single_source": 40
   },
   "exact_duplicate_groups": [],
-  "failures": [],
+  "failures": [
+    "same fact/evidence instance assigned to different groups: ['clean_0001', 'clean_0196']",
+    "same fact/evidence instance assigned to different groups: ['clean_0002', 'clean_0197']",
+    "same fact/evidence instance assigned to different groups: ['clean_0003', 'clean_0198']",
+    "same fact/evidence instance assigned to different groups: ['clean_0004', 'clean_0199']",
+    "same fact/evidence instance assigned to different groups: ['clean_0005', 'clean_0200']",
+    "same fact/evidence instance assigned to different groups: ['clean_0006', 'clean_0201']",
+    "same fact/evidence instance assigned to different groups: ['clean_0007', 'clean_0202']",
+    "same fact/evidence instance assigned to different groups: ['clean_0008', 'clean_0203']",
+    "same fact/evidence instance assigned to different groups: ['clean_0009', 'clean_0204']",
+    "same fact/evidence instance assigned to different groups: ['clean_0010', 'clean_0205']",
+    "same fact/evidence instance assigned to different groups: ['clean_0011', 'clean_0206']",
+    "same fact/evidence instance assigned to different groups: ['clean_0012', 'clean_0207']",
+    "same fact/evidence instance assigned to different groups: ['clean_0013', 'clean_0208']",
+    "same fact/evidence instance assigned to different groups: ['clean_0014', 'clean_0209']",
+    "same fact/evidence instance assigned to different groups: ['clean_0015', 'clean_0210']",
+    "same fact/evidence instance assigned to different groups: ['clean_0026', 'clean_0211']",
+    "same fact/evidence instance assigned to different groups: ['clean_0027', 'clean_0212']",
+    "same fact/evidence instance assigned to different groups: ['clean_0028', 'clean_0213']",
+    "same fact/evidence instance assigned to different groups: ['clean_0029', 'clean_0214']",
+    "same fact/evidence instance assigned to different groups: ['clean_0030', 'clean_0215']",
+    "same fact/evidence instance assigned to different groups: ['clean_0031', 'clean_0216']",
+    "same fact/evidence instance assigned to different groups: ['clean_0032', 'clean_0217']",
+    "same fact/evidence instance assigned to different groups: ['clean_0033', 'clean_0218']",
+    "same fact/evidence instance assigned to different groups: ['clean_0034', 'clean_0219']",
+    "same fact/evidence instance assigned to different groups: ['clean_0035', 'clean_0220']",
+    "same fact/evidence instance assigned to different groups: ['clean_0041', 'clean_0221']",
+    "same fact/evidence instance assigned to different groups: ['clean_0042', 'clean_0222']",
+    "same fact/evidence instance assigned to different groups: ['clean_0043', 'clean_0223']",
+    "same fact/evidence instance assigned to different groups: ['clean_0044', 'clean_0224']",
+    "same fact/evidence instance assigned to different groups: ['clean_0045', 'clean_0225']"
+  ],
   "ground_truth_records": 250,
+  "misgrouped_instances": [
+    [
+      "clean_0001",
+      "clean_0196"
+    ],
+    [
+      "clean_0002",
+      "clean_0197"
+    ],
+    [
+      "clean_0003",
+      "clean_0198"
+    ],
+    [
+      "clean_0004",
+      "clean_0199"
+    ],
+    [
+      "clean_0005",
+      "clean_0200"
+    ],
+    [
+      "clean_0006",
+      "clean_0201"
+    ],
+    [
+      "clean_0007",
+      "clean_0202"
+    ],
+    [
+      "clean_0008",
+      "clean_0203"
+    ],
+    [
+      "clean_0009",
+      "clean_0204"
+    ],
+    [
+      "clean_0010",
+      "clean_0205"
+    ],
+    [
+      "clean_0011",
+      "clean_0206"
+    ],
+    [
+      "clean_0012",
+      "clean_0207"
+    ],
+    [
+      "clean_0013",
+      "clean_0208"
+    ],
+    [
+      "clean_0014",
+      "clean_0209"
+    ],
+    [
+      "clean_0015",
+      "clean_0210"
+    ],
+    [
+      "clean_0026",
+      "clean_0211"
+    ],
+    [
+      "clean_0027",
+      "clean_0212"
+    ],
+    [
+      "clean_0028",
+      "clean_0213"
+    ],
+    [
+      "clean_0029",
+      "clean_0214"
+    ],
+    [
+      "clean_0030",
+      "clean_0215"
+    ],
+    [
+      "clean_0031",
+      "clean_0216"
+    ],
+    [
+      "clean_0032",
+      "clean_0217"
+    ],
+    [
+      "clean_0033",
+      "clean_0218"
+    ],
+    [
+      "clean_0034",
+      "clean_0219"
+    ],
+    [
+      "clean_0035",
+      "clean_0220"
+    ],
+    [
+      "clean_0041",
+      "clean_0221"
+    ],
+    [
+      "clean_0042",
+      "clean_0222"
+    ],
+    [
+      "clean_0043",
+      "clean_0223"
+    ],
+    [
+      "clean_0044",
+      "clean_0224"
+    ],
+    [
+      "clean_0045",
+      "clean_0225"
+    ]
+  ],
   "oracle_trace_events": 1407,
   "oracle_valid": 250,
   "owner_counts": {
@@ -25,6 +178,128 @@
   },
   "review_coverage": 250,
   "schema_valid": 250,
+  "semantic_instance_groups": [
+    [
+      "clean_0001",
+      "clean_0196"
+    ],
+    [
+      "clean_0002",
+      "clean_0197"
+    ],
+    [
+      "clean_0003",
+      "clean_0198"
+    ],
+    [
+      "clean_0004",
+      "clean_0199"
+    ],
+    [
+      "clean_0005",
+      "clean_0200"
+    ],
+    [
+      "clean_0006",
+      "clean_0201"
+    ],
+    [
+      "clean_0007",
+      "clean_0202"
+    ],
+    [
+      "clean_0008",
+      "clean_0203"
+    ],
+    [
+      "clean_0009",
+      "clean_0204"
+    ],
+    [
+      "clean_0010",
+      "clean_0205"
+    ],
+    [
+      "clean_0011",
+      "clean_0206"
+    ],
+    [
+      "clean_0012",
+      "clean_0207"
+    ],
+    [
+      "clean_0013",
+      "clean_0208"
+    ],
+    [
+      "clean_0014",
+      "clean_0209"
+    ],
+    [
+      "clean_0015",
+      "clean_0210"
+    ],
+    [
+      "clean_0026",
+      "clean_0211"
+    ],
+    [
+      "clean_0027",
+      "clean_0212"
+    ],
+    [
+      "clean_0028",
+      "clean_0213"
+    ],
+    [
+      "clean_0029",
+      "clean_0214"
+    ],
+    [
+      "clean_0030",
+      "clean_0215"
+    ],
+    [
+      "clean_0031",
+      "clean_0216"
+    ],
+    [
+      "clean_0032",
+      "clean_0217"
+    ],
+    [
+      "clean_0033",
+      "clean_0218"
+    ],
+    [
+      "clean_0034",
+      "clean_0219"
+    ],
+    [
+      "clean_0035",
+      "clean_0220"
+    ],
+    [
+      "clean_0041",
+      "clean_0221"
+    ],
+    [
+      "clean_0042",
+      "clean_0222"
+    ],
+    [
+      "clean_0043",
+      "clean_0223"
+    ],
+    [
+      "clean_0044",
+      "clean_0224"
+    ],
+    [
+      "clean_0045",
+      "clean_0225"
+    ]
+  ],
   "tool_call_counts": {
     "cached_fetch": 34,
     "cached_search": 34,
@@ -46,5 +321,5 @@
     "send_email_mock": 8
   },
   "total_tasks": 250,
-  "valid": true
+  "valid": false
 }

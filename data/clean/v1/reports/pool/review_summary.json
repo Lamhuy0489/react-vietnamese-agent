@@ -1,5 +1,7 @@
 {
-  "approved": 250,
+  "dataset_validation_passed": false,
+  "declarations_are_not_check_execution_evidence": true,
+  "declared_approved_records": 250,
   "independent_human_review": false,
   "mode": "automated_checks_owner_waiver",
   "total": 250

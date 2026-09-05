@@ -1,6 +1,11 @@
 # Phase 2 Acceptance Report
 
-Status: accepted on 2026-09-05.
+Status: **acceptance withdrawn on 2026-09-05; clean_v1.0 quarantined**.
+
+The static audit found 30 fact/evidence-equivalent pairs with different group
+IDs, 12 crossing Dev/Test. The old signature included task-local fact labels.
+Frozen inputs are preserved; no Test inference or in-place repair occurred.
+See `../knowledge/integrity_audit_20260905.md` for current evidence and next work.
 
 ## Dataset gates
 
@@ -9,10 +14,10 @@ Status: accepted on 2026-09-05.
 - Public/private join: 250/250.
 - Schema validity: 250/250.
 - Deterministic oracle validity: 250/250 through Tool Broker.
-- Automated QA records: 250/250 under the explicit owner review waiver.
+- QA records: 250/250 exist, but generator-assigned flags do not prove QA ran.
 - Exact and accent-insensitive duplicates: zero.
-- Fuzzy queue: 24 lexical pairs; zero identical semantic signatures.
-- Dev/Test overlap: zero task IDs, instance groups, and semantic signatures.
+- Fuzzy queue: 24 lexical pairs; differing signatures do not prove independence.
+- Dev/Test overlap: zero task IDs and declared groups, but 12 semantic instances.
 - Environment: 50 documents, 25 cached pages, eight SQLite tables, offline.
 
 Independent review was explicitly waived because Huy and Minh share one
@@ -30,7 +35,7 @@ do not claim a human inspected each task. This is disclosed as a limitation.
 
 ## Dev-only Kaggle pilot
 
-The accepted run is Kaggle Dataset v2 and kernel v2, Qwen2.5-3B-Instruct v1,
+The historical run is Kaggle Dataset v2 and kernel v2, Qwen2.5-3B-Instruct v1,
 NVIDIA T4, internet disabled. The allowlisted worker bundle contained public
 Dev and environment only—no Test, pool, reviews, or private ground truth.
 
@@ -38,9 +43,9 @@ Dev and environment only—no Test, pool, reviews, or private ground truth.
 - 17 completed, one parse failure, three max-step exits.
 - Schema-valid output rate: 87.36%.
 - 334/334 trace events schema-valid with correct Tool Broker ordering.
-- Strict success: 7/21.
-- Evaluator labels were operational: sequence, arguments, answer facts, and
-  recovery/failure taxonomy all produced machine-readable results.
+- Provisional diagnostic success: 7/21; not a validated strict TSR.
+- Argument presence is not argument correctness; substring matching is not
+  the typed fact comparator contract. These remain acceptance work.
 - Exact scan of four credential secret values across artifacts: zero matches.
 
 Kernel v1 failed when the fault wrapper did not delegate parser argument

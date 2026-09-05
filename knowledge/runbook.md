@@ -47,7 +47,15 @@ make phase2-validate
 Ba validator lần lượt kiểm tra môi trường, pool 250 task và split 150/100 đã
 niêm phong. Validator không chạy model trên Test.
 
+Hiện v1 lỗi grouping: pool/split phải FAIL. Make dừng ở pool; chạy riêng
+`python scripts/validate_clean_split.py` để thấy 12 instance xuyên split.
+Test phần mềm pass không thay thế gate dữ liệu.
+
 ## Kaggle Dev pilot Phase 2
+
+Tạm dừng: lệnh đóng gói từ chối v1 không hợp lệ. Chỉ dùng lại các lệnh này sau
+khi version thay thế được phê duyệt và qua acceptance; chọn output mới, không
+ghi đè bundle hoặc raw kết quả cũ.
 
 ```bash
 make phase2-kaggle-bundle

@@ -933,6 +933,9 @@ def sha256(path: Path) -> str:
 
 
 def main() -> int:
+    from react_agent.validation.clean_integrity import assert_clean_version_writable
+
+    assert_clean_version_writable(CLEAN_ROOT)
     documents, document_catalog = build_documents()
     pages, page_catalog = build_pages()
     seed = build_database_seed()

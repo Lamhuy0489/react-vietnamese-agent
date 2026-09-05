@@ -11,6 +11,7 @@ chi tiết nằm trong `plan/`, và kế hoạch gốc là file Word ở root.
 3. `runbook.md` — lệnh kiểm tra/chạy lại thường dùng.
 4. `kaggle_lessons.md` — các lỗi Kaggle đã gặp và cách tránh lặp lại.
 5. `phase2_evidence.md` — bằng chứng dataset, split và Dev pilot Phase 2.
+6. `integrity_audit_20260905.md` — audit mới, lỗi Phase 2 và kiểm tra lại Phase 1.
 
 Cập nhật `current_status.md` khi một acceptance gate thực sự thay đổi. Không
 ghi credential, API key, token hoặc dữ liệu held-out Test vào thư mục này.

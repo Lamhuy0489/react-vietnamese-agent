@@ -10,6 +10,8 @@ import shutil
 import subprocess
 from pathlib import Path
 
+from react_agent.validation.clean_split import validate_clean_split
+
 ROOT = Path(__file__).resolve().parents[1]
 MODEL_SOURCE = "qwen-lm/qwen2.5/transformers/3b-instruct/1"
 GIT = shutil.which("git")
@@ -57,6 +59,11 @@ def included_files() -> list[str]:
 
 def main() -> int:
     args = parse_args()
+    acceptance = validate_clean_split()
+    if not acceptance["valid"]:
+        raise SystemExit(
+            f"Refusing to package an invalid clean benchmark: {acceptance['failures']}"
+        )
     if GIT is None:
         raise SystemExit("git executable not found")
     if git_output("status", "--porcelain"):
@@ -75,7 +82,9 @@ def main() -> int:
         raise RuntimeError(f"forbidden Test/private paths selected: {forbidden}")
     output = args.output.resolve()
     if output.exists():
-        shutil.rmtree(output)
+        raise SystemExit(
+            "Output already exists; choose a fresh --output to preserve prior bundles."
+        )
     dataset_dir = output / "dataset"
     kernel_dir = output / "kernel"
     dataset_dir.mkdir(parents=True)

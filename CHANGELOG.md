@@ -1,6 +1,21 @@
 # Changelog
 
+## Integrity audit — 2026-09-05
+
+- Withdraw Phase 2 acceptance: 30 same-instance pairs were missed by the local
+  fact-label signature; 12 cross Dev/Test. No release tag created.
+- Preserve sealed v1 inputs and raw model artifacts; require approval for a
+  separately versioned replacement, not an in-place reseal.
+- Add cross-category screening, complete component/aggregate hash checks,
+  pre-write seal guards, and invalid-benchmark bundle rejection.
+- QA flags are not proof that checks ran; Dev pilot 7/21 is provisional TSR.
+- Re-audit Phase 1 smoke DoD/eight Kaggle hashes; strengthen trace validation
+  with synthetic regression tests. No new inference or runtime changes.
+
 ## clean_v1.0 — 2026-09-05
+
+Historical creation record; acceptance/QA claims below are superseded by the
+integrity audit above.
 
 - Added typed public task, private ground-truth, oracle, fault, and owner-review
   contracts.

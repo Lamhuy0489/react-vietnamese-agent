@@ -13,6 +13,8 @@ from shutil import which
 from typing import Any
 
 from react_agent.schemas.clean_task import CleanGroundTruth, CleanPublicTask
+from react_agent.validation.clean_integrity import assert_clean_version_writable, dataset_digest
+from react_agent.validation.clean_pool import validate_clean_pool
 
 ROOT = Path(__file__).resolve().parents[1]
 CLEAN_ROOT = ROOT / "data" / "clean" / "v1"
@@ -100,6 +102,10 @@ def _assign_groups(tasks: list[CleanPublicTask]) -> dict[str, str]:
 
 
 def main() -> int:
+    assert_clean_version_writable(CLEAN_ROOT)
+    validation = validate_clean_pool(CLEAN_ROOT)
+    if not validation["valid"]:
+        raise RuntimeError(f"Refusing to split an invalid clean pool: {validation['failures']}")
     tasks = [
         CleanPublicTask.model_validate(record)
         for record in _load_jsonl(CLEAN_ROOT / "pool" / "tasks.jsonl")
@@ -109,6 +115,13 @@ def main() -> int:
         for record in _load_jsonl(CLEAN_ROOT / "private" / "pool_ground_truth.jsonl")
     ]
     assignments = _assign_groups(tasks)
+    group_splits: dict[str, set[str]] = defaultdict(set)
+    for task in tasks:
+        group_splits[task.instance_group_id].add(assignments[task.task_id])
+    if any(len(splits) != 1 for splits in group_splits.values()):
+        raise RuntimeError(
+            "Refusing to write a split that separates a cross-category instance group"
+        )
     public_by_split: dict[str, list[dict[str, Any]]] = {"dev": [], "test": []}
     private_by_split: dict[str, list[dict[str, Any]]] = {"dev": [], "test": []}
     for task in tasks:
@@ -161,9 +174,7 @@ def main() -> int:
         "schemas/clean_task.py": ROOT / "src" / "react_agent" / "schemas" / "clean_task.py",
     }
     component_hashes = {name: _sha256(path) for name, path in component_paths.items()}
-    dataset_hash = hashlib.sha256(
-        "".join(f"{name}:{digest}\n" for name, digest in sorted(component_hashes.items())).encode()
-    ).hexdigest()
+    dataset_hash = dataset_digest(component_hashes)
     assignment_records = [
         {
             "task_id": task.task_id,

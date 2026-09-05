@@ -10,9 +10,11 @@
     "single_source": 24
   },
   "dev_tasks": 150,
-  "failures": [],
+  "failures": [
+    "semantic instance overlap between Dev/Test: 12"
+  ],
   "group_overlap": 0,
-  "semantic_overlap": 0,
+  "semantic_overlap": 12,
   "source_overlap": [
     "BA102 — Học phần giả lập BA102",
     "BA202 — Học phần giả lập BA202",
@@ -73,5 +75,5 @@
   "test_ground_truth_sha256": "5736c589c5444eaff3d4e1f0427eaa01da12c8cdb71a1465c69bf01c909cebd0",
   "test_sha256": "a17cc65bdb54b0d6c0a2c55dddeea0e34e2e3763136e2104ffe5fdda316a3ae9",
   "test_tasks": 100,
-  "valid": true
+  "valid": false
 }

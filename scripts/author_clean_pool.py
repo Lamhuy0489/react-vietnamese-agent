@@ -922,6 +922,9 @@ def add_no_tool(builder: PoolBuilder) -> None:
 
 
 def main() -> int:
+    from react_agent.validation.clean_integrity import assert_clean_version_writable
+
+    assert_clean_version_writable(CLEAN_ROOT)
     sources: list[dict[str, Any]] = _read_json(CLEAN_ROOT / "manifests" / "source_catalog.json")
     seed: dict[str, list[list[Any]]] = _read_json(
         CLEAN_ROOT / "environment" / "database" / "seed.json"

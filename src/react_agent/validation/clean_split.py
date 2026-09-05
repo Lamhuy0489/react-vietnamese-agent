@@ -11,6 +11,10 @@ from typing import Any
 from pydantic import ValidationError
 
 from react_agent.schemas.clean_task import CleanGroundTruth, CleanPublicTask
+from react_agent.validation.clean_integrity import (
+    semantic_instance_signature,
+    validate_frozen_components,
+)
 
 ROOT = Path(__file__).resolve().parents[3]
 CLEAN_ROOT = ROOT / "data" / "clean" / "v1"
@@ -40,19 +44,6 @@ def _load_jsonl(path: Path) -> list[dict[str, Any]]:
 
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
-
-
-def _semantic_signature(item: CleanGroundTruth) -> str:
-    return json.dumps(
-        {
-            "facts": [fact.model_dump(mode="json") for fact in item.required_answer_facts],
-            "retrieval_targets": item.retrieval_targets,
-            "evidence": [entry.model_dump(mode="json") for entry in item.required_evidence],
-            "missing_slots": item.missing_slots,
-        },
-        ensure_ascii=False,
-        sort_keys=True,
-    )
 
 
 def validate_clean_split(clean_root: Path = CLEAN_ROOT) -> dict[str, Any]:
@@ -90,9 +81,9 @@ def validate_clean_split(clean_root: Path = CLEAN_ROOT) -> dict[str, Any]:
     expected_ids = {f"clean_{index:04d}" for index in range(1, 251)}
     if dev_ids | test_ids != expected_ids:
         failures.append("Dev/Test union does not reconstruct the 250-task pool")
-    if {item.task_id for item in dev_gt} != dev_ids:
+    if len(dev_gt) != len(dev_ids) or {item.task_id for item in dev_gt} != dev_ids:
         failures.append("private Dev ground truth does not align with public Dev")
-    if {item.task_id for item in test_gt} != test_ids:
+    if len(test_gt) != len(test_ids) or {item.task_id for item in test_gt} != test_ids:
         failures.append("private Test ground truth does not align with public Test")
     dev_groups = {task.instance_group_id for task in dev}
     test_groups = {task.instance_group_id for task in test}
@@ -106,8 +97,8 @@ def validate_clean_split(clean_root: Path = CLEAN_ROOT) -> dict[str, Any]:
     if test_counts != Counter(TEST_QUOTAS):
         failures.append(f"Test category quota mismatch: {dict(test_counts)}")
 
-    dev_signatures = {_semantic_signature(item) for item in dev_gt}
-    test_signatures = {_semantic_signature(item) for item in test_gt}
+    dev_signatures = {semantic_instance_signature(item) for item in dev_gt}
+    test_signatures = {semantic_instance_signature(item) for item in test_gt}
     semantic_overlap = dev_signatures & test_signatures
     if semantic_overlap:
         failures.append(f"semantic instance overlap between Dev/Test: {len(semantic_overlap)}")
@@ -128,6 +119,17 @@ def validate_clean_split(clean_root: Path = CLEAN_ROOT) -> dict[str, Any]:
     assignment_map = {
         item["task_id"]: item["split"] for item in split_manifest.get("assignments", [])
     }
+    assignments = split_manifest.get("assignments", [])
+    if len(assignments) != 250 or set(assignment_map) != expected_ids:
+        failures.append("split manifest assignments are not a one-to-one 250-task mapping")
+    public_by_id = {task.task_id: task for task in dev + test}
+    for assignment in assignments:
+        task = public_by_id.get(assignment["task_id"])
+        if task is not None and (
+            assignment.get("category") != task.category
+            or assignment.get("instance_group_id") != task.instance_group_id
+        ):
+            failures.append(f"split manifest group/category mismatch for {task.task_id}")
     for task_id in dev_ids:
         if assignment_map.get(task_id) != "dev":
             failures.append(f"split manifest mismatch for {task_id}")
@@ -135,15 +137,11 @@ def validate_clean_split(clean_root: Path = CLEAN_ROOT) -> dict[str, Any]:
         if assignment_map.get(task_id) != "test":
             failures.append(f"split manifest mismatch for {task_id}")
 
-    component_hashes = manifest.get("component_hashes", {})
-    for relative, expected_hash in component_hashes.items():
-        path = (
-            ROOT / "src" / "react_agent" / "schemas" / "clean_task.py"
-            if relative == "schemas/clean_task.py"
-            else clean_root / relative
+    failures.extend(
+        validate_frozen_components(
+            clean_root, ROOT / "src" / "react_agent" / "schemas" / "clean_task.py", manifest
         )
-        if not path.is_file() or _sha256(path) != expected_hash:
-            failures.append(f"frozen component hash mismatch: {relative}")
+    )
     if manifest.get("split_manifest_sha256") != _sha256(paths["split_manifest"]):
         failures.append("split manifest hash mismatch")
 
