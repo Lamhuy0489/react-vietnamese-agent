@@ -20,4 +20,12 @@ and are not inferred here.
 - Repository-local Git author: `Lamhuy0489 <lamquanghuy1234@gmail.com>`.
 - Kaggle CLI smoke authentication uses the existing local credential for
   `lamhuy8904`; credential files remain ignored and outside Git history.
-- Teammate GitHub username and collaborator permission are still pending.
+- Teammate access was pending at setup close and is resolved by the following
+  Phase 0 handoff entry.
+
+## 2026-09-05 — Phase 0 accepted and Phase 1 authorized
+
+- Project owner accepted the frozen research contract without changes.
+- GitHub user `minhb5d` was invited to the private repository with write access.
+- Phase 1 starts on branch `phase-1/a0-vertical-slice`.
+- Phase 1 uses synthetic smoke data only and does not access held-out Test.

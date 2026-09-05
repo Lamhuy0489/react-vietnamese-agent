@@ -1,0 +1,25 @@
+id: A0
+
+runtime:
+  max_steps: 8
+  max_format_retries_per_step: 2
+  tool_timeout_seconds: 5
+
+structured_output:
+  strict: true
+
+security:
+  regex_guard: false
+  llm_guard: false
+  sensitivity_tracking: false
+  trust_tracking: false
+  provenance_tracking: false
+  pre_gate: false
+  post_gate: false
+  final_gate: false
+
+logging:
+  trace_enabled: true
+  raw_model_output: true
+  tool_arguments: true
+  tool_results: true

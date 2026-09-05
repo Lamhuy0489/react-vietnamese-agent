@@ -5,7 +5,7 @@ công cụ trong môi trường tiếng Việt giả lập (hành chính–học
 
 ## Trạng thái
 
-- Giai đoạn hiện tại: **Setup trước Phase 1**.
+- Giai đoạn hiện tại: **Phase 1 — A0 baseline**.
 - Kế hoạch gốc: file Word ở root và thư mục `plan/`.
 - Contract triển khai đã chuẩn hóa: `docs/`.
 - Chưa triển khai A0 hay chạy thí nghiệm chính.
@@ -35,6 +35,17 @@ Kiểm tra setup:
 python scripts/verify_setup.py
 pytest
 ```
+
+Chạy A0 smoke suite trên CPU bằng replay backend:
+
+```bash
+python scripts/build_smoke_environment.py
+python scripts/validate_smoke_data.py
+python scripts/run_smoke.py --backend replay
+```
+
+Replay suite phải hoàn thành 20/20 tác vụ, không crash và bao phủ đủ tám mock
+tools. Kết quả sinh dưới `results/phase1/` và không được commit mặc định.
 
 Sau khi cài dev dependencies:
 

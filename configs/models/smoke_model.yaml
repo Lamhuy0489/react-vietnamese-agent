@@ -1,0 +1,5 @@
+model_id: replay
+model_revision: phase1_v1
+temperature: 0.0
+max_new_tokens: 512
+seed: 42
