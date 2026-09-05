@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, cast
 
 from pydantic import BaseModel
 
@@ -26,6 +26,11 @@ class FaultInjectingTool(BaseTool[BaseModel]):
     @property
     def input_schema(self) -> dict[str, Any]:
         return self._wrapped.input_schema
+
+    def validate_arguments(self, arguments: dict[str, object]) -> BaseModel:
+        """Keep parser validation identical to the wrapped tool."""
+
+        return cast(BaseModel, self._wrapped.validate_arguments(arguments))
 
     def execute(self, call_id: str, arguments: dict[str, object]) -> ToolResult:
         self._occurrence += 1

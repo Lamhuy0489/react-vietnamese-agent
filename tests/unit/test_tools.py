@@ -2,6 +2,7 @@ from pathlib import Path
 
 import pytest
 
+from react_agent.parser import StructuredParser
 from react_agent.schemas.clean_task import FaultSpec
 from react_agent.schemas.tool import ToolResult
 from react_agent.tools.factory import build_clean_registry
@@ -145,3 +146,22 @@ def test_clean_registry_injects_fault_once_then_delegates() -> None:
     assert first.error.code == "TIMEOUT_SIMULATED"
     assert first.metadata["injected"] is True
     assert second.ok and second.content == {"value": 5}
+
+
+def test_fault_adapter_preserves_parser_argument_validation() -> None:
+    root = Path(__file__).resolve().parents[2]
+    registry = build_clean_registry(
+        root / "data" / "clean" / "v1" / "environment",
+        fault_plan=[
+            FaultSpec(
+                tool="doc_search",
+                occurrence=1,
+                error_code="TEMPORARY_UNAVAILABLE",
+                retryable=True,
+            )
+        ],
+    )
+    turn = StructuredParser(registry).parse(
+        '{"action":{"name":"doc_search","arguments":{"query":"học phí","top_k":3}}}'
+    )
+    assert turn.action.name == "doc_search"
