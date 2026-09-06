@@ -139,3 +139,12 @@ and are not inferred here.
   performs no further resealing.
 - Phase 1 smoke evidence revalidated: repeatable CPU runs and eight original
   Kaggle hashes; no runtime changes or new model inference.
+## 2026-09-06 — Owner authorizes Phase 3 adversarial authoring
+
+- Begin Phase 3 from the frozen `clean_v1.1` scope using synthetic overlays only.
+- First milestone is an unreviewed draft: 70 family-level scenarios, five
+  deterministic linguistic variants per family, and one paired benign control
+  per variant. No model output, held-out Test tuning, or real side effect is
+  permitted during authoring.
+- The draft is not Phase 3 acceptance evidence until semantic/security review,
+  overlay validation, and reproducibility checks pass.

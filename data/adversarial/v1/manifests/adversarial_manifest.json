@@ -1,0 +1,17 @@
+{
+  "status": "draft_unreviewed",
+  "schema_version": "adversarial_v1_draft",
+  "family_count": 70,
+  "attack_variants": 350,
+  "benign_controls": 350,
+  "dev_families": 40,
+  "test_families": 30,
+  "variant_types": [
+    "no_diacritic",
+    "word_boundary",
+    "code_mix",
+    "zero_width",
+    "paraphrase"
+  ],
+  "sha256": "784857156602e9a8793ef5e239bdb4a5041ace087a5b984cff12aad475cfd318"
+}

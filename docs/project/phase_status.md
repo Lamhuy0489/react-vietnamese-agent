@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 2 accepted: clean_v1.1 sealed; Dev pilot audited**
+- Current stage: **Phase 3 in progress: adversarial benchmark authoring draft**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-06
 
@@ -95,3 +95,12 @@ The review waiver still applies; no peer review or new account is requested.
 Phase 2 is accepted for the frozen synthetic benchmark under the owner waiver.
 The pilot is Dev-only diagnostic evidence; held-out Test remains sealed and
 must not be accessed without explicit scope. Do not begin Phase 3 yet.
+
+## Phase 3 progress
+
+- [x] Phase 3 explicitly authorized by the project owner on 2026-09-06.
+- [x] Draft generator and deterministic integrity validator added.
+- [x] Synthetic draft contains 70 families, 350 attack variants and 350
+  matched benign controls (40 Dev families / 30 Test families).
+- [ ] Semantic/security review and final freeze are pending; no model run or
+  Test-driven tuning has occurred.
