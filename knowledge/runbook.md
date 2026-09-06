@@ -48,6 +48,18 @@ và report chưa tồn tại:
 Lệnh chạy 16 Replay, không gọi LLM, không cần credentials; chỉ sao chép môi
 trường vào thư mục kết quả. Không ghi đè kết quả cũ và không tự tạo Test split.
 
+Đợt mở rộng hiện hành có 12 cặp ứng viên riêng, chạy 48 Replay với data-scope
+QA offline; cũng phải chọn hai đường dẫn chưa tồn tại:
+
+```bash
+.venv/bin/python scripts/verify_canonical_candidates.py \
+  --output results/phase3/candidates_local_check \
+  --report results/phase3/candidates_local_check_receipt.json
+```
+
+Không gọi script này như evaluator LLM/held-out Test. Receipt xác nhận fixture
+QA với exact source/input hashes, không cấp semantic/Phase 3 acceptance.
+
 [Báo cáo measured Dev](../docs/evaluation/measured_dev_pilot_report.md) chứa
 lệnh tái tạo chính xác từ raw artifacts đã audit. Các script dùng output mới
 và từ chối ghi đè; không thêm cờ overwrite. Source inference và source reporting

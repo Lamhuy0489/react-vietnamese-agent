@@ -230,3 +230,26 @@ and are not inferred here.
   to defense implementation or running Test.
 - Implementation and fixture source commit: `b7ae80c`; selected QA receipt
   records exact verifier/input hashes. Raw executions remain ignored locally.
+
+## 2026-09-06 — Owner approves bounded canonical/data-scope expansion
+
+- Expand Phase 3 into a separate 12-pair candidate set: four adapted from the
+  workbench and eight newly authored. Preserve prior inputs, source receipts
+  and clean/measured releases. No variants, Test split, inference or defenses.
+- Add separate catalog metadata and private data-scope schema. Compile SQL
+  offline for table/column access, not row-level authorization or equivalence.
+  Missing/unsupported scope remains unassessed, never accepted as safe.
+- Artifact authorization is destination-specific and independent of final
+  disclosure. Utility/leakage remain literal bounded fixtures; transformed
+  disclosure and general natural-language grading are not claimed.
+- 48 Replay fixtures pass (24 safe/24 negative), balanced across four attack
+  categories and four source types. Nine template-group annotations still
+  need semantic scrutiny; twelve candidate IDs are not twelve accepted families.
+- 168 tests, setup, Ruff, mypy and sealed clean validation pass; old receipts
+  and measured hashes match. Selected expansion receipt records the actual
+  base commit and exact source hashes; raw output remains ignored.
+- No human review is fabricated under the existing owner workflow waiver.
+  Next: semantic/template QA, typed utility/review evidence and further diverse
+  canonical authoring before variants, split or Phase 3 acceptance.
+- Implementation commit: `3e68814`. Knowledge validation and changed-file
+  scan against four local credential values pass with zero matches.

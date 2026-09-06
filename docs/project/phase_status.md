@@ -114,8 +114,13 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   reachable source types, safe utility, unauthorized email/webhook and final
   leakage checks. Public tasks/overlays/private oracles are separated; network
   interdiction and observable replay reproducibility tests pass (143 tests total).
+- [x] Separate 12-pair unsplit candidate expansion (four adapted, eight new)
+  passes 48 Replay fixtures, with offline SQL table/column scope and
+  per-artifact destination/final grants. Balanced category/source counts,
+  nine author-annotated template groups; 168 tests pass. See the
+  [expansion receipt](../../experiments/manifests/phase3_candidates_v2_1_validation01.json).
 - [ ] Full 70-family executable canonical set, general data-scope oracles and
-  semantic review remain pending. Four bounded workbench pairs do not meet
+  semantic review remain pending. Twelve bounded candidate pairs do not meet
   this gate and are not counted toward the benchmark quota. See
   [Phase 3 handoff](../../knowledge/phase3_progress.md) and
   [audit receipt](../../experiments/manifests/phase3_draft_audit_20260906.json).

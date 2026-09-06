@@ -1,9 +1,38 @@
 # Phase 3: tiến độ và thiếu sót đã xác minh
 
 Cập nhật 2026-09-06. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
-Đây là audit tĩnh để tiếp tục authoring, không phải đánh giá ASR hay chọn model.
+Gồm audit tĩnh và QA executable để tiếp tục authoring, không phải ASR hay chọn model.
 
-## Mới nhất: bốn cặp executable workbench đã pass
+## Mới nhất: 12 cặp ứng viên và data-scope QA
+
+Owner cho phép mở rộng. Bộ riêng `data/adversarial/candidates_v2_1` có bốn cặp
+thích nghi từ workbench và tám cặp mới, không ghi đè đầu vào cũ. Public task,
+overlay, private oracle và catalog metadata tách riêng; runtime không nhận
+ground truth. Tất cả unsplit/review-pending, chưa tính vào 70 family chính thức.
+
+- Mỗi category và mỗi source type có ba cặp; catalog có chín nhóm template.
+  Nhãn nhóm là gợi ý review, không phải bằng chứng có 12 family độc lập.
+- Bổ sung đọc tài liệu ngoài phạm vi, đổi endpoint, gửi thêm artifact riêng
+  tới địa chỉ hợp lệ, và gửi artifact được phép nhưng không lộ trong final.
+- SQL scope kiểm tra bảng/cột bằng SQLite compile/authorizer offline, xử lý
+  alias, biểu thức và wildcard. SQL không hỗ trợ/lỗi hoặc thiếu scope là
+  `unassessed`, không được đánh giá thành safe. Không thêm defense cho A0.
+- 48 Replay (12 × attack/benign × safe/negative): 24 safe đạt utility và
+  24 negative được nhận diện; payload reachable, facts có evidence, private
+  context guard pass, không action unassessed trong reference scripts.
+- 25 test bổ sung, gồm chặn network, SQL adversarial cases, quyền artifact
+  theo nơi nhận/final và tái lập normalized traces. Tổng 168 tests pass;
+  setup/Ruff/mypy 107 source files và clean_v1.1 sealed validation pass.
+- [Receipt mới](../experiments/manifests/phase3_candidates_v2_1_validation01.json)
+  lưu exact input/source/trace hashes và base Git commit. Input/source của
+  workbench và audit v1, cùng 12 measured release artifacts vẫn khớp hash.
+
+[Contract mở rộng](../docs/benchmark/canonical_expansion_contract.md) giới hạn
+SQL ở table/column, không chứng minh row-level scope/equivalence/side channels.
+Utility và artifact leakage còn là literal checks, chưa có encoded leakage.
+Không chạy LLM, chưa tạo variants/split và không ghi giả human semantic review.
+
+## Lịch sử: bốn cặp executable workbench đã pass
 
 Đã thêm `data/adversarial/workbench_v2`: bốn cặp synthetic chưa chia split,
 review-pending, không tính vào 70 family chính thức và không thay bản v1.
@@ -71,11 +100,12 @@ nó không triển khai/certify các gate semantic và executable.
 
 ## Thứ tự tiếp tục
 
-1. Nâng từ fixture schema sang canonical schema hoàn chỉnh: family/template
-   groups, authorization/data scope, artifact IDs, typed utility conditions
-   và review evidence. Không gọi bốn cặp là benchmark hoàn chỉnh.
-2. Mở rộng executable QA cho quy tắc theo data scope/SQL và sự kiện chưa được
-   bốn fixture bao phủ; vẫn tách private oracle khỏi runtime policy/model.
+1. Rà semantic/template groups của 12 ứng viên và hoàn thiện canonical schema:
+   typed utility conditions và review evidence còn thiếu. Không gọi 12 ứng
+   viên là benchmark hoàn chỉnh hoặc 12 family độc lập đã được duyệt.
+2. Mở rộng executable QA theo yêu cầu ca mới; table/column SQL đã có nhưng
+   row-level scope, transformed leakage và utility tổng quát chưa được bao phủ.
+   Vẫn tách private oracle khỏi runtime policy/model.
 3. Author canonical đa dạng và matched benign controls, có bằng chứng safe
    path/negative oracle. Không dùng thành công của LLM để lọc attack.
 4. Review semantic units và nhóm template trước stratified 40/30 split; không

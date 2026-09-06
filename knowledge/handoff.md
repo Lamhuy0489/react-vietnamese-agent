@@ -4,14 +4,14 @@ Cập nhật: 2026-09-06. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Theo yêu cầu owner: củng cố knowledge rồi tiếp tục Phase 3. Memory đã được
-tổ chức lại theo chỉ mục → trạng thái → bàn giao → bằng chứng, không cài thêm
-dịch vụ và không thay đổi benchmark agent.
+Theo yêu cầu owner mở rộng Phase 3: đã có 12 cặp ứng viên executable riêng
+(bốn thích nghi từ workbench + tám mới), 48 Replay đạt QA. Catalog tách khỏi
+public task/overlay/private oracle; thêm SQL table/column scope, document/page
+scope và quyền cho từng artifact ở từng nơi nhận/final. A0 không đổi.
 
-Phase 3: bản v1 có 70 family/350+350 variants nhưng chưa accepted. Workbench
-riêng đã có bốn cặp executable, chưa split/review, không tính vào quota chính.
-16 lượt Replay đã chứng minh reachable overlay, safe utility và nhận diện
-negative fixtures; schema/oracle còn bị giới hạn ở các fixture này.
+Bản v1 70 family/350+350 variants và workbench bốn cặp vẫn giữ nguyên.
+12 ứng viên mới chưa split/review, không tính vào quota chính. Chín nhóm
+template là annotation để rà soát, không chứng nhận độc lập ngữ nghĩa.
 Đọc [tiến độ Phase 3](phase3_progress.md) để xem những thiếu sót đã xác minh.
 
 ## Bước tiếp theo
@@ -21,9 +21,11 @@ negative fixtures; schema/oracle còn bị giới hạn ở các fixture này.
    [split rules](../docs/benchmark/split_rules.md).
 2. Chạy `make phase3-audit`: hiện cố ý không cấp acceptance; không retry GPU
    hoặc đổi dữ liệu tại chỗ để làm xanh gate.
-3. Đọc [contract workbench](../docs/benchmark/adversarial_workbench_contract.md),
-   mở rộng schema canonical/data-scope và QA ngoài bốn fixture. Sau đó author
-   canonical đa dạng với matched benign và bằng chứng thực thi.
+3. Đọc [contract mở rộng](../docs/benchmark/canonical_expansion_contract.md).
+   Rà semantic/template groups của 12 ứng viên trước khi nhân rộng; bổ sung
+   typed utility và evidence review. Nếu thêm ca cần row-level scope hoặc
+   leakage biến đổi thì triển khai/test oracle tương ứng trước khi tính QA.
+   Tiếp tục author canonical đa dạng với matched benign và bằng chứng thực thi.
 4. Review nhóm semantic/template, xác định split rồi mới sinh variants. Giữ
    bản draft cũ làm bằng chứng; không âm thầm reseal/move family.
 5. Chỉ cập nhật acceptance khi có kiểm tra thực sự. Đọc [runbook](runbook.md)
@@ -50,14 +52,24 @@ negative fixtures; schema/oracle còn bị giới hạn ở các fixture này.
 - [Workbench receipt](../experiments/manifests/phase3_workbench_v2_validation_01.json):
   source implementation `b7ae80c`, bốn cặp, 16 Replay, tám safe/tám negative đạt
   điều kiện fixture. Test có
-  chặn network và lặp lại observable traces. Kiểm tra mới nhất: 143 tests,
+  chặn network và lặp lại observable traces. Kiểm tra mốc workbench: 143 tests,
   setup/Ruff/mypy 103 source files pass; không thay dữ liệu/release đã khóa.
+- [Receipt mở rộng](../experiments/manifests/phase3_candidates_v2_1_validation01.json):
+  source implementation `3e68814`;
+  12 ứng viên, 48 Replay (24 safe/24 negative), bốn category và bốn source
+  type đều ba cặp; không có action chưa đánh giá được trong reference scripts.
+  168 tests pass; setup/Ruff/mypy 107 source files và clean_v1.1 seal pass.
+  Hash input/source mới, v1/workbench cũ và 12 measured artifacts đều khớp.
+  Receipt lưu base commit và exact source hashes, không giả source đã commit
+  tại thời điểm chạy. Raw traces nằm ngoài Git.
+  Quét bốn credential values trong 18 file thay đổi: không có match.
 
 ## Giới hạn
 
 - Phase 3 đang authoring; Phase 4–5 chưa được triển khai trong lượt này.
 - Không có held-out model run; QA split tĩnh không được dùng để tuning.
 - Llama chưa chạy vì Meta access pending; không cần hỏi lại quyền Google.
+- Không cần tài khoản mới cho QA offline; không có LLM/Kaggle run mới.
 - Owner đã bỏ yêu cầu Minh peer-review trong workflow dùng chung máy; không
   giả reviewer hoặc coi automated QA là bằng chứng human semantic review.
 - Không đổi bytes clean_v1/v1.1 hoặc measured releases. Không đưa credentials,

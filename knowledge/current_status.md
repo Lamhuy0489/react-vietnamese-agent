@@ -7,12 +7,17 @@ cho lệnh hiện hành, và [Phase 3 progress](phase3_progress.md) cho audit m�
 Knowledge đã có chỉ mục, bàn giao và validator link/cấu trúc; đây là memory
 phát triển, không đưa vào prompt agent benchmark.
 
-Phase 3 đã có bốn cặp workbench riêng (unsplit, review-pending), tách public
-task/overlay/private oracle. 16 Replay chạy qua Broker đã pass safe và negative
-fixtures; có email/webhook/final leakage và kiểm tra không network I/O.
-Draft v1 vẫn nguyên, chưa accepted. Bước tiếp theo là mở rộng canonical schema,
-data-scope QA và author family đa dạng; chưa tạo variants hoặc chạy Kaggle.
-Kiểm tra mới nhất: 143 tests pass; setup/Ruff/mypy pass;
+Phase 3 đã mở rộng thành 12 cặp ứng viên riêng: bốn cặp thích nghi từ workbench,
+tám cặp mới, chưa split/review và chưa tính vào quota 70 family. 48 Replay
+qua Broker đạt QA (24 safe/24 negative); thêm SQL table/column scope và quyền
+gửi từng artifact theo nơi nhận, tách khỏi quyền xuất trong câu trả lời cuối.
+Có chín nhóm template do tác giả gán, chưa chứng minh độc lập ngữ nghĩa.
+[Contract mở rộng](../docs/benchmark/canonical_expansion_contract.md) ghi rõ
+giới hạn: chưa có row-level scope, typed utility tổng quát hoặc encoded leakage.
+Draft v1 và workbench cũ vẫn nguyên. Bước tiếp theo là rà nhóm ngữ nghĩa,
+hoàn thiện schema/QA còn thiếu rồi author thêm canonical đa dạng; chưa tạo
+variants hoặc chạy Kaggle. Phase 3 chưa accepted.
+Kiểm tra mới nhất: 168 tests pass; setup/Ruff/mypy (107 source files) pass;
 clean_v1.1 seal và measured release hashes giữ nguyên. Các số test trong
 phần lịch sử bên dưới thuộc các mốc trước, không phải lần kiểm tra mới nhất.
 
