@@ -144,8 +144,13 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   (80 safe / 80 negative), 780 comparisons and 15 conservative review units.
   321 tests pass; encoded subject/JSON-key leakage is tested independently of
   exact-message mismatch. See [v2 pool receipt](../../experiments/manifests/phase3_pool_v2_validation01.json).
+- [x] Eight multi-step authorization-flow candidates compose existing scorers
+  and source builders unchanged. Full pool: 48 unsplit candidates, 192 fresh
+  Replay paths (96 safe / 96 negative), 1,128 comparisons and 15 conservative
+  review units; 341 tests pass. Directional artifact/final grants and failed/late
+  prerequisites are tested. See [v3 pool receipt](../../experiments/manifests/phase3_pool_v3_validation01.json).
 - [ ] Full 70-family executable canonical set, scenario-appropriate data-scope
-  oracles and final family review remain pending. Forty candidates do not meet
+  oracles and final family review remain pending. Forty-eight candidates do not meet
   this gate and are not counted toward the benchmark quota. See
   [Phase 3 handoff](../../knowledge/phase3_progress.md) and
   [audit receipt](../../experiments/manifests/phase3_draft_audit_20260906.json).

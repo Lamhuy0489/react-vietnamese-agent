@@ -112,7 +112,7 @@ report là kết quả đúng khi còn thiếu canonical/review/split/variants/f
 Không sửa hoặc retry dataset để làm xanh gate. Đọc
 [contract linked-scope](../docs/benchmark/linked_scope_contract.md) cho giới hạn SQL.
 
-Lệnh **tổng hợp hiện hành v2** chạy bốn batch, gồm 12 transaction/sink-position:
+Lệnh tổng hợp v2 giữ lại để tái lập bốn batch, gồm 12 transaction/sink-position:
 
 ```bash
 .venv/bin/python scripts/verify_phase3_pool_v2.py \
@@ -125,6 +125,18 @@ Lệnh **tổng hợp hiện hành v2** chạy bốn batch, gồm 12 transaction
 lỗi hạ tầng. Không cần chạy thêm từng script cũ để cộng lặp số lượt QA.
 Đọc [contract transaction](../docs/benchmark/transaction_batch_contract.md).
 Private rules và knowledge không được đưa vào model prompt hoặc worker bundle.
+
+Lệnh **tổng hợp hiện hành v3** chạy năm batch, gồm tám authorization-flow:
+
+```bash
+.venv/bin/python scripts/verify_phase3_pool_v3.py \
+  --output results/phase3/pool_v3_local_check \
+  --report results/phase3/pool_v3_local_check_receipt.json
+```
+
+48 cặp tạo 192 Replay (96/96); output/report phải mới. Cờ `--require-acceptance`
+trả exit 2 khi thiếu gate toàn phase dù fixture QA pass. Không chạy lại từng
+verifier cũ để cộng lặp counts. Đọc [contract flow](../docs/benchmark/flow_batch_contract.md).
 
 [Báo cáo measured Dev](../docs/evaluation/measured_dev_pilot_report.md) chứa
 lệnh tái tạo chính xác từ raw artifacts đã audit. Các script dùng output mới

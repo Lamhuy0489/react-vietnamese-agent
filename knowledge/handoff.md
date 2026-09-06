@@ -4,18 +4,18 @@ Cập nhật: 2026-09-06. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Theo yêu cầu owner tiếp tục và báo % Phase 3: đã thêm `transaction_batch_v1`
-12 cặp và verifier tổng hợp v2. Tổng **40 ứng viên**, 15 review units tạm thời.
-160 fresh Replay đạt QA trên bốn bộ; 80 safe/80 negative. Đã self-review 28
-cặp cũ và từng cặp mới; quyết định nhận/gộp family cuối cùng vẫn pending.
-A0, dataset/source/scorer cũ và model scores không đổi. Source mới: `7f1f284`.
+Theo yêu cầu owner tiếp tục Phase 3: đã thêm `flow_batch_v1` tám cặp và verifier
+tổng hợp v3. Tổng **48 ứng viên**, 15 review units tạm thời. 192 fresh Replay
+đạt QA trên năm bộ; 96 safe/96 negative. Có directional/final grants và temporal
+prerequisites thực thi; quyết định nhận/gộp family cuối cùng vẫn pending.
+A0, dataset/source/scorer cũ và model scores không đổi. Source mới: `56de8e7`.
 
 Bản v1 70 family/350+350 variants và workbench bốn cặp vẫn giữ nguyên.
-40 ứng viên chưa split/approved, không tính vào quota family đã nghiệm thu.
-Combined audit có 780 pair comparisons; 160 là reference QA, không phải model
+48 ứng viên chưa split/approved, không tính vào quota family đã nghiệm thu.
+Combined audit có 1.128 pair comparisons; 192 là reference QA, không phải model
 runs. Không giả independent review. [Tiến độ theo DoD](phase3_readiness.md):
-ước lượng 40–45% effort; 40/70 ≈ 57% là candidate count, không completion.
-Còn thiếu 30 ứng viên trước quyết định nhận/gộp family toàn pool.
+ước lượng 45–50% effort; 48/70 ≈ 69% là candidate count, không completion.
+Còn thiếu 22 ứng viên trước quyết định nhận/gộp family toàn pool.
 Đọc [tiến độ Phase 3](phase3_progress.md) để xem những thiếu sót đã xác minh.
 
 ## Bước tiếp theo
@@ -25,12 +25,12 @@ Còn thiếu 30 ứng viên trước quyết định nhận/gộp family toàn p
    [split rules](../docs/benchmark/split_rules.md).
 2. Chạy `make phase3-audit`: hiện cố ý không cấp acceptance; không retry GPU
    hoặc đổi dữ liệu tại chỗ để làm xanh gate.
-3. Đọc [tóm tắt transaction](../docs/benchmark/transaction_batch_summary.md),
-   [contract](../docs/benchmark/transaction_batch_contract.md) và
+3. Đọc [tóm tắt flow](../docs/benchmark/flow_batch_summary.md),
+   [contract](../docs/benchmark/flow_batch_contract.md) và
    [self-review pool](../docs/benchmark/pool_author_review_v1.md). Dùng verifier
-   v2 trong runbook; không chạy lại từng batch chỉ để báo thêm tiến độ. Không
-   sửa bytes 40 candidates/source đã có receipt hoặc lặp lại nhóm vừa thêm.
-   Bước cụ thể: author 30 canonical còn thiếu, rồi quyết định nhận/gộp từng
+   v3 trong runbook; không chạy lại từng batch chỉ để báo thêm tiến độ. Không
+   sửa bytes 48 candidates/source đã có receipt hoặc lặp lại nhóm vừa thêm.
+   Bước cụ thể: author 22 canonical còn thiếu, rồi quyết định nhận/gộp từng
    family của full pool. Phân biệt tình huống thực sự, không đổi tên để đủ 70.
    15 review units là nhóm bảo thủ cần giữ chung split, không đòi 70 abstract
    mechanisms khác nhau. Fragmentation/general entailment vẫn chưa covered;
@@ -42,6 +42,15 @@ Còn thiếu 30 ứng viên trước quyết định nhận/gộp family toàn p
 
 ## Bằng chứng
 
+- [Receipt v3](../experiments/manifests/phase3_pool_v3_validation01.json):
+  source `56de8e7`, 48 candidates/192 Replay/1.128 comparisons/15 review units.
+  341 tests pass (20 mới), setup/Ruff/mypy 123 source files và clean seal pass.
+  Chín receipt cũ/566 hash entries giữ nguyên, gồm 12 measured artifacts.
+  Hai send vi phạm được đếm riêng; hai artifact trong một send không bị đếm đôi.
+  Final grant độc lập email grant; failed/late prerequisites không cấp quyền.
+  `--require-acceptance` trả exit 2 đúng dự kiến, không phải runtime failure.
+  Selected source/input hashes khớp; quét bốn credential values trên 22 file
+  thay đổi có 0 match. Knowledge-check pass sau khi receipt được ghi hoàn chỉnh.
 - [Receipt v2](../experiments/manifests/phase3_pool_v2_validation01.json):
   source `7f1f284`, 40 candidates/160 Replay/780 comparisons/15 review units.
   321 tests pass (24 mới), setup/Ruff/mypy 121 source files và clean seal pass.

@@ -3,7 +3,24 @@
 Cập nhật 2026-09-06. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
 Gồm audit tĩnh và QA executable để tiếp tục authoring, không phải ASR hay chọn model.
 
-## Mới nhất: 40 ứng viên, self-review và QA tổng hợp v2
+## Mới nhất: 48 ứng viên và QA authorization-flow
+
+Tám cặp mới dùng lại builder/runtime/scorer cũ nguyên vẹn; bổ sung source
+dependencies và private flow rules, không thêm defense. Tổng 48 candidates,
+15 nhóm bảo thủ và 1.128 pair comparisons; không coi tám cặp là tám cơ chế mới.
+
+- 192 fresh Replay pass (96/96), 32 lượt thuộc batch flow.
+- 341 tests pass (20 mới), setup/Ruff/mypy 123 source files và clean seal pass.
+- Chín receipt cũ/566 hash entries khớp, gồm 12 measured artifacts.
+- [Receipt v3](../experiments/manifests/phase3_pool_v3_validation01.json),
+  [tóm tắt](../docs/benchmark/flow_batch_summary.md),
+  [contract](../docs/benchmark/flow_batch_contract.md). Source `56de8e7`.
+
+Ước lượng **45–50% effort**, không metric nghiệm thu; 48/70 ≈ 69% chỉ là số
+ứng viên so với mục tiêu. Còn 22 trước full-pool admission/merge, rồi grouped
+split, variants và freeze. Không LLM/Kaggle/Test inference hoặc Test-driven tuning.
+
+## Lịch sử: 40 ứng viên, self-review và QA tổng hợp v2
 
 Thêm 12 cặp transaction/sink-position, không sửa dữ liệu đã khóa. Đã ghi
 self-review 28 cặp trước và 12 cặp mới. Các substitution gần nhau tiếp tục
@@ -209,8 +226,8 @@ nó không triển khai/certify các gate semantic và executable.
 
 ## Thứ tự tiếp tục
 
-1. Dùng 15 combined review units của 40 ứng viên và self-review hiện có để
-   author 30 canonical còn thiếu. Không lặp các batch đã pass hoặc tự sinh
+1. Dùng 15 combined review units của 48 ứng viên và self-review hiện có để
+   author 22 canonical còn thiếu. Không lặp các batch đã pass hoặc tự sinh
    variants để tăng count; không đòi 70 abstract mechanisms. Chốt quyết định
    nhận/gộp family khi đủ full pool, trước grouped split.
 2. Mở rộng executable QA chỉ theo yêu cầu ca mới; bounded row scope đã có,

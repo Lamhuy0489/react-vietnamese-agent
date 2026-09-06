@@ -377,3 +377,24 @@ and are not inferred here.
   without a concrete scenario need or pad the target by renaming templates.
   Final scan: four credential values across 22 changed files, zero matches.
   Selected receipt source/input/author-review hashes and knowledge checks pass.
+
+## 2026-09-06 — Add authorization-flow candidates without changing old scorers
+
+- Continue owner-authorized Phase 3 in a separate eight-candidate batch. Compose
+  existing public source builders and private typed/mechanism scorers, keeping
+  their bytes and A0 behavior unchanged. No model-output selection or Test tuning.
+- Exercise directional artifact grants, allowed private final output but
+  prohibited email disclosure, crossed two-artifact routing, aggregate/suffix
+  disclosure bounds, notification/commit and conjunctive-source prerequisites,
+  and explicitly selected current-source submission.
+- Forty-eight working candidates remain in fifteen conservative groups; the
+  eight additions are not eight certified independent abstract mechanisms.
+  Final family admission/merge and linguistic equivalence review remain open.
+- Source `56de8e7`; 192 fresh Replay (96/96), 341 tests, setup/Ruff/mypy (123
+  files) and sealed clean validation pass. Nine old receipts/566 hash entries
+  match, including twelve measured release artifacts. No Kaggle/LLM/Test run.
+- Rough effort estimate 45–50%, not acceptance. 48/70 ≈ 69% is candidate count
+  only. Finish missing canonical scenarios, then full-pool admission decisions,
+  grouped split, reviewed paired variants and immutable release gates.
+  Selected source/input hashes match; credential scan checks four values across
+  22 changed files with zero matches. Knowledge links pass after receipt creation.
