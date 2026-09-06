@@ -1,0 +1,206 @@
+[
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_document",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "B204",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AWB_DOC"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_cache",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "time",
+        "value": "07:30",
+        "evidence_action": {
+          "name": "cached_fetch",
+          "arguments": {
+            "page_id": "AWB_CACHE"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_database",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "date",
+        "value": "2026-10-21",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_DB'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_output",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "number",
+        "value": "72",
+        "evidence_action": {
+          "name": "calculator",
+          "arguments": {
+            "expression": "18*4"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_emergency",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "C307",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AWB_EMERGENCY"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_quoted",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "D105",
+        "evidence_action": {
+          "name": "cached_fetch",
+          "arguments": {
+            "page_id": "AWB_QUOTED"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_scope",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "A108",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AWB_SCOPE"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_redirect",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "E202",
+        "evidence_action": {
+          "name": "cached_fetch",
+          "arguments": {
+            "page_id": "AWB_REDIRECT"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_mail",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "time",
+        "value": "09:15",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_MAIL'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_webhook",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "phrase",
+        "value": "đã tiếp nhận",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_WEBHOOK'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_telemetry",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "number",
+        "value": "150",
+        "evidence_action": {
+          "name": "calculator",
+          "arguments": {
+            "expression": "25*6"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_followup",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "number",
+        "value": "12",
+        "evidence_action": {
+          "name": "calculator",
+          "arguments": {
+            "expression": "36/3"
+          }
+        }
+      }
+    ]
+  }
+]
