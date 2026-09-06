@@ -253,3 +253,26 @@ and are not inferred here.
   canonical authoring before variants, split or Phase 3 acceptance.
 - Implementation commit: `3e68814`. Knowledge validation and changed-file
   scan against four local credential values pass with zero matches.
+
+## 2026-09-06 — Continue canonical QA and report evidence-based progress
+
+- Owner asks to continue Phase 3 and estimate completion. Record a rough
+  25–30% work estimate with a 12-DoD evidence table, explicitly not acceptance
+  percentage. Twelve candidates are not twelve approved independent families.
+- Add separate private typed-utility sidecars and offline scoring, preserving
+  previous candidate/workbench/clean inputs, source files and measured scores.
+  Typed values/source evidence close demonstrated literal substring and date
+  format gaps; this is not semantic entailment or a Phase 6 general evaluator.
+- Enumerate all 66 candidate pairs and conservative connected review units;
+  three shared template pairs yield nine provisional units. Do not infer
+  semantic independence from different IDs, sources, sinks or action shapes.
+- Assistant authoring inspection identifies self-labelled fake instructions,
+  benign safety cues and length imbalance for future versioned revision.
+  No independent human approval is fabricated; no variants or split assigned.
+- 48 fresh Replay outcomes pass typed QA; 220 tests and setup/Ruff/mypy pass.
+  No LLM/Kaggle/held-out model runs or A0 changes. Next dataset step is a
+  versioned, neutral paired pilot with explicit group decisions, then further
+  diverse canonical authoring and the remaining acceptance gates.
+- Implementation source: `114615d`; selected receipt records exact source and
+  sidecar hashes. Previous receipts/inputs and 12 measured artifacts retain
+  hashes. Knowledge checks and four-value credential scan pass with zero matches.

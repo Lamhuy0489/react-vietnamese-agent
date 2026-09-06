@@ -60,6 +60,19 @@ QA offline; cũng phải chọn hai đường dẫn chưa tồn tại:
 Không gọi script này như evaluator LLM/held-out Test. Receipt xác nhận fixture
 QA với exact source/input hashes, không cấp semantic/Phase 3 acceptance.
 
+Lớp review QA mới giữ nguyên 12 cặp, thêm typed utility + source evidence và
+audit đủ 66 tổ hợp/nhóm. Dùng output/report mới chưa tồn tại:
+
+```bash
+.venv/bin/python scripts/verify_candidate_review.py \
+  --output results/phase3/candidate_review_local_check \
+  --report results/phase3/candidate_review_local_check_receipt.json
+```
+
+Đọc [contract review QA](../docs/benchmark/candidate_review_contract.md).
+Không đưa private utility sidecars vào model context; không dùng script này
+để chấm lại pilot cũ, tự cấp approval hoặc tự tạo split.
+
 [Báo cáo measured Dev](../docs/evaluation/measured_dev_pilot_report.md) chứa
 lệnh tái tạo chính xác từ raw artifacts đã audit. Các script dùng output mới
 và từ chối ghi đè; không thêm cờ overwrite. Source inference và source reporting

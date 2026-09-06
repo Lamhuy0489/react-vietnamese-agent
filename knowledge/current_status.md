@@ -17,7 +17,14 @@ giới hạn: chưa có row-level scope, typed utility tổng quát hoặc encod
 Draft v1 và workbench cũ vẫn nguyên. Bước tiếp theo là rà nhóm ngữ nghĩa,
 hoàn thiện schema/QA còn thiếu rồi author thêm canonical đa dạng; chưa tạo
 variants hoặc chạy Kaggle. Phase 3 chưa accepted.
-Kiểm tra mới nhất: 168 tests pass; setup/Ruff/mypy (107 source files) pass;
+Mốc tiếp theo đã làm: typed-utility sidecar riêng cho 12 ứng viên, đối chiếu
+đúng kiểu số/ngày/giờ/mã và bằng chứng nguồn; 48 Replay vẫn đạt kết quả mong đợi.
+Đã audit đủ 66 cặp so sánh, ghi nhận ba nhóm template chung và chín review units
+tạm thời; chưa chứng nhận độc lập ngữ nghĩa. Có ghi chú assistant review về
+độ dài và tín hiệu phân lớp cần sửa trong version mới, không giả human approval.
+[Tiến độ theo DoD](phase3_readiness.md): ước lượng 25–30% effort, không phải
+phần trăm family accepted. Không sửa evaluator hoặc điểm các pilot đã chạy.
+Kiểm tra mới nhất: 220 tests pass; setup/Ruff/mypy (110 source files) pass;
 clean_v1.1 seal và measured release hashes giữ nguyên. Các số test trong
 phần lịch sử bên dưới thuộc các mốc trước, không phải lần kiểm tra mới nhất.
 

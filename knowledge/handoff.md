@@ -4,14 +4,17 @@ Cập nhật: 2026-09-06. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Theo yêu cầu owner mở rộng Phase 3: đã có 12 cặp ứng viên executable riêng
+Theo yêu cầu owner tiếp tục và báo tiến độ Phase 3: đã có 12 cặp ứng viên executable riêng
 (bốn thích nghi từ workbench + tám mới), 48 Replay đạt QA. Catalog tách khỏi
 public task/overlay/private oracle; thêm SQL table/column scope, document/page
 scope và quyền cho từng artifact ở từng nơi nhận/final. A0 không đổi.
 
 Bản v1 70 family/350+350 variants và workbench bốn cặp vẫn giữ nguyên.
-12 ứng viên mới chưa split/review, không tính vào quota chính. Chín nhóm
-template là annotation để rà soát, không chứng nhận độc lập ngữ nghĩa.
+12 ứng viên mới chưa split/approved, không tính vào quota chính. Đã thêm typed
+utility + evidence sidecar và audit 66 cặp so sánh; 48 Replay pass. Ba nhóm
+template chung tạo chín review units tạm thời, không chứng nhận độc lập ngữ nghĩa.
+Có assistant authoring review, không phải independent human approval.
+[Ước lượng tiến độ theo DoD](phase3_readiness.md): khoảng 25–30% effort.
 Đọc [tiến độ Phase 3](phase3_progress.md) để xem những thiếu sót đã xác minh.
 
 ## Bước tiếp theo
@@ -21,11 +24,14 @@ template là annotation để rà soát, không chứng nhận độc lập ng�
    [split rules](../docs/benchmark/split_rules.md).
 2. Chạy `make phase3-audit`: hiện cố ý không cấp acceptance; không retry GPU
    hoặc đổi dữ liệu tại chỗ để làm xanh gate.
-3. Đọc [contract mở rộng](../docs/benchmark/canonical_expansion_contract.md).
-   Rà semantic/template groups của 12 ứng viên trước khi nhân rộng; bổ sung
-   typed utility và evidence review. Nếu thêm ca cần row-level scope hoặc
-   leakage biến đổi thì triển khai/test oracle tương ứng trước khi tính QA.
-   Tiếp tục author canonical đa dạng với matched benign và bằng chứng thực thi.
+3. Đọc [contract review QA](../docs/benchmark/candidate_review_contract.md) và
+   [ghi chú assistant review](../docs/benchmark/candidate_review_notes.md).
+   Bước cụ thể: tạo revision canonical pilot riêng, sửa benign thành nội dung
+   trung tính/tương đương độ dài và quyết định nhóm ngữ nghĩa cho các cặp giống
+   nhau; giữ nguyên bytes mọi version cũ. Typed utility đã có cho số/ngày/giờ/
+   entity/phrase, không cần viết lại mốc này. Sau pair QA, author thêm cơ chế.
+   Nếu ca mới cần row-level scope hoặc leakage biến đổi thì bổ sung oracle/test
+   tương ứng, không tuyên bố lớp QA hiện tại bao phủ.
 4. Review nhóm semantic/template, xác định split rồi mới sinh variants. Giữ
    bản draft cũ làm bằng chứng; không âm thầm reseal/move family.
 5. Chỉ cập nhật acceptance khi có kiểm tra thực sự. Đọc [runbook](runbook.md)
@@ -63,6 +69,14 @@ template là annotation để rà soát, không chứng nhận độc lập ng�
   Receipt lưu base commit và exact source hashes, không giả source đã commit
   tại thời điểm chạy. Raw traces nằm ngoài Git.
   Quét bốn credential values trong 18 file thay đổi: không có match.
+- [Review QA receipt](../experiments/manifests/phase3_candidate_review_v1_validation02.json):
+  source implementation `114615d`;
+  48 fresh Replay, 24 safe/24 negative, đủ 66 pair comparisons, chín review units.
+  220 tests pass, gồm 52 tests mới về typed answers/evidence/sinks/trace/grouping.
+  Setup/Ruff/mypy 110 source files pass. Raw preformat receipt giữ riêng dưới
+  ignored results; validation02 là bằng chứng được chọn, không ghi đè lượt cũ.
+  clean_v1.1 sealed validation và hash các source/input/receipt cũ, 12 measured
+  artifacts đều khớp. Quét bốn credential values trong 17 file thay đổi: 0 match.
 
 ## Giới hạn
 

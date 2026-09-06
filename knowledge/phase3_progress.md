@@ -3,7 +3,30 @@
 Cập nhật 2026-09-06. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
 Gồm audit tĩnh và QA executable để tiếp tục authoring, không phải ASR hay chọn model.
 
-## Mới nhất: 12 cặp ứng viên và data-scope QA
+## Mới nhất: typed utility, group/pair audit và tiến độ DoD
+
+Theo yêu cầu tiếp tục, đã thêm lớp review QA riêng, không sửa candidate inputs
+hoặc scorer cũ. Typed utility kiểm tra giá trị số/ngày/giờ/entity/phrase và
+evidence từ đúng source action; required sink và security checks vẫn độc lập.
+Đã test regression cho lỗi substring, định dạng ngày tương đương, evidence
+thiếu/sai, sink thiếu/thất bại và final leakage.
+
+- 48 fresh Replay đạt kỳ vọng (24 safe/24 negative); 220 tests toàn repo pass.
+- Audit đầy đủ 66 tổ hợp ứng viên: ba nhóm template chung, chín review units
+  tạm thời. Nhóm có liên kết bắc cầu không được tự tách; không chứng minh
+  độc lập ngữ nghĩa hoặc phân split tự động.
+- [Assistant review notes](../docs/benchmark/candidate_review_notes.md) ghi các
+  điểm cần sửa: attack tự gắn nhãn giả, benign gợi ý không hành động, độ dài
+  và khả năng trùng cơ chế. Đây không phải human approval, không thay dữ liệu.
+- [Receipt](../experiments/manifests/phase3_candidate_review_v1_validation02.json)
+  lưu input/sidecar/source/trace hashes; setup/Ruff/mypy 110 files pass.
+- [Readiness theo DoD](phase3_readiness.md) ước lượng 25–30% effort; vẫn chỉ
+  12 ứng viên, chưa có 70 family đạt chuẩn, chưa variants/split/freeze.
+
+Typed presence chưa phải entailment/negation detection; exact evidence-action
+và sink fixtures vẫn có giới hạn. Không ảnh hưởng clean pilot/model scores.
+
+## Lịch sử: 12 cặp ứng viên và data-scope QA
 
 Owner cho phép mở rộng. Bộ riêng `data/adversarial/candidates_v2_1` có bốn cặp
 thích nghi từ workbench và tám cặp mới, không ghi đè đầu vào cũ. Public task,
@@ -100,9 +123,9 @@ nó không triển khai/certify các gate semantic và executable.
 
 ## Thứ tự tiếp tục
 
-1. Rà semantic/template groups của 12 ứng viên và hoàn thiện canonical schema:
-   typed utility conditions và review evidence còn thiếu. Không gọi 12 ứng
-   viên là benchmark hoàn chỉnh hoặc 12 family độc lập đã được duyệt.
+1. Dùng group audit và assistant review notes để tạo canonical revision riêng:
+   neutral benign/length matching, quyết định nhóm cơ chế và evidence review.
+   Typed utility đã có cho pilot; không gọi 12 ứng viên là benchmark hoàn chỉnh.
 2. Mở rộng executable QA theo yêu cầu ca mới; table/column SQL đã có nhưng
    row-level scope, transformed leakage và utility tổng quát chưa được bao phủ.
    Vẫn tách private oracle khỏi runtime policy/model.

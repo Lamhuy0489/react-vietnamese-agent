@@ -119,6 +119,11 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   per-artifact destination/final grants. Balanced category/source counts,
   nine author-annotated template groups; 168 tests pass. See the
   [expansion receipt](../../experiments/manifests/phase3_candidates_v2_1_validation01.json).
+- [x] Separate typed-utility/source-evidence sidecars retain 48 expected Replay
+  outcomes. Pair/group audit examines all 66 combinations: nine provisional
+  review units, not independent-family certification. Assistant authoring review
+  notes identify wording/length/group issues; 220 tests pass. See
+  [review QA receipt](../../experiments/manifests/phase3_candidate_review_v1_validation02.json).
 - [ ] Full 70-family executable canonical set, general data-scope oracles and
   semantic review remain pending. Twelve bounded candidate pairs do not meet
   this gate and are not counted toward the benchmark quota. See
