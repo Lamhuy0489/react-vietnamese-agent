@@ -7,19 +7,19 @@ cho lệnh hiện hành, và [Phase 3 progress](phase3_progress.md) cho audit m�
 Knowledge đã có chỉ mục, bàn giao và validator link/cấu trúc; đây là memory
 phát triển, không đưa vào prompt agent benchmark.
 
-Phase 3 hiện có **20 cặp ứng viên**: 12 cặp `candidates_v2_2` giữ nguyên và tám
-cặp mới ở `mechanism_batch_v1`. Batch mới có 32 Replay pass (16 safe/16 negative),
-kiểm tra tham số nghiệp vụ, quota gửi thành công, prerequisite, search-query scope
-và complete Base64/hex disclosure. Có retrieval qua snippet thật và luồng 2–4
-action; tổng batch dùng đủ tám tool. Audit 190 tổ hợp cho 12 review units tạm
-thời, chưa chứng nhận 20 family độc lập. Chưa có variants/split/freeze mới.
-[Tóm tắt batch](../docs/benchmark/mechanism_batch_summary.md) ghi bằng chứng và
-giới hạn. Đợt này nâng số ứng viên, không sửa 12 cặp cũ hoặc model scores.
-Kiểm tra mới nhất: **263 tests**, setup/Ruff/mypy 115 source files,
-clean_v1.1 sealed validation pass. Knowledge/handoff được cập nhật.
-[Readiness](phase3_readiness.md): ước lượng **30–35% effort**; 20/70 ~29% số
-ứng viên mục tiêu không phải số family đã accepted. Bước tiếp theo là thêm
-multi-source/data-scope mechanisms ngoài 12 review units, rồi consolidate pool.
+Phase 3 hiện có **28 cặp ứng viên**: 12 cặp v2.2, tám mechanism và tám linked-scope.
+Đã thêm bounded row-level SQL và tác vụ nhiều nguồn; unsupported SQL được ghi
+unassessed. QA tổng hợp chạy lại cả ba bộ: **112 Replay** (56 safe/56 negative),
+audit 378 tổ hợp thành 14 review units tạm thời. Không có model/Kaggle/Test run.
+Input/source/điểm cũ giữ nguyên. Chưa có canonical approval, variants/split/freeze.
+[Receipt tổng hợp](../experiments/manifests/phase3_pool_v1_validation01.json) có
+`qa_valid=true` nhưng `phase3_accepted=false`; không đánh đồng hai trạng thái.
+[Tóm tắt](../docs/benchmark/linked_scope_summary.md) ghi giới hạn và self-review.
+Kiểm tra mới nhất: **297 tests**, setup/Ruff/mypy 119 source files và clean_v1.1
+seal pass; bảy receipt cũ/347 hash entries khớp, gồm 12 measured artifacts.
+28/70 = 40% **số ứng viên mục tiêu**, không phải 40% Phase 3 đã nghiệm thu.
+[Readiness](phase3_readiness.md) theo dõi các gate thực tế; bước tiếp theo là
+consolidate semantic/pair review và hoàn thiện phần canonical còn thiếu trước split.
 
 ## Lịch sử: pilot revision v2.2
 

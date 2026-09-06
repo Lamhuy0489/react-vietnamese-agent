@@ -4,17 +4,17 @@ Cập nhật: 2026-09-06. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Theo yêu cầu owner tiếp tục Phase 3: thêm `mechanism_batch_v1` với tám cặp mới
-bên cạnh 12 cặp v2.2 giữ nguyên. Tổng **20 ứng viên**, 12 review units tạm thời.
-Batch mới có 32 Replay đạt QA; thêm offline argument/quota/prerequisite rules
-và full Base64/hex disclosure, có genuine search snippets và multi-step paths.
-A0, các dataset/source/scorer cũ và model scores không đổi.
+Theo yêu cầu owner hoàn thiện/tiếp tục Phase 3: đã thêm `linked_scope_v1` tám
+cặp và verifier tổng hợp. Tổng **28 ứng viên**, 14 review units tạm thời.
+112 fresh Replay đạt QA trên ba bộ hiện hành; 56 safe/56 negative. Row scope
+chỉ hỗ trợ grammar SQL đã khai báo; multi-source dùng auxiliary resources riêng.
+A0, dataset/source/scorer cũ và model scores không đổi. Source mới: `89eedaa`.
 
 Bản v1 70 family/350+350 variants và workbench bốn cặp vẫn giữ nguyên.
-20 ứng viên chưa split/approved, không tính vào quota family đã nghiệm thu.
-Combined audit có 190 pair comparisons; 80 reference QA trajectories tích lũy
-ở hai bộ hiện hành, không phải 80 model runs. Không giả independent review.
-[Ước lượng tiến độ theo DoD](phase3_readiness.md): khoảng 30–35% effort.
+28 ứng viên chưa split/approved, không tính vào quota family đã nghiệm thu.
+Combined audit có 378 pair comparisons; 112 là reference QA, không phải model
+runs. Không giả independent review. [Tiến độ theo DoD](phase3_readiness.md)
+phân biệt số ứng viên với completion; còn thiếu 42 ứng viên trước semantic QA.
 Đọc [tiến độ Phase 3](phase3_progress.md) để xem những thiếu sót đã xác minh.
 
 ## Bước tiếp theo
@@ -24,13 +24,15 @@ Combined audit có 190 pair comparisons; 80 reference QA trajectories tích lũy
    [split rules](../docs/benchmark/split_rules.md).
 2. Chạy `make phase3-audit`: hiện cố ý không cấp acceptance; không retry GPU
    hoặc đổi dữ liệu tại chỗ để làm xanh gate.
-3. Đọc [tóm tắt batch](../docs/benchmark/mechanism_batch_summary.md) và
-   [contract](../docs/benchmark/mechanism_batch_contract.md). Không làm lại
-   revision wording v2.2 hoặc năm cơ chế vừa thêm. Bước cụ thể: author batch
-   multi-source/data-scope mới ngoài 12 review units; freeze extension cần thiết
-   trước code, mỗi case phải có safe/negative QA và private utility.
-   Full Base64/hex đã có, nhưng fragmentation/row-level/entailment chưa có;
-   không coi chúng là covered. Giữ nguyên bytes mọi version cũ.
+3. Đọc [tóm tắt linked-scope](../docs/benchmark/linked_scope_summary.md) và
+   [contract](../docs/benchmark/linked_scope_contract.md); dùng lệnh tổng hợp
+   trong runbook, không chạy lại từng batch chỉ để báo thêm tiến độ. Không làm
+   lại row-scope/multi-source hoặc sửa bytes 28 candidates đã có receipts.
+   Bước cụ thể: consolidate review toàn pool, chỉ giữ canonical thực sự khác
+   (không lấy đổi tên làm family), rồi author phần thiếu hướng tới đủ 70.
+   14 review units là nhóm bảo thủ cần giữ chung split, không đòi 70 abstract
+   mechanisms khác nhau. Fragmentation/general entailment vẫn chưa covered;
+   chỉ thêm oracle nếu scenario mới thật sự cần, không mở scope vô hạn.
 4. Review nhóm semantic/template, xác định split rồi mới sinh variants. Giữ
    bản draft cũ làm bằng chứng; không âm thầm reseal/move family.
 5. Chỉ cập nhật acceptance khi có kiểm tra thực sự. Đọc [runbook](runbook.md)
@@ -38,6 +40,15 @@ Combined audit có 190 pair comparisons; 80 reference QA trajectories tích lũy
 
 ## Bằng chứng
 
+- [Receipt tổng hợp](../experiments/manifests/phase3_pool_v1_validation01.json):
+  source `89eedaa`, 28 candidates/112 Replay/378 pairs/14 review units;
+  `qa_valid=true`, `phase3_accepted=false`. Chạy `--require-acceptance` trả exit 2
+  đúng dự kiến do thiếu các gate toàn phase, không phải runtime crash.
+  297 tests pass (34 mới), setup/Ruff/mypy 119 source files và clean seal pass.
+  Bảy receipt cũ/347 hash entries giữ nguyên, gồm 12 measured artifacts.
+  Quét bốn credential values trên 24 file thay đổi: 0 match. Knowledge và
+  receipt source/input hash checks pass; không cần tài khoản hoặc quyền mới.
+  Raw preflight và selected run lưu riêng, không ghi đè và không lên Git.
 - Nguồn trạng thái: [phase status](../docs/project/phase_status.md).
 - Phase 1 accepted; Phase 2 clean_v1.1 accepted dưới owner automated-QA waiver:
   [v1.1 progress](clean_v11_progress.md).

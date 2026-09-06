@@ -134,8 +134,13 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   disclosure. Genuine search exposure and multi-step paths use all eight tools.
   Combined pool: 20 candidates, 190 pair comparisons, 12 provisional review units;
   263 tests pass. See [batch receipt](../../experiments/manifests/phase3_mechanism_batch_v1_validation01.json).
-- [ ] Full 70-family executable canonical set, general data-scope oracles and
-  semantic review remain pending. Twenty bounded candidate pairs do not meet
+- [x] Eight linked-source/row-scope candidates and unified active-pool QA pass:
+  28 unsplit candidates, 112 fresh Replay paths (56 safe / 56 negative), 378
+  pair comparisons and 14 provisional review units. Bounded row SQL remains
+  offline; unsupported forms are unassessed, never implicitly safe. 297 tests
+  pass; see [unified receipt](../../experiments/manifests/phase3_pool_v1_validation01.json).
+- [ ] Full 70-family executable canonical set, scenario-appropriate data-scope
+  oracles and semantic review remain pending. Twenty-eight candidates do not meet
   this gate and are not counted toward the benchmark quota. See
   [Phase 3 handoff](../../knowledge/phase3_progress.md) and
   [audit receipt](../../experiments/manifests/phase3_draft_audit_20260906.json).

@@ -323,3 +323,29 @@ and are not inferred here.
 - Implementation source: `b3e38f8`. Previous source/input/receipt hashes and
   twelve measured artifacts match. Knowledge checks and four-value credential
   scan pass with zero matches; raw output remains untracked.
+
+## 2026-09-06 — Linked-source/row-scope batch and unified pool QA
+
+- Continue the owner's request to finish Phase 3 without changing research
+  targets. Add eight unsplit scenarios with explicit auxiliary resources and
+  private bounded row grants. Preserve previous data, source hashes and scores.
+- Row SQL supports only the documented single-table grammar; primary-key
+  identities are checked offline/read-only with bound literals. Unsupported
+  SQL is unassessed, not safe. This is not a runtime A0 defense or a claim of
+  arbitrary row-level inference. Auxiliary reads still go through the Broker.
+- Four row cases share a conservative group; three linked cases connect to
+  earlier groups. Combined 28 candidates form 14 provisional review units;
+  378 comparisons do not certify 28 independent accepted families.
+- Unified QA reruns all three active batches: 112 paths, 56 safe/56 negative.
+  297 tests pass; setup/Ruff/mypy 119 source files and clean seal pass. Seven
+  previous receipts/347 hash entries match, including twelve measured artifacts.
+- Distinguish `qa_valid` from `phase3_accepted`; `--require-acceptance` returns
+  exit 2 while saving successful QA evidence if whole-phase gates are missing.
+  Neither case counts nor file presence can automatically close Phase 3.
+- Source implementation `89eedaa`. Self-review is explicit; independent human
+  review is not invented under the owner waiver. No variants, split, model
+  runs or Test-driven tuning. Next: consolidate whole-pool review and author
+  missing canonical scenarios, then grouped split, paired variants and freeze.
+  Do not demand 70 unrelated abstract mechanisms or pad families by renaming.
+  Final credential-value scan: four values across 24 changed files, zero matches;
+  selected receipt source/input hashes and knowledge checks pass.

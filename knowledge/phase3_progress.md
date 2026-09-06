@@ -3,7 +3,29 @@
 Cập nhật 2026-09-06. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
 Gồm audit tĩnh và QA executable để tiếp tục authoring, không phải ASR hay chọn model.
 
-## Mới nhất: thêm tám cặp cơ chế mới, tổng 20 ứng viên
+## Mới nhất: 28 ứng viên và QA tổng hợp
+
+Batch linked-scope bổ sung tám cặp: bốn row-scope, bốn multi-source. Các nhóm
+trùng cơ chế nối với pool cũ; không coi mỗi cặp là một cơ chế độc lập. Tổng
+14 review units, 378 pair comparisons. Cả ba batch được chạy lại cùng verifier:
+112 Replay pass, 56 safe có typed utility/evidence, 56 negative được nhận diện.
+
+- 297 tests pass (34 mới), setup/Ruff/mypy 119 source files và clean seal pass.
+- Row scope kiểm tra key trong SQLite read-only, grammar bounded; SQL ngoài
+  grammar hoặc thiếu grant là unassessed. Không sửa A0 hay scorer cũ.
+- Tách public auxiliary sources khỏi private rules; nguồn phụ trong từng pair
+  giữ nguyên, mọi runtime read qua Broker. Tests chặn mạng và tái lập pass.
+- Bảy receipt trước/347 hash entries khớp, gồm 12 measured model artifacts.
+- [Receipt tổng hợp](../experiments/manifests/phase3_pool_v1_validation01.json),
+  [tóm tắt/self-review](../docs/benchmark/linked_scope_summary.md),
+  [contract](../docs/benchmark/linked_scope_contract.md). Source `89eedaa`.
+
+Verifier báo `qa_valid=true` và `phase3_accepted=false`. Với cờ
+`--require-acceptance`, exit 2 là báo thiếu acceptance có chủ đích.
+28/70 = 40% số ứng viên mục tiêu, không phải phần trăm phase đã đạt. Còn thiếu
+42 ứng viên trước review; variants, grouped split và freeze vẫn chưa hoàn tất.
+
+## Lịch sử: thêm tám cặp cơ chế mới, tổng 20 ứng viên
 
 Đã thêm batch độc lập `mechanism_batch_v1`: tham số nghiệp vụ ở endpoint hợp lệ,
 gửi lặp vượt quota, gửi trước kiểm tra, mở rộng query và encoded final disclosure.
@@ -166,12 +188,12 @@ nó không triển khai/certify các gate semantic và executable.
 
 ## Thứ tự tiếp tục
 
-1. Dùng 12 combined review units làm mốc tránh trùng; author multi-source/
-   data-scope batch mới. Không lặp revision/batch đã pass, không gọi 20 ứng viên
-   là benchmark hoàn chỉnh hoặc tự sinh variants để tăng count.
-2. Mở rộng executable QA theo yêu cầu ca mới; table/column SQL đã có nhưng
-   row-level scope, transformed leakage ngoài full Base64/hex và utility tổng
-   quát chưa được bao phủ.
+1. Dùng 14 combined review units của 28 ứng viên để consolidate review và
+   author canonical còn thiếu. Không lặp lại batch row-scope/multi-source vừa
+   pass hoặc tự sinh variants để tăng count; không đòi 70 abstract mechanisms.
+2. Mở rộng executable QA chỉ theo yêu cầu ca mới; bounded row scope đã có,
+   nhưng general SQL row inference, transformed leakage ngoài full Base64/hex
+   và utility entailment tổng quát chưa được bao phủ.
    Vẫn tách private oracle khỏi runtime policy/model.
 3. Author canonical đa dạng và matched benign controls, có bằng chứng safe
    path/negative oracle. Không dùng thành công của LLM để lọc attack.
