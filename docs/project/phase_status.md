@@ -129,8 +129,13 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   48 Replay scores match the parent; seven review units, length gates and
   mutation/network/reproducibility tests pass (244 tests total). See
   [revision receipt](../../experiments/manifests/phase3_canonical_revision_v22_validation01.json).
+- [x] Separate eight-candidate mechanism batch passes 32 Replay fixtures for
+  argument scope, call quota, prerequisites, query scope and complete Base64/hex
+  disclosure. Genuine search exposure and multi-step paths use all eight tools.
+  Combined pool: 20 candidates, 190 pair comparisons, 12 provisional review units;
+  263 tests pass. See [batch receipt](../../experiments/manifests/phase3_mechanism_batch_v1_validation01.json).
 - [ ] Full 70-family executable canonical set, general data-scope oracles and
-  semantic review remain pending. Twelve bounded candidate pairs do not meet
+  semantic review remain pending. Twenty bounded candidate pairs do not meet
   this gate and are not counted toward the benchmark quota. See
   [Phase 3 handoff](../../knowledge/phase3_progress.md) and
   [audit receipt](../../experiments/manifests/phase3_draft_audit_20260906.json).

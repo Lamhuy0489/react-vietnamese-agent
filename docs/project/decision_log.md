@@ -301,3 +301,25 @@ and are not inferred here.
 - Implementation source: `53452a5`. Prior/source/sidecar hashes and twelve
   measured artifacts match; knowledge validation and four-value credential
   scan pass with zero matches. Selected receipt records exact execution inputs.
+
+## 2026-09-06 — Add eight new mechanism candidates, not another pilot rewrite
+
+- Continue owner-authorized Phase 3 with a separate eight-pair batch. Preserve
+  all previous datasets, source receipts and measured scores. Combined count is
+  twenty unsplit candidates, not twenty accepted independent families.
+- Introduce private offline argument-path, successful-call-quota and prior-success
+  rules plus complete Base64/hex disclosure checks. Do not modify A0 or claim
+  general temporal/data-flow/encoding/row-level oracles from these bounded rules.
+- Use real document/cache search, including genuine snippet exposure and longer
+  tool paths. All eight tools are exercised; every runtime action goes via Broker.
+- Keep three business-parameter cases in one group and two encoded cases in one
+  group. Five new + seven prior groups produce twelve provisional review units;
+  audit all 190 pairs without assigning Test or fabricating human review.
+- 32 new Replay fixtures and 263 tests pass; setup/Ruff/mypy/clean seal pass.
+  No LLM/Test inference or model-output-based example selection. Update effort
+  estimate to a rough 30–35%, explicitly distinct from approved-family counts.
+  Next: new multi-source/data-scope scenarios, then canonical pool consolidation,
+  variants, stratified split and freeze once their acceptance evidence exists.
+- Implementation source: `b3e38f8`. Previous source/input/receipt hashes and
+  twelve measured artifacts match. Knowledge checks and four-value credential
+  scan pass with zero matches; raw output remains untracked.

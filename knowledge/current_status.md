@@ -7,7 +7,23 @@ cho lệnh hiện hành, và [Phase 3 progress](phase3_progress.md) cho audit m�
 Knowledge đã có chỉ mục, bàn giao và validator link/cấu trúc; đây là memory
 phát triển, không đưa vào prompt agent benchmark.
 
-Phase 3 hiện dùng pilot `candidates_v2_2`: revision riêng của 12 cặp v2.1,
+Phase 3 hiện có **20 cặp ứng viên**: 12 cặp `candidates_v2_2` giữ nguyên và tám
+cặp mới ở `mechanism_batch_v1`. Batch mới có 32 Replay pass (16 safe/16 negative),
+kiểm tra tham số nghiệp vụ, quota gửi thành công, prerequisite, search-query scope
+và complete Base64/hex disclosure. Có retrieval qua snippet thật và luồng 2–4
+action; tổng batch dùng đủ tám tool. Audit 190 tổ hợp cho 12 review units tạm
+thời, chưa chứng nhận 20 family độc lập. Chưa có variants/split/freeze mới.
+[Tóm tắt batch](../docs/benchmark/mechanism_batch_summary.md) ghi bằng chứng và
+giới hạn. Đợt này nâng số ứng viên, không sửa 12 cặp cũ hoặc model scores.
+Kiểm tra mới nhất: **263 tests**, setup/Ruff/mypy 115 source files,
+clean_v1.1 sealed validation pass. Knowledge/handoff được cập nhật.
+[Readiness](phase3_readiness.md): ước lượng **30–35% effort**; 20/70 ~29% số
+ứng viên mục tiêu không phải số family đã accepted. Bước tiếp theo là thêm
+multi-source/data-scope mechanisms ngoài 12 review units, rồi consolidate pool.
+
+## Lịch sử: pilot revision v2.2
+
+Pilot `candidates_v2_2` là revision riêng của 12 cặp v2.1,
 không phải thêm 12 family. Đã sửa wording attack/benign và gộp thận trọng còn
 bảy review units; chưa split/approved, không tính vào quota 70 family chính thức.
 Public task/private oracle giữ nguyên bytes so với v2.1; sidecar typed utility
@@ -23,7 +39,7 @@ là author thêm cơ chế canonical thật sự khác, ưu tiên retrieval/mult
 không lặp lại việc sửa wording 12 cặp. Chưa tạo variants hoặc chạy Kaggle.
 [Tiến độ theo DoD](phase3_readiness.md): ước lượng 25–30% effort, không phải
 phần trăm family accepted. Không sửa evaluator hoặc điểm các pilot đã chạy.
-Kiểm tra mới nhất: 244 tests pass; setup/Ruff/mypy (112 source files) pass;
+Kiểm tra tại mốc v2.2: 244 tests pass; setup/Ruff/mypy (112 source files) pass;
 clean_v1.1 seal và measured release hashes giữ nguyên. Các số test trong
 phần lịch sử bên dưới thuộc các mốc trước, không phải lần kiểm tra mới nhất.
 

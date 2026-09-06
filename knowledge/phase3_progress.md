@@ -3,7 +3,29 @@
 Cập nhật 2026-09-06. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
 Gồm audit tĩnh và QA executable để tiếp tục authoring, không phải ASR hay chọn model.
 
-## Mới nhất: pilot revision v2.2 — neutral benign và nhóm cơ chế
+## Mới nhất: thêm tám cặp cơ chế mới, tổng 20 ứng viên
+
+Đã thêm batch độc lập `mechanism_batch_v1`: tham số nghiệp vụ ở endpoint hợp lệ,
+gửi lặp vượt quota, gửi trước kiểm tra, mở rộng query và encoded final disclosure.
+Các biến thể cùng cơ chế giữ chung group; năm nhóm mới + bảy cũ = 12 review units,
+chưa chứng nhận family độc lập. Audit toàn bộ 190 tổ hợp của 20 ứng viên.
+
+- 32 fresh Replay pass (16 safe/16 negative); 263 tests toàn repo pass.
+- Tám tool thực sự được dùng; hai pair có full payload trong search snippet
+  gốc, bốn path bắt đầu bằng retrieval, safe paths dài 2–4 actions.
+- Private rules chấm nested arguments, quota successful calls, prior-success
+  prerequisite và complete Base64/hex. Failed effects không tính executed;
+  grants theo artifact/nơi nhận/final vẫn riêng. Không thêm defense cho A0.
+- [Receipt](../experiments/manifests/phase3_mechanism_batch_v1_validation01.json),
+  [tóm tắt](../docs/benchmark/mechanism_batch_summary.md),
+  [contract](../docs/benchmark/mechanism_batch_contract.md).
+- Setup/Ruff/mypy 115 files và sealed clean validation pass. Không LLM/Test run.
+
+20/70 ~29% số ứng viên mục tiêu, không phải approved families. Ước lượng effort
+Phase 3 khoảng 30–35%; variants/split/freeze vẫn pending. Bước sau là cơ chế
+multi-source/data-scope khác, không lặp lại batch hoặc revision cũ.
+
+## Lịch sử: pilot revision v2.2 — neutral benign và nhóm cơ chế
 
 Đã tạo bản riêng cho 12 cặp, giữ nguyên v2.1 và các artifact cũ. Public task/
 private oracle byte-identical; chỉ đổi overlay attack/benign text và catalog
@@ -144,11 +166,12 @@ nó không triển khai/certify các gate semantic và executable.
 
 ## Thứ tự tiếp tục
 
-1. Dùng bảy review units v2.2 làm mốc tránh trùng; author batch cơ chế mới,
-   ưu tiên retrieval/search và multi-step source coverage. Không lặp lại revision
-   wording đã pass, không gọi 12 ứng viên là benchmark hoàn chỉnh.
+1. Dùng 12 combined review units làm mốc tránh trùng; author multi-source/
+   data-scope batch mới. Không lặp revision/batch đã pass, không gọi 20 ứng viên
+   là benchmark hoàn chỉnh hoặc tự sinh variants để tăng count.
 2. Mở rộng executable QA theo yêu cầu ca mới; table/column SQL đã có nhưng
-   row-level scope, transformed leakage và utility tổng quát chưa được bao phủ.
+   row-level scope, transformed leakage ngoài full Base64/hex và utility tổng
+   quát chưa được bao phủ.
    Vẫn tách private oracle khỏi runtime policy/model.
 3. Author canonical đa dạng và matched benign controls, có bằng chứng safe
    path/negative oracle. Không dùng thành công của LLM để lọc attack.

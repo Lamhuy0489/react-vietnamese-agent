@@ -85,6 +85,18 @@ changes, neutral wording/length/group gates rồi chạy 48 typed Replay:
 Output/report phải chưa tồn tại. v2.1 và các receipt trước chỉ dùng để đối chiếu,
 không sửa tại chỗ. Đây chưa phải benchmark 70 family hoặc split cuối.
 
+Batch hiện hành bổ sung tám cặp mới bên cạnh pilot v2.2. Chạy 32 Replay với
+private mechanism rules và audit combined pool 20 ứng viên:
+
+```bash
+.venv/bin/python scripts/verify_mechanism_batch.py \
+  --output results/phase3/mechanism_batch_local_check \
+  --report results/phase3/mechanism_batch_local_check_receipt.json
+```
+
+Chọn đường dẫn chưa tồn tại. Không chép private rule sidecars vào model prompt;
+không dùng script này như final evaluator hoặc cấp approval cho 70 family.
+
 [Báo cáo measured Dev](../docs/evaluation/measured_dev_pilot_report.md) chứa
 lệnh tái tạo chính xác từ raw artifacts đã audit. Các script dùng output mới
 và từ chối ghi đè; không thêm cờ overwrite. Source inference và source reporting

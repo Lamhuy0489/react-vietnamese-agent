@@ -4,17 +4,17 @@ Cập nhật: 2026-09-06. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Theo yêu cầu owner tiếp tục Phase 3: đã tạo pilot revision `candidates_v2_2`
-cho 12 cặp hiện có. Sửa attack/benign wording và quyết định gộp nhóm; không
-đổi public task/private oracle bytes, scope hoặc reference scripts. 48 Replay
-đạt QA, per-case typed/security scores khớp bản trước. A0 không đổi.
+Theo yêu cầu owner tiếp tục Phase 3: thêm `mechanism_batch_v1` với tám cặp mới
+bên cạnh 12 cặp v2.2 giữ nguyên. Tổng **20 ứng viên**, 12 review units tạm thời.
+Batch mới có 32 Replay đạt QA; thêm offline argument/quota/prerequisite rules
+và full Base64/hex disclosure, có genuine search snippets và multi-step paths.
+A0, các dataset/source/scorer cũ và model scores không đổi.
 
 Bản v1 70 family/350+350 variants và workbench bốn cặp vẫn giữ nguyên.
-12 ứng viên chưa split/approved, không tính vào quota chính. Có typed utility +
-source evidence và audit 66 cặp so sánh; revision gộp thận trọng còn bảy review
-units, không chứng nhận độc lập ngữ nghĩa. Benign/attack word ratios 1,03–1,13.
-Có assistant author self-review records, không phải independent human approval.
-[Ước lượng tiến độ theo DoD](phase3_readiness.md): khoảng 25–30% effort.
+20 ứng viên chưa split/approved, không tính vào quota family đã nghiệm thu.
+Combined audit có 190 pair comparisons; 80 reference QA trajectories tích lũy
+ở hai bộ hiện hành, không phải 80 model runs. Không giả independent review.
+[Ước lượng tiến độ theo DoD](phase3_readiness.md): khoảng 30–35% effort.
 Đọc [tiến độ Phase 3](phase3_progress.md) để xem những thiếu sót đã xác minh.
 
 ## Bước tiếp theo
@@ -24,14 +24,13 @@ Có assistant author self-review records, không phải independent human approv
    [split rules](../docs/benchmark/split_rules.md).
 2. Chạy `make phase3-audit`: hiện cố ý không cấp acceptance; không retry GPU
    hoặc đổi dữ liệu tại chỗ để làm xanh gate.
-3. Đọc [tóm tắt v2.2](../docs/benchmark/canonical_revision_summary.md) và
-   [contract revision](../docs/benchmark/canonical_revision_contract.md).
-   Wording/neutral benign/length/group revision cho 12 cặp đã xong mốc QA;
-   không viết lại vòng này. Bước cụ thể: author batch cơ chế mới ngoài bảy
-   review units, ưu tiên retrieval/search và multi-step sources. Đóng băng
-   interface mở rộng cần thiết trước implementation, mỗi case có safe/negative
-   QA và private utility. Không đổi bytes các version cũ. Nếu ca mới cần
-   row-level/encoded leakage thì phải có oracle/test tương ứng trước khi tính.
+3. Đọc [tóm tắt batch](../docs/benchmark/mechanism_batch_summary.md) và
+   [contract](../docs/benchmark/mechanism_batch_contract.md). Không làm lại
+   revision wording v2.2 hoặc năm cơ chế vừa thêm. Bước cụ thể: author batch
+   multi-source/data-scope mới ngoài 12 review units; freeze extension cần thiết
+   trước code, mỗi case phải có safe/negative QA và private utility.
+   Full Base64/hex đã có, nhưng fragmentation/row-level/entailment chưa có;
+   không coi chúng là covered. Giữ nguyên bytes mọi version cũ.
 4. Review nhóm semantic/template, xác định split rồi mới sinh variants. Giữ
    bản draft cũ làm bằng chứng; không âm thầm reseal/move family.
 5. Chỉ cập nhật acceptance khi có kiểm tra thực sự. Đọc [runbook](runbook.md)
@@ -85,6 +84,14 @@ Có assistant author self-review records, không phải independent human approv
   grouping. Không ghi đè preflight/raw runs hoặc đổi điểm pilot cũ.
   Hash revision/parent/sidecar/source và mọi receipt cũ đã đối chiếu khớp,
   gồm 12 measured artifacts; quét bốn credential values trong 19 file: 0 match.
+- [Mechanism batch receipt](../experiments/manifests/phase3_mechanism_batch_v1_validation01.json):
+  source implementation `b3e38f8`;
+  tám cặp mới, 32 Replay, 16 safe/16 negative; combined 20 ứng viên, 190 pair
+  comparisons, 12 review units. 263 tests pass (19 mới); setup/Ruff/mypy 115
+  source files và clean_v1.1 seal pass. Có test genuine snippet reachability,
+  temporal/quota failures, nested arguments, encoding grants và no-network.
+  Hash source/input cũ, pilot/clean inputs và 12 measured artifacts đều khớp;
+  quét bốn credential values trên 21 file thay đổi không có match.
 
 ## Giới hạn
 
