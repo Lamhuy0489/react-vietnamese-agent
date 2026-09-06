@@ -7,24 +7,23 @@ cho lệnh hiện hành, và [Phase 3 progress](phase3_progress.md) cho audit m�
 Knowledge đã có chỉ mục, bàn giao và validator link/cấu trúc; đây là memory
 phát triển, không đưa vào prompt agent benchmark.
 
-Phase 3 đã mở rộng thành 12 cặp ứng viên riêng: bốn cặp thích nghi từ workbench,
-tám cặp mới, chưa split/review và chưa tính vào quota 70 family. 48 Replay
-qua Broker đạt QA (24 safe/24 negative); thêm SQL table/column scope và quyền
-gửi từng artifact theo nơi nhận, tách khỏi quyền xuất trong câu trả lời cuối.
-Có chín nhóm template do tác giả gán, chưa chứng minh độc lập ngữ nghĩa.
-[Contract mở rộng](../docs/benchmark/canonical_expansion_contract.md) ghi rõ
-giới hạn: chưa có row-level scope, typed utility tổng quát hoặc encoded leakage.
-Draft v1 và workbench cũ vẫn nguyên. Bước tiếp theo là rà nhóm ngữ nghĩa,
-hoàn thiện schema/QA còn thiếu rồi author thêm canonical đa dạng; chưa tạo
-variants hoặc chạy Kaggle. Phase 3 chưa accepted.
-Mốc tiếp theo đã làm: typed-utility sidecar riêng cho 12 ứng viên, đối chiếu
-đúng kiểu số/ngày/giờ/mã và bằng chứng nguồn; 48 Replay vẫn đạt kết quả mong đợi.
-Đã audit đủ 66 cặp so sánh, ghi nhận ba nhóm template chung và chín review units
-tạm thời; chưa chứng nhận độc lập ngữ nghĩa. Có ghi chú assistant review về
-độ dài và tín hiệu phân lớp cần sửa trong version mới, không giả human approval.
+Phase 3 hiện dùng pilot `candidates_v2_2`: revision riêng của 12 cặp v2.1,
+không phải thêm 12 family. Đã sửa wording attack/benign và gộp thận trọng còn
+bảy review units; chưa split/approved, không tính vào quota 70 family chính thức.
+Public task/private oracle giữ nguyên bytes so với v2.1; sidecar typed utility
+và các reference scripts giữ nguyên. 48 Replay qua Broker đạt QA (24 safe/24
+negative), per-case scores khớp bản trước. Benign trung tính hơn, tỷ lệ độ dài
+so với attack 1,03–1,13; lexical/length QA không chứng minh độc lập ngữ nghĩa.
+[Tóm tắt revision](../docs/benchmark/canonical_revision_summary.md) và
+[contract](../docs/benchmark/canonical_revision_contract.md) ghi ranh giới rõ.
+Typed utility + source evidence, SQL table/column và per-artifact sink/final
+QA đã có; row-level scope, entailment và encoded leakage vẫn chưa tổng quát.
+Draft v1, workbench và mọi input/source/receipt trước giữ nguyên. Bước tiếp theo
+là author thêm cơ chế canonical thật sự khác, ưu tiên retrieval/multi-step;
+không lặp lại việc sửa wording 12 cặp. Chưa tạo variants hoặc chạy Kaggle.
 [Tiến độ theo DoD](phase3_readiness.md): ước lượng 25–30% effort, không phải
 phần trăm family accepted. Không sửa evaluator hoặc điểm các pilot đã chạy.
-Kiểm tra mới nhất: 220 tests pass; setup/Ruff/mypy (110 source files) pass;
+Kiểm tra mới nhất: 244 tests pass; setup/Ruff/mypy (112 source files) pass;
 clean_v1.1 seal và measured release hashes giữ nguyên. Các số test trong
 phần lịch sử bên dưới thuộc các mốc trước, không phải lần kiểm tra mới nhất.
 

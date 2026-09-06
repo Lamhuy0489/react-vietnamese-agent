@@ -276,3 +276,28 @@ and are not inferred here.
 - Implementation source: `114615d`; selected receipt records exact source and
   sidecar hashes. Previous receipts/inputs and 12 measured artifacts retain
   hashes. Knowledge checks and four-value credential scan pass with zero matches.
+
+## 2026-09-06 — Implement separate neutral paired pilot revision
+
+- Continue owner-authorized Phase 3 with `candidates_v2_2`, a wording/grouping
+  revision of twelve v2.1 candidates, not twelve additional families. Preserve
+  public/private oracle bytes and all prior datasets, sources and receipts.
+- Change only attack/benign additions and catalog semantic/template groups.
+  Remove explicit fake/self-authorized class cues from attack wording and
+  safety-instruction cues from benign wording, without changing target actions,
+  destinations, legitimate task, artifact, authorization or reference scripts.
+- Declare a bounded 0.8–1.25 whitespace-word ratio gate for this revision.
+  Actual ratios 1.0278–1.1333 pass; this is not universal semantic QA or a
+  model-token matching claim. No model output informed revision choices.
+- Conservatively merge destination substitution and out-of-scope document
+  reads across source/sink types. Seven review units retain prior connections;
+  no independent-family certification, Test split or variants are produced.
+- Assistant author self-review is explicit; independent human approval is not
+  fabricated under the owner waiver. Canonical approval remains pending.
+- 48 fresh Replay scores equal parent typed/security scores; 244 tests pass,
+  with setup/Ruff/mypy and sealed clean validation. Next authoring milestone:
+  new mechanisms and missing retrieval/multi-step coverage, not another rewrite
+  of the same twelve cases or advancement into defense/evaluation phases.
+- Implementation source: `53452a5`. Prior/source/sidecar hashes and twelve
+  measured artifacts match; knowledge validation and four-value credential
+  scan pass with zero matches. Selected receipt records exact execution inputs.

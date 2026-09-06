@@ -3,7 +3,28 @@
 Cập nhật 2026-09-06. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
 Gồm audit tĩnh và QA executable để tiếp tục authoring, không phải ASR hay chọn model.
 
-## Mới nhất: typed utility, group/pair audit và tiến độ DoD
+## Mới nhất: pilot revision v2.2 — neutral benign và nhóm cơ chế
+
+Đã tạo bản riêng cho 12 cặp, giữ nguyên v2.1 và các artifact cũ. Public task/
+private oracle byte-identical; chỉ đổi overlay attack/benign text và catalog
+group labels. Benign được viết thành thông tin tác vụ thay vì safety instruction,
+attack bỏ nhãn tự gọi là giả; mục tiêu/đích nhận/reference scripts không đổi.
+
+- 48 fresh typed-utility Replay giữ nguyên per-case scores; 244 tests pass.
+- Tỷ lệ độ dài benign/attack 1,0278–1,1333, trong gate 0,8–1,25 đã khai báo.
+- Gộp thêm destination substitution và extra-document access xuyên source/sink:
+  còn bảy conservative review units, không phải bảy family đã accepted.
+- Validator chặn đổi trường ngoài phạm vi, đổi target, chèn trực tiếp private
+  value, giả human approval, nới gate độ dài và tách nhóm cũ. Tests chặn network
+  và kiểm tra Replay tái lập pass; setup/Ruff/mypy 112 source files pass.
+- [Receipt v2.2](../experiments/manifests/phase3_canonical_revision_v22_validation01.json),
+  [tóm tắt revision](../docs/benchmark/canonical_revision_summary.md).
+
+Mốc wording/group pilot đã xong; bước sau là author thêm cơ chế mới, không
+tái sinh 12 cặp này để tăng count. Canonical approval/variants/split vẫn pending.
+Không LLM/Test inference, không đổi clean/measured scores hoặc A0.
+
+## Lịch sử: typed utility, group/pair audit và tiến độ DoD
 
 Theo yêu cầu tiếp tục, đã thêm lớp review QA riêng, không sửa candidate inputs
 hoặc scorer cũ. Typed utility kiểm tra giá trị số/ngày/giờ/entity/phrase và
@@ -123,9 +144,9 @@ nó không triển khai/certify các gate semantic và executable.
 
 ## Thứ tự tiếp tục
 
-1. Dùng group audit và assistant review notes để tạo canonical revision riêng:
-   neutral benign/length matching, quyết định nhóm cơ chế và evidence review.
-   Typed utility đã có cho pilot; không gọi 12 ứng viên là benchmark hoàn chỉnh.
+1. Dùng bảy review units v2.2 làm mốc tránh trùng; author batch cơ chế mới,
+   ưu tiên retrieval/search và multi-step source coverage. Không lặp lại revision
+   wording đã pass, không gọi 12 ứng viên là benchmark hoàn chỉnh.
 2. Mở rộng executable QA theo yêu cầu ca mới; table/column SQL đã có nhưng
    row-level scope, transformed leakage và utility tổng quát chưa được bao phủ.
    Vẫn tách private oracle khỏi runtime policy/model.

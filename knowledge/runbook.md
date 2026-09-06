@@ -73,6 +73,18 @@ audit đủ 66 tổ hợp/nhóm. Dùng output/report mới chưa tồn tại:
 Không đưa private utility sidecars vào model context; không dùng script này
 để chấm lại pilot cũ, tự cấp approval hoặc tự tạo split.
 
+Pilot dữ liệu hiện hành là revision v2.2 của 12 cặp. Kiểm tra allowed-field
+changes, neutral wording/length/group gates rồi chạy 48 typed Replay:
+
+```bash
+.venv/bin/python scripts/verify_canonical_revision.py \
+  --output results/phase3/canonical_revision_local_check \
+  --report results/phase3/canonical_revision_local_check_receipt.json
+```
+
+Output/report phải chưa tồn tại. v2.1 và các receipt trước chỉ dùng để đối chiếu,
+không sửa tại chỗ. Đây chưa phải benchmark 70 family hoặc split cuối.
+
 [Báo cáo measured Dev](../docs/evaluation/measured_dev_pilot_report.md) chứa
 lệnh tái tạo chính xác từ raw artifacts đã audit. Các script dùng output mới
 và từ chối ghi đè; không thêm cờ overwrite. Source inference và source reporting

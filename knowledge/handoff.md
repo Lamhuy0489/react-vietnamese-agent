@@ -4,16 +4,16 @@ Cập nhật: 2026-09-06. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Theo yêu cầu owner tiếp tục và báo tiến độ Phase 3: đã có 12 cặp ứng viên executable riêng
-(bốn thích nghi từ workbench + tám mới), 48 Replay đạt QA. Catalog tách khỏi
-public task/overlay/private oracle; thêm SQL table/column scope, document/page
-scope và quyền cho từng artifact ở từng nơi nhận/final. A0 không đổi.
+Theo yêu cầu owner tiếp tục Phase 3: đã tạo pilot revision `candidates_v2_2`
+cho 12 cặp hiện có. Sửa attack/benign wording và quyết định gộp nhóm; không
+đổi public task/private oracle bytes, scope hoặc reference scripts. 48 Replay
+đạt QA, per-case typed/security scores khớp bản trước. A0 không đổi.
 
 Bản v1 70 family/350+350 variants và workbench bốn cặp vẫn giữ nguyên.
-12 ứng viên mới chưa split/approved, không tính vào quota chính. Đã thêm typed
-utility + evidence sidecar và audit 66 cặp so sánh; 48 Replay pass. Ba nhóm
-template chung tạo chín review units tạm thời, không chứng nhận độc lập ngữ nghĩa.
-Có assistant authoring review, không phải independent human approval.
+12 ứng viên chưa split/approved, không tính vào quota chính. Có typed utility +
+source evidence và audit 66 cặp so sánh; revision gộp thận trọng còn bảy review
+units, không chứng nhận độc lập ngữ nghĩa. Benign/attack word ratios 1,03–1,13.
+Có assistant author self-review records, không phải independent human approval.
 [Ước lượng tiến độ theo DoD](phase3_readiness.md): khoảng 25–30% effort.
 Đọc [tiến độ Phase 3](phase3_progress.md) để xem những thiếu sót đã xác minh.
 
@@ -24,14 +24,14 @@ Có assistant authoring review, không phải independent human approval.
    [split rules](../docs/benchmark/split_rules.md).
 2. Chạy `make phase3-audit`: hiện cố ý không cấp acceptance; không retry GPU
    hoặc đổi dữ liệu tại chỗ để làm xanh gate.
-3. Đọc [contract review QA](../docs/benchmark/candidate_review_contract.md) và
-   [ghi chú assistant review](../docs/benchmark/candidate_review_notes.md).
-   Bước cụ thể: tạo revision canonical pilot riêng, sửa benign thành nội dung
-   trung tính/tương đương độ dài và quyết định nhóm ngữ nghĩa cho các cặp giống
-   nhau; giữ nguyên bytes mọi version cũ. Typed utility đã có cho số/ngày/giờ/
-   entity/phrase, không cần viết lại mốc này. Sau pair QA, author thêm cơ chế.
-   Nếu ca mới cần row-level scope hoặc leakage biến đổi thì bổ sung oracle/test
-   tương ứng, không tuyên bố lớp QA hiện tại bao phủ.
+3. Đọc [tóm tắt v2.2](../docs/benchmark/canonical_revision_summary.md) và
+   [contract revision](../docs/benchmark/canonical_revision_contract.md).
+   Wording/neutral benign/length/group revision cho 12 cặp đã xong mốc QA;
+   không viết lại vòng này. Bước cụ thể: author batch cơ chế mới ngoài bảy
+   review units, ưu tiên retrieval/search và multi-step sources. Đóng băng
+   interface mở rộng cần thiết trước implementation, mỗi case có safe/negative
+   QA và private utility. Không đổi bytes các version cũ. Nếu ca mới cần
+   row-level/encoded leakage thì phải có oracle/test tương ứng trước khi tính.
 4. Review nhóm semantic/template, xác định split rồi mới sinh variants. Giữ
    bản draft cũ làm bằng chứng; không âm thầm reseal/move family.
 5. Chỉ cập nhật acceptance khi có kiểm tra thực sự. Đọc [runbook](runbook.md)
@@ -77,6 +77,14 @@ Có assistant authoring review, không phải independent human approval.
   ignored results; validation02 là bằng chứng được chọn, không ghi đè lượt cũ.
   clean_v1.1 sealed validation và hash các source/input/receipt cũ, 12 measured
   artifacts đều khớp. Quét bốn credential values trong 17 file thay đổi: 0 match.
+- [v2.2 revision receipt](../experiments/manifests/phase3_canonical_revision_v22_validation01.json):
+  source implementation `53452a5`;
+  12 revised pairs, 48 Replay, bảy review units. 244 tests pass (24 mới),
+  setup/Ruff/mypy 112 source files và clean_v1.1 seal pass. Có validator cho
+  allowed-field changes, markers/destinations, length/cue gates và merge-only
+  grouping. Không ghi đè preflight/raw runs hoặc đổi điểm pilot cũ.
+  Hash revision/parent/sidecar/source và mọi receipt cũ đã đối chiếu khớp,
+  gồm 12 measured artifacts; quét bốn credential values trong 19 file: 0 match.
 
 ## Giới hạn
 

@@ -124,6 +124,11 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   review units, not independent-family certification. Assistant authoring review
   notes identify wording/length/group issues; 220 tests pass. See
   [review QA receipt](../../experiments/manifests/phase3_candidate_review_v1_validation02.json).
+- [x] v2.2 pilot revision preserves public/private oracle bytes and all reference
+  objectives while revising attack/benign wording and conservative group labels.
+  48 Replay scores match the parent; seven review units, length gates and
+  mutation/network/reproducibility tests pass (244 tests total). See
+  [revision receipt](../../experiments/manifests/phase3_canonical_revision_v22_validation01.json).
 - [ ] Full 70-family executable canonical set, general data-scope oracles and
   semantic review remain pending. Twelve bounded candidate pairs do not meet
   this gate and are not counted toward the benchmark quota. See
