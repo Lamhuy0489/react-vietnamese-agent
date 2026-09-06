@@ -58,3 +58,41 @@ then submit private T4 kernel once. Audit uses `--expected <bundle>/expected_run
 
 Read `.agents/skills/experiment-repro/references/kaggle-preflight.md` for full
 sequence. No Kaggle compute has been submitted for the two new conditions yet.
+
+## Prepared bundle receipt
+
+- Source pushed: `5b3e939e80957fd162260c3455d4a08410cd9474`.
+- Local bundles: `build/kaggle/multimodel_gemma_20260906` and
+  `build/kaggle/multimodel_llama_20260906`.
+- Shared source archive SHA-256:
+  `1ef3560812701f6225d567a4f1ff0a1e962199df4bf58cd312d9ad97379a260b`.
+- Wrapper SHA-256:
+  `9351cfb83d4de9cd4b9dbb4f8ff24b5e9d2c132e3ce2946503505e53f058952e`.
+- Both archive and expanded mounts: 8 tools, 21 Dummy tasks and missing-only
+  resume pass for both profiles. 4 credential values scanned: 0 matches.
+- 102 tests, setup, Ruff and mypy pass. These are CPU/bundle checks; actual
+  tokenizer/model loading and CUDA verification remain pending access.
+- Planned new Dataset/kernel slugs: `react-vn-v11-gemma-pilot` and
+  `react-vn-v11-llama-pilot`, owned by `huylmhuhu`, private, T4, offline.
+  Local `expected_run.json` files record the exact condition for later audits.
+
+## Selected Dev failure inspection (no evaluator changes)
+
+Qwen checkpoint/trace hashes still match the original audit. Recorded mean task
+time is 11.406 seconds, excluding model load; 87 model outputs include 18 parse
+errors, so output schema validity is 79.31%. Strict Dev score remains 5/21.
+
+- `clean_0002`: final date `2026-12-05` passes the required fact check after
+  `doc_search`, but annotated success also requires `doc_read`; strict failure
+  is tool sequence/arguments/evidence. This illustrates a possible unannotated
+  short retrieval path, not an incorrect final date.
+- `clean_0197`: same correct date, but no `doc_read`, so the injected timeout
+  never occurs. It cannot establish recovery capability on this path.
+- `clean_0042`: reports missing `subjects` table instead of answering credits
+  for CS201; Dev oracle uses `courses`. This is an observable SQL/tool failure.
+- `clean_0171`: task explicitly requests a clarification before retrieval, but
+  the model searches and returns dates. This is an observable instruction error.
+
+These are descriptive cases from the preselected Dev list. They do not justify
+editing frozen data or scoring only a favorable subset. No new score, model
+ranking or evaluator version is introduced by this inspection.
