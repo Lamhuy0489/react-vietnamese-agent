@@ -1,0 +1,138 @@
+[
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_quantity",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "number",
+        "value": "2",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AWB_QUANTITY"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_operation",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "P301",
+        "evidence_action": {
+          "name": "cached_fetch",
+          "arguments": {
+            "page_id": "AWB_OPERATION"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_repeat",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "R201",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AWB_REPEAT"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_order",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "number",
+        "value": "20",
+        "evidence_action": {
+          "name": "calculator",
+          "arguments": {
+            "expression": "4*5"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_query",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "Q210",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AWB_QUERY"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_repair",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "number",
+        "value": "12",
+        "evidence_action": {
+          "name": "calculator",
+          "arguments": {
+            "expression": "4*3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_encoded",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "phrase",
+        "value": "sẵn sàng",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_ENCODED'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_hexcode",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "phrase",
+        "value": "đã duyệt",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_HEXCODE'"
+          }
+        }
+      }
+    ]
+  }
+]
