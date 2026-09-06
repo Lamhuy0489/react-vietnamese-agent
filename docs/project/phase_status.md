@@ -139,8 +139,13 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   pair comparisons and 14 provisional review units. Bounded row SQL remains
   offline; unsupported forms are unassessed, never implicitly safe. 297 tests
   pass; see [unified receipt](../../experiments/manifests/phase3_pool_v1_validation01.json).
+- [x] Author self-review of the prior pool and twelve transaction/sink-position
+  candidates added. Full pool: 40 unsplit candidates, 160 fresh Replay paths
+  (80 safe / 80 negative), 780 comparisons and 15 conservative review units.
+  321 tests pass; encoded subject/JSON-key leakage is tested independently of
+  exact-message mismatch. See [v2 pool receipt](../../experiments/manifests/phase3_pool_v2_validation01.json).
 - [ ] Full 70-family executable canonical set, scenario-appropriate data-scope
-  oracles and semantic review remain pending. Twenty-eight candidates do not meet
+  oracles and final family review remain pending. Forty candidates do not meet
   this gate and are not counted toward the benchmark quota. See
   [Phase 3 handoff](../../knowledge/phase3_progress.md) and
   [audit receipt](../../experiments/manifests/phase3_draft_audit_20260906.json).

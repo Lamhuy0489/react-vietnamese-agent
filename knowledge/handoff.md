@@ -4,17 +4,18 @@ Cập nhật: 2026-09-06. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Theo yêu cầu owner hoàn thiện/tiếp tục Phase 3: đã thêm `linked_scope_v1` tám
-cặp và verifier tổng hợp. Tổng **28 ứng viên**, 14 review units tạm thời.
-112 fresh Replay đạt QA trên ba bộ hiện hành; 56 safe/56 negative. Row scope
-chỉ hỗ trợ grammar SQL đã khai báo; multi-source dùng auxiliary resources riêng.
-A0, dataset/source/scorer cũ và model scores không đổi. Source mới: `89eedaa`.
+Theo yêu cầu owner tiếp tục và báo % Phase 3: đã thêm `transaction_batch_v1`
+12 cặp và verifier tổng hợp v2. Tổng **40 ứng viên**, 15 review units tạm thời.
+160 fresh Replay đạt QA trên bốn bộ; 80 safe/80 negative. Đã self-review 28
+cặp cũ và từng cặp mới; quyết định nhận/gộp family cuối cùng vẫn pending.
+A0, dataset/source/scorer cũ và model scores không đổi. Source mới: `7f1f284`.
 
 Bản v1 70 family/350+350 variants và workbench bốn cặp vẫn giữ nguyên.
-28 ứng viên chưa split/approved, không tính vào quota family đã nghiệm thu.
-Combined audit có 378 pair comparisons; 112 là reference QA, không phải model
-runs. Không giả independent review. [Tiến độ theo DoD](phase3_readiness.md)
-phân biệt số ứng viên với completion; còn thiếu 42 ứng viên trước semantic QA.
+40 ứng viên chưa split/approved, không tính vào quota family đã nghiệm thu.
+Combined audit có 780 pair comparisons; 160 là reference QA, không phải model
+runs. Không giả independent review. [Tiến độ theo DoD](phase3_readiness.md):
+ước lượng 40–45% effort; 40/70 ≈ 57% là candidate count, không completion.
+Còn thiếu 30 ứng viên trước quyết định nhận/gộp family toàn pool.
 Đọc [tiến độ Phase 3](phase3_progress.md) để xem những thiếu sót đã xác minh.
 
 ## Bước tiếp theo
@@ -24,13 +25,14 @@ phân biệt số ứng viên với completion; còn thiếu 42 ứng viên trư
    [split rules](../docs/benchmark/split_rules.md).
 2. Chạy `make phase3-audit`: hiện cố ý không cấp acceptance; không retry GPU
    hoặc đổi dữ liệu tại chỗ để làm xanh gate.
-3. Đọc [tóm tắt linked-scope](../docs/benchmark/linked_scope_summary.md) và
-   [contract](../docs/benchmark/linked_scope_contract.md); dùng lệnh tổng hợp
-   trong runbook, không chạy lại từng batch chỉ để báo thêm tiến độ. Không làm
-   lại row-scope/multi-source hoặc sửa bytes 28 candidates đã có receipts.
-   Bước cụ thể: consolidate review toàn pool, chỉ giữ canonical thực sự khác
-   (không lấy đổi tên làm family), rồi author phần thiếu hướng tới đủ 70.
-   14 review units là nhóm bảo thủ cần giữ chung split, không đòi 70 abstract
+3. Đọc [tóm tắt transaction](../docs/benchmark/transaction_batch_summary.md),
+   [contract](../docs/benchmark/transaction_batch_contract.md) và
+   [self-review pool](../docs/benchmark/pool_author_review_v1.md). Dùng verifier
+   v2 trong runbook; không chạy lại từng batch chỉ để báo thêm tiến độ. Không
+   sửa bytes 40 candidates/source đã có receipt hoặc lặp lại nhóm vừa thêm.
+   Bước cụ thể: author 30 canonical còn thiếu, rồi quyết định nhận/gộp từng
+   family của full pool. Phân biệt tình huống thực sự, không đổi tên để đủ 70.
+   15 review units là nhóm bảo thủ cần giữ chung split, không đòi 70 abstract
    mechanisms khác nhau. Fragmentation/general entailment vẫn chưa covered;
    chỉ thêm oracle nếu scenario mới thật sự cần, không mở scope vô hạn.
 4. Review nhóm semantic/template, xác định split rồi mới sinh variants. Giữ
@@ -40,6 +42,16 @@ phân biệt số ứng viên với completion; còn thiếu 42 ứng viên trư
 
 ## Bằng chứng
 
+- [Receipt v2](../experiments/manifests/phase3_pool_v2_validation01.json):
+  source `7f1f284`, 40 candidates/160 Replay/780 comparisons/15 review units.
+  321 tests pass (24 mới), setup/Ruff/mypy 121 source files và clean seal pass.
+  Tám receipt cũ/451 hash entries giữ nguyên, gồm 12 measured artifacts.
+  Encoded leakage ở subject/JSON key được test độc lập với exact-message rule;
+  full fixed-payload grants gồm cả record IDs/extra fields và phân biệt bool/number.
+  `--require-acceptance` trả exit 2 đúng dự kiến; không có runtime crash.
+  Static audit v1 vẫn refuse acceptance; không dùng nó để tuning hoặc sửa Test.
+  Quét bốn credential values trên 22 file thay đổi: 0 match. Selected source,
+  input và author-review hashes khớp; knowledge-check pass. Chưa cần quyền mới.
 - [Receipt tổng hợp](../experiments/manifests/phase3_pool_v1_validation01.json):
   source `89eedaa`, 28 candidates/112 Replay/378 pairs/14 review units;
   `qa_valid=true`, `phase3_accepted=false`. Chạy `--require-acceptance` trả exit 2

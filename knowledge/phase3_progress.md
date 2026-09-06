@@ -3,7 +3,28 @@
 Cập nhật 2026-09-06. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
 Gồm audit tĩnh và QA executable để tiếp tục authoring, không phải ASR hay chọn model.
 
-## Mới nhất: 28 ứng viên và QA tổng hợp
+## Mới nhất: 40 ứng viên, self-review và QA tổng hợp v2
+
+Thêm 12 cặp transaction/sink-position, không sửa dữ liệu đã khóa. Đã ghi
+self-review 28 cặp trước và 12 cặp mới. Các substitution gần nhau tiếp tục
+chung nhóm; 40 candidates tạo 15 conservative review units, 780 comparisons.
+Chưa chứng nhận đủ 40 family độc lập hoặc tự tạo variants/split.
+
+- 160 fresh Replay pass (80 safe/80 negative); batch mới đóng góp 48 paths.
+- 321 tests pass (24 mới), setup/Ruff/mypy 121 source files và clean seal pass.
+- Full fixed-payload scope kiểm tra cả ID/extra field, bool/number/list/object;
+  hai encoded sink cases được test riêng không dựa vào exact-message mismatch.
+- Tám receipt trước/451 hash entries khớp, gồm 12 measured artifacts.
+- [Receipt v2](../experiments/manifests/phase3_pool_v2_validation01.json),
+  [tóm tắt](../docs/benchmark/transaction_batch_summary.md),
+  [self-review](../docs/benchmark/pool_author_review_v1.md). Source `7f1f284`.
+
+Ước lượng trả lời owner: **40–45% effort Phase 3**, không tỷ lệ nghiệm thu.
+40/70 ≈ 57% candidate count; còn 30 trước full-pool release review. Các việc
+variants, grouped split và freeze vẫn mở. Không model/Kaggle/Test inference;
+static audit bản v1 đọc hai split chỉ để xác minh integrity như trước.
+
+## Lịch sử: 28 ứng viên và QA tổng hợp
 
 Batch linked-scope bổ sung tám cặp: bốn row-scope, bốn multi-source. Các nhóm
 trùng cơ chế nối với pool cũ; không coi mỗi cặp là một cơ chế độc lập. Tổng
@@ -188,9 +209,10 @@ nó không triển khai/certify các gate semantic và executable.
 
 ## Thứ tự tiếp tục
 
-1. Dùng 14 combined review units của 28 ứng viên để consolidate review và
-   author canonical còn thiếu. Không lặp lại batch row-scope/multi-source vừa
-   pass hoặc tự sinh variants để tăng count; không đòi 70 abstract mechanisms.
+1. Dùng 15 combined review units của 40 ứng viên và self-review hiện có để
+   author 30 canonical còn thiếu. Không lặp các batch đã pass hoặc tự sinh
+   variants để tăng count; không đòi 70 abstract mechanisms. Chốt quyết định
+   nhận/gộp family khi đủ full pool, trước grouped split.
 2. Mở rộng executable QA chỉ theo yêu cầu ca mới; bounded row scope đã có,
    nhưng general SQL row inference, transformed leakage ngoài full Base64/hex
    và utility entailment tổng quát chưa được bao phủ.

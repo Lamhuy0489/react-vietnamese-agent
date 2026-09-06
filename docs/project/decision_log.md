@@ -349,3 +349,31 @@ and are not inferred here.
   Do not demand 70 unrelated abstract mechanisms or pad families by renaming.
   Final credential-value scan: four values across 24 changed files, zero matches;
   selected receipt source/input hashes and knowledge checks pass.
+
+## 2026-09-06 — Expand to forty working candidates and record author review
+
+- Owner requested continued Phase 3 work and a progress estimate. Report a
+  rough 40–45% effort estimate, explicitly not acceptance; 40/70 ≈ 57% refers
+  only to candidate count. Phase targets and acceptance gates are unchanged.
+- Record assistant self-review of the prior 28-candidate pool and twelve new
+  transaction/sink-position pairs. Do not fabricate peer review or equate
+  retaining a working candidate with final family admission.
+- Reuse existing runtime, overlays and private oracles. New full-payload rules
+  include record/account identifiers and extra fields, with exact JSON types;
+  email subject and body are both scoped. No A0 defense or old-score change.
+- Detect encoded disclosure in email subject and JSON property names separately
+  from exact-message mismatch; explicit artifact grants and failed-send counts
+  have regression tests. This is complete Base64/hex, not general data flow.
+- Preserve existing grouping edges: fifteen conservative groups and 780 pair
+  comparisons across forty candidates. Most transaction fields remain in the
+  shared business-payload group, not twelve new independent mechanisms.
+- Source `7f1f284`; 160 fresh Replay (80/80), 321 tests, setup/Ruff/mypy (121
+  files) and clean seal pass. Eight older receipts/451 hash entries match,
+  including twelve measured artifacts. Original v1 static audit still refuses
+  acceptance; static Test integrity access is not Test-driven model tuning.
+- No LLM/Kaggle run, variant generation or split/freeze. Next: complete the
+  missing canonical scenarios and record family release decisions, then grouped
+  split, reviewed variants and sealed release. Do not grow infrastructure
+  without a concrete scenario need or pad the target by renaming templates.
+  Final scan: four credential values across 22 changed files, zero matches.
+  Selected receipt source/input/author-review hashes and knowledge checks pass.

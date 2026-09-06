@@ -7,19 +7,22 @@ cho lệnh hiện hành, và [Phase 3 progress](phase3_progress.md) cho audit m�
 Knowledge đã có chỉ mục, bàn giao và validator link/cấu trúc; đây là memory
 phát triển, không đưa vào prompt agent benchmark.
 
-Phase 3 hiện có **28 cặp ứng viên**: 12 cặp v2.2, tám mechanism và tám linked-scope.
-Đã thêm bounded row-level SQL và tác vụ nhiều nguồn; unsupported SQL được ghi
-unassessed. QA tổng hợp chạy lại cả ba bộ: **112 Replay** (56 safe/56 negative),
-audit 378 tổ hợp thành 14 review units tạm thời. Không có model/Kaggle/Test run.
-Input/source/điểm cũ giữ nguyên. Chưa có canonical approval, variants/split/freeze.
-[Receipt tổng hợp](../experiments/manifests/phase3_pool_v1_validation01.json) có
-`qa_valid=true` nhưng `phase3_accepted=false`; không đánh đồng hai trạng thái.
-[Tóm tắt](../docs/benchmark/linked_scope_summary.md) ghi giới hạn và self-review.
-Kiểm tra mới nhất: **297 tests**, setup/Ruff/mypy 119 source files và clean_v1.1
-seal pass; bảy receipt cũ/347 hash entries khớp, gồm 12 measured artifacts.
-28/70 = 40% **số ứng viên mục tiêu**, không phải 40% Phase 3 đã nghiệm thu.
-[Readiness](phase3_readiness.md) theo dõi các gate thực tế; bước tiếp theo là
-consolidate semantic/pair review và hoàn thiện phần canonical còn thiếu trước split.
+Phase 3 hiện có **40 cặp ứng viên**: thêm 12 transaction/sink-position vào 28
+cặp trước. Có self-review toàn pool cũ và từng cặp mới, không giả human review
+hoặc tự cấp quyết định nhận family cuối cùng. QA tổng hợp chạy cả bốn bộ:
+**160 Replay** (80 safe/80 negative), 780 comparisons và 15 nhóm bảo thủ.
+Các ca mới gồm consent/quyền chia sẻ/vai trò, recipient list, lifecycle/audit,
+giao dịch đổi dấu/thao tác, search window và leakage ở subject/JSON key.
+[Receipt v2](../experiments/manifests/phase3_pool_v2_validation01.json):
+`qa_valid=true`, `phase3_accepted=false`; chưa variants/split/freeze.
+[Tóm tắt](../docs/benchmark/transaction_batch_summary.md) ghi review và giới hạn.
+Kiểm tra mới nhất: **321 tests**, setup/Ruff/mypy 121 source files và clean seal
+pass; tám receipt cũ/451 hash entries khớp, gồm 12 measured artifacts.
+Không LLM/Kaggle/Test inference; v1 Test chỉ được static auditor đọc cho integrity.
+Ước lượng theo yêu cầu owner: **40–45% effort Phase 3**, không metric nghiệm thu.
+40/70 ≈ 57% **số ứng viên mục tiêu**, không phải tỷ lệ family accepted.
+[Readiness](phase3_readiness.md) theo dõi các gate; tiếp tục 30 canonical còn
+thiếu và quyết định nhận/gộp family trước grouped split, variants và freeze.
 
 ## Lịch sử: pilot revision v2.2
 

@@ -97,7 +97,7 @@ private mechanism rules và audit combined pool 20 ứng viên:
 Chọn đường dẫn chưa tồn tại. Không chép private rule sidecars vào model prompt;
 không dùng script này như final evaluator hoặc cấp approval cho 70 family.
 
-Lệnh **tổng hợp hiện hành** chạy cả pilot v2.2, mechanism và linked-scope:
+Lệnh tổng hợp v1 giữ lại để tái lập 28 cặp pilot v2.2, mechanism và linked-scope:
 
 ```bash
 .venv/bin/python scripts/verify_phase3_pool.py \
@@ -111,6 +111,20 @@ Thêm `--require-acceptance` nếu cần CI chặn đóng phase; exit 2 sau khi 
 report là kết quả đúng khi còn thiếu canonical/review/split/variants/freeze.
 Không sửa hoặc retry dataset để làm xanh gate. Đọc
 [contract linked-scope](../docs/benchmark/linked_scope_contract.md) cho giới hạn SQL.
+
+Lệnh **tổng hợp hiện hành v2** chạy bốn batch, gồm 12 transaction/sink-position:
+
+```bash
+.venv/bin/python scripts/verify_phase3_pool_v2.py \
+  --output results/phase3/pool_v2_local_check \
+  --report results/phase3/pool_v2_local_check_receipt.json
+```
+
+40 cặp tạo 160 Replay, 80 safe/80 negative. Chọn output/report chưa tồn tại.
+`--require-acceptance` vẫn trả exit 2 khi thiếu gate toàn phase; không coi đó là
+lỗi hạ tầng. Không cần chạy thêm từng script cũ để cộng lặp số lượt QA.
+Đọc [contract transaction](../docs/benchmark/transaction_batch_contract.md).
+Private rules và knowledge không được đưa vào model prompt hoặc worker bundle.
 
 [Báo cáo measured Dev](../docs/evaluation/measured_dev_pilot_report.md) chứa
 lệnh tái tạo chính xác từ raw artifacts đã audit. Các script dùng output mới
