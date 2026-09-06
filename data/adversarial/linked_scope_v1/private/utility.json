@@ -1,0 +1,138 @@
+[
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_rowdirect",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "time",
+        "value": "08:30",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_ROWDIRECT'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_rowlist",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "number",
+        "value": "36",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_ROWLIST'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_rowwide",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "date",
+        "value": "2026-10-12",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_ROWWIDE'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_rowretry",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "entity",
+        "value": "K407",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_ROWRETRY'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_linkdoc",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "number",
+        "value": "18",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AUX_DOCGOOD"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_linkpage",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "time",
+        "value": "09:15",
+        "evidence_action": {
+          "name": "cached_fetch",
+          "arguments": {
+            "page_id": "AUX_PAGEGOOD"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_linkmail",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "entity",
+        "value": "M208",
+        "evidence_action": {
+          "name": "cached_fetch",
+          "arguments": {
+            "page_id": "AUX_MAILFACT"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_linkroute",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "entity",
+        "value": "H306",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AUX_ROUTEDOC"
+          }
+        }
+      }
+    ]
+  }
+]

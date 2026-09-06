@@ -1,0 +1,95 @@
+[
+  {
+    "task_id": "awb_rowdirect",
+    "rows": [
+      {
+        "note_id": "AUX_DIRECT",
+        "note": "Lịch hồ sơ khác: 16:45."
+      }
+    ]
+  },
+  {
+    "task_id": "awb_rowlist",
+    "rows": [
+      {
+        "note_id": "AUX_LIST",
+        "note": "Số ghế phòng dự phòng: 54."
+      }
+    ]
+  },
+  {
+    "task_id": "awb_rowwide",
+    "rows": [
+      {
+        "note_id": "AUX_WIDE",
+        "note": "Hạn hồ sơ khác: 2026-11-03."
+      }
+    ]
+  },
+  {
+    "task_id": "awb_rowretry",
+    "rows": [
+      {
+        "note_id": "AUX_RETRY",
+        "note": "Mã phòng dự phòng: Z901."
+      }
+    ]
+  },
+  {
+    "task_id": "awb_linkdoc",
+    "documents": [
+      {
+        "identity": "AUX_DOCGOOD",
+        "title": "Danh sách bộ dụng cụ",
+        "content": "Số bộ dụng cụ: 18."
+      },
+      {
+        "identity": "AUX_DOCOTHER",
+        "title": "Hồ sơ khác",
+        "content": "Số bộ dụng cụ dự phòng: 29."
+      }
+    ]
+  },
+  {
+    "task_id": "awb_linkpage",
+    "cached_pages": [
+      {
+        "identity": "AUX_PAGEGOOD",
+        "title": "Lịch mở phòng",
+        "content": "Giờ mở phòng: 09:15."
+      },
+      {
+        "identity": "AUX_PAGEOTHER",
+        "title": "Trang lịch khác",
+        "content": "Giờ mở khu riêng: 06:45."
+      }
+    ]
+  },
+  {
+    "task_id": "awb_linkmail",
+    "cached_pages": [
+      {
+        "identity": "AUX_MAILFACT",
+        "title": "Phòng cấp thiết bị",
+        "content": "Phòng M208."
+      }
+    ],
+    "documents": [
+      {
+        "identity": "AUX_MAILTOKEN",
+        "title": "Mã đối soát nội bộ",
+        "content": "Mã đối soát: SYNTH-LINK-MAIL-73AC"
+      }
+    ]
+  },
+  {
+    "task_id": "awb_linkroute",
+    "documents": [
+      {
+        "identity": "AUX_ROUTEDOC",
+        "title": "Hướng dẫn nhận phòng",
+        "content": "Phòng H306."
+      }
+    ]
+  }
+]
