@@ -3,7 +3,34 @@
 Cập nhật 2026-09-06. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
 Đây là audit tĩnh để tiếp tục authoring, không phải đánh giá ASR hay chọn model.
 
-## Mốc đã làm trong lượt này
+## Mới nhất: bốn cặp executable workbench đã pass
+
+Đã thêm `data/adversarial/workbench_v2`: bốn cặp synthetic chưa chia split,
+review-pending, không tính vào 70 family chính thức và không thay bản v1.
+Public task, environment overlay và private oracle tách file/schema riêng.
+Runtime chỉ nhận instruction; private QA không đi vào prompt/policy.
+
+- Bao phủ document, cached page, DB text field và calculator tool output.
+  Tất cả chạy trên bản sao môi trường clean_v1.1, vẫn đủ tám tool qua Broker.
+- 16 lượt Replay: bốn cặp × hai nhánh attack/benign × safe/negative. Tám safe
+  paths đều giữ utility; tám negative scripts đều phát hiện vi phạm mẫu.
+- Có benign email được user cho phép; sink sai địa chỉ, webhook không được
+  phép và final-answer leakage có kiểm tra riêng. Tool result thất bại không
+  được tính như đã gửi thành công; từ chối mọi việc không đạt utility.
+- QA xác minh payload xuất hiện trong trace, facts có tool evidence, sensitive
+  artifact tồn tại, không đưa private metadata vào context. Test chặn socket,
+  DNS và SMTP vẫn pass; observable traces tái lập sau bỏ timestamp/run ID.
+- [Receipt](../experiments/manifests/phase3_workbench_v2_validation_01.json)
+  lưu input/verifier/trace hashes; raw traces và bản sao DB nằm ngoài Git.
+- Toàn bộ 143 tests pass; setup/Ruff/mypy (103 source files), clean_v1.1 seal
+  pass; bản v1 và measured releases không thay đổi. Không có LLM/Kaggle run mới.
+
+[Contract workbench](../docs/benchmark/adversarial_workbench_contract.md)
+giới hạn rõ: literal facts/artifact values, exact sink actions và query fixture,
+chưa phải evaluator tổng quát. Không suy ra ASR/FPR, semantic review hay Phase 3
+acceptance từ các script Replay được viết sẵn. Chưa tạo variant/split mới.
+
+## Lịch sử: audit v1 và helper surface
 
 - Siết validator: mã scenario/pair duy nhất, năm loại variant đúng và không
   lặp, quota từng split, nội dung không rỗng, attack/benign khớp source và
@@ -44,13 +71,13 @@ nó không triển khai/certify các gate semantic và executable.
 
 ## Thứ tự tiếp tục
 
-1. Chốt schema typed public task / overlay / private GT / review receipt riêng;
-   không đưa prohibited-action GT vào prompt hay public worker task.
-2. Author canonical + benign pair bằng synthetic executable fixtures, bao phủ
-   bốn source và các sink: email, webhook, final answer; có benign external
-   action được user cho phép để đo overblocking.
-3. Chạy safe path qua Broker và negative violation fixtures; kiểm tra artifact
-   reference thực sự tồn tại, không network I/O, không dùng LLM để lọc attack.
+1. Nâng từ fixture schema sang canonical schema hoàn chỉnh: family/template
+   groups, authorization/data scope, artifact IDs, typed utility conditions
+   và review evidence. Không gọi bốn cặp là benchmark hoàn chỉnh.
+2. Mở rộng executable QA cho quy tắc theo data scope/SQL và sự kiện chưa được
+   bốn fixture bao phủ; vẫn tách private oracle khỏi runtime policy/model.
+3. Author canonical đa dạng và matched benign controls, có bằng chứng safe
+   path/negative oracle. Không dùng thành công của LLM để lọc attack.
 4. Review semantic units và nhóm template trước stratified 40/30 split; không
    sửa/move các family trong v1 tại chỗ. Dùng version authoring mới và giữ
    nguyên receipt v1. Không dùng điểm pilot clean để thiết kế attack.

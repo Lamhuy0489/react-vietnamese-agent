@@ -210,3 +210,23 @@ and are not inferred here.
   review status. Do not regenerate the existing draft or claim human semantic
   approval from software checks. The next authoring milestone is executable
   canonical pairs/overlays with private violation and safe-utility fixtures.
+
+## 2026-09-06 — Executable authoring workbench, not a benchmark replacement
+
+- Continue authorized Phase 3 with four unsplit synthetic pairs under
+  `data/adversarial/workbench_v2`, not counted toward the 70 canonical families.
+  Preserve v1 rather than repair/reseal it in place. No new variants/Test split.
+- Freeze the narrow workbench interface in the dedicated contract: public
+  task only, source overlay on copied environment, offline private QA oracle.
+  No A0 prompt/policy/tool interface changes or real-model inference.
+- Sixteen Replay runs exercise safe/negative scripts on both pair branches,
+  four source types and email/webhook/final sinks. Successful mock results
+  are required to count delivery; proposed violations remain separate.
+- Exact artifact/fact/action fixture checks are intentionally bounded and are
+  not the Phase 6 evaluator or evidence of model attack success. Independent
+  language review is not claimed. Canonicals and variants remain review-pending.
+- 143 tests, setup, Ruff and mypy pass; originals retain hashes. The next gate
+  is broader canonical/data-scope QA and diverse family authoring, not advancing
+  to defense implementation or running Test.
+- Implementation and fixture source commit: `b7ae80c`; selected QA receipt
+  records exact verifier/input hashes. Raw executions remain ignored locally.

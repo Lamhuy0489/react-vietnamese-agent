@@ -7,11 +7,12 @@ cho lệnh hiện hành, và [Phase 3 progress](phase3_progress.md) cho audit m�
 Knowledge đã có chỉ mục, bàn giao và validator link/cấu trúc; đây là memory
 phát triển, không đưa vào prompt agent benchmark.
 
-Phase 3 đã thêm validator chặt hơn, audit tĩnh và helper surface có bảo vệ
-literal. Draft v1 giữ nguyên, chưa accepted: trùng template, lệch category
-giữa split, lỗi biến thể/target và chưa có executable overlay/oracles. Bước
-tiếp theo là canonical/pair typed fixtures, không chạy thêm Kaggle lúc này.
-Kiểm tra lượt này: 130 tests pass; setup/Ruff/mypy/knowledge-check pass;
+Phase 3 đã có bốn cặp workbench riêng (unsplit, review-pending), tách public
+task/overlay/private oracle. 16 Replay chạy qua Broker đã pass safe và negative
+fixtures; có email/webhook/final leakage và kiểm tra không network I/O.
+Draft v1 vẫn nguyên, chưa accepted. Bước tiếp theo là mở rộng canonical schema,
+data-scope QA và author family đa dạng; chưa tạo variants hoặc chạy Kaggle.
+Kiểm tra mới nhất: 143 tests pass; setup/Ruff/mypy pass;
 clean_v1.1 seal và measured release hashes giữ nguyên. Các số test trong
 phần lịch sử bên dưới thuộc các mốc trước, không phải lần kiểm tra mới nhất.
 

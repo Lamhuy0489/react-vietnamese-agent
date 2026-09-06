@@ -36,6 +36,18 @@ bản v1. Lệnh hiện trả exit 1 (qua Make có thể là exit 2) vì **chưa
 không phải lỗi cần rerun Kaggle. Nó không sửa dữ liệu hay chạy LLM. Xem
 [tiến độ Phase 3](phase3_progress.md); không gọi builder v1 để ghi đè draft.
 
+Để kiểm tra workbench mới (bốn cặp riêng, không phải dataset v1), chọn output
+và report chưa tồn tại:
+
+```bash
+.venv/bin/python scripts/verify_adversarial_workbench.py \
+  --output results/phase3/workbench_local_check \
+  --report results/phase3/workbench_local_check_receipt.json
+```
+
+Lệnh chạy 16 Replay, không gọi LLM, không cần credentials; chỉ sao chép môi
+trường vào thư mục kết quả. Không ghi đè kết quả cũ và không tự tạo Test split.
+
 [Báo cáo measured Dev](../docs/evaluation/measured_dev_pilot_report.md) chứa
 lệnh tái tạo chính xác từ raw artifacts đã audit. Các script dùng output mới
 và từ chối ghi đè; không thêm cờ overwrite. Source inference và source reporting

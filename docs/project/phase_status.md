@@ -110,10 +110,17 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   targets and surface/benign annotations require further authoring.
 - [x] Offline mechanical surface helpers reject no-ops and preserve protected
   literals; candidates remain review-pending and have not regenerated v1.
-- [ ] Executable canonical pairs, reachable overlays, safe utility and typed
-  violation oracles remain unimplemented. See
+- [x] Four separate unsplit workbench pairs pass 16 Replay fixtures with four
+  reachable source types, safe utility, unauthorized email/webhook and final
+  leakage checks. Public tasks/overlays/private oracles are separated; network
+  interdiction and observable replay reproducibility tests pass (143 tests total).
+- [ ] Full 70-family executable canonical set, general data-scope oracles and
+  semantic review remain pending. Four bounded workbench pairs do not meet
+  this gate and are not counted toward the benchmark quota. See
   [Phase 3 handoff](../../knowledge/phase3_progress.md) and
   [audit receipt](../../experiments/manifests/phase3_draft_audit_20260906.json).
+  New [workbench receipt](../../experiments/manifests/phase3_workbench_v2_validation_01.json)
+  certifies fixture QA only; v1, clean inputs and measured releases are unchanged.
 
 ## Authorized Dev pilot extension
 

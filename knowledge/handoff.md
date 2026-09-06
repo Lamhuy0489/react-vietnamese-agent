@@ -8,10 +8,10 @@ Theo yêu cầu owner: củng cố knowledge rồi tiếp tục Phase 3. Memory 
 tổ chức lại theo chỉ mục → trạng thái → bàn giao → bằng chứng, không cài thêm
 dịch vụ và không thay đổi benchmark agent.
 
-Phase 3 hiện là draft: 70 family, 350 attack variants, 350 benign controls.
-Số lượng/file tồn tại chưa chứng minh semantic diversity, overlay reachable,
-safe path hoặc violation oracle. Audit và validator tăng cường đã hoàn tất;
-helper tạo surface có bảo vệ literal đã thêm, chưa áp dụng lên dataset.
+Phase 3: bản v1 có 70 family/350+350 variants nhưng chưa accepted. Workbench
+riêng đã có bốn cặp executable, chưa split/review, không tính vào quota chính.
+16 lượt Replay đã chứng minh reachable overlay, safe utility và nhận diện
+negative fixtures; schema/oracle còn bị giới hạn ở các fixture này.
 Đọc [tiến độ Phase 3](phase3_progress.md) để xem những thiếu sót đã xác minh.
 
 ## Bước tiếp theo
@@ -21,8 +21,9 @@ helper tạo surface có bảo vệ literal đã thêm, chưa áp dụng lên da
    [split rules](../docs/benchmark/split_rules.md).
 2. Chạy `make phase3-audit`: hiện cố ý không cấp acceptance; không retry GPU
    hoặc đổi dữ liệu tại chỗ để làm xanh gate.
-3. Chốt schema tách public task / overlay / private GT và author canonical +
-   benign pair có executable fixtures, safe path và violation oracle.
+3. Đọc [contract workbench](../docs/benchmark/adversarial_workbench_contract.md),
+   mở rộng schema canonical/data-scope và QA ngoài bốn fixture. Sau đó author
+   canonical đa dạng với matched benign và bằng chứng thực thi.
 4. Review nhóm semantic/template, xác định split rồi mới sinh variants. Giữ
    bản draft cũ làm bằng chứng; không âm thầm reseal/move family.
 5. Chỉ cập nhật acceptance khi có kiểm tra thực sự. Đọc [runbook](runbook.md)
@@ -43,9 +44,14 @@ helper tạo surface có bảo vệ literal đã thêm, chưa áp dụng lên da
 - [Audit Phase 3](../experiments/manifests/phase3_draft_audit_20260906.json)
   xác minh số lượng/hash nhưng ghi rõ lỗi template/surface/stratification và
   gate chưa thực thi. Không có inference mới trong lượt củng cố knowledge.
-- Kiểm tra lượt này: 130 tests pass; setup/Ruff/mypy (98 source files) và
+- Kiểm tra lượt trước: 130 tests pass; setup/Ruff/mypy (98 source files) và
   `make knowledge-check` pass. clean_v1.1 sealed-read-only validation pass;
   hash draft v1, auditor và measured releases khớp, không thay input đã khóa.
+- [Workbench receipt](../experiments/manifests/phase3_workbench_v2_validation_01.json):
+  source implementation `b7ae80c`, bốn cặp, 16 Replay, tám safe/tám negative đạt
+  điều kiện fixture. Test có
+  chặn network và lặp lại observable traces. Kiểm tra mới nhất: 143 tests,
+  setup/Ruff/mypy 103 source files pass; không thay dữ liệu/release đã khóa.
 
 ## Giới hạn
 
