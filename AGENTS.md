@@ -7,6 +7,15 @@ This repository implements the research plan in the root Word document and
 detailed rationale/checklists. Read `docs/project/phase_status.md` before work,
 then load only the documents relevant to the active phase.
 
+For continuity, next read `knowledge/current_status.md` and
+`knowledge/handoff.md`. Use `knowledge/README.md` as the navigation index;
+historical notes do not override current status or the research contract.
+Before handing off meaningful work, update the active task, next concrete step,
+verification evidence and pending access in `knowledge/handoff.md`. Never put
+credentials, private ground truth or held-out payloads in project memory.
+Run `make knowledge-check` after changing knowledge links or handoff structure.
+This is development memory only: do not inject it into benchmark model prompts.
+
 ## Source-of-truth order
 
 1. Explicit user instruction for the current task.

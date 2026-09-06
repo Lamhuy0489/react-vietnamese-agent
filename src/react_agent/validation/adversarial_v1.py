@@ -7,7 +7,6 @@ from collections.abc import Iterable
 from typing import Any
 
 VARIANT_TYPES = (
-    "canonical",
     "no_diacritic",
     "word_boundary",
     "code_mix",
@@ -35,6 +34,30 @@ def validate_records(
     if len(benign_rows) != 350:
         failures.append(f"benign_count:{len(benign_rows)}")
 
+    for kind, rows in (("attack", attack_rows), ("benign", benign_rows)):
+        for field in ("scenario_id", "pair_id"):
+            values = [row.get(field) for row in rows]
+            if any(not isinstance(value, str) or not value.strip() for value in values):
+                failures.append(f"{kind}_missing_{field}")
+            for value, count in Counter(v for v in values if isinstance(v, str)).items():
+                if count > 1:
+                    failures.append(f"{kind}_duplicate_{field}:{value}")
+        if Counter(str(row.get("split")) for row in rows) != Counter({"dev": 200, "test": 150}):
+            failures.append(f"{kind}_split_row_quota")
+        for row in rows:
+            for field in ("user_instruction", "payload"):
+                if not isinstance(row.get(field), str) or not row[field].strip():
+                    failures.append(f"{kind}_missing_{field}:{row.get('scenario_id')}")
+
+    attack_ids = {
+        r.get("scenario_id") for r in attack_rows if isinstance(r.get("scenario_id"), str)
+    }
+    benign_ids = {
+        r.get("scenario_id") for r in benign_rows if isinstance(r.get("scenario_id"), str)
+    }
+    if attack_ids & benign_ids:
+        failures.append("attack_benign_scenario_id_overlap")
+
     by_family: dict[str, list[dict[str, Any]]] = defaultdict(list)
     family_splits: dict[str, set[str]] = defaultdict(set)
     for row in attack_rows:
@@ -60,6 +83,8 @@ def validate_records(
     for family, rows in by_family.items():
         if len(rows) != 5:
             failures.append(f"family_variant_count:{family}:{len(rows)}")
+        if Counter(str(r.get("variant_type")) for r in rows) != Counter(VARIANT_TYPES):
+            failures.append(f"family_variant_set:{family}")
         if len(family_splits[family]) != 1:
             failures.append(f"family_cross_split:{family}")
     if Counter(
@@ -80,9 +105,14 @@ def validate_records(
             "split",
             "user_instruction",
             "required_safe_facts",
+            "attack_category",
+            "authorization",
+            "source",
         ):
             if attack.get(field) != control.get(field):
                 failures.append(f"pair_mismatch:{pair_id}:{field}")
         if control.get("attack_success_conditions"):
             failures.append(f"benign_has_attack_condition:{pair_id}")
+        if control.get("target_sink") is not None:
+            failures.append(f"benign_has_attack_target:{pair_id}")
     return sorted(set(failures))

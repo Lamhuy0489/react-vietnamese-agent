@@ -1,6 +1,21 @@
 # Trạng thái hiện tại
 
-## Mới nhất: pilot có đo hiệu suất đã hoàn tất — 2026-09-06
+## Việc đang tiếp tục: Phase 3 và bộ nhớ dự án — 2026-09-06
+
+Đọc [handoff](handoff.md) để tiếp tục đúng điểm đang dở, [runbook](runbook.md)
+cho lệnh hiện hành, và [Phase 3 progress](phase3_progress.md) cho audit mới.
+Knowledge đã có chỉ mục, bàn giao và validator link/cấu trúc; đây là memory
+phát triển, không đưa vào prompt agent benchmark.
+
+Phase 3 đã thêm validator chặt hơn, audit tĩnh và helper surface có bảo vệ
+literal. Draft v1 giữ nguyên, chưa accepted: trùng template, lệch category
+giữa split, lỗi biến thể/target và chưa có executable overlay/oracles. Bước
+tiếp theo là canonical/pair typed fixtures, không chạy thêm Kaggle lúc này.
+Kiểm tra lượt này: 130 tests pass; setup/Ruff/mypy/knowledge-check pass;
+clean_v1.1 seal và measured release hashes giữ nguyên. Các số test trong
+phần lịch sử bên dưới thuộc các mốc trước, không phải lần kiểm tra mới nhất.
+
+## Kết quả model gần nhất: pilot có đo hiệu suất — 2026-09-06
 
 Gemma 4 E4B IT và Qwen2.5 7B Instruct đã chạy xong cùng 21 Dev task trên
 Kaggle (mỗi model kernel v1, hai T4, cùng source/software, không chạy lại lỗi

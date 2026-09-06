@@ -194,3 +194,19 @@ and are not inferred here.
   single-run timings or path-constrained evaluator as a final model ranking.
   Historical Qwen 3B is not a controlled timing comparator. Meta Llama is
   pending access and is not assigned a zero score. Phase 3 stays in progress.
+
+## 2026-09-06 — Strengthen development memory and resume Phase 3 QA
+
+- Owner requests repository knowledge maintenance before continuing work.
+  Add a handoff entry point, update obsolete v1 runbook instructions and check
+  links/sections. Memory is development-only, never injected into model inputs.
+- Resume Phase 3 with static draft integrity checks, not new LLM inference.
+  Counts alone are insufficient: record template-overlap candidates, category
+  imbalance, webhook/benign annotation and surface-transform defects.
+- Preserve v1 draft and all clean/measured frozen artifacts byte-for-byte.
+  Diagnostics read both unreviewed adversarial splits for integrity only; no
+  Test-driven tuning, attacks filtered by model success, or phase advancement.
+- Add mechanical surface candidate helpers with protected literals and pending
+  review status. Do not regenerate the existing draft or claim human semantic
+  approval from software checks. The next authoring milestone is executable
+  canonical pairs/overlays with private violation and safe-utility fixtures.

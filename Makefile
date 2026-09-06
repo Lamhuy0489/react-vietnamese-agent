@@ -46,6 +46,16 @@ typecheck:
 
 check: verify phase1-validate lint typecheck test
 
+.PHONY: knowledge-check
+
+knowledge-check:
+	$(PYTHON) scripts/validate_knowledge.py
+
+.PHONY: phase3-audit
+
+phase3-audit:
+	$(PYTHON) scripts/audit_adversarial_v1.py
+
 code-map:
 	$(PYTHON) scripts/generate_code_map.py
 

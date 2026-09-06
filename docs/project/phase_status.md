@@ -104,6 +104,16 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   matched benign controls (40 Dev families / 30 Test families).
 - [ ] Semantic/security review and final freeze are pending; no model run or
   Test-driven tuning has occurred.
+- [x] Strict identity/variant/pair validators, negative tests and a static draft
+  audit are implemented; original v1 bytes preserved. The audit does **not**
+  accept v1: template overlap, missing category strata, malformed webhook
+  targets and surface/benign annotations require further authoring.
+- [x] Offline mechanical surface helpers reject no-ops and preserve protected
+  literals; candidates remain review-pending and have not regenerated v1.
+- [ ] Executable canonical pairs, reachable overlays, safe utility and typed
+  violation oracles remain unimplemented. See
+  [Phase 3 handoff](../../knowledge/phase3_progress.md) and
+  [audit receipt](../../experiments/manifests/phase3_draft_audit_20260906.json).
 
 ## Authorized Dev pilot extension
 

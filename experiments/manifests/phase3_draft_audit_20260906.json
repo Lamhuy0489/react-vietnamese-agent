@@ -1,0 +1,70 @@
+{
+  "scope": "static integrity audit of unreviewed v1; no model execution or data edits",
+  "acceptance_ready": false,
+  "acceptance_note": "This diagnostic audit cannot certify semantic or executable gates.",
+  "draft_structure_valid": true,
+  "draft_manifest_hash_matches": true,
+  "canonical_families": 70,
+  "attack_variants": 350,
+  "benign_variants": 350,
+  "model_runs": 0,
+  "test_payloads_read_for_static_integrity_only": true,
+  "family_categories_by_split": {
+    "dev": {
+      "data_exfiltration": 5,
+      "indirect_injection": 20,
+      "policy_violation": 0,
+      "tool_output_poisoning": 15
+    },
+    "test": {
+      "data_exfiltration": 15,
+      "indirect_injection": 0,
+      "policy_violation": 15,
+      "tool_output_poisoning": 0
+    }
+  },
+  "normalized_payload_template_groups": 1,
+  "template_overlap_is_candidate_not_semantic_proof": true,
+  "issues": {
+    "attack:incorrect_no_diacritic": 70,
+    "attack:zero_width_not_insertion_only": 70,
+    "benign:incorrect_no_diacritic": 70,
+    "benign:unchanged_payload:code_mix": 70,
+    "benign:unchanged_payload:paraphrase": 70,
+    "benign:unchanged_payload:word_boundary": 70,
+    "benign:unchanged_payload:zero_width": 70,
+    "canonical_benign_contains_attack_annotation": 70,
+    "category_absent_from_split": 3,
+    "cross_split_payload_template_candidate": 1,
+    "exfiltration_without_sensitive_artifact_reference": 20,
+    "webhook_target_not_typed_endpoint": 35
+  },
+  "unverified_acceptance_gates": [
+    "reachable_overlay_and_safe_path_execution",
+    "typed_proposed_executed_and_final_violation_oracles",
+    "sensitive_artifact_existence_and_authorization",
+    "canonical_and_variant_semantic_equivalence_review",
+    "payload_overlay_mapping_and_environment_freeze"
+  ],
+  "missing_artifact_directories": [
+    "overlays",
+    "payloads",
+    "mappings",
+    "reviews",
+    "checksums"
+  ],
+  "input_file_sha256": {
+    "canonical/attacks.jsonl": "9b4eaad422da65070345cd23c9aa32b55ea3a1923acb1a1936a8823773aba46a",
+    "canonical/benign.jsonl": "9905f1445b4be87b40a437d5b37edf1d57166804ba7a3d67e7fa33d10c8faca0",
+    "manifests/adversarial_manifest.json": "820b81521dac9d07550dbe223b023e13becfbf4479cb2a3f1000e9f3800d18d8",
+    "variants/dev_attacks.jsonl": "bd1d755b096a802185e71052ff46532affaa2e433287cce1c30458f24c7d1fba",
+    "variants/dev_benign.jsonl": "e027f1cf180cecfc0225e0708705cc2eab85c8af3dd68c716fd078d8720d30d3",
+    "variants/test_attacks.jsonl": "27b5cb38aa7444872fb6adaa02e0d52bc47ded030a9c9d4ad96809f510fb048f",
+    "variants/test_benign.jsonl": "b320d3ae1283ab19ef165697f12e516072fb05cc3eccd7f9ead8d586d395d235"
+  },
+  "auditor_sha256": {
+    "scripts/audit_adversarial_v1.py": "e61d21eb8ea00bb7b544ee3e2bc11cbad7a233070d327754131bd77fb0631370",
+    "src/react_agent/validation/adversarial_v1.py": "f9ad68af5b75001d842f7b8a22d79019465d2523ce9f98e956ef99612884724f",
+    "src/react_agent/validation/adversarial_audit.py": "b4375b8aed289b74ab0ad418ffc3fa2b4373147f9a9d10e021aaf35c8d411c8a"
+  }
+}
