@@ -70,6 +70,8 @@ def prepare_project(input_root: Path, project_root: Path) -> dict[str, Any]:
         MODEL_SOURCE,
         "google/gemma-2/transformers/gemma-2-2b-it/2",
         "metaresearch/llama-3.2/transformers/3b-instruct/1",
+        "qwen-lm/qwen2.5/transformers/7b-instruct/1",
+        "google/gemma-4/transformers/gemma-4-e4b-it/1",
     }
     if manifest.get("model_source") not in permitted_sources:
         raise RuntimeError("manifest model source does not match the frozen condition")
@@ -119,10 +121,47 @@ def find_model_path(input_root: Path) -> Path:
 def run(project_root: Path, frozen_commit: str, *arguments: str) -> None:
     environment = os.environ.copy()
     environment["PYTHONPATH"] = str(project_root / "src")
+    if os.environ.get("PILOT_DEPENDENCY_DIR"):
+        environment["PYTHONPATH"] += os.pathsep + os.environ["PILOT_DEPENDENCY_DIR"]
     environment["FROZEN_GIT_COMMIT"] = frozen_commit
     subprocess.run(  # noqa: S603 - fixed interpreter and repository scripts
         [sys.executable, *arguments], cwd=project_root, env=environment, check=True
     )
+
+
+def bootstrap_dependencies(input_root: Path, work_root: Path, manifest: dict[str, Any]) -> None:
+    hashes = manifest.get("wheel_sha256", {})
+    if not hashes:
+        return
+    bundle = find_unique(input_root, "frozen_manifest.json").parent
+    for name, digest in hashes.items():
+        if Path(name).name != name or not name.endswith(".whl"):
+            raise RuntimeError("invalid dependency filename")
+        if sha256(bundle / name) != digest:
+            raise RuntimeError("dependency wheel hash mismatch")
+    target = work_root / "pilot_dependencies"
+    if target.exists():
+        raise RuntimeError("dependency target must be fresh")
+    subprocess.run(  # noqa: S603 - offline pinned dependencies, no shell
+        [
+            sys.executable,
+            "-m",
+            "pip",
+            "install",
+            "--no-index",
+            "--no-deps",
+            "--find-links",
+            str(bundle),
+            "--target",
+            str(target),
+            *manifest["dependency_versions"],
+        ],
+        check=True,
+    )
+    os.environ["PILOT_DEPENDENCY_DIR"] = str(target)
+    os.environ["HF_HUB_OFFLINE"] = "1"
+    os.environ["TRANSFORMERS_OFFLINE"] = "1"
+    sys.path.insert(0, str(target))
 
 
 def main(
@@ -131,6 +170,7 @@ def main(
 ) -> None:
     project_root = work_root / "react-vietnamese-agent"
     manifest = prepare_project(input_root, project_root)
+    bootstrap_dependencies(input_root, work_root, manifest)
     profile_key = manifest.get("model_profile", "qwen")
     sys.path.insert(0, str(project_root / "src"))
     from react_agent.llm.pilot_profiles import PROFILES, find_pilot_model
@@ -140,6 +180,19 @@ def main(
         raise RuntimeError("profile and frozen model source differ")
     model_path = find_pilot_model(input_root, profile)
     frozen_commit = str(manifest["git_commit"])
+    if manifest.get("cpu_model_preflight"):
+        run(project_root, frozen_commit, "scripts/preflight_clean_worker.py")
+        run(
+            project_root,
+            frozen_commit,
+            "scripts/preflight_pilot_models.py",
+            "--input-root",
+            str(input_root),
+            "--output",
+            str(work_root / "model_preflight.json"),
+        )
+        print("MODEL_CPU_PREFLIGHT_COMPLETE")
+        return
     (work_root / "kaggle_bundle_info.json").write_text(
         json.dumps(
             {
@@ -150,6 +203,8 @@ def main(
                 "model_source": profile.source,
                 "model_profile": profile_key,
                 "chat_adapter": profile.chat_adapter,
+                "measurement_protocol": manifest.get("measurement_protocol"),
+                "wheel_sha256": manifest.get("wheel_sha256", {}),
                 "model_path": str(model_path),
                 "test_in_bundle": False,
                 "private_ground_truth_in_bundle": False,
@@ -185,6 +240,7 @@ def main(
         "scripts/run_clean_v11_dev.py" if replacement else "scripts/run_hf_clean_dev.py",
         *(["--backend", "hf"] if replacement else []),
         *(["--model-profile", profile_key] if replacement else []),
+        *(["--measure-performance"] if manifest.get("measurement_protocol") else []),
         "--model-path",
         str(model_path),
         "--output",

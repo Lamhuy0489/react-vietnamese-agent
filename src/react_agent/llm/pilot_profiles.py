@@ -24,6 +24,8 @@ PROFILES = {
     "qwen": PilotProfile("qwen-lm/qwen2.5/transformers/3b-instruct/1"),
     "gemma": PilotProfile("google/gemma-2/transformers/gemma-2-2b-it/2", "gemma_system_to_user_v1"),
     "llama": PilotProfile("metaresearch/llama-3.2/transformers/3b-instruct/1"),
+    "qwen7b": PilotProfile("qwen-lm/qwen2.5/transformers/7b-instruct/1"),
+    "gemma4": PilotProfile("google/gemma-4/transformers/gemma-4-e4b-it/1"),
 }
 
 

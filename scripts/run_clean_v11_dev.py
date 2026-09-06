@@ -38,6 +38,7 @@ def main() -> int:
     parser.add_argument("--model-path", type=Path)
     parser.add_argument("--model-profile", choices=sorted(PROFILES), default="qwen")
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--measure-performance", action="store_true")
     args = parser.parse_args()
     public_path = CLEAN_ROOT / "splits/dev.jsonl"
     selection_path = CLEAN_ROOT / "dev_pilot/task_ids.json"
@@ -66,9 +67,17 @@ def main() -> int:
         from run_hf_smoke import load_backend
 
         profile = PROFILES[args.model_profile]
-        backend = load_backend(
-            args.model_path, profile.model_id, profile.revision, chat_adapter=profile.chat_adapter
-        )
+        if args.measure_performance:
+            from react_agent.llm.measured_hf import MeasuredHFBackend
+
+            backend = MeasuredHFBackend(args.model_path, profile, args.output)
+        else:
+            backend = load_backend(
+                args.model_path,
+                profile.model_id,
+                profile.revision,
+                chat_adapter=profile.chat_adapter,
+            )
     else:
         backend = DummyBackend()
     identity: dict[str, Any] = {
@@ -80,6 +89,7 @@ def main() -> int:
         "model_revision": backend.model_revision,
         "model_profile": args.model_profile,
         "chat_adapter": PROFILES[args.model_profile].chat_adapter,
+        "measurement_protocol": "dev21_performance_v1" if args.measure_performance else None,
         "generation": generation_config.model_dump(),
         "file_sha256": {
             name: sha256(path)
@@ -104,6 +114,13 @@ def main() -> int:
         }
 
     def runtime_factory(task: RuntimeTask) -> AgentRuntime:
+        if args.backend == "hf" and args.measure_performance:
+            from react_agent.llm.measured_hf import MeasuredHFBackend
+
+            assert isinstance(backend, MeasuredHFBackend)  # noqa: S101 - internal typed boundary
+            backend.begin_task(task.task_id)
+            if not (args.output / "model_setup.json").exists():
+                atomic_json(args.output / "model_setup.json", backend.setup)
         return AgentRuntime(
             backend,
             build_clean_registry(

@@ -1,5 +1,15 @@
 # Pilot Dev: Qwen, Gemma, Llama
 
+## Latest: measured Gemma 4 / Qwen 7B pilot
+
+Owner now requests Gemma 4 and a stronger Qwen. Official weight listings confirm
+access to Gemma 4 E4B IT v1 and Qwen2.5 7B Instruct v1. Google access has been
+resolved. The unexecuted Gemma 2 plan below is historical; Llama remains pending.
+The new predeclared method is `docs/evaluation/dev21_performance_protocol.md`.
+CPU loader preflight on Kaggle precedes real GPU inference because local Intel
+macOS cannot install the needed PyTorch version. Historical Qwen 3B timing is
+not mixed into a controlled latency ranking with newly instrumented runs.
+
 ## Scope approved 2026-09-06
 
 Owner requests the same 21 clean_v1.1 Dev tasks on three LLM families and

@@ -1,5 +1,21 @@
 # Decision Log
 
+## 2026-09-06 — Gemma 4 and Qwen 7B measured Dev conditions
+
+- Owner requested Gemma 4, a stronger Qwen, and scientific time/efficiency
+  reporting. Google file access is now confirmed; Meta access remains pending.
+- Predeclare Gemma 4 E4B IT v1 and Qwen2.5 7B Instruct v1 on the same 21 Dev
+  tasks with measured protocol `dev21_performance_v1`. Larger Qwen is selected
+  by size/availability, not by observing its scores. Historical Qwen 3B remains
+  a separately labeled reference. The old unexecuted Gemma 2 condition is deferred.
+- Native Gemma 4 loader, non-thinking generation, offline pinned dependencies,
+  two T4 GPUs without CPU offload, per-call token/time/memory measurements,
+  and group-bootstrap intervals are specified before inference in
+  `docs/evaluation/dev21_performance_protocol.md`.
+- Local Intel macOS cannot install the required recent PyTorch build; CPU
+  library/model preflight is moved to Kaggle. No benchmark inference occurs in
+  that preflight. Both mount-layout/Dummy/resume tests still run locally.
+
 ## 2026-09-06 — Owner authorizes three-model Dev pilot
 
 - Compare existing 21-task clean_v1.1 Dev pilot with Qwen, Google Gemma and

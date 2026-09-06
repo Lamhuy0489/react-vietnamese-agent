@@ -29,6 +29,7 @@ PATHS = (
     "data/clean/v1_1/dev_pilot",
     "scripts/run_clean_v11_dev.py",
     "scripts/preflight_clean_worker.py",
+    "scripts/preflight_pilot_models.py",
     "scripts/run_hf_smoke.py",
     "scripts/run_smoke.py",
 )
@@ -41,6 +42,9 @@ def main() -> int:
     parser.add_argument("--model-profile", choices=sorted(PROFILES), default="qwen")
     parser.add_argument("--dataset-slug", default="react-vn-clean-v11-dev")
     parser.add_argument("--kernel-slug")
+    parser.add_argument("--wheelhouse", type=Path)
+    parser.add_argument("--measure-performance", action="store_true")
+    parser.add_argument("--cpu-model-preflight", action="store_true")
     args = parser.parse_args()
     import re
 
@@ -49,6 +53,8 @@ def main() -> int:
     for slug in (args.owner, args.dataset_slug, kernel_slug):
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug):
             raise ValueError("invalid owner/dataset/kernel slug")
+    if args.measure_performance and args.wheelhouse is None:
+        raise ValueError("measured runs require the pinned offline wheelhouse")
     if git_output("status", "--porcelain"):
         raise RuntimeError("commit frozen source and dataset before packaging")
     failures = validate_seal(ROOT / "data/clean/v1_1")
@@ -89,6 +95,27 @@ def main() -> int:
         "dataset": f"{args.owner}/{args.dataset_slug}",
         "dataset_version": 1,
     }
+    if args.measure_performance:
+        wheels = sorted(args.wheelhouse.glob("*.whl"))
+        if len(wheels) != 8:
+            raise ValueError("expected 8 wheels including regex for Python 3.11 and 3.12")
+        for wheel in wheels:
+            shutil.copy2(wheel, dataset / wheel.name)
+        manifest["measurement_protocol"] = "dev21_performance_v1"
+        manifest["wheel_sha256"] = {wheel.name: sha256(wheel) for wheel in wheels}
+        manifest["dependency_versions"] = [
+            "transformers==5.5.0",
+            "tokenizers==0.22.2",
+            "huggingface-hub==1.7.2",
+            "regex==2025.11.3",
+            "safetensors==0.6.2",
+            "hf-xet==1.4.2",
+            "accelerate==1.10.1",
+        ]
+    if args.cpu_model_preflight:
+        if not args.measure_performance:
+            raise ValueError("CPU model preflight requires measured dependencies")
+        manifest["cpu_model_preflight"] = True
     (dataset / "frozen_manifest.json").write_text(
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
     )
@@ -111,14 +138,18 @@ def main() -> int:
                 "language": "python",
                 "kernel_type": "script",
                 "is_private": True,
-                "enable_gpu": True,
+                "enable_gpu": not args.cpu_model_preflight,
                 "enable_tpu": False,
                 "enable_internet": False,
                 "dataset_sources": [manifest["dataset"]],
-                "model_sources": [profile.source],
+                "model_sources": (
+                    [PROFILES[k].source for k in ("gemma4", "qwen7b")]
+                    if args.cpu_model_preflight
+                    else [profile.source]
+                ),
                 "competition_sources": [],
                 "kernel_sources": [],
-                "machine_shape": "NvidiaTeslaT4",
+                "machine_shape": "None" if args.cpu_model_preflight else "NvidiaTeslaT4",
             },
             indent=2,
         )
@@ -177,6 +208,7 @@ def main() -> int:
                 "dummy_tasks_per_layout": 21,
                 "resume_verified": True,
                 "gpu_tested_locally": False,
+                "wheel_sha256": manifest.get("wheel_sha256", {}),
             },
             indent=2,
         )
@@ -197,6 +229,8 @@ def main() -> int:
                 "kernel": f"{args.owner}/{kernel_slug}",
                 "model_profile": args.model_profile,
                 "model_source": profile.source,
+                "measurement_protocol": manifest.get("measurement_protocol"),
+                "wheel_sha256": manifest.get("wheel_sha256", {}),
             },
             indent=2,
         )
