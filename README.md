@@ -5,7 +5,7 @@ công cụ trong môi trường tiếng Việt giả lập (hành chính–học
 
 ## Trạng thái
 
-- Trạng thái hiện tại: **Phase 1 qua kiểm tra lại; Phase 2 cần sửa lỗi benchmark**.
+- Trạng thái hiện tại: **Phase 2 clean_v1.1 đã được khóa và chấp nhận dưới automated-QA waiver**.
 - Kế hoạch gốc: file Word ở root và thư mục `plan/`.
 - Contract triển khai đã chuẩn hóa: `docs/`.
 - A0, smoke environment và clean benchmark 250 task đã được tạo; real-model

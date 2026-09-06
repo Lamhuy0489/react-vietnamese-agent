@@ -4,12 +4,14 @@
 
 Owner đã phê duyệt bản thay thế. v1.1 đã qua QA thực thi 250/250 và khóa split
 150/100 không tách nhóm ngữ nghĩa. Kaggle v1.1 COMPLETE ngay lần đầu: 21/21
-terminal, 0 crash, 318 trace hợp lệ, 5/21 Dev diagnostic. 96 test pass; chưa
-đóng toàn bộ Phase 2 vì còn kiểm tra độ đầy đủ annotation/cách trả lời tương đương. Đọc
+terminal, 0 crash, 318 trace hợp lệ, 5/21 Dev diagnostic. 96 test pass. Đã
+đóng Phase 2 cho benchmark frozen dưới automated-QA waiver; các giới hạn
+annotation/cách trả lời tương đương được ghi rõ và không được diễn giải quá mức. Đọc
 [clean_v11_progress.md](clean_v11_progress.md) trước phần audit lịch sử bên dưới.
 
-Cập nhật: 2026-09-05, sau audit lại. **Phase 2 chưa đạt acceptance; kết luận
-hoàn thành trước đó đã được rút lại.** Xem `integrity_audit_20260905.md`.
+Cập nhật: 2026-09-06, sau audit lại. **clean_v1.0 bị quarantine; clean_v1.1 là
+benchmark thay thế đã được chấp nhận dưới waiver.** Kết luận cũ về v1.0
+được rút lại; xem `integrity_audit_20260905.md` để biết lịch sử.
 
 ## Đã hoàn thành
 
@@ -20,15 +22,16 @@ hoàn thành trước đó đã được rút lại.** Xem `integrity_audit_2026
 - Kaggle authoritative run: kernel v4, Dataset v5, Qwen2.5-3B-Instruct v1,
   NVIDIA T4, internet tắt.
 - Minh review được chủ dự án cho phép hoãn; lời mời GitHub vẫn giữ nguyên.
-- Phase 2 đã tạo 250 task, môi trường, split 150/100 và Dev pilot, nhưng chưa
-  đạt QA: 30 cặp cùng fact/nguồn bị gán nhóm khác nhau, 12 cặp xuyên Dev/Test.
+- clean_v1.1 đã tạo 250 task, môi trường, split 150/100 và Dev pilot; v1.0
+  trước đó có 30 cặp cùng fact/nguồn bị gán nhóm khác nhau, 12 cặp xuyên Dev/Test.
 
 ## Trạng thái chất lượng
 
 - Local Replay: 20/20 success, 20/20 terminal, 0 crash, 8/8 tool coverage.
 - Real model: 20/20 terminal, 0 crash, 3/20 task success, 78,87% schema
   validity; đây là smoke metric, không phải kết quả luận văn.
-- Test sau audit: 77 pass; Ruff/mypy pass. Software pass không thay thế QA dữ liệu.
+- Test sau audit: 96 pass; Ruff/mypy/setup pass. Software pass không thay thế
+  thẩm định ngôn ngữ độc lập.
 - Phase 1 audit lại: hai lượt Replay/Dummy có cùng hành vi khi bỏ timestamp/run
   ID; 8/8 artifact Kaggle khớp hash, 262 sự kiện hợp lệ, không chạy lại model.
 - Phase 2 oracle mẫu: 250/250, đủ 8 tool; review flag được gán sẵn nên không

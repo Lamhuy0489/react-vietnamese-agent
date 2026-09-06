@@ -56,3 +56,17 @@ the fix.
 Raw artifacts remain ignored at `results/phase2/kaggle_v2`. Their hashes and
 the complete audit record are frozen in
 `experiments/manifests/phase2_kaggle_v2.json`.
+
+## clean_v1.1 replacement acceptance (2026-09-06)
+
+The quarantined v1.0 was not repaired in place. The replacement `clean_v1.1`
+is independently generated and sealed with 250 tasks (150 Dev/100 Test), exact
+category quotas, executable oracle QA 250/250, and group-disjoint split hashes.
+Its dataset hash is recorded in `experiments/manifests/phase2_clean_v11_kaggle_v1.json`.
+
+The same-machine owner waiver replaces human peer review with deterministic
+automated checks; this does not claim independent language-quality review.
+The Dev-only Kaggle pilot completed and was audited (21 terminal tasks, 0 model
+errors, 318 valid trace events, 5/21 diagnostic success). No Test inference or
+Test-driven tuning occurred. Phase 2 is accepted for the frozen benchmark;
+the pilot score remains diagnostic and is not a final Test result.
