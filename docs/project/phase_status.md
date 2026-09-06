@@ -94,7 +94,7 @@ The review waiver still applies; no peer review or new account is requested.
 
 Phase 2 is accepted for the frozen synthetic benchmark under the owner waiver.
 The pilot is Dev-only diagnostic evidence; held-out Test remains sealed and
-must not be accessed without explicit scope. Do not begin Phase 3 yet.
+must not be accessed without explicit scope. Phase 3 was subsequently authorized below.
 
 ## Phase 3 progress
 
@@ -104,3 +104,10 @@ must not be accessed without explicit scope. Do not begin Phase 3 yet.
   matched benign controls (40 Dev families / 30 Test families).
 - [ ] Semantic/security review and final freeze are pending; no model run or
   Test-driven tuning has occurred.
+
+## Authorized Dev pilot extension
+
+- Three-model comparison authorized: historical Qwen + Gemma + Llama on the
+  same 21 clean_v1.1 Dev tasks. See `knowledge/multimodel_dev_pilot.md`.
+- Gemma/Llama file access currently returns 403 for `huylmhuhu`; no new GPU
+  submission yet. Phase 3 draft and held-out model-run status remain unchanged.

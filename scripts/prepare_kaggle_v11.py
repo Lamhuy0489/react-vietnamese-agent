@@ -12,8 +12,9 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
-from prepare_kaggle_phase2 import MODEL_SOURCE, git_output, sha256
+from prepare_kaggle_phase2 import git_output, sha256
 
+from react_agent.llm.pilot_profiles import PROFILES
 from react_agent.validation.clean_v11_seal import validate_seal
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -37,7 +38,17 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--owner", required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--model-profile", choices=sorted(PROFILES), default="qwen")
+    parser.add_argument("--dataset-slug", default="react-vn-clean-v11-dev")
+    parser.add_argument("--kernel-slug")
     args = parser.parse_args()
+    import re
+
+    profile = PROFILES[args.model_profile]
+    kernel_slug = args.kernel_slug or f"react-vn-v11-pilot-{args.model_profile}"
+    for slug in (args.owner, args.dataset_slug, kernel_slug):
+        if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug):
+            raise ValueError("invalid owner/dataset/kernel slug")
     if git_output("status", "--porcelain"):
         raise RuntimeError("commit frozen source and dataset before packaging")
     failures = validate_seal(ROOT / "data/clean/v1_1")
@@ -72,8 +83,10 @@ def main() -> int:
         "benchmark": "clean_v1.1",
         "archive_sha256": sha256(archive),
         "file_sha256": {name: sha256(ROOT / name) for name in files},
-        "model_source": MODEL_SOURCE,
-        "dataset": f"{args.owner}/react-vn-clean-v11-dev",
+        "model_source": profile.source,
+        "model_profile": args.model_profile,
+        "chat_adapter": profile.chat_adapter,
+        "dataset": f"{args.owner}/{args.dataset_slug}",
         "dataset_version": 1,
     }
     (dataset / "frozen_manifest.json").write_text(
@@ -92,8 +105,8 @@ def main() -> int:
     (kernel_dir / "kernel-metadata.json").write_text(
         json.dumps(
             {
-                "id": f"{args.owner}/react-vn-clean-v11-dev-pilot",
-                "title": "ReAct Vietnamese Clean v1.1 Dev Pilot",
+                "id": f"{args.owner}/{kernel_slug}",
+                "title": kernel_slug.replace("-", " "),
                 "code_file": "phase2_kernel.py",
                 "language": "python",
                 "kernel_type": "script",
@@ -102,7 +115,7 @@ def main() -> int:
                 "enable_tpu": False,
                 "enable_internet": False,
                 "dataset_sources": [manifest["dataset"]],
-                "model_sources": [MODEL_SOURCE],
+                "model_sources": [profile.source],
                 "competition_sources": [],
                 "kernel_sources": [],
                 "machine_shape": "NvidiaTeslaT4",
@@ -137,6 +150,8 @@ def main() -> int:
                 "scripts/run_clean_v11_dev.py",
                 "--output",
                 str(output),
+                "--model-profile",
+                args.model_profile,
             )
             kernel.run(
                 project,
@@ -145,6 +160,8 @@ def main() -> int:
                 "--output",
                 str(output),
                 "--resume",
+                "--model-profile",
+                args.model_profile,
             )
     (args.output / "preflight_receipt.json").write_text(
         json.dumps(
@@ -153,11 +170,33 @@ def main() -> int:
                 "git_commit": manifest["git_commit"],
                 "archive_sha256": manifest["archive_sha256"],
                 "wrapper_sha256": sha256(kernel_path),
+                "model_source": profile.source,
+                "model_profile": args.model_profile,
                 "layouts": ["archive", "expanded"],
                 "runtime_tools": 8,
                 "dummy_tasks_per_layout": 21,
                 "resume_verified": True,
                 "gpu_tested_locally": False,
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    sealed = json.loads((ROOT / "data/clean/v1_1/manifests/benchmark_manifest.json").read_text())
+    (args.output / "expected_run.json").write_text(
+        json.dumps(
+            {
+                "status": "prepared_not_submitted",
+                "source_commit": manifest["git_commit"],
+                "archive_sha256": manifest["archive_sha256"],
+                "wrapper_sha256": sha256(kernel_path),
+                "dataset_hash": sealed["dataset_hash"],
+                "dataset": manifest["dataset"],
+                "dataset_version": 1,
+                "kernel": f"{args.owner}/{kernel_slug}",
+                "model_profile": args.model_profile,
+                "model_source": profile.source,
             },
             indent=2,
         )

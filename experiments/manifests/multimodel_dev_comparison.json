@@ -1,0 +1,89 @@
+{
+  "scope": "21-task Dev diagnostic; no Test or final model ranking",
+  "complete": false,
+  "conditions": {
+    "qwen": {
+      "status": "audited",
+      "source": "qwen-lm/qwen2.5/transformers/3b-instruct/1",
+      "successes": 5,
+      "tasks": 21,
+      "success_rate": 0.23809523809523808,
+      "schema_validity_rate": 0.7931034482758621,
+      "terminal_statuses": {
+        "completed": 18,
+        "max_steps": 1,
+        "parse_failure": 2
+      },
+      "failure_reasons": {
+        "answer_facts": 13,
+        "arguments": 12,
+        "clarification_question": 3,
+        "fault_observation": 3,
+        "forbidden_tool": 3,
+        "required_evidence": 10,
+        "terminal:max_steps": 1,
+        "terminal:parse_failure": 2,
+        "tool_sequence": 14,
+        "unresolved_tool_error": 8
+      },
+      "task_seconds_mean": 11.406421285714284,
+      "git_commit": "42c1d45ebf349884496dd9f3029b640027f8622d",
+      "chat_adapter": "native",
+      "evaluation_sha256": "c67ee7f55da3b162c61321f3b14bd74c36ef59f17bd55ec8837b975f230b9f37",
+      "audit_sha256": "a2b6ff3341a0a0294a8630e0b3bf8c4ab36f2cac4026e24025f2281169840635"
+    },
+    "gemma": {
+      "status": "not_run",
+      "source": "google/gemma-2/transformers/gemma-2-2b-it/2"
+    },
+    "llama": {
+      "status": "not_run",
+      "source": "metaresearch/llama-3.2/transformers/3b-instruct/1"
+    }
+  },
+  "shared_inputs": {
+    "task_ids": [
+      "clean_0002",
+      "clean_0004",
+      "clean_0005",
+      "clean_0042",
+      "clean_0046",
+      "clean_0047",
+      "clean_0081",
+      "clean_0082",
+      "clean_0083",
+      "clean_0132",
+      "clean_0134",
+      "clean_0135",
+      "clean_0171",
+      "clean_0173",
+      "clean_0174",
+      "clean_0197",
+      "clean_0199",
+      "clean_0200",
+      "clean_0226",
+      "clean_0228",
+      "clean_0229"
+    ],
+    "file_sha256": {
+      "agent": "addc4f29dd7322a93e26c0e7e1a2cbb44670f1a38d2a01e36a7de9984486ebf5",
+      "dev": "ce1cda2a258c6d00b31a428b10258bbda7cade77c4b3841aa8cd1af34227a0d3",
+      "environment_manifest": "4241e73fa3ada87dd9d595d5db0a249966a5cead7da04a37cba7cac020b787e9",
+      "faults": "3da01fa7c945cc00bb72a1e505b4db77bd339b19f15060ae6f37c3c3df06bceb",
+      "generation": "e4ceb4c787446dc4253d42889750b693d45284531e63ea667ed56aedb18c7a44",
+      "selection": "1548683a7c985d08b867a4adc276071b08c36c5e14d29121e96966185f86beba"
+    },
+    "generation": {
+      "max_new_tokens": 512,
+      "seed": 42,
+      "temperature": 0.0
+    },
+    "evaluator": "clean_v1_1_typed_v1"
+  },
+  "limitations": [
+    "Historical Qwen is reused; source commits/software images can differ.",
+    "Gemma merges system text into first user turn and consecutive user turns.",
+    "Different parameter counts; latency is descriptive, not a controlled speed rank.",
+    "Fixed evaluator may reject valid unannotated answers/tool paths."
+  ]
+}

@@ -9,6 +9,7 @@ import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from react_agent.llm.pilot_profiles import PROFILES
 from react_agent.schemas.trace import TraceEvent
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,13 +24,18 @@ def main() -> int:
     parser.add_argument("artifacts", type=Path)
     parser.add_argument("--evaluation", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument(
+        "--expected",
+        type=Path,
+        default=ROOT / "experiments/manifests/phase2_clean_v11_kaggle_v1.json",
+    )
     args = parser.parse_args()
     if args.output.exists():
         raise ValueError("preserve existing audit receipt")
     run = args.artifacts / "phase2_clean_dev_pilot"
-    expected = json.loads(
-        (ROOT / "experiments/manifests/phase2_clean_v11_kaggle_v1.json").read_text()
-    )
+    expected = json.loads(args.expected.read_text())
+    profile_key = expected.get("model_profile", "qwen")
+    profile = PROFILES[profile_key]
     identity = json.loads((run / "identity.json").read_text())
     bundle_info = json.loads((args.artifacts / "kaggle_bundle_info.json").read_text())
     summary = json.loads((run / "summary.json").read_text())
@@ -50,7 +56,13 @@ def main() -> int:
         failures.append("worker bundle mismatch")
     if identity["task_ids"] != selection or evaluation["source_identity"] != identity:
         failures.append("task/evaluation identity mismatch")
-    if identity["backend"] != "hf" or identity["model_revision"] != "transformers/3b-instruct/1":
+    if (
+        identity["backend"] != "hf"
+        or identity["model_id"] != profile.model_id
+        or identity["model_revision"] != profile.revision
+        or bundle_info["model_source"] != profile.source
+        or identity.get("chat_adapter", "native") != profile.chat_adapter
+    ):
         failures.append("model identity mismatch")
     paths = {
         "agent": ROOT / "configs/agent/A0.yaml",
@@ -68,6 +80,7 @@ def main() -> int:
     events: list[TraceEvent] = []
     statuses: Counter[str] = Counter()
     run_ids: set[str] = set()
+    task_seconds: list[float] = []
     for task_id in selection:
         task_root = run / "tasks" / task_id
         checkpoint = json.loads((task_root / "result.json").read_text())
@@ -81,6 +94,7 @@ def main() -> int:
             failures.append(f"terminal boundary: {task_id}")
             continue
         run_ids.add(trace[0].run_id)
+        task_seconds.append((trace[-1].timestamp - trace[0].timestamp).total_seconds())
         statuses[trace[-1].data["status"]] += 1
         calls: dict[str, list[str]] = defaultdict(list)
         for event in trace:
@@ -113,12 +127,19 @@ def main() -> int:
         "failures": failures,
         "kernel_version": 1,
         "source_commit": expected["source_commit"],
+        "model_profile": profile_key,
+        "model_source": profile.source,
+        "chat_adapter": profile.chat_adapter,
         "dataset_hash": expected["dataset_hash"],
         "tasks": len(selection),
         "terminal_runs": len(run_ids),
         "statuses": dict(statuses),
         "trace_events": len(events),
         "schema_validity_rate": (outputs - parse_errors) / outputs,
+        "model_outputs": outputs,
+        "parse_errors": parse_errors,
+        "task_seconds_total": sum(task_seconds),
+        "task_seconds_mean": sum(task_seconds) / len(task_seconds),
         "dev_diagnostic_successes": evaluation["successes"],
         "evaluation_scope": evaluation["scope"],
         "credential_secret_matches": secret_matches,

@@ -1,5 +1,17 @@
 # Decision Log
 
+## 2026-09-06 — Owner authorizes three-model Dev pilot
+
+- Compare existing 21-task clean_v1.1 Dev pilot with Qwen, Google Gemma and
+  Meta Llama. Reuse historical Qwen; prepare Gemma 2 2B IT v2 and Llama 3.2 3B
+  Instruct v1 from official Kaggle sources before observing their outputs.
+- Keep task selection, A0, generation limits and evaluator fixed. Record native
+  chat-template differences; Gemma requires merging system text into user text.
+- API metadata confirms model handles; weight-file listing returns 403 for both
+  additional models while Qwen succeeds. Await account access before submission.
+- This is Dev-only diagnostic scope alongside Phase 3. See
+  `knowledge/multimodel_dev_pilot.md` for comparison and audit protocol.
+
 ## 2026-09-06 — Replacement seal and first-attempt Kaggle evidence
 
 - Frozen v1.1 hash `692ca92a214b0da87245ca7d11a074a74d416558f377bc448c125bd7d387be38`;

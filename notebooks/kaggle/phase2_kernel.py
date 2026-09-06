@@ -66,7 +66,12 @@ def verify_frozen_files(project_root: Path, manifest: dict[str, Any]) -> None:
 def prepare_project(input_root: Path, project_root: Path) -> dict[str, Any]:
     manifest_path = find_unique(input_root, "frozen_manifest.json")
     manifest: dict[str, Any] = json.loads(manifest_path.read_text(encoding="utf-8"))
-    if manifest.get("model_source") != MODEL_SOURCE:
+    permitted_sources = {
+        MODEL_SOURCE,
+        "google/gemma-2/transformers/gemma-2-2b-it/2",
+        "metaresearch/llama-3.2/transformers/3b-instruct/1",
+    }
+    if manifest.get("model_source") not in permitted_sources:
         raise RuntimeError("manifest model source does not match the frozen condition")
     bundle_root = manifest_path.parent
     archives = list(bundle_root.glob("react-vietnamese-agent-phase2-dev.tar.gz"))
@@ -126,7 +131,14 @@ def main(
 ) -> None:
     project_root = work_root / "react-vietnamese-agent"
     manifest = prepare_project(input_root, project_root)
-    model_path = find_model_path(input_root)
+    profile_key = manifest.get("model_profile", "qwen")
+    sys.path.insert(0, str(project_root / "src"))
+    from react_agent.llm.pilot_profiles import PROFILES, find_pilot_model
+
+    profile = PROFILES[profile_key]
+    if profile.source != manifest["model_source"]:
+        raise RuntimeError("profile and frozen model source differ")
+    model_path = find_pilot_model(input_root, profile)
     frozen_commit = str(manifest["git_commit"])
     (work_root / "kaggle_bundle_info.json").write_text(
         json.dumps(
@@ -135,7 +147,9 @@ def main(
                 "archive_sha256": manifest["archive_sha256"],
                 "dataset": manifest["dataset"],
                 "dataset_version": manifest["dataset_version"],
-                "model_source": MODEL_SOURCE,
+                "model_source": profile.source,
+                "model_profile": profile_key,
+                "chat_adapter": profile.chat_adapter,
                 "model_path": str(model_path),
                 "test_in_bundle": False,
                 "private_ground_truth_in_bundle": False,
@@ -170,6 +184,7 @@ def main(
         frozen_commit,
         "scripts/run_clean_v11_dev.py" if replacement else "scripts/run_hf_clean_dev.py",
         *(["--backend", "hf"] if replacement else []),
+        *(["--model-profile", profile_key] if replacement else []),
         "--model-path",
         str(model_path),
         "--output",

@@ -1,5 +1,14 @@
 # Trạng thái hiện tại
 
+## Pilot ba LLM — chuẩn bị 2026-09-06
+
+Owner chọn Qwen + Google Gemma + Meta Llama trên cùng 21 Dev task.
+Worker, model identity, chat adapter và bộ so sánh đã được bổ sung; 102 tests pass.
+Qwen lịch sử đã được audit lại: 5/21, schema validity 79,31%, trung bình
+11,41 giây/task (không gồm load model). Gemma/Llama chưa chạy vì file API trả
+403 trên tài khoản `huylmhuhu`. Xem [multimodel_dev_pilot.md](multimodel_dev_pilot.md).
+Phase 3 vẫn đang draft; phần dưới ghi lịch sử Phase 1–2.
+
 ## Cập nhật mới nhất — 2026-09-06
 
 Owner đã phê duyệt bản thay thế. v1.1 đã qua QA thực thi 250/250 và khóa split

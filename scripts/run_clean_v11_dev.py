@@ -9,6 +9,7 @@ import json
 import os
 from collections import Counter
 from datetime import UTC, datetime
+from importlib.metadata import version
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +18,7 @@ from react_agent.agent.checkpoint import atomic_json, run_checkpointed
 from react_agent.config import load_generation_config, load_runtime_config
 from react_agent.llm import DummyBackend
 from react_agent.llm.base import LLMBackend
+from react_agent.llm.pilot_profiles import PROFILES
 from react_agent.schemas.clean_task import CleanPublicTask, FaultSpec
 from react_agent.schemas.task import RuntimeTask
 from react_agent.tools.factory import build_clean_registry
@@ -34,6 +36,7 @@ def main() -> int:
     parser.add_argument("--backend", choices=["dummy", "hf"], default="dummy")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--model-path", type=Path)
+    parser.add_argument("--model-profile", choices=sorted(PROFILES), default="qwen")
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     public_path = CLEAN_ROOT / "splits/dev.jsonl"
@@ -62,7 +65,10 @@ def main() -> int:
             raise ValueError("--model-path required for hf")
         from run_hf_smoke import load_backend
 
-        backend = load_backend(args.model_path, "qwen-lm/qwen2.5", "transformers/3b-instruct/1")
+        profile = PROFILES[args.model_profile]
+        backend = load_backend(
+            args.model_path, profile.model_id, profile.revision, chat_adapter=profile.chat_adapter
+        )
     else:
         backend = DummyBackend()
     identity: dict[str, Any] = {
@@ -72,6 +78,8 @@ def main() -> int:
         "backend": args.backend,
         "model_id": backend.model_id,
         "model_revision": backend.model_revision,
+        "model_profile": args.model_profile,
+        "chat_adapter": PROFILES[args.model_profile].chat_adapter,
         "generation": generation_config.model_dump(),
         "file_sha256": {
             name: sha256(path)
@@ -85,6 +93,15 @@ def main() -> int:
             }.items()
         },
     }
+    if args.backend == "hf":
+        identity["software_versions"] = {
+            name: version(name) for name in ("torch", "transformers", "tokenizers", "accelerate")
+        }
+        identity["model_metadata_sha256"] = {
+            name: sha256(args.model_path / name)
+            for name in ("config.json", "tokenizer_config.json", "generation_config.json")
+            if (args.model_path / name).is_file()
+        }
 
     def runtime_factory(task: RuntimeTask) -> AgentRuntime:
         return AgentRuntime(

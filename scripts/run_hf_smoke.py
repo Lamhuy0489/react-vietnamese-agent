@@ -47,7 +47,9 @@ def select_tasks(all_tasks: list[SmokeTask], task_id: str | None) -> list[SmokeT
     return selected
 
 
-def load_backend(model_path: Path, model_id: str, model_revision: str) -> HFBackend:
+def load_backend(
+    model_path: Path, model_id: str, model_revision: str, *, chat_adapter: str = "native"
+) -> HFBackend:
     import torch  # type: ignore[import-not-found]
     from transformers import (  # type: ignore[import-not-found]
         AutoModelForCausalLM,
@@ -61,6 +63,19 @@ def load_backend(model_path: Path, model_id: str, model_revision: str) -> HFBack
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(42)
     tokenizer = AutoTokenizer.from_pretrained(model_path, local_files_only=True)
+    from react_agent.llm.pilot_profiles import adapt_messages
+
+    # Compile a context with a correction before allocating model weights.
+    probe = [
+        {"role": "system", "content": "System"},
+        {"role": "user", "content": "Task"},
+        {"role": "assistant", "content": "Action"},
+        {"role": "user", "content": "Observation"},
+        {"role": "user", "content": "Correction"},
+    ]
+    tokenizer.apply_chat_template(
+        adapt_messages(probe, chat_adapter), tokenize=False, add_generation_prompt=True
+    )
     model = AutoModelForCausalLM.from_pretrained(
         model_path,
         torch_dtype=torch.float16,
@@ -68,7 +83,10 @@ def load_backend(model_path: Path, model_id: str, model_revision: str) -> HFBack
         local_files_only=True,
     )
     generator = pipeline("text-generation", model=model, tokenizer=tokenizer)
-    return HFBackend(generator, model_id=model_id, model_revision=model_revision)
+    def adapted_generator(messages: list[dict[str, str]], **kwargs: Any) -> Any:
+        return generator(adapt_messages(messages, chat_adapter), **kwargs)
+
+    return HFBackend(adapted_generator, model_id=model_id, model_revision=model_revision)
 
 
 def run_suite(
