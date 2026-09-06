@@ -109,5 +109,13 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
 
 - Three-model comparison authorized: historical Qwen + Gemma + Llama on the
   same 21 clean_v1.1 Dev tasks. See `knowledge/multimodel_dev_pilot.md`.
-- Gemma/Llama file access currently returns 403 for `huylmhuhu`; no new GPU
-  submission yet. Phase 3 draft and held-out model-run status remain unchanged.
+- Owner subsequently selected Gemma 4 E4B IT and Qwen2.5 7B Instruct with a
+  predeclared performance protocol. Google access is resolved.
+- Both measured GPU kernel v1 runs completed: 21 terminal tasks each, zero
+  model errors, exact artifact/input/source audits passed. Gemma 4 strict Dev
+  success 6/21; Qwen 7B 3/21. No semantic retries or held-out inference.
+- [Audited report](../evaluation/measured_dev_pilot_report.md) includes paired
+  uncertainty, latency, throughput, memory and failure diagnostics. These are
+  small selected Dev results, not final thesis results or a backbone selection.
+- Llama remains not run pending Meta access. The measured two-condition pilot
+  is complete; the three-family comparison and Phase 3 acceptance are not.

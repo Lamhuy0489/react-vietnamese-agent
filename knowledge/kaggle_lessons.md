@@ -43,3 +43,24 @@ The standard CLI hid the detailed server message; the API HTTP response body
 identified the collision. Use distinct Dataset/kernel slugs and titles. CPU
 machine_shape should be omitted/null, not the literal string `None`.
 Failed SaveKernel requests are not completed or failed inference attempts.
+
+## Measured pilot completion lessons — 2026-09-06
+
+- Real Gemma 4/Qwen 7B tokenizers/configs and tiny random generation passed on
+  a Kaggle CPU kernel before GPU submission. Local Intel macOS PyTorch 2.2.2
+  is not a substitute for validating this newer Transformers runtime.
+- Offline wheelhouse pins Transformers 5.5.0 and compatible dependencies with
+  hashes; provide CPython 3.11/3.12 regex wheels for the images in scope.
+  Do not replace Kaggle's Torch/CUDA stack blindly. Both measured runs actually
+  reported Torch 2.10.0+cu128, Transformers 5.5.0, tokenizers 0.22.2,
+  accelerate 1.10.1 and two Tesla T4 GPUs.
+- Both GPU kernels completed on v1 after CPU/bundle preflight. Record this
+  separately from the earlier metadata 409 calls, which never ran inference.
+- `kernels output --page-size 1000` returned HTTP 400 in this session;
+  `--page-size 100` worked. This is observed behavior, not a universal API limit.
+- Select only bundle info and run artifacts when downloading. Installing the
+  offline dependencies under `/kaggle/working` causes thousands of dependency
+  files to appear in exported outputs; CLI pagination can remain slow even
+  with filename filtering. Check required checkpoint coverage, not CLI silence.
+- Never download over audited files. Retain manifest hashes; regenerate tables
+  from saved measurements without spending another GPU attempt for low scores.

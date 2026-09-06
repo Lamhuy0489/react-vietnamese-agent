@@ -2,6 +2,27 @@
 
 ## Latest: measured Gemma 4 / Qwen 7B pilot
 
+**Completed and audited, 2026-09-06.** Both GPU v1 conditions have all 21
+terminal checkpoints, zero model errors and zero credential-secret matches.
+Gemma 4: strict 6/21, mean 11.66 s/task, schema 100%; Qwen 7B: strict 3/21,
+mean 10.92 s/task, schema 94.74%. The paired latency interval includes zero;
+this selected Dev pilot does not establish a general winner.
+
+- [Methods, interpretation and reproducibility](../docs/evaluation/measured_dev_pilot_report.md).
+- [Generated tables](../experiments/reports/measured_dev21_v1/report.md),
+  [JSON](../experiments/reports/measured_dev21_v1/report.json),
+  [CSV](../experiments/reports/measured_dev21_v1/tasks.csv).
+- GPU source: `58fdeb510d1a8e3265c60f97650f64e8898700e4`; private kernels
+  `huylmhuhu/react-vn-gemma4-measured-run-v1` and
+  `huylmhuhu/react-vn-qwen7b-measured-run-v1`, each version 1.
+- CPU preflight COMPLETE and valid: real tokenizers/configs, two tiny random
+  generations, zero benchmark tasks, no GPU. Submission snapshot and completion
+  manifest are retained under `experiments/manifests/measured_pilot_*`.
+- Llama remains not run pending Meta access. Historical Qwen 3B remains a
+  reference only. Phase 3 is still draft; no held-out model inference occurred.
+
+## Preparation history (superseded by completion above)
+
 Owner now requests Gemma 4 and a stronger Qwen. Official weight listings confirm
 access to Gemma 4 E4B IT v1 and Qwen2.5 7B Instruct v1. Google access has been
 resolved. The unexecuted Gemma 2 plan below is historical; Llama remains pending.
@@ -24,7 +45,7 @@ Report generator: `scripts/report_measured_pilot.py`; it requires audited exact
 inputs/software/hardware and exports JSON, per-task CSV and Markdown. New
 Gemma4/Qwen7B measurements are still pending CPU preflight and GPU execution.
 
-## Scope approved 2026-09-06
+## Original three-family scope approved 2026-09-06 (historical access state)
 
 Owner requests the same 21 clean_v1.1 Dev tasks on three LLM families and
 specifically prefers Google Gemma and Meta Llama alongside Qwen. This is an

@@ -176,3 +176,21 @@ and are not inferred here.
   permitted during authoring.
 - The draft is not Phase 3 acceptance evidence until semantic/security review,
   overlay validation, and reproducibility checks pass.
+
+## 2026-09-06 — Measured Dev pilot completed; no final backbone decision
+
+- Owner requested Gemma 4, a larger Qwen and research-style efficiency metrics.
+  The predeclared `dev21_performance_v1` protocol supersedes the unexecuted
+  Gemma 2 condition; the three-family final capability target is unchanged.
+- Gemma 4 E4B IT v1 and Qwen2.5 7B Instruct v1 each completed one 21-task Dev
+  run from source `58fdeb510d1a8e3265c60f97650f64e8898700e4`, same two-T4
+  hardware class, FP16/SDPA, pinned software, native templates, no thinking.
+- Exact input/source/measurement and checkpoint audits pass. Strict scores
+  remain 6/21 and 3/21; no semantic retries, evaluator edits or hidden Test use.
+  Post-inference reporting adds presentation tables only, not new score rules.
+- Publish selected aggregate JSON/CSV/Markdown, figures and hash receipts in
+  GitHub; raw synthetic trajectories stay ignored locally and on private Kaggle.
+- Do not interpret the small selected Dev set, heterogeneous tokenizers,
+  single-run timings or path-constrained evaluator as a final model ranking.
+  Historical Qwen 3B is not a controlled timing comparator. Meta Llama is
+  pending access and is not assigned a zero score. Phase 3 stays in progress.

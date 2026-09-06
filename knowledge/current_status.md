@@ -1,15 +1,26 @@
 # Trạng thái hiện tại
 
-## Pilot ba LLM — chuẩn bị 2026-09-06
+## Mới nhất: pilot có đo hiệu suất đã hoàn tất — 2026-09-06
 
-Owner chọn Qwen + Google Gemma + Meta Llama trên cùng 21 Dev task.
-Worker, model identity, chat adapter và bộ so sánh đã được bổ sung; 102 tests pass.
-Qwen lịch sử đã được audit lại: 5/21, schema validity 79,31%, trung bình
-11,41 giây/task (không gồm load model). Gemma/Llama chưa chạy vì file API trả
-403 trên tài khoản `huylmhuhu`. Xem [multimodel_dev_pilot.md](multimodel_dev_pilot.md).
-Phase 3 vẫn đang draft; phần dưới ghi lịch sử Phase 1–2.
+Gemma 4 E4B IT và Qwen2.5 7B Instruct đã chạy xong cùng 21 Dev task trên
+Kaggle (mỗi model kernel v1, hai T4, cùng source/software, không chạy lại lỗi
+ngữ nghĩa). CPU preflight pass; hai audit pass, 0 model errors, 0 secret matches.
+Gemma đạt strict 6/21, trung bình 11,66 giây/task; Qwen 7B đạt 3/21,
+10,92 giây/task. Schema validity tương ứng 100% và 94,74%.
 
-## Cập nhật mới nhất — 2026-09-06
+[Báo cáo và giới hạn](../docs/evaluation/measured_dev_pilot_report.md),
+[bảng/CSV/JSON](../experiments/reports/measured_dev21_v1/report.md),
+[nhật ký pilot](multimodel_dev_pilot.md). Các script sinh báo cáo/biểu đồ từ
+artifact đã audit; không sửa điểm tay và không chốt model từ mẫu nhỏ này.
+Qwen 3B lịch sử không thuộc so sánh tốc độ có kiểm soát. Llama vẫn chưa chạy
+vì chưa được cấp quyền Meta; không ghi model thiếu thành điểm 0.
+Kiểm tra cuối: setup/Ruff/mypy pass, 107 tests pass; JSON/CSV/Markdown tái tạo
+khớp từng byte, biểu đồ PNG/PDF đã kiểm tra hiển thị.
+
+Phase 1 và Phase 2 v1.1 đã accepted; Phase 3 vẫn là draft cần semantic/overlay
+QA. Held-out Test chưa chạy model. Phần dưới là lịch sử Phase 1–2.
+
+## Lịch sử đóng Phase 2 — 2026-09-06
 
 Owner đã phê duyệt bản thay thế. v1.1 đã qua QA thực thi 250/250 và khóa split
 150/100 không tách nhóm ngữ nghĩa. Kaggle v1.1 COMPLETE ngay lần đầu: 21/21

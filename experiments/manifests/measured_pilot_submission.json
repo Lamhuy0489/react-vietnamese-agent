@@ -1,0 +1,128 @@
+{
+  "status": "gpu_submitted",
+  "cpu_preflight": {
+    "valid": true,
+    "gpu_used": false,
+    "benchmark_model_runs": 0,
+    "template_profiles": [
+      "gemma4",
+      "qwen7b"
+    ],
+    "tiny_random_generation_models": 2,
+    "versions": {
+      "torch": "2.10.0+cpu",
+      "transformers": "5.5.0",
+      "tokenizers": "0.22.2",
+      "accelerate": "1.10.1"
+    }
+  },
+  "cpu_receipt_sha256": "68a302789d53936bc7aec16abc83f12c1d364c36a1854a6c6337f6dd4ef83104",
+  "cpu_kernel": "huylmhuhu/react-vn-measured-preflight-check-v1",
+  "cpu_kernel_version": 1,
+  "conditions": {
+    "gemma4": {
+      "expected": {
+        "status": "kernel_v1_submitted",
+        "source_commit": "58fdeb510d1a8e3265c60f97650f64e8898700e4",
+        "archive_sha256": "95f96e34899eaf67cf5e3cb995ab28029510805d595413bb683e461d02364a29",
+        "wrapper_sha256": "4d5aa5fae0d8e35991763c8d770328522f1d43268975503c9691f587bfa20d57",
+        "dataset_hash": "692ca92a214b0da87245ca7d11a074a74d416558f377bc448c125bd7d387be38",
+        "dataset": "huylmhuhu/react-vn-gemma4-measured-data-v1",
+        "dataset_version": 1,
+        "kernel": "huylmhuhu/react-vn-gemma4-measured-run-v1",
+        "model_profile": "gemma4",
+        "model_source": "google/gemma-4/transformers/gemma-4-e4b-it/1",
+        "measurement_protocol": "dev21_performance_v1",
+        "wheel_sha256": {
+          "accelerate-1.10.1-py3-none-any.whl": "3621cff60b9a27ce798857ece05e2b9f56fcc71631cfb31ccf71f0359c311f11",
+          "hf_xet-1.4.2-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl": "77e8c180b7ef12d8a96739a4e1e558847002afe9ea63b6f6358b2271a8bdda1c",
+          "huggingface_hub-1.7.2-py3-none-any.whl": "288f33a0a17b2a73a1359e2a5fd28d1becb2c121748c6173ab8643fb342c850e",
+          "regex-2025.11.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl": "10483eefbfb0adb18ee9474498c9a32fcf4e594fbca0543bb94c48bac6183e2e",
+          "regex-2025.11.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl": "a12ab1f5c29b4e93db518f5e3872116b7e9b1646c9f9f426f777b50d44a09e8c",
+          "safetensors-0.6.2-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl": "8045db2c872db8f4cbe3faa0495932d89c38c899c603f21e9b6486951a5ecb8f",
+          "tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl": "369cc9fc8cc10cb24143873a0d95438bb8ee257bb80c71989e3ee290e8d72c67",
+          "transformers-5.5.0-py3-none-any.whl": "821a9ff0961abbb29eb1eb686d78df1c85929fdf213a3fe49dc6bd94f9efa944"
+        }
+      },
+      "preflight": {
+        "valid": true,
+        "git_commit": "58fdeb510d1a8e3265c60f97650f64e8898700e4",
+        "archive_sha256": "95f96e34899eaf67cf5e3cb995ab28029510805d595413bb683e461d02364a29",
+        "wrapper_sha256": "4d5aa5fae0d8e35991763c8d770328522f1d43268975503c9691f587bfa20d57",
+        "model_source": "google/gemma-4/transformers/gemma-4-e4b-it/1",
+        "model_profile": "gemma4",
+        "layouts": [
+          "archive",
+          "expanded"
+        ],
+        "runtime_tools": 8,
+        "dummy_tasks_per_layout": 21,
+        "resume_verified": true,
+        "gpu_tested_locally": false,
+        "wheel_sha256": {
+          "accelerate-1.10.1-py3-none-any.whl": "3621cff60b9a27ce798857ece05e2b9f56fcc71631cfb31ccf71f0359c311f11",
+          "hf_xet-1.4.2-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl": "77e8c180b7ef12d8a96739a4e1e558847002afe9ea63b6f6358b2271a8bdda1c",
+          "huggingface_hub-1.7.2-py3-none-any.whl": "288f33a0a17b2a73a1359e2a5fd28d1becb2c121748c6173ab8643fb342c850e",
+          "regex-2025.11.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl": "10483eefbfb0adb18ee9474498c9a32fcf4e594fbca0543bb94c48bac6183e2e",
+          "regex-2025.11.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl": "a12ab1f5c29b4e93db518f5e3872116b7e9b1646c9f9f426f777b50d44a09e8c",
+          "safetensors-0.6.2-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl": "8045db2c872db8f4cbe3faa0495932d89c38c899c603f21e9b6486951a5ecb8f",
+          "tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl": "369cc9fc8cc10cb24143873a0d95438bb8ee257bb80c71989e3ee290e8d72c67",
+          "transformers-5.5.0-py3-none-any.whl": "821a9ff0961abbb29eb1eb686d78df1c85929fdf213a3fe49dc6bd94f9efa944"
+        }
+      },
+      "kernel_metadata_sha256": "9b236ce9b644d67f3168dc4df44e710bff8fd1b3b7192f5208c409f40592fd2d"
+    },
+    "qwen7b": {
+      "expected": {
+        "status": "kernel_v1_submitted",
+        "source_commit": "58fdeb510d1a8e3265c60f97650f64e8898700e4",
+        "archive_sha256": "95f96e34899eaf67cf5e3cb995ab28029510805d595413bb683e461d02364a29",
+        "wrapper_sha256": "4d5aa5fae0d8e35991763c8d770328522f1d43268975503c9691f587bfa20d57",
+        "dataset_hash": "692ca92a214b0da87245ca7d11a074a74d416558f377bc448c125bd7d387be38",
+        "dataset": "huylmhuhu/react-vn-qwen7b-measured-data-v1",
+        "dataset_version": 1,
+        "kernel": "huylmhuhu/react-vn-qwen7b-measured-run-v1",
+        "model_profile": "qwen7b",
+        "model_source": "qwen-lm/qwen2.5/transformers/7b-instruct/1",
+        "measurement_protocol": "dev21_performance_v1",
+        "wheel_sha256": {
+          "accelerate-1.10.1-py3-none-any.whl": "3621cff60b9a27ce798857ece05e2b9f56fcc71631cfb31ccf71f0359c311f11",
+          "hf_xet-1.4.2-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl": "77e8c180b7ef12d8a96739a4e1e558847002afe9ea63b6f6358b2271a8bdda1c",
+          "huggingface_hub-1.7.2-py3-none-any.whl": "288f33a0a17b2a73a1359e2a5fd28d1becb2c121748c6173ab8643fb342c850e",
+          "regex-2025.11.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl": "10483eefbfb0adb18ee9474498c9a32fcf4e594fbca0543bb94c48bac6183e2e",
+          "regex-2025.11.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl": "a12ab1f5c29b4e93db518f5e3872116b7e9b1646c9f9f426f777b50d44a09e8c",
+          "safetensors-0.6.2-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl": "8045db2c872db8f4cbe3faa0495932d89c38c899c603f21e9b6486951a5ecb8f",
+          "tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl": "369cc9fc8cc10cb24143873a0d95438bb8ee257bb80c71989e3ee290e8d72c67",
+          "transformers-5.5.0-py3-none-any.whl": "821a9ff0961abbb29eb1eb686d78df1c85929fdf213a3fe49dc6bd94f9efa944"
+        }
+      },
+      "preflight": {
+        "valid": true,
+        "git_commit": "58fdeb510d1a8e3265c60f97650f64e8898700e4",
+        "archive_sha256": "95f96e34899eaf67cf5e3cb995ab28029510805d595413bb683e461d02364a29",
+        "wrapper_sha256": "4d5aa5fae0d8e35991763c8d770328522f1d43268975503c9691f587bfa20d57",
+        "model_source": "qwen-lm/qwen2.5/transformers/7b-instruct/1",
+        "model_profile": "qwen7b",
+        "layouts": [
+          "archive",
+          "expanded"
+        ],
+        "runtime_tools": 8,
+        "dummy_tasks_per_layout": 21,
+        "resume_verified": true,
+        "gpu_tested_locally": false,
+        "wheel_sha256": {
+          "accelerate-1.10.1-py3-none-any.whl": "3621cff60b9a27ce798857ece05e2b9f56fcc71631cfb31ccf71f0359c311f11",
+          "hf_xet-1.4.2-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl": "77e8c180b7ef12d8a96739a4e1e558847002afe9ea63b6f6358b2271a8bdda1c",
+          "huggingface_hub-1.7.2-py3-none-any.whl": "288f33a0a17b2a73a1359e2a5fd28d1becb2c121748c6173ab8643fb342c850e",
+          "regex-2025.11.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl": "10483eefbfb0adb18ee9474498c9a32fcf4e594fbca0543bb94c48bac6183e2e",
+          "regex-2025.11.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl": "a12ab1f5c29b4e93db518f5e3872116b7e9b1646c9f9f426f777b50d44a09e8c",
+          "safetensors-0.6.2-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl": "8045db2c872db8f4cbe3faa0495932d89c38c899c603f21e9b6486951a5ecb8f",
+          "tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl": "369cc9fc8cc10cb24143873a0d95438bb8ee257bb80c71989e3ee290e8d72c67",
+          "transformers-5.5.0-py3-none-any.whl": "821a9ff0961abbb29eb1eb686d78df1c85929fdf213a3fe49dc6bd94f9efa944"
+        }
+      },
+      "kernel_metadata_sha256": "5fc97a63fd41f3985c39d8af1b255c24d202fbec390e8c01dc0ce2af5f2ac63c"
+    }
+  }
+}

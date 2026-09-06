@@ -1,0 +1,72 @@
+{
+  "status": "two_condition_measured_pilot_complete",
+  "date": "2026-09-06",
+  "scope": "selected clean_v1.1 Dev; not final thesis or backbone selection",
+  "inference_source_commit": "58fdeb510d1a8e3265c60f97650f64e8898700e4",
+  "reporting_source_commit": "3b7527a3cd56ad79d8b853bfa89819843488aff7",
+  "cpu_preflight_valid": true,
+  "conditions": [
+    {
+      "profile": "gemma4",
+      "kernel": "huylmhuhu/react-vn-gemma4-measured-run-v1",
+      "kernel_version": 1,
+      "status": "complete_audited",
+      "tasks": 21,
+      "terminal_states": {
+        "completed": 20,
+        "max_steps": 1
+      },
+      "strict_successes": 6,
+      "model_errors": 0,
+      "semantic_retries": 0
+    },
+    {
+      "profile": "qwen7b",
+      "kernel": "huylmhuhu/react-vn-qwen7b-measured-run-v1",
+      "kernel_version": 1,
+      "status": "complete_audited",
+      "tasks": 21,
+      "terminal_states": {
+        "completed": 21
+      },
+      "strict_successes": 3,
+      "model_errors": 0,
+      "semantic_retries": 0
+    }
+  ],
+  "pending_conditions": {
+    "llama": "not_run_pending_Meta_access"
+  },
+  "test_model_tasks": 0,
+  "checks": {
+    "setup": "pass",
+    "ruff": "pass",
+    "mypy_source_files": 93,
+    "pytest_passed": 107,
+    "report_json_csv_markdown_byte_reproduction": true,
+    "figure_visually_inspected": true
+  },
+  "release_secret_scan": {
+    "files_scanned_before_commits": 19,
+    "credential_keys_checked": 4,
+    "matches": 0
+  },
+  "plot_environment": {
+    "python": "3.11.0",
+    "matplotlib": "3.9.2"
+  },
+  "frozen_artifact_sha256": {
+    "experiments/manifests/measured_pilot_submission.json": "557fdba9e52839f907ae96bbad57853e1a1e2f8b367138dc248d17e76940f36f",
+    "experiments/manifests/measured_gemma4_v1_audit.json": "8328732c8394138865edf80b1d4871f75021c7293f6a5b0226e673d094ba406d",
+    "experiments/manifests/measured_qwen7b_v1_audit.json": "21757886c0dce8fb8f9044b4af001e06ec5ceb87d39c76c7eae47bd7c733df5c",
+    "scripts/report_measured_pilot.py": "b99281bc4393aced83c40b1ef6472aef2baf0c64eb9d2f7d61dc4b1148e70dce",
+    "scripts/plot_measured_pilot.py": "c17d3056cae37e8814b59c4c76bbcaf8cf1d7332242ae27899d85969fb257c60",
+    "src/react_agent/validation/pilot_statistics.py": "5d166261743c0937bc5f4a96e06aa6021cb78f247f2973349c76daf5dce603a7",
+    "docs/evaluation/dev21_performance_protocol.md": "3ddd87e735c5072bad2fdcbd5879ecad50373a89cef9b2c80819541155153ba2",
+    "experiments/reports/measured_dev21_v1/figures/quality_latency.pdf": "50da492f098ba5f7026dfc11e195747e09b22d9709386bd85481ada6a2002a8a",
+    "experiments/reports/measured_dev21_v1/figures/quality_latency.png": "dc80253dfb4714564c7e97eaad31481c619d189ace0a2eabe83a267441509703",
+    "experiments/reports/measured_dev21_v1/report.json": "1debb2c05e6ef20d79c781917b8d356b8b89bcd7ef2c5d5c740b0b21d670ab78",
+    "experiments/reports/measured_dev21_v1/report.md": "6f78b151c0c4e39fc15a9abc16fb48e56e7265088c07dc5f981b04f3fae3eb59",
+    "experiments/reports/measured_dev21_v1/tasks.csv": "d1810247a85ce80618bcd43ecd62400a73dd8e0cd8bed45376363e1757a01297"
+  }
+}

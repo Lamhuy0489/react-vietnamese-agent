@@ -5,7 +5,11 @@ công cụ trong môi trường tiếng Việt giả lập (hành chính–học
 
 ## Trạng thái
 
-- Trạng thái hiện tại: **Phase 2 clean_v1.1 đã được khóa và chấp nhận dưới automated-QA waiver**.
+- Phase 1 và Phase 2 clean_v1.1 đã accepted (Phase 2 dưới automated-QA waiver);
+  **Phase 3 đang ở bản nháp, chưa nghiệm thu**.
+- Pilot đo hiệu suất Gemma 4 / Qwen 7B đã hoàn tất: strict 6/21 và 3/21 Dev,
+  trung bình 11,66 và 10,92 giây/task; chưa phải kết quả Test hay kết luận chọn
+  model. Xem [báo cáo](docs/evaluation/measured_dev_pilot_report.md).
 - Kế hoạch gốc: file Word ở root và thư mục `plan/`.
 - Contract triển khai đã chuẩn hóa: `docs/`.
 - A0, smoke environment và clean benchmark 250 task đã được tạo; real-model

@@ -1,0 +1,43 @@
+model,task_id,group,category,success,status,task_seconds,calls,parse_errors,input_tokens,output_tokens,generate_seconds,tool_calls,peak_allocated_bytes_gpu0,peak_allocated_bytes_gpu1,failures
+gemma4,clean_0002,INSTANCE_F53F3DD46DE1EDD6,single_source,False,completed,8.324692,2,0,2454,68,8.305244371000015,1,2836767232,13949156352,"['tool_sequence', 'arguments', 'required_evidence']"
+gemma4,clean_0004,INSTANCE_14B816690FCBF7FC,single_source,False,completed,9.77374,2,0,2398,83,9.755336443000033,1,2819030016,13926596096,"['tool_sequence', 'arguments', 'required_evidence']"
+gemma4,clean_0005,INSTANCE_210DE3196F5CC926,single_source,False,completed,6.167847,2,0,2425,47,6.14876487600003,1,2828639744,13941136384,"['tool_sequence', 'answer_facts', 'arguments', 'required_evidence']"
+gemma4,clean_0042,INSTANCE_FFC2BFB5AA2E4765,parameter_extraction,False,completed,24.468337,6,0,7408,197,24.410025350000126,5,2845459968,13957189120,"['tool_sequence', 'answer_facts', 'arguments', 'unresolved_tool_error']"
+gemma4,clean_0046,INSTANCE_8BC7FCAB6EBB03F6,parameter_extraction,False,completed,20.970673,5,0,5933,169,20.923341187000005,4,2815573504,13922356736,"['tool_sequence', 'answer_facts', 'arguments', 'unresolved_tool_error']"
+gemma4,clean_0047,INSTANCE_D380B16D31E7CB65,parameter_extraction,False,completed,14.30415,4,0,4551,114,14.267341863000013,3,2783223808,13884567040,"['tool_sequence', 'arguments', 'unresolved_tool_error']"
+gemma4,clean_0081,INSTANCE_926AF6930428B049,multi_step,False,completed,7.686867,3,0,3957,54,7.660051699999997,2,2856300032,13970664448,"['tool_sequence', 'arguments', 'required_evidence']"
+gemma4,clean_0082,INSTANCE_7A6F328DA327653C,multi_step,True,completed,13.212755,4,0,5486,99,13.174245766000013,3,2882913280,14002124288,[]
+gemma4,clean_0083,INSTANCE_BA87D0344103B11C,multi_step,True,completed,16.926455,4,0,5547,135,16.888817160999963,3,2889501184,14010202112,[]
+gemma4,clean_0132,INSTANCE_BA76D94C7F2F24C0,db_document,False,completed,12.629285,3,0,4311,99,12.600128538000035,2,2993059328,14127404032,"['tool_sequence', 'answer_facts', 'arguments', 'required_evidence']"
+gemma4,clean_0134,INSTANCE_8A1CA722A6CFF038,db_document,False,completed,12.592846,3,0,4311,99,12.563036775999933,2,2993059328,14127404032,"['tool_sequence', 'answer_facts', 'arguments', 'required_evidence']"
+gemma4,clean_0135,INSTANCE_76412CECC9C66262,db_document,False,max_steps,32.565761,8,0,10976,256,32.487737987,8,2932982272,14058936320,"['terminal:max_steps', 'tool_sequence', 'answer_facts', 'arguments', 'required_evidence', 'unresolved_tool_error']"
+gemma4,clean_0171,INSTANCE_85DE3096818976A0,ambiguous,False,completed,5.9689,1,0,993,54,5.961038548999966,0,2691389952,13775045632,['answer_facts']
+gemma4,clean_0173,INSTANCE_C415F28CAADFFC9F,ambiguous,True,completed,5.133758,1,0,991,46,5.123140622999983,0,2691085824,13774564352,[]
+gemma4,clean_0174,INSTANCE_CA4C702271B55860,ambiguous,False,completed,6.402878,1,0,991,58,6.394942672000013,0,2691085824,13774564352,['answer_facts']
+gemma4,clean_0197,INSTANCE_F53F3DD46DE1EDD6,error_recovery,False,completed,12.011783,2,0,2484,105,11.99310854600003,1,2842418688,13952559104,"['tool_sequence', 'arguments', 'required_evidence', 'fault_observation']"
+gemma4,clean_0199,INSTANCE_14B816690FCBF7FC,error_recovery,False,completed,11.248237,2,0,2428,97,11.230396190999954,1,2823377920,13933271040,"['tool_sequence', 'arguments', 'required_evidence', 'fault_observation']"
+gemma4,clean_0200,INSTANCE_210DE3196F5CC926,error_recovery,False,completed,15.856006,3,0,4056,132,15.827279490999956,2,2925857792,14052329984,"['tool_sequence', 'answer_facts', 'arguments', 'required_evidence', 'fault_observation']"
+gemma4,clean_0226,INSTANCE_97159DA27468B14C,no_tool,True,completed,2.913956,1,0,996,24,2.9059039050000024,0,2691892224,13775767552,[]
+gemma4,clean_0228,INSTANCE_9E1D3B0295F4CF80,no_tool,True,completed,2.92621,1,0,995,23,2.9175310669999703,0,2691724800,13775526912,[]
+gemma4,clean_0229,INSTANCE_807870D50B7F1FFC,no_tool,True,completed,2.860632,1,0,995,23,2.8521670049999557,0,2691724800,13775526912,[]
+qwen7b,clean_0002,INSTANCE_F53F3DD46DE1EDD6,single_source,False,completed,7.25764,2,0,2432,68,7.236382247999984,1,7403156480,9269558784,"['tool_sequence', 'arguments', 'required_evidence']"
+qwen7b,clean_0004,INSTANCE_14B816690FCBF7FC,single_source,False,completed,7.477604,2,0,2380,72,7.4575700099999835,1,7361626624,9227497984,"['tool_sequence', 'arguments', 'required_evidence']"
+qwen7b,clean_0005,INSTANCE_210DE3196F5CC926,single_source,False,completed,5.530419,2,0,2403,46,5.509959648000006,1,7385162240,9251061760,"['tool_sequence', 'answer_facts', 'arguments', 'required_evidence']"
+qwen7b,clean_0042,INSTANCE_FFC2BFB5AA2E4765,parameter_extraction,False,completed,5.903322,2,0,2035,57,5.8832059260000165,1,7107455488,8973503488,"['answer_facts', 'arguments', 'unresolved_tool_error']"
+qwen7b,clean_0046,INSTANCE_8BC7FCAB6EBB03F6,parameter_extraction,False,completed,5.952959,2,0,2035,57,5.935196164000047,1,7107455488,8973503488,"['answer_facts', 'arguments', 'unresolved_tool_error']"
+qwen7b,clean_0047,INSTANCE_D380B16D31E7CB65,parameter_extraction,False,completed,5.666152,2,0,2035,53,5.64610926499995,1,7107455488,8973503488,"['answer_facts', 'arguments', 'unresolved_tool_error']"
+qwen7b,clean_0081,INSTANCE_926AF6930428B049,multi_step,False,completed,20.162767,5,0,6297,182,20.109248533000027,4,7688802816,9555302912,"['tool_sequence', 'answer_facts', 'arguments', 'required_evidence', 'unresolved_tool_error']"
+qwen7b,clean_0082,INSTANCE_7A6F328DA327653C,multi_step,False,completed,8.647754,3,0,3800,64,8.615122439999993,2,7398769152,9265241088,"['tool_sequence', 'arguments', 'required_evidence']"
+qwen7b,clean_0083,INSTANCE_BA87D0344103B11C,multi_step,False,completed,13.272356,3,0,3828,121,13.24092149200004,2,7443577344,9309539840,"['tool_sequence', 'answer_facts', 'arguments', 'required_evidence']"
+qwen7b,clean_0132,INSTANCE_BA76D94C7F2F24C0,db_document,False,completed,20.945945,5,0,5985,188,20.892504927999994,4,7345122816,9210973696,"['tool_sequence', 'answer_facts', 'arguments', 'required_evidence', 'unresolved_tool_error']"
+qwen7b,clean_0134,INSTANCE_8A1CA722A6CFF038,db_document,False,completed,34.202881,7,0,9254,308,34.12195436899992,6,7610849792,9476149760,"['tool_sequence', 'answer_facts', 'arguments', 'required_evidence', 'unresolved_tool_error']"
+qwen7b,clean_0135,INSTANCE_76412CECC9C66262,db_document,False,completed,19.125923,4,0,4710,191,19.083194287999845,3,7324605440,9190428672,"['tool_sequence', 'answer_facts', 'arguments', 'required_evidence', 'unresolved_tool_error']"
+qwen7b,clean_0171,INSTANCE_85DE3096818976A0,ambiguous,False,completed,21.456799,4,2,4894,214,21.41478098899995,1,7413317120,9279251456,"['tool_sequence', 'forbidden_tool', 'answer_facts', 'clarification_question']"
+qwen7b,clean_0173,INSTANCE_C415F28CAADFFC9F,ambiguous,False,completed,16.727125,3,1,3741,165,16.695087351000097,1,7355449344,9221312512,"['tool_sequence', 'forbidden_tool', 'answer_facts', 'clarification_question']"
+qwen7b,clean_0174,INSTANCE_CA4C702271B55860,ambiguous,False,completed,5.204598,1,0,979,59,5.195354313000053,0,7054686720,8920778240,['answer_facts']
+qwen7b,clean_0197,INSTANCE_F53F3DD46DE1EDD6,error_recovery,False,completed,7.750887,2,0,2324,72,7.72735353600001,1,7307624448,9174100480,"['tool_sequence', 'answer_facts', 'arguments', 'required_evidence', 'fault_observation']"
+qwen7b,clean_0199,INSTANCE_14B816690FCBF7FC,error_recovery,False,completed,7.101226,2,0,2410,62,7.077987137999912,1,7374862848,9240750080,"['tool_sequence', 'arguments', 'required_evidence', 'fault_observation']"
+qwen7b,clean_0200,INSTANCE_210DE3196F5CC926,error_recovery,False,completed,9.438289,3,0,3625,75,9.403785806000087,2,7492336128,9358128128,"['tool_sequence', 'answer_facts', 'arguments', 'required_evidence']"
+qwen7b,clean_0226,INSTANCE_97159DA27468B14C,no_tool,True,completed,2.536955,1,0,984,23,2.5275817430000416,0,7058427904,8924452864,[]
+qwen7b,clean_0228,INSTANCE_9E1D3B0295F4CF80,no_tool,True,completed,2.479302,1,0,983,22,2.4700335169999335,0,7058362880,8924401152,[]
+qwen7b,clean_0229,INSTANCE_807870D50B7F1FFC,no_tool,True,completed,2.395259,1,0,983,21,2.3858332439999685,0,7058362880,8924401152,[]
