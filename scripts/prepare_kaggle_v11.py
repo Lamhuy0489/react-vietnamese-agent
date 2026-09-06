@@ -50,6 +50,8 @@ def main() -> int:
 
     profile = PROFILES[args.model_profile]
     kernel_slug = args.kernel_slug or f"react-vn-v11-pilot-{args.model_profile}"
+    if kernel_slug == args.dataset_slug:
+        raise ValueError("Kaggle dataset and kernel must have distinct slugs/titles")
     for slug in (args.owner, args.dataset_slug, kernel_slug):
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug):
             raise ValueError("invalid owner/dataset/kernel slug")
@@ -149,7 +151,7 @@ def main() -> int:
                 ),
                 "competition_sources": [],
                 "kernel_sources": [],
-                "machine_shape": "None" if args.cpu_model_preflight else "NvidiaTeslaT4",
+                "machine_shape": None if args.cpu_model_preflight else "NvidiaTeslaT4",
             },
             indent=2,
         )

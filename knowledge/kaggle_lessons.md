@@ -36,3 +36,10 @@ Quy tắc giữ nguyên:
 - Retry chỉ khi lỗi hạ tầng; không retry semantic failure để lấy điểm đẹp.
 - Dataset/kernel đều private, model revision cố định, internet tắt.
 - Chạy `make kaggle-bundle-validate` trước mọi lần upload.
+## Measured pilot metadata — 2026-09-06
+
+SaveKernel returned HTTP 409 when the kernel title matched the Dataset name.
+The standard CLI hid the detailed server message; the API HTTP response body
+identified the collision. Use distinct Dataset/kernel slugs and titles. CPU
+machine_shape should be omitted/null, not the literal string `None`.
+Failed SaveKernel requests are not completed or failed inference attempts.

@@ -10,6 +10,20 @@ CPU loader preflight on Kaggle precedes real GPU inference because local Intel
 macOS cannot install the needed PyTorch version. Historical Qwen 3B timing is
 not mixed into a controlled latency ranking with newly instrumented runs.
 
+CPU Dataset: `huylmhuhu/react-vn-measured-preflight-v1` v1 ready. Kernel:
+`huylmhuhu/react-vn-measured-preflight-check-v1` v1 submitted, source `46dba0e`.
+Two SaveKernel calls before this successful version returned HTTP 409 because
+the kernel title collided with the Dataset name. Neither created an inference
+attempt. Changed CPU metadata's machine_shape from string `None` to JSON null
+and separated the kernel title. Server's detailed response established the
+title collision; this is not evidence of a GPU/runtime failure. Generator now
+rejects equal Dataset/kernel slugs before uploading.
+
+106 software tests pass, including statistics and measured-report tamper checks.
+Report generator: `scripts/report_measured_pilot.py`; it requires audited exact
+inputs/software/hardware and exports JSON, per-task CSV and Markdown. New
+Gemma4/Qwen7B measurements are still pending CPU preflight and GPU execution.
+
 ## Scope approved 2026-09-06
 
 Owner requests the same 21 clean_v1.1 Dev tasks on three LLM families and

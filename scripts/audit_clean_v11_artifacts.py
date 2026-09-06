@@ -54,6 +54,18 @@ def main() -> int:
         or bundle_info["dataset_version"] != 1
     ):
         failures.append("worker bundle mismatch")
+    if expected.get("measurement_protocol"):
+        if (
+            identity.get("measurement_protocol") != expected["measurement_protocol"]
+            or bundle_info.get("measurement_protocol") != expected["measurement_protocol"]
+            or bundle_info.get("wheel_sha256") != expected["wheel_sha256"]
+        ):
+            failures.append("measurement protocol/dependency mismatch")
+        if (
+            not (run / "model_setup.json").is_file()
+            or not (run / "inference_metrics.jsonl").is_file()
+        ):
+            failures.append("missing performance measurements")
     if identity["task_ids"] != selection or evaluation["source_identity"] != identity:
         failures.append("task/evaluation identity mismatch")
     if (
