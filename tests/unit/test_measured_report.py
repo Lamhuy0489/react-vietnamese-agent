@@ -110,3 +110,27 @@ def test_report_rejects_post_audit_metric_changes(tmp_path: Path) -> None:
     metrics.write_text(metrics.read_text().replace('"output_tokens": 10', '"output_tokens": 500'))
     with pytest.raises(ValueError, match="differs from audit"):
         report_module().condition(*args)
+
+
+def test_supplementary_tables_preserve_counts_and_missing_success(tmp_path: Path) -> None:
+    module = report_module()
+    report = module.condition(*fixture(tmp_path))
+    report["setup"] = {"load_seconds": 3.0, "warmup_seconds": 1.0}
+    report["latency_successful_tasks_seconds"] = None
+    report["failure_reasons"] = {"arguments": 2, "tool_sequence": 2}
+    paired = [
+        {
+            "left": "a",
+            "right": "b",
+            "success_difference": -0.1,
+            "success_difference_ci95": [-0.3, 0.1],
+            "latency_difference_seconds": 2.0,
+            "latency_difference_ci95": [-1.0, 4.0],
+        }
+    ]
+    text = "\n".join(module.supplementary_tables([report], paired))
+    assert "21 / 0 | 420 / 210" in text
+    assert "N/A (0)" in text
+    assert "| arguments | 2 |" in text
+    assert "-10.00 [-30.00, 10.00]" in text
+    assert "2.00 [-1.00, 4.00]" in text

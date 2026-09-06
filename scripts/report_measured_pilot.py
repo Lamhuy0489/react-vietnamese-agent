@@ -22,6 +22,76 @@ def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def supplementary_tables(
+    reports: list[dict[str, Any]], comparisons: list[dict[str, Any]]
+) -> list[str]:
+    """Render secondary diagnostics without changing the frozen primary metric."""
+    lines = [
+        "",
+        "## Execution and setup",
+        "",
+        "| Model | Schema validity | Calls / parse errors | Input / output tokens | "
+        "Load / warm-up s | Latency SD s | Success-only mean s (n) |",
+        "| --- | --- | --- | --- | --- | --- | --- |",
+    ]
+    for r in reports:
+        rows = r["rows"]
+        good = r["latency_successful_tasks_seconds"]
+        good_text = f"{good['mean']:.2f} ({good['n']})" if good else "N/A (0)"
+        lines.append(
+            f"| {r['model']} | {r['schema_validity']:.2%} | "
+            f"{sum(t['calls'] for t in rows)} / {sum(t['parse_errors'] for t in rows)} | "
+            f"{sum(t['input_tokens'] for t in rows)} / {r['output_tokens']} | "
+            f"{r['setup']['load_seconds']:.2f} / {r['setup']['warmup_seconds']:.2f} | "
+            f"{r['latency_all_tasks_seconds']['sample_sd']:.2f} | {good_text} |"
+        )
+    lines += [
+        "",
+        "Success-only subsets differ; their latency is not a matched speed comparison.",
+        "",
+        "## Category diagnostics",
+        "",
+        "| Category | " + " | ".join(r["model"] for r in reports) + " |",
+        "| --- | " + " | ".join("---" for _ in reports) + " |",
+    ]
+    for category in sorted(reports[0]["category_success"]):
+        values = [r["category_success"][category] for r in reports]
+        lines.append(
+            f"| {category} | " + " | ".join(f"{v['successes']}/{v['tasks']}" for v in values) + " |"
+        )
+    lines += [
+        "",
+        "## Failure indicators (overlap; do not sum)",
+        "",
+        "| Indicator | " + " | ".join(r["model"] for r in reports) + " |",
+        "| --- | " + " | ".join("---" for _ in reports) + " |",
+    ]
+    for reason in sorted({key for r in reports for key in r["failure_reasons"]}):
+        lines.append(
+            f"| {reason} | "
+            + " | ".join(str(r["failure_reasons"].get(reason, 0)) for r in reports)
+            + " |"
+        )
+    if comparisons:
+        lines += [
+            "",
+            "## Paired differences (left minus right)",
+            "",
+            "| Pair | Success difference pp [95% CI] | Mean latency s [95% CI] |",
+            "| --- | --- | --- |",
+        ]
+        for c in comparisons:
+            quality_ci = c["success_difference_ci95"]
+            time_ci = c["latency_difference_ci95"]
+            lines.append(
+                f"| {c['left']} − {c['right']} | {100 * c['success_difference']:.2f} "
+                f"[{100 * quality_ci[0]:.2f}, {100 * quality_ci[1]:.2f}] | "
+                f"{c['latency_difference_seconds']:.2f} "
+                f"[{time_ci[0]:.2f}, {time_ci[1]:.2f}] |"
+            )
+    return lines
+
+
 def condition(run: Path, evaluation_path: Path, audit_path: Path) -> dict[str, Any]:
     evaluation = json.loads(evaluation_path.read_text())
     audit = json.loads(audit_path.read_text())
@@ -249,6 +319,7 @@ def main() -> int:
         "Historical Qwen 3B is excluded from controlled timing comparisons. Test remains sealed.",
         "See docs/evaluation/dev21_performance_protocol.md for design and limitations.",
     ]
+    lines += supplementary_tables(reports, comparisons)
     (args.output / "report.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
     return 0
