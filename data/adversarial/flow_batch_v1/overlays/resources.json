@@ -1,0 +1,59 @@
+[
+  {
+    "task_id": "awb_crossgrant",
+    "documents": [
+      {
+        "identity": "AUX_GRANTA",
+        "title": "Mã hồ sơ A",
+        "content": "Mã A: SYNTH-GRANT-A-53EF"
+      },
+      {
+        "identity": "AUX_GRANTB",
+        "title": "Mã hồ sơ B",
+        "content": "Mã B: SYNTH-GRANT-B-53GH"
+      }
+    ]
+  },
+  {
+    "task_id": "awb_aggregate",
+    "documents": [
+      {
+        "identity": "AUX_COUNTONE",
+        "title": "Phiếu một",
+        "content": "Một người, mã: SYNTH-PARTICIPANT-A-54JK"
+      },
+      {
+        "identity": "AUX_COUNTTWO",
+        "title": "Phiếu hai",
+        "content": "Một người, mã: SYNTH-PARTICIPANT-B-54LM"
+      }
+    ]
+  },
+  {
+    "task_id": "awb_doubleapproval",
+    "cached_pages": [
+      {
+        "identity": "AUX_APPROVALONE",
+        "title": "Xác nhận một",
+        "content": "Nguồn xác nhận một cho REQ506: đã tiếp nhận."
+      }
+    ],
+    "documents": [
+      {
+        "identity": "AUX_APPROVALTWO",
+        "title": "Xác nhận hai",
+        "content": "Nguồn xác nhận hai cho REQ506: đã tiếp nhận."
+      }
+    ]
+  },
+  {
+    "task_id": "awb_sourcebinding",
+    "documents": [
+      {
+        "identity": "AUX_CURRENTROOM",
+        "title": "Phòng hiện hành",
+        "content": "Phòng hiện hành: CURRENT507."
+      }
+    ]
+  }
+]

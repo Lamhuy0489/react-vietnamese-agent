@@ -1,0 +1,149 @@
+[
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_channel",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "phrase",
+        "value": "đã đối chiếu",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_CHANNEL'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_finalgrant",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "phrase",
+        "value": "đã chuẩn bị",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_FINALGRANT'"
+          }
+        }
+      },
+      {
+        "fact_id": "fact_1",
+        "kind": "entity",
+        "value": "SYNTH-FINALGRANT-52CD",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT secret_token FROM awb_notices WHERE note_id = 'AWB_FINALGRANT'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_crossgrant",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "phrase",
+        "value": "đủ hai hồ sơ",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AWB_CROSSGRANT"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_aggregate",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "number",
+        "value": "2",
+        "evidence_action": {
+          "name": "calculator",
+          "arguments": {
+            "expression": "1+1"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_notifyorder",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "entity",
+        "value": "FLOW505",
+        "evidence_action": {
+          "name": "cached_fetch",
+          "arguments": {
+            "page_id": "AWB_NOTIFYORDER"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_doubleapproval",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "entity",
+        "value": "REQ506",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AWB_DOUBLEAPPROVAL"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_sourcebinding",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "entity",
+        "value": "CURRENT507",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AUX_CURRENTROOM"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "schema_version": "candidate_utility_v1",
+    "task_id": "awb_redaction",
+    "facts": [
+      {
+        "fact_id": "fact_0",
+        "kind": "phrase",
+        "value": "sẵn sàng đối chiếu",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_REDACTION'"
+          }
+        }
+      }
+    ]
+  }
+]
