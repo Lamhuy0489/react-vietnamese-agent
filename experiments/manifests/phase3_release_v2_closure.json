@@ -1,0 +1,71 @@
+{
+  "schema_version": "phase3_release_closure_v2",
+  "valid": true,
+  "phase3_accepted": true,
+  "test_sealed": true,
+  "accepted_date": "2026-09-07",
+  "source_git_commit": "c228a6818319f2566ac888b57f0b52492043a1aa",
+  "release_path": "data/adversarial/release_v2",
+  "seal_sha256": "431b81118026bef6c60e33306e51df71160504579e76ea08fb4648005fa1cb6b",
+  "release_sha256": {
+    "README.md": "fd21e4f609fa99b1101dfd4860c048d64c66edcaee5ad946c2700eafa6c30c23",
+    "dev_attack.jsonl": "764cf63ac986d89c747c9baa9019d7025a3bc38c5b9cf9c8cf151edfb7d4beba",
+    "dev_benign.jsonl": "93c9e7a70758ed8d5f8a8fa35c5c605edf4d05d57432fa86c6d1872c6a7de739",
+    "mapping.json": "e9a4dafac709a29d8302fb5722946d36de8edb8be04790abb153da90fe266cc3",
+    "qa.json": "9c1d3fdb7e636a1eed82d9bad528c2ee03bf73233eec2316078f9afce8299a53",
+    "reference_traces.jsonl.gz": "c60e915acbc0057adfe2373307433ace7c835e0b5db380f00872704bfa114ec2",
+    "schema.json": "b72fcf1f29462a5c02077c49eb21e9957dc01d391a43da48d127dd2876a39733",
+    "test_attack.jsonl": "ef59b5b156e0199ea1140fb13a917e6607ee0d8dd8e250bd4acbb5771cdfa83c",
+    "test_benign.jsonl": "d97c816c4c58248c33ee3a477cd1cdf2dc509c55cc814fd4d853f75fe244b916"
+  },
+  "families": 70,
+  "conservative_groups": 20,
+  "dev_families": 40,
+  "test_families": 30,
+  "attack_variants": 350,
+  "benign_variants": 350,
+  "dev_per_branch": 200,
+  "test_per_branch": 150,
+  "reused_reference_paths": 1692,
+  "canonical_standard_paths": 280,
+  "variant_standard_paths": 1400,
+  "alternative_paths": 12,
+  "test_assigned_reference_paths_pre_seal": 732,
+  "fresh_replay_runs_in_release_assembly": 0,
+  "real_model_runs": 0,
+  "held_out_model_runs": 0,
+  "pre_seal_tests": {
+    "passed": 782,
+    "skipped": 2,
+    "skip_reason": "post-seal-only tests; seal not yet present"
+  },
+  "post_seal_tests": {
+    "passed": 132,
+    "historical_construction_tests_not_collected": 650,
+    "reason": "Prevent frozen Test construction data entering later development, including import-time loading."
+  },
+  "verification": {
+    "setup": "pass",
+    "ruff": "pass",
+    "mypy": "pass:146 source files",
+    "knowledge_check": "pass after final documentation update",
+    "clean_v11_seal": "pass",
+    "adversarial_seal": "pass: sealed_read_only",
+    "credential_scan": {
+      "secret_values": 4,
+      "changed_files_at_precommit": 43,
+      "changed_files_at_final_scan": 52,
+      "matches": 0,
+      "compressed_archive_scanned_after_decompression": true
+    }
+  },
+  "review_method": "assistant_self_review_owner_waiver",
+  "independent_human_review": false,
+  "limitations": [
+    "Scenario families are not 70 independent abstract mechanisms.",
+    "Grouped tool-output-poisoning allocation has 12 Dev/3 Test families.",
+    "Semantic equivalence is assistant self-review with bounded deterministic/reference QA, not independent human certification.",
+    "Replay reference scores are not model attack-success rates."
+  ],
+  "next_phase": "Phase 4 requires explicit authorization; no Phase 4 implementation in this closure."
+}

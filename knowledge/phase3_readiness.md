@@ -1,34 +1,34 @@
-# Phase 3: tiến độ theo Definition of Done
+# Phase 3: nghiệm thu theo Definition of Done
 
-Cập nhật 2026-09-07 sau whole-pool admission/grouped split. Ước lượng
-**65–70% effort Phase 3**, không metric nghiệm thu. Không có trọng số effort
-khóa trước nên đây là khoảng quản lý, không kết quả đo khoa học.
+Cập nhật 2026-09-07: **12/12 DoD đã đạt trong phạm vi benchmark synthetic và
+owner self-review waiver; adversarial_v2 accepted và Test đã seal.**
+Không dùng ước lượng effort 65–70% ở các ghi chú lịch sử làm trạng thái hiện hành.
+Đây là hoàn thành Phase 3, không phải hoàn thành 100% đồ án.
 
-70 canonical đã nhận **cho authoring biến thể**, 40 Dev/30 Test, giữ 20 nhóm.
-Không phải 70 abstract mechanisms độc lập hoặc 100% Phase 3. Còn bộ 350+350
-variants có review/QA, release integration và Test seal. Draft v1 không tính.
+| DoD | Bằng chứng |
+|---|---|
+| 1. Canonical families | 70 paired scenarios đã nhận, hai merge giữ làm lịch sử |
+| 2. Năm variants/family | Năm dạng, 350 attack records |
+| 3. Benign completeness | 350 benign, mỗi attack đúng một matched control |
+| 4. Family split | 40 Dev/30 Test, 20 conservative groups không bị tách |
+| 5. Experimental counts | Mỗi branch 200 Dev/150 Test, không cộng canonical |
+| 6. Safe utility path | Safe references mọi canonical/variant và quota alternatives pass |
+| 7. Machine-checkable violation | Frozen six-scorer adapter giữ final-policy/derived fields |
+| 8. Semantic equivalence | 280 linguistic + 140 boundary self-review; 280 structural QA |
+| 9. Pair integrity | Task/source/resources và family/group/split mapping kiểm tra đúng cặp |
+| 10. No Test tuning | Không held-out model run; sau seal Dev loader không mở Test |
+| 11. No side effects | Mọi tool qua Broker; network-interdiction tests pass |
+| 12. Reproducibility | Source/config/environment/schema/mapping/payload hashes + archive + seal |
 
-| DoD trong Phase 3 | Bằng chứng hiện tại | Còn thiếu |
-|---|---|---|
-| 1. 70 canonical families | Whole-pool rationale, 70 selected/2 merged | Đưa selection vào executable variant release |
-| 2. Năm variants/family | Helper cơ học đã có | Bộ 350 variants thay thế có QA |
-| 3. Matched benign completeness | 70 selected canonical pairs | 350 benign variants đã review |
-| 4. Split 40/30 theo family | Exact grouped split, 20 nhóm, seed/objective/strata báo cáo | Giữ mapping qua variants; lệch output 12/3 phải công bố |
-| 5. Exact experimental counts | Canonical/pair/split identities pass | 200/150 variants cho mỗi attack/benign |
-| 6. Safe utility path | 280 selected reference paths trong 288 stored records | Replay với overlay biến thể, không chỉ canonical |
-| 7. Violation machine-checkable | Oracle từng batch có bounded QA | Adapter release giữ đủ final-policy/derived fields |
-| 8. Semantic variant equivalence | Chưa có bộ variants mới được duyệt | Review năm dạng attack/benign |
-| 9. Pair integrity | Whole-pool self-review dưới owner waiver | Variant equivalence và pair QA |
-| 10. No Test tuning | Không LLM/Test run mới; Test chưa seal | Duy trì sau assignment/seal |
-| 11. No real side effects | Mock Broker và offline tests pass | Giữ trên mọi overlay biến thể |
-| 12. Reproducibility | Selection manifest, evidence/source/input hashes | Release mapping/schema/inventory và immutable seal |
+782 tests pass trước seal; hai seal-only tests skip. Sau seal 132 tests pass;
+650 historical construction tests không collect trước import vì bảo vệ Test.
+Setup/Ruff/mypy 146 files, clean và adversarial seals pass. 1.692 reference
+paths tái chấm/archive là bằng chứng tái sử dụng, không inference mới.
 
-Nguồn: [DoD chi tiết](../plan/phase3.md),
-[phase status](../docs/project/phase_status.md),
-[selection receipt](../experiments/manifests/phase3_canonical_selection_v1_validation01.json),
-[tóm tắt/giới hạn](../docs/benchmark/canonical_selection_summary.md).
+[Nghiệm thu và giới hạn](../docs/benchmark/adversarial_release_v2_summary.md),
+[receipt](../experiments/manifests/phase3_release_v2_closure.json),
+[phase status](../docs/project/phase_status.md), [handoff](handoff.md).
 
-495 tests pass (29 mới), setup/Ruff/mypy 136 source files và clean seal pass.
-Không có Replay/model run mới; tái kiểm tra bằng chứng cũ, không tăng số lần
-thực nghiệm hay thay điểm Gemma/Qwen. [Handoff](handoff.md) ghi bước tiếp theo:
-author variants theo assignment đã chốt, không thêm ca hoặc resplit.
+Giới hạn không biến mất: self-review không independent human review; 70 scenario
+families không phải 70 cơ chế độc lập; output-poisoning 12/3 do grouped split.
+Phase 4 chưa bắt đầu và cần owner cho phép.

@@ -12,8 +12,8 @@ memory của agent đang được benchmark. Không cần tài khoản hoặc gr
    [invariants](../docs/project/invariants.md), rồi chỉ đọc tài liệu của phần
    đang làm theo [phase map](../docs/project/phase_map.md).
 
-Phase 1 và clean_v1.1 Phase 2 đã accepted. Phase 3 đang ở bản nháp chưa
-nghiệm thu. Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
+Phase 1, clean_v1.1 Phase 2 và adversarial_v2 Phase 3 đã accepted; Test đã khóa.
+Phase 4 chưa bắt đầu. Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
@@ -23,6 +23,7 @@ nghiệm thu. Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
   [báo cáo measured Dev](../docs/evaluation/measured_dev_pilot_report.md).
 - Phase 2 đang có hiệu lực: [clean_v1.1](clean_v11_progress.md).
 - Phase 3 đang làm: [tiến độ và thiếu sót đã audit](phase3_progress.md).
+- Release Phase 3 hiện hành: [nghiệm thu v2 và giới hạn](../docs/benchmark/adversarial_release_v2_summary.md).
 - Canonical/split hiện hành: [70 canonical cho authoring, grouped 40/30](../docs/benchmark/canonical_selection_summary.md).
 - Phần trăm Phase 3 và tiêu chí còn thiếu: [readiness theo DoD](phase3_readiness.md).
 - Tránh lặp lỗi Kaggle: [lessons](kaggle_lessons.md).

@@ -1,6 +1,41 @@
 # Trạng thái hiện tại
 
-## Việc đang tiếp tục: canonical đã chọn, còn variants/release — 2026-09-07
+## Hiện hành: Phase 3 đã nghiệm thu — 2026-09-07
+
+**Phase 1, Phase 2 clean_v1.1 và Phase 3 adversarial_v2 đều đã accepted.**
+Phase 4 chưa bắt đầu. [Receipt đóng phase](../experiments/manifests/phase3_release_v2_closure.json),
+[tóm tắt](../docs/benchmark/adversarial_release_v2_summary.md), source `c228a68`.
+Đủ 70 canonical pairs, năm dạng, **350 attack + 350 benign**; mỗi branch 200 Dev/
+150 Test, giữ 20 nhóm trong split 40/30. Test đã seal, không author/replay lại.
+
+782 tests pass trước seal; hai seal-only tests skip đúng điều kiện. Sau seal:
+132 tests pass; 650 historical construction tests không collect để bảo vệ Test.
+Setup/Ruff/mypy 146 files, clean seal và adversarial hash check pass. Full release
+tái chấm/archive 1.692 reference paths cũ, không tính thành lượt inference mới.
+732 Test-assigned reference paths đều trước seal; không LLM/held-out model run.
+
+Giữ giới hạn: review assistant theo waiver, không independent human review;
+70 scenario families không phải 70 cơ chế độc lập; output-poisoning lệch 12/3.
+Điểm model cũ không đổi. Không cần tài khoản mới; Meta chưa có không chặn đóng
+Phase 3. Đọc [handoff](handoff.md) để tiếp tục; cần owner mở Phase 4.
+
+## Lịch sử: code-mix/paraphrase đang triển khai
+
+Đã lưu source `257cb1c` cho 420 mechanical variants (210 attack/210 benign),
+ba dạng bỏ dấu/ranh giới từ/ký tự ẩn. 140 boundary edits được assistant review
+dưới owner waiver; 280 dạng còn lại được structural QA. 604 tests pass (109 mới),
+setup/Ruff/mypy 140 source files và clean seal pass.
+[Receipt mechanical](../experiments/manifests/phase3_mechanical_v1_validation01.json):
+1.128 fresh Replay = 280 canonical standard + 840 variant standard + tám safe
+alternatives, score parity khớp canonical đã khóa. 488 lượt QA trên Test-assigned
+construction data, không LLM/held-out model run. Preflight và selected run có
+stable summary khớp; giữ nguyên split/scorer/data cũ. Chưa seal/Phase 3 accepted.
+
+Owner vừa yêu cầu tiếp tục trong lúc làm. Đang chuyển sang **140 code-mix +
+140 paraphrase records còn thiếu**, rồi full 700-variant integration/QA/seal.
+Không đổi mốc mechanical đã hash; thêm module/version mới.
+
+## Lịch sử: canonical đã chọn, còn variants/release
 
 Đã review toàn pool và **nhận 70 canonical cho bước tạo biến thể**, theo waiver
 self-review của owner; không phải 70 abstract mechanisms độc lập. Giữ hai merge

@@ -5,6 +5,20 @@ lịch sử là lệnh hiện hành. Đọc [bàn giao](handoff.md) trước khi
 
 ## Kiểm tra phần mềm và bộ nhớ
 
+Phase 3 đã seal: không dùng các lệnh authoring/Replay lịch sử bên dưới cho
+phát triển phase tiếp theo. Chỉ chạy kiểm tra hash và nạp Dev:
+
+```bash
+.venv/bin/python scripts/assemble_adversarial_release.py --action check
+```
+
+`react_agent.adversarial_release.load_split(release)` mặc định Dev (400 records),
+không mở Test. Chỉ đưa `fixture.task` vào Runtime; overlay/resources dùng để dựng
+tools. Không đưa cả fixture vào prompt. Test cần phạm vi đánh giá được cho phép.
+`pytest` sau seal không collect 650 construction tests cũ trước import; 132 tests
+còn lại gồm seal integrity/Dev-only loading. Lượt full trước seal đạt 782 tests.
+Không gỡ seal để chạy lại authoring tests. [Nghiệm thu](../docs/benchmark/adversarial_release_v2_summary.md).
+
 ```bash
 .venv/bin/python scripts/verify_setup.py
 .venv/bin/ruff check .

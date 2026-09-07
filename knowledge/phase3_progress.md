@@ -1,9 +1,15 @@
 # Phase 3: tiến độ và thiếu sót đã xác minh
 
-Cập nhật 2026-09-07. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
-Gồm audit tĩnh và QA executable để tiếp tục authoring, không phải ASR hay chọn model.
+Cập nhật 2026-09-07. Trạng thái: **adversarial_v2 đã nghiệm thu và seal Test**.
+[Receipt](../experiments/manifests/phase3_release_v2_closure.json),
+[tóm tắt/giới hạn](../docs/benchmark/adversarial_release_v2_summary.md).
+Đủ 700 variants có review/QA, source `c228a68`. 1.692 reference paths tái chấm
+và archive, không inference mới. 782 tests trước seal; 132 tests sau seal,
+650 construction tests không collect vì bảo vệ Test. Setup/Ruff/mypy và hai
+seal checks pass. Không model/Test inference, không phải ASR hoặc chọn model.
+Phần dưới là lịch sử; không dùng trạng thái draft cũ thay acceptance hiện hành.
 
-## Mới nhất: nhận 70 canonical cho authoring, split 40/30
+## Lịch sử: nhận 70 canonical cho authoring, split 40/30
 
 Source `dc45ccb`, [manifest](../experiments/manifests/phase3_canonical_selection_v1_validation01.json)
 và [tóm tắt](../docs/benchmark/canonical_selection_summary.md). Review toàn bộ

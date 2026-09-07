@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 3 in progress: adversarial benchmark authoring draft**
+- Current stage: **Phase 3 accepted: adversarial_v2 sealed; Phase 4 not started**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-07
 
@@ -98,6 +98,21 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
 
 ## Phase 3 progress
 
+**Accepted 2026-09-07 for adversarial_v2 under the owner self-review waiver.**
+Source `c228a68`; [closure receipt](../../experiments/manifests/phase3_release_v2_closure.json)
+and [acceptance summary](../benchmark/adversarial_release_v2_summary.md).
+70 paired canonical scenarios, 350 attack/350 benign, five types, each branch
+200 Dev/150 Test, 20 conservative groups. All 1,692 selected reference paths
+re-scored/archived (280 canonical standard, 1,400 variant standard, 12 alternatives).
+782 pre-seal tests pass; two seal-only tests skip. After seal: 132 tests pass,
+650 construction tests excluded before import to protect frozen Test during
+later development. Setup/Ruff/mypy 146 files, clean and adversarial seals pass.
+Review is assistant self-review, not independent human review. Grouped output
+strata remain 12/3; scenario count is not independent-mechanism certification.
+Test seal binds data/environment/config/schema/mapping/source. No new model or
+held-out inference; 732 Test-assigned reference paths were pre-seal construction.
+Phase 4 is not started. The bullets below preserve historical authoring stages.
+
 - [x] Phase 3 explicitly authorized by the project owner on 2026-09-06.
 - [x] Draft generator and deterministic integrity validator added.
 - [x] Synthetic draft contains 70 families, 350 attack variants and 350
@@ -177,8 +192,8 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   reported (output-poisoning 12/3). 495 tests pass. Revalidate 288 prior reference
   records, 280 selected; no new Replay/model inference. See
   [selection manifest](../../experiments/manifests/phase3_canonical_selection_v1_validation01.json).
-- [ ] Full executable variant release, 350 attack/350 benign reviewed pairs,
-  release mapping/integration and immutable Test seal remain pending.
+- [x] Full executable variant release, 350 attack/350 benign reviewed records,
+  release mapping/integration and immutable Test seal accepted in adversarial_v2.
   Canonical authoring admission is not Phase 3 acceptance or certification of
   70 unrelated abstract mechanisms. See
   [Phase 3 handoff](../../knowledge/phase3_progress.md) and
@@ -199,4 +214,4 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   uncertainty, latency, throughput, memory and failure diagnostics. These are
   small selected Dev results, not final thesis results or a backbone selection.
 - Llama remains not run pending Meta access. The measured two-condition pilot
-  is complete; the three-family comparison and Phase 3 acceptance are not.
+  is complete; the three-family comparison is not. Phase 3 acceptance is recorded above.
