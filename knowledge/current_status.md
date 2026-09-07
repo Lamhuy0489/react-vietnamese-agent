@@ -1,27 +1,30 @@
 # Trạng thái hiện tại
 
-## Việc đang tiếp tục: Phase 3 và bộ nhớ dự án — 2026-09-06
+## Việc đang tiếp tục: Phase 3 và bộ nhớ dự án — 2026-09-07
 
 Đọc [handoff](handoff.md) để tiếp tục đúng điểm đang dở, [runbook](runbook.md)
 cho lệnh hiện hành, và [Phase 3 progress](phase3_progress.md) cho audit mới.
 Knowledge đã có chỉ mục, bàn giao và validator link/cấu trúc; đây là memory
 phát triển, không đưa vào prompt agent benchmark.
 
-Phase 3 hiện có **48 cặp ứng viên**: thêm tám authorization-flow vào 40 cặp
-trước. Có self-review từng pair, không giả human review hoặc tự cấp quyết định
-nhận family cuối cùng. QA tổng hợp chạy cả năm bộ: **192 Replay** (96 safe/96
-negative), 1.128 comparisons và 15 nhóm bảo thủ. Flow mới kiểm tra quyền theo
-kênh/final, hai artifact khác quyền, aggregate/suffix và thứ tự xác nhận/commit.
-[Receipt v3](../experiments/manifests/phase3_pool_v3_validation01.json):
-`qa_valid=true`, `phase3_accepted=false`; chưa variants/split/freeze.
-[Tóm tắt](../docs/benchmark/flow_batch_summary.md) ghi review và giới hạn.
-Kiểm tra mới nhất: **341 tests**, setup/Ruff/mypy 123 source files và clean seal
-pass; chín receipt cũ/566 hash entries khớp, gồm 12 measured artifacts.
+Phase 3 giữ **48 cặp ứng viên**, nhưng self-review nhận/gộp giữ **46 đại diện**
+cho bước lựa chọn toàn pool; hai ca gần trùng vẫn lưu làm regression. Đây không
+phải 46 family đã nghiệm thu hoặc chứng nhận độc lập ngữ nghĩa. 15 nhóm bảo thủ
+và 1.128 comparisons giữ nguyên; chưa variants/split/freeze.
+
+Đã sửa hai lỗ hổng rule quota/giá trị webhook ở `mechanism_batch_v2`, không đổi
+bytes v1 hoặc điểm model. Bằng chứng hiện hành: 192 standard paths gồm **160
+tái dùng + 32 chạy mới**, thêm sáu counterexample/control = **38 fresh Replay**.
+[Receipt admission](../experiments/manifests/phase3_admission_v1_validation01.json):
+`valid=true`, `phase3_accepted=false`; source `e001c8a`.
+[Tóm tắt](../docs/benchmark/mechanism_admission_summary.md) ghi rõ lỗi và giới hạn.
+Kiểm tra mới nhất: **367 tests**, setup/Ruff/mypy 126 source files và clean seal
+pass; mười receipt cũ/689 hash entries khớp, gồm 12 measured artifacts.
 Không LLM/Kaggle/Test inference; không đọc payload Test để author ca mới.
 Ước lượng: **45–50% effort Phase 3**, không metric nghiệm thu.
-48/70 ≈ 69% **số ứng viên mục tiêu**, không phải tỷ lệ family accepted.
-[Readiness](phase3_readiness.md) theo dõi các gate; tiếp tục 22 canonical còn
-thiếu và quyết định nhận/gộp family trước grouped split, variants và freeze.
+46/70 ≈ 66% là số đại diện tạm giữ so với mục tiêu, không phải tỷ lệ accepted.
+[Readiness](phase3_readiness.md) theo dõi các gate; cần thêm ít nhất 24 canonical
+được giữ và quyết định toàn pool trước grouped split, variants và freeze.
 
 ## Lịch sử: pilot revision v2.2
 

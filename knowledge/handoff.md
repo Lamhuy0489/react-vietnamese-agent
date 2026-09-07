@@ -1,21 +1,23 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-09-06. Đây là chỉ dẫn tiếp tục, không thay thế contract.
+Cập nhật: 2026-09-07. Đây là chỉ dẫn tiếp tục, không thay thế contract.
 
 ## Đang làm
 
-Theo yêu cầu owner tiếp tục Phase 3: đã thêm `flow_batch_v1` tám cặp và verifier
-tổng hợp v3. Tổng **48 ứng viên**, 15 review units tạm thời. 192 fresh Replay
-đạt QA trên năm bộ; 96 safe/96 negative. Có directional/final grants và temporal
-prerequisites thực thi; quyết định nhận/gộp family cuối cùng vẫn pending.
-A0, dataset/source/scorer cũ và model scores không đổi. Source mới: `56de8e7`.
+Đã chốt sửa hai lỗ hổng rule quota/giá trị webhook bằng `mechanism_batch_v2` và
+verifier admission. Source `e001c8a`. 48 ứng viên được self-review dưới owner
+waiver: **46 đại diện tạm giữ**, gộp hexcode → encoded và rowretry → rowdirect;
+không xóa ca gốc. Không đồng nghĩa 46 family độc lập đã được nghiệm thu.
+192 standard paths hiện hành = 160 tái dùng + 32 chạy mới; thêm sáu đường
+counterexample/control, tổng **38 fresh Replay**. 15 nhóm bảo thủ không đổi.
+A0, dataset/source/scorer cũ và model scores không đổi.
 
 Bản v1 70 family/350+350 variants và workbench bốn cặp vẫn giữ nguyên.
 48 ứng viên chưa split/approved, không tính vào quota family đã nghiệm thu.
-Combined audit có 1.128 pair comparisons; 192 là reference QA, không phải model
+Combined audit có 1.128 pair comparisons; Replay là reference QA, không phải model
 runs. Không giả independent review. [Tiến độ theo DoD](phase3_readiness.md):
-ước lượng 45–50% effort; 48/70 ≈ 69% là candidate count, không completion.
-Còn thiếu 22 ứng viên trước quyết định nhận/gộp family toàn pool.
+ước lượng 45–50% effort, không metric nghiệm thu. Cần thêm ít nhất **24** đại
+diện được giữ, rồi quyết định nhận/gộp family toàn pool.
 Đọc [tiến độ Phase 3](phase3_progress.md) để xem những thiếu sót đã xác minh.
 
 ## Bước tiếp theo
@@ -23,14 +25,14 @@ Còn thiếu 22 ứng viên trước quyết định nhận/gộp family toàn p
 1. Đọc [Phase 3](../plan/phase3.md),
    [adversarial contract](../docs/benchmark/adversarial_contract.md) và
    [split rules](../docs/benchmark/split_rules.md).
-2. Chạy `make phase3-audit`: hiện cố ý không cấp acceptance; không retry GPU
-   hoặc đổi dữ liệu tại chỗ để làm xanh gate.
-3. Đọc [tóm tắt flow](../docs/benchmark/flow_batch_summary.md),
-   [contract](../docs/benchmark/flow_batch_contract.md) và
-   [self-review pool](../docs/benchmark/pool_author_review_v1.md). Dùng verifier
-   v3 trong runbook; không chạy lại từng batch chỉ để báo thêm tiến độ. Không
-   sửa bytes 48 candidates/source đã có receipt hoặc lặp lại nhóm vừa thêm.
-   Bước cụ thể: author 22 canonical còn thiếu, rồi quyết định nhận/gộp từng
+2. Đọc [tóm tắt admission](../docs/benchmark/mechanism_admission_summary.md) và
+   [register](../data/adversarial/admission_review_v1/README.md). Dùng verifier
+   `verify_canonical_admission.py` trong runbook khi cần tái kiểm tra snapshot;
+   v3 vẫn dùng rules v1, chỉ là evidence lịch sử. Draft v1 vẫn chưa accepted;
+   không retry GPU hoặc sửa dữ liệu tại chỗ để làm xanh gate.
+3. Không chạy lại từng batch để báo thêm tiến độ. Không sửa bytes 48 candidates,
+   review snapshot hoặc source đã có receipt; tạo version mới nếu cần sửa.
+   Bước cụ thể: author ít nhất 24 canonical khác biệt còn thiếu, rồi nhận/gộp từng
    family của full pool. Phân biệt tình huống thực sự, không đổi tên để đủ 70.
    15 review units là nhóm bảo thủ cần giữ chung split, không đòi 70 abstract
    mechanisms khác nhau. Fragmentation/general entailment vẫn chưa covered;
@@ -42,6 +44,17 @@ Còn thiếu 22 ứng viên trước quyết định nhận/gộp family toàn p
 
 ## Bằng chứng
 
+- [Receipt admission](../experiments/manifests/phase3_admission_v1_validation01.json):
+  source `e001c8a`; 48 working/46 retained/2 merged/15 review units. 38 fresh
+  Replay gồm 32 standard và sáu counterexample/control; 160 standard tái dùng.
+  367 tests pass (26 mới), setup/Ruff/mypy 126 source files và clean seal pass.
+  Mười receipt cũ/689 hash entries khớp, gồm 12 measured artifacts. Hai đường
+  vi phạm thực sự được rule cũ chấm safe và rule v2 nhận diện đúng trên cùng
+  trace; failed violation không được tính executed. Không đổi điểm lịch sử.
+  `--require-acceptance` trả exit 2 đúng dự kiến; chưa cấp acceptance toàn phase.
+  Selected receipt: 134 mục hash source/input/review và 38 raw trace files khớp.
+  Quét bốn credential values trên 24 file thay đổi: 0 match. Knowledge-check
+  pass sau khi receipt được ghi hoàn chỉnh; không cần quyền tài khoản mới.
 - [Receipt v3](../experiments/manifests/phase3_pool_v3_validation01.json):
   source `56de8e7`, 48 candidates/192 Replay/1.128 comparisons/15 review units.
   341 tests pass (20 mới), setup/Ruff/mypy 123 source files và clean seal pass.

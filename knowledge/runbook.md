@@ -126,7 +126,7 @@ lỗi hạ tầng. Không cần chạy thêm từng script cũ để cộng lặ
 Đọc [contract transaction](../docs/benchmark/transaction_batch_contract.md).
 Private rules và knowledge không được đưa vào model prompt hoặc worker bundle.
 
-Lệnh **tổng hợp hiện hành v3** chạy năm batch, gồm tám authorization-flow:
+Lệnh tổng hợp v3 **lịch sử** chạy năm batch với mechanism rules v1:
 
 ```bash
 .venv/bin/python scripts/verify_phase3_pool_v3.py \
@@ -137,6 +137,23 @@ Lệnh **tổng hợp hiện hành v3** chạy năm batch, gồm tám authorizat
 48 cặp tạo 192 Replay (96/96); output/report phải mới. Cờ `--require-acceptance`
 trả exit 2 khi thiếu gate toàn phase dù fixture QA pass. Không chạy lại từng
 verifier cũ để cộng lặp counts. Đọc [contract flow](../docs/benchmark/flow_batch_contract.md).
+
+Lệnh **QA snapshot hiện hành** dùng mechanism rules v2 và register nhận/gộp:
+
+```bash
+.venv/bin/python scripts/verify_canonical_admission.py \
+  --output results/phase3/admission_local_check \
+  --report results/phase3/admission_local_check_receipt.json \
+  --require-acceptance
+```
+
+Output/report phải mới. Lệnh đối chiếu hash receipt/source/input cũ rồi tái dùng
+160 standard paths; chạy mới 32 standard và sáu counterexample/control, tổng
+38 fresh Replay. 48 ca → 46 đại diện tạm giữ/2 gộp; không phải family accepted.
+Exit 2 có chủ đích khi `valid=true`, `phase3_accepted=false`; không retry để đổi
+thành acceptance. [Contract](../docs/benchmark/mechanism_admission_contract.md)
+và [tóm tắt](../docs/benchmark/mechanism_admission_summary.md) ghi giới hạn.
+Không sửa source/input đã hash để làm gate xanh; tạo version cho thay đổi mới.
 
 [Báo cáo measured Dev](../docs/evaluation/measured_dev_pilot_report.md) chứa
 lệnh tái tạo chính xác từ raw artifacts đã audit. Các script dùng output mới

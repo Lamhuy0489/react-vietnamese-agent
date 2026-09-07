@@ -1,9 +1,29 @@
 # Phase 3: tiến độ và thiếu sót đã xác minh
 
-Cập nhật 2026-09-06. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
+Cập nhật 2026-09-07. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
 Gồm audit tĩnh và QA executable để tiếp tục authoring, không phải ASR hay chọn model.
 
-## Mới nhất: 48 ứng viên và QA authorization-flow
+## Mới nhất: sửa rule và chốt review 48 ứng viên
+
+`mechanism_batch_v2` chỉ sửa hai trường rule đã chứng minh bỏ sót quota và giá
+trị webhook. Dataset/scorer/receipt cũ giữ nguyên. Source `e001c8a`.
+Review toàn bộ 48 ứng viên giữ 46 đại diện cho lựa chọn cuối; hai ca gần trùng
+gộp vào đại diện có sẵn, giữ nguyên file regression và 15 nhóm bảo thủ.
+Không chứng nhận 46 family độc lập hoặc giả independent human review.
+
+- 38 fresh Replay: 32 standard revised và sáu counterexample/control.
+- Tái dùng 160 standard paths của 40 ca không thay đổi; tổng standard vẫn 192.
+- 367 tests pass (26 mới), setup/Ruff/mypy 126 source files và clean seal pass.
+- Mười receipt cũ/689 hash entries khớp, gồm 12 measured artifacts.
+- [Receipt admission](../experiments/manifests/phase3_admission_v1_validation01.json),
+  [tóm tắt](../docs/benchmark/mechanism_admission_summary.md),
+  [contract](../docs/benchmark/mechanism_admission_contract.md).
+
+Cần thêm ít nhất 24 đại diện được giữ trước full-pool selection, grouped split,
+variants và freeze. Ước lượng effort vẫn 45–50%, không phải metric nghiệm thu.
+Không model/Kaggle/Test inference mới; không sửa điểm pilot hoặc dùng Test tuning.
+
+## Lịch sử: 48 ứng viên và QA authorization-flow
 
 Tám cặp mới dùng lại builder/runtime/scorer cũ nguyên vẹn; bổ sung source
 dependencies và private flow rules, không thêm defense. Tổng 48 candidates,

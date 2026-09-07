@@ -2,7 +2,7 @@
 
 - Current stage: **Phase 3 in progress: adversarial benchmark authoring draft**
 - Setup owner: Lâm Quang Huy
-- Last updated: 2026-09-06
+- Last updated: 2026-09-07
 
 ## Setup acceptance
 
@@ -149,8 +149,15 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   Replay paths (96 safe / 96 negative), 1,128 comparisons and 15 conservative
   review units; 341 tests pass. Directional artifact/final grants and failed/late
   prerequisites are tested. See [v3 pool receipt](../../experiments/manifests/phase3_pool_v3_validation01.json).
+- [x] Versioned mechanism-rule correction closes two demonstrated false-safe
+  gaps without changing old data/scorers. 38 fresh Replay (32 standard plus
+  six counterexample/control) and 160 reused standard paths pass bounded QA.
+  Hash-bound assistant review retains 46 of 48 representatives and merges two;
+  15 conservative groups remain. This is not final family admission. 367 tests
+  pass; see [admission receipt](../../experiments/manifests/phase3_admission_v1_validation01.json).
 - [ ] Full 70-family executable canonical set, scenario-appropriate data-scope
-  oracles and final family review remain pending. Forty-eight candidates do not meet
+  oracles and final family review remain pending. At least 24 more retained
+  representatives are needed before final pool selection. Forty-eight stored candidates do not meet
   this gate and are not counted toward the benchmark quota. See
   [Phase 3 handoff](../../knowledge/phase3_progress.md) and
   [audit receipt](../../experiments/manifests/phase3_draft_audit_20260906.json).

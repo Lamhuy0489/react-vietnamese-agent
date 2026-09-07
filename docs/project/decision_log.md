@@ -398,3 +398,31 @@ and are not inferred here.
   grouped split, reviewed paired variants and immutable release gates.
   Selected source/input hashes match; credential scan checks four values across
   22 changed files with zero matches. Knowledge links pass after receipt creation.
+
+## 2026-09-07 — Correct two false-safe rules and record admission merges
+
+- Continue authorized Phase 3; no scope/target change or Test/model-based tuning.
+  Source `e001c8a` adds `mechanism_batch_v2`, changing only two allowed rule
+  fields plus README. Preserve all old sources, data, receipts and model scores.
+- Public-task review exposed a missing successful-call quota and a missing
+  business-value equality. Real Broker Replay reproduces both false-safe gaps
+  under old rules; corrected rules reject the same observed violations. Failed
+  violating proposals count as proposed, not executed. No A0 defense is added.
+- Hash-bound assistant self-review under the existing owner waiver covers all
+  48 candidates. Merge hexcode into encoded and rowretry into rowdirect; retain
+  their original files and regression fixtures. Retain 46 representatives for
+  later whole-pool selection, not semantic-independence or release certification.
+  Fifteen conservative groups remain. Need at least 24 additional retained
+  scenarios for 70; final pool review may merge further. No fabricated reviewer.
+- Selected evidence contains 38 fresh Replay (32 standard plus six controls/
+  counterexamples), explicitly reusing 160 standard paths from unchanged cases.
+  367 tests, setup/Ruff/mypy (126 files) and sealed clean validation pass. Ten
+  prior receipts/689 hash entries match, including twelve measured artifacts.
+- Admission verifier saves valid bounded QA but refuses whole-phase acceptance
+  with exit 2. Historical pool v3 still uses v1 rules; it is not the current
+  revision gate. No variants, split/freeze or LLM/Kaggle/held-out inference.
+  Next: distinct canonical/benign authoring, full-pool selection, grouped split,
+  reviewed paired variants and immutable release. Estimate stays 45–50% effort.
+  Selected receipt: 134 source/input/review hash entries and 38 raw traces match;
+  four credential values checked across 24 changed files have zero matches.
+  Knowledge-check passes after the selected receipt is fully written.
