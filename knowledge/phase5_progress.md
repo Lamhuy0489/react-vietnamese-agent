@@ -1,6 +1,25 @@
-# Phase 5 — runtime A0/A1 đã tích hợp
+# Phase 5 — A2 process guard đã tích hợp
 
 ## Hiện hành
+
+Preflight A2 v2: **446 tests pass** (80 mới), setup/Ruff/mypy 175 files pass.
+40 exact smoke pairs A0/A1 đối chiếu v1 + chín A2 synthetic trajectories = 89
+fresh Replay, 31 fake guard classifications. Validator kiểm tra source/action/
+proposal linkage, cache identity, error/result schema, counters và worker reap.
+124 source/548 raw hashes ghi trong preflight, 390 prior source entries bất biến.
+Selected committed-source reproduction đang chuẩn bị.
+
+Đã có A2 Pre/Post trong ReAct, cumulative A1, sticky MALICIOUS/error external veto,
+read-open, SUSPICIOUS tagging, final pass-through. Guard inference riêng process;
+timeout thực + terminate/kill/reap, failure retirement, fresh task cache, typed
+output và cold end-to-end latency. [Contract](../docs/architecture/phase5_a2_runtime_contract.md).
+
+**Chưa xong Phase 5:** chốt guard thật/revision cố định A2–A6 và worker GPU hiệu quả,
+A3–A5 session enforcement, A6 value-origin/Post/Final, grouped Dev validation.
+Cold process mỗi cache miss chưa phù hợp đo warm throughput. Chưa có model-quality
+evidence hoặc benchmark Dev/Test run mới. Quy tắc/cache đã khóa không tune theo Test.
+
+## Lịch sử: runtime A0/A1
 
 Source `d2ec2d5`, [receipt](../experiments/manifests/phase5_runtime_v1_validation01.json),
 [contract runtime](../docs/architecture/phase5_runtime_contract.md).

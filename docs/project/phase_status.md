@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: A0/A1 shared ReAct runtime verified**
+- Current stage: **Phase 5 in progress: A2 bounded-process integration verified on synthetic QA**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-07
 
@@ -260,14 +260,21 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   Source `d2ec2d5`, [runtime receipt](../../experiments/manifests/phase5_runtime_v1_validation01.json),
   [runtime contract](../architecture/phase5_runtime_contract.md). 120 source/369 raw
   hashes verified; 270 prior source hash entries preserved; preflight summary matches.
-- [ ] A2 fixed guard model/revision, bounded inference, actual Dev validation.
+- [x] Versioned A0/A1/A2 runtime and process-bounded guard adapter. Preflight:
+  446 tests (80 new), setup/Ruff/mypy 175 files pass; 40 A0/A1 exact smoke pairs
+  + nine synthetic A2 conditions = 89 Replay runs, 31 fake guard classifications.
+  Timeout/terminate/kill/reap, cache retirement, sticky errors, cumulative A1,
+  source/action trace linkage tested. 390 prior source entries remain unchanged.
+  [A2 contract](../architecture/phase5_a2_runtime_contract.md); selected receipt pending.
+- [ ] A2 production guard model/revision, efficient GPU lifecycle and actual Dev validation.
 - [ ] A3–A5 session enforcement and A6 value-origin Pre/Post/Final policies.
 - [ ] Grouped Dev tuning/validation protocol, differential experiments and freeze.
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
-The first host adapter is historical; the separate A0/A1 ReAct runner now records
-actual model/context lineage. A2–A6 are explicitly unsupported by this runtime,
-not silently mapped to A1. No new model/benchmark Dev/Test inference.
+The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
+The new v2 loop supports A2 with an explicit process-owned backend factory; A3–A6
+are rejected. Cold process startup/model loading is included in guard duration,
+not warm inference throughput. No new real model/benchmark Dev/Test inference.
 
 ## Authorized Dev pilot extension
 

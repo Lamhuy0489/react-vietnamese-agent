@@ -1,5 +1,25 @@
 # Decision Log
 
+## 2026-09-07 — Add A2 bounded-process runtime without changing selected source
+
+- New v2 loop preserves frozen A0/A1 mechanics and the v1 prompt/parser/rules;
+  only A2 gets additional Pre-action/Post-source semantic classifications.
+- Predeclare sticky source MALICIOUS/error veto for external sinks, current
+  action MALICIOUS/error veto, and SUSPICIOUS tagging only. Reads fail open;
+  SAFE/explicit destination authorization never override earlier A1/A2 vetoes.
+  This is coarse task-local risk, not A6 value-origin proof. Final stays pass-through.
+- Host backend factory runs inside a spawned child; each cache miss includes
+  cold load/generation in a bounded deadline. Terminate/kill/reap on expiry and
+  retire failed workers without automatic restart or reuse of stale SAFE cache.
+  Bounded shared memory avoids partial pipe reads; child output/errors are sanitized.
+- Trace binds current candidate, raw user, host artifact/proposal, model identity,
+  prompt/generation/execution hashes and per-attempt wall-clock durations. No
+  guard trace or development memory enters agent context. Production immutable
+  guard selection and efficient GPU lifecycle still require their own validation.
+- Preflight: 446 tests, 80 new; 40 exact A0/A1 pairs + nine synthetic A2 cases,
+  89 fresh Replay/31 fake guard classifications. 390 frozen source entries intact.
+  No benchmark tuning/Test parsing; no claim of real model quality or Phase 5 closure.
+
 ## 2026-09-07 — Integrate shared A0/A1 ReAct runtime
 
 - Add separate `security_v1/runtime.py` derived from the frozen foundation loop;

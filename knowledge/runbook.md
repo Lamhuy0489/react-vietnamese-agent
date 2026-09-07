@@ -5,7 +5,20 @@ lịch sử là lệnh hiện hành. Đọc [bàn giao](handoff.md) trước khi
 
 ## Kiểm tra phần mềm và bộ nhớ
 
-Phase 5 runtime QA hiện hành (source đã hash, output/report luôn mới):
+Phase 5 A2 QA hiện hành (output/report luôn mới):
+
+```bash
+.venv/bin/python scripts/verify_phase5_a2.py \
+  --output results/phase5_a2_next_check \
+  --report results/phase5_a2_next_check.json
+```
+
+40 A0/A1 smoke pairs + chín A2 synthetic cases = 89 Replay, 31 fake guard calls.
+Suite 446 tests; Test hash-only, không guard model thật. Worker cold-start mỗi cache
+miss, deadline gồm load/generate; không dùng số này làm GPU throughput.
+Selected report cần source sạch + `--reference` trỏ preflight cùng source hashes.
+
+Phase 5 runtime v1 lịch sử (source đã hash, output/report luôn mới):
 
 ```bash
 .venv/bin/python scripts/verify_phase5_runtime.py \

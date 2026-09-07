@@ -1,6 +1,23 @@
 # Trạng thái hiện tại
 
-## Hiện hành: Phase 5 đang triển khai — 2026-09-07
+## Hiện hành: A2 đã tích hợp bằng process guard — 2026-09-07
+
+Vòng ReAct v2 hỗ trợ A0/A1/A2. A2 kiểm tra action/source, giữ cảnh báo độc hại/lỗi
+trong task, chặn external sink trước Broker; read-open, SUSPICIOUS chỉ TAG.
+Worker có deadline thực, terminate/kill/reap, không tự retry sau infrastructure
+failure. Guard cache/trace riêng từng task, không vào agent prompt.
+
+Preflight **446 tests pass** (80 mới); setup/Ruff/mypy 175 files pass. 40 exact
+A0/A1 smoke pairs + chín A2 synthetic cases = 89 Replay, 31 fake classifications.
+124 source/548 raw hashes được ghi, 390 prior source entries giữ nguyên.
+Selected receipt đang chuẩn bị; [contract](../docs/architecture/phase5_a2_runtime_contract.md),
+[bàn giao](handoff.md). Không real model/Dev benchmark run hoặc Test parsing.
+
+Chưa chọn/chạy guard LLM thật. Adapter hiện cold-load mỗi cache miss; thời gian
+ghi là tổng cold guard, không throughput GPU. A3–A6/final protection/Dev validation
+còn thiếu, không nghiệm thu Phase 5. Không cần tài khoản mới cho phần local.
+
+## Lịch sử: shared A0/A1 runtime
 
 Source mới `d2ec2d5`, [runtime receipt](../experiments/manifests/phase5_runtime_v1_validation01.json).
 Shared ReAct A0/A1 đã tích hợp policy, raw model/context/argument/final artifacts,

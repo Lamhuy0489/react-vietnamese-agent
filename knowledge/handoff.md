@@ -4,68 +4,55 @@ Cập nhật: 2026-09-07. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-**Phase 5 đã được owner cho phép**, shared ReAct runtime A0/A1 đã pass.
-Phase 1–4 accepted; Test vẫn khóa. Source `d2ec2d5`,
-[receipt](../experiments/manifests/phase5_runtime_v1_validation01.json),
-[contract](../docs/architecture/phase5_runtime_contract.md),
-[tiến độ](phase5_progress.md).
+Phase 5: **A2 process guard đã tích hợp vào ReAct v2**, local synthetic QA pass.
+Phase 1–4 accepted; Test vẫn khóa. [Contract](../docs/architecture/phase5_a2_runtime_contract.md),
+[tiến độ](phase5_progress.md). Selected committed-source receipt đang chuẩn bị.
 
-Đã có config A0–A6 strict/cumulative, quyết định bảo mật có reason codes,
-A1 raw/normalized rules và raw-user anchors, vòng ReAct A0/A1 qua Tool Broker.
-Raw model/context/action/argument/final có lineage; denied action không chạy tool,
-không giả ToolResult; feedback artifact riêng để model tiếp tục theo step budget.
-A2 chỉ có interface/prompt/parser/cache/error handling, chưa guard inference thật.
-Không nhận bảy config là bảy mức đã operational, không nghiệm thu Phase 5.
+A0/A1 giữ nguyên mechanics; A2 thêm guard Pre-action/Post-source, sticky nguồn
+MALICIOUS/error chặn external trước Broker, read-open, SUSPICIOUS chỉ TAG.
+Worker thực sự bị terminate/kill/reap khi timeout; không tự restart sau failure.
+Guard trace/cache riêng task, ghi identity/hash/cold latency, không vào model context.
+A3–A6 chưa operational, final vẫn pass-through. Không nghiệm thu toàn Phase 5.
 
 ## Bước tiếp theo
 
-1. Kiểm tra [phase status](../docs/project/phase_status.md), Git và source hashes.
-   Chạy quality/component validator theo [runbook](runbook.md).
-2. Shared runtime A0/A1 đã có. Giữ source đã hash, dùng module/version kế tiếp
-   khi tích hợp mức mới; không đổi rule/config/receipt đã chọn. Xác nhận không
-   bypass Broker/Pre/Post/Final và luôn có differential A0 parity.
-3. **Chốt model/revision của guard dùng chung A2–A6**; bổ sung timeout/cancellation
-   có hiệu lực trước actual inference. Adapter hiện xử lý TimeoutError do backend
-   trả, không giả có khả năng ngắt GPU job. Không cần tài khoản mới cho phần local.
-4. A3 sensitivity, A4 trust/control và A5 combined session; sau đó A6 value-origin
-   + sensitive-value index/unknown critical deny/Post views/Final protection.
-   Đọc các mục tương ứng trong [phase5](../plan/phase5.md) trước triển khai.
-5. Chia grouped Dev tune/validation trước tuning. Không load authoring/Test payload,
-   không thay seal/frozen source và không điều chỉnh dựa trên Test. Không sang Phase 6.
-6. Meta access vẫn thiếu cho Llama pilot riêng, không chặn component work.
+1. Đọc phase status, kiểm tra Git/hashes; dùng validator A2 mới trong
+   [runbook](runbook.md), không sửa source/test/config đã ghi receipt.
+2. Chốt guard model/revision cố định A2–A6; host factory phải tạo model trong
+   process, inference local và process-owned. Adapter hiện cold-load mỗi cache
+   miss, chưa phải persistent GPU worker hoặc bằng chứng hiệu suất model.
+   Cần lifecycle/version hiệu quả hơn được QA riêng trước chạy guard LLM thật.
+3. A3 sensitivity, A4 trust/control, A5 combined session; A6 value-origin/index/
+   unknown critical deny/Post views/Final protection. Không nhầm coarse sticky
+   A2 veto với proof nguồn giá trị. Đọc phase5 sections trước mỗi phần triển khai.
+4. Grouped Dev tune/validation protocol trước tuning; không load Test/authoring
+   payload hoặc thay seal/frozen source. Không sang Phase 6.
+5. Không cần tài khoản mới cho local implementation. Meta access vẫn thiếu cho
+   Llama pilot riêng, không chặn A3–A6 local work.
 
 ## Bằng chứng
 
-- Runtime selected: **366 tests pass**, 66 tests mới; setup/Ruff/mypy 170 files.
-  20 smoke exact A0 pairs + 24 synthetic A0/A1 conditions = 64 fresh Replay.
-  655 artifacts của các run Phase 5, sáu micro-case denials đúng kỳ vọng; không ASR.
-  120 source/369 raw hashes khớp, 270 prior source entries giữ nguyên. Stable
-  summary khớp preflight; selected run từ clean source commit. No model/benchmark
-  Dev/Test payload parsing. Lỗi detector, repeated denials, parse retry, model error,
-  audit-view isolation, final pass-through và fresh state đều có regression tests.
-- Component dưới đây là mốc lịch sử, vẫn giữ nguyên source/evidence.
-
-- **300 tests pass**, gồm 56 synthetic Phase 5 micro-tests. Setup/Ruff/mypy
-  **166 files** pass. Selected component receipt ghi source sạch trước chạy.
-- A0 bypass detector; A1 read-only allow, source TAG/raw preservation, external
-  deny trước Broker và explicit-authorized control. Session signal reset.
-- Strict config/GT rejection; guard JSON duplicate/unknown/extra reasoning rejection,
-  identity/cache tests và read-open/sink-closed khi timeout/backend error.
-  Đây là Replay/fake backend tests, không ASR/LLM-quality evidence.
-- 153 frozen Phase 4 source hashes đã check; component validator hash-only Test,
-  không benchmark Dev run, không guard/model inference mới.
+- Preflight: **446 tests pass**, 80 mới; setup/Ruff/mypy 175 files/knowledge pass.
+  40 exact A0/A1 smoke pairs + chín synthetic A2 = 89 fresh Replay, 31 fake guard
+  classifications. 124 source/548 raw hashes ghi, 390 prior source entries intact.
+  Timeout và SIGTERM-ignore được kill/reap; crash/invalid output/identity/cache
+  retirement, sticky source errors, fresh policy, denied Broker separation và
+  guard trace tampering có tests. Không ASR, utility hay GPU throughput claim.
+- V1 source `d2ec2d5`,
+  [receipt](../experiments/manifests/phase5_runtime_v1_validation01.json):
+  366 tests, 20 A0 pairs + 24 A0/A1 micro conditions, 64 Replay.
+- Component source `4bddd23`,
+  [receipt](../experiments/manifests/phase5_components_v1_validation01.json): 300 tests.
 - Phase 4 source `be7f8b5`,
-  [closure](../experiments/manifests/phase4_closure_v1_validation01.json):
-  244 tests, 45 Dev pairs/90 Replay + 440 overhead + hai stress. Raw/data/source
-  và điểm pilot trước giữ nguyên. Gemma 6/21, Qwen7B 3/21 Dev.
+  [closure](../experiments/manifests/phase4_closure_v1_validation01.json): 244 tests.
+  Điểm pilot cũ Gemma 6/21, Qwen7B 3/21 Dev giữ nguyên.
 
 ## Giới hạn
 
-Phase 5 đang làm, runtime chỉ hỗ trợ A0/A1, chưa full A2–A6 architecture. A1 lexical rules có
-false positives với trích dẫn; raw-user anchor grammar có false negatives và không
-chứng minh hiểu mọi ý định. Rule input là source-native JSON snapshots, không
-đảm bảo detection qua mọi JSON escape/phrase split. Final A0/A1 chưa bảo vệ rò rỉ.
-A6 phải tách exposure/value-origin, không biến whole-context taint thành proof
-nguồn từng token. Chưa sửa frozen artifacts để declassify.
+Chưa chọn/chạy guard LLM thật, chưa benchmark Dev tuning hoặc Test payload parsing.
+Local factory không được mở remote inference/detached job/descendant workers;
+adapter không chứng minh ngắt được GPU job bên ngoài process đó.
+Rule input vẫn source-native JSON; lexical/anchor false positives/negatives giữ
+nguyên, không giả hiểu mọi câu tiếng Việt. A2 sticky veto có thể giảm utility.
 Review assistant theo owner waiver, không independent human review.
 Không lưu credentials, private GT, Test payload hoặc CoT trong knowledge.
