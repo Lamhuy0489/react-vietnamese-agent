@@ -6,7 +6,9 @@ Cập nhật: 2026-09-08. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 Phase 5: **A6 value PreGate/Post-view components đã qua synthetic QA**.
 [Contract](../docs/architecture/phase5_value_gates_contract.md), [tiến độ](phase5_progress.md).
-Selected-source reproduction đang chuẩn bị. Runtime v3 vẫn A0–A5, final pass-through;
+Selected-source reproduction đã đạt từ source sạch `a3743a2`;
+[receipt](../experiments/manifests/phase5_value_gates_v1_validation02.json).
+Runtime v3 vẫn A0–A5, final pass-through;
 không nhận component ALLOW thành full A6 ALLOW hoặc nghiệm thu Phase 5.
 
 PreGate nhận user/proposal host artifacts, schema strict, exact raw-user action/
@@ -39,6 +41,10 @@ public chưa được thấy. Post-view untrusted JSON envelope giữ raw/nhãn/
   24 Pre cases: 4 ALLOW/20 DENY, sáu Post cases. Bốn actual Broker mock calls,
   zero model/guard/Replay runs. 771 prior source entries intact; 132 source/121 raw
   hashes ghi. Không ASR/utility hoặc real-model claims.
+- Selected validation02: **769 tests pass** trong 138,14 giây; stable summary
+  khớp preflight02, source sạch `a3743a2`. Đã kiểm lại 132 source/121 raw hashes.
+  Validation01 gián đoạn trước receipt, không còn tiến trình chạy khi kiểm tra;
+  giữ nguyên thư mục, không tính là lượt đạt. Validation02 chạy mới toàn bộ QA.
 - Review phát hiện omitted-observation hole, thêm two-way coverage check/test.
   Preflight01 source-changed bị vô hiệu, giữ logs nhưng không chọn evidence.
   Tests có unknown fields, key/subject leaks, dimensions/authorization, numeric

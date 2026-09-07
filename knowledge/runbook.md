@@ -9,14 +9,18 @@ Phase 5 value PreGate/Post-view QA hiện hành (output/report luôn mới):
 
 ```bash
 .venv/bin/python scripts/verify_phase5_value_gates.py \
+  --reference experiments/manifests/phase5_value_gates_v1_validation02.json \
   --output results/phase5_value_gates_next_check \
   --report results/phase5_value_gates_next_check.json
 ```
 
 24 Pre/sáu Post component cases, bốn mock Broker calls. 769 tests; không model/
 guard/Replay inference, Test hash-only. Source/test/contract đã hash giữ bất biến;
-selected cần source sạch và `--reference` tới preflight02 cùng source hashes.
+Selected validation02 từ source sạch `a3743a2` khớp preflight02, 769 tests pass;
+132 source/121 raw hashes đã kiểm lại. Selected mới cần source sạch và reference
+cùng source hashes. Dùng output/report mới; không ghi đè lượt đã có.
 Preflight01 bị source-changed trong review, không dùng làm evidence đã chọn.
+Validation01 gián đoạn trước receipt; giữ nguyên, validation02 chạy mới toàn bộ QA.
 
 Phase 5 value-origin/final-release QA lịch sử (output/report luôn mới):
 

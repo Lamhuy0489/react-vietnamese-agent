@@ -11,7 +11,10 @@ Kiểm tra hai chiều index↔exposure để không bỏ sót nguồn S2 hoặc
 Preflight02: **769 tests pass**, 73 mới; setup/Ruff/mypy 186 files/knowledge pass.
 24 Pre cases (4 ALLOW/20 DENY) + sáu Post cases; bốn Broker mock calls, zero model/
 guard/Replay runs. 771 prior source entries nguyên vẹn, 132 source/121 raw hashes
-ghi. Selected reproduction đang chuẩn bị. Preflight01 source-changed bị loại.
+đã kiểm lại. [Selected reproduction](../experiments/manifests/phase5_value_gates_v1_validation02.json)
+từ source sạch `a3743a2` khớp preflight; 769 tests pass trong 138,14 giây.
+Preflight01 source-changed bị loại. Validation01 gián đoạn trước receipt; giữ
+nguyên thư mục và chạy validation02 mới, không ghi đè hoặc chọn kết quả từng ca.
 
 Vẫn chưa runtime A6: phải kết hợp guard/control risks, arbitration coarse session,
 critical-field bindings, Post context và released-final accounting/authorization.

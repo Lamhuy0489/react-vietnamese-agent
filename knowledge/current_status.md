@@ -11,7 +11,10 @@ không sửa raw/labels. Đây là components, chưa full policy hoặc runtime 
 Preflight02: **769 tests pass** (73 mới), setup/Ruff/mypy 186 files/knowledge pass.
 24 Pre cases (4 ALLOW/20 DENY), sáu Post cases; bốn Broker mock calls, không model/
 guard/Replay run. 771 prior source entries giữ nguyên; 132 source/121 raw hashes
-ghi. Selected reproduction đang chuẩn bị. [Contract](../docs/architecture/phase5_value_gates_contract.md),
+đã kiểm lại. [Selected reproduction](../experiments/manifests/phase5_value_gates_v1_validation02.json)
+từ source sạch `a3743a2` khớp preflight, **769 tests pass** trong 138,14 giây.
+Validation01 bị gián đoạn trước khi có receipt; giữ nguyên, không chọn làm evidence.
+[Contract](../docs/architecture/phase5_value_gates_contract.md),
 [handoff](handoff.md). Preflight01 bị vô hiệu vì sửa source, không chọn làm evidence.
 
 Runtime v3 vẫn A0–A5, final pass-through. Còn A6 integration/guard arbitration/

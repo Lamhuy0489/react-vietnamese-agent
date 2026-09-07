@@ -293,7 +293,9 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   Post cases; four existing Broker mock calls, zero model/guard/Replay runs.
   Bidirectional observed-source/index coverage blocks omitted protected sources;
   771 prior source entries unchanged, 132 source/121 raw hashes recorded.
-  [Gate contract](../architecture/phase5_value_gates_contract.md); selected reproduction pending.
+  [Gate contract](../architecture/phase5_value_gates_contract.md). Source `a3743a2`,
+  [selected reproduction](../../experiments/manifests/phase5_value_gates_v1_validation02.json)
+  from clean source matches preflight; 769 tests pass, 132 source/121 raw hashes verified.
 - [ ] A6 full Pre/Post/Final runtime integration, guard arbitration and final authorization.
 - [ ] Grouped Dev tuning/validation protocol, differential experiments and freeze.
 

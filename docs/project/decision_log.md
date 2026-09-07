@@ -25,6 +25,15 @@
   indexed as well. Regression test uses omitted S2/public duplicate data. No Test
   payloads informed this repair. Preflight01 was invalidated by this source edit;
   preserve its logs, select only the fresh preflight02 of the corrected source.
+- Selected validation01 stopped before a receipt or pytest log was written; no
+  validator/pytest process remained when checked. Preserve its partial directory
+  without claiming acceptance. Run the full unchanged-source QA in a fresh
+  validation02 directory, not a semantic retry or per-case selection.
+- Source `a3743a2` clean-worktree validation02 reproduces preflight02: 769 tests
+  pass in 138.14 seconds, setup/Ruff/mypy 186 files/knowledge pass. Verify all
+  132 source/121 raw hashes and 771 prior source entries. Selected receipt:
+  [value-gate validation02](../../experiments/manifests/phase5_value_gates_v1_validation02.json).
+  No model/guard/Replay run or Test payload parsing; Phase 5 remains unaccepted.
 
 ## 2026-09-07 — Predeclare cumulative A3–A5 session enforcement
 
