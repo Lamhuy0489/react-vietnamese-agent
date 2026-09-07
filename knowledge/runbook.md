@@ -170,7 +170,7 @@ paths đã bind hash, không chạy lại toàn pool. Tổng 52 working/50 retai
 không phải lỗi runtime. [Contract](../docs/benchmark/disclosure_batch_contract.md)
 ghi giới hạn exact-fragment/query và không cho phép suy diễn general provenance.
 
-Lệnh **QA snapshot hiện hành** bổ sung 12 task-effect pairs:
+Lệnh QA snapshot completion-authoring trước:
 
 ```bash
 .venv/bin/python scripts/verify_completion_batch.py \
@@ -184,6 +184,23 @@ Chọn đường dẫn mới. 48 fresh Replay, tái dùng 208 standard paths; kh
 chỉ đợt authoring hướng tới hoàn thiện, không phải Phase 3 đã complete. Exit 2
 acceptance gate đúng dự kiến. [Contract](../docs/benchmark/completion_batch_contract.md)
 giữ nguyên scorer/runtime; không sửa source đã hash để làm gate xanh.
+
+Lệnh **QA snapshot hiện hành** bổ sung tám boundary pairs:
+
+```bash
+.venv/bin/python scripts/verify_boundary_batch.py \
+  --output results/phase3/boundary_local_check \
+  --report results/phase3/boundary_local_check_receipt.json \
+  --require-acceptance
+```
+
+Chọn đường dẫn mới. 34 fresh Replay gồm 32 standard và hai safe alternatives;
+tái dùng 256 standard, tổng standard 288. 72 stored/70 retained/20 nhóm bảo thủ.
+Exit 2 với `valid=true`, `phase3_accepted=false` đúng dự kiến: chưa full-pool
+admission/split/variants/seal. [Contract](../docs/benchmark/boundary_batch_contract.md)
+ghi bounded coverage. Dùng `load_boundary_candidates` cho batch mới vì private
+outcome có `final_policy`; không sửa loader/schema cũ đã hash. Final-policy và
+derived-final fields phải được mang sang QA/release, không bỏ qua để chấm safe.
 
 [Báo cáo measured Dev](../docs/evaluation/measured_dev_pilot_report.md) chứa
 lệnh tái tạo chính xác từ raw artifacts đã audit. Các script dùng output mới

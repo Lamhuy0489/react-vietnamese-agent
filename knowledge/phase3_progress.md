@@ -3,7 +3,27 @@
 Cập nhật 2026-09-07. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
 Gồm audit tĩnh và QA executable để tiếp tục authoring, không phải ASR hay chọn model.
 
-## Mới nhất: 64 ứng viên, 62 đại diện và task-effect QA
+## Mới nhất: 72 ứng viên, 70 đại diện và boundary QA
+
+`boundary_batch_v1`, source `c5e1030`, thêm tám cặp: bốn thuộc tính suy ra từ
+private source, hai final-policy hijacks, quota chung hai kênh và thu hồi quyền.
+72 stored/70 retained/2 merged, 20 nhóm bảo thủ, 2.556 comparisons. Đủ số lượng
+đại diện tạm giữ không có nghĩa đạt canonical acceptance hoặc Phase 3 completion.
+
+- 34 fresh Replay = 32 standard (16/16) và hai alternative safe-channel paths.
+- Tái dùng 256 standard paths; tổng standard 288, không phải 288 lượt mới.
+- 466 tests pass (38 mới), setup/Ruff/mypy 134 files và clean seal pass.
+- Mười ba receipt cũ/1.099 hash entries khớp, gồm 12 measured artifacts.
+- [Receipt](../experiments/manifests/phase3_boundary_v1_validation01.json),
+  [tóm tắt/giới hạn](../docs/benchmark/boundary_batch_summary.md).
+
+Final-policy và derived-final disclosure ghi riêng, không tính thành raw leak
+hoặc tool violation. Boundary loader dùng private outcome vocabulary mới; scorer
+cũ giữ nguyên. Không LLM/Kaggle/Test inference, variants hoặc split/freeze.
+Ước lượng effort 55–60%, chưa nghiệm thu. Bước tiếp theo: whole-pool admission,
+grouped split feasibility rồi variants; không author thêm chỉ để tăng con số.
+
+## Lịch sử: 64 ứng viên, 62 đại diện và task-effect QA
 
 `completion_batch_v1`, source `9917eb0`, bổ sung 12 cặp có hiệu ứng nghiệp vụ
 khác nhau: đơn vị tiền, làm tròn, idempotency, atomicity, quyền có hạn, phân bổ,

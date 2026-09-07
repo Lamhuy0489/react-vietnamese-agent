@@ -4,20 +4,21 @@ Cập nhật: 2026-09-07. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Đã chốt `completion_batch_v1`, source `9917eb0`: thêm 12 cặp task-effect,
-bảy tool-output/ba document/hai cache. **64 ứng viên, 62 đại diện tạm giữ**, giữ hai merge
+Đã chốt `boundary_batch_v1`, source `c5e1030`: thêm tám cặp private projection,
+final-policy, quota chung và revocation. **72 ứng viên, 70 đại diện tạm giữ**, giữ hai merge
 hexcode → encoded và rowretry → rowdirect; không xóa ca gốc. Không đồng nghĩa
-62 family độc lập đã nghiệm thu. 17 nhóm bảo thủ, 2.016 pair comparisons.
-256 standard paths hiện hành = 208 tái dùng + **48 fresh Replay** (24 safe/24
-negative mới). Sáu counterexample/control admission cũ vẫn là bằng chứng riêng.
+70 family độc lập đã nghiệm thu. 20 nhóm bảo thủ, 2.556 pair comparisons.
+288 standard paths hiện hành = 256 tái dùng + 32 mới (16 safe/16 negative).
+Thêm hai safe alternatives: tổng **34 fresh Replay**. Sáu counterexample/control
+admission cũ vẫn là bằng chứng riêng, không cộng vào standard paths.
 A0, dataset/source/scorer cũ và model scores không đổi.
 
 Bản v1 70 family/350+350 variants và workbench bốn cặp vẫn giữ nguyên.
-64 ứng viên chưa split/approved, không tính vào quota family đã nghiệm thu.
+72 ứng viên chưa split/approved, không tính vào quota family đã nghiệm thu.
 Replay là reference QA, không phải model
 runs. Không giả independent review. [Tiến độ theo DoD](phase3_readiness.md):
-ước lượng 50–55% effort, không metric nghiệm thu. Cần thêm ít nhất **tám** đại
-diện được giữ, rồi quyết định nhận/gộp family toàn pool.
+ước lượng 55–60% effort, không metric nghiệm thu. Đủ 70 đại diện tạm giữ nhưng
+chưa quyết định nhận/gộp family toàn pool; review có thể yêu cầu gộp/thay thế.
 Đọc [tiến độ Phase 3](phase3_progress.md) để xem những thiếu sót đã xác minh.
 
 ## Bước tiếp theo
@@ -25,22 +26,23 @@ diện được giữ, rồi quyết định nhận/gộp family toàn pool.
 1. Đọc [Phase 3](../plan/phase3.md),
    [adversarial contract](../docs/benchmark/adversarial_contract.md) và
    [split rules](../docs/benchmark/split_rules.md).
-2. Đọc [tóm tắt completion-authoring](../docs/benchmark/completion_batch_summary.md) và
-   [review batch](../data/adversarial/completion_batch_v1/README.md). Dùng verifier
-   `verify_completion_batch.py` trong runbook khi cần tái kiểm tra snapshot;
-   disclosure/admission/v3 là các mốc trước. Draft v1 vẫn chưa accepted;
+2. Đọc [tóm tắt boundary](../docs/benchmark/boundary_batch_summary.md) và
+   [review batch](../data/adversarial/boundary_batch_v1/README.md). Dùng verifier
+   `verify_boundary_batch.py` trong runbook khi cần tái kiểm tra snapshot;
+   completion/disclosure/admission/v3 là các mốc trước. Draft v1 vẫn chưa accepted;
    không retry GPU hoặc sửa dữ liệu tại chỗ để làm xanh gate.
-3. Không chạy lại từng batch để báo thêm tiến độ. Không sửa bytes 64 candidates,
+3. Không chạy lại từng batch để báo thêm tiến độ. Không sửa bytes 72 candidates,
    review snapshot hoặc source đã có receipt; tạo version mới nếu cần sửa.
-   Bước cụ thể: author ít nhất tám canonical khác biệt còn thiếu, rồi nhận/gộp từng
-   family của full pool. Phân biệt tình huống thực sự, không đổi tên để đủ 70.
-   17 review units là nhóm bảo thủ cần giữ chung split, không đòi 70 abstract
-   mechanisms khác nhau. Fragmentation chỉ hỗ trợ hai mảnh khai báo chính xác;
-   chưa có general entailment/reconstruction. Retained categories: 18 indirect,
-   15 tool-output, 16 exfiltration, 13 policy; đây không phải quota nghiệm thu.
-   Business group đã có 25 đại diện, phải chung split. Ưu tiên boundary thông tin/
-   quyền còn thiếu; không thêm tiếp scalar substitutions chỉ để đủ số, không đổi
-   group để ép split. Chỉ thêm oracle khi scenario cụ thể thật sự cần.
+   Bước cụ thể: review semantic/pair và quyết định admission toàn bộ 70 đại diện,
+   rồi kiểm tra khả năng grouped 40/30 split, báo imbalance trước khi gán split.
+   Không author thêm chỉ để tăng số; không đổi tên để đủ 70. 20 review units phải
+   chung split, không đòi 70 abstract mechanisms khác nhau. Business group có 25
+   đại diện, không tách để ép strata. Categories retained: 20 indirect/15 output/
+   20 exfiltration/15 policy; sources: 19 document/15 cache/21 DB/15 output.
+   BoundaryOracle thêm private outcome `final_policy`; dùng loader riêng cho
+   batch mới. Không gọi generic loader cũ lên batch này. Final-policy và derived
+   disclosure là field riêng, không giả raw-artifact leakage hoặc tool violation.
+   Coverage chỉ bounded projection/exact lines, chưa general entailment.
 4. Review nhóm semantic/template, xác định split rồi mới sinh variants. Giữ
    bản draft cũ làm bằng chứng; không âm thầm reseal/move family.
 5. Chỉ cập nhật acceptance khi có kiểm tra thực sự. Đọc [runbook](runbook.md)
@@ -48,6 +50,16 @@ diện được giữ, rồi quyết định nhận/gộp family toàn pool.
 
 ## Bằng chứng
 
+- [Receipt boundary](../experiments/manifests/phase3_boundary_v1_validation01.json):
+  source `c5e1030`; 72 working/70 retained/2 merged/20 groups. 34 fresh Replay
+  gồm 32 standard và hai alternatives; 256 standard tái dùng. 466 tests pass
+  (38 mới), setup/Ruff/mypy 134 files và clean seal pass. Mười ba receipt cũ/
+  1.099 hash entries khớp, gồm 12 measured artifacts. Projection truth/types,
+  explicit grants, exact final lines, cross-channel quota/failures và designated
+  sticky revocation được test. Exit 2 acceptance gate đúng dự kiến; chưa split/
+  variants/seal, không LLM/Kaggle/Test inference hoặc cần quyền tài khoản mới.
+  Selected receipt: 155 mục hash source/input/prior và 34 raw trace files khớp.
+  Quét bốn credential values trên 25 file thay đổi: 0 match; knowledge-check pass.
 - [Receipt completion-authoring](../experiments/manifests/phase3_completion_v1_validation01.json):
   source `9917eb0`; 64 working/62 retained/2 merged/17 groups. 48 fresh Replay,
   208 standard tái dùng. 428 tests pass (27 mới), setup/Ruff/mypy 131 source

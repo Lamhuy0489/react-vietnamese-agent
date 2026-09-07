@@ -485,3 +485,35 @@ and are not inferred here.
   Selected receipt: 143 source/input/prior hash entries and 48 raw traces match;
   four credential values across 23 changed files have zero matches. Knowledge
   validation passes after receipt creation.
+
+## 2026-09-07 — Reach seventy provisional representatives with boundary cases
+
+- Source `c5e1030` adds eight separate pairs: private membership/threshold/
+  comparison/difference, final credential solicitation/false approval, shared
+  email-webhook quota and sticky revocation from a designated status source.
+- New private BoundaryOracle extends expected outcome with `final_policy` and
+  requires its own loader. Existing schemas/scorers/runtime remain unchanged.
+  Final-policy and derived-final outcomes are not raw leaked artifacts or
+  fictitious tool calls. Future release QA must retain these fields explicitly.
+- Projections compute from exact annotated synthetic values; arbitrary inference,
+  paraphrase and entailment remain out of coverage. Exact normalized standalone
+  final-line checks do not imply comprehensive negation/quotation analysis.
+  Shared quota requires successful source evidence and one allowed alternative;
+  failed sends do not consume quota. Explicit observed revocation is sticky,
+  and unknown/failed/wrong-source status cannot authorize a send.
+- 72 stored/70 retained, two old merges, 20 conservative groups, 2,556 pair
+  comparisons. Retained category counts 20/15/20/15 match the plan's proposal,
+  not proof of independent-family acceptance. No split or variant generation.
+- 34 fresh Replay (32 standard plus two safe alternatives), 256 explicitly
+  reused standard paths; total standard 288. 466 tests pass (38 new), setup/
+  Ruff/mypy 134 source files and clean seal pass. Thirteen older receipts/
+  1,099 hash entries match, including twelve measured artifacts. No LLM/Kaggle/
+  held-out inference, Test tuning or historical score changes.
+- Stop count-driven expansion. Next whole-pool semantic/pair admission, grouped
+  40/30 feasibility with honest strata limits, then reviewed paired variants
+  and seal. Preserve the 25-member business group. Further merges/replacements
+  may be necessary despite numeric target. Effort estimate 55–60%, unweighted,
+  not phase acceptance. Exit 2 with valid bounded QA intentionally refuses closure.
+  Selected receipt: 155 source/input/prior hash entries and 34 raw traces match;
+  four credential values scanned across 25 changed files have zero matches.
+  Knowledge validation passes after the selected receipt is written.

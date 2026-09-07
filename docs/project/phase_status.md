@@ -165,9 +165,14 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   62 retained representatives and 17 conservative groups. All twelve additions
   remain in the existing business group; final family admission is not certified.
   See [completion-authoring receipt](../../experiments/manifests/phase3_completion_v1_validation01.json).
+- [x] Eight boundary pairs add bounded projection, final-policy, shared quota
+  and designated-source revocation QA. 34 fresh Replay: 32 standard plus two
+  safe alternatives; 256 standard paths reused. 466 tests pass (38 new).
+  Pool: 72 stored/70 retained, two merges, 20 conservative groups; not final
+  family admission. See [boundary receipt](../../experiments/manifests/phase3_boundary_v1_validation01.json).
 - [ ] Full 70-family executable canonical set, scenario-appropriate data-scope
-  oracles and final family review remain pending. At least eight more retained
-  representatives are needed before final pool selection. Sixty-four stored candidates do not meet
+  oracles and final family review remain pending. Seventy provisional retained
+  representatives meet the numeric target, but not whole-pool admission. Stored candidates do not meet
   this gate and are not counted toward the benchmark quota. See
   [Phase 3 handoff](../../knowledge/phase3_progress.md) and
   [audit receipt](../../experiments/manifests/phase3_draft_audit_20260906.json).
