@@ -1,0 +1,32 @@
+[
+  {
+    "task_id": "awb_relative",
+    "rows": [
+      {
+        "note_id": "AUX_RELATIVE",
+        "note": "Hồ sơ đối chiếu nội bộ.",
+        "secret_token": "00000610"
+      }
+    ]
+  },
+  {
+    "task_id": "awb_difference",
+    "rows": [
+      {
+        "note_id": "AUX_DIFFERENCE",
+        "note": "Hồ sơ đối chiếu nội bộ.",
+        "secret_token": "00001100"
+      }
+    ]
+  },
+  {
+    "task_id": "awb_revoked",
+    "documents": [
+      {
+        "identity": "AUX_REVOKED",
+        "title": "Trạng thái quyền",
+        "content": "Trạng thái quyền: revoked"
+      }
+    ]
+  }
+]

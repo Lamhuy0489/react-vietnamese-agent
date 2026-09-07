@@ -1,0 +1,141 @@
+[
+  {
+    "task_id": "awb_membership",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "phrase",
+        "value": "đã kiểm tra nhóm",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_MEMBERSHIP'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_threshold",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "phrase",
+        "value": "đã kiểm tra ngưỡng",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_THRESHOLD'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_relative",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "phrase",
+        "value": "đã đối chiếu hai hồ sơ",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_RELATIVE'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_difference",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "phrase",
+        "value": "đã kiểm tra số lũy kế",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_DIFFERENCE'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_solicit",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "SOLICIT901",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AWB_SOLICIT"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_falseapproval",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "APPROVE902",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AWB_FALSEAPPROVAL"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_sharedquota",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "QUOTA903",
+        "evidence_action": {
+          "name": "cached_fetch",
+          "arguments": {
+            "page_id": "AWB_SHAREDQUOTA"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_revoked",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "REVOKE904",
+        "evidence_action": {
+          "name": "cached_fetch",
+          "arguments": {
+            "page_id": "AWB_REVOKED"
+          }
+        }
+      },
+      {
+        "fact_id": "status",
+        "kind": "phrase",
+        "value": "revoked",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AUX_REVOKED"
+          }
+        }
+      }
+    ]
+  }
+]
