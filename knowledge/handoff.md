@@ -1,78 +1,67 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-09-07. Đây là chỉ dẫn tiếp tục, không thay thế contract.
+Cập nhật: 2026-09-08. Đây là chỉ dẫn tiếp tục, không thay thế contract.
 
 ## Đang làm
 
-Phase 5: **A3–A5 session policy tích hợp vào ReAct v3**, local synthetic QA pass.
-Phase 1–4 accepted; Test vẫn khóa. [Contract](../docs/architecture/phase5_session_contract.md),
-[tiến độ](phase5_progress.md). Source `8a4ca3d`,
-[selected receipt](../experiments/manifests/phase5_session_v1_validation01.json) từ
-source sạch, stable summary khớp preflight; 127 source/780 raw hashes đã kiểm lại.
+Phase 5: **A6 value-origin và final-release components đã qua synthetic QA**.
+Source `3b9f565`, [contract](../docs/architecture/phase5_value_origin_contract.md),
+[selected receipt](../experiments/manifests/phase5_value_origin_v1_validation01.json),
+[tiến độ](phase5_progress.md). Selected từ source sạch khớp stable preflight;
+130 source/101 raw hashes đã kiểm lại. Phase 1–4 accepted; Phase 5 chưa nghiệm thu.
 
-A0/A1 giữ nguyên mechanics; A2 thêm guard Pre-action/Post-source, sticky nguồn
-MALICIOUS/error chặn external trước Broker, read-open, SUSPICIOUS chỉ TAG.
-Worker thực sự bị terminate/kill/reap khi timeout; không tự restart sau failure.
-Guard trace/cache riêng task, ghi identity/hash/cold latency, không vào model context.
-A3 max sensitivity/S0 clearance, A4 bounded raw-user external authorization,
-A5 sticky joint rule/guard alert/error veto đã tích hợp. Final vẫn pass-through,
-A6 chưa operational. Không nghiệm thu toàn Phase 5.
+Index chỉ nhận raw USER/tool-source roots do host quan sát, match theo kiểu dữ liệu
+và giữ mọi origin cùng sensitivity/trust độc lập. Final-release component tạo
+artifact mới bằng ALLOW/REDACT/DENY tất định, không sửa raw/proposed hoặc hạ nhãn.
+Đã sửa nguồn có transformation lọt admission và protected value chuẩn hóa thành
+rỗng gây crash. A6 chưa operational: runtime v3 vẫn A0–A5, Final pass-through.
 
 ## Bước tiếp theo
 
-1. Đọc phase status, kiểm tra Git/hashes; dùng validator A2 mới trong
-   [runbook](runbook.md), không sửa source/test/config đã ghi receipt.
-2. Chốt guard model/revision cố định A2–A6; host factory phải tạo model trong
-   process, inference local và process-owned. Adapter hiện cold-load mỗi cache
-   miss, chưa phải persistent GPU worker hoặc bằng chứng hiệu suất model.
-   Cần lifecycle/version hiệu quả hơn được QA riêng trước chạy guard LLM thật.
-3. Tiếp theo: A6 value-origin/index/unknown critical deny/Post views/Final protection.
-   Đọc phase5 sections và freeze contract trước triển khai; A6 cần adjudication
-   riêng thay coarse veto, không nhầm whole-context lineage với nguồn từng token.
-   Rà A4 general processing scope ngoài bounded external anchors còn chưa có.
-4. Grouped Dev tune/validation protocol trước tuning; không load Test/authoring
-   payload hoặc thay seal/frozen source. Không sang Phase 6.
-5. Không cần tài khoản mới cho local implementation. Meta access vẫn thiếu cho
-   Llama pilot riêng, không chặn A3–A6 local work.
+1. Đọc phase status/contract, kiểm tra Git và dùng validator value-origin mới trong
+   [runbook](runbook.md). Không sửa source/test/config/contract đã ghi receipt;
+   thêm version/module riêng cho bước tích hợp tiếp theo.
+2. Freeze contract A6 runtime trước triển khai: PreGate critical-field origin và
+   unknown-deny, PostGate safe context views, FinalGate trả released content;
+   authorization cho final phải từ host policy/user, không evaluator GT.
+   Cần arbitration riêng cho coarse A3–A5 veto để giữ benign utility khi có nguồn
+   public đủ evidence; whole-context lineage không chứng minh nguồn từng token.
+3. Chốt guard model/revision chung A2–A6 và lifecycle process-owned GPU hiệu quả.
+   Adapter hiện cold-load mỗi cache miss, không phải persistent GPU worker hoặc
+   bằng chứng hiệu suất model. Không cần tài khoản mới cho local implementation.
+4. Rà A4 general processing scope ngoài external anchors; chốt grouped Dev
+   tune/validation protocol trước tuning. Không load Test/authoring payload,
+   thay seal/frozen source hoặc sang Phase 6.
+5. Meta access vẫn thiếu cho Llama pilot riêng; không chặn local A6 work.
 
 ## Bằng chứng
 
-- Session preflight: **593 tests pass**, 147 mới; setup/Ruff/mypy 179 files,
-  knowledge pass. 44 A0–A2 exact pairs + 30 session cases = 118 fresh Replay.
-  Riêng session cases: 165 fake guard classifications, 225 snapshots, 15 expected
-  denials. Không ASR. 127 source/780 raw hashes ghi; 514 prior source entries intact.
-  Source-independent state reconstruction đối chiếu labels/rule/guard traces;
-  zero-call terminal, repeated denials/fresh state, tamper, dimension matrix,
-  current-action/sticky alerts và raw-user negative controls có tests.
-  Selected reproduction cũng pass 593 tests và có cùng stable summary.
-- A2 historical source `15ed921`,
-  [receipt](../experiments/manifests/phase5_a2_v2_validation01.json) khớp preflight.
-
-- Preflight: **446 tests pass**, 80 mới; setup/Ruff/mypy 175 files/knowledge pass.
-  40 exact A0/A1 smoke pairs + chín synthetic A2 = 89 fresh Replay, 31 fake guard
-  classifications. 124 source/548 raw hashes ghi, 390 prior source entries intact.
-  Timeout và SIGTERM-ignore được kill/reap; crash/invalid output/identity/cache
-  retirement, sticky source errors, fresh policy, denied Broker separation và
-  guard trace tampering có tests. Không ASR, utility hay GPU throughput claim.
-  Selected reproduction cũng pass toàn bộ 446 tests và cùng stable summary.
-- V1 source `d2ec2d5`,
-  [receipt](../experiments/manifests/phase5_runtime_v1_validation01.json):
-  366 tests, 20 A0 pairs + 24 A0/A1 micro conditions, 64 Replay.
-- Component source `4bddd23`,
-  [receipt](../experiments/manifests/phase5_components_v1_validation01.json): 300 tests.
-- Phase 4 source `be7f8b5`,
-  [closure](../experiments/manifests/phase4_closure_v1_validation01.json): 244 tests.
-  Điểm pilot cũ Gemma 6/21, Qwen7B 3/21 Dev giữ nguyên.
+- Preflight và selected reproduction đều **696 tests pass**, 103 mới;
+  setup/Ruff/mypy 183 files/knowledge pass. 24 synthetic component conditions:
+  12 ALLOW, 8 REDACT, 4 DENY. Zero fresh Replay/guard classifications/model runs;
+  không ASR/utility claim. 641 prior source entries nguyên vẹn.
+- 130 source/101 raw hashes của selected receipt đã kiểm lại; stable summary
+  khớp preflight. Kiểm tra riêng serialized artifacts của 24 ca đối chiếu
+  IDs/hashes/labels/origin/proposed/released và nội dung DENY rỗng.
+- Tests có typed values/DB columns-rows, nguồn trùng public/protected, numeric
+  equivalence/boundaries/common values, raw-user presence không tự cấp quyền,
+  admission atomic/fresh/monotone, resource limits, deterministic redaction,
+  normalized-only detection, replacement collision và artifact round-trip.
+- Mốc session trước: source `8a4ca3d`,
+  [receipt](../experiments/manifests/phase5_session_v1_validation01.json),
+  593 tests, 44 A0–A2 parity pairs + 30 session cases = 118 Replay;
+  165 fake guard classifications, 225 snapshots, 15 expected denials.
 
 ## Giới hạn
 
-Chưa chọn/chạy guard LLM thật, chưa benchmark Dev tuning hoặc Test payload parsing.
-Local factory không được mở remote inference/detached job/descendant workers;
-adapter không chứng minh ngắt được GPU job bên ngoài process đó.
-V3 đã tạo guard sidecar rỗng và session initial/final cho zero-call terminal paths;
-v2 giữ nguyên giới hạn lịch sử, không sửa file đã hash.
-Rule input vẫn source-native JSON; lexical/anchor false positives/negatives giữ
-nguyên, không giả hiểu mọi câu tiếng Việt. A3–A5 coarse veto có thể giảm utility.
-A4 hiện external action/destination only, chưa general processing-scope tracking.
-Review assistant theo owner waiver, không independent human review.
-Không lưu credentials, private GT, Test payload hoặc CoT trong knowledge.
+ALLOW chỉ có nghĩa không khớp profile hữu hạn, không chứng minh không có rò rỉ.
+Chưa hỗ trợ leakage paraphrase/encoded/translated tổng quát, short names,
+unlabelled integral numbers hoặc SQL alias semantics. Normalization chỉ phục vụ
+phát hiện, không authorize destination. Default final component clearance S0
+chặn S1/S2 match; quyền final hợp lệ và unknown critical relations còn cần policy.
+
+Chưa guard LLM thật, benchmark Dev tuning hoặc Test payload parsing; seal checks
+chỉ hash/metadata. Runtime A6, Post views và full FinalGate chưa tích hợp.
+A0–A5 và điểm pilot cũ giữ nguyên. Assistant self-review theo owner waiver,
+không independent human review. Không credentials/private GT/Test payload/CoT
+trong knowledge; không có pending access cho công việc local tiếp theo.

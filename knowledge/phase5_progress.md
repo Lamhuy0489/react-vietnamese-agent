@@ -1,6 +1,30 @@
-# Phase 5 — A3–A5 session enforcement đã tích hợp
+# Phase 5 — A6 value-origin/final-release components
 
 ## Hiện hành
+
+Source `3b9f565`: [component contract](../docs/architecture/phase5_value_origin_contract.md)
+cho typed origin index và deterministic final release. Đây là phần nền A6, chưa
+bật A6 runtime hoặc thay A0–A5. Index chỉ nhận raw roots do host quan sát, giữ mọi
+nguồn trùng giá trị và nhãn sensitivity/trust độc lập; hỗ trợ DB columns/rows,
+numeric equivalence có giới hạn, kiểm soát tài nguyên và admission atomic.
+Final mới liên kết proposal/nguồn, raw và nhãn gốc giữ nguyên. Normalized-only hit,
+scan failure hoặc protected value chuẩn hóa thành rỗng dẫn tới DENY.
+
+Preflight **696 tests pass** (103 mới), setup/Ruff/mypy 183 files/knowledge pass.
+24 synthetic conditions: 12 ALLOW, 8 REDACT, 4 DENY; không fresh Replay hoặc guard
+classification. 130 source/101 raw hashes ghi, 641 prior source entries nguyên vẹn.
+[Selected reproduction](../experiments/manifests/phase5_value_origin_v1_validation01.json)
+từ commit sạch khớp stable preflight, 696 tests pass; 130 source/101 raw hashes
+đã kiểm lại. Kiểm tra riêng serialized artifacts đã đối chiếu
+ID/hash/labels/proposed/released cho cả 24 ca.
+
+Không benchmark Dev tuning/Test parsing hoặc model inference. ALLOW chỉ là không
+khớp profile hiện hành; không chứng minh không có rò rỉ ngữ nghĩa/encoded/paraphrase.
+Final authorization và unknown critical relations cần runtime policy riêng, không GT.
+Tiếp theo: A6 Pre/Post/Final/veto arbitration, A4 general processing scope, guard
+production/revision/GPU lifecycle và grouped Dev protocol. Phase 5 chưa nghiệm thu.
+
+## Lịch sử: A3–A5 session runtime
 
 Runtime v3 hỗ trợ A0–A5 với policy cumulative, không tạo ablation ngầm. A3 chặn
 external sau S1/S2; A4 thêm authorization raw-user sau untrusted; A5 thêm joint

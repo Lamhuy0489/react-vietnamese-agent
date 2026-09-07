@@ -1,6 +1,26 @@
 # Trạng thái hiện tại
 
-## Hiện hành: A3–A5 session enforcement đã tích hợp — 2026-09-07
+## Hiện hành: A6 value-origin và final-release components — 2026-09-08
+
+Đã hoàn thiện mốc component [truy nguồn giá trị/lọc final](../docs/architecture/phase5_value_origin_contract.md),
+source `3b9f565`. Index theo kiểu dữ liệu, giữ mọi nguồn khớp và hai chiều
+sensitivity/trust; release ALLOW/REDACT/DENY tất định, giữ nguyên proposed final
+và nhãn lineage. Nguồn có transformation bị từ chối; giá trị chỉ còn rỗng sau
+chuẩn hóa khiến release DENY, không crash hoặc tạo match rỗng.
+
+Preflight **696 tests pass** (103 mới), setup/Ruff/mypy 183 files/knowledge pass.
+24 ca synthetic: 12 ALLOW, 8 REDACT, 4 DENY; không Replay/model/benchmark run.
+130 source/101 raw hashes đã kiểm lại, 641 prior source entries nguyên vẹn.
+[Selected receipt](../experiments/manifests/phase5_value_origin_v1_validation01.json)
+từ source sạch khớp stable preflight; lượt tái lập cũng 696 tests pass.
+Test chỉ hash-check; không parse payload Test.
+
+A6 chưa bật trong runtime: v3 vẫn A0–A5, Final pass-through. Còn Pre/Post/Final
+integration, authorization/unknown critical relations, A4 general processing scope,
+guard model/revision/GPU lifecycle và grouped Dev validation. Phase 5 chưa nghiệm thu.
+Đọc [handoff](handoff.md) để tiếp tục; không cần tài khoản mới cho local implementation.
+
+## Lịch sử: A3–A5 session enforcement đã tích hợp — 2026-09-07
 
 Runtime v3 hỗ trợ A0–A5: A3 max sensitivity/S0 external clearance, A4 thêm raw-user
 destination authorization sau untrusted source, A5 thêm sticky rule/LLM alerts

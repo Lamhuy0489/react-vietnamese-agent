@@ -5,7 +5,22 @@ lịch sử là lệnh hiện hành. Đọc [bàn giao](handoff.md) trước khi
 
 ## Kiểm tra phần mềm và bộ nhớ
 
-Phase 5 session QA hiện hành (output/report luôn mới):
+Phase 5 value-origin/final-release component QA hiện hành (output/report luôn mới):
+
+```bash
+.venv/bin/python scripts/verify_phase5_value_origin.py \
+  --reference experiments/manifests/phase5_value_origin_v1_validation01.json \
+  --output results/phase5_value_origin_next_check \
+  --report results/phase5_value_origin_next_check.json
+```
+
+24 synthetic conditions: 12 ALLOW/8 REDACT/4 DENY; không Replay/model/guard run.
+Suite 696 tests, setup/Ruff/mypy 183 files/knowledge pass. Source `3b9f565`,
+selected receipt khớp preflight; 130 source/101 raw hashes kiểm lại. Test hash-only.
+Component chưa bật A6 runtime. Source/test/contract đã hash không sửa tại chỗ;
+thêm version riêng khi tích hợp Pre/Post/Final hoặc mở rộng matching profile.
+
+Phase 5 session QA lịch sử (output/report luôn mới):
 
 ```bash
 .venv/bin/python scripts/verify_phase5_session.py \

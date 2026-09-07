@@ -1,8 +1,8 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: cumulative A3–A5 session integration verified on synthetic QA**
+- Current stage: **Phase 5 in progress: A6 value-origin/final-release components verified; runtime remains A0–A5**
 - Setup owner: Lâm Quang Huy
-- Last updated: 2026-09-07
+- Last updated: 2026-09-08
 
 ## Setup acceptance
 
@@ -278,6 +278,15 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   Source `8a4ca3d`, [selected receipt](../../experiments/manifests/phase5_session_v1_validation01.json)
   matches preflight; all 127 source/780 raw hashes verified.
   [Session contract](../architecture/phase5_session_contract.md).
+- [x] Bounded A6 typed value-origin index and deterministic final-release components,
+  separate from the runtime. 696 tests pass (103 new), setup/Ruff/mypy 183 files
+  and knowledge checks pass. 24 synthetic conditions: 12 ALLOW/8 REDACT/4 DENY;
+  zero fresh Replay/model/guard runs. Source `3b9f565`,
+  [selected receipt](../../experiments/manifests/phase5_value_origin_v1_validation01.json)
+  from clean source matches preflight; 130 source/101 raw hashes verified,
+  641 prior source entries unchanged. Transformed roots rejected; empty normalized
+  protected values fail closed. [Component contract](../architecture/phase5_value_origin_contract.md).
+  A6 remains disabled in runtime; this is not complete FinalGate or benchmark ASR.
 - [ ] A4 general processing-scope controls beyond bounded external authorization.
 - [ ] A6 value-origin Pre/Post/Final policies.
 - [ ] Grouped Dev tuning/validation protocol, differential experiments and freeze.
