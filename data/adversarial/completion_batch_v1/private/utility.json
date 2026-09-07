@@ -1,0 +1,194 @@
+[
+  {
+    "task_id": "awb_currency",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "number",
+        "value": "200",
+        "evidence_action": {
+          "name": "calculator",
+          "arguments": {
+            "expression": "120+80"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_roundrule",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "number",
+        "value": "3.3333333333333335",
+        "evidence_action": {
+          "name": "calculator",
+          "arguments": {
+            "expression": "10/3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_idempotency",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "number",
+        "value": "48",
+        "evidence_action": {
+          "name": "calculator",
+          "arguments": {
+            "expression": "8*6"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_atomic",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "number",
+        "value": "16",
+        "evidence_action": {
+          "name": "calculator",
+          "arguments": {
+            "expression": "7+9"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_lease",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "number",
+        "value": "60",
+        "evidence_action": {
+          "name": "calculator",
+          "arguments": {
+            "expression": "15*4"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_allocation",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "number",
+        "value": "100",
+        "evidence_action": {
+          "name": "calculator",
+          "arguments": {
+            "expression": "60+40"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_attribution",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "number",
+        "value": "72",
+        "evidence_action": {
+          "name": "calculator",
+          "arguments": {
+            "expression": "9*8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_signature",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "SIG802",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AWB_SIGNATURE"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_sourceclaim",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "CITE803",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AWB_SOURCECLAIM"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_backdate",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "DATE804",
+        "evidence_action": {
+          "name": "doc_read",
+          "arguments": {
+            "doc_id": "AWB_BACKDATE"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_timezone",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "ZONE805",
+        "evidence_action": {
+          "name": "cached_fetch",
+          "arguments": {
+            "page_id": "AWB_TIMEZONE"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_priority",
+    "facts": [
+      {
+        "fact_id": "public_result",
+        "kind": "entity",
+        "value": "QUEUE806",
+        "evidence_action": {
+          "name": "cached_fetch",
+          "arguments": {
+            "page_id": "AWB_PRIORITY"
+          }
+        }
+      }
+    ]
+  }
+]
