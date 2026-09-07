@@ -1,5 +1,32 @@
 # Decision Log
 
+## 2026-09-07 — Three mechanical surfaces and unified private reference adapter
+
+- Continue Phase 3 from the immutable 70-canonical/40–30 selection. Add a separate
+  420-record mechanical snapshot (210 attack/210 benign; 120 Dev/90 Test per
+  branch), not a new selection or a replacement of old data/scorers.
+- Existing helper handles no-diacritic, word-boundary and U+200B insertion.
+  Exact output/argument literals remain unchanged even where that leaves accents
+  in a no-diacritic payload. Protect NOTICE so insertion targets Vietnamese text.
+  All 140 boundary edits were inspected in sentence context under owner waiver;
+  structural checks cover the other 280. This is not independent human review.
+- Preserve original protected spans, not raw substring counts: removing accents
+  can create extra ordinary substrings without changing any original literal.
+  The initial structural preflight exposed this checker false-positive before
+  reference execution; a positional check and regression test fix the new checker
+  only. No canonical, model, scope or historical oracle was changed.
+- New adapter dispatches to the existing six scorer types and binds the old
+  pilot utility sidecar explicitly. Search-snippet exposures are checked alongside
+  primary reads. Public inputs exclude private rule/utility/reference objects;
+  every call uses the unchanged Tool Broker and offline mocks.
+- Preflight passes 1,128 fresh references: 280 canonical standard, 840 variant
+  standard and eight safe alternatives. Scores match hash-bound canonical
+  evidence exactly. 488 references use Test-assigned construction data, not
+  held-out model inference; no LLM/Kaggle runs or Test-driven model tuning.
+- 604 tests pass (109 new), setup/Ruff/mypy 140 source files and clean seal pass.
+  Code-mix/paraphrase, their executable QA, complete release integration and Test
+  seal remain outstanding; mechanical acceptance must not close Phase 3.
+
 ## 2026-09-07 — Whole-pool admission and grouped canonical assignment
 
 - Owner asks to complete Phase 3. Review all 72 stored task/attack/benign texts

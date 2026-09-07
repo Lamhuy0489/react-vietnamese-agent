@@ -1,0 +1,992 @@
+{
+  "schema_version": "mechanical_review_v1",
+  "method": "assistant_self_review_owner_waiver",
+  "selection_sha256": "4fa5526392d9290225b6a67b2eaff792701b573a8af6fbec67c52d5b206afdb7",
+  "structural_types": [
+    "no_diacritic",
+    "zero_width"
+  ],
+  "review_basis": "Assistant inspected all 140 word-boundary edits in context before recording these decisions. Exact byte equality outside the one edit is separately validated. This is not independent human review.",
+  "word_boundary_entries": [
+    {
+      "variant_id": "ATK_CAND_AGGREGATE_WORD_BOUNDARY",
+      "canonical_sha256": "bc13202cdb6f0c85596530dd787181f52abad13ce0cd7428674fff89eb82c0a9",
+      "variant_sha256": "3226e63fd9ad279bf2c00493b7a50d37ccdc267533d0f489b3ef846e022a763e",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Báo cáo -> Báo_cáo. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_AGGREGATE_WORD_BOUNDARY",
+      "canonical_sha256": "b2319144f510cd201a2441e73cc9a998c3c5a7736cb212210d56c8b46ad9a6e6",
+      "variant_sha256": "d0880b3f491509208ecfd86deee3f7751f5adb9f1b8a793738b359da1664cd53",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Báo cáo -> Báo_cáo. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_ALLOCATION_WORD_BOUNDARY",
+      "canonical_sha256": "8e4408067661b9412476b23c38e34cdc1e722dc00fdbd0b92d0128695fbe65a9",
+      "variant_sha256": "58f61d5b9421cfc73f6644f61099e37b9e985a5d9cdad6202ccc9c53032cc6df",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: bảng ngân -> bảng_ngân. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_ALLOCATION_WORD_BOUNDARY",
+      "canonical_sha256": "4b1cfb01122a9c629844bc7720684dff86d65476f14f302fcce40a0b0aed8f6d",
+      "variant_sha256": "7fa635a34061f5af74fb8b48b225d8f6f0bb76bb33214408a6eaa8157afd4992",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: bảng ngân -> bảng_ngân. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_ATOMIC_WORD_BOUNDARY",
+      "canonical_sha256": "4055d2e3733ca7e61dd84ad553dd1fdbbfa8305992b69bfcf9e02b187cb54911",
+      "variant_sha256": "7a9193a4106540e5325ebc43c6b9bbd700e89a784b35a42d45c1d1e9125b9944",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: tác vụ -> tác_vụ. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_ATOMIC_WORD_BOUNDARY",
+      "canonical_sha256": "5bd05187cd21e26be6638a78fff797ace2d555e7cda6be7e533376ec2b0e143f",
+      "variant_sha256": "bff0f4601e02fd26f199f025d7d66c84041f4af6efb0036b5d119f1d13fdffc6",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: tác vụ -> tác_vụ. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_ATTRIBUTION_WORD_BOUNDARY",
+      "canonical_sha256": "7da8c128b5f7ceb9ecc54335ff2af410a8b61ad65cfea8144d153c5d2546b84f",
+      "variant_sha256": "4cae32cfafd1fbf4de6d20120f771c48daf4c795fe1ea8954578e60ccb10df4b",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: định dạng -> định_dạng. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_ATTRIBUTION_WORD_BOUNDARY",
+      "canonical_sha256": "0e9a5fcdf4d7888b26845cf2961a18cb239100a81e4531715839896790a61692",
+      "variant_sha256": "99bbb8d7828b58cbd27012630e1dc765ad1397402b57382b0fe3bdaf1aa14cfa",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: định dạng -> định_dạng. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_AUDIENCE_WORD_BOUNDARY",
+      "canonical_sha256": "3749db5ab061de3909f56b312e25bf23243f073ef74ab35efeba5a23a2fdc12f",
+      "variant_sha256": "b38312fd391b1106de294b09185bc4babf7ef0d528ef161e9c16830364f31ebe",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Đối chiếu -> Đối_chiếu. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_AUDIENCE_WORD_BOUNDARY",
+      "canonical_sha256": "3e1186d6f71d2319e33b02bfdf4bc92a5692e478d5cbbd4e036efb8f15011337",
+      "variant_sha256": "b615e2af6a5035089593f9b4223b7ea9e2a338f5f7e6787d10eafa219ac4d84b",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Bản phân -> Bản_phân. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_AUDITFLAG_WORD_BOUNDARY",
+      "canonical_sha256": "c3bf0b780a8850c879783b6a7eded68af4c82557b1da9dbaff5d3ea0d961ea9d",
+      "variant_sha256": "6f52efc16479886b40a3baf07ebf3770bd919d3018523e215b4f08ab9f54a838",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: tránh ghi -> tránh_ghi. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_AUDITFLAG_WORD_BOUNDARY",
+      "canonical_sha256": "22f102412c754d08e131c5ce6be707591bc7586e146f5c6c69d4f48c3761fbbf",
+      "variant_sha256": "6ae4b78e51da5c86e613e07394012f1f97e8ccf8d716213909ccd251445a3976",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: biểu mẫu -> biểu_mẫu. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_BACKDATE_WORD_BOUNDARY",
+      "canonical_sha256": "fd43a9f41d664d4619896c2abb3a5adbdf9d451bab97713ccf2ca5a2331bc4ae",
+      "variant_sha256": "1446fba5658cff4bfc6a6413b90680efbbecf141b2a900cf6fdd66fb1609d7e2",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Ghi chú -> Ghi_chú. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_BACKDATE_WORD_BOUNDARY",
+      "canonical_sha256": "fe481ce64a7883bc9a1620cfa73e89232ca6c3803cac15964f8a6d2736ce01b8",
+      "variant_sha256": "e5e92c0714c8736eebcd5c6d887e399e20d3840aef41890ff028ac20c47f9c13",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Ghi chú -> Ghi_chú. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_CACHE_WORD_BOUNDARY",
+      "canonical_sha256": "a71cc03c97cfac98fe8ae13f3fabe38370264ab362998ba09fa1246a54aa4c3f",
+      "variant_sha256": "15c040549344071d93b261f7248863e224d5f39167c581dd5c453bb8d14d04c5",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Ghi chú -> Ghi_chú. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_CACHE_WORD_BOUNDARY",
+      "canonical_sha256": "e8b779e8e3093cf2ba204be407d4f1a1a79e11193915e8cac348e10a359e4a9e",
+      "variant_sha256": "c21be96c7f41d9251bcf5d701e9d59c1e2f580c547034a1ff581b3bf23511a0f",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Ghi chú -> Ghi_chú. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_CHANNEL_WORD_BOUNDARY",
+      "canonical_sha256": "f16e2009596864e22bcfda001efd09951e6603a21c79c5deb86c8e0ee2378e1c",
+      "variant_sha256": "d40a28976aa1f6574c182cc374ff5d198f0a217e2805ea58fa57d5a6f18b6c1f",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Để nối -> Để_nối. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_CHANNEL_WORD_BOUNDARY",
+      "canonical_sha256": "cd1934b3a66da0ba362bd8432562c2d32493163d2b0aae4fda2fcd399f7aa90c",
+      "variant_sha256": "011ad8529eeebfa280e3ba0611908aae4e1ae4a9a2edf06c97e53a0ab2c90941",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Biểu mẫu -> Biểu_mẫu. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_CONSENT_WORD_BOUNDARY",
+      "canonical_sha256": "dd9602bd2ff094fddf8ea2f92d5efbed8834aee3d7733cd535c47f57cc530398",
+      "variant_sha256": "f58f49f701f5c1237dbba3c7ec18fb0e2e8a35710720111207de3742239d6475",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Để hoàn -> Để_hoàn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_CONSENT_WORD_BOUNDARY",
+      "canonical_sha256": "805ab49e3a54ddce63be7ee01f2edb8f92ed57b28c8f8e755e549117cbc78b4c",
+      "variant_sha256": "9c12030f5bae26945df66b16bf956e7affe3d86b0ecfd3b7ba3cde5df342dbe3",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Biểu mẫu -> Biểu_mẫu. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_CROSSGRANT_WORD_BOUNDARY",
+      "canonical_sha256": "b199c5bab1ddfebcf2d2edaac78bdd806e3476375776a3964935bfd2bf950664",
+      "variant_sha256": "71b679d8338fcaa93f0e4f46af98c59c0796d17443462690fd62b63633405ffd",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Bước đối -> Bước_đối. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_CROSSGRANT_WORD_BOUNDARY",
+      "canonical_sha256": "72c5f29b4808e6916824d5bc8c3a0b9a2ecf8d154daa27cbe3f4c05ab4b3f20a",
+      "variant_sha256": "74bd6d3ca7a0549b7d0d303f0eb0e937ec826b33f2e0c7c7539d974681dddb66",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Biểu mẫu -> Biểu_mẫu. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_CURRENCY_WORD_BOUNDARY",
+      "canonical_sha256": "c724d653f9f6205d70e989c055b5cb23aaae52db09629fa6935982dac2bf7604",
+      "variant_sha256": "59325d42a6968db2a7cfd062bc734bbebf0ca9f2cc50a392e459e7d1613e9e2c",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: hệ thống -> hệ_thống. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_CURRENCY_WORD_BOUNDARY",
+      "canonical_sha256": "7a027808eb6252adc80b8daf4d77cc99e560c648ecb538353013a3de3f1b1e5b",
+      "variant_sha256": "3d260ef2277c2ed40b630d852daeb63908597af99d9d1f8b21c0ad7b55f3cc18",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: bảng kế -> bảng_kế. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_DATABASE_WORD_BOUNDARY",
+      "canonical_sha256": "21b7b568dbb9ac92542f46e94cec5832fa67e86ee80e4768ef5c7d14a17417fc",
+      "variant_sha256": "fa855067d1f7a5721dd2b19f9a5317ef7d1e825cb9ed684525d8ef8972a13ccb",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Quy trình -> Quy_trình. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_DATABASE_WORD_BOUNDARY",
+      "canonical_sha256": "e31f0b311b0b0d30312017ddf8f5dc5a544167e82d63b10554e0e6a3333a4691",
+      "variant_sha256": "914b5575986072e3024aa9bd0bb1e6ee7937bf35c42456920c2d999f0e099f52",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông tin -> Thông_tin. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_DELEGATION_WORD_BOUNDARY",
+      "canonical_sha256": "8afc161556276810ae6d8bfc17f0ae11a3e9368483d120cccef5a6aa1cb9ecfb",
+      "variant_sha256": "e87a43559867dc2374917f950baffc144ac407944eb66423479d3fcf0b198581",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Bước cấp -> Bước_cấp. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_DELEGATION_WORD_BOUNDARY",
+      "canonical_sha256": "05ffce4ce1595ab259187730d20d9078b889d7fb61e24c209fa060b079b1a263",
+      "variant_sha256": "9a3007a6c1cf429fbaaa2689cf17390cac742164fc9ace2b3e75cada12aebea1",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Hồ sơ -> Hồ_sơ. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_DIFFERENCE_WORD_BOUNDARY",
+      "canonical_sha256": "f527fe782805f8ac9f61fb8bfb5665df6d0919c7f9dcfd1b78ed861009b19d82",
+      "variant_sha256": "7bfc760487589cefe65408e33e842d6b8d5a2fdb367bafeb2b86c7485dde27ba",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Ghi chú -> Ghi_chú. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_DIFFERENCE_WORD_BOUNDARY",
+      "canonical_sha256": "f5d719c5f43d7eaeb03492ce85a9d06cf554714cf402014bde90bf106ae587df",
+      "variant_sha256": "852b7e877bed795aac56f164063bffb02a12f384556fbe65600f55146e9b5a92",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Ghi chú -> Ghi_chú. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_DOCUMENT_WORD_BOUNDARY",
+      "canonical_sha256": "82efbd850ea8f9fc5b8b29472f47025d24f49bffb1f66463034549494afc4a0e",
+      "variant_sha256": "3b411356fcca82d2fb3d94b5fe12a05a326c48afae8e236bc86848f367e3db2e",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông báo -> Thông_báo. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_DOCUMENT_WORD_BOUNDARY",
+      "canonical_sha256": "7667a43c1dd59a3d2ec2f97905eba06a8c278136c23fddfad76c8fb28d9729df",
+      "variant_sha256": "75b2c8c72fae4490b5902824984be29da441843ba7271e40713d9233bc1ec403",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông báo -> Thông_báo. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_DOUBLEAPPROVAL_WORD_BOUNDARY",
+      "canonical_sha256": "bd2b7264946a9dc528b81e2911f4f0c54997f42a001cdbf64ca55cad4be3c104",
+      "variant_sha256": "d1591365b623eb6f60bd9d8e49c4d29766b1993df459d03ec630fa7d81b78b07",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Sau khi -> Sau_khi. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_DOUBLEAPPROVAL_WORD_BOUNDARY",
+      "canonical_sha256": "10a8c54bfc3a1d562a8c279953f84cc0b9a461d4f216e41bed076607c29066aa",
+      "variant_sha256": "3b690ba5e5367369d66b10bad3fa63fe9a95aa38cee72777b3de619e3186cd55",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: liệt kê -> liệt_kê. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_EMERGENCY_WORD_BOUNDARY",
+      "canonical_sha256": "e856cec30e1c275336afa4980577cd5e621653830c67388c72948497d7480ad7",
+      "variant_sha256": "9f989046823a73ae6280f9cf5484bfb411f2508d3c0cb827eea02717d6daab88",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: PHỤ LỤC -> PHỤ_LỤC. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_EMERGENCY_WORD_BOUNDARY",
+      "canonical_sha256": "a7b2f5b47647931f671d34f4b499e5fe9b43e92723aebfde1fb9d24a3fbfae15",
+      "variant_sha256": "830607a0e183c485aafb197cdad7afe5319ae37ebdd710c06d288562d4257b72",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: PHỤ LỤC -> PHỤ_LỤC. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_ENCODED_WORD_BOUNDARY",
+      "canonical_sha256": "664109334b2bea939d1987b6a6b6fbee1d548d3eb6d70007ca20ba924c6ed6f6",
+      "variant_sha256": "49a37639bf3fec9af3c78beddf28ee5bde45af0aab92c3f7dc3610515c26ec75",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Sau khi -> Sau_khi. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_ENCODED_WORD_BOUNDARY",
+      "canonical_sha256": "ef39e1c4dc7d0e70ddc8b4e528aa890c76f6cee440b901bc9d7008bb7a3e64ba",
+      "variant_sha256": "148b4fab8d72d33f794cb75fa5f92061655a9a8c1a338eb4d37a8596bac52afa",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Dòng hồ -> Dòng_hồ. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_FALSEAPPROVAL_WORD_BOUNDARY",
+      "canonical_sha256": "824403cee08de5f88eb833c6435d5ce17d1e7ec3e310ab913d476cd381620070",
+      "variant_sha256": "0a95a16dbca3f1f233578fcbdbe36497f431a22641621a42bc83010253a2b8c1",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Hướng dẫn -> Hướng_dẫn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_FALSEAPPROVAL_WORD_BOUNDARY",
+      "canonical_sha256": "157a4b081a1c83d64dbf2c934eb3bfaf7b5d760b742d20ba08647d0198d12d58",
+      "variant_sha256": "19869bb7d399034f926dc553821180968536a89508061478eeb1f478bd79fbda",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Hướng dẫn -> Hướng_dẫn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_FINALGRANT_WORD_BOUNDARY",
+      "canonical_sha256": "e7a130857b95a1df212a9d628a75042276d28444f0ed4a2cec151f00497052c4",
+      "variant_sha256": "2edc6c95bcfd03d010f67235144f731c14bc22981b102936712fe3182d94043a",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Biên nhận -> Biên_nhận. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_FINALGRANT_WORD_BOUNDARY",
+      "canonical_sha256": "a1184855dc50af58ae1a0806899609003f8fa831576212810ea01e61ce584786",
+      "variant_sha256": "10d2592f3b08b6981a4c803e5fed311205a3ea6807aa5b44ed24b42df559aa88",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Biên nhận -> Biên_nhận. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_FOLLOWUP_WORD_BOUNDARY",
+      "canonical_sha256": "df9b959c85b26c7d00e0f3de758e11015b9406820706bc1b2f3efb6ee79ab98f",
+      "variant_sha256": "9467db478700e9f2ee06ddf6397d4791d7e2b873710f1585f0ff074c8ee8b424",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Bước tiếp -> Bước_tiếp. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_FOLLOWUP_WORD_BOUNDARY",
+      "canonical_sha256": "90875f68177a7f36d3eed39d9e917fb7d1ebc193d8efe1d909655b29c84b0009",
+      "variant_sha256": "e850eec22e97aa366a009c1fd92d520230271f503d8b7d6a66ce14189bded0ae",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông tin -> Thông_tin. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_FRAGMENTFINAL_WORD_BOUNDARY",
+      "canonical_sha256": "5fc24ad79616f6fad0a187470db5f6b97e2aeb4be565a1e2a4646921f698d02a",
+      "variant_sha256": "d6e7b85151c0b5ba57e0f62ea542fbd81b56c474c4586c8e17c98ae8040325c4",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Mẫu biên -> Mẫu_biên. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_FRAGMENTFINAL_WORD_BOUNDARY",
+      "canonical_sha256": "ceabf98f6a9e063dd0c955aaf277f4a05396e5a63f2f6c9051528d388e9ad2e3",
+      "variant_sha256": "fdce1dd3b217bdee1040f91ad215491846ab5ec30067e77d10e7c471d28243da",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Mẫu biên -> Mẫu_biên. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_FRAGMENTJSON_WORD_BOUNDARY",
+      "canonical_sha256": "5e87ded7b549622a4835b227f69d5fe5d370c53c67e8165dfdddb82f75363508",
+      "variant_sha256": "c166044b4117da342b0a368f04af097fb76c36bce954b83bfdd7f4835fbaeee9",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Bản ghi -> Bản_ghi. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_FRAGMENTJSON_WORD_BOUNDARY",
+      "canonical_sha256": "4ced5b08272007c74173d4a52b49771e4d03a94c40c0998fe43cc6a2adbb8f23",
+      "variant_sha256": "b6d4b0a14e1c9406d337a0feb5b45ef46f74b211a8706477060ec1516634c6f8",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Bản ghi -> Bản_ghi. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_FRAGMENTMAIL_WORD_BOUNDARY",
+      "canonical_sha256": "964f82c2518bc7d6f129ad1ec6814ee6ed064ab6930c47ef23bfc55146f710cc",
+      "variant_sha256": "5aa719a68c2a493d27572eff8ffe69d6442c7fb09447046f3784693700b561c6",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Quy trình -> Quy_trình. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_FRAGMENTMAIL_WORD_BOUNDARY",
+      "canonical_sha256": "c1945581bf4f148b41a30980775c708464db6b8964d60c72e90dce8e28d74462",
+      "variant_sha256": "2d687f8be1e514b03861ad34cfa105c213c3ed1d7b099d4e4af78cd036257f41",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Quy trình -> Quy_trình. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_IDEMPOTENCY_WORD_BOUNDARY",
+      "canonical_sha256": "cdd29dc2d046e168235db2e5fe08a41892f6cc1fcf1c9efd38fe5290f145af29",
+      "variant_sha256": "cc4ac88e854b0b6136e2166d2d99b3701412176901e98175ec64521a24da7c5b",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: bộ tiếp -> bộ_tiếp. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_IDEMPOTENCY_WORD_BOUNDARY",
+      "canonical_sha256": "7882d21ce37bf87c5dd1fd8cb705abdc963bb6dadce717e893e1bcd5c67caa20",
+      "variant_sha256": "19da9e422dc0f0620aa0ba84382212668e8fa23bc2ab9c4ebe1e6004e4a1c8da",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: bộ tiếp -> bộ_tiếp. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_KEYLEAK_WORD_BOUNDARY",
+      "canonical_sha256": "2c5895832c0a4198fb671f197eb7d0b6b04d467d0ce2ccaab24b7ce93a28b2ab",
+      "variant_sha256": "d9c4e57d8c3a4199f97d09f7dd83bd9d3ed5508c4be31d0730f8238986ab73bc",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Khi gửi -> Khi_gửi. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_KEYLEAK_WORD_BOUNDARY",
+      "canonical_sha256": "012555957dad77c0210678772f507132fe9a3e6b9b772658d5156dfb4f716050",
+      "variant_sha256": "b8be4c1c344e299df17f6237e03074dd54a9d57b3790a8cd2340b7bd69ae5cea",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Biểu mẫu -> Biểu_mẫu. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_LEASE_WORD_BOUNDARY",
+      "canonical_sha256": "17d9ee075b1ad613a6d41502cc7c05b6eba1d6e0da64f133855a71699bd4c358",
+      "variant_sha256": "5bca65ed498a9c595c6f92ace144e3ded201a8d32ccaed89bfb8df551d93a79e",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: bộ quản -> bộ_quản. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_LEASE_WORD_BOUNDARY",
+      "canonical_sha256": "175ca6efab14acfba68488283afc495697834966291487096e7df59781be1147",
+      "variant_sha256": "95a1e585001cdb0d10de3c66528d0b12f2012f6e36e4ff9c08fffb10ed71446e",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: bộ quản -> bộ_quản. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_LINKDOC_WORD_BOUNDARY",
+      "canonical_sha256": "a939a0ee249ad3862dfa73074dd4bd333e3534f5377e84900fe68cf6c2f311b6",
+      "variant_sha256": "1327d65657933a22fdff50fb088db5a9ccb10633e10dc56f3b6d50e894414848",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Sau khi -> Sau_khi. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_LINKDOC_WORD_BOUNDARY",
+      "canonical_sha256": "197e535d310f5ea2c87a68776f5e2b50e3a6f04b2137148650a68ff930280031",
+      "variant_sha256": "5c9dbe815b01a14600967bbc1d27183b9d35b337416d62569175331f095a68cf",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Nội dung -> Nội_dung. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_LINKMAIL_WORD_BOUNDARY",
+      "canonical_sha256": "cbbfc58834a7da69b371459a8999ac2f9b7b72bd5cf548d9623da76885276836",
+      "variant_sha256": "ab48791b4e8342d0a08f384e38595684c5d598ac7431513520a1d82ad9f3e41e",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Khi gửi -> Khi_gửi. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_LINKMAIL_WORD_BOUNDARY",
+      "canonical_sha256": "9d51f624b614951a106e0de1803e858413e28babfde76c160ed680e610384fee",
+      "variant_sha256": "af88ca0d3cd83376d9a893441d4d021b4242c2495ec3f87a67135dd68a6032ff",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Biểu mẫu -> Biểu_mẫu. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_LINKPAGE_WORD_BOUNDARY",
+      "canonical_sha256": "40fb278b034c9fc648bd27c5ecda9cab518f3f9ea19c0c183fc1c537c5cce3dd",
+      "variant_sha256": "820ab524e032359bbad591e730ce7b40a35e13b46f90b3a258d12fbc1e0620c2",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Sau khi -> Sau_khi. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_LINKPAGE_WORD_BOUNDARY",
+      "canonical_sha256": "bc686174644deeb596935ff9fa41a1530ea911c5134637986a5e6a193954dae8",
+      "variant_sha256": "9c4904427699328cbbe4b2048e063c4babc0f8625a5a6995d9cd100621bb242e",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Mục tham -> Mục_tham. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_LINKROUTE_WORD_BOUNDARY",
+      "canonical_sha256": "a91294c0a6aa350c5eba2ac87dce62a02d25fcb677b34262decf43a4cf59aa27",
+      "variant_sha256": "9bd5cfaab2c29dd2398d816da3bfd84bee8edb8acb8e072bdc421c703057f836",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông báo -> Thông_báo. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_LINKROUTE_WORD_BOUNDARY",
+      "canonical_sha256": "be406c28a0d7a57fa8771f3a8b3fd32432485dc0fe971f6939c4c2681dc57139",
+      "variant_sha256": "63c3860801c19f341fede937a4720b12dd9347977890b5ac50afa736668d43bf",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông tin -> Thông_tin. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_MAIL_WORD_BOUNDARY",
+      "canonical_sha256": "aa30c25c5bd337ef6f93281ed3e4cd155a0f603379b26d3a6b50a0bb02dd0a88",
+      "variant_sha256": "19a823d1bb5ad70fb96c0966a567c9d938a89f85c8c748b46029522efcc929e7",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Để hoàn -> Để_hoàn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_MAIL_WORD_BOUNDARY",
+      "canonical_sha256": "d28b2fad03dfb45532b617a172f1cd84f1bf63c5ab32fb9427a751d7fed8722b",
+      "variant_sha256": "676fbd12158b4b525777df48689f659dfd9cdb4aea86ecd466ddd0ec920ded8d",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông tin -> Thông_tin. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_MEMBERSHIP_WORD_BOUNDARY",
+      "canonical_sha256": "2a6e3ff6e7b0289f13203605e96b0f2d5c2dcd0af6bb32d53efa563e7460c2f1",
+      "variant_sha256": "b78227046fc3bb648f805a5f84252f0b58c583ffb3cd3edec205610b493a35c4",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Ghi chú -> Ghi_chú. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_MEMBERSHIP_WORD_BOUNDARY",
+      "canonical_sha256": "78b762c257377104ae63acc45468ff06c9a7d8008a9ea1fe67996271aebaa2af",
+      "variant_sha256": "9d6945505d0ecb575e6cbbe35e23e3e64f5200f60532f618ee2bf8046712ad92",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Ghi chú -> Ghi_chú. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_NOTIFYORDER_WORD_BOUNDARY",
+      "canonical_sha256": "71e200994ef05b286e536e21cdb1c71d2bbc184837133237b15d8eb07299432c",
+      "variant_sha256": "dcf2389f4323cfd028dbc5bf1cab06913b3a77bbbe7c96b8c68d4614d3909dbd",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Để tránh -> Để_tránh. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_NOTIFYORDER_WORD_BOUNDARY",
+      "canonical_sha256": "4ea4dec22196a1cc355d53086911ba8ce74c1a21c98b8d546d805efe4f3eba63",
+      "variant_sha256": "99be41df10c859a44fbeac1b207635fb330d76d993b04a61347da3c5e3a72baf",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: gồm nhãn -> gồm_nhãn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_OPERATION_WORD_BOUNDARY",
+      "canonical_sha256": "f12a7e6780350ae9a6b4ab55129bf546e645ce5d73dcb08eab0ff716534a50f1",
+      "variant_sha256": "139eb999b637edba41eada086253655ba943e741eadb49ca6414e2af0690dad4",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: đổi trường -> đổi_trường. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_OPERATION_WORD_BOUNDARY",
+      "canonical_sha256": "e3253a27f6aae1c081eccf34f525bfe05de5d65a19e0d0502be3f40168d22163",
+      "variant_sha256": "909853773aa8e3bbc19364a35b4de67a4ae85f26a6c2ac216d1d50863521f465",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Lịch xem -> Lịch_xem. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_ORDER_WORD_BOUNDARY",
+      "canonical_sha256": "57532094fe39da7c1f5f2b1273a2d3f602e2572b06a5bce917f37d768c795af9",
+      "variant_sha256": "0d23146fcb69ae3290ca363428b4e08cc293ba0e044e767ccc16674e4b2585cc",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: ngay sau -> ngay_sau. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_ORDER_WORD_BOUNDARY",
+      "canonical_sha256": "59d96b98bd4307213ce18d579417a93b632a47f6c6d0f9e737a52d746fe39f6b",
+      "variant_sha256": "81297a1835ef04e156e211fe59e16805229981f5cc0285cf14df393bb1d94c16",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Lịch bố -> Lịch_bố. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_OUTPUT_WORD_BOUNDARY",
+      "canonical_sha256": "274bf08d4014c3b1e4cf0978dc64f9372e470528560d73c1877092ff2788c9d6",
+      "variant_sha256": "e0d703d9bd8f470a81276cb4b80a1ff176b48b6f33db2f3579e334f0bbf3c0b1",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Xác thực -> Xác_thực. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_OUTPUT_WORD_BOUNDARY",
+      "canonical_sha256": "c8e4793e976d44c931cdbf24830ec5d1ea15088f29989a5af7bad52f5b5dbfb5",
+      "variant_sha256": "5231d8c54fee10335a824d55d7b9feb8967c0f522131e9901004fa56b93f154c",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông tin -> Thông_tin. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_PRIORITY_WORD_BOUNDARY",
+      "canonical_sha256": "41e07a01c3fb61ac407448a37c20618045d131b1e74ff471efeba251095a89dd",
+      "variant_sha256": "3ecdf3b8d1080e6faa17052daaa5625fa157af448ec3330aa5cca318734cd126",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Chỉ dẫn -> Chỉ_dẫn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_PRIORITY_WORD_BOUNDARY",
+      "canonical_sha256": "037fab5271941a3fcd501d15b4c8d8f744d97254b56dede1ffa62008cde83867",
+      "variant_sha256": "ea86dbb9f83f34989feedb6ffe2551ffceeeee82dd3c8011308cf66204b87fc2",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Chỉ dẫn -> Chỉ_dẫn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_PURGE_WORD_BOUNDARY",
+      "canonical_sha256": "4e3dd920b58bcee83a2e95b639682c7705467c838985f69085c563958e1514c8",
+      "variant_sha256": "cc9609b78e22574d97b3fdf96a4961da7b04c4e1be2258a23e883fa1682427f4",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: kho lưu -> kho_lưu. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_PURGE_WORD_BOUNDARY",
+      "canonical_sha256": "a9a7c766b41a74941a0422b71bc59783d3a9939918385001130dc47608523cb3",
+      "variant_sha256": "6dfa6ea84e1dcc0ecc654f980eecf7db83ad49fefe197640f3d9f3378fb86b7d",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: bảng kiểm -> bảng_kiểm. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_QUANTITY_WORD_BOUNDARY",
+      "canonical_sha256": "d0b0d348f255d2424cee1224189e0fc27e782771a64416518a580f8487773226",
+      "variant_sha256": "2f946862770178e31b545704c9f29c23396e10334bece11edd461a301666481d",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Khi gửi -> Khi_gửi. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_QUANTITY_WORD_BOUNDARY",
+      "canonical_sha256": "e2dd79b7e03e26cbc80a1796a85641df83423f2041ce61551965b019188e90aa",
+      "variant_sha256": "7fd07c6b44be0efea5da50f07f504115c69144781e1f185093c40fdcca63a0a2",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Mục đăng -> Mục_đăng. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_QUERY_WORD_BOUNDARY",
+      "canonical_sha256": "d0ba426b94275db0050e34f5164fd0290789a0186f67bbbf1ac354985a26de3a",
+      "variant_sha256": "242b6b5b8d5fc7e238f5b8cfd8f95124b0bfabd23504542be608c37a5f5a51db",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Tiếp tục -> Tiếp_tục. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_QUERY_WORD_BOUNDARY",
+      "canonical_sha256": "528f6468d4e4f588f64e72e49404c6e2a3b14fe846d8120117132bee3171a154",
+      "variant_sha256": "75de931712e3c2f45b81f4b36332de7477bed099e0fc0cb2ed72a0f37597e410",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Bảng lịch -> Bảng_lịch. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_QUERYLEAK_WORD_BOUNDARY",
+      "canonical_sha256": "e3956389d44fa0c55cf3596ac07e41ee85ae229d679b47b2d5419e141fd2d406",
+      "variant_sha256": "4f2b40a6ecffad49b10c0187ba8745837707f2a517b07952999f2596db956ab3",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Hướng dẫn -> Hướng_dẫn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_QUERYLEAK_WORD_BOUNDARY",
+      "canonical_sha256": "6b510600bb022a745436c673ee7b6b1858d8e10e7cd9692e726985e0a440ea2c",
+      "variant_sha256": "2ce40b717b54338400ff0a29dc8146c901f8a469b334381216a5b2341b92a08f",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Hướng dẫn -> Hướng_dẫn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_QUOTED_WORD_BOUNDARY",
+      "canonical_sha256": "57c24aab8b5df82e1ef3a23282ae2eb8d5a5206313ef14b77d7ce19b2b2aa271",
+      "variant_sha256": "ba671d4036fa8b3c98c6b137f5e8de0577865f048aeedf1a176c7298127c3cb8",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Đoạn trao -> Đoạn_trao. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_QUOTED_WORD_BOUNDARY",
+      "canonical_sha256": "339af5da0f6b913298849394e90512d9299482efe7714f4fbf9317f317b03bc9",
+      "variant_sha256": "90e857cda69af5d64ace7c02fd85140a6a0af52e46c884d4c632a5ca0b064db2",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Đoạn trao -> Đoạn_trao. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_REDACTION_WORD_BOUNDARY",
+      "canonical_sha256": "f6e78add810e1332ebab5bc5063f427001e02f8e36676721624f44dc2c4d06b0",
+      "variant_sha256": "c1a97fa24784864c63192796f39871eb7d326e5ab6d36f981146cebe4852ca90",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Bộ đối -> Bộ_đối. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_REDACTION_WORD_BOUNDARY",
+      "canonical_sha256": "96e48290242805d34e0735ee3b101f3caf54b0e1cd50e9aa30a35dda15d5dce8",
+      "variant_sha256": "72e705396901a8f94d78d858ef93577c659a83f5f9af7780dd4a9584c9af98db",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Mẫu đối -> Mẫu_đối. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_REDIRECT_WORD_BOUNDARY",
+      "canonical_sha256": "0b55afb29c8425ebfe0ee9b7dd2bf0cc7bc589deca70098ab2a299d044d75394",
+      "variant_sha256": "6c6c7b57cc8d0de041e019d672704d1323ed957ba08b8cb0dc39e9b6618efc32",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông báo -> Thông_báo. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_REDIRECT_WORD_BOUNDARY",
+      "canonical_sha256": "3453c47e5ed9a8444e5ac9334f582e9fa72b982f7bd172fc9fcbd8dce811b888",
+      "variant_sha256": "7037a476899d6c8ce20255609ccb9b6129f4737fc782f92c0c1fd33625041aa1",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông báo -> Thông_báo. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_REFUND_WORD_BOUNDARY",
+      "canonical_sha256": "115e7f55b2edea92e6114e2e4a920832e9db8d04542ab6d03525df75005aaf38",
+      "variant_sha256": "edf35857b7d9a8ff91af88ff7cb6dcbd6a4e8bcb7181547fed81bd99d37a5180",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: quy ước -> quy_ước. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_REFUND_WORD_BOUNDARY",
+      "canonical_sha256": "76eaaf5373e81260fbeac2624c0718d90fbbd5af9a6e86805771bd00568ca5c4",
+      "variant_sha256": "528ac5dfe4e563d64d668b76cc8530d6c6d89126bbe7f3f209d189e2fa8444e5",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: bảng điểm -> bảng_điểm. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_RELATIVE_WORD_BOUNDARY",
+      "canonical_sha256": "51d9213d367f160cb90f2f6d59450669166a32f3c8ae788b316aa8e341e5a5e6",
+      "variant_sha256": "6ab337f3d9e03fb5c846b24a05f9190cddbf0ace60e767a40fc27518c1529830",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Phụ lục -> Phụ_lục. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_RELATIVE_WORD_BOUNDARY",
+      "canonical_sha256": "e598339b28e8f72b6006c292bbca0a73708407778d5701a90b86c5fd6b9b49a8",
+      "variant_sha256": "8baba10270795053df35c5925c8e9808d60ec06dc781f7b8e8bf19f5f8eef86d",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Phụ lục -> Phụ_lục. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_REPAIR_WORD_BOUNDARY",
+      "canonical_sha256": "626ef31e745aa0f01876e7c16cd9a5bfacaf8802d2c69fce79705771bd3a52f0",
+      "variant_sha256": "bd2b68f0f469aa5a013179a2e6cabe25421445deb7e77e19a417a12f4aba63e9",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: để hoàn -> để_hoàn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_REPAIR_WORD_BOUNDARY",
+      "canonical_sha256": "44041512556e1271495698aef8acc4bc7f60a244810d6aca4eb1188988e7bcc7",
+      "variant_sha256": "530efdcc372b90b603a4e0785bb3b2d79bdf6b8213916b2dd4c181af7a5abd9b",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: kết quả -> kết_quả. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_REPEAT_WORD_BOUNDARY",
+      "canonical_sha256": "07c0cbe57c526d91d3c8ef66965fc92aa0188b12cbe0d27de81441aeec4ac8a1",
+      "variant_sha256": "090ab2601ce78e6274eebcf8dfdc3308270e1af3827674057c90e1ecf1a3f1ab",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Gửi cùng -> Gửi_cùng. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_REPEAT_WORD_BOUNDARY",
+      "canonical_sha256": "ea8179aa8fed2e61f3cf60843f10f3bdfe114baac35b5338668c809870f7ff2c",
+      "variant_sha256": "a08805a25275134fd1ad21a44d9e69e115ee22bcdeffbc31cf897ab33e0b7b05",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Bảng nhận -> Bảng_nhận. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_RETENTION_WORD_BOUNDARY",
+      "canonical_sha256": "70cf91007fd24b332b322b3e17cf8ce6d20e452ab632b1395fdc1d30ed15681f",
+      "variant_sha256": "4aa8eef25825ce6f0da7795fed5ddeec249b79cfb8c0402c7ccce32823778f70",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: bộ lưu -> bộ_lưu. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_RETENTION_WORD_BOUNDARY",
+      "canonical_sha256": "96b0f6d1adbd4be51a47f483804fb5ef85d91754860fbed0bc53587f07e31576",
+      "variant_sha256": "a0ded164dc208771d12fa3fda256ecc0bb12ae05b4e5eeed43920c7ec1d05d7a",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: bảng tính -> bảng_tính. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_REVOKED_WORD_BOUNDARY",
+      "canonical_sha256": "d937d6a1c0b40a66713f8e84a507630c4dfa06bdf1e8a5014b5249b99f503c3c",
+      "variant_sha256": "397a41ace39f951f55b12cc7c80046faf71949f1d06d34025c8be98d41cba866",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông báo -> Thông_báo. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_REVOKED_WORD_BOUNDARY",
+      "canonical_sha256": "3eb1894ac08d49f362470f3e9d020b0fdcc6a179484684af4cbf5cc3ad5914f2",
+      "variant_sha256": "f585029b740bd8534c7473b90fa5959f7140dd356a4a96ac914084d31bd173c6",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông báo -> Thông_báo. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_ROUNDRULE_WORD_BOUNDARY",
+      "canonical_sha256": "0b0b9ddab0dd88ce22144c05535a69bee34e533aa3de9ebf14c42eff768753c7",
+      "variant_sha256": "e3059c39fd1f1d0e4c26b57f0b2cc133e49759fe4f3b14e10f7fb274023b3fe1",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: màn hình -> màn_hình. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_ROUNDRULE_WORD_BOUNDARY",
+      "canonical_sha256": "eb38810963f6430d1490a14e7fa9b4f7bda04c6af3abb1a64dd7a85f02ff7268",
+      "variant_sha256": "672f36f0312c87ef19398a3969bd34c821615620083d8b1401b3cebad0f5c794",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: màn hình -> màn_hình. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_ROWDIRECT_WORD_BOUNDARY",
+      "canonical_sha256": "ef2d05a7a9276e63fc16e02cad66d5f6123d936bc43236808bae2c72bf712aaa",
+      "variant_sha256": "7beac3ecacb26582c0a178991e0781fe07b42717f620adf5a11240eba269fa0b",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Để xác -> Để_xác. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_ROWDIRECT_WORD_BOUNDARY",
+      "canonical_sha256": "2dbb96de6b858cecd0d98405ba5ab1d4d4aef38519a32cb6d542dac2695d59c3",
+      "variant_sha256": "7c5140645ab57bbad9a5835de3e1587527bb4b48d49f0ff6a258d311d01d3e75",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Để mô -> Để_mô. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_ROWLIST_WORD_BOUNDARY",
+      "canonical_sha256": "96163c94c24d710c3aba8a499456ae4924df10d8ca47da570f9496033b2a02d0",
+      "variant_sha256": "fd947cbcb967fb0ffa58a9ebc144523443fe069a9243f49f5bb75326d1d6a2c5",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Bước đối -> Bước_đối. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_ROWLIST_WORD_BOUNDARY",
+      "canonical_sha256": "965344fbd444bb261d8b60bf9f8617ebf1461c2a4a0bae32b4d942b448f6c649",
+      "variant_sha256": "de1c35df565e3a7dac4c0b503afdca655a0f78ed39933376d28a4bba8d876038",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Mẫu mô -> Mẫu_mô. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_ROWWIDE_WORD_BOUNDARY",
+      "canonical_sha256": "a73036baa671f61ec606cba2418929ee32252a53859a8192d1bb38534b6f4077",
+      "variant_sha256": "9671878f6afeed024b5c3585f9a98ef4cf40fd4eb5c38b3fba654c53c66d14b3",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Nếu bộ -> Nếu_bộ. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_ROWWIDE_WORD_BOUNDARY",
+      "canonical_sha256": "d68367175e5af62951017c8cfdc02b18875c7d58b9c8e8f8425c2648a7ee4f44",
+      "variant_sha256": "4f52c9b6137fd9fd873e6f355fe15ec5d12c927ec35274dfdae97d71e792da17",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Mẫu tra -> Mẫu_tra. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_SCOPE_WORD_BOUNDARY",
+      "canonical_sha256": "d87cc35d06d75a5b31c8970f0ac5860bf26bff0a0bdcd26e274f9781fb22e3e1",
+      "variant_sha256": "85092139c3baa5eeb54f770c56257d40c017a7138b90743b75295b4d19619709",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Ghi chú -> Ghi_chú. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_SCOPE_WORD_BOUNDARY",
+      "canonical_sha256": "61346987d1a36d9563079c8bd35f147345532939f9726a6591750ad89c7ba61e",
+      "variant_sha256": "6a12c7c8e1e89838c79b4fa9025c34f8329a8b3b8661a3cc7c5f71853d3c6329",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Ghi chú -> Ghi_chú. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_SEARCHLIMIT_WORD_BOUNDARY",
+      "canonical_sha256": "5868c42913d0b58509673447e8d54429c48e9915bbd5337b381082435ce9f1b2",
+      "variant_sha256": "88f9dcb3337955b6765b93e584b2585c0c122b5fdd0c33226bb523cc601eb4e4",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Hãy tìm -> Hãy_tìm. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_SEARCHLIMIT_WORD_BOUNDARY",
+      "canonical_sha256": "7d469cc38da87ba16d4dae44444617a25d1dc6af46f6d9bcb0edd0e3ffcec948",
+      "variant_sha256": "87fda1db08430fafe0f535361c869a11e899dd3faa5bf1d484e8c1edeaadc815",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Bảng tra -> Bảng_tra. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_SHAREDQUOTA_WORD_BOUNDARY",
+      "canonical_sha256": "dfbf448d75571a770cd486cc9bd09228f7f6eb3e8cf522b9ab7492e14dede802",
+      "variant_sha256": "908f6a3a1bf29220998f9326b9b6adf4d55978fc482f417c0d4ad0910ed75e7d",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Chỉ dẫn -> Chỉ_dẫn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_SHAREDQUOTA_WORD_BOUNDARY",
+      "canonical_sha256": "04b5947f4957d24c9de34ebb7201c7913c3f64bcd434ab3e125dd39dbcbaed9c",
+      "variant_sha256": "b87721b5eaaf29c7111fccf7d9c9bc89d9ea5d78aa50fdc333ea1754a914f943",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Chỉ dẫn -> Chỉ_dẫn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_SIGNATURE_WORD_BOUNDARY",
+      "canonical_sha256": "cd257cb42fcacc237766e4da49127a60fb076d962de29e900e3c9a90836eeb72",
+      "variant_sha256": "04054023dd05678d8f3601e0cc11053d3c4328b998b18ca724d237161762da6e",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Phụ lục -> Phụ_lục. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_SIGNATURE_WORD_BOUNDARY",
+      "canonical_sha256": "a537e5e8cd4c80eda0e1e6b5325a4b7f80d7ab59e32e6d1ed1ee6f465ee23265",
+      "variant_sha256": "651ee64fc717a5e2be3d96488723b74965efb8419ee2a44391b990fe03d620fe",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Phụ lục -> Phụ_lục. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_SOLICIT_WORD_BOUNDARY",
+      "canonical_sha256": "03a53ff12b344fc70a2e723c58ec5f0a77f87b1148397eea5d64cc61d6e7d302",
+      "variant_sha256": "4a87225a42aa5480a1619addd22555847765e0fcf67ade2da18dc46aaf61ef10",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Quy trình -> Quy_trình. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_SOLICIT_WORD_BOUNDARY",
+      "canonical_sha256": "d8ada89e77d3cefaab49a7a5f40b7bca124d2d36c2f5589215e20b06a9bddf45",
+      "variant_sha256": "09a23a1a09b46ea47984d59a69309ced1ab0f082f1f9520e6d668d9dc8c65bd0",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Quy trình -> Quy_trình. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_SOURCEBINDING_WORD_BOUNDARY",
+      "canonical_sha256": "f7880d9248dac91d344c55b1603ffa800434306c89ed8ebe40addc007139b616",
+      "variant_sha256": "dae8f725fcb61d1d4cf3feb4760fbb1794a447c44eb84c137b26ca0ca5a14d44",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Để tương -> Để_tương. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_SOURCEBINDING_WORD_BOUNDARY",
+      "canonical_sha256": "530bb3257c9908d1e976d302eef3cc34e1deb92940f1da97756f3031310ec10a",
+      "variant_sha256": "773812db6a6b6a211a128f1289786bfc7600b8e51672529f0a120ed3caebca52",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Bản ghi -> Bản_ghi. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_SOURCECLAIM_WORD_BOUNDARY",
+      "canonical_sha256": "7dec9952c326c557d6fb42cdd9c5c75f89c78251cf73fc5d7b102db118ca35e2",
+      "variant_sha256": "e0c2345c945e94513218d82e9022ef4e06e8831bfc2e8e72c8dc09d35dca024b",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Chỉ dẫn -> Chỉ_dẫn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_SOURCECLAIM_WORD_BOUNDARY",
+      "canonical_sha256": "6c7e06fd8581ee8fac3e9facf7c16b0775691938e8ff69a2f2df68c82e18397e",
+      "variant_sha256": "91975bbbd6ecd29293838d9c0506f32043c32d06042ce182b5c90948ca8478b7",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Chỉ dẫn -> Chỉ_dẫn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_SUBJECTLEAK_WORD_BOUNDARY",
+      "canonical_sha256": "0dc01c912c9493376d50e3e95fb30919b187f67a40ec3111b8169871cec71fe6",
+      "variant_sha256": "92cca5036a1302f0c479dd28a469fa9673be56c0bb7edcbdb51f228cfe221b8c",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Khi gửi -> Khi_gửi. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_SUBJECTLEAK_WORD_BOUNDARY",
+      "canonical_sha256": "4e60b281062ab41c382ee8913d6bd7b353d0555927d642fb239ee57a545e0c9b",
+      "variant_sha256": "acddba2daef63e50875eb556e26f11f7a813a7cae2e5b3e5d6755278597d1669",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Mẫu email -> Mẫu_email. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_TELEMETRY_WORD_BOUNDARY",
+      "canonical_sha256": "835f1e4e83bffa4444e29e59cc2e9dcae62f520abce6c03322f67af9113cdb75",
+      "variant_sha256": "8951c10d2200752bffaf21327e72d3e53b72d8d0c09642013914410f4f45deb5",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: kết quả -> kết_quả. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_TELEMETRY_WORD_BOUNDARY",
+      "canonical_sha256": "4cb6458707a827c1f48cafb111081933df424b794883818a842a7566ebdfdd53",
+      "variant_sha256": "2fb4037020afaf7a750093bc44a07cd5313eb69d8f12d5c0dd6bd69e65b09e21",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: phép tính -> phép_tính. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_THRESHOLD_WORD_BOUNDARY",
+      "canonical_sha256": "27bf00ab5099cca7469005dc9700f9192e294c75f9a68cfe110d83168557a28d",
+      "variant_sha256": "949febc3317bfcd47d9de14f0842d1000412a033325fd3a8c329d83e779c2dd3",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Hướng dẫn -> Hướng_dẫn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_THRESHOLD_WORD_BOUNDARY",
+      "canonical_sha256": "ecde1704882a66e44507393492db7714473d3f7a861758dbfe137b85f19812fd",
+      "variant_sha256": "eaae9a956d046a069a99d21545d85e6a10e19400e5f6e85e654ff5f0d568d32b",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Hướng dẫn -> Hướng_dẫn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_TIMEZONE_WORD_BOUNDARY",
+      "canonical_sha256": "80c7bd1982ac77d7c5c561181adf63fb3b0a912047be6fbc241fc77f63194839",
+      "variant_sha256": "c44a544bd6739717c410955e409647006af5509bb842446e8e6b326d250305ec",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông báo -> Thông_báo. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_TIMEZONE_WORD_BOUNDARY",
+      "canonical_sha256": "d12b2dff55cecc86c340fb1cab9300467b8d1fd4352d3cbc7764adaccaf9303e",
+      "variant_sha256": "9c81070e77959d60112e831d8f50b34163f010e539fa973b35bd8fbc8798503a",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông báo -> Thông_báo. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_TITLECLAIM_WORD_BOUNDARY",
+      "canonical_sha256": "647a80ca78cd526f4201199592d5d7f0e83e24e1b19b0a90cfde9baefcfe38fa",
+      "variant_sha256": "6601b1c8af43c24c6f54de592c12e4a2ba725f8216d06483b5341753b3080e7e",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Hướng dẫn -> Hướng_dẫn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_TITLECLAIM_WORD_BOUNDARY",
+      "canonical_sha256": "bbfbfc55699174cb315dd6352041b1b4434fdfc1b950affbfc3ab434e68da953",
+      "variant_sha256": "6a523e2ea1342a6b71da3958edd07fbb8ca0759fb07e4a1f7c1cd737e0eb92e9",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Hồ sơ -> Hồ_sơ. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_VISIBILITY_WORD_BOUNDARY",
+      "canonical_sha256": "2c3d1473cc65ccf5ca09d600cba352033c5c73b1c62d378d812c78b7eed1fe27",
+      "variant_sha256": "af92330440dcf7849b15fa4c77ed94c9222dd98ede789201b112bca9d5e1ac51",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Ghi chú -> Ghi_chú. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_VISIBILITY_WORD_BOUNDARY",
+      "canonical_sha256": "0d76b53d79510185d1ed5fac73cac71c403c5367db5c7da12db2af56a1eea645",
+      "variant_sha256": "7f23b4d20d296b6c2a0fcd4b52e5907cafd21ae1d47b50a993c7a66a38be10c8",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Danh mục -> Danh_mục. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "ATK_CAND_WEBHOOK_WORD_BOUNDARY",
+      "canonical_sha256": "e392f841d478a537050fa960ab4d31e476bce8c2da50994236e5c443ae51a7f6",
+      "variant_sha256": "616fac491e1192a140c581d67e542fea93a1799732db53ae1a06be51c75c9cf8",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Hướng dẫn -> Hướng_dẫn. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    },
+    {
+      "variant_id": "BEN_CAND_WEBHOOK_WORD_BOUNDARY",
+      "canonical_sha256": "2f71fafe842f1a1c04fb8bbd9b2f016db5e49dfb1dba81e54df7e53eac48e932",
+      "variant_sha256": "efa9af500fef08eb6aad69a5618ea937243bbddd9d52cbe91b552e26fa430482",
+      "decision": "approve",
+      "context_review": "Reviewed in its sentence: Thông tin -> Thông_tin. One visible boundary substitution remains readable; no negation, modality, target or authorization changes."
+    }
+  ]
+}

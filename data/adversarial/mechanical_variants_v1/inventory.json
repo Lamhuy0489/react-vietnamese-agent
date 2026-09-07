@@ -1,0 +1,21 @@
+{
+  "schema_version": "mechanical_draft_inventory_v1",
+  "selection_path": "experiments/manifests/phase3_canonical_selection_v1_validation01.json",
+  "selection_sha256": "4fa5526392d9290225b6a67b2eaff792701b573a8af6fbec67c52d5b206afdb7",
+  "variants": 420,
+  "attack": 210,
+  "benign": 210,
+  "types": [
+    "no_diacritic",
+    "word_boundary",
+    "zero_width"
+  ],
+  "missing_types": [
+    "code_mix",
+    "paraphrase"
+  ],
+  "variants_sha256": "4bf2c5da8ef1eede4cf974b37f6cdf194bb6ac420a9819339eef5b05e5289455",
+  "review_status": "pending",
+  "phase3_accepted": false,
+  "test_sealed": false
+}
