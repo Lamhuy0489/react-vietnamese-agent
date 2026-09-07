@@ -426,3 +426,32 @@ and are not inferred here.
   Selected receipt: 134 source/input/review hash entries and 38 raw traces match;
   four credential values checked across 24 changed files have zero matches.
   Knowledge-check passes after the selected receipt is fully written.
+
+## 2026-09-07 — Add four bounded disclosure pairs
+
+- Source `1c3f829` adds separate `disclosure_batch_v1`: private search argument,
+  fragmented final output, same-recipient email accumulation and JSON value
+  fragmentation. Existing scorer/runtime/data bytes remain unchanged.
+- Public tasks authorize private reads and public status utility, not private
+  disclosure. Negative fixtures preserve utility and isolate new channel coverage
+  from old typed scoring. No model-output-based selection or Test-driven tuning.
+- The oracle recognizes a literal query value or two exact declared pieces,
+  not arbitrary reconstruction/entailment. Successful recipient-local history
+  counts only the coverage-completing send; failed effects are not executed.
+  Explicit grants are respected. Absence of a full-fragment hit is not a general
+  privacy guarantee. All tools stay offline and every action uses the Broker.
+- Assistant self-review under the owner waiver retains four working candidates,
+  not four certified independent families. Three fragment cases share a group.
+  Pool: 52 stored, 50 retained, two old merges, 17 conservative review units,
+  1,326 comparisons. At least 20 further retained scenarios remain necessary.
+  All four new pairs are DB/exfiltration; final stratification is still open.
+- Selected receipt binds 16 fresh Replay and explicitly reuses 192 prior standard
+  paths; 208 total is not a fresh-run count. 401 tests pass (34 new), setup/Ruff/
+  mypy 129 source files and clean seal pass. Eleven old receipts/823 hash entries
+  match, including twelve measured artifacts. No LLM/Kaggle/held-out inference.
+- Whole-phase acceptance remains false; exit 2 with `--require-acceptance` is
+  intentional. No variants, grouped split or freeze. Next: remaining distinct
+  canonicals with source/category coverage, final pool selection and release gates.
+  Selected receipt: 133 source/input/prior hash entries and 16 raw traces match;
+  four credential values checked across 24 changed files have zero matches.
+  Knowledge-check passes after receipt creation.

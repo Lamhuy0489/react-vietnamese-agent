@@ -138,7 +138,7 @@ Lệnh tổng hợp v3 **lịch sử** chạy năm batch với mechanism rules v
 trả exit 2 khi thiếu gate toàn phase dù fixture QA pass. Không chạy lại từng
 verifier cũ để cộng lặp counts. Đọc [contract flow](../docs/benchmark/flow_batch_contract.md).
 
-Lệnh **QA snapshot hiện hành** dùng mechanism rules v2 và register nhận/gộp:
+Lệnh QA snapshot admission trước dùng mechanism rules v2 và register nhận/gộp:
 
 ```bash
 .venv/bin/python scripts/verify_canonical_admission.py \
@@ -154,6 +154,21 @@ Exit 2 có chủ đích khi `valid=true`, `phase3_accepted=false`; không retry 
 thành acceptance. [Contract](../docs/benchmark/mechanism_admission_contract.md)
 và [tóm tắt](../docs/benchmark/mechanism_admission_summary.md) ghi giới hạn.
 Không sửa source/input đã hash để làm gate xanh; tạo version cho thay đổi mới.
+
+Lệnh **QA snapshot hiện hành** bổ sung disclosure batch:
+
+```bash
+.venv/bin/python scripts/verify_disclosure_batch.py \
+  --output results/phase3/disclosure_local_check \
+  --report results/phase3/disclosure_local_check_receipt.json \
+  --require-acceptance
+```
+
+Chọn đường dẫn chưa tồn tại. 16 fresh Replay cho bốn cặp; tái dùng 192 standard
+paths đã bind hash, không chạy lại toàn pool. Tổng 52 working/50 retained,
+208 standard paths, 17 nhóm bảo thủ. Exit 2 từ acceptance gate là đúng dự kiến;
+không phải lỗi runtime. [Contract](../docs/benchmark/disclosure_batch_contract.md)
+ghi giới hạn exact-fragment/query và không cho phép suy diễn general provenance.
 
 [Báo cáo measured Dev](../docs/evaluation/measured_dev_pilot_report.md) chứa
 lệnh tái tạo chính xác từ raw artifacts đã audit. Các script dùng output mới

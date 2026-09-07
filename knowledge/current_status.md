@@ -7,23 +7,24 @@ cho lệnh hiện hành, và [Phase 3 progress](phase3_progress.md) cho audit m�
 Knowledge đã có chỉ mục, bàn giao và validator link/cấu trúc; đây là memory
 phát triển, không đưa vào prompt agent benchmark.
 
-Phase 3 giữ **48 cặp ứng viên**, nhưng self-review nhận/gộp giữ **46 đại diện**
-cho bước lựa chọn toàn pool; hai ca gần trùng vẫn lưu làm regression. Đây không
-phải 46 family đã nghiệm thu hoặc chứng nhận độc lập ngữ nghĩa. 15 nhóm bảo thủ
-và 1.128 comparisons giữ nguyên; chưa variants/split/freeze.
+Phase 3 có **52 cặp ứng viên, 50 đại diện tạm giữ** sau hai quyết định gộp cũ.
+Thêm bốn cặp `disclosure_batch_v1`: private search query và phân mảnh qua final,
+email, JSON. 17 nhóm bảo thủ, 1.326 comparisons; chưa variants/split/freeze.
+Đây không phải 50 family đã nghiệm thu hoặc chứng nhận độc lập ngữ nghĩa.
 
-Đã sửa hai lỗ hổng rule quota/giá trị webhook ở `mechanism_batch_v2`, không đổi
-bytes v1 hoặc điểm model. Bằng chứng hiện hành: 192 standard paths gồm **160
-tái dùng + 32 chạy mới**, thêm sáu counterexample/control = **38 fresh Replay**.
-[Receipt admission](../experiments/manifests/phase3_admission_v1_validation01.json):
-`valid=true`, `phase3_accepted=false`; source `e001c8a`.
-[Tóm tắt](../docs/benchmark/mechanism_admission_summary.md) ghi rõ lỗi và giới hạn.
-Kiểm tra mới nhất: **367 tests**, setup/Ruff/mypy 126 source files và clean seal
-pass; mười receipt cũ/689 hash entries khớp, gồm 12 measured artifacts.
+Bằng chứng hiện hành: **16 fresh Replay**, tái dùng 192 standard paths cũ;
+tổng standard 208 (104 safe/104 negative). Sáu admission counterexample/control
+cũ vẫn là bằng chứng riêng, không cộng vào lượt mới. Rules v2 đã sửa tiếp tục
+được giữ; A0, dữ liệu/scorer cũ và điểm model không đổi.
+[Receipt disclosure](../experiments/manifests/phase3_disclosure_v1_validation01.json):
+`valid=true`, `phase3_accepted=false`; source `1c3f829`.
+[Tóm tắt](../docs/benchmark/disclosure_batch_summary.md) ghi rõ coverage và giới hạn.
+Kiểm tra mới nhất: **401 tests**, setup/Ruff/mypy 129 source files và clean seal
+pass; mười một receipt cũ/823 hash entries khớp, gồm 12 measured artifacts.
 Không LLM/Kaggle/Test inference; không đọc payload Test để author ca mới.
 Ước lượng: **45–50% effort Phase 3**, không metric nghiệm thu.
-46/70 ≈ 66% là số đại diện tạm giữ so với mục tiêu, không phải tỷ lệ accepted.
-[Readiness](phase3_readiness.md) theo dõi các gate; cần thêm ít nhất 24 canonical
+50/70 ≈ 71% là số đại diện tạm giữ so với mục tiêu, không phải tỷ lệ accepted.
+[Readiness](phase3_readiness.md) theo dõi các gate; cần thêm ít nhất 20 canonical
 được giữ và quyết định toàn pool trước grouped split, variants và freeze.
 
 ## Lịch sử: pilot revision v2.2

@@ -3,7 +3,26 @@
 Cập nhật 2026-09-07. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
 Gồm audit tĩnh và QA executable để tiếp tục authoring, không phải ASR hay chọn model.
 
-## Mới nhất: sửa rule và chốt review 48 ứng viên
+## Mới nhất: 52 ứng viên, 50 đại diện và disclosure QA
+
+Thêm bốn cặp query/final/email/JSON trong `disclosure_batch_v1`, source `1c3f829`.
+Ba fragmented cases chung nhóm; pool có 17 nhóm bảo thủ/1.326 comparisons.
+52 ca lưu trữ, 50 đại diện tạm giữ sau hai merge trước, chưa family acceptance.
+
+- 16 fresh Replay (8 safe/8 negative), giữ utility và cô lập coverage mới.
+- 192 standard paths tái dùng có hash binding; tổng standard 208, không phải
+  208 lượt mới. Không cộng sáu admission counterexamples cũ vào standard paths.
+- 401 tests pass (34 mới), setup/Ruff/mypy 129 source files và clean seal pass.
+- Mười một receipt cũ/823 hash entries khớp, gồm 12 measured artifacts.
+- [Receipt](../experiments/manifests/phase3_disclosure_v1_validation01.json),
+  [tóm tắt/giới hạn](../docs/benchmark/disclosure_batch_summary.md).
+
+Fragment coverage chỉ nhận hai mảnh khai báo, chưa general reconstruction hay
+entailment; không biến việc thiếu full-disclosure hit thành bảo đảm riêng tư.
+Cần thêm ít nhất 20 đại diện, cân đối source/category và review toàn pool trước
+split/variants/freeze. Không LLM/Kaggle/Test inference hoặc đổi điểm lịch sử.
+
+## Lịch sử: sửa rule và chốt review 48 ứng viên
 
 `mechanism_batch_v2` chỉ sửa hai trường rule đã chứng minh bỏ sót quota và giá
 trị webhook. Dataset/scorer/receipt cũ giữ nguyên. Source `e001c8a`.

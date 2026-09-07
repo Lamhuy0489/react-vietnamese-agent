@@ -4,19 +4,19 @@ Cập nhật: 2026-09-07. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Đã chốt sửa hai lỗ hổng rule quota/giá trị webhook bằng `mechanism_batch_v2` và
-verifier admission. Source `e001c8a`. 48 ứng viên được self-review dưới owner
-waiver: **46 đại diện tạm giữ**, gộp hexcode → encoded và rowretry → rowdirect;
-không xóa ca gốc. Không đồng nghĩa 46 family độc lập đã được nghiệm thu.
-192 standard paths hiện hành = 160 tái dùng + 32 chạy mới; thêm sáu đường
-counterexample/control, tổng **38 fresh Replay**. 15 nhóm bảo thủ không đổi.
+Đã chốt `disclosure_batch_v1`, source `1c3f829`: thêm bốn cặp rò private query,
+fragmented final/email/JSON. **52 ứng viên, 50 đại diện tạm giữ**, giữ hai merge
+hexcode → encoded và rowretry → rowdirect; không xóa ca gốc. Không đồng nghĩa
+50 family độc lập đã nghiệm thu. 17 nhóm bảo thủ, 1.326 pair comparisons.
+208 standard paths hiện hành = 192 tái dùng + **16 fresh Replay** (tám safe/tám
+negative mới). Sáu counterexample/control admission cũ vẫn là bằng chứng riêng.
 A0, dataset/source/scorer cũ và model scores không đổi.
 
 Bản v1 70 family/350+350 variants và workbench bốn cặp vẫn giữ nguyên.
-48 ứng viên chưa split/approved, không tính vào quota family đã nghiệm thu.
-Combined audit có 1.128 pair comparisons; Replay là reference QA, không phải model
+52 ứng viên chưa split/approved, không tính vào quota family đã nghiệm thu.
+Replay là reference QA, không phải model
 runs. Không giả independent review. [Tiến độ theo DoD](phase3_readiness.md):
-ước lượng 45–50% effort, không metric nghiệm thu. Cần thêm ít nhất **24** đại
+ước lượng 45–50% effort, không metric nghiệm thu. Cần thêm ít nhất **20** đại
 diện được giữ, rồi quyết định nhận/gộp family toàn pool.
 Đọc [tiến độ Phase 3](phase3_progress.md) để xem những thiếu sót đã xác minh.
 
@@ -25,18 +25,20 @@ diện được giữ, rồi quyết định nhận/gộp family toàn pool.
 1. Đọc [Phase 3](../plan/phase3.md),
    [adversarial contract](../docs/benchmark/adversarial_contract.md) và
    [split rules](../docs/benchmark/split_rules.md).
-2. Đọc [tóm tắt admission](../docs/benchmark/mechanism_admission_summary.md) và
-   [register](../data/adversarial/admission_review_v1/README.md). Dùng verifier
-   `verify_canonical_admission.py` trong runbook khi cần tái kiểm tra snapshot;
-   v3 vẫn dùng rules v1, chỉ là evidence lịch sử. Draft v1 vẫn chưa accepted;
+2. Đọc [tóm tắt disclosure](../docs/benchmark/disclosure_batch_summary.md) và
+   [review batch](../data/adversarial/disclosure_batch_v1/README.md). Dùng verifier
+   `verify_disclosure_batch.py` trong runbook khi cần tái kiểm tra snapshot;
+   admission/v3 là các mốc trước, v3 còn dùng rules v1. Draft v1 vẫn chưa accepted;
    không retry GPU hoặc sửa dữ liệu tại chỗ để làm xanh gate.
-3. Không chạy lại từng batch để báo thêm tiến độ. Không sửa bytes 48 candidates,
+3. Không chạy lại từng batch để báo thêm tiến độ. Không sửa bytes 52 candidates,
    review snapshot hoặc source đã có receipt; tạo version mới nếu cần sửa.
-   Bước cụ thể: author ít nhất 24 canonical khác biệt còn thiếu, rồi nhận/gộp từng
+   Bước cụ thể: author ít nhất 20 canonical khác biệt còn thiếu, rồi nhận/gộp từng
    family của full pool. Phân biệt tình huống thực sự, không đổi tên để đủ 70.
-   15 review units là nhóm bảo thủ cần giữ chung split, không đòi 70 abstract
-   mechanisms khác nhau. Fragmentation/general entailment vẫn chưa covered;
-   chỉ thêm oracle nếu scenario mới thật sự cần, không mở scope vô hạn.
+   17 review units là nhóm bảo thủ cần giữ chung split, không đòi 70 abstract
+   mechanisms khác nhau. Fragmentation chỉ hỗ trợ hai mảnh khai báo chính xác;
+   chưa có general entailment/reconstruction. Bốn ca vừa thêm đều DB/exfiltration;
+   cần đối chiếu quota source/category trước chọn batch sau. Chỉ thêm oracle khi
+   scenario thật sự cần; không mở scope vô hạn hoặc đổi group để ép split.
 4. Review nhóm semantic/template, xác định split rồi mới sinh variants. Giữ
    bản draft cũ làm bằng chứng; không âm thầm reseal/move family.
 5. Chỉ cập nhật acceptance khi có kiểm tra thực sự. Đọc [runbook](runbook.md)
@@ -44,6 +46,16 @@ diện được giữ, rồi quyết định nhận/gộp family toàn pool.
 
 ## Bằng chứng
 
+- [Receipt disclosure](../experiments/manifests/phase3_disclosure_v1_validation01.json):
+  source `1c3f829`; 52 working/50 retained/2 merged/17 review units. 16 fresh
+  Replay, 192 standard tái dùng. 401 tests pass (34 mới), setup/Ruff/mypy 129
+  source files và clean seal pass. Mười một receipt cũ/823 hash entries khớp,
+  gồm 12 measured artifacts. Partial pieces, recipient/channel separation,
+  explicit grants, failed effects, immutable inputs và no-network được test.
+  `--require-acceptance` exit 2 đúng dự kiến, không phải runtime failure.
+  Không LLM/Kaggle/Test inference, không cần quyền tài khoản mới.
+  Selected receipt: 133 mục hash source/input/prior và 16 raw trace files khớp.
+  Quét bốn credential values trên 24 file thay đổi: 0 match. Knowledge-check pass.
 - [Receipt admission](../experiments/manifests/phase3_admission_v1_validation01.json):
   source `e001c8a`; 48 working/46 retained/2 merged/15 review units. 38 fresh
   Replay gồm 32 standard và sáu counterexample/control; 160 standard tái dùng.

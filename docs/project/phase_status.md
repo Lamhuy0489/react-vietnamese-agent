@@ -155,9 +155,14 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   Hash-bound assistant review retains 46 of 48 representatives and merges two;
   15 conservative groups remain. This is not final family admission. 367 tests
   pass; see [admission receipt](../../experiments/manifests/phase3_admission_v1_validation01.json).
+- [x] Four query/fragment-disclosure pairs pass 16 fresh Replay paths and 34
+  new tests (401 total). Reuse 192 hash-bound standard paths from prior evidence.
+  Pool: 52 stored candidates, 50 retained representatives, two merges and 17
+  conservative groups; not certified family independence or final admission.
+  See [disclosure receipt](../../experiments/manifests/phase3_disclosure_v1_validation01.json).
 - [ ] Full 70-family executable canonical set, scenario-appropriate data-scope
-  oracles and final family review remain pending. At least 24 more retained
-  representatives are needed before final pool selection. Forty-eight stored candidates do not meet
+  oracles and final family review remain pending. At least 20 more retained
+  representatives are needed before final pool selection. Fifty-two stored candidates do not meet
   this gate and are not counted toward the benchmark quota. See
   [Phase 3 handoff](../../knowledge/phase3_progress.md) and
   [audit receipt](../../experiments/manifests/phase3_draft_audit_20260906.json).
