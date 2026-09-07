@@ -1,5 +1,18 @@
 # Decision Log
 
+## 2026-09-07 — Reviewed linguistic variants after fixed canonical assignment
+
+Add a separate 280-record linguistic snapshot: 140 individually authored clause
+paraphrases and 140 contextual code-mix outputs, each reviewed by the assistant
+under the owner's existing waiver. Correct ambiguous glossary compounds before
+freeze; do not use model failures or change any previously hashed source/data.
+Review is semantic self-review, not independent human certification. Preserve
+literal values, modality, timing, derived-disclosure direction and paired utility.
+Preflight: 564 fresh reference paths (560 standard/four alternatives), exact
+canonical score parity, 244 Test-assigned construction QA and zero model runs.
+699 tests pass, setup/Ruff/mypy 143 source files pass. The complete 700-record
+release still needs integration and immutable sealing; no Phase 4 work here.
+
 ## 2026-09-07 — Three mechanical surfaces and unified private reference adapter
 
 - Continue Phase 3 from the immutable 70-canonical/40–30 selection. Add a separate

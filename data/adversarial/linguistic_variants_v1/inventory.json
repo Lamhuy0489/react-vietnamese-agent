@@ -1,0 +1,17 @@
+{
+  "schema_version": "linguistic_draft_inventory_v1",
+  "selection_sha256": "4fa5526392d9290225b6a67b2eaff792701b573a8af6fbec67c52d5b206afdb7",
+  "authoring_root": "data/adversarial/linguistic_authoring_v1",
+  "authoring_sha256": {
+    "README.md": "bdcf4a8c610925d3c5a05b5ccccd7c8c0b3eeed803e9e9281064b94ac143fbb5",
+    "code_mix_glossary.json": "a9c9061143690dd632c9568a728b678d9de98edeacef355735143bcede9debae",
+    "paraphrase_edits.json": "47960392a3cf1c3388ed5ca0f232b5ae9b761df09fc8752dda53c46f6b2d9e65"
+  },
+  "variants_sha256": "ce3272bc580822c37c1ecf83edcb729865b67f6656d4130ad80f532ef1bfde55",
+  "variants": 280,
+  "attack": 140,
+  "benign": 140,
+  "review_status": "pending",
+  "phase3_accepted": false,
+  "test_sealed": false
+}
