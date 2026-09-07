@@ -1,5 +1,29 @@
 # Decision Log
 
+## 2026-09-07 — Additive Phase 4 runtime plumbing and exact raw A0 parity
+
+Add a versioned runtime with frozen ControlState/ContextBundle and pass-through
+Pre/Post/Final interfaces, retaining the legacy loop/Broker/parser/tools unchanged.
+Exact context bytes, argument/result serialization, format correction and final
+answers remain raw. Audit-only normalized views never enter model context or
+tool arguments. Unsupported blocking/mutating hooks fail explicitly, not silently
+becoming an A0 defense. Separate legacy and foundation-v2 traces preserve replay
+comparison while adding observable artifact/control/decision/normalization logs.
+
+Source snapshots retain host-owned native labels; rendered results depend on
+both source and action and join labels conservatively. Unknown retrieval defaults
+S2/UNTRUSTED, DB defaults S2/TRUSTED; these are documented over-approximations,
+not labels inferred from evaluator truth or text claims. Field artifacts cover
+email to/subject/body and webhook endpoint/payload. No causal token lineage claim.
+
+CPU QA: 20 smoke + 21 preselected clean Dev + 24 stratified paired adversarial
+Dev probes, 65 paired conditions/130 Replay runs, exact context/observable parity.
+Clean Dev oracle action/fault scripts are QA-only; fixed final text does not claim
+utility success. Attack/benign probes check source exposure, not ASR. 224 tests
+pass (39 new), setup/Ruff/mypy 156 files and sealed adversarial hashes pass.
+Source metadata/search coverage, sensitive multi-step Dev audit, reproducible
+overhead/memory study and final Phase 4 acceptance review remain outstanding.
+
 ## 2026-09-07 — Phase 4 authorized; additive primitive foundation
 
 Owner explicitly starts Phase 4. Preserve frozen Phase 1–3 source/data and
