@@ -21,7 +21,9 @@
   Preflight01 passes all 845 tests (76 new), setup/Ruff/mypy 190 files/knowledge.
   26 synthetic conditions + 12 prior-level parity pairs = 50 Replay, 56 mock
   Broker calls, 121 fake guard classifications. 135 source/435 raw hashes and
-  903 prior source entries verified. Selected-source reproduction pending;
+  903 prior source entries verified. Selected source `04ae4c8` reproduces the
+  stable preflight and passes all 845 tests in 178.29 seconds; 135 source/435 raw
+  hashes rechecked. [Receipt](../../experiments/manifests/phase5_a6_runtime_v1_validation01.json).
   Phase 5 remains unaccepted and no real-model security result is claimed.
 
 ## 2026-09-08 — Value-origin release evidence and bounded value gates

@@ -6,11 +6,17 @@ Runtime v4 A0–A6 theo [contract](../docs/architecture/phase5_a6_runtime_contra
 đã qua preflight01: **845 tests pass** (76 mới), setup/Ruff/mypy 190 files/knowledge
 pass. 26 synthetic conditions + 12 A0–A5 parity pairs = 50 Replay, 56 Broker mock
 calls, 121 fake guard classifications. 135 source/435 raw hashes kiểm lại,
-903 prior source entries giữ nguyên. Selected reproduction đang chuẩn bị.
+903 prior source entries giữ nguyên.
+[Selected reproduction](../experiments/manifests/phase5_a6_runtime_v1_validation01.json)
+từ source sạch `04ae4c8` khớp preflight, 845 tests pass trong 178,29 giây;
+135 source/435 raw hashes kiểm lại. 25 A6 finals: 23 ALLOW/1 REDACT/1 DENY;
+một A5 final pass-through. Đây là predeclared synthetic conditions, không ASR.
 Coarse verdict/value/composed verdict lưu riêng; chỉ thay coarse sensitivity
 veto khi đủ nguồn public. Guard/control veto không bị vượt qua. Actual Post view
 vào context; final proposed/released tách biệt và chỉ released text được trả ra.
 Không sửa source đã hash, không dùng Test hoặc chạy model thật.
+Guard production/revision/GPU lifecycle, A4 scope, grouped Dev validation/freeze
+và general final entitlements vẫn chưa hoàn tất; không nghiệm thu Phase 5.
 
 ## Lịch sử: value PreGate/Post-view components
 

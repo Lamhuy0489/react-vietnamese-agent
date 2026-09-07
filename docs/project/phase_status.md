@@ -303,7 +303,9 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   source entries unchanged. Coarse sensitivity refinement retains rule/LLM vetoes;
   actual Post context views, separate proposed/released final and fixed S0 host
   final policy. [Runtime contract](../architecture/phase5_a6_runtime_contract.md).
-  Selected-source reproduction pending; not real-model security evidence.
+  Source `04ae4c8`, [selected receipt](../../experiments/manifests/phase5_a6_runtime_v1_validation01.json)
+  from clean source matches preflight; 845 tests pass and all 135 source/435 raw
+  hashes verified. Not real-model security evidence.
 - [ ] General private-record final entitlements and broader origin-coverage assessment.
 - [ ] Grouped Dev tuning/validation protocol, differential experiments and freeze.
 

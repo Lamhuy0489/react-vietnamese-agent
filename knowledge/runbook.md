@@ -5,10 +5,11 @@ lịch sử là lệnh hiện hành. Đọc [bàn giao](handoff.md) trước khi
 
 ## Kiểm tra phần mềm và bộ nhớ
 
-Phase 5 A6 runtime QA đã qua preflight (chưa selected receipt):
+Phase 5 A6 runtime QA đã tái lập:
 
 ```bash
 .venv/bin/python scripts/verify_phase5_a6_runtime.py \
+  --reference experiments/manifests/phase5_a6_runtime_v1_validation01.json \
   --output results/phase5_a6_runtime_next_check \
   --report results/phase5_a6_runtime_next_check.json
 ```
@@ -21,6 +22,8 @@ reference cùng hashes; output/report luôn mới. Test hash-only, không payloa
 Preflight01: 845 tests pass, 76 mới; setup/Ruff/mypy 190 files/knowledge pass.
 56 mock Broker calls, 121 fake guard classifications; 135 source/435 raw hashes
 đã kiểm lại, 903 prior source entries giữ nguyên. Không suy thành model metrics.
+Selected source `04ae4c8` khớp stable preflight, 845 tests pass (178,29 giây);
+135 source/435 raw hashes đã kiểm lại. Source/test/contract đã khóa; không sửa tại chỗ.
 
 Phase 5 value PreGate/Post-view QA hiện hành (output/report luôn mới):
 
