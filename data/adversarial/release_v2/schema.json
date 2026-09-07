@@ -1,0 +1,339 @@
+{
+  "$defs": {
+    "Action": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "arguments": {
+          "additionalProperties": true,
+          "title": "Arguments",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ],
+      "title": "Action",
+      "type": "object"
+    },
+    "LinkedResources": {
+      "additionalProperties": false,
+      "properties": {
+        "task_id": {
+          "pattern": "^awb_[a-z]+$",
+          "title": "Task Id",
+          "type": "string"
+        },
+        "documents": {
+          "items": {
+            "$ref": "#/$defs/LinkedText"
+          },
+          "title": "Documents",
+          "type": "array"
+        },
+        "cached_pages": {
+          "items": {
+            "$ref": "#/$defs/LinkedText"
+          },
+          "title": "Cached Pages",
+          "type": "array"
+        },
+        "rows": {
+          "items": {
+            "$ref": "#/$defs/LinkedRow"
+          },
+          "title": "Rows",
+          "type": "array"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "title": "LinkedResources",
+      "type": "object"
+    },
+    "LinkedRow": {
+      "additionalProperties": false,
+      "properties": {
+        "note_id": {
+          "pattern": "^AUX_[A-Z]+$",
+          "title": "Note Id",
+          "type": "string"
+        },
+        "note": {
+          "minLength": 1,
+          "title": "Note",
+          "type": "string"
+        },
+        "secret_token": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Secret Token"
+        }
+      },
+      "required": [
+        "note_id",
+        "note"
+      ],
+      "title": "LinkedRow",
+      "type": "object"
+    },
+    "LinkedText": {
+      "additionalProperties": false,
+      "properties": {
+        "identity": {
+          "pattern": "^AUX_[A-Z]+$",
+          "title": "Identity",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "content": {
+          "minLength": 1,
+          "title": "Content",
+          "type": "string"
+        }
+      },
+      "required": [
+        "identity",
+        "title",
+        "content"
+      ],
+      "title": "LinkedText",
+      "type": "object"
+    },
+    "OverlayScenario": {
+      "additionalProperties": false,
+      "properties": {
+        "task_id": {
+          "pattern": "^awb_[a-z]+$",
+          "title": "Task Id",
+          "type": "string"
+        },
+        "attack_category": {
+          "enum": [
+            "indirect_injection",
+            "tool_output_poisoning",
+            "data_exfiltration",
+            "policy_violation"
+          ],
+          "title": "Attack Category",
+          "type": "string"
+        },
+        "source_type": {
+          "enum": [
+            "document",
+            "cached_page",
+            "database_text_field",
+            "tool_output"
+          ],
+          "title": "Source Type",
+          "type": "string"
+        },
+        "source_id": {
+          "pattern": "^AWB_[A-Z]+$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "trust": {
+          "enum": [
+            "T0",
+            "T1",
+            "T2"
+          ],
+          "title": "Trust",
+          "type": "string"
+        },
+        "sensitivity": {
+          "enum": [
+            "S0",
+            "S1",
+            "S2"
+          ],
+          "title": "Sensitivity",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "base_content": {
+          "minLength": 1,
+          "title": "Base Content",
+          "type": "string"
+        },
+        "attack_text": {
+          "minLength": 1,
+          "title": "Attack Text",
+          "type": "string"
+        },
+        "benign_text": {
+          "minLength": 1,
+          "title": "Benign Text",
+          "type": "string"
+        },
+        "sensitive_value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sensitive Value"
+        },
+        "trigger": {
+          "$ref": "#/$defs/Action"
+        },
+        "review_status": {
+          "const": "pending",
+          "default": "pending",
+          "title": "Review Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id",
+        "attack_category",
+        "source_type",
+        "source_id",
+        "trust",
+        "sensitivity",
+        "title",
+        "base_content",
+        "attack_text",
+        "benign_text",
+        "trigger"
+      ],
+      "title": "OverlayScenario",
+      "type": "object"
+    },
+    "PublicWorkbenchTask": {
+      "additionalProperties": false,
+      "properties": {
+        "task_id": {
+          "pattern": "^awb_[a-z]+$",
+          "title": "Task Id",
+          "type": "string"
+        },
+        "instruction": {
+          "minLength": 1,
+          "title": "Instruction",
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id",
+        "instruction"
+      ],
+      "title": "PublicWorkbenchTask",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "adversarial_release_fixture_v2",
+      "default": "adversarial_release_fixture_v2",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "variant_id": {
+      "pattern": "^(ATK|BEN)_CAND_[A-Z]+_[A-Z_]+$",
+      "title": "Variant Id",
+      "type": "string"
+    },
+    "pair_id": {
+      "title": "Pair Id",
+      "type": "string"
+    },
+    "family_id": {
+      "title": "Family Id",
+      "type": "string"
+    },
+    "canonical_id": {
+      "title": "Canonical Id",
+      "type": "string"
+    },
+    "group_id": {
+      "title": "Group Id",
+      "type": "string"
+    },
+    "split": {
+      "enum": [
+        "dev",
+        "test"
+      ],
+      "title": "Split",
+      "type": "string"
+    },
+    "branch": {
+      "enum": [
+        "attack",
+        "benign"
+      ],
+      "title": "Branch",
+      "type": "string"
+    },
+    "variant_type": {
+      "enum": [
+        "no_diacritic",
+        "word_boundary",
+        "zero_width",
+        "code_mix",
+        "paraphrase"
+      ],
+      "title": "Variant Type",
+      "type": "string"
+    },
+    "task": {
+      "$ref": "#/$defs/PublicWorkbenchTask"
+    },
+    "overlay": {
+      "$ref": "#/$defs/OverlayScenario"
+    },
+    "resources": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/LinkedResources"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "variant_id",
+    "pair_id",
+    "family_id",
+    "canonical_id",
+    "group_id",
+    "split",
+    "branch",
+    "variant_type",
+    "task",
+    "overlay",
+    "resources"
+  ],
+  "title": "ReleasedFixture",
+  "type": "object"
+}

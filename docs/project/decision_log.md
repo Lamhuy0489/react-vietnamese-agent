@@ -1,5 +1,28 @@
 # Decision Log
 
+## 2026-09-07 — Full release integration and post-seal access discipline
+
+Combine accepted mechanical/linguistic snapshots into separate `release_v2`;
+do not repair rejected v1 or rewrite canonical references. Exact 700 variants,
+350 per branch, fixed 40/30 families and twenty conservative groups. Public-only
+fixture loader exposes only task instructions to Runtime, with overlays/resources
+owned by tools; private scorer dispatch remains unchanged. Unique variant and
+invocation identities bridge original canonical runtime IDs.
+
+Re-score and archive 1,692 previously recorded paths: 280 canonical standard,
+1,400 variant standard and twelve safe alternatives. This is reused evidence,
+not new inference. All 732 Test-assigned paths are pre-seal construction QA;
+no held-out model runs. Archive stores observable events only. Input/source,
+configuration, schema, mapping, environment and dependency hashes are frozen.
+Sealing requires the exact source/data bytes already committed to Git.
+
+Run full construction tests before sealing. Afterwards, exclude historical
+authoring test modules before collection/import to prevent held-out construction
+fixtures entering later development. Preserve their full pre-seal result; use
+hash-only seal integrity and Dev-only loading checks afterwards. This is an
+access boundary, not a waiver of failing tests. Keep reviewer and strata limits
+explicit; Phase 3 acceptance does not authorize Phase 4 or model experiments.
+
 ## 2026-09-07 — Reviewed linguistic variants after fixed canonical assignment
 
 Add a separate 280-record linguistic snapshot: 140 individually authored clause
