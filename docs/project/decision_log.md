@@ -455,3 +455,33 @@ and are not inferred here.
   Selected receipt: 133 source/input/prior hash entries and 16 raw traces match;
   four credential values checked across 24 changed files have zero matches.
   Knowledge-check passes after receipt creation.
+
+## 2026-09-07 — Add twelve task-effect pairs toward canonical completion
+
+- Owner requests completion and an honest progress estimate. Source `9917eb0`
+  adds a separate twelve-pair batch, using old runtime and scorers unchanged.
+  Seven tool-output, three indirect/document and two policy/cache cases improve
+  source/category coverage. Existing frozen labels and data are not altered.
+- Distinctions: denomination, rounding, idempotency identity, atomic effects,
+  expiring permission, allocation, computation attribution, signatory identity,
+  source citation, evidence backdating, time zone and queue priority. All remain
+  in the conservative business-payload group, now 25 retained members; do not
+  split it to manufacture independence or improve Dev/Test strata.
+- Public authorized full payload, source prerequisite and one-successful-send
+  limit are explicit. Negative fixture violates payload and fails legitimate
+  sink completion despite correct final fact. No false utility claims.
+- 64 stored/62 retained, two old merges, 17 groups and 2,016 comparisons. Review
+  is assistant self-review under owner waiver, not final independent-family or
+  human-review certification. At least eight more retained scenarios needed;
+  full-pool selection may merge further. No variants or split/freeze yet.
+- 48 fresh Replay plus 208 explicitly reused standard paths. 428 tests pass
+  (27 new), setup/Ruff/mypy 131 files and clean seal pass. Twelve old receipts/
+  956 hash entries match, including twelve measured artifacts. No model runs,
+  held-out inference, Test-driven tuning or old-score changes.
+- Estimate 50–55% effort, unweighted and not acceptance. 62/70 ≈ 89% refers only
+  to provisional representative count. Remaining work: distinct canonical
+  boundaries, whole-pool review, grouped 40/30 split, paired variants and seal.
+  `--require-acceptance` exits 2 with valid bounded QA; no phase closure claimed.
+  Selected receipt: 143 source/input/prior hash entries and 48 raw traces match;
+  four credential values across 23 changed files have zero matches. Knowledge
+  validation passes after receipt creation.

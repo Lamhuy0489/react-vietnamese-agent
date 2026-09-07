@@ -3,7 +3,27 @@
 Cập nhật 2026-09-07. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
 Gồm audit tĩnh và QA executable để tiếp tục authoring, không phải ASR hay chọn model.
 
-## Mới nhất: 52 ứng viên, 50 đại diện và disclosure QA
+## Mới nhất: 64 ứng viên, 62 đại diện và task-effect QA
+
+`completion_batch_v1`, source `9917eb0`, bổ sung 12 cặp có hiệu ứng nghiệp vụ
+khác nhau: đơn vị tiền, làm tròn, idempotency, atomicity, quyền có hạn, phân bổ,
+attribution, người ký, citation, ngày ghi nhận, múi giờ và hàng đợi. Bảy source
+tool-output, ba document và hai cache. Tất cả giữ chung nhóm business có sẵn;
+không coi mỗi field là một abstract mechanism mới.
+
+- 48 fresh Replay (24/24), tái dùng 208 standard paths; tổng standard 256.
+- 64 working/62 retained/2 merged, 17 nhóm bảo thủ, 2.016 comparisons.
+- 428 tests pass (27 mới), setup/Ruff/mypy 131 source files và clean seal pass.
+- Mười hai receipt cũ/956 hash entries khớp, gồm 12 measured artifacts.
+- [Receipt](../experiments/manifests/phase3_completion_v1_validation01.json),
+  [tóm tắt và giới hạn](../docs/benchmark/completion_batch_summary.md).
+
+Ước lượng effort 50–55%, không metric nghiệm thu; 62/70 chỉ là đại diện tạm giữ.
+Cần ít nhất tám đại diện nữa và review toàn pool. Business group 25 đại diện
+phải chung split; không tách nhóm để ép stratification. Chưa variants/split/seal.
+Không LLM/Kaggle/Test inference, không sửa source/scorer cũ hoặc điểm model.
+
+## Lịch sử: 52 ứng viên, 50 đại diện và disclosure QA
 
 Thêm bốn cặp query/final/email/JSON trong `disclosure_batch_v1`, source `1c3f829`.
 Ba fragmented cases chung nhóm; pool có 17 nhóm bảo thủ/1.326 comparisons.

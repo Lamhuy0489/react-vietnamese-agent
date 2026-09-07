@@ -7,24 +7,24 @@ cho lệnh hiện hành, và [Phase 3 progress](phase3_progress.md) cho audit m�
 Knowledge đã có chỉ mục, bàn giao và validator link/cấu trúc; đây là memory
 phát triển, không đưa vào prompt agent benchmark.
 
-Phase 3 có **52 cặp ứng viên, 50 đại diện tạm giữ** sau hai quyết định gộp cũ.
-Thêm bốn cặp `disclosure_batch_v1`: private search query và phân mảnh qua final,
-email, JSON. 17 nhóm bảo thủ, 1.326 comparisons; chưa variants/split/freeze.
-Đây không phải 50 family đã nghiệm thu hoặc chứng nhận độc lập ngữ nghĩa.
+Phase 3 có **64 cặp ứng viên, 62 đại diện tạm giữ** sau hai quyết định gộp cũ.
+Thêm 12 cặp `completion_batch_v1`, dùng nguyên runtime/scorer đã khóa: bảy
+tool-output, ba document, hai cache. 17 nhóm bảo thủ, 2.016 comparisons;
+chưa variants/split/freeze hoặc chứng nhận 62 family độc lập đã nghiệm thu.
 
-Bằng chứng hiện hành: **16 fresh Replay**, tái dùng 192 standard paths cũ;
-tổng standard 208 (104 safe/104 negative). Sáu admission counterexample/control
+Bằng chứng hiện hành: **48 fresh Replay**, tái dùng 208 standard paths cũ;
+tổng standard 256 (128 safe/128 negative). Sáu admission counterexample/control
 cũ vẫn là bằng chứng riêng, không cộng vào lượt mới. Rules v2 đã sửa tiếp tục
 được giữ; A0, dữ liệu/scorer cũ và điểm model không đổi.
-[Receipt disclosure](../experiments/manifests/phase3_disclosure_v1_validation01.json):
-`valid=true`, `phase3_accepted=false`; source `1c3f829`.
-[Tóm tắt](../docs/benchmark/disclosure_batch_summary.md) ghi rõ coverage và giới hạn.
-Kiểm tra mới nhất: **401 tests**, setup/Ruff/mypy 129 source files và clean seal
-pass; mười một receipt cũ/823 hash entries khớp, gồm 12 measured artifacts.
+[Receipt completion-authoring](../experiments/manifests/phase3_completion_v1_validation01.json):
+`valid=true`, `phase3_accepted=false`; source `9917eb0`.
+[Tóm tắt](../docs/benchmark/completion_batch_summary.md) ghi rõ coverage và giới hạn.
+Kiểm tra mới nhất: **428 tests**, setup/Ruff/mypy 131 source files và clean seal
+pass; mười hai receipt cũ/956 hash entries khớp, gồm 12 measured artifacts.
 Không LLM/Kaggle/Test inference; không đọc payload Test để author ca mới.
-Ước lượng: **45–50% effort Phase 3**, không metric nghiệm thu.
-50/70 ≈ 71% là số đại diện tạm giữ so với mục tiêu, không phải tỷ lệ accepted.
-[Readiness](phase3_readiness.md) theo dõi các gate; cần thêm ít nhất 20 canonical
+Ước lượng: **50–55% effort Phase 3**, không metric nghiệm thu.
+62/70 ≈ 89% là số đại diện tạm giữ so với mục tiêu, không phải tỷ lệ accepted.
+[Readiness](phase3_readiness.md) theo dõi các gate; cần thêm ít nhất tám canonical
 được giữ và quyết định toàn pool trước grouped split, variants và freeze.
 
 ## Lịch sử: pilot revision v2.2

@@ -160,9 +160,14 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   Pool: 52 stored candidates, 50 retained representatives, two merges and 17
   conservative groups; not certified family independence or final admission.
   See [disclosure receipt](../../experiments/manifests/phase3_disclosure_v1_validation01.json).
+- [x] Twelve task-effect pairs reuse frozen mechanism QA: 48 fresh Replay paths,
+  208 reused standard paths, 428 tests pass (27 new). Pool: 64 stored candidates,
+  62 retained representatives and 17 conservative groups. All twelve additions
+  remain in the existing business group; final family admission is not certified.
+  See [completion-authoring receipt](../../experiments/manifests/phase3_completion_v1_validation01.json).
 - [ ] Full 70-family executable canonical set, scenario-appropriate data-scope
-  oracles and final family review remain pending. At least 20 more retained
-  representatives are needed before final pool selection. Fifty-two stored candidates do not meet
+  oracles and final family review remain pending. At least eight more retained
+  representatives are needed before final pool selection. Sixty-four stored candidates do not meet
   this gate and are not counted toward the benchmark quota. See
   [Phase 3 handoff](../../knowledge/phase3_progress.md) and
   [audit receipt](../../experiments/manifests/phase3_draft_audit_20260906.json).

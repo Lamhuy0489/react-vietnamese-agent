@@ -155,7 +155,7 @@ thành acceptance. [Contract](../docs/benchmark/mechanism_admission_contract.md)
 và [tóm tắt](../docs/benchmark/mechanism_admission_summary.md) ghi giới hạn.
 Không sửa source/input đã hash để làm gate xanh; tạo version cho thay đổi mới.
 
-Lệnh **QA snapshot hiện hành** bổ sung disclosure batch:
+Lệnh QA snapshot disclosure trước:
 
 ```bash
 .venv/bin/python scripts/verify_disclosure_batch.py \
@@ -169,6 +169,21 @@ paths đã bind hash, không chạy lại toàn pool. Tổng 52 working/50 retai
 208 standard paths, 17 nhóm bảo thủ. Exit 2 từ acceptance gate là đúng dự kiến;
 không phải lỗi runtime. [Contract](../docs/benchmark/disclosure_batch_contract.md)
 ghi giới hạn exact-fragment/query và không cho phép suy diễn general provenance.
+
+Lệnh **QA snapshot hiện hành** bổ sung 12 task-effect pairs:
+
+```bash
+.venv/bin/python scripts/verify_completion_batch.py \
+  --output results/phase3/completion_local_check \
+  --report results/phase3/completion_local_check_receipt.json \
+  --require-acceptance
+```
+
+Chọn đường dẫn mới. 48 fresh Replay, tái dùng 208 standard paths; không phải
+256 lượt mới. 64 stored/62 retained, 17 nhóm bảo thủ. `completion` trong tên
+chỉ đợt authoring hướng tới hoàn thiện, không phải Phase 3 đã complete. Exit 2
+acceptance gate đúng dự kiến. [Contract](../docs/benchmark/completion_batch_contract.md)
+giữ nguyên scorer/runtime; không sửa source đã hash để làm gate xanh.
 
 [Báo cáo measured Dev](../docs/evaluation/measured_dev_pilot_report.md) chứa
 lệnh tái tạo chính xác từ raw artifacts đã audit. Các script dùng output mới
