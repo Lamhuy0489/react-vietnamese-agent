@@ -1,0 +1,16 @@
+schema: normalization_profile_catalog_v1
+normalizer_version: normalizer_v1
+model_input_profile: raw_v1
+profiles:
+  raw_v1: []
+  unicode_v1:
+    - unicode_nfkc
+  security_v1:
+    - unicode_nfkc
+    - remove_explicit_zero_width
+    - unicode_nfkc_recompose
+    - line_endings
+    - inline_whitespace
+zero_width_codepoints: [U+200B, U+200C, U+200D, U+2060, U+FEFF]
+# Descriptive, tested catalog; the versioned Python normalizer is executable truth.
+# Security views never replace raw A0 model messages or arguments.

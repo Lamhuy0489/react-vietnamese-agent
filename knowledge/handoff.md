@@ -4,6 +4,12 @@ Cập nhật: 2026-09-07. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+**Phase 4 closure preflight đã pass**, đang chốt source và selected reproduction.
+Đã có host catalog v2, search/DB collection joins, deep Dev audit và overhead study.
+244 tests pass; setup/Ruff/mypy 160 files/knowledge-check pass. Preflight receipt
+`results/phase4_closure_v1_preflight01.json`; chưa phải receipt nghiệm thu.
+[Báo cáo và 12 DoD](../docs/architecture/phase4_report.md).
+
 **Phase 4 đã được owner cho phép**, đã tích hợp runtime và kiểm tra A0 parity. Phase 1,
 Phase 2 clean_v1.1, Phase 3 adversarial_v2 đã accepted; Test vẫn khóa.
 [Tiến độ Phase 4](phase4_progress.md),
@@ -16,7 +22,12 @@ qua Broker. Giữ raw A0 và source/data/scorer đã khóa, không bật defense
 
 ## Bước tiếp theo
 
-1. Xác nhận Git/remote và [phase status](../docs/project/phase_status.md);
+1. Chốt source closure đã kiểm tra; chạy `verify_phase4_closure.py` với
+   `--quality --reference results/phase4_closure_v1_preflight01.json`, output mới
+   và selected report trong `experiments/manifests`. Source hashes/stable summary
+   phải khớp; chỉ sau pass mới cập nhật acceptance. Không cần thêm tài khoản.
+2. Các mục dưới là checklist cũ đã được preflight thực hiện, cần selected receipt
+   để đóng. Xác nhận Git/remote và [phase status](../docs/project/phase_status.md);
    chạy setup/Ruff/mypy/pytest/knowledge-check theo [runbook](runbook.md).
 2. **Rà metadata nguồn/search và propagation** theo các mục XXXIV–LI của
    [phase4](../plan/phase4.md); thay fallback bảo thủ bằng host-owned bindings
@@ -34,6 +45,12 @@ qua Broker. Giữ raw A0 và source/data/scorer đã khóa, không bật defense
 
 ## Bằng chứng
 
+- Closure preflight: 45 pairs/90 fresh Dev Replay (21 clean + 24 deep paired
+  attack/benign), 152 deep source snapshots, 12 search envelopes, 120 sink fields.
+  440 smoke overhead Replay + hai stress Replay; p95 added 7,775 ms, traced peak
+  524.460 bytes trên smoke, cả hai guard pass. Stress traced peak 21.605.044 bytes;
+  không dùng timing có tracer như timing thường. 497 prior hash entries còn khớp.
+  Chưa chốt source/selected receipt, vì vậy chưa nghiệm thu toàn Phase 4.
 - Runtime source `a65bc53`,
   [receipt](../experiments/manifests/phase4_runtime_v1_validation01.json):
   **65 paired conditions / 130 fresh Replay** = 20 smoke + 21 clean Dev + 24

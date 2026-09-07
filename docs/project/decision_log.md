@@ -1,5 +1,27 @@
 # Decision Log
 
+## 2026-09-07 — Phase 4 closure metadata and measurement scope
+
+- Owner requested completion of Phase 4. Keep frozen runtime/primitives, A0
+  behavior, benchmark sources and prior evidence unchanged; add host catalog v2
+  plus separate QA/measurement modules. No Phase 5 security enforcement.
+- Clean host document namespace defaults S1/TRUSTED; cached public pages default
+  S0/UNTRUSTED, DB S2/TRUSTED, unlabeled auxiliary sources S2/UNTRUSTED. Explicit
+  public overlay metadata is branch-independent. Search joins the whole source
+  collection; DB projections join the DB scope, including tainted overlay/rows.
+  These conservative initialization rules do not use evaluator facts or payload
+  assertions, and are not claims of row-level or token-level attribution.
+- New integration scope: 21 fixed clean Dev QA references and 24 paired Dev
+  multi-step trajectories prioritizing linked resources. Their scripted outputs
+  demonstrate plumbing, not utility, ASR, real-model success or defense.
+- Controlled local study: seven alternating timing repeats after warm-up, separate
+  three-repeat allocation tracing, process RSS and long-document stress. Thresholds
+  and limits recorded before measurement in the closure protocol. No GPU/LLM
+  extrapolation; storage duplication and long-context limits must remain visible.
+- Plan's proposed file layout is mapped to consolidated versioned contracts in
+  the design index. Existing self-review waiver applies; no fabricated Minh or
+  independent-review approval. Acceptance remains conditional on closure evidence.
+
 ## 2026-09-07 — Additive Phase 4 runtime plumbing and exact raw A0 parity
 
 Add a versioned runtime with frozen ControlState/ContextBundle and pass-through
