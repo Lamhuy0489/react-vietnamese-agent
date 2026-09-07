@@ -1,5 +1,31 @@
 # Decision Log
 
+## 2026-09-08 — Value-origin release evidence and bounded value gates
+
+- Source `3b9f565` and `phase5_value_origin_v1_validation01` freeze the typed
+  origin/final-release component: 696 tests, 24 synthetic cases, 130 source/101 raw
+  hashes verified. Evidence handoff completed in `06086c1`; runtime A6 remains off.
+- Next separate value PreGate requires raw-user action/destination anchors,
+  complete index roots in the proposal ancestry, exact typed origins for all
+  critical scalar leaves, S0 clearance and protected scans including JSON keys.
+  Missing/unsupported origins, structure or resource coverage deny external sinks.
+  Fixed read/compute tools remain value-origin fail-open; unknown tools do not.
+- Predeclare small webhook key allowlist and exact scalar matching. This is
+  intentionally restrictive; no substring concatenation or unknown numeric
+  inference is advertised. Schema defaults are allowed without rewriting supplied
+  arguments. A6 control/guard arbitration is still separate, not bypassed.
+- Post primitive creates a JSON data envelope only for untrusted source results,
+  preserving content/lineage/labels. It is not claimed to prevent all prompt
+  injection. No raw artifact rewrites, model prompt changes or Test payload access.
+- Component tests can exercise the existing Broker only after a value ALLOW;
+  no real side effects or model run. Full A6 runtime/Final authorization and Dev
+  validation remain pending; do not interpret component ALLOW as full A6 safety.
+- Review found an omitted-observation hole: checking only indexed roots against
+  exposure was insufficient. Require every observed raw user/tool source to be
+  indexed as well. Regression test uses omitted S2/public duplicate data. No Test
+  payloads informed this repair. Preflight01 was invalidated by this source edit;
+  preserve its logs, select only the fresh preflight02 of the corrected source.
+
 ## 2026-09-07 — Predeclare cumulative A3–A5 session enforcement
 
 - New session policy and runtime v3 preserve selected A0–A2 implementations.

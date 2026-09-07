@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: A6 value-origin/final-release components verified; runtime remains A0–A5**
+- Current stage: **Phase 5 in progress: A6 value PreGate/Post-view components verified; runtime remains A0–A5**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-08
 
@@ -288,7 +288,13 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   protected values fail closed. [Component contract](../architecture/phase5_value_origin_contract.md).
   A6 remains disabled in runtime; this is not complete FinalGate or benchmark ASR.
 - [ ] A4 general processing-scope controls beyond bounded external authorization.
-- [ ] A6 value-origin Pre/Post/Final policies.
+- [x] Value PreGate/Post-view components: preflight 769 tests (73 new), setup/
+  Ruff/mypy 186 files/knowledge pass. 24 Pre cases (4 ALLOW/20 DENY) and six
+  Post cases; four existing Broker mock calls, zero model/guard/Replay runs.
+  Bidirectional observed-source/index coverage blocks omitted protected sources;
+  771 prior source entries unchanged, 132 source/121 raw hashes recorded.
+  [Gate contract](../architecture/phase5_value_gates_contract.md); selected reproduction pending.
+- [ ] A6 full Pre/Post/Final runtime integration, guard arbitration and final authorization.
 - [ ] Grouped Dev tuning/validation protocol, differential experiments and freeze.
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.

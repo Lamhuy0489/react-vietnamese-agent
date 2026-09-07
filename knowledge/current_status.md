@@ -1,6 +1,23 @@
 # Trạng thái hiện tại
 
-## Hiện hành: A6 value-origin và final-release components — 2026-09-08
+## Hiện hành: A6 value PreGate/Post-view components — 2026-09-08
+
+PreGate mới kiểm tra quyền raw-user, nguồn typed của mọi critical leaf, sensitivity
+S0 và protected values kể cả JSON keys; unknown/error chặn external, fixed reads
+vẫn allow. Nguồn model đã thấy và index phải khớp hai chiều, tránh bỏ sót S2 hoặc
+dùng nguồn public chưa vào prompt. Post-view tạo JSON envelope cho untrusted data,
+không sửa raw/labels. Đây là components, chưa full policy hoặc runtime A6.
+
+Preflight02: **769 tests pass** (73 mới), setup/Ruff/mypy 186 files/knowledge pass.
+24 Pre cases (4 ALLOW/20 DENY), sáu Post cases; bốn Broker mock calls, không model/
+guard/Replay run. 771 prior source entries giữ nguyên; 132 source/121 raw hashes
+ghi. Selected reproduction đang chuẩn bị. [Contract](../docs/architecture/phase5_value_gates_contract.md),
+[handoff](handoff.md). Preflight01 bị vô hiệu vì sửa source, không chọn làm evidence.
+
+Runtime v3 vẫn A0–A5, final pass-through. Còn A6 integration/guard arbitration/
+final authorization, guard thật và grouped Dev validation. Không Test payload parsing.
+
+## Lịch sử: value-origin/final-release components
 
 Đã hoàn thiện mốc component [truy nguồn giá trị/lọc final](../docs/architecture/phase5_value_origin_contract.md),
 source `3b9f565`. Index theo kiểu dữ liệu, giữ mọi nguồn khớp và hai chiều

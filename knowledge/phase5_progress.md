@@ -1,6 +1,24 @@
-# Phase 5 — A6 value-origin/final-release components
+# Phase 5 — A6 value PreGate/Post-view components
 
 ## Hiện hành
+
+PreGate component nhận host user/proposal artifacts, yêu cầu exact raw-user anchors
+và origin của critical leaves; protected/unknown/coverage failures chặn external.
+Kiểm tra hai chiều index↔exposure để không bỏ sót nguồn S2 hoặc dùng public chưa
+được thấy. Post-view giữ raw và nhãn, dùng JSON data envelope cho untrusted source.
+[Contract](../docs/architecture/phase5_value_gates_contract.md).
+
+Preflight02: **769 tests pass**, 73 mới; setup/Ruff/mypy 186 files/knowledge pass.
+24 Pre cases (4 ALLOW/20 DENY) + sáu Post cases; bốn Broker mock calls, zero model/
+guard/Replay runs. 771 prior source entries nguyên vẹn, 132 source/121 raw hashes
+ghi. Selected reproduction đang chuẩn bị. Preflight01 source-changed bị loại.
+
+Vẫn chưa runtime A6: phải kết hợp guard/control risks, arbitration coarse session,
+critical-field bindings, Post context và released-final accounting/authorization.
+Không coi value ALLOW là full A6 ALLOW. Còn guard thật/GPU lifecycle, A4 scope và
+grouped Dev validation. Không ASR/utility claim hoặc Test payload parsing.
+
+## Lịch sử: value-origin/final-release
 
 Source `3b9f565`: [component contract](../docs/architecture/phase5_value_origin_contract.md)
 cho typed origin index và deterministic final release. Đây là phần nền A6, chưa
