@@ -1,5 +1,24 @@
 # Decision Log
 
+## 2026-09-07 — Integrate shared A0/A1 ReAct runtime
+
+- Add separate `security_v1/runtime.py` derived from the frozen foundation loop;
+  no edits to prior hashed modules. Both A0/A1 use the same loop/prompt/tools/
+  decoder. Only security config differs; A2–A6 fail explicitly before output.
+- Pre denial consumes a model step but not a Broker call. Store original action,
+  related source lineage and fixed POLICY_FEEDBACK separately; no fabricated
+  ToolResult or call ID. Next model turn may recover under ordinary step limits.
+- Security sidecar links proposals/decisions/denials/actual Broker calls and
+  proposed/released final artifacts. A0/A1 finals remain pass-through; no hidden A6.
+- Runtime detector errors are typed/class-only, sticky fail-closed for external
+  sinks and fail-open for reads. A0 skips the detector. Contract and tests precede
+  selected evidence; no benchmark Dev/Test payload inspection or rule tuning.
+- Source-native JSON snapshots are the existing detector input representation;
+  this is not a new semantic detector and does not guarantee detection across
+  every JSON escape or phrase split. Shared runtime integration does not establish
+  ASR/utility improvements or real-model robustness. Grouped Dev protocol and
+  actual A2 inference remain required before whole-phase acceptance.
+
 ## 2026-09-07 — Open Phase 5; freeze first security-component contract
 
 - Owner explicitly authorized Phase 5. Add versioned security modules/configs,
