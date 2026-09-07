@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: config/A1 Broker adapter and guard-interface milestone**
+- Current stage: **Phase 5 in progress: A0/A1 shared ReAct runtime verified**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-07
 
@@ -253,14 +253,21 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 - [x] 56 synthetic micro-tests / 300 full tests pass; setup/Ruff/mypy 166 files
   pass. 153 Phase 4 source hashes preserved; new validator uses hash-only Test checks.
   Source `4bddd23`; [component receipt](../../experiments/manifests/phase5_components_v1_validation01.json).
-- [ ] Shared instrumented ReAct runtime integration and A0 exact parity.
+- [x] Shared instrumented A0/A1 ReAct loop with raw context/action/field/final
+  lineage, source-native detector input, denial feedback and proposal/call separation.
+  20 exact A0 parity pairs against Phase 4, 24 synthetic A0/A1 conditions;
+  64 fresh Replay runs. 366 tests pass (66 new), setup/Ruff/mypy 170 files pass.
+  Source `d2ec2d5`, [runtime receipt](../../experiments/manifests/phase5_runtime_v1_validation01.json),
+  [runtime contract](../architecture/phase5_runtime_contract.md). 120 source/369 raw
+  hashes verified; 270 prior source hash entries preserved; preflight summary matches.
 - [ ] A2 fixed guard model/revision, bounded inference, actual Dev validation.
 - [ ] A3–A5 session enforcement and A6 value-origin Pre/Post/Final policies.
 - [ ] Grouped Dev tuning/validation protocol, differential experiments and freeze.
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
-First adapter records host proposals, not complete model/context lineage; it is
-not the experimental ReAct runner. No new model/benchmark Dev/Test inference.
+The first host adapter is historical; the separate A0/A1 ReAct runner now records
+actual model/context lineage. A2–A6 are explicitly unsupported by this runtime,
+not silently mapped to A1. No new model/benchmark Dev/Test inference.
 
 ## Authorized Dev pilot extension
 

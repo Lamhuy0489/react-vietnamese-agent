@@ -2,6 +2,17 @@
 
 ## Hiện hành: Phase 5 đang triển khai — 2026-09-07
 
+Source mới `d2ec2d5`, [runtime receipt](../experiments/manifests/phase5_runtime_v1_validation01.json).
+Shared ReAct A0/A1 đã tích hợp policy, raw model/context/argument/final artifacts,
+security sidecar và denial feedback không giả ToolResult. **366 tests pass**, 66
+runtime tests mới; setup/Ruff/mypy 170 files pass. 20 exact A0 pairs + 24 synthetic
+A0/A1 conditions = 64 fresh Replay; 120 source/369 raw hashes khớp, 270 prior
+source entries giữ nguyên, stable summary khớp preflight. Không model/benchmark
+Dev run/Test payload parsing. Bước tiếp theo: A2 guard/bounded inference và A3–A6.
+Runtime chưa hỗ trợ A2–A6, final A0/A1 vẫn pass-through. [Handoff](handoff.md).
+
+## Lịch sử: mốc component đầu tiên
+
 Owner đã mở Phase 5. Source `4bddd23`,
 [component receipt](../experiments/manifests/phase5_components_v1_validation01.json).
 Đã có bảy config tích lũy, typed decisions/public inputs, A1 detector/authorization

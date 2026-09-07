@@ -5,6 +5,20 @@ lịch sử là lệnh hiện hành. Đọc [bàn giao](handoff.md) trước khi
 
 ## Kiểm tra phần mềm và bộ nhớ
 
+Phase 5 runtime QA hiện hành (source đã hash, output/report luôn mới):
+
+```bash
+.venv/bin/python scripts/verify_phase5_runtime.py \
+  --reference experiments/manifests/phase5_runtime_v1_validation01.json \
+  --output results/phase5_runtime_next_check \
+  --report results/phase5_runtime_next_check.json
+```
+
+20 smoke A0 pairs + 24 synthetic differential conditions = 64 Replay, cùng quality
+checks (suite hiện 366 tests). No benchmark Dev/model run, Test hash-only. Source
+khác receipt sẽ bị từ chối: khi triển khai tiếp cần version/phạm vi QA mới; không
+ghi đè evidence. [Contract](../docs/architecture/phase5_runtime_contract.md).
+
 Phase 5 component QA (synthetic micro-tests, chưa benchmark/model evaluation):
 
 ```bash

@@ -1,4 +1,29 @@
-# Phase 5 — mốc component đầu tiên
+# Phase 5 — runtime A0/A1 đã tích hợp
+
+## Hiện hành
+
+Source `d2ec2d5`, [receipt](../experiments/manifests/phase5_runtime_v1_validation01.json),
+[contract runtime](../docs/architecture/phase5_runtime_contract.md).
+366 tests pass (66 mới), setup/Ruff/mypy 170 files pass. 20 smoke exact A0 parity
+pairs với Phase 4 + 24 synthetic A0/A1 conditions, 64 fresh Replay. 655 artifacts
+trong các run Phase 5, sáu denials đúng micro-case expectations; không diễn giải
+6/12 thành benchmark ASR. 120 source và 369 raw hashes khớp; 270 prior hash entries
+giữ nguyên. Stable summary khớp preflight. Không benchmark Dev/Test inference.
+
+Vòng ReAct chung đã có actual context/model/argument/final lineage. Policy denial
+không gọi Broker, không tạo ToolResult/call ID giả; phản hồi chính sách có artifact
+và các parent liên quan. Lặp denial tiêu thụ step budget; parse retry tiếp tục đúng
+context. Detector lỗi ghi class-only, read-open/external-closed; final A0/A1 vẫn
+pass-through, không giả A6. Có validator thứ tự proposal/pre/denied-or-call/post/final.
+Runtime chỉ hỗ trợ A0/A1 và từ chối A2–A6 trước khi tạo output.
+
+Tiếp theo: grouped Dev tune/validation trước tuning; chốt guard model/revision và
+bounded inference, tích hợp A2; session enforcement A3–A5 rồi value-origin A6.
+Không sửa các module/config/receipt đã hash; thêm version tiếp theo. Rules/anchors
+chưa được tune trên benchmark, giữ giới hạn lexical/JSON-escape và grammar đã ghi.
+Không cần tài khoản mới cho local implementation; chưa có guard model run thật.
+
+## Lịch sử: mốc component đầu tiên
 
 Owner authorized 2026-09-07. Source `4bddd23`,
 [receipt](../experiments/manifests/phase5_components_v1_validation01.json),
