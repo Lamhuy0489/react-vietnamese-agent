@@ -4,92 +4,52 @@ Cập nhật: 2026-09-07. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-**Phase 4 closure preflight đã pass**, đang chốt source và selected reproduction.
-Đã có host catalog v2, search/DB collection joins, deep Dev audit và overhead study.
-244 tests pass; setup/Ruff/mypy 160 files/knowledge-check pass. Preflight receipt
-`results/phase4_closure_v1_preflight01.json`; chưa phải receipt nghiệm thu.
-[Báo cáo và 12 DoD](../docs/architecture/phase4_report.md).
-
-**Phase 4 đã được owner cho phép**, đã tích hợp runtime và kiểm tra A0 parity. Phase 1,
-Phase 2 clean_v1.1, Phase 3 adversarial_v2 đã accepted; Test vẫn khóa.
-[Tiến độ Phase 4](phase4_progress.md),
-[contract runtime](../docs/architecture/phase4_runtime_contract.md).
-
-Runtime version riêng đã có ControlState/ContextBundle, Pre/Post/Final hooks
-pass-through, source snapshots, argument/field artifacts, context/model/final
-lineage, trace v2 và audit-normalized views không đưa vào prompt. Mọi tool vẫn
-qua Broker. Giữ raw A0 và source/data/scorer đã khóa, không bật defense.
+**Phase 4 đã nghiệm thu; Phase 1–4 accepted theo phạm vi/waiver hiện hành.**
+Source `be7f8b5`, [closure receipt](../experiments/manifests/phase4_closure_v1_validation01.json),
+[báo cáo 12 DoD](../docs/architecture/phase4_report.md).
+Host catalog v2, search/DB collection joins, nguồn phụ, deep Dev parity và
+overhead study đã kiểm chứng. Không bật defense trong A0. Test vẫn khóa.
 
 ## Bước tiếp theo
 
-1. Chốt source closure đã kiểm tra; chạy `verify_phase4_closure.py` với
-   `--quality --reference results/phase4_closure_v1_preflight01.json`, output mới
-   và selected report trong `experiments/manifests`. Source hashes/stable summary
-   phải khớp; chỉ sau pass mới cập nhật acceptance. Không cần thêm tài khoản.
-2. Các mục dưới là checklist cũ đã được preflight thực hiện, cần selected receipt
-   để đóng. Xác nhận Git/remote và [phase status](../docs/project/phase_status.md);
-   chạy setup/Ruff/mypy/pytest/knowledge-check theo [runbook](runbook.md).
-2. **Rà metadata nguồn/search và propagation** theo các mục XXXIV–LI của
-   [phase4](../plan/phase4.md); thay fallback bảo thủ bằng host-owned bindings
-   khi có bằng chứng nguồn. Không suy labels từ payload hoặc evaluator GT.
-3. Mở rộng sensitive/multi-step Dev trajectories để kiểm tra sink fields,
-   final-answer lineage và search summaries. Suite hiện có 24 public Dev source
-   probes, không phải adversarial utility/ASR evaluation hoàn chỉnh.
-4. Đo overhead thời gian/bộ nhớ có kiểm soát với warm-up, repeats và môi trường
-   được ghi nhận. Timing từng ca trong receipt chỉ là CPU Replay diagnostic.
-   Source a65bc53 đã hash: thay đổi hành vi cần version mới, không sửa receipt.
-5. Chỉ sau đủ DoD mới nghiệm thu Phase 4. Không triển khai chặn A1–A6/Phase 5.
-   Không dùng Test hoặc thay normalized profile dựa trên Test. Không gỡ seal.
-6. Không cần tài khoản mới, graph database hoặc Kaggle cho phần local này.
-   Meta access còn thiếu chỉ ảnh hưởng Llama pilot, không chặn Phase 4.
+1. Kiểm tra Git/remote và [phase status](../docs/project/phase_status.md).
+   Chạy chất lượng theo [runbook](runbook.md), không tái dựng dữ liệu đã khóa.
+2. **Chờ owner cho phép Phase 5**; khi được mở, đọc contract/invariants và
+   [phase5](../plan/phase5.md), chốt interfaces/config A1–A6 trước triển khai.
+   Không tự coi “làm tiếp Phase 4” là cho phép security enforcement.
+3. Source/runtime/data đã hash phải giữ nguyên; thay đổi sau freeze cần version
+   mới, phạm vi rerun rõ. Không gỡ seal, không tune trên Test, không chạy authoring
+   construction tests đã loại sau seal.
+4. Không cần thêm tài khoản/graph database/Kaggle cho mốc vừa hoàn thành.
+   Meta access vẫn thiếu cho Llama pilot riêng, không chặn nghiệm thu Phase 4.
 
 ## Bằng chứng
 
-- Closure preflight: 45 pairs/90 fresh Dev Replay (21 clean + 24 deep paired
-  attack/benign), 152 deep source snapshots, 12 search envelopes, 120 sink fields.
-  440 smoke overhead Replay + hai stress Replay; p95 added 7,775 ms, traced peak
-  524.460 bytes trên smoke, cả hai guard pass. Stress traced peak 21.605.044 bytes;
-  không dùng timing có tracer như timing thường. 497 prior hash entries còn khớp.
-  Chưa chốt source/selected receipt, vì vậy chưa nghiệm thu toàn Phase 4.
-- Runtime source `a65bc53`,
-  [receipt](../experiments/manifests/phase4_runtime_v1_validation01.json):
-  **65 paired conditions / 130 fresh Replay** = 20 smoke + 21 clean Dev + 24
-  attack/benign Dev probes. Exact context/action/result/final/terminal parity;
-  824 artifacts, 1.173 edges, 390 raw file hashes. Stable summary khớp preflight.
-- **224 tests pass**, gồm 39 tests runtime mới; setup/Ruff/mypy **156 files**
-  và adversarial seal check pass. Clean Dev reference actions/faults chỉ dùng
-  trong QA; runtime/catalog/prompt không nhận GT. Suite mới parse 0 Test payload,
-  không LLM/Kaggle run. Còn thiếu metadata/search audit, controlled overhead và
-  acceptance review; receipt ghi rõ `phase4_accepted: false`.
-- Các số bên dưới là bằng chứng primitive/Phase 3 lịch sử.
-
-- Source `a4e9a87`, [receipt](../experiments/manifests/phase4_primitives_v1_validation01.json):
-  selected run khớp stable summary preflight, source hashes đúng. Quét bốn
-  credential values trên 16 file trước commit: 0 match; knowledge-check pass.
-
-- **185 tests pass**, gồm 53 tests mới. Setup/Ruff/mypy **151 files** pass.
-- Primitive Dev QA: 150 clean instructions + 400 adversarial payloads × ba
-  profiles = **1.650 checks**. Determinism/idempotence/raw preservation, labels
-  và artifact serialization/lineage pass; không model hoặc Broker run.
-- Trong corpus Dev: raw/Unicode có 0 text đổi; security có 80 text đổi. Đây là
-  số biến đổi, không ASR, không tuyên bố ngăn tấn công. Stress labels S2/UNTRUSTED
-  do QA chủ động gán, không phải benchmark source annotation.
-- Validator mới parse 0 Test payload/GT; kiểm tra hash dependencies và đúng 50
-  robustness IDs đã seal. Adversarial seal check vẫn pass. Các source/data cũ
-  không bị sửa theo Git diff. Unicode profiles có golden tests gồm dấu tách,
-  zero-width/combining adjacency, emoji, newline/paragraph separator, URL/email.
-- Phase 3 closure source `c228a68`, evidence commit `a5547f9`:
-  [receipt](../experiments/manifests/phase3_release_v2_closure.json).
-  782 tests trước seal; 132 sau seal và 650 construction tests không collect.
-  Không rerun các test construction đó trong phase sau.
-- Model scores trước đây giữ nguyên: Gemma 6/21, Qwen7B 3/21 Dev.
+- **244 tests pass**, 20 tests closure mới; setup/Ruff/mypy **160 files** và
+  knowledge-check pass. Receipt có quality log hashes.
+- 45 fresh paired Dev conditions/90 Replay: 21 clean Dev + 24 deep attack/benign,
+  đủ tám tool. 152 deep source snapshots, 12 search envelopes, 120 sink fields.
+  Source ancestors đến final và S2/UNTRUSTED đến sink fields; exact raw A0 parity.
+- 440 smoke Replay đo overhead + hai stress; 532 lượt selected ngoài tests.
+  Median added 5,539 ms, p95 11,749 ms; smoke traced peak 527.301 bytes.
+  Cả hai guard đặt trước pass. Stress 64 KiB/eight-read: traced peak 21.603.744
+  bytes, 4.111.390 log bytes. Timing có tracer không so với untraced timing.
+- 153 source/1.625 raw hashes đã đối chiếu, 497 prior hash entries giữ nguyên.
+  Stable Dev summary khớp preflight; clean source commit trước selected run.
+- Test chỉ hash, không parse payload/GT; clean Dev QA references không đưa
+  vào runtime/catalog/prompts. Không model/Kaggle run, không điểm utility/ASR mới.
+- [Runtime v1 receipt](../experiments/manifests/phase4_runtime_v1_validation01.json):
+  source `a65bc53`, 65 pairs/130 Replay; [primitive receipt](../experiments/manifests/phase4_primitives_v1_validation01.json):
+  source `a4e9a87`, 1.650 checks trên Dev. Đây là các mốc lịch sử đã bảo toàn.
+- Điểm pilot cũ không đổi: Gemma 6/21, Qwen7B 3/21 Dev. Không diễn giải
+  nghiệm thu Phase 4 thành cải thiện chất lượng model hay chống tấn công.
 
 ## Giới hạn
 
-Replay parity chứng minh plumbing trên các ca đã chạy, không chứng minh model
-utility, ASR hay security defense. Metadata fallback còn coarse và bảo thủ.
-NFKC/zero-width có thể đổi emoji joiner hoặc compatibility literals; normalized
-view là tùy chọn, raw vẫn authoritative. Không tự sửa dấu/dịch/paraphrase.
-Conservative provenance không phải token-level causal attribution.
-Review theo owner waiver, không giả independent human review.
-Không lưu credentials, GT, payload Test hoặc CoT trong knowledge.
+Nhãn search/DB là collection joins bảo thủ; provenance theo context, không
+token/row-level causal attribution. Source-native labels khác rendered results
+phụ thuộc action. Có log/context duplication, chưa content_ref/dedup hoặc bảo đảm
+hiệu suất tùy ý theo độ dài. CPU Replay overhead không suy ra GPU/LLM latency.
+Raw authoritative; audit-normalized views ngoài prompt, không autocorrect/dịch.
+Review assistant theo owner waiver, không independent human review.
+Không lưu credentials, private GT, Test payload hoặc CoT trong knowledge.

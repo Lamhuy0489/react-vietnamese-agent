@@ -5,6 +5,22 @@ lịch sử là lệnh hiện hành. Đọc [bàn giao](handoff.md) trước khi
 
 ## Kiểm tra phần mềm và bộ nhớ
 
+Phase 4 đã nghiệm thu, suite hiện 244 tests. Tái lập closure CPU khi cần (tất cả
+đường dẫn output/report phải mới, không ghi đè selected receipt):
+
+```bash
+.venv/bin/python scripts/verify_phase4_closure.py --quality \
+  --reference experiments/manifests/phase4_closure_v1_validation01.json \
+  --output results/phase4_closure_next_check \
+  --report results/phase4_closure_next_check.json
+```
+
+45 Dev pairs/90 Replay + 440 smoke overhead + hai stress. Không inference LLM;
+Test hash-only. Cần giữ local raw evidence của runtime receipt cũ để audit các
+hash trước đó; fresh clone thiếu raw không được giả là đã audit. Source/reference
+hashes phải khớp; thay đổi source sau freeze cần version/phạm vi validation mới.
+`--qa-only` bỏ đo overhead, không đủ để tự cấp nghiệm thu. [Báo cáo](../docs/architecture/phase4_report.md).
+
 Phase 4 runtime parity (output/report phải mới):
 
 ```bash

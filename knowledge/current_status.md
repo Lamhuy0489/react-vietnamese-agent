@@ -1,6 +1,21 @@
 # Trạng thái hiện tại
 
-## Hiện hành: runtime Phase 4 đã tích hợp — 2026-09-07
+## Hiện hành: Phase 4 đã nghiệm thu — 2026-09-07
+
+Source `be7f8b5`, [closure receipt](../experiments/manifests/phase4_closure_v1_validation01.json),
+[12 DoD và giới hạn](../docs/architecture/phase4_report.md). **244 tests pass**;
+setup/Ruff/mypy 160 files/knowledge-check pass. 21 clean Dev + 24 deep attack/benign
+Dev paired conditions, 90 fresh Replay; thêm 440 smoke overhead và hai stress.
+Metadata search/DB/nguồn phụ giữ nhãn bảo thủ; 120 sink fields có lineage S2.
+Overhead CPU Replay thêm trung vị 5,539 ms, p95 11,749 ms; smoke traced peak
+527.301 bytes, cả hai guard pass. Stress 64 KiB/eight-read traced peak 21.603.744
+bytes: log/context duplication còn là giới hạn. Không suy sang LLM/GPU performance.
+153 source + 1.625 raw hashes khớp, 497 prior hashes giữ nguyên; stable Dev summary
+khớp preflight. Test hash-only, không Test payload parsing hoặc model run mới.
+Phase 1–4 accepted dưới các waiver đã ghi; **Phase 5 cần owner cho phép**.
+Điểm Gemma/Qwen cũ không đổi. [Handoff](handoff.md).
+
+## Lịch sử: runtime Phase 4 đã tích hợp — 2026-09-07
 
 Source `a65bc53`, [receipt](../experiments/manifests/phase4_runtime_v1_validation01.json).
 Runtime riêng có ControlState/ContextBundle, hook Pre/Post/Final pass-through,

@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 4 in progress: pass-through runtime integration and Dev parity verified**
+- Current stage: **Phase 4 accepted; awaiting explicit Phase 5 authorization**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-07
 
@@ -221,14 +221,25 @@ Phase 4 was subsequently authorized below. The bullets preserve historical autho
   [receipt](../../experiments/manifests/phase4_runtime_v1_validation01.json),
   [runtime contract](../architecture/phase4_runtime_contract.md). Clean/attack Dev
   final texts are plumbing probes, not utility/ASR measurements.
-- [ ] Full source metadata/search propagation and sensitive/multi-step Dev audit.
-- [ ] Controlled overhead/memory report, final reproducibility and whole-phase acceptance.
+- [x] Host catalog v2: conservative search/DB collection labels, auxiliary sources;
+  21 clean Dev + 24 deep paired Dev trajectories, 90 fresh Replay, all eight tools.
+  152 deep source snapshots, 12 search envelopes, 120 sink fields checked.
+- [x] Controlled overhead: 440 smoke Replay and two long-document stress runs;
+  median added 5.539 ms, p95 11.749 ms; smoke traced peak 527,301 bytes. Guards pass.
+- [x] 244 tests, setup/Ruff/mypy 160 files/knowledge-check pass; 153 source and
+  1,625 raw hashes verified, 497 prior evidence hashes preserved. Dev stable
+  summary matches preflight. Source `be7f8b5`,
+  [closure receipt](../../experiments/manifests/phase4_closure_v1_validation01.json),
+  [12-DoD report and limits](../architecture/phase4_report.md).
 
-Partial Phase 4 milestones only; no phase acceptance, model inference or security gate.
+**Phase 4 accepted 2026-09-07 under owner self-review waiver.** No model inference
+or security gate. Phase 5 needs explicit authorization. Replay does not measure
+LLM utility/ASR. Collection/context lineage is conservative; log/content duplication
+remains a measured long-context limitation, not a hidden claim of deduplication.
 Frozen runtime/data/scorers unchanged; security normalization is not enabled in
 A0. [Foundation contract](../architecture/phase4_foundation_contract.md).
 Source `a4e9a87`; [Dev primitive receipt](../../experiments/manifests/phase4_primitives_v1_validation01.json)
-matches the preflight stable summary; no whole-phase acceptance implied.
+matches its preflight stable summary; this earlier primitive receipt is historical.
 
 ## Authorized Dev pilot extension
 

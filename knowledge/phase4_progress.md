@@ -1,6 +1,22 @@
-# Phase 4 — runtime integration đang kiểm chứng
+# Phase 4 — đã nghiệm thu
 
-## Hiện hành: pass-through runtime v1
+## Hiện hành: closure đã pass
+
+Source `be7f8b5`; [receipt](../experiments/manifests/phase4_closure_v1_validation01.json),
+[12 DoD và báo cáo](../docs/architecture/phase4_report.md). 244 tests pass; setup,
+Ruff, mypy 160 files, knowledge-check và sealed hashes pass. Tiến độ Phase 4:
+100% theo DoD trong phạm vi nền tảng, không phải 100% toàn đồ án.
+45 fresh Dev pairs/90 Replay, đủ tám tool; 24 deep trajectories có 152 source
+snapshots, 12 search envelopes, 120 sink fields; raw A0 exact parity giữ nguyên.
+440 smoke overhead + hai stress Replay. Median added 5,539 ms, p95 11,749 ms;
+smoke traced peak 527.301 bytes, guards pass. Stress traced peak 21.603.744 bytes,
+4.111.390 log bytes: chưa có content_ref/dedup, không claim arbitrary-scale efficiency.
+153 source/1.625 raw hashes và 497 prior entries đã audit; stable summary khớp.
+Không LLM/Test payload parsing; Dev reference scripts chỉ trong QA, không utility/ASR.
+Metadata collection/context over-approximation và owner self-review waiver vẫn áp dụng.
+Phase 5 chưa authorized; không tự bật A1–A6. Xem [handoff](handoff.md).
+
+## Lịch sử: pass-through runtime v1
 
 Source `a65bc53`; [receipt](../experiments/manifests/phase4_runtime_v1_validation01.json),
 [contract](../docs/architecture/phase4_runtime_contract.md). 224 tests pass (39 mới),

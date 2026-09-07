@@ -13,8 +13,8 @@ memory của agent đang được benchmark. Không cần tài khoản hoặc gr
    đang làm theo [phase map](../docs/project/phase_map.md).
 
 Phase 1, clean_v1.1 Phase 2 và adversarial_v2 Phase 3 đã accepted; Test đã khóa.
-Phase 4 đã tích hợp runtime pass-through và kiểm chứng parity smoke/Dev;
-chưa nghiệm thu toàn phase.
+Phase 4 đã nghiệm thu runtime pass-through, deep Dev parity và overhead;
+[báo cáo 12 DoD](../docs/architecture/phase4_report.md). Phase 5 chưa được mở.
 Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc

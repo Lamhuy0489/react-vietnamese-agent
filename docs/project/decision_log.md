@@ -1,5 +1,20 @@
 # Decision Log
 
+## 2026-09-07 — Accept Phase 4 after committed-source reproduction
+
+- Source `be7f8b5`; selected `phase4_closure_v1_validation01` passes all 12
+  plan DoD gates. 244 tests, setup/Ruff/mypy 160 files/knowledge-check pass.
+  45 fresh Dev pairs, 440 smoke overhead runs and two stress runs; no LLM or
+  held-out payload parsing. 153 source/1,625 raw hashes and 497 prior entries
+  audited. Stable Dev summary matches preflight; no semantic retries.
+- Selected added runtime median 5.539 ms, p95 11.749 ms; max smoke traced peak
+  527,301 bytes. Both prespecified guards pass. Stress traced peak 21,603,744
+  bytes and 4,111,390 log bytes document duplication limits, not content-ref support.
+- Acceptance is foundation/plumbing under existing owner waiver, not independent
+  review, utility/ASR success, token-level lineage or GPU efficiency. No change
+  to frozen research scope, source/data or prior model scores. Phase 5 remains
+  gated on explicit owner authorization.
+
 ## 2026-09-07 — Phase 4 closure metadata and measurement scope
 
 - Owner requested completion of Phase 4. Keep frozen runtime/primitives, A0
