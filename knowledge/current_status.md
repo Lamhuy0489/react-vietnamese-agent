@@ -10,8 +10,9 @@ và trust độc lập. Final vẫn pass-through, A6 từ chối rõ ràng.
 Preflight **593 tests pass** (147 mới), setup/Ruff/mypy 179 files/knowledge pass.
 44 A0–A2 exact parity pairs + 30 session cases = 118 Replay. Riêng session cases:
 165 fake guard classifications, 225 snapshots và 15 expected denials; không ASR.
-127 source/780 raw hashes ghi, 514 prior source entries giữ nguyên. Selected
-committed-source receipt đang chuẩn bị. [Contract](../docs/architecture/phase5_session_contract.md),
+127 source/780 raw hashes đã kiểm, 514 prior source entries giữ nguyên. Source
+`8a4ca3d`, [selected receipt](../experiments/manifests/phase5_session_v1_validation01.json)
+khớp stable preflight và 593 tests pass. [Contract](../docs/architecture/phase5_session_contract.md),
 [handoff](handoff.md), [tiến độ](phase5_progress.md).
 
 Không guard LLM thật/benchmark Dev/Test payload parsing. Còn general A4 processing

@@ -275,7 +275,9 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   synthetic session conditions = 118 Replay runs. Session cases: 165 fake guard
   classifications, 225 state snapshots, 15 expected denials (not benchmark ASR).
   514 prior source entries unchanged; preflight records 127 source/780 raw hashes.
-  [Session contract](../architecture/phase5_session_contract.md); selected receipt pending.
+  Source `8a4ca3d`, [selected receipt](../../experiments/manifests/phase5_session_v1_validation01.json)
+  matches preflight; all 127 source/780 raw hashes verified.
+  [Session contract](../architecture/phase5_session_contract.md).
 - [ ] A4 general processing-scope controls beyond bounded external authorization.
 - [ ] A6 value-origin Pre/Post/Final policies.
 - [ ] Grouped Dev tuning/validation protocol, differential experiments and freeze.

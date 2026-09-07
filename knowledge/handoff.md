@@ -6,7 +6,9 @@ Cập nhật: 2026-09-07. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 Phase 5: **A3–A5 session policy tích hợp vào ReAct v3**, local synthetic QA pass.
 Phase 1–4 accepted; Test vẫn khóa. [Contract](../docs/architecture/phase5_session_contract.md),
-[tiến độ](phase5_progress.md). Selected committed-source receipt đang chuẩn bị.
+[tiến độ](phase5_progress.md). Source `8a4ca3d`,
+[selected receipt](../experiments/manifests/phase5_session_v1_validation01.json) từ
+source sạch, stable summary khớp preflight; 127 source/780 raw hashes đã kiểm lại.
 
 A0/A1 giữ nguyên mechanics; A2 thêm guard Pre-action/Post-source, sticky nguồn
 MALICIOUS/error chặn external trước Broker, read-open, SUSPICIOUS chỉ TAG.
@@ -42,6 +44,7 @@ A6 chưa operational. Không nghiệm thu toàn Phase 5.
   Source-independent state reconstruction đối chiếu labels/rule/guard traces;
   zero-call terminal, repeated denials/fresh state, tamper, dimension matrix,
   current-action/sticky alerts và raw-user negative controls có tests.
+  Selected reproduction cũng pass 593 tests và có cùng stable summary.
 - A2 historical source `15ed921`,
   [receipt](../experiments/manifests/phase5_a2_v2_validation01.json) khớp preflight.
 

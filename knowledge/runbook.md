@@ -9,6 +9,7 @@ Phase 5 session QA hiện hành (output/report luôn mới):
 
 ```bash
 .venv/bin/python scripts/verify_phase5_session.py \
+  --reference experiments/manifests/phase5_session_v1_validation01.json \
   --output results/phase5_session_next_check \
   --report results/phase5_session_next_check.json
 ```
@@ -17,6 +18,7 @@ Phase 5 session QA hiện hành (output/report luôn mới):
 có 165 fake guard classifications, 225 snapshots. Suite 593 tests, Test hash-only.
 Không guard model thật, không ASR/throughput claim. Chạy selected từ source sạch
 với `--reference` trỏ preflight cùng source hashes. A6 vẫn chưa được hỗ trợ.
+Source milestone `8a4ca3d`; selected receipt khớp preflight/source/raw hashes.
 
 Phase 5 A2 QA lịch sử (output/report luôn mới):
 

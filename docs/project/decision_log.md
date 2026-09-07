@@ -21,7 +21,9 @@
   44 exact A0–A2 pairs + 30 session cases = 118 Replay. Session cases have 165
   fake guard classifications, 225 snapshots and 15 expected denials, not ASR.
   514 prior source entries intact; 127 source/780 raw hashes recorded.
-  Selected-source reproduction pending. Production guard selection/GPU efficiency,
+  Selected source `8a4ca3d` reproduces the stable summary and all 593 tests pass;
+  127 source/780 raw hashes verified in `phase5_session_v1_validation01`.
+  Production guard selection/GPU efficiency,
   general A4 processing scope, A6 and grouped Dev validation remain open.
 
 ## 2026-09-07 — Add A2 bounded-process runtime without changing selected source
