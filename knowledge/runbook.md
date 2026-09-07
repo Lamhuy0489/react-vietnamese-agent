@@ -5,6 +5,17 @@ lịch sử là lệnh hiện hành. Đọc [bàn giao](handoff.md) trước khi
 
 ## Kiểm tra phần mềm và bộ nhớ
 
+Phase 5 component QA (synthetic micro-tests, chưa benchmark/model evaluation):
+
+```bash
+.venv/bin/python scripts/verify_phase5_components.py \
+  --output results/phase5_components_next_check \
+  --report results/phase5_components_next_check.json
+```
+
+Source/report paths mới; 56 micro-tests, hash-only Test, không model inference.
+Suite toàn repo hiện 300 tests. [Tiến độ và giới hạn](phase5_progress.md).
+
 Phase 4 đã nghiệm thu, suite hiện 244 tests. Tái lập closure CPU khi cần (tất cả
 đường dẫn output/report phải mới, không ghi đè selected receipt):
 

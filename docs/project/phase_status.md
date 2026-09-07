@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 4 accepted; awaiting explicit Phase 5 authorization**
+- Current stage: **Phase 5 in progress: config/A1 Broker adapter and guard-interface milestone**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-07
 
@@ -240,6 +240,27 @@ Frozen runtime/data/scorers unchanged; security normalization is not enabled in
 A0. [Foundation contract](../architecture/phase4_foundation_contract.md).
 Source `a4e9a87`; [Dev primitive receipt](../../experiments/manifests/phase4_primitives_v1_validation01.json)
 matches its preflight stable summary; this earlier primitive receipt is historical.
+
+## Phase 5 progress
+
+- [x] Owner explicitly authorized Phase 5 on 2026-09-07.
+- [x] Cumulative A0–A6 config matrix, strict config/decision/public-observation
+  schemas and first [policy contract](../architecture/phase5_policy_contract.md).
+- [x] A1 raw/normalized detector, bounded raw-user destination authorization,
+  sticky source signals and A0/A1 Broker adapter; denied proposals never execute.
+- [x] A2 interface preparation: versioned prompt, strict JSON parser, cache
+  identity and error semantics. Replay/fake-backend tests only, not a real guard run.
+- [x] 56 synthetic micro-tests / 300 full tests pass; setup/Ruff/mypy 166 files
+  pass. 153 Phase 4 source hashes preserved; new validator uses hash-only Test checks.
+  Source `4bddd23`; [component receipt](../../experiments/manifests/phase5_components_v1_validation01.json).
+- [ ] Shared instrumented ReAct runtime integration and A0 exact parity.
+- [ ] A2 fixed guard model/revision, bounded inference, actual Dev validation.
+- [ ] A3–A5 session enforcement and A6 value-origin Pre/Post/Final policies.
+- [ ] Grouped Dev tuning/validation protocol, differential experiments and freeze.
+
+Phase 5 is not accepted. Seven config files do not mean seven operational levels.
+First adapter records host proposals, not complete model/context lineage; it is
+not the experimental ReAct runner. No new model/benchmark Dev/Test inference.
 
 ## Authorized Dev pilot extension
 

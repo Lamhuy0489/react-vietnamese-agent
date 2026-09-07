@@ -14,7 +14,8 @@ memory của agent đang được benchmark. Không cần tài khoản hoặc gr
 
 Phase 1, clean_v1.1 Phase 2 và adversarial_v2 Phase 3 đã accepted; Test đã khóa.
 Phase 4 đã nghiệm thu runtime pass-through, deep Dev parity và overhead;
-[báo cáo 12 DoD](../docs/architecture/phase4_report.md). Phase 5 chưa được mở.
+[báo cáo 12 DoD](../docs/architecture/phase4_report.md). Phase 5 đã được mở;
+xem [tiến độ hiện hành](phase5_progress.md).
 Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
@@ -27,6 +28,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Phase 3 đang làm: [tiến độ và thiếu sót đã audit](phase3_progress.md).
 - Release Phase 3 hiện hành: [nghiệm thu v2 và giới hạn](../docs/benchmark/adversarial_release_v2_summary.md).
 - Phase 4 hiện hành: [nền tảng và phần còn lại](phase4_progress.md).
+- Phase 5 hiện hành: [cấu hình, guard và tích hợp còn lại](phase5_progress.md).
 - Canonical/split hiện hành: [70 canonical cho authoring, grouped 40/30](../docs/benchmark/canonical_selection_summary.md).
 - Phần trăm Phase 3 và tiêu chí còn thiếu: [readiness theo DoD](phase3_readiness.md).
 - Tránh lặp lỗi Kaggle: [lessons](kaggle_lessons.md).

@@ -11,7 +11,8 @@ công cụ trong môi trường tiếng Việt giả lập (hành chính–học
   **Phase 4 đã nghiệm thu**: runtime artifact/provenance, metadata và hooks;
   244 tests đạt, deep Dev parity và overhead đã kiểm chứng.
   Xem [báo cáo 12 DoD và giới hạn](docs/architecture/phase4_report.md).
-  Phase 5 chưa bắt đầu.
+  Phase 5 đã bắt đầu: cấu hình A0–A6, lõi A1 qua Broker và giao diện guard;
+  300 tests đạt. Chưa tích hợp đủ các mức bảo vệ hoặc nghiệm thu Phase 5.
 - Pilot đo hiệu suất Gemma 4 / Qwen 7B đã hoàn tất: strict 6/21 và 3/21 Dev,
   trung bình 11,66 và 10,92 giây/task; chưa phải kết quả Test hay kết luận chọn
   model. Xem [báo cáo](docs/evaluation/measured_dev_pilot_report.md).

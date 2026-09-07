@@ -4,52 +4,57 @@ Cập nhật: 2026-09-07. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-**Phase 4 đã nghiệm thu; Phase 1–4 accepted theo phạm vi/waiver hiện hành.**
-Source `be7f8b5`, [closure receipt](../experiments/manifests/phase4_closure_v1_validation01.json),
-[báo cáo 12 DoD](../docs/architecture/phase4_report.md).
-Host catalog v2, search/DB collection joins, nguồn phụ, deep Dev parity và
-overhead study đã kiểm chứng. Không bật defense trong A0. Test vẫn khóa.
+**Phase 5 đã được owner cho phép**, mốc component đầu tiên đã pass.
+Phase 1–4 accepted; Test vẫn khóa. Source `4bddd23`,
+[receipt](../experiments/manifests/phase5_components_v1_validation01.json),
+[contract](../docs/architecture/phase5_policy_contract.md),
+[tiến độ](phase5_progress.md).
+
+Đã có config A0–A6 strict/cumulative, quyết định bảo mật có reason codes,
+A1 raw/normalized rules và raw-user anchors, adapter A0/A1 qua Tool Broker.
+A2 chỉ có interface/prompt/parser/cache/error handling, chưa guard inference thật.
+Không nhận bảy config là bảy mức đã operational, không nghiệm thu Phase 5.
 
 ## Bước tiếp theo
 
-1. Kiểm tra Git/remote và [phase status](../docs/project/phase_status.md).
-   Chạy chất lượng theo [runbook](runbook.md), không tái dựng dữ liệu đã khóa.
-2. **Chờ owner cho phép Phase 5**; khi được mở, đọc contract/invariants và
-   [phase5](../plan/phase5.md), chốt interfaces/config A1–A6 trước triển khai.
-   Không tự coi “làm tiếp Phase 4” là cho phép security enforcement.
-3. Source/runtime/data đã hash phải giữ nguyên; thay đổi sau freeze cần version
-   mới, phạm vi rerun rõ. Không gỡ seal, không tune trên Test, không chạy authoring
-   construction tests đã loại sau seal.
-4. Không cần thêm tài khoản/graph database/Kaggle cho mốc vừa hoàn thành.
-   Meta access vẫn thiếu cho Llama pilot riêng, không chặn nghiệm thu Phase 4.
+1. Kiểm tra [phase status](../docs/project/phase_status.md), Git và source hashes.
+   Chạy quality/component validator theo [runbook](runbook.md).
+2. **Tích hợp shared ReAct runtime Phase 5** trong version/module mới, giữ frozen
+   runtime/nguồn cũ. Gắn Pre/Post/Final thực, raw model/argument/final artifacts,
+   proposed-vs-executed trace; A0 exact parity với cùng Replay. Adapter hiện chỉ
+   ghi host proposal lineage, không dùng nó như runner benchmark.
+3. Chốt model/revision của guard dùng chung A2–A6; bổ sung timeout/cancellation
+   có hiệu lực trước actual inference. Adapter hiện xử lý TimeoutError do backend
+   trả, không giả có khả năng ngắt GPU job. Không cần tài khoản mới cho phần local.
+4. A3 sensitivity, A4 trust/control và A5 combined session; sau đó A6 value-origin
+   + sensitive-value index/unknown critical deny/Post views/Final protection.
+   Đọc các mục tương ứng trong [phase5](../plan/phase5.md) trước triển khai.
+5. Chia grouped Dev tune/validation trước tuning. Không load authoring/Test payload,
+   không thay seal/frozen source và không điều chỉnh dựa trên Test. Không sang Phase 6.
+6. Meta access vẫn thiếu cho Llama pilot riêng, không chặn component work.
 
 ## Bằng chứng
 
-- **244 tests pass**, 20 tests closure mới; setup/Ruff/mypy **160 files** và
-  knowledge-check pass. Receipt có quality log hashes.
-- 45 fresh paired Dev conditions/90 Replay: 21 clean Dev + 24 deep attack/benign,
-  đủ tám tool. 152 deep source snapshots, 12 search envelopes, 120 sink fields.
-  Source ancestors đến final và S2/UNTRUSTED đến sink fields; exact raw A0 parity.
-- 440 smoke Replay đo overhead + hai stress; 532 lượt selected ngoài tests.
-  Median added 5,539 ms, p95 11,749 ms; smoke traced peak 527.301 bytes.
-  Cả hai guard đặt trước pass. Stress 64 KiB/eight-read: traced peak 21.603.744
-  bytes, 4.111.390 log bytes. Timing có tracer không so với untraced timing.
-- 153 source/1.625 raw hashes đã đối chiếu, 497 prior hash entries giữ nguyên.
-  Stable Dev summary khớp preflight; clean source commit trước selected run.
-- Test chỉ hash, không parse payload/GT; clean Dev QA references không đưa
-  vào runtime/catalog/prompts. Không model/Kaggle run, không điểm utility/ASR mới.
-- [Runtime v1 receipt](../experiments/manifests/phase4_runtime_v1_validation01.json):
-  source `a65bc53`, 65 pairs/130 Replay; [primitive receipt](../experiments/manifests/phase4_primitives_v1_validation01.json):
-  source `a4e9a87`, 1.650 checks trên Dev. Đây là các mốc lịch sử đã bảo toàn.
-- Điểm pilot cũ không đổi: Gemma 6/21, Qwen7B 3/21 Dev. Không diễn giải
-  nghiệm thu Phase 4 thành cải thiện chất lượng model hay chống tấn công.
+- **300 tests pass**, gồm 56 synthetic Phase 5 micro-tests. Setup/Ruff/mypy
+  **166 files** pass. Selected component receipt ghi source sạch trước chạy.
+- A0 bypass detector; A1 read-only allow, source TAG/raw preservation, external
+  deny trước Broker và explicit-authorized control. Session signal reset.
+- Strict config/GT rejection; guard JSON duplicate/unknown/extra reasoning rejection,
+  identity/cache tests và read-open/sink-closed khi timeout/backend error.
+  Đây là Replay/fake backend tests, không ASR/LLM-quality evidence.
+- 153 frozen Phase 4 source hashes đã check; component validator hash-only Test,
+  không benchmark Dev run, không guard/model inference mới.
+- Phase 4 source `be7f8b5`,
+  [closure](../experiments/manifests/phase4_closure_v1_validation01.json):
+  244 tests, 45 Dev pairs/90 Replay + 440 overhead + hai stress. Raw/data/source
+  và điểm pilot trước giữ nguyên. Gemma 6/21, Qwen7B 3/21 Dev.
 
 ## Giới hạn
 
-Nhãn search/DB là collection joins bảo thủ; provenance theo context, không
-token/row-level causal attribution. Source-native labels khác rendered results
-phụ thuộc action. Có log/context duplication, chưa content_ref/dedup hoặc bảo đảm
-hiệu suất tùy ý theo độ dài. CPU Replay overhead không suy ra GPU/LLM latency.
-Raw authoritative; audit-normalized views ngoài prompt, không autocorrect/dịch.
+Phase 5 đang làm, chưa full runtime/security architecture. A1 lexical rules có
+false positives với trích dẫn; raw-user anchor grammar có false negatives và không
+chứng minh hiểu mọi ý định. Bản adapter hiện chỉ kiểm tra host proposals.
+A6 phải tách exposure/value-origin, không biến whole-context taint thành proof
+nguồn từng token. Chưa sửa frozen artifacts để declassify.
 Review assistant theo owner waiver, không independent human review.
 Không lưu credentials, private GT, Test payload hoặc CoT trong knowledge.

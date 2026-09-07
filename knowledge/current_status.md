@@ -1,6 +1,17 @@
 # Trạng thái hiện tại
 
-## Hiện hành: Phase 4 đã nghiệm thu — 2026-09-07
+## Hiện hành: Phase 5 đang triển khai — 2026-09-07
+
+Owner đã mở Phase 5. Source `4bddd23`,
+[component receipt](../experiments/manifests/phase5_components_v1_validation01.json).
+Đã có bảy config tích lũy, typed decisions/public inputs, A1 detector/authorization
+và adapter trước Tool Broker; A2 có strict parser/backend/cache/error interface.
+**300 tests pass**, gồm 56 micro-tests mới; setup/Ruff/mypy 166 files pass.
+153 Phase 4 source hashes giữ nguyên; không Dev benchmark tuning/Test payload
+parsing hoặc model run mới. [Tiến độ](phase5_progress.md), [handoff](handoff.md).
+Chưa full ReAct integration, guard inference thật, A3–A6 enforcement hoặc nghiệm thu.
+
+## Lịch sử: Phase 4 đã nghiệm thu — 2026-09-07
 
 Source `be7f8b5`, [closure receipt](../experiments/manifests/phase4_closure_v1_validation01.json),
 [12 DoD và giới hạn](../docs/architecture/phase4_report.md). **244 tests pass**;
