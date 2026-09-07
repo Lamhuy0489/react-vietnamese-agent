@@ -9,6 +9,7 @@ Phase 5 A2 QA hiện hành (output/report luôn mới):
 
 ```bash
 .venv/bin/python scripts/verify_phase5_a2.py \
+  --reference experiments/manifests/phase5_a2_v2_validation01.json \
   --output results/phase5_a2_next_check \
   --report results/phase5_a2_next_check.json
 ```
@@ -17,6 +18,7 @@ Phase 5 A2 QA hiện hành (output/report luôn mới):
 Suite 446 tests; Test hash-only, không guard model thật. Worker cold-start mỗi cache
 miss, deadline gồm load/generate; không dùng số này làm GPU throughput.
 Selected report cần source sạch + `--reference` trỏ preflight cùng source hashes.
+Source milestone `15ed921`; receipt hiện hành đã khớp preflight/source/raw hashes.
 
 Phase 5 runtime v1 lịch sử (source đã hash, output/report luôn mới):
 

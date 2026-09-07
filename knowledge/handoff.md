@@ -6,7 +6,9 @@ Cập nhật: 2026-09-07. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 Phase 5: **A2 process guard đã tích hợp vào ReAct v2**, local synthetic QA pass.
 Phase 1–4 accepted; Test vẫn khóa. [Contract](../docs/architecture/phase5_a2_runtime_contract.md),
-[tiến độ](phase5_progress.md). Selected committed-source receipt đang chuẩn bị.
+[tiến độ](phase5_progress.md). Source `15ed921`,
+[selected receipt](../experiments/manifests/phase5_a2_v2_validation01.json) từ source
+sạch, stable summary khớp preflight; 124 source/548 raw hashes đã kiểm lại.
 
 A0/A1 giữ nguyên mechanics; A2 thêm guard Pre-action/Post-source, sticky nguồn
 MALICIOUS/error chặn external trước Broker, read-open, SUSPICIOUS chỉ TAG.
@@ -38,6 +40,7 @@ A3–A6 chưa operational, final vẫn pass-through. Không nghiệm thu toàn P
   Timeout và SIGTERM-ignore được kill/reap; crash/invalid output/identity/cache
   retirement, sticky source errors, fresh policy, denied Broker separation và
   guard trace tampering có tests. Không ASR, utility hay GPU throughput claim.
+  Selected reproduction cũng pass toàn bộ 446 tests và cùng stable summary.
 - V1 source `d2ec2d5`,
   [receipt](../experiments/manifests/phase5_runtime_v1_validation01.json):
   366 tests, 20 A0 pairs + 24 A0/A1 micro conditions, 64 Replay.
@@ -52,6 +55,8 @@ A3–A6 chưa operational, final vẫn pass-through. Không nghiệm thu toàn P
 Chưa chọn/chạy guard LLM thật, chưa benchmark Dev tuning hoặc Test payload parsing.
 Local factory không được mở remote inference/detached job/descendant workers;
 adapter không chứng minh ngắt được GPU job bên ngoài process đó.
+Guard sidecar hiện được tạo khi có classification; A2 final-only/parse/model-error
+trước action không có file guard trace. Mở rộng QA zero-call trước batch guard thật.
 Rule input vẫn source-native JSON; lexical/anchor false positives/negatives giữ
 nguyên, không giả hiểu mọi câu tiếng Việt. A2 sticky veto có thể giảm utility.
 Review assistant theo owner waiver, không independent human review.

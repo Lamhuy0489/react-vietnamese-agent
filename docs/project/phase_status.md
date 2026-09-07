@@ -265,7 +265,9 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   + nine synthetic A2 conditions = 89 Replay runs, 31 fake guard classifications.
   Timeout/terminate/kill/reap, cache retirement, sticky errors, cumulative A1,
   source/action trace linkage tested. 390 prior source entries remain unchanged.
-  [A2 contract](../architecture/phase5_a2_runtime_contract.md); selected receipt pending.
+  Source `15ed921`, [selected receipt](../../experiments/manifests/phase5_a2_v2_validation01.json)
+  matches preflight; 124 source/548 raw hashes verified.
+  [A2 contract](../architecture/phase5_a2_runtime_contract.md).
 - [ ] A2 production guard model/revision, efficient GPU lifecycle and actual Dev validation.
 - [ ] A3–A5 session enforcement and A6 value-origin Pre/Post/Final policies.
 - [ ] Grouped Dev tuning/validation protocol, differential experiments and freeze.

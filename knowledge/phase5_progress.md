@@ -7,7 +7,8 @@ Preflight A2 v2: **446 tests pass** (80 mới), setup/Ruff/mypy 175 files pass.
 fresh Replay, 31 fake guard classifications. Validator kiểm tra source/action/
 proposal linkage, cache identity, error/result schema, counters và worker reap.
 124 source/548 raw hashes ghi trong preflight, 390 prior source entries bất biến.
-Selected committed-source reproduction đang chuẩn bị.
+Selected source `15ed921`, [receipt](../experiments/manifests/phase5_a2_v2_validation01.json)
+khớp preflight; toàn bộ source/raw hashes kiểm lại thành công.
 
 Đã có A2 Pre/Post trong ReAct, cumulative A1, sticky MALICIOUS/error external veto,
 read-open, SUSPICIOUS tagging, final pass-through. Guard inference riêng process;

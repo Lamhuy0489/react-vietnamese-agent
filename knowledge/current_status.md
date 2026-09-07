@@ -10,7 +10,8 @@ failure. Guard cache/trace riêng từng task, không vào agent prompt.
 Preflight **446 tests pass** (80 mới); setup/Ruff/mypy 175 files pass. 40 exact
 A0/A1 smoke pairs + chín A2 synthetic cases = 89 Replay, 31 fake classifications.
 124 source/548 raw hashes được ghi, 390 prior source entries giữ nguyên.
-Selected receipt đang chuẩn bị; [contract](../docs/architecture/phase5_a2_runtime_contract.md),
+Source `15ed921`, [selected receipt](../experiments/manifests/phase5_a2_v2_validation01.json)
+khớp preflight; source/raw hashes đã kiểm lại. [Contract](../docs/architecture/phase5_a2_runtime_contract.md),
 [bàn giao](handoff.md). Không real model/Dev benchmark run hoặc Test parsing.
 
 Chưa chọn/chạy guard LLM thật. Adapter hiện cold-load mỗi cache miss; thời gian

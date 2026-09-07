@@ -19,6 +19,8 @@
 - Preflight: 446 tests, 80 new; 40 exact A0/A1 pairs + nine synthetic A2 cases,
   89 fresh Replay/31 fake guard classifications. 390 frozen source entries intact.
   No benchmark tuning/Test parsing; no claim of real model quality or Phase 5 closure.
+  Selected source `15ed921` reproduces the same stable summary with 446 passing
+  tests; all 124 source/548 raw hashes verified. Receipt: `phase5_a2_v2_validation01`.
 
 ## 2026-09-07 — Integrate shared A0/A1 ReAct runtime
 
