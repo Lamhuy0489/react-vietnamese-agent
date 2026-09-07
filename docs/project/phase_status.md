@@ -170,10 +170,17 @@ must not be accessed without explicit scope. Phase 3 was subsequently authorized
   safe alternatives; 256 standard paths reused. 466 tests pass (38 new).
   Pool: 72 stored/70 retained, two merges, 20 conservative groups; not final
   family admission. See [boundary receipt](../../experiments/manifests/phase3_boundary_v1_validation01.json).
-- [ ] Full 70-family executable canonical set, scenario-appropriate data-scope
-  oracles and final family review remain pending. Seventy provisional retained
-  representatives meet the numeric target, but not whole-pool admission. Stored candidates do not meet
-  this gate and are not counted toward the benchmark quota. See
+- [x] Whole-pool canonical admission **for variant authoring**, under owner
+  self-review waiver: 70 selected scenarios, two merged regression cases and
+  exact 40 Dev/30 Test assignment preserving 20 conservative groups. All 17,429
+  feasible assignments evaluated; category/source imbalance is explicitly
+  reported (output-poisoning 12/3). 495 tests pass. Revalidate 288 prior reference
+  records, 280 selected; no new Replay/model inference. See
+  [selection manifest](../../experiments/manifests/phase3_canonical_selection_v1_validation01.json).
+- [ ] Full executable variant release, 350 attack/350 benign reviewed pairs,
+  release mapping/integration and immutable Test seal remain pending.
+  Canonical authoring admission is not Phase 3 acceptance or certification of
+  70 unrelated abstract mechanisms. See
   [Phase 3 handoff](../../knowledge/phase3_progress.md) and
   [audit receipt](../../experiments/manifests/phase3_draft_audit_20260906.json).
   New [workbench receipt](../../experiments/manifests/phase3_workbench_v2_validation_01.json)

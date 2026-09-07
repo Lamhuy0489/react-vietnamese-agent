@@ -1,6 +1,27 @@
 # Trạng thái hiện tại
 
-## Việc đang tiếp tục: Phase 3 và bộ nhớ dự án — 2026-09-07
+## Việc đang tiếp tục: canonical đã chọn, còn variants/release — 2026-09-07
+
+Đã review toàn pool và **nhận 70 canonical cho bước tạo biến thể**, theo waiver
+self-review của owner; không phải 70 abstract mechanisms độc lập. Giữ hai merge
+trong 72 ca lưu. Chia **40 Dev / 30 Test**, không tách 20 nhóm bảo thủ.
+[Manifest hiện hành](../experiments/manifests/phase3_canonical_selection_v1_validation01.json),
+[tóm tắt và giới hạn](../docs/benchmark/canonical_selection_summary.md), source `dc45ccb`.
+
+17.429 phương án grouped hợp lệ được xét theo objective cố định. Tool-output
+poisoning lệch **12 Dev / 3 Test** do nhóm business có 25 ca; không được đổi nhãn
+hay tách nhóm để che lệch. Sink/complexity cũng có phân bố và ô zero trong manifest.
+495 tests pass (29 mới), setup/Ruff/mypy 136 source files và clean seal pass.
+288 reference records cũ được tái kiểm tra; 280 thuộc 70 ca được chọn, tám thuộc
+hai ca gộp. **Không Replay/model/Test run mới**, không đổi dữ liệu/scorer/điểm cũ.
+
+Phase 3 **chưa xong**: chưa có 350 attack + 350 benign variants được duyệt,
+chưa release integration/seal Test. Ước lượng **65–70% effort**, không metric
+nghiệm thu. Bước tiếp theo là variants theo split đã chốt, không thêm canonical
+hoặc chọn lại split. Xem [handoff](handoff.md) và [readiness](phase3_readiness.md).
+Không cần tài khoản mới để làm phần này; quyền Meta vẫn không chặn Phase 3.
+
+## Lịch sử: boundary batch đạt 70 đại diện tạm giữ
 
 Đọc [handoff](handoff.md) để tiếp tục đúng điểm đang dở, [runbook](runbook.md)
 cho lệnh hiện hành, và [Phase 3 progress](phase3_progress.md) cho audit mới.

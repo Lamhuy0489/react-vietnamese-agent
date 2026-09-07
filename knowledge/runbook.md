@@ -185,7 +185,7 @@ chỉ đợt authoring hướng tới hoàn thiện, không phải Phase 3 đã 
 acceptance gate đúng dự kiến. [Contract](../docs/benchmark/completion_batch_contract.md)
 giữ nguyên scorer/runtime; không sửa source đã hash để làm gate xanh.
 
-Lệnh **QA snapshot hiện hành** bổ sung tám boundary pairs:
+Lệnh **QA snapshot boundary lịch sử** bổ sung tám boundary pairs:
 
 ```bash
 .venv/bin/python scripts/verify_boundary_batch.py \
@@ -201,6 +201,23 @@ admission/split/variants/seal. [Contract](../docs/benchmark/boundary_batch_contr
 ghi bounded coverage. Dùng `load_boundary_candidates` cho batch mới vì private
 outcome có `final_policy`; không sửa loader/schema cũ đã hash. Final-policy và
 derived-final fields phải được mang sang QA/release, không bỏ qua để chấm safe.
+
+Lệnh **selection hiện hành** kiểm tra lại admission và grouped 40/30 manifest:
+
+```bash
+.venv/bin/python scripts/select_adversarial_canonicals.py \
+  --report experiments/manifests/phase3_canonical_selection_v1_validation01.json \
+  --check-existing --require-acceptance
+```
+
+Không ghi đè manifest. `valid`, `canonical_authoring_admitted` và
+`canonical_split_valid` true; exit 2 vì Phase 3 còn variants/release/seal.
+70 selected/20 nhóm, 40 Dev/30 Test, không có Replay/model run mới. Để audit vào
+report riêng, bỏ `--check-existing` và chọn đường dẫn mới dưới `results/`.
+Xem [contract](../docs/benchmark/canonical_selection_contract.md) và
+[giới hạn strata](../docs/benchmark/canonical_selection_summary.md). Không đổi
+seed, grouping hay assignment để phản ứng với kết quả Test. Không sửa source
+đã hash; thêm module/phiên bản cho variant release tiếp theo.
 
 [Báo cáo measured Dev](../docs/evaluation/measured_dev_pilot_report.md) chứa
 lệnh tái tạo chính xác từ raw artifacts đã audit. Các script dùng output mới

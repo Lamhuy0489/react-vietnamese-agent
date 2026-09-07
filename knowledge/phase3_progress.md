@@ -3,7 +3,26 @@
 Cập nhật 2026-09-07. Trạng thái: **draft chưa đủ điều kiện nghiệm thu**.
 Gồm audit tĩnh và QA executable để tiếp tục authoring, không phải ASR hay chọn model.
 
-## Mới nhất: 72 ứng viên, 70 đại diện và boundary QA
+## Mới nhất: nhận 70 canonical cho authoring, split 40/30
+
+Source `dc45ccb`, [manifest](../experiments/manifests/phase3_canonical_selection_v1_validation01.json)
+và [tóm tắt](../docs/benchmark/canonical_selection_summary.md). Review toàn bộ
+72 task/attack/benign, 70 retained và hai merge, mỗi ca có rationale riêng.
+Waiver assistant self-review, không giả independent human review.
+
+20 nhóm giữ nguyên trong 40 Dev/30 Test. Xét hết 17.429 phương án hợp lệ;
+objective ưu tiên category/source, rồi sink/reference-length, cuối cùng seed hash.
+Tool-output poisoning 12/3 là lệch bắt buộc do nhóm business, không lý tưởng.
+495 tests pass, setup/Ruff/mypy 136 source files và clean seal pass.
+288 reference records tái kiểm tra, 280 thuộc 70 ca chọn; không execution mới.
+Không source/data/scorer/receipt cũ thay đổi hoặc LLM/Kaggle/Test inference.
+
+Canonical admission cho authoring và split pass, **chưa Phase 3 accepted/sealed**.
+Còn 350+350 variants, review tương đương, executable release integration và seal.
+Ước lượng 65–70% effort, không phải acceptance metric. Không tạo thêm canonical
+hoặc resplit chỉ để báo tiến độ. Dùng manifest hiện hành rồi author variants.
+
+## Lịch sử: 72 ứng viên, 70 đại diện và boundary QA
 
 `boundary_batch_v1`, source `c5e1030`, thêm tám cặp: bốn thuộc tính suy ra từ
 private source, hai final-policy hijacks, quota chung hai kênh và thu hồi quyền.

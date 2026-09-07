@@ -4,51 +4,62 @@ Cập nhật: 2026-09-07. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Đã chốt `boundary_batch_v1`, source `c5e1030`: thêm tám cặp private projection,
-final-policy, quota chung và revocation. **72 ứng viên, 70 đại diện tạm giữ**, giữ hai merge
-hexcode → encoded và rowretry → rowdirect; không xóa ca gốc. Không đồng nghĩa
-70 family độc lập đã nghiệm thu. 20 nhóm bảo thủ, 2.556 pair comparisons.
-288 standard paths hiện hành = 256 tái dùng + 32 mới (16 safe/16 negative).
-Thêm hai safe alternatives: tổng **34 fresh Replay**. Sáu counterexample/control
-admission cũ vẫn là bằng chứng riêng, không cộng vào standard paths.
-A0, dataset/source/scorer cũ và model scores không đổi.
+Đã chốt `canonical_selection_v1`, source `dc45ccb`: whole-pool self-review
+nhận **70 canonical cho authoring**, hai ca gộp vẫn lưu làm regression. Mỗi ca
+trong 72 stored có rationale nhận/gộp; benign review cũ được hash-bind.
+Không phải 70 abstract mechanisms độc lập hoặc independent human review.
 
-Bản v1 70 family/350+350 variants và workbench bốn cặp vẫn giữ nguyên.
-72 ứng viên chưa split/approved, không tính vào quota family đã nghiệm thu.
-Replay là reference QA, không phải model
-runs. Không giả independent review. [Tiến độ theo DoD](phase3_readiness.md):
-ước lượng 55–60% effort, không metric nghiệm thu. Đủ 70 đại diện tạm giữ nhưng
-chưa quyết định nhận/gộp family toàn pool; review có thể yêu cầu gộp/thay thế.
-Đọc [tiến độ Phase 3](phase3_progress.md) để xem những thiếu sót đã xác minh.
+**40 Dev / 30 Test**, 20 nhóm bảo thủ giữ trọn, 17.429 phương án khả thi được xét
+theo objective cố định. Nhóm business 25 ca ở Dev; tool-output poisoning lệch
+12 Dev/3 Test là giới hạn phải báo cáo, không được tách nhóm hay đổi nhãn.
+Authoritative assignment nằm trong manifest mới; tám snapshot cũ vẫn giữ nguyên
+`unassigned/pending`, không sửa tại chỗ. Test chưa seal và không có inference.
+
+288 stored reference records được revalidate; 280 thuộc 70 selected, tám thuộc
+hai ca merge. **Không có Replay/model run mới** ở mốc này. Không đổi A0,
+data/source/scorer/receipt cũ hoặc model scores. Draft v1 cũ vẫn rejected,
+không dùng variants của v1 để lấp quota. Phase 3 chưa accepted; ước lượng
+65–70% effort, không metric nghiệm thu. [Readiness](phase3_readiness.md).
 
 ## Bước tiếp theo
 
 1. Đọc [Phase 3](../plan/phase3.md),
    [adversarial contract](../docs/benchmark/adversarial_contract.md) và
    [split rules](../docs/benchmark/split_rules.md).
-2. Đọc [tóm tắt boundary](../docs/benchmark/boundary_batch_summary.md) và
-   [review batch](../data/adversarial/boundary_batch_v1/README.md). Dùng verifier
-   `verify_boundary_batch.py` trong runbook khi cần tái kiểm tra snapshot;
-   completion/disclosure/admission/v3 là các mốc trước. Draft v1 vẫn chưa accepted;
-   không retry GPU hoặc sửa dữ liệu tại chỗ để làm xanh gate.
-3. Không chạy lại từng batch để báo thêm tiến độ. Không sửa bytes 72 candidates,
-   review snapshot hoặc source đã có receipt; tạo version mới nếu cần sửa.
-   Bước cụ thể: review semantic/pair và quyết định admission toàn bộ 70 đại diện,
-   rồi kiểm tra khả năng grouped 40/30 split, báo imbalance trước khi gán split.
-   Không author thêm chỉ để tăng số; không đổi tên để đủ 70. 20 review units phải
-   chung split, không đòi 70 abstract mechanisms khác nhau. Business group có 25
-   đại diện, không tách để ép strata. Categories retained: 20 indirect/15 output/
-   20 exfiltration/15 policy; sources: 19 document/15 cache/21 DB/15 output.
-   BoundaryOracle thêm private outcome `final_policy`; dùng loader riêng cho
-   batch mới. Không gọi generic loader cũ lên batch này. Final-policy và derived
-   disclosure là field riêng, không giả raw-artifact leakage hoặc tool violation.
-   Coverage chỉ bounded projection/exact lines, chưa general entailment.
-4. Review nhóm semantic/template, xác định split rồi mới sinh variants. Giữ
-   bản draft cũ làm bằng chứng; không âm thầm reseal/move family.
-5. Chỉ cập nhật acceptance khi có kiểm tra thực sự. Đọc [runbook](runbook.md)
-   và chạy các kiểm tra trước commit/push.
+2. Đọc [selection contract](../docs/benchmark/canonical_selection_contract.md),
+   [tóm tắt](../docs/benchmark/canonical_selection_summary.md) và
+   [manifest](../experiments/manifests/phase3_canonical_selection_v1_validation01.json).
+   Dùng `select_adversarial_canonicals.py --check-existing` theo runbook;
+   `--require-acceptance` exit 2 đúng dự kiến, không phải lỗi selection.
+3. **Bước cụ thể: author/review năm variants cho từng attack/benign canonical
+   đã chọn, thành 350+350.** Dùng assignment manifest, không chạy lại admission,
+   không thêm canonical hoặc resplit để làm đẹp strata. Mechanical helper hiện
+   có `surfaces.py`; code-mix/paraphrase cần author và self-review từng cặp theo
+   waiver, không lấy nguyên text rồi chỉ thêm tiền tố để giả đủ loại biến thể.
+4. Tạo version mới, không sửa bytes nguồn đã hash. Giữ literal tool/SQL/source/
+   recipient/artifact và mục tiêu, quyền, utility khi biến đổi surface. Tạo
+   release loader/adapter riêng nối đúng scorer từng batch; BoundaryOracle cần
+   loader riêng. Giữ fields final-policy/derived disclosure, không làm rơi chúng
+   khi thống nhất evaluator. Chạy exposure, safe/negative utility và pair QA
+   trên overlay biến thể, không coi text presence là đủ executable acceptance.
+5. Sau review đủ 700 variants: validate counts 200/150 mỗi branch, group/pair
+   mapping, inventory/hashes, rồi seal Test. Không dùng Test model failures để
+   sửa data/prompts/policy; không sang Phase 4 trước acceptance. Đọc runbook và
+   chạy setup/Ruff/mypy/pytest/knowledge-check trước commit/push.
 
 ## Bằng chứng
+
+- [Receipt selection](../experiments/manifests/phase3_canonical_selection_v1_validation01.json):
+  source `dc45ccb`, canonical authoring admission và grouped split pass;
+  whole-phase acceptance/Test seal false. 495 tests pass (29 mới), setup/Ruff/
+  mypy 136 files và clean seal pass. Manifest tái tạo đúng qua `--check-existing`;
+  `--require-acceptance` exit 2 như thiết kế. Revalidate hash tám batch, source,
+  review và linked receipts; 288 reference records/280 selected, không run mới.
+  Prior tracked data/source/evidence byte-identical theo Git. Quét bốn credential
+  values ở source commit trên bảy file thay đổi: 0 match.
+  Selected receipt: 78 direct hash entries khớp; final credential scan trên
+  16 file thay đổi có 0 match. Knowledge-check pass sau khi tạo manifest.
+  Không cần quyền tài khoản mới; Meta pending không chặn authoring Phase 3.
 
 - [Receipt boundary](../experiments/manifests/phase3_boundary_v1_validation01.json):
   source `c5e1030`; 72 working/70 retained/2 merged/20 groups. 34 fresh Replay

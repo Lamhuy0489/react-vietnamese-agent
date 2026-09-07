@@ -23,7 +23,7 @@ nghiệm thu. Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
   [báo cáo measured Dev](../docs/evaluation/measured_dev_pilot_report.md).
 - Phase 2 đang có hiệu lực: [clean_v1.1](clean_v11_progress.md).
 - Phase 3 đang làm: [tiến độ và thiếu sót đã audit](phase3_progress.md).
-- QA canonical hiện hành: [70 đại diện tạm giữ và boundary QA](../docs/benchmark/boundary_batch_summary.md).
+- Canonical/split hiện hành: [70 canonical cho authoring, grouped 40/30](../docs/benchmark/canonical_selection_summary.md).
 - Phần trăm Phase 3 và tiêu chí còn thiếu: [readiness theo DoD](phase3_readiness.md).
 - Tránh lặp lỗi Kaggle: [lessons](kaggle_lessons.md).
 - Bằng chứng lịch sử: [Phase 1](phase1_evidence.md),
