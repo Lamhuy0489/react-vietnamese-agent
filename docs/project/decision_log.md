@@ -1,5 +1,23 @@
 # Decision Log
 
+## 2026-09-07 — Open Phase 5; freeze first security-component contract
+
+- Owner explicitly authorized Phase 5. Add versioned security modules/configs,
+  preserving all 153 Phase 4 source/test/config hashes and frozen datasets.
+- Freeze cumulative matrix and typed public-only decision/observation schemas in
+  `phase5_policy_contract.md`. A0/A1 execution adapter is the first milestone;
+  A2 strict backend/parser/cache interface is not operational real-model evidence.
+  A2–A6 config presence is not implementation or acceptance.
+- A1 scans raw plus detector-normalized content, tags sources and vetoes external
+  proposals after signals unless exact user action/destination is authorized.
+  Raw-user anchor grammar is bounded and requires affirmative destination cues;
+  quoted/negated/conditional/incidental addresses do not count as authorization.
+- A6 will retain cumulative detectors/tracking but adjudicate coarse session
+  vetoes with value-origin evidence, per phase5 II/XXXVIII/LV. Detailed A6 policy
+  remains to be specified; no silent removal of components or current implementation claim.
+- First QA uses synthetic micro-cases only; no Dev tuning, Test payload parsing,
+  guard model selection, GPU inference or benchmark outcome optimization.
+
 ## 2026-09-07 — Accept Phase 4 after committed-source reproduction
 
 - Source `be7f8b5`; selected `phase4_closure_v1_validation01` passes all 12

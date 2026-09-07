@@ -1,0 +1,11 @@
+version: security_config_v1
+level: A4
+rule: true
+llm_guard: true
+session_sensitivity: true
+session_trust: true
+joint_session: false
+value_origin: false
+rule_version: rules_v1
+detector_profile: security_v1
+model_input_profile: raw_v1
