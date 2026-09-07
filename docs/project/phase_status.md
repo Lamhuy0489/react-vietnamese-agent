@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: A2 bounded-process integration verified on synthetic QA**
+- Current stage: **Phase 5 in progress: cumulative A3–A5 session integration verified on synthetic QA**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-07
 
@@ -269,13 +269,22 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   matches preflight; 124 source/548 raw hashes verified.
   [A2 contract](../architecture/phase5_a2_runtime_contract.md).
 - [ ] A2 production guard model/revision, efficient GPU lifecycle and actual Dev validation.
-- [ ] A3–A5 session enforcement and A6 value-origin Pre/Post/Final policies.
+- [x] Cumulative A3 sensitivity, A4 bounded destination/action authorization and
+  A5 joint-session enforcement in separate runtime v3. 593 tests pass (147 new),
+  setup/Ruff/mypy 179 files/knowledge-check pass. 44 A0–A2 parity pairs + 30
+  synthetic session conditions = 118 Replay runs. Session cases: 165 fake guard
+  classifications, 225 state snapshots, 15 expected denials (not benchmark ASR).
+  514 prior source entries unchanged; preflight records 127 source/780 raw hashes.
+  [Session contract](../architecture/phase5_session_contract.md); selected receipt pending.
+- [ ] A4 general processing-scope controls beyond bounded external authorization.
+- [ ] A6 value-origin Pre/Post/Final policies.
 - [ ] Grouped Dev tuning/validation protocol, differential experiments and freeze.
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
-The new v2 loop supports A2 with an explicit process-owned backend factory; A3–A6
-are rejected. Cold process startup/model loading is included in guard duration,
+The v3 loop supports A2–A5 with an explicit process-owned backend factory; A6
+is rejected. A3–A5 deliberately use coarse state and final remains pass-through.
+Cold process startup/model loading is included in guard duration,
 not warm inference throughput. No new real model/benchmark Dev/Test inference.
 
 ## Authorized Dev pilot extension

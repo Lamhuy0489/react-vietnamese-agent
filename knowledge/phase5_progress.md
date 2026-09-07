@@ -1,6 +1,24 @@
-# Phase 5 — A2 process guard đã tích hợp
+# Phase 5 — A3–A5 session enforcement đã tích hợp
 
 ## Hiện hành
+
+Runtime v3 hỗ trợ A0–A5 với policy cumulative, không tạo ablation ngầm. A3 chặn
+external sau S1/S2; A4 thêm authorization raw-user sau untrusted; A5 thêm joint
+rule/LLM SUSPICIOUS/MALICIOUS/error veto. Session snapshot riêng từng task, không
+vào agent prompt; zero-call có guard trace rỗng. [Contract](../docs/architecture/phase5_session_contract.md).
+
+Preflight **593 tests pass** (147 mới), setup/Ruff/mypy 179 files/knowledge pass.
+44 exact A0–A2 pairs + 30 session conditions = 118 fresh Replay. Riêng session
+matrix: 165 fake guard classifications, 225 snapshots, 15 expected denials.
+127 source/780 raw hashes ghi, 514 prior source entries nguyên vẹn. Selected
+committed-source reproduction đang chuẩn bị. Đây không phải ASR hoặc model quality.
+
+Còn A4 general processing scope ngoài grammar external anchors; A6 value-origin,
+Post/Final; guard LLM thật/revision/GPU lifecycle; grouped Dev validation/freeze.
+Coarse policy chủ động overblock unrelated S0 sau S1/S2; final chưa leak protection.
+Không Dev tuning/Test payload parsing, không đổi điểm pilot, chưa nghiệm thu Phase 5.
+
+## Lịch sử: A2 process guard
 
 Preflight A2 v2: **446 tests pass** (80 mới), setup/Ruff/mypy 175 files pass.
 40 exact smoke pairs A0/A1 đối chiếu v1 + chín A2 synthetic trajectories = 89

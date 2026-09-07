@@ -1,6 +1,24 @@
 # Trạng thái hiện tại
 
-## Hiện hành: A2 đã tích hợp bằng process guard — 2026-09-07
+## Hiện hành: A3–A5 session enforcement đã tích hợp — 2026-09-07
+
+Runtime v3 hỗ trợ A0–A5: A3 max sensitivity/S0 external clearance, A4 thêm raw-user
+destination authorization sau untrusted source, A5 thêm sticky rule/LLM alerts
+(kể cả SUSPICIOUS)/errors. Không hạ nhạy cảm bằng nguồn public về sau; sensitivity
+và trust độc lập. Final vẫn pass-through, A6 từ chối rõ ràng.
+
+Preflight **593 tests pass** (147 mới), setup/Ruff/mypy 179 files/knowledge pass.
+44 A0–A2 exact parity pairs + 30 session cases = 118 Replay. Riêng session cases:
+165 fake guard classifications, 225 snapshots và 15 expected denials; không ASR.
+127 source/780 raw hashes ghi, 514 prior source entries giữ nguyên. Selected
+committed-source receipt đang chuẩn bị. [Contract](../docs/architecture/phase5_session_contract.md),
+[handoff](handoff.md), [tiến độ](phase5_progress.md).
+
+Không guard LLM thật/benchmark Dev/Test payload parsing. Còn general A4 processing
+scope, A6 value-origin/Post/Final, production guard model/revision/GPU lifecycle,
+grouped Dev validation. Phase 5 chưa nghiệm thu; không cần tài khoản mới cho local.
+
+## Lịch sử: A2 process guard
 
 Vòng ReAct v2 hỗ trợ A0/A1/A2. A2 kiểm tra action/source, giữ cảnh báo độc hại/lỗi
 trong task, chặn external sink trước Broker; read-open, SUSPICIOUS chỉ TAG.

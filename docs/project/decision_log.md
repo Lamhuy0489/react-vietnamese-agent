@@ -1,5 +1,29 @@
 # Decision Log
 
+## 2026-09-07 — Predeclare cumulative A3–A5 session enforcement
+
+- New session policy and runtime v3 preserve selected A0–A2 implementations.
+  Research contract/config matrix requires A4 to retain A3 sensitivity and A5
+  to retain A1–A4; plan shorthand does not authorize standalone ablations.
+- Host source sensitivity joins by max, trust by independent untrusted OR.
+  A3 external clearance is S0: S1/S2 exposure blocks even unrelated public
+  output and explicit user authorization. This coarse overblocking is intentional.
+- A4 additionally requires action-specific raw-user destination authorization
+  after any untrusted source. No general student/course-ID or processing-scope
+  parser is claimed in this bounded milestone.
+- A5 additionally vetoes external proposals on sticky rule alerts, guard
+  SUSPICIOUS/MALICIOUS alerts or errors, including the current proposal. This is
+  predeclared rather than tuned on Dev/Test; SUSPICIOUS remains TAG-only in A2–A4.
+- Session snapshots are host-only at Initial/Pre/Post/Final; source/action IDs
+  support auditing, not fine-grained value provenance. Empty guard sidecars now
+  exist for zero-call runs. Final remains pass-through and A6 rejects explicitly.
+- Preflight: 593 tests pass (147 new), setup/Ruff/mypy 179 files/knowledge pass.
+  44 exact A0–A2 pairs + 30 session cases = 118 Replay. Session cases have 165
+  fake guard classifications, 225 snapshots and 15 expected denials, not ASR.
+  514 prior source entries intact; 127 source/780 raw hashes recorded.
+  Selected-source reproduction pending. Production guard selection/GPU efficiency,
+  general A4 processing scope, A6 and grouped Dev validation remain open.
+
 ## 2026-09-07 — Add A2 bounded-process runtime without changing selected source
 
 - New v2 loop preserves frozen A0/A1 mechanics and the v1 prompt/parser/rules;

@@ -5,7 +5,20 @@ lịch sử là lệnh hiện hành. Đọc [bàn giao](handoff.md) trước khi
 
 ## Kiểm tra phần mềm và bộ nhớ
 
-Phase 5 A2 QA hiện hành (output/report luôn mới):
+Phase 5 session QA hiện hành (output/report luôn mới):
+
+```bash
+.venv/bin/python scripts/verify_phase5_session.py \
+  --output results/phase5_session_next_check \
+  --report results/phase5_session_next_check.json
+```
+
+44 A0–A2 parity pairs + 30 synthetic A3–A5 conditions = 118 Replay. Session cases
+có 165 fake guard classifications, 225 snapshots. Suite 593 tests, Test hash-only.
+Không guard model thật, không ASR/throughput claim. Chạy selected từ source sạch
+với `--reference` trỏ preflight cùng source hashes. A6 vẫn chưa được hỗ trợ.
+
+Phase 5 A2 QA lịch sử (output/report luôn mới):
 
 ```bash
 .venv/bin/python scripts/verify_phase5_a2.py \
