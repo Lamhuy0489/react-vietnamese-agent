@@ -1,5 +1,28 @@
 # Decision Log
 
+## 2026-09-07 — Phase 4 authorized; additive primitive foundation
+
+Owner explicitly starts Phase 4. Preserve frozen Phase 1–3 source/data and
+introduce `foundation` modules only; no A1–A6 enforcement or hidden A0 changes.
+First milestone: versioned optional normalization and immutable run-local JSON
+artifact/DAG primitives. Control/context/hooks and runtime integration follow.
+Use named raw/Unicode/security profiles; explicit zero-width removal, paragraph
+preservation and post-removal Unicode recomposition for idempotence. Removal can
+alter emoji joiners; security view is optional and never silently enabled in A0.
+
+Artifacts store canonical JSON strings rather than mutable nested objects. Host
+allocates IDs; parents precede children; import verifies rather than trusts IDs.
+Independent S0/S1/S2 and explicit TRUSTED/UNTRUSTED joins prohibit declassification
+or trust upgrade through normalization/derivation. Phase4 follows its binary
+trust proposal; legacy T1/T2 will map conservatively to UNTRUSTED while retaining
+original source metadata. No oracle-driven source labeling.
+
+Prerequisites use hash-only Test checks and the already sealed 50 robustness IDs.
+Dev QA covers 150 clean instructions/400 adversarial payloads across three
+profiles (1,650 checks), using explicit synthetic stress labels rather than
+claimed benchmark sensitivity annotations. 185 tests pass (53 new), setup/Ruff/
+mypy 151 files pass. No model/Broker run, no runtime/A0 parity claim yet.
+
 ## 2026-09-07 — Full release integration and post-seal access discipline
 
 Combine accepted mechanical/linguistic snapshots into separate `release_v2`;
