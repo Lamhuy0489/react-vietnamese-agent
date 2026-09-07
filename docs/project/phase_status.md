@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: A6 value PreGate/Post-view components verified; runtime remains A0–A5**
+- Current stage: **Phase 5 in progress: bounded A0–A6 runtime v4 integration verified on synthetic QA**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-08
 
@@ -296,13 +296,22 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   [Gate contract](../architecture/phase5_value_gates_contract.md). Source `a3743a2`,
   [selected reproduction](../../experiments/manifests/phase5_value_gates_v1_validation02.json)
   from clean source matches preflight; 769 tests pass, 132 source/121 raw hashes verified.
-- [ ] A6 full Pre/Post/Final runtime integration, guard arbitration and final authorization.
+- [x] Bounded A6 runtime v4 Pre/Post/Final integration: 845 tests pass (76 new),
+  setup/Ruff/mypy 190 files/knowledge pass. 26 synthetic runtime conditions +
+  12 exact A0–A5 parity pairs = 50 fresh Replay; 56 Broker mock calls and 121
+  fake guard classifications. 135 source/435 raw hashes verified; 903 prior
+  source entries unchanged. Coarse sensitivity refinement retains rule/LLM vetoes;
+  actual Post context views, separate proposed/released final and fixed S0 host
+  final policy. [Runtime contract](../architecture/phase5_a6_runtime_contract.md).
+  Selected-source reproduction pending; not real-model security evidence.
+- [ ] General private-record final entitlements and broader origin-coverage assessment.
 - [ ] Grouped Dev tuning/validation protocol, differential experiments and freeze.
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
-The v3 loop supports A2–A5 with an explicit process-owned backend factory; A6
-is rejected. A3–A5 deliberately use coarse state and final remains pass-through.
+The current v4 loop supports A0–A6; A2–A6 require an explicit process-owned
+backend factory. The frozen v3 still rejects A6. A3–A5 deliberately use coarse
+state and final pass-through; only v4 A6 returns a gated released final.
 Cold process startup/model loading is included in guard duration,
 not warm inference throughput. No new real model/benchmark Dev/Test inference.
 

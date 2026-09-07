@@ -1,6 +1,18 @@
 # Trạng thái hiện tại
 
-## Hiện hành: A6 value PreGate/Post-view components — 2026-09-08
+## Hiện hành: A6 runtime integration đã qua preflight — 2026-09-08
+
+Runtime v4 nối Pre/value/guard composition, Post context view và Final release.
+[Contract](../docs/architecture/phase5_a6_runtime_contract.md). A0–A5 giữ hành vi
+cũ; A6 chỉ gỡ coarse sensitivity veto khi value ALLOW, không gỡ rule/LLM veto.
+Final clearance cố định S0, không tự cấp quyền dữ liệu riêng; trả released text.
+`phase5_a6_runtime_v1_preflight01` đạt: **845 tests pass**, 76 mới, trong 178,13 giây;
+setup/Ruff/mypy 190 files/knowledge pass. 26 synthetic conditions + 12 parity pairs
+= 50 Replay, 56 Broker mock calls, 121 fake guard classifications. 135 source/435
+raw hashes đã kiểm lại, 903 prior source entries và hai seals giữ nguyên.
+Selected-source reproduction đang chuẩn bị; không đọc payload Test hoặc chạy model thật.
+
+## Lịch sử: A6 value PreGate/Post-view components
 
 PreGate mới kiểm tra quyền raw-user, nguồn typed của mọi critical leaf, sensitivity
 S0 và protected values kể cả JSON keys; unknown/error chặn external, fixed reads

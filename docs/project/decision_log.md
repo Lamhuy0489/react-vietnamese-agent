@@ -1,5 +1,29 @@
 # Decision Log
 
+## 2026-09-08 — Predeclare bounded A6 runtime composition
+
+- New v4 loop composes frozen A6 components without editing selected A0–A5
+  source. All levels share the new config-driven loop; old versions are evidence
+  references. [Integration contract](../architecture/phase5_a6_runtime_contract.md).
+- Retain full A5 session/rule/guard processing and log its coarse verdict. Only
+  the coarse sensitivity pair may be discharged by an ALLOW host value gate;
+  authorization, rule, suspicious/malicious/error guard vetoes stay in force.
+  This is plan II/LV's artifact-aware refinement, not a standalone ablation.
+- Actual model context references the declared untrusted Post view; raw source
+  and observation remain immutable. Index/decisions stay host-only. A6 final
+  uses fixed S0 host clearance and returns only the separately released text.
+  No private-record entitlements inferred from user text or evaluator metadata.
+- Synthetic QA fixture initially assumed uppercase email normalization; the
+  frozen profile is case-sensitive. Correct the fixture to its supported
+  zero-width normalization case, without changing matcher/expected protection
+  scope. Uppercase/semantic/encoded leakage is not advertised as covered.
+- No Test payload access, benchmark model run, guard-model selection or Phase 6.
+  Preflight01 passes all 845 tests (76 new), setup/Ruff/mypy 190 files/knowledge.
+  26 synthetic conditions + 12 prior-level parity pairs = 50 Replay, 56 mock
+  Broker calls, 121 fake guard classifications. 135 source/435 raw hashes and
+  903 prior source entries verified. Selected-source reproduction pending;
+  Phase 5 remains unaccepted and no real-model security result is claimed.
+
 ## 2026-09-08 — Value-origin release evidence and bounded value gates
 
 - Source `3b9f565` and `phase5_value_origin_v1_validation01` freeze the typed

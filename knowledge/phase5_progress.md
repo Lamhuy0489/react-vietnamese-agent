@@ -1,6 +1,18 @@
-# Phase 5 — A6 value PreGate/Post-view components
+# Phase 5 — A6 runtime integration
 
 ## Hiện hành
+
+Runtime v4 A0–A6 theo [contract](../docs/architecture/phase5_a6_runtime_contract.md)
+đã qua preflight01: **845 tests pass** (76 mới), setup/Ruff/mypy 190 files/knowledge
+pass. 26 synthetic conditions + 12 A0–A5 parity pairs = 50 Replay, 56 Broker mock
+calls, 121 fake guard classifications. 135 source/435 raw hashes kiểm lại,
+903 prior source entries giữ nguyên. Selected reproduction đang chuẩn bị.
+Coarse verdict/value/composed verdict lưu riêng; chỉ thay coarse sensitivity
+veto khi đủ nguồn public. Guard/control veto không bị vượt qua. Actual Post view
+vào context; final proposed/released tách biệt và chỉ released text được trả ra.
+Không sửa source đã hash, không dùng Test hoặc chạy model thật.
+
+## Lịch sử: value PreGate/Post-view components
 
 PreGate component nhận host user/proposal artifacts, yêu cầu exact raw-user anchors
 và origin của critical leaves; protected/unknown/coverage failures chặn external.

@@ -5,6 +5,23 @@ lịch sử là lệnh hiện hành. Đọc [bàn giao](handoff.md) trước khi
 
 ## Kiểm tra phần mềm và bộ nhớ
 
+Phase 5 A6 runtime QA đã qua preflight (chưa selected receipt):
+
+```bash
+.venv/bin/python scripts/verify_phase5_a6_runtime.py \
+  --output results/phase5_a6_runtime_next_check \
+  --report results/phase5_a6_runtime_next_check.json
+```
+
+26 synthetic runtime conditions + 12 A0–A5 parity pairs = 50 fresh Replay.
+Guard là fake backend chạy trong process, không chất lượng LLM/ASR. Final host
+clearance S0; chưa quyền đọc dữ liệu riêng. Không sửa source/test/contract trong
+lượt đang chạy. Sau preflight: commit source, selected run từ source sạch và
+reference cùng hashes; output/report luôn mới. Test hash-only, không payload.
+Preflight01: 845 tests pass, 76 mới; setup/Ruff/mypy 190 files/knowledge pass.
+56 mock Broker calls, 121 fake guard classifications; 135 source/435 raw hashes
+đã kiểm lại, 903 prior source entries giữ nguyên. Không suy thành model metrics.
+
 Phase 5 value PreGate/Post-view QA hiện hành (output/report luôn mới):
 
 ```bash

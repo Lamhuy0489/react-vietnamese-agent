@@ -4,67 +4,52 @@ Cập nhật: 2026-09-08. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Phase 5: **A6 value PreGate/Post-view components đã qua synthetic QA**.
-[Contract](../docs/architecture/phase5_value_gates_contract.md), [tiến độ](phase5_progress.md).
-Selected-source reproduction đã đạt từ source sạch `a3743a2`;
-[receipt](../experiments/manifests/phase5_value_gates_v1_validation02.json).
-Runtime v3 vẫn A0–A5, final pass-through;
-không nhận component ALLOW thành full A6 ALLOW hoặc nghiệm thu Phase 5.
+Phase 5: **A6 runtime v4 integration đã qua preflight**.
+[Contract](../docs/architecture/phase5_a6_runtime_contract.md), [tiến độ](phase5_progress.md).
+Preflight `results/phase5_a6_runtime_v1_preflight01` valid; selected reproduction
+đang chuẩn bị. Chưa Phase 5 acceptance. Không sửa source/test/contract đã xác minh.
 
-PreGate nhận user/proposal host artifacts, schema strict, exact raw-user action/
-destination anchors; critical leaves cần typed origins và S0, protected scan cả
-JSON keys. Unknown/limits/errors chặn external, fixed reads vẫn allow.
-Index roots và raw-source exposure phải khớp hai chiều; không bỏ sót S2 hoặc dùng
-public chưa được thấy. Post-view untrusted JSON envelope giữ raw/nhãn/lineage.
+V4 hỗ trợ cùng loop A0–A6. A6 lưu coarse/value/composed decisions, chỉ gỡ coarse
+sensitivity khi có value ALLOW; rule/LLM/error/control veto vẫn giữ. Index từ
+raw host user/tool roots, không từ model/derived views. Post view thật vào model
+context; final proposed/released có IDs/hashes riêng, runtime trả released text.
+Final S0 host policy không cấp quyền đọc hồ sơ riêng; không lấy grants từ GT.
 
 ## Bước tiếp theo
 
-1. Đọc phase status/contract, kiểm tra Git/hashes; validator value-gates mới trong
-   [runbook](runbook.md). Không sửa source/test/contract đã được selected receipt
-   hash; thêm version/module riêng cho integration.
-2. **Tích hợp A6 runtime**: freeze contract cho composition PreGuard/value/control,
-   arbitration coarse A3–A5 veto, actual-context Post-view lineage, proposed/released
-   Final logging và trả released content. Không dùng giá trị ALLOW như proof an toàn.
-   Final authorization từ host/user policy, không evaluator GT. Thiếu evidence
-   unknown critical relations phải fail closed; không hạ nhãn raw artifact.
-3. Kế thừa index/final-release source `3b9f565` và receipt phía dưới. Typed matching
-   hữu hạn, không suy whole-context lineage thành nguồn từng token. Destination
-   anchor grammar và webhook key/leaf profile hạn chế, có thể giảm utility.
-4. Chốt guard model/revision A2–A6/lifecycle GPU hiệu quả; adapter hiện cold-load
-   mỗi cache miss. Rà A4 general processing scope, grouped Dev tune/validation
-   trước tuning. Không đọc Test/authoring payload hoặc sang Phase 6.
-5. Không cần tài khoản mới cho local work. Meta access vẫn thiếu cho Llama pilot riêng.
+1. Preflight đã đạt setup/Ruff/mypy/pytest/knowledge, stable cases và hashes.
+   Commit source, selected reproduction từ source sạch
+   với `--reference` preflight, output/report mới. Xem [runbook](runbook.md).
+2. Kiểm lại selected source/raw hashes; cập nhật status/evidence/knowledge, commit
+   nhỏ rồi đồng bộ GitHub. Không sửa source đã được receipt khóa.
+3. Sau mốc runtime: guard model/revision và lifecycle GPU hiệu quả; adapter hiện
+   cold-load mỗi cache miss. Rà A4 processing scope và grouped Dev tune/validation
+   trước tuning. Không sang Phase 6 hoặc đọc Test payload.
+4. General private-record final entitlement và broader value coverage vẫn thiếu;
+   không diễn giải S0 profile như đã giải quyết quyền truy cập riêng tư hợp lệ.
+5. Không cần tài khoản mới cho local work. Meta access thiếu cho Llama pilot riêng.
 
 ## Bằng chứng
 
-- Preflight02: **769 tests pass**, 73 mới; setup/Ruff/mypy 186 files/knowledge pass.
-  24 Pre cases: 4 ALLOW/20 DENY, sáu Post cases. Bốn actual Broker mock calls,
-  zero model/guard/Replay runs. 771 prior source entries intact; 132 source/121 raw
-  hashes ghi. Không ASR/utility hoặc real-model claims.
-- Selected validation02: **769 tests pass** trong 138,14 giây; stable summary
-  khớp preflight02, source sạch `a3743a2`. Đã kiểm lại 132 source/121 raw hashes.
-  Validation01 gián đoạn trước receipt, không còn tiến trình chạy khi kiểm tra;
-  giữ nguyên thư mục, không tính là lượt đạt. Validation02 chạy mới toàn bộ QA.
-- Review phát hiện omitted-observation hole, thêm two-way coverage check/test.
-  Preflight01 source-changed bị vô hiệu, giữ logs nhưng không chọn evidence.
-  Tests có unknown fields, key/subject leaks, dimensions/authorization, numeric
-  leaves, source/exposure integrity, read/schema limits, Post round-trip/label
-  preservation và envelope injection delimiters.
+- Preflight01: **845 tests pass**, 76 mới, trong 178,13 giây. Setup/Ruff/mypy
+  190 files/knowledge pass; 135 source/435 raw hashes kiểm lại.
+- 903 prior source entries nguyên vẹn; clean/adversarial seals hash-only pass.
+- 26 synthetic runtime conditions + 12 prior-level parity pairs = 50 Replay,
+  56 mock Broker calls và 121 fake guard classifications; report valid=true.
+- Source `a3743a2`, [value-gate receipt](../experiments/manifests/phase5_value_gates_v1_validation02.json):
+  769 tests, 132 source/121 raw hashes khớp; evidence/GitHub commit `3c3f7fe`.
 - Origin source `3b9f565`,
   [receipt](../experiments/manifests/phase5_value_origin_v1_validation01.json):
-  696 tests, 24 synthetic release cases, 130 source/101 raw hashes khớp.
-  Evidence commit `06086c1` hoàn tất phần staged trước đó sau hash/knowledge check.
-- Session source `8a4ca3d`,
-  [receipt](../experiments/manifests/phase5_session_v1_validation01.json):
-  593 tests, 118 Replay; 165 fake guard classifications, 225 snapshots.
+  696 tests, 24 release cases. Session source `8a4ca3d`,
+  [receipt](../experiments/manifests/phase5_session_v1_validation01.json): 593 tests.
 
 ## Giới hạn
 
-A6 runtime/full Pre/Post/Final còn chưa tích hợp. Value gate chưa kết hợp rule/LLM
-control risks; JSON envelope không chứng minh chống mọi prompt injection.
-Exact origin chưa hỗ trợ tự do tổng hợp câu/short values/SQL alias semantics;
-unknown leaf/key fail closed có thể overblock. Không model-generated provenance.
-Final-release default S0 chưa thay policy cho quyền đọc dữ liệu riêng hợp lệ.
-Chưa guard LLM thật, Dev tuning hoặc Test payload parsing; Test checks hash-only.
-A0–A5 và điểm pilot giữ nguyên; assistant self-review theo owner waiver, không
-independent review. Không credentials/private GT/Test payload/CoT trong knowledge.
+Không real guard/LLM/Kaggle run, không benchmark Dev tuning hoặc Test parsing.
+Exact origin không chứng minh model-internal causal provenance; short values,
+SQL aliases, paraphrase, encoding và email case changes chưa được bao phủ đầy đủ.
+Unknown critical leaves fail closed có thể overblock. Post envelope không chứng
+minh chống mọi injection. Terminal completed chỉ kết thúc loop, không security
+success; phải đọc final effect/released field. Assistant self-review theo owner
+waiver, không independent review. Không credentials/private GT/Test payload/CoT
+trong knowledge; không đưa knowledge vào model prompts.
