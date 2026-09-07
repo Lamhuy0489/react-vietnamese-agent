@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 4 in progress: normalization/artifact/provenance primitives**
+- Current stage: **Phase 4 in progress: pass-through runtime integration and Dev parity verified**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-07
 
@@ -212,13 +212,19 @@ Phase 4 was subsequently authorized below. The bullets preserve historical autho
   queries, serialization and independent conservative sensitivity/trust joins.
 - [x] 1,650 primitive checks on 150 clean Dev instructions/400 adversarial Dev
   payloads; 185 tests pass (53 new), setup/Ruff/mypy 151 source files pass.
-- [ ] ControlState, ContextBundle, pre/post/final hook contracts and implementations.
-- [ ] Runtime integration with public source metadata, field-level sink arguments,
-  model/context lineage, trace v2 and A0 behavioral regression.
-- [ ] Smoke/clean/attack Dev trajectory coverage, performance/memory report,
-  final reproducibility evidence and whole-phase acceptance.
+- [x] ControlState, ContextBundle, pre/post/final pass-through hooks implemented.
+- [x] Separate runtime: host source catalog, email/webhook field artifacts,
+  context/model/final lineage, trace v2 and raw A0 exact-context/observable parity.
+- [x] 65 paired CPU conditions: 20 smoke, 21 clean Dev reference-action scripts,
+  24 attack/benign Dev source probes; 130 fresh Replay runs. No model/Test run.
+  224 tests pass (39 new), setup/Ruff/mypy 156 files pass. Source `a65bc53`,
+  [receipt](../../experiments/manifests/phase4_runtime_v1_validation01.json),
+  [runtime contract](../architecture/phase4_runtime_contract.md). Clean/attack Dev
+  final texts are plumbing probes, not utility/ASR measurements.
+- [ ] Full source metadata/search propagation and sensitive/multi-step Dev audit.
+- [ ] Controlled overhead/memory report, final reproducibility and whole-phase acceptance.
 
-First milestone only; no Phase 4 acceptance, model inference or security gate.
+Partial Phase 4 milestones only; no phase acceptance, model inference or security gate.
 Frozen runtime/data/scorers unchanged; security normalization is not enabled in
 A0. [Foundation contract](../architecture/phase4_foundation_contract.md).
 Source `a4e9a87`; [Dev primitive receipt](../../experiments/manifests/phase4_primitives_v1_validation01.json)

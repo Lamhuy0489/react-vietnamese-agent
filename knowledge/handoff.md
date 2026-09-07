@@ -4,34 +4,47 @@ Cập nhật: 2026-09-07. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-**Phase 4 đã được owner cho phép**, đang ở mốc primitive foundation. Phase 1,
+**Phase 4 đã được owner cho phép**, đã tích hợp runtime và kiểm tra A0 parity. Phase 1,
 Phase 2 clean_v1.1, Phase 3 adversarial_v2 đã accepted; Test vẫn khóa.
 [Tiến độ Phase 4](phase4_progress.md),
-[contract](../docs/architecture/phase4_foundation_contract.md).
+[contract runtime](../docs/architecture/phase4_runtime_contract.md).
 
-Đã thêm normalizer raw/Unicode/security có phiên bản, immutable JSON artifacts,
-run-isolated store, typed provenance DAG, ancestor queries, import/export và
-sensitivity/trust joins độc lập. Đây chưa phải runtime có provenance hoàn chỉnh.
-Không sửa source/data/scorer cũ, không bật defense trong A0.
+Runtime version riêng đã có ControlState/ContextBundle, Pre/Post/Final hooks
+pass-through, source snapshots, argument/field artifacts, context/model/final
+lineage, trace v2 và audit-normalized views không đưa vào prompt. Mọi tool vẫn
+qua Broker. Giữ raw A0 và source/data/scorer đã khóa, không bật defense.
 
 ## Bước tiếp theo
 
 1. Xác nhận Git/remote và [phase status](../docs/project/phase_status.md);
    chạy setup/Ruff/mypy/pytest/knowledge-check theo [runbook](runbook.md).
-2. **Triển khai ControlState/ContextBundle và Decision + Pre/Post/Final hooks
-   pass-through**, đọc các mục XXXIV–LI của [phase4](../plan/phase4.md).
-3. Thêm runtime version riêng, giữ frozen runtime A0 để so sánh. Artifact hóa
-   user/model/arguments/ToolResult/final và context lineage; mọi tool qua Broker.
-   Host-owned source metadata, không dùng evaluator GT để gán labels.
-4. Mở rộng QA: cùng Replay so exact contexts/actions/results/final/terminal
-   A0 cũ và mới; 20 smoke, 20–30 clean Dev, 20–30 adversarial Dev; retries/errors.
-   Thêm trace v2, source/environment hashes, performance và memory diagnostics.
+2. **Rà metadata nguồn/search và propagation** theo các mục XXXIV–LI của
+   [phase4](../plan/phase4.md); thay fallback bảo thủ bằng host-owned bindings
+   khi có bằng chứng nguồn. Không suy labels từ payload hoặc evaluator GT.
+3. Mở rộng sensitive/multi-step Dev trajectories để kiểm tra sink fields,
+   final-answer lineage và search summaries. Suite hiện có 24 public Dev source
+   probes, không phải adversarial utility/ASR evaluation hoàn chỉnh.
+4. Đo overhead thời gian/bộ nhớ có kiểm soát với warm-up, repeats và môi trường
+   được ghi nhận. Timing từng ca trong receipt chỉ là CPU Replay diagnostic.
+   Source a65bc53 đã hash: thay đổi hành vi cần version mới, không sửa receipt.
 5. Chỉ sau đủ DoD mới nghiệm thu Phase 4. Không triển khai chặn A1–A6/Phase 5.
    Không dùng Test hoặc thay normalized profile dựa trên Test. Không gỡ seal.
 6. Không cần tài khoản mới, graph database hoặc Kaggle cho phần local này.
    Meta access còn thiếu chỉ ảnh hưởng Llama pilot, không chặn Phase 4.
 
 ## Bằng chứng
+
+- Runtime source `a65bc53`,
+  [receipt](../experiments/manifests/phase4_runtime_v1_validation01.json):
+  **65 paired conditions / 130 fresh Replay** = 20 smoke + 21 clean Dev + 24
+  attack/benign Dev probes. Exact context/action/result/final/terminal parity;
+  824 artifacts, 1.173 edges, 390 raw file hashes. Stable summary khớp preflight.
+- **224 tests pass**, gồm 39 tests runtime mới; setup/Ruff/mypy **156 files**
+  và adversarial seal check pass. Clean Dev reference actions/faults chỉ dùng
+  trong QA; runtime/catalog/prompt không nhận GT. Suite mới parse 0 Test payload,
+  không LLM/Kaggle run. Còn thiếu metadata/search audit, controlled overhead và
+  acceptance review; receipt ghi rõ `phase4_accepted: false`.
+- Các số bên dưới là bằng chứng primitive/Phase 3 lịch sử.
 
 - Source `a4e9a87`, [receipt](../experiments/manifests/phase4_primitives_v1_validation01.json):
   selected run khớp stable summary preflight, source hashes đúng. Quét bốn
@@ -56,7 +69,8 @@ Không sửa source/data/scorer cũ, không bật defense trong A0.
 
 ## Giới hạn
 
-Mốc primitive không chứng minh A0 parity/runtime lineage: phải làm tiếp.
+Replay parity chứng minh plumbing trên các ca đã chạy, không chứng minh model
+utility, ASR hay security defense. Metadata fallback còn coarse và bảo thủ.
 NFKC/zero-width có thể đổi emoji joiner hoặc compatibility literals; normalized
 view là tùy chọn, raw vẫn authoritative. Không tự sửa dấu/dịch/paraphrase.
 Conservative provenance không phải token-level causal attribution.

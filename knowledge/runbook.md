@@ -5,6 +5,20 @@ lịch sử là lệnh hiện hành. Đọc [bàn giao](handoff.md) trước khi
 
 ## Kiểm tra phần mềm và bộ nhớ
 
+Phase 4 runtime parity (output/report phải mới):
+
+```bash
+.venv/bin/python scripts/verify_phase4_runtime.py \
+  --output results/phase4_runtime_next_check \
+  --report results/phase4_runtime_next_check.json
+```
+
+65 paired conditions/130 Replay, không LLM/Test inference. Suite có đọc reference
+actions/faults của clean Dev trong QA; không đưa oracle vào runtime/catalog/prompt.
+Adversarial Dev chỉ public trigger probes, không đọc private authoring pools hoặc
+archive Test. Không gọi `load_selected` cho công việc mới. Suite hiện 224 tests;
+các số 185/132 bên dưới là mốc lịch sử. [Tiến độ](phase4_progress.md).
+
 Phase 4 primitive QA (report phải mới, chỉ đọc nội dung Dev):
 
 ```bash

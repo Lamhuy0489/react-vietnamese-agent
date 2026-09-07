@@ -1,4 +1,35 @@
-# Phase 4 — primitive foundation
+# Phase 4 — runtime integration đang kiểm chứng
+
+## Hiện hành: pass-through runtime v1
+
+Source `a65bc53`; [receipt](../experiments/manifests/phase4_runtime_v1_validation01.json),
+[contract](../docs/architecture/phase4_runtime_contract.md). 224 tests pass (39 mới),
+setup/Ruff/mypy 156 files và sealed hash check pass.
+
+65 paired CPU conditions, 130 fresh Replay: 20 smoke, 21 preselected clean Dev,
+24 paired attack/benign Dev source probes. Exact messages/tool arguments/results/
+final/terminal/parse parity pass. 824 artifacts, 1.173 edges; 390 raw hashes và
+source hashes đã revalidate. Selected summary khớp preflight, không retry model.
+
+Các control snapshots/ContextBundle/hook pass-through đã có. Source-native labels
+tách result phụ thuộc action; email to/subject/body, webhook endpoint/payload có
+field artifacts. Normalized audit views giữ raw và không vào context. Trace v2
+ghi operations/features/hashes cùng artifact/context/control/decision events.
+39 tests mới gồm malformed/retry, parse failure, backend error, max_steps, tool
+failure, mutation/deny hooks, source catalog ambiguity và chống đọc Test payload.
+
+Giới hạn: clean Dev reference action/fault scripts chỉ ở QA, final cố định không
+chứng minh utility; attack/benign source probes không đo ASR. Metadata fallback
+retrieval S2/UNTRUSTED, DB S2/TRUSTED còn thô. Sensitive propagation hiện có unit/
+integration stress test, chưa thay thế audit nhiều bước trên Dev thực. Thời gian
+trong receipt là một lượt local kèm ghi log, chưa phải overhead benchmark kiểm soát;
+serialized artifact bytes không phải peak RSS. Không model/Test inference.
+
+Tiếp theo: rà source/search/auxiliary metadata và sensitive multi-step Dev; bổ sung
+coverage thiếu; đo overhead/memory tái lập và đánh giá đủ DoD để đóng Phase 4.
+Giữ nguyên frozen source; thêm phiên bản/module khi cần sửa runtime đã hash.
+
+## Lịch sử: primitive foundation
 
 Owner authorized 2026-09-07. [Contract](../docs/architecture/phase4_foundation_contract.md)
 và [kế hoạch](../plan/phase4.md). Đây là mốc đầu, không phải nghiệm thu Phase 4.

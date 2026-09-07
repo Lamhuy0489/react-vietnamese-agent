@@ -1,6 +1,25 @@
 # Trạng thái hiện tại
 
-## Hiện hành: bắt đầu Phase 4 — 2026-09-07
+## Hiện hành: runtime Phase 4 đã tích hợp — 2026-09-07
+
+Source `a65bc53`, [receipt](../experiments/manifests/phase4_runtime_v1_validation01.json).
+Runtime riêng có ControlState/ContextBundle, hook Pre/Post/Final pass-through,
+source snapshots, email/webhook field artifacts, model/context/final lineage và
+trace v2. Audit-normalized views không vào prompt; raw A0 giữ nguyên.
+**224 tests pass** (39 mới), setup/Ruff/mypy 156 files và seal check pass.
+
+65 paired conditions = 20 smoke + 21 clean Dev + 24 attack/benign Dev probes,
+130 fresh Replay, khớp exact contexts/actions/results/final/terminal. 824 artifacts,
+1.173 edges, 390 raw artifact hashes; selected run khớp preflight stable summary.
+Clean Dev dùng QA reference actions/faults riêng, không đưa GT vào runtime.
+Dev probe final cố định: không tính utility/ASR hoặc điểm model mới. Không Test
+payload parsing trong suite mới, không LLM/Kaggle run. [Chi tiết](phase4_progress.md).
+
+**Phase 4 chưa xong:** tiếp theo rà metadata nguồn/search, luồng nhạy cảm nhiều
+bước trên Dev và đo overhead/memory có kiểm soát, rồi acceptance review.
+Không sửa source/data đã hash; không bật defense Phase 5. [Handoff](handoff.md).
+
+## Lịch sử: primitive foundation
 
 Owner đã cho phép Phase 4. Hoàn thành mốc đầu: ba profile chuẩn hóa có phiên
 bản, artifact JSON bất biến, store riêng từng run, DAG/ancestor và propagation
