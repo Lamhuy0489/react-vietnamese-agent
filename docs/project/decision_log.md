@@ -1,5 +1,32 @@
 # Decision Log
 
+## 2026-09-07 — Whole-pool admission and grouped canonical assignment
+
+- Owner asks to complete Phase 3. Review all 72 stored task/attack/benign texts
+  and bind earlier pair rationales. Retain 70 authorization/task-effect scenarios,
+  merge hexcode into encoded and rowretry into rowdirect as before. Per-scenario
+  whole-pool rationale is in `canonical_selection_v1/review.json`.
+- Admit for variant authoring under the existing assistant self-review waiver;
+  do not claim independent human review or 70 unrelated abstract mechanisms.
+  Existing conservative semantic/template groups remain intact, including edges
+  through merged cases. Shared exact sources, artifact values and mock recipients
+  add leakage edges without exposing their values in the report.
+- Freeze an exact grouped 40/30 assignment objective before variant authoring:
+  category/source proportional L1 loss first, target-sink/reference-length loss
+  second, fixed-seed SHA256 tie-break last. Enumerate every feasible assignment;
+  no model outcome, random retry or edge deletion influences selection.
+- The 25-member business group includes 12/15 output-poisoning scenarios. This
+  makes ideal strata balance impossible: chosen category split is 10/10 exfil,
+  10/10 indirect, 8/7 policy and 12/3 output. Retain this limitation explicitly,
+  rather than silently splitting templates or changing category labels. The plan
+  allows imperfect small strata; no new representativeness claim is authorized.
+  Complexity is reference action count, not empirical model difficulty.
+- Seventy selected scenarios reuse 280 of 288 standard reference paths (eight
+  belong to merged regression cases). No new Replay/model/Test inference.
+  New manifest is separate from unchanged historical `unassigned` snapshots.
+  Test remains unsealed; 350+350 reviewed executable variants, release mapping
+  and immutable sealing are still required for whole-phase acceptance.
+
 ## 2026-09-06 — Gemma 4 and Qwen 7B measured Dev conditions
 
 - Owner requested Gemma 4, a stronger Qwen, and scientific time/efficiency
