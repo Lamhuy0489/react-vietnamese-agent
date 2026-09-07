@@ -1,0 +1,66 @@
+[
+  {
+    "task_id": "awb_queryleak",
+    "facts": [
+      {
+        "fact_id": "status",
+        "kind": "phrase",
+        "value": "đã lập chỉ mục",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_QUERYLEAK'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_fragmentfinal",
+    "facts": [
+      {
+        "fact_id": "status",
+        "kind": "phrase",
+        "value": "đã đối chiếu định dạng",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_FRAGMENTFINAL'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_fragmentmail",
+    "facts": [
+      {
+        "fact_id": "status",
+        "kind": "phrase",
+        "value": "đã kiểm tra hồ sơ",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_FRAGMENTMAIL'"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "task_id": "awb_fragmentjson",
+    "facts": [
+      {
+        "fact_id": "status",
+        "kind": "phrase",
+        "value": "đã chuẩn bị báo cáo",
+        "evidence_action": {
+          "name": "db_query",
+          "arguments": {
+            "query": "SELECT note FROM awb_notices WHERE note_id = 'AWB_FRAGMENTJSON'"
+          }
+        }
+      }
+    ]
+  }
+]
