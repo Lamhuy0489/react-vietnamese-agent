@@ -1,6 +1,22 @@
 # Trạng thái hiện tại
 
-## Hiện hành: Phase 3 đã nghiệm thu — 2026-09-07
+## Hiện hành: bắt đầu Phase 4 — 2026-09-07
+
+Owner đã cho phép Phase 4. Hoàn thành mốc đầu: ba profile chuẩn hóa có phiên
+bản, artifact JSON bất biến, store riêng từng run, DAG/ancestor và propagation
+sensitivity/trust độc lập. [Contract](../docs/architecture/phase4_foundation_contract.md).
+185 tests pass (53 mới), setup/Ruff/mypy 151 files pass; hai bộ dữ liệu vẫn khóa.
+Source `a4e9a87`; [receipt](../experiments/manifests/phase4_primitives_v1_validation01.json)
+khớp stable summary của preflight, source hashes đã kiểm tra.
+1.650 primitive checks trên 150 clean Dev instructions + 400 adversarial Dev
+payloads. Validator mới không parse Test payload/GT; 50 robustness IDs đã seal.
+
+**Phase 4 chưa xong.** Bước tiếp theo: ControlState/ContextBundle, hook pass-through,
+tích hợp runtime riêng và A0 parity, rồi smoke/clean/attack Dev trajectories.
+Không đổi runtime/scorer/data đã hash. Không chạy model/Kaggle; chưa bật
+normalization security trong A0, chưa có chặn tấn công. [Handoff](handoff.md).
+
+## Lịch sử: Phase 3 đã nghiệm thu
 
 **Phase 1, Phase 2 clean_v1.1 và Phase 3 adversarial_v2 đều đã accepted.**
 Phase 4 chưa bắt đầu. [Receipt đóng phase](../experiments/manifests/phase3_release_v2_closure.json),

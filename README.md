@@ -8,7 +8,8 @@ công cụ trong môi trường tiếng Việt giả lập (hành chính–học
 - Phase 1 và Phase 2 clean_v1.1 đã accepted (Phase 2 dưới automated-QA waiver);
   **Phase 3 adversarial_v2 đã nghiệm thu và khóa Test**: 350 attack + 350 benign,
   năm dạng biến thể. Xem [nghiệm thu và giới hạn](docs/benchmark/adversarial_release_v2_summary.md).
-  Phase 4 chưa bắt đầu.
+  Phase 4 đang triển khai: normalizer và artifact/provenance primitives đã có;
+  tích hợp runtime và kiểm chứng A0 còn đang làm.
 - Pilot đo hiệu suất Gemma 4 / Qwen 7B đã hoàn tất: strict 6/21 và 3/21 Dev,
   trung bình 11,66 và 10,92 giây/task; chưa phải kết quả Test hay kết luận chọn
   model. Xem [báo cáo](docs/evaluation/measured_dev_pilot_report.md).

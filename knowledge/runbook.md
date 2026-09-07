@@ -5,6 +5,17 @@ lịch sử là lệnh hiện hành. Đọc [bàn giao](handoff.md) trước khi
 
 ## Kiểm tra phần mềm và bộ nhớ
 
+Phase 4 primitive QA (report phải mới, chỉ đọc nội dung Dev):
+
+```bash
+.venv/bin/python scripts/verify_phase4_primitives.py \
+  --report results/phase4_primitives_next_check.json
+```
+
+1.650 kiểm tra ba profile trên 550 Dev texts; kiểm tra hash Test/50 robustness
+IDs, không đọc Test payload hoặc GT trong validator này. Không chạy model/tools.
+Sau mốc Phase 4 đầu, suite hiện có 185 tests; con số 132 bên dưới là mốc Phase 3.
+
 Phase 3 đã seal: không dùng các lệnh authoring/Replay lịch sử bên dưới cho
 phát triển phase tiếp theo. Chỉ chạy kiểm tra hash và nạp Dev:
 

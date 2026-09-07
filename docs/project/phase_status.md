@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 3 accepted: adversarial_v2 sealed; Phase 4 not started**
+- Current stage: **Phase 4 in progress: normalization/artifact/provenance primitives**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-07
 
@@ -111,7 +111,7 @@ Review is assistant self-review, not independent human review. Grouped output
 strata remain 12/3; scenario count is not independent-mechanism certification.
 Test seal binds data/environment/config/schema/mapping/source. No new model or
 held-out inference; 732 Test-assigned reference paths were pre-seal construction.
-Phase 4 is not started. The bullets below preserve historical authoring stages.
+Phase 4 was subsequently authorized below. The bullets preserve historical authoring stages.
 
 - [x] Phase 3 explicitly authorized by the project owner on 2026-09-06.
 - [x] Draft generator and deterministic integrity validator added.
@@ -200,6 +200,29 @@ Phase 4 is not started. The bullets below preserve historical authoring stages.
   [audit receipt](../../experiments/manifests/phase3_draft_audit_20260906.json).
   New [workbench receipt](../../experiments/manifests/phase3_workbench_v2_validation_01.json)
   certifies fixture QA only; v1, clean inputs and measured releases are unchanged.
+
+## Phase 4 progress
+
+- [x] Owner explicitly authorized Phase 4 on 2026-09-07.
+- [x] Prerequisites checked: clean/adversarial hashes intact; 50 robustness
+  canonical IDs already sealed. New Dev validator does not parse Test payloads/GT.
+- [x] Versioned raw/Unicode/security normalizer, raw preservation, operation
+  hashes, descriptive features, explicit zero-width handling and idempotence.
+- [x] Immutable JSON artifacts, run-isolated IDs, typed DAG links, ancestor
+  queries, serialization and independent conservative sensitivity/trust joins.
+- [x] 1,650 primitive checks on 150 clean Dev instructions/400 adversarial Dev
+  payloads; 185 tests pass (53 new), setup/Ruff/mypy 151 source files pass.
+- [ ] ControlState, ContextBundle, pre/post/final hook contracts and implementations.
+- [ ] Runtime integration with public source metadata, field-level sink arguments,
+  model/context lineage, trace v2 and A0 behavioral regression.
+- [ ] Smoke/clean/attack Dev trajectory coverage, performance/memory report,
+  final reproducibility evidence and whole-phase acceptance.
+
+First milestone only; no Phase 4 acceptance, model inference or security gate.
+Frozen runtime/data/scorers unchanged; security normalization is not enabled in
+A0. [Foundation contract](../architecture/phase4_foundation_contract.md).
+Source `a4e9a87`; [Dev primitive receipt](../../experiments/manifests/phase4_primitives_v1_validation01.json)
+matches the preflight stable summary; no whole-phase acceptance implied.
 
 ## Authorized Dev pilot extension
 
