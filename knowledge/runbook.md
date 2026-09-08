@@ -5,10 +5,11 @@ lịch sử là lệnh hiện hành. Đọc [bàn giao](handoff.md) trước khi
 
 ## Kiểm tra phần mềm và bộ nhớ
 
-Warm guard/runtime v5 QA đã qua preflight (output/report luôn mới):
+Warm guard/runtime v5 QA đã tái lập (output/report luôn mới):
 
 ```bash
 .venv/bin/python scripts/verify_phase5_warm_guard.py \
+  --reference experiments/manifests/phase5_warm_guard_v1_validation01.json \
   --output results/phase5_warm_guard_next_check \
   --report results/phase5_warm_guard_next_check.json
 ```
@@ -21,7 +22,8 @@ source/test/contract trong lượt đang chạy. Sau QA mới ghi acceptance b�
 Preflight01: 891 tests pass (46 mới), setup/Ruff/mypy 194 files/knowledge pass;
 138 source/370 raw hashes đã kiểm lại, 1.038 prior source entries giữ nguyên.
 Runtime matrix: 140 Broker calls, 240 fake guard classifications; cold/warm
-process starts 53/18 trên paired runs. Chưa selected receipt hoặc GPU evidence.
+process starts 53/18 trên paired runs. Selected source `2300751` khớp preflight,
+891 tests pass (225,80 giây), 138 source/370 raw hashes kiểm lại. Chưa GPU evidence.
 
 Phase 5 A6 runtime QA đã tái lập:
 

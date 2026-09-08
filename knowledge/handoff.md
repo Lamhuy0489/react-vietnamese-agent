@@ -4,10 +4,10 @@ Cập nhật: 2026-09-08. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Phase 5: **Task-local warm guard + runtime v5 đã qua preflight**.
+Phase 5: **Task-local warm guard + runtime v5 đã tái lập từ source `2300751`**.
 [Contract](../docs/architecture/phase5_warm_guard_contract.md), [tiến độ](phase5_progress.md).
-Preflight `results/phase5_warm_guard_v1_preflight01` valid. Selected reproduction
-đang chuẩn bị; chưa Phase 5 acceptance. Không sửa source/test/contract đã xác minh.
+[Selected receipt](../experiments/manifests/phase5_warm_guard_v1_validation01.json)
+khớp preflight01; chưa Phase 5 acceptance. Không sửa source/test/contract đã khóa.
 
 Worker spawn/load một lần/task, JSON IPC giới hạn, full inclusive request deadline,
 cold/warm timing, liveness-aware cache và close/terminate/kill/reap. Không worker/
@@ -18,17 +18,19 @@ binding, không đổi nội dung source/model và vẫn giữ raw context trong
 
 ## Bước tiếp theo
 
-1. Preflight01 đã pass setup/Ruff/mypy/pytest/knowledge và hash audit:
-   commit source, selected reproduction từ source sạch với matching reference,
-   output/report mới. [Runbook](runbook.md). Không sửa source đã hash.
-2. Kiểm lại source/raw hashes, cập nhật status/evidence/knowledge và đồng bộ GitHub.
-3. **Sau lifecycle QA**: chốt guard model/revision từ nguồn chính thức; chuẩn bị
+1. Kiểm tra Git/hashes và [runbook](runbook.md). Source `2300751` cùng các source
+   trước đã hash; không sửa tại chỗ, mở version riêng nếu cần thay hành vi.
+2. **Bước triển khai tiếp**: chốt guard model/revision từ nguồn chính thức; chuẩn bị
    real-backend statelessness/memory-fit test rồi GPU preflight. Đọc Kaggle skill/
    preflight reference trước đóng gói/upload. Warm worker chưa chứng minh backend
    không giữ conversational/KV history giữa generate calls; cần kiểm tra adapter.
-4. Rà A4 processing scope và grouped Dev tune/validation trước tuning. General
+   Lưu ý từ code local: `MeasuredHFBackend` cũ bắt buộc hai T4, balanced placement
+   và max_memory 13 GiB/device. Không tái dùng nguyên cấu hình đó cho guard chạy
+   đồng thời agent; version riêng cần explicit device/memory budgets và kiểm fit.
+   Đây là giới hạn cấu hình đã đọc, không phải một lỗi OOM đã thực nghiệm.
+3. Rà A4 processing scope và grouped Dev tune/validation trước tuning. General
    private final entitlement/broader origin coverage còn mở. Không Phase 6/Test.
-5. Không cần tài khoản mới cho local work. Meta access thiếu cho Llama pilot riêng.
+4. Không cần tài khoản mới cho local work. Meta access thiếu cho Llama pilot riêng.
 
 ## Bằng chứng
 
@@ -37,6 +39,9 @@ binding, không đổi nội dung source/model và vẫn giữ raw context trong
 - 22 cold/warm runtime pairs = 44 Replay, chín lifecycle conditions, 140 mock
   Broker calls và 240 fake runtime guard classifications. Worker starts trong
   paired runs: 53 cold → 18 warm; chỉ synthetic process-count evidence, không GPU speedup.
+- Selected validation01: source sạch `2300751`, stable summary khớp preflight,
+  **891 tests pass** trong 225,80 giây; 138 source/370 raw hashes và worker starts
+  53/18 đã kiểm lại. Không Test payload parsing, model/GPU inference hoặc tuning.
 - V4 source `04ae4c8`, [receipt](../experiments/manifests/phase5_a6_runtime_v1_validation01.json):
   845 tests, 50 Replay, 56 mock Broker calls, 121 fake guard classifications;
   135 source/435 raw hashes verified. GitHub evidence commit `d9367de`.

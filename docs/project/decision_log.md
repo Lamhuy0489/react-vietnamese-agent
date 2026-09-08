@@ -23,7 +23,10 @@
   44 Replay, 140 mock Broker calls, 240 fake runtime guard classifications;
   138 source/370 raw hashes and 1,038 prior source entries checked. Paired worker
   starts 53 cold / 18 warm are synthetic process counts, not model/GPU speedup.
-  Selected reproduction pending; Phase 5 remains unaccepted.
+  Selected source `2300751` reproduces the stable preflight summary and passes
+  all 891 tests in 225.80 seconds; 138 source/370 raw hashes and 53/18 starts
+  rechecked. [Receipt](../../experiments/manifests/phase5_warm_guard_v1_validation01.json).
+  Phase 5 remains unaccepted.
 
 ## 2026-09-08 — Predeclare bounded A6 runtime composition
 

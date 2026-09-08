@@ -314,7 +314,9 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   entries intact. Paired worker starts 53 cold / 18 warm; not GPU performance.
   Deadline, identity/cache retirement, graceful/forced cleanup and terminal/
   exception close verified. [Contract](../architecture/phase5_warm_guard_contract.md).
-  Selected-source reproduction pending; actual guard model/GPU validation stays open.
+  Source `2300751`, [selected receipt](../../experiments/manifests/phase5_warm_guard_v1_validation01.json)
+  from clean source matches preflight; 891 tests pass, 138 source/370 raw hashes
+  and 53/18 worker starts rechecked. Actual guard model/GPU validation stays open.
 - [ ] Grouped Dev tuning/validation protocol, differential experiments and freeze.
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.

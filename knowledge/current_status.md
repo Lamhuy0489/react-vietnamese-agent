@@ -1,6 +1,6 @@
 # Trạng thái hiện tại
 
-## Hiện hành: warm guard/runtime v5 đã qua preflight — 2026-09-08
+## Hiện hành: warm guard/runtime v5 đã tái lập — 2026-09-08
 
 Worker mới tải backend một lần trong mỗi task, tái dùng giữa các request; không
 chia sẻ worker/cache giữa tasks. Deadline tính cả cold load; lỗi/timeout/identity
@@ -11,7 +11,11 @@ Preflight01 valid: **891 tests pass**, 46 mới, trong 226,45 giây; setup/Ruff/
 140 mock Broker calls và 240 fake guard classifications trong runtime matrix.
 138 source/370 raw hashes kiểm lại, 1.038 prior source entries nguyên vẹn.
 Trong paired runs, worker process starts 53 cold → 18 warm; không phải GPU speedup.
-Selected-source reproduction đang chuẩn bị.
+[Selected receipt](../experiments/manifests/phase5_warm_guard_v1_validation01.json)
+từ source sạch `2300751` khớp preflight: **891 tests pass** trong 225,80 giây;
+138 source/370 raw hashes kiểm lại, số worker starts vẫn 53/18.
+Tiếp theo là guard model/revision, adapter GPU có memory budgets riêng và kiểm
+statelessness/VRAM khi chạy đồng thời agent. Chưa nghiệm thu Phase 5.
 Không model/GPU/Kaggle hoặc Test payload; giữ nguyên source v4 đã khóa.
 
 ## Lịch sử: A6 runtime integration đã tái lập
