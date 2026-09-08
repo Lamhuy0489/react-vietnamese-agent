@@ -1,6 +1,17 @@
 # Trạng thái hiện tại
 
-## Hiện hành: guard GPU v1 đã audit, còn lỗi chất lượng/cleanup — 2026-09-08
+## Hiện hành: cancellation preflight đạt, tiếp tục trên main — 2026-09-09
+
+Source cancellation `dab6c64`: 1.067tests pass, hai isolated archive/expanded PAX
+layouts pass whole CPU stub protocol, eight tools/fault và 21Dummy/resume.
+[Receipt](../experiments/manifests/phase5_guard_cancellation_v1_preflight01.json).
+Đang chuẩn bị push source/receipt trước một private GPU technical probe; chưa
+submit cancellation. Không classification rerun, không Test hoặc thay model.
+Nhánh bạn `phase5-integration` đã review; owner cho tiếp tục main, không lấy các
+sửa đổi chưa đạt hoặc results trùng QA đã có. [Review](phase5_integration_review_20260909.md).
+Phase5 chưa accepted; còn recovery/coexistence/grouped Dev và guard quality.
+
+## Lịch sử: guard GPU v1 đã audit, còn lỗi chất lượng/cleanup — 2026-09-08
 
 Kernel v1 COMPLETE ngay lần submit đầu; không retry. Qwen 1.5B có bốn output
 đúng schema, A lặp lại đúng hash nhưng **B cũng bị gán SAFE**, cả bốn output

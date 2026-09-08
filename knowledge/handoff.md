@@ -1,16 +1,34 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-09-08. Đây là chỉ dẫn tiếp tục, không thay thế contract.
+Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế contract.
 
 ## Đang làm
 
-Mốc mới: cancellation/VRAM recovery probe đã triển khai riêng, đang QA.
+Yêu cầu hiện hành: tiếp tục công việc trên main, chỉ lấy phần nhánh bạn nếu cần.
+Không cherry-pick: không có functionality cần thiết mới; A0/A1 QA đã có trên main,
+các sửa adapter/ignore chưa đạt. Nhánh bạn giữ nguyên, không merge hoặc sửa.
+[Biên bản review](phase5_integration_review_20260909.md): tip `7f37634`, hai
+commits trên remote main `505149b`; chưa nên tích hợp vì generation lỗi,
+credential ignores bị bỏ, loader/profile Gemma lệch và frozen hashes thay đổi.
+Adapter tests nhánh: 48pass/3fail; Ruff7lỗi, mypy12lỗi trong CPU dev env.
+Chưa chạy full suite nhánh, không đọc Test/GT hoặc thực hiện remote writes.
+Bước tiếp theo: đẩy source/receipt cancellation đã kiểm, chạy một private GPU
+probe rồi audit. Không cần tài khoản mới; chưa submit cancellation GPU.
+
+Mốc local: cancellation/VRAM recovery probe đã triển khai riêng và pass QA.
 [Contract](../docs/architecture/phase5_guard_cancellation_v1_contract.md).
 Three trials resident_close/busy_timeout/ignore_term_timeout; no model.generate,
 không retry A/B. Frozen WarmGuard/HF adapter giữ nguyên, deadline120/graces0,5/1.
 Observer CUDA parent ổn định, sixsamples/1s, tolerance256MiB, residency>=2GiB.
 21 targeted tests pass (five spawned-process, ten recovery, six overlay).
-Full suite đang chạy; chưa commit/exact preflight/GPU cho mốc mới.
+Full suite 1.067tests/301,86s pass; setup/Ruff/mypy211files/knowledge pass.
+Local commit `dab6c64` chưa push. Exact archive/expanded PAX preflight pass,
+receipt ở `build/kaggle/phase5_guard_cancellation_v1_preflight01/preflight_receipt.json`;
+[Selected preflight](../experiments/manifests/phase5_guard_cancellation_v1_preflight01.json)
+đã copy byte-identical, overlay/wrapper và 134 frozen source hashes kiểm lại.
+Chưa cancellation GPU. Full suite đang kiểm lại với basetemp cancel_v1_02.
+Pre-submit 2026-09-09: account huylmhuhu còn29,45h GPU, Dataset READY/v1/private;
+kernel cancellation chưa tìm thấy. Không đổi account hoặc coi quota là giữ chỗ.
 Kernel-only overlay builder `scripts/prepare_phase5_guard_cancellation_v1.py`
 dùng lại Dataset v1, thêm đúng hai files không overwrite frozen source.
 

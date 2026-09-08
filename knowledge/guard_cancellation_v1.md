@@ -20,6 +20,9 @@ Dataset v1/model giữ nguyên. Preflight phải chạy actual PAX/archive, eigh
 21Dummy/completed+missingonly resume, toàn cancellationstub trong isolatedvenv.
 
 21 targeted tests pass: five process lifecycle/error persistence, ten tolerance/
-late samples, six overlay integrity. Fullsuite và exact preflight đang chờ.
+late samples, six overlay integrity. Fullsuite1.067tests/301,86s pass;
+exact archive/expanded PAX preflight pass cả hai layouts từ source dab6c64.
+[Selected receipt](../experiments/manifests/phase5_guard_cancellation_v1_preflight01.json)
+copy byte-identical; overlay/wrapper/134 frozen source hashes đã kiểm lại.
 Chưa real GPU submission cho cancellation. Giữ các first guard GPU diagnostics:
 B SAFE, forced terminate, không guard production acceptance. Phase5 chưa accepted.

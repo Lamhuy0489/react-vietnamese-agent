@@ -1,0 +1,555 @@
+{
+  "protocol": "guard_cancellation_overlay_v1_preflight",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "7649d5bed0b872e93b4233a7dcdbdf0da4623194",
+  "bootstrap_commit": "dab6c6400ec573c0fd2e44f2b61528688d868781",
+  "bundle_manifest_sha256": "b14976413b72898b6c0c1b8c46c1ebb0f62f63633f647ab2064fbc048262240f",
+  "base_preflight_sha256": "9eca9191b2f2e370e37f3bb49c8368ff5f9dd63f4f6c4f8795d001481c370ef4",
+  "remote_diagnostic_sha256": "3b7183d432ea3d332a1fb0c0022c566f21b06aea8465bae1f3d95249896822e2",
+  "remote_pax_sha256": "afc46082093e423aee3f0c9f9dff5da1c860a4a415caa54ec820ba34f1890594",
+  "wrapper_sha256": "95b2ec840e2a4569a23b23d16b12ff2cc024389dab85d5cd9e45c435880067b3",
+  "bootstrap_template_sha256": "73376becda9a21880e4ed94aded1fd98b4f384c272ba7b91c6dbe11587fa0221",
+  "kernel_metadata_sha256": "ad952c3b0187fb415ceffcf2fadc454e7175b019b9bb872b522da3af77200ba4",
+  "checks": [
+    {
+      "layout": "archive",
+      "isolated_python": true,
+      "tools": 8,
+      "dummy_tasks": 21,
+      "completed_task_resume": true,
+      "missing_only_resume": true,
+      "retained_checkpoints": 20,
+      "missing_task_runs": 1,
+      "probe": {
+        "protocol": "guard_cancellation_v1",
+        "valid": true,
+        "phase5_accepted": false,
+        "model_generation_calls": 0,
+        "rows": [
+          {
+            "trial": "resident_close",
+            "before": {
+              "free_bytes": 15032385536,
+              "total_bytes": 17179869184
+            },
+            "valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "resident": {
+              "free_bytes": 11811160064,
+              "total_bytes": 17179869184
+            },
+            "attempts": [
+              {
+                "sequence": 1,
+                "status": "OK",
+                "pid": 4536,
+                "cold_start": true,
+                "reaped": false,
+                "worker_retained": true,
+                "load_seconds": 0.0051520139968488365,
+                "generation_seconds": 9.509202209301293e-05,
+                "elapsed_seconds": 0.42867046801256947,
+                "execution_config_sha256": "ada4e51894f39eefa4a710880938fb1ad521213d52323786abd4eabd273e5131",
+                "request_sha256": "852bd1ff5f133ca8a26030ec2abeecb5fff1124a1cbf923dfd06e256795906ba",
+                "generation_sha256": "a77b3cf340a59d5da57ed446930b739d0db0e362b116831c39cce522cbd4115b"
+              }
+            ],
+            "lifecycle": [
+              {
+                "sequence": 1,
+                "pid": 4536,
+                "method": "GRACEFUL",
+                "reaped": true,
+                "exitcode": 0,
+                "elapsed_seconds": 0.032679302006727085
+              }
+            ],
+            "closed": true,
+            "reaped": true,
+            "after_samples": [
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              }
+            ],
+            "recovery_valid": true,
+            "graceful": true
+          },
+          {
+            "trial": "busy_timeout",
+            "before": {
+              "free_bytes": 15032385536,
+              "total_bytes": 17179869184
+            },
+            "valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "resident": {
+              "free_bytes": 11811160064,
+              "total_bytes": 17179869184
+            },
+            "timeout_observed": true,
+            "attempts": [
+              {
+                "sequence": 1,
+                "status": "OK",
+                "pid": 4538,
+                "cold_start": true,
+                "reaped": false,
+                "worker_retained": true,
+                "load_seconds": 0.0009386969904880971,
+                "generation_seconds": 0.00010711199138313532,
+                "elapsed_seconds": 0.33275170798879117,
+                "execution_config_sha256": "ada4e51894f39eefa4a710880938fb1ad521213d52323786abd4eabd273e5131",
+                "request_sha256": "852bd1ff5f133ca8a26030ec2abeecb5fff1124a1cbf923dfd06e256795906ba",
+                "generation_sha256": "a77b3cf340a59d5da57ed446930b739d0db0e362b116831c39cce522cbd4115b"
+              },
+              {
+                "sequence": 2,
+                "status": "TIMEOUT",
+                "pid": 4538,
+                "cold_start": false,
+                "reaped": true,
+                "worker_retained": false,
+                "elapsed_seconds": 2.0052910200029146,
+                "execution_config_sha256": "ada4e51894f39eefa4a710880938fb1ad521213d52323786abd4eabd273e5131",
+                "request_sha256": "771781815e16fb17c86efd5b12c9643b4d64f9b8dae860b9b4ff2b62a2488e0f",
+                "generation_sha256": "a77b3cf340a59d5da57ed446930b739d0db0e362b116831c39cce522cbd4115b"
+              }
+            ],
+            "lifecycle": [
+              {
+                "sequence": 1,
+                "pid": 4538,
+                "method": "TERMINATE",
+                "reaped": true,
+                "exitcode": -15,
+                "elapsed_seconds": 0.0044991690083406866
+              }
+            ],
+            "closed": true,
+            "reaped": true,
+            "after_samples": [
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              }
+            ],
+            "recovery_valid": true,
+            "graceful": false
+          },
+          {
+            "trial": "ignore_term_timeout",
+            "before": {
+              "free_bytes": 15032385536,
+              "total_bytes": 17179869184
+            },
+            "valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "resident": {
+              "free_bytes": 11811160064,
+              "total_bytes": 17179869184
+            },
+            "timeout_observed": true,
+            "attempts": [
+              {
+                "sequence": 1,
+                "status": "OK",
+                "pid": 4540,
+                "cold_start": true,
+                "reaped": false,
+                "worker_retained": true,
+                "load_seconds": 0.000926809007069096,
+                "generation_seconds": 9.440700523555279e-05,
+                "elapsed_seconds": 0.3225808749848511,
+                "execution_config_sha256": "ada4e51894f39eefa4a710880938fb1ad521213d52323786abd4eabd273e5131",
+                "request_sha256": "852bd1ff5f133ca8a26030ec2abeecb5fff1124a1cbf923dfd06e256795906ba",
+                "generation_sha256": "a77b3cf340a59d5da57ed446930b739d0db0e362b116831c39cce522cbd4115b"
+              },
+              {
+                "sequence": 2,
+                "status": "TIMEOUT",
+                "pid": 4540,
+                "cold_start": false,
+                "reaped": true,
+                "worker_retained": false,
+                "elapsed_seconds": 2.5056817099975888,
+                "execution_config_sha256": "ada4e51894f39eefa4a710880938fb1ad521213d52323786abd4eabd273e5131",
+                "request_sha256": "771781815e16fb17c86efd5b12c9643b4d64f9b8dae860b9b4ff2b62a2488e0f",
+                "generation_sha256": "a77b3cf340a59d5da57ed446930b739d0db0e362b116831c39cce522cbd4115b"
+              }
+            ],
+            "lifecycle": [
+              {
+                "sequence": 1,
+                "pid": 4540,
+                "method": "KILL",
+                "reaped": true,
+                "exitcode": -9,
+                "elapsed_seconds": 0.5049573699943721
+              }
+            ],
+            "closed": true,
+            "reaped": true,
+            "after_samples": [
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              }
+            ],
+            "recovery_valid": true,
+            "graceful": false
+          }
+        ],
+        "scope": "Resource lifecycle only; no guard quality or agent coexistence"
+      }
+    },
+    {
+      "layout": "expanded",
+      "isolated_python": true,
+      "tools": 8,
+      "dummy_tasks": 21,
+      "completed_task_resume": true,
+      "missing_only_resume": true,
+      "retained_checkpoints": 20,
+      "missing_task_runs": 1,
+      "probe": {
+        "protocol": "guard_cancellation_v1",
+        "valid": true,
+        "phase5_accepted": false,
+        "model_generation_calls": 0,
+        "rows": [
+          {
+            "trial": "resident_close",
+            "before": {
+              "free_bytes": 15032385536,
+              "total_bytes": 17179869184
+            },
+            "valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "resident": {
+              "free_bytes": 11811160064,
+              "total_bytes": 17179869184
+            },
+            "attempts": [
+              {
+                "sequence": 1,
+                "status": "OK",
+                "pid": 4621,
+                "cold_start": true,
+                "reaped": false,
+                "worker_retained": true,
+                "load_seconds": 0.0007094710017554462,
+                "generation_seconds": 7.811698014847934e-05,
+                "elapsed_seconds": 0.3273391469847411,
+                "execution_config_sha256": "ada4e51894f39eefa4a710880938fb1ad521213d52323786abd4eabd273e5131",
+                "request_sha256": "852bd1ff5f133ca8a26030ec2abeecb5fff1124a1cbf923dfd06e256795906ba",
+                "generation_sha256": "a77b3cf340a59d5da57ed446930b739d0db0e362b116831c39cce522cbd4115b"
+              }
+            ],
+            "lifecycle": [
+              {
+                "sequence": 1,
+                "pid": 4621,
+                "method": "GRACEFUL",
+                "reaped": true,
+                "exitcode": 0,
+                "elapsed_seconds": 0.032206629985012114
+              }
+            ],
+            "closed": true,
+            "reaped": true,
+            "after_samples": [
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              }
+            ],
+            "recovery_valid": true,
+            "graceful": true
+          },
+          {
+            "trial": "busy_timeout",
+            "before": {
+              "free_bytes": 15032385536,
+              "total_bytes": 17179869184
+            },
+            "valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "resident": {
+              "free_bytes": 11811160064,
+              "total_bytes": 17179869184
+            },
+            "timeout_observed": true,
+            "attempts": [
+              {
+                "sequence": 1,
+                "status": "OK",
+                "pid": 4622,
+                "cold_start": true,
+                "reaped": false,
+                "worker_retained": true,
+                "load_seconds": 0.000733633991330862,
+                "generation_seconds": 0.00010438202298246324,
+                "elapsed_seconds": 0.33115102801821195,
+                "execution_config_sha256": "ada4e51894f39eefa4a710880938fb1ad521213d52323786abd4eabd273e5131",
+                "request_sha256": "852bd1ff5f133ca8a26030ec2abeecb5fff1124a1cbf923dfd06e256795906ba",
+                "generation_sha256": "a77b3cf340a59d5da57ed446930b739d0db0e362b116831c39cce522cbd4115b"
+              },
+              {
+                "sequence": 2,
+                "status": "TIMEOUT",
+                "pid": 4622,
+                "cold_start": false,
+                "reaped": true,
+                "worker_retained": false,
+                "elapsed_seconds": 2.0046559129841626,
+                "execution_config_sha256": "ada4e51894f39eefa4a710880938fb1ad521213d52323786abd4eabd273e5131",
+                "request_sha256": "771781815e16fb17c86efd5b12c9643b4d64f9b8dae860b9b4ff2b62a2488e0f",
+                "generation_sha256": "a77b3cf340a59d5da57ed446930b739d0db0e362b116831c39cce522cbd4115b"
+              }
+            ],
+            "lifecycle": [
+              {
+                "sequence": 1,
+                "pid": 4622,
+                "method": "TERMINATE",
+                "reaped": true,
+                "exitcode": -15,
+                "elapsed_seconds": 0.004356229008408263
+              }
+            ],
+            "closed": true,
+            "reaped": true,
+            "after_samples": [
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              }
+            ],
+            "recovery_valid": true,
+            "graceful": false
+          },
+          {
+            "trial": "ignore_term_timeout",
+            "before": {
+              "free_bytes": 15032385536,
+              "total_bytes": 17179869184
+            },
+            "valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "resident": {
+              "free_bytes": 11811160064,
+              "total_bytes": 17179869184
+            },
+            "timeout_observed": true,
+            "attempts": [
+              {
+                "sequence": 1,
+                "status": "OK",
+                "pid": 4624,
+                "cold_start": true,
+                "reaped": false,
+                "worker_retained": true,
+                "load_seconds": 0.00047842797357589006,
+                "generation_seconds": 6.418899283744395e-05,
+                "elapsed_seconds": 0.30920809297822416,
+                "execution_config_sha256": "ada4e51894f39eefa4a710880938fb1ad521213d52323786abd4eabd273e5131",
+                "request_sha256": "852bd1ff5f133ca8a26030ec2abeecb5fff1124a1cbf923dfd06e256795906ba",
+                "generation_sha256": "a77b3cf340a59d5da57ed446930b739d0db0e362b116831c39cce522cbd4115b"
+              },
+              {
+                "sequence": 2,
+                "status": "TIMEOUT",
+                "pid": 4624,
+                "cold_start": false,
+                "reaped": true,
+                "worker_retained": false,
+                "elapsed_seconds": 2.50492887099972,
+                "execution_config_sha256": "ada4e51894f39eefa4a710880938fb1ad521213d52323786abd4eabd273e5131",
+                "request_sha256": "771781815e16fb17c86efd5b12c9643b4d64f9b8dae860b9b4ff2b62a2488e0f",
+                "generation_sha256": "a77b3cf340a59d5da57ed446930b739d0db0e362b116831c39cce522cbd4115b"
+              }
+            ],
+            "lifecycle": [
+              {
+                "sequence": 1,
+                "pid": 4624,
+                "method": "KILL",
+                "reaped": true,
+                "exitcode": -9,
+                "elapsed_seconds": 0.5047069849970285
+              }
+            ],
+            "closed": true,
+            "reaped": true,
+            "after_samples": [
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              },
+              {
+                "free_bytes": 15032385536,
+                "total_bytes": 17179869184
+              }
+            ],
+            "recovery_valid": true,
+            "graceful": false
+          }
+        ],
+        "scope": "Resource lifecycle only; no guard quality or agent coexistence"
+      }
+    }
+  ],
+  "overlay_sha256": {
+    "scripts/probe_phase5_guard_cancellation.py": "89fffad72bad09fccb9796f2550a53f96bd2ad9dfd779f44c4134cfa077d151f",
+    "src/react_agent/llm/guard_cancellation_v1.py": "1437b47f9c4834ecf940c4d9771b2218c66c5c313f3df895151df970e4f48b06"
+  },
+  "prerequisites": {
+    "clean_frozen": true,
+    "robustness_ids_presealed": 50,
+    "adversarial_seal_valid": true,
+    "test_access": "hash-only; robustness IDs only",
+    "clean_component_hashes": {
+      "dev_pilot/fault_plans.json": "3da01fa7c945cc00bb72a1e505b4db77bd339b19f15060ae6f37c3c3df06bceb",
+      "dev_pilot/task_ids.json": "1548683a7c985d08b867a4adc276071b08c36c5e14d29121e96966185f86beba",
+      "environment/cached_pages/pages.json": "4ce56c270a4d96117ba14cde6d070e56a59817d774401f71372fa9f2c2fab34a",
+      "environment/database/seed.json": "51b5f8980984f8905bbee557906c677cca449aa16a83fb7de645cb375b0a2b31",
+      "environment/database/university.db": "85bc7a259438b89f8f86fdf09965aa46e9ef9b4749564795aab7f43e582c10c3",
+      "environment/documents/documents.json": "431a7b8cbcd271c98f08adc61cdd83c0e1ed34f944f86c43fad8dca2526cacbe",
+      "manifests/environment_manifest.json": "4241e73fa3ada87dd9d595d5db0a249966a5cead7da04a37cba7cac020b787e9",
+      "manifests/source_catalog.json": "f9d8621762d016aefca05d1eff24f52ea39fc2034d4122889c5b7f1127588b49",
+      "manifests/split_manifest.json": "4e396d50e8a4f6b50be42913e4213db0ab870f461bcedd4fc01dfec1c9cec6e0",
+      "pool/tasks.jsonl": "f96839aa55aa95de0b3fd2ba79139bbd108d2899de26391203ae978672c86611",
+      "private/dev_ground_truth.jsonl": "95a3e4668699dddbb8f8e85ff3ad08950d528644980ec4033a266d851d01582c",
+      "private/pool_ground_truth.jsonl": "5cdc74cfca6887e63a3fed7da22a0d78c4a781029d826768a4f5b5ddc9ad0a52",
+      "private/robustness_canonical_ids.json": "18feead8234e8c1461f91077fabcbaee151f5f3791ade1275c8cbf8fc27652d0",
+      "private/test_ground_truth.jsonl": "8d11fec78cdf6714ff6d5136e88abb3fd7dbc1f66b0485a77c2c1933696b95a5",
+      "reports/pool_validation.json": "d4e940014be90ace7a7ff839454b867255f8ef8787d88daeb85b592be9a35d09",
+      "reports/qa_records.json": "399495e2f73373dbbf61eba43fab2666e430baab50a2f83616eec2dcc8000c22",
+      "splits/dev.jsonl": "ce1cda2a258c6d00b31a428b10258bbda7cade77c4b3841aa8cd1af34227a0d3",
+      "splits/test.jsonl": "688fddcc4c4cb363515e1247e992cbda9e5268ba8e1cc51e0060d48f5a9dad20"
+    },
+    "adversarial_seal_sha256": "431b81118026bef6c60e33306e51df71160504579e76ea08fb4648005fa1cb6b"
+  },
+  "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+  "dataset_version": 1,
+  "real_model_runs": 0,
+  "scope": "Technical cancellation overlay; Dataset/runtime/model unchanged; no LLM text generation."
+}
