@@ -1,8 +1,8 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: first guard-only GPU probe audited; quality and cleanup gaps remain**
+- Current stage: **Phase 5 in progress: GPU cancellation/VRAM recovery audited; quality and coexistence gaps remain**
 - Setup owner: Lâm Quang Huy
-- Last updated: 2026-09-08
+- Last updated: 2026-09-09
 
 ## Setup acceptance
 
@@ -340,6 +340,16 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   Both workers reaped only after TERMINATE/-15. V1 graceful-cleanup audit fails;
   [post-run v2 interpretation](../evaluation/phase5_guard_gpu_audit_deviation.md)
   reports integrity and failed graceful cleanup separately. No semantic retry.
+
+- [x] Separate cancellation-only GPU v1 COMPLETE on first submission, no model
+  generation or semantic retry. Three fresh workers, resident3.047GiB, all18
+  recovery samples returned to baseline. TERMINATE/-15 for normal close/busy
+  timeout; SIGTERM-ignore escalated to KILL/-9. Normal closure still not graceful.
+  [Report](../evaluation/phase5_guard_cancellation_v1_report.md),
+  [audit](../../experiments/manifests/phase5_guard_cancellation_v1_audit01.json).
+  1,087 tests pass; setup/Ruff/mypy213files pass; two audits byte-identical,
+  67 raw/134 frozen source hashes verified. No agent resident, quality evaluation
+  or Test payload access. Recovery is bounded technical evidence, not Phase5 closure.
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.

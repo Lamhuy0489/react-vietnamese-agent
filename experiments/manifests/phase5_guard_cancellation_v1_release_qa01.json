@@ -1,0 +1,44 @@
+{
+  "protocol": "guard_cancellation_v1_release_qa",
+  "software_qa_valid": true,
+  "phase5_accepted": false,
+  "gpu_kernel": "huylmhuhu/react-vn-guard-cancel-run-v1",
+  "gpu_kernel_version": 1,
+  "gpu_kernel_status": "COMPLETE",
+  "kernel_submissions": 1,
+  "model_generation_calls": 0,
+  "semantic_retries": 0,
+  "pre_submission_main_commit": "52004ea",
+  "bootstrap_commit": "dab6c6400ec573c0fd2e44f2b61528688d868781",
+  "selected_local_audit": "results/phase5_guard_cancellation_v1_audit01",
+  "reproduction_local_audit": "results/phase5_guard_cancellation_v1_audit02",
+  "audit_json_and_report_byte_identical": true,
+  "raw_files_hash_verified": 67,
+  "prior_adapter_source_files_hash_verified": 134,
+  "credential_scan_files": 71,
+  "credential_value_matches": 0,
+  "test_payloads_parsed": 0,
+  "quality": {
+    "setup": "pass",
+    "ruff": "pass",
+    "mypy_files_including_cancellation_wrapper": 213,
+    "new_audit_tests": 20,
+    "full_suite_tests": 1087,
+    "full_suite_seconds": 257.0,
+    "basetemp": "build/pytest_guard_cancel_audit_v1_01",
+    "knowledge_check": "pass"
+  },
+  "source_and_selected_evidence_sha256": {
+    "scripts/audit_phase5_guard_cancellation.py": "db5f2a96cc649441635417cdece207295164423e2a5999daa1f118a0ca97b2a7",
+    "src/react_agent/validation/guard_cancellation_audit_v1.py": "69d80c7fc953c74b7d9b367e136786ca9ecff688ea2a0a449fa431e299fcde1f",
+    "tests/unit/test_guard_cancellation_audit_v1.py": "47a51139f6a95aeaf9eb6853187b9b513566719fa2446bf5375f8e19cdbf9f69",
+    "experiments/manifests/phase5_guard_cancellation_v1_audit01.json": "d5d928c792e0812a7ade6902b33ba162e4dd7278356ed322af6ee26d23254958",
+    "docs/evaluation/phase5_guard_cancellation_v1_report.md": "e31ed1e3610ebedda7280c6faf041a91a0dea418ce5b4a961d3e2822c542c36f"
+  },
+  "remaining": [
+    "Normal closure still TERMINATE/-15, not graceful",
+    "Historical B classified SAFE; no production guard quality acceptance",
+    "Concurrent agent/guard placement and context stress",
+    "Grouped Dev protocol, A4 scope and general final entitlements"
+  ]
+}

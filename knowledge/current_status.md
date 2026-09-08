@@ -1,6 +1,19 @@
 # Trạng thái hiện tại
 
-## Hiện hành: cancellation preflight đạt, tiếp tục trên main — 2026-09-09
+## Hiện hành: cancellation GPU đã audit, VRAM recovery đạt — 2026-09-09
+
+Kernel cancellation v1 COMPLETE ngay lần submit đầu; ba workers tải model thật,
+không model.generate. Model resident3,047GiB; cả18samples sau reap trở về baseline
+(residual0MiB). Hai TERMINATE/-15, ca ignore-term KILL/-9; normal close vẫn chưa
+graceful. [Báo cáo](../docs/evaluation/phase5_guard_cancellation_v1_report.md),
+[audit](../experiments/manifests/phase5_guard_cancellation_v1_audit01.json).
+Hai audit/report byte-identical; 67raw/134frozen source hashes kiểm lại;
+credential scan71files/0matches. **1.087tests/257s**, setup/Ruff/mypy213files pass.
+Không Test/GT, semantic retry hoặc sửa guard quality miss cũ. Tiếp theo là agent
+placement/coexistence, grouped Dev/model decision và phạm vi A4/final còn lại.
+Phase5 chưa accepted; không cần tài khoản mới. [Handoff](handoff.md).
+
+## Lịch sử: cancellation preflight đạt, tiếp tục trên main — 2026-09-09
 
 Source cancellation `dab6c64`: 1.067tests pass, hai isolated archive/expanded PAX
 layouts pass whole CPU stub protocol, eight tools/fault và 21Dummy/resume.
