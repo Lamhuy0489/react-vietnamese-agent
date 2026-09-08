@@ -1,0 +1,36 @@
+{
+  "protocol": "phase5_placement_release_qa_v1",
+  "software_qa_valid": true,
+  "phase5_accepted": false,
+  "source_commit": "2f311bbce218e082897a66d3cfe20d7cf42a00b1",
+  "quality": {
+    "full_suite_tests": 1143,
+    "full_suite_seconds": 241.49,
+    "new_tests": 56,
+    "basetemp": "build/pytest_placement_v1_final01",
+    "setup": "pass",
+    "ruff": "pass",
+    "mypy_files_including_cancellation_wrapper": 215,
+    "knowledge": "pass"
+  },
+  "source_and_evidence_sha256": {
+    "src/react_agent/llm/coexistence_placement_v1.py": "873c8c2169a6a25ec000bec9805801d679c9946950311059d20449f2245131c0",
+    "scripts/verify_phase5_placement.py": "9cbf7b53ce33fdd1a301a2eeb8dda6892c85fbb9efebf0a27012c5714cf706ab",
+    "tests/unit/test_coexistence_placement_v1.py": "054494b7e9baf736e729c2f2a9cb59d7c3b95c94a329885a81c03a6b2811da1c",
+    "docs/architecture/phase5_coexistence_placement_v1_contract.md": "d8c95157218b51a432cc209d4892b2f7ff4db1e9d6eca502cac961f3f33edb1f",
+    "experiments/manifests/phase5_placement_v1_validation01.json": "c2368c7e00d14364ea4b9581b7233a2ca8fb3b3e4ec499665760ff1bafd4fd2f",
+    "docs/evaluation/qwen7b_upstream_inventory_v1.json": "9023d04a65f44a4e4beef29efba9f1ca088e2af1990cc82e586f457d4c5c43b3",
+    "docs/evaluation/qwen7b_pinned_config_v1.json": "7463bb0ea78315365e6c6b74de4e73bbcc8359dfb0c5a737584e077d42c0b03c"
+  },
+  "selected_local_receipt": "results/phase5_placement_v1_validation01/receipt.json",
+  "reproduction_local_receipt": "results/phase5_placement_v1_validation02/receipt.json",
+  "receipt_bytes_identical": true,
+  "prior_source_hashes_verified": 134,
+  "prior_gpu_raw_hashes_verified": 67,
+  "model_loads": 0,
+  "gpu_runs": 0,
+  "test_payloads_parsed": 0,
+  "combined_gpu_fit": "NOT_MEASURED",
+  "agent_weights_authenticated": false,
+  "scope": "CPU placement only; publisher metadata/config verified, no agent weights downloaded"
+}

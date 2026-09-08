@@ -1,0 +1,124 @@
+{
+  "protocol": "phase5_placement_cpu_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_git_commit": "2f311bbce218e082897a66d3cfe20d7cf42a00b1",
+  "source_worktree_clean": true,
+  "source_sha256": {
+    "scripts/verify_phase5_placement.py": "9cbf7b53ce33fdd1a301a2eeb8dda6892c85fbb9efebf0a27012c5714cf706ab",
+    "src/react_agent/llm/coexistence_placement_v1.py": "873c8c2169a6a25ec000bec9805801d679c9946950311059d20449f2245131c0",
+    "tests/unit/test_coexistence_placement_v1.py": "054494b7e9baf736e729c2f2a9cb59d7c3b95c94a329885a81c03a6b2811da1c",
+    "docs/architecture/phase5_coexistence_placement_v1_contract.md": "d8c95157218b51a432cc209d4892b2f7ff4db1e9d6eca502cac961f3f33edb1f"
+  },
+  "plan": {
+    "protocol": "qwen7b_guard15_placement_v1",
+    "agent_candidate": "Qwen/Qwen2.5-7B-Instruct",
+    "guard_device": 1,
+    "first_device_layers": 20,
+    "agent_caps": [
+      12884901888,
+      7516192768
+    ],
+    "guard_cap": 5368709120,
+    "global_headroom": 1073741824,
+    "workspace_per_device": 1073741824,
+    "input_limit": 4096,
+    "output_limit": 512
+  },
+  "plan_sha256": "e5ab63050de430b4620d51352da61cb2da73d86cf3db6e92ec834faeba7d405a",
+  "device_map": {
+    "model.embed_tokens": 0,
+    "model.layers.0": 0,
+    "model.layers.1": 0,
+    "model.layers.2": 0,
+    "model.layers.3": 0,
+    "model.layers.4": 0,
+    "model.layers.5": 0,
+    "model.layers.6": 0,
+    "model.layers.7": 0,
+    "model.layers.8": 0,
+    "model.layers.9": 0,
+    "model.layers.10": 0,
+    "model.layers.11": 0,
+    "model.layers.12": 0,
+    "model.layers.13": 0,
+    "model.layers.14": 0,
+    "model.layers.15": 0,
+    "model.layers.16": 0,
+    "model.layers.17": 0,
+    "model.layers.18": 0,
+    "model.layers.19": 0,
+    "model.layers.20": 1,
+    "model.layers.21": 1,
+    "model.layers.22": 1,
+    "model.layers.23": 1,
+    "model.layers.24": 1,
+    "model.layers.25": 1,
+    "model.layers.26": 1,
+    "model.layers.27": 1,
+    "model.norm": 1,
+    "model.rotary_emb": 1,
+    "lm_head": 1
+  },
+  "parameters": 7615616512,
+  "fp16_weight_bytes": [
+    10412306432,
+    4818926592
+  ],
+  "dynamic_kv_bytes": [
+    188743680,
+    75497472
+  ],
+  "estimated_agent_bytes": [
+    11674791936,
+    5968165888
+  ],
+  "required_free_bytes_before_either_load": [
+    13958643712,
+    13958643712
+  ],
+  "historical_device_total_bytes": [
+    15636037632,
+    15636037632
+  ],
+  "evidence_sha256": {
+    "experiments/manifests/measured_qwen7b_v1_audit.json": "21757886c0dce8fb8f9044b4af001e06ec5ceb87d39c76c7eae47bd7c733df5c",
+    "results/phase2/measured_qwen7b_v1/phase2_clean_dev_pilot/model_setup.json": "656435da890313fb4827257f83f479c003f34ee408dcd51672c6cf1a1ce9948e",
+    "experiments/manifests/phase5_guard_hf_v1_validation01.json": "1bff83c5105033950bff6f1b242ab33ccd362a56d67e8674247fc41b728ed964"
+  },
+  "prior_source_hashes_verified": 134,
+  "prerequisites": {
+    "clean_frozen": true,
+    "robustness_ids_presealed": 50,
+    "adversarial_seal_valid": true,
+    "test_access": "hash-only; robustness IDs only",
+    "clean_component_hashes": {
+      "dev_pilot/fault_plans.json": "3da01fa7c945cc00bb72a1e505b4db77bd339b19f15060ae6f37c3c3df06bceb",
+      "dev_pilot/task_ids.json": "1548683a7c985d08b867a4adc276071b08c36c5e14d29121e96966185f86beba",
+      "environment/cached_pages/pages.json": "4ce56c270a4d96117ba14cde6d070e56a59817d774401f71372fa9f2c2fab34a",
+      "environment/database/seed.json": "51b5f8980984f8905bbee557906c677cca449aa16a83fb7de645cb375b0a2b31",
+      "environment/database/university.db": "85bc7a259438b89f8f86fdf09965aa46e9ef9b4749564795aab7f43e582c10c3",
+      "environment/documents/documents.json": "431a7b8cbcd271c98f08adc61cdd83c0e1ed34f944f86c43fad8dca2526cacbe",
+      "manifests/environment_manifest.json": "4241e73fa3ada87dd9d595d5db0a249966a5cead7da04a37cba7cac020b787e9",
+      "manifests/source_catalog.json": "f9d8621762d016aefca05d1eff24f52ea39fc2034d4122889c5b7f1127588b49",
+      "manifests/split_manifest.json": "4e396d50e8a4f6b50be42913e4213db0ab870f461bcedd4fc01dfec1c9cec6e0",
+      "pool/tasks.jsonl": "f96839aa55aa95de0b3fd2ba79139bbd108d2899de26391203ae978672c86611",
+      "private/dev_ground_truth.jsonl": "95a3e4668699dddbb8f8e85ff3ad08950d528644980ec4033a266d851d01582c",
+      "private/pool_ground_truth.jsonl": "5cdc74cfca6887e63a3fed7da22a0d78c4a781029d826768a4f5b5ddc9ad0a52",
+      "private/robustness_canonical_ids.json": "18feead8234e8c1461f91077fabcbaee151f5f3791ade1275c8cbf8fc27652d0",
+      "private/test_ground_truth.jsonl": "8d11fec78cdf6714ff6d5136e88abb3fd7dbc1f66b0485a77c2c1933696b95a5",
+      "reports/pool_validation.json": "d4e940014be90ace7a7ff839454b867255f8ef8787d88daeb85b592be9a35d09",
+      "reports/qa_records.json": "399495e2f73373dbbf61eba43fab2666e430baab50a2f83616eec2dcc8000c22",
+      "splits/dev.jsonl": "ce1cda2a258c6d00b31a428b10258bbda7cade77c4b3841aa8cd1af34227a0d3",
+      "splits/test.jsonl": "688fddcc4c4cb363515e1247e992cbda9e5268ba8e1cc51e0060d48f5a9dad20"
+    },
+    "adversarial_seal_sha256": "431b81118026bef6c60e33306e51df71160504579e76ea08fb4648005fa1cb6b"
+  },
+  "model_loads": 0,
+  "gpu_runs": 0,
+  "test_payloads_parsed": 0,
+  "live_free_memory_admission": "NOT_RUN",
+  "combined_gpu_fit": "NOT_MEASURED",
+  "agent_snapshot_authenticated": false,
+  "scope": "Analytical CPU budget admission only; workspace is not a peak bound"
+}

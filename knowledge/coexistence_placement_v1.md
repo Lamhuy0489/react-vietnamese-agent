@@ -44,8 +44,33 @@ contract/source evolved before freeze, so neither is selected evidence. A fresh
 committed-source reproduction must bind the final geometry validator and tests.
 The verifier
 binds source/plan/metadata and preserves134frozen adapter hashes and Test seals.
-Full quality checks are in progress; no new GPU submission.
+Committed source2f311bb reproduced twice, validation01/02 receipts byte-identical.
+[Selected CPU receipt](../experiments/manifests/phase5_placement_v1_validation01.json).
+Full final-source suite **1.143tests/241,49s** pass;56new targetedtests pass;
+setup/Ruff/mypy215files including cancellation wrapper/knowledge pass.
+The earlier suite1125tests passed while geometry additions were in progress;
+only the final1143test run is selected. No new GPU submission.
 Next: versioned sharded agent snapshot acquisition/authentication and budget-
 enforcing HF loader. Then complete CPU fake/context tests and exact packaged
 preflight before declaring/running combined GPU stress. Do not substitute the
 old 13GiB/device loader or use these estimates as measured memory results.
+
+## Agent acquisition preparation
+
+[Pinned upstream inventory](../docs/evaluation/qwen7b_upstream_inventory_v1.json)
+verified through official revision endpoint2026-09-09:
+`a09a35458c702b33eeacc393d103063234e8bc28`,14files including4safetensors shards,
+15,242,807,270bytes total. Public/ungated metadata; LFS SHA256 for shards and
+Git blob SHA1 for metadata recorded. No weights downloaded or locally authenticated;
+no claim that this HF revision is byte-identical to prior Kaggle model variation.
+[Config pinned](../docs/evaluation/qwen7b_pinned_config_v1.json) tải từ raw URL
+cùng revision:663bytes, Git blob SHA1 khớp inventory; geometry validator pass.
+Endpoint resolve trước đó trả nội dung không phải JSON nên bị loại trước khi
+ghi file; dùng raw cùng revision, không retry model/inference.
+
+Local disk observed17,36GiB free. One snapshot is about14,20GiB; a duplicate
+archive/materialized copy plus scratch would exceed current free space. Do not
+start a multi-copy download/package workflow or delete research artifacts silently.
+Investigate read-only pinned Kaggle model mount plus publisher-hash verification,
+or ask owner for a larger storage location if local materialization is necessary.
+No new account or gated-model acceptance needed based on public metadata alone.

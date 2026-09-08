@@ -351,6 +351,15 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   67 raw/134 frozen source hashes verified. No agent resident, quality evaluation
   or Test payload access. Recovery is bounded technical evidence, not Phase5 closure.
 
+- [x] CPU-only dual-GPU placement admission: explicit candidate20/8layer map,
+  separate agent12/7GiB and guard5GiB caps, context/geometry/tensor-placement
+  rejection. 1,143 tests pass,56new; setup/Ruff/mypy215files/knowledge pass.
+  [Contract](../architecture/phase5_coexistence_placement_v1_contract.md),
+  [CPU receipt](../../experiments/manifests/phase5_placement_v1_validation01.json)
+  reproduced twice byte-identically from source2f311bb. No budget-enforcing
+  agent HF loader, authenticated agent weights or combined GPU run yet;
+  analytical estimates are not measured peaks or model selection.
+
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
 The current v5 loop supports A0–A6 with an explicitly task-owned warm guard for

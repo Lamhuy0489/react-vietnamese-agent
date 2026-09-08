@@ -1,12 +1,16 @@
 # Trạng thái hiện tại
 
-## Hiện hành: đang kiểm tra placement agent/guard trên CPU — 2026-09-09
+## Hiện hành: placement agent/guard đã qua CPU QA — 2026-09-09
 
 Module riêng đã có deterministic map và kiểm tra ngân sách/context/tensor placement;
 56targetedtests pass. Candidate Qwen7B chia20/8layers, agent caps12/7GiB,
 guard5GiB/device1; estimates10,873/5,558GiB gồmKV/workspace, không phải GPU peak.
 Model geometry khớp audited pilot setup;134frozen source hashes và seals giữ nguyên.
-Full QA đang chạy. Chưa agent weights acquisition/adapter, chưa combined GPU run.
+Full QA **1.143tests/241,49s**, setup/Ruff/mypy215files/knowledge pass.
+Source2f311bb tái lập hai lần, receipts byte-identical.
+[Selected CPU receipt](../experiments/manifests/phase5_placement_v1_validation01.json).
+Upstream agent inventory/config pin đã xác minh; chưa weights acquisition/adapter,
+chưa combined GPU run. Disk không đủ nhiều bản copy snapshot, chưa tải weights.
 [Tri thức và bằng chứng](coexistence_placement_v1.md), [handoff](handoff.md).
 
 ## Lịch sử: cancellation GPU đã audit, VRAM recovery đạt — 2026-09-09

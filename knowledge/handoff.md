@@ -5,11 +5,17 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 ## Đang làm
 
 Mốc hiện hành: CPU-only placement admission đã triển khai;56targetedtests pass,
-full QA đang chạy. [Contract](../docs/architecture/phase5_coexistence_placement_v1_contract.md),
+full QA1.143tests/241,49s pass. [Contract](../docs/architecture/phase5_coexistence_placement_v1_contract.md),
 [bằng chứng/giới hạn](coexistence_placement_v1.md).
 Qwen7B candidate chia20/8layers, agent process caps12/7GiB và guard5GiB/device1;
 globalheadroom1GiB/device riêng. Không model selection hoặc combined-fit claim.
 Chưa agent snapshot authenticated/budgeted HF loader hoặc GPU submission mới.
+Source2f311bb đã tái lập hai lần, receipts validation01/02 byte-identical.
+[Selected CPU receipt](../experiments/manifests/phase5_placement_v1_validation01.json).
+Upstream Qwen7B14files/fourshards được xác minh ở revision cố định; config663bytes
+khớp Git blob và geometry. Không tải weights. Disk17,36GiB còn: không đủ
+workflow nhiều bản copy của snapshot14,20GiB; xem phương án pinned Kaggle mount
+và publisher-hash verification hoặc cần storage lớn hơn, không tự xóa artifacts.
 
 Phase5: cancellation/GPU-memory-recovery v1 đã hoàn tất và audit. Owner yêu cầu
 tiếp tục trên main, chỉ lấy nhánh bạn nếu cần. Không cherry-pick/merge
@@ -31,7 +37,7 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
 
 ## Bước tiếp theo
 
-1. Hoàn tất CPU placement QA/receipt, tiếp theo authenticated sharded agent snapshot
+1. CPU placement QA/receipt đã hoàn tất; tiếp theo authenticated sharded agent snapshot
    và separate budget-enforcing HF adapter. Không dùng nguyên
    MeasuredHFBackend13GiB/device. Sau CPU fake/context tests và exact packaging,
    predeclare combined residency/context stress trước GPU; frozen source giữ nguyên.
@@ -48,6 +54,12 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
 
 ## Bằng chứng
 
+- Final placement suite1.143tests/241,49s;56newtests. Setup/Ruff/mypy215files
+  gồm cancellation wrapper và knowledge pass. Basetemp
+  `build/pytest_placement_v1_final01`. Không test/model/kernel job đang chạy.
+  Selected receipt byte-identical từ source2f311bb sạch;134frozen sources và
+  67prior cancellation raw hashes giữ nguyên. Không Phase5 acceptance mới.
+  [Placement QA receipt](../experiments/manifests/phase5_placement_v1_release_qa01.json).
 - Full1.087tests/257s, basetemp `build/pytest_guard_cancel_audit_v1_01`;
   20 tests mới cho read-only cancellation audit. Setup/Ruff/mypy213files gồm
   cancellation wrapper pass. Lần trước1.067tests/256,77s cũng pass trước GPU.
