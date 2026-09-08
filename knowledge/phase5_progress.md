@@ -2,6 +2,18 @@
 
 ## Hiện hành
 
+Bundle03 đã qua archive/expanded isolated mounts, source `7649d5b` và receipt
+đã push trước upload Dataset riêng tư. Remote READY v1/private đã xác minh,
+nhưng có extra `source/pax_global_header` 52 bytes khiến frozen wrapper reject.
+Đã tái hiện cục bộ từ file download, chưa kernel submission/GPU.
+Thêm completed-probe audit với 13 synthetic tests; tách integrity và measured
+repeatability, không đổi frozen inference code. Full suite 1.011 tests pass
+tuần tự/271,34 giây; setup/Ruff/mypy 205 files gồm kernel pass.
+[Nhật ký](guard_gpu_probe_v1.md) và
+[remote diagnostic](../experiments/manifests/phase5_guard_remote_mount_v1_diagnostic01.json).
+
+## Lịch sử: acquisition
+
 Weights Qwen 1.5B đã acquired/hash-verified (10 files, 3.098.973.447 bytes).
 [Probe contract](../docs/architecture/phase5_guard_probe_contract.md): two task-local
 workers, A→B→A/fresh-A bypass cache, strict JSON, no semantic retry. **998 tests

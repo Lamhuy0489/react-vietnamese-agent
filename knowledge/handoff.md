@@ -4,7 +4,8 @@ Cập nhật: 2026-09-08. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Phase 5: **bundle03 từ source `7649d5b` qua hai exact mounts; chuẩn bị upload GPU probe**.
+Phase 5: **Dataset READY/private; đã tái hiện lỗi PAX mount trước GPU**.
+[Nhật ký triển khai](guard_gpu_probe_v1.md). Chưa submit GPU kernel.
 [Bundle receipt](../experiments/manifests/phase5_guard_bundle_v1_preflight03.json).
 [Contract](../docs/architecture/phase5_guard_probe_contract.md), [tiến độ](phase5_progress.md).
 Source cũ `bc2023f`/evidence `abd0203` nguyên vẹn; không sửa adapter/test/contract
@@ -24,9 +25,13 @@ revision chính thức + local file hashes. Model ở build, không add weights 
    Bundle01 không chọn do broad source scope; bundle02 failed local eager import
    `validation.__init__` kéo pool validator. Bundle03 bỏ initializer, namespace
    chỉ có environment validator. Giữ các bundle trước, chưa upload bản lỗi.
-2. Push source và lưu bundle receipt; kiểm private metadata, upload Dataset
-   `huylmhuhu/react-vn-guard15-probe-data-v1` với keep-tabular, không public;
-   đợi READY và xác minh version. Chưa Dataset/kernel mới được submit.
+2. Dataset `huylmhuhu/react-vn-guard15-probe-data-v1` READY/version 1/private,
+   id 11942593. Source/receipt đã push `1e55203` trước upload, upload đã kết thúc.
+   Remote có thêm `source/pax_global_header` 52 bytes; đã tải header/manifest và
+   tái hiện frozen wrapper reject. [Diagnostic receipt](../experiments/manifests/phase5_guard_remote_mount_v1_diagnostic01.json).
+   Sửa versioned packaging/bootstrap, không đổi bundle03 hoặc bỏ qua mọi extras.
+   Kiểm lại archive và actual expanded mount có global PAX, eight tools/fault,
+   21 Dummy/resume/stub trong isolated venv trước GPU. Chưa submit kernel.
 3. Kernel `huylmhuhu/react-vn-guard15-probe-run-v1`: hai T4, internet off.
    Guard-only A→B→A/fresh-A, 120s inclusive/request, greedy128/seed42.
    Không agent resident; chưa combined-memory proof. Kết quả invalid/mismatch
@@ -40,6 +45,14 @@ revision chính thức + local file hashes. Model ở build, không add weights 
    Không Phase 6/Test; không cần user tạo tài khoản mới lúc này.
 
 ## Bằng chứng
+
+- Added completed-probe auditor: 13 synthetic tests pass; old full suite
+  998 tests pass lại/287,71 giây. Full suite mới 1.011 tests pass/281,27 giây,
+  có cảnh báo cleanup symlinks khi dùng chung temp parent. Lượt tuần tự tiếp
+  theo pass sạch **1.011 tests/271,34 giây**, basetemp mới
+  `build/pytest_guard_audit_v1_validation01`. Không còn test/upload đang chạy.
+  Setup/Ruff/mypy 205 files gồm kernel pass; 134 frozen adapter source hashes
+  và clean/adversarial prerequisites kiểm lại nguyên vẹn, Test hash-only.
 
 - Acquisition script báo valid, 10 files/3.098.973.447 bytes; artifact
   `acquisition.json` và `snapshot.json` ở build path trên. Packager sẽ kiểm lại

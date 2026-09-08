@@ -33,6 +33,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Phần trăm Phase 3 và tiêu chí còn thiếu: [readiness theo DoD](phase3_readiness.md).
 - Tránh lặp lỗi Kaggle: [lessons](kaggle_lessons.md).
 - Guard model/GPU preflight: [nguồn ứng viên và giới hạn](guard_model_preflight_evidence.md).
+- Guard GPU probe đang triển khai: [upload, audit và bước tiếp](guard_gpu_probe_v1.md).
 - Bằng chứng lịch sử: [Phase 1](phase1_evidence.md),
   [Phase 2 v1 cũ](phase2_evidence.md),
   [audit v1 và withdrawal](integrity_audit_20260905.md).

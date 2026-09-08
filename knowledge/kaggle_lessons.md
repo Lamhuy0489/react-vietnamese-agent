@@ -1,5 +1,25 @@
 # Ghi chú Kaggle Phase 1
 
+## Guard probe remote mount — 2026-09-08
+
+- Dataset v1 create thành công nhưng status/metadata ban đầu HTTP 403 và
+  mine-search chưa thấy; sau xử lý mới READY/v1/private. Không kết luận thiếu
+  quyền từ lần đọc sớm hoặc create lại. Quota đọc được không chứng minh Dataset ready.
+- `git archive` có global PAX comment; Python `tarfile` xử lý như metadata,
+  Kaggle lại materialize `source/pax_global_header` thành regular file 52 bytes.
+  Vì vậy local expanded simulation dùng tarfile có thể pass nhưng chưa mô
+  phỏng đủ mount Kaggle. Remote file listing phát hiện trước GPU; tải header
+  và manifest, kiểm hash/commit rồi tái hiện exact inventory rejection cục bộ.
+- Không nới lỏng mọi extra files: sửa versioned archive/bootstrap với exact
+  sidecar binding hoặc archive không PAX, rồi chạy lại actual-layout preflight.
+  Giữ Dataset v1/bundle03; đây là phát hiện pre-submission, **0 GPU submissions**,
+  không phải một model failure. [Biên bản](../experiments/manifests/phase5_guard_remote_mount_v1_diagnostic01.json).
+- CLI tải riêng `source/pax_global_header` vào basename `pax_global_header`
+  trong lần này; kiểm đường dẫn thực trước audit, không tải lại chỉ vì đoán sai path.
+- Local pytest chạy đồng thời dưới shared temp parent gây cleanup symlink warnings;
+  lượt tuần tự với fresh explicit basetemp pass sạch 1.011 tests. Không sửa frozen
+  test behavior hoặc xóa thư mục rộng để che cảnh báo.
+
 ## Cập nhật v1.1 — 2026-09-06
 
 Khi tạo kernel mới, `id` và slug sinh từ `title` cần nhất quán. Lần v1.1 đầu

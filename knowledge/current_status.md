@@ -1,6 +1,20 @@
 # Trạng thái hiện tại
 
-## Hiện hành: đã xác thực weights, chuẩn bị GPU probe — 2026-09-08
+## Hiện hành: Dataset READY; phát hiện lỗi mount trước GPU — 2026-09-08
+
+Bundle03 source `7649d5b` đã pass hai exact layouts; source/receipt đã push
+GitHub `1e55203` trước khi bắt đầu upload Dataset riêng tư trên `huylmhuhu`.
+Dataset v1 đã READY và private (id 11942593). Kaggle materialize thêm
+`source/pax_global_header` 52 bytes; đã tải và tái hiện exact-inventory rejection
+cục bộ. Chưa submit kernel, không GPU/model call. Bundle03 qua mô phỏng cũ nhưng
+chưa hỗ trợ mount thực tế này; phải sửa versioned packaging/bootstrap rồi kiểm lại.
+[Biên bản](../experiments/manifests/phase5_guard_remote_mount_v1_diagnostic01.json).
+Bộ audit chỉ đọc artifacts thêm 13 tests; full suite **1.011 tests pass/271,34 giây**
+tuần tự với basetemp riêng, không cảnh báo cleanup. Setup/Ruff/mypy 205 files gồm
+kernel/knowledge pass. Giữ nguyên Dataset v1/bundle03, không retry ngữ nghĩa.
+[Nhật ký và giới hạn](guard_gpu_probe_v1.md).
+
+## Lịch sử: acquisition và chuẩn bị bundle — 2026-09-08
 
 Snapshot Qwen 1.5B đã tải và đối chiếu đủ mười file với Git/LFS hash chính thức:
 3.098.973.447 bytes, nằm ở `build/guard_models/qwen1_5b_hf_v1_acquisition01`.

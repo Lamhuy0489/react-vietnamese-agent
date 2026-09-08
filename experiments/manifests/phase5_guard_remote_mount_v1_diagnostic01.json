@@ -1,0 +1,48 @@
+{
+  "protocol": "guard_remote_mount_diagnostic_v1",
+  "diagnostic_valid": true,
+  "worker_submission_ready": false,
+  "phase5_accepted": false,
+  "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+  "dataset_id": 11942593,
+  "remote_status": "ready",
+  "remote_version": 1,
+  "remote_is_private": true,
+  "source_commit": "7649d5bed0b872e93b4233a7dcdbdf0da4623194",
+  "manifest_sha256": "b14976413b72898b6c0c1b8c46c1ebb0f62f63633f647ab2064fbc048262240f",
+  "downloaded_manifest_matches_local": true,
+  "unexpected_remote_member": "source/pax_global_header",
+  "remote_header_sha256": "afc46082093e423aee3f0c9f9dff5da1c860a4a415caa54ec820ba34f1890594",
+  "remote_header_bytes": 52,
+  "remote_header_matches_git_comment": true,
+  "original_source_inventory_valid": true,
+  "expanded_remote_inventory_rejected": true,
+  "reproduced_error": "exact bundle inventory/hash mismatch",
+  "gpu_submissions": 0,
+  "real_model_calls": 0,
+  "test_payloads_parsed": 0,
+  "local_raw": {
+    "directory": "build/kaggle/guard_pax_diagnostic01",
+    "header_filename": "pax_global_header",
+    "metadata": "build/kaggle/phase5_guard_probe_v1_remote01/dataset-metadata.json",
+    "metadata_sha256": "4366f368a8104e734bb26d414be05fbfc77c884b956fbbd6d7fd2521e62e380e"
+  },
+  "audit_source_sha256": {
+    "scripts/audit_phase5_guard_probe.py": "26bff4371b314ac0639dee20c96031ad6ac1c97b949539afc624686c1dd8bff4",
+    "src/react_agent/validation/guard_probe_audit_v1.py": "6ac7f5ea69f0876bd00d45ee03ff71ea4c2da5aa7576f500bdbbcdcc49f78e36",
+    "tests/unit/test_guard_probe_audit_v1.py": "8c11aa5fcb0b4e6386eee7c7275ea6617aa19741e6b36d056e7ebfd8416c497c"
+  },
+  "quality": {
+    "setup": "pass",
+    "ruff": "pass",
+    "mypy_files_including_kernel": 205,
+    "new_audit_tests": 13,
+    "full_suite_tests": 1011,
+    "full_suite_seconds": 271.34,
+    "isolated_basetemp": "build/pytest_guard_audit_v1_validation01",
+    "prior_adapter_source_hashes_verified": 134,
+    "clean_adversarial_prerequisites_unchanged": true
+  },
+  "scope": "Remote mount rejection reproduced before GPU submission; completed-probe auditor tested only with synthetic records.",
+  "next": "Versioned packaging/bootstrap repair and exact actual-layout preflight before any GPU submission. Preserve Dataset v1 and bundle03 evidence."
+}
