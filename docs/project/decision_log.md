@@ -1,5 +1,30 @@
 # Decision Log
 
+## 2026-09-08 — Task-local warm guard and runtime v5
+
+- [Contract](../architecture/phase5_warm_guard_contract.md) predeclares one model
+  load per task, one in-flight request, bounded shared-memory JSON, inclusive
+  cold/warm request deadlines, explicit close and terminate/kill/reap fallback.
+  No cross-task worker/cache reuse, automatic restart or semantic retries.
+- V5 retains the v4 policy loop but owns a warm worker in try/finally. A0/A1
+  create no worker. Guard prompt/parser/generation and source labels stay fixed.
+  Invalid guard JSON retires the new worker and clears cache; this additional
+  fail-closed lifecycle behavior is versioned, not backported into frozen v4.
+- Cache serving checks worker liveness; concurrent classifications are rejected.
+  Cleanup failure retains the handle and raises, never reports successful reap.
+  Real backend statelessness between generate calls still requires validation.
+- Cold/warm A6 context comparison resolves only host-generated Post source IDs
+  into source ID/type/hash/step/labels. Initial exact-byte comparison differed on
+  those run-local IDs while outcomes/legacy events matched. Preserve raw contexts
+  and do not normalize arbitrary model/source content to hide mismatches.
+- Synthetic-only QA: 22 paired runtime conditions and nine worker conditions;
+  no model selection, GPU/Kaggle run, benchmark Dev tuning or Test payload access.
+  Preflight01 passes 891 tests (46 new), setup/Ruff/mypy 194 files/knowledge.
+  44 Replay, 140 mock Broker calls, 240 fake runtime guard classifications;
+  138 source/370 raw hashes and 1,038 prior source entries checked. Paired worker
+  starts 53 cold / 18 warm are synthetic process counts, not model/GPU speedup.
+  Selected reproduction pending; Phase 5 remains unaccepted.
+
 ## 2026-09-08 — Predeclare bounded A6 runtime composition
 
 - New v4 loop composes frozen A6 components without editing selected A0–A5

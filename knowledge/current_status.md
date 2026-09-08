@@ -1,6 +1,20 @@
 # Trạng thái hiện tại
 
-## Hiện hành: A6 runtime integration đã tái lập — 2026-09-08
+## Hiện hành: warm guard/runtime v5 đã qua preflight — 2026-09-08
+
+Worker mới tải backend một lần trong mỗi task, tái dùng giữa các request; không
+chia sẻ worker/cache giữa tasks. Deadline tính cả cold load; lỗi/timeout/identity
+drift/invalid guard JSON loại worker và cache, có close/terminate/kill/reap.
+Runtime v5 sở hữu worker bằng try/finally. [Contract](../docs/architecture/phase5_warm_guard_contract.md).
+Preflight01 valid: **891 tests pass**, 46 mới, trong 226,45 giây; setup/Ruff/mypy
+194 files/knowledge pass. 22 cold/warm pairs = 44 Replay, chín lifecycle conditions,
+140 mock Broker calls và 240 fake guard classifications trong runtime matrix.
+138 source/370 raw hashes kiểm lại, 1.038 prior source entries nguyên vẹn.
+Trong paired runs, worker process starts 53 cold → 18 warm; không phải GPU speedup.
+Selected-source reproduction đang chuẩn bị.
+Không model/GPU/Kaggle hoặc Test payload; giữ nguyên source v4 đã khóa.
+
+## Lịch sử: A6 runtime integration đã tái lập
 
 Runtime v4 nối Pre/value/guard composition, Post context view và Final release.
 [Contract](../docs/architecture/phase5_a6_runtime_contract.md). A0–A5 giữ hành vi

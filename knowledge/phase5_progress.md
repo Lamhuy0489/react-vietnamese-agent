@@ -1,6 +1,19 @@
-# Phase 5 — A6 runtime integration
+# Phase 5 — Task-local warm guard/runtime v5
 
 ## Hiện hành
+
+[Warm guard/runtime v5](../docs/architecture/phase5_warm_guard_contract.md) đã qua preflight:
+model load một lần/task, bounded JSON IPC, cold/warm timing riêng và deadline
+tính đủ cold load. Không cache/worker xuyên task, không tự restart/retry. Worker
+lỗi hoặc guard output invalid bị loại, cache xóa. V5 close ở terminal và exception.
+Preflight01: **891 tests pass**, 46 mới; setup/Ruff/mypy 194 files/knowledge pass.
+22 cold/warm pairs = 44 Replay + chín lifecycle conditions; 140 mock Broker calls,
+240 fake runtime guard classifications. 138 source/370 raw hashes kiểm lại,
+1.038 prior entries giữ nguyên. Paired worker starts 53 cold → 18 warm, không GPU
+throughput claim. Chưa selected receipt/Phase 5 acceptance. A6 Post source IDs chỉ được đối chiếu
+qua source binding; context gốc vẫn lưu nguyên. Chưa guard/model/GPU thật.
+
+## Lịch sử: A6 runtime v4
 
 Runtime v4 A0–A6 theo [contract](../docs/architecture/phase5_a6_runtime_contract.md)
 đã qua preflight01: **845 tests pass** (76 mới), setup/Ruff/mypy 190 files/knowledge

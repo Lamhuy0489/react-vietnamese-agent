@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: bounded A0–A6 runtime v4 integration verified on synthetic QA**
+- Current stage: **Phase 5 in progress: task-local warm guard and A0–A6 runtime v5 verified on synthetic QA**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-08
 
@@ -307,15 +307,24 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   from clean source matches preflight; 845 tests pass and all 135 source/435 raw
   hashes verified. Not real-model security evidence.
 - [ ] General private-record final entitlements and broader origin-coverage assessment.
+- [x] Task-local warm guard and v5 runtime: 891 tests pass (46 new), setup/Ruff/
+  mypy 194 files/knowledge pass. 22 cold/warm parity pairs = 44 Replay plus nine
+  lifecycle conditions; 140 mock Broker calls and 240 fake guard classifications
+  in the runtime matrix. 138 source/370 raw hashes verified, 1,038 prior source
+  entries intact. Paired worker starts 53 cold / 18 warm; not GPU performance.
+  Deadline, identity/cache retirement, graceful/forced cleanup and terminal/
+  exception close verified. [Contract](../architecture/phase5_warm_guard_contract.md).
+  Selected-source reproduction pending; actual guard model/GPU validation stays open.
 - [ ] Grouped Dev tuning/validation protocol, differential experiments and freeze.
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
-The current v4 loop supports A0–A6; A2–A6 require an explicit process-owned
-backend factory. The frozen v3 still rejects A6. A3–A5 deliberately use coarse
-state and final pass-through; only v4 A6 returns a gated released final.
-Cold process startup/model loading is included in guard duration,
-not warm inference throughput. No new real model/benchmark Dev/Test inference.
+The current v5 loop supports A0–A6 with an explicitly task-owned warm guard for
+A2–A6; frozen v4 remains the cold-worker reference. V3 still rejects A6. A3–A5
+use coarse state/final pass-through; v4/v5 A6 return gated released finals.
+First-request process startup/model load is included in elapsed guard duration;
+warm requests and task cleanup are separately recorded. No real model/GPU or
+benchmark Dev/Test inference has been added.
 
 ## Authorized Dev pilot extension
 

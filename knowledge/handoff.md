@@ -4,57 +4,56 @@ Cập nhật: 2026-09-08. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Phase 5: **A6 runtime v4 integration đã tái lập từ source sạch `04ae4c8`**.
-[Contract](../docs/architecture/phase5_a6_runtime_contract.md), [tiến độ](phase5_progress.md).
-[Selected receipt](../experiments/manifests/phase5_a6_runtime_v1_validation01.json)
-khớp preflight01. Chưa Phase 5 acceptance. Không sửa source/test/contract đã khóa.
+Phase 5: **Task-local warm guard + runtime v5 đã qua preflight**.
+[Contract](../docs/architecture/phase5_warm_guard_contract.md), [tiến độ](phase5_progress.md).
+Preflight `results/phase5_warm_guard_v1_preflight01` valid. Selected reproduction
+đang chuẩn bị; chưa Phase 5 acceptance. Không sửa source/test/contract đã xác minh.
 
-V4 hỗ trợ cùng loop A0–A6. A6 lưu coarse/value/composed decisions, chỉ gỡ coarse
-sensitivity khi có value ALLOW; rule/LLM/error/control veto vẫn giữ. Index từ
-raw host user/tool roots, không từ model/derived views. Post view thật vào model
-context; final proposed/released có IDs/hashes riêng, runtime trả released text.
-Final S0 host policy không cấp quyền đọc hồ sơ riêng; không lấy grants từ GT.
+Worker spawn/load một lần/task, JSON IPC giới hạn, full inclusive request deadline,
+cold/warm timing, liveness-aware cache và close/terminate/kill/reap. Không worker/
+cache xuyên task hoặc automatic retry. Invalid guard JSON cũng retire cache/worker.
+Runtime v5 dùng cùng A0–A6 policies, close trên terminal và unexpected exception.
+A6 contexts khác run-local source IDs: so sánh slot host đó bằng verified source
+binding, không đổi nội dung source/model và vẫn giữ raw context trong artifacts.
 
 ## Bước tiếp theo
 
-1. Đọc [runbook](runbook.md), kiểm tra Git/hashes. Giữ nguyên source v4 và các
-   components đã hash; mở module/version mới nếu cần sửa hành vi.
-2. **Guard lifecycle tiếp theo**: predeclare worker dùng lại model qua nhiều
-   request, giữ timeout/identity/cache isolation, cancellation/kill/reap và
-   retirement khi lỗi. Thêm fake-worker tests trước model/Kaggle thật; không
-   âm thầm đổi timeout semantics hoặc bỏ chi phí cold start khỏi số đo.
-3. Chốt guard model/revision và worker GPU; rà A4 processing scope và grouped
-   Dev tune/validation trước tuning. Không sang Phase 6 hoặc đọc Test payload.
-4. General private-record final entitlement và broader value coverage vẫn thiếu;
-   không diễn giải S0 profile như đã giải quyết quyền truy cập riêng tư hợp lệ.
+1. Preflight01 đã pass setup/Ruff/mypy/pytest/knowledge và hash audit:
+   commit source, selected reproduction từ source sạch với matching reference,
+   output/report mới. [Runbook](runbook.md). Không sửa source đã hash.
+2. Kiểm lại source/raw hashes, cập nhật status/evidence/knowledge và đồng bộ GitHub.
+3. **Sau lifecycle QA**: chốt guard model/revision từ nguồn chính thức; chuẩn bị
+   real-backend statelessness/memory-fit test rồi GPU preflight. Đọc Kaggle skill/
+   preflight reference trước đóng gói/upload. Warm worker chưa chứng minh backend
+   không giữ conversational/KV history giữa generate calls; cần kiểm tra adapter.
+4. Rà A4 processing scope và grouped Dev tune/validation trước tuning. General
+   private final entitlement/broader origin coverage còn mở. Không Phase 6/Test.
 5. Không cần tài khoản mới cho local work. Meta access thiếu cho Llama pilot riêng.
 
 ## Bằng chứng
 
-- Preflight01: **845 tests pass**, 76 mới, trong 178,13 giây. Setup/Ruff/mypy
-  190 files/knowledge pass; 135 source/435 raw hashes kiểm lại.
-- 903 prior source entries nguyên vẹn; clean/adversarial seals hash-only pass.
-- 26 synthetic runtime conditions + 12 prior-level parity pairs = 50 Replay,
-  56 mock Broker calls và 121 fake guard classifications; report valid=true.
-- Selected source `04ae4c8`: stable summary khớp preflight, **845 tests pass** trong
-  178,29 giây; 135 source/435 raw hashes kiểm lại. 25 A6 final effects: 23 ALLOW,
-  1 REDACT, 1 DENY; một A5 pass-through. Không benchmark success/ASR claims.
-- Audit bổ sung preflight 50 traces: Broker execution chỉ sau PRE ALLOW, không
-  duplicate execution; legacy final answer khớp released RunResult text.
-- Source `a3743a2`, [value-gate receipt](../experiments/manifests/phase5_value_gates_v1_validation02.json):
-  769 tests, 132 source/121 raw hashes khớp; evidence/GitHub commit `3c3f7fe`.
-- Origin source `3b9f565`,
+- Preflight01: **891 tests pass**, 46 mới, 226,45 giây; setup/Ruff/mypy 194 files/
+  knowledge pass. 138 source/370 raw hashes kiểm lại, 1.038 prior source entries.
+- 22 cold/warm runtime pairs = 44 Replay, chín lifecycle conditions, 140 mock
+  Broker calls và 240 fake runtime guard classifications. Worker starts trong
+  paired runs: 53 cold → 18 warm; chỉ synthetic process-count evidence, không GPU speedup.
+- V4 source `04ae4c8`, [receipt](../experiments/manifests/phase5_a6_runtime_v1_validation01.json):
+  845 tests, 50 Replay, 56 mock Broker calls, 121 fake guard classifications;
+  135 source/435 raw hashes verified. GitHub evidence commit `d9367de`.
+- Value-gate source `a3743a2`,
+  [receipt](../experiments/manifests/phase5_value_gates_v1_validation02.json):
+  769 tests. Origin source `3b9f565`,
   [receipt](../experiments/manifests/phase5_value_origin_v1_validation01.json):
-  696 tests, 24 release cases. Session source `8a4ca3d`,
-  [receipt](../experiments/manifests/phase5_session_v1_validation01.json): 593 tests.
+  696 tests; tất cả selected source phải nguyên vẹn.
 
 ## Giới hạn
 
-Không real guard/LLM/Kaggle run, không benchmark Dev tuning hoặc Test parsing.
-Exact origin không chứng minh model-internal causal provenance; short values,
-SQL aliases, paraphrase, encoding và email case changes chưa được bao phủ đầy đủ.
-Unknown critical leaves fail closed có thể overblock. Post envelope không chứng
-minh chống mọi injection. Terminal completed chỉ kết thúc loop, không security
-success; phải đọc final effect/released field. Assistant self-review theo owner
-waiver, không independent review. Không credentials/private GT/Test payload/CoT
-trong knowledge; không đưa knowledge vào model prompts.
+Chưa real guard/LLM/GPU/Kaggle, không benchmark Dev tuning hoặc Test parsing.
+Synthetic cold/warm timing không phải model throughput; không bỏ cold load khỏi
+chi phí. Worker reuse chỉ trong task. Close khi request đang chạy bị từ chối;
+owner-thread interrupt/deadline là cơ chế cancel. Host hard-kill/orphan recovery
+chưa được bảo đảm. Failed cancellation không được ghi giả là reaped.
+A6 vẫn là bounded origin/S0 final policy, chưa arbitrary private entitlements,
+short-name/SQL-alias/encoded/paraphrase/email-case protection. Phase 5 chưa xong.
+Assistant self-review theo owner waiver; không independent review. Không ghi
+credentials/private GT/Test payload/CoT vào knowledge hoặc đưa memory vào prompt.
