@@ -9,10 +9,10 @@ from pathlib import Path
 
 
 def main() -> int:
-    import matplotlib  # type: ignore[import-not-found]
+    import matplotlib  
 
     matplotlib.use("Agg")
-    import matplotlib.pyplot as plt  # type: ignore[import-not-found]
+    import matplotlib.pyplot as plt  
 
     parser = argparse.ArgumentParser()
     parser.add_argument("report", type=Path)

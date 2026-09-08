@@ -50,7 +50,7 @@ class CUDAProbeFactory:
     hf: GuardHFFactory
 
     def __call__(self) -> LLMBackend:
-        import torch  # type: ignore[import-not-found]
+        import torch  
 
         devices = range(torch.cuda.device_count())
         if len(devices) != 2 or any("T4" not in torch.cuda.get_device_name(i) for i in devices):

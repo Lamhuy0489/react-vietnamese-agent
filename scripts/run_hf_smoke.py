@@ -50,8 +50,8 @@ def select_tasks(all_tasks: list[SmokeTask], task_id: str | None) -> list[SmokeT
 def load_backend(
     model_path: Path, model_id: str, model_revision: str, *, chat_adapter: str = "native"
 ) -> HFBackend:
-    import torch  # type: ignore[import-not-found]
-    from transformers import (  # type: ignore[import-not-found]
+    import torch  
+    from transformers import (  
         AutoModelForCausalLM,
         AutoTokenizer,
         pipeline,

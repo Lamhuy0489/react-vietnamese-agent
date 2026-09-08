@@ -18,8 +18,8 @@ class MeasuredHFBackend:
     """Record token counts/timing, never attention states or hidden reasoning."""
 
     def __init__(self, model_path: Path, profile: PilotProfile, output: Path) -> None:
-        import torch  # type: ignore[import-not-found]
-        import transformers  # type: ignore[import-not-found]
+        import torch  
+        import transformers  
 
         self.model_id, self.model_revision = profile.model_id, profile.revision
         self.profile, self.output = profile, output
@@ -39,7 +39,7 @@ class MeasuredHFBackend:
             model_path, local_files_only=True, trust_remote_code=False
         )
         model_class = (
-            transformers.Gemma4ForConditionalGeneration
+            transformers.Gemma3ForConditionalGeneration
             if profile.model_id == "google/gemma-4"
             else transformers.AutoModelForCausalLM
         )
