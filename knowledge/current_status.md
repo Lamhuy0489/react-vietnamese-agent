@@ -1,6 +1,13 @@
 # Trạng thái hiện tại
 
-## Hiện hành: placement agent/guard đã qua CPU QA — 2026-09-09
+## Hiện hành: xác thực model trực tiếp trên Kaggle — 2026-09-09
+
+Owner đã chốt không tải model lớn về local. Read-only stdlib scanner29tests pass,
+fullsuite đang chạy; chuẩn bị một CPU/offline Kaggle job để hash pinned Qwen7B
+mount. Chưa model load/GPU submission mới. [Protocol](agent_mount_v1.md).
+Không upload cả repo/credentials/Test/GT. Không cần GPU hoặc thêm disk local.
+
+## Lịch sử: placement agent/guard đã qua CPU QA — 2026-09-09
 
 Module riêng đã có deterministic map và kiểm tra ngân sách/context/tensor placement;
 56targetedtests pass. Candidate Qwen7B chia20/8layers, agent caps12/7GiB,

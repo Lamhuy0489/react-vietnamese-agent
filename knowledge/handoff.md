@@ -4,6 +4,12 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Hiện hành: theo owner clarification, model lớn chỉ ở Kaggle. Triển khai read-only
+agent mount authenticator;29targetedtests pass, fullsuite đang chạy. Chưa submit.
+[Contract](../docs/architecture/phase5_agent_mount_v1_contract.md),
+[tri thức](agent_mount_v1.md). Không tải Qwen7B về local hoặc cần mở rộng disk.
+Next: commit/render/preflight/push rồi một CPU/offline Kaggle hash-only job.
+
 Mốc hiện hành: CPU-only placement admission đã triển khai;56targetedtests pass,
 full QA1.143tests/241,49s pass. [Contract](../docs/architecture/phase5_coexistence_placement_v1_contract.md),
 [bằng chứng/giới hạn](coexistence_placement_v1.md).
@@ -37,7 +43,7 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
 
 ## Bước tiếp theo
 
-1. CPU placement QA/receipt đã hoàn tất; tiếp theo authenticated sharded agent snapshot
+1. CPU placement QA/receipt đã hoàn tất; tiếp theo xác thực read-only Kaggle agent mount
    và separate budget-enforcing HF adapter. Không dùng nguyên
    MeasuredHFBackend13GiB/device. Sau CPU fake/context tests và exact packaging,
    predeclare combined residency/context stress trước GPU; frozen source giữ nguyên.
