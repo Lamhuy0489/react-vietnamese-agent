@@ -1,6 +1,19 @@
 # Trạng thái hiện tại
 
-## Hiện hành: guard HF adapter đã tái lập trên CPU — 2026-09-08
+## Hiện hành: đã xác thực weights, chuẩn bị GPU probe — 2026-09-08
+
+Snapshot Qwen 1.5B đã tải và đối chiếu đủ mười file với Git/LFS hash chính thức:
+3.098.973.447 bytes, nằm ở `build/guard_models/qwen1_5b_hf_v1_acquisition01`.
+Không dùng token HF, không tắt TLS; Python cần CA bundle hợp lệ từ certifi.
+Guard A→B→A/fresh-A bypass cache và bootstrap bundle riêng: **998 tests pass**
+(56 mới), 275,42 giây; setup/Ruff/mypy 203 files/knowledge pass. Exact archive/
+expanded mount đang chuẩn bị từ committed source. Chưa GPU run.
+[Contract](../docs/architecture/phase5_guard_probe_contract.md).
+Kaggle CLI 2.2.4, tài khoản `huylmhuhu`: 29,49 giờ GPU còn lại lúc kiểm tra
+2026-09-08 (không phải quota được giữ chỗ). Không đổi tài khoản/vượt quota.
+Không Test/GT hoặc model-quality tuning; Phase 5 chưa accepted. [Handoff](handoff.md).
+
+## Lịch sử: guard HF adapter đã tái lập trên CPU — 2026-09-08
 
 Thêm adapter riêng, không sửa runtime/policy/source đã khóa. Snapshot pin gồm
 HF revision và hash/size mọi file; native local-only Qwen2, FP16/single GPU,

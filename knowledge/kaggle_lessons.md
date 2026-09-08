@@ -64,3 +64,17 @@ Failed SaveKernel requests are not completed or failed inference attempts.
   with filename filtering. Check required checkpoint coverage, not CLI silence.
 - Never download over audited files. Retain manifest hashes; regenerate tables
   from saved measurements without spending another GPU attempt for low scores.
+# Phase 5 guard preparation — 2026-09-08
+
+- Kaggle CLI nằm ở `python3 -m kaggle` (2.2.4), không phải `.venv/bin/kaggle`.
+  Help/version hoạt động; không cần cài lại chỉ vì thiếu entrypoint trong venv.
+- Python.org Python 3.11 cục bộ gặp `CERTIFICATE_VERIFY_FAILED` khi dùng CA mặc
+  định với HF. Curl TLS-verified đọc được metadata. Acquisition dùng explicit CA
+  bundle hợp lệ từ certifi; **không dùng ssl unverified/curl insecure**.
+- Guard snapshot pin cần metadata upstream độc lập: Git blob SHA-1 gồm header
+  `blob <size>\0`; LFS weights dùng publisher SHA-256. HF commit label tự khai
+  cộng hash tự tính không đủ chứng minh publisher. Không tải model từ branch main.
+- Quota đã đọc cho tài khoản pilot `huylmhuhu`: GPU còn 29,49h ngày 2026-09-08.
+  Đây là snapshot quota, không reservation và không lý do đổi accounts để bypass.
+- Bundle guard mới đang kiểm chứng môi trường venv sạch/offline, both layouts,
+  no inherited development imports. Không coi unit tests là GPU readiness.

@@ -1,0 +1,133 @@
+{
+  "schema_version": "phase5_guard_acquisition_v1",
+  "valid": true,
+  "upstream": {
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "metadata_url": "https://huggingface.co/api/models/Qwen/Qwen2.5-1.5B-Instruct/revision/989aa7980e4cf806f80c7fef2b1adb7bc71aa306?blobs=true",
+    "access_date": "2026-09-08",
+    "files": [
+      {
+        "name": ".gitattributes",
+        "size": 1519,
+        "git_blob_sha1": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+        "sha256": null
+      },
+      {
+        "name": "LICENSE",
+        "size": 11343,
+        "git_blob_sha1": "6634c8cc3133b3848ec74b9f275acaaa1ea618ab",
+        "sha256": null
+      },
+      {
+        "name": "README.md",
+        "size": 4917,
+        "git_blob_sha1": "b3327a17e2ffa52e0fd941a2810b18a9fd0e7d94",
+        "sha256": null
+      },
+      {
+        "name": "config.json",
+        "size": 660,
+        "git_blob_sha1": "f81ead14ab072d65a07817f83a3ee0e5a1890d10",
+        "sha256": null
+      },
+      {
+        "name": "generation_config.json",
+        "size": 242,
+        "git_blob_sha1": "dfc11073787daf1b0f9c0f1499487ab5f4c93738",
+        "sha256": null
+      },
+      {
+        "name": "merges.txt",
+        "size": 1671839,
+        "git_blob_sha1": "20024bfe7c83998e9aeaf98a0cd6a2ce6306c2f0",
+        "sha256": null
+      },
+      {
+        "name": "model.safetensors",
+        "size": 3087467144,
+        "git_blob_sha1": null,
+        "sha256": "dd924a11b4c220f385b51ffa522daea7c9f3d850e31b162bb5661df483c6d3ee"
+      },
+      {
+        "name": "tokenizer.json",
+        "size": 7031645,
+        "git_blob_sha1": "443909a61d429dff23010e5bddd28ff530edda00",
+        "sha256": null
+      },
+      {
+        "name": "tokenizer_config.json",
+        "size": 7305,
+        "git_blob_sha1": "07bfe0640cb5a0037f9322287fbfc682806cf672",
+        "sha256": null
+      },
+      {
+        "name": "vocab.json",
+        "size": 2776833,
+        "git_blob_sha1": "4783fe10ac3adce15ac8f358ef5462739852c569",
+        "sha256": null
+      }
+    ]
+  },
+  "upstream_pin_sha256": "5719271cdb3b1178cf75b287d27b9717d12851af6d4749f7b7080c0ae620d063",
+  "snapshot_sha256": "36b6d38e9e3cbc47427b1fabcf6f44fdd926a1d95a04a33bbfb19d7f1ffd5fbe",
+  "model_revision": "hf:989aa7980e4cf806f80c7fef2b1adb7bc71aa306;snapshot-sha256:36b6d38e9e3cbc47427b1fabcf6f44fdd926a1d95a04a33bbfb19d7f1ffd5fbe",
+  "local_snapshot": "build/guard_models/qwen1_5b_hf_v1_acquisition01/snapshot",
+  "files": [
+    {
+      "name": ".gitattributes",
+      "size": 1519,
+      "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361"
+    },
+    {
+      "name": "LICENSE",
+      "size": 11343,
+      "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e"
+    },
+    {
+      "name": "README.md",
+      "size": 4917,
+      "sha256": "2e1bcd8bd964728a820be709fa0f7b9dd54817a94fd2254c535df70c5e67fada"
+    },
+    {
+      "name": "config.json",
+      "size": 660,
+      "sha256": "98d2ff8cc47488d08a2b0b3acf4eb99ef210779b42bd48605f6b8e36acdbf670"
+    },
+    {
+      "name": "generation_config.json",
+      "size": 242,
+      "sha256": "e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6"
+    },
+    {
+      "name": "merges.txt",
+      "size": 1671839,
+      "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3"
+    },
+    {
+      "name": "model.safetensors",
+      "size": 3087467144,
+      "sha256": "dd924a11b4c220f385b51ffa522daea7c9f3d850e31b162bb5661df483c6d3ee"
+    },
+    {
+      "name": "tokenizer.json",
+      "size": 7031645,
+      "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539"
+    },
+    {
+      "name": "tokenizer_config.json",
+      "size": 7305,
+      "sha256": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583"
+    },
+    {
+      "name": "vocab.json",
+      "size": 2776833,
+      "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+    }
+  ],
+  "bytes": 3098973447,
+  "elapsed_seconds": 938.7666467940144,
+  "tls_verified": true,
+  "automatic_retry": false,
+  "real_model_runs": 0
+}

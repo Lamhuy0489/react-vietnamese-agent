@@ -2,6 +2,15 @@
 
 ## Hiện hành
 
+Weights Qwen 1.5B đã acquired/hash-verified (10 files, 3.098.973.447 bytes).
+[Probe contract](../docs/architecture/phase5_guard_probe_contract.md): two task-local
+workers, A→B→A/fresh-A bypass cache, strict JSON, no semantic retry. **998 tests
+pass** (56 mới), 275,42 giây; setup/Ruff/mypy 203 files/knowledge pass.
+Two-layout isolated bundle validation là bước kế tiếp. Chưa GPU run.
+Kaggle `huylmhuhu` còn 29,49 giờ GPU tại lần đọc 2026-09-08; không đổi account.
+
+## Lịch sử: HF adapter CPU
+
 Adapter [HF guard v1](../docs/architecture/phase5_guard_hf_contract.md) qua CPU
 preflight01: 942 tests pass (51 mới), 228,00 giây; setup/Ruff/mypy 197 files và
 knowledge pass. 134 source hashes và 1.176 prior entries nguyên vẹn. Candidate

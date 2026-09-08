@@ -4,67 +4,60 @@ Cập nhật: 2026-09-08. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Phase 5: **offline guard HF adapter v1 đã tái lập từ source sạch `bc2023f`**.
-[Selected receipt](../experiments/manifests/phase5_guard_hf_v1_validation01.json)
-khớp source/input/prior-evidence preflight01; chưa Phase 5 acceptance.
-[Contract](../docs/architecture/phase5_guard_hf_contract.md),
-[nguồn ứng viên](guard_model_preflight_evidence.md), [tiến độ](phase5_progress.md).
-Không sửa runtime v5/policies/prompt hoặc source/test/contract đã khóa trước.
+Phase 5: **đã acquired/hash-verified Qwen guard; đang đóng gói synthetic GPU probe**.
+[Contract](../docs/architecture/phase5_guard_probe_contract.md), [tiến độ](phase5_progress.md).
+Source cũ `bc2023f`/evidence `abd0203` nguyên vẹn; không sửa adapter/test/contract
+đã selected. Mốc mới thêm acquisition, probe cache-bypassed, wrapper và packager.
 
-GuardSnapshot pin HF revision + SHA-256/size toàn bộ snapshot; local-only native
-Qwen2/safetensors, FP16, single GPU, process allocator ceiling và context cap.
-Factory picklable dùng với interface WarmGuardBackend; cần snapshot thật
-và metrics path mới mỗi task. Fresh messages/config/dynamic cache, greedy128/seed42,
-lỗi retire; không prompt/response/exception text trong adapter metrics.
+Acquisition `build/guard_models/qwen1_5b_hf_v1_acquisition01`: 10 files,
+3.098.973.447 bytes. Hash chính thức đã pin trước download; TLS verified với CA
+certifi. Partial downloads giữ riêng; no automatic retry. Snapshot identity gồm
+revision chính thức + local file hashes. Model ở build, không add weights vào Git.
 
 ## Bước tiếp theo
 
-1. Kiểm Git/hashes và receipt guard HF. Script `scripts/verify_phase5_guard_hf.py`;
-   không sửa adapter/test/contract/research note đã selected; version riêng nếu đổi.
-2. **GPU prerequisites**: acquisition độc lập từ official HF revision
-   `989aa7980e4cf806f80c7fef2b1adb7bc71aa306`, materialize rồi hash snapshot.
-   `describe_snapshot` không tự xác thực publisher; cần acquisition receipt riêng.
-   Chưa xác minh Kaggle variation/version tương đương. Đọc Kaggle skill + project
-   preflight trước bundle/upload; exact archive/expanded mount tests phải pass.
-3. Chuẩn bị runner synthetic cache-bypassed A→B→A vs fresh-A; không dùng cache-hit
-   ModelGuard làm chứng cứ statelessness. Giữ invalid/mismatch, không retry ngữ nghĩa.
-   Kiểm tensor thật, task-local load/deadline/cancel/reap và metrics dưới GPU.
-4. Version riêng agent placement để đo concurrent residency/context stress.
-   Guard default 5 GiB allocator + 1 GiB free headroom không phải combined fit.
-   MeasuredHFBackend cũ balanced 13 GiB/device không tái dùng nguyên cho coexistence.
-5. Rà A4 processing scope, grouped Dev tune/validation và broader final entitlements.
-   Không Phase 6/Test. Không cần tài khoản mới cho local work; Kaggle account/quota
-   chưa kiểm trong mốc này. Đã tìm được `python3 -m kaggle` phiên bản 2.2.4;
-   `--version` và `quota --help` pass. `.venv/bin/kaggle` không có, không cần cài
-   lại chỉ vì thiếu entrypoint trong venv. Chưa kiểm auth/quota qua mạng hoặc đổi
-   credentials; không tự đổi tài khoản để vượt quota.
+1. Full suite pass 998 tests. Commit source rồi chạy
+   `scripts/prepare_phase5_guard_probe.py` với acquisition trên,
+   wheelhouse `build/guard_probe_wheels_v1`, output build/kaggle mới.
+   Hai exact layouts phải pass: isolated Python, eight tools/fault recovery,
+   21 Dummy + completed/missing-only resume, bốn-call stub probe.
+2. Push source và lưu bundle receipt; kiểm private metadata, upload Dataset
+   `huylmhuhu/react-vn-guard15-probe-data-v1` với keep-tabular, không public;
+   đợi READY và xác minh version. Chưa Dataset/kernel mới được submit.
+3. Kernel `huylmhuhu/react-vn-guard15-probe-run-v1`: hai T4, internet off.
+   Guard-only A→B→A/fresh-A, 120s inclusive/request, greedy128/seed42.
+   Không agent resident; chưa combined-memory proof. Kết quả invalid/mismatch
+   là kết quả phải giữ, không retry ngữ nghĩa. Download vào output mới rồi audit.
+4. Kaggle CLI `python3 -m kaggle` 2.2.4. Selected account `huylmhuhu` (kaggle1)
+   đã auth/quota read: GPU used0,51h/remaining29,49h, refresh2026-09-12T00:00:00.
+   Không token/key trong logs/memory. Không đổi tài khoản để vượt quota.
+5. Sau guard probe: cancellation/GPU cleanup, versioned agent placement và
+   concurrent residency/context stress. MeasuredHFBackend cũ 13GiB/device không
+   tái dùng nguyên cho coexistence. Rồi A4 scope/grouped Dev/final entitlements.
+   Không Phase 6/Test; không cần user tạo tài khoản mới lúc này.
 
 ## Bằng chứng
 
-- Adapter preflight01: **942 tests pass** (51 mới), 228,00 giây; setup/Ruff/mypy
-  197 source files/knowledge pass. 134 source hashes, 1.176 prior source entries
-  nguyên vẹn. Chưa GPU/LLM. 370 raw hashes của warm v5 cũng đã kiểm lại riêng.
-- Selected validation01: source sạch `bc2023f`, 942 tests pass trong 228,14 giây;
-  setup/Ruff/mypy 197 files/knowledge pass, source/input/prior evidence khớp
-  preflight01. 134 source/sáu raw log hashes kiểm lại. Không GPU/LLM/Dev/Test run.
-- Warm v5 source `2300751`, evidence commit `598ea7e`:
-  [receipt](../experiments/manifests/phase5_warm_guard_v1_validation01.json).
-  891 tests; 22 cold/warm pairs = 44 Replay, chín lifecycle conditions; 140 mock
-  Broker calls, 240 fake guard classifications. 138 source/370 raw hashes,
-  1.038 prior entries. Worker starts 53→18 chỉ là synthetic process counts.
-- V4 source `04ae4c8`, [receipt](../experiments/manifests/phase5_a6_runtime_v1_validation01.json):
-  845 tests, 50 Replay. Value-gate source `a3743a2`, origin source `3b9f565`;
-  tất cả selected source và Test seals phải giữ nguyên.
+- Acquisition script báo valid, 10 files/3.098.973.447 bytes; artifact
+  `acquisition.json` và `snapshot.json` ở build path trên. Packager sẽ kiểm lại
+  mọi byte từ committed source trước inference. Chưa GPU/LLM mới.
+- **998 tests pass** trong 275,42 giây: 56 mới (25 acquisition, 26 bundle,
+  5 process-probe); setup/Ruff/mypy 203 files gồm kernel/knowledge pass.
+  Giữ các lỗi local QA đã sửa,
+  không claim chúng là Kaggle failures.
+- Guard adapter source `bc2023f`, [receipt](../experiments/manifests/phase5_guard_hf_v1_validation01.json):
+  942 tests, 134 source/sáu raw logs, 1.176 prior source entries verified.
+- Warm v5 source `2300751`, [receipt](../experiments/manifests/phase5_warm_guard_v1_validation01.json):
+  891 tests; 22 cold/warm pairs = 44 Replay, 140 Broker calls, 240 fake guard
+  classifications. 370 raw artifact hashes đã kiểm lại ở mốc trước.
 
 ## Giới hạn
 
-Chưa tải model hoặc GPU/Kaggle run, không benchmark Dev tuning/Test parsing.
-CPU fakes không chứng minh internals Transformers stateless hoặc CUDA compatible.
-Allocator cap là process-wide, không gồm mọi CUDA overhead hoặc process agent;
-global free-memory endpoints không phải global peak. Snapshot chỉ kiểm trước/sau
-load, mount phải immutable. Model choice vẫn là technical candidate, không guard
-đã freeze để so A2–A6. Guard model semantic/structured-output quality chưa đo.
-Warm guard không bảo đảm host hard-kill/orphan recovery. A6 bounded origin/S0
-final policy vẫn còn giới hạn entitlements, short names/aliases/encoded/paraphrase.
-Assistant self-review theo owner waiver, không independent review. Không đưa
-credentials/GT/Test payload/CoT vào knowledge hoặc development memory vào prompt.
+Chưa real guard/GPU inference, không benchmark Dev tuning/Test payload parsing.
+Probe stub-valid chỉ transport QA, không accuracy/ASR. Exact equality A có giới
+hạn bốn calls, không chứng minh mọi HF state/history. Allocator cap process-wide,
+free-memory endpoints không phải global peak; guard-only không combined fit.
+HF candidate chưa chốt làm production guard. A6 vẫn bounded origin/S0 final,
+không general private entitlements/aliases/paraphrase/encoding proof. Assistant
+self-review theo owner waiver, không independent review. Không credentials/GT/
+Test payload/CoT hoặc development memory trong model prompts.

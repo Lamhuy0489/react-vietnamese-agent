@@ -1,0 +1,18 @@
+{
+  "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "metadata_url": "https://huggingface.co/api/models/Qwen/Qwen2.5-1.5B-Instruct/revision/989aa7980e4cf806f80c7fef2b1adb7bc71aa306?blobs=true",
+  "access_date": "2026-09-08",
+  "files": [
+    {"name": ".gitattributes", "size": 1519, "git_blob_sha1": "a6344aac8c09253b3b630fb776ae94478aa0275b"},
+    {"name": "LICENSE", "size": 11343, "git_blob_sha1": "6634c8cc3133b3848ec74b9f275acaaa1ea618ab"},
+    {"name": "README.md", "size": 4917, "git_blob_sha1": "b3327a17e2ffa52e0fd941a2810b18a9fd0e7d94"},
+    {"name": "config.json", "size": 660, "git_blob_sha1": "f81ead14ab072d65a07817f83a3ee0e5a1890d10"},
+    {"name": "generation_config.json", "size": 242, "git_blob_sha1": "dfc11073787daf1b0f9c0f1499487ab5f4c93738"},
+    {"name": "merges.txt", "size": 1671839, "git_blob_sha1": "20024bfe7c83998e9aeaf98a0cd6a2ce6306c2f0"},
+    {"name": "model.safetensors", "size": 3087467144, "sha256": "dd924a11b4c220f385b51ffa522daea7c9f3d850e31b162bb5661df483c6d3ee"},
+    {"name": "tokenizer.json", "size": 7031645, "git_blob_sha1": "443909a61d429dff23010e5bddd28ff530edda00"},
+    {"name": "tokenizer_config.json", "size": 7305, "git_blob_sha1": "07bfe0640cb5a0037f9322287fbfc682806cf672"},
+    {"name": "vocab.json", "size": 2776833, "git_blob_sha1": "4783fe10ac3adce15ac8f358ef5462739852c569"}
+  ]
+}
