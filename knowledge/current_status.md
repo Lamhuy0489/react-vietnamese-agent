@@ -1,6 +1,21 @@
 # Trạng thái hiện tại
 
-## Hiện hành: warm guard/runtime v5 đã tái lập — 2026-09-08
+## Hiện hành: guard HF adapter qua CPU preflight — 2026-09-08
+
+Thêm adapter riêng, không sửa runtime/policy/source đã khóa. Snapshot pin gồm
+HF revision và hash/size mọi file; native local-only Qwen2, FP16/single GPU,
+allocator budget riêng trong guard subprocess. Fresh messages/generation config/
+dynamic cache mỗi call; không truncation, lỗi retire. Metrics không lưu prompt/
+response/exception text. [Contract](../docs/architecture/phase5_guard_hf_contract.md).
+Preflight01: **942 tests pass** (51 CPU fake tests mới), 228,00 giây; setup/Ruff/
+mypy 197 files/knowledge pass. 134 source hashes, 1.176 prior source entries
+nguyên vẹn; selected clean-source reproduction là bước kế tiếp.
+[Nguồn ứng viên](guard_model_preflight_evidence.md): Qwen2.5-1.5B-Instruct,
+HF revision đã xác minh tồn tại, chưa tải/xác thực weights hoặc chốt guard luận văn.
+Chưa GPU/coexistence/statelessness thật; không benchmark Dev/Test hoặc thay điểm cũ.
+Phase 5 chưa nghiệm thu. [Bước tiếp theo](handoff.md).
+
+## Lịch sử: warm guard/runtime v5 đã tái lập — 2026-09-08
 
 Worker mới tải backend một lần trong mỗi task, tái dùng giữa các request; không
 chia sẻ worker/cache giữa tasks. Deadline tính cả cold load; lỗi/timeout/identity

@@ -1,6 +1,17 @@
-# Phase 5 — Task-local warm guard/runtime v5
+# Phase 5 — Offline guard adapter và GPU preflight còn lại
 
 ## Hiện hành
+
+Adapter [HF guard v1](../docs/architecture/phase5_guard_hf_contract.md) qua CPU
+preflight01: 942 tests pass (51 mới), 228,00 giây; setup/Ruff/mypy 197 files và
+knowledge pass. 134 source hashes và 1.176 prior entries nguyên vẹn. Candidate
+[Qwen 1.5B/revision evidence](guard_model_preflight_evidence.md), chưa tải weights.
+Content-bound identity, GPU/process budget, context cap, fresh generation config/
+cache và metrics riêng; không sửa runtime v5 hay các source đã hash.
+Không suy CPU fake thành GPU fit hoặc model-quality/statelessness evidence.
+Phase 5 chưa accepted; acquisition/bundle/GPU và grouped Dev còn mở.
+
+## Lịch sử: warm guard/runtime v5
 
 [Warm guard/runtime v5](../docs/architecture/phase5_warm_guard_contract.md) đã tái lập:
 model load một lần/task, bounded JSON IPC, cold/warm timing riêng và deadline

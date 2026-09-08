@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: task-local warm guard and A0–A6 runtime v5 verified on synthetic QA**
+- Current stage: **Phase 5 in progress: offline guard HF adapter passes synthetic CPU preflight; GPU validation pending**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-08
 
@@ -318,6 +318,14 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   from clean source matches preflight; 891 tests pass, 138 source/370 raw hashes
   and 53/18 worker starts rechecked. Actual guard model/GPU validation stays open.
 - [ ] Grouped Dev tuning/validation protocol, differential experiments and freeze.
+
+- [x] Separate offline guard HF adapter CPU preflight: 942 tests pass (51 new),
+  setup/Ruff/mypy 197 files/knowledge pass; 134 source hashes and 1,176 prior
+  entries verified. Content-bound snapshot identity, local-only native FP16
+  single-device loading, allocator/context budgets, fresh generation config/cache
+  and text-free metrics. [Contract](../architecture/phase5_guard_hf_contract.md).
+  Candidate upstream revision verified, but weights not acquired/authenticated;
+  no real HF/CUDA or agent/guard coexistence evidence. Selected reproduction pending.
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
