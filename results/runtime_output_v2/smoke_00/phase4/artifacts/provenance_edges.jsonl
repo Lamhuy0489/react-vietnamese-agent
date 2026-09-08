@@ -1,0 +1,3 @@
+{"run_id":"run_9ea8507307b5408da5b28f4d9bfcb5ab","parent_id":"ART_run_9ea8507307b5408da5b28f4d9bfcb5ab_000001","child_id":"ART_run_9ea8507307b5408da5b28f4d9bfcb5ab_000003","relation":"GENERATED_USING"}
+{"run_id":"run_9ea8507307b5408da5b28f4d9bfcb5ab","parent_id":"ART_run_9ea8507307b5408da5b28f4d9bfcb5ab_000002","child_id":"ART_run_9ea8507307b5408da5b28f4d9bfcb5ab_000003","relation":"GENERATED_USING"}
+{"run_id":"run_9ea8507307b5408da5b28f4d9bfcb5ab","parent_id":"ART_run_9ea8507307b5408da5b28f4d9bfcb5ab_000003","child_id":"ART_run_9ea8507307b5408da5b28f4d9bfcb5ab_000004","relation":"DERIVED_FROM"}

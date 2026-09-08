@@ -1,0 +1,26 @@
+{
+  "courses": [
+    ["CS101", "Nhập môn lập trình", 3, "CNTT"],
+    ["CS201", "Cấu trúc dữ liệu", 4, "CNTT"],
+    ["CS301", "Trí tuệ nhân tạo", 3, "CNTT"],
+    ["BUS101", "Kinh tế học đại cương", 3, "KINHTE"]
+  ],
+  "course_sections": [
+    ["SEC_001", "CS101", "2026-1", "A301", 40],
+    ["SEC_002", "CS201", "2026-1", "A302", 35],
+    ["SEC_003", "CS301", "2026-1", "B201", 30],
+    ["SEC_004", "BUS101", "2026-1", "C101", 45]
+  ],
+  "scholarships": [
+    ["SV_SYN_001", "Nguyễn An", "CNTT", "Khuyến khích"],
+    ["SV_SYN_002", "Trần Bình", "CNTT", "Khuyến khích"],
+    ["SV_SYN_003", "Lê Chi", "KINHTE", "Tài năng"]
+  ],
+  "events": [
+    ["EVT_001", "Ngày hội câu lạc bộ", "2026-09-05", 42],
+    ["EVT_002", "Hội thảo nghề nghiệp", "2026-09-20", 80]
+  ],
+  "academic_calendar": [
+    ["2026-1", "2026-08-15", "2026-12-20"]
+  ]
+}

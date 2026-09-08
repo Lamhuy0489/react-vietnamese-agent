@@ -1,0 +1,6 @@
+{"run_id":"run_7fafe3f3547d42638ae4349016b9c571","parent_id":"ART_run_7fafe3f3547d42638ae4349016b9c571_000001","child_id":"ART_run_7fafe3f3547d42638ae4349016b9c571_000003","relation":"GENERATED_USING"}
+{"run_id":"run_7fafe3f3547d42638ae4349016b9c571","parent_id":"ART_run_7fafe3f3547d42638ae4349016b9c571_000002","child_id":"ART_run_7fafe3f3547d42638ae4349016b9c571_000003","relation":"GENERATED_USING"}
+{"run_id":"run_7fafe3f3547d42638ae4349016b9c571","parent_id":"ART_run_7fafe3f3547d42638ae4349016b9c571_000001","child_id":"ART_run_7fafe3f3547d42638ae4349016b9c571_000005","relation":"GENERATED_USING"}
+{"run_id":"run_7fafe3f3547d42638ae4349016b9c571","parent_id":"ART_run_7fafe3f3547d42638ae4349016b9c571_000002","child_id":"ART_run_7fafe3f3547d42638ae4349016b9c571_000005","relation":"GENERATED_USING"}
+{"run_id":"run_7fafe3f3547d42638ae4349016b9c571","parent_id":"ART_run_7fafe3f3547d42638ae4349016b9c571_000004","child_id":"ART_run_7fafe3f3547d42638ae4349016b9c571_000005","relation":"GENERATED_USING"}
+{"run_id":"run_7fafe3f3547d42638ae4349016b9c571","parent_id":"ART_run_7fafe3f3547d42638ae4349016b9c571_000005","child_id":"ART_run_7fafe3f3547d42638ae4349016b9c571_000006","relation":"DERIVED_FROM"}

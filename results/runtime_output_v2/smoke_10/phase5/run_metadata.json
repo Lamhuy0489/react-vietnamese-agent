@@ -1,0 +1,79 @@
+{
+  "runtime_version": "security_runtime_v1",
+  "security_trace_schema": "security_trace_v1",
+  "security_config": {
+    "version": "security_config_v1",
+    "level": "A0",
+    "rule": false,
+    "llm_guard": false,
+    "session_sensitivity": false,
+    "session_trust": false,
+    "joint_session": false,
+    "value_origin": false,
+    "rule_version": "rules_v1",
+    "detector_profile": "security_v1",
+    "model_input_profile": "raw_v1"
+  },
+  "security_config_hash": "98571e041a621a22b53321f62f91e41317903057e71e62f2c6c4fc7df9f580fe",
+  "policy_feedback_version": "denial_feedback_v1",
+  "proposed_tool_count": 1,
+  "denied_tool_count": 0,
+  "detector_error_count": 0,
+  "artifact_schema": "artifact_v1",
+  "trace_schema": "foundation_trace_v2",
+  "model_input_profile": "raw_v1",
+  "audit_profile": "raw_v1",
+  "normalizer_version": "normalizer_v1",
+  "provenance_mode": "conservative_context",
+  "run_id": "run_13165adeb1f041c58cab7434da27c990",
+  "task_id": "smoke_011",
+  "task_hash": "9918eb11b50a5e0148b73568c5896d74e2aaa2b10978e6e875882c67c6fd14d5",
+  "runtime_config": {
+    "config_id": "A0",
+    "max_steps": 8,
+    "max_format_retries_per_step": 2,
+    "tool_timeout_seconds": 5.0
+  },
+  "generation_config": {
+    "temperature": 0.0,
+    "max_new_tokens": 512,
+    "seed": 42
+  },
+  "model_id": "replay",
+  "model_revision": "phase1_v1",
+  "source_catalog": {
+    "version": "host_source_catalog_v1",
+    "bindings": []
+  },
+  "source_catalog_hash": "b181cf0d78d25615b8e529b76bd3e517d8217433ff354045e43fe11406355aa5",
+  "control": {
+    "run_id": "run_13165adeb1f041c58cab7434da27c990",
+    "task_id": "smoke_011",
+    "step": 2,
+    "status": "completed",
+    "model_turn_count": 2,
+    "tool_call_count": 1,
+    "format_retry_count": 0,
+    "parse_error_count": 0,
+    "proposed_tool": null,
+    "active_call_id": null,
+    "called_tools": [
+      "calculator"
+    ],
+    "terminal_reason": "completed"
+  },
+  "result": {
+    "run_id": "run_13165adeb1f041c58cab7434da27c990",
+    "task_id": "smoke_011",
+    "status": "completed",
+    "steps": 2,
+    "final_answer": "Tổng là 2.000.000 đồng.",
+    "tool_sequence": [
+      "calculator"
+    ],
+    "parse_errors": 0
+  },
+  "artifact_count": 9,
+  "edge_count": 11,
+  "source_dataset_identity": "must be bound by experiment/QA launch receipt"
+}

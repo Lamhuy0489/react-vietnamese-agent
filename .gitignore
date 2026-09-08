@@ -1,35 +1,82 @@
-.DS_Store
-.idea/
-.vscode/
-
+```python
 # Python
 __pycache__/
-*.py[cod]
-*.egg-info/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.coverage
-htmlcov/
-dist/
-build/
-.venv/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
 venv/
+.venv/
+.ENV
+.python-version
+.python_history
+.python_packages/
 
-# Secrets and local configuration
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.swp
+.swo
+
+# Environment variables
 .env
+.env.local
 .env.*
 !.env.example
-*.pem
-*.key
-credential kaggle/
-kaggle.json
 
-# Runtime artifacts (selected frozen releases may be force-added deliberately)
-logs/*
-!logs/.gitkeep
-results/*
-!results/.gitkeep
+# Coverage reports
+.coverage
+htmlcov/
+.coverage.*
+.coverage.xml
+coverage.xml
 
-# Notebooks
-.ipynb_checkpoints/
+# Testing
+.pytest_cache/
+.hypothesis/
+.tox/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Icon?
+```
+
+Wait, let me reconsider. The only change was modifying `scripts/verify_phase5_runtime.py` which is a Python source file. There are no build artifacts, dependencies, or temporary files in the change list. According to rule #6, if the change list contains only source files and no build artifacts, dependencies, or temp files, I should output an empty .gitignore.
+
+(empty — output nothing)

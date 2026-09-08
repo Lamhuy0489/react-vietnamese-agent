@@ -1,0 +1,56 @@
+{
+  "runtime_version": "foundation_runtime_v1",
+  "artifact_schema": "artifact_v1",
+  "trace_schema": "foundation_trace_v2",
+  "model_input_profile": "raw_v1",
+  "audit_profile": "raw_v1",
+  "normalizer_version": "normalizer_v1",
+  "provenance_mode": "conservative_context",
+  "run_id": "run_9ea8507307b5408da5b28f4d9bfcb5ab",
+  "task_id": "smoke_001",
+  "task_hash": "c1c63374db2d8487bef5beb2237af8885069ff4c8478d769a60ee4efb367ca55",
+  "runtime_config": {
+    "config_id": "A0",
+    "max_steps": 8,
+    "max_format_retries_per_step": 2,
+    "tool_timeout_seconds": 5.0
+  },
+  "generation_config": {
+    "temperature": 0.0,
+    "max_new_tokens": 512,
+    "seed": 42
+  },
+  "model_id": "replay",
+  "model_revision": "phase1_v1",
+  "source_catalog": {
+    "version": "host_source_catalog_v1",
+    "bindings": []
+  },
+  "source_catalog_hash": "b181cf0d78d25615b8e529b76bd3e517d8217433ff354045e43fe11406355aa5",
+  "control": {
+    "run_id": "run_9ea8507307b5408da5b28f4d9bfcb5ab",
+    "task_id": "smoke_001",
+    "step": 1,
+    "status": "completed",
+    "model_turn_count": 1,
+    "tool_call_count": 0,
+    "format_retry_count": 0,
+    "parse_error_count": 0,
+    "proposed_tool": null,
+    "active_call_id": null,
+    "called_tools": [],
+    "terminal_reason": "completed"
+  },
+  "result": {
+    "run_id": "run_9ea8507307b5408da5b28f4d9bfcb5ab",
+    "task_id": "smoke_001",
+    "status": "completed",
+    "steps": 1,
+    "final_answer": "Tôi có thể dùng các công cụ giả lập để tìm tài liệu, truy vấn dữ liệu, tính toán và mô phỏng hành động học vụ.",
+    "tool_sequence": [],
+    "parse_errors": 0
+  },
+  "artifact_count": 4,
+  "edge_count": 3,
+  "source_dataset_identity": "must be bound by experiment/QA launch receipt"
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "page_id": "CACHE_001",
+    "title": "Thông báo lịch nghỉ Quốc khánh 2026",
+    "content": "Trường nghỉ Quốc khánh từ ngày 02/09/2026 đến hết ngày 03/09/2026.",
+    "source_url": "https://example-university.local/holiday-2026"
+  },
+  {
+    "page_id": "CACHE_002",
+    "title": "Tuyến xe buýt đến cơ sở A",
+    "content": "Các tuyến xe buýt giả lập 08, 18 và 50 dừng gần cổng cơ sở A.",
+    "source_url": "https://example-university.local/bus-campus-a"
+  },
+  {
+    "page_id": "CACHE_003",
+    "title": "Thực đơn căn tin tuần 1",
+    "content": "Suất cơm tiêu chuẩn có giá 35.000 đồng trong tuần 1.",
+    "source_url": "https://example-university.local/canteen-week-1"
+  },
+  {
+    "page_id": "CACHE_004",
+    "title": "Lịch bảo trì cổng đào tạo",
+    "content": "Cổng đào tạo bảo trì từ 22:00 ngày 12/08/2026 đến 01:00 ngày 13/08/2026.",
+    "source_url": "https://example-university.local/portal-maintenance"
+  },
+  {
+    "page_id": "CACHE_005",
+    "title": "Bản đồ phòng học cơ sở A",
+    "content": "Tòa A nằm bên trái cổng chính; phòng A301 ở tầng 3.",
+    "source_url": "https://example-university.local/map-a"
+  },
+  {
+    "page_id": "CACHE_006",
+    "title": "Ngày hội câu lạc bộ",
+    "content": "Ngày hội câu lạc bộ diễn ra lúc 08:00 ngày 05/09/2026 tại sân trung tâm.",
+    "source_url": "https://example-university.local/club-day"
+  },
+  {
+    "page_id": "CACHE_007",
+    "title": "Hướng dẫn sử dụng Wi-Fi khách",
+    "content": "Mạng Wi-Fi khách giả lập có tên UNIVERSITY-GUEST và không dùng dữ liệu thật.",
+    "source_url": "https://example-university.local/wifi"
+  },
+  {
+    "page_id": "CACHE_008",
+    "title": "Lịch xe nội bộ",
+    "content": "Xe nội bộ rời cơ sở A lúc 07:00, 12:00 và 17:00 mỗi ngày học.",
+    "source_url": "https://example-university.local/shuttle"
+  },
+  {
+    "page_id": "CACHE_009",
+    "title": "Thông báo hiến máu",
+    "content": "Chương trình hiến máu giả lập tổ chức ngày 18/09/2026 tại hội trường B.",
+    "source_url": "https://example-university.local/blood-donation"
+  },
+  {
+    "page_id": "CACHE_010",
+    "title": "Hỗ trợ kỹ thuật trực tuyến",
+    "content": "Kênh hỗ trợ kỹ thuật hoạt động từ 08:00 đến 17:00 các ngày làm việc.",
+    "source_url": "https://example-university.local/it-support"
+  }
+]

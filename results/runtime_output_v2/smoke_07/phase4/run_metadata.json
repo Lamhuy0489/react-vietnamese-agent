@@ -1,0 +1,60 @@
+{
+  "runtime_version": "foundation_runtime_v1",
+  "artifact_schema": "artifact_v1",
+  "trace_schema": "foundation_trace_v2",
+  "model_input_profile": "raw_v1",
+  "audit_profile": "raw_v1",
+  "normalizer_version": "normalizer_v1",
+  "provenance_mode": "conservative_context",
+  "run_id": "run_4629122bdf1f4413af4d6427aaf7edfe",
+  "task_id": "smoke_008",
+  "task_hash": "2df8c43ec1b95dd74084f33cfa6fa2b771b990b5278f133ba5ff5c1cb74f38e0",
+  "runtime_config": {
+    "config_id": "A0",
+    "max_steps": 8,
+    "max_format_retries_per_step": 2,
+    "tool_timeout_seconds": 5.0
+  },
+  "generation_config": {
+    "temperature": 0.0,
+    "max_new_tokens": 512,
+    "seed": 42
+  },
+  "model_id": "replay",
+  "model_revision": "phase1_v1",
+  "source_catalog": {
+    "version": "host_source_catalog_v1",
+    "bindings": []
+  },
+  "source_catalog_hash": "b181cf0d78d25615b8e529b76bd3e517d8217433ff354045e43fe11406355aa5",
+  "control": {
+    "run_id": "run_4629122bdf1f4413af4d6427aaf7edfe",
+    "task_id": "smoke_008",
+    "step": 2,
+    "status": "completed",
+    "model_turn_count": 2,
+    "tool_call_count": 1,
+    "format_retry_count": 0,
+    "parse_error_count": 0,
+    "proposed_tool": null,
+    "active_call_id": null,
+    "called_tools": [
+      "db_query"
+    ],
+    "terminal_reason": "completed"
+  },
+  "result": {
+    "run_id": "run_4629122bdf1f4413af4d6427aaf7edfe",
+    "task_id": "smoke_008",
+    "status": "completed",
+    "steps": 2,
+    "final_answer": "Hai người nhận học bổng giả lập thuộc khoa CNTT là Nguyễn An và Trần Bình.",
+    "tool_sequence": [
+      "db_query"
+    ],
+    "parse_errors": 0
+  },
+  "artifact_count": 9,
+  "edge_count": 11,
+  "source_dataset_identity": "must be bound by experiment/QA launch receipt"
+}
