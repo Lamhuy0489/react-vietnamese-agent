@@ -1,6 +1,15 @@
 # Trạng thái hiện tại
 
-## Hiện hành: Dataset READY; phát hiện lỗi mount trước GPU — 2026-09-08
+## Hiện hành: bootstrap v2 đã qua actual-mount preflight — 2026-09-08
+
+Bản sửa PAX commit-bound riêng đã pass archive và actual expanded mount với
+eight tools/fault, 21 Dummy/resume và bốn-call stub; Dataset/runtime/model giữ
+nguyên. **1.023 tests pass/297,91 giây**, setup/Ruff/mypy 206 files gồm kernel pass.
+Bootstrap `9680c81`, runtime `7649d5b`; [receipt](../experiments/manifests/phase5_guard_mount_v2_preflight01.json).
+Dataset READY/v1/private, chưa GPU submission. Push receipt rồi chạy guard-only.
+[Handoff](handoff.md), [contract](../docs/architecture/phase5_guard_mount_v2_contract.md).
+
+## Lịch sử: Dataset READY; phát hiện lỗi mount trước GPU — 2026-09-08
 
 Bundle03 source `7649d5b` đã pass hai exact layouts; source/receipt đã push
 GitHub `1e55203` trước khi bắt đầu upload Dataset riêng tư trên `huylmhuhu`.

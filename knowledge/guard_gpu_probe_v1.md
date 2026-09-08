@@ -8,8 +8,13 @@ Cập nhật 2026-09-08. Phase 5 vẫn đang làm, không phải benchmark ASR/u
 đúng PAX header khớp source commit, kiểm exact inventory rồi không copy sidecar
 vào executable tree. Wrapper v2 riêng, không sửa v1/runtime/model/prompt/Dataset.
 Kernel-only packager tái dùng Dataset v1 và ghi cả runtime commit/bootstrap commit.
-12 tests mới + 26 bundle regressions pass; full suite và actual-layout preflight
-cần hoàn tất trước GPU. Không cần upload lại weights.
+12 tests mới + 26 bundle regressions pass; **1.023 full tests pass/297,91 giây**,
+setup/Ruff/mypy 206 files gồm v2 wrapper pass. Exact archive và expanded có header
+thực đã pass đầy đủ từ bootstrap source `9680c81`.
+[Receipt v2](../experiments/manifests/phase5_guard_mount_v2_preflight01.json),
+kernel-only output `build/kaggle/phase5_guard_mount_v2_preflight01/kernel`.
+Dataset được kiểm lại READY/v1/private, quota29,49h; chưa submit GPU.
+Không cần upload lại weights. Runtime source vẫn `7649d5b`.
 
 ## Đầu vào đã khóa
 

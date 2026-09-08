@@ -1,0 +1,247 @@
+{
+  "protocol": "guard_pax_bootstrap_v2_preflight",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "7649d5bed0b872e93b4233a7dcdbdf0da4623194",
+  "bootstrap_commit": "9680c81a2919e02ffc025c24c7bfbc4c383bbfb2",
+  "bundle_manifest_sha256": "b14976413b72898b6c0c1b8c46c1ebb0f62f63633f647ab2064fbc048262240f",
+  "base_preflight_sha256": "9eca9191b2f2e370e37f3bb49c8368ff5f9dd63f4f6c4f8795d001481c370ef4",
+  "remote_diagnostic_sha256": "3b7183d432ea3d332a1fb0c0022c566f21b06aea8465bae1f3d95249896822e2",
+  "remote_pax_sha256": "afc46082093e423aee3f0c9f9dff5da1c860a4a415caa54ec820ba34f1890594",
+  "wrapper_sha256": "dbd2e777c3b73b41d02f47558605d01a0b4c4f62e0a647494e132afc6982dde7",
+  "bootstrap_template_sha256": "62a58132c76107cae0dd5d5ede704bc76452748cad98e9dfa61b0687cda3af97",
+  "kernel_metadata_sha256": "578bc48c377448041cbe8e5c735974d242725418de89b7b0da525d9a4adee204",
+  "checks": [
+    {
+      "layout": "archive",
+      "isolated_python": true,
+      "tools": 8,
+      "dummy_tasks": 21,
+      "completed_task_resume": true,
+      "missing_only_resume": true,
+      "retained_checkpoints": 20,
+      "missing_task_runs": 1,
+      "probe": {
+        "protocol": "guard_statelessness_preflight_v1",
+        "valid": true,
+        "phase5_accepted": false,
+        "planned_calls": 4,
+        "attempted_calls": 4,
+        "structured_valid_calls": 4,
+        "same_A_response_sha256": true,
+        "rows": [
+          {
+            "trial": "warm",
+            "index": 0,
+            "case": "A",
+            "response_sha256": "cb16cbbc10fa88f9e2c2c400ae63134e83502775f5901c85f46477e5741ae920",
+            "status": "OK",
+            "parsed": {
+              "risk": "SAFE",
+              "labels": [],
+              "confidence": "HIGH"
+            }
+          },
+          {
+            "trial": "warm",
+            "index": 1,
+            "case": "B",
+            "response_sha256": "cb16cbbc10fa88f9e2c2c400ae63134e83502775f5901c85f46477e5741ae920",
+            "status": "OK",
+            "parsed": {
+              "risk": "SAFE",
+              "labels": [],
+              "confidence": "HIGH"
+            }
+          },
+          {
+            "trial": "warm",
+            "index": 2,
+            "case": "A",
+            "response_sha256": "cb16cbbc10fa88f9e2c2c400ae63134e83502775f5901c85f46477e5741ae920",
+            "status": "OK",
+            "parsed": {
+              "risk": "SAFE",
+              "labels": [],
+              "confidence": "HIGH"
+            }
+          },
+          {
+            "trial": "fresh",
+            "index": 0,
+            "case": "A",
+            "response_sha256": "cb16cbbc10fa88f9e2c2c400ae63134e83502775f5901c85f46477e5741ae920",
+            "status": "OK",
+            "parsed": {
+              "risk": "SAFE",
+              "labels": [],
+              "confidence": "HIGH"
+            }
+          }
+        ],
+        "lifecycle": [
+          {
+            "trial": "warm",
+            "closed": true,
+            "events": [
+              {
+                "sequence": 1,
+                "pid": 98739,
+                "method": "GRACEFUL",
+                "reaped": true,
+                "exitcode": 0,
+                "elapsed_seconds": 0.0329195800004527
+              }
+            ]
+          },
+          {
+            "trial": "fresh",
+            "closed": true,
+            "events": [
+              {
+                "sequence": 1,
+                "pid": 98741,
+                "method": "GRACEFUL",
+                "reaped": true,
+                "exitcode": 0,
+                "elapsed_seconds": 0.03470640000887215
+              }
+            ]
+          }
+        ],
+        "scope": "Two independent technical trials, not guard accuracy or ASR"
+      }
+    },
+    {
+      "layout": "expanded",
+      "isolated_python": true,
+      "tools": 8,
+      "dummy_tasks": 21,
+      "completed_task_resume": true,
+      "missing_only_resume": true,
+      "retained_checkpoints": 20,
+      "missing_task_runs": 1,
+      "probe": {
+        "protocol": "guard_statelessness_preflight_v1",
+        "valid": true,
+        "phase5_accepted": false,
+        "planned_calls": 4,
+        "attempted_calls": 4,
+        "structured_valid_calls": 4,
+        "same_A_response_sha256": true,
+        "rows": [
+          {
+            "trial": "warm",
+            "index": 0,
+            "case": "A",
+            "response_sha256": "cb16cbbc10fa88f9e2c2c400ae63134e83502775f5901c85f46477e5741ae920",
+            "status": "OK",
+            "parsed": {
+              "risk": "SAFE",
+              "labels": [],
+              "confidence": "HIGH"
+            }
+          },
+          {
+            "trial": "warm",
+            "index": 1,
+            "case": "B",
+            "response_sha256": "cb16cbbc10fa88f9e2c2c400ae63134e83502775f5901c85f46477e5741ae920",
+            "status": "OK",
+            "parsed": {
+              "risk": "SAFE",
+              "labels": [],
+              "confidence": "HIGH"
+            }
+          },
+          {
+            "trial": "warm",
+            "index": 2,
+            "case": "A",
+            "response_sha256": "cb16cbbc10fa88f9e2c2c400ae63134e83502775f5901c85f46477e5741ae920",
+            "status": "OK",
+            "parsed": {
+              "risk": "SAFE",
+              "labels": [],
+              "confidence": "HIGH"
+            }
+          },
+          {
+            "trial": "fresh",
+            "index": 0,
+            "case": "A",
+            "response_sha256": "cb16cbbc10fa88f9e2c2c400ae63134e83502775f5901c85f46477e5741ae920",
+            "status": "OK",
+            "parsed": {
+              "risk": "SAFE",
+              "labels": [],
+              "confidence": "HIGH"
+            }
+          }
+        ],
+        "lifecycle": [
+          {
+            "trial": "warm",
+            "closed": true,
+            "events": [
+              {
+                "sequence": 1,
+                "pid": 98908,
+                "method": "GRACEFUL",
+                "reaped": true,
+                "exitcode": 0,
+                "elapsed_seconds": 0.031162991013843566
+              }
+            ]
+          },
+          {
+            "trial": "fresh",
+            "closed": true,
+            "events": [
+              {
+                "sequence": 1,
+                "pid": 98910,
+                "method": "GRACEFUL",
+                "reaped": true,
+                "exitcode": 0,
+                "elapsed_seconds": 0.031742163002491
+              }
+            ]
+          }
+        ],
+        "scope": "Two independent technical trials, not guard accuracy or ASR"
+      }
+    }
+  ],
+  "prerequisites": {
+    "clean_frozen": true,
+    "robustness_ids_presealed": 50,
+    "adversarial_seal_valid": true,
+    "test_access": "hash-only; robustness IDs only",
+    "clean_component_hashes": {
+      "dev_pilot/fault_plans.json": "3da01fa7c945cc00bb72a1e505b4db77bd339b19f15060ae6f37c3c3df06bceb",
+      "dev_pilot/task_ids.json": "1548683a7c985d08b867a4adc276071b08c36c5e14d29121e96966185f86beba",
+      "environment/cached_pages/pages.json": "4ce56c270a4d96117ba14cde6d070e56a59817d774401f71372fa9f2c2fab34a",
+      "environment/database/seed.json": "51b5f8980984f8905bbee557906c677cca449aa16a83fb7de645cb375b0a2b31",
+      "environment/database/university.db": "85bc7a259438b89f8f86fdf09965aa46e9ef9b4749564795aab7f43e582c10c3",
+      "environment/documents/documents.json": "431a7b8cbcd271c98f08adc61cdd83c0e1ed34f944f86c43fad8dca2526cacbe",
+      "manifests/environment_manifest.json": "4241e73fa3ada87dd9d595d5db0a249966a5cead7da04a37cba7cac020b787e9",
+      "manifests/source_catalog.json": "f9d8621762d016aefca05d1eff24f52ea39fc2034d4122889c5b7f1127588b49",
+      "manifests/split_manifest.json": "4e396d50e8a4f6b50be42913e4213db0ab870f461bcedd4fc01dfec1c9cec6e0",
+      "pool/tasks.jsonl": "f96839aa55aa95de0b3fd2ba79139bbd108d2899de26391203ae978672c86611",
+      "private/dev_ground_truth.jsonl": "95a3e4668699dddbb8f8e85ff3ad08950d528644980ec4033a266d851d01582c",
+      "private/pool_ground_truth.jsonl": "5cdc74cfca6887e63a3fed7da22a0d78c4a781029d826768a4f5b5ddc9ad0a52",
+      "private/robustness_canonical_ids.json": "18feead8234e8c1461f91077fabcbaee151f5f3791ade1275c8cbf8fc27652d0",
+      "private/test_ground_truth.jsonl": "8d11fec78cdf6714ff6d5136e88abb3fd7dbc1f66b0485a77c2c1933696b95a5",
+      "reports/pool_validation.json": "d4e940014be90ace7a7ff839454b867255f8ef8787d88daeb85b592be9a35d09",
+      "reports/qa_records.json": "399495e2f73373dbbf61eba43fab2666e430baab50a2f83616eec2dcc8000c22",
+      "splits/dev.jsonl": "ce1cda2a258c6d00b31a428b10258bbda7cade77c4b3841aa8cd1af34227a0d3",
+      "splits/test.jsonl": "688fddcc4c4cb363515e1247e992cbda9e5268ba8e1cc51e0060d48f5a9dad20"
+    },
+    "adversarial_seal_sha256": "431b81118026bef6c60e33306e51df71160504579e76ea08fb4648005fa1cb6b"
+  },
+  "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+  "dataset_version": 1,
+  "real_model_runs": 0,
+  "scope": "Bootstrap-only repair; Dataset, guard runtime/model/prompt unchanged."
+}

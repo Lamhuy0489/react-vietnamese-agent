@@ -7,7 +7,10 @@ Cập nhật: 2026-09-08. Đây là chỉ dẫn tiếp tục, không thay thế 
 Phase 5: **bootstrap v2 đã sửa PAX bằng commit binding; đang kiểm chứng trước GPU**.
 [Contract v2](../docs/architecture/phase5_guard_mount_v2_contract.md).
 V1/Dataset/runtime giữ nguyên; v2 là wrapper riêng và kernel-only packager.
-38 targeted tests pass (12 mới); full suite và exact preflight cần hoàn tất.
+38 targeted tests pass (12 mới); **1.023 full tests pass/297,91 giây**,
+setup/Ruff/mypy 206 files gồm v2 kernel pass. Exact archive và expanded PAX
+preflight pass từ bootstrap `9680c81`; [receipt](../experiments/manifests/phase5_guard_mount_v2_preflight01.json).
+Kernel-only output `build/kaggle/phase5_guard_mount_v2_preflight01/kernel`.
 [Nhật ký triển khai](guard_gpu_probe_v1.md). Chưa submit GPU kernel.
 [Bundle receipt](../experiments/manifests/phase5_guard_bundle_v1_preflight03.json).
 [Contract](../docs/architecture/phase5_guard_probe_contract.md), [tiến độ](phase5_progress.md).
@@ -34,8 +37,10 @@ revision chính thức + local file hashes. Model ở build, không add weights 
    tái hiện frozen wrapper reject. [Diagnostic receipt](../experiments/manifests/phase5_guard_remote_mount_v1_diagnostic01.json).
    Bản sửa: `notebooks/kaggle/guard_probe_kernel_v2.py`, packager
    `scripts/prepare_phase5_guard_mount_v2.py`. Không đổi bundle03 hoặc bỏ qua mọi extras.
-   Kiểm lại archive và actual expanded mount có global PAX, eight tools/fault,
-   21 Dummy/resume/stub trong isolated venv trước GPU. Chưa submit kernel.
+   Archive và actual expanded PAX đã pass eight tools/fault, 21 Dummy,
+   completed/missing-only resume và stub trong isolated venv. Wrapper hash/receipt
+   đối chiếu, credential scan0. Dataset đã đọc lại READY/v1/private, quota29,49h.
+   Push source/receipt rồi submit đúng kernel-only output trên; chưa submit kernel.
 3. Kernel `huylmhuhu/react-vn-guard15-probe-run-v1`: hai T4, internet off.
    Guard-only A→B→A/fresh-A, 120s inclusive/request, greedy128/seed42.
    Không agent resident; chưa combined-memory proof. Kết quả invalid/mismatch
