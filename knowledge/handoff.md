@@ -4,7 +4,9 @@ Cập nhật: 2026-09-08. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Phase 5: **offline guard HF adapter v1 đã qua full-suite preflight01**.
+Phase 5: **offline guard HF adapter v1 đã tái lập từ source sạch `bc2023f`**.
+[Selected receipt](../experiments/manifests/phase5_guard_hf_v1_validation01.json)
+khớp source/input/prior-evidence preflight01; chưa Phase 5 acceptance.
 [Contract](../docs/architecture/phase5_guard_hf_contract.md),
 [nguồn ứng viên](guard_model_preflight_evidence.md), [tiến độ](phase5_progress.md).
 Không sửa runtime v5/policies/prompt hoặc source/test/contract đã khóa trước.
@@ -17,8 +19,8 @@ lỗi retire; không prompt/response/exception text trong adapter metrics.
 
 ## Bước tiếp theo
 
-1. Commit source và chạy selected reproduction, lưu receipt rồi GitHub.
-   Script mới: `scripts/verify_phase5_guard_hf.py`; không sửa source đã selected.
+1. Kiểm Git/hashes và receipt guard HF. Script `scripts/verify_phase5_guard_hf.py`;
+   không sửa adapter/test/contract/research note đã selected; version riêng nếu đổi.
 2. **GPU prerequisites**: acquisition độc lập từ official HF revision
    `989aa7980e4cf806f80c7fef2b1adb7bc71aa306`, materialize rồi hash snapshot.
    `describe_snapshot` không tự xác thực publisher; cần acquisition receipt riêng.
@@ -42,6 +44,9 @@ lỗi retire; không prompt/response/exception text trong adapter metrics.
 - Adapter preflight01: **942 tests pass** (51 mới), 228,00 giây; setup/Ruff/mypy
   197 source files/knowledge pass. 134 source hashes, 1.176 prior source entries
   nguyên vẹn. Chưa GPU/LLM. 370 raw hashes của warm v5 cũng đã kiểm lại riêng.
+- Selected validation01: source sạch `bc2023f`, 942 tests pass trong 228,14 giây;
+  setup/Ruff/mypy 197 files/knowledge pass, source/input/prior evidence khớp
+  preflight01. 134 source/sáu raw log hashes kiểm lại. Không GPU/LLM/Dev/Test run.
 - Warm v5 source `2300751`, evidence commit `598ea7e`:
   [receipt](../experiments/manifests/phase5_warm_guard_v1_validation01.json).
   891 tests; 22 cold/warm pairs = 44 Replay, chín lifecycle conditions; 140 mock

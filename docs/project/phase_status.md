@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: offline guard HF adapter passes synthetic CPU preflight; GPU validation pending**
+- Current stage: **Phase 5 in progress: offline guard HF adapter reproduced on synthetic CPU tests; GPU validation pending**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-08
 
@@ -325,7 +325,10 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   single-device loading, allocator/context budgets, fresh generation config/cache
   and text-free metrics. [Contract](../architecture/phase5_guard_hf_contract.md).
   Candidate upstream revision verified, but weights not acquired/authenticated;
-  no real HF/CUDA or agent/guard coexistence evidence. Selected reproduction pending.
+  no real HF/CUDA or agent/guard coexistence evidence. Source `bc2023f`,
+  [selected receipt](../../experiments/manifests/phase5_guard_hf_v1_validation01.json)
+  matches preflight from clean source: 942 tests in 228.14 seconds;
+  all 134 source/six raw log hashes verified. Phase 5 acceptance remains open.
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.

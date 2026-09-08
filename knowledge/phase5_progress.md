@@ -10,6 +10,9 @@ Content-bound identity, GPU/process budget, context cap, fresh generation config
 cache và metrics riêng; không sửa runtime v5 hay các source đã hash.
 Không suy CPU fake thành GPU fit hoặc model-quality/statelessness evidence.
 Phase 5 chưa accepted; acquisition/bundle/GPU và grouped Dev còn mở.
+[Selected receipt](../experiments/manifests/phase5_guard_hf_v1_validation01.json)
+từ source sạch `bc2023f` khớp preflight, **942 tests pass** trong 228,14 giây;
+134 source/sáu raw log hashes kiểm lại. Không sửa adapter/test/contract đã selected.
 
 ## Lịch sử: warm guard/runtime v5
 

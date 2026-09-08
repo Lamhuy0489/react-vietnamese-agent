@@ -1,6 +1,6 @@
 # Trạng thái hiện tại
 
-## Hiện hành: guard HF adapter qua CPU preflight — 2026-09-08
+## Hiện hành: guard HF adapter đã tái lập trên CPU — 2026-09-08
 
 Thêm adapter riêng, không sửa runtime/policy/source đã khóa. Snapshot pin gồm
 HF revision và hash/size mọi file; native local-only Qwen2, FP16/single GPU,
@@ -9,7 +9,9 @@ dynamic cache mỗi call; không truncation, lỗi retire. Metrics không lưu p
 response/exception text. [Contract](../docs/architecture/phase5_guard_hf_contract.md).
 Preflight01: **942 tests pass** (51 CPU fake tests mới), 228,00 giây; setup/Ruff/
 mypy 197 files/knowledge pass. 134 source hashes, 1.176 prior source entries
-nguyên vẹn; selected clean-source reproduction là bước kế tiếp.
+nguyên vẹn. [Selected receipt](../experiments/manifests/phase5_guard_hf_v1_validation01.json)
+từ source sạch `bc2023f` khớp preflight: **942 tests pass**, 228,14 giây;
+134 source/sáu raw log hashes đã kiểm lại. Không model/GPU inference.
 [Nguồn ứng viên](guard_model_preflight_evidence.md): Qwen2.5-1.5B-Instruct,
 HF revision đã xác minh tồn tại, chưa tải/xác thực weights hoặc chốt guard luận văn.
 Chưa GPU/coexistence/statelessness thật; không benchmark Dev/Test hoặc thay điểm cũ.
