@@ -20,7 +20,10 @@ retained, not accepted or silently repaired. Success proves file bytes only.
 
 29 targeted tests pass including standalone isolated(-I) renderer execution on
 direct/nested synthetic mounts and negative corruption; fake tiny bytes, not
-actual model weights. Fullsuite pending. No submission yet at this entry.
+actual model weights. Fullsuite1.172tests/263,13s pass;setup/Ruff/mypy216files
+và knowledge pass. Actual rendered wrapper -I help/import pass.
+[Preflight](../experiments/manifests/phase5_agent_mount_v1_preflight01.json).
+No submission yet at this entry.
 Next: commit/source freeze, render actual-inventory wrapper and help/import check,
 retain preflight, push, submit once CPU, pull exact source and audit returned
 hashes/status. Then budget-enforcing agent loader and combined GPU preflight.

@@ -1,0 +1,33 @@
+{
+  "protocol": "phase5_agent_mount_cpu_preflight_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "97c9507e61cd8206647e83068e652511f2f3d651",
+  "model_handle": "qwen-lm/qwen2.5/transformers/7b-instruct/1",
+  "wrapper_sha256": "f12a987218f3f3b39b393e9b743676ccf4032bb89da477b1ede9366b9c81c118",
+  "metadata_sha256": "cdf16d33adca471d2a8b470712dbaf2d4f8e4478c90dbe1245af0c9c69103b85",
+  "source_sha256": {
+    "src/react_agent/llm/agent_mount_v1.py": "8561a6cc9e8ebcb02a8061fb6b9a5cb3efb478dc96676996849a74381c97264f",
+    "scripts/prepare_phase5_agent_mount.py": "84e630b1a93f53fa2118627771e91f58f465fed5b1e487f31a4095ce82fb501f",
+    "tests/unit/test_agent_mount_v1.py": "35c4985023b09a45400d96c77a706fb8299d2315fb21ff017b28925caa20af74",
+    "docs/architecture/phase5_agent_mount_v1_contract.md": "aec08c3df88c283863a786dec4910353b6c8f6bc59820fe547bddcab9579bea2",
+    "docs/evaluation/qwen7b_upstream_inventory_v1.json": "9023d04a65f44a4e4beef29efba9f1ca088e2af1990cc82e586f457d4c5c43b3"
+  },
+  "checks": {
+    "targeted_tests": 29,
+    "isolated_synthetic_mount_layouts": [
+      "direct",
+      "nested"
+    ],
+    "synthetic_corruption_rejected": true,
+    "actual_wrapper_isolated_help": "pass",
+    "upload_files": 2,
+    "credential_matches": 0
+  },
+  "gpu_enabled": false,
+  "network_enabled": false,
+  "model_loads": 0,
+  "local_weight_downloads": 0,
+  "expected_diagnostic": "README size mismatch (Kaggle6005/HF6240); full inventory rejection expected; runtime hashes unknown",
+  "scope": "CPU hash diagnostic only; not GPU runtime bundle preflight"
+}

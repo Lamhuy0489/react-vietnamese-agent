@@ -476,3 +476,4 @@ Huy và Minh dùng chung máy nên chủ dự án bỏ peer review. Dataset khô
 reviewer; thay vào đó phải có automated QA theo owner waiver, đồng thời ghi
 rõ hạn chế thiếu independent human review trong data card. Không ghi rằng chủ
 dự án đã inspect từng task; audit record dùng `automated_gate`.
+Full1.172tests/263,13s, setup/Ruff/mypy216files/knowledge pass; chuẩn bị CPU submit.

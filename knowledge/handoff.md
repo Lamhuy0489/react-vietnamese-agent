@@ -5,7 +5,8 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 ## Đang làm
 
 Hiện hành: theo owner clarification, model lớn chỉ ở Kaggle. Triển khai read-only
-agent mount authenticator;29targetedtests pass, fullsuite đang chạy. Chưa submit.
+agent mount authenticator;29targetedtests pass, fullsuite1.172tests/263,13s pass.
+Setup/Ruff/mypy216files/knowledge pass. Chưa submit.
 [Contract](../docs/architecture/phase5_agent_mount_v1_contract.md),
 [tri thức](agent_mount_v1.md). Không tải Qwen7B về local hoặc cần mở rộng disk.
 Next: commit/render/preflight/push rồi một CPU/offline Kaggle hash-only job.
