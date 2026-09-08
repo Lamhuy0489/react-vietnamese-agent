@@ -1,0 +1,44 @@
+{
+  "protocol": "guard_gpu_v1_release_qa",
+  "software_qa_valid": true,
+  "phase5_accepted": false,
+  "gpu_kernel": "huylmhuhu/react-vn-guard15-probe-run-v1",
+  "gpu_kernel_version": 1,
+  "gpu_kernel_status": "COMPLETE",
+  "kernel_submissions": 1,
+  "model_calls": 4,
+  "semantic_retries": 0,
+  "selected_local_audit": "results/phase5_guard_gpu_v1_release_audit03",
+  "reproduction_local_audit": "results/phase5_guard_gpu_v1_release_audit04",
+  "audit_json_and_report_byte_identical": true,
+  "raw_files_hash_verified": 56,
+  "prior_adapter_source_files_hash_verified": 134,
+  "credential_scan_files": 60,
+  "credential_value_matches": 0,
+  "test_payloads_parsed": 0,
+  "quality": {
+    "setup": "pass",
+    "ruff": "pass",
+    "mypy_files_including_v2_wrapper": 208,
+    "new_tests": 23,
+    "full_suite_tests": 1046,
+    "full_suite_seconds": 276.16,
+    "basetemp": "build/pytest_guard_gpu_audit_v2_01",
+    "knowledge_check": "pass"
+  },
+  "source_and_selected_evidence_sha256": {
+    "scripts/audit_phase5_guard_gpu_release.py": "e4a6c84c655ec84e6eaa4f0c18169aee3d59b862a5b2f0bbe8ed2ce759931693",
+    "src/react_agent/validation/guard_probe_audit_v2.py": "e739b08f0e681e4cdd655cdf73a464cf14dc223fcf43a421ba04c3fbfe696831",
+    "tests/unit/test_guard_probe_audit_v2.py": "e032f485563d35ee23f85328ba15d37720a9f15217da435db8d4106dc597d8cd",
+    "tests/unit/test_guard_gpu_release_audit.py": "42a198a9102bd66007a8d4d19da4f9d38b720ef0264d23ccc2ad166bd60da863",
+    "experiments/manifests/phase5_guard_gpu_v1_audit01.json": "0b2ebed485107577c372e7a85673258bf68a0cf043583ef03f8f305c9178d97c",
+    "docs/evaluation/phase5_guard_gpu_v1_report.md": "6c401b1695eaaf3352594cd6be3c302ab658fbc4bd18b4f599b7b6ab054e85c2"
+  },
+  "remaining": [
+    "B classified SAFE; no guard-quality acceptance or production model selection",
+    "V1 strict graceful-cleanup audit remains rejected; both workers terminate/reap",
+    "GPU memory recovery and cancellation/context stress",
+    "Concurrent agent/guard placement and residency",
+    "Grouped Dev protocol, A4 scope and general final entitlements"
+  ]
+}

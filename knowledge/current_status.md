@@ -1,6 +1,23 @@
 # Trạng thái hiện tại
 
-## Hiện hành: bootstrap v2 đã qua actual-mount preflight — 2026-09-08
+## Hiện hành: guard GPU v1 đã audit, còn lỗi chất lượng/cleanup — 2026-09-08
+
+Kernel v1 COMPLETE ngay lần submit đầu; không retry. Qwen 1.5B có bốn output
+đúng schema, A lặp lại đúng hash nhưng **B cũng bị gán SAFE**, cả bốn output
+giống nhau. Cold request47,895/32,814s; warm0,956/0,991s; peakallocated2,898GiB.
+Hai worker đều TERMINATE/-15 và reaped, không graceful. Audit v1 bị từ chối;
+v2 chỉ tách integrity/repeatability/graceful, không đổi kết quả cũ hay chốt model.
+[Báo cáo](../docs/evaluation/phase5_guard_gpu_v1_report.md),
+[receipt](../experiments/manifests/phase5_guard_gpu_v1_audit01.json),
+[deviation](../docs/evaluation/phase5_guard_gpu_audit_deviation.md).
+Remote wrapper/private/offline/T4 khớp, 21 Dummy/84 trace và 56 raw files audit;
+hai audit/report tái tạo khớp bytes, credential scan60files/0matches.
+Không Test payload/model benchmark hoặc agent resident. Phase 5 chưa accepted.
+**1.046 tests pass/276,16 giây**, setup/Ruff/mypy208files gồm wrapper/knowledge pass.
+[QA receipt](../experiments/manifests/phase5_guard_gpu_v1_release_qa01.json).
+Tiếp theo: cancellation/VRAM recovery, agent coexistence, rồi grouped Dev protocol.
+
+## Lịch sử: bootstrap v2 đã qua actual-mount preflight — 2026-09-08
 
 Bản sửa PAX commit-bound riêng đã pass archive và actual expanded mount với
 eight tools/fault, 21 Dummy/resume và bốn-call stub; Dataset/runtime/model giữ

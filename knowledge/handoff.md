@@ -4,87 +4,75 @@ Cập nhật: 2026-09-08. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Phase 5: **bootstrap v2 đã sửa PAX bằng commit binding; đang kiểm chứng trước GPU**.
-[Contract v2](../docs/architecture/phase5_guard_mount_v2_contract.md).
-V1/Dataset/runtime giữ nguyên; v2 là wrapper riêng và kernel-only packager.
-38 targeted tests pass (12 mới); **1.023 full tests pass/297,91 giây**,
-setup/Ruff/mypy 206 files gồm v2 kernel pass. Exact archive và expanded PAX
-preflight pass từ bootstrap `9680c81`; [receipt](../experiments/manifests/phase5_guard_mount_v2_preflight01.json).
-Kernel-only output `build/kaggle/phase5_guard_mount_v2_preflight01/kernel`.
-[Nhật ký triển khai](guard_gpu_probe_v1.md). Chưa submit GPU kernel.
-[Bundle receipt](../experiments/manifests/phase5_guard_bundle_v1_preflight03.json).
-[Contract](../docs/architecture/phase5_guard_probe_contract.md), [tiến độ](phase5_progress.md).
-Source cũ `bc2023f`/evidence `abd0203` nguyên vẹn; không sửa adapter/test/contract
-đã selected. Mốc mới thêm acquisition, probe cache-bypassed, wrapper và packager.
+Phase 5: **guard-only GPU v1 COMPLETE và audit; chưa quality/graceful acceptance**.
+[Báo cáo](../docs/evaluation/phase5_guard_gpu_v1_report.md),
+[receipt](../experiments/manifests/phase5_guard_gpu_v1_audit01.json),
+[audit deviation](../docs/evaluation/phase5_guard_gpu_audit_deviation.md).
+First submission kernel `huylmhuhu/react-vn-guard15-probe-run-v1` version1,
+id133519671, private/offline/T4. Runtime source `7649d5b`, bootstrap `9680c81`,
+source/receipt push `0e1bc2d` trước GPU. Không submit lần hai.
 
-Acquisition `build/guard_models/qwen1_5b_hf_v1_acquisition01`: 10 files,
-3.098.973.447 bytes. Hash chính thức đã pin trước download; TLS verified với CA
-certifi. Partial downloads giữ riêng; no automatic retry. Snapshot identity gồm
-revision chính thức + local file hashes. Model ở build, không add weights vào Git.
+Bốn output đúng schema, ba A khớp hash nhưng **B cũng SAFE**, cả bốn giống nhau.
+Cold requests47,895/32,814s; warm0,956/0,991s; peakallocated2,898GiB.
+Hai workers PID34/62 TERMINATE/-15/reaped, không graceful. Auditor v1 reject
+`worker cleanup`; v2 giữ failure, báo integrity/repeatability/graceful riêng.
+Không sửa frozen inference source hoặc raw; không chốt Qwen1.5B làm guard.
 
 ## Bước tiếp theo
 
-1. Bundle đã chọn: `build/kaggle/phase5_guard_probe_v1_bundle03`.
-   Hai exact layouts pass: isolated Python, eight tools/fault recovery,
-   21 Dummy + completed/missing-only resume, bốn-call stub probe mỗi layout.
-   72 source/input files, no authoring/pool/GT/Test/knowledge, credential scan0.
-   Bundle01 không chọn do broad source scope; bundle02 failed local eager import
-   `validation.__init__` kéo pool validator. Bundle03 bỏ initializer, namespace
-   chỉ có environment validator. Giữ các bundle trước, chưa upload bản lỗi.
-2. Dataset `huylmhuhu/react-vn-guard15-probe-data-v1` READY/version 1/private,
-   id 11942593. Source/receipt đã push `1e55203` trước upload, upload đã kết thúc.
-   Remote có thêm `source/pax_global_header` 52 bytes; đã tải header/manifest và
-   tái hiện frozen wrapper reject. [Diagnostic receipt](../experiments/manifests/phase5_guard_remote_mount_v1_diagnostic01.json).
-   Bản sửa: `notebooks/kaggle/guard_probe_kernel_v2.py`, packager
-   `scripts/prepare_phase5_guard_mount_v2.py`. Không đổi bundle03 hoặc bỏ qua mọi extras.
-   Archive và actual expanded PAX đã pass eight tools/fault, 21 Dummy,
-   completed/missing-only resume và stub trong isolated venv. Wrapper hash/receipt
-   đối chiếu, credential scan0. Dataset đã đọc lại READY/v1/private, quota29,49h.
-   Push source/receipt rồi submit đúng kernel-only output trên; chưa submit kernel.
-3. Kernel `huylmhuhu/react-vn-guard15-probe-run-v1`: hai T4, internet off.
-   Guard-only A→B→A/fresh-A, 120s inclusive/request, greedy128/seed42.
-   Không agent resident; chưa combined-memory proof. Kết quả invalid/mismatch
-   là kết quả phải giữ, không retry ngữ nghĩa. Download vào output mới rồi audit.
-4. Kaggle CLI `python3 -m kaggle` 2.2.4. Selected account `huylmhuhu` (kaggle1)
-   đã auth/quota read: GPU used0,51h/remaining29,49h, refresh2026-09-12T00:00:00.
-   Không token/key trong logs/memory. Không đổi tài khoản để vượt quota.
-5. Sau guard probe: cancellation/GPU cleanup, versioned agent placement và
-   concurrent residency/context stress. MeasuredHFBackend cũ 13GiB/device không
-   tái dùng nguyên cho coexistence. Rồi A4 scope/grouped Dev/final entitlements.
-   Không Phase 6/Test; không cần user tạo tài khoản mới lúc này.
+1. Full QA đã hoàn tất: **1.046 tests/276,16 giây**, basetemp
+   `build/pytest_guard_gpu_audit_v2_01`; không test/kernel/upload đang chạy.
+   Targeted23tests pass (17 v2 audit + six Dummy release audit), lint/mypy208files
+   gồm wrapper/setup/knowledge pass. Audit/report tái tạo hai lần khớp bytes.
+   [Release QA receipt](../experiments/manifests/phase5_guard_gpu_v1_release_qa01.json).
+2. Predeclare technical cancellation/GPU-memory-recovery probe. Hiện biết hai
+   workers cần terminate; chưa đo VRAM trực tiếp sau reap, chưa biết nguyên nhân
+   cleanup chậm. Không tăng grace hoặc rerun classification rồi bỏ kết quả cũ.
+   Nếu thay lifecycle/config, dùng version mới và giữ source/receipt hiện tại.
+3. Versioned agent placement và concurrent-residency/context stress. Old
+   MeasuredHFBackend13GiB/device không tái dùng nguyên cho agent+guard.
+   Guard-only peak không combined fit hoặc general context bound proof.
+4. Grouped Dev protocol/model decision rồi A4 scope/general final entitlements.
+   Không tune từ four-call result hoặc held-out Test. Phase 5 chưa accepted.
+   Không Phase 6/7, không benchmark Test, không cần tài khoản mới.
+5. Account `huylmhuhu` (kaggle1), CLI `python3 -m kaggle`2.2.4.
+   Pre-submit quota29,49h còn; không coi đó là quota hiện tại được giữ chỗ.
+   Không đổi account để vượt quota. Không token/key trong logs/memory.
 
 ## Bằng chứng
 
-- Added completed-probe auditor: 13 synthetic tests pass; old full suite
-  998 tests pass lại/287,71 giây. Full suite mới 1.011 tests pass/281,27 giây,
-  có cảnh báo cleanup symlinks khi dùng chung temp parent. Lượt tuần tự tiếp
-  theo pass sạch **1.011 tests/271,34 giây**, basetemp mới
-  `build/pytest_guard_audit_v1_validation01`. Không còn test/upload đang chạy.
-  Setup/Ruff/mypy 205 files gồm kernel pass; 134 frozen adapter source hashes
-  và clean/adversarial prerequisites kiểm lại nguyên vẹn, Test hash-only.
+- 1.046 full tests pass; 23 tests mới cho v2 audit/Dummy release audit.
+  Source/module/test/report hashes được khóa trong release QA receipt.
 
-- Acquisition script báo valid, 10 files/3.098.973.447 bytes; artifact
-  `acquisition.json` và `snapshot.json` ở build path trên. Packager sẽ kiểm lại
-  mọi byte từ committed source trước inference. Chưa GPU/LLM mới.
-- **998 tests pass** trong 275,42 giây: 56 mới (25 acquisition, 26 bundle,
-  5 process-probe); setup/Ruff/mypy 203 files gồm kernel/knowledge pass.
-  Full suite lần kế tiếp 998 tests/276,95 giây. Bundle03 source `7649d5b`;
-  exact mounts đã thực thi lại sau thay đổi allowlist cuối, không GPU claim.
-  Giữ các lỗi local QA đã sửa,
-  không claim chúng là Kaggle failures.
-- Guard adapter source `bc2023f`, [receipt](../experiments/manifests/phase5_guard_hf_v1_validation01.json):
-  942 tests, 134 source/sáu raw logs, 1.176 prior source entries verified.
-- Warm v5 source `2300751`, [receipt](../experiments/manifests/phase5_warm_guard_v1_validation01.json):
-  891 tests; 22 cold/warm pairs = 44 Replay, 140 Broker calls, 240 fake guard
-  classifications. 370 raw artifact hashes đã kiểm lại ở mốc trước.
+- Raw `results/phase5_guard_gpu_v1_raw01`: **56 files**, full log + Dummy/guard.
+  Remote source `build/kaggle/guard_gpu_v1_remote_source02`; versioned pull /1
+  403, latest pull thành công; wrapper hash khớp receipt. Metadata chứa image digest.
+- Selected audit/report ở `results/phase5_guard_gpu_v1_release_audit03`;
+  audit04 tái tạo khớp bytes. Audit01/02 giữ lịch sử trước khi làm rõ câu mô tả
+  hai T4 allocated nhưng hai guard workers tuần tự chỉ ở device1; số đo không đổi.
+  Checked-in receipt/report là bản copy đúng bytes từ audit03.
+  21Dummy unique runs/84schema-valid events/checkpoint hashes/input identity pass.
+  Credential scan60files gồm raw/audit/source:0matches. Test hash-only prerequisites.
+- V2 bootstrap `build/kaggle/phase5_guard_mount_v2_preflight01/kernel`,
+  [preflight](../experiments/manifests/phase5_guard_mount_v2_preflight01.json):
+  archive và actual expanded PAX pass isolated offline, eight tools/fault,
+  21Dummy/completed+missingonly resume, four-callstub mỗilayout. 1.023tests pass.
+- Original Dataset `huylmhuhu/react-vn-guard15-probe-data-v1` READY/v1/private,
+  id11942593; bundle03 `build/kaggle/phase5_guard_probe_v1_bundle03` giữ nguyên.
+  [PAX rejection](../experiments/manifests/phase5_guard_remote_mount_v1_diagnostic01.json)
+  xảy ra trước GPU. Metadata sidecar xử lý exact commit, không ignore mọi extras.
+- Weights `build/guard_models/qwen1_5b_hf_v1_acquisition01`: ten files,
+  3.098.973.447bytes, publisher hashes pinned, revision
+  `989aa7980e4cf806f80c7fef2b1adb7bc71aa306`.
+- Frozen adapter source `bc2023f`, warm `2300751`, v4 `04ae4c8` giữ nguyên.
+  134 adapter source hashes đã kiểm lại trước GPU; không sửa selected files.
 
 ## Giới hạn
 
-Chưa real guard/GPU inference, không benchmark Dev tuning/Test payload parsing.
-Probe stub-valid chỉ transport QA, không accuracy/ASR. Exact equality A có giới
-hạn bốn calls, không chứng minh mọi HF state/history. Allocator cap process-wide,
-free-memory endpoints không phải global peak; guard-only không combined fit.
-HF candidate chưa chốt làm production guard. A6 vẫn bounded origin/S0 final,
-không general private entitlements/aliases/paraphrase/encoding proof. Assistant
-self-review theo owner waiver, không independent review. Không credentials/GT/
-Test payload/CoT hoặc development memory trong model prompts.
+Model quality không đạt diagnostic B; repeatability không discrimination proof.
+V1 graceful audit vẫn fail; v2 integrity flag không chuyển failure thành pass.
+Raw response chỉ giữ hash và valid JSON, không thể tái hash raw từ parsed JSON.
+Free-memory endpoints không global peak; process reap không đo VRAM recovery.
+No agent resident, no combined/context/cancellation stress. No semantic retry,
+benchmark inference/Test payload/GT/CoT hoặc project memory trong model prompts.
+Assistant self-review theo owner waiver, không independent human review.

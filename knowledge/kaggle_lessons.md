@@ -1,5 +1,20 @@
 # Ghi chú Kaggle Phase 1
 
+## Guard GPU v1 completion — 2026-09-08
+
+- PAX-aware bootstrap v2 hoàn tất kernel v1 ngay lần submit đầu; không cần
+  upload lại Dataset/model. Runtime/model/prompt bytes giữ nguyên.
+- Pull private kernel với hậu tố `/1` trả403, latest pull thành công; kiểm
+  downloaded wrapper hash với preflight thay vì claim version endpoint pass.
+- `kernels output` tự tải kernel log ngoài file regex; audit inventory phải
+  tính log thực có, không xóa nó để làm đẹp inventory.
+- Four guard calls valid/repeatable không chứng minh quality: B vẫn SAFE.
+  Hai workers dùng forced terminate/reap, không graceful; audit cũ phải giữ
+  rejection, v2 reporting ghi riêng graceful flag. Không semantic retry.
+- Một lượt tải gồm 56rawfiles, 21Dummy/84events và realCUDA trênT4; offline
+  torch2.10.0+cu128/transformers5.5.0 chạy được với wheelhouse đã pin.
+  [Audit và giới hạn](../docs/evaluation/phase5_guard_gpu_audit_deviation.md).
+
 ## Guard probe remote mount — 2026-09-08
 
 - Dataset v1 create thành công nhưng status/metadata ban đầu HTTP 403 và

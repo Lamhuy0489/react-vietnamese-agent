@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: offline guard HF adapter reproduced on synthetic CPU tests; GPU validation pending**
+- Current stage: **Phase 5 in progress: first guard-only GPU probe audited; quality and cleanup gaps remain**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-08
 
@@ -330,14 +330,25 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   matches preflight from clean source: 942 tests in 228.14 seconds;
   all 134 source/six raw log hashes verified. Phase 5 acceptance remains open.
 
+- [x] Guard-only GPU technical execution: first kernel v1 COMPLETE, two T4,
+  offline pinned Qwen 1.5B, four schema-valid calls and matching A hashes.
+  Exact source/bootstrap/artifact checks and 21 Dummy/84 trace events verified.
+  [Report](../evaluation/phase5_guard_gpu_v1_report.md),
+  [audit](../../experiments/manifests/phase5_guard_gpu_v1_audit01.json).
+  Cold request 47.895/32.814 s; warm 0.956/0.991 s; peak allocated 2.898 GiB.
+  **Not quality acceptance:** B classified SAFE; all A/B responses identical.
+  Both workers reaped only after TERMINATE/-15. V1 graceful-cleanup audit fails;
+  [post-run v2 interpretation](../evaluation/phase5_guard_gpu_audit_deviation.md)
+  reports integrity and failed graceful cleanup separately. No semantic retry.
+
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
 The current v5 loop supports A0–A6 with an explicitly task-owned warm guard for
 A2–A6; frozen v4 remains the cold-worker reference. V3 still rejects A6. A3–A5
 use coarse state/final pass-through; v4/v5 A6 return gated released finals.
 First-request process startup/model load is included in elapsed guard duration;
-warm requests and task cleanup are separately recorded. No real model/GPU or
-benchmark Dev/Test inference has been added.
+warm requests and task cleanup are separately recorded. Four synthetic guard GPU
+calls are now audited; no benchmark model Dev/Test inference has been added in Phase 5.
 
 ## Authorized Dev pilot extension
 

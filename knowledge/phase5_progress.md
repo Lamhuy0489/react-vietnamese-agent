@@ -2,6 +2,21 @@
 
 ## Hiện hành
 
+First real guard GPU kernel v1 đã COMPLETE và audit: four schema-valid responses,
+matching A hashes, nhưng all A/B giống nhau và malicious synthetic B bị SAFE.
+Hai worker reaped bằng TERMINATE/-15; graceful cleanup chưa đạt. Không chốt guard
+hoặc Phase 5. Cold47,895/32,814s, warm0,956/0,991s, peakallocated2,898GiB.
+[Report](../docs/evaluation/phase5_guard_gpu_v1_report.md),
+[receipt](../experiments/manifests/phase5_guard_gpu_v1_audit01.json),
+[audit deviation](../docs/evaluation/phase5_guard_gpu_audit_deviation.md).
+21 Dummy/84 events, remote wrapper/private/offline/T4 và 56 raw hashes verified.
+1.046 full tests pass/276,16 giây (23 mới), setup/Ruff/mypy208files/knowledge pass;
+[release QA](../experiments/manifests/phase5_guard_gpu_v1_release_qa01.json).
+Không semantic retry/Test/agent coexistence. Còn cancellation/GPU memory recovery,
+versioned agent placement, grouped Dev validation/guard selection, A4/general final.
+
+## Lịch sử: remote mount detection
+
 Bundle03 đã qua archive/expanded isolated mounts, source `7649d5b` và receipt
 đã push trước upload Dataset riêng tư. Remote READY v1/private đã xác minh,
 nhưng có extra `source/pax_global_header` 52 bytes khiến frozen wrapper reject.
