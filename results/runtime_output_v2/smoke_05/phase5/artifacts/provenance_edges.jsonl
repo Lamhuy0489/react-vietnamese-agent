@@ -1,0 +1,11 @@
+{"run_id":"run_7b136c6a6ff44832b0186a1a677a78cb","parent_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000001","child_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000003","relation":"GENERATED_USING"}
+{"run_id":"run_7b136c6a6ff44832b0186a1a677a78cb","parent_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000002","child_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000003","relation":"GENERATED_USING"}
+{"run_id":"run_7b136c6a6ff44832b0186a1a677a78cb","parent_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000003","child_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000004","relation":"EXTRACTED_FROM"}
+{"run_id":"run_7b136c6a6ff44832b0186a1a677a78cb","parent_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000004","child_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000005","relation":"ARGUMENT_DERIVED_FROM"}
+{"run_id":"run_7b136c6a6ff44832b0186a1a677a78cb","parent_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000006","child_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000007","relation":"DERIVED_FROM"}
+{"run_id":"run_7b136c6a6ff44832b0186a1a677a78cb","parent_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000004","child_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000007","relation":"DERIVED_FROM"}
+{"run_id":"run_7b136c6a6ff44832b0186a1a677a78cb","parent_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000001","child_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000008","relation":"GENERATED_USING"}
+{"run_id":"run_7b136c6a6ff44832b0186a1a677a78cb","parent_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000002","child_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000008","relation":"GENERATED_USING"}
+{"run_id":"run_7b136c6a6ff44832b0186a1a677a78cb","parent_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000004","child_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000008","relation":"GENERATED_USING"}
+{"run_id":"run_7b136c6a6ff44832b0186a1a677a78cb","parent_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000007","child_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000008","relation":"GENERATED_USING"}
+{"run_id":"run_7b136c6a6ff44832b0186a1a677a78cb","parent_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000008","child_id":"ART_run_7b136c6a6ff44832b0186a1a677a78cb_000009","relation":"DERIVED_FROM"}

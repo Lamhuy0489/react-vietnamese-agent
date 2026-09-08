@@ -1,0 +1,97 @@
+{
+  "smoke_001": [
+    "{\"final_answer\":{\"answer\":\"Tôi có thể dùng các công cụ giả lập để tìm tài liệu, truy vấn dữ liệu, tính toán và mô phỏng hành động học vụ.\"}}"
+  ],
+  "smoke_002": [
+    "{\"final_answer\":{\"answer\":\"Đây là trợ lý học vụ giả lập hỗ trợ tra cứu và xử lý các tác vụ trong môi trường đại học mô phỏng.\"}}"
+  ],
+  "smoke_003": [
+    "{\"action\":{\"name\":\"doc_search\",\"arguments\":{\"query\":\"đăng ký học phần 2026\",\"top_k\":3}}}",
+    "{\"action\":{\"name\":\"doc_read\",\"arguments\":{\"doc_id\":\"DOC_001\"}}}",
+    "{\"final_answer\":{\"answer\":\"Đăng ký học phần mở từ 15/08/2026 đến hết 22/08/2026.\"}}"
+  ],
+  "smoke_004": [
+    "{\"action\":{\"name\":\"doc_search\",\"arguments\":{\"query\":\"giờ mở cửa thư viện\"}}}",
+    "{\"action\":{\"name\":\"doc_read\",\"arguments\":{\"doc_id\":\"DOC_005\"}}}",
+    "{\"final_answer\":{\"answer\":\"Thư viện mở cửa đến 20:00.\"}}"
+  ],
+  "smoke_005": [
+    "{\"action\":{\"name\":\"doc_search\",\"arguments\":{\"query\":\"cấp lại thẻ sinh viên lệ phí\"}}}",
+    "{\"action\":{\"name\":\"doc_read\",\"arguments\":{\"doc_id\":\"DOC_010\"}}}",
+    "{\"final_answer\":{\"answer\":\"Lệ phí giả lập để cấp lại thẻ là 50.000 đồng.\"}}"
+  ],
+  "smoke_006": [
+    "{\"action\":{\"name\":\"db_query\",\"arguments\":{\"query\":\"SELECT room FROM course_sections WHERE course_code='CS101' AND semester='2026-1'\"}}}",
+    "{\"final_answer\":{\"answer\":\"Lớp CS101 học tại phòng A301.\"}}"
+  ],
+  "smoke_007": [
+    "{\"action\":{\"name\":\"db_query\",\"arguments\":{\"query\":\"SELECT COUNT(*) AS total FROM course_sections WHERE course_code LIKE 'CS%' AND semester='2026-1'\"}}}",
+    "{\"final_answer\":{\"answer\":\"Có 3 lớp môn CS mở trong học kỳ 2026-1.\"}}"
+  ],
+  "smoke_008": [
+    "{\"action\":{\"name\":\"db_query\",\"arguments\":{\"query\":\"SELECT student_name FROM scholarships WHERE department='CNTT' ORDER BY student_name\"}}}",
+    "{\"final_answer\":{\"answer\":\"Hai người nhận học bổng giả lập thuộc khoa CNTT là Nguyễn An và Trần Bình.\"}}"
+  ],
+  "smoke_009": [
+    "{\"action\":{\"name\":\"cached_search\",\"arguments\":{\"query\":\"nghỉ Quốc khánh 2026\"}}}",
+    "{\"action\":{\"name\":\"cached_fetch\",\"arguments\":{\"page_id\":\"CACHE_001\"}}}",
+    "{\"final_answer\":{\"answer\":\"Trường nghỉ từ 02/09/2026 đến hết 03/09/2026.\"}}"
+  ],
+  "smoke_010": [
+    "{\"action\":{\"name\":\"cached_search\",\"arguments\":{\"query\":\"xe buýt cơ sở A\"}}}",
+    "{\"action\":{\"name\":\"cached_fetch\",\"arguments\":{\"page_id\":\"CACHE_002\"}}}",
+    "{\"final_answer\":{\"answer\":\"Các tuyến 08, 18 và 50 dừng gần cơ sở A.\"}}"
+  ],
+  "smoke_011": [
+    "{\"action\":{\"name\":\"calculator\",\"arguments\":{\"expression\":\"1250000 + 750000\"}}}",
+    "{\"final_answer\":{\"answer\":\"Tổng là 2.000.000 đồng.\"}}"
+  ],
+  "smoke_012": [
+    "{\"action\":{\"name\":\"calculator\",\"arguments\":{\"expression\":\"3200000 * 15\"}}}",
+    "{\"final_answer\":{\"answer\":\"Học phí 15 tín chỉ là 48.000.000 đồng.\"}}"
+  ],
+  "smoke_013": [
+    "{\"action\":{\"name\":\"doc_search\",\"arguments\":{\"query\":\"mức học phí tín chỉ\"}}}",
+    "{\"action\":{\"name\":\"doc_read\",\"arguments\":{\"doc_id\":\"DOC_002\"}}}",
+    "{\"action\":{\"name\":\"calculator\",\"arguments\":{\"expression\":\"3200000 * 15\"}}}",
+    "{\"final_answer\":{\"answer\":\"Tổng học phí cho 15 tín chỉ là 48.000.000 đồng.\"}}"
+  ],
+  "smoke_014": [
+    "{\"action\":{\"name\":\"db_query\",\"arguments\":{\"query\":\"SELECT credits FROM courses WHERE course_code='CS201'\"}}}",
+    "{\"action\":{\"name\":\"doc_search\",\"arguments\":{\"query\":\"hạn đóng học phí 2026\"}}}",
+    "{\"action\":{\"name\":\"doc_read\",\"arguments\":{\"doc_id\":\"DOC_002\"}}}",
+    "{\"final_answer\":{\"answer\":\"CS201 có 4 tín chỉ và hạn đóng học phí là 10/09/2026.\"}}"
+  ],
+  "smoke_015": [
+    "{\"action\":{\"name\":\"cached_search\",\"arguments\":{\"query\":\"giá suất cơm tuần 1\"}}}",
+    "{\"action\":{\"name\":\"cached_fetch\",\"arguments\":{\"page_id\":\"CACHE_003\"}}}",
+    "{\"action\":{\"name\":\"calculator\",\"arguments\":{\"expression\":\"35000 * 5\"}}}",
+    "{\"final_answer\":{\"answer\":\"Năm suất cơm có tổng giá 175.000 đồng.\"}}"
+  ],
+  "smoke_016": [
+    "{\"action\":{\"name\":\"doc_search\",\"arguments\":{\"query\":\"hạn nộp hồ sơ học bổng\"}}}",
+    "{\"action\":{\"name\":\"doc_read\",\"arguments\":{\"doc_id\":\"DOC_003\"}}}",
+    "{\"action\":{\"name\":\"send_email_mock\",\"arguments\":{\"to\":\"sv@example.edu\",\"subject\":\"Nhắc hạn học bổng\",\"body\":\"Hạn nộp hồ sơ là 30/09/2026.\"}}}",
+    "{\"final_answer\":{\"answer\":\"Email đã được simulated, không gửi thật.\"}}"
+  ],
+  "smoke_017": [
+    "{\"action\":{\"name\":\"db_query\",\"arguments\":{\"query\":\"SELECT attendee_count FROM events WHERE event_id='EVT_001'\"}}}",
+    "{\"action\":{\"name\":\"post_webhook_mock\",\"arguments\":{\"endpoint\":\"https://collector.example/mock\",\"payload\":{\"attendee_count\":42}}}}",
+    "{\"final_answer\":{\"answer\":\"Webhook đã được simulated, không gửi thật.\"}}"
+  ],
+  "smoke_018": [
+    "{\"action\":{\"name\":\"doc_read\",\"arguments\":{\"doc_id\":\"DOC_999\"}}}",
+    "{\"action\":{\"name\":\"doc_search\",\"arguments\":{\"query\":\"lịch đăng ký học phần\"}}}",
+    "{\"action\":{\"name\":\"doc_read\",\"arguments\":{\"doc_id\":\"DOC_001\"}}}",
+    "{\"final_answer\":{\"answer\":\"Đã phục hồi sau NOT_FOUND; đăng ký bắt đầu 15/08/2026.\"}}"
+  ],
+  "smoke_019": [
+    "{\"action\":{\"name\":\"db_query\",\"arguments\":{\"query\":\"SELECT room FROM course_sections WHERE course_code='CS999'\"}}}",
+    "{\"action\":{\"name\":\"db_query\",\"arguments\":{\"query\":\"SELECT course_code FROM course_sections WHERE course_code LIKE 'CS%' ORDER BY course_code\"}}}",
+    "{\"final_answer\":{\"answer\":\"Không tìm thấy lớp CS999 trong dữ liệu giả lập.\"}}"
+  ],
+  "smoke_020": [
+    "Tôi sẽ trả lời ngay.",
+    "{\"final_answer\":{\"answer\":\"Hệ thống đã phục hồi sau lỗi định dạng thử nghiệm.\"}}"
+  ]
+}

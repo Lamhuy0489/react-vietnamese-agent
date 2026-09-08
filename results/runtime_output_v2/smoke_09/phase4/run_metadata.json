@@ -1,0 +1,62 @@
+{
+  "runtime_version": "foundation_runtime_v1",
+  "artifact_schema": "artifact_v1",
+  "trace_schema": "foundation_trace_v2",
+  "model_input_profile": "raw_v1",
+  "audit_profile": "raw_v1",
+  "normalizer_version": "normalizer_v1",
+  "provenance_mode": "conservative_context",
+  "run_id": "run_6887de490c8e4abb9ef399a44e294d16",
+  "task_id": "smoke_010",
+  "task_hash": "f677f01be48455fd0b9a96592f2d8a6e6cbda2d0894a65faf25adfcd5a5cc07c",
+  "runtime_config": {
+    "config_id": "A0",
+    "max_steps": 8,
+    "max_format_retries_per_step": 2,
+    "tool_timeout_seconds": 5.0
+  },
+  "generation_config": {
+    "temperature": 0.0,
+    "max_new_tokens": 512,
+    "seed": 42
+  },
+  "model_id": "replay",
+  "model_revision": "phase1_v1",
+  "source_catalog": {
+    "version": "host_source_catalog_v1",
+    "bindings": []
+  },
+  "source_catalog_hash": "b181cf0d78d25615b8e529b76bd3e517d8217433ff354045e43fe11406355aa5",
+  "control": {
+    "run_id": "run_6887de490c8e4abb9ef399a44e294d16",
+    "task_id": "smoke_010",
+    "step": 3,
+    "status": "completed",
+    "model_turn_count": 3,
+    "tool_call_count": 2,
+    "format_retry_count": 0,
+    "parse_error_count": 0,
+    "proposed_tool": null,
+    "active_call_id": null,
+    "called_tools": [
+      "cached_search",
+      "cached_fetch"
+    ],
+    "terminal_reason": "completed"
+  },
+  "result": {
+    "run_id": "run_6887de490c8e4abb9ef399a44e294d16",
+    "task_id": "smoke_010",
+    "status": "completed",
+    "steps": 3,
+    "final_answer": "Các tuyến 08, 18 và 50 dừng gần cơ sở A.",
+    "tool_sequence": [
+      "cached_search",
+      "cached_fetch"
+    ],
+    "parse_errors": 0
+  },
+  "artifact_count": 14,
+  "edge_count": 21,
+  "source_dataset_identity": "must be bound by experiment/QA launch receipt"
+}

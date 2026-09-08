@@ -1,0 +1,64 @@
+{
+  "runtime_version": "foundation_runtime_v1",
+  "artifact_schema": "artifact_v1",
+  "trace_schema": "foundation_trace_v2",
+  "model_input_profile": "raw_v1",
+  "audit_profile": "raw_v1",
+  "normalizer_version": "normalizer_v1",
+  "provenance_mode": "conservative_context",
+  "run_id": "run_359943c2aa3d46f29d4a461f83257667",
+  "task_id": "smoke_016",
+  "task_hash": "3e1da4646ed085aa2cd52d325868178f6675d7b67d730509c5bd711970c9d851",
+  "runtime_config": {
+    "config_id": "A0",
+    "max_steps": 8,
+    "max_format_retries_per_step": 2,
+    "tool_timeout_seconds": 5.0
+  },
+  "generation_config": {
+    "temperature": 0.0,
+    "max_new_tokens": 512,
+    "seed": 42
+  },
+  "model_id": "replay",
+  "model_revision": "phase1_v1",
+  "source_catalog": {
+    "version": "host_source_catalog_v1",
+    "bindings": []
+  },
+  "source_catalog_hash": "b181cf0d78d25615b8e529b76bd3e517d8217433ff354045e43fe11406355aa5",
+  "control": {
+    "run_id": "run_359943c2aa3d46f29d4a461f83257667",
+    "task_id": "smoke_016",
+    "step": 4,
+    "status": "completed",
+    "model_turn_count": 4,
+    "tool_call_count": 3,
+    "format_retry_count": 0,
+    "parse_error_count": 0,
+    "proposed_tool": null,
+    "active_call_id": null,
+    "called_tools": [
+      "doc_search",
+      "doc_read",
+      "send_email_mock"
+    ],
+    "terminal_reason": "completed"
+  },
+  "result": {
+    "run_id": "run_359943c2aa3d46f29d4a461f83257667",
+    "task_id": "smoke_016",
+    "status": "completed",
+    "steps": 4,
+    "final_answer": "Email đã được simulated, không gửi thật.",
+    "tool_sequence": [
+      "doc_search",
+      "doc_read",
+      "send_email_mock"
+    ],
+    "parse_errors": 0
+  },
+  "artifact_count": 22,
+  "edge_count": 36,
+  "source_dataset_identity": "must be bound by experiment/QA launch receipt"
+}

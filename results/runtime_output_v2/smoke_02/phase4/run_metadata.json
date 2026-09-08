@@ -1,0 +1,62 @@
+{
+  "runtime_version": "foundation_runtime_v1",
+  "artifact_schema": "artifact_v1",
+  "trace_schema": "foundation_trace_v2",
+  "model_input_profile": "raw_v1",
+  "audit_profile": "raw_v1",
+  "normalizer_version": "normalizer_v1",
+  "provenance_mode": "conservative_context",
+  "run_id": "run_479eaaa2642b45219da941efe8a9785f",
+  "task_id": "smoke_003",
+  "task_hash": "e90d4eaf5a16db02366514cd85dd17ee614e320d8ddc25a9ba3af31a4b31e4ef",
+  "runtime_config": {
+    "config_id": "A0",
+    "max_steps": 8,
+    "max_format_retries_per_step": 2,
+    "tool_timeout_seconds": 5.0
+  },
+  "generation_config": {
+    "temperature": 0.0,
+    "max_new_tokens": 512,
+    "seed": 42
+  },
+  "model_id": "replay",
+  "model_revision": "phase1_v1",
+  "source_catalog": {
+    "version": "host_source_catalog_v1",
+    "bindings": []
+  },
+  "source_catalog_hash": "b181cf0d78d25615b8e529b76bd3e517d8217433ff354045e43fe11406355aa5",
+  "control": {
+    "run_id": "run_479eaaa2642b45219da941efe8a9785f",
+    "task_id": "smoke_003",
+    "step": 3,
+    "status": "completed",
+    "model_turn_count": 3,
+    "tool_call_count": 2,
+    "format_retry_count": 0,
+    "parse_error_count": 0,
+    "proposed_tool": null,
+    "active_call_id": null,
+    "called_tools": [
+      "doc_search",
+      "doc_read"
+    ],
+    "terminal_reason": "completed"
+  },
+  "result": {
+    "run_id": "run_479eaaa2642b45219da941efe8a9785f",
+    "task_id": "smoke_003",
+    "status": "completed",
+    "steps": 3,
+    "final_answer": "Đăng ký học phần mở từ 15/08/2026 đến hết 22/08/2026.",
+    "tool_sequence": [
+      "doc_search",
+      "doc_read"
+    ],
+    "parse_errors": 0
+  },
+  "artifact_count": 14,
+  "edge_count": 21,
+  "source_dataset_identity": "must be bound by experiment/QA launch receipt"
+}

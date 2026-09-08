@@ -1,0 +1,3 @@
+{"run_id":"run_a838e3a947ee431f8ff5d4eb79352136","parent_id":"ART_run_a838e3a947ee431f8ff5d4eb79352136_000001","child_id":"ART_run_a838e3a947ee431f8ff5d4eb79352136_000003","relation":"GENERATED_USING"}
+{"run_id":"run_a838e3a947ee431f8ff5d4eb79352136","parent_id":"ART_run_a838e3a947ee431f8ff5d4eb79352136_000002","child_id":"ART_run_a838e3a947ee431f8ff5d4eb79352136_000003","relation":"GENERATED_USING"}
+{"run_id":"run_a838e3a947ee431f8ff5d4eb79352136","parent_id":"ART_run_a838e3a947ee431f8ff5d4eb79352136_000003","child_id":"ART_run_a838e3a947ee431f8ff5d4eb79352136_000004","relation":"DERIVED_FROM"}

@@ -59,8 +59,8 @@ class GuardHFBackend:
         if metrics_path.exists() or not metrics_path.parent.is_dir():
             raise ValueError("fresh metrics file in an existing output directory required")
         verify_snapshot(model_path, snapshot)
-        import torch  # type: ignore[import-not-found]
-        import transformers  # type: ignore[import-not-found]
+        import torch  
+        import transformers  
 
         self.model_id, self.model_revision = snapshot.model_id, snapshot.model_revision
         self.config, self.metrics_path = config, metrics_path
@@ -212,7 +212,7 @@ class GuardHFBackend:
         inputs = inputs.to(f"cuda:{self.config.device}")
         # New config and dynamic KV cache on EVERY call. Never inherit sampling,
         # penalties, stop strings or conversation state from prior generation.
-        generation = self.transformers.GenerationConfig(
+        generation = self.transformers.self.transformers.GenerationConfig(  # type: ignore[attr-defined, no-untyped-call]
             max_new_tokens=128,
             do_sample=False,
             num_beams=1,

@@ -1,0 +1,11 @@
+{"run_id":"run_2ca9f26b584e40b2b8dc423154563c7c","parent_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000001","child_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000003","relation":"GENERATED_USING"}
+{"run_id":"run_2ca9f26b584e40b2b8dc423154563c7c","parent_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000002","child_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000003","relation":"GENERATED_USING"}
+{"run_id":"run_2ca9f26b584e40b2b8dc423154563c7c","parent_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000003","child_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000004","relation":"EXTRACTED_FROM"}
+{"run_id":"run_2ca9f26b584e40b2b8dc423154563c7c","parent_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000004","child_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000005","relation":"ARGUMENT_DERIVED_FROM"}
+{"run_id":"run_2ca9f26b584e40b2b8dc423154563c7c","parent_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000006","child_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000007","relation":"DERIVED_FROM"}
+{"run_id":"run_2ca9f26b584e40b2b8dc423154563c7c","parent_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000004","child_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000007","relation":"DERIVED_FROM"}
+{"run_id":"run_2ca9f26b584e40b2b8dc423154563c7c","parent_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000001","child_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000008","relation":"GENERATED_USING"}
+{"run_id":"run_2ca9f26b584e40b2b8dc423154563c7c","parent_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000002","child_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000008","relation":"GENERATED_USING"}
+{"run_id":"run_2ca9f26b584e40b2b8dc423154563c7c","parent_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000004","child_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000008","relation":"GENERATED_USING"}
+{"run_id":"run_2ca9f26b584e40b2b8dc423154563c7c","parent_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000007","child_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000008","relation":"GENERATED_USING"}
+{"run_id":"run_2ca9f26b584e40b2b8dc423154563c7c","parent_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000008","child_id":"ART_run_2ca9f26b584e40b2b8dc423154563c7c_000009","relation":"DERIVED_FROM"}

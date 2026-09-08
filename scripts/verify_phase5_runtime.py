@@ -96,8 +96,8 @@ def main() -> int:
     quality = {}
     commands = {
         "setup": [sys.executable, "scripts/verify_setup.py"],
-        "ruff": [str(ROOT / ".venv/bin/ruff"), "check", "."],
-        "mypy": [str(ROOT / ".venv/bin/mypy"), "src", "scripts"],
+        "ruff": ["ruff", "check", "."],
+        "mypy": ["mypy", "src", "scripts"],
         "pytest": [sys.executable, "-m", "pytest"],
         "knowledge": [sys.executable, "scripts/validate_knowledge.py"],
     }

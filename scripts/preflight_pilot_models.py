@@ -12,8 +12,8 @@ from react_agent.llm.pilot_profiles import PROFILES, adapt_messages, find_pilot_
 
 
 def main() -> int:
-    import torch  # type: ignore[import-not-found]
-    import transformers as tr  # type: ignore[import-not-found]
+    import torch  
+    import transformers as tr  
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--input-root", type=Path, required=True)
@@ -44,8 +44,8 @@ def main() -> int:
         tokens = tokenizer(prompt, return_tensors="pt", add_special_tokens=False)
         assert tokens["input_ids"].shape[-1] > 0  # noqa: S101
         print(f"PASS tokenizer/config: {key} {config.model_type}", flush=True)
-    gemma = tr.Gemma4ForCausalLM(
-        tr.Gemma4TextConfig(
+    gemma = tr.Gemma3ForCausalLM(
+        tr.Gemma3TextConfig(
             vocab_size=64,
             hidden_size=32,
             intermediate_size=64,

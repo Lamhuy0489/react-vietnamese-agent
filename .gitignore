@@ -1,35 +1,50 @@
-.DS_Store
-.idea/
-.vscode/
-
+```
 # Python
 __pycache__/
-*.py[cod]
-*.egg-info/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.coverage
-htmlcov/
-dist/
-build/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.ENV
+.ENV.*
 .venv/
 venv/
-
-# Secrets and local configuration
 .env
 .env.*
-!.env.example
-*.pem
-*.key
-credential kaggle/
-kaggle.json
+.env.local
 
-# Runtime artifacts (selected frozen releases may be force-added deliberately)
-logs/*
-!logs/.gitkeep
-results/*
-!results/.gitkeep
+# Build artifacts
+build/
+dist/
+*.egg-info/
 
-# Notebooks
-.ipynb_checkpoints/
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Coverage
+.coverage
+htmlcov/
+coverage/
+
+# Temporary files
+*.tmp
+*~
+```
