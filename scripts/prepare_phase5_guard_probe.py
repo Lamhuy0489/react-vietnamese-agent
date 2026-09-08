@@ -71,7 +71,8 @@ PATHS = (
     "src/react_agent/foundation/__init__.py",
     "src/react_agent/foundation/artifacts.py",
     "src/react_agent/foundation/normalization.py",
-    "src/react_agent/validation/__init__.py",
+    # Namespace-only worker validation directory: the historical __init__ eagerly
+    # imports pool validators. Never package it merely to import environment QA.
     "src/react_agent/validation/clean_environment.py",
     "configs/agent/A0.yaml",
     "configs/runtime/default.yaml",
