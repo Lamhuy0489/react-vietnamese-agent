@@ -4,7 +4,8 @@ Cập nhật: 2026-09-08. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Phase 5: **đã acquired/hash-verified Qwen guard; đang đóng gói synthetic GPU probe**.
+Phase 5: **bundle03 từ source `7649d5b` qua hai exact mounts; chuẩn bị upload GPU probe**.
+[Bundle receipt](../experiments/manifests/phase5_guard_bundle_v1_preflight03.json).
 [Contract](../docs/architecture/phase5_guard_probe_contract.md), [tiến độ](phase5_progress.md).
 Source cũ `bc2023f`/evidence `abd0203` nguyên vẹn; không sửa adapter/test/contract
 đã selected. Mốc mới thêm acquisition, probe cache-bypassed, wrapper và packager.
@@ -16,11 +17,13 @@ revision chính thức + local file hashes. Model ở build, không add weights 
 
 ## Bước tiếp theo
 
-1. Full suite pass 998 tests. Commit source rồi chạy
-   `scripts/prepare_phase5_guard_probe.py` với acquisition trên,
-   wheelhouse `build/guard_probe_wheels_v1`, output build/kaggle mới.
-   Hai exact layouts phải pass: isolated Python, eight tools/fault recovery,
-   21 Dummy + completed/missing-only resume, bốn-call stub probe.
+1. Bundle đã chọn: `build/kaggle/phase5_guard_probe_v1_bundle03`.
+   Hai exact layouts pass: isolated Python, eight tools/fault recovery,
+   21 Dummy + completed/missing-only resume, bốn-call stub probe mỗi layout.
+   72 source/input files, no authoring/pool/GT/Test/knowledge, credential scan0.
+   Bundle01 không chọn do broad source scope; bundle02 failed local eager import
+   `validation.__init__` kéo pool validator. Bundle03 bỏ initializer, namespace
+   chỉ có environment validator. Giữ các bundle trước, chưa upload bản lỗi.
 2. Push source và lưu bundle receipt; kiểm private metadata, upload Dataset
    `huylmhuhu/react-vn-guard15-probe-data-v1` với keep-tabular, không public;
    đợi READY và xác minh version. Chưa Dataset/kernel mới được submit.
@@ -43,6 +46,8 @@ revision chính thức + local file hashes. Model ở build, không add weights 
   mọi byte từ committed source trước inference. Chưa GPU/LLM mới.
 - **998 tests pass** trong 275,42 giây: 56 mới (25 acquisition, 26 bundle,
   5 process-probe); setup/Ruff/mypy 203 files gồm kernel/knowledge pass.
+  Full suite lần kế tiếp 998 tests/276,95 giây. Bundle03 source `7649d5b`;
+  exact mounts đã thực thi lại sau thay đổi allowlist cuối, không GPU claim.
   Giữ các lỗi local QA đã sửa,
   không claim chúng là Kaggle failures.
 - Guard adapter source `bc2023f`, [receipt](../experiments/manifests/phase5_guard_hf_v1_validation01.json):

@@ -66,6 +66,10 @@ Failed SaveKernel requests are not completed or failed inference attempts.
   from saved measurements without spending another GPU attempt for low scores.
 # Phase 5 guard preparation — 2026-09-08
 
+- Bundle02 local preflight bắt `validation.__init__` eager-import pool validator
+  khi chỉ mang environment validator. Bundle03 bỏ initializer khỏi archive,
+  dùng namespace directory; both isolated layouts pass. Không sửa source cũ,
+  không mang authoring/pool modules vào GPU để che missing import.
 - Kaggle CLI nằm ở `python3 -m kaggle` (2.2.4), không phải `.venv/bin/kaggle`.
   Help/version hoạt động; không cần cài lại chỉ vì thiếu entrypoint trong venv.
 - Python.org Python 3.11 cục bộ gặp `CERTIFICATE_VERIFY_FAILED` khi dùng CA mặc
