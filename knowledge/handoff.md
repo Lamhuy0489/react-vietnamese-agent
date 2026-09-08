@@ -4,6 +4,13 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Mốc hiện hành: CPU-only placement admission đã triển khai;56targetedtests pass,
+full QA đang chạy. [Contract](../docs/architecture/phase5_coexistence_placement_v1_contract.md),
+[bằng chứng/giới hạn](coexistence_placement_v1.md).
+Qwen7B candidate chia20/8layers, agent process caps12/7GiB và guard5GiB/device1;
+globalheadroom1GiB/device riêng. Không model selection hoặc combined-fit claim.
+Chưa agent snapshot authenticated/budgeted HF loader hoặc GPU submission mới.
+
 Phase5: cancellation/GPU-memory-recovery v1 đã hoàn tất và audit. Owner yêu cầu
 tiếp tục trên main, chỉ lấy nhánh bạn nếu cần. Không cherry-pick/merge
 phase5-integration: A0/A1 QA đã có, các sửa khác chưa đạt.
@@ -24,9 +31,10 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
 
 ## Bước tiếp theo
 
-1. Versioned agent placement/concurrent residency/context stress. Không dùng
-   nguyên MeasuredHFBackend13GiB/device cho agent+guard. Chốt model, budgets,
-   context bounds và protocol trước GPU; source frozen không sửa tại chỗ.
+1. Hoàn tất CPU placement QA/receipt, tiếp theo authenticated sharded agent snapshot
+   và separate budget-enforcing HF adapter. Không dùng nguyên
+   MeasuredHFBackend13GiB/device. Sau CPU fake/context tests và exact packaging,
+   predeclare combined residency/context stress trước GPU; frozen source giữ nguyên.
 2. Grouped Dev protocol/model decision rồi A4 scope/general final entitlements.
    First guard GPU B vẫn SAFE, bốn A/B outputs giống nhau; không chốt Qwen1.5B
    làm guard production hoặc tune từ four-call diagnostic.

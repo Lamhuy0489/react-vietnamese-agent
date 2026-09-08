@@ -1,6 +1,15 @@
 # Trạng thái hiện tại
 
-## Hiện hành: cancellation GPU đã audit, VRAM recovery đạt — 2026-09-09
+## Hiện hành: đang kiểm tra placement agent/guard trên CPU — 2026-09-09
+
+Module riêng đã có deterministic map và kiểm tra ngân sách/context/tensor placement;
+56targetedtests pass. Candidate Qwen7B chia20/8layers, agent caps12/7GiB,
+guard5GiB/device1; estimates10,873/5,558GiB gồmKV/workspace, không phải GPU peak.
+Model geometry khớp audited pilot setup;134frozen source hashes và seals giữ nguyên.
+Full QA đang chạy. Chưa agent weights acquisition/adapter, chưa combined GPU run.
+[Tri thức và bằng chứng](coexistence_placement_v1.md), [handoff](handoff.md).
+
+## Lịch sử: cancellation GPU đã audit, VRAM recovery đạt — 2026-09-09
 
 Kernel cancellation v1 COMPLETE ngay lần submit đầu; ba workers tải model thật,
 không model.generate. Model resident3,047GiB; cả18samples sau reap trở về baseline
