@@ -2,6 +2,15 @@
 
 Cập nhật 2026-09-08. Phase 5 vẫn đang làm, không phải benchmark ASR/utility.
 
+## Bootstrap v2 đang kiểm chứng
+
+[Contract](../docs/architecture/phase5_guard_mount_v2_contract.md): chỉ chấp nhận
+đúng PAX header khớp source commit, kiểm exact inventory rồi không copy sidecar
+vào executable tree. Wrapper v2 riêng, không sửa v1/runtime/model/prompt/Dataset.
+Kernel-only packager tái dùng Dataset v1 và ghi cả runtime commit/bootstrap commit.
+12 tests mới + 26 bundle regressions pass; full suite và actual-layout preflight
+cần hoàn tất trước GPU. Không cần upload lại weights.
+
 ## Đầu vào đã khóa
 
 - Bundle `build/kaggle/phase5_guard_probe_v1_bundle03`, source `7649d5b`.

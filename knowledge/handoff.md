@@ -4,7 +4,10 @@ Cập nhật: 2026-09-08. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Phase 5: **Dataset READY/private; đã tái hiện lỗi PAX mount trước GPU**.
+Phase 5: **bootstrap v2 đã sửa PAX bằng commit binding; đang kiểm chứng trước GPU**.
+[Contract v2](../docs/architecture/phase5_guard_mount_v2_contract.md).
+V1/Dataset/runtime giữ nguyên; v2 là wrapper riêng và kernel-only packager.
+38 targeted tests pass (12 mới); full suite và exact preflight cần hoàn tất.
 [Nhật ký triển khai](guard_gpu_probe_v1.md). Chưa submit GPU kernel.
 [Bundle receipt](../experiments/manifests/phase5_guard_bundle_v1_preflight03.json).
 [Contract](../docs/architecture/phase5_guard_probe_contract.md), [tiến độ](phase5_progress.md).
@@ -29,7 +32,8 @@ revision chính thức + local file hashes. Model ở build, không add weights 
    id 11942593. Source/receipt đã push `1e55203` trước upload, upload đã kết thúc.
    Remote có thêm `source/pax_global_header` 52 bytes; đã tải header/manifest và
    tái hiện frozen wrapper reject. [Diagnostic receipt](../experiments/manifests/phase5_guard_remote_mount_v1_diagnostic01.json).
-   Sửa versioned packaging/bootstrap, không đổi bundle03 hoặc bỏ qua mọi extras.
+   Bản sửa: `notebooks/kaggle/guard_probe_kernel_v2.py`, packager
+   `scripts/prepare_phase5_guard_mount_v2.py`. Không đổi bundle03 hoặc bỏ qua mọi extras.
    Kiểm lại archive và actual expanded mount có global PAX, eight tools/fault,
    21 Dummy/resume/stub trong isolated venv trước GPU. Chưa submit kernel.
 3. Kernel `huylmhuhu/react-vn-guard15-probe-run-v1`: hai T4, internet off.
