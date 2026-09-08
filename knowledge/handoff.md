@@ -4,6 +4,16 @@ Cập nhật: 2026-09-08. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Mốc mới: cancellation/VRAM recovery probe đã triển khai riêng, đang QA.
+[Contract](../docs/architecture/phase5_guard_cancellation_v1_contract.md).
+Three trials resident_close/busy_timeout/ignore_term_timeout; no model.generate,
+không retry A/B. Frozen WarmGuard/HF adapter giữ nguyên, deadline120/graces0,5/1.
+Observer CUDA parent ổn định, sixsamples/1s, tolerance256MiB, residency>=2GiB.
+21 targeted tests pass (five spawned-process, ten recovery, six overlay).
+Full suite đang chạy; chưa commit/exact preflight/GPU cho mốc mới.
+Kernel-only overlay builder `scripts/prepare_phase5_guard_cancellation_v1.py`
+dùng lại Dataset v1, thêm đúng hai files không overwrite frozen source.
+
 Phase 5: **guard-only GPU v1 COMPLETE và audit; chưa quality/graceful acceptance**.
 [Báo cáo](../docs/evaluation/phase5_guard_gpu_v1_report.md),
 [receipt](../experiments/manifests/phase5_guard_gpu_v1_audit01.json),
