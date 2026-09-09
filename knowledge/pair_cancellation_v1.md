@@ -5,7 +5,11 @@
 Đã có lazy HF factories/entry script và standalone wrapper13file;17new tests
 pass. Giữ11pair overlay và CPU cancellation module hash, pinned Docker image
 đã thấy ở run cũ. [GPU contract](../docs/architecture/phase5_pair_cancel_gpu_v1_contract.md).
-Tiếp theo source freeze, full QA và exact archive/expanded/PAX preflight trước
+Sourcee01b4e7 exact preflight pass cả archive/expanded/PAX,8tools/21Dummy/resume/
+three stub trials. Full QA1.406tests/369,92s, setup/Ruff/mypy234files/knowledge pass.
+[Receipt](../experiments/manifests/phase5_pair_cancel_gpu_v1_preflight01.json),
+[QA](../experiments/manifests/phase5_pair_cancel_gpu_v1_pre_submit_qa01.json).
+Quota29,22h; Dataset11942593 private/v1/READY. Tiếp theo push source/receipt,
 private GPU submit1 `huylmhuhu/react-vn-pair-cancel-v1`, timeout5400s. Chưa submit.
 
 ## Mốc CPU đã hoàn tất

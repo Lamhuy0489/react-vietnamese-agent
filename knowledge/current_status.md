@@ -2,8 +2,9 @@
 
 ## Hiện hành: pair cancellation GPU packaging — 2026-09-09
 
-HF entry/13file wrapper đã triển khai,17new tests pass. Full QA/exact mount
-preflight trước GPU đang chuẩn bị; chưa submit hoặc localmodel/Test payload.
+HF entry/13file wrapper đã triển khai,17new tests pass. Full QA1.406tests/369,92s
+pass; exact sourcee01b4e7 archive/expanded/PAX8tools/21Dummy/resume/three stub trials
+pass. Quota29,22h/private Datasetv1READY; tiếp theo push/submit, chưa GPU mới.
 [Contract](../docs/architecture/phase5_pair_cancel_gpu_v1_contract.md),
 [tri thức](pair_cancellation_v1.md). Dùng lại pinned model/Dataset/Docker image.
 

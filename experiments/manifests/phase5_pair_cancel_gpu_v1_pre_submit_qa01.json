@@ -1,0 +1,47 @@
+{
+  "protocol": "pair_cancel_gpu_pre_submit_qa_v1",
+  "software_qa_valid": true,
+  "phase5_accepted": false,
+  "source_commit": "e01b4e7b71cb9e362b5a0ba3baae4c3e3dd946f8",
+  "full_suite_tests": 1406,
+  "full_suite_seconds": 369.92,
+  "new_tests": 17,
+  "junit": {
+    "tests": "1406",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "369.831"
+  },
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 234,
+  "knowledge": "pass",
+  "exact_layouts": [
+    "archive",
+    "expanded/PAX"
+  ],
+  "tools_per_layout": 8,
+  "dummy_tasks_per_layout": 21,
+  "cancellation_stub_trials_per_layout": 3,
+  "pinned_prior_overlay_and_cancellation_files": 12,
+  "upload_files": 2,
+  "credential_scan_files": 12,
+  "credential_value_matches": 0,
+  "gpu_submissions": 0,
+  "local_model_loads": 0,
+  "test_payloads_parsed": 0,
+  "quota_hours_remaining": 29.22,
+  "private_dataset_version": 1,
+  "dataset_id": 11942593,
+  "wall_clock_limit_seconds": 5400,
+  "source_and_evidence_sha256": {
+    "scripts/run_phase5_pair_cancel_worker.py": "bf9749d52853237daeb4748075c710e4dbe7d98012c0a627be88f173fa07a36f",
+    "scripts/prepare_phase5_pair_cancel.py": "d0a2ad789d8c78809eb173e318ba6ea24d780c5d94b6b7c7dadaf21b117143be",
+    "notebooks/kaggle/pair_cancel_kernel_v1.py": "ba11ea7c877749ded295fe08b130b7a93416d419c244695a3e590a0fbb33b763",
+    "tests/unit/test_pair_cancel_entry_v1.py": "e11155de2d41a138de176f56b51921f60ec58942e9f0223c167a4405f7229e6b",
+    "tests/unit/test_pair_cancel_kernel_v1.py": "acfbe0f7ceec73039d2503b52a51e9fa5f0425ed39f7263985316104436e5c53",
+    "experiments/manifests/phase5_pair_cancel_gpu_v1_preflight01.json": "80fffe0326f2c3fa220ce0c92929615248ddf489bb2f6c28f04765108bf688ca",
+    "results/phase5_pair_cancel_gpu_v1_pre01_pytest.xml": "0b132ab1a235f290af4c62eb640a54c90f23237922e9a0a1dc50a9bea29a13bc"
+  }
+}

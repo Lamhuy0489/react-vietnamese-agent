@@ -1,0 +1,153 @@
+{
+  "protocol": "pair_cancel_gpu_exact_preflight_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "e01b4e7b71cb9e362b5a0ba3baae4c3e3dd946f8",
+  "runtime_commit": "7649d5bed0b872e93b4233a7dcdbdf0da4623194",
+  "wrapper_sha256": "610184a23ca53ecdc37d90a2e9d9abbcb1a574ef11683b4b4a8336925ae7ff02",
+  "metadata_sha256": "2186df130c6af4e19d3f21018a1ca75279a245bf7922548b2824e27f4fa69fcb",
+  "base_source_sha256": "73376becda9a21880e4ed94aded1fd98b4f384c272ba7b91c6dbe11587fa0221",
+  "bundle_manifest_sha256": "b14976413b72898b6c0c1b8c46c1ebb0f62f63633f647ab2064fbc048262240f",
+  "overlay_sha256": {
+    "docs/evaluation/qwen7b_upstream_inventory_v1.json": "9023d04a65f44a4e4beef29efba9f1ca088e2af1990cc82e586f457d4c5c43b3",
+    "scripts/run_phase5_pair_cancel_worker.py": "bf9749d52853237daeb4748075c710e4dbe7d98012c0a627be88f173fa07a36f",
+    "scripts/run_phase5_pair_worker.py": "12542161ed3221c4abdd21095826262ac98b1e3008e0bcb635ccdaa3fc8b7436",
+    "src/react_agent/llm/agent_hf_v1.py": "8998700cf470d99f954d02697de7d2898408efe5b9cac63a22733abe7cd5af9f",
+    "src/react_agent/llm/agent_hf_v2.py": "5b382e7208fcfffa06cb0e0b1eaec7cef32a86e7816e88fd53338e21a4a9079c",
+    "src/react_agent/llm/agent_mount_v1.py": "8561a6cc9e8ebcb02a8061fb6b9a5cb3efb478dc96676996849a74381c97264f",
+    "src/react_agent/llm/agent_runtime_input_v1.py": "3ddc20e19ac6bc4c5cf5fae93920649d57416cc2961b4d8f996c5732c44262f3",
+    "src/react_agent/llm/coexistence_placement_v1.py": "873c8c2169a6a25ec000bec9805801d679c9946950311059d20449f2245131c0",
+    "src/react_agent/llm/model_pair_hf_v1.py": "77a6cd6bfad3ebe1838a4b25bd8a2c57a44f2a9303b7c1ff3077a5855c220974",
+    "src/react_agent/llm/model_pair_probe_v1.py": "bff03064780fb4f36243549e75a444826e6dbd2ea31ac13f3a8d1cb76ebfedb1",
+    "src/react_agent/llm/model_pair_v1.py": "e5de61646922d382ff312e2fb982597b11610fea4e018b93230c7a9c2c1719cf",
+    "src/react_agent/llm/pair_cancellation_v1.py": "b8acad79bc2da00cea92428b6501d703df062a544d0c79fe51cc46f95bee2379",
+    "src/react_agent/validation/agent_mount_audit_v1.py": "5af72b6ba9ecb18b901da93d8b0f001746ca501b84fdaa9651a16bb8b1437db1"
+  },
+  "checks": [
+    {
+      "layout": "archive",
+      "isolated_python": true,
+      "tools": 8,
+      "dummy_tasks": 21,
+      "retained_checkpoints": 20,
+      "missing_only_resume": true,
+      "probe": {
+        "error_class": null,
+        "model_generation_calls": 0,
+        "phase5_accepted": false,
+        "protocol": "pair_cancellation_v1",
+        "rows": [
+          {
+            "cleanup_error": false,
+            "forced_method_valid": true,
+            "reaped": true,
+            "recovery_valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "timeout_observed": true,
+            "trial": "agent_busy",
+            "valid": true
+          },
+          {
+            "cleanup_error": false,
+            "forced_method_valid": true,
+            "reaped": true,
+            "recovery_valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "timeout_observed": true,
+            "trial": "guard_busy",
+            "valid": true
+          },
+          {
+            "cleanup_error": false,
+            "forced_method_valid": true,
+            "reaped": true,
+            "recovery_valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "timeout_observed": true,
+            "trial": "guard_ignore_term",
+            "valid": true
+          }
+        ],
+        "scope": "Cancellation with sibling resident; not model generation or context stress",
+        "valid": true
+      }
+    },
+    {
+      "layout": "expanded",
+      "isolated_python": true,
+      "tools": 8,
+      "dummy_tasks": 21,
+      "retained_checkpoints": 20,
+      "missing_only_resume": true,
+      "probe": {
+        "error_class": null,
+        "model_generation_calls": 0,
+        "phase5_accepted": false,
+        "protocol": "pair_cancellation_v1",
+        "rows": [
+          {
+            "cleanup_error": false,
+            "forced_method_valid": true,
+            "reaped": true,
+            "recovery_valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "timeout_observed": true,
+            "trial": "agent_busy",
+            "valid": true
+          },
+          {
+            "cleanup_error": false,
+            "forced_method_valid": true,
+            "reaped": true,
+            "recovery_valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "timeout_observed": true,
+            "trial": "guard_busy",
+            "valid": true
+          },
+          {
+            "cleanup_error": false,
+            "forced_method_valid": true,
+            "reaped": true,
+            "recovery_valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "timeout_observed": true,
+            "trial": "guard_ignore_term",
+            "valid": true
+          }
+        ],
+        "scope": "Cancellation with sibling resident; not model generation or context stress",
+        "valid": true
+      }
+    }
+  ],
+  "prerequisites": {
+    "clean_frozen": true,
+    "robustness_ids_presealed": 50,
+    "adversarial_seal_valid": true,
+    "test_access": "hash-only; robustness IDs only",
+    "clean_component_hashes": {
+      "dev_pilot/fault_plans.json": "3da01fa7c945cc00bb72a1e505b4db77bd339b19f15060ae6f37c3c3df06bceb",
+      "dev_pilot/task_ids.json": "1548683a7c985d08b867a4adc276071b08c36c5e14d29121e96966185f86beba",
+      "environment/cached_pages/pages.json": "4ce56c270a4d96117ba14cde6d070e56a59817d774401f71372fa9f2c2fab34a",
+      "environment/database/seed.json": "51b5f8980984f8905bbee557906c677cca449aa16a83fb7de645cb375b0a2b31",
+      "environment/database/university.db": "85bc7a259438b89f8f86fdf09965aa46e9ef9b4749564795aab7f43e582c10c3",
+      "environment/documents/documents.json": "431a7b8cbcd271c98f08adc61cdd83c0e1ed34f944f86c43fad8dca2526cacbe",
+      "manifests/environment_manifest.json": "4241e73fa3ada87dd9d595d5db0a249966a5cead7da04a37cba7cac020b787e9",
+      "manifests/source_catalog.json": "f9d8621762d016aefca05d1eff24f52ea39fc2034d4122889c5b7f1127588b49",
+      "manifests/split_manifest.json": "4e396d50e8a4f6b50be42913e4213db0ab870f461bcedd4fc01dfec1c9cec6e0",
+      "pool/tasks.jsonl": "f96839aa55aa95de0b3fd2ba79139bbd108d2899de26391203ae978672c86611",
+      "private/dev_ground_truth.jsonl": "95a3e4668699dddbb8f8e85ff3ad08950d528644980ec4033a266d851d01582c",
+      "private/pool_ground_truth.jsonl": "5cdc74cfca6887e63a3fed7da22a0d78c4a781029d826768a4f5b5ddc9ad0a52",
+      "private/robustness_canonical_ids.json": "18feead8234e8c1461f91077fabcbaee151f5f3791ade1275c8cbf8fc27652d0",
+      "private/test_ground_truth.jsonl": "8d11fec78cdf6714ff6d5136e88abb3fd7dbc1f66b0485a77c2c1933696b95a5",
+      "reports/pool_validation.json": "d4e940014be90ace7a7ff839454b867255f8ef8787d88daeb85b592be9a35d09",
+      "reports/qa_records.json": "399495e2f73373dbbf61eba43fab2666e430baab50a2f83616eec2dcc8000c22",
+      "splits/dev.jsonl": "ce1cda2a258c6d00b31a428b10258bbda7cade77c4b3841aa8cd1af34227a0d3",
+      "splits/test.jsonl": "688fddcc4c4cb363515e1247e992cbda9e5268ba8e1cc51e0060d48f5a9dad20"
+    },
+    "adversarial_seal_sha256": "431b81118026bef6c60e33306e51df71160504579e76ea08fb4648005fa1cb6b"
+  },
+  "actual_model_loads": 0,
+  "gpu_runs": 0
+}

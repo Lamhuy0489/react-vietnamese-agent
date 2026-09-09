@@ -6,9 +6,11 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 Hiện hành: pair cancellation GPU entry/wrapper13file đã có;17new tests pass.
 [GPU contract](../docs/architecture/phase5_pair_cancel_gpu_v1_contract.md).
-Source freeze/full QA và exact archive/expanded/PAX13overlay/8tools/21Dummy/
-resume/three stub trials là gate tiếp theo. Sau push nguồn/receipt, xác minh
-quota/private Dataset11942593v1 và submit1 private/offline twoT4 kernel
+Sourcee01b4e7 full QA1.406tests/369,92s pass; exact archive/expanded/PAX13overlay/
+8tools/21Dummy/resume/three stub trials pass. Setup/Ruff/mypy234files/knowledge pass.
+[Preflight](../experiments/manifests/phase5_pair_cancel_gpu_v1_preflight01.json).
+Quota29,22h/Dataset11942593private/v1/READY đã xác minh. Tiếp theo push nguồn/receipt,
+rồi submit1 private/offline twoT4 kernel
 `huylmhuhu/react-vn-pair-cancel-v1`, timeout5400s. Chưa GPU run mới, không local
 weights/Test/GT. Giữ nguyên prior source và raw. Không pending access mới.
 
