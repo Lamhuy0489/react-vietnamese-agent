@@ -7,8 +7,11 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 Đang triển khai diagnostic IPC riêng, chưa GPU attribution hoặc cleanup fix.
 [Protocol](../docs/architecture/phase5_pair_ipc_v1_contract.md),
 [tri thức](pair_ipc_v1.md). Tracer/entry/wrapper15files và exact builder đã có;
-CPU controls xác minh90parent registrations được gỡ. Tiếp: final QA/source commit,
-exact preflight/push/quota trước một private GPU diagnostic. Giữ mọi source cũ.
+CPU controls xác minh90parent registrations được gỡ. Source9087791 exact
+archive/expanded/PAX preflight pass; fullQA1.481tests/359,83s,51new pass;
+setup/Ruff/mypy241files/knowledge pass. [QA](../experiments/manifests/phase5_pair_ipc_gpu_v1_pre_submit_qa01.json).
+Dataset11942593 private/v1/ready, quota28,89h verified trước run. Tiếp: push receipts
+rồi một private GPU diagnostic; chưa submit. Giữ mọi source cũ, không pending access.
 
 Hiện hành: pair cancellation GPU v1 COMPLETE lần submit1 và audit resource gates pass.
 Sourcee01b4e7/exactpreflight/full QA1.406tests push mainf6474a7 trước GPU.

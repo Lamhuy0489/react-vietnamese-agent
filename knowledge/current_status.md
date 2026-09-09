@@ -2,8 +2,8 @@
 
 ## Đang làm: IPC-origin diagnostic riêng — 2026-09-09
 
-[Protocol và tiến độ](pair_ipc_v1.md). Đã có tracer/entry/wrapper; CPU controls
-đang kiểm tra trước full QA/exact preflight. Chưa submit mới/attribution GPU
+[Protocol và tiến độ](pair_ipc_v1.md). Tracer/entry/wrapper/audit đã có;
+full QA1.481tests pass, exact archive/expanded/PAX preflight pass. Chưa submit mới/attribution GPU
 hoặc sửa lifecycle. Không local model/Test payload.
 
 ## Hiện hành: pair cancellation GPU đã audit — 2026-09-09

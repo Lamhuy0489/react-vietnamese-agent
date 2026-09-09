@@ -1,0 +1,55 @@
+{
+  "protocol": "pair_ipc_gpu_pre_submit_qa_v1",
+  "software_qa_valid": true,
+  "phase5_accepted": false,
+  "source_commit": "90877913655179aab2abd2c3438a1af8036b777f",
+  "full_suite_tests": 1481,
+  "full_suite_seconds": 359.83,
+  "new_tests": 51,
+  "junit": {
+    "tests": "1481",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "359.751"
+  },
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 241,
+  "knowledge": "pass",
+  "exact_layouts": [
+    "archive",
+    "expanded/PAX"
+  ],
+  "tools_per_layout": 8,
+  "dummy_tasks_per_layout": 21,
+  "cancellation_stub_trials_per_layout": 3,
+  "parent_register_unregister_per_layout": [
+    90,
+    90
+  ],
+  "pinned_prior_overlay_files": 13,
+  "upload_files": 2,
+  "credential_scan_files": 17,
+  "credential_value_matches": 0,
+  "gpu_submissions": 0,
+  "local_model_loads": 0,
+  "test_payloads_parsed": 0,
+  "quota_hours_remaining_at_check": 28.89,
+  "private_dataset_version": 1,
+  "dataset_id": 11942593,
+  "wall_clock_limit_seconds": 5400,
+  "source_and_evidence_sha256": {
+    "src/react_agent/llm/ipc_trace_v1.py": "87b067f3f263a0d52090e3f2485da2be3a0cea7a5b3b63319637dcfaf3c42f59",
+    "scripts/run_phase5_pair_ipc_worker.py": "2d60050440f1588724604738fc0f815e592f86fe95c2c3553c921b2ec386c722",
+    "scripts/prepare_phase5_pair_ipc.py": "b1f85101085c2b63be73a2dab555334036a152c010011942573e7d721ff10f52",
+    "notebooks/kaggle/pair_ipc_kernel_v1.py": "49d684458a5dda3aa2139ad7e295353491754bb779d3e73147f7d5bd4f3f15d2",
+    "scripts/audit_phase5_pair_ipc_gpu.py": "ec439cd245f266f4279a84dfd45893f36ab3009d21f4a77663cf9f831cb94982",
+    "src/react_agent/validation/pair_ipc_audit_v1.py": "8d9466b7e1d506e7eca130823d1c01ec0404021e324b29d107cba9e025611514",
+    "tests/unit/test_ipc_trace_v1.py": "da726f8b43457a3475cefcc94a0ad437ef4ce9ea5e8cd97e1b31eda3807efdd4",
+    "tests/unit/test_pair_ipc_audit_v1.py": "32d5422ad5dee04f73efcf3d8410b553b2b39e7910a0137f307aaa2dd8e5b5b4",
+    "tests/unit/test_pair_ipc_kernel_v1.py": "0126ed9c993d37d29e6853a3167f6fdbe9c374af5c286c1350f970ab082a6cab",
+    "experiments/manifests/phase5_pair_ipc_gpu_v1_preflight01.json": "b07d6087d3a1dd9fe3b23653d34894c68b0e5324099cc00e0f56d566c13147e1",
+    "results/phase5_pair_ipc_v1_pre_submit02_pytest.xml": "b262fd720f6a080963519c707b6497c440629f29e27dd862ed82499229271007"
+  }
+}

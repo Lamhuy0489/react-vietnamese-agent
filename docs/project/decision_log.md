@@ -1,5 +1,17 @@
 # Decision Log
 
+## 2026-09-09 — Separate IPC-origin diagnostic, no cleanup reinterpretation
+
+- Prior paired cancellation GPU logs warned about3semaphores; worker reap/VRAM
+  recovery remains valid within its frozen scope, not global IPC certification.
+- [New diagnostic protocol](../architecture/phase5_pair_ipc_v1_contract.md) adds
+  observational tracker hooks and a declared post-suite owner GC checkpoint,
+  preserving model inputs, deadlines, caps and frozen transport/factory code.
+  It creates a new run identity, not a semantic retry or rewrite of old results.
+- Stacks/hashes/PIDs only; no manual unlink/unregister, warning suppression or
+  threshold changes. Instrumented latency is not pooled with original timings.
+  No policy, model choice, Test access or approved research scope change.
+
 ## 2026-09-09 — Combined cancellation precedes context stress
 
 - [Separate technical protocol](../architecture/phase5_pair_cancellation_v1_contract.md)

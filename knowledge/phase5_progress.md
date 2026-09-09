@@ -1,6 +1,30 @@
-# Phase 5 — Offline guard adapter và GPU preflight còn lại
+# Phase 5 — tiến độ và các gate còn lại
 
 ## Hiện hành
+
+Mốc mới nhất xem [current status](current_status.md) và [handoff](handoff.md).
+Combined small-context/cancellation GPU đã audit;6workers reaped/18VRAM samples
+trở về nền nhưng warning3semaphores chưa xác định nguồn. Đang chốt
+[IPC-origin diagnostic](pair_ipc_v1.md), không sửa frozen transport hoặc che warning.
+
+Phase5 chưa accepted. Những nhóm việc cần hoàn tất theo phase_status/plan:
+
+1. Đóng chẩn đoán lifecycle/IPC ở phạm vi đo được; giữ riêng forced/graceful và
+   VRAM/IPC. Không coi absence-of-warning là chứng minh mọi resource đã sạch.
+2. Protocol maximum-context/forced-length và kiểm chứng trên Kaggle; small-context
+   không chứng minh4096+512tokens, allocator caps không phải measured peak.
+3. Tích hợp ModelPair vào một runtime version riêng, A0–A6 config isolation,
+   cold/warm accounting, task cleanup, parity và Broker/final gate coverage.
+4. Hoàn thiện A4 processing-scope anchors và general private-record final
+   entitlements; chưa dùng benchmark GT làm policy authority.
+5. Grouped Dev tuning/validation/model decision, differential evidence và freeze.
+   Qwen1.5B guard chưa được chọn production; four-call diagnostic có B=SAFE và
+   outputs giống nhau, không phải bằng chứng chất lượng đủ.
+
+Không dùng tỷ lệ test pass để suy phần trăm hoàn thành Phase5. Không chuyển
+Phase6/7 hoặc mở held-out Test. Mỗi gate cần receipt/trace/reproduction phù hợp.
+
+## Lịch sử: guard-only GPU preflight
 
 First real guard GPU kernel v1 đã COMPLETE và audit: four schema-valid responses,
 matching A hashes, nhưng all A/B giống nhau và malicious synthetic B bị SAFE.
