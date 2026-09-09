@@ -1,0 +1,56 @@
+{
+  "protocol": "pair_cancellation_cpu_release_qa_v1",
+  "software_qa_valid": true,
+  "phase5_accepted": false,
+  "source_commit": "5d326bf68571f35cbdca2aa37051557d95c38c84",
+  "full_suite_tests": 1389,
+  "full_suite_seconds": 356.32,
+  "junit": {
+    "tests": "1389",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "356.249"
+  },
+  "new_tests": 26,
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 231,
+  "knowledge": "pass",
+  "prior_source_entries_verified": 146,
+  "prior_gpu_overlay_verified": 11,
+  "prior_gpu_raw_hashes_verified": 62,
+  "raw_files_per_rehearsal": [
+    44,
+    44
+  ],
+  "stable_summaries_identical": true,
+  "raw_bytes_identical": false,
+  "reaped_cpu_workers": 12,
+  "busy_terminate_workers": 4,
+  "busy_kill_workers": 2,
+  "idle_graceful_workers": 6,
+  "rehearsal_memory": "synthetic only",
+  "actual_model_loads": 0,
+  "model_generation_calls": 0,
+  "gpu_runs": 0,
+  "kaggle_submissions": 0,
+  "test_payloads_parsed": 0,
+  "credential_scan_files": 103,
+  "credential_value_matches": 0,
+  "source_and_evidence_sha256": {
+    "src/react_agent/llm/pair_cancellation_v1.py": "b8acad79bc2da00cea92428b6501d703df062a544d0c79fe51cc46f95bee2379",
+    "scripts/probe_phase5_pair_cancellation.py": "910d7cc20ed38e5cabf3469fb8d0dc549fe33a43e03287060768f6db92d80a80",
+    "tests/unit/test_pair_cancellation_v1.py": "9932b392b3d088d88303404ec06518094fab0059ad0c1083cd05deb6df5c0d29",
+    "docs/architecture/phase5_pair_cancellation_v1_contract.md": "42733e552b80af240d1a686d8b5f893e40cd51912b5f3aeedcac2ca17277e461",
+    "docs/evaluation/phase5_pair_cancellation_v1_report.md": "68b6fc0586b68db2a507a4259e41c1dd247ecc4a0a63098ce1a341623868664f",
+    "experiments/manifests/phase5_pair_cancellation_v1_validation01.json": "3ece43b86acb436ecdd2cc21cc55f8620711900a9c8a457ed2b66449d107408c",
+    "results/phase5_pair_cancellation_v1_final01_pytest.xml": "4785fd17f5e7b22974d4c7bf75188bf798ef344748a19a31f2379b57d07a63bb"
+  },
+  "remaining": [
+    "Exact pinned HF entry point and private Kaggle wrapper/preflight",
+    "Combined cancellation GPU run and audit",
+    "Separate maximum-context/forced-length protocol",
+    "Production pair integration and grouped Dev guard/model decision; A4/final scope"
+  ]
+}

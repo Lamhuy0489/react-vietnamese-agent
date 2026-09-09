@@ -4,14 +4,24 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Hiện hành: pair cancellation v1 CPU suite đã triển khai;25tests pass trước thêm
-cleanup-interrupt case. Source freeze/hai CPU rehearsals và full QA tiếp theo.
+Hiện hành: pair cancellation v1 CPU suite source5d326bf đã tái lập hai lần,
+cả ba ca pass;12workers reaped,44raw files/run +receipt. Stable summaries match,
+raw PID/timing khác nhau. Full QA1.389tests/356,32s pass,26newtests;
+XML `results/phase5_pair_cancellation_v1_final01_pytest.xml`.
+Setup/Ruff/mypy231files/knowledge pass. Không test/kernel/model job đang chạy.
+[Release QA](../experiments/manifests/phase5_pair_cancellation_v1_release_qa01.json).
+[Selected receipt](../experiments/manifests/phase5_pair_cancellation_v1_validation01.json),
+[report](../docs/evaluation/phase5_pair_cancellation_v1_report.md).
 [Contract](../docs/architecture/phase5_pair_cancellation_v1_contract.md),
 [tri thức](pair_cancellation_v1.md). Ba freshpairs agent_busy/guard_busy/
 guard_ignore_term, no model.generate, real spawn/synthetic memory. CLI CPU-only
 `scripts/probe_phase5_pair_cancellation.py` yêu cầu clean committed source.
 Chưa GPU wrapper/submission/HF suite hoặc context-stress. Không localweights/
-Test payload/pending access mới. Giữ nguyên pair GPU source và62rawfiles cũ.
+Test payload/pending access mới. Giữ nguyên146prior source entries,11GPUoverlay
+và62GPUrawfiles cũ. Tiếp theo exact HF suite packaging: compose pinned factories,
+giữ deadlines180/120, archive/expanded/PAX8tools/21Dummy/resume; sau source push,
+private Dataset/quota verification mới submit một GPU identity mới. Context
+stress và native-generation cancellation chưa được chứng minh; Phase5 chưa accepted.
 
 Mốc lịch sử: combined small-context pair GPU đã COMPLETE và kiểm tra lần submit1.
 Kernel `huylmhuhu/react-vn-pair-gpu-v1` private/offline/twoT4/version1;

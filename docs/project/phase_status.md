@@ -402,6 +402,14 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   Release QA1,363tests/339.69s, setup/Ruff/mypy230files/knowledge pass;
   [QA receipt](../../experiments/manifests/phase5_pair_gpu_v1_release_qa01.json).
 
+- [x] Separate combined cancellation CPU protocol/suite implemented: three fresh
+  pairs exercise agent busy, guard busy and guard SIGTERM-ignore timeout. Two
+  clean-source5d326bf rehearsals pass;12workers reaped,44raw files/run, matching
+  stable summaries with genuine distinct PID/timing bytes.1,389tests/356.32s
+  pass,26new; setup/Ruff/mypy231files/knowledge pass. [Report](../evaluation/phase5_pair_cancellation_v1_report.md).
+  CPU uses synthetic backends/memory only. No new GPU run, native generation
+  cancellation, maximum-context evidence or production pair integration.
+
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
 The current v5 loop supports A0–A6 with an explicitly task-owned warm guard for

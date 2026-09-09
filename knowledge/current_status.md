@@ -3,11 +3,13 @@
 ## Hiện hành: combined cancellation CPU implementation — 2026-09-09
 
 Ba ca agent_busy/guard_busy/guard_ignore_term đã có diagnostic wrapper và durable
-suite, real spawn trên synthetic backends/memory.25tests pass,26th interruption
-case/full final QA pending. Chưa Kaggle submission hoặc model load mới.
+suite, real spawn trên synthetic backends/memory. Hai source5d326bf rehearsals
+đều pass,12workers reaped,44raw files/run, stable summaries match. Full QA:
+1.389tests/356,32s,26new; setup/Ruff/mypy231files/knowledge pass. Không job còn chạy.
+Chưa Kaggle submission hoặc model load mới.
 [Contract](../docs/architecture/phase5_pair_cancellation_v1_contract.md),
-[tri thức](pair_cancellation_v1.md). Tiếp theo clean-source hai CPU rehearsals,
-rồi exact GPU packaging sau QA. Context stress/runtime/Dev vẫn còn mở.
+[tri thức](pair_cancellation_v1.md). Tiếp theo exact GPU packaging.
+Context stress/runtime/Dev vẫn còn mở.
 
 ## Lịch sử: agent–guard cùng chạy trên GPU đã kiểm tra — 2026-09-09
 
