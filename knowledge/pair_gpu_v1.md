@@ -30,3 +30,9 @@ Next freeze source, execute builder against
 metadata/credential exclusion, push source and preflight, check live account
 quota/private Dataset readiness, then submit once `huylmhuhu/react-vn-pair-gpu-v1`.
 No new kernel submitted yet. Preserve failed attempts; no semantic retries.
+
+Exact preflight01 caught a local mount-simulation issue after8tools/21Dummy/resume
+passed: macOS tempfile spelled the scratch path through /var, a symlink to
+/private/var. Strict no_links correctly rejected the probe output. Fix only the
+builder's own newly-created scratch root with resolve(); model-path checks stay
+unchanged. Keep preflight01 wrapper/failure; run new clean-source preflight02.

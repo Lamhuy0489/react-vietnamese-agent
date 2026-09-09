@@ -96,7 +96,9 @@ def main() -> None:
     checks = []
     for layout in ("archive", "expanded"):
         with tempfile.TemporaryDirectory(prefix="pair-preflight-") as temporary:
-            scratch = Path(temporary)
+            # macOS tempfile may spell /private/var as the /var symlink. Resolve
+            # our own new scratch root; never relax link checks on model inputs.
+            scratch = Path(temporary).resolve()
             base = wrapper.load_base(scratch)
             mount = scratch / "input/dataset"
             mount.mkdir(parents=True)
