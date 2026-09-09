@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: small-context agent–guard GPU coexistence verified; context stress, integration and quality gaps remain**
+- Current stage: **Phase 5 in progress: agent–guard GPU coexistence and busy-cancellation VRAM recovery verified; IPC cleanup, context stress, integration and quality gaps remain**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-09
 
@@ -409,6 +409,17 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   pass,26new; setup/Ruff/mypy231files/knowledge pass. [Report](../evaluation/phase5_pair_cancellation_v1_report.md).
   CPU uses synthetic backends/memory only. No new GPU run, native generation
   cancellation, maximum-context evidence or production pair integration.
+
+- [x] Combined cancellation GPU technical scope verified, first submission COMPLETE:
+  three fresh pairs, six HF loads and zero model generation calls. All six workers
+  reaped (five TERMINATE/-15, one KILL/-9), zero graceful exits; all18recovery
+  samples residual0bytes on both T4 GPUs.91raw files and21Dummy/84events audited;
+  two audits byte-identical. Full QA1,430tests/353.52s,24new audit tests;
+  setup/Ruff/mypy236files/knowledge pass. [Report](../evaluation/phase5_pair_cancel_gpu_v1_report.md),
+  [QA](../../experiments/manifests/phase5_pair_cancel_gpu_v1_release_qa01.json).
+  Shutdown warning3semaphores retained; IPC cleanup is unverified. Busy CUDA loops
+  with resident weights do not prove native-generation cancellation, maximum-
+  context fit or production integration. No quality or full Phase5 acceptance.
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.

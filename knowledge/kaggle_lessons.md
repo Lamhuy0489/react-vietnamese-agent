@@ -1,5 +1,19 @@
 # Ghi chú Kaggle Phase 1
 
+## Combined cancellation GPU v1 — 2026-09-09
+
+- Exact archive/expanded/PAX13file overlay preflight +17newtests trước submit;
+  kernel COMPLETE lần đầu. Docker image digest yêu cầu khớp metadata tải ngược.
+- Three pairs giữ model thật và small CUDA busy loop;6workers reaped,18samples
+  VRAM về baseline. Không suy ra native autoregressive cancellation hoặc maxcontext.
+- Log có warning3leaked semaphore objects lúc shutdown. Giữ warning như bằng
+  chứng; resource-tracker warning không tự xác định nơi tạo hoặc persistent leak.
+  GPU recovery pass không đồng nghĩa IPC cleanup verified, không tự unregister
+  hoặc nới graces. [Report](../docs/evaluation/phase5_pair_cancel_gpu_v1_report.md).
+- Cả3idle siblings vẫn TERMINATE, không graceful; phân biệt với ca guard-ignore
+  chủ động KILL. Six HFloadrecords/zero generation,91rawfiles/21Dummy/84events;
+  auditJSON/table lặp lại khớp bytes, không model rerun để lấy kết quả đẹp hơn.
+
 ## Pair GPU v1 completion — 2026-09-09
 
 - First private pair kernel COMPLETE, exact wrapper two-layout preflight trước

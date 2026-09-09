@@ -4,15 +4,22 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Hiện hành: pair cancellation GPU entry/wrapper13file đã có;17new tests pass.
-[GPU contract](../docs/architecture/phase5_pair_cancel_gpu_v1_contract.md).
-Sourcee01b4e7 full QA1.406tests/369,92s pass; exact archive/expanded/PAX13overlay/
-8tools/21Dummy/resume/three stub trials pass. Setup/Ruff/mypy234files/knowledge pass.
-[Preflight](../experiments/manifests/phase5_pair_cancel_gpu_v1_preflight01.json).
-Quota29,22h/Dataset11942593private/v1/READY đã xác minh. Tiếp theo push nguồn/receipt,
-rồi submit1 private/offline twoT4 kernel
-`huylmhuhu/react-vn-pair-cancel-v1`, timeout5400s. Chưa GPU run mới, không local
-weights/Test/GT. Giữ nguyên prior source và raw. Không pending access mới.
+Hiện hành: pair cancellation GPU v1 COMPLETE lần submit1 và audit resource gates pass.
+Sourcee01b4e7/exactpreflight/full QA1.406tests push mainf6474a7 trước GPU.
+Kernel `huylmhuhu/react-vn-pair-cancel-v1` private/offline/twoT4/version1;
+returned Docker digest/model/Dataset pins match. [Contract](../docs/architecture/phase5_pair_cancel_gpu_v1_contract.md),
+[report](../docs/evaluation/phase5_pair_cancel_gpu_v1_report.md),
+[audit](../experiments/manifests/phase5_pair_cancel_gpu_v1_audit01.json).
+Raw91files `results/phase5_pair_cancel_gpu_v1_raw01`; remote source
+`build/kaggle/pair_cancel_gpu_v1_remote_source01`; audits01/02 JSON/tablebyte-identical.
+Three fresh pairs timeout180,383/120,337/120,823s;6workers reaped (5TERMINATE/1KILL),
+18recovery samples residual0bytes haiGPU. Không graceful hoặc nativegenerate.
+Log warning3leaked semaphores: giữ nguyên; IPC cleanup chưa được xác minh.
+24new audit tests pass; full release suite1.430tests/353,52s pass, XML
+`results/phase5_pair_cancel_gpu_v1_release01_pytest.xml`. Setup/Ruff/mypy236files pass.
+Không test/Kaggle/model job/retry/localweights/Test/GT/pending access mới. Sau push,
+bước tiếp là bounded semaphore-origin diagnostic, protocol maximum-context/forced-
+length, rồi versioned runtime integration/grouped Dev và A4/final scope còn lại.
 
 Mốc CPU: pair cancellation v1 CPU suite source5d326bf đã tái lập hai lần,
 cả ba ca pass;12workers reaped,44raw files/run +receipt. Stable summaries match,
@@ -127,10 +134,11 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
 
 ## Bước tiếp theo
 
-1. HF entry point và adapter v2 đã có; chốt full QA/source và exact builder
-   archive/expanded packaging/eight tools/21Dummy/resume
-   trước GPU. Không dùng MeasuredHFBackend13GiB/device hoặc coi allocator cap là
-   proof of fit. Frozen source giữ nguyên; large models chỉ chạy trên Kaggle.
+1. Combined small-context và busy-cancellation GPU đã audit. Tiếp theo bounded
+   semaphore-origin diagnostic riêng; chưa biết nguồn tạo3semaphores hoặc kết quả
+   IPC cleanup. Sau đó freeze protocol maximum-context/forced-length trước GPU,
+   rồi versioned runtime integration. Không coi allocator cap là proof of fit.
+   Frozen source giữ nguyên; large models chỉ chạy trên Kaggle.
 2. Grouped Dev protocol/model decision rồi A4 scope/general final entitlements.
    First guard GPU B vẫn SAFE, bốn A/B outputs giống nhau; không chốt Qwen1.5B
    làm guard production hoặc tune từ four-call diagnostic.
@@ -138,12 +146,18 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
    phải có version/protocol mới, không đổi grace để biến số đo cũ thành pass.
 4. Không Phase6/7, không Test inference/GT hoặc semantic retries.
 5. Account huylmhuhu (kaggle1), CLI python3 -m kaggle2.2.4. Pre-submit ngày
-   2026-09-09 còn29,45h, không phải quota hiện tại/giữ chỗ; kiểm lại trước run mới.
+   pair-cancel ngày2026-09-09 còn29,22h, không phải quota hiện tại/giữ chỗ;
+   kiểm lại trước run mới.
    Không cần tài khoản mới hoặc pending model-access cho mốc vừa xong.
    Không job test/kernel/upload đang chạy sau completion; không submit lần hai.
 
 ## Bằng chứng
 
+- [Pair cancellation GPU release QA](../experiments/manifests/phase5_pair_cancel_gpu_v1_release_qa01.json):
+  1.430tests/353,52s pass,24new audit tests; setup/Ruff/mypy236files/knowledge pass.
+  91raw files, hai audit JSON/report byte-identical;6workers reaped/18VRAM samples
+  residual0bytes.5TERMINATE/1KILL/0graceful; warning3semaphores giữ nguyên,
+  IPC cleanup chưa verified. Không nativegeneration/quality/Phase5 acceptance.
 - [Model pair release QA](../experiments/manifests/phase5_model_pair_v1_release_qa01.json):
   source6d1c761,1.330tests/326,86s;56newtests. Hai clean-source rehearsals giữ
   30raw files +2receipts, stable summaries equal, raw PID/timing hashes khác nhau.

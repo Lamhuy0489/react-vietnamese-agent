@@ -1,12 +1,18 @@
 # Trạng thái hiện tại
 
-## Hiện hành: pair cancellation GPU packaging — 2026-09-09
+## Hiện hành: pair cancellation GPU đã audit — 2026-09-09
 
-HF entry/13file wrapper đã triển khai,17new tests pass. Full QA1.406tests/369,92s
-pass; exact sourcee01b4e7 archive/expanded/PAX8tools/21Dummy/resume/three stub trials
-pass. Quota29,22h/private Datasetv1READY; tiếp theo push/submit, chưa GPU mới.
-[Contract](../docs/architecture/phase5_pair_cancel_gpu_v1_contract.md),
-[tri thức](pair_cancellation_v1.md). Dùng lại pinned model/Dataset/Docker image.
+Kernel pair-cancel-v1 version1 COMPLETE lần submit đầu. Ba fresh pairs cùng
+resident9,799/7,621GiB; timeout180,383/120,337/120,823s,5TERMINATE+1KILL/reaped.
+Cả18recovery samples residual0bytes haiGPU. Không worker graceful; shutdown
+warning3semaphores giữ nguyên, IPC cleanup chưa verified.91raw files/21Dummy/
+84events và pinned source/metadata/identities verified; hai audits byte-identical.
+[Report](../docs/evaluation/phase5_pair_cancel_gpu_v1_report.md),
+[tri thức](pair_cancellation_v1.md).24new audit tests pass; full release QA
+1.430tests/353,52s pass, setup/Ruff/mypy236files/knowledge pass.
+[Release QA](../experiments/manifests/phase5_pair_cancel_gpu_v1_release_qa01.json).
+Không kernel/model job, retry, localweights/Test payload. Tiếp theo semaphore
+diagnostic/context stress rồi runtime integration/Dev; Phase5 vẫn chưa accepted.
 
 ## Lịch sử: combined cancellation CPU implementation — 2026-09-09
 
