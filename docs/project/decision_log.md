@@ -1,5 +1,16 @@
 # Decision Log
 
+## 2026-09-09 — Combined cancellation precedes context stress
+
+- [Separate technical protocol](../architecture/phase5_pair_cancellation_v1_contract.md)
+  adds three fresh-pair timeout trials after the small-context GPU milestone;
+  no changes to frozen supervisors, adapters or prior results. CPU implementation
+  is not GPU recovery evidence. GPU busy loops retain weights but do not invoke
+  native autoregressive generation; report this boundary explicitly.
+- Maximum-context/forced-length stress needs a separate versioned protocol;
+  early EOS cannot certify a full4096+512-token allocation. No benchmark decoding,
+  guard prompt or Test-based tuning is changed. No Phase5 acceptance implied.
+
 ## 2026-09-09 — Pair GPU entry point and native Transformers5.5 buffer adapter
 
 - Exact pinned Dataset wheel inspection found native original_inv_freq is a

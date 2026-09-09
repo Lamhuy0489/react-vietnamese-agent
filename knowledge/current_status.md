@@ -1,6 +1,15 @@
 # Trạng thái hiện tại
 
-## Hiện hành: agent–guard cùng chạy trên GPU đã kiểm tra — 2026-09-09
+## Hiện hành: combined cancellation CPU implementation — 2026-09-09
+
+Ba ca agent_busy/guard_busy/guard_ignore_term đã có diagnostic wrapper và durable
+suite, real spawn trên synthetic backends/memory.25tests pass,26th interruption
+case/full final QA pending. Chưa Kaggle submission hoặc model load mới.
+[Contract](../docs/architecture/phase5_pair_cancellation_v1_contract.md),
+[tri thức](pair_cancellation_v1.md). Tiếp theo clean-source hai CPU rehearsals,
+rồi exact GPU packaging sau QA. Context stress/runtime/Dev vẫn còn mở.
+
+## Lịch sử: agent–guard cùng chạy trên GPU đã kiểm tra — 2026-09-09
 
 Kernel pair GPU v1 COMPLETE lần submit đầu; sourceb76c040/preflight push6596802
 trước GPU. Qwen7B/guard1,5B cùng resident trên twoT4, warm calls1,906/1,788s;

@@ -4,7 +4,16 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Hiện hành: combined small-context pair GPU đã COMPLETE và kiểm tra lần submit1.
+Hiện hành: pair cancellation v1 CPU suite đã triển khai;25tests pass trước thêm
+cleanup-interrupt case. Source freeze/hai CPU rehearsals và full QA tiếp theo.
+[Contract](../docs/architecture/phase5_pair_cancellation_v1_contract.md),
+[tri thức](pair_cancellation_v1.md). Ba freshpairs agent_busy/guard_busy/
+guard_ignore_term, no model.generate, real spawn/synthetic memory. CLI CPU-only
+`scripts/probe_phase5_pair_cancellation.py` yêu cầu clean committed source.
+Chưa GPU wrapper/submission/HF suite hoặc context-stress. Không localweights/
+Test payload/pending access mới. Giữ nguyên pair GPU source và62rawfiles cũ.
+
+Mốc lịch sử: combined small-context pair GPU đã COMPLETE và kiểm tra lần submit1.
 Kernel `huylmhuhu/react-vn-pair-gpu-v1` private/offline/twoT4/version1;
 sourceb76c040/preflight push main6596802 trước GPU. Dataset11942593 private/v1.
 [Report](../docs/evaluation/phase5_pair_gpu_v1_report.md),
