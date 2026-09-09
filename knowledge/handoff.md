@@ -4,7 +4,15 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Hiện hành: theo owner clarification, model lớn chỉ ở Kaggle. Triển khai read-only
+Hiện hành: runtime-input admission và agent HF loader12/7GiB đã triển khai riêng;
+87new CPU fake tests pass, Ruff/setup/mypy221files pass. Full final-source QA còn
+đang chạy; không chọn run trước thay đổi native config defaults làm bằng chứng
+cuối. [Contract](../docs/architecture/phase5_agent_hf_v1_contract.md),
+[tri thức](agent_loader_v1.md). Chưa live header/model load/combined GPU hoặc
+submission mới. Tiếp theo chốt QA/source/reproduction, rồi supervised combined
+GPU protocol và exact bundle preflight. Không cần GPU/download weights local.
+
+Mốc lịch sử: theo owner clarification, model lớn chỉ ở Kaggle. Triển khai read-only
 agent mount authenticator;29targetedtests pass, fullsuite1.172tests/263,13s pass.
 Setup/Ruff/mypy216files/knowledge pass. CPU diagnostic submitv1 thành công;
 actual handle `huylmhuhu/react-vn-agent-mount-auth-v1` do title/slug mapping.
@@ -56,11 +64,11 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
 
 ## Bước tiếp theo
 
-1. CPU placement và mount diagnostic đã hoàn tất; tiếp theo versioned runtime-input
-   admission giữ nguyên README mismatch, rồi separate budget-enforcing HF adapter.
-   Không dùng nguyên
-   MeasuredHFBackend13GiB/device. Sau CPU fake/context tests và exact packaging,
-   predeclare combined residency/context stress trước GPU; frozen source giữ nguyên.
+1. Chốt final-source QA, commit loader và tái lập CPU receipt từ source sạch.
+   Sau đó khai báo combined residency/context/cancellation protocol với agent
+   process supervisor; exact archive/expanded packaging/eight tools/21Dummy/resume
+   trước GPU. Không dùng MeasuredHFBackend13GiB/device hoặc coi allocator cap là
+   proof of fit. Frozen source giữ nguyên; large models chỉ chạy trên Kaggle.
 2. Grouped Dev protocol/model decision rồi A4 scope/general final entitlements.
    First guard GPU B vẫn SAFE, bốn A/B outputs giống nhau; không chốt Qwen1.5B
    làm guard production hoặc tune từ four-call diagnostic.

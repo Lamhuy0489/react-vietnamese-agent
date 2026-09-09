@@ -1,5 +1,9 @@
 # Agent model remains on Kaggle — 2026-09-09
 
+Continuation: [runtime-input admission and budgeted agent loader](agent_loader_v1.md)
+now have CPU implementation/tests; GPU and live-header gates remain pending.
+The diagnostic below and its full-inventory rejection are unchanged.
+
 Owner explicitly clarified local machine has no GPU: all large models and heavy
 model jobs must run on Kaggle. No local Qwen7B download or storage expansion is
 required by this workflow. Disk limitation of the earlier multi-copy suggestion

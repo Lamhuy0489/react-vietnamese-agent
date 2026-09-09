@@ -37,6 +37,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Guard cancellation/VRAM recovery: [protocol và tiến độ](guard_cancellation_v1.md).
 - Agent/guard cùng GPU: [placement admission và giới hạn](coexistence_placement_v1.md).
 - Model agent trên Kaggle: [read-only mount authentication](agent_mount_v1.md).
+- Agent HF loader: [runtime admission và giới hạn VRAM](agent_loader_v1.md).
 - Bằng chứng lịch sử: [Phase 1](phase1_evidence.md),
   [Phase 2 v1 cũ](phase2_evidence.md),
   [audit v1 và withdrawal](integrity_audit_20260905.md).

@@ -1,5 +1,19 @@
 # Decision Log
 
+## 2026-09-09 — Versioned runtime-only agent admission, not a repaired full scan
+
+- Owner authorized continuing the budgeted agent loader after the Kaggle CPU
+  diagnostic. The old scanner/receipt remains a full-inventory failure; no rerun
+  or publisher pin change. A new [contract](../architecture/phase5_agent_hf_v1_contract.md)
+  admits matching runtime files and only the exact previously observed README
+  size/SHA256/Git-blob difference. Documentation is not a runtime input.
+- Live hashes, index/header shapes and post-load reauthentication are mandatory;
+  a saved success receipt alone cannot authorize a load. Dedicated agent process,
+  12/7GiB allocator caps and fixed20/8layer placement preserve the prior plan.
+- Scope impact: engineering admission only. No model selection, semantic retry,
+  held-out access, score change or Phase5 closure. GPU coexistence and grouped Dev
+  remain future gates, not proven by synthetic CPU fakes.
+
 ## 2026-09-08 — Task-local warm guard and runtime v5
 
 - [Contract](../architecture/phase5_warm_guard_contract.md) predeclares one model
