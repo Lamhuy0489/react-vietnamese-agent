@@ -2,9 +2,13 @@
 
 ## Hiện hành: xác thực model trực tiếp trên Kaggle — 2026-09-09
 
-Owner đã chốt không tải model lớn về local. Read-only stdlib scanner29tests pass,
-fullsuite đang chạy; chuẩn bị một CPU/offline Kaggle job để hash pinned Qwen7B
-mount. Chưa model load/GPU submission mới. [Protocol](agent_mount_v1.md).
+Owner đã chốt không tải model lớn về local. CPU job v1 đã hash15,24GB trên
+Kaggle trong290,801s:11/11runtime files match publisher, chỉ README khác.
+Giữ full-inventory rejection/kernelERROR; không inference hoặc GPU mới.
+Actual handle `huylmhuhu/react-vn-agent-mount-auth-v1`; sourcehash/private/offline/
+CPU/version1 verified, two audits byte-identical. FinalQA1.187tests/238,38s,
+setup/Ruff/mypy218files/knowledge pass. [Báo cáo](../docs/evaluation/phase5_agent_mount_v1_report.md),
+[protocol](agent_mount_v1.md). Tiếp theo runtime admission riêng/agent loader.
 Không upload cả repo/credentials/Test/GT. Không cần GPU hoặc thêm disk local.
 
 ## Lịch sử: placement agent/guard đã qua CPU QA — 2026-09-09
@@ -476,4 +480,3 @@ Huy và Minh dùng chung máy nên chủ dự án bỏ peer review. Dataset khô
 reviewer; thay vào đó phải có automated QA theo owner waiver, đồng thời ghi
 rõ hạn chế thiếu independent human review trong data card. Không ghi rằng chủ
 dự án đã inspect từng task; audit record dùng `automated_gate`.
-Full1.172tests/263,13s, setup/Ruff/mypy216files/knowledge pass; chuẩn bị CPU submit.

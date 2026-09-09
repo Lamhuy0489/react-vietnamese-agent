@@ -117,3 +117,17 @@ Failed SaveKernel requests are not completed or failed inference attempts.
   Đây là snapshot quota, không reservation và không lý do đổi accounts để bypass.
 - Bundle guard mới đang kiểm chứng môi trường venv sạch/offline, both layouts,
   no inherited development imports. Không coi unit tests là GPU readiness.
+# CPU mount diagnostic additions — 2026-09-09
+
+- At first kernel creation, keep requested id slug and title-derived slug aligned.
+  Agent mount v1 requested agent7b but title omitted7b; Kaggle created
+  `react-vn-agent-mount-auth-v1`. Follow the returned handle, preserve requested
+  metadata, verify pulled wrapper hash; do not submit again only to rename.
+- Pulled model_sources may serialize framework as `Transformers` while requested
+  metadata uses `transformers`. Accept only the documented exact enum variant,
+  preserving owner/model/variation/version; do not broadly normalize identity.
+- Read-only CPU hashing of mounted model avoids local weights/download/copy and
+  does not consume GPU quota. A hash diagnostic intentionally exiting1 can yield
+  ERROR with a complete receipt; inspect artifacts before calling it infrastructure
+  failure. Qwen7Bv1 runtime11files matched HF, README differed; preserve both facts.
+  [Diagnostic evidence](agent_mount_v1.md). This does not replace GPU runtime preflight.

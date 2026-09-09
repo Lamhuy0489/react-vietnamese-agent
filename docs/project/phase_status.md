@@ -360,6 +360,14 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   agent HF loader, authenticated agent weights or combined GPU run yet;
   analytical estimates are not measured peaks or model selection.
 
+- [x] One read-only Kaggle CPU model-mount diagnostic completed with full-inventory
+  rejection preserved:11/11runtime files, including four Qwen7B shards, match
+  pinned HF publisher hashes; only README differs. No local weights download,
+  model loading, inference or GPU use. [Report](../evaluation/phase5_agent_mount_v1_report.md).
+  Source/remote metadata audited, two audits byte-identical;1,187tests pass,
+  setup/Ruff/mypy218files/knowledge pass. Full mount is not admitted for loading;
+  runtime-input admission and budgeted agent loader remain separate next steps.
+
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
 The current v5 loop supports A0–A6 with an explicitly task-owned warm guard for

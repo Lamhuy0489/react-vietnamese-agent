@@ -1,0 +1,88 @@
+{
+  "actual_kernel": "huylmhuhu/react-vn-agent-mount-auth-v1",
+  "audit_integrity_valid": true,
+  "bytes_hashed_on_kaggle": 15242807035,
+  "framework_serialization": "Requested transformers; Kaggle metadata returned Transformers",
+  "full_inventory_match": false,
+  "gpu_used": false,
+  "kernel_status": "ERROR",
+  "kernel_submissions": 1,
+  "kernel_version": 1,
+  "limits": "Checks trusted worker hash records, not a second scan of weights. Full mismatch is retained; a versioned mount contract is required before loading.",
+  "mismatches": [
+    "README.md"
+  ],
+  "model_loads": 0,
+  "mount_admitted_for_loader": false,
+  "observed_files": 14,
+  "phase5_accepted": false,
+  "preflight_sha256": "c83ba6865b26a32e48c0f75217e40c2f93b4536fcd36b16ff7cd940b2789997a",
+  "prerequisites": {
+    "adversarial_seal_sha256": "431b81118026bef6c60e33306e51df71160504579e76ea08fb4648005fa1cb6b",
+    "adversarial_seal_valid": true,
+    "clean_component_hashes": {
+      "dev_pilot/fault_plans.json": "3da01fa7c945cc00bb72a1e505b4db77bd339b19f15060ae6f37c3c3df06bceb",
+      "dev_pilot/task_ids.json": "1548683a7c985d08b867a4adc276071b08c36c5e14d29121e96966185f86beba",
+      "environment/cached_pages/pages.json": "4ce56c270a4d96117ba14cde6d070e56a59817d774401f71372fa9f2c2fab34a",
+      "environment/database/seed.json": "51b5f8980984f8905bbee557906c677cca449aa16a83fb7de645cb375b0a2b31",
+      "environment/database/university.db": "85bc7a259438b89f8f86fdf09965aa46e9ef9b4749564795aab7f43e582c10c3",
+      "environment/documents/documents.json": "431a7b8cbcd271c98f08adc61cdd83c0e1ed34f944f86c43fad8dca2526cacbe",
+      "manifests/environment_manifest.json": "4241e73fa3ada87dd9d595d5db0a249966a5cead7da04a37cba7cac020b787e9",
+      "manifests/source_catalog.json": "f9d8621762d016aefca05d1eff24f52ea39fc2034d4122889c5b7f1127588b49",
+      "manifests/split_manifest.json": "4e396d50e8a4f6b50be42913e4213db0ab870f461bcedd4fc01dfec1c9cec6e0",
+      "pool/tasks.jsonl": "f96839aa55aa95de0b3fd2ba79139bbd108d2899de26391203ae978672c86611",
+      "private/dev_ground_truth.jsonl": "95a3e4668699dddbb8f8e85ff3ad08950d528644980ec4033a266d851d01582c",
+      "private/pool_ground_truth.jsonl": "5cdc74cfca6887e63a3fed7da22a0d78c4a781029d826768a4f5b5ddc9ad0a52",
+      "private/robustness_canonical_ids.json": "18feead8234e8c1461f91077fabcbaee151f5f3791ade1275c8cbf8fc27652d0",
+      "private/test_ground_truth.jsonl": "8d11fec78cdf6714ff6d5136e88abb3fd7dbc1f66b0485a77c2c1933696b95a5",
+      "reports/pool_validation.json": "d4e940014be90ace7a7ff839454b867255f8ef8787d88daeb85b592be9a35d09",
+      "reports/qa_records.json": "399495e2f73373dbbf61eba43fab2666e430baab50a2f83616eec2dcc8000c22",
+      "splits/dev.jsonl": "ce1cda2a258c6d00b31a428b10258bbda7cade77c4b3841aa8cd1af34227a0d3",
+      "splits/test.jsonl": "688fddcc4c4cb363515e1247e992cbda9e5268ba8e1cc51e0060d48f5a9dad20"
+    },
+    "clean_frozen": true,
+    "robustness_ids_presealed": 50,
+    "test_access": "hash-only; robustness IDs only"
+  },
+  "protocol": "agent_mount_scan_audit_v1",
+  "raw_sha256": {
+    "mount_receipt.json": "397cbe1835104ac86da4167ec841409959f437f527203f63759371539c4ee41e",
+    "react-vn-agent-mount-auth-v1.log": "598a9f9c639312f6dbf647df2fb44ab38d468c348acaa54a735d240b8c98cc1f"
+  },
+  "remote_metadata": {
+    "code_file": "react-vn-agent-mount-auth-v1.py",
+    "competition_sources": [],
+    "dataset_sources": [],
+    "docker_image": "gcr.io/kaggle-images/python@sha256:dafd4ce5668bbf1ad422e4c109e0f18c9623c3a7c7f48b0235f13142755c40b9",
+    "enable_gpu": false,
+    "enable_internet": false,
+    "enable_tpu": false,
+    "id": "huylmhuhu/react-vn-agent-mount-auth-v1",
+    "id_no": 133605346,
+    "is_private": true,
+    "kernel_sources": [],
+    "kernel_type": "script",
+    "keywords": [],
+    "language": "python",
+    "machine_shape": "None",
+    "model_sources": [
+      "qwen-lm/qwen2.5/Transformers/7b-instruct/1"
+    ],
+    "title": "ReAct VN Agent Mount Auth v1"
+  },
+  "remote_source_sha256": {
+    "kernel-metadata.json": "6d972c7647521111978d619a040720b3a8175ee58a72eedd96ef71e9fcc3b524",
+    "react-vn-agent-mount-auth-v1.py": "f12a987218f3f3b39b393e9b743676ccf4032bb89da477b1ede9366b9c81c118"
+  },
+  "requested_kernel": "huylmhuhu/react-vn-agent7b-mount-auth-v1",
+  "runtime_files": 11,
+  "runtime_files_match": true,
+  "scan_seconds": 290.801165509,
+  "slug_deviation": "Kaggle created title-derived slug; no resubmission; source hash exact",
+  "source_commit": "97c9507e61cd8206647e83068e652511f2f3d651",
+  "source_sha256": {
+    "scripts/audit_phase5_agent_mount.py": "ee56c9a886b125f4fae767fa3730455fab4195d81d74a7cf4dc87ec5ab458ff6",
+    "src/react_agent/validation/agent_mount_audit_v1.py": "5af72b6ba9ecb18b901da93d8b0f001746ca501b84fdaa9651a16bb8b1437db1"
+  },
+  "upstream_inventory_sha256": "9023d04a65f44a4e4beef29efba9f1ca088e2af1990cc82e586f457d4c5c43b3"
+}

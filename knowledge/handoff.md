@@ -6,23 +6,35 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 Hiện hành: theo owner clarification, model lớn chỉ ở Kaggle. Triển khai read-only
 agent mount authenticator;29targetedtests pass, fullsuite1.172tests/263,13s pass.
-Setup/Ruff/mypy216files/knowledge pass. Chưa submit.
+Setup/Ruff/mypy216files/knowledge pass. CPU diagnostic submitv1 thành công;
+actual handle `huylmhuhu/react-vn-agent-mount-auth-v1` do title/slug mapping.
+Không submit lại; giữ requested metadata, kiểm sourcehash theo actual handle.
+CPU job đã kết thúcERROR do full-inventory mismatch đúng dự kiến. 11/11runtime
+files match, chỉ README khác. [Report](../docs/evaluation/phase5_agent_mount_v1_report.md),
+[scan](../experiments/manifests/phase5_agent_mount_v1_scan01.json),
+[audit](../experiments/manifests/phase5_agent_mount_v1_audit01.json).
+Raw `results/phase5_agent_mount_v1_raw01` có2files(log/receipt); remote source
+`build/kaggle/agent_mount_remote_source01`, audit01/02 tái tạo byte-identical.
+15audit tests pass, fullsuite1.187tests/238,38s pass;setup/Ruff/mypy218files/
+knowledge pass. Không job đang chạy. Tiếp theo versioned runtime-input
+admission cho matching runtime bytes + known README difference, rồi budgeted
+agent HF loader. Chưa combined GPU run; không cần GPU/disk/model download local.
 [Contract](../docs/architecture/phase5_agent_mount_v1_contract.md),
 [tri thức](agent_mount_v1.md). Không tải Qwen7B về local hoặc cần mở rộng disk.
-Next: commit/render/preflight/push rồi một CPU/offline Kaggle hash-only job.
+CPU source/preflight đã push2db4496 trước first submission; không submit thêm.
 
-Mốc hiện hành: CPU-only placement admission đã triển khai;56targetedtests pass,
+Mốc lịch sử: CPU-only placement admission đã triển khai;56targetedtests pass,
 full QA1.143tests/241,49s pass. [Contract](../docs/architecture/phase5_coexistence_placement_v1_contract.md),
 [bằng chứng/giới hạn](coexistence_placement_v1.md).
 Qwen7B candidate chia20/8layers, agent process caps12/7GiB và guard5GiB/device1;
 globalheadroom1GiB/device riêng. Không model selection hoặc combined-fit claim.
-Chưa agent snapshot authenticated/budgeted HF loader hoặc GPU submission mới.
+Tại mốc placement chưa xác thực agent snapshot; CPU diagnostic phía trên đã
+kiểm runtime hashes. Budgeted HF loader và combined GPU vẫn chưa triển khai.
 Source2f311bb đã tái lập hai lần, receipts validation01/02 byte-identical.
 [Selected CPU receipt](../experiments/manifests/phase5_placement_v1_validation01.json).
 Upstream Qwen7B14files/fourshards được xác minh ở revision cố định; config663bytes
-khớp Git blob và geometry. Không tải weights. Disk17,36GiB còn: không đủ
-workflow nhiều bản copy của snapshot14,20GiB; xem phương án pinned Kaggle mount
-và publisher-hash verification hoặc cần storage lớn hơn, không tự xóa artifacts.
+khớp Git blob và geometry. Phương án nhiều bản copy local đã được thay bằng
+pinned Kaggle mount theo owner; không yêu cầu thêm storage hoặc xóa artifacts.
 
 Phase5: cancellation/GPU-memory-recovery v1 đã hoàn tất và audit. Owner yêu cầu
 tiếp tục trên main, chỉ lấy nhánh bạn nếu cần. Không cherry-pick/merge
@@ -44,8 +56,9 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
 
 ## Bước tiếp theo
 
-1. CPU placement QA/receipt đã hoàn tất; tiếp theo xác thực read-only Kaggle agent mount
-   và separate budget-enforcing HF adapter. Không dùng nguyên
+1. CPU placement và mount diagnostic đã hoàn tất; tiếp theo versioned runtime-input
+   admission giữ nguyên README mismatch, rồi separate budget-enforcing HF adapter.
+   Không dùng nguyên
    MeasuredHFBackend13GiB/device. Sau CPU fake/context tests và exact packaging,
    predeclare combined residency/context stress trước GPU; frozen source giữ nguyên.
 2. Grouped Dev protocol/model decision rồi A4 scope/general final entitlements.
@@ -61,6 +74,10 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
 
 ## Bằng chứng
 
+- [Agent mount release QA](../experiments/manifests/phase5_agent_mount_v1_release_qa01.json):
+  1.187 tests/238,38s, 44 scanner/audit tests mới; setup/Ruff/mypy218files/knowledge
+  pass. Hai audit byte-identical, 134 frozen source hashes giữ nguyên; không
+  model load/GPU/local agent weights. Full inventory vẫn bị từ chối vì README.
 - Final placement suite1.143tests/241,49s;56newtests. Setup/Ruff/mypy215files
   gồm cancellation wrapper và knowledge pass. Basetemp
   `build/pytest_placement_v1_final01`. Không test/model/kernel job đang chạy.

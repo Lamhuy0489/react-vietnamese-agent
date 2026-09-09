@@ -1,0 +1,49 @@
+{
+  "protocol": "phase5_agent_mount_release_qa_v1",
+  "software_qa_valid": true,
+  "phase5_accepted": false,
+  "kernel_submissions": 1,
+  "actual_kernel": "huylmhuhu/react-vn-agent-mount-auth-v1",
+  "kernel_version": 1,
+  "kernel_status": "ERROR",
+  "diagnostic_execution": "COMPLETE: full-inventory README mismatch retained",
+  "runtime_files_match": true,
+  "full_inventory_match": false,
+  "mount_admitted_for_loader": false,
+  "gpu_runs": 0,
+  "model_loads": 0,
+  "local_agent_weight_downloads": 0,
+  "quality": {
+    "full_suite_tests": 1187,
+    "full_suite_seconds": 238.38,
+    "new_scanner_tests": 29,
+    "new_audit_tests": 15,
+    "basetemp": "build/pytest_agent_mount_audit_v1_01",
+    "setup": "pass",
+    "ruff": "pass",
+    "mypy_files": 218,
+    "knowledge": "pass"
+  },
+  "source_and_evidence_sha256": {
+    "src/react_agent/validation/agent_mount_audit_v1.py": "5af72b6ba9ecb18b901da93d8b0f001746ca501b84fdaa9651a16bb8b1437db1",
+    "scripts/audit_phase5_agent_mount.py": "ee56c9a886b125f4fae767fa3730455fab4195d81d74a7cf4dc87ec5ab458ff6",
+    "tests/unit/test_agent_mount_audit_v1.py": "b0f1d0deb8fcaf583c207e0435edad34e55bce796cb1b3c5dc2eba541d7f60df",
+    "experiments/manifests/phase5_agent_mount_v1_audit01.json": "8a3cc4fa02514cf597f84332e76aab5da75d1c573ab8a5ffec9778781202fb65",
+    "experiments/manifests/phase5_agent_mount_v1_scan01.json": "397cbe1835104ac86da4167ec841409959f437f527203f63759371539c4ee41e",
+    "docs/evaluation/phase5_agent_mount_v1_report.md": "371140cbdb0cec29d9a1ca40d1c4eec771ef45e2295cf8d8c795fd1d0626764f"
+  },
+  "selected_local_audit": "results/phase5_agent_mount_v1_audit01/audit.json",
+  "reproduction_local_audit": "results/phase5_agent_mount_v1_audit02/audit.json",
+  "audit_bytes_identical": true,
+  "prior_source_hashes_verified": 134,
+  "raw_files": 2,
+  "credential_scan_files": 6,
+  "credential_value_matches": 0,
+  "test_payloads_parsed": 0,
+  "remaining": [
+    "Versioned runtime input admission retaining known documentation mismatch",
+    "Budget-enforcing agent HF loader",
+    "Combined agent/guard GPU residency/context stress",
+    "Guard quality and grouped Dev protocol; remaining A4/final scope"
+  ]
+}
