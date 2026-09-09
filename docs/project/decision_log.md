@@ -1,5 +1,18 @@
 # Decision Log
 
+## 2026-09-09 — Model pair supervisor, separate from frozen v5 runtime
+
+- [Contract](../architecture/phase5_model_pair_v1_contract.md) composes the existing
+  warm transport into two task-owned sibling workers, agent readiness before
+  guard loading. No model.generate for readiness; fail either side, close both.
+- Cold/warm technical deadlines are explicit and hash-bound; switching them
+  after readiness does not change model identity or alter frozen transport.
+  Prior forced/graceful cleanup outcomes remain unchanged. This component is
+  not wired into security policies and does not select a guard or close Phase5.
+- CPU spawn tests and a durable synthetic residency/small-context rehearsal
+  precede an HF entry point and exact GPU bundle. Fake memory is never selected
+  as proof of real VRAM recovery; Test access remains hash-only.
+
 ## 2026-09-09 — Versioned runtime-only agent admission, not a repaired full scan
 
 - Owner authorized continuing the budgeted agent loader after the Kaggle CPU

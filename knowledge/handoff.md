@@ -4,7 +4,16 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Hiện hành: runtime-input admission và agent HF loader12/7GiB đã triển khai riêng;
+Hiện hành: ModelPair supervisor và durable residency probe đã triển khai riêng;
+56newtests pass (37supervisor/19probe), setup/Ruff/mypy224files pass. Full final
+suite đang chạy, XML `results/phase5_model_pair_v1_final01_pytest.xml`.
+[Contract](../docs/architecture/phase5_model_pair_v1_contract.md), [tri thức](model_pair_v1.md).
+First CPU rehearsal có2syntheticcalls/reaped/giả lập recovery; chưa chọn do script
+line wrapping sau run. Tiếp theo final QA/source freeze/clean-source rehearsal,
+rồi HF entry point và exact worker overlay/mount preflight trước GPU. Không
+model/GPU/Kaggle submission mới hoặc local weights; Test chỉ hash-check.
+
+Mốc lịch sử: runtime-input admission và agent HF loader12/7GiB đã triển khai riêng;
 87new CPU fake tests pass, Ruff/setup/mypy221files pass. Full final-source QA
 1.274tests/278,23s pass; JUnit lưu trong results. Không chọn run1269tests trước
 thay đổi native config defaults hoặc final01 mất process handle làm QA cuối.
@@ -68,9 +77,8 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
 
 ## Bước tiếp theo
 
-1. Sourcefa894c4 đã tái lập và QA cuối đạt. Khai báo combined
-   residency/context/cancellation protocol với agent
-   process supervisor; exact archive/expanded packaging/eight tools/21Dummy/resume
+1. Chốt supervisor/probe QA và clean-source CPU rehearsal; sau đó HF entry point
+   và exact archive/expanded packaging/eight tools/21Dummy/resume
    trước GPU. Không dùng MeasuredHFBackend13GiB/device hoặc coi allocator cap là
    proof of fit. Frozen source giữ nguyên; large models chỉ chạy trên Kaggle.
 2. Grouped Dev protocol/model decision rồi A4 scope/general final entitlements.

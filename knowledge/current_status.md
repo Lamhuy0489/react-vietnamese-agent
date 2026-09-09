@@ -1,6 +1,16 @@
 # Trạng thái hiện tại
 
-## Hiện hành: agent loader với ngân sách VRAM — 2026-09-09
+## Hiện hành: supervisor hai worker agent–guard — 2026-09-09
+
+ModelPair đã có thứ tự nạp agent/guard, readiness không gọi model, deadline
+cold/warm, hủy cả hai khi một bên lỗi và retry cleanup-only khi chưa reap.
+56new tests pass (real spawn, synthetic backend/memory); full QA đang chạy.
+Durable rehearsal lưu manifest, ready/call/closed và recovery samples; không
+model/GPU hoặc Kaggle submission mới. [Contract](../docs/architecture/phase5_model_pair_v1_contract.md),
+[tri thức và bước tiếp](model_pair_v1.md). Chưa HF entry point/exact worker bundle,
+combined GPU hoặc v5 runtime integration. Phase5 chưa accepted.
+
+## Lịch sử: agent loader với ngân sách VRAM — 2026-09-09
 
 Đã triển khai runtime-input admission riêng giữ nguyên README mismatch, kiểm
 index/header339tensors, cùng backend agent12/7GiB/fixed20/8layer map. 87test mới
