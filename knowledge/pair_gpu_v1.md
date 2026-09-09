@@ -1,4 +1,33 @@
-# Pair GPU v1 preparation — 2026-09-09
+# Pair GPU v1 completed technical probe — 2026-09-09
+
+## Hiện hành
+
+Kernel `huylmhuhu/react-vn-pair-gpu-v1` version1 COMPLETE lần submit đầu.
+Sourceb76c040/preflight đã push main6596802 trước GPU. Hai models thật cùng
+resident trên twoT4; agent warm1,906s/guard1,788s. Cold readiness264,423/33,033s
+bao gồm startup/hash/load. Residency delta9,799/7,621GiB; sáu recovery samples
+đều residual0bytes trên haiGPU. Cả hai worker TERMINATE/-15, không graceful.
+[Báo cáo](../docs/evaluation/phase5_pair_gpu_v1_report.md),
+[review receipt](../experiments/manifests/phase5_pair_gpu_v1_review01.json).
+
+62raw files `results/phase5_pair_gpu_v1_raw01`, source/metadata
+`build/kaggle/pair_gpu_v1_remote_source02`; hai inspections byte-identical.
+21Dummy/84trace events audited.11new recovery-inspector tests pass; final full
+release QA1.363tests/339,69s pass, setup/Ruff/mypy230files/knowledge pass.
+[Release QA](../experiments/manifests/phase5_pair_gpu_v1_release_qa01.json).
+Không test/kernel/model job đang chạy, không retry.
+Agent live runtime identity/header339tensors verified; README/fullinventoryfalse
+giữ nguyên. Single small call mỗi model, không quality/max-context conclusion.
+
+Remote Docker digest mới đã lưu trong report/receipt. Version-qualified pull
+trả403; unqualified pull thành công và exact wrapper hash match. Framework label
+remote `Transformers` là display-case của pinned handle, không đổi model version.
+
+Tiếp theo freeze protocol context-stress/combined cancellation trước GPU,
+rồi runtime integration/grouped Dev decision và phần A4/final còn lại.
+Phase5 chưa accepted. Không weights local/Test payload/private GT hoặc access mới.
+
+## Lịch sử chuẩn bị trước GPU
 
 [Contract](../docs/architecture/phase5_pair_gpu_v1_contract.md). One private offline
 two-T4 technical pair, agent readiness then guard, one small call each, cleanup
@@ -31,9 +60,9 @@ Source b76c040 exact preflight02 passes archive and expanded/PAX layouts,
 8tools/fault,21Dummy, completed/missing-only resume preserving20checkpoints,
 two synthetic pair calls and reap/recovery per layout. No actual model/GPU locally.
 [Selected receipt](../experiments/manifests/phase5_pair_gpu_v1_preflight02.json).
-Next inspect metadata/credential exclusion, push source/preflight, verify private
-Dataset version, then submit once `huylmhuhu/react-vn-pair-gpu-v1`, timeout3600s.
-Live quota29,33h; Dataset READY; kernel slug absent. No submission yet.
+Pre-submit sequence: inspect metadata/credential exclusion, push source/preflight,
+verify private Dataset version, then submit once with timeout3600s.
+Pre-submit quota29,33h; Dataset READY; kernel slug was absent.
 Preserve failed attempts; no semantic retries.
 
 Exact preflight01 caught a local mount-simulation issue after8tools/21Dummy/resume

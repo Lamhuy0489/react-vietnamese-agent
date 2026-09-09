@@ -1,0 +1,197 @@
+{
+  "protocol": "phase5_pair_gpu_v1_technical_review",
+  "technical_scope_pass": true,
+  "review_method": "assistant self-review plus read-only assertions over frozen manifest, request/generation hashes, identities, deadlines, allocator caps, lifecycle and recovery; not independent review",
+  "phase5_accepted": false,
+  "source_commit": "b76c0401be94081075ed99d139b5839fa8bfd722",
+  "pushed_before_submission": "6596802",
+  "kernel": "huylmhuhu/react-vn-pair-gpu-v1",
+  "version": 1,
+  "kernel_status": "COMPLETE",
+  "submissions": 1,
+  "raw_files": 62,
+  "raw_sha256": {
+    "dummy/identity.json": "4c31213415554ea47a0dbae53cca860d9e90dfd292a848f49309032ef2a7f4f6",
+    "dummy/results.json": "0a6de62b5d0eb0f95ecf5e39dbd6b8f68014e1ff0f30cd5eb6a5a74aca258be7",
+    "dummy/summary.json": "206e015064b2c2180ef4c507d90fa057ba709dd2aad85a0e0362b786802bd302",
+    "dummy/tasks/clean_0002/result.json": "f2a82764bc1c4fa414199924115e604939e6361bf04ce9af68edcac380b9036c",
+    "dummy/tasks/clean_0002/trace.jsonl": "ecf77ad4273c25de5d1e50f14beeea4c467926a0e2ed872b864935530c080ecc",
+    "dummy/tasks/clean_0004/result.json": "2a6dd971dbb32af938e933221bb43b8f9d3e4896f62b56f65299d42d71b09581",
+    "dummy/tasks/clean_0004/trace.jsonl": "c94c3bca4c3bc8570137b09d32165056a19f1acf4a50f5dea24e141586e95406",
+    "dummy/tasks/clean_0005/result.json": "d3e32b501d9f34178bf86ab6b23d0324e6e5f96d2ee5a2246acce8ee159c8896",
+    "dummy/tasks/clean_0005/trace.jsonl": "d398f0012d6d3d2c2f1ecce6372603207f24edc0091457ce80f745ab80464443",
+    "dummy/tasks/clean_0042/result.json": "eb47c6f859ae956010e47f5d1d8145fbffccee049244c14d58d7335a1126a813",
+    "dummy/tasks/clean_0042/trace.jsonl": "6544d49c111427f3220524cca0e0dbb2e350777b90dab0b1053a6203226dc8fe",
+    "dummy/tasks/clean_0046/result.json": "9fae7fc5cfb8434f45e7c6107aeefde640dbecd229db4b331639b6fbf97b6d07",
+    "dummy/tasks/clean_0046/trace.jsonl": "135de3c56a548e070bef506e164456b25099203f02f41a24086d4dad482a8cf2",
+    "dummy/tasks/clean_0047/result.json": "f59e757ce52b83c1d5a4d5084a46575c53bf1bb443422cc75d1215a81104107f",
+    "dummy/tasks/clean_0047/trace.jsonl": "8002300381bccf047c9b2b046249ca595b0073e4d45b78b7badb45972ea7d38d",
+    "dummy/tasks/clean_0081/result.json": "d413574c8ba2b52129c02a18fd342b917322576ee10f45d9ef1494ee9aece7eb",
+    "dummy/tasks/clean_0081/trace.jsonl": "68757c54d92534d9e67050b643b26db2cad2972c817f9daac0409be23b9c0dc6",
+    "dummy/tasks/clean_0082/result.json": "a4c51c7749c9f671fcc6083c54d392ffe70b0bedafff4b32cc27a43fc15649dc",
+    "dummy/tasks/clean_0082/trace.jsonl": "3748908447e3fa7ee0a9afd06cdf9470103abec062830b070ad04a5909f83d46",
+    "dummy/tasks/clean_0083/result.json": "c16e89ddc42980ce1b5eda1a6701b851c347eccde5a9f72c11e78c23ac97ac9a",
+    "dummy/tasks/clean_0083/trace.jsonl": "6b41967c43c07290a0827c4bf2f204cc5945ff56072ed4441e75cb229be05c00",
+    "dummy/tasks/clean_0132/result.json": "86676a391ac99f662c54f498fba0bf4ee72b55fb910f7ceb8c863f9dca59ea67",
+    "dummy/tasks/clean_0132/trace.jsonl": "4e9312a3da94145af4fce7aa0933a1177e30bdbc7a5cc756b8316248ff76f683",
+    "dummy/tasks/clean_0134/result.json": "85ecf418abd046c1fae99b0b6942058db63331c8aa67ed6f6c69624836e32fe8",
+    "dummy/tasks/clean_0134/trace.jsonl": "55a0c79497ebddbe5be63be1e9525795b307acf5b81d9f02c33a0cca9ddd0a0b",
+    "dummy/tasks/clean_0135/result.json": "c16d31624684fc370613d04b93d9462ef2381ff915442800656fd2f8ed6d2b55",
+    "dummy/tasks/clean_0135/trace.jsonl": "4a46f5536c3d1aa67ade39c0cedb51f42b6d6a06a999488e50640a56fbda1da9",
+    "dummy/tasks/clean_0171/result.json": "3d9f02f1763f767aa5433b76916729b6976df389714944ed2cf929ac84d5cf75",
+    "dummy/tasks/clean_0171/trace.jsonl": "3dc2eb17fe836d4720f7bb9926bdc823027c8faf823409f25bcf73c1a14866db",
+    "dummy/tasks/clean_0173/result.json": "b9770d718b5592b86ba14bad5c0bd77d415e921b51d4cf0a03b67e872af87d1e",
+    "dummy/tasks/clean_0173/trace.jsonl": "9bd91410af089f646459e289839fd81b5e35019356145c0fd7ba48f452a66fdb",
+    "dummy/tasks/clean_0174/result.json": "61ba0879c7c3b760a461fce5df8453d461d8805d9cd673d88aabeb10f6c45b7b",
+    "dummy/tasks/clean_0174/trace.jsonl": "0be2b7d12be5ffde5f5796e9efa052f52c1a4148cf16d140cdaafdd7af9624bd",
+    "dummy/tasks/clean_0197/result.json": "c2fa5256f841b78070223415b95f5411a054eecc79ed7399b0a6c86b25506cc9",
+    "dummy/tasks/clean_0197/trace.jsonl": "1294ea4fa896d8e5bd9a058b5fd442139a3f60ce5e11b1e08b51a7a24e3ec2e8",
+    "dummy/tasks/clean_0199/result.json": "c6179210549cc072ad67e73558f1518c55cfe82fd6dd3bc6e5e940fedece8479",
+    "dummy/tasks/clean_0199/trace.jsonl": "d8902377e8b33b20eae907f558eb44c376969da692334fe614d047b6a3ca48b8",
+    "dummy/tasks/clean_0200/result.json": "93b714234c2771839620ffce4b45aced01746b02efd9578ce981086afca28fb1",
+    "dummy/tasks/clean_0200/trace.jsonl": "aaeace3140655b12146d1b06e1d62b7ee9db4d4bdd22d11cf289274bb236a0b1",
+    "dummy/tasks/clean_0226/result.json": "7a929c102c565b68fd4b6faec5649d53d40eea39ec8e10b0928cda7cde6cfea2",
+    "dummy/tasks/clean_0226/trace.jsonl": "f3542b415e5ca0df59d457d1ba05fe9d0d4fd1b60a1c55570247f7a9d360e412",
+    "dummy/tasks/clean_0228/result.json": "80715987e4d473ae8daa410afee1167a4e89ef7791d1b86d63a02c9a8e442f7e",
+    "dummy/tasks/clean_0228/trace.jsonl": "4f8d763a5e4ecbdeafcd18f98ea1582814137ed0b22e63bb4308942bfdf1ce6a",
+    "dummy/tasks/clean_0229/result.json": "db4543078e715ea8dabf59d11790b4ac047ad831d622e72a4cfb8169fc8cb224",
+    "dummy/tasks/clean_0229/trace.jsonl": "ff7843977e05306ec4bd1b022b639c4bf7c2247642dc7256f0ea091e05f5f141",
+    "pair_bootstrap_identity.json": "2a69d6d6b590c1c47d467e828881c2fc7a0210beb96e7beeb64f52837afaebf5",
+    "pair_probe/agent_call.json": "7d44aa2116368c95ca4e40862b1c3478a4291500e136e45e9af871ee31428087",
+    "pair_probe/agent_hf_metrics.jsonl": "fd82a7ee9c1d92ff9d171bb83863ed5f0dbab04db7e91ef7221d08cbd80b728c",
+    "pair_probe/baseline.json": "ea5e75eb4fc1e10a100d236c84f346d5f6589fb7b9d53cb89d065f2fec6884d2",
+    "pair_probe/closed.json": "70b93f7e2dd7b054d4fc09f2f5ead49c6ad89ef1d306653dc385d484dd9df9fa",
+    "pair_probe/guard_call.json": "5cecf547be6fb456e73cfc5a3c58df013358171b6d260a266b553efded8c7cfd",
+    "pair_probe/guard_hf_metrics.jsonl": "d60d7300a3f7ab4fab82c4eaf339a2ddf5ecdaeb98ee33d5e8d576402cf2d1ef",
+    "pair_probe/manifest.json": "beeb0843237258ca4bd93267016046e8d7bd8d3640cb0d1fff8b17e7f0e35c7c",
+    "pair_probe/ready.json": "7250d3db88b5b416b7c8300d7ec4a049fd62f623c28c08ad16438b40e45d863c",
+    "pair_probe/recovery_0.json": "d959898e247fa951b4b657a05d4a2a8ff9959a61454dc7ab31e1bfabad27dd48",
+    "pair_probe/recovery_1.json": "432ee7379f8f5e498d91ffe6c083edcb1a031ce3ad86d4733fc473b489bcd661",
+    "pair_probe/recovery_2.json": "6a0448e745922a36cb5fd03793237b5e7b279187d624f220aa76fc8060dda76d",
+    "pair_probe/recovery_3.json": "659c4bbfb430df1120463b9fb3729f146e579d329d4c6dc7b26bc347c92f8eaa",
+    "pair_probe/recovery_4.json": "d29ea49fcc9db6cb5bce94ee70182ca1d8f52aedc7d4c2c208c728bbad3e3052",
+    "pair_probe/recovery_5.json": "0b5d7db22f5f8f795e1e33f2a4a7c8d9a2387b43e8da9dce10fb28a9ec6cf927",
+    "pair_probe/summary.json": "8f856a133c470ccb0741b250e99488e9572a8d6ea3dc536951ada6cebc559e9c",
+    "react-vn-pair-gpu-v1.log": "056bc92b74c8675165b505a881a2eb64446cabd7aaecabf83bed949d83b614fc"
+  },
+  "inspection_sha256": "488756704936438a2607daa426765cb2d3e065a91ad41973547d38001597a30b",
+  "two_inspections_byte_identical": true,
+  "remote_metadata": {
+    "code_file": "react-vn-pair-gpu-v1.py",
+    "competition_sources": [],
+    "dataset_sources": [
+      "huylmhuhu/react-vn-guard15-probe-data-v1"
+    ],
+    "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+    "enable_gpu": true,
+    "enable_internet": false,
+    "enable_tpu": false,
+    "id": "huylmhuhu/react-vn-pair-gpu-v1",
+    "id_no": 133696355,
+    "is_private": true,
+    "kernel_sources": [],
+    "kernel_type": "script",
+    "keywords": [],
+    "language": "python",
+    "machine_shape": "NvidiaTeslaT4",
+    "model_sources": [
+      "qwen-lm/qwen2.5/Transformers/7b-instruct/1"
+    ],
+    "title": "ReAct VN Pair GPU v1"
+  },
+  "remote_metadata_sha256": "39c88be725c1d1d5421d3646cbb17740b13cabcd63049fdb73f96b3e9c9987ea",
+  "wrapper_sha256": "682aa4b252e50210617a8b35e507c38a3090dcfd292c8532efbd8d790d8cb0a6",
+  "resident_bytes": [
+    10521411584,
+    8183087104
+  ],
+  "measurements": {
+    "agent": {
+      "load_seconds_including_hashes": 264.08189882,
+      "cold_ready_seconds": 264.42342378699993,
+      "warm_host_seconds": 1.9060088149999501,
+      "generate_seconds": 1.8353853649998655,
+      "input_tokens": 43,
+      "output_tokens": 8,
+      "output_tokens_per_generate_second": 4.358757649786853,
+      "cleanup": {
+        "elapsed_seconds": 0.8854511930001081,
+        "exitcode": -15,
+        "method": "TERMINATE",
+        "pid": 41,
+        "reaped": true,
+        "sequence": 1
+      }
+    },
+    "guard": {
+      "load_seconds_including_hashes": 32.69228874800001,
+      "cold_ready_seconds": 33.03342057700013,
+      "warm_host_seconds": 1.7882912000000033,
+      "generate_seconds": 1.7614145879999796,
+      "input_tokens": 147,
+      "output_tokens": 31,
+      "output_tokens_per_generate_second": 17.599490892827987,
+      "cleanup": {
+        "elapsed_seconds": 0.8402211689999604,
+        "exitcode": -15,
+        "method": "TERMINATE",
+        "pid": 68,
+        "reaped": true,
+        "sequence": 1
+      }
+    }
+  },
+  "recovery": {
+    "complete": true,
+    "elapsed_seconds": [
+      302.89643791000003,
+      303.89977694699996,
+      304.90397622399996,
+      305.90927334799994,
+      306.91403364999996,
+      307.91834511499997
+    ],
+    "recovery_pass": true,
+    "signed_residual_bytes": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "both_graceful": false,
+  "dummy": {
+    "events": 84,
+    "scope": "Dummy transport/checkpoints only, not semantic task success",
+    "tasks": 21,
+    "unique_run_ids": 21,
+    "valid": true
+  },
+  "test_payloads_parsed": 0,
+  "limitations": [
+    "One small synthetic call per model: not quality or comparative throughput",
+    "Cold includes model hashing/load; global samples are not continuous peak",
+    "Both workers required TERMINATE/-15; not graceful shutdown",
+    "No max-context stress, production v5 pair integration or grouped Dev selection"
+  ]
+}

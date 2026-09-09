@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: GPU cancellation/VRAM recovery audited; quality and coexistence gaps remain**
+- Current stage: **Phase 5 in progress: small-context agent–guard GPU coexistence verified; context stress, integration and quality gaps remain**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-09
 
@@ -391,6 +391,16 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   pair/recovery. Native Transformers5.5 two-buffer compatibility uses separate
   adapter v2; prior146source entries stay frozen. [Pre-submit QA](../../experiments/manifests/phase5_pair_gpu_v1_pre_submit_qa01.json).
   Actual pair GPU residency/inference is not yet measured at this milestone.
+
+- [x] First combined real-model GPU technical probe COMPLETE, one submission:
+  Qwen7B/guard1.5B resident deltas9.799/7.621GiB across twoT4; two small calls
+  warm1.906/1.788s. Six recovery samples residual0bytes on both devices. Both
+  workers TERMINATE/-15/reaped, not graceful.62raw files,21Dummy/84events,
+  source/inputs/request/metrics inspected; two evidence inspections byte-identical.
+  [Report](../evaluation/phase5_pair_gpu_v1_report.md). No maximum-context stress,
+  combined busy-cancellation, v5 pair integration or guard quality selection yet.
+  Release QA1,363tests/339.69s, setup/Ruff/mypy230files/knowledge pass;
+  [QA receipt](../../experiments/manifests/phase5_pair_gpu_v1_release_qa01.json).
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.

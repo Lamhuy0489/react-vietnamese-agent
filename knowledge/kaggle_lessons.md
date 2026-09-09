@@ -1,5 +1,24 @@
 # Ghi chú Kaggle Phase 1
 
+## Pair GPU v1 completion — 2026-09-09
+
+- First private pair kernel COMPLETE, exact wrapper two-layout preflight trước
+  submit; không whole-repo/weights download local hoặc retry. [Report](../docs/evaluation/phase5_pair_gpu_v1_report.md).
+- Kiểm native source trong wheel đã hash-pin phát hiện Transformers5.5 đăng ký
+  thêm original_inv_freq. Sửa adapter v2 riêng và negative tests trước GPU;
+  không sửa frozen v1 hoặc bỏ kiểm buffer/tensor inventory.
+- macOS temp root /var là symlink: resolve chính scratch root mình vừa tạo
+  trong builder, giữ strict no_links ở model/output. Giữ preflight01 failure,
+  preflight02 hai layouts pass. Di chuyển generated __pycache__ ra ngoài thư
+  mục upload để chỉ còn wrapper/metadata; không đổi bytes đã hash-pin.
+- Remote metadata của run này trả Docker image digest; lưu đúng observed digest,
+  không nói đã pin digest trước run. API framework label trả `Transformers`
+  thay vì `transformers`; model owner/slug/variation/version1 không thay đổi.
+- Cặp model fit ở context43/147tokens không chứng minh max-context. Cả hai worker
+  cần TERMINATE/-15 mặc dù mọi recovery sample residual0bytes; không claim graceful.
+- Inspector envelope/Dummy/recovery không thay thế technical self-review, không
+  đánh giá quality. Output chỉ có response hashes và observable metrics, không CoT.
+
 ## Guard GPU v1 completion — 2026-09-08
 
 - PAX-aware bootstrap v2 hoàn tất kernel v1 ngay lần submit đầu; không cần

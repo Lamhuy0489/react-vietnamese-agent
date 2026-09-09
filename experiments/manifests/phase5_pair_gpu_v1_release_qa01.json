@@ -1,0 +1,49 @@
+{
+  "protocol": "phase5_pair_gpu_release_qa_v1",
+  "software_qa_valid": true,
+  "phase5_accepted": false,
+  "runtime_source_commit": "b76c0401be94081075ed99d139b5839fa8bfd722",
+  "full_suite_tests": 1363,
+  "full_suite_seconds": 339.69,
+  "junit": {
+    "tests": "1363",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "339.601"
+  },
+  "new_pre_submit_tests": 22,
+  "new_recovery_inspector_tests": 11,
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 230,
+  "knowledge": "pass",
+  "frozen_source_entries_verified": 146,
+  "raw_files_verified": 62,
+  "two_inspections_byte_identical": true,
+  "credential_scan_files": 89,
+  "credential_value_matches": 0,
+  "kaggle_submissions": 1,
+  "kernel_version": 1,
+  "kernel_status": "COMPLETE",
+  "actual_model_loads": 2,
+  "actual_model_generation_calls": 2,
+  "graceful_worker_exits": 0,
+  "terminated_and_reaped_workers": 2,
+  "local_model_loads": 0,
+  "test_payloads_parsed": 0,
+  "source_and_evidence_sha256": {
+    "scripts/inspect_phase5_pair_gpu.py": "9b49813b2755de69b35fa1233ebb6b4baf66c5296ce171ee5727168ba3aeeaa2",
+    "tests/unit/test_pair_gpu_inspection.py": "f5dd9b89bf2563e00149179e0303e2ae11d6c17a223556989438b9eca46d4acd",
+    "docs/evaluation/phase5_pair_gpu_v1_report.md": "97ad79936345958a0327792911f396eab069cfe636839973317fe9fab6d87ec9",
+    "experiments/manifests/phase5_pair_gpu_v1_review01.json": "242134886ad0abc1e4b5e187ec183d6dc8df4f4fa053ad7b7f8f09a737ae071e",
+    "results/phase5_pair_gpu_v1_inspection01.json": "488756704936438a2607daa426765cb2d3e065a91ad41973547d38001597a30b",
+    "results/phase5_pair_gpu_v1_inspection02.json": "488756704936438a2607daa426765cb2d3e065a91ad41973547d38001597a30b",
+    "results/phase5_pair_gpu_v1_release01_pytest.xml": "49b432e79253ca3ccc55a2298909b4856acc785084a1a04e1e647e8b77fcf5c5"
+  },
+  "remaining": [
+    "predeclared maximum-context/combined busy-cancellation stress",
+    "versioned runtime integration",
+    "grouped Dev guard/model decision and remaining A4/final scope"
+  ]
+}

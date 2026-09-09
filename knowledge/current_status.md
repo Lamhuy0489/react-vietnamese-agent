@@ -1,16 +1,17 @@
 # Trạng thái hiện tại
 
-## Hiện hành: HF pair worker và exact Kaggle preflight — 2026-09-09
+## Hiện hành: agent–guard cùng chạy trên GPU đã kiểm tra — 2026-09-09
 
-Đã có HF entry point và wrapper11file overlay. Phát hiện native Transformers5.5
-có original_inv_freq, bổ sung adapter v2 riêng trước GPU; v1 giữ nguyên.
-22new tests pass; full QA01:1.352tests/361,66s. Exact preflight02 sourceb76c040
-pass cả archive/expanded/PAX,8tools/21Dummy/resume và hai stub calls/recovery.
-146frozen source entries giữ nguyên; Dataset v1/private/READY, quota29,33h.
-Final-source QA02:1.352tests/328,89s; setup/Ruff/mypy229files/knowledge pass.
-Chưa submission/model GPU mới; tiếp theo push trước submit.
-[Contract](../docs/architecture/phase5_pair_gpu_v1_contract.md),
-[tri thức](pair_gpu_v1.md). Không local model download hoặc Test payload.
+Kernel pair GPU v1 COMPLETE lần submit đầu; sourceb76c040/preflight push6596802
+trước GPU. Qwen7B/guard1,5B cùng resident trên twoT4, warm calls1,906/1,788s;
+deltaVRAM9,799/7,621GiB và cả sáu recovery samples residual0bytes haiGPU.
+Hai worker TERMINATE/-15/reaped, chưa graceful.62raw files/21Dummy/84events
+kiểm tra; hai inspections byte-identical. [Báo cáo](../docs/evaluation/phase5_pair_gpu_v1_report.md),
+[tri thức](pair_gpu_v1.md). Không kernel/model job hoặc localweights/Test payload.
+Final release QA1.363tests/339,69s pass; setup/Ruff/mypy230files/knowledge pass,
+11new inspector tests. [QA](../experiments/manifests/phase5_pair_gpu_v1_release_qa01.json).
+Tiếp theo protocol context-stress/combined cancellation rồi runtime integration
+và grouped Dev/guard decision. Đây chưa phải quality hoặc Phase5 acceptance.
 
 ## Lịch sử: supervisor hai worker agent–guard — 2026-09-09
 

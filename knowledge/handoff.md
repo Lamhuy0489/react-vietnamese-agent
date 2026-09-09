@@ -4,18 +4,23 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Hiện hành: HF pair entry point/standalone wrapper đã triển khai,22newtests pass.
-Adapter v2 riêng đúng hai native5.5buffers;146frozen source entries nguyên vẹn.
-QA01:1.352tests/361,66s; final-source QA02:1.352tests/328,89s pass, XML
-`results/phase5_pair_gpu_v1_final02_pytest.xml`. Exact preflight02 sourceb76c040
-pass archive/expanded/PAX,8tools/21Dummy/resume và two stub calls/recovery.
-[Receipt](../experiments/manifests/phase5_pair_gpu_v1_preflight02.json).
-Dataset11942593 verified private/version1/READY; quota29,33h; slug chưa tồn tại.
-Setup/Ruff/mypy229files/knowledge pass;17files credential scan0matches.
-Tiếp theo push source/receipt rồi submit private/offline twoT4 kernel
-`huylmhuhu/react-vn-pair-gpu-v1`, timeout3600s; tải source/outputs audit không retry.
-[Contract](../docs/architecture/phase5_pair_gpu_v1_contract.md), [tri thức](pair_gpu_v1.md).
-Chưa submit kernel mới, không localweights/Test payload. Không pending access mới.
+Hiện hành: combined small-context pair GPU đã COMPLETE và kiểm tra lần submit1.
+Kernel `huylmhuhu/react-vn-pair-gpu-v1` private/offline/twoT4/version1;
+sourceb76c040/preflight push main6596802 trước GPU. Dataset11942593 private/v1.
+[Report](../docs/evaluation/phase5_pair_gpu_v1_report.md),
+[review receipt](../experiments/manifests/phase5_pair_gpu_v1_review01.json),
+[tri thức](pair_gpu_v1.md). Agent/guard cold264,423/33,033s,warm1,906/1,788s.
+Resident delta9,799/7,621GiB, six recovery samples residual0bytes haiGPU.
+Hai workers TERMINATE/-15/reaped; không graceful. Không quality/max-context claim.
+62raw files `results/phase5_pair_gpu_v1_raw01`; remote source02 hashmatch.
+Hai inspections01/02 byte-identical;21Dummy/84events checked,146frozen entries
+nguyên vẹn. Full release1.363tests/339,69s pass,11new inspector tests; XML
+`results/phase5_pair_gpu_v1_release01_pytest.xml`. Setup/Ruff/mypy230files/knowledge pass.
+[Release QA](../experiments/manifests/phase5_pair_gpu_v1_release_qa01.json).
+Không test/Kaggle/model job đang chạy; không retry. Không localweights/Test payload.
+Không pending access mới. Bước tiếp: freeze protocol max-context và
+combined cancellation trước GPU, rồi pair integration vào version mới của runtime,
+grouped Dev guard/model decision và phạm vi A4/final còn lại. Phase5 chưa accepted.
 
 Mốc lịch sử: ModelPair supervisor và durable residency probe đã triển khai riêng;
 56newtests pass (37supervisor/19probe), setup/Ruff/mypy224files pass. Full final
