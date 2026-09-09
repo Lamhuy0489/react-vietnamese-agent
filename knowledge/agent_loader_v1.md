@@ -23,12 +23,17 @@ All large weights remain on Kaggle; no local GPU or storage expansion requested.
   cover None admission and active config rejection; no frozen validator changed.
 
 87new tests pass (43runtime-input +44adapter), synthetic tiny weights and CPU
-CUDA/transformers fakes only. Ruff/setup and mypy221sourcefiles pass. Full final
-suite is pending; earlier run started before the native-default adjustment and
-must not be selected as final-source QA. `verify_phase5_agent_loader.py` preflight01
+CUDA/transformers fakes only. Ruff/setup and mypy221sourcefiles pass. Final suite
+1,274tests/278.23s pass on sourcefa894c4; durable JUnit at
+`results/phase5_agent_loader_v1_final02_pytest.xml`. Earlier1269test run began
+before the native-default adjustment; final01 lost its process handle and is
+not selected. No test process remains. `verify_phase5_agent_loader.py` preflight01
 recomputes saved scan admission and7,615,616,512parameter arithmetic;134frozen
 source hashes and hash-only Test seals unchanged. Saved receipt is not a live
-loading permit. No real header scan, model load, GPU or new Kaggle submission.
+loading permit. Two clean-source reproductions are byte-identical:
+[selected receipt](../experiments/manifests/phase5_agent_loader_v1_validation01.json).
+[Report](../docs/evaluation/phase5_agent_loader_v1_report.md).
+No real header scan, model load, GPU or new Kaggle submission.
 
 ## Next
 

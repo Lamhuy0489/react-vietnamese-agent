@@ -4,7 +4,8 @@
 
 Đã triển khai runtime-input admission riêng giữ nguyên README mismatch, kiểm
 index/header339tensors, cùng backend agent12/7GiB/fixed20/8layer map. 87test mới
-pass trên CPU fakes; full QA cuối đang chạy. Chưa model load/combined GPU hoặc
+pass trên CPU fakes; full QA1.274tests/278,23s pass. Hai tái lập từ source sạch
+fa894c4 byte-identical;134frozen hashes/seals nguyên vẹn. Chưa model load/combined GPU hoặc
 submission mới. [Contract](../docs/architecture/phase5_agent_hf_v1_contract.md),
 [tri thức/bước tiếp](agent_loader_v1.md). Không tải weights lớn về máy local.
 Phase5 chưa accepted; vẫn còn combined GPU, grouped Dev/guard quality và A4/final.

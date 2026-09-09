@@ -368,6 +368,14 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   setup/Ruff/mypy218files/knowledge pass. Full mount is not admitted for loading;
   runtime-input admission and budgeted agent loader remain separate next steps.
 
+- [x] Separate runtime-input admission and budgeted agent HF adapter CPU QA:
+  1,274tests pass,87new; setup/Ruff/mypy221files/knowledge pass. Live hash/339tensor
+  header checks,12/7GiB allocator caps, fixed20/8layer map, context rejection and
+  text-free metrics implemented with CPU fakes. Sourcefa894c4 reproduces saved
+  hash admission twice byte-identically. [Report](../evaluation/phase5_agent_loader_v1_report.md).
+  Original README/full-inventory rejection retained. No real header/model load,
+  combined GPU run or production supervisor; GPU compatibility/fit remain unproven.
+
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
 The current v5 loop supports A0–A6 with an explicitly task-owned warm guard for

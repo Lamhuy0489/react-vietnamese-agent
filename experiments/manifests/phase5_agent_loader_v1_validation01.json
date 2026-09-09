@@ -1,0 +1,143 @@
+{
+  "combined_gpu_fit": "NOT_MEASURED",
+  "evidence_sha256": {
+    "docs/evaluation/qwen7b_upstream_inventory_v1.json": "9023d04a65f44a4e4beef29efba9f1ca088e2af1990cc82e586f457d4c5c43b3",
+    "experiments/manifests/phase5_agent_mount_v1_release_qa01.json": "f0cb637deb4abb861ede56279132835e3598c44391e79fa34e9d5292a0808adb",
+    "experiments/manifests/phase5_agent_mount_v1_scan01.json": "397cbe1835104ac86da4167ec841409959f437f527203f63759371539c4ee41e",
+    "experiments/manifests/phase5_guard_hf_v1_validation01.json": "1bff83c5105033950bff6f1b242ab33ccd362a56d67e8674247fc41b728ed964"
+  },
+  "expected_parameter_tensors": 339,
+  "gpu_runs": 0,
+  "live_header_validation": "NOT_RUN: synthetic headers tested separately",
+  "local_agent_weight_downloads": 0,
+  "model_loads": 0,
+  "parameters": 7615616512,
+  "phase5_accepted": false,
+  "plan_sha256": "e5ab63050de430b4620d51352da61cb2da73d86cf3db6e92ec834faeba7d405a",
+  "prerequisites": {
+    "adversarial_seal_sha256": "431b81118026bef6c60e33306e51df71160504579e76ea08fb4648005fa1cb6b",
+    "adversarial_seal_valid": true,
+    "clean_component_hashes": {
+      "dev_pilot/fault_plans.json": "3da01fa7c945cc00bb72a1e505b4db77bd339b19f15060ae6f37c3c3df06bceb",
+      "dev_pilot/task_ids.json": "1548683a7c985d08b867a4adc276071b08c36c5e14d29121e96966185f86beba",
+      "environment/cached_pages/pages.json": "4ce56c270a4d96117ba14cde6d070e56a59817d774401f71372fa9f2c2fab34a",
+      "environment/database/seed.json": "51b5f8980984f8905bbee557906c677cca449aa16a83fb7de645cb375b0a2b31",
+      "environment/database/university.db": "85bc7a259438b89f8f86fdf09965aa46e9ef9b4749564795aab7f43e582c10c3",
+      "environment/documents/documents.json": "431a7b8cbcd271c98f08adc61cdd83c0e1ed34f944f86c43fad8dca2526cacbe",
+      "manifests/environment_manifest.json": "4241e73fa3ada87dd9d595d5db0a249966a5cead7da04a37cba7cac020b787e9",
+      "manifests/source_catalog.json": "f9d8621762d016aefca05d1eff24f52ea39fc2034d4122889c5b7f1127588b49",
+      "manifests/split_manifest.json": "4e396d50e8a4f6b50be42913e4213db0ab870f461bcedd4fc01dfec1c9cec6e0",
+      "pool/tasks.jsonl": "f96839aa55aa95de0b3fd2ba79139bbd108d2899de26391203ae978672c86611",
+      "private/dev_ground_truth.jsonl": "95a3e4668699dddbb8f8e85ff3ad08950d528644980ec4033a266d851d01582c",
+      "private/pool_ground_truth.jsonl": "5cdc74cfca6887e63a3fed7da22a0d78c4a781029d826768a4f5b5ddc9ad0a52",
+      "private/robustness_canonical_ids.json": "18feead8234e8c1461f91077fabcbaee151f5f3791ade1275c8cbf8fc27652d0",
+      "private/test_ground_truth.jsonl": "8d11fec78cdf6714ff6d5136e88abb3fd7dbc1f66b0485a77c2c1933696b95a5",
+      "reports/pool_validation.json": "d4e940014be90ace7a7ff839454b867255f8ef8787d88daeb85b592be9a35d09",
+      "reports/qa_records.json": "399495e2f73373dbbf61eba43fab2666e430baab50a2f83616eec2dcc8000c22",
+      "splits/dev.jsonl": "ce1cda2a258c6d00b31a428b10258bbda7cade77c4b3841aa8cd1af34227a0d3",
+      "splits/test.jsonl": "688fddcc4c4cb363515e1247e992cbda9e5268ba8e1cc51e0060d48f5a9dad20"
+    },
+    "clean_frozen": true,
+    "robustness_ids_presealed": 50,
+    "test_access": "hash-only; robustness IDs only"
+  },
+  "prior_source_hashes_verified": 134,
+  "protocol": "phase5_agent_loader_cpu_v1",
+  "saved_scan_admission": {
+    "content_sha256": "24b62737df7885edc2facccd6ca172c0266bccec85c30080a9fcb45adad6d19b",
+    "documentation_mismatches": [
+      "README.md"
+    ],
+    "files": [
+      {
+        "name": ".gitattributes",
+        "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+        "size": 1519
+      },
+      {
+        "name": "LICENSE",
+        "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+        "size": 11343
+      },
+      {
+        "name": "README.md",
+        "sha256": "0981c06fb21db45eca831ebafa68861b654587566a8e3071aece79cf60329b71",
+        "size": 6005
+      },
+      {
+        "name": "config.json",
+        "sha256": "7463bb0ea78315365e6c6b74de4e73bbcc8359dfb0c5a737584e077d42c0b03c",
+        "size": 663
+      },
+      {
+        "name": "generation_config.json",
+        "sha256": "3a8f9087e486054c8a4a08dae2e5a3ba62e23da212b5b8c08bc42cb983c3459f",
+        "size": 243
+      },
+      {
+        "name": "merges.txt",
+        "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+        "size": 1671839
+      },
+      {
+        "name": "model-00001-of-00004.safetensors",
+        "sha256": "a1333e6293854747c481288ea83b348226af178dd565c49b6f9495ba1966aba7",
+        "size": 3945441440
+      },
+      {
+        "name": "model-00002-of-00004.safetensors",
+        "sha256": "f5d25a2772cb825164a2a2c0fb6d51a87e282abf21e4dd75bc5cfb3cd0ea6185",
+        "size": 3864726352
+      },
+      {
+        "name": "model-00003-of-00004.safetensors",
+        "sha256": "8efdec4c1bc12317ae1a38dc42b595ce777738a64deea3fcb8a0a91381bcdfd5",
+        "size": 3864726424
+      },
+      {
+        "name": "model-00004-of-00004.safetensors",
+        "sha256": "1a72d403cdf0c1ec3cb7f289f17b394a01e64394c2e9b3c0f94dbce3faf879bd",
+        "size": 3556377672
+      },
+      {
+        "name": "model.safetensors.index.json",
+        "sha256": "624bf7c47cd12468fdc16e38a47cf4f19e0415b859a223ba3c027eed2f0e1028",
+        "size": 27752
+      },
+      {
+        "name": "tokenizer.json",
+        "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+        "size": 7031645
+      },
+      {
+        "name": "tokenizer_config.json",
+        "sha256": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+        "size": 7305
+      },
+      {
+        "name": "vocab.json",
+        "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "size": 2776833
+      }
+    ],
+    "full_inventory_match": false,
+    "inventory_sha256": "9023d04a65f44a4e4beef29efba9f1ca088e2af1990cc82e586f457d4c5c43b3",
+    "phase5_accepted": false,
+    "protocol": "agent_runtime_input_v1",
+    "runtime_files": 11,
+    "runtime_files_match": true
+  },
+  "scope": "Read-only saved hash evidence plus geometry arithmetic; not a live load permit",
+  "source_git_commit": "fa894c4bebda74b19a635220578b9b29baf06a48",
+  "source_sha256": {
+    "docs/architecture/phase5_agent_hf_v1_contract.md": "bcdaf97b1c8be565c4df1686cd1032a6269aa39ab819d26059e3e66712b710ee",
+    "scripts/verify_phase5_agent_loader.py": "c4ccc3d0fa47b201163a23b5237a3c6b0de5680d746b84771bda258296a6a5bb",
+    "src/react_agent/llm/agent_hf_v1.py": "8998700cf470d99f954d02697de7d2898408efe5b9cac63a22733abe7cd5af9f",
+    "src/react_agent/llm/agent_runtime_input_v1.py": "3ddc20e19ac6bc4c5cf5fae93920649d57416cc2961b4d8f996c5732c44262f3",
+    "tests/unit/test_agent_hf_v1.py": "960117543f6cbb7cc82ee7c3cc0ebf89aef55df09e5ff0a1f9bcd847db2b9c3b",
+    "tests/unit/test_agent_runtime_input_v1.py": "ed81d8aa44a3584702da2a333e009e59bc3d565c8e5944b53bdfcfd49105aa01"
+  },
+  "source_worktree_clean": true,
+  "test_payloads_parsed": 0,
+  "valid": true
+}

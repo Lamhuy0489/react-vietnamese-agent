@@ -5,11 +5,15 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 ## Đang làm
 
 Hiện hành: runtime-input admission và agent HF loader12/7GiB đã triển khai riêng;
-87new CPU fake tests pass, Ruff/setup/mypy221files pass. Full final-source QA còn
-đang chạy; không chọn run trước thay đổi native config defaults làm bằng chứng
-cuối. [Contract](../docs/architecture/phase5_agent_hf_v1_contract.md),
+87new CPU fake tests pass, Ruff/setup/mypy221files pass. Full final-source QA
+1.274tests/278,23s pass; JUnit lưu trong results. Không chọn run1269tests trước
+thay đổi native config defaults hoặc final01 mất process handle làm QA cuối.
+Hai clean-source reproductionsfa894c4 byte-identical; không còn test process.
+[Selected receipt](../experiments/manifests/phase5_agent_loader_v1_validation01.json),
+[report](../docs/evaluation/phase5_agent_loader_v1_report.md).
+[Contract](../docs/architecture/phase5_agent_hf_v1_contract.md),
 [tri thức](agent_loader_v1.md). Chưa live header/model load/combined GPU hoặc
-submission mới. Tiếp theo chốt QA/source/reproduction, rồi supervised combined
+submission mới. QA/source/reproduction đã xong; tiếp theo supervised combined
 GPU protocol và exact bundle preflight. Không cần GPU/download weights local.
 
 Mốc lịch sử: theo owner clarification, model lớn chỉ ở Kaggle. Triển khai read-only
@@ -64,8 +68,8 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
 
 ## Bước tiếp theo
 
-1. Chốt final-source QA, commit loader và tái lập CPU receipt từ source sạch.
-   Sau đó khai báo combined residency/context/cancellation protocol với agent
+1. Sourcefa894c4 đã tái lập và QA cuối đạt. Khai báo combined
+   residency/context/cancellation protocol với agent
    process supervisor; exact archive/expanded packaging/eight tools/21Dummy/resume
    trước GPU. Không dùng MeasuredHFBackend13GiB/device hoặc coi allocator cap là
    proof of fit. Frozen source giữ nguyên; large models chỉ chạy trên Kaggle.
@@ -82,6 +86,10 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
 
 ## Bằng chứng
 
+- [Agent loader QA](../experiments/manifests/phase5_agent_loader_v1_release_qa01.json):
+  sourcefa894c4,1.274tests/278,23s với JUnit durable,87newtests; setup/Ruff/
+  mypy221files/knowledge pass. Hai clean-source CPU reproductions byte-identical,
+  134frozen hashes và Test seals nguyên vẹn. Không GPU/model load hoặc live header.
 - [Agent mount release QA](../experiments/manifests/phase5_agent_mount_v1_release_qa01.json):
   1.187 tests/238,38s, 44 scanner/audit tests mới; setup/Ruff/mypy218files/knowledge
   pass. Hai audit byte-identical, 134 frozen source hashes giữ nguyên; không

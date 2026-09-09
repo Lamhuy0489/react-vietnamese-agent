@@ -1,0 +1,50 @@
+{
+  "protocol": "phase5_agent_loader_release_qa_v1",
+  "software_qa_valid": true,
+  "phase5_accepted": false,
+  "source_git_commit": "fa894c4bebda74b19a635220578b9b29baf06a48",
+  "full_suite_tests": 1274,
+  "full_suite_seconds": 278.23,
+  "junit": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "1274",
+    "time": "278.160",
+    "timestamp": "2026-09-09T10:22:22.029006+07:00",
+    "hostname": "Huys-MacBook-Pro.local"
+  },
+  "new_tests": 87,
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 221,
+  "knowledge": "pass",
+  "reproductions_byte_identical": true,
+  "prior_source_hashes_verified": 134,
+  "source_and_evidence_sha256": {
+    "docs/architecture/phase5_agent_hf_v1_contract.md": "bcdaf97b1c8be565c4df1686cd1032a6269aa39ab819d26059e3e66712b710ee",
+    "scripts/verify_phase5_agent_loader.py": "c4ccc3d0fa47b201163a23b5237a3c6b0de5680d746b84771bda258296a6a5bb",
+    "src/react_agent/llm/agent_hf_v1.py": "8998700cf470d99f954d02697de7d2898408efe5b9cac63a22733abe7cd5af9f",
+    "src/react_agent/llm/agent_runtime_input_v1.py": "3ddc20e19ac6bc4c5cf5fae93920649d57416cc2961b4d8f996c5732c44262f3",
+    "tests/unit/test_agent_hf_v1.py": "960117543f6cbb7cc82ee7c3cc0ebf89aef55df09e5ff0a1f9bcd847db2b9c3b",
+    "tests/unit/test_agent_runtime_input_v1.py": "ed81d8aa44a3584702da2a333e009e59bc3d565c8e5944b53bdfcfd49105aa01",
+    "experiments/manifests/phase5_agent_loader_v1_validation01.json": "cd170ac7c24e2a5db73a4becbc2451400fed24d8555cd729610dfd5913e85e72",
+    "docs/evaluation/phase5_agent_loader_v1_report.md": "40cd06bb4e5b2c65a743e4a7e6385d6bbb2ef0f64e7ad270ad705b3fbfd5930e",
+    "results/phase5_agent_loader_v1_final02_pytest.xml": "01437108f7ef41b690c91392c0be75b8fa5ed3f9909accb35370441d992f82ae"
+  },
+  "model_loads": 0,
+  "gpu_runs": 0,
+  "kaggle_submissions": 0,
+  "local_agent_weight_downloads": 0,
+  "test_payloads_parsed": 0,
+  "combined_gpu_fit": "NOT_MEASURED",
+  "actual_model_headers": "NOT_INSPECTED",
+  "prior_full_inventory_rejection": "retained",
+  "remaining": [
+    "Dedicated process supervisor and combined residency/context/cancellation protocol",
+    "Exact runtime worker archive/expanded preflight, pinned dependencies and private inputs",
+    "Combined GPU execution and audit",
+    "Grouped Dev guard decision, broader A4 scope and final entitlements"
+  ]
+}
