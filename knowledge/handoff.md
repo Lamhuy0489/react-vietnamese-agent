@@ -6,11 +6,14 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 Hiện hành: ModelPair supervisor và durable residency probe đã triển khai riêng;
 56newtests pass (37supervisor/19probe), setup/Ruff/mypy224files pass. Full final
-suite đang chạy, XML `results/phase5_model_pair_v1_final01_pytest.xml`.
+suite1.330tests/326,86s pass, XML `results/phase5_model_pair_v1_final01_pytest.xml`.
 [Contract](../docs/architecture/phase5_model_pair_v1_contract.md), [tri thức](model_pair_v1.md).
-First CPU rehearsal có2syntheticcalls/reaped/giả lập recovery; chưa chọn do script
-line wrapping sau run. Tiếp theo final QA/source freeze/clean-source rehearsal,
-rồi HF entry point và exact worker overlay/mount preflight trước GPU. Không
+First preflight chỉ là lịch sử trước script line wrapping. Hai clean-source
+rehearsals6d1c761 validation01/02 có2syntheticcalls/run, reaped/giả lập recovery;
+stable summaries/source hashes khớp,15raw files/run giữ PID/timing riêng. Cả4CPU
+workers GRACEFUL; không thay kết quả GPU cũ. [Receipt](../experiments/manifests/phase5_model_pair_v1_validation01.json),
+[report](../docs/evaluation/phase5_model_pair_v1_report.md). Không còn test process.
+Tiếp theo HF entry point và exact worker overlay/mount preflight trước GPU. Không
 model/GPU/Kaggle submission mới hoặc local weights; Test chỉ hash-check.
 
 Mốc lịch sử: runtime-input admission và agent HF loader12/7GiB đã triển khai riêng;
@@ -77,7 +80,7 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
 
 ## Bước tiếp theo
 
-1. Chốt supervisor/probe QA và clean-source CPU rehearsal; sau đó HF entry point
+1. Supervisor/probe source6d1c761 đã đạt QA và clean-source rehearsal; tiếp theo HF entry point
    và exact archive/expanded packaging/eight tools/21Dummy/resume
    trước GPU. Không dùng MeasuredHFBackend13GiB/device hoặc coi allocator cap là
    proof of fit. Frozen source giữ nguyên; large models chỉ chạy trên Kaggle.
@@ -94,6 +97,10 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
 
 ## Bằng chứng
 
+- [Model pair release QA](../experiments/manifests/phase5_model_pair_v1_release_qa01.json):
+  source6d1c761,1.330tests/326,86s;56newtests. Hai clean-source rehearsals giữ
+  30raw files +2receipts, stable summaries equal, raw PID/timing hashes khác nhau.
+  140prior source entries nguyên vẹn; model/memory giả lập, zero GPU/Test payload.
 - [Agent loader QA](../experiments/manifests/phase5_agent_loader_v1_release_qa01.json):
   sourcefa894c4,1.274tests/278,23s với JUnit durable,87newtests; setup/Ruff/
   mypy221files/knowledge pass. Hai clean-source CPU reproductions byte-identical,

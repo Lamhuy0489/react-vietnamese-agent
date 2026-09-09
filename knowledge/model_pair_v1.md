@@ -35,13 +35,19 @@ It verifies140prior source entries (134guard +6agent loader) and Test seals by
 hash only. Raw PIDs/timing/lifecycle records are immutable and may differ across
 reproductions; never call raw JSON byte-identical across actual spawn executions.
 
-Full-suite final QA currently running with durable XML. Ruff/setup/mypy224files
+Final full suite1,330tests/326.86s pass; durable XML at
+`results/phase5_model_pair_v1_final01_pytest.xml`. Ruff/setup/mypy224files/knowledge
 pass. No Kaggle submission, local model download or pending account access.
+Clean-source6d1c761 rehearsals validation01/02 both valid, stable summaries and
+six source hashes equal;15raw files each keep distinct PID/timing hashes. All
+four CPU workers across the two runs closed GRACEFULLY; not a new GPU result.
+[Selected receipt](../experiments/manifests/phase5_model_pair_v1_validation01.json),
+[report](../docs/evaluation/phase5_model_pair_v1_report.md). No test process remains.
 
 ## Next concrete step
 
-Finish final QA, freeze/push supervisor and record selected clean-source CPU
-rehearsal. Then add an explicitly identified HF entry point and exact source
+Final QA/source freeze and clean-source rehearsals are complete. Next add an
+explicitly identified HF entry point and exact source
 overlay onto the frozen private guard Dataset plus pinned Qwen7B model mount.
 Do not upload entire repo/credentials/private GT/Test/memory. Include model_pair,
 probe, agent loader/runtime-input/mount scanner/audit, placement and publisher

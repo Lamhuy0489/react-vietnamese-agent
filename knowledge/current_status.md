@@ -4,7 +4,8 @@
 
 ModelPair đã có thứ tự nạp agent/guard, readiness không gọi model, deadline
 cold/warm, hủy cả hai khi một bên lỗi và retry cleanup-only khi chưa reap.
-56new tests pass (real spawn, synthetic backend/memory); full QA đang chạy.
+56new tests pass (real spawn, synthetic backend/memory); full QA1.330tests/326,86s
+pass. Source6d1c761 tái lập hai lần, stable summaries khớp; raw PID/timing giữ riêng.
 Durable rehearsal lưu manifest, ready/call/closed và recovery samples; không
 model/GPU hoặc Kaggle submission mới. [Contract](../docs/architecture/phase5_model_pair_v1_contract.md),
 [tri thức và bước tiếp](model_pair_v1.md). Chưa HF entry point/exact worker bundle,

@@ -1,0 +1,59 @@
+{
+  "protocol": "phase5_model_pair_release_qa_v1",
+  "software_qa_valid": true,
+  "phase5_accepted": false,
+  "source_git_commit": "6d1c7618c9c8d1b8ece21d5ab2aeb78c276302d4",
+  "full_suite_tests": 1330,
+  "full_suite_seconds": 326.86,
+  "junit": {
+    "tests": "1330",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "326.802"
+  },
+  "new_supervisor_tests": 37,
+  "new_probe_tests": 19,
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 224,
+  "knowledge": "pass",
+  "prior_source_hashes_verified": 140,
+  "stable_reproduction_summaries_equal": true,
+  "raw_bytes_identical": false,
+  "raw_files_per_run": [
+    15,
+    15
+  ],
+  "cpu_workers_reaped": 4,
+  "cpu_rehearsal_cleanup_methods": [
+    "GRACEFUL",
+    "GRACEFUL",
+    "GRACEFUL",
+    "GRACEFUL"
+  ],
+  "source_and_evidence_sha256": {
+    "docs/architecture/phase5_model_pair_v1_contract.md": "6116e62ad804543d7728312e197059246b1f93f01d17087f86d6a67b06fd85b0",
+    "scripts/probe_phase5_model_pair.py": "a544385371e748bb7fce4b5737943ca0d9b708003ad32d5d6036ac79f7f8568d",
+    "src/react_agent/llm/model_pair_probe_v1.py": "bff03064780fb4f36243549e75a444826e6dbd2ea31ac13f3a8d1cb76ebfedb1",
+    "src/react_agent/llm/model_pair_v1.py": "e5de61646922d382ff312e2fb982597b11610fea4e018b93230c7a9c2c1719cf",
+    "tests/unit/test_model_pair_probe_v1.py": "184e1121970ae6d1243312bb213ee2a1948fb100d8ec88009093e114cca09d3b",
+    "tests/unit/test_model_pair_v1.py": "32d8b24ce27208606198493f3c7640c139e845cd34babb6ae2aac05da1823db1",
+    "experiments/manifests/phase5_model_pair_v1_validation01.json": "868c82f985d1baa7c7973f9027a7a3712c241e5369f564d4624fff4055f5f922",
+    "results/phase5_model_pair_v1_final01_pytest.xml": "8e0b3a7aec812382016d39fbf7b511f97f69973b63ed1e31c4d556ec31ee2182",
+    "docs/evaluation/phase5_model_pair_v1_report.md": "4d6cf7a0a8837f2c77b5d02e1997bb9c0f16eb139d47563cc8cf0797d1f7b401"
+  },
+  "credential_scan_files": 47,
+  "credential_value_matches": 0,
+  "actual_model_loads": 0,
+  "gpu_runs": 0,
+  "kaggle_submissions": 0,
+  "test_payloads_parsed": 0,
+  "model_memory": "synthetic only",
+  "remaining": [
+    "HF entry point and exact bounded GPU overlay/archive/expanded preflight",
+    "Pinned dependencies, private inputs, live quota check",
+    "Combined GPU residency/context/cancellation and audit",
+    "Runtime integration and grouped Dev guard decision; remaining A4/final scope"
+  ]
+}

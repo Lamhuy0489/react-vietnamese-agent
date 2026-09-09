@@ -376,6 +376,15 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   Original README/full-inventory rejection retained. No real header/model load,
   combined GPU run or production supervisor; GPU compatibility/fit remain unproven.
 
+- [x] Separate sibling agent/guard supervisor and durable small-context probe:
+  1,330tests pass,56new; setup/Ruff/mypy224files/knowledge pass. Real spawn tests
+  verify agent-first readiness, cold/warm deadlines, sibling cleanup and KILL
+  escalation. Two clean-source6d1c761 CPU rehearsals have matching summaries,
+  four workers reaped,15raw files/run retained with distinct PID/timing hashes.
+  [Report](../evaluation/phase5_model_pair_v1_report.md). Memory/inference are
+  synthetic here; no HF entry point/exact GPU bundle, actual coexistence or v5
+  runtime integration yet. Prior GPU graceful-close failure remains unchanged.
+
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
 The current v5 loop supports A0–A6 with an explicitly task-owned warm guard for
