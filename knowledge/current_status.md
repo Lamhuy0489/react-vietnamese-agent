@@ -1,6 +1,14 @@
 # Trạng thái hiện tại
 
-## Hiện hành: supervisor hai worker agent–guard — 2026-09-09
+## Hiện hành: HF pair worker và exact Kaggle preflight — 2026-09-09
+
+Đã có HF entry point và wrapper11file overlay. Phát hiện native Transformers5.5
+có original_inv_freq, bổ sung adapter v2 riêng trước GPU; v1 giữ nguyên.
+22new tests pass; full QA và exact archive/expanded preflight đang chuẩn bị.
+Chưa submission/model GPU mới. [Contract](../docs/architecture/phase5_pair_gpu_v1_contract.md),
+[tri thức](pair_gpu_v1.md). Không local model download hoặc Test payload.
+
+## Lịch sử: supervisor hai worker agent–guard — 2026-09-09
 
 ModelPair đã có thứ tự nạp agent/guard, readiness không gọi model, deadline
 cold/warm, hủy cả hai khi một bên lỗi và retry cleanup-only khi chưa reap.

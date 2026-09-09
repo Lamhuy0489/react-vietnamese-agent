@@ -4,7 +4,15 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Hiện hành: ModelPair supervisor và durable residency probe đã triển khai riêng;
+Hiện hành: HF pair entry point/standalone wrapper đã triển khai,22newtests pass.
+Exact Transformers5.5wheel có original_inv_freq; adapter v2 riêng chấp nhận đúng
+hai native buffers, giữ v1 source/hashes. Fullsuite đang chạy với XML
+`results/phase5_pair_gpu_v1_final01_pytest.xml`. Tiếp theo source freeze/builder
+archive+expanded actual wrapper,8tools/21Dummy/resume, rồi account/quota/private
+inputs và first GPU submit. [Contract](../docs/architecture/phase5_pair_gpu_v1_contract.md),
+[tri thức](pair_gpu_v1.md). Chưa submit kernel mới, không localweights/Test payload.
+
+Mốc lịch sử: ModelPair supervisor và durable residency probe đã triển khai riêng;
 56newtests pass (37supervisor/19probe), setup/Ruff/mypy224files pass. Full final
 suite1.330tests/326,86s pass, XML `results/phase5_model_pair_v1_final01_pytest.xml`.
 [Contract](../docs/architecture/phase5_model_pair_v1_contract.md), [tri thức](model_pair_v1.md).
@@ -80,8 +88,8 @@ Mốc resource recovery đạt contract; Phase5 chưa accepted.
 
 ## Bước tiếp theo
 
-1. Supervisor/probe source6d1c761 đã đạt QA và clean-source rehearsal; tiếp theo HF entry point
-   và exact archive/expanded packaging/eight tools/21Dummy/resume
+1. HF entry point và adapter v2 đã có; chốt full QA/source và exact builder
+   archive/expanded packaging/eight tools/21Dummy/resume
    trước GPU. Không dùng MeasuredHFBackend13GiB/device hoặc coi allocator cap là
    proof of fit. Frozen source giữ nguyên; large models chỉ chạy trên Kaggle.
 2. Grouped Dev protocol/model decision rồi A4 scope/general final entitlements.

@@ -39,6 +39,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Model agent trên Kaggle: [read-only mount authentication](agent_mount_v1.md).
 - Agent HF loader: [runtime admission và giới hạn VRAM](agent_loader_v1.md).
 - Điều phối agent–guard: [supervisor và durable CPU rehearsal](model_pair_v1.md).
+- Pair GPU worker: [HF entry point, compatibility và exact preflight](pair_gpu_v1.md).
 - Bằng chứng lịch sử: [Phase 1](phase1_evidence.md),
   [Phase 2 v1 cũ](phase2_evidence.md),
   [audit v1 và withdrawal](integrity_audit_20260905.md).

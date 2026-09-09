@@ -1,5 +1,16 @@
 # Decision Log
 
+## 2026-09-09 — Pair GPU entry point and native Transformers5.5 buffer adapter
+
+- Exact pinned Dataset wheel inspection found native original_inv_freq is a
+  registered buffer; frozen agent v1 would reject it before any generation.
+  New agent v2 admits exactly the two known64-element rotary buffers and pins
+  Transformers5.5.0. Original v1 and all earlier hashes remain unchanged.
+- [Predeclared GPU contract](../architecture/phase5_pair_gpu_v1_contract.md) keeps
+  the one-pair/two-small-call technical scope, original caps/deadlines and guard
+  prompt. New offline HF entry point and hash-bound overlay are separate from
+  policy/runtime integration. No GPU result or held-out output drove this fix.
+
 ## 2026-09-09 — Model pair supervisor, separate from frozen v5 runtime
 
 - [Contract](../architecture/phase5_model_pair_v1_contract.md) composes the existing
