@@ -1,6 +1,13 @@
 # Trạng thái hiện tại
 
-## Hiện hành: combined cancellation CPU implementation — 2026-09-09
+## Hiện hành: pair cancellation GPU packaging — 2026-09-09
+
+HF entry/13file wrapper đã triển khai,17new tests pass. Full QA/exact mount
+preflight trước GPU đang chuẩn bị; chưa submit hoặc localmodel/Test payload.
+[Contract](../docs/architecture/phase5_pair_cancel_gpu_v1_contract.md),
+[tri thức](pair_cancellation_v1.md). Dùng lại pinned model/Dataset/Docker image.
+
+## Lịch sử: combined cancellation CPU implementation — 2026-09-09
 
 Ba ca agent_busy/guard_busy/guard_ignore_term đã có diagnostic wrapper và durable
 suite, real spawn trên synthetic backends/memory. Hai source5d326bf rehearsals

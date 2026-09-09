@@ -1,5 +1,15 @@
 # Pair cancellation v1 — CPU implementation, 2026-09-09
 
+## GPU packaging đang làm
+
+Đã có lazy HF factories/entry script và standalone wrapper13file;17new tests
+pass. Giữ11pair overlay và CPU cancellation module hash, pinned Docker image
+đã thấy ở run cũ. [GPU contract](../docs/architecture/phase5_pair_cancel_gpu_v1_contract.md).
+Tiếp theo source freeze, full QA và exact archive/expanded/PAX preflight trước
+private GPU submit1 `huylmhuhu/react-vn-pair-cancel-v1`, timeout5400s. Chưa submit.
+
+## Mốc CPU đã hoàn tất
+
 [Contract](../docs/architecture/phase5_pair_cancellation_v1_contract.md).
 Ba fresh pairs theo thứ tự agent_busy,guard_busy,guard_ignore_term. Wrapper
 giữ backend resident, không gọi model.generate; host busy command chạy smallCUDA
