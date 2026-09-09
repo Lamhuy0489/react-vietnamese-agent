@@ -385,6 +385,13 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   synthetic here; no HF entry point/exact GPU bundle, actual coexistence or v5
   runtime integration yet. Prior GPU graceful-close failure remains unchanged.
 
+- [x] HF pair entry point and exact bounded Kaggle wrapper prepared: sourceb76c040,
+  1,352tests/328.89s pass,22new; setup/Ruff/mypy229files/knowledge pass. Both
+  isolated archive/expanded PAX layouts pass8tools,21Dummy/resume and synthetic
+  pair/recovery. Native Transformers5.5 two-buffer compatibility uses separate
+  adapter v2; prior146source entries stay frozen. [Pre-submit QA](../../experiments/manifests/phase5_pair_gpu_v1_pre_submit_qa01.json).
+  Actual pair GPU residency/inference is not yet measured at this milestone.
+
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
 The current v5 loop supports A0–A6 with an explicitly task-owned warm guard for

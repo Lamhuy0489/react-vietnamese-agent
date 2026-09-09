@@ -1,0 +1,42 @@
+{
+  "protocol": "phase5_pair_gpu_pre_submit_qa_v1",
+  "source_commit": "b76c0401be94081075ed99d139b5839fa8bfd722",
+  "software_qa_valid": true,
+  "phase5_accepted": false,
+  "full_suite_tests": 1352,
+  "full_suite_seconds": 328.89,
+  "junit": {
+    "tests": "1352",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "328.831"
+  },
+  "new_tests": 22,
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 229,
+  "knowledge": "pass",
+  "frozen_source_entries_verified": 146,
+  "isolated_layouts": [
+    "archive",
+    "expanded/PAX"
+  ],
+  "credential_scan_files": 17,
+  "credential_value_matches": 0,
+  "gpu_runs": 0,
+  "local_model_loads": 0,
+  "test_payloads_parsed": 0,
+  "quota_hours_remaining": 29.33,
+  "private_dataset_version": 1,
+  "submission_timeout_seconds": 3600,
+  "source_and_evidence_sha256": {
+    "results/phase5_pair_gpu_v1_final02_pytest.xml": "626240280603811f3dee4bec6efc02f8de8a72b6fea58047054510bf43548292",
+    "experiments/manifests/phase5_pair_gpu_v1_preflight02.json": "cfeeed503628c80547a8f108e7c54471085be69a2cd1337e030b2ae951549f25",
+    "scripts/prepare_phase5_model_pair.py": "db11cbda1dbd35a3c3d5f1c0b37a7865e5567199125fe466dc61097ebba7c25d",
+    "notebooks/kaggle/model_pair_kernel_v1.py": "458fe99cf54d8247f192a99121f0df2faa07a5c565df7b5fee66552dc634125c",
+    "src/react_agent/llm/agent_hf_v2.py": "5b382e7208fcfffa06cb0e0b1eaec7cef32a86e7816e88fd53338e21a4a9079c",
+    "src/react_agent/llm/model_pair_hf_v1.py": "77a6cd6bfad3ebe1838a4b25bd8a2c57a44f2a9303b7c1ff3077a5855c220974",
+    "scripts/run_phase5_pair_worker.py": "12542161ed3221c4abdd21095826262ac98b1e3008e0bcb635ccdaa3fc8b7436"
+  }
+}

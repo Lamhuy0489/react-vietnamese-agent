@@ -24,12 +24,17 @@ knowledge upload. `prepare_phase5_model_pair.py` performs exact archive/expanded
 simulations, fresh isolated venv,8tools/fault,21Dummy/completed+missing-only resume
 and the same new worker entry point in stub mode. Actual HF mode is not run locally.
 
-22new targeted tests pass; full final QA and actual wrapper preflight pending.
-Next freeze source, execute builder against
-`build/kaggle/phase5_guard_probe_v1_bundle03`, retain receipt, inspect exact
-metadata/credential exclusion, push source and preflight, check live account
-quota/private Dataset readiness, then submit once `huylmhuhu/react-vn-pair-gpu-v1`.
-No new kernel submitted yet. Preserve failed attempts; no semantic retries.
+22new targeted tests pass; full QA01:1.352tests/361,66s. Final-source QA02:
+1.352tests/328,89s pass; setup/Ruff/mypy229files/knowledge pass.
+[Pre-submit QA](../experiments/manifests/phase5_pair_gpu_v1_pre_submit_qa01.json).
+Source b76c040 exact preflight02 passes archive and expanded/PAX layouts,
+8tools/fault,21Dummy, completed/missing-only resume preserving20checkpoints,
+two synthetic pair calls and reap/recovery per layout. No actual model/GPU locally.
+[Selected receipt](../experiments/manifests/phase5_pair_gpu_v1_preflight02.json).
+Next inspect metadata/credential exclusion, push source/preflight, verify private
+Dataset version, then submit once `huylmhuhu/react-vn-pair-gpu-v1`, timeout3600s.
+Live quota29,33h; Dataset READY; kernel slug absent. No submission yet.
+Preserve failed attempts; no semantic retries.
 
 Exact preflight01 caught a local mount-simulation issue after8tools/21Dummy/resume
 passed: macOS tempfile spelled the scratch path through /var, a symlink to

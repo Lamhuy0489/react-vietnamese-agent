@@ -4,8 +4,12 @@
 
 Đã có HF entry point và wrapper11file overlay. Phát hiện native Transformers5.5
 có original_inv_freq, bổ sung adapter v2 riêng trước GPU; v1 giữ nguyên.
-22new tests pass; full QA và exact archive/expanded preflight đang chuẩn bị.
-Chưa submission/model GPU mới. [Contract](../docs/architecture/phase5_pair_gpu_v1_contract.md),
+22new tests pass; full QA01:1.352tests/361,66s. Exact preflight02 sourceb76c040
+pass cả archive/expanded/PAX,8tools/21Dummy/resume và hai stub calls/recovery.
+146frozen source entries giữ nguyên; Dataset v1/private/READY, quota29,33h.
+Final-source QA02:1.352tests/328,89s; setup/Ruff/mypy229files/knowledge pass.
+Chưa submission/model GPU mới; tiếp theo push trước submit.
+[Contract](../docs/architecture/phase5_pair_gpu_v1_contract.md),
 [tri thức](pair_gpu_v1.md). Không local model download hoặc Test payload.
 
 ## Lịch sử: supervisor hai worker agent–guard — 2026-09-09

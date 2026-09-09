@@ -5,12 +5,17 @@ Cập nhật: 2026-09-09. Đây là chỉ dẫn tiếp tục, không thay thế 
 ## Đang làm
 
 Hiện hành: HF pair entry point/standalone wrapper đã triển khai,22newtests pass.
-Exact Transformers5.5wheel có original_inv_freq; adapter v2 riêng chấp nhận đúng
-hai native buffers, giữ v1 source/hashes. Fullsuite đang chạy với XML
-`results/phase5_pair_gpu_v1_final01_pytest.xml`. Tiếp theo source freeze/builder
-archive+expanded actual wrapper,8tools/21Dummy/resume, rồi account/quota/private
-inputs và first GPU submit. [Contract](../docs/architecture/phase5_pair_gpu_v1_contract.md),
-[tri thức](pair_gpu_v1.md). Chưa submit kernel mới, không localweights/Test payload.
+Adapter v2 riêng đúng hai native5.5buffers;146frozen source entries nguyên vẹn.
+QA01:1.352tests/361,66s; final-source QA02:1.352tests/328,89s pass, XML
+`results/phase5_pair_gpu_v1_final02_pytest.xml`. Exact preflight02 sourceb76c040
+pass archive/expanded/PAX,8tools/21Dummy/resume và two stub calls/recovery.
+[Receipt](../experiments/manifests/phase5_pair_gpu_v1_preflight02.json).
+Dataset11942593 verified private/version1/READY; quota29,33h; slug chưa tồn tại.
+Setup/Ruff/mypy229files/knowledge pass;17files credential scan0matches.
+Tiếp theo push source/receipt rồi submit private/offline twoT4 kernel
+`huylmhuhu/react-vn-pair-gpu-v1`, timeout3600s; tải source/outputs audit không retry.
+[Contract](../docs/architecture/phase5_pair_gpu_v1_contract.md), [tri thức](pair_gpu_v1.md).
+Chưa submit kernel mới, không localweights/Test payload. Không pending access mới.
 
 Mốc lịch sử: ModelPair supervisor và durable residency probe đã triển khai riêng;
 56newtests pass (37supervisor/19probe), setup/Ruff/mypy224files pass. Full final

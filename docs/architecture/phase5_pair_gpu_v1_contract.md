@@ -61,3 +61,7 @@ must agree (`react-vn-pair-gpu-v1`) to avoid prior title-derived slug deviation.
 No automatic retries. Pull remote wrapper/metadata and fresh output artifacts;
 audit source, metrics, model identities, deadlines, raw immutability and cleanup.
 Keep any failure and classify it before considering a new execution identity.
+
+Submission wall-clock limit: 3600 seconds for this single technical run, including
+bootstrap and live model hashing. This does not extend per-worker cold/warm
+deadlines. GPU quota checked pre-submit: 29.33 hours remaining on 2026-09-09.
