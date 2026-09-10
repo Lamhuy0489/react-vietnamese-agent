@@ -2,6 +2,12 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-10
 
+[Pair progress GPU v1](pair_progress_v1.md) đã có source `a1a90b3` và exact
+preflight archive/expanded/PAX: 8 tools/21 Dummy/resume, 12 native-policy workers
+tổng hai layouts. Full QA 1.517 đạt/1 optional native skip trong 358,49s;
+setup/Ruff/mypy 247 files/knowledge đạt. Đang chốt receipt/push trước GPU mới,
+chưa submission tại mốc này. Không dùng CPU preflight làm bằng chứng GPU.
+
 IPC diagnostic đã được audit lại03/04,99raw files nguyên vẹn. Kết luận có giới hạn
 ở [review addendum](../docs/evaluation/phase5_pair_ipc_gpu_v1_review_addendum.md)
 thay thế các khẳng định quá rộng trong bàn giao dưới đây: cả6worker vẫn forced,

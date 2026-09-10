@@ -11,7 +11,10 @@ cóUNREGISTER. Cả6exits vẫn forced (5TERM/1KILL),0graceful.18VRAM samples v�
 không chứng minh driver/IPC leak-free. [Đính chính](../docs/evaluation/phase5_pair_ipc_gpu_v1_review_addendum.md).
 
 Đang triển khai [pair progress GPU v1](pair_progress_v1.md): entry/wrapper/builder
-và auditor riêng đã có; cần chốt test/commit, exact preflight rồi mới GPU submission.
+và auditor riêng đã có. Source `a1a90b3`: 21 test mới đạt, exact preflight cả hai
+archive/expanded/PAX layouts đạt, 6 native-policy workers/layout và owner 90/90.
+Full pre-submit QA đạt: 1.517 pass/1 optional native skip trong 358,49s;
+setup/Ruff/mypy 247 files/knowledge đạt. Chưa GPU submission tại mốc receipt này.
 Đã chốt bản sửa opt-in thread-only progress lock và hai native CPU reproductions:
 [contract](../docs/architecture/phase5_worker_progress_v1_contract.md),
 [tri thức](worker_progress_v1.md). Default/disabled/threadTERM/threadKILL controls
@@ -19,7 +22,8 @@ có1/1/0/0registrations; TQDM_DISABLE không phải fix. Chưa sửa frozen GPU/
 Full QA hoàn tất: 1.496 đạt, 1 optional native pytest bỏ qua; XML
 `results/phase5_worker_progress_v1_release01_pytest.xml`. Hai standalone native
 runs thực sự đã chạy với pinned tqdm, 8 workers/PID khác nhau đều reaped.
-Không job local/Kaggle còn chạy, model load mới hoặc local weights/Test payload.
+Không job Kaggle hoặc model load mới/local weights/Test payload. Full QA mới:
+`results/phase5_pair_progress_v1_pre_submit01_pytest.xml` đã hoàn tất.
 
 Có báo cáo tiến độ MD/PDF/figures từ ngoài phiên này;
 giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguyên tại

@@ -1,0 +1,48 @@
+{
+  "protocol": "pair_progress_gpu_pre_submit_qa_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "runtime_source_commit": "a1a90b31c312b09c62c03af1b7f3bcc66166b0ee",
+  "preflight_sha256": "77f527e15ab288e1ce1a6fe49aaaa1bfdccdb7e38be6b3c1297ac06efcdd0edb",
+  "full_suite_passed": 1517,
+  "full_suite_skipped": 1,
+  "full_suite_seconds": 358.49,
+  "junit": {
+    "tests": "1518",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "1",
+    "time": "358.420"
+  },
+  "junit_sha256": "0e2a83eb644806d914496953d622b271b2e192ef20961744a15543145078168a",
+  "new_tests_passed": 21,
+  "skip_reason": ".venv lacks native tqdm; exact isolated archive/expanded preflight separately executed pinned native tqdm in six workers per layout",
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 247,
+  "knowledge": "pass",
+  "credential_scan_files": 31,
+  "credential_values_checked": 4,
+  "credential_value_matches": 0,
+  "overlay_files": 17,
+  "native_preflight_workers": 12,
+  "kaggle_submissions_at_receipt": 0,
+  "planned_kernel": "huylmhuhu/react-vn-pair-progress-v1",
+  "planned_timeout_seconds": 5400,
+  "planned_accelerator": "NvidiaTeslaT4",
+  "private_dataset_check": {
+    "date": "2026-09-10",
+    "id": 11942593,
+    "version": 1,
+    "private": true,
+    "status": "ready"
+  },
+  "quota_reading": {
+    "date": "2026-09-10",
+    "account": "huylmhuhu",
+    "remaining_gpu_hours": 28.57,
+    "reservation": false
+  },
+  "local_model_loads": 0,
+  "test_payloads_parsed": 0
+}
