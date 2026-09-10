@@ -4,6 +4,10 @@ Cập nhật: 2026-09-10. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Đang chốt [context stress backend/runner CPU](context_stress_v1.md): 42 tests mới
+đạt; cần full QA, commit nguồn và hai CLI stub reproductions. Chưa GPU wrapper,
+native stress audit/preflight/submission. Không sửa source và kết quả cũ.
+
 Phase5 còn mở. IPC diagnostic pair-ipc-v1 đã COMPLETE, một lần submit.
 Audits03/04 tái lập selected audit byte-identical,99rawfiles. Nguồn semaphore
 observed thuộc tqdm.std.create_mp_lock trong3busy workers;90parent+3idle locks

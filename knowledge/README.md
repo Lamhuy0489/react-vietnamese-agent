@@ -45,6 +45,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Khóa tiến độ worker: [bản sửa riêng và bằng chứng CPU](worker_progress_v1.md).
 - Kiểm chứng bản sửa trên GPU: [pair progress v1](pair_progress_v1.md).
 - Chuẩn bị bài thử ngữ cảnh dài: [context geometry CPU](context_geometry_v1.md).
+- Backend và bộ chạy ngữ cảnh dài: [context stress v1](context_stress_v1.md).
 - Bằng chứng lịch sử: [Phase 1](phase1_evidence.md),
   [Phase 2 v1 cũ](phase2_evidence.md),
   [audit v1 và withdrawal](integrity_audit_20260905.md).
