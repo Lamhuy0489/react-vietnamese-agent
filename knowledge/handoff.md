@@ -6,9 +6,10 @@ Cập nhật: 2026-09-11. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 Đang chuẩn bị [context/policy GPU](context_policy_gpu_v1.md): publisher metadata
 đã xác thực, combined23+10/outer80file auditor +32file wrapper/builder/dispatcher
-đã có;45focused tests/Ruff/mypy264 đạt. Chưa fullQA/exactpreflight/submission.
-Tiếp commitnguồn → exactpreflight/fullQA → push → kiểmquota/privateinputs →
-một GPUstress identity đã khai báo. Không localweights/Test/privateGT.
+đã có;45focused tests đạt. Source9bbf5eb exactpreflight hai layouts đạt,
+full1.788pass/1optional skip370,00s/setup/Ruff/mypy264/knowledge đạt. Chưa submission.
+Tiếp push nguồn/receipts → một GPUstress identity đã khai báo. Datasetprivate/v1
+ready, modelmountv1 truy cập được, currentquota28,27h. Không localweights/Test/privateGT.
 
 Đã COMPLETE [native policy compatibility CPU](policy_native_compat_v1.md),
 `huylmhuhu/react-vn-policy-native-compat-v1` version1, một submission.

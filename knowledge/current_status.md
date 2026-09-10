@@ -4,8 +4,10 @@
 
 Đang chuẩn bị [context/policy GPU](context_policy_gpu_v1.md):45focused tests
 đạt cho publisher authentication/combined audit/packaging;32file wrapper và
-dispatcher giữ nguyên HF source. Chưa fullQA/exactpreflight hoặc GPUsubmission.
-Tiếp commitnguồn → exactpackage/fullQA → push → một GPUstress sau kiểmquota.
+dispatcher giữ nguyên HF source. Source9bbf5eb exactpreflight hai layouts đạt;
+full1.788pass/1optional skip370,00s/setup/Ruff/mypy264/knowledge đạt.
+Chưa GPUsubmission; tiếp push nguồn/receipts → một GPUstress; quota28,27h,
+Datasetprivate/v1ready/modelmountv1 truy cập được. Không localmodel/Test.
 
 [Native policy CPU compatibility](policy_native_compat_v1.md): worker source
 `5c0c20e`, exact archive/expanded/PAX/tools/Dummy/resume và native progress
