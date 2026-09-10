@@ -7,7 +7,11 @@ Cập nhật: 2026-09-10. Đây là chỉ dẫn tiếp tục, không thay thế 
 Đang chuẩn bị [native policy compatibility CPU](policy_native_compat_v1.md).
 Local Torch2.2.2; dùng kernelCPU Kaggle với native pinned libraries, không
 model.generate/weights/GPU. Harness+wrapper+exact builder có, đang QA/preflight;
-chưa submission. Source mới additive, không sửa runtime đã chốt.
+chưa submission. Source `5c0c20e`, exact preflight cả2layouts đã đạt;25newtests
+đạt; fullQApre01 mất tiến trình/noJUnit khi phiên tool ngắt; fullQApre02 đạt
+1.734pass/1optional skip370,38s, setup/Ruff/mypy260/knowledge đạt, XML
+`results/phase5_policy_native_cpu_v1_pre02_pytest.xml`. Source additive, không sửa
+runtime đã chốt. Datasetprivate/v1ready đã xác nhận, currentGPUquota28,27h.
 
 Đã chốt CPU milestone [generation policy observation v1](generation_policy_v1.md):
 38tests mới đạt; actual-stage hooks được fake differential/mutation kiểm chứng,

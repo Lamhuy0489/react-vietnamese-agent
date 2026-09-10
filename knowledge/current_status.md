@@ -2,6 +2,13 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-10
 
+[Native policy CPU compatibility](policy_native_compat_v1.md): worker source
+`5c0c20e`, exact archive/expanded/PAX/tools/Dummy/resume và native progress
+preflight đạt.25newtests đạt; fullQApre02:1.734pass/1optional skip370,38s,
+setup/Ruff/mypy260/knowledge đạt; phiênpre01 ngắt/noJUnit không tính pass.
+Chưa submit; không local native/model hoặc Test. Datasetprivate/v1ready; CPU
+kernel dự kiến khôngGPU/no model_sources, không materialize weights.
+
 [Generation policy observation](generation_policy_v1.md) đã thêm wrapper/factory,
 auditor và HF entry riêng,38tests mới đạt. Ghi actual resolve/length stages qua
 hai hook delegate-once rồi restore; không đổi publisher defaults hoặc decoding.
