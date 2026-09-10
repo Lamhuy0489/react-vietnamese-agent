@@ -5,8 +5,15 @@
 [Pair progress GPU v1](pair_progress_v1.md) đã có source `a1a90b3` và exact
 preflight archive/expanded/PAX: 8 tools/21 Dummy/resume, 12 native-policy workers
 tổng hai layouts. Full QA 1.517 đạt/1 optional native skip trong 358,49s;
-setup/Ruff/mypy 247 files/knowledge đạt. Đang chốt receipt/push trước GPU mới,
-chưa submission tại mốc này. Không dùng CPU preflight làm bằng chứng GPU.
+setup/Ruff/mypy 247 files/knowledge đạt. Source/receipt đã push `f8ab56d`, một
+kernel `huylmhuhu/react-vn-pair-progress-v1` version 1 COMPLETE. Hai audits và
+reports byte-identical, 106 raw hashes verified: prevention gate đạt, cả 6 child
+registrations bằng 0, owner 90/90, không semaphore warning; 18 VRAM samples
+residual 0 bytes hai GPU. Sáu exits vẫn forced (5 TERM/1 KILL), không graceful
+hoặc exhaustive IPC cleanup claim. [Báo cáo](../docs/evaluation/phase5_pair_progress_gpu_v1_report.md).
+Không job còn chạy. Trong lúc chờ đã thêm
+[context geometry CPU](context_geometry_v1.md): 35 test mới, full QA 1.552 đạt/
+1 optional native skip trong 343,38s; chưa native context-stress inference.
 
 IPC diagnostic đã được audit lại03/04,99raw files nguyên vẹn. Kết luận có giới hạn
 ở [review addendum](../docs/evaluation/phase5_pair_ipc_gpu_v1_review_addendum.md)
@@ -18,8 +25,9 @@ controls 1/1/0/0 registrations. Hai lượt native CPU từ source `e8f72de` đ�
 1 optional native pytest bỏ qua vì .venv thiếu tqdm; native chạy riêng bằng
 system Python 3.11.0 với tqdm 4.67.3. Setup/Ruff/mypy 243 files/knowledge đạt.
 [Release QA](../experiments/manifests/phase5_worker_progress_v1_release_qa01.json).
-Chưa áp dụng hoặc kiểm chứng fix trên GPU; tiếp theo là wrapper/preflight riêng.
-Không jobKaggle mới, không localmodel/Test; Phase5 còn mở.
+Mốc CPU lịch sử được nối tiếp bằng GPU validation có giới hạn ghi ở đầu mục này;
+chưa tích hợp fix vào benchmark runtime.
+Không local model/Test; Phase5 còn mở.
 
 Phần ghi nhận2026-09-09 dưới đây giữ để đối chiếu; diễn giải tuân theo đính chính.
 

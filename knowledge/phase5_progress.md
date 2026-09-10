@@ -6,8 +6,11 @@ Mốc mới nhất xem [current status](current_status.md) và [handoff](handoff
 Combined small-context/cancellation GPU đã audit;6workers reaped/18VRAM samples
 trở về nền. [IPC-origin diagnostic](pair_ipc_v1.md) đã xác định ba observed
 registrations thuộc khóa tqdm; không chứng minh mọi IPC đều sạch. Bản sửa
-[worker progress](worker_progress_v1.md) đã qua CPU; đang chuẩn bị
-[kiểm chứng GPU riêng](pair_progress_v1.md), không sửa frozen transport hoặc che warning.
+[worker progress](worker_progress_v1.md) đã qua CPU và
+[kiểm chứng GPU riêng](pair_progress_v1.md): 6 child registrations bằng 0,
+owner 90/90, không semaphore warning, 18 VRAM samples về nền; 6 exits vẫn forced.
+Không sửa frozen transport hoặc che warning. Context geometry CPU đã có,
+nhưng native maximum-context runner/inference vẫn chưa được kiểm chứng.
 
 Phase5 chưa accepted. Những nhóm việc cần hoàn tất theo phase_status/plan:
 

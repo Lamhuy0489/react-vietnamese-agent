@@ -14,16 +14,28 @@ không chứng minh driver/IPC leak-free. [Đính chính](../docs/evaluation/pha
 và auditor riêng đã có. Source `a1a90b3`: 21 test mới đạt, exact preflight cả hai
 archive/expanded/PAX layouts đạt, 6 native-policy workers/layout và owner 90/90.
 Full pre-submit QA đạt: 1.517 pass/1 optional native skip trong 358,49s;
-setup/Ruff/mypy 247 files/knowledge đạt. Chưa GPU submission tại mốc receipt này.
+setup/Ruff/mypy 247 files/knowledge đạt. Source/QA đã push `f8ab56d`; một kernel
+`huylmhuhu/react-vn-pair-progress-v1` version 1 COMPLETE, một submission.
+Hai audits01/02 byte-identical, 106 raw hashes verified; prevention gate đạt:
+0 child registrations, owner 90/90, 0 unmatched/semaphore warning; 18 VRAM
+samples residual 0 bytes hai GPU. 6 loads/0 generation, 5 TERM/1 KILL/0 graceful.
+[Báo cáo](../docs/evaluation/phase5_pair_progress_gpu_v1_report.md).
 Đã chốt bản sửa opt-in thread-only progress lock và hai native CPU reproductions:
 [contract](../docs/architecture/phase5_worker_progress_v1_contract.md),
 [tri thức](worker_progress_v1.md). Default/disabled/threadTERM/threadKILL controls
-có1/1/0/0registrations; TQDM_DISABLE không phải fix. Chưa sửa frozen GPU/runtime.
+có1/1/0/0registrations; TQDM_DISABLE không phải fix. Chưa sửa frozen runtime.
 Full QA hoàn tất: 1.496 đạt, 1 optional native pytest bỏ qua; XML
 `results/phase5_worker_progress_v1_release01_pytest.xml`. Hai standalone native
 runs thực sự đã chạy với pinned tqdm, 8 workers/PID khác nhau đều reaped.
-Không job Kaggle hoặc model load mới/local weights/Test payload. Full QA mới:
+Không job Kaggle hoặc local test còn chạy; không local weights/Test payload.
+Full QA mới:
 `results/phase5_pair_progress_v1_pre_submit01_pytest.xml` đã hoàn tất.
+
+Trong lúc GPU chạy, [context geometry CPU](context_geometry_v1.md) đã có module
+và 35 test đạt; full suite mới 1.552 đạt/1 optional native skip trong 343,38s, XML
+`results/phase5_context_geometry_v1_release01_pytest.xml`. Chưa native stress
+backend/inference hoặc sửa source đã gửi lên Kaggle. Setup/Ruff/mypy 248 files/
+knowledge đạt; không local test job còn chạy sau mốc này.
 
 Có báo cáo tiến độ MD/PDF/figures từ ngoài phiên này;
 giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguyên tại
@@ -31,23 +43,27 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
 
 ## Bước tiếp theo
 
-1. Versioned GPU lock wrapper/entry với trace/identity; exact archive/expanded/PAX
-   8tools/21Dummy/resume, source/receipts push, currentquota/privateinputs rồi mới
-   submit một identity mới. Không sửa/retry các kernel cũ để thay kết quả.
-2. [Context-stress design](../docs/architecture/phase5_context_stress_v1_design.md):
-   chưa implementation/GPU. Exact4096input,512/128output; phân biệt output count
-   với actualKVcache. Không benchmarkdecode/promptchange hoặc localmodels.
-3. Versioned runtime integration, A4 processing-scope anchors, private-record
+1. [Context-stress design](../docs/architecture/phase5_context_stress_v1_design.md):
+   geometry CPU đã có, cần native backend/runner với fresh forced-length config,
+   cache/timing/memory observations, partial evidence/finally cleanup và fake QA.
+   Sau đó exact preflight/source push/new GPU identity. Exact4096input,512/128output;
+   không suy output count thành full KV cache hoặc thay benchmark decoding.
+2. Versioned runtime integration, A4 processing-scope anchors, private-record
    final entitlements, grouped Dev guard/model decision/differential/freeze.
    Không tune từ four-call diagnostic, không Phase6/7/Test access.
 
 Pending access: không tài khoản/model access mới cần cho bước CPU hiện tại.
-Kaggle huylmhuhu/kaggle1, systemCLI2.2.4; Dataset11942593private/v1, quota28,89h
-chỉ là pre-submit2026-09-09, kiểm lại trước run mới. Không cycling account.
+Kaggle huylmhuhu/kaggle1, systemCLI2.2.4; Dataset11942593private/v1, quota28,57h
+chỉ là pre-submit2026-09-10, kiểm lại trước run mới. Không cycling account.
 Llama/Meta pilot chưa chạy; không gán điểm0.
 
 ## Bằng chứng
 
+- [Pair-progress audit](../experiments/manifests/phase5_pair_progress_gpu_v1_audit01.json)
+  và [release QA](../experiments/manifests/phase5_pair_progress_gpu_v1_release_qa01.json):
+  source `a1a90b3`, pre-push `f8ab56d`, 106 raw files, hai audits byte-identical.
+  Full QA 1.552 pass/1skip, setup/Ruff/mypy248/knowledge đạt; credential-value scan
+  118 files/bốn values/0matches. Context geometry CPU commit `0d6d141`.
 - [IPC selected audit](../experiments/manifests/phase5_pair_ipc_gpu_v1_audit01.json):
   source9087791, pre-pushmain31910cb; raw `results/phase5_pair_ipc_gpu_v1_raw01`,
   remote `build/kaggle/pair_ipc_gpu_v1_remote_source01`; audits01–04byte-identical.
@@ -70,7 +86,8 @@ Llama/Meta pilot chưa chạy; không gán điểm0.
 
 Worker reap, graceful exit, VRAM recovery và IPC cleanup là các kết luận khác nhau.
 IPC trace không quan sát cachedaliases/Cregistrations/trackerOSunlink; timings
-instrumented không gộp với lượt trước. Thread-only lock chưa GPU/HF verified.
+instrumented không gộp với lượt trước. Thread-only lock đạt bounded HF/GPU
+creation-path prevention, không phải graceful/native generation shutdown proof.
 
 Không privateGT/Testpayload/credentials/hiddenreasoning trong memory; memory không
 đi vào prompts. Test seals chỉ hash-check, không model Test. Phase1–4 đã accepted

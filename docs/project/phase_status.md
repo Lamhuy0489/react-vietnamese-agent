@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: GPU IPC registration origin traced; prevention validation, context stress, integration and quality gaps remain**
+- Current stage: **Phase 5 in progress: bounded GPU progress-lock prevention validated; native context stress, integration and quality gaps remain**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-10
 
@@ -430,8 +430,20 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   Source9087791/pre-push31910cb, full pre-submit QA1,481tests/359.83s.
   [Evidence clarification](../evaluation/phase5_pair_ipc_gpu_v1_review_addendum.md),
   [selected audit](../../experiments/manifests/phase5_pair_ipc_gpu_v1_audit01.json).
-  Thread-only progress-lock prevention is a separate CPU implementation, not
-  applied or validated with GPU/HF workers yet. Context/runtime/Dev gates remain.
+  This historical run did not apply prevention; the separate validation follows.
+
+- [x] Pair-progress GPU v1 COMPLETE, one submission; exact 17-file overlay,
+  pinned private/offline T4 inputs, source `a1a90b3` and pre-push `f8ab56d`.
+  106 raw hashes verified, audits/reports01/02 byte-identical. Six policy receipts
+  bind PID and native tqdm implementation; zero observed child registrations,
+  owner90/90, no unmatched entries or shutdown semaphore warnings. Six HF loads,
+  zero generation;18VRAM samples residual0bytes both GPUs. Five TERM/one KILL,
+  zero graceful exits: creation-path prevention passes, not global IPC cleanup.
+  [Report](../evaluation/phase5_pair_progress_gpu_v1_report.md),
+  [selected audit](../../experiments/manifests/phase5_pair_progress_gpu_v1_audit01.json).
+  Pre-submit QA1,517pass/1optional native skip; exact native preflight ran both
+  layouts. Context geometry CPU adds35tests, full QA1,552pass/1skip; native
+  maximum-context runner/GPU stress, runtime integration and Dev gates remain.
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
