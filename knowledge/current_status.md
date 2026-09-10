@@ -2,12 +2,18 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-11
 
-Đang chuẩn bị [context/policy GPU](context_policy_gpu_v1.md):45focused tests
-đạt cho publisher authentication/combined audit/packaging;32file wrapper và
-dispatcher giữ nguyên HF source. Source9bbf5eb exactpreflight hai layouts đạt;
-full1.788pass/1optional skip370,00s/setup/Ruff/mypy264/knowledge đạt.
-Chưa GPUsubmission; tiếp push nguồn/receipts → một GPUstress; quota28,27h,
-Datasetprivate/v1ready/modelmountv1 truy cập được. Không localmodel/Test.
+[Context/policy GPU v1](context_policy_gpu_v1.md) đã ERROR, không còn RUNNING.
+Một submission; giữ nguyên 59 raw và 2 remote files. Agent load khoảng 259 giây
+rồi lỗi thứ tự factory: stress nhận ReadyBackend thay vì native backend;
+guard chưa chạy, không stress generation. Không tính lượt này là đạt gate.
+[Failure receipt](../experiments/manifests/phase5_context_policy_gpu_v1_failure01.json).
+
+Đang sửa bằng [v2 contract](../docs/architecture/phase5_context_policy_gpu_v2_contract.md):
+readiness bọc ngoài instrumentation, không đổi model/decoding/deadline.
+CPU real-spawn đã tái hiện lỗi cũ và bản sửa READY cả hai roles, không tải model.
+36-file wrapper và exact preflight mới bổ sung kiểm tra factory thật cho hai
+layouts; chưa submit GPU v2. Tiếp full QA, source commit, exact preflight và
+kiểm tra quota trước một submission mới. Không local model hoặc Test access.
 
 [Native policy CPU compatibility](policy_native_compat_v1.md): worker source
 `5c0c20e`, exact archive/expanded/PAX/tools/Dummy/resume và native progress

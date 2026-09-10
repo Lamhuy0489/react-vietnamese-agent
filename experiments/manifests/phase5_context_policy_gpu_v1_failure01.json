@@ -1,0 +1,348 @@
+{
+  "protocol": "context_policy_gpu_v1_failure_evidence",
+  "artifact_integrity_valid": true,
+  "stress_valid": false,
+  "phase5_accepted": false,
+  "kernel_status": "ERROR",
+  "kernel_version": 1,
+  "submission_count": 1,
+  "source_commit": "9bbf5eb7be560b6ee3bb065d8e15a449af867ab9",
+  "raw_sha256": {
+    "context_policy_bootstrap_identity.json": "9d4907fa00847773de74df141bf454423215a6d7048b6c3115a444a865fd099f",
+    "context_stress/agent_hf_metrics.jsonl": "e3ef5b77629e3af5ff661d9b4a12410f26c0b2ed10b3d42f1b53e05d140487f0",
+    "context_stress/baseline.json": "ea5e75eb4fc1e10a100d236c84f346d5f6589fb7b9d53cb89d065f2fec6884d2",
+    "context_stress/closed.json": "955244e2726cc3e2561757a7c445cee9f8e8ec3fe086cbf9389a8eb4ead74a37",
+    "context_stress/error.json": "e04e5d8cd4785988094da2b4a5d753a68c8154c790a0b80576f1b3b3d6873829",
+    "context_stress/manifest.json": "a6814cce1245451e86c16f15d924430f2553e3badcefbafc080326db3fe508f7",
+    "context_stress/recovery_0.json": "ea39762cb4505ab1aec782212d77a13e321342fd028064a04662501e0f749137",
+    "context_stress/recovery_1.json": "61211c6b91668a76c424ddb71363f406f24d8b033e0e37ca72fe7912266b383e",
+    "context_stress/recovery_2.json": "6b50abe69772749b428a59467d9dc68abb57e7807003f265316091dc9e318327",
+    "context_stress/recovery_3.json": "8de52f5a4272b304765dda925a0cd25696c91cdc1c804b362663cb55294e346d",
+    "context_stress/recovery_4.json": "88de264c6e9e60f1173749131ff7654fb55022a3c448ba9d5f9478e4d8ff6ef7",
+    "context_stress/recovery_5.json": "9255b613d07fdb06cc34a31ecc5086b3347a344a2627b3398fa3b370a07ac5a5",
+    "context_stress/summary.json": "639890fa4c182b23d7a4e20c3711f574b68ed08db7f7e0f04245e66bb02aa2ee",
+    "dummy/identity.json": "4c31213415554ea47a0dbae53cca860d9e90dfd292a848f49309032ef2a7f4f6",
+    "dummy/results.json": "8f44f5661ab3ff0238394f6142f6f8c50c5c0fc095d7cf29822a350e26f61821",
+    "dummy/summary.json": "e82df1edf99f20b2eff99c2540aee1fbdbd6cff4c47ae69e18b8515c890ef521",
+    "dummy/tasks/clean_0002/result.json": "1db653b73a83bace05b1e6e4e4c2d14b057ba6bba045ea7e125461989a2faf38",
+    "dummy/tasks/clean_0002/trace.jsonl": "bff35379e7e055202ea1d348d6a78a90dc88e9fc8c786659117cd5657781cdcf",
+    "dummy/tasks/clean_0004/result.json": "8949c4906ece12d6e3a8d337cbb1e8f020685087c166d58cbae9237fcbff8f54",
+    "dummy/tasks/clean_0004/trace.jsonl": "36ea57b682c31ee0087b171e54922d49a854cab7a38907a95f2bddb205f312a5",
+    "dummy/tasks/clean_0005/result.json": "93ba36adc949a5dd93fd85f52ad312bc174ace1356f678f2450f01842816a1b5",
+    "dummy/tasks/clean_0005/trace.jsonl": "edc4ed981994d3abfe511c946ff44fc8d7b29520ebab34d6cc85735cd4b4e107",
+    "dummy/tasks/clean_0042/result.json": "d39d69f77ea15e8ea16ef98c22d1f479000e7d145931eb099d5d57e6ea6e70e2",
+    "dummy/tasks/clean_0042/trace.jsonl": "28ccd5374441586bea074fe496ea289256ab81dcd229b6b9c4b3e68d0566ed7c",
+    "dummy/tasks/clean_0046/result.json": "3f4893fe8806a4fbba3a29d5fe39f0ea0f14a4f6e07277e39513875feea5dbe7",
+    "dummy/tasks/clean_0046/trace.jsonl": "fb95573a50940d5cc420e3a4873918624e93bec26ff93e582a179ecd48f92220",
+    "dummy/tasks/clean_0047/result.json": "5b2447c30145de13a02d2cd1664d308ac825de9e3ab04920f1b40519e320ab12",
+    "dummy/tasks/clean_0047/trace.jsonl": "dc25b501bf92ec4f28256ba89aefe7f94d82109fb0cdc6ae69428e5f94bab190",
+    "dummy/tasks/clean_0081/result.json": "0f1b44bbbb4895454b32f47bf3a41348625059f5541c6bbf95077fc373bafae8",
+    "dummy/tasks/clean_0081/trace.jsonl": "aef038b92bc80198ca7df9b7b15609bee811257c149ded939a97c6952ea916e2",
+    "dummy/tasks/clean_0082/result.json": "3eb501c0e3d3ad0b41bd975739697dabb3f6cc0b38bebdaaa890a937e7207396",
+    "dummy/tasks/clean_0082/trace.jsonl": "d9aa08a58fe31b960741967db41b9cd46b32649633cf7af9e601d2c47c74a2a5",
+    "dummy/tasks/clean_0083/result.json": "762147fbefe16d7c086675b2d123f84eaceccfe6a2b49fa3743a15c27a0d22cf",
+    "dummy/tasks/clean_0083/trace.jsonl": "4c399361aac0ef1229400340b008503162d87291fff750708c931af9784cebc0",
+    "dummy/tasks/clean_0132/result.json": "4545f3833b0a4af4b4c7d19e6afe3bdc9c8c0ec9a5e692a15f092b377d17b32f",
+    "dummy/tasks/clean_0132/trace.jsonl": "14943f51c9954144a5d1f2ab739c27fc84488bd6005706ef2bdd47ee5bb53909",
+    "dummy/tasks/clean_0134/result.json": "7e185a6c3c522075b605f41c9a742cf9fe430a8e79f33428e3ea29b02ff287f0",
+    "dummy/tasks/clean_0134/trace.jsonl": "339400e87ccef0cfe2361cf27d85c17bbe339ab1be05efa4a29988b65113de89",
+    "dummy/tasks/clean_0135/result.json": "faad3d032a6d88d62f4941a8052d8cb1dd37fb647032be54cd5ec6d1a23fb481",
+    "dummy/tasks/clean_0135/trace.jsonl": "61fd38b3c7353fce1561e0e831015443a92583014722c290f96aa8633ff8c7a4",
+    "dummy/tasks/clean_0171/result.json": "472456ee21a941bd817dc3ed43c759aa93ecb8e680e1bb978573bfea4ea33705",
+    "dummy/tasks/clean_0171/trace.jsonl": "e0a5c53ed436c829d8da462d90b814253b306b20104ebc38bebeaa5569b33227",
+    "dummy/tasks/clean_0173/result.json": "4cee8c7e74b7cc50a58b12e3870ad1e5ca77a8914f87a752211c3cb5e80de571",
+    "dummy/tasks/clean_0173/trace.jsonl": "92a75e3259cbd8ecdd1454e5067e845e0fdc7e7f36f501dc116f6d40831c27e3",
+    "dummy/tasks/clean_0174/result.json": "3a2f3a907199e00587f9a865a5ce5067c1c35efdb23bc9dad23bae790c756e95",
+    "dummy/tasks/clean_0174/trace.jsonl": "0f2f17db38b53d81a3f36dff00fd3594ea439d1829a5adb4f8a1b20f8ab3d997",
+    "dummy/tasks/clean_0197/result.json": "5fc6aadf3c75c81c326f1369651230fe6022cb8286a6a3779a14385873bbf133",
+    "dummy/tasks/clean_0197/trace.jsonl": "0fa80bfb79b5ede4aaa80f740cec4d0fa403e51b713bd55de95c9eb10859f5df",
+    "dummy/tasks/clean_0199/result.json": "6ae3f1ac1769272bc6c6663577c92b175ea247aa3200cf38a0bdc2faf9a23b9b",
+    "dummy/tasks/clean_0199/trace.jsonl": "e64851e9a41d13238a919b4af0065a9c98f2b951f40832534a9f520064ef4f51",
+    "dummy/tasks/clean_0200/result.json": "5a395f31b599281cc9be009b8b98853a9de9e9d848d664c5c8cae9f167cd54ab",
+    "dummy/tasks/clean_0200/trace.jsonl": "646cbf6532db5a763f6f16baf68ccfa764e018a2b8d0cb2912a757a0470e7559",
+    "dummy/tasks/clean_0226/result.json": "561adbca117bb1659bc5e771f50974640d69dbeb9571237c91d9420f31dbb87c",
+    "dummy/tasks/clean_0226/trace.jsonl": "3ee6132f2f9b8e46ee65e07708f2e365cd4162cd66bc053e95d2d8f084b2df4e",
+    "dummy/tasks/clean_0228/result.json": "3c4b949281d315be090213774195dbdd52921022f295ca9d103e2762502cd878",
+    "dummy/tasks/clean_0228/trace.jsonl": "3bb2b465f90c87f5c05a39868583e4f6728ee6c41bc557e54a5836a1eee6b0bd",
+    "dummy/tasks/clean_0229/result.json": "f76b6906cf755405426985d8335898401e9ff855e08db4b1c9cfda86061844c4",
+    "dummy/tasks/clean_0229/trace.jsonl": "6cd6452d3f121caf86877ef82c175bbcf053f69eecef109c031d6102550cd774",
+    "react-vn-context-policy-v1.log": "c01a3dd81504d429c71b0b4f332071e65642e708927c5a29f5647a0f038bea71"
+  },
+  "remote_sha256": {
+    "kernel-metadata.json": "b282c07ad7b392cfe31376304b122f27d62c8adb8e22a19d5506cb75d027e248",
+    "react-vn-context-policy-v1.py": "af58181e04eec44035860b064153a8a50352cae93459384fa82ce0a1a9742fad"
+  },
+  "bootstrap_verified": true,
+  "remote_metadata": {
+    "id": "huylmhuhu/react-vn-context-policy-v1",
+    "id_no": 133864169,
+    "title": "ReAct VN Context Policy v1",
+    "code_file": "react-vn-context-policy-v1.py",
+    "language": "python",
+    "kernel_type": "script",
+    "is_private": true,
+    "enable_gpu": true,
+    "enable_tpu": false,
+    "enable_internet": false,
+    "keywords": [],
+    "dataset_sources": [
+      "huylmhuhu/react-vn-guard15-probe-data-v1"
+    ],
+    "kernel_sources": [],
+    "competition_sources": [],
+    "model_sources": [
+      "qwen-lm/qwen2.5/Transformers/7b-instruct/1"
+    ],
+    "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+    "machine_shape": "NvidiaTeslaT4"
+  },
+  "dummy": {
+    "valid": true,
+    "tasks": 21,
+    "events": 84,
+    "unique_run_ids": 21,
+    "scope": "Dummy transport/checkpoints only, not semantic task success"
+  },
+  "summary_preserved": {
+    "actual_model_generation_calls": null,
+    "calls_completed": 0,
+    "cleanup_error": false,
+    "native_stress_verified": false,
+    "phase5_accepted": false,
+    "protocol": "context_stress_pair_probe_v1",
+    "reaped": true,
+    "recovery_valid": true,
+    "scope": "Stress transport/completion/recovery; stub is not native GPU evidence; native records still require independent artifact audit",
+    "status": "ERROR",
+    "valid": false
+  },
+  "agent_start_attempt": {
+    "cold_start": true,
+    "elapsed_seconds": 259.814326482,
+    "execution_config_sha256": "f5517704c3f9fb58c36205569b9cc4931cbb9808776b1ec6db2eaa95c3784829",
+    "generation_seconds": 0.0,
+    "generation_sha256": "32dfcc50c6378ec0d22ba7b78542f1bd997b502f708277dfbf5266f210e768fd",
+    "load_seconds": 259.04325589099994,
+    "pid": 40,
+    "reaped": true,
+    "request_sha256": "5af0b9d52c04bad9feab11bfcc74d0a41c6f89174757b0902297cd8c3a573b28",
+    "sequence": 1,
+    "status": "BACKEND_FAILURE",
+    "worker_retained": false
+  },
+  "agent_load": {
+    "adapter_protocol": "agent_hf_dual_gpu_v2_tf550",
+    "agent_caps": [
+      12884901888,
+      7516192768
+    ],
+    "attention": "sdpa",
+    "cuda_version": "12.8",
+    "device_map": {
+      "lm_head": 1,
+      "model.embed_tokens": 0,
+      "model.layers.0": 0,
+      "model.layers.1": 0,
+      "model.layers.10": 0,
+      "model.layers.11": 0,
+      "model.layers.12": 0,
+      "model.layers.13": 0,
+      "model.layers.14": 0,
+      "model.layers.15": 0,
+      "model.layers.16": 0,
+      "model.layers.17": 0,
+      "model.layers.18": 0,
+      "model.layers.19": 0,
+      "model.layers.2": 0,
+      "model.layers.20": 1,
+      "model.layers.21": 1,
+      "model.layers.22": 1,
+      "model.layers.23": 1,
+      "model.layers.24": 1,
+      "model.layers.25": 1,
+      "model.layers.26": 1,
+      "model.layers.27": 1,
+      "model.layers.3": 0,
+      "model.layers.4": 0,
+      "model.layers.5": 0,
+      "model.layers.6": 0,
+      "model.layers.7": 0,
+      "model.layers.8": 0,
+      "model.layers.9": 0,
+      "model.norm": 1,
+      "model.rotary_emb": 1
+    },
+    "dtype": "float16",
+    "event": "load",
+    "global_before": [
+      {
+        "free_bytes": 15402336256,
+        "index": 0,
+        "name": "Tesla T4",
+        "total_bytes": 15636037632
+      },
+      {
+        "free_bytes": 15402336256,
+        "index": 1,
+        "name": "Tesla T4",
+        "total_bytes": 15636037632
+      }
+    ],
+    "load_seconds_including_hashes": 258.98034668,
+    "memory": [
+      {
+        "allocated_bytes": 10412830720,
+        "device": 0,
+        "global_free_bytes": 4987879424,
+        "global_total_bytes": 15636037632,
+        "peak_allocated_bytes": 10412830720,
+        "peak_reserved_bytes": 10414456832,
+        "reserved_bytes": 10414456832
+      },
+      {
+        "allocated_bytes": 4819451904,
+        "device": 1,
+        "global_free_bytes": 10580983808,
+        "global_total_bytes": 15636037632,
+        "peak_allocated_bytes": 4819451904,
+        "peak_reserved_bytes": 4821352448,
+        "reserved_bytes": 4821352448
+      }
+    ],
+    "model_id": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28:runtime-sha256:24b62737df7885edc2facccd6ca172c0266bccec85c30080a9fcb45adad6d19b",
+    "placement_sha256": "e5ab63050de430b4620d51352da61cb2da73d86cf3db6e92ec834faeba7d405a",
+    "protocol": "agent_hf_dual_gpu_v1",
+    "quantization": null,
+    "runtime_admission": {
+      "content_sha256": "24b62737df7885edc2facccd6ca172c0266bccec85c30080a9fcb45adad6d19b",
+      "documentation_mismatches": [
+        "README.md"
+      ],
+      "files": [
+        {
+          "name": ".gitattributes",
+          "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+          "size": 1519
+        },
+        {
+          "name": "LICENSE",
+          "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+          "size": 11343
+        },
+        {
+          "name": "README.md",
+          "sha256": "0981c06fb21db45eca831ebafa68861b654587566a8e3071aece79cf60329b71",
+          "size": 6005
+        },
+        {
+          "name": "config.json",
+          "sha256": "7463bb0ea78315365e6c6b74de4e73bbcc8359dfb0c5a737584e077d42c0b03c",
+          "size": 663
+        },
+        {
+          "name": "generation_config.json",
+          "sha256": "3a8f9087e486054c8a4a08dae2e5a3ba62e23da212b5b8c08bc42cb983c3459f",
+          "size": 243
+        },
+        {
+          "name": "merges.txt",
+          "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+          "size": 1671839
+        },
+        {
+          "name": "model-00001-of-00004.safetensors",
+          "sha256": "a1333e6293854747c481288ea83b348226af178dd565c49b6f9495ba1966aba7",
+          "size": 3945441440
+        },
+        {
+          "name": "model-00002-of-00004.safetensors",
+          "sha256": "f5d25a2772cb825164a2a2c0fb6d51a87e282abf21e4dd75bc5cfb3cd0ea6185",
+          "size": 3864726352
+        },
+        {
+          "name": "model-00003-of-00004.safetensors",
+          "sha256": "8efdec4c1bc12317ae1a38dc42b595ce777738a64deea3fcb8a0a91381bcdfd5",
+          "size": 3864726424
+        },
+        {
+          "name": "model-00004-of-00004.safetensors",
+          "sha256": "1a72d403cdf0c1ec3cb7f289f17b394a01e64394c2e9b3c0f94dbce3faf879bd",
+          "size": 3556377672
+        },
+        {
+          "name": "model.safetensors.index.json",
+          "sha256": "624bf7c47cd12468fdc16e38a47cf4f19e0415b859a223ba3c027eed2f0e1028",
+          "size": 27752
+        },
+        {
+          "name": "tokenizer.json",
+          "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+          "size": 7031645
+        },
+        {
+          "name": "tokenizer_config.json",
+          "sha256": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+          "size": 7305
+        },
+        {
+          "name": "vocab.json",
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+          "size": 2776833
+        }
+      ],
+      "full_inventory_match": false,
+      "inventory_sha256": "9023d04a65f44a4e4beef29efba9f1ca088e2af1990cc82e586f457d4c5c43b3",
+      "parameter_tensors": 339,
+      "phase5_accepted": false,
+      "protocol": "agent_runtime_input_v1",
+      "runtime_files": 11,
+      "runtime_files_match": true,
+      "serialized_parameter_bytes": 15231233024
+    },
+    "torch_version": "2.10.0+cu128",
+    "transformers_version": "5.5.0"
+  },
+  "agent_cleanup": {
+    "elapsed_seconds": 0.39996803799999725,
+    "exitcode": -15,
+    "method": "TERMINATE",
+    "pid": 40,
+    "reaped": true,
+    "sequence": 1
+  },
+  "guard_started": false,
+  "recovery_signed_residual_bytes": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "shutdown_warnings": {
+    "semaphore_warning_counts": [],
+    "ipc_cleanup_verified": false,
+    "scope": "Kernel shutdown warnings are separate from measured worker reap/VRAM recovery"
+  },
+  "classification": "Factory composition: ContextStressFactory receives ReadyBackend instead of the exact native loader type; deterministic CPU reproduction agrees with post-load/pre-ready failure. No native stress completed; raw actual_model_generation_calls=null retained.",
+  "scope": "Failed startup evidence, not maximum-context fit or model quality. One initialized agent; guard never started; failed source/raw preserved."
+}

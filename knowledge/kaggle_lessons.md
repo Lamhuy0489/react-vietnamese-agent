@@ -210,3 +210,19 @@ Failed SaveKernel requests are not completed or failed inference attempts.
 - Kernel COMPLETE alone is not acceptance: verify remote code, native installed
   source hashes, exact raw inventory, failure controls and repeated independent
   audits. Reused synthetic counters must not be reported as model inference.
+
+## HF factory composition failure — 2026-09-11
+
+- Context/policy v1 failed after the agent load, before READY or guard startup.
+  Preserve its 59 raw files; BACKEND_FAILURE is not proof of a model-load error.
+  The exact native-type validator was given a host ReadyBackend by the entry's
+  decorator order. [Failure and correction](context_policy_gpu_v1.md).
+- A dispatcher stub and native-library hook harness do not exercise the real HF
+  factory composition. Test the composed factory in actual daemon-spawn workers,
+  retaining the original failing topology as a control. Native-shaped objects
+  bypassing constructors prove readiness/transport only, not model execution.
+- Place host ReadyFactory outside single-use stress instrumentation. Assert
+  readiness leaves the stress call unused, verify both roles before mutating
+  factories, and retain the native exact-type check. Run this gate in both exact
+  archive/expanded preflights. New code means a new kernel identity, not a rerun
+  overwriting the failed v1 evidence. [v2 contract](../docs/architecture/phase5_context_policy_gpu_v2_contract.md).

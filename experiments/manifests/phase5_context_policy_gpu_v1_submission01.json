@@ -1,0 +1,22 @@
+{
+  "protocol": "context_policy_gpu_submission_v1",
+  "kernel": "huylmhuhu/react-vn-context-policy-v1",
+  "version": 1,
+  "submission_count": 1,
+  "source_commit": "9bbf5eb7be560b6ee3bb065d8e15a449af867ab9",
+  "github_pre_submit_commit": "b257506",
+  "submission_success_observed_at_utc": "2026-09-10T17:33:29Z",
+  "preflight": "experiments/manifests/phase5_context_policy_gpu_v1_preflight01.json",
+  "pre_submit_qa": "experiments/manifests/phase5_context_policy_gpu_v1_pre_submit_qa01.json",
+  "accelerator": "NvidiaTeslaT4",
+  "timeout_seconds": 3600,
+  "expected_native_generations": 2,
+  "expected_separate_final_forwards": 2,
+  "dataset_id": 11942593,
+  "dataset_private_version_verified": 1,
+  "dataset_status_before_push": "ready",
+  "gpu_hours_remaining_before_push": 28.27,
+  "remote_source_directory": "build/kaggle/context_policy_gpu_v1_remote_source01",
+  "phase5_accepted": false,
+  "scope": "One maximum-context technical diagnostic, not benchmark quality or a cross-model speed comparison; no retries"
+}

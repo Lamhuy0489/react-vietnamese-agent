@@ -4,12 +4,19 @@ Cập nhật: 2026-09-11. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Đang chuẩn bị [context/policy GPU](context_policy_gpu_v1.md): publisher metadata
-đã xác thực, combined23+10/outer80file auditor +32file wrapper/builder/dispatcher
-đã có;45focused tests đạt. Source9bbf5eb exactpreflight hai layouts đạt,
-full1.788pass/1optional skip370,00s/setup/Ruff/mypy264/knowledge đạt. Chưa submission.
-Tiếp push nguồn/receipts → một GPUstress identity đã khai báo. Datasetprivate/v1
-ready, modelmountv1 truy cập được, currentquota28,27h. Không localweights/Test/privateGT.
+[Context/policy GPU v1](context_policy_gpu_v1.md) đã ERROR sau một submission,
+không còn job RUNNING. Giữ nguyên 59 raw và 2 remote files; bootstrap/source/
+metadata/Dummy/agent load/recovery đã kiểm. Agent lỗi sau load khoảng 259 giây,
+guard chưa khởi động, không stress generation. Factory nhận ReadyBackend thay
+vì native backend. [Failure receipt](../experiments/manifests/phase5_context_policy_gpu_v1_failure01.json).
+
+Đang làm [v2](../docs/architecture/phase5_context_policy_gpu_v2_contract.md): đưa
+ReadyFactory ra ngoài progress/policy instrumentation. CPU real-spawn control
+đã tái hiện bản cũ BACKEND_FAILURE và bản sửa READY cả hai roles, không weights.
+36-file wrapper/builder mới thêm phép kiểm tra factory cho cả hai layouts.
+Tiếp full QA, commit source, exact preflight và push trước một GPU v2 submission;
+chưa submit v2. Giữ nguyên toàn bộ source/receipt/raw v1, không retry mù.
+Không localweights/Test/privateGT; quota phải kiểm lại trước GPU mới.
 
 Đã COMPLETE [native policy compatibility CPU](policy_native_compat_v1.md),
 `huylmhuhu/react-vn-policy-native-compat-v1` version1, một submission.
@@ -93,9 +100,9 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
 1. [Context-stress design](../docs/architecture/phase5_context_stress_v1_design.md):
    geometry/native backend/runner và independent23file auditor đã có. Static
    native interface checks đạt nhưng phát hiện publisher-default inheritance.
-   Versioned policy receipt+auditor CPU/fullQA và native library hook rehearsal
-   không weights đã đạt; tiếp outer audit xác thực publisher metadata độc lập,
-   gộp23probe+10policyfiles. Sau đó exact wrapper/preflight/new GPU identity.
+   Versioned policy receipt/outer audit và native library rehearsal đã có.
+   GPU v1 lỗi thứ tự factory; tiếp v2 corrected topology, exact factory-spawn
+   preflight cả hai layouts, full QA rồi một submission mới theo contract v2.
    Exact4096input,512/128output;
    không suy output count thành full KV cache hoặc thay benchmark decoding.
 2. Versioned runtime integration, A4 processing-scope anchors, private-record
