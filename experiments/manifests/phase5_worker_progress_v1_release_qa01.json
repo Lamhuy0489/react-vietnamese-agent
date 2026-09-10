@@ -1,0 +1,72 @@
+{
+  "protocol": "phase5_worker_progress_release_qa_v1",
+  "software_qa_valid": true,
+  "phase5_accepted": false,
+  "source_commit": "e8f72de5f5ff9c9406f981db99834a60fd62652c",
+  "full_suite_passed": 1496,
+  "full_suite_skipped": 1,
+  "full_suite_seconds": 354.52,
+  "junit": {
+    "tests": "1497",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "1",
+    "time": "354.450"
+  },
+  "skip_reason": "Optional native pytest control: .venv lacks pinned tqdm; native controls executed separately with system Python 3.11.0 and tqdm 4.67.3",
+  "new_unit_tests_passed": 15,
+  "native_reproductions": 2,
+  "native_distinct_workers": 8,
+  "native_raw_files_per_run": 7,
+  "native_register_counts_each_run": [
+    1,
+    1,
+    0,
+    0
+  ],
+  "native_unregister_counts_each_run": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "positive_control_semaphore_warning_count_each_run": 2,
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 243,
+  "knowledge": "pass",
+  "credential_scan_files": 133,
+  "credential_values_checked": 4,
+  "credential_value_matches": 0,
+  "integrity_counts": {
+    "guard_hf": 134,
+    "agent_loader": 6,
+    "model_pair": 6,
+    "pair_cancel_overlay": 13,
+    "pair_ipc_overlay": 15,
+    "pair_cancel_raw": 91,
+    "pair_ipc_raw": 99
+  },
+  "held_out_seals": "hash-only pass",
+  "test_payloads_parsed": 0,
+  "new_kaggle_submissions": 0,
+  "model_loads": 0,
+  "gpu_runs": 0,
+  "ipc_cleanup_verified": false,
+  "hf_gpu_prevention_verified": false,
+  "source_and_evidence_sha256": {
+    "src/react_agent/llm/worker_progress_v1.py": "6a2df338c1c79aa5c62796ed98dc34d48f722bbd6a5102fc31934103da06d35c",
+    "scripts/probe_phase5_worker_progress.py": "1bebfeb965d422bfa3cc01bd20a2918ea73f3bfa5e561c14e24dcad349756973",
+    "tests/unit/test_worker_progress_v1.py": "54f0184fc45efb307e2d1cff473e56153e0ff1c1b7dce805a5036552f13395e4",
+    "experiments/manifests/phase5_worker_progress_v1_validation01.json": "fb48d95b9254f1b41bfd3a77c410baca396663e2ba5302c8dfbae16e2e80d763",
+    "results/phase5_worker_progress_cpu_validation01/receipt.json": "fb48d95b9254f1b41bfd3a77c410baca396663e2ba5302c8dfbae16e2e80d763",
+    "results/phase5_worker_progress_cpu_validation02/receipt.json": "ea4a16ce6acd0116fbe8a3508b22064bf20f71790bc5206fe8e9341ade6815f8",
+    "results/phase5_worker_progress_v1_release01_pytest.xml": "31daf24dad9ddab0d83c53e87f2c0aa377d39a8046ccda5d33879d7333e2d25b"
+  },
+  "remaining": [
+    "New versioned GPU wrapper and exact bundle preflight before HF prevention validation",
+    "Maximum-context stress implementation and GPU validation",
+    "Versioned runtime integration",
+    "A4 processing scope, private-record final entitlements, grouped Dev guard/model decision"
+  ]
+}

@@ -7,7 +7,12 @@ IPC diagnostic đã được audit lại03/04,99raw files nguyên vẹn. Kết l
 thay thế các khẳng định quá rộng trong bàn giao dưới đây: cả6worker vẫn forced,
 không chứng minh absence of driver/IPC leaks. TQDM_DISABLE không tránh tạo khóa.
 [Worker progress v1](worker_progress_v1.md) đã có bản sửa riêng và native CPU
-controls1/1/0/0registrations; đang full QA, chưa áp dụng/kiểm chứng fix trên GPU.
+controls 1/1/0/0 registrations. Hai lượt native CPU từ source `e8f72de` đã đạt,
+8 PID khác nhau, mỗi lượt 7 raw files được kiểm hash. Full QA: 1.496 đạt,
+1 optional native pytest bỏ qua vì .venv thiếu tqdm; native chạy riêng bằng
+system Python 3.11.0 với tqdm 4.67.3. Setup/Ruff/mypy 243 files/knowledge đạt.
+[Release QA](../experiments/manifests/phase5_worker_progress_v1_release_qa01.json).
+Chưa áp dụng hoặc kiểm chứng fix trên GPU; tiếp theo là wrapper/preflight riêng.
 Không jobKaggle mới, không localmodel/Test; Phase5 còn mở.
 
 Phần ghi nhận2026-09-09 dưới đây giữ để đối chiếu; diễn giải tuân theo đính chính.

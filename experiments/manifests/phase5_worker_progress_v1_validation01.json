@@ -1,0 +1,269 @@
+{
+  "gpu_runs": 0,
+  "ipc_cleanup_verified": false,
+  "model_loads": 0,
+  "observations": {
+    "default_term": {
+      "events": 4,
+      "ipc_cleanup_verified": false,
+      "pid": 46743,
+      "register_calls": 1,
+      "role": "control",
+      "scope": "Only observed Python entry-point calls; no OS/tracker-exit observation",
+      "unmatched_registrations": [
+        {
+          "action": "REGISTER",
+          "name_sha256": "edd382123c455b0cf6f6e8854035108629f932f3b9439a102571b6e9360406dd",
+          "pid": 46743,
+          "protocol": "ipc_tracker_trace_v1",
+          "resource_type": "semaphore",
+          "role": "control",
+          "sequence": 3,
+          "stack": [
+            {
+              "file": "synchronize.py",
+              "function": "__init__",
+              "line": 80,
+              "module": "multiprocessing.synchronize"
+            },
+            {
+              "file": "synchronize.py",
+              "function": "__init__",
+              "line": 187,
+              "module": "multiprocessing.synchronize"
+            },
+            {
+              "file": "context.py",
+              "function": "RLock",
+              "line": 73,
+              "module": "multiprocessing.context"
+            },
+            {
+              "file": "std.py",
+              "function": "create_mp_lock",
+              "line": 121,
+              "module": "tqdm.std"
+            },
+            {
+              "file": "std.py",
+              "function": "__init__",
+              "line": 97,
+              "module": "tqdm.std"
+            },
+            {
+              "file": "std.py",
+              "function": "get_lock",
+              "line": 764,
+              "module": "tqdm.std"
+            },
+            {
+              "file": "std.py",
+              "function": "__new__",
+              "line": 665,
+              "module": "tqdm.std"
+            },
+            {
+              "file": "probe_phase5_worker_progress.py",
+              "function": "child",
+              "line": 49,
+              "module": "__mp_main__"
+            },
+            {
+              "file": "process.py",
+              "function": "run",
+              "line": 108,
+              "module": "multiprocessing.process"
+            },
+            {
+              "file": "process.py",
+              "function": "_bootstrap",
+              "line": 314,
+              "module": "multiprocessing.process"
+            },
+            {
+              "file": "spawn.py",
+              "function": "_main",
+              "line": 133,
+              "module": "multiprocessing.spawn"
+            },
+            {
+              "file": "spawn.py",
+              "function": "spawn_main",
+              "line": 120,
+              "module": "multiprocessing.spawn"
+            },
+            {
+              "file": "<string>",
+              "function": "<module>",
+              "line": 1,
+              "module": "__main__"
+            }
+          ]
+        }
+      ],
+      "unregister_calls": 0
+    },
+    "disabled_term": {
+      "events": 4,
+      "ipc_cleanup_verified": false,
+      "pid": 46745,
+      "register_calls": 1,
+      "role": "control",
+      "scope": "Only observed Python entry-point calls; no OS/tracker-exit observation",
+      "unmatched_registrations": [
+        {
+          "action": "REGISTER",
+          "name_sha256": "ae8ee3a1e4c6287da2076fd9b552eaa4f101936bd51e42929a7b771727dbd832",
+          "pid": 46745,
+          "protocol": "ipc_tracker_trace_v1",
+          "resource_type": "semaphore",
+          "role": "control",
+          "sequence": 3,
+          "stack": [
+            {
+              "file": "synchronize.py",
+              "function": "__init__",
+              "line": 80,
+              "module": "multiprocessing.synchronize"
+            },
+            {
+              "file": "synchronize.py",
+              "function": "__init__",
+              "line": 187,
+              "module": "multiprocessing.synchronize"
+            },
+            {
+              "file": "context.py",
+              "function": "RLock",
+              "line": 73,
+              "module": "multiprocessing.context"
+            },
+            {
+              "file": "std.py",
+              "function": "create_mp_lock",
+              "line": 121,
+              "module": "tqdm.std"
+            },
+            {
+              "file": "std.py",
+              "function": "__init__",
+              "line": 97,
+              "module": "tqdm.std"
+            },
+            {
+              "file": "std.py",
+              "function": "get_lock",
+              "line": 764,
+              "module": "tqdm.std"
+            },
+            {
+              "file": "std.py",
+              "function": "__new__",
+              "line": 665,
+              "module": "tqdm.std"
+            },
+            {
+              "file": "probe_phase5_worker_progress.py",
+              "function": "child",
+              "line": 49,
+              "module": "__mp_main__"
+            },
+            {
+              "file": "process.py",
+              "function": "run",
+              "line": 108,
+              "module": "multiprocessing.process"
+            },
+            {
+              "file": "process.py",
+              "function": "_bootstrap",
+              "line": 314,
+              "module": "multiprocessing.process"
+            },
+            {
+              "file": "spawn.py",
+              "function": "_main",
+              "line": 133,
+              "module": "multiprocessing.spawn"
+            },
+            {
+              "file": "spawn.py",
+              "function": "spawn_main",
+              "line": 120,
+              "module": "multiprocessing.spawn"
+            },
+            {
+              "file": "<string>",
+              "function": "<module>",
+              "line": 1,
+              "module": "__main__"
+            }
+          ]
+        }
+      ],
+      "unregister_calls": 0
+    },
+    "thread_kill": {
+      "events": 3,
+      "ipc_cleanup_verified": false,
+      "pid": 46748,
+      "register_calls": 0,
+      "role": "control",
+      "scope": "Only observed Python entry-point calls; no OS/tracker-exit observation",
+      "unmatched_registrations": [],
+      "unregister_calls": 0
+    },
+    "thread_term": {
+      "events": 3,
+      "ipc_cleanup_verified": false,
+      "pid": 46747,
+      "register_calls": 0,
+      "role": "control",
+      "scope": "Only observed Python entry-point calls; no OS/tracker-exit observation",
+      "unmatched_registrations": [],
+      "unregister_calls": 0
+    }
+  },
+  "phase5_accepted": false,
+  "protocol": "worker_thread_progress_cpu_v1",
+  "python_version": "3.11.0",
+  "raw_sha256": {
+    "default_term.jsonl": "31f9205e7716f8ba980a44f891ca44ef184bf211f7ad6951ab6edf6c61fc28dc",
+    "disabled_term.jsonl": "b0bfbb1b856dfa9e4354a2fe2ff5101208a87a51f83820badaf349243d8f19eb",
+    "owner_stderr.txt": "eef082b50b2109bdfe20f7e4120cf625ff952086fb4cf0160a1e08ad70ea2852",
+    "owner_stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "thread_kill.jsonl": "611569d923a859ed075bee828aba7d52afd0fccd3d2bed8721012e11dc058378",
+    "thread_term.jsonl": "a293c385ed105aa80679b61f8ef2f12b8f45fc1c37e3170712a455c3617b61b7",
+    "workers.json": "0de4833f0d39bc28fc2320868376afc178d21136592888c955759f7ad924081f"
+  },
+  "scope": "Native pinned tqdm with synthetic iteration, not HF loading or GPU cleanup",
+  "source_commit": "e8f72de5f5ff9c9406f981db99834a60fd62652c",
+  "source_sha256": {
+    "scripts/probe_phase5_worker_progress.py": "1bebfeb965d422bfa3cc01bd20a2918ea73f3bfa5e561c14e24dcad349756973",
+    "src/react_agent/llm/ipc_trace_v1.py": "87b067f3f263a0d52090e3f2485da2be3a0cea7a5b3b63319637dcfaf3c42f59",
+    "src/react_agent/llm/worker_progress_v1.py": "6a2df338c1c79aa5c62796ed98dc34d48f722bbd6a5102fc31934103da06d35c"
+  },
+  "valid": true,
+  "workers": [
+    {
+      "case": "default_term",
+      "exitcode": -15,
+      "pid": 46743
+    },
+    {
+      "case": "disabled_term",
+      "exitcode": -15,
+      "pid": 46745
+    },
+    {
+      "case": "thread_term",
+      "exitcode": -15,
+      "pid": 46747
+    },
+    {
+      "case": "thread_kill",
+      "exitcode": -9,
+      "pid": 46748
+    }
+  ]
+}

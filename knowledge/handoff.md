@@ -10,29 +10,28 @@ observed thuộc tqdm.std.create_mp_lock trong3busy workers;90parent+3idle locks
 cóUNREGISTER. Cả6exits vẫn forced (5TERM/1KILL),0graceful.18VRAM samples về nền;
 không chứng minh driver/IPC leak-free. [Đính chính](../docs/evaluation/phase5_pair_ipc_gpu_v1_review_addendum.md).
 
-Đang chốt bản sửa opt-in thread-only progress lock và native CPU reproduction:
+Đã chốt bản sửa opt-in thread-only progress lock và hai native CPU reproductions:
 [contract](../docs/architecture/phase5_worker_progress_v1_contract.md),
 [tri thức](worker_progress_v1.md). Default/disabled/threadTERM/threadKILL controls
 có1/1/0/0registrations; TQDM_DISABLE không phải fix. Chưa sửa frozen GPU/runtime.
-Full QA đang chạy XML `results/phase5_worker_progress_v1_release01_pytest.xml`.
-Không jobKaggle/model mới hoặc local weights/Test payload.
+Full QA hoàn tất: 1.496 đạt, 1 optional native pytest bỏ qua; XML
+`results/phase5_worker_progress_v1_release01_pytest.xml`. Hai standalone native
+runs thực sự đã chạy với pinned tqdm, 8 workers/PID khác nhau đều reaped.
+Không job local/Kaggle còn chạy, model load mới hoặc local weights/Test payload.
 
-Có báo cáo tiến độ MD/PDF/figures và Word lockfile mới từ ngoài phiên này;
+Có báo cáo tiến độ MD/PDF/figures từ ngoài phiên này;
 giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguyên tại
 [bản lưu](handoff_20260909_ipc_draft.md); các khẳng định quá rộng được đính chính.
 
 ## Bước tiếp theo
 
-1. Chốt full QA (ghi đúng optional native-test skip), commit nguồn lock/preflight.
-   Chạy hai standalone native controls bằng systemPython có pinnedtqdm;
-   giữ riêng PID/rawhashes, lưu selectedreceipt+releaseQA, cập nhật knowledge/push.
-2. Versioned GPU lock wrapper/entry với trace/identity; exact archive/expanded/PAX
+1. Versioned GPU lock wrapper/entry với trace/identity; exact archive/expanded/PAX
    8tools/21Dummy/resume, source/receipts push, currentquota/privateinputs rồi mới
    submit một identity mới. Không sửa/retry các kernel cũ để thay kết quả.
-3. [Context-stress design](../docs/architecture/phase5_context_stress_v1_design.md):
+2. [Context-stress design](../docs/architecture/phase5_context_stress_v1_design.md):
    chưa implementation/GPU. Exact4096input,512/128output; phân biệt output count
    với actualKVcache. Không benchmarkdecode/promptchange hoặc localmodels.
-4. Versioned runtime integration, A4 processing-scope anchors, private-record
+3. Versioned runtime integration, A4 processing-scope anchors, private-record
    final entitlements, grouped Dev guard/model decision/differential/freeze.
    Không tune từ four-call diagnostic, không Phase6/7/Test access.
 
@@ -50,9 +49,13 @@ Llama/Meta pilot chưa chạy; không gán điểm0.
   1.481tests/359,83s,51new,setup/Ruff/mypy241files/knowledgepass.
 - [Pair cancellation](pair_cancellation_v1.md), [small-context GPU](pair_gpu_v1.md):
   prior62+91raw hashes unchanged. Guard-only olderwarning2alsoimmutable.
-- [Worker progress](worker_progress_v1.md):15unit pass, native optional pytest skip
-  (.venv thiếu tqdm); standalone systemPython native control đã chạy với4.67.3,
-  stdSHA match GPU. Prototype chưa selected/final-source release.
+- [Worker progress](worker_progress_v1.md): source `e8f72de`, 15 unit mới đạt;
+  full suite 1.496 đạt/1 skip trong 354,52s, setup/Ruff/mypy 243 files/knowledge đạt.
+  [Selected receipt](../experiments/manifests/phase5_worker_progress_v1_validation01.json)
+  và [release QA](../experiments/manifests/phase5_worker_progress_v1_release_qa01.json)
+  bind hai native runs bằng system Python 3.11.0/tqdm 4.67.3; mỗi lượt 7 raw files,
+  registrations 1/1/0/0, warning 2 positive controls. Không dùng prototype dev01
+  làm selected release. Frozen sources/overlays/raw GPU và seals hash-only đạt.
 - [Gate còn lại](phase5_progress.md), [README](README.md) dẫn tới các mốc CPU/GPU
   và các phase đã accepted. Không merge nhánh bạn:
   [review](phase5_integration_review_20260909.md).
