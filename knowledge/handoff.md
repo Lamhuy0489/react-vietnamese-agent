@@ -10,6 +10,8 @@ observed thuộc tqdm.std.create_mp_lock trong3busy workers;90parent+3idle locks
 cóUNREGISTER. Cả6exits vẫn forced (5TERM/1KILL),0graceful.18VRAM samples về nền;
 không chứng minh driver/IPC leak-free. [Đính chính](../docs/evaluation/phase5_pair_ipc_gpu_v1_review_addendum.md).
 
+Đang triển khai [pair progress GPU v1](pair_progress_v1.md): entry/wrapper/builder
+và auditor riêng đã có; cần chốt test/commit, exact preflight rồi mới GPU submission.
 Đã chốt bản sửa opt-in thread-only progress lock và hai native CPU reproductions:
 [contract](../docs/architecture/phase5_worker_progress_v1_contract.md),
 [tri thức](worker_progress_v1.md). Default/disabled/threadTERM/threadKILL controls

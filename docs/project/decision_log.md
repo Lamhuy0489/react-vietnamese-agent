@@ -1,5 +1,18 @@
 # Decision Log
 
+## 2026-09-10 — Versioned HF progress prevention validation
+
+- [Pair progress v1](../architecture/phase5_pair_progress_v1_contract.md) keeps
+  the 15-file IPC overlay, fixed model/image/transport and all prior results.
+  Two additional files configure the pinned thread lock before native loading;
+  distinct source/protocol and seven identity/policy receipts bind treatment.
+- Exact preflight adds the hash-pinned 78 kB native tqdm wheel to isolated CPU
+  environments only. GPU uses the pinned image's package, checked at runtime;
+  no frozen Dataset version or local model acquisition changes.
+- Tracked sources must be clean/committed; unrelated untracked user reports may
+  remain outside the allowlisted payload. Prevention miss is retained separately
+  from integrity validity. No automatic retry, Test access or phase closure.
+
 ## 2026-09-10 — Worker-local progress lock, not warning suppression
 
 - IPC diagnostic trace attributes three unmatched registrations to tqdm's

@@ -4,8 +4,10 @@
 
 Mốc mới nhất xem [current status](current_status.md) và [handoff](handoff.md).
 Combined small-context/cancellation GPU đã audit;6workers reaped/18VRAM samples
-trở về nền nhưng warning3semaphores chưa xác định nguồn. Đang chốt
-[IPC-origin diagnostic](pair_ipc_v1.md), không sửa frozen transport hoặc che warning.
+trở về nền. [IPC-origin diagnostic](pair_ipc_v1.md) đã xác định ba observed
+registrations thuộc khóa tqdm; không chứng minh mọi IPC đều sạch. Bản sửa
+[worker progress](worker_progress_v1.md) đã qua CPU; đang chuẩn bị
+[kiểm chứng GPU riêng](pair_progress_v1.md), không sửa frozen transport hoặc che warning.
 
 Phase5 chưa accepted. Những nhóm việc cần hoàn tất theo phase_status/plan:
 
