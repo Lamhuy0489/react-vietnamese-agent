@@ -4,6 +4,11 @@ Cập nhật: 2026-09-10. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Đang chuẩn bị [native policy compatibility CPU](policy_native_compat_v1.md).
+Local Torch2.2.2; dùng kernelCPU Kaggle với native pinned libraries, không
+model.generate/weights/GPU. Harness+wrapper+exact builder có, đang QA/preflight;
+chưa submission. Source mới additive, không sửa runtime đã chốt.
+
 Đã chốt CPU milestone [generation policy observation v1](generation_policy_v1.md):
 38tests mới đạt; actual-stage hooks được fake differential/mutation kiểm chứng,
 hai pinned-wheel source checks byte-identical. Full suite1.709pass/1optional native
