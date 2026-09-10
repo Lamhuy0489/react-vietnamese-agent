@@ -8,14 +8,22 @@ rồi lỗi thứ tự factory: stress nhận ReadyBackend thay vì native backe
 guard chưa chạy, không stress generation. Không tính lượt này là đạt gate.
 [Failure receipt](../experiments/manifests/phase5_context_policy_gpu_v1_failure01.json).
 
-Đang sửa bằng [v2 contract](../docs/architecture/phase5_context_policy_gpu_v2_contract.md):
+[V2](../docs/architecture/phase5_context_policy_gpu_v2_contract.md) đã sửa:
 readiness bọc ngoài instrumentation, không đổi model/decoding/deadline.
 CPU real-spawn đã tái hiện lỗi cũ và bản sửa READY cả hai roles, không tải model.
 36-file wrapper và exact preflight mới bổ sung kiểm tra factory thật cho hai
 layouts đã đạt từ commit `0a97953`. Full QA 1.825 pass/1 optional skip trong
 394,49 giây; setup/Ruff/mypy 270/knowledge đạt. Hai standalone CPU rehearsals
 đạt với 6 PID khác nhau. Quota 28,17 giờ, Dataset private/v1 và model v1 đã kiểm.
-Tiếp push source/QA rồi một submission v2; chưa submit. Không local model/Test.
+Source/QA push `a39a9e6` trước một v2 version 1; kernel đã ERROR, không còn job.
+Cả hai model native READY, lỗi factory không lặp; agent OOM khi stress 4096
+token sau 1,134 giây, không generation/KV completion. [69 raw files/failure receipt](../experiments/manifests/phase5_context_policy_gpu_v2_failure01.json).
+Agent policy resolve/length/restoration đã kiểm; 2 forced TERM/reaped, 6 recovery
+samples residual 0 hai GPU. Không coi là stress pass hoặc Phase5 acceptance.
+[Phân tích và đề xuất](../docs/evaluation/phase5_context_policy_v2_oom_review.md):
+nghi vấn GQA/math fallback; cần phép đo bổ sung. Chờ owner đồng ý thử đường
+attention tiết kiệm VRAM trước khi đổi computation đã khóa. Chưa thêm GPU run,
+chưa đổi model/caps/deadlines/input; không local model/Test.
 
 [Native policy CPU compatibility](policy_native_compat_v1.md): worker source
 `5c0c20e`, exact archive/expanded/PAX/tools/Dummy/resume và native progress

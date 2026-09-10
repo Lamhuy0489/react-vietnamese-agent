@@ -226,3 +226,20 @@ Failed SaveKernel requests are not completed or failed inference attempts.
   factories, and retain the native exact-type check. Run this gate in both exact
   archive/expanded preflights. New code means a new kernel identity, not a rerun
   overwriting the failed v1 evidence. [v2 contract](../docs/architecture/phase5_context_policy_gpu_v2_contract.md).
+
+## Context OOM after successful readiness — 2026-09-11
+
+- V2's two native READY acknowledgements verify the factory correction; they do
+  not verify maximum-context feasibility. Agent raised OutOfMemoryError after
+  preparation/policy resolution. Preserve all 69 raw files and the null actual
+  generation count. The guard performed readiness only, not stress inference.
+- Full 4096-token prefill has different temporary-memory costs from small chat
+  calls. Attention labelled `sdpa` does not identify its selected CUDA kernel.
+  Global endpoint free VRAM also does not imply allocator-cap headroom.
+- [Source evidence and hypothesis](../docs/evaluation/phase5_context_policy_v2_oom_review.md)
+  suggest native GQA/math fallback on T4, but this run did not record kernel or
+  failure-time allocation. Diagnose it explicitly; do not call the inference
+  conclusive, increase caps silently or repeatedly push the same failing run.
+- A different attention path may change rounding. The proposed opt-in correction
+  needs approval, numerical checks and a new identity; no automatic benchmark
+  adoption or shorter-context substitute for the declared boundary test.

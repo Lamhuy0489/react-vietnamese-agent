@@ -1,0 +1,365 @@
+{
+  "protocol": "context_policy_gpu_v2_failure_evidence",
+  "artifact_integrity_valid": true,
+  "stress_valid": false,
+  "phase5_accepted": false,
+  "kernel_status": "ERROR",
+  "kernel_version": 1,
+  "submission_count": 1,
+  "source_commit": "0a97953b934437e37bbfc5c9adb7c98c67b0b453",
+  "github_pre_submit_commit": "a39a9e6",
+  "raw_sha256": {
+    "context_policy_bootstrap_identity.json": "780d4585c3b0b9b9c790b95c480947cbc44b69568ba6a223ca9afa0364dfbf9e",
+    "context_stress/agent_hf_metrics.jsonl": "060b401c32fa3a14e064940efb7c2e61c548190521512b40f4fa4d3f4b6f6447",
+    "context_stress/agent_stress/entered.json": "b42eb7ca98d20e3c80f92cfb4321e15a39d2e795e334b93b7df079ed90b1507a",
+    "context_stress/agent_stress/error.json": "60b8f2e98399a09b39f019817a9822693bd9be99c85f715606a7ca73f5ebecd5",
+    "context_stress/agent_stress/prepared.json": "01e626237e34b76e4a9f937115a1947c634ae551b0871faf8145d10f2d624479",
+    "context_stress/baseline.json": "ea5e75eb4fc1e10a100d236c84f346d5f6589fb7b9d53cb89d065f2fec6884d2",
+    "context_stress/closed.json": "f5c93846ec5501845f946abeac185cb9755c69395515eac0c1be40ee4f1a5091",
+    "context_stress/error.json": "e04e5d8cd4785988094da2b4a5d753a68c8154c790a0b80576f1b3b3d6873829",
+    "context_stress/guard_hf_metrics.jsonl": "9fdbd5a56171508cea30c166722f03036dd0179340e003c1fe5133c35a7927c0",
+    "context_stress/manifest.json": "61fa329f27341122bf30ad90ccf19f93b88b61824f4e90260cf43aa3da09b29f",
+    "context_stress/ready.json": "0f56981daa1c3b39afe9549707ea74abdb2f97fbb577696eb02c49ef4b06c844",
+    "context_stress/recovery_0.json": "c38ecb665f359798580d35ec152a8ace7a8e2b1cdbcb8d48512037a526a696eb",
+    "context_stress/recovery_1.json": "fa5dec8f92e269d6b7dfb40d7c2b18198f2048529932e29880cde95692c54891",
+    "context_stress/recovery_2.json": "e7e8dc0d1e008b6430b682319104955600aefc7c5d7c6838a44e278efdfdfc3b",
+    "context_stress/recovery_3.json": "6de50ccfa01efa99cad8e70f20f7249401a502edac79aa792fe8bbf302cc33c3",
+    "context_stress/recovery_4.json": "101f81aa93d4772472cf05cd05f6c46e556b5e25c992bd0bb7bdd93c6c66ba7a",
+    "context_stress/recovery_5.json": "157f3d676134be6ad0f8b89b0b5c7009f1b8986379bfd7f04ac2aeb0025b3793",
+    "context_stress/summary.json": "639890fa4c182b23d7a4e20c3711f574b68ed08db7f7e0f04245e66bb02aa2ee",
+    "dummy/identity.json": "4c31213415554ea47a0dbae53cca860d9e90dfd292a848f49309032ef2a7f4f6",
+    "dummy/results.json": "40ccd039b78ffc70ab9e6a0f13a1ea08e0687b31a55a315b12cbe9f1a105027d",
+    "dummy/summary.json": "613fae5f31cb92deacac250e52ec20d290beae1f50db6f2dafcce71c5a220ff7",
+    "dummy/tasks/clean_0002/result.json": "24769efd8e0b113c5a2ed9e35112028f4e29cb6e2f04b7b680f8ab12e85442d2",
+    "dummy/tasks/clean_0002/trace.jsonl": "db40ad4960ba0892c2a7879e742337af3fa72387879791d805c86e6a10015d45",
+    "dummy/tasks/clean_0004/result.json": "aee0dfbf90ea396645f90aa11a49b1e230159159e81f37ded8e0cc894ccd5b2f",
+    "dummy/tasks/clean_0004/trace.jsonl": "41abcca66ac76ece89b35bc679f31f13fef723e1456a7e0daa08a3566222deaa",
+    "dummy/tasks/clean_0005/result.json": "6c3e25a8904a592c50fac56489ead3474514a57692a1e3eaca2185516333b917",
+    "dummy/tasks/clean_0005/trace.jsonl": "44289fa1d4f3d0ed949c2e4aa31437253f0f6e25d9da412a4e4127b91fa3a8f2",
+    "dummy/tasks/clean_0042/result.json": "308c25716e451561d9fa5257ba039b5b12c5e38b4eb20700e03205fa4eb58658",
+    "dummy/tasks/clean_0042/trace.jsonl": "7e4416a3d2345b6e5e4aa571911f7704bf620f4eaa4cc9dcf38995cdd5bc6fe7",
+    "dummy/tasks/clean_0046/result.json": "0f253ef733cde3ca86ef1e5516efb55d45d0057f05001c4d0f5e83741fb2bf64",
+    "dummy/tasks/clean_0046/trace.jsonl": "cf4c7460380e75546fbcac4e210e95dd0d15704dac61e9f848d1dd7b8c177928",
+    "dummy/tasks/clean_0047/result.json": "161b8eb19c2291706f4cdd0616f0974a4f52ee74acd4ae617f0d9f2aae679d51",
+    "dummy/tasks/clean_0047/trace.jsonl": "af1e6b812e5552e624d7869ef329be0f0af5991b8bc3c07c93b516cebe09b5c8",
+    "dummy/tasks/clean_0081/result.json": "bfad2f100af701fa09141d69630e90097569b463cbe26deb6de140c19f737eb3",
+    "dummy/tasks/clean_0081/trace.jsonl": "f07002703c50a1023d193a2c6e67cff84a38b384901eec3955630185ccbb3c4b",
+    "dummy/tasks/clean_0082/result.json": "d1ed34f7647041c4f17cccf6a5932bcacf3317242c1b009f8433b92f5ab5f3bc",
+    "dummy/tasks/clean_0082/trace.jsonl": "c68fe3fa60210bd81a4943ccb71eacd390e0875eb9d795b906cd1e00c2748e23",
+    "dummy/tasks/clean_0083/result.json": "b5dc1734a56d91c5a64674f9090828092b0f3c65835ef2fcbee742af3477528c",
+    "dummy/tasks/clean_0083/trace.jsonl": "ae95f86802d45a91045c678e0be852ba18bc4f0cbce0c7bfa9f63161b81999bd",
+    "dummy/tasks/clean_0132/result.json": "c18c19a13a9af178e1f98964605fb1d93b42aaa4d70660422137295948d27139",
+    "dummy/tasks/clean_0132/trace.jsonl": "b7346d6d4ee84df4b1249e4b82c8283a3b6e9a60982b0268cf82c9ccdc205a9d",
+    "dummy/tasks/clean_0134/result.json": "58a1ca9702aebf9530bc651d4b59f11825e8b252db6cea53cb99b8ff7cb0730f",
+    "dummy/tasks/clean_0134/trace.jsonl": "ee8ac37d7fd6f7e80fb56fc01cf17eb55fb7f29f0b9e786ccc917ad639f67c8a",
+    "dummy/tasks/clean_0135/result.json": "91b319fc1dfae7407b65722e2802b8021fea5abfef0a9aed9d869ae963b1d68d",
+    "dummy/tasks/clean_0135/trace.jsonl": "412f52184249011a7b8198bffc0cb3c5b679692295cd07ff2da87bc734167cbb",
+    "dummy/tasks/clean_0171/result.json": "c7122af50d24606a3d6671b162cfa3214654a6fb3ea154649b57bf14ac628df2",
+    "dummy/tasks/clean_0171/trace.jsonl": "0d34afbba942909cbc7d6a63d18da7b0aa414a764ef6c8cdfb2f5581b6f5ecb0",
+    "dummy/tasks/clean_0173/result.json": "20ada371bc4b0e815f2f34a93ca9bd7889986ce35c32688e247db263f5407716",
+    "dummy/tasks/clean_0173/trace.jsonl": "0f60a3946af7f3c7f5829a5f15355bebabac9ac4a6dba46b77f6d3bbcbd71080",
+    "dummy/tasks/clean_0174/result.json": "13cab349b4f0100403c8ede93d05c897250f97a4c3212fd789adf81d833143cb",
+    "dummy/tasks/clean_0174/trace.jsonl": "489d81d7bcca15e0fb49a825f5480b2f5c2ea98129f5f5683946d3a686365dbe",
+    "dummy/tasks/clean_0197/result.json": "c4bb4c573163cc8a1c0ea0806cee3a7d6a4c10467d09cc3b419f64d4a09f3fdf",
+    "dummy/tasks/clean_0197/trace.jsonl": "0b6ebce903edc5bdb594f57a5b5f369d7fa696bbf7f39143977dedcce41bf09d",
+    "dummy/tasks/clean_0199/result.json": "f274c872bc8cf9bb8164de3a4097afce5a8b6025ba9c90ee6704b331318840a7",
+    "dummy/tasks/clean_0199/trace.jsonl": "25d56013303cf908ca95b5e5a0881c3c3549a18383d3e1b129e22bbe680bf093",
+    "dummy/tasks/clean_0200/result.json": "8f419b766cc835549c65a0a3ef1f78f9e12fdbdac7e1bb6ee74d099a564ba21a",
+    "dummy/tasks/clean_0200/trace.jsonl": "4eb61e8a1cd6e158417f9c3df1497fc092f5f79312c7403ef2274bd91d609a85",
+    "dummy/tasks/clean_0226/result.json": "7b4760b6cb62d160885d233fdcb00858f625a324fced14ffbafe9d74613367da",
+    "dummy/tasks/clean_0226/trace.jsonl": "186045e102f4df4519ea3674734154463c80b9b904d82dbd7b1e845bd7f129a2",
+    "dummy/tasks/clean_0228/result.json": "fe13daed0260813034b8487592b7b0db3e1fd16e8d5c61372ab19543936a2b04",
+    "dummy/tasks/clean_0228/trace.jsonl": "43955fbc2139ce3311d189637c8b8da3465ca95f9dc06f9441b32cf33f3ec697",
+    "dummy/tasks/clean_0229/result.json": "d800e4a37c8ce3044660c07b690b28eb28c7960794f9e833b29072ca60da3c45",
+    "dummy/tasks/clean_0229/trace.jsonl": "620b618205c461b0073aed5489692fb320658b4927531d4324b14db8fa1662f5",
+    "generation_policy/agent/entered.json": "d8dcd4a1014f791a0ee2a025e79775bb7480340ecb0ff2271050bb1daa731bd8",
+    "generation_policy/agent/error.json": "4610419defcdc92be72e331bd618890c5283707c56f5356fbb0685180823c8f6",
+    "generation_policy/agent/length.json": "9a7fab3cf629fe551ff1a3c2e2f6a3c5ce05db61c15d24c939c7153c88b3051c",
+    "generation_policy/agent/resolved.json": "8d514cec875210cd0c1cfa5bcfbceb6396862288e8c0f861ae30b14162f99d3e",
+    "generation_policy/agent/restored.json": "81c525add8d77d8781f060baf8b5a16a5babe35fe9368dbc2dde6fea06dab3f6",
+    "react-vn-context-policy-v2.log": "799356051f3c18d7384629b11c657b3862695ee88a184c7a47cbe6bac2172dfd"
+  },
+  "remote_sha256": {
+    "kernel-metadata.json": "2daa68b61b689dc41c5ffafac97eaf3d602a8c48155cec692054729f39a9d91e",
+    "react-vn-context-policy-v2.py": "02aad21ab32124d3eff841f0f5fa146e3af601aad8e94ca0660ae186cdc8e363"
+  },
+  "remote_metadata": {
+    "id": "huylmhuhu/react-vn-context-policy-v2",
+    "id_no": 133867368,
+    "title": "ReAct VN Context Policy v2",
+    "code_file": "react-vn-context-policy-v2.py",
+    "language": "python",
+    "kernel_type": "script",
+    "is_private": true,
+    "enable_gpu": true,
+    "enable_tpu": false,
+    "enable_internet": false,
+    "keywords": [],
+    "dataset_sources": [
+      "huylmhuhu/react-vn-guard15-probe-data-v1"
+    ],
+    "kernel_sources": [],
+    "competition_sources": [],
+    "model_sources": [
+      "qwen-lm/qwen2.5/Transformers/7b-instruct/1"
+    ],
+    "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+    "machine_shape": "NvidiaTeslaT4"
+  },
+  "preflight_sha256": "a22a158c3a3f21d8792bbe24181b0dbbd7f1aab2b8ee4541b3ab0aa2eb077181",
+  "bootstrap_verified": true,
+  "dummy": {
+    "valid": true,
+    "tasks": 21,
+    "events": 84,
+    "unique_run_ids": 21,
+    "scope": "Dummy transport/checkpoints only, not semantic task success"
+  },
+  "pair_ready": true,
+  "closed_snapshot": {
+    "config_sha256": "a642bf864c696f645aa39f3bcc1bcd414db4ce296172296b578811e8c551d84f",
+    "events": [
+      {
+        "cold_execution_sha256": "f5517704c3f9fb58c36205569b9cc4931cbb9808776b1ec6db2eaa95c3784829",
+        "pid": 41,
+        "role": "agent",
+        "sequence": 1,
+        "stage": "ready"
+      },
+      {
+        "execution_sha256": "8aa2df7bc3af618e89a0184071c59be527cbd701de2b94cd74c9d242fc9233a1",
+        "role": "agent",
+        "sequence": 2,
+        "stage": "warm_deadline"
+      },
+      {
+        "cold_execution_sha256": "f589f7f05eee0541eb5fda69b4c2509018e0799a72217e87fdee91975844eb39",
+        "pid": 68,
+        "role": "guard",
+        "sequence": 3,
+        "stage": "ready"
+      },
+      {
+        "execution_sha256": "f589f7f05eee0541eb5fda69b4c2509018e0799a72217e87fdee91975844eb39",
+        "role": "guard",
+        "sequence": 4,
+        "stage": "warm_deadline"
+      },
+      {
+        "error_class": "RuntimeError",
+        "role": "agent",
+        "sequence": 5,
+        "stage": "generate",
+        "status": "ERROR"
+      },
+      {
+        "reaped": true,
+        "role": "guard",
+        "sequence": 6,
+        "stage": "cleanup"
+      },
+      {
+        "reaped": true,
+        "role": "agent",
+        "sequence": 7,
+        "stage": "cleanup"
+      },
+      {
+        "reaped": true,
+        "role": "guard",
+        "sequence": 8,
+        "stage": "cleanup"
+      },
+      {
+        "reaped": true,
+        "role": "agent",
+        "sequence": 9,
+        "stage": "cleanup"
+      }
+    ],
+    "owner_pid": 33,
+    "phase5_accepted": false,
+    "protocol": "model_pair_v1",
+    "state": "FAILED",
+    "workers": {
+      "agent": {
+        "attempts": [
+          {
+            "cold_start": true,
+            "elapsed_seconds": 233.28141704200004,
+            "execution_config_sha256": "f5517704c3f9fb58c36205569b9cc4931cbb9808776b1ec6db2eaa95c3784829",
+            "generation_seconds": 3.56560000227546e-05,
+            "generation_sha256": "32dfcc50c6378ec0d22ba7b78542f1bd997b502f708277dfbf5266f210e768fd",
+            "load_seconds": 232.9631020820001,
+            "pid": 41,
+            "reaped": false,
+            "request_sha256": "5af0b9d52c04bad9feab11bfcc74d0a41c6f89174757b0902297cd8c3a573b28",
+            "sequence": 1,
+            "status": "OK",
+            "worker_retained": true
+          },
+          {
+            "cold_start": false,
+            "elapsed_seconds": 1.5573681409999836,
+            "execution_config_sha256": "8aa2df7bc3af618e89a0184071c59be527cbd701de2b94cd74c9d242fc9233a1",
+            "generation_seconds": 1.148212858000079,
+            "generation_sha256": "32dfcc50c6378ec0d22ba7b78542f1bd997b502f708277dfbf5266f210e768fd",
+            "load_seconds": 0.0,
+            "pid": 41,
+            "reaped": true,
+            "request_sha256": "950d330aaee80f0cb31f6c359eac0235218f4c734c6fc5563b7e5c050d9855fe",
+            "sequence": 2,
+            "status": "BACKEND_FAILURE",
+            "worker_retained": false
+          }
+        ],
+        "closed": true,
+        "handle_pending": false,
+        "lifecycle": [
+          {
+            "elapsed_seconds": 0.408546380999951,
+            "exitcode": -15,
+            "method": "TERMINATE",
+            "pid": 41,
+            "reaped": true,
+            "sequence": 1
+          }
+        ]
+      },
+      "guard": {
+        "attempts": [
+          {
+            "cold_start": true,
+            "elapsed_seconds": 31.289321502000007,
+            "execution_config_sha256": "f589f7f05eee0541eb5fda69b4c2509018e0799a72217e87fdee91975844eb39",
+            "generation_seconds": 3.3472999916739354e-05,
+            "generation_sha256": "32dfcc50c6378ec0d22ba7b78542f1bd997b502f708277dfbf5266f210e768fd",
+            "load_seconds": 30.967684847999976,
+            "pid": 68,
+            "reaped": false,
+            "request_sha256": "5af0b9d52c04bad9feab11bfcc74d0a41c6f89174757b0902297cd8c3a573b28",
+            "sequence": 1,
+            "status": "OK",
+            "worker_retained": true
+          }
+        ],
+        "closed": true,
+        "handle_pending": false,
+        "lifecycle": [
+          {
+            "elapsed_seconds": 0.7875891589999355,
+            "exitcode": -15,
+            "method": "TERMINATE",
+            "pid": 68,
+            "reaped": true,
+            "sequence": 1
+          }
+        ]
+      }
+    }
+  },
+  "summary_unchanged": {
+    "actual_model_generation_calls": null,
+    "calls_completed": 0,
+    "cleanup_error": false,
+    "native_stress_verified": false,
+    "phase5_accepted": false,
+    "protocol": "context_stress_pair_probe_v1",
+    "reaped": true,
+    "recovery_valid": true,
+    "scope": "Stress transport/completion/recovery; stub is not native GPU evidence; native records still require independent artifact audit",
+    "status": "ERROR",
+    "valid": false
+  },
+  "native_stress_error": {
+    "error_class": "OutOfMemoryError",
+    "model_id": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28:runtime-sha256:24b62737df7885edc2facccd6ca172c0266bccec85c30080a9fcb45adad6d19b",
+    "pid": 41,
+    "protocol": "context_stress_v1",
+    "role": "agent",
+    "stage": "error",
+    "total_seconds": 1.1338341489999948
+  },
+  "load_seconds_including_hashes": {
+    "agent": 232.949506886,
+    "guard": 30.952987452000002
+  },
+  "agent_generation_policy_observed": {
+    "authenticated_publisher": true,
+    "repetition_penalty": 1.05,
+    "do_sample": false,
+    "max_length": 4608,
+    "min_length": 4608,
+    "methods_restored": true,
+    "hook_calls": {
+      "_prepare_generation_config": 1,
+      "_prepare_generated_length": 1
+    }
+  },
+  "ready_memory": [
+    {
+      "device": 0,
+      "free_bytes": 4987879424,
+      "total_bytes": 15636037632
+    },
+    {
+      "device": 1,
+      "free_bytes": 7326203904,
+      "total_bytes": 15636037632
+    }
+  ],
+  "prepared_memory": [
+    {
+      "allocated_bytes": 10412830720,
+      "device": 0,
+      "global_free_bytes": 4987879424,
+      "global_total_bytes": 15636037632,
+      "peak_allocated_bytes": 10412830720,
+      "peak_reserved_bytes": 10414456832,
+      "reserved_bytes": 10414456832
+    },
+    {
+      "allocated_bytes": 4819451904,
+      "device": 1,
+      "global_free_bytes": 7326203904,
+      "global_total_bytes": 15636037632,
+      "peak_allocated_bytes": 4819451904,
+      "peak_reserved_bytes": 4821352448,
+      "reserved_bytes": 4821352448
+    }
+  ],
+  "recovery_signed_residual_bytes": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "shutdown_warnings": {
+    "semaphore_warning_counts": [],
+    "ipc_cleanup_verified": false,
+    "scope": "Kernel shutdown warnings are separate from measured worker reap/VRAM recovery"
+  },
+  "successful_release_auditor_rejection": "combined policy inventory",
+  "classification": "Native OutOfMemoryError after readiness, geometry preparation and policy resolution; no completed generation/KV boundary. Different failure from v1 factory admission. Exact failed allocation/device/selected attention kernel not recorded; do not infer them as measured. No automatic rerun."
+}

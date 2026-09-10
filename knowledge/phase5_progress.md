@@ -16,7 +16,10 @@ submit,4cases/68rawfiles và hai audit byte-identical; không model.generate/GPU
 Outer publisher-metadata audit và GPU stress wrapper đã có. Context/policy v1
 lỗi thứ tự factory trước READY, đã giữ 59 raw files; không tính là stress pass.
 [Bản sửa v2](context_policy_gpu_v1.md) đã qua factory-spawn controls, hai exact
-layouts và full QA 1.825 pass/1 optional skip; GPU v2 chưa submit tại mốc này.
+layouts và full QA 1.825 pass/1 optional skip. GPU v2 đã chạy: cả hai model READY
+nhưng agent OOM ở stress 4096 token; 69 raw files giữ nguyên, không retry.
+[Đề xuất memory/attention](../docs/evaluation/phase5_context_policy_v2_oom_review.md)
+chờ owner chấp thuận; chưa đổi frozen computation, chưa native stress acceptance.
 
 Phase5 chưa accepted. Những nhóm việc cần hoàn tất theo phase_status/plan:
 

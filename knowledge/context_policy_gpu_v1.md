@@ -49,7 +49,21 @@ knowledge đạt. Hai committed-source native-shaped CPU rehearsals có summary
 giống nhau, 6 distinct PIDs/reaped, không model inference. 146 frozen entries,
 364 historical raw, 59 failed raw/2remote/v1 overlay nguyên vẹn; Test hash-only.
 Quota 28,17 giờ; Dataset11942593 private/v1 ready và model v1 đã kiểm.
-Chưa submit v2; tiếp push source/QA rồi đúng một lượt theo contract v2.
+Source/QA đã push `a39a9e6`; v2 version 1 chạy một lần và ERROR.
+[Submission v2](../experiments/manifests/phase5_context_policy_gpu_v2_submission01.json),
+[failure receipt v2](../experiments/manifests/phase5_context_policy_gpu_v2_failure01.json):
+69 raw và 2 remote files đã kiểm; Dummy21/84events, 36overlay/bootstrap/load
+identities đúng. Agent và guard READY với PID41/68; load232,950/30,953 giây.
+Factory fix có hiệu lực trên GPU. Agent OOM1,134 giây vào stress, host1,557 giây;
+không generation completion, guard stress chưa chạy. Summary actual count giữ null.
+Agent policy1.05/samplingfalse/min-max4608 đã kiểm, hai hooks gọi một lần/restore.
+Hai TERM/-15/reaped, không graceful; 6 samples residual0 hai GPU, không IPC-wide claim.
+Success auditor từ chối incomplete policy đúng thiết kế. Không retry.
+
+[Review OOM](../docs/evaluation/phase5_context_policy_v2_oom_review.md) phân biệt
+native error đã đo với giả thuyết GQA/math fallback từ pinned source. Đề xuất
+tensor diagnostic rồi opt-in efficient attention cần owner chấp thuận thay đường
+tính; chưa implementation/submission tiếp, không tự đổi model/input/caps/deadlines.
 Không Test/privateGT hoặc localmodel. Không nguồn mới sửa trong gói đã gửi.
 
 Sau gate này vẫn cần runtimeintegration, A4processing scope, finalentitlements,

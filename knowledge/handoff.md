@@ -10,7 +10,7 @@ metadata/Dummy/agent load/recovery đã kiểm. Agent lỗi sau load khoảng 25
 guard chưa khởi động, không stress generation. Factory nhận ReadyBackend thay
 vì native backend. [Failure receipt](../experiments/manifests/phase5_context_policy_gpu_v1_failure01.json).
 
-Đang làm [v2](../docs/architecture/phase5_context_policy_gpu_v2_contract.md): đưa
+[V2](../docs/architecture/phase5_context_policy_gpu_v2_contract.md) đã sửa: đưa
 ReadyFactory ra ngoài progress/policy instrumentation. CPU real-spawn control
 đã tái hiện bản cũ BACKEND_FAILURE và bản sửa READY cả hai roles, không weights.
 36-file wrapper/builder mới thêm phép kiểm tra factory cho cả hai layouts.
@@ -19,9 +19,19 @@ Source `0a97953` đã commit, exact preflight cả hai layouts đạt (36 overla
 Ruff, mypy 270 files, knowledge đạt. Hai standalone real-spawn rehearsals từ
 commit này khớp summary, 6 PID khác nhau/reaped, không model load.
 [Pre-submit QA v2](../experiments/manifests/phase5_context_policy_gpu_v2_pre_submit_qa01.json).
-Tiếp push source/QA rồi một GPU v2 submission; chưa submit v2.
-Giữ nguyên toàn bộ source/receipt/raw v1, không retry mù.
-Không localweights/Test/privateGT; quota phải kiểm lại trước GPU mới.
+Source/QA đã push `a39a9e6`; một kernel v2 version 1 đã chạy và ERROR.
+Lỗi factory v1 không lặp: cả agent/guard native READY; load 232,950/30,953 giây.
+Agent gặp OutOfMemoryError sau 1,134 giây trong stress 4096 token; guard chưa
+chạy stress. Giữ nguyên 69 raw và 2 remote files, [failure receipt v2](../experiments/manifests/phase5_context_policy_gpu_v2_failure01.json).
+Policy agent resolve/length/hook restore khớp; 2 TERMINATE/-15, 6 recovery
+samples residual 0 trên cả hai GPU. Không full context/KV hoặc graceful claim.
+
+Việc tiếp theo: [đề xuất chẩn đoán/attention tiết kiệm VRAM](../docs/evaluation/phase5_context_policy_v2_oom_review.md)
+đang chờ chủ đồ án đồng ý trước khi thay đường tính đã khóa. Nghi vấn GQA/math
+fallback là suy luận từ source, chưa phải đo kernel thực tế. Không tự giảm input,
+đổi model, lượng tử hóa, nới caps/deadlines hay submit lại. Không job Kaggle/local
+còn chạy. Giữ nguyên v1/v2 source, outputs và pre-submit QA. Quota28,17h chỉ là
+trước v2; kiểm lại nếu có GPU mới. Không localweights/Test/privateGT.
 
 Đã COMPLETE [native policy compatibility CPU](policy_native_compat_v1.md),
 `huylmhuhu/react-vn-policy-native-compat-v1` version1, một submission.
@@ -106,15 +116,17 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
    geometry/native backend/runner và independent23file auditor đã có. Static
    native interface checks đạt nhưng phát hiện publisher-default inheritance.
    Versioned policy receipt/outer audit và native library rehearsal đã có.
-   GPU v1 lỗi thứ tự factory; tiếp v2 corrected topology, exact factory-spawn
-   preflight cả hai layouts, full QA rồi một submission mới theo contract v2.
+   GPU v1 lỗi thứ tự factory; v2 đã sửa READY nhưng agent OOM trong stress.
+   Chờ owner đồng ý đề xuất memory/attention diagnostic và deviation trước
+   thay đường tính. Không retry v1/v2 hoặc đổi tham số để vượt gate.
    Exact4096input,512/128output;
    không suy output count thành full KV cache hoặc thay benchmark decoding.
 2. Versioned runtime integration, A4 processing-scope anchors, private-record
    final entitlements, grouped Dev guard/model decision/differential/freeze.
    Không tune từ four-call diagnostic, không Phase6/7/Test access.
 
-Pending access: không tài khoản/model access mới cần cho bước CPU hiện tại.
+Pending access: chưa cần tài khoản/model access mới; cần owner quyết định đề
+xuất đổi đường tính attention sau OOM, ghi trong decision log (chưa approved).
 Kaggle huylmhuhu/kaggle1, systemCLI2.2.4; Dataset11942593private/v1, quota28,27h
 chỉ là pre-submitCPU2026-09-10, kiểm lại trước runGPU mới. Không cycling account.
 Llama/Meta pilot chưa chạy; không gán điểm0.

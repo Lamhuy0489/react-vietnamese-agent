@@ -1,5 +1,24 @@
 # Decision Log
 
+## 2026-09-11 — Proposed attention-memory deviation; awaiting owner approval
+
+- Context/policy v1 failed factory admission; corrected v2 reached READY for
+  both native models, then agent stress raised OutOfMemoryError. Preserve both
+  runs separately; no same-identity retry, shortened context or success claim.
+  [Evidence and source-level hypothesis](../evaluation/phase5_context_policy_v2_oom_review.md).
+- Proposed: first diagnose pinned SDPA eligibility/memory with synthetic tensors
+  and no model weights. If the GQA/math-fallback hypothesis is confirmed, test an
+  opt-in explicit-KV-repeat/memory-efficient attention implementation. Retain
+  model revisions, FP16, placement/caps, request deadlines, full 4096 input and
+  512/128 output workload, publisher decoding, task splits and source history.
+- This is not yet approved or implemented. Different kernels can change floating
+  point results, requiring predeclared short-shape parity tolerances, distinct
+  run identity, full package QA, native stress validation and later runtime
+  differential evidence. No benchmark/runtime adoption from a tensor probe.
+- Research-evidence does not authorize a frozen architecture change. Wait for
+  explicit owner confirmation before this experimental computation-path change;
+  no additional GPU submission has been made after v2 ERROR.
+
 ## 2026-09-10 — Observe native policy stages without changing decoding
 
 - [Generation policy observation v1](../architecture/phase5_generation_policy_v1_contract.md)
