@@ -4,14 +4,19 @@ Cập nhật: 2026-09-10. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Đang chuẩn bị [native policy compatibility CPU](policy_native_compat_v1.md).
-Local Torch2.2.2; dùng kernelCPU Kaggle với native pinned libraries, không
-model.generate/weights/GPU. Harness+wrapper+exact builder có, đang QA/preflight;
-chưa submission. Source `5c0c20e`, exact preflight cả2layouts đã đạt;25newtests
-đạt; fullQApre01 mất tiến trình/noJUnit khi phiên tool ngắt; fullQApre02 đạt
-1.734pass/1optional skip370,38s, setup/Ruff/mypy260/knowledge đạt, XML
-`results/phase5_policy_native_cpu_v1_pre02_pytest.xml`. Source additive, không sửa
-runtime đã chốt. Datasetprivate/v1ready đã xác nhận, currentGPUquota28,27h.
+Đã COMPLETE [native policy compatibility CPU](policy_native_compat_v1.md),
+`huylmhuhu/react-vn-policy-native-compat-v1` version1, một submission.
+Source `5c0c20e`; pre-submit source/QA đã push `c3bf60f`.
+Native Transformers5.5.0/Torch2.10.0+cu128 CPU4cases đạt; không model.generate,
+weights/GPU.68rawfiles xác thực, hai audits01/02 byte-identical.
+[Báo cáo](../docs/evaluation/phase5_policy_native_cpu_v1_report.md).
+Remote `build/kaggle/policy_native_cpu_v1_remote_source01`, raw
+`results/phase5_policy_native_cpu_v1_raw01`, giữ nguyên. CPU machine_shape
+serialize `"None"` đã thêm9tests,34focused đạt; không sửa submitted worker.
+Full releaseQA:1.743pass/1optional skip375,60s; setup/Ruff/mypy260/knowledge đạt,
+`results/phase5_policy_native_cpu_v1_release01_pytest.xml`.
+PreQA1.734pass/1skip370,38s; lượtpre01 ngắt/noJUnit không tính pass.
+Không Kaggle hoặc local QA job còn chạy; không local weights hoặc Test access.
 
 Đã chốt CPU milestone [generation policy observation v1](generation_policy_v1.md):
 38tests mới đạt; actual-stage hooks được fake differential/mutation kiểm chứng,
@@ -81,9 +86,9 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
 1. [Context-stress design](../docs/architecture/phase5_context_stress_v1_design.md):
    geometry/native backend/runner và independent23file auditor đã có. Static
    native interface checks đạt nhưng phát hiện publisher-default inheritance.
-   Versioned policy receipt+auditor CPU/fullQA đã có; tiếp
-   actual native library hook rehearsal không weights và outer audit xác thực
-   publisher metadata độc lập. Sau đó exact wrapper/preflight/new GPU identity.
+   Versioned policy receipt+auditor CPU/fullQA và native library hook rehearsal
+   không weights đã đạt; tiếp outer audit xác thực publisher metadata độc lập,
+   gộp23probe+10policyfiles. Sau đó exact wrapper/preflight/new GPU identity.
    Exact4096input,512/128output;
    không suy output count thành full KV cache hoặc thay benchmark decoding.
 2. Versioned runtime integration, A4 processing-scope anchors, private-record
@@ -91,12 +96,15 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
    Không tune từ four-call diagnostic, không Phase6/7/Test access.
 
 Pending access: không tài khoản/model access mới cần cho bước CPU hiện tại.
-Kaggle huylmhuhu/kaggle1, systemCLI2.2.4; Dataset11942593private/v1, quota28,57h
-chỉ là pre-submit2026-09-10, kiểm lại trước run mới. Không cycling account.
+Kaggle huylmhuhu/kaggle1, systemCLI2.2.4; Dataset11942593private/v1, quota28,27h
+chỉ là pre-submitCPU2026-09-10, kiểm lại trước runGPU mới. Không cycling account.
 Llama/Meta pilot chưa chạy; không gán điểm0.
 
 ## Bằng chứng
 
+- [Native CPU release QA](../experiments/manifests/phase5_policy_native_cpu_v1_release_qa01.json):
+  source5c0c20e/pre-pushc3bf60f, one CPU version1 COMPLETE;68raw/2remote files,
+  native4cases/0model.generate/0GPU. Two audits byte-identical, full1.743pass1skip.
 - [Generation policy CPU release](../experiments/manifests/phase5_generation_policy_v1_release_qa01.json):
   38new/full1.709pass1skip; hai pinned-source checks byte-identical; fake roles
   agent/guard có5policyfiles/role, repeated audit và hook/nohook summaries khớp.

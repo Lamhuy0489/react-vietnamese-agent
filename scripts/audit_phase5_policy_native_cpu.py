@@ -42,6 +42,11 @@ NATIVE = {
 }
 
 
+def require_cpu_shape(shape: object) -> None:
+    """Kaggle pull serializes CPU's absent machine shape as the string None."""
+    require(shape in (None, "", "None"), "CPU only")
+
+
 def audit_harness(root: Path, commit: str) -> dict[str, Any]:
     hashes = inventory(root)
     expected = {"summary.json"}
@@ -197,7 +202,7 @@ def audit(raw: Path, remote: Path, preflight: Path) -> dict[str, Any]:
         "37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
     }.items():
         equal(metadata[key], value, "remote metadata " + key)
-    require(metadata.get("machine_shape") in (None, ""), "CPU only")
+    require_cpu_shape(metadata.get("machine_shape"))
     equal(
         read_record(raw / "policy_native_bootstrap_identity.json"),
         {

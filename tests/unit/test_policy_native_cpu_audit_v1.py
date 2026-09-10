@@ -9,6 +9,23 @@ from typing import Any
 import pytest
 
 
+@pytest.mark.parametrize("shape", [None, "", "None"])
+def test_cpu_machine_shape_serialization(
+    shape: object, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[2] / "scripts"))
+    auditor = importlib.import_module("audit_phase5_policy_native_cpu")
+    auditor.require_cpu_shape(shape)
+
+
+@pytest.mark.parametrize("shape", ["NvidiaTeslaT4", "Gpu", "cpu", "none", False, 0])
+def test_non_cpu_shape_rejected(shape: object, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[2] / "scripts"))
+    auditor = importlib.import_module("audit_phase5_policy_native_cpu")
+    with pytest.raises(ValueError, match="CPU only"):
+        auditor.require_cpu_shape(shape)
+
+
 @pytest.fixture
 def sample(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Any:
     monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[2] / "scripts"))

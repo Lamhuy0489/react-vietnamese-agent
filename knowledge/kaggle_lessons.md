@@ -196,3 +196,17 @@ Failed SaveKernel requests are not completed or failed inference attempts.
   packaging must include both roots and independently bind loaded publisher
   settings to authenticated metadata. Five self-reported policy files alone are
   not source authentication or actual native compatibility proof.
+
+## Native-library CPU rehearsal — 2026-09-10
+
+- One private/offline CPU kernel using the pinned GPU-capable image can test
+  installed Transformers5.5.0/Torch2.10.0+cu128 config functions without CUDA,
+  weights or model.generate. [Audited run](../docs/evaluation/phase5_policy_native_cpu_v1_report.md)
+  passes4cases; do not generalize this to native GPU/model compatibility.
+- CPU metadata pulled by CLI2.2.4 returns machine_shape string `"None"`, not
+  JSONnull. Preserve the received metadata and narrowly accept this absent-shape
+  representation only alongside explicit GPU/TPU=false. Do not normalize arbitrary
+  strings or resubmit a valid kernel to fix an auditor serialization mismatch.
+- Kernel COMPLETE alone is not acceptance: verify remote code, native installed
+  source hashes, exact raw inventory, failure controls and repeated independent
+  audits. Reused synthetic counters must not be reported as model inference.

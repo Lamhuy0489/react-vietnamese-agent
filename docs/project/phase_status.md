@@ -445,6 +445,18 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   layouts. Context geometry CPU adds35tests, full QA1,552pass/1skip; native
   maximum-context runner/GPU stress, runtime integration and Dev gates remain.
 
+- [x] Native generation-policy library compatibility CPU v1 COMPLETE, one
+  submission; worker source `5c0c20e`, pre-submit GitHub `c3bf60f`. Actual pinned
+  Transformers5.5.0/Torch2.10.0+cu128 config/special-token/length functions pass
+  two success and two injected error/interruption controls with hook restoration.
+  Remote source/metadata and68raw files authenticated; two audits byte-identical.
+  Zero weights/model.generate/GPU; configured lengths are not cache allocation
+  measurements. Full QA1,743pass/1optional skip375.60s;34newfocused tests pass.
+  [Report](../evaluation/phase5_policy_native_cpu_v1_report.md),
+  [selected audit](../../experiments/manifests/phase5_policy_native_cpu_v1_audit01.json).
+  Publisher-metadata authentication, combined stress packaging and native GPU
+  context execution remain open, as do runtime and grouped Dev acceptance gates.
+
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
 The current v5 loop supports A0–A6 with an explicitly task-owned warm guard for

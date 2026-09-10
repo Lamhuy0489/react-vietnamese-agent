@@ -11,6 +11,9 @@ registrations thuộc khóa tqdm; không chứng minh mọi IPC đều sạch. B
 owner 90/90, không semaphore warning, 18 VRAM samples về nền; 6 exits vẫn forced.
 Không sửa frozen transport hoặc che warning. Context geometry CPU đã có,
 nhưng native maximum-context runner/inference vẫn chưa được kiểm chứng.
+[Native-library policy CPU](policy_native_compat_v1.md) đã COMPLETE một lần
+submit,4cases/68rawfiles và hai audit byte-identical; không model.generate/GPU.
+Tiếp theo là outer publisher-metadata audit rồi exact GPU stress wrapper/preflight.
 
 Phase5 chưa accepted. Những nhóm việc cần hoàn tất theo phase_status/plan:
 

@@ -1,0 +1,20 @@
+{
+  "protocol": "policy_native_cpu_submission_v1",
+  "kernel": "huylmhuhu/react-vn-policy-native-compat-v1",
+  "version": 1,
+  "submission_count": 1,
+  "source_commit": "5c0c20e18a26d1cc9b0bec24204052d198b15055",
+  "github_pre_submit_commit": "c3bf60f",
+  "preflight": "experiments/manifests/phase5_policy_native_cpu_v1_preflight01.json",
+  "pre_submit_qa": "experiments/manifests/phase5_policy_native_cpu_v1_pre_submit_qa01.json",
+  "accelerator": "CPU",
+  "timeout_seconds": 1800,
+  "dataset_id": 11942593,
+  "dataset_version": 1,
+  "private_dataset_verified_before_push": true,
+  "dataset_ready_before_push": true,
+  "initial_status": "RUNNING",
+  "initial_status_observed_at_utc": "2026-09-10T08:49:06Z",
+  "remote_source_directory": "build/kaggle/policy_native_cpu_v1_remote_source01",
+  "scope": "Native-library compatibility only, zero model.generate calls and no weights loaded; not GPU context stress or Phase5 acceptance"
+}

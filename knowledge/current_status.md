@@ -6,8 +6,13 @@
 `5c0c20e`, exact archive/expanded/PAX/tools/Dummy/resume và native progress
 preflight đạt.25newtests đạt; fullQApre02:1.734pass/1optional skip370,38s,
 setup/Ruff/mypy260/knowledge đạt; phiênpre01 ngắt/noJUnit không tính pass.
-Chưa submit; không local native/model hoặc Test. Datasetprivate/v1ready; CPU
-kernel dự kiến khôngGPU/no model_sources, không materialize weights.
+Source/QA đã push `c3bf60f`; một CPU kernel version1 COMPLETE,
+`huylmhuhu/react-vn-policy-native-compat-v1`. Native4cases/68rawfiles đạt,
+audits01/02byte-identical; không model.generate/weights/GPU/Test.
+[Báo cáo](../docs/evaluation/phase5_policy_native_cpu_v1_report.md).
+Metadata CPU string`"None"` được kiểm riêng,9tests mới/34focused đạt;
+full releaseQA1.743pass/1optional skip375,60s, setup/Ruff/mypy260/knowledge đạt.
+Không job mới còn chạy. Tiếp outer publisher audit rồi exact GPU stress wrapper.
 
 [Generation policy observation](generation_policy_v1.md) đã thêm wrapper/factory,
 auditor và HF entry riêng,38tests mới đạt. Ghi actual resolve/length stages qua
