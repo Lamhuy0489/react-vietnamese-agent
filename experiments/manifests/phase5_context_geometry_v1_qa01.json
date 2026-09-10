@@ -1,0 +1,42 @@
+{
+  "protocol": "context_geometry_cpu_qa_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "tested_worktree_base_commit": "f8ab56dc76f3ef172a25517ed59ce9eae70f75fc",
+  "source_binding": "Exact added working-tree files identified by SHA256; not a model experiment",
+  "source_sha256": {
+    "src/react_agent/llm/context_geometry_v1.py": "842a2056140d35c091f3f4c8d71b63fbbf9e76bd9bfba6b234e312cfcf960976",
+    "tests/unit/test_context_geometry_v1.py": "05fe5d26bf79532a537da6c062c5a85d46d6b0d1386ab459d6ad91e4b968eab2"
+  },
+  "full_suite_passed": 1552,
+  "full_suite_skipped": 1,
+  "full_suite_seconds": 343.38,
+  "new_synthetic_tests_passed": 35,
+  "junit": {
+    "tests": "1553",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "1",
+    "time": "343.269"
+  },
+  "junit_sha256": "fe69007ebbeb9f4597924f2aeaaeddd74cf3b28d23d727593177161bad7d1aa6",
+  "skip_reason": "Existing optional native tqdm test; native control separately covered by pair-progress exact preflight",
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 248,
+  "knowledge": "pass",
+  "frozen_source_entries_verified": 146,
+  "historical_gpu_raw_files_verified": 190,
+  "context_model_loads": 0,
+  "context_generation_calls": 0,
+  "context_gpu_submissions": 0,
+  "native_tokenizer_verified": false,
+  "actual_cache_or_memory_verified": false,
+  "test_payloads_parsed": 0,
+  "remaining": [
+    "Native stress backend and pinned tokenizer/generation/cache instrumentation",
+    "Durable stress runner and CPU fakes",
+    "Separate exact GPU preflight and launch contract",
+    "Measured GPU maximum-context validation"
+  ]
+}

@@ -1,8 +1,11 @@
 # Next gate: maximum-context stress design (not submitted)
 
-Status: implementation design, not an accepted test, GPU run or a frozen launch
-manifest. Separate from the running IPC-origin diagnostic. Do not change a
-running kernel, frozen adapter or benchmark decoding to execute this design.
+Status: partial CPU implementation, not an accepted stress test, GPU run or a
+frozen launch manifest. The deterministic token/count/cache-boundary helper is
+implemented with 35 synthetic tests; see [context geometry](../../knowledge/context_geometry_v1.md).
+Native generation, timing/memory instrumentation and stress wrapper remain open.
+Separate from the pair-progress GPU diagnostic. Do not change a running kernel,
+frozen adapter or benchmark decoding to execute this design.
 
 ## Question and scope
 
