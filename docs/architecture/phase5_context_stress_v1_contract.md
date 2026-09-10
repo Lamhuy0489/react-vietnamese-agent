@@ -24,6 +24,14 @@ to max_new_tokens; EOS IDs copied unchanged. Return sequences/cache for immediat
 local inspection, never hidden-state/attention/score outputs. No decoding or raw
 token IDs in durable files/IPC; only hashes, counts and tensor metadata survive.
 
+Pre-submit source audit found that Transformers5.5.0 fills the fresh config's
+None fields from publisher settings, then global defaults. Thus prepared.json
+is a **submitted configuration receipt**, not the fully resolved runtime policy.
+Explicit greedy/length settings remain fixed; publisher repetition settings can
+still apply. [Finding](../../experiments/manifests/phase5_context_stress_generation_defaults_finding01.json).
+Before GPU, add versioned publisher/resolved-policy evidence and its auditor;
+do not rewrite frozen backend v1 or silently change the benchmark decoding.
+
 ## Full-boundary cache observation
 
 After generation, require exact input4096 plus output512/128 sequence shape and
@@ -78,8 +86,14 @@ Real spawn synthetic runner tests cover successful calls, failing observers,
 request failure/interruption, missing native receipts and always-close behavior.
 Full QA and two source-bound CPU rehearsals precede selected receipt.
 
+The [independent artifact auditor](../../knowledge/context_stress_audit_v1.md)
+now validates complete 23-file evidence with mutation/CLI tests. Static checks
+against the hash-pinned Transformers5.5.0 wheel confirm constructor/serialization,
+Qwen forward arguments and dynamic-cache storage. These do not execute native
+libraries, reconstruct tokenizer IDs or authenticate a remote GPU release.
 Still required: versioned allowlisted GPU wrapper and exact archive/expanded/PAX
-8tools/21Dummy/resume preflight, native-version compatibility checks, independent
-stress artifact auditor, source/receipts push and current private inputs/quota.
+8tools/21Dummy/resume preflight, outer source/bundle release audit, source/receipts
+push and current private inputs/quota. Preserve the prior native progress-policy
+rehearsal: the context stub alone does not configure native tqdm.
 No context GPU launch is authorized by file presence alone. No Phase6/7/Test,
 model-quality tuning, automatic retry or changes to benchmark decoding.

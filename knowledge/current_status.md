@@ -2,12 +2,19 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-10
 
+[Context stress artifact audit](context_stress_audit_v1.md) đã có 77 tests mới
+đạt và hai static checks wheel thật byte-identical. Full suite1.671pass/1optional
+native skip trong358,82s; setup/Ruff/mypy253/knowledge đạt. [Receipt](../experiments/manifests/phase5_context_stress_audit_v1_release_qa01.json).
+Không job local/GPU mới đang chạy. Phát hiện quan trọng:
+Transformers5.5.0 điền None từ publisher defaults; prepared config chưa phải
+resolved policy. Cần versioned policy receipt/auditor trước exact wrapper/GPU.
+
 [Context stress backend/runner CPU](context_stress_v1.md) đã kiểm chứng:
 source `d07e914`, 42 test mới và hai real-spawn synthetic reproductions,
 4PID/reaped,15rawfiles/run. Full QA sau sửa test isolation1.594pass/1skip trong
 344,79s; giữ nguyên lượt lỗi đầu. Setup/Ruff/mypy250/knowledge đạt.
-Chưa native stress GPU; tiếp theo artifact auditor và exact wrapper/preflight.
-Không job đang chạy, không localweights hoặc held-out Testpayload.
+Chưa native stress GPU; auditor CPU được bổ sung ở mốc trên. Không localweights
+hoặc held-out Testpayload. Các kết quả dưới đây là mốc lịch sử đã chốt.
 
 [Pair progress GPU v1](pair_progress_v1.md) đã có source `a1a90b3` và exact
 preflight archive/expanded/PAX: 8 tools/21 Dummy/resume, 12 native-policy workers

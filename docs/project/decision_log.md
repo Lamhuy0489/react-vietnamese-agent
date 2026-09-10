@@ -1,5 +1,18 @@
 # Decision Log
 
+## 2026-09-10 — Submitted generation config is not the resolved policy
+
+- Independent context-stress artifact auditing now covers 23-file consistency,
+  lifecycle, all-layer KV arithmetic, allocator/timing containment and recovery.
+  Its success does not authenticate remote source or certify the generation policy.
+- Hash-verified Transformers5.5.0 source fills None fields from model defaults
+  before global defaults; a newly constructed GenerationConfig is not isolated
+  from publisher repetition settings. Preserve the [finding](../../experiments/manifests/phase5_context_stress_generation_defaults_finding01.json)
+  and frozen backend. No inference has been submitted for this diagnostic.
+- Add versioned publisher/resolved-policy evidence and matching checks before
+  GPU wrapper/preflight. Do not silently neutralize publisher values, tune using
+  outputs or relabel CPU/static checks as GPU acceptance. No research-scope change.
+
 ## 2026-09-10 — Isolated full-boundary context diagnostic implementation
 
 - [Context stress v1](../architecture/phase5_context_stress_v1_contract.md)

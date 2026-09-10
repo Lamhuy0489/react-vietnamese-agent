@@ -28,7 +28,8 @@ giữ hash cả lượt lỗi và lượt đạt; không giấu lỗi test isola
 146 frozen source entries, 296 raw GPU hashes và 17 current overlay hashes
 không thay đổi. Không job local/Kaggle còn chạy; chưa native stress GPU.
 
-Tiếp: independent stress artifact auditor + exact GPU wrapper/preflight/launch
+Đã thêm [independent artifact auditor và static compatibility](context_stress_audit_v1.md):
+77 test mới đạt, chưa phải GPU execution. Tiếp: exact GPU wrapper/preflight/launch
 contract, currentquota/mount, source/receipt push rồi một identity mới. Không
 đổi benchmark decoding hay kéo weights về local. Các gate runtime/A4/final/
 grouped Dev/freeze còn mở. Không jobGPU mới, không Test/privateGT payload.

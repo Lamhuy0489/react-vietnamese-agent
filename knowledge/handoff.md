@@ -4,14 +4,24 @@ Cập nhật: 2026-09-10. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
-Đang chốt [context stress backend/runner CPU](context_stress_v1.md): 42 tests mới
+Đã chốt CPU QA [context stress artifact auditor](context_stress_audit_v1.md):
+77 tests mới đạt; static native-wheel check hai lần byte-identical, không native
+imports/load/inference. Full QA1.671pass/1optional native skip trong358,82s;
+setup/Ruff/mypy253/knowledge đạt. XML
+`results/phase5_context_stress_audit_v1_release01_pytest.xml`.
+Không job local/context GPU đang chạy; chưa context GPU submission.
+Phát hiện trước GPU: TF5.5.0 resolve None từ publisher config; prepared.json là
+submitted config, không phải resolved policy. Cần versioned policy evidence
+và matching auditor trước wrapper/preflight/submission. Không sửa frozen code.
+
+Mốc trước: [context stress backend/runner CPU](context_stress_v1.md): 42 tests mới
 đạt, source `d07e914` có hai CLI stub reproductions cùng summary/4PID reaped.
 Full QA01 lỗi test isolation (30lateUNREGISTER từ object cũ trong IPC test),
 giữ nguyên XML/trace. Teardown nhóm test mới đã sửa; probe+IPC46/46 đạt;
 full QA02 hoàn tất: 1.594 pass/1 optional native skip trong344,79s, XML
 `results/phase5_context_stress_v1_release02_pytest.xml`. Setup/Ruff/mypy250/
-knowledge đạt; không job local/Kaggle đang chạy.
-Chưa GPU wrapper/native stress audit/preflight/submission. Không sửa nguồn cũ.
+knowledge đạt. Chưa GPU wrapper/preflight/submission. Auditor mới kiểm receipt
+consistency, không tự xác thực source hoặc effective policy. Không sửa nguồn cũ.
 
 Phase5 còn mở. IPC diagnostic pair-ipc-v1 đã COMPLETE, một lần submit.
 Audits03/04 tái lập selected audit byte-identical,99rawfiles. Nguồn semaphore
@@ -53,9 +63,10 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
 ## Bước tiếp theo
 
 1. [Context-stress design](../docs/architecture/phase5_context_stress_v1_design.md):
-   geometry và native backend/runner đã có, CPU fake/spawn QA và hai reproductions
-   đạt. Cần independent stress artifact auditor, native-version compatibility,
-   exact wrapper/preflight/source push/new GPU identity. Exact4096input,512/128output;
+   geometry/native backend/runner và independent23file auditor đã có. Static
+   native interface checks đạt nhưng phát hiện publisher-default inheritance.
+   Làm versioned publisher/resolved-policy receipt+auditor trước exact wrapper/
+   preflight/source push/new GPU identity. Exact4096input,512/128output;
    không suy output count thành full KV cache hoặc thay benchmark decoding.
 2. Versioned runtime integration, A4 processing-scope anchors, private-record
    final entitlements, grouped Dev guard/model decision/differential/freeze.
@@ -68,6 +79,11 @@ Llama/Meta pilot chưa chạy; không gán điểm0.
 
 ## Bằng chứng
 
+- [Context stress audit CPU release](../experiments/manifests/phase5_context_stress_audit_v1_release_qa01.json):
+  77new tests/full1.671pass1skip; hai static wheel receipts byte-identical.
+  146frozenentries/296oldGPUraw/17overlay/4contextsource unchanged.
+  [Publisher-default finding](../experiments/manifests/phase5_context_stress_generation_defaults_finding01.json)
+  là source-level evidence; submitted config chưa chứng minh resolved policy.
 - [Context stress CPU](../experiments/manifests/phase5_context_stress_v1_validation01.json)
   và [release QA](../experiments/manifests/phase5_context_stress_v1_release_qa01.json):
   runtime source `d07e914`, 42 test mới, full1.594pass/1skip; hai runs/4PID reaped,

@@ -164,3 +164,21 @@ Failed SaveKernel requests are not completed or failed inference attempts.
   ERROR with a complete receipt; inspect artifacts before calling it infrastructure
   failure. Qwen7Bv1 runtime11files matched HF, README differed; preserve both facts.
   [Diagnostic evidence](agent_mount_v1.md). This does not replace GPU runtime preflight.
+
+## Context stress preflight — 2026-09-10
+
+- Pinned Transformers5.5.0 `GenerationConfig` constructor has70 fields, all
+  kwargs defaultsNone; `to_dict()` removes `_commit_hash` and supplies version,
+  leaving69 fields. The fresh stress config has55None/13explicit/version.
+  This is the submitted config only: `_prepare_generation_config` fills None
+  fields from the publisher config, then global defaults. Record the resolved
+  policy separately; a fresh object does not remove publisher repetition settings.
+  [Hash-bound static check and mutation tests](context_stress_audit_v1.md).
+- Generation returns its last token before forwarding that token into KV cache.
+  Counts4608/4224 do not establish full cache coverage: inspect4607/4223 first,
+  then the separately timed final-token forward at4608/4224. This remains a
+  diagnostic, not a change to benchmark decoding.
+- Static wheel checks and synthetic artifact audits do **not** replace exact
+  packaged CPU rehearsal or native GPU validation. Context CLI stub also does
+  not configure native tqdm: carry the separate thread-progress policy rehearsal
+  into the new wrapper preflight. No new context GPU submission at this milestone.

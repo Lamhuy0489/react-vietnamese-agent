@@ -1,0 +1,29 @@
+{
+  "protocol": "context_stress_generation_defaults_finding_v1",
+  "finding_verified_by_static_source": true,
+  "phase5_accepted": false,
+  "gpu_readiness": false,
+  "runtime_source_commit": "d07e9142b2622922daddb68a2602cb41e3b33a80",
+  "transformers_wheel_sha256": "821a9ff0961abbb29eb1eb686d78df1c85929fdf213a3fe49dc6bd94f9efa944",
+  "generation_utils_sha256": "dde2df36821c0d724b5af47cb0ff71c3c4c1990c86d81b821911127ae4dc1254",
+  "method": "GenerationMixin._prepare_generation_config",
+  "update_order": [
+    "generation_config.update(**self.generation_config.to_dict(), defaults_only=True, allow_custom_entries=True)",
+    "generation_config.update(**global_defaults, defaults_only=True)",
+    "generation_config.update(**kwargs)"
+  ],
+  "guard_generation_config_sha256": "e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6",
+  "guard_publisher_values_not_explicit_in_submitted_stress_config": {
+    "repetition_penalty": 1.1,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20
+  },
+  "explicit_do_sample": false,
+  "interpretation": "Fresh config None fields may inherit publisher defaults. Existing prepared.json records submitted config, not the fully resolved generation policy. Greedy explicit fields are retained; inactive sampling parameters are not evidence of sampling.",
+  "native_model_executions": 0,
+  "gpu_submissions": 0,
+  "test_payloads_parsed": 0,
+  "required_before_gpu": "Versioned recording/verification of publisher and resolved generation policy, then matching auditor and exact wrapper preflight. Do not modify frozen runtime or silently change decoding.",
+  "scope": "Source and pinned guard metadata evidence only; no observed runtime generation or model-quality claim"
+}
