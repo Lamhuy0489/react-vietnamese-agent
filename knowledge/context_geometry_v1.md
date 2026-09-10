@@ -20,9 +20,10 @@ cho diagnostic riêng; chưa gắn vào loader/runtime/Kaggle hoặc benchmark p
   [QA receipt](../experiments/manifests/phase5_context_geometry_v1_qa01.json)
   bind source/test hashes và XML `results/phase5_context_geometry_v1_release01_pytest.xml`.
 
-Tiếp: native stress backend với fresh forced-length generation/cache, timing và
-peak counters, PID-bound durable outputs, finally cleanup; fake/native-version
-QA rồi exact GPU preflight riêng. Chưa native tokenizer/model-generation test,
+Tiếp nối: [stress backend/runner](context_stress_v1.md) đã có fresh forced-length
+generation/cache, timing và peak counters, PID-bound stages/finally cleanup;
+đang CPU QA, chưa native execution. Cần audit/exact GPU preflight riêng.
+Chưa native tokenizer/model-generation test,
 chưa gói hoặc lượt context-stress GPU. Không dùng helper làm bằng chứng đạt
 maximum-context gate hoặc Phase 5 acceptance. Không sửa lượt pair-progress GPU
 đang chạy hoặc 17 overlay files đã pin.

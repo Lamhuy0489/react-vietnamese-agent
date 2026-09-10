@@ -3,7 +3,10 @@
 Status: partial CPU implementation, not an accepted stress test, GPU run or a
 frozen launch manifest. The deterministic token/count/cache-boundary helper is
 implemented with 35 synthetic tests; see [context geometry](../../knowledge/context_geometry_v1.md).
-Native generation, timing/memory instrumentation and stress wrapper remain open.
+The [native diagnostic adapter/CPU runner](phase5_context_stress_v1_contract.md)
+now implements forced generation, final-token forward and stage/memory logging;
+it is under CPU QA, not native model/GPU verified. The exact stress wrapper,
+independent artifact audit and GPU validation remain open.
 Separate from the pair-progress GPU diagnostic. Do not change a running kernel,
 frozen adapter or benchmark decoding to execute this design.
 

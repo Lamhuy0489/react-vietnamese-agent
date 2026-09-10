@@ -1,0 +1,60 @@
+{
+  "protocol": "context_stress_cpu_release_qa_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "runtime_source_commit": "d07e9142b2622922daddb68a2602cb41e3b33a80",
+  "new_tests_passed": 42,
+  "full_suite_passed": 1594,
+  "full_suite_skipped": 1,
+  "full_suite_seconds": 344.79,
+  "junit": {
+    "tests": "1595",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "1",
+    "time": "344.696"
+  },
+  "skip_reason": "Existing optional native tqdm test unavailable in .venv; prior separate native preflight retained",
+  "first_full_suite": {
+    "passed": 1593,
+    "failed": 1,
+    "skipped": 1,
+    "seconds": 349.88,
+    "failure": "Late finalizers from previous test objects caused 30 unmatched UNREGISTER calls in independent IPC test",
+    "resolution": "Test-only teardown undoes monkeypatch references and collects owned test cycles; runtime/tracer unchanged",
+    "followup_combined_probe_ipc_tests_passed": 46
+  },
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 250,
+  "knowledge": "pass",
+  "native_model_runs": 0,
+  "gpu_submissions": 0,
+  "test_payloads_parsed": 0,
+  "cpu_reproductions": 2,
+  "distinct_reaped_workers": 4,
+  "raw_files_per_cpu_run": 15,
+  "frozen_source_entries_verified": 146,
+  "historical_gpu_raw_hashes_verified": 296,
+  "prior_gpu_overlay_files_verified": 17,
+  "credential_scan_files": 43,
+  "credential_values_checked": 4,
+  "credential_value_matches": 0,
+  "source_and_evidence_sha256": {
+    "src/react_agent/llm/context_stress_v1.py": "2ec4f124f9b242f62e749a7a567bcfb0a64e8bab022b77f60f4eecf9ab13c60d",
+    "src/react_agent/llm/context_stress_probe_v1.py": "49bd3e8d99391bd47de79fbbaef14aae559a93213cff363918609f2330c80f0e",
+    "scripts/run_phase5_context_stress_worker.py": "8741a3554a6799a3e1970181c0f20aa082038544d5146ebacd28cc724648d955",
+    "tests/unit/test_context_stress_v1.py": "70154dfec3b9b3f9909f422cf170b0ca5a632b72bb54cb5dcf657780569dec8c",
+    "tests/unit/test_context_stress_probe_v1.py": "0fa1bb196d76bf022a4773ccea89f3bf1735e170e9bd91bada4552e9bb5a3b01",
+    "experiments/manifests/phase5_context_stress_v1_validation01.json": "9b3a69c4f462aabed96ed6bbac125c43e7f15a44c2f9cf19d2e50558a0004127",
+    "results/phase5_context_stress_v1_release01_pytest.xml": "1c8f155f1c3d9ec5d408e946fed1302137278a5cfbf349ca0c89c4c04aa4907c",
+    "results/phase5_context_stress_v1_release02_pytest.xml": "18246c5f77ab10e06b1116837ad7396af6f6caf41b62a648b60d09399ba76aea",
+    "build/pytest_context_stress_v1_release01/test_real_event_registration_a0/trace.jsonl": "3e69e791744e318bbda1171abc19984e95e25a8babe6b51cb297a5ed7fb2b18d"
+  },
+  "remaining": [
+    "Independent stress artifact auditor",
+    "Native-version compatibility and exact standalone GPU wrapper/preflight",
+    "Current quota/private inputs and source/receipts pushed before new GPU stress identity",
+    "Runtime integration, A4/final entitlement scope, grouped Dev model decision and freeze"
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "protocol": "context_stress_cpu_reproduction_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "d07e9142b2622922daddb68a2602cb41e3b33a80",
+  "source_sha256": {
+    "src/react_agent/llm/context_stress_v1.py": "2ec4f124f9b242f62e749a7a567bcfb0a64e8bab022b77f60f4eecf9ab13c60d",
+    "src/react_agent/llm/context_stress_probe_v1.py": "49bd3e8d99391bd47de79fbbaef14aae559a93213cff363918609f2330c80f0e",
+    "scripts/run_phase5_context_stress_worker.py": "8741a3554a6799a3e1970181c0f20aa082038544d5146ebacd28cc724648d955",
+    "src/react_agent/llm/context_geometry_v1.py": "842a2056140d35c091f3f4c8d71b63fbbf9e76bd9bfba6b234e312cfcf960976"
+  },
+  "runs": [
+    {
+      "path": "results/phase5_context_stress_cpu_validation01",
+      "summary": {
+        "actual_model_generation_calls": 0,
+        "calls_completed": 2,
+        "cleanup_error": false,
+        "native_stress_verified": false,
+        "phase5_accepted": false,
+        "protocol": "context_stress_pair_probe_v1",
+        "reaped": true,
+        "recovery_valid": true,
+        "scope": "Stress transport/completion/recovery; stub is not native GPU evidence; native records still require independent artifact audit",
+        "status": "EXECUTION_COMPLETE",
+        "valid": true
+      },
+      "worker_pids": [
+        66615,
+        66617
+      ],
+      "raw_sha256": {
+        "agent_call.json": "cca2fb40e4d35c1038d6c23731f6f76cc82603a29d55aa10ffd1b254972c01fa",
+        "agent_synthetic_load.json": "a55af515be4b71f0457d4e024ab2f2ad479de2b1a6f5517823352a76c13046e5",
+        "baseline.json": "ee83ba1df874a269aeed6d0d44dda72396f4bfdeac9e44abb57954b5307d0c6b",
+        "closed.json": "bdb82dd3e4fedae25109df0b63ac8e6a396e63f9ad409f65413b2af1c8ccde68",
+        "guard_call.json": "81ba267c2a832387cea3066dff5587724971d9192c0a9c92f38a80a494c73718",
+        "guard_synthetic_load.json": "9d9de29f3678696d6d8608513e21490b5d862925fac105aee1c7f077b8589baf",
+        "manifest.json": "e3281dd12ac502feeb5839b887df77b0c50530a95fe9653f5c6999304aa83c55",
+        "ready.json": "ad53bbc4418278caca73b26ad5eda884654e49288904cfe01a003d6826616886",
+        "recovery_0.json": "508d7834231832f1f7f8388e427fc521e5b315dc2bfbc672f3f90b0f4e43b1d1",
+        "recovery_1.json": "6992961eb93d5720787393077336bd6bfe5a012cfdb978d2f738ddf17c2662c5",
+        "recovery_2.json": "dd9db1676c72ab0fdd5807e862b490bfa8e6f997f2f432783bfcb6a591aee008",
+        "recovery_3.json": "48114bd1bfa6593cbf0f6eacc58292ed4ebb3f8aab36afdd129cd06d499ab3bc",
+        "recovery_4.json": "f7ece817e7ced40651f4871aa5ffcfc38477a9ab4e3241a3682c20952aaf7b6a",
+        "recovery_5.json": "f46eea89d098eed52ecf243a2ad2d9d8be372d4b1f8bde2c194473ec11435963",
+        "summary.json": "d9f76aa3975104bf4722143e4c65db10d35e6e67e580a72a8fa15b47f254ecf7"
+      }
+    },
+    {
+      "path": "results/phase5_context_stress_cpu_validation02",
+      "summary": {
+        "actual_model_generation_calls": 0,
+        "calls_completed": 2,
+        "cleanup_error": false,
+        "native_stress_verified": false,
+        "phase5_accepted": false,
+        "protocol": "context_stress_pair_probe_v1",
+        "reaped": true,
+        "recovery_valid": true,
+        "scope": "Stress transport/completion/recovery; stub is not native GPU evidence; native records still require independent artifact audit",
+        "status": "EXECUTION_COMPLETE",
+        "valid": true
+      },
+      "worker_pids": [
+        66626,
+        66628
+      ],
+      "raw_sha256": {
+        "agent_call.json": "e175fe69445582bd8c22d0c5f85a481a0bce9ca5460157897bcdc56dfd9322df",
+        "agent_synthetic_load.json": "5a910d3069ce54604ec725fecaaf7078473c86513e0385706b5d913297dfb6e9",
+        "baseline.json": "ee83ba1df874a269aeed6d0d44dda72396f4bfdeac9e44abb57954b5307d0c6b",
+        "closed.json": "a15742b5c4ab0ee7042d5946eb981c26657350b8b85ad7b7aae4ea8f25ccc250",
+        "guard_call.json": "3eb46f11218fa1afb8dcaa1272354f469e8e87d42ca72d3408047f420b76629b",
+        "guard_synthetic_load.json": "b64776b05d613d7012e0079ec81859d0ee4286498b297277c027ea0b356d6eab",
+        "manifest.json": "e3281dd12ac502feeb5839b887df77b0c50530a95fe9653f5c6999304aa83c55",
+        "ready.json": "7c4ac482dfa2d0be0d975894b45d80dee9567ffc84856fc3345feb4bea9b000e",
+        "recovery_0.json": "70bca0bd1bacf3fc93e64e1a71e77ec1b83b88c0bdc8afad0c53ee52bd658f3c",
+        "recovery_1.json": "93e3a6a9cb114d903b259ee7175ec2c86a313c7958cc6f352201b6514330e322",
+        "recovery_2.json": "0b886d0c16a5747061b5a60d1369a96568d97c8d301c31c583f0bd556e8aeb3f",
+        "recovery_3.json": "e44d0030db2a8654125b9cf6c129ccbaa236fb8d6e51641b06712b048f8877b8",
+        "recovery_4.json": "dfd43eee451b897ca3ad1ccbf7c3521c047d8a6ff603fab07f271e586e3458c0",
+        "recovery_5.json": "f9fcc7b35d5e51c2ac6862b098733cc6e59ad6466acd0a6c4eaf1ce4e09768b0",
+        "summary.json": "d9f76aa3975104bf4722143e4c65db10d35e6e67e580a72a8fa15b47f254ecf7"
+      }
+    }
+  ],
+  "stable_summaries_match": true,
+  "distinct_spawn_workers": 4,
+  "local_model_loads": 0,
+  "actual_model_generation_calls": 0,
+  "gpu_runs": 0,
+  "held_out_seals": "hash-only verified",
+  "prior_gpu_overlay_files_verified": 17,
+  "scope": "Real spawn with synthetic backends and memory, not native GPU/cache allocation evidence"
+}

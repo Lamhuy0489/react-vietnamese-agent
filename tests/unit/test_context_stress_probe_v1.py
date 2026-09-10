@@ -1,5 +1,6 @@
 """Real spawn transport with synthetic backends/memory; no native model execution."""
 
+import gc
 import json
 from pathlib import Path
 from typing import Any
@@ -13,6 +14,16 @@ from react_agent.llm.context_stress_probe_v1 import (
 )
 from react_agent.llm.model_pair_probe_v1 import SyntheticPairObserver
 from react_agent.llm.model_pair_v1 import ModelIdentity, ModelPair, PairConfig
+
+
+@pytest.fixture(autouse=True)
+def collect_owned_test_pairs(monkeypatch: pytest.MonkeyPatch) -> Any:
+    # Failure injection can retain a pair through monkeypatch's bound method
+    # and traceback cycles. Reap first in the test, then release these references
+    # before a later IPC test installs a new per-process registration ledger.
+    yield
+    monkeypatch.undo()
+    gc.collect()
 
 
 def pair(root: Path) -> ModelPair:

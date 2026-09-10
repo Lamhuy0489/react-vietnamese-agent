@@ -1,5 +1,20 @@
 # Decision Log
 
+## 2026-09-10 — Isolated full-boundary context diagnostic implementation
+
+- [Context stress v1](../architecture/phase5_context_stress_v1_contract.md)
+  implements the existing design without changing benchmark decoding or frozen
+  loaders/transport. Single-use synthetic4096input, forced512/128new tokens,
+  followed by one separately timed last-token forward. Every KV layer's shape,
+  dtype, device and byte count is checked, with no tensor values/text persisted.
+- Parent clocks remain end-to-end; child generation time includes prefill,
+  which is not claimed separately. Per-process allocator peaks and global free
+  endpoints are distinct. Failed native attempt counts are unknown/null, not
+  inferred from how many responses reached the parent.
+- Two synthetic spawn rehearsals and fake tests are CPU evidence only. A new
+  read-only artifact auditor, exact standalone preflight and launch contract
+  must precede any context GPU submission. No Test or research-scope changes.
+
 ## 2026-09-10 — Versioned HF progress prevention validation
 
 - [Pair progress v1](../architecture/phase5_pair_progress_v1_contract.md) keeps
