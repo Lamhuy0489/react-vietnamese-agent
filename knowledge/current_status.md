@@ -1,6 +1,11 @@
 # Trạng thái hiện tại
 
-## Đính chính hiện hành và việc tiếp theo — 2026-09-10
+## Đính chính hiện hành và việc tiếp theo — 2026-09-11
+
+Đang chuẩn bị [context/policy GPU](context_policy_gpu_v1.md):45focused tests
+đạt cho publisher authentication/combined audit/packaging;32file wrapper và
+dispatcher giữ nguyên HF source. Chưa fullQA/exactpreflight hoặc GPUsubmission.
+Tiếp commitnguồn → exactpackage/fullQA → push → một GPUstress sau kiểmquota.
 
 [Native policy CPU compatibility](policy_native_compat_v1.md): worker source
 `5c0c20e`, exact archive/expanded/PAX/tools/Dummy/resume và native progress

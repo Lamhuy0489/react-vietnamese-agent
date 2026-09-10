@@ -1,8 +1,14 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-09-10. Đây là chỉ dẫn tiếp tục, không thay thế contract.
+Cập nhật: 2026-09-11. Đây là chỉ dẫn tiếp tục, không thay thế contract.
 
 ## Đang làm
+
+Đang chuẩn bị [context/policy GPU](context_policy_gpu_v1.md): publisher metadata
+đã xác thực, combined23+10/outer80file auditor +32file wrapper/builder/dispatcher
+đã có;45focused tests/Ruff/mypy264 đạt. Chưa fullQA/exactpreflight/submission.
+Tiếp commitnguồn → exactpreflight/fullQA → push → kiểmquota/privateinputs →
+một GPUstress identity đã khai báo. Không localweights/Test/privateGT.
 
 Đã COMPLETE [native policy compatibility CPU](policy_native_compat_v1.md),
 `huylmhuhu/react-vn-policy-native-compat-v1` version1, một submission.
