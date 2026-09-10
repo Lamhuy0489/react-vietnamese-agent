@@ -12,8 +12,10 @@ guard chưa chạy, không stress generation. Không tính lượt này là đ�
 readiness bọc ngoài instrumentation, không đổi model/decoding/deadline.
 CPU real-spawn đã tái hiện lỗi cũ và bản sửa READY cả hai roles, không tải model.
 36-file wrapper và exact preflight mới bổ sung kiểm tra factory thật cho hai
-layouts; chưa submit GPU v2. Tiếp full QA, source commit, exact preflight và
-kiểm tra quota trước một submission mới. Không local model hoặc Test access.
+layouts đã đạt từ commit `0a97953`. Full QA 1.825 pass/1 optional skip trong
+394,49 giây; setup/Ruff/mypy 270/knowledge đạt. Hai standalone CPU rehearsals
+đạt với 6 PID khác nhau. Quota 28,17 giờ, Dataset private/v1 và model v1 đã kiểm.
+Tiếp push source/QA rồi một submission v2; chưa submit. Không local model/Test.
 
 [Native policy CPU compatibility](policy_native_compat_v1.md): worker source
 `5c0c20e`, exact archive/expanded/PAX/tools/Dummy/resume và native progress

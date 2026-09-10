@@ -14,8 +14,13 @@ vì native backend. [Failure receipt](../experiments/manifests/phase5_context_po
 ReadyFactory ra ngoài progress/policy instrumentation. CPU real-spawn control
 đã tái hiện bản cũ BACKEND_FAILURE và bản sửa READY cả hai roles, không weights.
 36-file wrapper/builder mới thêm phép kiểm tra factory cho cả hai layouts.
-Tiếp full QA, commit source, exact preflight và push trước một GPU v2 submission;
-chưa submit v2. Giữ nguyên toàn bộ source/receipt/raw v1, không retry mù.
+Source `0a97953` đã commit, exact preflight cả hai layouts đạt (36 overlay files).
+37 focused tests và full 1.825 pass/1 optional skip trong 394,49 giây; setup,
+Ruff, mypy 270 files, knowledge đạt. Hai standalone real-spawn rehearsals từ
+commit này khớp summary, 6 PID khác nhau/reaped, không model load.
+[Pre-submit QA v2](../experiments/manifests/phase5_context_policy_gpu_v2_pre_submit_qa01.json).
+Tiếp push source/QA rồi một GPU v2 submission; chưa submit v2.
+Giữ nguyên toàn bộ source/receipt/raw v1, không retry mù.
 Không localweights/Test/privateGT; quota phải kiểm lại trước GPU mới.
 
 Đã COMPLETE [native policy compatibility CPU](policy_native_compat_v1.md),

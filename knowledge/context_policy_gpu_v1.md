@@ -41,7 +41,15 @@ của HF entry. Bản sửa versioned giữ ReadyFactory ở ngoài cùng; CPU r
 rehearsal tái hiện bản cũ lỗi và bản sửa READY cả hai roles, không model load.
 [Contract v2](../docs/architecture/phase5_context_policy_gpu_v2_contract.md) bổ sung
 factory control cho cả hai exact layouts trước GPU, giữ nguyên 32-file v1 overlay
-và thêm 4 files. Chưa submit v2; tiếp full QA/commit/exact preflight/push/quota.
+và thêm 4 files. Source `0a97953` exact preflight hai layouts đã đạt.
+[Preflight v2](../experiments/manifests/phase5_context_policy_gpu_v2_preflight01.json),
+[QA v2](../experiments/manifests/phase5_context_policy_gpu_v2_pre_submit_qa01.json):
+37 focused/full 1.825 pass/1 optional skip trong 394,49 giây; setup/Ruff/mypy270/
+knowledge đạt. Hai committed-source native-shaped CPU rehearsals có summary
+giống nhau, 6 distinct PIDs/reaped, không model inference. 146 frozen entries,
+364 historical raw, 59 failed raw/2remote/v1 overlay nguyên vẹn; Test hash-only.
+Quota 28,17 giờ; Dataset11942593 private/v1 ready và model v1 đã kiểm.
+Chưa submit v2; tiếp push source/QA rồi đúng một lượt theo contract v2.
 Không Test/privateGT hoặc localmodel. Không nguồn mới sửa trong gói đã gửi.
 
 Sau gate này vẫn cần runtimeintegration, A4processing scope, finalentitlements,

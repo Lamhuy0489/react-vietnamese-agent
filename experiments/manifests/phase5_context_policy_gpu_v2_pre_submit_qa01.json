@@ -1,0 +1,120 @@
+{
+  "protocol": "context_policy_gpu_pre_submit_qa_v2",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "0a97953b934437e37bbfc5c9adb7c98c67b0b453",
+  "junit": {
+    "tests": "1826",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "1",
+    "time": "394.380"
+  },
+  "source_and_evidence_sha256": {
+    "src/react_agent/llm/policy_stress_factory_v2.py": "67c11bcdb1608d0a095a45e536e4461de9d980fb12ddff42a7c5eefa971d075c",
+    "scripts/check_phase5_policy_factory.py": "87045a305fecf1a651eb56e481f1f65f92727171accaf42ff8a7d526462bbe26",
+    "scripts/run_phase5_policy_stress_fixed.py": "978f1d268d427bb59199a06d7d88f83a51dc096ab3294ec34e8e91404c78ee89",
+    "scripts/run_phase5_policy_stress_v3.py": "5982f8ef97e13235dc95003c3fa64bb11167255f0a9d7dbccbe3c6d6b9e35468",
+    "scripts/prepare_phase5_context_policy_v2.py": "dd184d04bba89cd131904a8b0576ccf22a2406391efe771955f6ecd7bf270642",
+    "scripts/audit_phase5_context_policy_gpu_v2.py": "6ca46dc778236e285b6e53fb0c7f9854b317dd831bbff8a85a3290bfd9810b5f",
+    "notebooks/kaggle/context_policy_kernel_v2.py": "38adcc84dbe5aafc4d16a2e2ab1de275eae93842a5af416d7abf59045ce7e37a",
+    "tests/unit/test_context_policy_package_v2.py": "507ef8eaa4453de692ae8d8c66454be98b0148e82946ed77cef9e57ddc67032f",
+    "tests/unit/test_policy_stress_factory_v2.py": "8700a0b35a3262ce54d506681db286e51eead06aca491ce33b1f2ed9e28d5872",
+    "experiments/manifests/phase5_context_policy_gpu_v2_preflight01.json": "a22a158c3a3f21d8792bbe24181b0dbbd7f1aab2b8ee4541b3ab0aa2eb077181",
+    "results/phase5_context_policy_gpu_v2_pre_submit01_pytest.xml": "cfb7e3576f394a1a2ec7200040eed0808e93c0570e25b68bca70f16d3d65b3da"
+  },
+  "new_tests_passed": 37,
+  "full_suite_passed": 1825,
+  "full_suite_skipped": 1,
+  "full_suite_seconds": 394.49,
+  "skip_reason": "Optional dev-venv tqdm absent; exact packaged and two standalone native tqdm factory/progress rehearsals passed separately",
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 270,
+  "knowledge": "pass",
+  "factory_reproductions": {
+    "results/phase5_policy_factory_v2_shape02": {
+      "summary.json": "9f3223e49157ddda5d903601f1b2b67cfdd7c9534d3ff2168c4a59a46c0e9965",
+      "original_failure/agent_shape.json": "2a79e55f8ce2f7c73df233090c4a472d17467900d14a8a9c0e279318dc4bcd2d",
+      "original_failure/closed.json": "03a0c8ef903c6360d6e5cd672b5776246398eff91231e8c80a7753e5be20cdba",
+      "corrected/guard_shape.json": "f0b025b00971981899b7cbaed3355ca5d5efbe655917cf01c8e60c998e1d4ab0",
+      "corrected/agent_shape.json": "32424a16b0d681605d41b59b6690ca195ae7228217a0de17d11466d956619068",
+      "corrected/closed.json": "59599a9c67c064029d9937d4c1bc457889201cdc80daccb6c5e8e9a8e513dbd9"
+    },
+    "results/phase5_policy_factory_v2_shape03": {
+      "summary.json": "9f3223e49157ddda5d903601f1b2b67cfdd7c9534d3ff2168c4a59a46c0e9965",
+      "original_failure/agent_shape.json": "d2d4bdf34a47e4bab9adf9d124069dd3e24d7bad9544b4939e8830b498995dc0",
+      "original_failure/closed.json": "004346b8c28157c6087d23d7362707ed27db897c44b11c97608c6565243c760e",
+      "corrected/guard_shape.json": "3f0d1664d18cb3c1b1ffd0a8cfbf0e5653f387ae922e1cd1f9c09cdef5d5a1cf",
+      "corrected/agent_shape.json": "eb505306a43bfb323dd3b9ef8d06a0739938c48c61cf1ffd704880c1eb13833a",
+      "corrected/closed.json": "1f5f136b7790fff52669ece02cb7718c3271fa4be43d6ed01b86a451350ee7e3"
+    }
+  },
+  "distinct_worker_pids": [
+    12566,
+    12573,
+    12568,
+    12745,
+    12748,
+    12746
+  ],
+  "factory_summary": {
+    "native_context_verified": false,
+    "phase5_accepted": false,
+    "protocol": "policy_factory_shape_rehearsal_v1",
+    "rows": [
+      {
+        "all_handles_reaped": true,
+        "corrected": false,
+        "error": "RuntimeError",
+        "native_model_calls": 0,
+        "statuses": [
+          "BACKEND_FAILURE"
+        ],
+        "stress_call_not_consumed": true,
+        "weights_loaded": 0
+      },
+      {
+        "all_handles_reaped": true,
+        "corrected": true,
+        "error": null,
+        "native_model_calls": 0,
+        "statuses": [
+          "OK",
+          "OK"
+        ],
+        "stress_call_not_consumed": true,
+        "weights_loaded": 0
+      }
+    ],
+    "scope": "Actual spawn/progress/factory/readiness only; model constructors bypassed",
+    "valid": true
+  },
+  "factory_scope": "Native-shaped placeholders bypass constructors. Real spawn/progress/readiness only; no weights or native model execution",
+  "overlay_files": 36,
+  "exact_preflight_layouts": [
+    "archive",
+    "expanded/PAX"
+  ],
+  "native_context_verified": false,
+  "local_weights_loaded": 0,
+  "test_payloads_parsed": 0,
+  "gpu_submissions": 0,
+  "account": "huylmhuhu",
+  "gpu_hours_remaining_at_check": 28.17,
+  "dataset_id": 11942593,
+  "dataset_private_version_verified": 1,
+  "dataset_status": "ready",
+  "agent_mount_version": 1,
+  "planned_kernel": "huylmhuhu/react-vn-context-policy-v2",
+  "planned_accelerator": "NvidiaTeslaT4",
+  "planned_timeout_seconds": 3600,
+  "planned_native_generations": 2,
+  "planned_final_token_forwards": 2,
+  "preserved_failure_receipt_sha256": "d408414c545a6a49500b270b78276ebcc55fc388f014e0d78695fa84cdf000e8",
+  "preserved_failure_raw_files": 59,
+  "preserved_failure_remote_files": 2,
+  "frozen_source_entries_verified": 146,
+  "historical_raw_files_verified": 364,
+  "seals_unchanged_hash_only": true
+}

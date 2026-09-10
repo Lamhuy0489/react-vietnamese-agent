@@ -1,0 +1,393 @@
+{
+  "protocol": "context_policy_gpu_exact_preflight_v2",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "0a97953b934437e37bbfc5c9adb7c98c67b0b453",
+  "runtime_commit": "7649d5bed0b872e93b4233a7dcdbdf0da4623194",
+  "wrapper_sha256": "02aad21ab32124d3eff841f0f5fa146e3af601aad8e94ca0660ae186cdc8e363",
+  "metadata_sha256": "51db88352fc20ce83eb8ac6373cdf1b94d1c1b483bb8e8c2d209ad7ebe1e1f80",
+  "base_source_sha256": "73376becda9a21880e4ed94aded1fd98b4f384c272ba7b91c6dbe11587fa0221",
+  "bundle_manifest_sha256": "b14976413b72898b6c0c1b8c46c1ebb0f62f63633f647ab2064fbc048262240f",
+  "overlay_sha256": {
+    "docs/evaluation/publisher_policy_v1/agent_generation_config.json": "3a8f9087e486054c8a4a08dae2e5a3ba62e23da212b5b8c08bc42cb983c3459f",
+    "docs/evaluation/publisher_policy_v1/guard_generation_config.json": "e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6",
+    "docs/evaluation/qwen7b_upstream_inventory_v1.json": "9023d04a65f44a4e4beef29efba9f1ca088e2af1990cc82e586f457d4c5c43b3",
+    "scripts/check_phase5_policy_factory.py": "87045a305fecf1a651eb56e481f1f65f92727171accaf42ff8a7d526462bbe26",
+    "scripts/run_phase5_context_stress_worker.py": "8741a3554a6799a3e1970181c0f20aa082038544d5146ebacd28cc724648d955",
+    "scripts/run_phase5_pair_cancel_worker.py": "bf9749d52853237daeb4748075c710e4dbe7d98012c0a627be88f173fa07a36f",
+    "scripts/run_phase5_pair_ipc_worker.py": "2d60050440f1588724604738fc0f815e592f86fe95c2c3553c921b2ec386c722",
+    "scripts/run_phase5_pair_progress_worker.py": "09751d48363a74062f99f16c1875123b852061b3d794d3888ca0a2db0be276b4",
+    "scripts/run_phase5_pair_worker.py": "12542161ed3221c4abdd21095826262ac98b1e3008e0bcb635ccdaa3fc8b7436",
+    "scripts/run_phase5_policy_native_compat.py": "0abeed3c426a15d6aa50c4c418f7cf8fbb8c9b8f6bf726323207f31861d5342d",
+    "scripts/run_phase5_policy_stress_fixed.py": "978f1d268d427bb59199a06d7d88f83a51dc096ab3294ec34e8e91404c78ee89",
+    "scripts/run_phase5_policy_stress_v2.py": "57731652ad461f4b36c53e81b17490b956a034c4a25151a5a6918c378ea05f29",
+    "scripts/run_phase5_policy_stress_v3.py": "5982f8ef97e13235dc95003c3fa64bb11167255f0a9d7dbccbe3c6d6b9e35468",
+    "scripts/run_phase5_policy_stress_worker.py": "3be296d9805369ca223c2b6527c5ace30e97a58d0e329ad0df1ccbfc593fbbcf",
+    "src/react_agent/llm/agent_hf_v1.py": "8998700cf470d99f954d02697de7d2898408efe5b9cac63a22733abe7cd5af9f",
+    "src/react_agent/llm/agent_hf_v2.py": "5b382e7208fcfffa06cb0e0b1eaec7cef32a86e7816e88fd53338e21a4a9079c",
+    "src/react_agent/llm/agent_mount_v1.py": "8561a6cc9e8ebcb02a8061fb6b9a5cb3efb478dc96676996849a74381c97264f",
+    "src/react_agent/llm/agent_runtime_input_v1.py": "3ddc20e19ac6bc4c5cf5fae93920649d57416cc2961b4d8f996c5732c44262f3",
+    "src/react_agent/llm/coexistence_placement_v1.py": "873c8c2169a6a25ec000bec9805801d679c9946950311059d20449f2245131c0",
+    "src/react_agent/llm/context_geometry_v1.py": "842a2056140d35c091f3f4c8d71b63fbbf9e76bd9bfba6b234e312cfcf960976",
+    "src/react_agent/llm/context_stress_probe_v1.py": "49bd3e8d99391bd47de79fbbaef14aae559a93213cff363918609f2330c80f0e",
+    "src/react_agent/llm/context_stress_v1.py": "2ec4f124f9b242f62e749a7a567bcfb0a64e8bab022b77f60f4eecf9ab13c60d",
+    "src/react_agent/llm/generation_policy_v1.py": "a084aa9a870baf4ad7bb95c5ba7ed9424314a51f7eea62d2216c8ba094e74eab",
+    "src/react_agent/llm/ipc_trace_v1.py": "87b067f3f263a0d52090e3f2485da2be3a0cea7a5b3b63319637dcfaf3c42f59",
+    "src/react_agent/llm/model_pair_hf_v1.py": "77a6cd6bfad3ebe1838a4b25bd8a2c57a44f2a9303b7c1ff3077a5855c220974",
+    "src/react_agent/llm/model_pair_probe_v1.py": "bff03064780fb4f36243549e75a444826e6dbd2ea31ac13f3a8d1cb76ebfedb1",
+    "src/react_agent/llm/model_pair_v1.py": "e5de61646922d382ff312e2fb982597b11610fea4e018b93230c7a9c2c1719cf",
+    "src/react_agent/llm/pair_cancellation_v1.py": "b8acad79bc2da00cea92428b6501d703df062a544d0c79fe51cc46f95bee2379",
+    "src/react_agent/llm/policy_stress_factory_v2.py": "67c11bcdb1608d0a095a45e536e4461de9d980fb12ddff42a7c5eefa971d075c",
+    "src/react_agent/llm/worker_progress_v1.py": "6a2df338c1c79aa5c62796ed98dc34d48f722bbd6a5102fc31934103da06d35c",
+    "src/react_agent/validation/agent_mount_audit_v1.py": "5af72b6ba9ecb18b901da93d8b0f001746ca501b84fdaa9651a16bb8b1437db1",
+    "src/react_agent/validation/context_policy_audit_v1.py": "af4d167d3a266543f9ac53d493063a814a08a4ce7f8bb399cf71e2417fb4e81f",
+    "src/react_agent/validation/context_stress_audit_v1.py": "25744944ac535718dc65f6beb53173c33d79ca8f0bd5d3d8c60ba9a2230bbccc",
+    "src/react_agent/validation/generation_policy_audit_v1.py": "ce5a6786779f96d6a29433f94aafd8e6e732331e0d07bc2ec2139c7282a5f3b9",
+    "src/react_agent/validation/guard_probe_audit_v2.py": "e739b08f0e681e4cdd655cdf73a464cf14dc223fcf43a421ba04c3fbfe696831",
+    "src/react_agent/validation/pair_cancellation_audit_v1.py": "5c55a269e367dddaebea47633fc30be1f86611f238d7e071b4ec2b50aeb07d60"
+  },
+  "checks": [
+    {
+      "layout": "archive",
+      "isolated_python": true,
+      "tools": 8,
+      "dummy_tasks": 21,
+      "retained_checkpoints": 20,
+      "missing_only_resume": true,
+      "probe": {
+        "error_class": null,
+        "model_generation_calls": 0,
+        "phase5_accepted": false,
+        "protocol": "pair_cancellation_v1",
+        "rows": [
+          {
+            "cleanup_error": false,
+            "forced_method_valid": true,
+            "reaped": true,
+            "recovery_valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "timeout_observed": true,
+            "trial": "agent_busy",
+            "valid": true
+          },
+          {
+            "cleanup_error": false,
+            "forced_method_valid": true,
+            "reaped": true,
+            "recovery_valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "timeout_observed": true,
+            "trial": "guard_busy",
+            "valid": true
+          },
+          {
+            "cleanup_error": false,
+            "forced_method_valid": true,
+            "reaped": true,
+            "recovery_valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "timeout_observed": true,
+            "trial": "guard_ignore_term",
+            "valid": true
+          }
+        ],
+        "scope": "Cancellation with sibling resident; not model generation or context stress",
+        "valid": true
+      },
+      "policy_stub": {
+        "backend": "stub",
+        "cases": [
+          {
+            "case": "agent_none",
+            "caught": null,
+            "identity": {
+              "backend": "stub",
+              "native_imported": false
+            },
+            "methods_restored": true,
+            "model_generate_calls": 0,
+            "policy_receipt_generation_count_is_synthetic": true
+          },
+          {
+            "case": "guard_none",
+            "caught": null,
+            "identity": {
+              "backend": "stub",
+              "native_imported": false
+            },
+            "methods_restored": true,
+            "model_generate_calls": 0,
+            "policy_receipt_generation_count_is_synthetic": true
+          },
+          {
+            "case": "guard_error",
+            "caught": "RuntimeError",
+            "identity": {
+              "backend": "stub",
+              "native_imported": false
+            },
+            "methods_restored": true,
+            "model_generate_calls": 0,
+            "policy_receipt_generation_count_is_synthetic": true
+          },
+          {
+            "case": "guard_interrupt",
+            "caught": "KeyboardInterrupt",
+            "identity": {
+              "backend": "stub",
+              "native_imported": false
+            },
+            "methods_restored": true,
+            "model_generate_calls": 0,
+            "policy_receipt_generation_count_is_synthetic": true
+          }
+        ],
+        "gpu_used": false,
+        "model_generate_calls": 0,
+        "native_library_verified": false,
+        "phase5_accepted": false,
+        "protocol": "native_policy_library_compat_v1",
+        "scope": "Native config/special-token/length functions with synthetic harness; not Qwen generation or GPU stress",
+        "source_commit": "0a97953b934437e37bbfc5c9adb7c98c67b0b453",
+        "valid": true,
+        "weights_loaded": 0
+      },
+      "context_stub": {
+        "actual_model_generation_calls": 0,
+        "calls_completed": 2,
+        "cleanup_error": false,
+        "native_stress_verified": false,
+        "phase5_accepted": false,
+        "protocol": "context_stress_pair_probe_v1",
+        "reaped": true,
+        "recovery_valid": true,
+        "scope": "Stress transport/completion/recovery; stub is not native GPU evidence; native records still require independent artifact audit",
+        "status": "EXECUTION_COMPLETE",
+        "valid": true
+      },
+      "factory_shape": {
+        "native_context_verified": false,
+        "phase5_accepted": false,
+        "protocol": "policy_factory_shape_rehearsal_v1",
+        "rows": [
+          {
+            "all_handles_reaped": true,
+            "corrected": false,
+            "error": "RuntimeError",
+            "native_model_calls": 0,
+            "statuses": [
+              "BACKEND_FAILURE"
+            ],
+            "stress_call_not_consumed": true,
+            "weights_loaded": 0
+          },
+          {
+            "all_handles_reaped": true,
+            "corrected": true,
+            "error": null,
+            "native_model_calls": 0,
+            "statuses": [
+              "OK",
+              "OK"
+            ],
+            "stress_call_not_consumed": true,
+            "weights_loaded": 0
+          }
+        ],
+        "scope": "Actual spawn/progress/factory/readiness only; model constructors bypassed",
+        "valid": true
+      },
+      "publisher_metadata_authenticated": true
+    },
+    {
+      "layout": "expanded",
+      "isolated_python": true,
+      "tools": 8,
+      "dummy_tasks": 21,
+      "retained_checkpoints": 20,
+      "missing_only_resume": true,
+      "probe": {
+        "error_class": null,
+        "model_generation_calls": 0,
+        "phase5_accepted": false,
+        "protocol": "pair_cancellation_v1",
+        "rows": [
+          {
+            "cleanup_error": false,
+            "forced_method_valid": true,
+            "reaped": true,
+            "recovery_valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "timeout_observed": true,
+            "trial": "agent_busy",
+            "valid": true
+          },
+          {
+            "cleanup_error": false,
+            "forced_method_valid": true,
+            "reaped": true,
+            "recovery_valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "timeout_observed": true,
+            "trial": "guard_busy",
+            "valid": true
+          },
+          {
+            "cleanup_error": false,
+            "forced_method_valid": true,
+            "reaped": true,
+            "recovery_valid": true,
+            "status": "EXECUTION_COMPLETE",
+            "timeout_observed": true,
+            "trial": "guard_ignore_term",
+            "valid": true
+          }
+        ],
+        "scope": "Cancellation with sibling resident; not model generation or context stress",
+        "valid": true
+      },
+      "policy_stub": {
+        "backend": "stub",
+        "cases": [
+          {
+            "case": "agent_none",
+            "caught": null,
+            "identity": {
+              "backend": "stub",
+              "native_imported": false
+            },
+            "methods_restored": true,
+            "model_generate_calls": 0,
+            "policy_receipt_generation_count_is_synthetic": true
+          },
+          {
+            "case": "guard_none",
+            "caught": null,
+            "identity": {
+              "backend": "stub",
+              "native_imported": false
+            },
+            "methods_restored": true,
+            "model_generate_calls": 0,
+            "policy_receipt_generation_count_is_synthetic": true
+          },
+          {
+            "case": "guard_error",
+            "caught": "RuntimeError",
+            "identity": {
+              "backend": "stub",
+              "native_imported": false
+            },
+            "methods_restored": true,
+            "model_generate_calls": 0,
+            "policy_receipt_generation_count_is_synthetic": true
+          },
+          {
+            "case": "guard_interrupt",
+            "caught": "KeyboardInterrupt",
+            "identity": {
+              "backend": "stub",
+              "native_imported": false
+            },
+            "methods_restored": true,
+            "model_generate_calls": 0,
+            "policy_receipt_generation_count_is_synthetic": true
+          }
+        ],
+        "gpu_used": false,
+        "model_generate_calls": 0,
+        "native_library_verified": false,
+        "phase5_accepted": false,
+        "protocol": "native_policy_library_compat_v1",
+        "scope": "Native config/special-token/length functions with synthetic harness; not Qwen generation or GPU stress",
+        "source_commit": "0a97953b934437e37bbfc5c9adb7c98c67b0b453",
+        "valid": true,
+        "weights_loaded": 0
+      },
+      "context_stub": {
+        "actual_model_generation_calls": 0,
+        "calls_completed": 2,
+        "cleanup_error": false,
+        "native_stress_verified": false,
+        "phase5_accepted": false,
+        "protocol": "context_stress_pair_probe_v1",
+        "reaped": true,
+        "recovery_valid": true,
+        "scope": "Stress transport/completion/recovery; stub is not native GPU evidence; native records still require independent artifact audit",
+        "status": "EXECUTION_COMPLETE",
+        "valid": true
+      },
+      "factory_shape": {
+        "native_context_verified": false,
+        "phase5_accepted": false,
+        "protocol": "policy_factory_shape_rehearsal_v1",
+        "rows": [
+          {
+            "all_handles_reaped": true,
+            "corrected": false,
+            "error": "RuntimeError",
+            "native_model_calls": 0,
+            "statuses": [
+              "BACKEND_FAILURE"
+            ],
+            "stress_call_not_consumed": true,
+            "weights_loaded": 0
+          },
+          {
+            "all_handles_reaped": true,
+            "corrected": true,
+            "error": null,
+            "native_model_calls": 0,
+            "statuses": [
+              "OK",
+              "OK"
+            ],
+            "stress_call_not_consumed": true,
+            "weights_loaded": 0
+          }
+        ],
+        "scope": "Actual spawn/progress/factory/readiness only; model constructors bypassed",
+        "valid": true
+      },
+      "publisher_metadata_authenticated": true
+    }
+  ],
+  "prerequisites": {
+    "clean_frozen": true,
+    "robustness_ids_presealed": 50,
+    "adversarial_seal_valid": true,
+    "test_access": "hash-only; robustness IDs only",
+    "clean_component_hashes": {
+      "dev_pilot/fault_plans.json": "3da01fa7c945cc00bb72a1e505b4db77bd339b19f15060ae6f37c3c3df06bceb",
+      "dev_pilot/task_ids.json": "1548683a7c985d08b867a4adc276071b08c36c5e14d29121e96966185f86beba",
+      "environment/cached_pages/pages.json": "4ce56c270a4d96117ba14cde6d070e56a59817d774401f71372fa9f2c2fab34a",
+      "environment/database/seed.json": "51b5f8980984f8905bbee557906c677cca449aa16a83fb7de645cb375b0a2b31",
+      "environment/database/university.db": "85bc7a259438b89f8f86fdf09965aa46e9ef9b4749564795aab7f43e582c10c3",
+      "environment/documents/documents.json": "431a7b8cbcd271c98f08adc61cdd83c0e1ed34f944f86c43fad8dca2526cacbe",
+      "manifests/environment_manifest.json": "4241e73fa3ada87dd9d595d5db0a249966a5cead7da04a37cba7cac020b787e9",
+      "manifests/source_catalog.json": "f9d8621762d016aefca05d1eff24f52ea39fc2034d4122889c5b7f1127588b49",
+      "manifests/split_manifest.json": "4e396d50e8a4f6b50be42913e4213db0ab870f461bcedd4fc01dfec1c9cec6e0",
+      "pool/tasks.jsonl": "f96839aa55aa95de0b3fd2ba79139bbd108d2899de26391203ae978672c86611",
+      "private/dev_ground_truth.jsonl": "95a3e4668699dddbb8f8e85ff3ad08950d528644980ec4033a266d851d01582c",
+      "private/pool_ground_truth.jsonl": "5cdc74cfca6887e63a3fed7da22a0d78c4a781029d826768a4f5b5ddc9ad0a52",
+      "private/robustness_canonical_ids.json": "18feead8234e8c1461f91077fabcbaee151f5f3791ade1275c8cbf8fc27652d0",
+      "private/test_ground_truth.jsonl": "8d11fec78cdf6714ff6d5136e88abb3fd7dbc1f66b0485a77c2c1933696b95a5",
+      "reports/pool_validation.json": "d4e940014be90ace7a7ff839454b867255f8ef8787d88daeb85b592be9a35d09",
+      "reports/qa_records.json": "399495e2f73373dbbf61eba43fab2666e430baab50a2f83616eec2dcc8000c22",
+      "splits/dev.jsonl": "ce1cda2a258c6d00b31a428b10258bbda7cade77c4b3841aa8cd1af34227a0d3",
+      "splits/test.jsonl": "688fddcc4c4cb363515e1247e992cbda9e5268ba8e1cc51e0060d48f5a9dad20"
+    },
+    "adversarial_seal_sha256": "431b81118026bef6c60e33306e51df71160504579e76ea08fb4648005fa1cb6b"
+  },
+  "native_preflight_tqdm_wheel_sha256": "ee1e4c0e59148062281c49d80b25b67771a127c85fc9676d3be5f243206826bf",
+  "native_preflight_tqdm_version": "4.67.3",
+  "native_progress_workers_each_layout": 6,
+  "actual_model_loads": 0,
+  "gpu_runs": 0,
+  "native_library_verified_locally": false,
+  "expected_native_generations": 2,
+  "expected_separate_final_forwards": 2,
+  "kernel_timeout_seconds": 3600,
+  "guard_weights_materialized": false,
+  "native_library_evidence_sha256": "b68645e8fbeacc03c3e1e686e8f4f8ad0e9149923ceb245f8e18bb58653304cf"
+}

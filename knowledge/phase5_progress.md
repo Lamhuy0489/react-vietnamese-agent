@@ -13,7 +13,10 @@ Không sửa frozen transport hoặc che warning. Context geometry CPU đã có,
 nhưng native maximum-context runner/inference vẫn chưa được kiểm chứng.
 [Native-library policy CPU](policy_native_compat_v1.md) đã COMPLETE một lần
 submit,4cases/68rawfiles và hai audit byte-identical; không model.generate/GPU.
-Tiếp theo là outer publisher-metadata audit rồi exact GPU stress wrapper/preflight.
+Outer publisher-metadata audit và GPU stress wrapper đã có. Context/policy v1
+lỗi thứ tự factory trước READY, đã giữ 59 raw files; không tính là stress pass.
+[Bản sửa v2](context_policy_gpu_v1.md) đã qua factory-spawn controls, hai exact
+layouts và full QA 1.825 pass/1 optional skip; GPU v2 chưa submit tại mốc này.
 
 Phase5 chưa accepted. Những nhóm việc cần hoàn tất theo phase_status/plan:
 
