@@ -182,3 +182,17 @@ Failed SaveKernel requests are not completed or failed inference attempts.
   packaged CPU rehearsal or native GPU validation. Context CLI stub also does
   not configure native tqdm: carry the separate thread-progress policy rehearsal
   into the new wrapper preflight. No new context GPU submission at this milestone.
+
+## Native policy observation preparation — 2026-09-10
+
+- [Policy observation v1](generation_policy_v1.md) keeps the frozen stress
+  backend and records actual resolver/length calls through temporary instance
+  hooks, then restores originals in finally. Do not call the resolver twice and
+  mistake a separate reconstruction for an observation of generation.
+- Transformers adds private special-token tensors before length preparation.
+  Copy only the69 known serialized config fields; never deepcopy the whole
+  config after private CUDA tensors appear. Unknown fields fail closed.
+- The new HF entry keeps policy output outside the23-file old probe. Future
+  packaging must include both roots and independently bind loaded publisher
+  settings to authenticated metadata. Five self-reported policy files alone are
+  not source authentication or actual native compatibility proof.

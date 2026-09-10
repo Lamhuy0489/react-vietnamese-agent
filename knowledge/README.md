@@ -47,6 +47,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Chuẩn bị bài thử ngữ cảnh dài: [context geometry CPU](context_geometry_v1.md).
 - Backend và bộ chạy ngữ cảnh dài: [context stress v1](context_stress_v1.md).
 - Kiểm artifact ngữ cảnh dài và native interface: [context stress audit](context_stress_audit_v1.md).
+- Ghi nhận cấu hình sinh sau resolve: [generation policy v1](generation_policy_v1.md).
 - Bằng chứng lịch sử: [Phase 1](phase1_evidence.md),
   [Phase 2 v1 cũ](phase2_evidence.md),
   [audit v1 và withdrawal](integrity_audit_20260905.md).

@@ -4,6 +4,13 @@ Cập nhật: 2026-09-10. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Đã chốt CPU milestone [generation policy observation v1](generation_policy_v1.md):
+38tests mới đạt; actual-stage hooks được fake differential/mutation kiểm chứng,
+hai pinned-wheel source checks byte-identical. Full suite1.709pass/1optional native
+skip trong399,13s, XML `results/phase5_generation_policy_v1_release01_pytest.xml`.
+Setup/Ruff/mypy257/knowledge đạt. Không job local hoặc Kaggle mới còn chạy.
+Không native model/GPU mới hoặc Test access. Nguồn cũ nguyên vẹn.
+
 Đã chốt CPU QA [context stress artifact auditor](context_stress_audit_v1.md):
 77 tests mới đạt; static native-wheel check hai lần byte-identical, không native
 imports/load/inference. Full QA1.671pass/1optional native skip trong358,82s;
@@ -65,8 +72,10 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
 1. [Context-stress design](../docs/architecture/phase5_context_stress_v1_design.md):
    geometry/native backend/runner và independent23file auditor đã có. Static
    native interface checks đạt nhưng phát hiện publisher-default inheritance.
-   Làm versioned publisher/resolved-policy receipt+auditor trước exact wrapper/
-   preflight/source push/new GPU identity. Exact4096input,512/128output;
+   Versioned policy receipt+auditor CPU/fullQA đã có; tiếp
+   actual native library hook rehearsal không weights và outer audit xác thực
+   publisher metadata độc lập. Sau đó exact wrapper/preflight/new GPU identity.
+   Exact4096input,512/128output;
    không suy output count thành full KV cache hoặc thay benchmark decoding.
 2. Versioned runtime integration, A4 processing-scope anchors, private-record
    final entitlements, grouped Dev guard/model decision/differential/freeze.
@@ -79,6 +88,10 @@ Llama/Meta pilot chưa chạy; không gán điểm0.
 
 ## Bằng chứng
 
+- [Generation policy CPU release](../experiments/manifests/phase5_generation_policy_v1_release_qa01.json):
+  38new/full1.709pass1skip; hai pinned-source checks byte-identical; fake roles
+  agent/guard có5policyfiles/role, repeated audit và hook/nohook summaries khớp.
+  Không native execution claim; source/evidence hashes và remaining gates có trong receipt.
 - [Context stress audit CPU release](../experiments/manifests/phase5_context_stress_audit_v1_release_qa01.json):
   77new tests/full1.671pass1skip; hai static wheel receipts byte-identical.
   146frozenentries/296oldGPUraw/17overlay/4contextsource unchanged.

@@ -59,8 +59,9 @@ Backend v1 ghi **submitted** config trước generate, không ghi resolved polic
 không thể gọi đây là full policy provenance. Không sửa nguồn d07e914 hoặc giả
 rằng auditor23files chứng minh đủ policy. Chưa có context GPU để phải rerun.
 
-Trước GPU cần thêm versioned recording/verification cho publisher/resolved
-generation policy, test precedence/None/defaults và auditor tương ứng. Sau đó
+Đã thêm [versioned policy observation và auditor CPU](generation_policy_v1.md),
+38tests mới; chưa actual native hook compatibility/GPU hoặc outer source audit.
+Trước GPU cần chốt các bước đó và publisher-metadata authentication. Sau đó
 tạo **file mới** wrapper/builder/release auditor, compose 17 prior overlay files
 và4 context files; giữ native progress-policy preflight riêng vì context CLI
 stub không cấu hình tqdm. Exact archive/expanded/PAX 8tools/21Dummy/resume,

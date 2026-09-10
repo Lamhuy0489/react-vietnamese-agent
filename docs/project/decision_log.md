@@ -1,5 +1,17 @@
 # Decision Log
 
+## 2026-09-10 — Observe native policy stages without changing decoding
+
+- [Generation policy observation v1](../architecture/phase5_generation_policy_v1_contract.md)
+  composes the frozen context backend through a new entry/factory, with separate
+  policy artifacts. Observe actual resolver and length-preparation calls once,
+  returning original results and restoring methods in finally. Do not neutralize
+  publisher defaults or change benchmark decoding based on the prior finding.
+- CPU fake differential/mutation tests and pinned-source assertions do not close
+  native compatibility or GPU gates. Authenticate publisher metadata independently
+  in the future outer release auditor; source/policy receipts alone are not proof.
+- No frozen source/raw overwrite, model inference, Test access or scope change.
+
 ## 2026-09-10 — Submitted generation config is not the resolved policy
 
 - Independent context-stress artifact auditing now covers 23-file consistency,

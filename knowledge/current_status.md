@@ -2,6 +2,13 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-10
 
+[Generation policy observation](generation_policy_v1.md) đã thêm wrapper/factory,
+auditor và HF entry riêng,38tests mới đạt. Ghi actual resolve/length stages qua
+hai hook delegate-once rồi restore; không đổi publisher defaults hoặc decoding.
+Hai pinned-source checks byte-identical. Full suite1.709pass/1optional native skip
+trong399,13s; setup/Ruff/mypy257/knowledge đạt. [Receipt](../experiments/manifests/phase5_generation_policy_v1_release_qa01.json).
+Không job mới còn chạy; chưa native hook execution/outer publisher audit/exact Kaggle bundle.
+
 [Context stress artifact audit](context_stress_audit_v1.md) đã có 77 tests mới
 đạt và hai static checks wheel thật byte-identical. Full suite1.671pass/1optional
 native skip trong358,82s; setup/Ruff/mypy253/knowledge đạt. [Receipt](../experiments/manifests/phase5_context_stress_audit_v1_release_qa01.json).
