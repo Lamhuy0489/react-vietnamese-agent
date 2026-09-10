@@ -1,5 +1,18 @@
 # Decision Log
 
+## 2026-09-10 — Worker-local progress lock, not warning suppression
+
+- IPC diagnostic trace attributes three unmatched registrations to tqdm's
+  default multiprocessing RLock in busy workers. All six process exits were
+  forced, including three idle siblings whose lock unregister had completed.
+- Separate [worker progress contract](../architecture/phase5_worker_progress_v1_contract.md)
+  uses a thread reentrant lock before progress/model initialization in daemon
+  spawn workers only. Refuses existing locks/dependency drift; no manual
+  unlink/unregister, deadline change, model/prompt change or source rewrite.
+- Native CPU controls show TQDM_DISABLE alone still creates a semaphore; the
+  thread-lock path does not. GPU/HF validation remains a distinct next gate.
+  No research-scope/model-choice/Test/Phase6 transition; old evidence preserved.
+
 ## 2026-09-09 — Separate IPC-origin diagnostic, no cleanup reinterpretation
 
 - Prior paired cancellation GPU logs warned about3semaphores; worker reap/VRAM

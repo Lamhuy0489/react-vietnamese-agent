@@ -1,0 +1,1956 @@
+{
+  "dummy": {
+    "events": 84,
+    "scope": "Dummy transport/checkpoints only, not semantic task success",
+    "tasks": 21,
+    "unique_run_ids": 21,
+    "valid": true
+  },
+  "limitations": "CUDA busy loops with weights resident, not native generation cancellation, maximum context, quality, continuous peak memory, owner SIGKILL or driver-crash safety",
+  "measurements": [
+    {
+      "hf_loads": {
+        "agent": {
+          "adapter_protocol": "agent_hf_dual_gpu_v2_tf550",
+          "agent_caps": [
+            12884901888,
+            7516192768
+          ],
+          "attention": "sdpa",
+          "cuda_version": "12.8",
+          "device_map": {
+            "lm_head": 1,
+            "model.embed_tokens": 0,
+            "model.layers.0": 0,
+            "model.layers.1": 0,
+            "model.layers.10": 0,
+            "model.layers.11": 0,
+            "model.layers.12": 0,
+            "model.layers.13": 0,
+            "model.layers.14": 0,
+            "model.layers.15": 0,
+            "model.layers.16": 0,
+            "model.layers.17": 0,
+            "model.layers.18": 0,
+            "model.layers.19": 0,
+            "model.layers.2": 0,
+            "model.layers.20": 1,
+            "model.layers.21": 1,
+            "model.layers.22": 1,
+            "model.layers.23": 1,
+            "model.layers.24": 1,
+            "model.layers.25": 1,
+            "model.layers.26": 1,
+            "model.layers.27": 1,
+            "model.layers.3": 0,
+            "model.layers.4": 0,
+            "model.layers.5": 0,
+            "model.layers.6": 0,
+            "model.layers.7": 0,
+            "model.layers.8": 0,
+            "model.layers.9": 0,
+            "model.norm": 1,
+            "model.rotary_emb": 1
+          },
+          "dtype": "float16",
+          "event": "load",
+          "global_before": [
+            {
+              "free_bytes": 15402336256,
+              "index": 0,
+              "name": "Tesla T4",
+              "total_bytes": 15636037632
+            },
+            {
+              "free_bytes": 15402336256,
+              "index": 1,
+              "name": "Tesla T4",
+              "total_bytes": 15636037632
+            }
+          ],
+          "load_seconds_including_hashes": 260.05817130700007,
+          "memory": [
+            {
+              "allocated_bytes": 10412830720,
+              "device": 0,
+              "global_free_bytes": 4987879424,
+              "global_total_bytes": 15636037632,
+              "peak_allocated_bytes": 10412830720,
+              "peak_reserved_bytes": 10414456832,
+              "reserved_bytes": 10414456832
+            },
+            {
+              "allocated_bytes": 4819451904,
+              "device": 1,
+              "global_free_bytes": 10580983808,
+              "global_total_bytes": 15636037632,
+              "peak_allocated_bytes": 4819451904,
+              "peak_reserved_bytes": 4821352448,
+              "reserved_bytes": 4821352448
+            }
+          ],
+          "model_id": "Qwen/Qwen2.5-7B-Instruct",
+          "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28:runtime-sha256:24b62737df7885edc2facccd6ca172c0266bccec85c30080a9fcb45adad6d19b",
+          "placement_sha256": "e5ab63050de430b4620d51352da61cb2da73d86cf3db6e92ec834faeba7d405a",
+          "protocol": "agent_hf_dual_gpu_v1",
+          "quantization": null,
+          "runtime_admission": {
+            "content_sha256": "24b62737df7885edc2facccd6ca172c0266bccec85c30080a9fcb45adad6d19b",
+            "documentation_mismatches": [
+              "README.md"
+            ],
+            "files": [
+              {
+                "name": ".gitattributes",
+                "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+                "size": 1519
+              },
+              {
+                "name": "LICENSE",
+                "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+                "size": 11343
+              },
+              {
+                "name": "README.md",
+                "sha256": "0981c06fb21db45eca831ebafa68861b654587566a8e3071aece79cf60329b71",
+                "size": 6005
+              },
+              {
+                "name": "config.json",
+                "sha256": "7463bb0ea78315365e6c6b74de4e73bbcc8359dfb0c5a737584e077d42c0b03c",
+                "size": 663
+              },
+              {
+                "name": "generation_config.json",
+                "sha256": "3a8f9087e486054c8a4a08dae2e5a3ba62e23da212b5b8c08bc42cb983c3459f",
+                "size": 243
+              },
+              {
+                "name": "merges.txt",
+                "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+                "size": 1671839
+              },
+              {
+                "name": "model-00001-of-00004.safetensors",
+                "sha256": "a1333e6293854747c481288ea83b348226af178dd565c49b6f9495ba1966aba7",
+                "size": 3945441440
+              },
+              {
+                "name": "model-00002-of-00004.safetensors",
+                "sha256": "f5d25a2772cb825164a2a2c0fb6d51a87e282abf21e4dd75bc5cfb3cd0ea6185",
+                "size": 3864726352
+              },
+              {
+                "name": "model-00003-of-00004.safetensors",
+                "sha256": "8efdec4c1bc12317ae1a38dc42b595ce777738a64deea3fcb8a0a91381bcdfd5",
+                "size": 3864726424
+              },
+              {
+                "name": "model-00004-of-00004.safetensors",
+                "sha256": "1a72d403cdf0c1ec3cb7f289f17b394a01e64394c2e9b3c0f94dbce3faf879bd",
+                "size": 3556377672
+              },
+              {
+                "name": "model.safetensors.index.json",
+                "sha256": "624bf7c47cd12468fdc16e38a47cf4f19e0415b859a223ba3c027eed2f0e1028",
+                "size": 27752
+              },
+              {
+                "name": "tokenizer.json",
+                "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+                "size": 7031645
+              },
+              {
+                "name": "tokenizer_config.json",
+                "sha256": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+                "size": 7305
+              },
+              {
+                "name": "vocab.json",
+                "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+                "size": 2776833
+              }
+            ],
+            "full_inventory_match": false,
+            "inventory_sha256": "9023d04a65f44a4e4beef29efba9f1ca088e2af1990cc82e586f457d4c5c43b3",
+            "parameter_tensors": 339,
+            "phase5_accepted": false,
+            "protocol": "agent_runtime_input_v1",
+            "runtime_files": 11,
+            "runtime_files_match": true,
+            "serialized_parameter_bytes": 15231233024
+          },
+          "torch_version": "2.10.0+cu128",
+          "transformers_version": "5.5.0"
+        },
+        "guard": {
+          "adapter_config_sha256": "b3a1d981cf8c7c872ef1704069f6223b9e3a55786c99c57b6f64b6c93dd66323",
+          "allocator_limit_bytes": 5368709120,
+          "attention": "sdpa",
+          "cuda_version": "12.8",
+          "device": 1,
+          "device_map": {
+            "": 1
+          },
+          "device_name": "Tesla T4",
+          "dtype": "float16",
+          "event": "load",
+          "free_headroom_bytes": 1073741824,
+          "global_free_bytes": 7326203904,
+          "global_free_bytes_before_load": 10474029056,
+          "global_total_bytes": 15636037632,
+          "load_seconds_including_hashes": 35.53771057899985,
+          "max_input_tokens": 4096,
+          "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+          "model_revision": "hf:989aa7980e4cf806f80c7fef2b1adb7bc71aa306;snapshot-sha256:36b6d38e9e3cbc47427b1fabcf6f44fdd926a1d95a04a33bbfb19d7f1ffd5fbe",
+          "process_allocated_bytes": 3087429632,
+          "process_peak_allocated_bytes": 3087429632,
+          "process_peak_reserved_bytes": 3147825152,
+          "process_reserved_bytes": 3147825152,
+          "protocol": "guard_hf_single_gpu_v1",
+          "quantization": null,
+          "snapshot_sha256": "36b6d38e9e3cbc47427b1fabcf6f44fdd926a1d95a04a33bbfb19d7f1ffd5fbe",
+          "torch_version": "2.10.0+cu128",
+          "transformers_version": "5.5.0"
+        }
+      },
+      "resident_bytes": [
+        10521411584,
+        8183087104
+      ],
+      "sample_elapsed_seconds": [
+        477.5838004310001,
+        478.58806507400004,
+        479.59303175700006,
+        480.59773008499997,
+        481.602100111,
+        482.60656671000015
+      ],
+      "signed_residual_bytes": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "trial": "agent_busy",
+      "workers": {
+        "agent": {
+          "busy_seconds": 180.37961430899986,
+          "cleanup": {
+            "elapsed_seconds": 0.3794149930001822,
+            "exitcode": -15,
+            "method": "TERMINATE",
+            "pid": 41,
+            "reaped": true,
+            "sequence": 1
+          },
+          "graceful": false,
+          "pid": 41,
+          "ready_seconds": 260.4345116070001
+        },
+        "guard": {
+          "busy_seconds": null,
+          "cleanup": {
+            "elapsed_seconds": 0.8165188989999024,
+            "exitcode": -15,
+            "method": "TERMINATE",
+            "pid": 68,
+            "reaped": true,
+            "sequence": 1
+          },
+          "graceful": false,
+          "pid": 68,
+          "ready_seconds": 35.937186696000026
+        }
+      }
+    },
+    {
+      "hf_loads": {
+        "agent": {
+          "adapter_protocol": "agent_hf_dual_gpu_v2_tf550",
+          "agent_caps": [
+            12884901888,
+            7516192768
+          ],
+          "attention": "sdpa",
+          "cuda_version": "12.8",
+          "device_map": {
+            "lm_head": 1,
+            "model.embed_tokens": 0,
+            "model.layers.0": 0,
+            "model.layers.1": 0,
+            "model.layers.10": 0,
+            "model.layers.11": 0,
+            "model.layers.12": 0,
+            "model.layers.13": 0,
+            "model.layers.14": 0,
+            "model.layers.15": 0,
+            "model.layers.16": 0,
+            "model.layers.17": 0,
+            "model.layers.18": 0,
+            "model.layers.19": 0,
+            "model.layers.2": 0,
+            "model.layers.20": 1,
+            "model.layers.21": 1,
+            "model.layers.22": 1,
+            "model.layers.23": 1,
+            "model.layers.24": 1,
+            "model.layers.25": 1,
+            "model.layers.26": 1,
+            "model.layers.27": 1,
+            "model.layers.3": 0,
+            "model.layers.4": 0,
+            "model.layers.5": 0,
+            "model.layers.6": 0,
+            "model.layers.7": 0,
+            "model.layers.8": 0,
+            "model.layers.9": 0,
+            "model.norm": 1,
+            "model.rotary_emb": 1
+          },
+          "dtype": "float16",
+          "event": "load",
+          "global_before": [
+            {
+              "free_bytes": 15402336256,
+              "index": 0,
+              "name": "Tesla T4",
+              "total_bytes": 15636037632
+            },
+            {
+              "free_bytes": 15402336256,
+              "index": 1,
+              "name": "Tesla T4",
+              "total_bytes": 15636037632
+            }
+          ],
+          "load_seconds_including_hashes": 136.48358614899985,
+          "memory": [
+            {
+              "allocated_bytes": 10412830720,
+              "device": 0,
+              "global_free_bytes": 4987879424,
+              "global_total_bytes": 15636037632,
+              "peak_allocated_bytes": 10412830720,
+              "peak_reserved_bytes": 10414456832,
+              "reserved_bytes": 10414456832
+            },
+            {
+              "allocated_bytes": 4819451904,
+              "device": 1,
+              "global_free_bytes": 10580983808,
+              "global_total_bytes": 15636037632,
+              "peak_allocated_bytes": 4819451904,
+              "peak_reserved_bytes": 4821352448,
+              "reserved_bytes": 4821352448
+            }
+          ],
+          "model_id": "Qwen/Qwen2.5-7B-Instruct",
+          "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28:runtime-sha256:24b62737df7885edc2facccd6ca172c0266bccec85c30080a9fcb45adad6d19b",
+          "placement_sha256": "e5ab63050de430b4620d51352da61cb2da73d86cf3db6e92ec834faeba7d405a",
+          "protocol": "agent_hf_dual_gpu_v1",
+          "quantization": null,
+          "runtime_admission": {
+            "content_sha256": "24b62737df7885edc2facccd6ca172c0266bccec85c30080a9fcb45adad6d19b",
+            "documentation_mismatches": [
+              "README.md"
+            ],
+            "files": [
+              {
+                "name": ".gitattributes",
+                "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+                "size": 1519
+              },
+              {
+                "name": "LICENSE",
+                "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+                "size": 11343
+              },
+              {
+                "name": "README.md",
+                "sha256": "0981c06fb21db45eca831ebafa68861b654587566a8e3071aece79cf60329b71",
+                "size": 6005
+              },
+              {
+                "name": "config.json",
+                "sha256": "7463bb0ea78315365e6c6b74de4e73bbcc8359dfb0c5a737584e077d42c0b03c",
+                "size": 663
+              },
+              {
+                "name": "generation_config.json",
+                "sha256": "3a8f9087e486054c8a4a08dae2e5a3ba62e23da212b5b8c08bc42cb983c3459f",
+                "size": 243
+              },
+              {
+                "name": "merges.txt",
+                "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+                "size": 1671839
+              },
+              {
+                "name": "model-00001-of-00004.safetensors",
+                "sha256": "a1333e6293854747c481288ea83b348226af178dd565c49b6f9495ba1966aba7",
+                "size": 3945441440
+              },
+              {
+                "name": "model-00002-of-00004.safetensors",
+                "sha256": "f5d25a2772cb825164a2a2c0fb6d51a87e282abf21e4dd75bc5cfb3cd0ea6185",
+                "size": 3864726352
+              },
+              {
+                "name": "model-00003-of-00004.safetensors",
+                "sha256": "8efdec4c1bc12317ae1a38dc42b595ce777738a64deea3fcb8a0a91381bcdfd5",
+                "size": 3864726424
+              },
+              {
+                "name": "model-00004-of-00004.safetensors",
+                "sha256": "1a72d403cdf0c1ec3cb7f289f17b394a01e64394c2e9b3c0f94dbce3faf879bd",
+                "size": 3556377672
+              },
+              {
+                "name": "model.safetensors.index.json",
+                "sha256": "624bf7c47cd12468fdc16e38a47cf4f19e0415b859a223ba3c027eed2f0e1028",
+                "size": 27752
+              },
+              {
+                "name": "tokenizer.json",
+                "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+                "size": 7031645
+              },
+              {
+                "name": "tokenizer_config.json",
+                "sha256": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+                "size": 7305
+              },
+              {
+                "name": "vocab.json",
+                "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+                "size": 2776833
+              }
+            ],
+            "full_inventory_match": false,
+            "inventory_sha256": "9023d04a65f44a4e4beef29efba9f1ca088e2af1990cc82e586f457d4c5c43b3",
+            "parameter_tensors": 339,
+            "phase5_accepted": false,
+            "protocol": "agent_runtime_input_v1",
+            "runtime_files": 11,
+            "runtime_files_match": true,
+            "serialized_parameter_bytes": 15231233024
+          },
+          "torch_version": "2.10.0+cu128",
+          "transformers_version": "5.5.0"
+        },
+        "guard": {
+          "adapter_config_sha256": "b3a1d981cf8c7c872ef1704069f6223b9e3a55786c99c57b6f64b6c93dd66323",
+          "allocator_limit_bytes": 5368709120,
+          "attention": "sdpa",
+          "cuda_version": "12.8",
+          "device": 1,
+          "device_map": {
+            "": 1
+          },
+          "device_name": "Tesla T4",
+          "dtype": "float16",
+          "event": "load",
+          "free_headroom_bytes": 1073741824,
+          "global_free_bytes": 7326203904,
+          "global_free_bytes_before_load": 10474029056,
+          "global_total_bytes": 15636037632,
+          "load_seconds_including_hashes": 29.992730504999827,
+          "max_input_tokens": 4096,
+          "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+          "model_revision": "hf:989aa7980e4cf806f80c7fef2b1adb7bc71aa306;snapshot-sha256:36b6d38e9e3cbc47427b1fabcf6f44fdd926a1d95a04a33bbfb19d7f1ffd5fbe",
+          "process_allocated_bytes": 3087429632,
+          "process_peak_allocated_bytes": 3087429632,
+          "process_peak_reserved_bytes": 3147825152,
+          "process_reserved_bytes": 3147825152,
+          "protocol": "guard_hf_single_gpu_v1",
+          "quantization": null,
+          "snapshot_sha256": "36b6d38e9e3cbc47427b1fabcf6f44fdd926a1d95a04a33bbfb19d7f1ffd5fbe",
+          "torch_version": "2.10.0+cu128",
+          "transformers_version": "5.5.0"
+        }
+      },
+      "resident_bytes": [
+        10521411584,
+        8183087104
+      ],
+      "sample_elapsed_seconds": [
+        288.4015349719998,
+        289.40496330099995,
+        290.409352572,
+        291.413648943,
+        292.4181084989998,
+        293.4224920549998
+      ],
+      "signed_residual_bytes": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "trial": "guard_busy",
+      "workers": {
+        "agent": {
+          "busy_seconds": null,
+          "cleanup": {
+            "elapsed_seconds": 0.8867385430000922,
+            "exitcode": -15,
+            "method": "TERMINATE",
+            "pid": 92,
+            "reaped": true,
+            "sequence": 1
+          },
+          "graceful": false,
+          "pid": 92,
+          "ready_seconds": 136.84943377600007
+        },
+        "guard": {
+          "busy_seconds": 120.32651383400002,
+          "cleanup": {
+            "elapsed_seconds": 0.32631074400001125,
+            "exitcode": -15,
+            "method": "TERMINATE",
+            "pid": 119,
+            "reaped": true,
+            "sequence": 1
+          },
+          "graceful": false,
+          "pid": 119,
+          "ready_seconds": 30.321999286999926
+        }
+      }
+    },
+    {
+      "hf_loads": {
+        "agent": {
+          "adapter_protocol": "agent_hf_dual_gpu_v2_tf550",
+          "agent_caps": [
+            12884901888,
+            7516192768
+          ],
+          "attention": "sdpa",
+          "cuda_version": "12.8",
+          "device_map": {
+            "lm_head": 1,
+            "model.embed_tokens": 0,
+            "model.layers.0": 0,
+            "model.layers.1": 0,
+            "model.layers.10": 0,
+            "model.layers.11": 0,
+            "model.layers.12": 0,
+            "model.layers.13": 0,
+            "model.layers.14": 0,
+            "model.layers.15": 0,
+            "model.layers.16": 0,
+            "model.layers.17": 0,
+            "model.layers.18": 0,
+            "model.layers.19": 0,
+            "model.layers.2": 0,
+            "model.layers.20": 1,
+            "model.layers.21": 1,
+            "model.layers.22": 1,
+            "model.layers.23": 1,
+            "model.layers.24": 1,
+            "model.layers.25": 1,
+            "model.layers.26": 1,
+            "model.layers.27": 1,
+            "model.layers.3": 0,
+            "model.layers.4": 0,
+            "model.layers.5": 0,
+            "model.layers.6": 0,
+            "model.layers.7": 0,
+            "model.layers.8": 0,
+            "model.layers.9": 0,
+            "model.norm": 1,
+            "model.rotary_emb": 1
+          },
+          "dtype": "float16",
+          "event": "load",
+          "global_before": [
+            {
+              "free_bytes": 15402336256,
+              "index": 0,
+              "name": "Tesla T4",
+              "total_bytes": 15636037632
+            },
+            {
+              "free_bytes": 15402336256,
+              "index": 1,
+              "name": "Tesla T4",
+              "total_bytes": 15636037632
+            }
+          ],
+          "load_seconds_including_hashes": 148.22912639800006,
+          "memory": [
+            {
+              "allocated_bytes": 10412830720,
+              "device": 0,
+              "global_free_bytes": 4987879424,
+              "global_total_bytes": 15636037632,
+              "peak_allocated_bytes": 10412830720,
+              "peak_reserved_bytes": 10414456832,
+              "reserved_bytes": 10414456832
+            },
+            {
+              "allocated_bytes": 4819451904,
+              "device": 1,
+              "global_free_bytes": 10580983808,
+              "global_total_bytes": 15636037632,
+              "peak_allocated_bytes": 4819451904,
+              "peak_reserved_bytes": 4821352448,
+              "reserved_bytes": 4821352448
+            }
+          ],
+          "model_id": "Qwen/Qwen2.5-7B-Instruct",
+          "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28:runtime-sha256:24b62737df7885edc2facccd6ca172c0266bccec85c30080a9fcb45adad6d19b",
+          "placement_sha256": "e5ab63050de430b4620d51352da61cb2da73d86cf3db6e92ec834faeba7d405a",
+          "protocol": "agent_hf_dual_gpu_v1",
+          "quantization": null,
+          "runtime_admission": {
+            "content_sha256": "24b62737df7885edc2facccd6ca172c0266bccec85c30080a9fcb45adad6d19b",
+            "documentation_mismatches": [
+              "README.md"
+            ],
+            "files": [
+              {
+                "name": ".gitattributes",
+                "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+                "size": 1519
+              },
+              {
+                "name": "LICENSE",
+                "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+                "size": 11343
+              },
+              {
+                "name": "README.md",
+                "sha256": "0981c06fb21db45eca831ebafa68861b654587566a8e3071aece79cf60329b71",
+                "size": 6005
+              },
+              {
+                "name": "config.json",
+                "sha256": "7463bb0ea78315365e6c6b74de4e73bbcc8359dfb0c5a737584e077d42c0b03c",
+                "size": 663
+              },
+              {
+                "name": "generation_config.json",
+                "sha256": "3a8f9087e486054c8a4a08dae2e5a3ba62e23da212b5b8c08bc42cb983c3459f",
+                "size": 243
+              },
+              {
+                "name": "merges.txt",
+                "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+                "size": 1671839
+              },
+              {
+                "name": "model-00001-of-00004.safetensors",
+                "sha256": "a1333e6293854747c481288ea83b348226af178dd565c49b6f9495ba1966aba7",
+                "size": 3945441440
+              },
+              {
+                "name": "model-00002-of-00004.safetensors",
+                "sha256": "f5d25a2772cb825164a2a2c0fb6d51a87e282abf21e4dd75bc5cfb3cd0ea6185",
+                "size": 3864726352
+              },
+              {
+                "name": "model-00003-of-00004.safetensors",
+                "sha256": "8efdec4c1bc12317ae1a38dc42b595ce777738a64deea3fcb8a0a91381bcdfd5",
+                "size": 3864726424
+              },
+              {
+                "name": "model-00004-of-00004.safetensors",
+                "sha256": "1a72d403cdf0c1ec3cb7f289f17b394a01e64394c2e9b3c0f94dbce3faf879bd",
+                "size": 3556377672
+              },
+              {
+                "name": "model.safetensors.index.json",
+                "sha256": "624bf7c47cd12468fdc16e38a47cf4f19e0415b859a223ba3c027eed2f0e1028",
+                "size": 27752
+              },
+              {
+                "name": "tokenizer.json",
+                "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+                "size": 7031645
+              },
+              {
+                "name": "tokenizer_config.json",
+                "sha256": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+                "size": 7305
+              },
+              {
+                "name": "vocab.json",
+                "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+                "size": 2776833
+              }
+            ],
+            "full_inventory_match": false,
+            "inventory_sha256": "9023d04a65f44a4e4beef29efba9f1ca088e2af1990cc82e586f457d4c5c43b3",
+            "parameter_tensors": 339,
+            "phase5_accepted": false,
+            "protocol": "agent_runtime_input_v1",
+            "runtime_files": 11,
+            "runtime_files_match": true,
+            "serialized_parameter_bytes": 15231233024
+          },
+          "torch_version": "2.10.0+cu128",
+          "transformers_version": "5.5.0"
+        },
+        "guard": {
+          "adapter_config_sha256": "b3a1d981cf8c7c872ef1704069f6223b9e3a55786c99c57b6f64b6c93dd66323",
+          "allocator_limit_bytes": 5368709120,
+          "attention": "sdpa",
+          "cuda_version": "12.8",
+          "device": 1,
+          "device_map": {
+            "": 1
+          },
+          "device_name": "Tesla T4",
+          "dtype": "float16",
+          "event": "load",
+          "free_headroom_bytes": 1073741824,
+          "global_free_bytes": 7326203904,
+          "global_free_bytes_before_load": 10474029056,
+          "global_total_bytes": 15636037632,
+          "load_seconds_including_hashes": 33.40442914899995,
+          "max_input_tokens": 4096,
+          "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+          "model_revision": "hf:989aa7980e4cf806f80c7fef2b1adb7bc71aa306;snapshot-sha256:36b6d38e9e3cbc47427b1fabcf6f44fdd926a1d95a04a33bbfb19d7f1ffd5fbe",
+          "process_allocated_bytes": 3087429632,
+          "process_peak_allocated_bytes": 3087429632,
+          "process_peak_reserved_bytes": 3147825152,
+          "process_reserved_bytes": 3147825152,
+          "protocol": "guard_hf_single_gpu_v1",
+          "quantization": null,
+          "snapshot_sha256": "36b6d38e9e3cbc47427b1fabcf6f44fdd926a1d95a04a33bbfb19d7f1ffd5fbe",
+          "torch_version": "2.10.0+cu128",
+          "transformers_version": "5.5.0"
+        }
+      },
+      "resident_bytes": [
+        10521411584,
+        8183087104
+      ],
+      "sample_elapsed_seconds": [
+        304.1361531399998,
+        305.13968211300016,
+        306.14422804100013,
+        307.14866424699994,
+        308.1531119309998,
+        309.15725040200005
+      ],
+      "signed_residual_bytes": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "trial": "guard_ignore_term",
+      "workers": {
+        "agent": {
+          "busy_seconds": null,
+          "cleanup": {
+            "elapsed_seconds": 0.8920682010002565,
+            "exitcode": -15,
+            "method": "TERMINATE",
+            "pid": 143,
+            "reaped": true,
+            "sequence": 1
+          },
+          "graceful": false,
+          "pid": 143,
+          "ready_seconds": 148.61145786399993
+        },
+        "guard": {
+          "busy_seconds": 120.83631651100018,
+          "cleanup": {
+            "elapsed_seconds": 0.8361180580000109,
+            "exitcode": -9,
+            "method": "KILL",
+            "pid": 170,
+            "reaped": true,
+            "sequence": 1
+          },
+          "graceful": false,
+          "pid": 170,
+          "ready_seconds": 33.78014491399995
+        }
+      }
+    }
+  ],
+  "model_generation_calls": 0,
+  "phase5_accepted": false,
+  "preflight_sha256": "b07d6087d3a1dd9fe3b23653d34894c68b0e5324099cc00e0f56d566c13147e1",
+  "protocol": "pair_ipc_gpu_probe_audit_v1",
+  "raw_sha256": {
+    "dummy/identity.json": "4c31213415554ea47a0dbae53cca860d9e90dfd292a848f49309032ef2a7f4f6",
+    "dummy/results.json": "89a319938bdb378cba36e2f606f427ae8b62ed5154b7f6f4f34d2f196e35e132",
+    "dummy/summary.json": "574aeff92576a120b9bdc26be980e10eaca60e8ed9926ca2918aadc9024178fc",
+    "dummy/tasks/clean_0002/result.json": "1382bf7f0cf441dce39b35cac603c7a4fbf3ec41b12194f2f32f0a6e9e109845",
+    "dummy/tasks/clean_0002/trace.jsonl": "04335e650b74e781da6dc608cbb07a87be866e851e21672bbff3777a020c32dc",
+    "dummy/tasks/clean_0004/result.json": "dbd5e745c6ac5a7f66ca7760f321c0d4afece38e7650dc8687de2fd04883df57",
+    "dummy/tasks/clean_0004/trace.jsonl": "bda3fee6eba3b9b43281bc83b733f97bd33dbe5ab5dba51ca9d3f9d25dc66a20",
+    "dummy/tasks/clean_0005/result.json": "f9a8a303987da94edd6a7ceef12d83f6e0c3d75c1ac176679a04b16f1953989c",
+    "dummy/tasks/clean_0005/trace.jsonl": "9634e098e3125f4d174d2e56c8905e94f22eef47a3eb3ced796e2038d9ecba5d",
+    "dummy/tasks/clean_0042/result.json": "677281e19de622a174f15b46ade73b6edc59ae74c119804e702924dec73920c3",
+    "dummy/tasks/clean_0042/trace.jsonl": "d052acfedc426ed888f5045e4f904ce6e52ae1c233ea78f34b1904d5fa7673e1",
+    "dummy/tasks/clean_0046/result.json": "798f078079b6e6413ae6925274f854f99d21683abbfc70692879f8277b1792be",
+    "dummy/tasks/clean_0046/trace.jsonl": "5d38ee119d1c960d35d43bf44a99184292d9f73bd79b6684bd4a8aa42bac78dc",
+    "dummy/tasks/clean_0047/result.json": "a819e702f6747676436b3ed8e6130c20a365282f8c95efa42b6bca5d23524ac4",
+    "dummy/tasks/clean_0047/trace.jsonl": "13e734c5f8a0abbb49a8c14baf0b4ba34bf1173d25c5e9c75873fa9d9fd8bd2c",
+    "dummy/tasks/clean_0081/result.json": "5629366773789cf899d7709cb570afb5bfed41a4c16d7708cc21db72354b14e5",
+    "dummy/tasks/clean_0081/trace.jsonl": "d80fb9dcdb8faed01b02e6989eb51887c5718bed938b88bfe3022ac047695776",
+    "dummy/tasks/clean_0082/result.json": "6545ebe3118fdcee23320d830bb9f927c8a8911414e5d2c2311e5e8b6514b98f",
+    "dummy/tasks/clean_0082/trace.jsonl": "34095c73c5769cc974c418948c08f8c2a6325d0b410cf382cf073cb20758239a",
+    "dummy/tasks/clean_0083/result.json": "b5f108407e037af6a13c8ace54fa82717f25d44a479f1f083d3897dd6e387e8b",
+    "dummy/tasks/clean_0083/trace.jsonl": "b5cfb8ef7f896bd4db0891ad62320cbfac9101855618d7ece24001cde5a3e854",
+    "dummy/tasks/clean_0132/result.json": "73b7232ab1ceb51e90e13ac433a44f3ad112a30dd90f215e0ee39e2e24d8a107",
+    "dummy/tasks/clean_0132/trace.jsonl": "b8818552f350ffa69e8561e16834efcee81b8212123b806158c47e3466f84a5e",
+    "dummy/tasks/clean_0134/result.json": "51038e65eb211cb10db20b801cb02d58d8407d62c8ed346d60979f5459c63a84",
+    "dummy/tasks/clean_0134/trace.jsonl": "a31a6a498dfe7330cb2ece991f8c64ac1e350c579d5e9bbc66fd7570efd9058c",
+    "dummy/tasks/clean_0135/result.json": "e2e401019fa9fe62da5fc13d9565844918e168ca172c087367a1f04fb255c2be",
+    "dummy/tasks/clean_0135/trace.jsonl": "3e7e9c15fb218d993347b06d086fa5ab1608a331b97a03455720b0b1f03e6f63",
+    "dummy/tasks/clean_0171/result.json": "de063566e8989e5af59dd1b53ba9698b43288a20cb48f0842f184137a774b418",
+    "dummy/tasks/clean_0171/trace.jsonl": "668a0811344913b3da5204e2e8f54386ee5474e659c618cb38c27924aced06d4",
+    "dummy/tasks/clean_0173/result.json": "ec7e3a14c379825f42bdf382a1a68ed01733df121c17ee959c638a743d253528",
+    "dummy/tasks/clean_0173/trace.jsonl": "c4624a6ef849dc2bc2acc4fbe742ca693ef541455f8a60fc9749fd6db663c137",
+    "dummy/tasks/clean_0174/result.json": "97590fbd90b80ba4ce480159f2d1a96c03d57f70f71fba413eda60aaa7e782dc",
+    "dummy/tasks/clean_0174/trace.jsonl": "be1d6a3011698757072d99e86dc020356b2d2c42a6d4a780839e83e76f2eae4d",
+    "dummy/tasks/clean_0197/result.json": "35f8f45cfc889dfc837be38079377cf6e0872b98d34c98e257cba92b127711ea",
+    "dummy/tasks/clean_0197/trace.jsonl": "0ca05bde536110f49edbab5483282105b4657a583371fa0d388b099202d0625b",
+    "dummy/tasks/clean_0199/result.json": "7e146d62f25b730b4851aab476947ec5dac27b41255beddda52e075396daad9a",
+    "dummy/tasks/clean_0199/trace.jsonl": "b19bbc968b918d1165cfced74551ab27cbec742a24d06348ba6b0a0818202eca",
+    "dummy/tasks/clean_0200/result.json": "39345ed44d7b98be35644ebb556a8c2e2a22163002955f24b01a4703c64b9125",
+    "dummy/tasks/clean_0200/trace.jsonl": "87f2c7fd135a0544cb91a60302847947f2f2054ffd7294c59b039bb321547148",
+    "dummy/tasks/clean_0226/result.json": "c0e321632720b19b79417d4ab64abb46070b455851ca7dcd7a5168f53aa4cbe9",
+    "dummy/tasks/clean_0226/trace.jsonl": "c91a207956161f09f38c57ed5a16a8aa681c7d474685aa29f92d59ed04153072",
+    "dummy/tasks/clean_0228/result.json": "be38527571a88d7db0d8176cb74f83d3fbb7b3651cb5f0a643f9a3d5f9f096f8",
+    "dummy/tasks/clean_0228/trace.jsonl": "5ffdfe184c07b4ea0e0a38a21a9a7bce3e7311c6e4f9931ea9e99fa9a3543a38",
+    "dummy/tasks/clean_0229/result.json": "4b7406c3bbfe98a3947ef95f59d19194c88fbb20a7f7949ec4e9fa602728bfbe",
+    "dummy/tasks/clean_0229/trace.jsonl": "c9a166f82a3b5e156241322e7939fbf96901ce2d9a15aee410777954b085d233",
+    "pair_ipc/identity.json": "acff6810c71bfcf9be9e04ab24f340583ea3537f63f4f22a5e31e8de394b006f",
+    "pair_ipc/pair_cancellation/agent_busy/agent_hf_metrics.jsonl": "04345de2ae1500b1d44922670b1689ad022b547fb49ad5d96424412ae95d56bf",
+    "pair_ipc/pair_cancellation/agent_busy/baseline.json": "ea5e75eb4fc1e10a100d236c84f346d5f6589fb7b9d53cb89d065f2fec6884d2",
+    "pair_ipc/pair_cancellation/agent_busy/busy_entered.json": "bcf81f089408402cf7124267d0572c678f884da47a654c283552e69451683dbf",
+    "pair_ipc/pair_cancellation/agent_busy/closed.json": "6c1d6d732586d454c1a19701dd050dfe661b6651ddd64ffa6c3c77b5dfdea785",
+    "pair_ipc/pair_cancellation/agent_busy/guard_hf_metrics.jsonl": "8c3df67054fffa5b42caecb76a0c5dfe3bc81c645fca0e3b2a57676a335ef8b4",
+    "pair_ipc/pair_cancellation/agent_busy/pair_config.json": "d67fd1ab8eb01105ddad6260de5d640927e10d8662ba80dc32ae57bd9232646f",
+    "pair_ipc/pair_cancellation/agent_busy/ready.json": "266554d4c0089c65e807d1a8a367c1f1dd0fb9d65b1bf470aeca4117b7ed1bc3",
+    "pair_ipc/pair_cancellation/agent_busy/recovery_0.json": "96edefc7e20c6a7318f73df343b3468d6bf36be711e8d53f4b0ac230071619e1",
+    "pair_ipc/pair_cancellation/agent_busy/recovery_1.json": "21466753a1be9d4e8bcc435306d8ab619f7abd8d39f8a99c552c9243513bef15",
+    "pair_ipc/pair_cancellation/agent_busy/recovery_2.json": "df51c5eb831aa6e016fd61cea78bf3852f5f7b08fb25e8dd3f9e484dca50fcab",
+    "pair_ipc/pair_cancellation/agent_busy/recovery_3.json": "b88759daa0fba6011f8678fc43faeac2fc1b80d452aabc50f4077f369e4ea00b",
+    "pair_ipc/pair_cancellation/agent_busy/recovery_4.json": "2c8c76bc35e70bfbe23121e654359ce4eaf233ecee527825da0389946431f52b",
+    "pair_ipc/pair_cancellation/agent_busy/recovery_5.json": "3cea7a42c6174c8907c5ce0c6b1dd9a9628700c667c2765c7cfce711e6734a93",
+    "pair_ipc/pair_cancellation/agent_busy/trial.json": "838977ac758ea180b4f0fba5b0fa3e40a4daa01adde6d7caf42e5ffa191d6125",
+    "pair_ipc/pair_cancellation/guard_busy/agent_hf_metrics.jsonl": "9e15248399a83eaead0cea4ef91c787806978b68a8ee91b95bad76062e8a04b6",
+    "pair_ipc/pair_cancellation/guard_busy/baseline.json": "ea5e75eb4fc1e10a100d236c84f346d5f6589fb7b9d53cb89d065f2fec6884d2",
+    "pair_ipc/pair_cancellation/guard_busy/busy_entered.json": "7ceaac4c80c12bdd146fdb3d56530e02c3b515b39fca4f12cfcb0451b1b66f97",
+    "pair_ipc/pair_cancellation/guard_busy/closed.json": "a3fa601f089f4b59ccc702906443a71c433b2b98b033e58846328397a490c726",
+    "pair_ipc/pair_cancellation/guard_busy/guard_hf_metrics.jsonl": "7c4dc9ad2e7542ce2f7d563c8743bbc7c2f0d5c572eef17135b986404dd83193",
+    "pair_ipc/pair_cancellation/guard_busy/pair_config.json": "d67fd1ab8eb01105ddad6260de5d640927e10d8662ba80dc32ae57bd9232646f",
+    "pair_ipc/pair_cancellation/guard_busy/ready.json": "13fc7c18a639c1536358e7ca29d19ae10a7d6d37660d775c4f37e9cf56049507",
+    "pair_ipc/pair_cancellation/guard_busy/recovery_0.json": "7a968e2de05413801517322b0c1fac600380ba612d21e0e13e68788238535998",
+    "pair_ipc/pair_cancellation/guard_busy/recovery_1.json": "998730594c937ea73ff71dec88b991e690ea6815f50af9fcebc2dfecacaf4d3f",
+    "pair_ipc/pair_cancellation/guard_busy/recovery_2.json": "166ce51ae72a31223d2179edd5cee1f8de055109254174c1ecb4f823896f35e9",
+    "pair_ipc/pair_cancellation/guard_busy/recovery_3.json": "351d19381c9c163857095a29b7fa200d02ae05c79b9776c352dace082b30c196",
+    "pair_ipc/pair_cancellation/guard_busy/recovery_4.json": "083c854e0152a816296f7ce7376b93c29893cc99c4b88a4aefeb92df030aeb56",
+    "pair_ipc/pair_cancellation/guard_busy/recovery_5.json": "f8764fa9122b43a532312d680f89d5483f2800335de93926d281ed68cf9d9469",
+    "pair_ipc/pair_cancellation/guard_busy/trial.json": "7367c12c705c788dfa7da8073592ab2e55abf1b1277e41502f090a2df7bc2a25",
+    "pair_ipc/pair_cancellation/guard_ignore_term/agent_hf_metrics.jsonl": "f3d4cf972d7d07fdbd9cea859bc8d58df44b5bec6f4efc37b7118cffa8946ab9",
+    "pair_ipc/pair_cancellation/guard_ignore_term/baseline.json": "ea5e75eb4fc1e10a100d236c84f346d5f6589fb7b9d53cb89d065f2fec6884d2",
+    "pair_ipc/pair_cancellation/guard_ignore_term/busy_entered.json": "a56c1503cb4527524c2a821149925e6306c2a5f1f5c8e4e536654fc798d13732",
+    "pair_ipc/pair_cancellation/guard_ignore_term/closed.json": "3e09fb3584dd22f637b519d57b942d7e6d69508a178b7e2cf2f15d433ae451e4",
+    "pair_ipc/pair_cancellation/guard_ignore_term/guard_hf_metrics.jsonl": "89beba7ff6a067dbb2fa54014c80877a7735c108f092f852a1b69ca6cd1019f3",
+    "pair_ipc/pair_cancellation/guard_ignore_term/pair_config.json": "d67fd1ab8eb01105ddad6260de5d640927e10d8662ba80dc32ae57bd9232646f",
+    "pair_ipc/pair_cancellation/guard_ignore_term/ready.json": "91353f15fcb558338e3e8a4938c2cfea0c6d239633c062a2e151d7ca3879ff91",
+    "pair_ipc/pair_cancellation/guard_ignore_term/recovery_0.json": "df86232a12ede2f2cc1e64c60493dbe1f1e6e94934a7329e53e75162e942b6ad",
+    "pair_ipc/pair_cancellation/guard_ignore_term/recovery_1.json": "1972f7b3777f95e3fab1a83e90b5dd37d2f7565032f738291234abc908a0dcd8",
+    "pair_ipc/pair_cancellation/guard_ignore_term/recovery_2.json": "af7b6e93882e620cb0f49b7be72dcc8f729df858fc0c319b5e111fdaaa1a28c6",
+    "pair_ipc/pair_cancellation/guard_ignore_term/recovery_3.json": "43fc5850575d71f5ec6cf95deed9a3cbe7dfb6ef9067a78b38b11047b67f0a9e",
+    "pair_ipc/pair_cancellation/guard_ignore_term/recovery_4.json": "83161e87b3e9c76b563acc2655160777ac14884c72c2434892981a715ad58170",
+    "pair_ipc/pair_cancellation/guard_ignore_term/recovery_5.json": "3941a7e2c0744a4a1344355171fc3401e5f041fc694780a168bdd24c4833433b",
+    "pair_ipc/pair_cancellation/guard_ignore_term/trial.json": "e04fc70641e2ed48afc72dd5c9654d9dbaa4fbcf89f6f5e84bd767e3a84e964d",
+    "pair_ipc/pair_cancellation/manifest.json": "a3bd46d7177037103c894a9a20c97c9eba1d7cf20d1c91edd518a560f9599f25",
+    "pair_ipc/pair_cancellation/summary.json": "28dd77b82ade02e4f5765729040eab906f73b2ecf3a270bfccc363afedea1393",
+    "pair_ipc/tracker/agent_busy_agent.jsonl": "47a95d1127ed76d198f69135fc43853ce47767ff391531ffc660a27dd77cf37c",
+    "pair_ipc/tracker/agent_busy_guard.jsonl": "7206d65c8fd30b50b8b95c029341e29cc813d1c3d75e3cbb25d5d6ce6c63fe9c",
+    "pair_ipc/tracker/guard_busy_agent.jsonl": "48b4b2abb7a4c19ffcda1032b53751472adc23b75b8973df14b50ec2d12027c0",
+    "pair_ipc/tracker/guard_busy_guard.jsonl": "61a123fc9848e1cda75798ec7f5c22f44668c79d1141b20002285ef31d5ec6fd",
+    "pair_ipc/tracker/guard_ignore_term_agent.jsonl": "77f421c928ffd15bf22467827e55db3d422f2a7741cfd570a585740838d1795e",
+    "pair_ipc/tracker/guard_ignore_term_guard.jsonl": "c3ffa115a8de38a1605d65f72eba86c62df969d1257bd120db86450ee27c37ad",
+    "pair_ipc/tracker/owner.jsonl": "d65e5fd394c13631d3bd82f5c5410d3dec0f8c65fd49f5aafef39793d49ad036",
+    "pair_ipc_bootstrap_identity.json": "70cba86312963da086e5b0423c1146bde1c825980ae136d0496ff0cf8f416eac",
+    "react-vn-pair-ipc-v1.log": "b3cdb50dbb9d7de9b2b9c157e980da37c19753ef87e391d2314488e130b9d01a"
+  },
+  "remote_metadata": {
+    "code_file": "react-vn-pair-ipc-v1.py",
+    "competition_sources": [],
+    "dataset_sources": [
+      "huylmhuhu/react-vn-guard15-probe-data-v1"
+    ],
+    "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+    "enable_gpu": true,
+    "enable_internet": false,
+    "enable_tpu": false,
+    "id": "huylmhuhu/react-vn-pair-ipc-v1",
+    "id_no": 133733807,
+    "is_private": true,
+    "kernel_sources": [],
+    "kernel_type": "script",
+    "keywords": [],
+    "language": "python",
+    "machine_shape": "NvidiaTeslaT4",
+    "model_sources": [
+      "qwen-lm/qwen2.5/Transformers/7b-instruct/1"
+    ],
+    "title": "ReAct VN Pair IPC v1"
+  },
+  "remote_source_sha256": {
+    "kernel-metadata.json": "772b9ea7c24b9326c4d6396134e79ddce8c26b3e47f039937af24a6a6e6055ea",
+    "react-vn-pair-ipc-v1.py": "39ea32a5c515c2539e4405f7a9407083f7cea945279128d630a4e91f3edf099d"
+  },
+  "resource_recovery_pass": true,
+  "shutdown_warnings": {
+    "ipc_cleanup_verified": false,
+    "scope": "Kernel shutdown warnings are separate from measured worker reap/VRAM recovery",
+    "semaphore_warning_counts": [
+      3
+    ]
+  },
+  "source_commit": "90877913655179aab2abd2c3438a1af8036b777f",
+  "source_sha256": {
+    "scripts/audit_phase5_pair_ipc_gpu.py": "ec439cd245f266f4279a84dfd45893f36ab3009d21f4a77663cf9f831cb94982",
+    "src/react_agent/validation/pair_ipc_audit_v1.py": "8d9466b7e1d506e7eca130823d1c01ec0404021e324b29d107cba9e025611514"
+  },
+  "test_access": "hash-only seals/presealed IDs; no Test or private GT payload",
+  "tracker": {
+    "ipc_cleanup_verified": false,
+    "limitations": "Observed entry points only; no C-level/cached-alias coverage or tracker/OS unlink certification",
+    "observations": {
+      "agent_busy_agent.jsonl": {
+        "events": 4,
+        "ipc_cleanup_verified": false,
+        "pid": 41,
+        "register_calls": 1,
+        "role": "agent",
+        "scope": "Only observed Python entry-point calls; no OS/tracker-exit observation",
+        "unmatched_registrations": [
+          {
+            "action": "REGISTER",
+            "name_sha256": "a6e546ff9bc33ce26e26454f1653ff0707476952d5e450f23684e18009b0909e",
+            "pid": 41,
+            "protocol": "ipc_tracker_trace_v1",
+            "resource_type": "semaphore",
+            "role": "agent",
+            "sequence": 3,
+            "stack": [
+              {
+                "file": "synchronize.py",
+                "function": "__init__",
+                "line": 80,
+                "module": "multiprocessing.synchronize"
+              },
+              {
+                "file": "synchronize.py",
+                "function": "__init__",
+                "line": 194,
+                "module": "multiprocessing.synchronize"
+              },
+              {
+                "file": "context.py",
+                "function": "RLock",
+                "line": 73,
+                "module": "multiprocessing.context"
+              },
+              {
+                "file": "std.py",
+                "function": "create_mp_lock",
+                "line": 121,
+                "module": "tqdm.std"
+              },
+              {
+                "file": "std.py",
+                "function": "__init__",
+                "line": 97,
+                "module": "tqdm.std"
+              },
+              {
+                "file": "std.py",
+                "function": "get_lock",
+                "line": 764,
+                "module": "tqdm.std"
+              },
+              {
+                "file": "std.py",
+                "function": "__new__",
+                "line": 665,
+                "module": "tqdm.std"
+              },
+              {
+                "file": "logging.py",
+                "function": "__call__",
+                "line": 383,
+                "module": "transformers.utils.logging"
+              },
+              {
+                "file": "core_model_loading.py",
+                "function": "convert_and_load_state_dict_in_model",
+                "line": 1233,
+                "module": "transformers.core_model_loading"
+              },
+              {
+                "file": "modeling_utils.py",
+                "function": "_load_pretrained_model",
+                "line": 4252,
+                "module": "transformers.modeling_utils"
+              },
+              {
+                "file": "modeling_utils.py",
+                "function": "from_pretrained",
+                "line": 4132,
+                "module": "transformers.modeling_utils"
+              },
+              {
+                "file": "agent_hf_v1.py",
+                "function": "__init__",
+                "line": 78,
+                "module": "react_agent.llm.agent_hf_v1"
+              },
+              {
+                "file": "model_pair_hf_v1.py",
+                "function": "__call__",
+                "line": 39,
+                "module": "react_agent.llm.model_pair_hf_v1"
+              },
+              {
+                "file": "pair_cancellation_v1.py",
+                "function": "__call__",
+                "line": 49,
+                "module": "react_agent.llm.pair_cancellation_v1"
+              },
+              {
+                "file": "model_pair_v1.py",
+                "function": "__call__",
+                "line": 115,
+                "module": "react_agent.llm.model_pair_v1"
+              },
+              {
+                "file": "ipc_trace_v1.py",
+                "function": "__call__",
+                "line": 125,
+                "module": "react_agent.llm.ipc_trace_v1"
+              },
+              {
+                "file": "warm_guard.py",
+                "function": "_serve",
+                "line": 48,
+                "module": "react_agent.security_v1.warm_guard"
+              },
+              {
+                "file": "process.py",
+                "function": "run",
+                "line": 108,
+                "module": "multiprocessing.process"
+              },
+              {
+                "file": "process.py",
+                "function": "_bootstrap",
+                "line": 314,
+                "module": "multiprocessing.process"
+              },
+              {
+                "file": "spawn.py",
+                "function": "_main",
+                "line": 135,
+                "module": "multiprocessing.spawn"
+              },
+              {
+                "file": "spawn.py",
+                "function": "spawn_main",
+                "line": 122,
+                "module": "multiprocessing.spawn"
+              },
+              {
+                "file": "<string>",
+                "function": "<module>",
+                "line": 1,
+                "module": "__main__"
+              }
+            ]
+          }
+        ],
+        "unregister_calls": 0
+      },
+      "agent_busy_guard.jsonl": {
+        "events": 5,
+        "ipc_cleanup_verified": false,
+        "pid": 68,
+        "register_calls": 1,
+        "role": "guard",
+        "scope": "Only observed Python entry-point calls; no OS/tracker-exit observation",
+        "unmatched_registrations": [],
+        "unregister_calls": 1
+      },
+      "guard_busy_agent.jsonl": {
+        "events": 5,
+        "ipc_cleanup_verified": false,
+        "pid": 92,
+        "register_calls": 1,
+        "role": "agent",
+        "scope": "Only observed Python entry-point calls; no OS/tracker-exit observation",
+        "unmatched_registrations": [],
+        "unregister_calls": 1
+      },
+      "guard_busy_guard.jsonl": {
+        "events": 4,
+        "ipc_cleanup_verified": false,
+        "pid": 119,
+        "register_calls": 1,
+        "role": "guard",
+        "scope": "Only observed Python entry-point calls; no OS/tracker-exit observation",
+        "unmatched_registrations": [
+          {
+            "action": "REGISTER",
+            "name_sha256": "54ff47062a8987a3e6f168a70e0365219ec210b5493493b3e846d61c28e1f475",
+            "pid": 119,
+            "protocol": "ipc_tracker_trace_v1",
+            "resource_type": "semaphore",
+            "role": "guard",
+            "sequence": 3,
+            "stack": [
+              {
+                "file": "synchronize.py",
+                "function": "__init__",
+                "line": 80,
+                "module": "multiprocessing.synchronize"
+              },
+              {
+                "file": "synchronize.py",
+                "function": "__init__",
+                "line": 194,
+                "module": "multiprocessing.synchronize"
+              },
+              {
+                "file": "context.py",
+                "function": "RLock",
+                "line": 73,
+                "module": "multiprocessing.context"
+              },
+              {
+                "file": "std.py",
+                "function": "create_mp_lock",
+                "line": 121,
+                "module": "tqdm.std"
+              },
+              {
+                "file": "std.py",
+                "function": "__init__",
+                "line": 97,
+                "module": "tqdm.std"
+              },
+              {
+                "file": "std.py",
+                "function": "get_lock",
+                "line": 764,
+                "module": "tqdm.std"
+              },
+              {
+                "file": "std.py",
+                "function": "__new__",
+                "line": 665,
+                "module": "tqdm.std"
+              },
+              {
+                "file": "logging.py",
+                "function": "__call__",
+                "line": 383,
+                "module": "transformers.utils.logging"
+              },
+              {
+                "file": "core_model_loading.py",
+                "function": "convert_and_load_state_dict_in_model",
+                "line": 1233,
+                "module": "transformers.core_model_loading"
+              },
+              {
+                "file": "modeling_utils.py",
+                "function": "_load_pretrained_model",
+                "line": 4252,
+                "module": "transformers.modeling_utils"
+              },
+              {
+                "file": "modeling_utils.py",
+                "function": "from_pretrained",
+                "line": 4132,
+                "module": "transformers.modeling_utils"
+              },
+              {
+                "file": "guard_hf_v1.py",
+                "function": "__init__",
+                "line": 84,
+                "module": "react_agent.llm.guard_hf_v1"
+              },
+              {
+                "file": "guard_hf_v1.py",
+                "function": "__call__",
+                "line": 43,
+                "module": "react_agent.llm.guard_hf_v1"
+              },
+              {
+                "file": "model_pair_hf_v1.py",
+                "function": "__call__",
+                "line": 49,
+                "module": "react_agent.llm.model_pair_hf_v1"
+              },
+              {
+                "file": "pair_cancellation_v1.py",
+                "function": "__call__",
+                "line": 49,
+                "module": "react_agent.llm.pair_cancellation_v1"
+              },
+              {
+                "file": "model_pair_v1.py",
+                "function": "__call__",
+                "line": 115,
+                "module": "react_agent.llm.model_pair_v1"
+              },
+              {
+                "file": "ipc_trace_v1.py",
+                "function": "__call__",
+                "line": 125,
+                "module": "react_agent.llm.ipc_trace_v1"
+              },
+              {
+                "file": "warm_guard.py",
+                "function": "_serve",
+                "line": 48,
+                "module": "react_agent.security_v1.warm_guard"
+              },
+              {
+                "file": "process.py",
+                "function": "run",
+                "line": 108,
+                "module": "multiprocessing.process"
+              },
+              {
+                "file": "process.py",
+                "function": "_bootstrap",
+                "line": 314,
+                "module": "multiprocessing.process"
+              },
+              {
+                "file": "spawn.py",
+                "function": "_main",
+                "line": 135,
+                "module": "multiprocessing.spawn"
+              },
+              {
+                "file": "spawn.py",
+                "function": "spawn_main",
+                "line": 122,
+                "module": "multiprocessing.spawn"
+              },
+              {
+                "file": "<string>",
+                "function": "<module>",
+                "line": 1,
+                "module": "__main__"
+              }
+            ]
+          }
+        ],
+        "unregister_calls": 0
+      },
+      "guard_ignore_term_agent.jsonl": {
+        "events": 5,
+        "ipc_cleanup_verified": false,
+        "pid": 143,
+        "register_calls": 1,
+        "role": "agent",
+        "scope": "Only observed Python entry-point calls; no OS/tracker-exit observation",
+        "unmatched_registrations": [],
+        "unregister_calls": 1
+      },
+      "guard_ignore_term_guard.jsonl": {
+        "events": 4,
+        "ipc_cleanup_verified": false,
+        "pid": 170,
+        "register_calls": 1,
+        "role": "guard",
+        "scope": "Only observed Python entry-point calls; no OS/tracker-exit observation",
+        "unmatched_registrations": [
+          {
+            "action": "REGISTER",
+            "name_sha256": "64f628b748521008e620b488048a22084b5fa0e0c7bfb8997357e3116d7473da",
+            "pid": 170,
+            "protocol": "ipc_tracker_trace_v1",
+            "resource_type": "semaphore",
+            "role": "guard",
+            "sequence": 3,
+            "stack": [
+              {
+                "file": "synchronize.py",
+                "function": "__init__",
+                "line": 80,
+                "module": "multiprocessing.synchronize"
+              },
+              {
+                "file": "synchronize.py",
+                "function": "__init__",
+                "line": 194,
+                "module": "multiprocessing.synchronize"
+              },
+              {
+                "file": "context.py",
+                "function": "RLock",
+                "line": 73,
+                "module": "multiprocessing.context"
+              },
+              {
+                "file": "std.py",
+                "function": "create_mp_lock",
+                "line": 121,
+                "module": "tqdm.std"
+              },
+              {
+                "file": "std.py",
+                "function": "__init__",
+                "line": 97,
+                "module": "tqdm.std"
+              },
+              {
+                "file": "std.py",
+                "function": "get_lock",
+                "line": 764,
+                "module": "tqdm.std"
+              },
+              {
+                "file": "std.py",
+                "function": "__new__",
+                "line": 665,
+                "module": "tqdm.std"
+              },
+              {
+                "file": "logging.py",
+                "function": "__call__",
+                "line": 383,
+                "module": "transformers.utils.logging"
+              },
+              {
+                "file": "core_model_loading.py",
+                "function": "convert_and_load_state_dict_in_model",
+                "line": 1233,
+                "module": "transformers.core_model_loading"
+              },
+              {
+                "file": "modeling_utils.py",
+                "function": "_load_pretrained_model",
+                "line": 4252,
+                "module": "transformers.modeling_utils"
+              },
+              {
+                "file": "modeling_utils.py",
+                "function": "from_pretrained",
+                "line": 4132,
+                "module": "transformers.modeling_utils"
+              },
+              {
+                "file": "guard_hf_v1.py",
+                "function": "__init__",
+                "line": 84,
+                "module": "react_agent.llm.guard_hf_v1"
+              },
+              {
+                "file": "guard_hf_v1.py",
+                "function": "__call__",
+                "line": 43,
+                "module": "react_agent.llm.guard_hf_v1"
+              },
+              {
+                "file": "model_pair_hf_v1.py",
+                "function": "__call__",
+                "line": 49,
+                "module": "react_agent.llm.model_pair_hf_v1"
+              },
+              {
+                "file": "pair_cancellation_v1.py",
+                "function": "__call__",
+                "line": 49,
+                "module": "react_agent.llm.pair_cancellation_v1"
+              },
+              {
+                "file": "model_pair_v1.py",
+                "function": "__call__",
+                "line": 115,
+                "module": "react_agent.llm.model_pair_v1"
+              },
+              {
+                "file": "ipc_trace_v1.py",
+                "function": "__call__",
+                "line": 125,
+                "module": "react_agent.llm.ipc_trace_v1"
+              },
+              {
+                "file": "warm_guard.py",
+                "function": "_serve",
+                "line": 48,
+                "module": "react_agent.security_v1.warm_guard"
+              },
+              {
+                "file": "process.py",
+                "function": "run",
+                "line": 108,
+                "module": "multiprocessing.process"
+              },
+              {
+                "file": "process.py",
+                "function": "_bootstrap",
+                "line": 314,
+                "module": "multiprocessing.process"
+              },
+              {
+                "file": "spawn.py",
+                "function": "_main",
+                "line": 135,
+                "module": "multiprocessing.spawn"
+              },
+              {
+                "file": "spawn.py",
+                "function": "spawn_main",
+                "line": 122,
+                "module": "multiprocessing.spawn"
+              },
+              {
+                "file": "<string>",
+                "function": "<module>",
+                "line": 1,
+                "module": "__main__"
+              }
+            ]
+          }
+        ],
+        "unregister_calls": 0
+      },
+      "owner.jsonl": {
+        "events": 182,
+        "ipc_cleanup_verified": false,
+        "pid": 33,
+        "register_calls": 90,
+        "role": "owner",
+        "scope": "Only observed Python entry-point calls; no OS/tracker-exit observation",
+        "unmatched_registrations": [],
+        "unregister_calls": 90
+      }
+    },
+    "protocol": "pair_ipc_trace_audit_v1",
+    "tracker_source_sha256": "f9d73a8145f8026ec48ebe4127e7e84960e297cb2e247159f8df4f858cfccbf6",
+    "transport_registrations": 90,
+    "transport_unmatched": [],
+    "unmatched_registrations": [
+      {
+        "action": "REGISTER",
+        "name_sha256": "a6e546ff9bc33ce26e26454f1653ff0707476952d5e450f23684e18009b0909e",
+        "pid": 41,
+        "protocol": "ipc_tracker_trace_v1",
+        "resource_type": "semaphore",
+        "role": "agent",
+        "sequence": 3,
+        "stack": [
+          {
+            "file": "synchronize.py",
+            "function": "__init__",
+            "line": 80,
+            "module": "multiprocessing.synchronize"
+          },
+          {
+            "file": "synchronize.py",
+            "function": "__init__",
+            "line": 194,
+            "module": "multiprocessing.synchronize"
+          },
+          {
+            "file": "context.py",
+            "function": "RLock",
+            "line": 73,
+            "module": "multiprocessing.context"
+          },
+          {
+            "file": "std.py",
+            "function": "create_mp_lock",
+            "line": 121,
+            "module": "tqdm.std"
+          },
+          {
+            "file": "std.py",
+            "function": "__init__",
+            "line": 97,
+            "module": "tqdm.std"
+          },
+          {
+            "file": "std.py",
+            "function": "get_lock",
+            "line": 764,
+            "module": "tqdm.std"
+          },
+          {
+            "file": "std.py",
+            "function": "__new__",
+            "line": 665,
+            "module": "tqdm.std"
+          },
+          {
+            "file": "logging.py",
+            "function": "__call__",
+            "line": 383,
+            "module": "transformers.utils.logging"
+          },
+          {
+            "file": "core_model_loading.py",
+            "function": "convert_and_load_state_dict_in_model",
+            "line": 1233,
+            "module": "transformers.core_model_loading"
+          },
+          {
+            "file": "modeling_utils.py",
+            "function": "_load_pretrained_model",
+            "line": 4252,
+            "module": "transformers.modeling_utils"
+          },
+          {
+            "file": "modeling_utils.py",
+            "function": "from_pretrained",
+            "line": 4132,
+            "module": "transformers.modeling_utils"
+          },
+          {
+            "file": "agent_hf_v1.py",
+            "function": "__init__",
+            "line": 78,
+            "module": "react_agent.llm.agent_hf_v1"
+          },
+          {
+            "file": "model_pair_hf_v1.py",
+            "function": "__call__",
+            "line": 39,
+            "module": "react_agent.llm.model_pair_hf_v1"
+          },
+          {
+            "file": "pair_cancellation_v1.py",
+            "function": "__call__",
+            "line": 49,
+            "module": "react_agent.llm.pair_cancellation_v1"
+          },
+          {
+            "file": "model_pair_v1.py",
+            "function": "__call__",
+            "line": 115,
+            "module": "react_agent.llm.model_pair_v1"
+          },
+          {
+            "file": "ipc_trace_v1.py",
+            "function": "__call__",
+            "line": 125,
+            "module": "react_agent.llm.ipc_trace_v1"
+          },
+          {
+            "file": "warm_guard.py",
+            "function": "_serve",
+            "line": 48,
+            "module": "react_agent.security_v1.warm_guard"
+          },
+          {
+            "file": "process.py",
+            "function": "run",
+            "line": 108,
+            "module": "multiprocessing.process"
+          },
+          {
+            "file": "process.py",
+            "function": "_bootstrap",
+            "line": 314,
+            "module": "multiprocessing.process"
+          },
+          {
+            "file": "spawn.py",
+            "function": "_main",
+            "line": 135,
+            "module": "multiprocessing.spawn"
+          },
+          {
+            "file": "spawn.py",
+            "function": "spawn_main",
+            "line": 122,
+            "module": "multiprocessing.spawn"
+          },
+          {
+            "file": "<string>",
+            "function": "<module>",
+            "line": 1,
+            "module": "__main__"
+          }
+        ]
+      },
+      {
+        "action": "REGISTER",
+        "name_sha256": "54ff47062a8987a3e6f168a70e0365219ec210b5493493b3e846d61c28e1f475",
+        "pid": 119,
+        "protocol": "ipc_tracker_trace_v1",
+        "resource_type": "semaphore",
+        "role": "guard",
+        "sequence": 3,
+        "stack": [
+          {
+            "file": "synchronize.py",
+            "function": "__init__",
+            "line": 80,
+            "module": "multiprocessing.synchronize"
+          },
+          {
+            "file": "synchronize.py",
+            "function": "__init__",
+            "line": 194,
+            "module": "multiprocessing.synchronize"
+          },
+          {
+            "file": "context.py",
+            "function": "RLock",
+            "line": 73,
+            "module": "multiprocessing.context"
+          },
+          {
+            "file": "std.py",
+            "function": "create_mp_lock",
+            "line": 121,
+            "module": "tqdm.std"
+          },
+          {
+            "file": "std.py",
+            "function": "__init__",
+            "line": 97,
+            "module": "tqdm.std"
+          },
+          {
+            "file": "std.py",
+            "function": "get_lock",
+            "line": 764,
+            "module": "tqdm.std"
+          },
+          {
+            "file": "std.py",
+            "function": "__new__",
+            "line": 665,
+            "module": "tqdm.std"
+          },
+          {
+            "file": "logging.py",
+            "function": "__call__",
+            "line": 383,
+            "module": "transformers.utils.logging"
+          },
+          {
+            "file": "core_model_loading.py",
+            "function": "convert_and_load_state_dict_in_model",
+            "line": 1233,
+            "module": "transformers.core_model_loading"
+          },
+          {
+            "file": "modeling_utils.py",
+            "function": "_load_pretrained_model",
+            "line": 4252,
+            "module": "transformers.modeling_utils"
+          },
+          {
+            "file": "modeling_utils.py",
+            "function": "from_pretrained",
+            "line": 4132,
+            "module": "transformers.modeling_utils"
+          },
+          {
+            "file": "guard_hf_v1.py",
+            "function": "__init__",
+            "line": 84,
+            "module": "react_agent.llm.guard_hf_v1"
+          },
+          {
+            "file": "guard_hf_v1.py",
+            "function": "__call__",
+            "line": 43,
+            "module": "react_agent.llm.guard_hf_v1"
+          },
+          {
+            "file": "model_pair_hf_v1.py",
+            "function": "__call__",
+            "line": 49,
+            "module": "react_agent.llm.model_pair_hf_v1"
+          },
+          {
+            "file": "pair_cancellation_v1.py",
+            "function": "__call__",
+            "line": 49,
+            "module": "react_agent.llm.pair_cancellation_v1"
+          },
+          {
+            "file": "model_pair_v1.py",
+            "function": "__call__",
+            "line": 115,
+            "module": "react_agent.llm.model_pair_v1"
+          },
+          {
+            "file": "ipc_trace_v1.py",
+            "function": "__call__",
+            "line": 125,
+            "module": "react_agent.llm.ipc_trace_v1"
+          },
+          {
+            "file": "warm_guard.py",
+            "function": "_serve",
+            "line": 48,
+            "module": "react_agent.security_v1.warm_guard"
+          },
+          {
+            "file": "process.py",
+            "function": "run",
+            "line": 108,
+            "module": "multiprocessing.process"
+          },
+          {
+            "file": "process.py",
+            "function": "_bootstrap",
+            "line": 314,
+            "module": "multiprocessing.process"
+          },
+          {
+            "file": "spawn.py",
+            "function": "_main",
+            "line": 135,
+            "module": "multiprocessing.spawn"
+          },
+          {
+            "file": "spawn.py",
+            "function": "spawn_main",
+            "line": 122,
+            "module": "multiprocessing.spawn"
+          },
+          {
+            "file": "<string>",
+            "function": "<module>",
+            "line": 1,
+            "module": "__main__"
+          }
+        ]
+      },
+      {
+        "action": "REGISTER",
+        "name_sha256": "64f628b748521008e620b488048a22084b5fa0e0c7bfb8997357e3116d7473da",
+        "pid": 170,
+        "protocol": "ipc_tracker_trace_v1",
+        "resource_type": "semaphore",
+        "role": "guard",
+        "sequence": 3,
+        "stack": [
+          {
+            "file": "synchronize.py",
+            "function": "__init__",
+            "line": 80,
+            "module": "multiprocessing.synchronize"
+          },
+          {
+            "file": "synchronize.py",
+            "function": "__init__",
+            "line": 194,
+            "module": "multiprocessing.synchronize"
+          },
+          {
+            "file": "context.py",
+            "function": "RLock",
+            "line": 73,
+            "module": "multiprocessing.context"
+          },
+          {
+            "file": "std.py",
+            "function": "create_mp_lock",
+            "line": 121,
+            "module": "tqdm.std"
+          },
+          {
+            "file": "std.py",
+            "function": "__init__",
+            "line": 97,
+            "module": "tqdm.std"
+          },
+          {
+            "file": "std.py",
+            "function": "get_lock",
+            "line": 764,
+            "module": "tqdm.std"
+          },
+          {
+            "file": "std.py",
+            "function": "__new__",
+            "line": 665,
+            "module": "tqdm.std"
+          },
+          {
+            "file": "logging.py",
+            "function": "__call__",
+            "line": 383,
+            "module": "transformers.utils.logging"
+          },
+          {
+            "file": "core_model_loading.py",
+            "function": "convert_and_load_state_dict_in_model",
+            "line": 1233,
+            "module": "transformers.core_model_loading"
+          },
+          {
+            "file": "modeling_utils.py",
+            "function": "_load_pretrained_model",
+            "line": 4252,
+            "module": "transformers.modeling_utils"
+          },
+          {
+            "file": "modeling_utils.py",
+            "function": "from_pretrained",
+            "line": 4132,
+            "module": "transformers.modeling_utils"
+          },
+          {
+            "file": "guard_hf_v1.py",
+            "function": "__init__",
+            "line": 84,
+            "module": "react_agent.llm.guard_hf_v1"
+          },
+          {
+            "file": "guard_hf_v1.py",
+            "function": "__call__",
+            "line": 43,
+            "module": "react_agent.llm.guard_hf_v1"
+          },
+          {
+            "file": "model_pair_hf_v1.py",
+            "function": "__call__",
+            "line": 49,
+            "module": "react_agent.llm.model_pair_hf_v1"
+          },
+          {
+            "file": "pair_cancellation_v1.py",
+            "function": "__call__",
+            "line": 49,
+            "module": "react_agent.llm.pair_cancellation_v1"
+          },
+          {
+            "file": "model_pair_v1.py",
+            "function": "__call__",
+            "line": 115,
+            "module": "react_agent.llm.model_pair_v1"
+          },
+          {
+            "file": "ipc_trace_v1.py",
+            "function": "__call__",
+            "line": 125,
+            "module": "react_agent.llm.ipc_trace_v1"
+          },
+          {
+            "file": "warm_guard.py",
+            "function": "_serve",
+            "line": 48,
+            "module": "react_agent.security_v1.warm_guard"
+          },
+          {
+            "file": "process.py",
+            "function": "run",
+            "line": 108,
+            "module": "multiprocessing.process"
+          },
+          {
+            "file": "process.py",
+            "function": "_bootstrap",
+            "line": 314,
+            "module": "multiprocessing.process"
+          },
+          {
+            "file": "spawn.py",
+            "function": "_main",
+            "line": 135,
+            "module": "multiprocessing.spawn"
+          },
+          {
+            "file": "spawn.py",
+            "function": "spawn_main",
+            "line": 122,
+            "module": "multiprocessing.spawn"
+          },
+          {
+            "file": "<string>",
+            "function": "<module>",
+            "line": 1,
+            "module": "__main__"
+          }
+        ]
+      }
+    ]
+  },
+  "valid": true,
+  "warning_count_matches_observed_unmatched": true,
+  "workers_reaped": 6
+}

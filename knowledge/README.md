@@ -42,6 +42,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Pair GPU worker: [HF entry point, compatibility và exact preflight](pair_gpu_v1.md).
 - Pair busy cancellation: [GPU recovery audit và cảnh báo IPC còn lại](pair_cancellation_v1.md).
 - IPC-origin diagnostic: [trace đăng ký/cleanup và protocol riêng](pair_ipc_v1.md).
+- Khóa tiến độ worker: [bản sửa riêng và bằng chứng CPU](worker_progress_v1.md).
 - Bằng chứng lịch sử: [Phase 1](phase1_evidence.md),
   [Phase 2 v1 cũ](phase2_evidence.md),
   [audit v1 và withdrawal](integrity_audit_20260905.md).

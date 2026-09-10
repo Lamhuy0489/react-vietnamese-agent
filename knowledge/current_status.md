@@ -1,10 +1,32 @@
 # Trạng thái hiện tại
 
-## Đang làm: IPC-origin diagnostic riêng — 2026-09-09
+## Đính chính hiện hành và việc tiếp theo — 2026-09-10
 
-[Protocol và tiến độ](pair_ipc_v1.md). Tracer/entry/wrapper/audit đã có;
-full QA1.481tests pass, exact archive/expanded/PAX preflight pass. Chưa submit mới/attribution GPU
-hoặc sửa lifecycle. Không local model/Test payload.
+IPC diagnostic đã được audit lại03/04,99raw files nguyên vẹn. Kết luận có giới hạn
+ở [review addendum](../docs/evaluation/phase5_pair_ipc_gpu_v1_review_addendum.md)
+thay thế các khẳng định quá rộng trong bàn giao dưới đây: cả6worker vẫn forced,
+không chứng minh absence of driver/IPC leaks. TQDM_DISABLE không tránh tạo khóa.
+[Worker progress v1](worker_progress_v1.md) đã có bản sửa riêng và native CPU
+controls1/1/0/0registrations; đang full QA, chưa áp dụng/kiểm chứng fix trên GPU.
+Không jobKaggle mới, không localmodel/Test; Phase5 còn mở.
+
+Phần ghi nhận2026-09-09 dưới đây giữ để đối chiếu; diễn giải tuân theo đính chính.
+
+## Hiện hành: pair IPC GPU đã audit thành công — 2026-09-09
+
+Kernel `huylmhuhu/react-vn-pair-ipc-v1` version 1 COMPLETE. Đã tải outputs về
+`results/phase5_pair_ipc_gpu_v1_raw01` và chạy `scripts/audit_phase5_pair_ipc_gpu.py`
+hai lần độc lập vào `audit01` và `audit02`, cho kết quả byte-identical.
+[Báo cáo](../docs/evaluation/phase5_pair_ipc_gpu_v1_report.md),
+[Selected audit](../experiments/manifests/phase5_pair_ipc_gpu_v1_audit01.json).
+
+Kết luận xác minh nguồn gốc (conclusive attribution):
+- Cảnh báo 3 leaked semaphores bắt nguồn từ `multiprocessing.synchronize.RLock`
+  do `tqdm.std.create_mp_lock` khởi tạo khi `transformers.modeling_utils.from_pretrained` nạp weights.
+- Worker bị cưỡng chế dừng do timeout nên hook dọn dẹp của tqdm không kịp chạy.
+- Residual VRAM phục hồi hoàn toàn (0 bytes trên cả 2 GPU). Không có rò rỉ VRAM hay CUDA.
+- Tiếp theo: Context-stress test (4096 input tokens), runtime integration, và grouped Dev validation.
+
 
 ## Hiện hành: pair cancellation GPU đã audit — 2026-09-09
 

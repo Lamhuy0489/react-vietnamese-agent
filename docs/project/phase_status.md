@@ -1,8 +1,8 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: agent–guard GPU coexistence and busy-cancellation VRAM recovery verified; IPC cleanup, context stress, integration and quality gaps remain**
+- Current stage: **Phase 5 in progress: GPU IPC registration origin traced; prevention validation, context stress, integration and quality gaps remain**
 - Setup owner: Lâm Quang Huy
-- Last updated: 2026-09-09
+- Last updated: 2026-09-10
 
 ## Setup acceptance
 
@@ -420,6 +420,18 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   Shutdown warning3semaphores retained; IPC cleanup is unverified. Busy CUDA loops
   with resident weights do not prove native-generation cancellation, maximum-
   context fit or production integration. No quality or full Phase5 acceptance.
+
+- [x] Separate IPC-origin GPU diagnostic COMPLETE, one submission;99raw files
+  verified and audits03/04 reproduce the selected audit byte-identically.
+  Three unmatched registrations trace to tqdm's default multiprocessing RLock
+  in forced busy workers;90owner and3idle registrations were unregistered.
+  All six process exits still forced (5TERM/1KILL), zero graceful exits.
+  18VRAM samples returned to baseline; no global IPC/driver-clean claim.
+  Source9087791/pre-push31910cb, full pre-submit QA1,481tests/359.83s.
+  [Evidence clarification](../evaluation/phase5_pair_ipc_gpu_v1_review_addendum.md),
+  [selected audit](../../experiments/manifests/phase5_pair_ipc_gpu_v1_audit01.json).
+  Thread-only progress-lock prevention is a separate CPU implementation, not
+  applied or validated with GPU/HF workers yet. Context/runtime/Dev gates remain.
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.
