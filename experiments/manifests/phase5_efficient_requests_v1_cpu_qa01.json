@@ -1,0 +1,50 @@
+{
+  "protocol": "efficient_requests_cpu_qa_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "039af856c4e4e96958e307b50b68aa2dc8323f57",
+  "scope": "CPU-only request-local adapter checks; not native repeated-request validation or runtime adoption.",
+  "focused_tests_passed": 46,
+  "focused_seconds": 0.91,
+  "full_suite_passed": 1977,
+  "full_suite_skipped": 1,
+  "full_suite_seconds": 437.99,
+  "skip_reason": "tests/unit/test_worker_progress_v1.py:143: native tqdm unavailable; run CPU receipt with pinned dependency",
+  "junit": {
+    "path": "results/phase5_efficient_requests_v1_cpu01_pytest.xml",
+    "errors": 0,
+    "failures": 0,
+    "skipped": 1,
+    "tests": 1978,
+    "time": 437.833,
+    "timestamp": "2026-09-11T22:49:27.547489+07:00"
+  },
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 283,
+  "knowledge": "pass",
+  "historical_overlay_entries_reverified": 106,
+  "historical_raw_files_reverified": 277,
+  "prerequisite_seals_unchanged": true,
+  "credential_scan_files_before_qa_receipt": 8,
+  "known_credential_values_checked": 4,
+  "credential_value_matches": 0,
+  "source_and_evidence_sha256": {
+    "src/react_agent/llm/efficient_requests_v1.py": "6997db38b0ebf75fb6f77c993f4eb989c0ff5a1adef684f2babbe716cedd8ce2",
+    "tests/unit/test_efficient_requests_v1.py": "9e92e3eb8853cce207ace1964419355e76165b45840d67b89ecbc91db6b89a14",
+    "docs/architecture/phase5_efficient_requests_v1_contract.md": "3ac0b8a46027caea53c8a60d7cf913836e2225f73628869c41ee5b3be8595cf7",
+    "results/phase5_efficient_requests_v1_cpu01_pytest.xml": "056bb2e1eacc3161dff075dddffc9a4f4cf815f91679075a2ce50e085ffa4afe"
+  },
+  "new_kaggle_submissions": 0,
+  "local_model_loads": 0,
+  "local_native_tensor_execution": false,
+  "held_out_test_access": "Hash-only seals; no Test payload or private ground truth.",
+  "remaining": [
+    "Independent request receipt audit joined with native metrics; attention counts alone do not verify output tokens or full-boundary KV cache.",
+    "Real-spawn factory, readiness and progress composition, then native repeated-request GPU proof before adoption.",
+    "Versioned task ownership and direct worker routing: agent-only A0/A1, no nested ModelPair in WarmGuardFactory, task cleanup and cold/warm accounting.",
+    "A0-A6 differential and phase-wide acceptance checks; this CPU milestone does not complete Phase5."
+  ],
+  "pending_access": "No access needed for this CPU milestone; any future GPU submission requires its own preflight and approved scope.",
+  "unrelated_changes_preserved": "Externally empty plan/phase6-9 and user reports/figures preserved and excluded."
+}

@@ -3,7 +3,9 @@
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-11
 
 Đang làm [efficient requests v1](efficient_requests_v1.md): adapter request-local
-variable geometry/multi-request,46focused tests đạt0,91s; fullQA đang chạy.
+variable geometry/multi-request,46focused tests đạt0,91s; fullQA1.977pass/
+1optional skip437,99s, setup/Ruff/mypy283/knowledge đạt, source039af85.
+[CPU QA receipt](../experiments/manifests/phase5_efficient_requests_v1_cpu_qa01.json).
 Chưa model run hoặc runtime adoption; bước tiếp và giới hạn trong note này.
 
 Đã COMPLETE owner-approved [efficient model stress v1](efficient_stress_v1.md)

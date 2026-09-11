@@ -12,7 +12,12 @@ vẫn phải đảm nhận task ownership và cleanup; chưa được nối vào
 
 46 focused tests đạt0,91s, gồm pinned HF source với fakeTensor/mask/no-mask và
 variable requests; không native GPU numerical/cache-statelessness claim.
-Full QA đang chạy: `results/phase5_efficient_requests_v1_cpu01_pytest.xml`.
+Full QA: 1.977 pass, 1 optional skip (native tqdm thiếu), 437,99s;
+setup/Ruff/mypy283/knowledge đạt. Source `039af85`;
+[CPU QA receipt](../experiments/manifests/phase5_efficient_requests_v1_cpu_qa01.json)
+ghi hash source và JUnit local `results/phase5_efficient_requests_v1_cpu01_pytest.xml`.
+Đã kiểm lại 106 frozen overlay entries, 277 historical raw files và prerequisite
+seals không đổi. Không cần quyền truy cập mới để hoàn tất mốc CPU này.
 Không GPU mới, local models hoặc Test/privateGT. Chưa thay phase acceptance.
 
 Tiếp: independent request receipt auditor + join native metrics; real-spawn
