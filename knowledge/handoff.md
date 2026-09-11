@@ -10,10 +10,16 @@ Owner yêu cầu làm luôn model integration sau tensor pass. Đang triển kha
 không weights. Source5267218; fullQA1.931pass/1optional skip389,21s, setup/Ruff/
 mypy282/knowledge đạt. Exact42file hai layouts đạt trong clean checkout riêng;
 quota28,02h/private Datasetv1ready. [QA](../experiments/manifests/phase5_efficient_stress_gpu_v1_pre_submit_qa01.json).
-Source/QA đã pusha66514e, kernel `huylmhuhu/react-vn-efficient-stress-v1`
-version1 đã submit một lần (success observed14:03:56UTC), đang theo dõi.
-Không push lại; chờ terminal, tải fresh raw/source và audit hai lần.
-Tiếp đúng gate ghi trong note này, không resubmit tensor/context cũ.
+Source/QA đã pusha66514e; kernel `huylmhuhu/react-vn-efficient-stress-v1`
+version1 COMPLETE một submission. 90raw/2remote files xác thực; audits01/02
+byte-identical. Native full-context đạt4096+512/128 và fullKV4608/4224 trên đủ
+28layers/model, không OOM. Generation48,447/6,085s có instrumentation;
+agentpeak10,408/5,077GiB và guard3,248GiB trong caps.2TERM/-15/reaped,
+6recovery samples residual0 haiGPU,0graceful. Không job còn chạy.
+[Báo cáo](../docs/evaluation/phase5_efficient_stress_gpu_v1_report.md).
+Tiếp versioned normal-request attention/ModelPair runtime integration; current
+stress backend single-use/fixed geometry không dùng trực tiếp cho ReAct.
+Không resubmit tensor/context/efficient identities hoặc sửa source5267218.
 
 [Context/policy GPU v1](context_policy_gpu_v1.md) đã ERROR sau một submission,
 không còn job RUNNING. Giữ nguyên 59 raw và 2 remote files; bootstrap/source/
@@ -137,9 +143,11 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
 
 ## Bước tiếp theo
 
-Ưu tiên hiện tại: [efficient stress](efficient_stress_v1.md) đã qua source/CPU/
-exact package QA và submit một version1; theo dõi rồi tải fresh outputs và
-audit hai lần. Không retry identity hoặc sửa source5267218 sau submission.
+Ưu tiên hiện tại: [efficient stress](efficient_stress_v1.md) đã native pass và
+audit hai lần. Chuẩn bị interface cho runtime integration: general request
+attention scope trong dedicated worker, task-local ModelPair, cold/warm metrics,
+A0–A6 parity/Broker/final/lifecycle. Cần code mới/tests/differential/exact package
+trước GPU tiếp; không suy stress pass thành benchmark adoption hoặc guard quality.
 
 1. [Context-stress design](../docs/architecture/phase5_context_stress_v1_design.md):
    geometry/native backend/runner và independent23file auditor đã có. Static
@@ -147,10 +155,9 @@ audit hai lần. Không retry identity hoặc sửa source5267218 sau submission
    Versioned policy receipt/outer audit và native library rehearsal đã có.
    GPU v1 lỗi thứ tự factory; v2 đã sửa READY nhưng agent OOM trong stress.
    Owner đã đồng ý bounded deviation và SDPA tensor v1 đã native pass.
-   Tiếp triển khai versioned efficient-stress integration theo design đã lưu,
-   giữ ReadyFactory ngoài và scoped HF repeat/forced efficient/restoration;
-   kiểm masks/scaling/dispatch, bổ sung independent sidecar auditor, fullQA và
-   exact package trước một GPU mới. Không retry v1/v2 hoặc tensor identity.
+   Versioned efficient-stress integration đã native pass: giữ ReadyFactory
+   ngoài, scoped HF repeat/forced efficient/restoration và full boundary audited.
+   Không retry v1/v2, tensor hoặc efficient identity.
    Exact4096input,512/128output;
    không suy output count thành full KV cache hoặc thay benchmark decoding.
 2. Versioned runtime integration, A4 processing-scope anchors, private-record
@@ -165,6 +172,13 @@ Llama/Meta pilot chưa chạy; không gán điểm0.
 
 ## Bằng chứng
 
+- [Efficient model stress audit](../experiments/manifests/phase5_efficient_stress_gpu_v1_audit01.json):
+  source5267218/pre-pusha66514e, version1 COMPLETE;90raw/2remote,hai audits SHA
+  f60467ea45e5e46b523cf365a98cfb3e56e266b27963b7b7a01acef7541b9d5f.
+  FullQA1.931pass1optional skip389,21s; postdownload72focused5,09s/setup/Ruff/
+  mypy282.42file exactpreflight hai layouts;0localmodels/0Testpayloads.
+  [Release QA](../experiments/manifests/phase5_efficient_stress_gpu_v1_release_qa01.json)
+  binds selected audit/report/QA; all pre-submit source/evidence hashes reverified.
 - [SDPA tensor GPU audit](../experiments/manifests/phase5_sdpa_tensor_gpu_v1_audit01.json):
   source5aabea0/pre-push50a6092, one version1 COMPLETE;59raw/2remote files,
   10freshPID/14attention/0models; candidate true/4parity pass, không Phase5accepted.

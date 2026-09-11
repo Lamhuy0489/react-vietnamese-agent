@@ -2,11 +2,16 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-11
 
-Đang thực hiện owner-approved [efficient model stress v1](efficient_stress_v1.md)
+Đã COMPLETE owner-approved [efficient model stress v1](efficient_stress_v1.md)
 sau tensor gate: source5267218/42file exactpackage/auditor đã có;72focused và
 fullQA1.931pass/1optional skip389,21s đạt. Source/QA pusha66514e; một GPU kernel
-`huylmhuhu/react-vn-efficient-stress-v1` version1 đã submit, đang theo dõi;
-chi tiết và bước tiếp trong note này. Các mốc dưới là lịch sử.
+`huylmhuhu/react-vn-efficient-stress-v1` version1 COMPLETE, một submission.
+90raw/2remote và hai audits byte-identical; full4096+512/128/cache4608/4224 đạt,
+không OOM. Generation48,447/6,085s có instrumentation.2TERM/reaped,0graceful,
+6recovery samples residual0 cả hai GPU. Không job còn chạy. Tiếp normal-request
+attention/ModelPair runtime integration riêng, không cắm fixed stress backend
+vào ReAct. [Báo cáo](../docs/evaluation/phase5_efficient_stress_gpu_v1_report.md).
+Các mốc dưới là lịch sử và không thay thế cập nhật này.
 
 [Context/policy GPU v1](context_policy_gpu_v1.md) đã ERROR, không còn RUNNING.
 Một submission; giữ nguyên 59 raw và 2 remote files. Agent load khoảng 259 giây

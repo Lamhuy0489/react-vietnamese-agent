@@ -1,8 +1,8 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: bounded GPU progress-lock prevention validated; native context stress, integration and quality gaps remain**
+- Current stage: **Phase 5 in progress: bounded native efficient-context stress validated; runtime integration and quality gaps remain**
 - Setup owner: Lâm Quang Huy
-- Last updated: 2026-09-10
+- Last updated: 2026-09-11
 
 ## Setup acceptance
 
@@ -456,6 +456,20 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   [selected audit](../../experiments/manifests/phase5_policy_native_cpu_v1_audit01.json).
   Publisher-metadata authentication, combined stress packaging and native GPU
   context execution remain open, as do runtime and grouped Dev acceptance gates.
+
+- [x] Owner-approved efficient model context stress v1 COMPLETE, one submission:
+  source5267218/pre-pusha66514e, exact42-file archive/expandedPAX package.
+  Full QA1,931pass/1optional skip389.21s;72focused post-download tests pass.
+  90raw/2remote files authenticated, two independent audits byte-identical.
+  Agent4096+512/guard4096+128 and full KV4608/4224 across all28layers pass,
+  unchanged models/FP16/placement/caps/deadlines/publisher policy, no OOM.
+  Four actual efficient dispatch samples, all-call flags/geometry guards and
+  native state restoration verified. Two TERM/-15/reaped,0graceful, six VRAM
+  recovery samples residual0bothGPU; no global IPC claim or benchmark adoption.
+  [Report](../evaluation/phase5_efficient_stress_gpu_v1_report.md),
+  [audit](../../experiments/manifests/phase5_efficient_stress_gpu_v1_audit01.json).
+  Prior factory/OOM runs remain immutable; normal-request runtime integration,
+  A4/general final, grouped Dev differential/model choice/freeze remain open.
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.

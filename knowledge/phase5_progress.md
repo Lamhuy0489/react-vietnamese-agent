@@ -9,8 +9,7 @@ registrations thuộc khóa tqdm; không chứng minh mọi IPC đều sạch. B
 [worker progress](worker_progress_v1.md) đã qua CPU và
 [kiểm chứng GPU riêng](pair_progress_v1.md): 6 child registrations bằng 0,
 owner 90/90, không semaphore warning, 18 VRAM samples về nền; 6 exits vẫn forced.
-Không sửa frozen transport hoặc che warning. Context geometry CPU đã có,
-nhưng native maximum-context runner/inference vẫn chưa được kiểm chứng.
+Không sửa frozen transport hoặc che warning.
 [Native-library policy CPU](policy_native_compat_v1.md) đã COMPLETE một lần
 submit,4cases/68rawfiles và hai audit byte-identical; không model.generate/GPU.
 Outer publisher-metadata audit và GPU stress wrapper đã có. Context/policy v1
@@ -18,15 +17,19 @@ lỗi thứ tự factory trước READY, đã giữ 59 raw files; không tính l
 [Bản sửa v2](context_policy_gpu_v1.md) đã qua factory-spawn controls, hai exact
 layouts và full QA 1.825 pass/1 optional skip. GPU v2 đã chạy: cả hai model READY
 nhưng agent OOM ở stress 4096 token; 69 raw files giữ nguyên, không retry.
-[Đề xuất memory/attention](../docs/evaluation/phase5_context_policy_v2_oom_review.md)
-chờ owner chấp thuận; chưa đổi frozen computation, chưa native stress acceptance.
+Owner đã đồng ý memory/attention; tensor gate và
+[efficient model stress](efficient_stress_v1.md) version1 đã COMPLETE/audited.
+Full4096+512/128, KV4608/4224 đủ28layers/model, không OOM trong frozen caps.
+90raw/2remote,hai audits byte-identical;2TERM/reaped,0graceful,6recovery samples
+residual0 haiGPU. Không sửa frozen transport hoặc tự adopt benchmark attention.
 
 Phase5 chưa accepted. Những nhóm việc cần hoàn tất theo phase_status/plan:
 
 1. Đóng chẩn đoán lifecycle/IPC ở phạm vi đo được; giữ riêng forced/graceful và
    VRAM/IPC. Không coi absence-of-warning là chứng minh mọi resource đã sạch.
-2. Protocol maximum-context/forced-length và kiểm chứng trên Kaggle; small-context
-   không chứng minh4096+512tokens, allocator caps không phải measured peak.
+2. Native maximum-context/forced-length gate đã đạt cho efficient diagnostic
+   riêng; kiểm lại behavior khi tích hợp general request/runtime, không suy
+   single-use stress thành task-local multi-request parity hoặc model quality.
 3. Tích hợp ModelPair vào một runtime version riêng, A0–A6 config isolation,
    cold/warm accounting, task cleanup, parity và Broker/final gate coverage.
 4. Hoàn thiện A4 processing-scope anchors và general private-record final

@@ -29,7 +29,23 @@ mypy282/knowledge đạt. [QA](../experiments/manifests/phase5_efficient_stress_
 Quota28,02h, Dataset11942593private/v1ready và model mountv1 đã kiểm.
 Source/QA push `a66514e`; [một submission](../experiments/manifests/phase5_efficient_stress_gpu_v1_submission01.json)
 version1 thành công, `huylmhuhu/react-vn-efficient-stress-v1`, lúc kiểm
-2026-09-11 14:03:56 UTC. Đang theo dõi, chưa có kết luận model stress.
-Không push lại. Pull source fresh, chờ terminal rồi tải toàn bộ outputs fresh
-và audit hai lần; giữ nguyên source5267218 và package đã gửi.
+2026-09-11 14:03:56 UTC. Kernel đã COMPLETE, không còn job chạy.
+[Báo cáo](../docs/evaluation/phase5_efficient_stress_gpu_v1_report.md),
+[selected audit](../experiments/manifests/phase5_efficient_stress_gpu_v1_audit01.json):
+90raw/2remote files, hai audits01/02 byte-identical. Native full-context gate đạt:
+agent4096+512/cache4608, guard4096+128/cache4224, đủ28layers mỗi model.
+Generation48,447s/6,085s; host48,664s/6,221s. Agent peakallocated10,408/5,077GiB;
+guard3,248GiB, không OOM hoặc đổi caps. Timing có instrumentation, không speedup.
+14.364/3.612attention calls, bốn actual efficient dispatch samples, policy và
+bindings/flags restored. Hai TERM/-15/reaped,0graceful,6recovery samples residual0
+haiGPU, không semaphore warning; không exhaustive IPC claim.
+Raw `results/phase5_efficient_stress_gpu_v1_raw01`, remote
+`build/kaggle/efficient_stress_gpu_v1_remote_source01`, giữ nguyên. Không submit lại.
+Sau download rerun72focused đạt5,09s, setup/Ruff/mypy282 đạt; source/preQA hashes
+kiểm lại. Chưa sửa source5267218 hoặc dùng treatment cho benchmark.
+
+Tiếp runtime integration riêng: adapter attention nhiều request nhưng process-local,
+không phụ thuộc geometry cố định/forced length của stress; ModelPair task-local,
+A0–A6 isolation/parity/Broker/final/lifecycle, rồi A4/general final và grouped Dev.
+Không cắm trực tiếp EfficientStressBackend single-use vào request ReAct bình thường.
 Không local model/Test/privateGT; không pending model/account access mới.

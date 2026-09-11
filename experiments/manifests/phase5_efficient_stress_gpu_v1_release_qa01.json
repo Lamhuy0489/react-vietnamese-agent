@@ -1,0 +1,103 @@
+{
+  "protocol": "efficient_stress_gpu_release_qa_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "5267218578b1366f7c0ed5c9a0183f19b7fef585",
+  "github_pre_submit_commit": "a66514eaa08167cc0a6296eb3385badbf6f2348a",
+  "kernel": "huylmhuhu/react-vn-efficient-stress-v1",
+  "version": 1,
+  "submissions": 1,
+  "status": "COMPLETE",
+  "raw_files_verified": 90,
+  "remote_files_verified": 2,
+  "two_audits_and_selected_byte_identical": true,
+  "native_full_context_pass": true,
+  "model_generate_calls": 2,
+  "separate_final_forwards": 2,
+  "agent_full_kv_tokens": 4608,
+  "guard_full_kv_tokens": 4224,
+  "all_layers_verified_each_model": 28,
+  "agent_attention_calls": 14364,
+  "guard_attention_calls": 3612,
+  "profiled_attention_calls_total": 4,
+  "attention_state_restored_both_workers": true,
+  "publisher_policy_authenticated": true,
+  "workers_reaped": 2,
+  "graceful_workers": 0,
+  "cleanup_methods": [
+    "TERMINATE",
+    "TERMINATE"
+  ],
+  "signed_residual_bytes": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "ipc_cleanup_verified": false,
+  "shutdown_warnings": {
+    "ipc_cleanup_verified": false,
+    "scope": "Kernel shutdown warnings are separate from measured worker reap/VRAM recovery",
+    "semaphore_warning_counts": []
+  },
+  "full_suite_passed": 1931,
+  "full_suite_skipped": 1,
+  "full_suite_seconds": 389.21,
+  "full_suite_scope": "Pre-submit full suite from unchanged executable source/tests; JUnit and every preQA source/evidence hash reverified after download.",
+  "junit": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "1",
+    "tests": "1932",
+    "time": "389.037",
+    "timestamp": "2026-09-11T20:51:31.462920+07:00",
+    "hostname": "Huys-MacBook-Pro.local"
+  },
+  "post_download_focused_tests_passed": 72,
+  "post_download_focused_seconds": 5.09,
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 282,
+  "knowledge": "pass",
+  "credential_scan_files": 102,
+  "known_credential_values_checked": 4,
+  "credential_value_matches": 0,
+  "pre_submit_source_evidence_hashes_reverified": 51,
+  "source_and_evidence_sha256": {
+    "experiments/manifests/phase5_efficient_stress_gpu_v1_audit01.json": "f60467ea45e5e46b523cf365a98cfb3e56e266b27963b7b7a01acef7541b9d5f",
+    "experiments/manifests/phase5_efficient_stress_gpu_v1_pre_submit_qa01.json": "58736343676f962de63079dfe751a35a2bc04da4e24a5d7db6dbabe5a535a4af",
+    "experiments/manifests/phase5_efficient_stress_gpu_v1_preflight01.json": "33cf51c67de3ff4d8bca8ce2f7fcc7030034da10fae25997708e43eb0ddba793",
+    "experiments/manifests/phase5_efficient_stress_gpu_v1_submission01.json": "7a36c4307987b8aeee43be4e9a516220b6d48e458f84dbaac495865d2f6725a1",
+    "docs/evaluation/phase5_efficient_stress_gpu_v1_report.md": "4a15ee1d0adf02d48664ae76bd6ca2e071d00f286b46170d44c29de189c5cdd7"
+  },
+  "local_model_loads": 0,
+  "local_native_tensor_execution": false,
+  "held_out_test_access": "hash-only seals; no Test payload/private ground truth",
+  "remaining": [
+    "General-request attention adapter and task-local ModelPair runtime integration; fixed stress backend is not suitable for ordinary ReAct requests.",
+    "A0-A6 isolation/parity/Broker/final/lifecycle checks; A4 processing-scope anchors and general private-record final entitlements.",
+    "Grouped Dev guard/model decision, quality/security differential validation and freeze. No benchmark adoption or Phase5 acceptance inferred from stress success."
+  ],
+  "unrelated_changes_preserved": "plan/phase6-9 externally empty; user reports and figures preserved and excluded from commit."
+}
