@@ -7,7 +7,10 @@ Cập nhật: 2026-09-11. Đây là chỉ dẫn tiếp tục, không thay thế 
 Owner yêu cầu làm luôn model integration sau tensor pass. Đang triển khai
 [efficient stress v1](efficient_stress_v1.md): core/factory/dispatcher/auditor/
 42filewrapper/builder và72focused tests đạt; real-spawn mới READY hai roles,
-không weights. FullQA đang chạy; chưa source freeze/exact preflight/GPU mới.
+không weights. Source5267218; fullQA1.931pass/1optional skip389,21s, setup/Ruff/
+mypy282/knowledge đạt. Exact42file hai layouts đạt trong clean checkout riêng;
+quota28,02h/private Datasetv1ready. [QA](../experiments/manifests/phase5_efficient_stress_gpu_v1_pre_submit_qa01.json).
+Tiếp push source/QA rồi một GPU mới, chưa submit ở mốc này.
 Tiếp đúng gate ghi trong note này, không resubmit tensor/context cũ.
 
 [Context/policy GPU v1](context_policy_gpu_v1.md) đã ERROR sau một submission,
@@ -131,6 +134,10 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
 [bản lưu](handoff_20260909_ipc_draft.md); các khẳng định quá rộng được đính chính.
 
 ## Bước tiếp theo
+
+Ưu tiên hiện tại: [efficient stress](efficient_stress_v1.md) đã qua source/CPU/
+exact package QA; push và gửi một kernel mới, theo dõi rồi tải fresh outputs và
+audit hai lần. Không retry identity hoặc sửa source5267218 sau submission.
 
 1. [Context-stress design](../docs/architecture/phase5_context_stress_v1_design.md):
    geometry/native backend/runner và independent23file auditor đã có. Static

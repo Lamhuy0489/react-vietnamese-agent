@@ -18,8 +18,14 @@ cả hai roles, không weights/stress consumed, handles reaped.
 các lượt này dùng working source chưa freeze, không phải exact release.
 CLI lần đầu truyền commit thiếu ký tự bị từ chối trước writes, không inference.
 
-Đang chạy full QA `results/phase5_efficient_stress_v1_pre_submit01_pytest.xml`.
-Chưa commit source/exact preflight hoặc GPU submission mới ở mốc ghi này.
-Tiếp freeze source, exact hai layouts trong clean worktree (giữ nguyên sửa đổi
-ngoài task ở plan6–9), push source/QA, kiểm quota/pins rồi một kernel mới.
+Source `5267218` đã commit. FullQA1.931pass/1optional skip trong389,21s;
+XML `results/phase5_efficient_stress_v1_pre_submit01_pytest.xml`, setup/Ruff/
+mypy282/knowledge đạt. [QA](../experiments/manifests/phase5_efficient_stress_gpu_v1_pre_submit_qa01.json).
+[Exact preflight](../experiments/manifests/phase5_efficient_stress_gpu_v1_preflight01.json)
+42files/hai layouts archive/expandedPAX đạt; clean checkout
+`/private/tmp/react-efficient-source.i4pHUV`, package dưới
+`build/kaggle/phase5_efficient_stress_gpu_v1_preflight01/kernel` trong checkout đó.
+106overlay entries/187raw lịch sử reverified; packaged45files/4knownsecrets/0matches.
+Quota28,02h, Dataset11942593private/v1ready và model mountv1 đã kiểm.
+Tiếp push source/QA rồi một kernel mới; chưa submit ở mốc ghi này.
 Không local model/Test/privateGT; không pending model/account access mới.

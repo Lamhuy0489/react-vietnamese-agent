@@ -3,8 +3,9 @@
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-11
 
 Đang thực hiện owner-approved [efficient model stress v1](efficient_stress_v1.md)
-sau tensor gate: code/42file package/auditor đã có,72focused đạt, fullQA đang
-chạy. Chưa GPU mới; chi tiết và bước tiếp trong note này. Các mốc dưới là lịch sử.
+sau tensor gate: source5267218/42file exactpackage/auditor đã có;72focused và
+fullQA1.931pass/1optional skip389,21s đạt. Tiếp push source/QA rồi một GPU mới;
+chi tiết và bước tiếp trong note này. Các mốc dưới là lịch sử.
 
 [Context/policy GPU v1](context_policy_gpu_v1.md) đã ERROR, không còn RUNNING.
 Một submission; giữ nguyên 59 raw và 2 remote files. Agent load khoảng 259 giây
