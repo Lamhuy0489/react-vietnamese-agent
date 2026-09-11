@@ -1,5 +1,32 @@
 # Attention cho request thường — bước nền CPU
 
+## Cập nhật mới: auditor request/native metrics
+
+Đã thêm `validation/efficient_requests_audit_v1.py` và CLI
+`scripts/audit_phase5_efficient_requests.py`, giữ nguyên adapter source039af85.
+[Contract auditor](../docs/architecture/phase5_efficient_requests_audit_v1_contract.md).
+78 test mới và 46 test adapter đạt (124 tổng, 23,79s), gồm actual sidecar writer
+với fake tensors/native metrics, request ngắn/dài/A-B-A, corruption, readonly,
+CLI không ghi đè. Không phải bằng chứng native model execution.
+Full QA hoàn tất: 2.055 pass, 1 optional skip (native tqdm thiếu), không lỗi;
+JUnit suite time454,190s, `results/phase5_efficient_requests_audit_v1_cpu01_pytest.xml`.
+Source `35fdad8`; [QA receipt](../experiments/manifests/phase5_efficient_requests_audit_v1_cpu_qa01.json).
+Setup/Ruff/mypy285/knowledge đạt; 106 frozen overlay entries, 277 historical raw
+files và prerequisite seals không đổi. Không test job còn chạy tại bàn giao.
+
+Auditor đối chiếu input/output token với geometry, thứ tự/PID/model/config,
+restore flags, thời gian load/generate/call; không chọn bỏ lỗi hoặc request thiếu.
+PID là kỳ vọng do caller đưa, chưa xác thực supervisor; native load memory,
+resolved publisher policy và full-boundary KV chưa được chứng minh bởi auditor.
+Không copy unknown native metadata vào report. Không GPU/Test/privateGT mới.
+
+Tiếp: real-spawn composition với ReadyFactory ngoài cùng, thread-only progress
+trước load, metrics/attention roots riêng và request index không tính readiness.
+Sau đó versioned repeated-request native GPU preflight/proof; task owner/runtime
+routing và A0–A6 differential còn mở. Không cần quyền/tài khoản mới cho mốc CPU.
+
+## Lịch sử: adapter CPU đã kiểm
+
 Owner yêu cầu tiếp tục sau efficient stress pass. Đã thêm module riêng
 `src/react_agent/llm/efficient_requests_v1.py`, không sửa source đã freeze.
 [Contract và ràng buộc tích hợp](../docs/architecture/phase5_efficient_requests_v1_contract.md).
@@ -20,8 +47,8 @@ ghi hash source và JUnit local `results/phase5_efficient_requests_v1_cpu01_pyte
 seals không đổi. Không cần quyền truy cập mới để hoàn tất mốc CPU này.
 Không GPU mới, local models hoặc Test/privateGT. Chưa thay phase acceptance.
 
-Tiếp: independent request receipt auditor + join native metrics; real-spawn
-factory/Ready/progress composition và repeated-request GPU proof trước adoption.
+Auditor/native metric join đã thêm ở cập nhật trên; real-spawn
+factory/Ready/progress composition và repeated-request GPU proof vẫn còn trước adoption.
 Runtime v5 tự tạo WarmGuardBackend, không được nhét ModelPair vào factory để
 spawn lồng nhau. ModelPair.start hiện load cả hai roles; A0/A1 phải agent-only,
 không được load guard. Cần versioned task owner và worker routing, cold/warm/task

@@ -1,16 +1,30 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-09-11. Đây là chỉ dẫn tiếp tục, không thay thế contract.
+Cập nhật: 2026-09-12. Đây là chỉ dẫn tiếp tục, không thay thế contract.
 
 ## Đang làm
+
+Mới nhất: [request/native-metric auditor](efficient_requests_v1.md) đã có code/CLI,
+78 test mới,124 focused pass23,79s; setup/Ruff/mypy285/knowledge đạt.
+FullQA2.055pass/1optional skip454,190s (JUnit), không lỗi, source35fdad8;
+[QA receipt](../experiments/manifests/phase5_efficient_requests_audit_v1_cpu_qa01.json).
+`results/phase5_efficient_requests_audit_v1_cpu01_pytest.xml` đã hoàn tất.
+Không test job còn chạy; 277 historical raw files kiểm lại không đổi.
+Chưa GPU hoặc runtime adoption; source adapter/frozen overlays/seals giữ nguyên.
+Tiếp real-spawn composition: ReadyFactory ngoài cùng, progress trước load,
+metrics/attention roots riêng, readiness không tiêu thụ request index. Auditor
+chưa xác thực supervisor PID, native load memory/publisher policy hoặc full KV.
+Không cần quyền mới cho mốc CPU; GPU tương lai cần preflight riêng.
+
+Lịch sử adapter CPU:
 
 Ưu tiên mới: [efficient requests v1](efficient_requests_v1.md), adapter nhiều
 request variable geometry riêng,46focused tests đạt0,91s. Source039af85;
 fullQA1.977pass/1optional skip437,99s, setup/Ruff/mypy283/knowledge đạt.
 [CPU QA](../experiments/manifests/phase5_efficient_requests_v1_cpu_qa01.json).
 Chưa GPU hoặc nối runtime. Không cần quyền mới cho mốc CPU đã kiểm;
-GPU tương lai cần preflight riêng. Tiếp independent receipt/native-metric audit và
-real-spawn composition, rồi native repeated-request proof. Runtime integration
+GPU tương lai cần preflight riêng. Receipt/native-metric auditor nay đã có;
+tiếp real-spawn composition, rồi native repeated-request proof. Runtime integration
 cần task owner agent-only cho A0/A1 và routing guard trực tiếp cho A2–A6;
 không spawn ModelPair lồng trong WarmGuardFactory hoặc sửa frozen v5.
 
@@ -153,9 +167,9 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
 
 ## Bước tiếp theo
 
-Ưu tiên hiện tại: [efficient stress](efficient_stress_v1.md) đã native pass và
-audit hai lần. Chuẩn bị interface cho runtime integration: general request
-attention scope trong dedicated worker, task-local ModelPair, cold/warm metrics,
+Ưu tiên hiện tại: [ordinary requests](efficient_requests_v1.md) đã có adapter và
+independent native-metric join CPU. Tiếp real-spawn factory/Ready/progress
+composition trước native repeated-request proof; rồi task-local ownership, cold/warm metrics,
 A0–A6 parity/Broker/final/lifecycle. Cần code mới/tests/differential/exact package
 trước GPU tiếp; không suy stress pass thành benchmark adoption hoặc guard quality.
 

@@ -1,5 +1,18 @@
 # Decision Log
 
+## 2026-09-11 — Audit ordinary request evidence without changing frozen workers
+
+- Continue Phase 5 with a separate read-only artifact auditor and CLI. Join
+  request geometry to original native input/output and timing metrics; reject
+  missing, duplicated, failed or reordered calls instead of selecting survivors.
+  [Contract](../architecture/phase5_efficient_requests_audit_v1_contract.md).
+- Preserve source039af85 and all measured worker sources. Caller-supplied PID
+  is not supervisor authentication; native metric consistency is not full KV,
+  numerical statelessness, resolved policy or benchmark/runtime acceptance.
+- No new inference, model load, GPU submission or Test/private-GT access.
+  Remaining work is real-spawn composition, native repeated-request proof and
+  task-owned runtime integration; research scope/decoding/caps are unchanged.
+
 ## 2026-09-11 — Separate ordinary requests from the fixed stress diagnostic
 
 - Continue the approved attention optimization through a new request-local

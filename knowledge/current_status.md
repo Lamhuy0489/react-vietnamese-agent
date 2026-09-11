@@ -1,6 +1,13 @@
 # Trạng thái hiện tại
 
-## Đính chính hiện hành và việc tiếp theo — 2026-09-11
+## Đính chính hiện hành và việc tiếp theo — 2026-09-12
+
+Mốc mới [request/native-metric auditor](efficient_requests_v1.md): 78 test mới,
+124 focused pass23,79s; fullQA2.055pass/1optional skip454,190s (JUnit), source35fdad8.
+[QA receipt](../experiments/manifests/phase5_efficient_requests_audit_v1_cpu_qa01.json).
+Setup/Ruff/mypy285/knowledge đạt, seals và106
+frozen overlay entries không đổi. Chưa GPU, supervisor binding hoặc runtime adoption.
+Bước tiếp: real-spawn factory/Ready/progress composition và native repeated-request proof.
 
 Đang làm [efficient requests v1](efficient_requests_v1.md): adapter request-local
 variable geometry/multi-request,46focused tests đạt0,91s; fullQA1.977pass/
