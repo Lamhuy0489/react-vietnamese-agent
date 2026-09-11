@@ -4,7 +4,8 @@
 
 Đang thực hiện owner-approved [efficient model stress v1](efficient_stress_v1.md)
 sau tensor gate: source5267218/42file exactpackage/auditor đã có;72focused và
-fullQA1.931pass/1optional skip389,21s đạt. Tiếp push source/QA rồi một GPU mới;
+fullQA1.931pass/1optional skip389,21s đạt. Source/QA pusha66514e; một GPU kernel
+`huylmhuhu/react-vn-efficient-stress-v1` version1 đã submit, đang theo dõi;
 chi tiết và bước tiếp trong note này. Các mốc dưới là lịch sử.
 
 [Context/policy GPU v1](context_policy_gpu_v1.md) đã ERROR, không còn RUNNING.

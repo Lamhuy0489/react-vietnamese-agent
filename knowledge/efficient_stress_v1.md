@@ -27,5 +27,9 @@ mypy282/knowledge đạt. [QA](../experiments/manifests/phase5_efficient_stress_
 `build/kaggle/phase5_efficient_stress_gpu_v1_preflight01/kernel` trong checkout đó.
 106overlay entries/187raw lịch sử reverified; packaged45files/4knownsecrets/0matches.
 Quota28,02h, Dataset11942593private/v1ready và model mountv1 đã kiểm.
-Tiếp push source/QA rồi một kernel mới; chưa submit ở mốc ghi này.
+Source/QA push `a66514e`; [một submission](../experiments/manifests/phase5_efficient_stress_gpu_v1_submission01.json)
+version1 thành công, `huylmhuhu/react-vn-efficient-stress-v1`, lúc kiểm
+2026-09-11 14:03:56 UTC. Đang theo dõi, chưa có kết luận model stress.
+Không push lại. Pull source fresh, chờ terminal rồi tải toàn bộ outputs fresh
+và audit hai lần; giữ nguyên source5267218 và package đã gửi.
 Không local model/Test/privateGT; không pending model/account access mới.
