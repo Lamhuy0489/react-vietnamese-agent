@@ -22,9 +22,15 @@ Agent policy resolve/length/restoration đã kiểm; 2 forced TERM/reaped, 6 rec
 samples residual 0 hai GPU. Không coi là stress pass hoặc Phase5 acceptance.
 [Phân tích và đề xuất](../docs/evaluation/phase5_context_policy_v2_oom_review.md):
 nghi vấn GQA/math fallback; cần phép đo bổ sung. Owner đã đồng ý tiếp tục.
-Đang làm [SDPA tensor v1](sdpa_tensor_v1.md):10fresh processes, short parity và
-long4096/boundary, không weights. Runner/28filewrapper/auditor đã có; tiếp
-full QA/exact preflight trước một GPU kernel mới. Chưa đổi model attention,
+Đã COMPLETE [SDPA tensor v1](sdpa_tensor_v1.md): source5aabea0/pre-push50a6092,
+một version1;10fresh processes/14attention calls/0models,59raw/2remote files.
+Hai audits byte-identical, candidate_valid=true;4parity/long4096/boundary đạt.
+Native agent OOM dưới tensor-only2GiB, candidate peak120MiB; guard native
+1920,172MiB/candidate52MiB. Đo được math vs efficient dispatch ở tensor run;
+không suy full-model VRAM hoặc speedup. [Báo cáo](../docs/evaluation/phase5_sdpa_tensor_gpu_v1_report.md).
+FullQA1.859pass/1optional skip379,56s, exact28file hai layouts đạt trước push.
+Không job còn chạy. Tiếp [versioned model integration](../docs/architecture/phase5_efficient_stress_v1_design.md),
+hiện mới thiết kế, cần code/tests/auditor/exactpreflight. Chưa đổi model attention,
 caps/deadlines/input; không local model/Test. Không còn pending owner approval
 cho phương án đã chốt, nhưng không được mở rộng sang giảm model/context.
 

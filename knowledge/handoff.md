@@ -27,15 +27,21 @@ Policy agent resolve/length/hook restore khớp; 2 TERMINATE/-15, 6 recovery
 samples residual 0 trên cả hai GPU. Không full context/KV hoặc graceful claim.
 
 Owner đã đồng ý [chẩn đoán/attention tiết kiệm VRAM](../docs/evaluation/phase5_context_policy_v2_oom_review.md).
-Đang triển khai [SDPA tensor v1](sdpa_tensor_v1.md), không weights,10fresh
+Đã COMPLETE [SDPA tensor v1](sdpa_tensor_v1.md), không weights,10fresh
 processes và predeclared parity/cap. Runner/28filewrapper/auditor đã có;
 Source5aabea0,34focused/full1.859pass1optional skip379,56s; setup/Ruff/mypy275/
 knowledge đạt. Hai exact28file layouts đạt trong clean checkout riêng vì
 plan/phase6–9 có chỉnh sửa ngoài task (giữ nguyên, không commit).
 [QA](../experiments/manifests/phase5_sdpa_tensor_gpu_v1_pre_submit_qa01.json),
-[package và đường dẫn](sdpa_tensor_v1.md). Quota28,07h/private Datasetv1ready.
-Tiếp push source/QA rồi một kernel mới; chưa submit SDPA tensor.
-Chưa đổi model attention. Nghi vấn GQA/math fallback vẫn là suy luận từ source.
+[package và đường dẫn](sdpa_tensor_v1.md). Quota28,07h/private Datasetv1ready
+đã kiểm trước push. Source/QA push50a6092; một kernel tensor version1 COMPLETE.
+59raw/2remote files, hai audits byte-identical, candidate_valid=true.4parity đạt;
+long agent native OOM/candidate120MiB, guard native1920,172MiB/candidate52MiB
+peakallocated; hai boundary decode đạt.14attention calls/0models. Đo được
+math/efficient dispatch trong tensor run, không retrospectively quy kết OOM cũ.
+[Báo cáo](../docs/evaluation/phase5_sdpa_tensor_gpu_v1_report.md).
+Chưa đổi model attention. Tiếp [integration design](../docs/architecture/phase5_efficient_stress_v1_design.md):
+mới thiết kế, cần versioned code/tests/auditor/fullQA/exactpreflight trước modelGPU.
 Không tự giảm input,
 đổi model, lượng tử hóa, nới caps/deadlines hay submit lại. Không job Kaggle/local
 còn chạy. Giữ nguyên v1/v2 source, outputs và pre-submit QA. Quota28,17h chỉ là
@@ -125,8 +131,11 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
    native interface checks đạt nhưng phát hiện publisher-default inheritance.
    Versioned policy receipt/outer audit và native library rehearsal đã có.
    GPU v1 lỗi thứ tự factory; v2 đã sửa READY nhưng agent OOM trong stress.
-   Owner đã đồng ý bounded deviation: tiếp SDPA tensor v1/fullQA/exact GPU,
-   rồi conditional versioned model integration nếu đạt. Không retry v1/v2.
+   Owner đã đồng ý bounded deviation và SDPA tensor v1 đã native pass.
+   Tiếp triển khai versioned efficient-stress integration theo design đã lưu,
+   giữ ReadyFactory ngoài và scoped HF repeat/forced efficient/restoration;
+   kiểm masks/scaling/dispatch, bổ sung independent sidecar auditor, fullQA và
+   exact package trước một GPU mới. Không retry v1/v2 hoặc tensor identity.
    Exact4096input,512/128output;
    không suy output count thành full KV cache hoặc thay benchmark decoding.
 2. Versioned runtime integration, A4 processing-scope anchors, private-record
@@ -141,6 +150,15 @@ Llama/Meta pilot chưa chạy; không gán điểm0.
 
 ## Bằng chứng
 
+- [SDPA tensor GPU audit](../experiments/manifests/phase5_sdpa_tensor_gpu_v1_audit01.json):
+  source5aabea0/pre-push50a6092, one version1 COMPLETE;59raw/2remote files,
+  10freshPID/14attention/0models; candidate true/4parity pass, không Phase5accepted.
+  Hai audits SHA278c3f0759e71c5d6291e03303ed859487ecebcc5fb8deb77b17e6894494e772.
+  PreQA1.859pass1skip, exact28file archive/expandedPAX đạt. Timings có profiler,
+  không speedup claim; không sửa frozen context/tensor code hoặc outputs.
+  [Release QA](../experiments/manifests/phase5_sdpa_tensor_gpu_v1_release_qa01.json):
+  sau download rerun34focused/setup/Ruff/mypy275/knowledge đạt, recheck9preQA
+  hashes/59raw/2remote; credential78files/4knownvalues/0matches.
 - [Native CPU release QA](../experiments/manifests/phase5_policy_native_cpu_v1_release_qa01.json):
   source5c0c20e/pre-pushc3bf60f, one CPU version1 COMPLETE;68raw/2remote files,
   native4cases/0model.generate/0GPU. Two audits byte-identical, full1.743pass1skip.

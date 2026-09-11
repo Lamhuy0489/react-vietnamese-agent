@@ -1,0 +1,279 @@
+{
+  "candidate_valid": true,
+  "dummy": {
+    "events": 84,
+    "scope": "Dummy transport/checkpoints only, not semantic task success",
+    "tasks": 21,
+    "unique_run_ids": 21,
+    "valid": true
+  },
+  "phase5_accepted": false,
+  "preflight_sha256": "e06b75446110866469be805257fcebc15023189176ac1d440d8d51e8b4c3e84a",
+  "protocol": "sdpa_tensor_gpu_release_audit_v1",
+  "raw_sha256": {
+    "dummy/identity.json": "4c31213415554ea47a0dbae53cca860d9e90dfd292a848f49309032ef2a7f4f6",
+    "dummy/results.json": "78fd2a0e93a594c675d56d71c8b41dc1dcabe192b1cd3f96fc9a3202828354ed",
+    "dummy/summary.json": "1eaf604968f35a1c8b13b4678b458f403bbbc3297d0ba06ae10ccba287c2700e",
+    "dummy/tasks/clean_0002/result.json": "5aa3ef8b34410b624ed58607d215a4a9a74586291930ef324c3dff5508a9471a",
+    "dummy/tasks/clean_0002/trace.jsonl": "d9756cab89da20a9f439ae2614d47dc8a82f68ff804222ab65dcb65ca25a54c1",
+    "dummy/tasks/clean_0004/result.json": "e6316b607830980145a8a14ea2f7df66efe722368eab5f89ccd9a8467c86326e",
+    "dummy/tasks/clean_0004/trace.jsonl": "7115670cf0d32ae98245a64e0079389e46c8d9aefe867ac193b263df7580f74a",
+    "dummy/tasks/clean_0005/result.json": "098d1da7fa843b620e1c7158671df57215ae572961aec84fd7768779e7a37cc2",
+    "dummy/tasks/clean_0005/trace.jsonl": "f7bf1153afc6c02d5aaa26294c62007ad89e04a1d2a0c84383df2ace4b248106",
+    "dummy/tasks/clean_0042/result.json": "b3d54e7613e8926b5d8feab6ff0f856e6041a6359dd0cfdbad0312d86f7e2746",
+    "dummy/tasks/clean_0042/trace.jsonl": "86ab9b404a55b7143c447e6c1dc5f97b7514fb620a4bbd4688bbd1a974460271",
+    "dummy/tasks/clean_0046/result.json": "bc73b44b5449d5354f19e007dc3bba20d67cfd894c63822d0253eabd444f17da",
+    "dummy/tasks/clean_0046/trace.jsonl": "d13adecc2cd4d44ba15ddd3c21d1a81f708abacf23e1e2544b102d9b9cf8fd5f",
+    "dummy/tasks/clean_0047/result.json": "792cd2884ff6cc003856b8ae8958e6b9f16f0fdf777222db1cc96e02c955653e",
+    "dummy/tasks/clean_0047/trace.jsonl": "27dfd571afeae2a7653979d885c16d1bfa30c214cfbf4a531bae8dc7019c118c",
+    "dummy/tasks/clean_0081/result.json": "009916f92c62c9c945ec332f32dad32a7ec99d26e2311307910f66c53c0b478e",
+    "dummy/tasks/clean_0081/trace.jsonl": "1d309657ac7453339db96f45ff7c7973022df4c47ffd6c29fed2b834a31aaa76",
+    "dummy/tasks/clean_0082/result.json": "c41d892ef4206789c3869fe3b0a3b0f329904336453f3bacc8c9b63f0bb2d149",
+    "dummy/tasks/clean_0082/trace.jsonl": "64b21a664fe4567490271edf9c16c8dde9b709776c879f8acb1805cce8e24b0a",
+    "dummy/tasks/clean_0083/result.json": "54a3b2f787170be131b3d5bcbc6f8178fc3a9551b67dafca1deb1f7d4849dbe2",
+    "dummy/tasks/clean_0083/trace.jsonl": "b3361a78b1f786642d5a06f99346c3ddad18398736f40234f06f98c39fdb2566",
+    "dummy/tasks/clean_0132/result.json": "e95c88095a676ccae777acd5fe7331155b363fc39ed0df388cbdad5610b225df",
+    "dummy/tasks/clean_0132/trace.jsonl": "ac022a6ced4206c384f103fbdc6e3274bdc8cfd3f1de37171301f3cfbbef1e89",
+    "dummy/tasks/clean_0134/result.json": "6c3467c6bc40d8e84d2f38dbd9e320a1e1ec42f24f53bfef8ad503f8d051b7d1",
+    "dummy/tasks/clean_0134/trace.jsonl": "36b7845dbd91d4af06f89110a25c95508a2a7d9f0347b91ef3294fc094b4b2e4",
+    "dummy/tasks/clean_0135/result.json": "815c3115d9eca0afa6753bf1fa85217eaaee410096201d252902bf28d69cc8a4",
+    "dummy/tasks/clean_0135/trace.jsonl": "3c0b87f952f3a4b1ccfab0593bdd361100c03233b4a0389646b1ae0e55a9060a",
+    "dummy/tasks/clean_0171/result.json": "c33a4eb7011e72dcb896496571b0a15037f5d9b269b0cc22224ad766a9b85a25",
+    "dummy/tasks/clean_0171/trace.jsonl": "294f7a3c7b5f633acdafa7b80af93ef08af4ca570f01a4d76ad2d6bca5949bdc",
+    "dummy/tasks/clean_0173/result.json": "974bc117dc6b1c4b635444daaf7adea05d56e09f6d279b1f4d83a040dfbe7214",
+    "dummy/tasks/clean_0173/trace.jsonl": "ac4182040ceee29b5df3a2bf8e049cfc9f310631837a379d8ae271f2402ec3fc",
+    "dummy/tasks/clean_0174/result.json": "73696ec7049e9ec43d50fe2dda0e819859384925f719d163e4fb40664f4ce74a",
+    "dummy/tasks/clean_0174/trace.jsonl": "3950a7bc100eeb9b5b91e80173cff00a4ba24ac5ba1b27b47f9f83a69bbf7e87",
+    "dummy/tasks/clean_0197/result.json": "7ac0c49a52c5c0949651d3ba863e5ae6711d592724fb7bc611ec054d579874ad",
+    "dummy/tasks/clean_0197/trace.jsonl": "143183a5d55557b9aefdf7b14f2b7b4cb39715155ba36f27c5ceb35d41a0599d",
+    "dummy/tasks/clean_0199/result.json": "30b97e2c7b643dac0d994c0265999be89f961fb8d21b9cddf3a98aa05efc7678",
+    "dummy/tasks/clean_0199/trace.jsonl": "41f01fd646ebaabf32fa5c86f7d2ce31f0555f15065f087d4f7eb246f50a0de3",
+    "dummy/tasks/clean_0200/result.json": "1a01da34269ab5655eb70e094728c8da9befc15d428e091b58746705a810c400",
+    "dummy/tasks/clean_0200/trace.jsonl": "7acc0e0b01759efbd20ab7d8ec7ba82a5fb22796e75110e37e2e7e4221971410",
+    "dummy/tasks/clean_0226/result.json": "5567579ab25d178d5faa4b0ed1c80149bdf2cf3ebe2fd61be684f278479364e5",
+    "dummy/tasks/clean_0226/trace.jsonl": "ed0ca034d478caff06c646b40b25332a25fccbf11db0376db0c454d7b02d4d35",
+    "dummy/tasks/clean_0228/result.json": "8bac7bd736805b350099bc96eb863dbb2fd5a62b6c23d3f763b89010aa8b6e2d",
+    "dummy/tasks/clean_0228/trace.jsonl": "9af8ced5266e6270a1100de8a712f5582721a531e437b77c090fc07b0a71e04d",
+    "dummy/tasks/clean_0229/result.json": "4b5df0ecabd940cb48e74abefc3e03732c27f66dd0c8c566a4bbc45d0cb3f740",
+    "dummy/tasks/clean_0229/trace.jsonl": "fe40082a77ebbd1793de32465997124118c8c5fb89caf7b2605651dcb75d28ca",
+    "react-vn-sdpa-tensor-v1.log": "3cc0b95cabe89d13541c5b08c1e1ada27dba896bb51fcd0cdb6b4e6a88676559",
+    "sdpa_tensor/agent_boundary_decode.json": "8adcf6b016e2de0925a69a78e3248f55ce1e12403baec17d3b7d765dd755341a",
+    "sdpa_tensor/agent_long_native.json": "a55335a8d30c334707cdb73da997345d6cee0b206154b65b4f1f1ba6b0d325df",
+    "sdpa_tensor/agent_long_repeat.json": "85bdd899d9669bf2f2f8bc67c2997ff8268f669e7b29529813921db28ead42dd",
+    "sdpa_tensor/agent_short_decode.json": "b9711ea54687cc1c9467c046f2d88cad5134fdac17b375c0e7a290d3dbd481f9",
+    "sdpa_tensor/agent_short_prefill.json": "62aff641e8fcdf2b7c49bf0581c7f5a5c44504dcdbb90ae46d3c296292e49074",
+    "sdpa_tensor/guard_boundary_decode.json": "760d2f9dd6c8884daa953496907cdc9a5c64c8cadb1b1360e1e7bf2430db9be7",
+    "sdpa_tensor/guard_long_native.json": "1afed5952a352b1dc6dd6f7895d18c02a9aedd25e8367d335c8a8a76ee16beb1",
+    "sdpa_tensor/guard_long_repeat.json": "653cfec5a2c1e3fffecab586fb29de4984956e147faa260936fae0d78a9db9f5",
+    "sdpa_tensor/guard_short_decode.json": "e93cd3bc750815c88db1617a6340d752452f91598d3cce548b51e906ff824aed",
+    "sdpa_tensor/guard_short_prefill.json": "15812f2b92171467cbf6dabcc16302e1ad7c305aa1f85f6000391ca1ff57f664",
+    "sdpa_tensor/manifest.json": "402690eaffbf8b6aac8572fc99fd998cb7b4b1356454b655eb3514bf4af9d1f7",
+    "sdpa_tensor/summary.json": "a2439b3a292ddb5d0b6dcd7fc511fd471d400694d93c2600833fb3cf52e937d1",
+    "sdpa_tensor_bootstrap_identity.json": "c5f7bbc8935a9c353fc9dff2c1a249ebee1935e8c24dc6050f1656d7035d8996"
+  },
+  "remote_metadata": {
+    "code_file": "react-vn-sdpa-tensor-v1.py",
+    "competition_sources": [],
+    "dataset_sources": [
+      "huylmhuhu/react-vn-guard15-probe-data-v1"
+    ],
+    "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+    "enable_gpu": true,
+    "enable_internet": false,
+    "enable_tpu": false,
+    "id": "huylmhuhu/react-vn-sdpa-tensor-v1",
+    "id_no": 133927000,
+    "is_private": true,
+    "kernel_sources": [],
+    "kernel_type": "script",
+    "keywords": [
+      "gpu"
+    ],
+    "language": "python",
+    "machine_shape": "NvidiaTeslaT4",
+    "model_sources": [],
+    "title": "ReAct VN SDPA Tensor v1"
+  },
+  "remote_sha256": {
+    "kernel-metadata.json": "ef0ecde9af88870c0a29eaf85c372578f22d2709ddaa5d7dbc05143d202cf2c6",
+    "react-vn-sdpa-tensor-v1.py": "bd359033c0bef68d049bec341ce984d7b9951a71cbfd736e5c0606af6b6ed45a"
+  },
+  "scope": "No-weights tensor feasibility/parity; not full model context or Phase5 acceptance",
+  "shutdown_warnings": {
+    "ipc_cleanup_verified": false,
+    "scope": "Kernel shutdown warnings are separate from measured worker reap/VRAM recovery",
+    "semaphore_warning_counts": []
+  },
+  "source_authenticated": true,
+  "source_commit": "5aabea015c1fa30c56dd908b51e382a59e092567",
+  "tensor_probe": {
+    "backend": "native",
+    "candidate_valid": true,
+    "case_count": 10,
+    "model_generate_calls": 0,
+    "model_loads": 0,
+    "native_verified": true,
+    "outcomes": [
+      {
+        "case": "agent_short_prefill",
+        "instrumented_seconds": 7.2700607929999705,
+        "mode": "native",
+        "operators": [
+          "aten::_scaled_dot_product_attention_math",
+          "aten::scaled_dot_product_attention"
+        ],
+        "peak_allocated": 23134208,
+        "status": "OK"
+      },
+      {
+        "case": "agent_short_prefill",
+        "instrumented_seconds": 0.03747687599991423,
+        "mode": "repeat",
+        "operators": [
+          "aten::_scaled_dot_product_efficient_attention",
+          "aten::scaled_dot_product_attention"
+        ],
+        "peak_allocated": 13369344,
+        "status": "OK"
+      },
+      {
+        "case": "agent_short_decode",
+        "instrumented_seconds": 4.274773393000032,
+        "mode": "native",
+        "operators": [
+          "aten::_scaled_dot_product_attention_math",
+          "aten::scaled_dot_product_attention"
+        ],
+        "peak_allocated": 21216768,
+        "status": "OK"
+      },
+      {
+        "case": "agent_short_decode",
+        "instrumented_seconds": 0.007637992000013583,
+        "mode": "repeat",
+        "operators": [
+          "aten::_scaled_dot_product_efficient_attention",
+          "aten::scaled_dot_product_attention"
+        ],
+        "peak_allocated": 12751872,
+        "status": "OK"
+      },
+      {
+        "case": "agent_long_native",
+        "instrumented_seconds": 4.333820718000084,
+        "mode": "native",
+        "operators": [
+          "aten::_scaled_dot_product_attention_math",
+          "aten::scaled_dot_product_attention"
+        ],
+        "peak_allocated": 415236096,
+        "status": "OOM"
+      },
+      {
+        "case": "agent_long_repeat",
+        "instrumented_seconds": 4.193052908000027,
+        "mode": "repeat",
+        "operators": [
+          "aten::_scaled_dot_product_efficient_attention",
+          "aten::scaled_dot_product_attention"
+        ],
+        "peak_allocated": 125829120,
+        "status": "OK"
+      },
+      {
+        "case": "agent_boundary_decode",
+        "instrumented_seconds": 4.243528222000009,
+        "mode": "repeat",
+        "operators": [
+          "aten::_scaled_dot_product_efficient_attention",
+          "aten::scaled_dot_product_attention"
+        ],
+        "peak_allocated": 76560384,
+        "status": "OK"
+      },
+      {
+        "case": "guard_short_prefill",
+        "instrumented_seconds": 4.390661508999983,
+        "mode": "native",
+        "operators": [
+          "aten::_scaled_dot_product_attention_math",
+          "aten::scaled_dot_product_attention"
+        ],
+        "peak_allocated": 14876672,
+        "status": "OK"
+      },
+      {
+        "case": "guard_short_prefill",
+        "instrumented_seconds": 0.007657254000037028,
+        "mode": "repeat",
+        "operators": [
+          "aten::_scaled_dot_product_efficient_attention",
+          "aten::scaled_dot_product_attention"
+        ],
+        "peak_allocated": 10616832,
+        "status": "OK"
+      },
+      {
+        "case": "guard_short_decode",
+        "instrumented_seconds": 4.322943039000052,
+        "mode": "native",
+        "operators": [
+          "aten::_scaled_dot_product_attention_math",
+          "aten::scaled_dot_product_attention"
+        ],
+        "peak_allocated": 14074368,
+        "status": "OK"
+      },
+      {
+        "case": "guard_short_decode",
+        "instrumented_seconds": 0.00786559200003012,
+        "mode": "repeat",
+        "operators": [
+          "aten::_scaled_dot_product_efficient_attention",
+          "aten::scaled_dot_product_attention"
+        ],
+        "peak_allocated": 10371072,
+        "status": "OK"
+      },
+      {
+        "case": "guard_long_native",
+        "instrumented_seconds": 4.360917678000078,
+        "mode": "native",
+        "operators": [
+          "aten::_scaled_dot_product_attention_math",
+          "aten::scaled_dot_product_attention"
+        ],
+        "peak_allocated": 2013446656,
+        "status": "OK"
+      },
+      {
+        "case": "guard_long_repeat",
+        "instrumented_seconds": 4.200026119999961,
+        "mode": "repeat",
+        "operators": [
+          "aten::_scaled_dot_product_efficient_attention",
+          "aten::scaled_dot_product_attention"
+        ],
+        "peak_allocated": 54525952,
+        "status": "OK"
+      },
+      {
+        "case": "guard_boundary_decode",
+        "instrumented_seconds": 4.130938095000033,
+        "mode": "repeat",
+        "operators": [
+          "aten::_scaled_dot_product_efficient_attention",
+          "aten::scaled_dot_product_attention"
+        ],
+        "peak_allocated": 30283776,
+        "status": "OK"
+      }
+    ],
+    "phase5_accepted": false,
+    "protocol": "sdpa_tensor_audit_v1",
+    "scope": "Synthetic tensor feasibility/parity only; no full model, KV cache, original OOM attribution or uninstrumented speed claim",
+    "source_commit": "5aabea015c1fa30c56dd908b51e382a59e092567",
+    "valid": true
+  },
+  "valid": true
+}
