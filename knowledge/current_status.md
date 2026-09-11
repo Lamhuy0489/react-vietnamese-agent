@@ -21,9 +21,12 @@ token sau 1,134 giây, không generation/KV completion. [69 raw files/failure re
 Agent policy resolve/length/restoration đã kiểm; 2 forced TERM/reaped, 6 recovery
 samples residual 0 hai GPU. Không coi là stress pass hoặc Phase5 acceptance.
 [Phân tích và đề xuất](../docs/evaluation/phase5_context_policy_v2_oom_review.md):
-nghi vấn GQA/math fallback; cần phép đo bổ sung. Chờ owner đồng ý thử đường
-attention tiết kiệm VRAM trước khi đổi computation đã khóa. Chưa thêm GPU run,
-chưa đổi model/caps/deadlines/input; không local model/Test.
+nghi vấn GQA/math fallback; cần phép đo bổ sung. Owner đã đồng ý tiếp tục.
+Đang làm [SDPA tensor v1](sdpa_tensor_v1.md):10fresh processes, short parity và
+long4096/boundary, không weights. Runner/28filewrapper/auditor đã có; tiếp
+full QA/exact preflight trước một GPU kernel mới. Chưa đổi model attention,
+caps/deadlines/input; không local model/Test. Không còn pending owner approval
+cho phương án đã chốt, nhưng không được mở rộng sang giảm model/context.
 
 [Native policy CPU compatibility](policy_native_compat_v1.md): worker source
 `5c0c20e`, exact archive/expanded/PAX/tools/Dummy/resume và native progress

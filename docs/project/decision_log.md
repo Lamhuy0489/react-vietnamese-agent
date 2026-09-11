@@ -1,5 +1,21 @@
 # Decision Log
 
+## 2026-09-11 — Owner approved bounded attention-memory investigation
+
+- User confirmed "ok làm cho tôi nhé" in response to the proposed VRAM-saving
+  attention experiment with unchanged models and4096-token workload, then asked
+  to continue. The earlier pending proposal below is now approved within those
+  bounds, not permission to lower context, quantize or replace a model.
+- First implement [no-weights SDPA tensor protocol](../architecture/phase5_sdpa_tensor_v1_contract.md):
+  pinned libraries/hardware,10fresh processes, four predeclared numerical
+  comparisons and long4096/boundary shapes. Tensor-only2GiB cap does not change
+  any model allocator cap. No model inference at this gate.
+- Conditional next step: only if native evidence supports the efficient path,
+  prepare a versioned model attention integration with the same revisions,
+  precision, placement/caps, deadlines, publisher decoding and full context.
+  Preserve old OOMs; do not silently resume or use Test/model outputs for tuning.
+- No Phase5 closure or benchmark adoption is inferred from component success.
+
 ## 2026-09-11 — Proposed attention-memory deviation; awaiting owner approval
 
 - Context/policy v1 failed factory admission; corrected v2 reached READY for

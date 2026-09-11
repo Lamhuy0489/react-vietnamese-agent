@@ -26,9 +26,12 @@ chạy stress. Giữ nguyên 69 raw và 2 remote files, [failure receipt v2](../
 Policy agent resolve/length/hook restore khớp; 2 TERMINATE/-15, 6 recovery
 samples residual 0 trên cả hai GPU. Không full context/KV hoặc graceful claim.
 
-Việc tiếp theo: [đề xuất chẩn đoán/attention tiết kiệm VRAM](../docs/evaluation/phase5_context_policy_v2_oom_review.md)
-đang chờ chủ đồ án đồng ý trước khi thay đường tính đã khóa. Nghi vấn GQA/math
-fallback là suy luận từ source, chưa phải đo kernel thực tế. Không tự giảm input,
+Owner đã đồng ý [chẩn đoán/attention tiết kiệm VRAM](../docs/evaluation/phase5_context_policy_v2_oom_review.md).
+Đang triển khai [SDPA tensor v1](sdpa_tensor_v1.md), không weights,10fresh
+processes và predeclared parity/cap. Runner/28filewrapper/auditor đã có;
+tiếp full QA, commit, exact preflight, push/quota rồi một kernel mới.
+Chưa đổi model attention. Nghi vấn GQA/math fallback vẫn là suy luận từ source.
+Không tự giảm input,
 đổi model, lượng tử hóa, nới caps/deadlines hay submit lại. Không job Kaggle/local
 còn chạy. Giữ nguyên v1/v2 source, outputs và pre-submit QA. Quota28,17h chỉ là
 trước v2; kiểm lại nếu có GPU mới. Không localweights/Test/privateGT.
@@ -117,16 +120,16 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
    native interface checks đạt nhưng phát hiện publisher-default inheritance.
    Versioned policy receipt/outer audit và native library rehearsal đã có.
    GPU v1 lỗi thứ tự factory; v2 đã sửa READY nhưng agent OOM trong stress.
-   Chờ owner đồng ý đề xuất memory/attention diagnostic và deviation trước
-   thay đường tính. Không retry v1/v2 hoặc đổi tham số để vượt gate.
+   Owner đã đồng ý bounded deviation: tiếp SDPA tensor v1/fullQA/exact GPU,
+   rồi conditional versioned model integration nếu đạt. Không retry v1/v2.
    Exact4096input,512/128output;
    không suy output count thành full KV cache hoặc thay benchmark decoding.
 2. Versioned runtime integration, A4 processing-scope anchors, private-record
    final entitlements, grouped Dev guard/model decision/differential/freeze.
    Không tune từ four-call diagnostic, không Phase6/7/Test access.
 
-Pending access: chưa cần tài khoản/model access mới; cần owner quyết định đề
-xuất đổi đường tính attention sau OOM, ghi trong decision log (chưa approved).
+Pending access: chưa cần tài khoản/model access mới; owner đã chấp thuận bounded
+attention deviation. Kiểm lại quota/private Dataset trước submission mới.
 Kaggle huylmhuhu/kaggle1, systemCLI2.2.4; Dataset11942593private/v1, quota28,27h
 chỉ là pre-submitCPU2026-09-10, kiểm lại trước runGPU mới. Không cycling account.
 Llama/Meta pilot chưa chạy; không gán điểm0.
