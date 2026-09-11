@@ -53,6 +53,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Xử lý OOM đã được owner đồng ý: [phép thử SDPA tensor](sdpa_tensor_v1.md).
 - Áp dụng tối ưu vào bài thử model: [efficient stress v1](efficient_stress_v1.md).
 - Chuẩn bị request ReAct thường: [efficient requests v1](efficient_requests_v1.md).
+- Ghép request với worker thật: [request pair CPU](request_pair_v1.md).
 - Bằng chứng lịch sử: [Phase 1](phase1_evidence.md),
   [Phase 2 v1 cũ](phase2_evidence.md),
   [audit v1 và withdrawal](integrity_audit_20260905.md).

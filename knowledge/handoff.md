@@ -4,6 +4,21 @@ Cập nhật: 2026-09-12. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Ưu tiên mới [request pair CPU](request_pair_v1.md): source35978d2,141focused
+pass26,56s; 2standalone runs/14distinctchildPIDs/92rawfiles đạt và hash-bound trong
+[validation](../experiments/manifests/phase5_request_pair_cpu_v1_validation01.json).
+FullQA2.072pass/1optional skip386,91s đã hoàn tất, XML
+`results/phase5_request_pair_v1_cpu01_pytest.xml`; setup/Ruff/mypy287/knowledge đạt.
+[Release QA](../experiments/manifests/phase5_request_pair_cpu_v1_release_qa01.json).
+Seals/106frozenentries/277historicalraw không đổi. Model/tensor/metrics chỉ giả lập,
+native tqdm thật; không GPU hoặc runtime adoption. Không test job còn chạy.
+Bước tiếp: native repeated-request runner với policy evidence theo request,
+native memory/placement/supervisor/source auditor và exact preflight trước GPU.
+Cần agent-only task owner cho A0/A1, không dùng pair hai roles cho A0/A1.
+Pending access: chưa cần tài khoản/quyền mới cho CPU; quota/Dataset kiểm trước GPU.
+
+Lịch sử auditor CPU:
+
 Mới nhất: [request/native-metric auditor](efficient_requests_v1.md) đã có code/CLI,
 78 test mới,124 focused pass23,79s; setup/Ruff/mypy285/knowledge đạt.
 FullQA2.055pass/1optional skip454,190s (JUnit), không lỗi, source35fdad8;
@@ -11,7 +26,7 @@ FullQA2.055pass/1optional skip454,190s (JUnit), không lỗi, source35fdad8;
 `results/phase5_efficient_requests_audit_v1_cpu01_pytest.xml` đã hoàn tất.
 Không test job còn chạy; 277 historical raw files kiểm lại không đổi.
 Chưa GPU hoặc runtime adoption; source adapter/frozen overlays/seals giữ nguyên.
-Tiếp real-spawn composition: ReadyFactory ngoài cùng, progress trước load,
+Đã thêm real-spawn composition ở mốc trên: ReadyFactory ngoài cùng, progress trước load,
 metrics/attention roots riêng, readiness không tiêu thụ request index. Auditor
 chưa xác thực supervisor PID, native load memory/publisher policy hoặc full KV.
 Không cần quyền mới cho mốc CPU; GPU tương lai cần preflight riêng.
@@ -167,9 +182,9 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
 
 ## Bước tiếp theo
 
-Ưu tiên hiện tại: [ordinary requests](efficient_requests_v1.md) đã có adapter và
-independent native-metric join CPU. Tiếp real-spawn factory/Ready/progress
-composition trước native repeated-request proof; rồi task-local ownership, cold/warm metrics,
+Ưu tiên hiện tại: [request pair](request_pair_v1.md) đã có real-spawn composition
+CPU; tiếp native repeated-request runner/policy/source/memory audit và exact
+preflight trước GPU; rồi task-local ownership, cold/warm metrics,
 A0–A6 parity/Broker/final/lifecycle. Cần code mới/tests/differential/exact package
 trước GPU tiếp; không suy stress pass thành benchmark adoption hoặc guard quality.
 

@@ -20,7 +20,7 @@ PID là kỳ vọng do caller đưa, chưa xác thực supervisor; native load m
 resolved publisher policy và full-boundary KV chưa được chứng minh bởi auditor.
 Không copy unknown native metadata vào report. Không GPU/Test/privateGT mới.
 
-Tiếp: real-spawn composition với ReadyFactory ngoài cùng, thread-only progress
+Đã thêm [real-spawn composition CPU](request_pair_v1.md) với ReadyFactory ngoài cùng, thread-only progress
 trước load, metrics/attention roots riêng và request index không tính readiness.
 Sau đó versioned repeated-request native GPU preflight/proof; task owner/runtime
 routing và A0–A6 differential còn mở. Không cần quyền/tài khoản mới cho mốc CPU.

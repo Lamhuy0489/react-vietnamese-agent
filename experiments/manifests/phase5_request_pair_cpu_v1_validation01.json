@@ -1,0 +1,282 @@
+{
+  "protocol": "request_pair_cpu_validation_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "35978d25a17d21e2126f5f8a79ada4479314238d",
+  "synthetic_model_and_tensor_objects": true,
+  "native_tqdm": true,
+  "actual_model_loads": 0,
+  "native_model_calls": 0,
+  "gpu_runs": 0,
+  "new_tests_passed": 17,
+  "focused_tests_passed": 141,
+  "focused_seconds": 26.56,
+  "stable_control_summaries_equal": true,
+  "distinct_child_pids": 14,
+  "source_sha256": {
+    "src/react_agent/llm/request_pair_v1.py": "1514594878bbff5ddd90ece2b0bfacecaf5843a8617200fdf873771d62251de8",
+    "scripts/check_phase5_request_pair.py": "6581faeff8b54f91175631601e1c4cfafb817dbbaa44b8ce7272bbff54315d91",
+    "tests/unit/test_request_pair_v1.py": "b7c1fe8f3bdfb6d144e5cee2d797bc0a4a2abdfd19d434f3548fab553bfd2717",
+    "docs/architecture/phase5_request_pair_v1_contract.md": "21dce59883b817de24b803943ce4849ac25e0f7cb2fb42c18717f297839f2e59"
+  },
+  "runs": [
+    {
+      "path": "results/phase5_request_pair_cpu_v1_run01",
+      "worker_pids": [
+        53220,
+        53222,
+        53227,
+        53231,
+        53233,
+        53236,
+        53240
+      ],
+      "cases": [
+        {
+          "case": "success",
+          "statuses": {
+            "agent": [
+              "OK",
+              "OK",
+              "OK",
+              "OK"
+            ],
+            "guard": [
+              "OK",
+              "OK",
+              "OK",
+              "OK"
+            ]
+          },
+          "error": null,
+          "all_handles_reaped": true,
+          "no_retry_attempt": true
+        },
+        {
+          "case": "reversed",
+          "statuses": {
+            "agent": [
+              "BACKEND_FAILURE"
+            ],
+            "guard": []
+          },
+          "error": "RuntimeError",
+          "all_handles_reaped": true,
+          "no_retry_attempt": true
+        },
+        {
+          "case": "agent_error",
+          "statuses": {
+            "agent": [
+              "OK",
+              "BACKEND_FAILURE"
+            ],
+            "guard": [
+              "OK"
+            ]
+          },
+          "error": "RuntimeError",
+          "all_handles_reaped": true,
+          "no_retry_attempt": true
+        },
+        {
+          "case": "guard_error",
+          "statuses": {
+            "agent": [
+              "OK"
+            ],
+            "guard": [
+              "OK",
+              "BACKEND_FAILURE"
+            ]
+          },
+          "error": "RuntimeError",
+          "all_handles_reaped": true,
+          "no_retry_attempt": true
+        }
+      ],
+      "graceful_workers": 4,
+      "terminated_workers": 3,
+      "raw_sha256": {
+        "agent_error/agent_metrics.jsonl": "04b7cc0b4e677449c4c6035afd4c79bbe81f389b9cdf5b18bd03cc293a1bb92e",
+        "agent_error/agent_shape.json": "e3ebcc90a956c558bd378698d4afeeb1582b025e6511516d57fde46fd3773af4",
+        "agent_error/attention/agent/request_000001/entered.json": "65233b7c75f90688df007fccec66ad105a8fe8c8acf08ed312293a583567ecd4",
+        "agent_error/attention/agent/request_000001/error.json": "83de2f1fa9073b996b8db69852652b7b63919e426075d297bd4c8853e73f5c4b",
+        "agent_error/attention/agent/request_000001/restored.json": "f5ff11679e871813c5441d07b269dc1ac5c16f7b47479fe5c75053dd5549eb00",
+        "agent_error/closed.json": "efe20a105148a72a8bfeea198508cb4f1c6c031cc6c95c3e75e987a9393ad11a",
+        "agent_error/guard_metrics.jsonl": "0fb34d3132a92a681bf2ce8edb62bbc0477efac883bdb25b98d0d3a87b422a99",
+        "agent_error/guard_shape.json": "b6ffa966f4a8e597d31b3dc11bb0c0354f41ae337c237457ba28a108246cd960",
+        "agent_error/ready.json": "75d42c4dcff057110d9d948509de4728fc5afd123c18f3bbfe26b7e626feba77",
+        "guard_error/agent_metrics.jsonl": "85c6fd2fb15c107bfa634a5da9864e2ba477333bc757a191bf12b0c5fcefba02",
+        "guard_error/agent_shape.json": "9b17ef65113208f7eb811692e318f17f0c8357ad9ccd2b97aa84331abdfff42d",
+        "guard_error/attention/guard/request_000001/entered.json": "9d19c170fe7fedb90c946ace252010d98ed83040814e1a985259a3d53f6320da",
+        "guard_error/attention/guard/request_000001/error.json": "d7ba68b92c58f8a8039dbbc6fca5942683cae09462d02e1b97748916204a75d8",
+        "guard_error/attention/guard/request_000001/restored.json": "ba962ffecbccfcbe015a1f48069fa5f2e7a890c52b7c1528873c9ea929f8189c",
+        "guard_error/closed.json": "7b3a9260cb024d60beba338e48c2fd17547601f21189b81b99f1e51702914e59",
+        "guard_error/guard_metrics.jsonl": "ea6da5fe5932f70d8001bf777efbef52d703d47b0c22db5c70896fbce9fb1d19",
+        "guard_error/guard_shape.json": "779e5af1f0fc3b943f3ec4420d8027aa167a4ca07abe6340db856d5342a9e8d9",
+        "guard_error/ready.json": "da40975e5ee20a21a4a8b1412d7e5ec83956db35d662077ff1f1daff808cbda1",
+        "reversed/agent_metrics.jsonl": "85c6fd2fb15c107bfa634a5da9864e2ba477333bc757a191bf12b0c5fcefba02",
+        "reversed/agent_shape.json": "840cd411859c8075f3afb54925169331233524dda70231589a75e4b688900d12",
+        "reversed/closed.json": "f4352f811558d99d9161e5f5e76a5fc9a2d2fa4271c36fdadaa8ed13ce8049ba",
+        "success/agent_metrics.jsonl": "7baec8739e29906f044e30bf99ccc5132e56c6ab7797f5d2880ec23d04e23f8d",
+        "success/agent_shape.json": "0ab63d0e204f4a2f3601a0203efbe4794fe71b0f60e8893b44d6da6b3f240bc4",
+        "success/attention/agent/request_000001/completed.json": "9ccbd612857befcf39be4214232661aa303707e5d3a2c2d19e9366754c81429c",
+        "success/attention/agent/request_000001/entered.json": "36af0abe301c572c8274dfa83456811d9e2fd0a7802bc9b9f2733af6982b3230",
+        "success/attention/agent/request_000001/restored.json": "485e07f9e575e1fa66bb3d10d1f904d81436beee020cfc2cf398b0a683487ef4",
+        "success/attention/agent/request_000002/completed.json": "0209ce481bd185d5da692814227a7fb87a4882fa61d5cc96adea67f00747dc62",
+        "success/attention/agent/request_000002/entered.json": "356f68757103ec965043d36f14b4673af382118330e8eec24340e05f142ddb60",
+        "success/attention/agent/request_000002/restored.json": "725cef21488f9457cbd5e46a4b76453d4866198fb8ea1a6717af99d8c911a54e",
+        "success/attention/agent/request_000003/completed.json": "92cfa341eb32f7a5d9bddef9608833b80e884200177a59606cc445d6f6e971e7",
+        "success/attention/agent/request_000003/entered.json": "e386af484949ea4ec74f2ca97ca5759d9421ab59311971cf0e40f4c23b1685dc",
+        "success/attention/agent/request_000003/restored.json": "28746cf1437e54666d72588b0d51dabc621c7461d9b25448e83bf620a41198c6",
+        "success/attention/guard/request_000001/completed.json": "d01942eeebc93625233c00cfd509b63134133e8f123ee49d82f9e2ebb08b0891",
+        "success/attention/guard/request_000001/entered.json": "0e61614b064b3ca7b4ea6da0e25493c45c0e0f073a7966fed194a08a9557f80f",
+        "success/attention/guard/request_000001/restored.json": "661d2a0b2ea87ce174b4347a68ea04becb348cb0ef5942af8cfffa13ca760f1a",
+        "success/attention/guard/request_000002/completed.json": "b1dcc6e3e3c46fafcacb635a69a62fd47e79372caa59f8eb5e96f28c6f47b433",
+        "success/attention/guard/request_000002/entered.json": "d5c5d7bb4ab3476053adb34921da7dad653da0d62f3812ae88b78939087e2efd",
+        "success/attention/guard/request_000002/restored.json": "2134e0b0483a9f7640a6ee92cc430ed3da407c8765a3083d9d8ed2bdd1123623",
+        "success/attention/guard/request_000003/completed.json": "6bd3f3bc2c728823a52302a2f0e3b6dab85fe5a1feea522aa31fc4bd29e6af90",
+        "success/attention/guard/request_000003/entered.json": "d279a56c67a90e30c3d40c8316248e5dc7ee4f2238590384e8688fc7e47ee0c1",
+        "success/attention/guard/request_000003/restored.json": "07b0be054cf8c3bac1e873567733f99e57b012ef1219a8a6dde2b2ef9446a728",
+        "success/closed.json": "eb2d0bd9ea02635600b15fdba5b79eb6fd078b7957d9b37f1a2587f693d5d800",
+        "success/guard_metrics.jsonl": "e8b6a52d322700c3ce8e489cef8907cf9c5ca11ecef2265bb37eeef59b398c2b",
+        "success/guard_shape.json": "b2b1aeecd0f8169adf3a084ac8a98baf9f648252148b068d7a00d9e297bdbc3a",
+        "success/ready.json": "2561966b0312d12b6a8d93659fdf2493e54d32c17181a4cdba53a3921b5613db",
+        "summary.json": "142ff1a6dfbe84eee44de5850935a21e0bc74c305e3d3801b59c7d0e2c71d777"
+      }
+    },
+    {
+      "path": "results/phase5_request_pair_cpu_v1_run02",
+      "worker_pids": [
+        53230,
+        53232,
+        53235,
+        53239,
+        53242,
+        53243,
+        53244
+      ],
+      "cases": [
+        {
+          "case": "success",
+          "statuses": {
+            "agent": [
+              "OK",
+              "OK",
+              "OK",
+              "OK"
+            ],
+            "guard": [
+              "OK",
+              "OK",
+              "OK",
+              "OK"
+            ]
+          },
+          "error": null,
+          "all_handles_reaped": true,
+          "no_retry_attempt": true
+        },
+        {
+          "case": "reversed",
+          "statuses": {
+            "agent": [
+              "BACKEND_FAILURE"
+            ],
+            "guard": []
+          },
+          "error": "RuntimeError",
+          "all_handles_reaped": true,
+          "no_retry_attempt": true
+        },
+        {
+          "case": "agent_error",
+          "statuses": {
+            "agent": [
+              "OK",
+              "BACKEND_FAILURE"
+            ],
+            "guard": [
+              "OK"
+            ]
+          },
+          "error": "RuntimeError",
+          "all_handles_reaped": true,
+          "no_retry_attempt": true
+        },
+        {
+          "case": "guard_error",
+          "statuses": {
+            "agent": [
+              "OK"
+            ],
+            "guard": [
+              "OK",
+              "BACKEND_FAILURE"
+            ]
+          },
+          "error": "RuntimeError",
+          "all_handles_reaped": true,
+          "no_retry_attempt": true
+        }
+      ],
+      "graceful_workers": 4,
+      "terminated_workers": 3,
+      "raw_sha256": {
+        "agent_error/agent_metrics.jsonl": "04b7cc0b4e677449c4c6035afd4c79bbe81f389b9cdf5b18bd03cc293a1bb92e",
+        "agent_error/agent_shape.json": "39140a15946bc77d58d14f93ea7cb1eef733ff1f63a561183c38eddf4372803a",
+        "agent_error/attention/agent/request_000001/entered.json": "9e53ca364ee4f1d16a365cf98dd41b820bfd82c4ea2f9ad5e6f7d6268354583a",
+        "agent_error/attention/agent/request_000001/error.json": "1d4e36b78b527cb43ef618ff347b68494344a7d5626ef03f0ed3b344b8c6412a",
+        "agent_error/attention/agent/request_000001/restored.json": "e270c98d48f38711b2c56bf6d8f3b0e62a8c455705fcb461582fc62a3589bbda",
+        "agent_error/closed.json": "0a5b5f71825af8a350a9113adabca507463322c83610bfe89f2816610d687020",
+        "agent_error/guard_metrics.jsonl": "0fb34d3132a92a681bf2ce8edb62bbc0477efac883bdb25b98d0d3a87b422a99",
+        "agent_error/guard_shape.json": "6d829638b3f6b24b24ebadaaccf825dc9ab3f32f2ea0dac570bc5ece4b7bae10",
+        "agent_error/ready.json": "bc916f9d3def597c9fb917ccc4d56a27391c0ecbbdf8c0d58a03dd659eba4515",
+        "guard_error/agent_metrics.jsonl": "85c6fd2fb15c107bfa634a5da9864e2ba477333bc757a191bf12b0c5fcefba02",
+        "guard_error/agent_shape.json": "3ef9b73a2e4f5973348a05f09f92e60591b8a809649a3875f0f74e6ecea815e3",
+        "guard_error/attention/guard/request_000001/entered.json": "f9eb02f5c7ec7b6448b2ff196cd53e126aacf016077139ad5befe56f0b30ced3",
+        "guard_error/attention/guard/request_000001/error.json": "7685ee72cf6bdfaf3e24f2d59e15145050d867c512465b82bd4d2cf11ea42d44",
+        "guard_error/attention/guard/request_000001/restored.json": "4199c52f40b1d2cc7a43a3b374233c9d1112b6428f6d7dc8fbdf84731822ab27",
+        "guard_error/closed.json": "cbd7fba34d31f5474f09a94c59ca42d1dfe7151f3878d15a31185cdda3a3037c",
+        "guard_error/guard_metrics.jsonl": "ea6da5fe5932f70d8001bf777efbef52d703d47b0c22db5c70896fbce9fb1d19",
+        "guard_error/guard_shape.json": "3f324f7eea4fa244315dfdfa1a408f8edc97d0604d8af16d1d436c55ba251213",
+        "guard_error/ready.json": "17ef1ac00812e2f51c9de90509aa13011c3212f2404ffac2189ff9e5481868a9",
+        "reversed/agent_metrics.jsonl": "85c6fd2fb15c107bfa634a5da9864e2ba477333bc757a191bf12b0c5fcefba02",
+        "reversed/agent_shape.json": "cee84942372227a3ecc8250e8c256b67551fb2846c72562d10fb95b12389bab4",
+        "reversed/closed.json": "45f17c61d4a3e69ff101c3e61de7f9406f701f26e6638a270c9d34ddf1d725ba",
+        "success/agent_metrics.jsonl": "7baec8739e29906f044e30bf99ccc5132e56c6ab7797f5d2880ec23d04e23f8d",
+        "success/agent_shape.json": "b735e13983efb5e36e2104a13bb4e73be2e52c4b9e8e3031e3239bff3b22d430",
+        "success/attention/agent/request_000001/completed.json": "259c6944eeb4597b70395edbdd05a7b182482816d7237cf18313d95560ce17c5",
+        "success/attention/agent/request_000001/entered.json": "c8e810c64fcbcc35714e40846b4676b391208be05aa744397454fd3ac2d664d4",
+        "success/attention/agent/request_000001/restored.json": "23012d0629ab645115fe6dbd2a3f71bbddf58a4c25e4abc8c4effe964b181ccf",
+        "success/attention/agent/request_000002/completed.json": "8a3c6a85b16af64b3e509399b89bc54f49b1a7ad09489ff6ddc479a16a04c004",
+        "success/attention/agent/request_000002/entered.json": "507c72a7f1074d1ccd73edd543ab222e82f78ec745813fd98faf5410d260561e",
+        "success/attention/agent/request_000002/restored.json": "b129268baeb72ebb2ef1c2e6b1086d98bd72dfa6b71ddaa23fddb016c1a0f33a",
+        "success/attention/agent/request_000003/completed.json": "ae87f6155d7177d95a41c87c6323835b00d8ace8d3c9fbf6714f91bb9ee406dc",
+        "success/attention/agent/request_000003/entered.json": "a0f6b3d156c175dbe30a1273368299cd3215f57a7092dbcfe9a1e837fea36bca",
+        "success/attention/agent/request_000003/restored.json": "3416982d5e95ebaf4b8b69511e053235f6dcea7850772987ee209ac290db76a2",
+        "success/attention/guard/request_000001/completed.json": "1ee47e69d7a7f5fa3123d49f8c97a80f085891bb8a2e9b52a8eb81e6ecb6528c",
+        "success/attention/guard/request_000001/entered.json": "f0631ea78a97ba88a21cf243816ddb61e1bbddb56a37353a8142542b4b2ef66f",
+        "success/attention/guard/request_000001/restored.json": "ff5af2c5c66d16b1ca91e54845c51827dace478362ce60566ce4072250251a28",
+        "success/attention/guard/request_000002/completed.json": "32f790d8c7ccc696aed5d28bfba880f9b015a89049ba033cbb8ec7105305bd4b",
+        "success/attention/guard/request_000002/entered.json": "5c36b04d22d4976bd406944c64dca271155dbbede0e3363298134c4901da8f17",
+        "success/attention/guard/request_000002/restored.json": "faefc9da2b0963c74cd853043865d8b8581395c0145676b68c1e8250e60ad590",
+        "success/attention/guard/request_000003/completed.json": "99619468cbd7aacb3424133e6411449bdc2c98d89bfcd6466f20d2f2a60469a8",
+        "success/attention/guard/request_000003/entered.json": "fec35e042dcedb1b74f6ef45f2be481783aaf3e1f5316b5449f36172078b4cf8",
+        "success/attention/guard/request_000003/restored.json": "4c60a535e673e1644d2198721cc4a4093456bbe50cc88391088db9fc09f5d17f",
+        "success/closed.json": "79d68757d679e5058b63899712f41f8ba0b95d0669305e63e7c4f7f1f2032d5d",
+        "success/guard_metrics.jsonl": "e8b6a52d322700c3ce8e489cef8907cf9c5ca11ecef2265bb37eeef59b398c2b",
+        "success/guard_shape.json": "f33b5df751a90afc54718632dec3342d88615b93e62898e1a2f48437e4598d24",
+        "success/ready.json": "3f0726b2353df3042b012c6ebbb900c58aeece633c8b9879801fac9beb481077",
+        "summary.json": "06fbb827aced7e21bd273196079efd81760e11b812e954d803be35d0f9d1a808"
+      }
+    }
+  ],
+  "scope": "Real spawn, native pinned tqdm and original transport/adapter/auditor; synthetic model objects and metrics. Not native model performance, numerical statelessness, GPU cleanup or runtime adoption.",
+  "test_access": "hash-only seals; no held-out payload/private GT",
+  "remaining": [
+    "Native repeated-request entry, policy/memory/source checks and exact preflight before GPU",
+    "Agent-only task ownership for A0/A1 and versioned runtime differential/lifecycle integration"
+  ]
+}

@@ -2,6 +2,14 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-12
 
+Mới nhất [request pair CPU](request_pair_v1.md): source35978d2,17 test mới/
+141focused pass26,56s; hai standalone rehearsals đạt,14childPIDs/92rawfiles,
+readiness không tiêu thụ request, A/B/A và failure cleanup/no-retry đạt.
+Native tqdm thật nhưng model/tensor/metrics giả lập; chưa GPU hoặc runtime adoption.
+FullQA2.072pass/1optional skip386,91s; setup/Ruff/mypy287/knowledge đạt.
+[Release QA](../experiments/manifests/phase5_request_pair_cpu_v1_release_qa01.json).
+Tiếp native repeated-request runner/policy/audit/exactpreflight.
+
 Mốc mới [request/native-metric auditor](efficient_requests_v1.md): 78 test mới,
 124 focused pass23,79s; fullQA2.055pass/1optional skip454,190s (JUnit), source35fdad8.
 [QA receipt](../experiments/manifests/phase5_efficient_requests_audit_v1_cpu_qa01.json).

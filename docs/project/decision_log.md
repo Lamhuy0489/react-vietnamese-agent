@@ -1,5 +1,18 @@
 # Decision Log
 
+## 2026-09-12 — Compose ordinary requests before native runtime adoption
+
+- New lazy pair builder preserves ReadyFactory outside progress and attention,
+  leaving frozen supervisor/loader/adapter/runtime sources unchanged.
+  [Contract](../architecture/phase5_request_pair_v1_contract.md).
+- Real daemon-spawn CPU controls use native pinned tqdm but explicitly synthetic
+  model-shaped objects and tensors. A/B/A success, reversed-order startup failure,
+  injected failures on either role, retry refusal and sibling cleanup are tested.
+  No native numerical/performance/GPU cleanup or benchmark adoption claim.
+- Pair still starts both roles, so A0/A1 require a separate agent-only owner;
+  native repeated-request policy/source/memory and package checks remain open.
+  No new model/held-out inference or change to research scope/caps/decoding.
+
 ## 2026-09-11 — Audit ordinary request evidence without changing frozen workers
 
 - Continue Phase 5 with a separate read-only artifact auditor and CLI. Join
