@@ -2,6 +2,10 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-11
 
+Đang làm [efficient requests v1](efficient_requests_v1.md): adapter request-local
+variable geometry/multi-request,46focused tests đạt0,91s; fullQA đang chạy.
+Chưa model run hoặc runtime adoption; bước tiếp và giới hạn trong note này.
+
 Đã COMPLETE owner-approved [efficient model stress v1](efficient_stress_v1.md)
 sau tensor gate: source5267218/42file exactpackage/auditor đã có;72focused và
 fullQA1.931pass/1optional skip389,21s đạt. Source/QA pusha66514e; một GPU kernel

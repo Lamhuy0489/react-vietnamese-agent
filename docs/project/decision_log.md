@@ -1,5 +1,18 @@
 # Decision Log
 
+## 2026-09-11 — Separate ordinary requests from the fixed stress diagnostic
+
+- Continue the approved attention optimization through a new request-local
+  adapter; preserve frozen stress/native/runtime code. No forced length or
+  extra forward; unchanged native config, caps and model identity.
+  [Contract](../architecture/phase5_efficient_requests_v1_contract.md).
+- Variable geometry and repeated success within a dedicated task worker are
+  CPU-tested; any admitted error retires the adapter. No native repeated-request
+  or benchmark adoption claim yet. No new GPU submission or Test access.
+- Runtime inspection identifies mandatory agent-only ownership for A0/A1 and
+  direct sibling routing for A2–A6. Do not nest ModelPair inside v5 guard factory
+  or misattribute readiness/cold load as normal model generation.
+
 ## 2026-09-11 — Implement the approved efficient model stress gate
 
 - Owner requested immediate continuation after tensor feasibility passed.

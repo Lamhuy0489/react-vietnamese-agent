@@ -4,6 +4,13 @@ Cập nhật: 2026-09-11. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Ưu tiên mới: [efficient requests v1](efficient_requests_v1.md), adapter nhiều
+request variable geometry riêng,46focused tests đạt0,91s. FullQA đang chạy,
+chưa GPU hoặc nối runtime. Tiếp independent receipt/native-metric audit và
+real-spawn composition, rồi native repeated-request proof. Runtime integration
+cần task owner agent-only cho A0/A1 và routing guard trực tiếp cho A2–A6;
+không spawn ModelPair lồng trong WarmGuardFactory hoặc sửa frozen v5.
+
 Owner yêu cầu làm luôn model integration sau tensor pass. Đang triển khai
 [efficient stress v1](efficient_stress_v1.md): core/factory/dispatcher/auditor/
 42filewrapper/builder và72focused tests đạt; real-spawn mới READY hai roles,
