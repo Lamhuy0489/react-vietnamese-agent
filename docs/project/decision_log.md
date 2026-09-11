@@ -1,5 +1,17 @@
 # Decision Log
 
+## 2026-09-11 — Implement the approved efficient model stress gate
+
+- Owner requested immediate continuation after tensor feasibility passed.
+  [Contract](../architecture/phase5_efficient_stress_v1_contract.md): new scoped
+  HF repeat/forced-efficient treatment with per-call guards, two actual dispatch
+  samples per role and independent sidecars. Original sources remain immutable.
+- Preserve models, precision, context, placement/caps, deadlines and publisher
+  decoding. Timing includes scoped checks/two profiled calls; no speedup claim.
+- This is a distinct diagnostic identity, not a retry or benchmark adoption.
+  Full QA and exact package checks precede GPU; Phase 5 and Test remain closed
+  to acceptance/final experiments respectively until their own gates pass.
+
 ## 2026-09-11 — Owner approved bounded attention-memory investigation
 
 - User confirmed "ok làm cho tôi nhé" in response to the proposed VRAM-saving

@@ -4,6 +4,12 @@ Cập nhật: 2026-09-11. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Owner yêu cầu làm luôn model integration sau tensor pass. Đang triển khai
+[efficient stress v1](efficient_stress_v1.md): core/factory/dispatcher/auditor/
+42filewrapper/builder và72focused tests đạt; real-spawn mới READY hai roles,
+không weights. FullQA đang chạy; chưa source freeze/exact preflight/GPU mới.
+Tiếp đúng gate ghi trong note này, không resubmit tensor/context cũ.
+
 [Context/policy GPU v1](context_policy_gpu_v1.md) đã ERROR sau một submission,
 không còn job RUNNING. Giữ nguyên 59 raw và 2 remote files; bootstrap/source/
 metadata/Dummy/agent load/recovery đã kiểm. Agent lỗi sau load khoảng 259 giây,
