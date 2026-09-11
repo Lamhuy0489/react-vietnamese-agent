@@ -29,7 +29,12 @@ samples residual 0 trên cả hai GPU. Không full context/KV hoặc graceful cl
 Owner đã đồng ý [chẩn đoán/attention tiết kiệm VRAM](../docs/evaluation/phase5_context_policy_v2_oom_review.md).
 Đang triển khai [SDPA tensor v1](sdpa_tensor_v1.md), không weights,10fresh
 processes và predeclared parity/cap. Runner/28filewrapper/auditor đã có;
-tiếp full QA, commit, exact preflight, push/quota rồi một kernel mới.
+Source5aabea0,34focused/full1.859pass1optional skip379,56s; setup/Ruff/mypy275/
+knowledge đạt. Hai exact28file layouts đạt trong clean checkout riêng vì
+plan/phase6–9 có chỉnh sửa ngoài task (giữ nguyên, không commit).
+[QA](../experiments/manifests/phase5_sdpa_tensor_gpu_v1_pre_submit_qa01.json),
+[package và đường dẫn](sdpa_tensor_v1.md). Quota28,07h/private Datasetv1ready.
+Tiếp push source/QA rồi một kernel mới; chưa submit SDPA tensor.
 Chưa đổi model attention. Nghi vấn GQA/math fallback vẫn là suy luận từ source.
 Không tự giảm input,
 đổi model, lượng tử hóa, nới caps/deadlines hay submit lại. Không job Kaggle/local

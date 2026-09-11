@@ -1,0 +1,53 @@
+{
+  "junit": {
+    "tests": "1860",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "1",
+    "time": "379.453"
+  },
+  "source_and_evidence_sha256": {
+    "src/react_agent/llm/sdpa_probe_v1.py": "faacddda886282a81bee2ace851a8805d8e577789ce4fb4bf9c5f225bba57a90",
+    "src/react_agent/validation/sdpa_probe_audit_v1.py": "4f7d5bc86ddbf3bdc58fd00a25a477898046da94fa831a8f4a324e070f6fea84",
+    "scripts/run_phase5_sdpa_probe.py": "db7e500927e90df04c9af5cc5392472f380fdc86a95948e676a8a9a718b87395",
+    "scripts/prepare_phase5_sdpa_tensor.py": "d9f2172146bbe66a1018e6d323806342412ed72ad661852534f6943e0ee325cc",
+    "scripts/audit_phase5_sdpa_tensor_gpu.py": "f57fde5b4a5e0b6d80aab6da50d45f86f9675511668105ac271d1fe765949750",
+    "notebooks/kaggle/sdpa_tensor_kernel_v1.py": "3ba4aec89703f78dce47ce80e708eeaf50aa54264d496bdd177a0762f448b06e",
+    "tests/unit/test_sdpa_probe_v1.py": "15892be754ec668df4bb6412fe8996a1b2a596a7d7f770e5f573eb378be044b3",
+    "experiments/manifests/phase5_sdpa_tensor_gpu_v1_preflight01.json": "e06b75446110866469be805257fcebc15023189176ac1d440d8d51e8b4c3e84a",
+    "results/phase5_sdpa_tensor_v1_pre_submit01_pytest.xml": "9eb74a9d2788b15f7a32ba60acf53992b7590ddab025787a62226d02ddb35943"
+  },
+  "protocol": "sdpa_tensor_pre_submit_qa_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "5aabea015c1fa30c56dd908b51e382a59e092567",
+  "new_tests": 34,
+  "full_passed": 1859,
+  "full_skipped": 1,
+  "full_seconds": 379.56,
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 275,
+  "knowledge": "pass",
+  "frozen_source_entries_verified": 146,
+  "historical_raw_files_verified": 492,
+  "exact_layouts": [
+    "archive",
+    "expanded/PAX"
+  ],
+  "overlay_files": 28,
+  "local_model_loads": 0,
+  "native_tensor_executed_locally": false,
+  "test_access": "hash-only",
+  "gpu_hours_remaining_at_check": 28.07,
+  "dataset_private_version": 1,
+  "dataset_id": 11942593,
+  "dataset_status": "ready",
+  "planned_kernel": "huylmhuhu/react-vn-sdpa-tensor-v1",
+  "planned_timeout_seconds": 1800,
+  "planned_native_children": 10,
+  "model_mounts": [],
+  "clean_source_checkout": "/private/tmp/react-sdpa-source.ZZCt8Y",
+  "unrelated_worktree_changes": "plan/phase6.md through phase9.md modified externally during task; preserved, not committed. Exact preflight used separate clean detached worktree. Full pytest ran in original workspace; packaged source hashes checked separately.",
+  "skip_reason": "Dev venv lacks optional native tqdm; pinned native progress checks separately executed in both exact layouts."
+}
