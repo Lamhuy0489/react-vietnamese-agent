@@ -4,6 +4,17 @@ Cập nhật: 2026-09-12. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Mới nhất [ordinary artifact audit CPU](ordinary_audit_v1.md): source `1f28978`,
+64 test mới đạt/7,69 giây, nhóm liên quan 244 pass trước overflow case cuối.
+Hai saved CPU runs 03/04 được audit hai lần byte-identical/run; joined fixture
+giả lập được audit hai lần. Setup/Ruff/mypy 297/knowledge đạt; full QA hoàn tất:
+2.262 pass/1 optional skip trong 415,95 giây, không lỗi; không test job còn chạy.
+`results/phase5_ordinary_audit_v1_cpu01_pytest.xml` và
+[release QA](../experiments/manifests/phase5_ordinary_audit_cpu_v1_release_qa01.json)
+bind source/4 supervisor audits/64 prior raw/167 fixture files; joined input 82 files.
+Tiếp tokenizer metadata admission và exact Kaggle package/source preflight trước
+native A/B/A. Không native/GPU/Test mới; chưa cần access mới cho CPU.
+
 Mốc mới [ordinary repeated-request pair CPU](ordinary_pair_probe_v1.md): source
 `44cf902`, 40 test mới/166 focused pass trong 33,14 giây; hai A/B/A real-spawn
 rehearsals đạt, mỗi lượt 6 calls/2 workers, 4 distinct PIDs/64 raw files trong
@@ -223,8 +234,8 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
 
 ## Bước tiếp theo
 
-Ưu tiên hiện tại: [ordinary pair runner](ordinary_pair_probe_v1.md) đã có HF entry/
-rehearsal CPU; tiếp independent native supervisor/policy/source/memory audit và exact
+Ưu tiên hiện tại: [ordinary auditor](ordinary_audit_v1.md) đã có supervisor/
+policy/publisher/allocator joined checks; tiếp tokenizer admission và exact source
 preflight trước GPU; rồi task-local ownership, cold/warm metrics,
 A0–A6 parity/Broker/final/lifecycle. Cần code mới/tests/differential/exact package
 trước GPU tiếp; không suy stress pass thành benchmark adoption hoặc guard quality.

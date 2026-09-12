@@ -23,7 +23,7 @@ Test seals (hash-only), không đổi. Quét 139 source/docs/receipt/raw files v
 
 Đây là bằng chứng transport/residency/cleanup CPU với response và memory giả lập,
 không phải native model quality, latency, GPU memory, graceful shutdown hay
-Phase 5 acceptance. Bước tiếp: independent supervisor-bound native audit,
-publisher/tokenizer/source/load/memory/placement authentication và exact Kaggle
+Phase 5 acceptance. [Independent artifact audit](ordinary_audit_v1.md) nay đã có
+supervisor/policy/publisher/allocator checks; tiếp tokenizer/source authentication và exact Kaggle
 package preflight; sau đó mới chạy HF mode trên Kaggle. A0/A1 vẫn cần task owner
 agent-only và runtime A0–A6/differential/grouped Dev gates chưa đóng.

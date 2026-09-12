@@ -2,6 +2,14 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-12
 
+Mới nhất [ordinary artifact audit CPU](ordinary_audit_v1.md): source `1f28978`,
+64 test mới đạt/7,69 giây; supervisor và joined policy/attention/native-metric/
+publisher/allocator checks. Hai saved runs 03/04 audit hai lần byte-identical/run,
+joined fixture giả lập audit hai lần. Setup/Ruff/mypy 297/knowledge đạt; full QA
+2.262 pass/1 optional skip trong 415,95 giây, không lỗi; không test job còn chạy.
+[Release QA](../experiments/manifests/phase5_ordinary_audit_cpu_v1_release_qa01.json).
+Tiếp tokenizer admission/exact Kaggle source package preflight. Chưa native GPU.
+
 Mốc mới [ordinary repeated-request pair CPU](ordinary_pair_probe_v1.md): source
 `44cf902`, 40 test mới/166 focused pass trong 33,14 giây; hai real-spawn A/B/A
 rehearsals, mỗi lượt 6 yêu cầu và 2 worker, 4 PID khác nhau/64 raw files đã hash-bound.

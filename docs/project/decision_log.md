@@ -1,5 +1,18 @@
 # Decision Log
 
+## 2026-09-12 — Audit the full ordinary request evidence chain
+
+- New read-only supervisor and joined-native auditors require expected commit,
+  exact six-request coverage, immutable snapshot prefixes and PID/attempt hashes.
+  Bind existing policy/attention/native metrics to supervisor records; check
+  publisher bytes, admitted model-file identities, placement and allocator bounds.
+- Preserve forced/graceful distinctions and descriptive A-repeat results. Report
+  native/worker/host timing separately; no semantic retry or performance claim
+  from synthetic CPU fixtures. Tokenizer and remote source/package authentication
+  remain release gates. See [contract](../architecture/phase5_ordinary_audit_v1_contract.md).
+- Public guard snapshot hashes are added as a deterministic test fixture. No
+  model weights, benchmark payloads, Test/private GT or research-scope change.
+
 ## 2026-09-12 — Add ordinary repeated-request pair entry point
 
 - Add a versioned A/B/A runner that records submitted/returned calls, timing,
