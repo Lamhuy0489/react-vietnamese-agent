@@ -2,6 +2,15 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-12
 
+Mới nhất [tokenizer metadata CPU](tokenizer_metadata_v1.md): source `351ea21`,
+26 test mới/130 focused pass trong 30,29 giây; setup/Ruff/mypy 301 files đạt.
+Admission/collector/joined auditor suy pad/EOS từ public bytes đã pin, nối với
+ordinary policy và admitted file identity. Hai standalone audits trên fixture
+giả lập cũ byte-identical; full QA 2.288 pass/1 optional skip trong 424,88 giây,
+không lỗi; [release QA](../experiments/manifests/phase5_tokenizer_metadata_cpu_v1_release_qa01.json).
+Không test job còn chạy. Tiếp exact Kaggle ordinary
+wrapper/package preflight rồi native A/B/A. Không native GPU/Test mới.
+
 Mới nhất [ordinary artifact audit CPU](ordinary_audit_v1.md): source `1f28978`,
 64 test mới đạt/7,69 giây; supervisor và joined policy/attention/native-metric/
 publisher/allocator checks. Hai saved runs 03/04 audit hai lần byte-identical/run,

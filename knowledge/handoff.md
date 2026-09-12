@@ -4,6 +4,20 @@ Cập nhật: 2026-09-12. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Ưu tiên mới [tokenizer metadata CPU](tokenizer_metadata_v1.md): source `351ea21`.
+26 test mới/130 focused pass trong 30,29 giây; setup/Ruff/mypy 301 files đạt.
+Metadata admission/collector và joined CLI không nhận pad ID nhập tay; hai
+standalone audits trên saved synthetic fixture byte-identical, đọc 84 inputs.
+Full QA đạt 2.288 pass/1 optional skip trong 424,88 giây, không lỗi; không job còn chạy.
+JUnit `results/phase5_tokenizer_metadata_v1_cpu01_pytest.xml` và
+[release QA](../experiments/manifests/phase5_tokenizer_metadata_cpu_v1_release_qa01.json)
+bind source/bằng chứng; 235 prior raw/audits/106 frozen entries/seals không đổi.
+Tiếp exact ordinary Kaggle wrapper/package preflight rồi native A/B/A trên GPU;
+static import inventory cần thêm 14 files ngoài stress payload, chưa exactpreflight.
+Pending access: chưa cần access mới cho CPU; kiểm quota/private Dataset trước GPU.
+Không weights/native tensor/model/GPU/Test payload mới. Giữ các thay đổi ngoài
+phạm vi ở plan/phase6–9 và báo cáo người dùng; không stage/restore chúng.
+
 Mới nhất [ordinary artifact audit CPU](ordinary_audit_v1.md): source `1f28978`,
 64 test mới đạt/7,69 giây, nhóm liên quan 244 pass trước overflow case cuối.
 Hai saved CPU runs 03/04 được audit hai lần byte-identical/run; joined fixture

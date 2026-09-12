@@ -1,5 +1,19 @@
 # Decision Log
 
+## 2026-09-12 — Authenticate ordinary tokenizer metadata without changing runtime
+
+- Add a versioned metadata-only collector and audit layer. Authenticate exact
+  public tokenizer config size/SHA256/Git blob against existing model pins;
+  derive special-token IDs, bind pad expectations to ordinary policy evidence
+  and config bytes to admitted model files. No caller pad override in new CLI.
+- Preserve frozen native/supervisor auditors, model loaders, decoding and raw
+  results. Public config is stored as a UTF-8 string envelope to preserve its
+  missing final newline; its chat template is not executed or injected.
+- Metadata authentication is not native tokenizer execution or model/source/
+  remote authentication. CPU standalone evidence reuses explicitly synthetic
+  records; no new model inference, Test access or research-scope change.
+  [Contract](../architecture/phase5_tokenizer_metadata_v1_contract.md).
+
 ## 2026-09-12 — Audit the full ordinary request evidence chain
 
 - New read-only supervisor and joined-native auditors require expected commit,

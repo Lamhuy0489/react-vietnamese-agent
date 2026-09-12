@@ -1,0 +1,100 @@
+{
+  "protocol": "tokenizer_metadata_cpu_release_qa_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "351ea211858d799c0ccfaafd9aa51a8bd3702a7c",
+  "source_sha256": {
+    "docs/architecture/phase5_tokenizer_metadata_v1_contract.md": "3c84a34a29aabbdea9f911fa0922296801038997e6c6669fe75642e5b85f11d2",
+    "docs/evaluation/tokenizer_config_v1_source.json": "eb58b3c1a86c2b6e389e69cf0809cf40d82a68333c59bfe6c68b4dbb08c9b516",
+    "scripts/audit_phase5_ordinary_tokenizer.py": "61c6d21d8dfdcea95c48f2f15bc056856154bf0ba80ad619a44f6a8289ce990b",
+    "scripts/collect_phase5_tokenizer_metadata.py": "37ac8a9136151b90ee8e89e8d387837c9488bf789799ae2f10a9d6cab55ef480",
+    "src/react_agent/validation/ordinary_tokenizer_audit_v1.py": "a4470e013ca7d8093638c09375fe6800d3fdd3b799ac2c2b73d29f68646afef1",
+    "src/react_agent/validation/tokenizer_metadata_v1.py": "ba406a5822c89f7c2edf9db687d8ccc5db21aa0ba9ca35707d0233903ff059be",
+    "tests/unit/test_ordinary_tokenizer_audit_v1.py": "aa3b9260ecbbb1629974c282cb3f34601e116d2a0c2bea83d19a2c9b475a8d5b"
+  },
+  "focused_tests_passed": 130,
+  "focused_seconds": 30.29,
+  "new_tests": 26,
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 301,
+  "knowledge": "pass",
+  "prior_release_path": "experiments/manifests/phase5_ordinary_audit_cpu_v1_release_qa01.json",
+  "prior_release_sha256": "214a24924b86da399b02829001d4eb55399bd330bc6e6685475766a6d15c6327",
+  "prior_source_entries_reverified": 7,
+  "prior_raw_and_audit_files_reverified": 235,
+  "frozen_overlay_entries_reverified": 106,
+  "prerequisites": {
+    "clean_frozen": true,
+    "robustness_ids_presealed": 50,
+    "adversarial_seal_valid": true,
+    "test_access": "hash-only; robustness IDs only",
+    "clean_component_hashes": {
+      "dev_pilot/fault_plans.json": "3da01fa7c945cc00bb72a1e505b4db77bd339b19f15060ae6f37c3c3df06bceb",
+      "dev_pilot/task_ids.json": "1548683a7c985d08b867a4adc276071b08c36c5e14d29121e96966185f86beba",
+      "environment/cached_pages/pages.json": "4ce56c270a4d96117ba14cde6d070e56a59817d774401f71372fa9f2c2fab34a",
+      "environment/database/seed.json": "51b5f8980984f8905bbee557906c677cca449aa16a83fb7de645cb375b0a2b31",
+      "environment/database/university.db": "85bc7a259438b89f8f86fdf09965aa46e9ef9b4749564795aab7f43e582c10c3",
+      "environment/documents/documents.json": "431a7b8cbcd271c98f08adc61cdd83c0e1ed34f944f86c43fad8dca2526cacbe",
+      "manifests/environment_manifest.json": "4241e73fa3ada87dd9d595d5db0a249966a5cead7da04a37cba7cac020b787e9",
+      "manifests/source_catalog.json": "f9d8621762d016aefca05d1eff24f52ea39fc2034d4122889c5b7f1127588b49",
+      "manifests/split_manifest.json": "4e396d50e8a4f6b50be42913e4213db0ab870f461bcedd4fc01dfec1c9cec6e0",
+      "pool/tasks.jsonl": "f96839aa55aa95de0b3fd2ba79139bbd108d2899de26391203ae978672c86611",
+      "private/dev_ground_truth.jsonl": "95a3e4668699dddbb8f8e85ff3ad08950d528644980ec4033a266d851d01582c",
+      "private/pool_ground_truth.jsonl": "5cdc74cfca6887e63a3fed7da22a0d78c4a781029d826768a4f5b5ddc9ad0a52",
+      "private/robustness_canonical_ids.json": "18feead8234e8c1461f91077fabcbaee151f5f3791ade1275c8cbf8fc27652d0",
+      "private/test_ground_truth.jsonl": "8d11fec78cdf6714ff6d5136e88abb3fd7dbc1f66b0485a77c2c1933696b95a5",
+      "reports/pool_validation.json": "d4e940014be90ace7a7ff839454b867255f8ef8787d88daeb85b592be9a35d09",
+      "reports/qa_records.json": "399495e2f73373dbbf61eba43fab2666e430baab50a2f83616eec2dcc8000c22",
+      "splits/dev.jsonl": "ce1cda2a258c6d00b31a428b10258bbda7cade77c4b3841aa8cd1af34227a0d3",
+      "splits/test.jsonl": "688fddcc4c4cb363515e1247e992cbda9e5268ba8e1cc51e0060d48f5a9dad20"
+    },
+    "adversarial_seal_sha256": "431b81118026bef6c60e33306e51df71160504579e76ea08fb4648005fa1cb6b"
+  },
+  "outputs_root": "results/phase5_tokenizer_metadata_v1_cpu01",
+  "output_sha256": {
+    "audit01.json": "a4fca39ef48a340da8f2e93360e534005d2c732ac24750d942d223c50fddd8ef",
+    "audit02.json": "a4fca39ef48a340da8f2e93360e534005d2c732ac24750d942d223c50fddd8ef",
+    "tokenizers/agent_tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+    "tokenizers/guard_tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583"
+  },
+  "byte_identical_audits": true,
+  "joined_input_file_counts": {
+    "attention": 18,
+    "policy": 30,
+    "probe": 32,
+    "publishers": 2,
+    "tokenizers": 2
+  },
+  "evidence_type": "Reaudit of previously preserved explicitly synthetic HF-shaped fixture; no new model execution.",
+  "metadata_source": "Both role sidecars copied from cached pinned guard config bytes; independently equal to agent inventory/mount hashes, not proof of an agent mount on this host.",
+  "tokenizer_metadata_authenticated": true,
+  "native_tokenizer_executed": false,
+  "native_model_loads": 0,
+  "native_tensor_execution": false,
+  "new_gpu_runs": 0,
+  "new_kaggle_submissions": 0,
+  "held_out_test_access": "Prerequisite hash-only payload verification and previously sealed robustness IDs; no Test payload parsing or private ground truth.",
+  "remaining": [
+    "Exact ordinary archive/expanded Kaggle wrapper/package source preflight; quota/private Dataset readiness; native A/B/A and remote/source release audit.",
+    "Agent-only A0/A1 task owner, runtime A0-A6 differential/lifecycle, A4/general final and grouped Dev gates."
+  ],
+  "junit_path": "results/phase5_tokenizer_metadata_v1_cpu01_pytest.xml",
+  "junit_sha256": "4e1afd7a242fe0e69149abb518277369755eaefbed2d38fc24f6da67e7f7c7d6",
+  "junit": {
+    "tests": "2289",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "1",
+    "time": "424.746"
+  },
+  "full_suite_passed": 2288,
+  "full_suite_skipped": 1,
+  "full_suite_seconds": 424.88,
+  "skip_reason": "Existing optional native tqdm test unavailable in default CPU environment.",
+  "credential_scan": {
+    "files": 254,
+    "known_values": 4,
+    "matches": 0
+  }
+}

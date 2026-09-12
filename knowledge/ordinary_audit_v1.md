@@ -31,7 +31,8 @@ Phase 5 acceptance vẫn false; phép kiểm các records không chứng minh na
 
 ## Bước tiếp theo
 
-1. Xác thực tokenizer metadata để suy pad IDs (hiện vẫn là expected inputs).
+1. Đã thêm [tokenizer metadata layer](tokenizer_metadata_v1.md) ở source `351ea21`;
+   layer mới suy pad IDs, auditor v1 cũ giữ nguyên interface/receipt và phạm vi.
 2. Đóng gói exact source cho archive/expanded Kaggle layouts và thử imports,
    eight-tool/Dummy/resume; kiểm source/model/wheel identities và output routing.
 3. Kiểm quota/private Dataset rồi chạy native A/B/A với model đã pin; audit
