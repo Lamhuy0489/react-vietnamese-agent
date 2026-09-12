@@ -1,0 +1,361 @@
+{
+  "protocol": "request_policy_pair_cpu_validation_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "53f7e19a80923b672f52c655eee1b9f5fd97522b",
+  "source_sha256": {
+    "src/react_agent/llm/request_policy_pair_v1.py": "cbd30ef7c4f63c421e3fb1cac38bed4665ac73ee7222c545b5a338d30094c420",
+    "scripts/check_phase5_request_policy_pair.py": "5fb3f0dc44e700ad841334174a0ff469632b22d6e5612ad4da63fbfe3e1b613a",
+    "tests/unit/test_request_policy_pair_v1.py": "5f517d4ed04aff9ebb910c61c59a4563faefc9a1a59a8f600b5932cb2d877679",
+    "docs/architecture/phase5_request_policy_pair_v1_contract.md": "107da5d74ca249462b701b391ba0203bc53cb231c2590b0cce8caef88dde7ad3"
+  },
+  "new_tests_passed": 23,
+  "focused_tests_passed": 227,
+  "focused_seconds": 27.04,
+  "standalone_runs": 2,
+  "distinct_child_pids": 14,
+  "stable_control_summaries_equal": true,
+  "runs": [
+    {
+      "path": "results/phase5_request_policy_pair_cpu_v1_run01",
+      "worker_pids": [
+        2330,
+        2331,
+        2341,
+        2344,
+        2346,
+        2350,
+        2353
+      ],
+      "control_rows": [
+        {
+          "all_handles_reaped": true,
+          "case": "success",
+          "error": null,
+          "no_retry_attempt": true,
+          "statuses": {
+            "agent": [
+              "OK",
+              "OK",
+              "OK",
+              "OK"
+            ],
+            "guard": [
+              "OK",
+              "OK",
+              "OK",
+              "OK"
+            ]
+          }
+        },
+        {
+          "all_handles_reaped": true,
+          "case": "reversed",
+          "error": "RuntimeError",
+          "no_retry_attempt": true,
+          "statuses": {
+            "agent": [
+              "BACKEND_FAILURE"
+            ],
+            "guard": []
+          }
+        },
+        {
+          "all_handles_reaped": true,
+          "case": "agent_error",
+          "error": "RuntimeError",
+          "no_retry_attempt": true,
+          "statuses": {
+            "agent": [
+              "OK",
+              "BACKEND_FAILURE"
+            ],
+            "guard": [
+              "OK"
+            ]
+          }
+        },
+        {
+          "all_handles_reaped": true,
+          "case": "guard_error",
+          "error": "RuntimeError",
+          "no_retry_attempt": true,
+          "statuses": {
+            "agent": [
+              "OK"
+            ],
+            "guard": [
+              "OK",
+              "BACKEND_FAILURE"
+            ]
+          }
+        }
+      ],
+      "graceful_workers": 4,
+      "terminated_workers": 3,
+      "raw_sha256": {
+        "summary.json": "800e7282812ab0b786646da438ca71ba29ad33d2467331c5570f7bb6b9f72680",
+        "transport/agent_error/agent_metrics.jsonl": "04b7cc0b4e677449c4c6035afd4c79bbe81f389b9cdf5b18bd03cc293a1bb92e",
+        "transport/agent_error/agent_shape.json": "7686d3d8f5c64260c53dcfc2fdf40ed81a6ead761852cb7a31d66bd4d6391f1d",
+        "transport/agent_error/attention/agent/request_000001/entered.json": "45a0facafdb92073acfbd3c7885d67df2a234bfe406368f35e28792e319fff3a",
+        "transport/agent_error/attention/agent/request_000001/error.json": "e08367889d73548e487875bb50c9ad10319ba2299c031ee1bb3f920752474e3e",
+        "transport/agent_error/attention/agent/request_000001/restored.json": "5caa3683085daa7a397e637bd2b10d89d1e247f857d7159f32adea2fc8664831",
+        "transport/agent_error/closed.json": "c019cab0623ede6837459297d55214bb4647f4db6c37e870ea821fd58548185d",
+        "transport/agent_error/guard_metrics.jsonl": "0fb34d3132a92a681bf2ce8edb62bbc0477efac883bdb25b98d0d3a87b422a99",
+        "transport/agent_error/guard_shape.json": "7921138d5888502b5c4bcff281f3817920109f7aab7899ebefd605c5d150ea84",
+        "transport/agent_error/policy/agent/request_000001/entered.json": "faa5e75229d0f6bfa6fe12500fb74223ed174a02b8f550cee834fa753a221698",
+        "transport/agent_error/policy/agent/request_000001/error.json": "79ce340c81c8d7216adcb2ce2ec1b7076efe9ea5afadbba4e92c8aac828d85d6",
+        "transport/agent_error/policy/agent/request_000001/length.json": "86fc3571873321a10acd23d78c1fd83d34881d1f1ebe19037b133f252e38a4a8",
+        "transport/agent_error/policy/agent/request_000001/resolved.json": "e1b44c8f7ea973ca6d78ec274fbd9f1b4d742544f14100fa1d03a89c0151f8cf",
+        "transport/agent_error/policy/agent/request_000001/restored.json": "e23fb86e32da5427380a42898c25ad09fbd3e381502692a904148ea94e615ca1",
+        "transport/agent_error/ready.json": "8ac29372a885de61f5814b8ac18c659e0aaf6bf147095714d3dcf5f2fef31119",
+        "transport/guard_error/agent_metrics.jsonl": "85c6fd2fb15c107bfa634a5da9864e2ba477333bc757a191bf12b0c5fcefba02",
+        "transport/guard_error/agent_shape.json": "f5146b584bdbeae5c846b5bb68a29609ccc9ead4eee23e9ca82b33ce81431809",
+        "transport/guard_error/attention/guard/request_000001/entered.json": "927bc806b197711a659459dc2534c50701208c03ab6f5045d3aaf1a3467031a4",
+        "transport/guard_error/attention/guard/request_000001/error.json": "e1d101c3438814a31fdb2c37969c46ce320b95853901b1ac91dd3a51d9fded14",
+        "transport/guard_error/attention/guard/request_000001/restored.json": "52a868853ccac02a327457def05c8057d79da7c89c29b05ec54ff1ada08ee13c",
+        "transport/guard_error/closed.json": "275158a08cf0c6d4294846e5496bfeb2b848de8975fd9a930b4356f4a7a8bfbb",
+        "transport/guard_error/guard_metrics.jsonl": "ea6da5fe5932f70d8001bf777efbef52d703d47b0c22db5c70896fbce9fb1d19",
+        "transport/guard_error/guard_shape.json": "1896e8cd6fb52129230d9177f58a0be4137296e2fc4a806095039b872235808c",
+        "transport/guard_error/policy/guard/request_000001/entered.json": "460ab77658b2bf7e4ef86c4f3c6aba86a64cbdae9224153ced125a836ee0fc39",
+        "transport/guard_error/policy/guard/request_000001/error.json": "83a23c230e6cc8b94fecb6abebc942405d8a322f6c565f772c1d9936ec6eeb32",
+        "transport/guard_error/policy/guard/request_000001/length.json": "c40bcf3a64a0c7e3d584d27224043f04746a92286e03594f72eb1c72b0c293b8",
+        "transport/guard_error/policy/guard/request_000001/resolved.json": "be86af1a75520d366f36ca90ef831e513875d05561ab6735d8c59a5bd942e93c",
+        "transport/guard_error/policy/guard/request_000001/restored.json": "9a61e66ac65d69e0affd443d35180235c1b03a84bad1f8e5832b575d1c8a2d30",
+        "transport/guard_error/ready.json": "fd222040acd236266784874ee9e8a94b48f6108cec870ec7a21abcd4fffd8f5c",
+        "transport/reversed/agent_metrics.jsonl": "85c6fd2fb15c107bfa634a5da9864e2ba477333bc757a191bf12b0c5fcefba02",
+        "transport/reversed/agent_shape.json": "9fb2207bccd3b94af7974aa11a22866c2f6d9369092bec37d64423dd763d5302",
+        "transport/reversed/closed.json": "e98037218990d5766f1d3180d404c66ad0aec034e89b55ced34bffd9a263150b",
+        "transport/success/agent_metrics.jsonl": "7baec8739e29906f044e30bf99ccc5132e56c6ab7797f5d2880ec23d04e23f8d",
+        "transport/success/agent_shape.json": "cd56ce3d7622787b38811e05c0640f7811cfcf3a8361af0a119e99b0c21e8ee0",
+        "transport/success/attention/agent/request_000001/completed.json": "24ed167bbdee93c3162fb868cad09e1145e2272d0ae3522ed81433bb0ce48482",
+        "transport/success/attention/agent/request_000001/entered.json": "a47f4165184c9a989c60319b5c41a2d735d2c86facfebcdbff1229a90a65fdb0",
+        "transport/success/attention/agent/request_000001/restored.json": "cf588400f743c2641d90d6127a6106fcd8615726b12e4b78bfdf524284d2143e",
+        "transport/success/attention/agent/request_000002/completed.json": "807112276b16c405b7951eb670180ce2226abf00942ee61cc5c66afae759b425",
+        "transport/success/attention/agent/request_000002/entered.json": "ba4e898ea4fbc6b76c67f0f373185b8bf748796f7506f4f230b1f1ed01bbbec0",
+        "transport/success/attention/agent/request_000002/restored.json": "1f7183b2c537eb7641775caa3328abe598917aa1483959b2ad30e087fd7e9a65",
+        "transport/success/attention/agent/request_000003/completed.json": "ede08319d4237aa9ed94d12b06d902b53a1856c30a72bf791d986e344d7a1621",
+        "transport/success/attention/agent/request_000003/entered.json": "2d9947eff193c2db33562f3db3b2459823b4d080763709ccce53f904a74619a6",
+        "transport/success/attention/agent/request_000003/restored.json": "745d419b89059308b1147bbedd5bf208fd7e220acbdb420ffa11617e31ffb2bd",
+        "transport/success/attention/guard/request_000001/completed.json": "494f6cec2c48b51211856029fbddfef84e081c271d5bd0645addd21adbc82008",
+        "transport/success/attention/guard/request_000001/entered.json": "f11fea12daed4765453692de962265101cfe1261b023936369fafa417d16ce35",
+        "transport/success/attention/guard/request_000001/restored.json": "a174ef36ec8a3fe302f80172cfbec096cc6a15c4d064346cb2aa13a29a984343",
+        "transport/success/attention/guard/request_000002/completed.json": "c4462191c4396f9675639b83186bebc403258b8ef2e0eb870cbb7ff32e929913",
+        "transport/success/attention/guard/request_000002/entered.json": "bf247590da5940e4436e2002944758ebf3994fda809364ec09378dcffcd135a4",
+        "transport/success/attention/guard/request_000002/restored.json": "50615530e701432e07a84657ee4863a3ede366eefd66875317f5633e5c86ad80",
+        "transport/success/attention/guard/request_000003/completed.json": "8e90054573081c392d150c76a90b375e408df23ef9b93e72eb851a4002035ce4",
+        "transport/success/attention/guard/request_000003/entered.json": "0baafaee6f760ca6450b8129857320ca3151386c406c706325f9a139077d9236",
+        "transport/success/attention/guard/request_000003/restored.json": "3dee2bda9b6d196f1fc51fb352edb64619065d6b732409161fa59f705e3efac0",
+        "transport/success/closed.json": "aab731a2395195aa80dbc207d4f8e64b57ec5d14138cb43f588de4bf414719a1",
+        "transport/success/guard_metrics.jsonl": "e8b6a52d322700c3ce8e489cef8907cf9c5ca11ecef2265bb37eeef59b398c2b",
+        "transport/success/guard_shape.json": "6d56ff62c57bede681de69cd288c9b6fe23ccb49a321477a80680a63ba6ec7bd",
+        "transport/success/policy/agent/request_000001/completed.json": "70360d4cbb765b8332b438664c96262dbe9a7c1b325da43539d86e69f30794da",
+        "transport/success/policy/agent/request_000001/entered.json": "e8bef02abd667453e3ae3c83b203e2ebb6b4f0b40824cc5d68890b5e48c01f79",
+        "transport/success/policy/agent/request_000001/length.json": "c7fecab15cdb1863cbe84f4d7695b14d5202c2ce956dc82dc39c09b4ff090203",
+        "transport/success/policy/agent/request_000001/resolved.json": "26f81147dbaf467ea9ded38ec7e090a4ff8678196076e25edbd4c717562c2b14",
+        "transport/success/policy/agent/request_000001/restored.json": "6fa5def6627067fca1ce46b69c456a2c8b369f3f518adfdddc3fe4d3ea16ed98",
+        "transport/success/policy/agent/request_000002/completed.json": "fc2cd27a6c390381f5d0590e37addf3fc9c1e5eb492e245ee809df1633a4f3e2",
+        "transport/success/policy/agent/request_000002/entered.json": "451bdb29a0f87ec974b7aa9fa31f6f18d9f9811a53277f80d1ec1193add44a79",
+        "transport/success/policy/agent/request_000002/length.json": "48d3874655ccec07da880653be9ce7a394db953756953aaf767fdea15bc9a5fc",
+        "transport/success/policy/agent/request_000002/resolved.json": "d59b5839888c9a99d276086eb48c038591cf4580a27b879c5deae12148e2d6bc",
+        "transport/success/policy/agent/request_000002/restored.json": "706076da464c4f813e7f7aab7b044588c784be1fb9ddfb519bf9a32cab8e001e",
+        "transport/success/policy/agent/request_000003/completed.json": "b4e0bf638c48d7eefd4fb7833db8280030398275de2a92e09a61c1fc2e83e584",
+        "transport/success/policy/agent/request_000003/entered.json": "81e5854e98d871ef9ba67b00fb1bdf83ec6f6dd818038a3df2ba19e4173c761f",
+        "transport/success/policy/agent/request_000003/length.json": "b2280822d060929ec9b6f9c43f9c982631c5b08cdbd61599ae5f4cfaa817faff",
+        "transport/success/policy/agent/request_000003/resolved.json": "18fa04cb6dd35503cea38113de0da329cf9637d71f4e40cbee5c503c99b184b0",
+        "transport/success/policy/agent/request_000003/restored.json": "2e57da74093209c42595afd73b9a39d6bb058b586d6d63d802a920122fb4ecc4",
+        "transport/success/policy/guard/request_000001/completed.json": "901ccbf09f4ea771044f714eff801247138cb859d6bb363e0141f1fc7961ec2f",
+        "transport/success/policy/guard/request_000001/entered.json": "ea4f6e154bce66f7d97d06808ff192738161e87e8cb30689051e836d28cd4da5",
+        "transport/success/policy/guard/request_000001/length.json": "dfa3e8f22879d1ff75fb898dd719ffda68b6e1ed6b08f7597d66dab399a58493",
+        "transport/success/policy/guard/request_000001/resolved.json": "6cb7e1fea360ef9f14594ab42d430c420722440bb1468516fa54883e812eb1ab",
+        "transport/success/policy/guard/request_000001/restored.json": "dafe72008dc0fa813c4ca52ce35bdef99c5e7df3ab9fcce842091de4f3d069b4",
+        "transport/success/policy/guard/request_000002/completed.json": "21cd675604998b1987f3aadbe71975cd3de3293eabb775cbd3af1709eab33e6d",
+        "transport/success/policy/guard/request_000002/entered.json": "f00606abe45e1b6214526ec575bd27d3148d89708a80ddd990561032977a2f2c",
+        "transport/success/policy/guard/request_000002/length.json": "36239ded004aa951d65c98f2f7ce24f680c88a8234d2ca03a6356ed066235da7",
+        "transport/success/policy/guard/request_000002/resolved.json": "eae444e9663f84dc92f5848853ba3f44c59fcb9013e4630a64bac8857dbc1db2",
+        "transport/success/policy/guard/request_000002/restored.json": "23ca520e5c05fce2e2ffb8da319cfe2ed6680c3fb70c8bd02b14e0c79c8efcfb",
+        "transport/success/policy/guard/request_000003/completed.json": "91f35de2fe9d8802cae886fbd42807825244b2c8181b28820f870095dd1158a2",
+        "transport/success/policy/guard/request_000003/entered.json": "9b297bf86ab32997ebde79f120cd2327a055ad08b8c108c4edf6cfb8d2c22e33",
+        "transport/success/policy/guard/request_000003/length.json": "697b5707fe93b4802ddfe3150336024641e780823802b2cf82dd87ee2833d70c",
+        "transport/success/policy/guard/request_000003/resolved.json": "7ca4b1159b0b2e0e0ec5312ba3080c6502644ed689c007f78a036a47faccb5e7",
+        "transport/success/policy/guard/request_000003/restored.json": "e402e6556998be0d6aa60dbe13656254ed5d987498dc9b1a8b5c5ff7483ce310",
+        "transport/success/ready.json": "7ea33675a4c64f2edffb0888f78303987d1021966edb93adf941ea6c3af9c59e",
+        "transport/summary.json": "f8b11b54a32837fa91ad5e8d2d6abc9628c579dc53aebaa7f20512cf63197a3c"
+      }
+    },
+    {
+      "path": "results/phase5_request_policy_pair_cpu_v1_run02",
+      "worker_pids": [
+        2343,
+        2345,
+        2349,
+        2352,
+        2354,
+        2355,
+        2356
+      ],
+      "control_rows": [
+        {
+          "all_handles_reaped": true,
+          "case": "success",
+          "error": null,
+          "no_retry_attempt": true,
+          "statuses": {
+            "agent": [
+              "OK",
+              "OK",
+              "OK",
+              "OK"
+            ],
+            "guard": [
+              "OK",
+              "OK",
+              "OK",
+              "OK"
+            ]
+          }
+        },
+        {
+          "all_handles_reaped": true,
+          "case": "reversed",
+          "error": "RuntimeError",
+          "no_retry_attempt": true,
+          "statuses": {
+            "agent": [
+              "BACKEND_FAILURE"
+            ],
+            "guard": []
+          }
+        },
+        {
+          "all_handles_reaped": true,
+          "case": "agent_error",
+          "error": "RuntimeError",
+          "no_retry_attempt": true,
+          "statuses": {
+            "agent": [
+              "OK",
+              "BACKEND_FAILURE"
+            ],
+            "guard": [
+              "OK"
+            ]
+          }
+        },
+        {
+          "all_handles_reaped": true,
+          "case": "guard_error",
+          "error": "RuntimeError",
+          "no_retry_attempt": true,
+          "statuses": {
+            "agent": [
+              "OK"
+            ],
+            "guard": [
+              "OK",
+              "BACKEND_FAILURE"
+            ]
+          }
+        }
+      ],
+      "graceful_workers": 4,
+      "terminated_workers": 3,
+      "raw_sha256": {
+        "summary.json": "bfcc5d2c76c259d21e0441a701864e453f67b4cc5b6f854394d95181d1f71cc3",
+        "transport/agent_error/agent_metrics.jsonl": "04b7cc0b4e677449c4c6035afd4c79bbe81f389b9cdf5b18bd03cc293a1bb92e",
+        "transport/agent_error/agent_shape.json": "2bed61d9abe5f4a3dfab793060e6c961294bdf51d4e769437a843a0afcf39f0a",
+        "transport/agent_error/attention/agent/request_000001/entered.json": "f271d2cd53aa21fc70efd1a64d5bbf8437b30f7263e4373917718bf0da34e3e6",
+        "transport/agent_error/attention/agent/request_000001/error.json": "b713af19189b7610c85166c359e4d9f4844e70b1ad129292dd31ed3b53cbbdee",
+        "transport/agent_error/attention/agent/request_000001/restored.json": "82059602c4ad6df8ba16c38051e51968e9e13cb3b7aa30c7e07198913d4e93fb",
+        "transport/agent_error/closed.json": "30c70ac2ff3df302a97896e8f3d404588078489404814547787ab0235efc4bd8",
+        "transport/agent_error/guard_metrics.jsonl": "0fb34d3132a92a681bf2ce8edb62bbc0477efac883bdb25b98d0d3a87b422a99",
+        "transport/agent_error/guard_shape.json": "4205ae67d1a62fab2d2c2783029606153fdeda3cefcea9e9fa8a2a6b62f60fcc",
+        "transport/agent_error/policy/agent/request_000001/entered.json": "1a686259c6c20012a97916d03ea0cb485b46846f4588d1215d6b72c13bba3483",
+        "transport/agent_error/policy/agent/request_000001/error.json": "d0f24f21eef5cc4bd5b8c2f9fc2f5a1f988f4ab4e5cf7890744e244b648b9df0",
+        "transport/agent_error/policy/agent/request_000001/length.json": "e5cef2adc365fe4162f2c7a81390dc39fc294f4f707c9891e780fe99bc6231f5",
+        "transport/agent_error/policy/agent/request_000001/resolved.json": "4d5136af6a704aadc1eb795fcf1113bb7d7095e97f34d14b27e0811e632a9ee3",
+        "transport/agent_error/policy/agent/request_000001/restored.json": "e57c7c1460499c4c837efd80f78e09caecd8ceddc5dd1bc0f18f21249ced1a8c",
+        "transport/agent_error/ready.json": "fc129cc38eb84261b79a918a8fa182660ad495db0279651c96774e6db57a0554",
+        "transport/guard_error/agent_metrics.jsonl": "85c6fd2fb15c107bfa634a5da9864e2ba477333bc757a191bf12b0c5fcefba02",
+        "transport/guard_error/agent_shape.json": "19422ae619919b7cc58833fcb1e10a35ec515a91640a6d97f3b4d770a85b45c5",
+        "transport/guard_error/attention/guard/request_000001/entered.json": "83f9ba46bee6e9cb090f969346b14f197df15b22ce8e9bcb516aa138294d4782",
+        "transport/guard_error/attention/guard/request_000001/error.json": "6249b410fd504001a2bd13b3fab4ccdd8a7f1473089db4d967c6a74ecec3abea",
+        "transport/guard_error/attention/guard/request_000001/restored.json": "326579a571225b0976fa8333530566a4663f5724a7d98682b6ad90aa938b8bd7",
+        "transport/guard_error/closed.json": "b0753b11521fafce7eb168e1d123326fe25e6ff8f903e9d7e9631a85ac64c8e5",
+        "transport/guard_error/guard_metrics.jsonl": "ea6da5fe5932f70d8001bf777efbef52d703d47b0c22db5c70896fbce9fb1d19",
+        "transport/guard_error/guard_shape.json": "60bd0c9485ee8781d597fb67d714bf7049fb5225eecfd28b49d68b55abf70abe",
+        "transport/guard_error/policy/guard/request_000001/entered.json": "5a6e41086e2d214bbf66045a9fe5a1f8420b7f61c3828a61f8acd3f044534b34",
+        "transport/guard_error/policy/guard/request_000001/error.json": "9a8b0b25d7f74a4d7eac7f851f6f6b8bda3eb57ad9a91c72c63fcbfc91a2844d",
+        "transport/guard_error/policy/guard/request_000001/length.json": "964f1fd0858404175cb7151b830ece98e65867ecbb7bf5242181aa9014c0f2e8",
+        "transport/guard_error/policy/guard/request_000001/resolved.json": "044c4be88d024c4044ae887ab4158ab824762a1cd29056af35819b715d745ebf",
+        "transport/guard_error/policy/guard/request_000001/restored.json": "51050502ac30c2df0f940a46d749d0ba94836c0210a3307633c2bdf8aecb98b9",
+        "transport/guard_error/ready.json": "d05f01d0446eb4c6b9589f8e097979135f8ab26a14af463654c1247715d0747c",
+        "transport/reversed/agent_metrics.jsonl": "85c6fd2fb15c107bfa634a5da9864e2ba477333bc757a191bf12b0c5fcefba02",
+        "transport/reversed/agent_shape.json": "3b298ee38713e17d656cb62fbcb8a2173ca7b7ae08bf1295568b484f947c5ab4",
+        "transport/reversed/closed.json": "49f3ecf2742da58facf72f722521f4d424adcf7af74a4b474d6ba786c656d61d",
+        "transport/success/agent_metrics.jsonl": "7baec8739e29906f044e30bf99ccc5132e56c6ab7797f5d2880ec23d04e23f8d",
+        "transport/success/agent_shape.json": "843e03682993e31bd95a3578edd3edd765d8f72b80f122566dab8c3db1a82fea",
+        "transport/success/attention/agent/request_000001/completed.json": "5b220c35e3e984bacc2a4ba63b83172e60216723c00c9d0353af0799997208cf",
+        "transport/success/attention/agent/request_000001/entered.json": "c885fd7dd8f319b84daa113a8d261db5eb78b95d1e6447eae4206f59bcf9239f",
+        "transport/success/attention/agent/request_000001/restored.json": "4d71931849224705f2981b9a7818105c4a579a306f749fab81bf18d0a38c705a",
+        "transport/success/attention/agent/request_000002/completed.json": "ef509159a4849b8e0d41aaa14cf93d64d5670025796a48edf4918311a54f1ee0",
+        "transport/success/attention/agent/request_000002/entered.json": "9a39e35b5179d2fb68a94419404174f1ef05bc90ec180b3fc678d8d8350feb38",
+        "transport/success/attention/agent/request_000002/restored.json": "853ebee6e079408e2eaa6bcc7300c28c318df4771606359b3aba48b7c6375f32",
+        "transport/success/attention/agent/request_000003/completed.json": "49eb84336dd1e89a0469eb05e51dd10baeec159de373b7d118ad1fcd22228d67",
+        "transport/success/attention/agent/request_000003/entered.json": "c90760e4485c35b719434c6e4794241539090b3764596db6452b08e3cfc1522f",
+        "transport/success/attention/agent/request_000003/restored.json": "671ad0d3c718ba2b9cf4de8e6e4709f77267de97f25621ecc5a5e0bcbe806679",
+        "transport/success/attention/guard/request_000001/completed.json": "d70a83f7900e0ea50c45aa52b65a6eb596993701a89109134279dc820fe7d27a",
+        "transport/success/attention/guard/request_000001/entered.json": "c3bac480ff85c17755c7b1a493ceb491d2fae80f561147a2e827b0b12df2f1e3",
+        "transport/success/attention/guard/request_000001/restored.json": "082574be5b6e4ddbf7234ec86083cc7caa3a7d0a8cb0442cd34f903a8a8f2980",
+        "transport/success/attention/guard/request_000002/completed.json": "5c35ea2599d9f594d7c4acfef566cbd1321c6488b59bef7e93757ed3f7c0b4da",
+        "transport/success/attention/guard/request_000002/entered.json": "e175a3d971e4177128c9bcb7491b2d36d76c7ec6d9444e128064c4abd76f20e7",
+        "transport/success/attention/guard/request_000002/restored.json": "ea5444c95b25afd9f59b14f611aa138956478f38e90c91a39ec85d7b19f0edc5",
+        "transport/success/attention/guard/request_000003/completed.json": "dd58d04cba8c531916056854e8b12f3ee4c0ef1a869ae36f768ee833da14ccce",
+        "transport/success/attention/guard/request_000003/entered.json": "16eac54c9205703823ccc324471224b4e1924ee6b64a2f576217a17c07ce52cf",
+        "transport/success/attention/guard/request_000003/restored.json": "7de803aeeea26a7a49d2cfad65edbc1818c1e984627669cc7ddb80293b1753f3",
+        "transport/success/closed.json": "ef196f7da743b66032196e24b00ab440fbd22bea2e44648e2a6c84cd2ea823f3",
+        "transport/success/guard_metrics.jsonl": "e8b6a52d322700c3ce8e489cef8907cf9c5ca11ecef2265bb37eeef59b398c2b",
+        "transport/success/guard_shape.json": "dbc85d68625bbe1398fab995bb2ff2d6a4bcd83718e66069aad1486ed6d23c27",
+        "transport/success/policy/agent/request_000001/completed.json": "b3bb8ed0df4c6007deee5e0b19bab7e87a7b63f862e146e490d4a5b98916a561",
+        "transport/success/policy/agent/request_000001/entered.json": "db322a9929df9873cf634426c1e975015a551cce58fd3d16e18d54ac32151fd6",
+        "transport/success/policy/agent/request_000001/length.json": "d4493973742a530caeef51f840fa8e51db74d3fd3aa587ceb8aeb0603475f8a0",
+        "transport/success/policy/agent/request_000001/resolved.json": "50c170fa667ace8d05781fa98b1ef1124816cbd97e9a210c9194cdc28f839a31",
+        "transport/success/policy/agent/request_000001/restored.json": "89ee602220bdea358d93c610c16d9c2e3989e31c81166751799265e70aac6f70",
+        "transport/success/policy/agent/request_000002/completed.json": "12eb64e3716e8ebdfa49dc53761e1f86c718dfed47276e3c5323924891e7fd81",
+        "transport/success/policy/agent/request_000002/entered.json": "27bf0917d122afeee94b7fd9d6d34033e23261e2ede0e0a3ae590e80b376ec01",
+        "transport/success/policy/agent/request_000002/length.json": "d1c39166356d37a385fc083c65fa07ea6ec85bc9d6bd765c9b0e054edd598dcc",
+        "transport/success/policy/agent/request_000002/resolved.json": "436c41231ad23a556dbaf68a00b5a550319f9e5855e4f10d93ceda4dbc85c207",
+        "transport/success/policy/agent/request_000002/restored.json": "e8856e6effb2693c2908faa362cc4f17758d9a7f4c57f71526f261c5496bf778",
+        "transport/success/policy/agent/request_000003/completed.json": "85c9f28c7e9eb727454966e2fe39c9e9a63855fce6727b9596273a454bea381f",
+        "transport/success/policy/agent/request_000003/entered.json": "7b7ffcd6b494dc10037beaca34b16542b0efbdcfca64125739ba4014104e4bee",
+        "transport/success/policy/agent/request_000003/length.json": "253f3ff7af4044b8ab5a734a86f0b3d1f96a7e41cc77858dc3e9c1581ef9bfed",
+        "transport/success/policy/agent/request_000003/resolved.json": "38bd4a3cc8b95c064f41ebe71f9a201405c10a402c585ba01877c4e0204981b9",
+        "transport/success/policy/agent/request_000003/restored.json": "21f813b5fbdd353c0c81792c06a14c6256ac9e7ec77dc0fcf1b60f73ffe0cdf7",
+        "transport/success/policy/guard/request_000001/completed.json": "0f2c3c5c391a73cb80f054c74e276c43f5396887597bc0962938d663b665c3cd",
+        "transport/success/policy/guard/request_000001/entered.json": "36e4e8509aa3e65d8903cb440bbd1107aa7428dfe139fe5ae44dc4d9135a31a4",
+        "transport/success/policy/guard/request_000001/length.json": "9e5264dd8c935c529ed20df8df2acac008ea8ef2d9ee6a38e62994616db6efb2",
+        "transport/success/policy/guard/request_000001/resolved.json": "74b3dfa30b8fdfa7708bd926cd63c90b7e20666526ab9f1b72a921098a1deb94",
+        "transport/success/policy/guard/request_000001/restored.json": "54a49b1dab9e1713045a6b3fda46c032f57df578ed8d0483c961731bac182fee",
+        "transport/success/policy/guard/request_000002/completed.json": "464277dec95bc50099583c32e627505851bdde936b86ecb6a1a8ad194f9dbbb8",
+        "transport/success/policy/guard/request_000002/entered.json": "1c3d882c34c87eedc25548a7a0c7ff70dfe83e123e7d29b26ece6ba3aec6dd7a",
+        "transport/success/policy/guard/request_000002/length.json": "d064e31e13431cb6f4d1cfac6158ec045c94105c6f82ccd20c83d64182857e20",
+        "transport/success/policy/guard/request_000002/resolved.json": "e10975360ecf37e54d696716ec6f1ba161ff286e5379366d0aea535be2acb05c",
+        "transport/success/policy/guard/request_000002/restored.json": "53adbf746e7f7a3b95f6e5d39b464b6ed19815784a77ecc2a34395d377ab8fc0",
+        "transport/success/policy/guard/request_000003/completed.json": "e5a5e94e6173aa56e608664253966a2c33eb57ada0336379e3d89f8f2239ea89",
+        "transport/success/policy/guard/request_000003/entered.json": "6c66304a84e370c941ac75b3fb6d5e6061e58248fd471797a18b016db272db95",
+        "transport/success/policy/guard/request_000003/length.json": "c0921c94ceb8fca0857a698d4cc262245ad23b44d65de4704e5030fec376c1e5",
+        "transport/success/policy/guard/request_000003/resolved.json": "cbe4d54c20eca000c29ea39adcfecdc1a1c487f007cbb46932b99052a2c36fab",
+        "transport/success/policy/guard/request_000003/restored.json": "8c980d465343fcc9392b69237c852cdc78673d4bf9c1868b39e23d39c1fb5de1",
+        "transport/success/ready.json": "ef1f4782ea3e8ca795cd0a6ec6ce089fe48e082acd7fa5933868c5b9603b5157",
+        "transport/summary.json": "ca8c0dbb300bb5870ae708568c23e08d9f07e4f2cdef7200b15fb335e7f1ccc8"
+      }
+    }
+  ],
+  "native_tqdm": true,
+  "synthetic_model_config_and_tensor_objects": true,
+  "actual_model_loads": 0,
+  "native_model_calls": 0,
+  "gpu_runs": 0,
+  "scope": "Real spawned policy/attention composition and native pinned tqdm, synthetic resolution/model/tensors/metrics. Not native numerical/performance/GPU cleanup or runtime adoption.",
+  "test_access": "hash-only seals; no held-out Test payload/private GT"
+}

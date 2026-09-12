@@ -33,7 +33,7 @@ binds source và JUnit hashes. Không test job còn chạy tại bàn giao.
 
 ## Bước tiếp và quyền cần thiết
 
-1. Ghép policy vào versioned pair: Ready ngoài progress ngoài policy ngoài
+1. Đã ghép [policy pair CPU](request_policy_pair_v1.md): Ready ngoài progress ngoài policy ngoài
    attention ngoài native factory. Builder request_pair_v1 cũ chưa có policy;
    không đưa PolicyBackend vào exact-native factory hoặc sửa source đã đo.
 2. Rehearsal composition rồi native repeated-request runner, authenticated

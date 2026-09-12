@@ -2,13 +2,21 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-12
 
-Mới nhất [request policy CPU](request_policy_v1.md): source99dbd92,63 test mới/
+Mới nhất [request policy pair CPU](request_policy_pair_v1.md): source `53f7e19`,
+23 test mới/227 focused pass trong 27,04 giây; hai real-spawn rehearsals đạt với
+14 child PIDs/174 raw files, joined policy/attention audit và failure cleanup/no-retry đạt.
+Native tqdm thật nhưng model/config/tensor/metrics giả lập; chưa native GPU/adoption.
+Full QA: 2.158 pass/1 optional skip trong 392,21 giây; setup/Ruff/mypy 291/knowledge đạt.
+[Release QA](../experiments/manifests/phase5_request_policy_pair_cpu_v1_release_qa01.json).
+Không test job còn chạy. Tiếp native runner/audit/exact preflight trước Kaggle.
+
+Mốc trước [request policy CPU](request_policy_v1.md): source99dbd92,63 test mới/
 204focused pass24,36s; observer+independent attention/native-metric joined audit.
 Publisher drift/restore/no-retry và pinned method-source fake execution đạt;
 setup/Ruff/mypy289/knowledge đạt. FullQA2.135pass/1optional skip429,45s;
 [CPU QA](../experiments/manifests/phase5_request_policy_v1_cpu_qa01.json).
-Chưa native policy-pair integration/GPU.
-Tiếp ghép policy vào pair rồi repeated-request native runner/audit/exactpreflight.
+Policy đã ghép vào CPU pair ở mốc trên; chưa native integration/GPU.
+Tiếp repeated-request native runner/audit/exactpreflight.
 
 Mới nhất [request pair CPU](request_pair_v1.md): source35978d2,17 test mới/
 141focused pass26,56s; hai standalone rehearsals đạt,14childPIDs/92rawfiles,

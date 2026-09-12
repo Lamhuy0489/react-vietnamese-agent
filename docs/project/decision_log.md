@@ -1,5 +1,20 @@
 # Decision Log
 
+## 2026-09-12 — Join request policy and attention in real spawned workers
+
+- Add a lazy versioned pair builder with Ready outside progress outside policy
+  outside attention/native factory. Validate both roles and roots before
+  transport allocation; keep prior sources immutable.
+  [Contract](../architecture/phase5_request_policy_pair_v1_contract.md).
+- Reuse the prior CPU control runner through a scoped host-only builder
+  substitution restored in finally. Explicit synthetic factories exercise
+  policy/attention together in real daemon spawn with pinned native tqdm;
+  models/config/tensors/timing rows remain synthetic, not model performance.
+- Readiness/index coverage, repeated requests, joined artifact audit, failure
+  partials/restoration/sibling cleanup/no-retry are checked. Native entry,
+  authentication/preflight, agent-only owner and runtime phase gates remain.
+  No new native/GPU/held-out inference or research scope change.
+
 ## 2026-09-12 — Observe ordinary policy separately from forced-length stress
 
 - Add request-local policy observer/factory and an independent auditor joined

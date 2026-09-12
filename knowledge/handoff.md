@@ -4,14 +4,29 @@ Cập nhật: 2026-09-12. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Ưu tiên mới [request policy pair CPU](request_policy_pair_v1.md): source `53f7e19`,
+23 test mới/227 focused pass trong 27,04 giây; 2 standalone runs/14 distinct child PIDs/174 raw files
+đạt và hash-bound trong [validation](../experiments/manifests/phase5_request_policy_pair_cpu_v1_validation01.json).
+Full QA: 2.158 pass/1 optional skip trong 392,21 giây, không lỗi;
+`results/phase5_request_policy_pair_v1_cpu01_pytest.xml` và
+[release QA](../experiments/manifests/phase5_request_policy_pair_cpu_v1_release_qa01.json).
+Không test job còn chạy; setup/Ruff/mypy 291/knowledge đạt.
+Seals/106 frozen entries/277 GPU raw/92 prior CPU raw không đổi.
+Synthetic model/config/tensors/metrics với native tqdm thật, không native GPU/adoption.
+Tiếp native repeated-request runner, publisher/tokenizer/model/source/load/memory/
+placement/supervisor audit và exactpreflight trước Kaggle. A0/A1 agent-only owner
+và runtime A0–A6 vẫn còn mở. Pending access: chưa cần quyền/tài khoản mới cho CPU.
+
+Lịch sử request-policy observer:
+
 Ưu tiên mới [request policy CPU](request_policy_v1.md): source99dbd92,63 test mới,
 204focused pass24,36s,setup/Ruff/mypy289/knowledge đạt. FullQA2.135pass/
 1optional skip429,45s, không lỗi; `results/phase5_request_policy_v1_cpu01_pytest.xml`.
 [CPU QA](../experiments/manifests/phase5_request_policy_v1_cpu_qa01.json).
 Không test job còn chạy;106frozenentries/277GPUraw/92CPUraw và seals không đổi.
-Observer theo request và joined auditor đã có; chưa ghép vào native pair/GPU.
-Tiếp versioned Ready→progress→policy→attention→native factory composition và
-real-spawn rehearsal, rồi native repeated-request runner/metadata/memory/
+Observer theo request và joined auditor đã có; đã ghép trong CPU pair ở mốc trên.
+Versioned Ready→progress→policy→attention→native factory composition và
+real-spawn rehearsal đã có; tiếp native repeated-request runner/metadata/memory/
 supervisor/source audit/exactpreflight. Không cắm policy wrapper vào exact-native
 factory hoặc sửa request_pair_v1 đã khóa. A0/A1 agent-only owner vẫn còn mở.
 Pending access: chưa cần quyền/tài khoản mới cho CPU, quota/private Dataset kiểm trước GPU.
@@ -196,8 +211,8 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
 
 ## Bước tiếp theo
 
-Ưu tiên hiện tại: [request policy](request_policy_v1.md) đã có observer/joined auditor
-CPU; tiếp policy-pair composition/rehearsal rồi native runner/source/memory audit và exact
+Ưu tiên hiện tại: [policy pair](request_policy_pair_v1.md) đã có composition/
+rehearsal CPU; tiếp native runner/source/memory audit và exact
 preflight trước GPU; rồi task-local ownership, cold/warm metrics,
 A0–A6 parity/Broker/final/lifecycle. Cần code mới/tests/differential/exact package
 trước GPU tiếp; không suy stress pass thành benchmark adoption hoặc guard quality.
