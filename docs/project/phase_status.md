@@ -2,7 +2,7 @@
 
 - Current stage: **Phase 5 in progress: bounded native efficient-context stress validated; runtime integration and quality gaps remain**
 - Setup owner: Lâm Quang Huy
-- Last updated: 2026-09-12
+- Last updated: 2026-09-13
 
 ## Setup acceptance
 
@@ -318,6 +318,15 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   component milestone only; it is not runtime adoption or private-final
   entitlement and does not close the general A4 gate.
 - [ ] General private-record final entitlements and broader origin-coverage assessment.
+- [x] Bounded host-only private-record final-entitlement component v1: 12 deterministic
+  synthetic conditions and 17 focused tests cover affirmative raw-user final clauses,
+  exact resource/table/value-type binding, trusted-origin release, wrong-source/type and
+  untrusted redaction, normalized-only/incomplete-coverage denial, and hash binding.
+  Full QA: 2,345 pass / 1 intentional native-tqdm skip; setup/Ruff/mypy/knowledge pass.
+  [Component contract](../architecture/phase5_final_entitlements_contract.md) and
+  [release report](../evaluation/phase5_final_entitlements_v1_report.md). This is a
+  host-only component milestone; runtime A0-A6 adoption, broader origin coverage,
+  semantic completeness and the general private-final gate remain open.
 - [x] Task-local warm guard and v5 runtime: 891 tests pass (46 new), setup/Ruff/
   mypy 194 files/knowledge pass. 22 cold/warm parity pairs = 44 Replay plus nine
   lifecycle conditions; 140 mock Broker calls and 240 fake guard classifications

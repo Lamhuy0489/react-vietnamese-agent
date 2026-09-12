@@ -2,6 +2,16 @@
 
 ## Hiện hành
 
+Mốc mới [private-record final-entitlement component v1](final_entitlements_v1.md)
+đã hoàn tất QA host-only: 12 điều kiện synthetic, 17 unit test riêng và full
+repository 2.345 pass/1 skip; setup/Ruff/mypy/knowledge đều đạt. Component chỉ
+cho phép raw-user clause affirmative với exact resource/table và value type, giữ
+trusted origin phù hợp, redact/deny untrusted hoặc sai nguồn/kiểu, và fail closed
+khi normalized-only hay coverage chưa đủ. Không sửa public-final/value-origin/v5,
+không chạy model/Kaggle/Test và chưa đóng runtime, semantic completeness hay
+general private-final gate. Bước kế tiếp là release hash-bound từ worktree sạch,
+rồi mới compose với runtime A0–A6.
+
 Mốc mới [A4 processing-scope component v1](processing_scope_v1.md) đã hoàn tất
 QA host-only: 14 điều kiện synthetic, 21 unit test riêng và full repository
 2.327 pass/1 skip; setup/Ruff/mypy/knowledge đều đạt. Release từ commit `e9710c7`

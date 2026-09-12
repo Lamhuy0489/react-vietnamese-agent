@@ -1,6 +1,16 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-09-12. Đây là chỉ dẫn tiếp tục, không thay thế contract.
+Cập nhật: 2026-09-13. Đây là chỉ dẫn tiếp tục, không thay thế contract.
+
+## Mốc mới — private-record final entitlement component v1
+
+`final_entitlement_v1` đã qua 12 synthetic cases, 17 focused tests và full
+repository QA 2.345 pass/1 skip; setup/Ruff/mypy/knowledge đều đạt. Component
+host-only bind exact raw-user resource/table/value-type clause và raw-user hash;
+trusted exact origin được release, untrusted/sai nguồn/sai kiểu/normalized-only
+hoặc coverage thiếu bị redact/deny. Preflight source còn dirty; cần selected run
+từ worktree sạch để tạo manifest/hash-bound receipt. Chưa có model/Kaggle/Test,
+chưa tích hợp runtime v5/A0–A6.
 
 ## Mốc hiện hành — native ordinary pair T4×2
 

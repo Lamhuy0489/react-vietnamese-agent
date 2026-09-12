@@ -1222,3 +1222,19 @@ and are not inferred here.
 - QA receipt scope: 14 synthetic conditions, 21 focused unit tests and the full
   repository suite with no model/Kaggle/Test inference. Existing source hashes,
   frozen inputs and prior receipts remain unchanged.
+
+# 2026-09-13 — Add bounded private-record final entitlements
+
+- Add a new host-only `final_entitlement_v1` component without editing frozen
+  public-final/value-origin policy or runtime v5 sources.
+- A grant requires an affirmative raw-user final-answer clause naming an exact
+  synthetic resource/table and supported value type. Quoted, conditional,
+  negated and scope-only clauses do not grant access.
+- Bind raw user, proposal ancestry and origin index; release only trusted exact
+  origins with matching source/table/type. Wrong-source/type or untrusted values
+  are redacted; normalized-only, incomplete coverage or residual unauthorized
+  values deny to an empty final. Sensitivity/trust joins remain conservative.
+- This is a bounded component milestone only. It does not claim semantic or
+  complete origin coverage, runtime A0–A6 adoption, ASR/utility evidence or Phase
+  5 acceptance. QA uses synthetic data only (12 cases, no model/Kaggle/Test),
+  and all prior seals/receipts remain unchanged.

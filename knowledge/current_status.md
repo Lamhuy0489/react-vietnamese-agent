@@ -2,6 +2,18 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-12
 
+## Mốc mới — private-record final entitlement component v1 (2026-09-13)
+
+Component host-only `final_entitlement_v1` đã qua 12 điều kiện synthetic và 17
+focused tests; full QA đạt 2.345 pass/1 intentional native-tqdm skip, cùng
+setup/Ruff/mypy/knowledge. Nó bind raw-user final clause bằng hash, yêu cầu exact
+resource/table/value type và complete origin coverage; trusted exact origins được
+giữ, còn untrusted/sai nguồn/sai kiểu/normalized-only hoặc coverage thiếu thì
+redact/deny deterministic. Preflight là source dirty nên chưa phải selected
+release; chưa chạy model/Kaggle, không đọc Test/private GT. Không sửa public-final,
+value-origin hay runtime v5; `phase5_accepted=false` và runtime A0–A6, broader
+origin/semantic coverage, grouped Dev vẫn mở.
+
 Mốc bổ sung [A4 processing-scope v1](processing_scope_v1.md) đã qua 14 điều kiện
 synthetic và full QA 2.327 pass/1 skip; release từ commit `e9710c7` đã hash-bound
 trong [manifest](../experiments/manifests/phase5_processing_scope_v1_validation01.json).
