@@ -2,6 +2,13 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-12
 
+Mới nhất [exact ordinary Kaggle package](ordinary_package_v1.md): source `c9749fa`,
+56-file overlay; archive/expanded isolated preflight đều pass 8 tools, 21 Dummy,
+resume 20 checkpoint, ordinary stub 6-call và joined synthetic audits. 16 package
+tests pass (combined focused 82); full QA đang chạy. Kaggle owner credential
+`huylmhuhu` còn 29,93 giờ GPU, Dataset private ready v1; credential mặc định
+`lamhuy8904` bị 403 với Dataset này. Chưa upload kernel/GPU.
+
 Mới nhất [tokenizer metadata CPU](tokenizer_metadata_v1.md): source `351ea21`,
 26 test mới/130 focused pass trong 30,29 giây; setup/Ruff/mypy 301 files đạt.
 Admission/collector/joined auditor suy pad/EOS từ public bytes đã pin, nối với

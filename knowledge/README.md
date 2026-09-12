@@ -59,6 +59,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Request thường A/B/A: [ordinary repeated-request pair CPU](ordinary_pair_probe_v1.md).
 - Kiểm chuỗi worker và bằng chứng native: [ordinary audit CPU](ordinary_audit_v1.md).
 - Xác thực special-token IDs: [tokenizer metadata CPU](tokenizer_metadata_v1.md).
+- Đóng gói Kaggle ordinary: [exact package preflight](ordinary_package_v1.md).
 - Bằng chứng lịch sử: [Phase 1](phase1_evidence.md),
   [Phase 2 v1 cũ](phase2_evidence.md),
   [audit v1 và withdrawal](integrity_audit_20260905.md).

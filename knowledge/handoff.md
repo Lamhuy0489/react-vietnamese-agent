@@ -4,6 +4,16 @@ Cập nhật: 2026-09-12. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Ưu tiên mới [exact ordinary package](ordinary_package_v1.md): source `c9749fa`.
+Offline preflight archive/expanded pass với 56 overlay files, 8 tools, 21 Dummy,
+resume giữ 20 checkpoint, ordinary stub 6 calls và joined synthetic audits; 16
+package tests (combined focused 82) pass. Full QA đang chạy, JUnit sẽ lưu sau.
+Quota owner `huylmhuhu`: GPU 29,93h; Dataset `react-vn-guard15-probe-data-v1`
+ready version 1. CLI mặc định `lamhuy8904` không có quyền Dataset (403), phải
+dùng đúng credential owner, không in khóa. Chưa upload hoặc chạy GPU.
+Tiếp: full QA → release receipt → push source → upload kernel identity mới và
+theo dõi một native run; nếu lỗi thì giữ logs/checkpoint, không retry ngữ nghĩa.
+
 Ưu tiên mới [tokenizer metadata CPU](tokenizer_metadata_v1.md): source `351ea21`.
 26 test mới/130 focused pass trong 30,29 giây; setup/Ruff/mypy 301 files đạt.
 Metadata admission/collector và joined CLI không nhận pad ID nhập tay; hai

@@ -1,5 +1,22 @@
 # Decision Log
 
+## 2026-09-12 — Prepare exact ordinary A/B/A Kaggle package
+
+- Add a new private ordinary kernel wrapper and offline builder. Extend the
+  frozen efficient-stress bundle with the ordinary runner, policy/attention/
+  tokenizer auditors and metadata collector; selected source bytes must match
+  the resolved Git commit. Validate archive and generated-expanded source
+  layouts in isolated Python environments with the pinned wheel set.
+- Run eight-tool/recovery, 21 public Dev Dummy tasks, missing-only resume,
+  synthetic six-call A/B/A and joined audits before any native request. Runtime
+  order is collector → HF pair → joined audit; errors stop with no semantic
+  retries. Model weights are never materialized locally and Test/private GT are
+  excluded.
+- Reserve a new private kernel identity `huylmhuhu/react-vn-ordinary-pair-v1`.
+  Current owner quota/Dataset readiness are checked separately; default
+  `lamhuy8904` lacks the private Dataset, so no upload occurs under that account.
+  Package evidence is not native/GPU or Phase 5 acceptance. [Contract](../architecture/phase5_ordinary_package_v1_contract.md).
+
 ## 2026-09-12 — Authenticate ordinary tokenizer metadata without changing runtime
 
 - Add a versioned metadata-only collector and audit layer. Authenticate exact
