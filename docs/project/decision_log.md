@@ -1,5 +1,22 @@
 # Decision Log
 
+## 2026-09-12 — Add ordinary repeated-request pair entry point
+
+- Add a versioned A/B/A runner that records submitted/returned calls, timing,
+  residency and six recovery samples while preserving the frozen pair,
+  policy and attention factories. The runner stops on errors, propagates
+  interrupts after cleanup and never performs semantic retries or filters
+  repeated outputs.
+- CPU controls use real daemon-spawn transport with explicit synthetic
+  responses/memory; HF mode is opt-in and requires the pinned model/snapshot,
+  two-device environment and separate output roots before native initialization.
+  This is plumbing evidence only; it does not change decoding, benchmark scope,
+  Test sealing, or Phase 5 acceptance.
+- CPU release correction: initial standalone runs 01/02 received an incorrect
+  asserted full Git commit. Preserve and hash their outputs as excluded;
+  select fresh runs 03/04 with identity obtained directly from Git and verified
+  against source bytes. No model inference or semantic retry was involved.
+
 ## 2026-09-12 — Join request policy and attention in real spawned workers
 
 - Add a lazy versioned pair builder with Ready outside progress outside policy

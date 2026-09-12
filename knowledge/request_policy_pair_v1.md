@@ -32,7 +32,8 @@ request/observer cũ không đổi. Dev01 prototype giữ riêng, không selecte
 
 ## Bước tiếp
 
-1. Native repeated-request runner dùng builder mới và original HF factories.
+1. [Native repeated-request runner](ordinary_pair_probe_v1.md) đã có CPU entry
+   và A/B/A fixture; bước còn lại là chạy HF trên Kaggle bằng original factories.
    Không dùng synthetic factory ngoài CPU harness; không ép output/min length.
 2. Authenticate publisher/tokenizer/model/source; kiểm native load/memory/
    placement, supervisor-bound independent audit, then exact package preflight

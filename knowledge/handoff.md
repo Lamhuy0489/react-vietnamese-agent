@@ -4,6 +4,18 @@ Cập nhật: 2026-09-12. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Mốc mới [ordinary repeated-request pair CPU](ordinary_pair_probe_v1.md): source
+`44cf902`, 40 test mới/166 focused pass trong 33,14 giây; hai A/B/A real-spawn
+rehearsals đạt, mỗi lượt 6 calls/2 workers, 4 distinct PIDs/64 raw files trong
+[release QA](../experiments/manifests/phase5_ordinary_pair_cpu_v1_release_qa01.json).
+Full QA 2.198 pass/1 optional skip trong 406,24 giây; không lỗi; setup/Ruff/mypy
+293/knowledge đạt. Runs 03/04 selected với full commit lấy trực tiếp từ Git;
+runs 01/02 truyền sai full commit, giữ nguyên và excluded trong receipt.
+Không test job còn chạy. Synthetic model responses/memory, chưa native GPU/adoption.
+Tiếp native HF repeated-request trên Kaggle sau independent publisher/source/
+loader/memory/policy audit và exact package preflight. A0/A1 agent-only owner,
+runtime A0–A6 và grouped Dev gates vẫn mở; pending access chưa cần cho CPU.
+
 Ưu tiên mới [request policy pair CPU](request_policy_pair_v1.md): source `53f7e19`,
 23 test mới/227 focused pass trong 27,04 giây; 2 standalone runs/14 distinct child PIDs/174 raw files
 đạt và hash-bound trong [validation](../experiments/manifests/phase5_request_policy_pair_cpu_v1_validation01.json).
@@ -211,8 +223,8 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
 
 ## Bước tiếp theo
 
-Ưu tiên hiện tại: [policy pair](request_policy_pair_v1.md) đã có composition/
-rehearsal CPU; tiếp native runner/source/memory audit và exact
+Ưu tiên hiện tại: [ordinary pair runner](ordinary_pair_probe_v1.md) đã có HF entry/
+rehearsal CPU; tiếp independent native supervisor/policy/source/memory audit và exact
 preflight trước GPU; rồi task-local ownership, cold/warm metrics,
 A0–A6 parity/Broker/final/lifecycle. Cần code mới/tests/differential/exact package
 trước GPU tiếp; không suy stress pass thành benchmark adoption hoặc guard quality.

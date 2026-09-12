@@ -2,6 +2,15 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-12
 
+Mốc mới [ordinary repeated-request pair CPU](ordinary_pair_probe_v1.md): source
+`44cf902`, 40 test mới/166 focused pass trong 33,14 giây; hai real-spawn A/B/A
+rehearsals, mỗi lượt 6 yêu cầu và 2 worker, 4 PID khác nhau/64 raw files đã hash-bound.
+Full QA 2.198 pass/1 optional skip trong 406,24 giây; setup/Ruff/mypy 293/knowledge đạt.
+Selected runs 03/04 lấy commit trực tiếp từ Git. Runs 01/02 truyền sai full commit,
+giữ nguyên và loại khỏi bằng chứng selected. Không còn test job đang chạy.
+Model responses/memory giả lập; chưa native model/GPU/adoption.
+Tiếp independent native policy/attention/source/memory audit và exact preflight trước Kaggle.
+
 Mới nhất [request policy pair CPU](request_policy_pair_v1.md): source `53f7e19`,
 23 test mới/227 focused pass trong 27,04 giây; hai real-spawn rehearsals đạt với
 14 child PIDs/174 raw files, joined policy/attention audit và failure cleanup/no-retry đạt.
