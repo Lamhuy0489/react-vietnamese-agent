@@ -322,9 +322,12 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   synthetic conditions and 17 focused tests cover affirmative raw-user final clauses,
   exact resource/table/value-type binding, trusted-origin release, wrong-source/type and
   untrusted redaction, normalized-only/incomplete-coverage denial, and hash binding.
-  Full QA: 2,345 pass / 1 intentional native-tqdm skip; setup/Ruff/mypy/knowledge pass.
+  Selected clean-release QA: 2,333 pass / 13 intentional optional/native skips;
+  setup/Ruff/mypy/knowledge pass.
   [Component contract](../architecture/phase5_final_entitlements_contract.md) and
-  [release report](../evaluation/phase5_final_entitlements_v1_report.md). This is a
+  [release report](../evaluation/phase5_final_entitlements_v1_report.md), with
+  [selected manifest](../../experiments/manifests/phase5_final_entitlements_v1_validation01.json).
+  This is a
   host-only component milestone; runtime A0-A6 adoption, broader origin coverage,
   semantic completeness and the general private-final gate remain open.
 - [x] Task-local warm guard and v5 runtime: 891 tests pass (46 new), setup/Ruff/

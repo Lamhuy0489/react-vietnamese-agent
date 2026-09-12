@@ -1,0 +1,154 @@
+{
+  "schema_version": "phase5_final_entitlements_qa_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_git_commit": "7ca96ce288d9a987a9066c1a50e7d53ce06ec83c",
+  "source_worktree_clean": true,
+  "source_sha256": {
+    "src/react_agent/security_v1/final_entitlements.py": "01fcced4d972cf7c0d6cdcae8a7e826d6af653d2d1ccfa7f32c1e1808057616c",
+    "tests/unit/test_final_entitlements_v1.py": "78231fb68c92b41b268097160edf0b2deaf6a5852dbded451efbdc441214a34b",
+    "scripts/verify_phase5_final_entitlements.py": "844732c517cb866615143225a479d36a7d2e7e0be19a58f86d89c9019f7860da",
+    "docs/architecture/phase5_final_entitlements_contract.md": "077c908d3d4cd5d65daf9af19a90c52c50a3e44d10ed0bb38235e3ce9454986d"
+  },
+  "prior_evidence": {
+    "receipt_sha256": {
+      "phase4_closure_v1_validation01.json": "0e80b8ccd1c45a86923f10c0121c7d469d40f5877358c789165a4d50303bb5cf",
+      "phase5_components_v1_validation01.json": "187a758ad0a59c6b867cd04cba3daf6b803f9f6c435c5b99b2b3342d5c617f57",
+      "phase5_runtime_v1_validation01.json": "0ede9fa435e284006661a89619012985d3de4614aa9471d369f4a84f823d01e0",
+      "phase5_a2_v2_validation01.json": "6c79cdb98eb16cc9d8681f2ddc0c55850b94a3b7e53d43456eda3ad21f3dbc9f",
+      "phase5_session_v1_validation01.json": "7d2c787fb8bf730a6420b9454574eeeb0f3d1296026e4c05ea3ce54f22113c20",
+      "phase5_value_origin_v1_validation01.json": "7177de0cb4d731eea9a7fc12f3452839d3bbbe1fbcbf474228759327a4630a80",
+      "phase5_value_gates_v1_validation02.json": "db76618e31112d764a89abb42e4ffe01235e3c8de909d6c95337c0f680932aab",
+      "phase5_a6_runtime_v1_validation01.json": "add94d035069288b8f7d8a11469540989dc5e53c2553e50e4ddc7611eb9c0451",
+      "phase5_warm_guard_v1_validation01.json": "5893d41f95d8626d8a03da027c908e73f5a74a123664fbf10eae4b0d1bd20868",
+      "phase5_processing_scope_v1_validation01.json": "f4af9110c6f8adbef147748d57eb6b86a79050859e4244ba4a7dedfcf0232970"
+    },
+    "source_hash_entries_checked": 1180
+  },
+  "profile": "final_entitlement_v1",
+  "synthetic_conditions": 12,
+  "checks": [
+    {
+      "case": "allowed",
+      "effect": "ALLOW",
+      "authorized_matches": 1,
+      "valid": true
+    },
+    {
+      "case": "redacted",
+      "effect": "REDACT",
+      "redacted_spans": 1,
+      "valid": true
+    },
+    {
+      "case": "untrusted",
+      "effect": "REDACT",
+      "valid": true
+    },
+    {
+      "case": "wrong_source",
+      "effect": "REDACT",
+      "valid": true
+    },
+    {
+      "case": "mixed_types",
+      "effect": "REDACT",
+      "authorized": 1,
+      "valid": true
+    },
+    {
+      "case": "normalized_only",
+      "effect": "DENY",
+      "valid": true
+    },
+    {
+      "case": "missing_coverage",
+      "effect": "DENY",
+      "index_complete": true,
+      "valid": true
+    },
+    {
+      "case": "hash_binding",
+      "mismatch_rejected": true,
+      "artifact_count": 4,
+      "valid": true
+    },
+    {
+      "case": "public_no_match",
+      "effect": "ALLOW",
+      "matches": 0,
+      "valid": true
+    },
+    {
+      "case": "serializable_labels",
+      "round_trip": true,
+      "sensitivity": "S2",
+      "valid": true
+    },
+    {
+      "case": "cue_inventory",
+      "supported_value_cues": 8,
+      "valid": true
+    },
+    {
+      "case": "rejected_clauses",
+      "rejected_clauses": 4,
+      "valid": true
+    }
+  ],
+  "stable_summary_sha256": "d5e3e33033289fdb2fe025ce4a05379ca8bcdc34541f7c0826870fe1de357c38",
+  "preflight_sha256": "2764c3ad623009e31c1149ceac6a38bd0500e1d3870116c5f91b54f9a9168369",
+  "preflight_matches": true,
+  "quality": {
+    "setup": {
+      "returncode": 0,
+      "log_sha256": "31e836b9c814fcf7126ef63fd608df0cbce6fc9b307ebc95c71ffe9d66d52280"
+    },
+    "ruff": {
+      "returncode": 0,
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    "mypy": {
+      "returncode": 0,
+      "log_sha256": "053d40b3236e545366e91f3298a630ce11886560ae7ada6fe14124c8a901a1f2"
+    },
+    "pytest": {
+      "returncode": 0,
+      "log_sha256": "b999c7cf671fbb629b790dbb95250a29c53f0186778740373d2d3a8ebee2f453"
+    },
+    "knowledge": {
+      "returncode": 0,
+      "log_sha256": "58c92f1be343c7daefab20129b586ffeed189b4c0a40d5ae24c36211a368fb51"
+    }
+  },
+  "raw_output": "results/phase5_final_entitlements_v1_release01",
+  "raw_sha256": {
+    "cases/allowed/result.json": "53041e77f964accae7266ffa9b5e15c3d1e74ce9c69559d9f7e6aeaa54b97f7c",
+    "cases/cue_inventory/result.json": "c84bcd8de7b4339929b14961243a26d81ce61ad1ab00253b39f1db0a2762ab67",
+    "cases/hash_binding/result.json": "6ebc133af5b539d697a6adb3f68a17eb508205534d0ed8c43cbb57a2b70b0525",
+    "cases/missing_coverage/result.json": "d8f8e40cfeef128fa008e91189956a878b96e29c5eb9e6eb26a73d234310819b",
+    "cases/mixed_types/result.json": "f7db03778b64f8b7d407313871b4562f21b1376394428cbf72971c4bd8489272",
+    "cases/normalized_only/result.json": "5fae4c1ed3d1ded3059665c5450025c163d14f8715ae7a4b7dea23186eca4992",
+    "cases/public_no_match/result.json": "476020a9e69d45b9f762b07126ab46b3ab2cd640118df8c56261c9c35dfbcf94",
+    "cases/redacted/result.json": "c2fdf5d5bf8e35df8cc0c8c27d62e0171356bbf122f8e86294a6fab9b39b81cc",
+    "cases/rejected_clauses/result.json": "b1077ad814a8f12a53b5fc3df1be9a42be0bb7ace6e261501409434804eae83f",
+    "cases/serializable_labels/result.json": "ade26b0345e9cc895d99bdc2ecf064e86fc299816e6208b499ad75a0f571ebb4",
+    "cases/untrusted/result.json": "07196e25247486cd4a35d04096f129ab179d08cff09092b8fb880188ac2379cc",
+    "cases/wrong_source/result.json": "2c1f1476442fd5a0d1e54faf5fb6101c889062e94224836b3d7b5feef28b0bc0",
+    "knowledge.log": "58c92f1be343c7daefab20129b586ffeed189b4c0a40d5ae24c36211a368fb51",
+    "mypy.log": "053d40b3236e545366e91f3298a630ce11886560ae7ada6fe14124c8a901a1f2",
+    "pytest.log": "b999c7cf671fbb629b790dbb95250a29c53f0186778740373d2d3a8ebee2f453",
+    "ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "setup.log": "31e836b9c814fcf7126ef63fd608df0cbce6fc9b307ebc95c71ffe9d66d52280"
+  },
+  "real_model_runs": 0,
+  "benchmark_dev_runs": 0,
+  "test_payloads_parsed": 0,
+  "scope": "Host-bound private final entitlement component; no runtime adoption or model metrics",
+  "remaining": [
+    "Compose entitlement with A6 final gate in a new versioned runtime",
+    "Broader origin-coverage assessment for unstructured/derived values",
+    "Production guard model/revision and efficient GPU worker validation",
+    "grouped Dev validation and freeze"
+  ]
+}

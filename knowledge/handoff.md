@@ -4,13 +4,16 @@ Cập nhật: 2026-09-13. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Mốc mới — private-record final entitlement component v1
 
-`final_entitlement_v1` đã qua 12 synthetic cases, 17 focused tests và full
-repository QA 2.345 pass/1 skip; setup/Ruff/mypy/knowledge đều đạt. Component
+`final_entitlement_v1` đã qua 12 synthetic cases, 17 focused tests và selected
+clean-release full QA 2.333 pass/13 optional/native skips (preflight 2.345/1);
+setup/Ruff/mypy/knowledge đều đạt. Component
 host-only bind exact raw-user resource/table/value-type clause và raw-user hash;
 trusted exact origin được release, untrusted/sai nguồn/sai kiểu/normalized-only
-hoặc coverage thiếu bị redact/deny. Preflight source còn dirty; cần selected run
-từ worktree sạch để tạo manifest/hash-bound receipt. Chưa có model/Kaggle/Test,
-chưa tích hợp runtime v5/A0–A6.
+hoặc coverage thiếu bị redact/deny. Receipt selected từ commit `7ca96ce` đã
+hash-bound trong [manifest](../experiments/manifests/phase5_final_entitlements_v1_validation01.json)
+(SHA-256 `0a8cb7d74833c36be1692a1ce490dd888f2ef45be063d9428e263b1c964deea2`,
+stable summary `d5e3e33033289fdb2fe025ce4a05379ca8bcdc34541f7c0826870fe1de357c38`).
+Chưa có model/Kaggle/Test, chưa tích hợp runtime v5/A0–A6.
 
 ## Mốc hiện hành — native ordinary pair T4×2
 
