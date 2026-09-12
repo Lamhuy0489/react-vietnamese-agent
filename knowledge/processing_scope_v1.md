@@ -15,9 +15,10 @@ serializable; no ground truth, Test payload, model output or hidden reasoning
 is used.
 
 Validation: 14 synthetic conditions, 21 focused unit tests, and the full
-repository quality suite are recorded in the [component report](../docs/evaluation/phase5_processing_scope_v1_report.md);
-the selected release receipt is created only from a clean source after this
-preflight.
+repository quality suite are recorded in the [component report](../docs/evaluation/phase5_processing_scope_v1_report.md).
+The selected release receipt was produced from clean commit `e9710c7`:
+[manifest](../experiments/manifests/phase5_processing_scope_v1_validation01.json),
+stable summary `4cfc2a06a5409799f4954de4957baa0d8f18eb22165ee02f2c5a7103b3accf11`.
 This is not runtime integration, private-final entitlement, ASR/utility or
 Phase 5 acceptance. Next is a new versioned runtime composition and differential
 audit, followed by private-final policy and grouped Dev/freeze work.

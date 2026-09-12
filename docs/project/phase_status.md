@@ -312,7 +312,9 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   delegated sinks, unknown actions, state monotonicity and bounds. Full QA:
   2,327 pass / 1 intentional native-tqdm skip; setup/Ruff/mypy/knowledge pass.
   [Contract](../architecture/phase5_processing_scope_contract.md),
-  [report](../evaluation/phase5_processing_scope_v1_report.md). This is a
+  [report](../evaluation/phase5_processing_scope_v1_report.md),
+  [release manifest](../../experiments/manifests/phase5_processing_scope_v1_validation01.json).
+  This is a
   component milestone only; it is not runtime adoption or private-final
   entitlement and does not close the general A4 gate.
 - [ ] General private-record final entitlements and broader origin-coverage assessment.

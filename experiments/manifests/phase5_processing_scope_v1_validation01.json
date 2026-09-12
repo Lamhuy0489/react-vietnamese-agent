@@ -1,0 +1,169 @@
+{
+  "schema_version": "phase5_processing_scope_qa_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_git_commit": "e9710c793a8ee875ec8e01410085e79904179d3b",
+  "source_worktree_clean": true,
+  "source_sha256": {
+    "src/react_agent/security_v1/processing_scope.py": "abd4d7b49afbf63e74dbd277e43f756a2707336ce9db3c77b6b5c1538bc1c3ba",
+    "tests/unit/test_processing_scope_v1.py": "0274997cf98be442651eb372c7cbda6187269996be7d74ee6f33ff613b30ea2a",
+    "scripts/verify_phase5_processing_scope.py": "83f8f61bea1d3b869ae1ad45f5b940ff17f9df5df8b08bc6fd69c365ee3c7e05",
+    "docs/architecture/phase5_processing_scope_contract.md": "2eaeff1196826c2682f340325e679c3cbaf0f438db5e24f62ccc765a8baacd99"
+  },
+  "prior_evidence": {
+    "receipt_sha256": {
+      "phase4_closure_v1_validation01.json": "0e80b8ccd1c45a86923f10c0121c7d469d40f5877358c789165a4d50303bb5cf",
+      "phase5_components_v1_validation01.json": "187a758ad0a59c6b867cd04cba3daf6b803f9f6c435c5b99b2b3342d5c617f57",
+      "phase5_runtime_v1_validation01.json": "0ede9fa435e284006661a89619012985d3de4614aa9471d369f4a84f823d01e0",
+      "phase5_a2_v2_validation01.json": "6c79cdb98eb16cc9d8681f2ddc0c55850b94a3b7e53d43456eda3ad21f3dbc9f",
+      "phase5_session_v1_validation01.json": "7d2c787fb8bf730a6420b9454574eeeb0f3d1296026e4c05ea3ce54f22113c20",
+      "phase5_value_origin_v1_validation01.json": "7177de0cb4d731eea9a7fc12f3452839d3bbbe1fbcbf474228759327a4630a80",
+      "phase5_value_gates_v1_validation02.json": "db76618e31112d764a89abb42e4ffe01235e3c8de909d6c95337c0f680932aab",
+      "phase5_a6_runtime_v1_validation01.json": "add94d035069288b8f7d8a11469540989dc5e53c2553e50e4ddc7611eb9c0451",
+      "phase5_warm_guard_v1_validation01.json": "5893d41f95d8626d8a03da027c908e73f5a74a123664fbf10eae4b0d1bd20868"
+    },
+    "source_hash_entries_checked": 1176
+  },
+  "profile": "a4_processing_scope_v1",
+  "synthetic_conditions": 14,
+  "checks": [
+    {
+      "case": "explicit_document",
+      "allowed_by": "raw_user_anchor",
+      "denied_by": "scope_expansion",
+      "valid": true
+    },
+    {
+      "case": "explicit_cache",
+      "allowed_by": "raw_user_anchor",
+      "denied_by": "scope_expansion",
+      "valid": true
+    },
+    {
+      "case": "explicit_database",
+      "allowed_by": "raw_user_anchor",
+      "denied": 2,
+      "valid": true
+    },
+    {
+      "case": "untrusted_expansion",
+      "before": "no_scope_trigger",
+      "repeat": "prior_observation",
+      "expansion": "untrusted_scope_expansion",
+      "valid": true
+    },
+    {
+      "case": "untrusted_search",
+      "effect": "DENY",
+      "authorized_by": "unassessed_scope",
+      "valid": true
+    },
+    {
+      "case": "trusted_no_trigger",
+      "effect": "ALLOW",
+      "authorized_by": "no_scope_trigger",
+      "valid": true
+    },
+    {
+      "case": "malformed_database",
+      "effect": "DENY",
+      "authorized_by": "unassessed_scope",
+      "valid": true
+    },
+    {
+      "case": "delegated_actions",
+      "delegated_actions": 3,
+      "valid": true
+    },
+    {
+      "case": "disabled",
+      "effect": "ALLOW",
+      "authorized_by": "not_enforced",
+      "valid": true
+    },
+    {
+      "case": "anchor_rejection",
+      "document_anchor_count": 1,
+      "valid": true
+    },
+    {
+      "case": "database_prior_shape",
+      "subset": "prior_observation",
+      "expansion": "untrusted_scope_expansion",
+      "valid": true
+    },
+    {
+      "case": "unknown_action",
+      "scope_kind": "UNKNOWN",
+      "effect": "DENY",
+      "valid": true
+    },
+    {
+      "case": "state_integrity",
+      "observation_count": 0,
+      "valid": true
+    },
+    {
+      "case": "limits",
+      "anchor_limit": 256,
+      "valid": true
+    }
+  ],
+  "stable_summary_sha256": "4cfc2a06a5409799f4954de4957baa0d8f18eb22165ee02f2c5a7103b3accf11",
+  "preflight_sha256": "e2ef9e9dbd151309552c8b7651bf1a6e853ffa9092f0f214bf050dc55d313ec9",
+  "preflight_matches": true,
+  "quality": {
+    "setup": {
+      "returncode": 0,
+      "log_sha256": "31e836b9c814fcf7126ef63fd608df0cbce6fc9b307ebc95c71ffe9d66d52280"
+    },
+    "ruff": {
+      "returncode": 0,
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    "mypy": {
+      "returncode": 0,
+      "log_sha256": "0eb462efc9ff953b553e5f81948d861ba00ba984f797ceab31f35ab7846e441f"
+    },
+    "pytest": {
+      "returncode": 0,
+      "log_sha256": "25d289c9978940d8b7a827b0f83ebfefd9e305881227166d005182ef02a6813d"
+    },
+    "knowledge": {
+      "returncode": 0,
+      "log_sha256": "58c92f1be343c7daefab20129b586ffeed189b4c0a40d5ae24c36211a368fb51"
+    }
+  },
+  "raw_output": "results/phase5_processing_scope_v1_release01",
+  "raw_sha256": {
+    "cases/anchor_rejection/result.json": "42f37265fa45ab66a4feb1789a1c01ab7373a7a3b1d7f58b508d28f24c09797d",
+    "cases/database_prior_shape/result.json": "2695d0f402877b10307a25dd7c9e0ab438fec8611aed214dad35eebc7aa1bdf6",
+    "cases/delegated_actions/result.json": "d5975377c436c06f8f05649a0731eec32cd7a81672a86f0c1cd33fa97f10fda0",
+    "cases/disabled/result.json": "331897891fccbd18d236e4ba3e1d02e633c0202669eddd231cd835ac17928a3f",
+    "cases/explicit_cache/result.json": "ff3859c7727da4faeccaf1b4d6c75dd7b9f9a99be263c87379698a6bcabb0f11",
+    "cases/explicit_database/result.json": "08eebe157709c517fc4a95289e1e8f0ae6887c940a43b73faa94f0beee00e666",
+    "cases/explicit_document/result.json": "22300b4fae7c312c402deae5c5482f67b203cd3e30b7889eed2e8f0acbeeced8",
+    "cases/limits/result.json": "0c668431f877b54a2fe34d8e94934a436642c072a5ce49fbaf36a2add3b0ed88",
+    "cases/malformed_database/result.json": "7bdab9f60f9db49a063ba031963ad9773859a3f51aa0dfe910964a0cdca0c489",
+    "cases/state_integrity/result.json": "67389a70f89a6f0e7d911c55af4d699a99cbc13e8ef5763de64666f0b2311913",
+    "cases/trusted_no_trigger/result.json": "ef4c79f5c6b4df8b494aa191cf53853ccdb7af7c679c2a96c1c9f66568729426",
+    "cases/unknown_action/result.json": "bea1aeb0c6fcb0b9098d7a245cc2a7bbe34d092714b7f7f3a951a0b708acbda9",
+    "cases/untrusted_expansion/result.json": "9f970f9830531cfd9a8c03eb6aa4750df740761626054aebfaa057c4109b9b31",
+    "cases/untrusted_search/result.json": "a9b6511b89fa4caf37ffe327ca572f3d69e67f5385fee6bd8ae150908baaaa2e",
+    "knowledge.log": "58c92f1be343c7daefab20129b586ffeed189b4c0a40d5ae24c36211a368fb51",
+    "mypy.log": "0eb462efc9ff953b553e5f81948d861ba00ba984f797ceab31f35ab7846e441f",
+    "pytest.log": "25d289c9978940d8b7a827b0f83ebfefd9e305881227166d005182ef02a6813d",
+    "ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "setup.log": "31e836b9c814fcf7126ef63fd608df0cbce6fc9b307ebc95c71ffe9d66d52280"
+  },
+  "real_model_runs": 0,
+  "benchmark_dev_runs": 0,
+  "test_payloads_parsed": 0,
+  "scope": "Bounded host-only A4 processing scope; no runtime adoption or model metrics",
+  "remaining": [
+    "Compose this component into a versioned A0–A6 runtime without changing frozen v5",
+    "General private-record final entitlements and broader origin coverage",
+    "Production guard model/revision and efficient GPU worker validation",
+    "grouped Dev validation and freeze"
+  ]
+}

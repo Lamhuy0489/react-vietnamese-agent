@@ -4,7 +4,9 @@
 
 Mốc mới [A4 processing-scope component v1](processing_scope_v1.md) đã hoàn tất
 QA host-only: 14 điều kiện synthetic, 21 unit test riêng và full repository
-2.327 pass/1 skip; setup/Ruff/mypy/knowledge đều đạt. Component trích exact
+2.327 pass/1 skip; setup/Ruff/mypy/knowledge đều đạt. Release từ commit `e9710c7`
+được ghi trong [manifest](../experiments/manifests/phase5_processing_scope_v1_validation01.json).
+Component trích exact
 anchor từ raw user, giữ state task-local và chặn scope mở rộng sau untrusted
 source; search/SQL không đánh giá được thì fail closed, external sinks vẫn giao
 cho gate hiện có. Đây chưa phải runtime adoption, private-final authorization,

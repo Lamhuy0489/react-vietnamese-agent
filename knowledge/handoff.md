@@ -7,7 +7,9 @@ Cập nhật: 2026-09-12. Đây là chỉ dẫn tiếp tục, không thay thế 
 ## Mốc bổ sung — bounded A4 processing-scope component v1
 
 Component mới `a4_processing_scope_v1` đã qua 14 điều kiện deterministic và full
-repository QA 2.327 pass/1 skip; contract, report và unit tests đã thêm riêng.
+repository QA 2.327 pass/1 skip; release từ commit `e9710c7` được ghi trong
+[manifest](../experiments/manifests/phase5_processing_scope_v1_validation01.json),
+contract/report/unit tests đã thêm riêng.
 Nó chỉ nhận exact affirmative resource/table anchors từ raw user, từ chối quoted/
 conditional/negated anchors, giữ state task-local và chặn read/search/SQL scope
 mở rộng sau untrusted observation. Calculator và external sinks được delegate
