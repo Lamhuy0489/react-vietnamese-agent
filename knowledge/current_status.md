@@ -2,6 +2,13 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-12
 
+Mốc bổ sung [A4 processing-scope v1](processing_scope_v1.md) đã qua 14 điều kiện
+synthetic và full QA 2.327 pass/1 skip. Host-only component này dùng anchor exact
+từ raw user, giữ state quan sát append-only và chặn untrusted scope expansion;
+không chạy model/Kaggle, không đọc Test/private GT và chưa được ghép vào runtime.
+Private-record final entitlement, runtime versioned integration và grouped Dev
+vẫn mở; `phase5_accepted=false` không đổi.
+
 Mốc mới nhất [ordinary native pair T4×2](ordinary_pair_gpu_v1.md) đã COMPLETE:
 kernel `huylmhuhu/react-vn-ordinary-pair-t4x2-v1` dùng đúng metadata
 `NvidiaTeslaT4`, private/offline Dataset và source package đã hash-bound. 21/21

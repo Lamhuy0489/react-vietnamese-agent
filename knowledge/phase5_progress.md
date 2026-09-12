@@ -2,6 +2,15 @@
 
 ## Hiện hành
 
+Mốc mới [A4 processing-scope component v1](processing_scope_v1.md) đã hoàn tất
+QA host-only: 14 điều kiện synthetic, 21 unit test riêng và full repository
+2.327 pass/1 skip; setup/Ruff/mypy/knowledge đều đạt. Component trích exact
+anchor từ raw user, giữ state task-local và chặn scope mở rộng sau untrusted
+source; search/SQL không đánh giá được thì fail closed, external sinks vẫn giao
+cho gate hiện có. Đây chưa phải runtime adoption, private-final authorization,
+Dev/model evidence hay Phase 5 acceptance. Bước kế tiếp là runtime version mới
+ghép component với A0–A6 mà không sửa frozen v5.
+
 Native ordinary pair follow-up đã COMPLETE trên kernel mới với metadata
 `NvidiaTeslaT4`: 21/21 Dummy, hai model cùng resident trên hai T4, 6/6 A/B/A
 generation và recovery residual 0.  Source/package/remote metadata/raw inventory

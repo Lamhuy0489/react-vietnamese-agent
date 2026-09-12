@@ -1202,3 +1202,23 @@ and are not inferred here.
 - This is feasibility/provenance evidence only.  It does not select a guard,
   measure ASR/utility, authorize Test access, or close runtime A0–A6/grouped
   Dev/freeze gates.  The release audit records `phase5_accepted=false`.
+
+# 2026-09-12 — Add bounded A4 processing-scope component
+
+- Add a new `a4_processing_scope_v1` host-only component rather than editing
+  frozen A3–A5/session or v5 runtime sources. The component extracts exact
+  affirmative `DOC_*`/`CACHE_*` and bounded SQL table/column anchors from raw
+  user text, rejects quoted/conditional/negated clauses, and records only
+  hashes/opaque host identities.
+- An explicit raw-user scope is a hard boundary. Without one, the first read
+  remains compatible with existing behavior until an untrusted source is
+  observed; thereafter only previously observed exact resources or database
+  subsets are allowed. Search, malformed SQL and unknown actions fail closed;
+  calculator and external sinks remain delegated to their existing gates.
+- This is a deliberately bounded component milestone, not a silent contract
+  change or runtime adoption. It does not implement private-final entitlements,
+  causal LLM attribution, benchmark tuning or Test access. A new runtime version
+  and independent differential evidence are required before Phase 5 acceptance.
+- QA receipt scope: 14 synthetic conditions, 21 focused unit tests and the full
+  repository suite with no model/Kaggle/Test inference. Existing source hashes,
+  frozen inputs and prior receipts remain unchanged.

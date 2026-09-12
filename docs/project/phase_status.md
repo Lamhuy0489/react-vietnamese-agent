@@ -306,6 +306,15 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   Source `04ae4c8`, [selected receipt](../../experiments/manifests/phase5_a6_runtime_v1_validation01.json)
   from clean source matches preflight; 845 tests pass and all 135 source/435 raw
   hashes verified. Not real-model security evidence.
+- [x] Bounded host-only A4 processing-scope component v1: 14 deterministic
+  synthetic conditions and 21 focused tests cover exact raw-user resource/table
+  anchors, untrusted scope expansion, unassessed search/SQL, trusted pass-through,
+  delegated sinks, unknown actions, state monotonicity and bounds. Full QA:
+  2,327 pass / 1 intentional native-tqdm skip; setup/Ruff/mypy/knowledge pass.
+  [Contract](../architecture/phase5_processing_scope_contract.md),
+  [report](../evaluation/phase5_processing_scope_v1_report.md). This is a
+  component milestone only; it is not runtime adoption or private-final
+  entitlement and does not close the general A4 gate.
 - [ ] General private-record final entitlements and broader origin-coverage assessment.
 - [x] Task-local warm guard and v5 runtime: 891 tests pass (46 new), setup/Ruff/
   mypy 194 files/knowledge pass. 22 cold/warm parity pairs = 44 Replay plus nine

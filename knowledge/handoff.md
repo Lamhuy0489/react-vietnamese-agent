@@ -4,6 +4,15 @@ Cập nhật: 2026-09-12. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Mốc hiện hành — native ordinary pair T4×2
 
+## Mốc bổ sung — bounded A4 processing-scope component v1
+
+Component mới `a4_processing_scope_v1` đã qua 14 điều kiện deterministic và full
+repository QA 2.327 pass/1 skip; contract, report và unit tests đã thêm riêng.
+Nó chỉ nhận exact affirmative resource/table anchors từ raw user, từ chối quoted/
+conditional/negated anchors, giữ state task-local và chặn read/search/SQL scope
+mở rộng sau untrusted observation. Calculator và external sinks được delegate
+cho gate cũ. Không có Test/private GT/model/Kaggle inference; chưa tích hợp runtime.
+
 Kernel `huylmhuhu/react-vn-ordinary-pair-t4x2-v1` version 1 đã COMPLETE sau
 lượt lỗi accelerator cũ.  Metadata remote giữ đúng `NvidiaTeslaT4`; wrapper,
 bootstrap, package source, private/offline Dataset và 132 raw artifacts đã
@@ -18,13 +27,13 @@ ghi `valid=true`, `phase5_accepted=false` và chỉ thuộc technical scope.
 
 ## Đang làm / bước kế tiếp cụ thể
 
-Đóng QA cho release-audit mới (full setup/Ruff/mypy/pytest và knowledge-check),
-commit/push source + receipt mà không stage các thay đổi ngoài phạm vi ở
-`plan/phase6.md`–`phase9.md` hoặc báo cáo người dùng. Sau đó tiếp tục versioned
-runtime integration A0–A6: task-local ModelPair/cold-warm accounting, A0 parity,
-Broker/Pre/Post/Final gate, A4 processing-scope/private-final entitlements và
-grouped Dev differential/model/freeze. Không dùng sáu-call probe để tune và
-không mở Test/private ground truth.
+Đã đóng QA/release-audit native pair và component scope; commit/push source mà
+không stage các thay đổi ngoài phạm vi ở `plan/phase6.md`–`phase9.md` hoặc báo
+cáo người dùng. Bước cụ thể tiếp theo là versioned runtime integration A0–A6:
+task-local ModelPair/cold-warm accounting, A0 parity, Broker/Pre/Post/Final gate
+và ghép `a4_processing_scope_v1` mà không sửa frozen v5. Sau đó mới xử lý
+private-final entitlements và grouped Dev differential/model/freeze. Không dùng
+sáu-call probe để tune và không mở Test/private ground truth.
 
 Pending access: không cần quyền mới cho mốc CPU/native này; chỉ kiểm lại quota
 owner `huylmhuhu` và Dataset private trước một submission GPU khác. Không cycling
