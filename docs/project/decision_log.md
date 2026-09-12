@@ -1,5 +1,22 @@
 # Decision Log
 
+## 2026-09-12 — Classify ordinary GPU v1 accelerator mismatch
+
+- Submit exactly one new private ordinary package under owner `huylmhuhu` after
+  source push and exact offline preflight. Kaggle accepted the kernel, but the
+  invocation used CLI alias `--accelerator gpu`; remote metadata returned generic
+  `machine_shape=Gpu`, and runtime observed one GPU. The pinned pair requires two
+  T4 devices, so `PairCUDAObserver` failed before native model initialization.
+- Pull source hash matches the preflight wrapper exactly. Bootstrap, tokenizer
+  sidecars, publisher metadata and 21 Dummy checkpoints were downloaded; no
+  model generation, tensor execution, benchmark/Test payload, private GT or
+  quality result exists. Preserve this as infrastructure error; do not retry
+  the same kernel/version or reinterpret it as semantic failure.
+- A new kernel identity may request explicit `NvidiaTeslaT4` (official Kaggle
+  documentation lists T4 x2). Verify returned metadata and `device_count==2`
+  before loading models; if the same one-GPU infrastructure failure repeats,
+  stop submissions and request platform access. [Receipt](../experiments/manifests/phase5_ordinary_pair_gpu_v1_error01.json).
+
 ## 2026-09-12 — Prepare exact ordinary A/B/A Kaggle package
 
 - Add a new private ordinary kernel wrapper and offline builder. Extend the

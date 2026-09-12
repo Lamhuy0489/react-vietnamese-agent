@@ -12,8 +12,12 @@ trong 454,22 giây, không lỗi; JUnit và release receipt đã hash-bound.
 Quota owner `huylmhuhu`: GPU 29,93h; Dataset `react-vn-guard15-probe-data-v1`
 ready version 1. CLI mặc định `lamhuy8904` không có quyền Dataset (403), phải
 dùng đúng credential owner, không in khóa. Chưa upload hoặc chạy GPU.
-Tiếp: push source/package receipt → upload kernel identity mới và
-theo dõi một native run; nếu lỗi thì giữ logs/checkpoint, không retry ngữ nghĩa.
+Submission đầu `huylmhuhu/react-vn-ordinary-pair-v1` v1 đã ERROR trước native
+model vì push với alias `gpu` trả một GPU (`machine_shape=Gpu`), không đủ 2 T4;
+source remote khớp package, log/artifact đã lưu ở [error receipt](../experiments/manifests/phase5_ordinary_pair_gpu_v1_error01.json).
+Không retry identity cũ. Tiếp push source/package receipt → kernel identity mới,
+request enum `NvidiaTeslaT4`, xác minh `device_count==2` trước native init; nếu
+lỗi hạ tầng lặp lại lần nữa thì dừng submission và ghi blocked access.
 
 Ưu tiên mới [tokenizer metadata CPU](tokenizer_metadata_v1.md): source `351ea21`.
 26 test mới/130 focused pass trong 30,29 giây; setup/Ruff/mypy 301 files đạt.

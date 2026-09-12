@@ -7,8 +7,13 @@ Mới nhất [exact ordinary Kaggle package](ordinary_package_v1.md): source `a4
  resume 20 checkpoint, ordinary stub 6-call và joined synthetic audits. 16 package
  tests pass (combined focused 82); full QA 2.304 pass/1 optional skip trong 454,22 giây,
  không lỗi ([release QA](../experiments/manifests/phase5_ordinary_package_cpu_v1_release_qa01.json)). Kaggle owner credential
-`huylmhuhu` còn 29,93 giờ GPU, Dataset private ready v1; credential mặc định
-`lamhuy8904` bị 403 với Dataset này. Chưa upload kernel/GPU.
+ `huylmhuhu` còn 29,93 giờ GPU, Dataset private ready v1; credential mặc định
+`lamhuy8904` bị 403 với Dataset này. Chưa có native run thành công.
+
+Đã có một submission GPU: `huylmhuhu/react-vn-ordinary-pair-v1` v1 ERROR ở
+accelerator gate vì chỉ có 1 GPU (`machine_shape=Gpu`), trong khi pair yêu cầu
+2 T4; source remote khớp package và không có native generation. [Error receipt](../experiments/manifests/phase5_ordinary_pair_gpu_v1_error01.json).
+Không retry cùng identity; tiếp kernel mới với enum `NvidiaTeslaT4`.
 
 Mới nhất [tokenizer metadata CPU](tokenizer_metadata_v1.md): source `351ea21`,
 26 test mới/130 focused pass trong 30,29 giây; setup/Ruff/mypy 301 files đạt.
