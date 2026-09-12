@@ -2,7 +2,7 @@
 
 - Current stage: **Phase 5 in progress: bounded native efficient-context stress validated; runtime integration and quality gaps remain**
 - Setup owner: Lâm Quang Huy
-- Last updated: 2026-09-11
+- Last updated: 2026-09-12
 
 ## Setup acceptance
 
@@ -470,6 +470,19 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   [audit](../../experiments/manifests/phase5_efficient_stress_gpu_v1_audit01.json).
   Prior factory/OOM runs remain immutable; normal-request runtime integration,
   A4/general final, grouped Dev differential/model choice/freeze remain open.
+
+- [x] Native ordinary A/B/A technical milestone: new private kernel
+  `huylmhuhu/react-vn-ordinary-pair-t4x2-v1` completed with explicit
+  `NvidiaTeslaT4`. Source/package/remote metadata and 132 raw files were
+  independently authenticated; 21/21 Dummy, two native model loads, 6/6
+  native calls, two-device residency and six zero-residual recovery samples
+  passed. A repeat hashes matched for both roles; both workers were reaped by
+  `TERMINATE/-15` and graceful cleanup remains unproven. Full QA is 2,307 pass/
+  1 optional skip, setup/Ruff/mypy 303 files and knowledge-check pass. This is
+  technical evidence only: no quality/ASR/Test inference and `phase5_accepted`
+  remains false. See [release audit](../../experiments/manifests/phase5_ordinary_pair_t4x2_v1_audit01.json),
+  [release QA](../../experiments/manifests/phase5_ordinary_pair_t4x2_v1_release_qa01.json)
+  and [report](../evaluation/phase5_ordinary_pair_t4x2_v1_report.md).
 
 Phase 5 is not accepted. Seven config files do not mean seven operational levels.
 The first host adapter and A0/A1 v1 runner remain immutable historical milestones.

@@ -2,22 +2,49 @@
 
 Cập nhật: 2026-09-12. Đây là chỉ dẫn tiếp tục, không thay thế contract.
 
+## Mốc hiện hành — native ordinary pair T4×2
+
+Kernel `huylmhuhu/react-vn-ordinary-pair-t4x2-v1` version 1 đã COMPLETE sau
+lượt lỗi accelerator cũ.  Metadata remote giữ đúng `NvidiaTeslaT4`; wrapper,
+bootstrap, package source, private/offline Dataset và 132 raw artifacts đã
+được kiểm tra. 21/21 Dummy không lỗi; Qwen 7B agent và Qwen 1.5B guard load một
+lần, 6/6 native A/B/A calls trả về, A repeat hash khớp cả hai role, hai worker
+reaped bằng TERMINATE/-15 và 6 recovery samples residual 0 trên hai T4. Load
+273,607/31,849 giây; generation agent 2,245/5,559/0,516 và guard
+1,645/0,999/1,034 giây. Worker joined audit khớp hai local audit độc lập
+byte-for-byte (SHA `a8669af992c77045ff97192f396d8440114543f96bfde881c0bef73a551b23dc`).
+[Release audit](../experiments/manifests/phase5_ordinary_pair_t4x2_v1_audit01.json)
+ghi `valid=true`, `phase5_accepted=false` và chỉ thuộc technical scope.
+
+## Đang làm / bước kế tiếp cụ thể
+
+Đóng QA cho release-audit mới (full setup/Ruff/mypy/pytest và knowledge-check),
+commit/push source + receipt mà không stage các thay đổi ngoài phạm vi ở
+`plan/phase6.md`–`phase9.md` hoặc báo cáo người dùng. Sau đó tiếp tục versioned
+runtime integration A0–A6: task-local ModelPair/cold-warm accounting, A0 parity,
+Broker/Pre/Post/Final gate, A4 processing-scope/private-final entitlements và
+grouped Dev differential/model/freeze. Không dùng sáu-call probe để tune và
+không mở Test/private ground truth.
+
+Pending access: không cần quyền mới cho mốc CPU/native này; chỉ kiểm lại quota
+owner `huylmhuhu` và Dataset private trước một submission GPU khác. Không cycling
+credential và không in khóa.
+
 ## Đang làm
 
-Ưu tiên mới [exact ordinary package](ordinary_package_v1.md): source `a412e57`.
+Mốc [exact ordinary package](ordinary_package_v1.md) trước native run: source `a412e57`.
 Offline preflight archive/expanded pass với 56 overlay files, 8 tools, 21 Dummy,
 resume giữ 20 checkpoint, ordinary stub 6 calls và joined synthetic audits; 16
 package tests (combined focused 82) pass. Full QA đạt 2.304 pass/1 optional skip
 trong 454,22 giây, không lỗi; JUnit và release receipt đã hash-bound.
-Quota owner `huylmhuhu`: GPU 29,93h; Dataset `react-vn-guard15-probe-data-v1`
-ready version 1. CLI mặc định `lamhuy8904` không có quyền Dataset (403), phải
-dùng đúng credential owner, không in khóa. Chưa upload hoặc chạy GPU.
+Quota owner `huylmhuhu`: GPU 29,93h tại thời điểm preflight; Dataset
+`react-vn-guard15-probe-data-v1` ready version 1. CLI mặc định `lamhuy8904`
+không có quyền Dataset (403), nên lượt preflight chưa upload/chạy GPU.
 Submission đầu `huylmhuhu/react-vn-ordinary-pair-v1` v1 đã ERROR trước native
 model vì push với alias `gpu` trả một GPU (`machine_shape=Gpu`), không đủ 2 T4;
 source remote khớp package, log/artifact đã lưu ở [error receipt](../experiments/manifests/phase5_ordinary_pair_gpu_v1_error01.json).
-Không retry identity cũ. Tiếp push source/package receipt → kernel identity mới,
-request enum `NvidiaTeslaT4`, xác minh `device_count==2` trước native init; nếu
-lỗi hạ tầng lặp lại lần nữa thì dừng submission và ghi blocked access.
+Không retry identity cũ. Bước tiếp theo khi đó là kernel identity mới với enum
+`NvidiaTeslaT4`, nay đã được thực hiện và ghi ở mốc hiện hành phía trên.
 
 Ưu tiên mới [tokenizer metadata CPU](tokenizer_metadata_v1.md): source `351ea21`.
 26 test mới/130 focused pass trong 30,29 giây; setup/Ruff/mypy 301 files đạt.

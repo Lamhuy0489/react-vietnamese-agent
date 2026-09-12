@@ -1185,3 +1185,20 @@ and are not inferred here.
   Selected receipt: 155 source/input/prior hash entries and 34 raw traces match;
   four credential values scanned across 25 changed files have zero matches.
   Knowledge validation passes after the selected receipt is written.
+# 2026-09-12 — Complete native ordinary pair with explicit T4×2 identity
+
+- The first ordinary-pair submission used the generic `gpu` accelerator and
+  stopped before model initialization because only one GPU was visible.  Keep
+  that error receipt immutable and do not retry its identity.
+- The owner-approved follow-up uses a fresh private kernel identity and the
+  explicit `NvidiaTeslaT4` machine shape.  The package source, wrapper bytes,
+  bootstrap identity, pinned model mounts and offline Dataset remain unchanged;
+  only the remote kernel identity/accelerator request changed.
+- The kernel completed one technical A/B/A run: 21/21 public Dummy tasks,
+  two native model loads, six native generations, two T4 residency deltas and
+  six signed recovery samples.  Two local joined audits match the worker audit
+  byte-for-byte.  Forced `TERMINATE/-15` cleanup is reported separately from
+  graceful cleanup.
+- This is feasibility/provenance evidence only.  It does not select a guard,
+  measure ASR/utility, authorize Test access, or close runtime A0–A6/grouped
+  Dev/freeze gates.  The release audit records `phase5_accepted=false`.

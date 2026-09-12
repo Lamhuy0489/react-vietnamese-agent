@@ -2,6 +2,14 @@
 
 ## Hiện hành
 
+Native ordinary pair follow-up đã COMPLETE trên kernel mới với metadata
+`NvidiaTeslaT4`: 21/21 Dummy, hai model cùng resident trên hai T4, 6/6 A/B/A
+generation và recovery residual 0.  Source/package/remote metadata/raw inventory
+được release-audit độc lập; worker audit và hai local audits byte-identical.
+Đây là technical feasibility evidence, không phải guard quality/ASR hay Phase 5
+acceptance. Xem [tri thức native pair](ordinary_pair_gpu_v1.md) và
+[release audit](../experiments/manifests/phase5_ordinary_pair_t4x2_v1_audit01.json).
+
 Mốc mới nhất xem [current status](current_status.md) và [handoff](handoff.md).
 Combined small-context/cancellation GPU đã audit;6workers reaped/18VRAM samples
 trở về nền. [IPC-origin diagnostic](pair_ipc_v1.md) đã xác định ba observed

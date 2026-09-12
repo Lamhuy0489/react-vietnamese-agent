@@ -1,0 +1,75 @@
+{
+  "protocol": "ordinary_pair_t4x2_gpu_release_qa_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "remote_kernel": "huylmhuhu/react-vn-ordinary-pair-t4x2-v1",
+  "remote_kernel_version": 1,
+  "remote_kernel_status": "COMPLETE",
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+  "source_commit": "a412e571a6fba89103b93c55eb830106bede2d01",
+  "preflight_receipt_sha256": "080d7370f937bb5bb6b466a393b31ebc12ffe210325763d2a320b91332091d9d",
+  "release_audit_manifest": "experiments/manifests/phase5_ordinary_pair_t4x2_v1_audit01.json",
+  "release_audit_manifest_sha256": "a74a048f98c1046c7f17db09f18abaa585175b506ada05e3c29c42420733f224",
+  "release_audit_script_sha256": "bdc4a8e20aa713af1d1d8c7b10ccd840fc437658cb9569686b19e5587dcae969",
+  "remote_source_authenticated": true,
+  "package_authenticated": true,
+  "native_model_loads": 2,
+  "native_model_generation_calls": 6,
+  "ordinary_calls": 6,
+  "dummy_tasks": 21,
+  "two_t4_memory_observed": true,
+  "ready_resident_delta_gib": [
+    9.798828125,
+    7.62109375
+  ],
+  "recovery_samples": 6,
+  "recovery_signed_residual_bytes": 0,
+  "graceful_worker_exits": 0,
+  "terminated_and_reaped_workers": 2,
+  "a_repeat_hash_equal": {
+    "agent": true,
+    "guard": true
+  },
+  "joined_audit_byte_identical": true,
+  "joined_audit_sha256": "a8669af992c77045ff97192f396d8440114543f96bfde881c0bef73a551b23dc",
+  "raw_files_verified": 132,
+  "remote_files_verified": 2,
+  "full_suite": {
+    "passed": 2307,
+    "skipped": 1,
+    "seconds": 423.96,
+    "junit_path": "results/phase5_ordinary_pair_t4x2_v1_release01_pytest.xml",
+    "junit_sha256": "c717c7ad037c31c3eb3f94aeb5655650dbf3e0c2eb66ddf066779fc8eabd865a",
+    "skip_reason": "Optional native tqdm test unavailable in the default development environment."
+  },
+  "focused_tests": {
+    "passed": 93,
+    "seconds": 14.33,
+    "scope": "ordinary pair, tokenizer and release-audit unit suites"
+  },
+  "checks": {
+    "verify_setup": "pass",
+    "ruff": "pass",
+    "mypy_files": 303,
+    "knowledge": "pass",
+    "git_diff_check": "pass",
+    "credential_files_checked": 4,
+    "credential_value_matches": 0
+  },
+  "source_and_evidence_sha256": {
+    "scripts/audit_phase5_ordinary_pair_gpu.py": "bdc4a8e20aa713af1d1d8c7b10ccd840fc437658cb9569686b19e5587dcae969",
+    "tests/unit/test_ordinary_pair_gpu_audit_v1.py": "80edeb7fe50ba15af7be8908030b9ae1ef6d731037d7e199fa48bc0469bb2d40",
+    "docs/evaluation/phase5_ordinary_pair_t4x2_v1_report.md": "55ada325f12aa7cec285dde039cf77856f08aeef116ee57ee23f3bf497b0f4cb",
+    "knowledge/ordinary_pair_gpu_v1.md": "f2c3ca975918cf388a00c79d92f7fd28dbf3baf268b4cb1a6696df64f16925e4",
+    "experiments/manifests/phase5_ordinary_pair_t4x2_v1_audit01.json": "a74a048f98c1046c7f17db09f18abaa585175b506ada05e3c29c42420733f224",
+    "results/phase5_ordinary_pair_t4x2_v1_release01_pytest.xml": "c717c7ad037c31c3eb3f94aeb5655650dbf3e0c2eb66ddf066779fc8eabd865a"
+  },
+  "test_access": "hash-only prerequisites; no Test payload or private ground truth",
+  "scope": "Software/release audit and one native ordinary A/B/A technical run; no quality, ASR, speed ranking, full-context/KV, global IPC-cleanup or Phase 5 acceptance claim.",
+  "remaining": [
+    "versioned runtime A0-A6 integration and differential parity",
+    "A4 processing-scope and private-final entitlements",
+    "grouped Dev guard/model validation and freeze"
+  ]
+}

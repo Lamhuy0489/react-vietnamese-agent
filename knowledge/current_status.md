@@ -2,20 +2,35 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-12
 
-Mới nhất [exact ordinary Kaggle package](ordinary_package_v1.md): source `a412e57`,
+Mốc mới nhất [ordinary native pair T4×2](ordinary_pair_gpu_v1.md) đã COMPLETE:
+kernel `huylmhuhu/react-vn-ordinary-pair-t4x2-v1` dùng đúng metadata
+`NvidiaTeslaT4`, private/offline Dataset và source package đã hash-bound. 21/21
+Dummy hoàn tất; Qwen 7B agent và Qwen 1.5B guard cùng resident trên hai T4,
+6/6 native generation calls ở A/B/A, hai A repeat hash đều khớp, 6 recovery
+samples residual 0 ở cả hai thiết bị. Load 273,607/31,849 giây; generation
+agent 2,245/5,559/0,516 giây và guard 1,645/0,999/1,034 giây. Hai worker được
+reap bằng TERMINATE/-15 (không có graceful exit). Worker audit và hai audit local
+độc lập byte-identical; [release audit](../experiments/manifests/phase5_ordinary_pair_t4x2_v1_audit01.json)
+valid=true. Đây chỉ là native transport/residency/timing evidence, không phải
+quality/ASR hoặc Phase 5 acceptance; `phase5_accepted=false` vẫn giữ nguyên.
+Tiếp theo là runtime A0–A6, A4 processing-scope/private-final, grouped Dev và
+freeze. Không chạy Test và không tune từ probe sáu call.
+
+Mốc package [exact ordinary Kaggle](ordinary_package_v1.md) trước native run: source `a412e57`,
 56-file overlay; archive/expanded isolated preflight đều pass 8 tools, 21 Dummy,
  resume 20 checkpoint, ordinary stub 6-call và joined synthetic audits. 16 package
  tests pass (combined focused 82); full QA 2.304 pass/1 optional skip trong 454,22 giây,
  không lỗi ([release QA](../experiments/manifests/phase5_ordinary_package_cpu_v1_release_qa01.json)). Kaggle owner credential
- `huylmhuhu` còn 29,93 giờ GPU, Dataset private ready v1; credential mặc định
-`lamhuy8904` bị 403 với Dataset này. Chưa có native run thành công.
+`huylmhuhu` còn 29,93 giờ GPU tại preflight cũ, Dataset private ready v1; credential mặc định
+`lamhuy8904` bị 403 với Dataset này. Native run mới nhất đã được ghi nhận ở mục
+trên; quota sau run cần được đọc lại trước submission tiếp theo.
 
 Đã có một submission GPU: `huylmhuhu/react-vn-ordinary-pair-v1` v1 ERROR ở
 accelerator gate vì chỉ có 1 GPU (`machine_shape=Gpu`), trong khi pair yêu cầu
 2 T4; source remote khớp package và không có native generation. [Error receipt](../experiments/manifests/phase5_ordinary_pair_gpu_v1_error01.json).
 Không retry cùng identity; tiếp kernel mới với enum `NvidiaTeslaT4`.
 
-Mới nhất [tokenizer metadata CPU](tokenizer_metadata_v1.md): source `351ea21`,
+Mốc tokenizer metadata CPU trước native run [tokenizer metadata](tokenizer_metadata_v1.md): source `351ea21`,
 26 test mới/130 focused pass trong 30,29 giây; setup/Ruff/mypy 301 files đạt.
 Admission/collector/joined auditor suy pad/EOS từ public bytes đã pin, nối với
 ordinary policy và admitted file identity. Hai standalone audits trên fixture
