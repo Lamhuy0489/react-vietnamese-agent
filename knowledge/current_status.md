@@ -2,6 +2,14 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-12
 
+Mới nhất [request policy CPU](request_policy_v1.md): source99dbd92,63 test mới/
+204focused pass24,36s; observer+independent attention/native-metric joined audit.
+Publisher drift/restore/no-retry và pinned method-source fake execution đạt;
+setup/Ruff/mypy289/knowledge đạt. FullQA2.135pass/1optional skip429,45s;
+[CPU QA](../experiments/manifests/phase5_request_policy_v1_cpu_qa01.json).
+Chưa native policy-pair integration/GPU.
+Tiếp ghép policy vào pair rồi repeated-request native runner/audit/exactpreflight.
+
 Mới nhất [request pair CPU](request_pair_v1.md): source35978d2,17 test mới/
 141focused pass26,56s; hai standalone rehearsals đạt,14childPIDs/92rawfiles,
 readiness không tiêu thụ request, A/B/A và failure cleanup/no-retry đạt.

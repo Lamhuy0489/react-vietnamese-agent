@@ -4,6 +4,20 @@ Cập nhật: 2026-09-12. Đây là chỉ dẫn tiếp tục, không thay thế 
 
 ## Đang làm
 
+Ưu tiên mới [request policy CPU](request_policy_v1.md): source99dbd92,63 test mới,
+204focused pass24,36s,setup/Ruff/mypy289/knowledge đạt. FullQA2.135pass/
+1optional skip429,45s, không lỗi; `results/phase5_request_policy_v1_cpu01_pytest.xml`.
+[CPU QA](../experiments/manifests/phase5_request_policy_v1_cpu_qa01.json).
+Không test job còn chạy;106frozenentries/277GPUraw/92CPUraw và seals không đổi.
+Observer theo request và joined auditor đã có; chưa ghép vào native pair/GPU.
+Tiếp versioned Ready→progress→policy→attention→native factory composition và
+real-spawn rehearsal, rồi native repeated-request runner/metadata/memory/
+supervisor/source audit/exactpreflight. Không cắm policy wrapper vào exact-native
+factory hoặc sửa request_pair_v1 đã khóa. A0/A1 agent-only owner vẫn còn mở.
+Pending access: chưa cần quyền/tài khoản mới cho CPU, quota/private Dataset kiểm trước GPU.
+
+Lịch sử request-pair CPU:
+
 Ưu tiên mới [request pair CPU](request_pair_v1.md): source35978d2,141focused
 pass26,56s; 2standalone runs/14distinctchildPIDs/92rawfiles đạt và hash-bound trong
 [validation](../experiments/manifests/phase5_request_pair_cpu_v1_validation01.json).
@@ -182,8 +196,8 @@ giữ nguyên, không stage/commit cùng task. Incoming handoff đã giữ nguy�
 
 ## Bước tiếp theo
 
-Ưu tiên hiện tại: [request pair](request_pair_v1.md) đã có real-spawn composition
-CPU; tiếp native repeated-request runner/policy/source/memory audit và exact
+Ưu tiên hiện tại: [request policy](request_policy_v1.md) đã có observer/joined auditor
+CPU; tiếp policy-pair composition/rehearsal rồi native runner/source/memory audit và exact
 preflight trước GPU; rồi task-local ownership, cold/warm metrics,
 A0–A6 parity/Broker/final/lifecycle. Cần code mới/tests/differential/exact package
 trước GPU tiếp; không suy stress pass thành benchmark adoption hoặc guard quality.

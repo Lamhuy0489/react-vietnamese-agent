@@ -1,5 +1,19 @@
 # Decision Log
 
+## 2026-09-12 — Observe ordinary policy separately from forced-length stress
+
+- Add request-local policy observer/factory and an independent auditor joined
+  to native-metric/attention receipts, without changing frozen source or decoding.
+  [Contract](../architecture/phase5_request_policy_v1_contract.md).
+- Ordinary native requests do not set min_new_tokens/output_logits; preserve
+  None and publisher/default inheritance instead of importing stress settings.
+  Require publisher stability, ordered observations and per-request restoration;
+  retire on admitted failure, no semantic retries or extra forward.
+- CPU fake differential and pinned method-source execution are bounded evidence,
+  not native model/library parity or GPU adoption. Policy-pair composition,
+  publisher/tokenizer/source/native-load authentication and phase gates remain.
+  No Test/private-GT access or new inference/submission.
+
 ## 2026-09-12 — Compose ordinary requests before native runtime adoption
 
 - New lazy pair builder preserves ReadyFactory outside progress and attention,

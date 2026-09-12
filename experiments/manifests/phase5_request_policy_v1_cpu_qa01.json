@@ -1,0 +1,78 @@
+{
+  "protocol": "request_policy_cpu_release_qa_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "99dbd92a5acac243a56a96d213c52608270a557f",
+  "source_and_evidence_sha256": {
+    "src/react_agent/llm/request_policy_v1.py": "0430bc5bacffdc52ae5f622fb3ed8f24bbb8ba84ed33b8044cf027d17c93a112",
+    "src/react_agent/validation/request_policy_audit_v1.py": "29291576f74156e203c1c060af5d501b0f4e387a9b3f1146e59508cd8382362c",
+    "tests/unit/test_request_policy_v1.py": "ecc06638651b959e8b6736423dcdc8abb09123df672e88319b88ef036a08ff46",
+    "docs/architecture/phase5_request_policy_v1_contract.md": "982d4e4068b28f41d9fc90d0305576cdb91068dc4f2b7323e6c5ef7a07ed55eb",
+    "results/phase5_request_policy_v1_cpu01_pytest.xml": "a9ba4a0b4cfc9d84211ba74cea89585fd6e1bddf8edcda526e01f4a9476c11ea"
+  },
+  "junit": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "1",
+    "tests": "2136",
+    "time": "429.298",
+    "timestamp": "2026-09-12T15:22:19.773735+07:00",
+    "hostname": "Huys-MacBook-Pro.local"
+  },
+  "new_tests_passed": 63,
+  "focused_tests_passed": 204,
+  "focused_seconds": 24.36,
+  "full_suite_passed": 2135,
+  "full_suite_skipped": 1,
+  "full_suite_seconds": 429.45,
+  "junit_path": "results/phase5_request_policy_v1_cpu01_pytest.xml",
+  "setup": "pass",
+  "ruff": "pass",
+  "mypy_files": 289,
+  "knowledge": "pass",
+  "pinned_method_source_execution": {
+    "wheel_sha256": "821a9ff0961abbb29eb1eb686d78df1c85929fdf213a3fe49dc6bd94f9efa944",
+    "generation_utils_sha256": "dde2df36821c0d724b5af47cb0ff71c3c4c1990c86d81b821911127ae4dc1254",
+    "methods": [
+      "_prepare_generation_config",
+      "_prepare_generated_length"
+    ],
+    "conditions": 4,
+    "roles": [
+      "agent",
+      "guard"
+    ],
+    "inherited_minimums": [
+      null,
+      2
+    ],
+    "input_lengths_each": [
+      1,
+      4096,
+      7
+    ],
+    "fake_config_update_and_tensors": true,
+    "native_library_imported": false
+  },
+  "historical_overlay_entries_reverified": 106,
+  "historical_gpu_raw_files_reverified": 277,
+  "prior_cpu_pair_raw_files_reverified": 92,
+  "prior_request_source_and_evidence_hashes_unchanged": true,
+  "prerequisite_seals_unchanged": true,
+  "credential_scan_files_before_qa": 10,
+  "known_credential_values_checked": 4,
+  "credential_value_matches": 0,
+  "new_kaggle_submissions": 0,
+  "local_model_loads": 0,
+  "local_native_tensor_execution": false,
+  "held_out_test_access": "Hash-only seals; no Test payload/private ground truth.",
+  "scope": "Request-local policy observation and independent attention/native-metric consistency on CPU synthetic data; authenticated method-source execution with fake config/tensors, not native library/model parity.",
+  "remaining": [
+    "Versioned Ready/progress/policy/attention/native pair composition and real-spawn rehearsal; do not mutate frozen request_pair_v1.",
+    "Native repeated-request runner, publisher/tokenizer/loader/memory/placement/source authentication, supervisor-bound audit and exact preflight before Kaggle.",
+    "Agent-only A0/A1 ownership, A2-A6 direct routing, runtime differential/lifecycle and grouped Dev acceptance."
+  ],
+  "pending_access": "No new access required for CPU milestone; quota/private Dataset preflight before any new GPU submission.",
+  "unrelated_changes_preserved": "Externally empty plan/phase6-9 and user reports/figures preserved and excluded."
+}

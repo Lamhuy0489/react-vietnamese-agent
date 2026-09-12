@@ -33,7 +33,8 @@ fullQA đã đạt để push. Không test job còn chạy hoặc job Kaggle m�
   dùng làm selected receipt; không ghi đè hoặc xóa lịch sử lỗi/test artifacts.
 - Builder hiện khởi động cả hai roles: không dùng cho A0/A1. Còn cần task owner
   agent-only và runtime routing trực tiếp, không nested WarmGuard/ModelPair.
-- Tiếp native repeated-request runner và request-local publisher-policy evidence;
+- [Request-local policy observer/auditor CPU](request_policy_v1.md) đã có;
+  tiếp ghép policy vào pair, native repeated-request runner và publisher evidence;
   observer stress cũ single-use, không cắm trực tiếp cho request thường. Cần
   native memory/placement admission, supervisor-bound independent audit, source
   authentication và exact package preflight trước Kaggle. Token/geometry join
