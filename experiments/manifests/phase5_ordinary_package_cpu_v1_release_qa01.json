@@ -1,0 +1,86 @@
+{
+  "protocol": "ordinary_pair_package_cpu_release_qa_v1",
+  "valid": true,
+  "phase5_accepted": false,
+  "source_commit": "a412e571a6fba89103b93c55eb830106bede2d01",
+  "package_preflight": {
+    "path": "build/kaggle/phase5_ordinary_pair_v1_preflight02",
+    "receipt_sha256": "080d7370f937bb5bb6b466a393b31ebc12ffe210325763d2a320b91332091d9d",
+    "wrapper_sha256": "1429eb99ade62c555378c44c1559e61049519f171f0f62fbc8eedf510d49cf45",
+    "kernel_metadata_sha256": "712df19cd6dfcb34cc8e13c1ee465fde4b0b3fcbf69647397fed8528ef8a8acd",
+    "source_files": 62,
+    "overlay_files": 56,
+    "runtime_commit": "7649d5bed0b872e93b4233a7dcdbdf0da4623194",
+    "bundle_manifest_sha256": "b14976413b72898b6c0c1b8c46c1ebb0f62f63633f647ab2064fbc048262240f"
+  },
+  "layouts": [
+    {
+      "name": "archive",
+      "raw_evidence_files": 128,
+      "ordinary_calls": 6,
+      "worker_pids": {"agent": 13333, "guard": 13334},
+      "tools": 8,
+      "dummy_tasks": 21,
+      "retained_checkpoints": 20,
+      "missing_only_resume": true,
+      "synthetic_joined_cli": true,
+      "metadata_only_collector": true,
+      "native_tokenizer_executed": false
+    },
+    {
+      "name": "expanded",
+      "raw_evidence_files": 128,
+      "ordinary_calls": 6,
+      "worker_pids": {"agent": 13359, "guard": 13361},
+      "tools": 8,
+      "dummy_tasks": 21,
+      "retained_checkpoints": 20,
+      "missing_only_resume": true,
+      "synthetic_joined_cli": true,
+      "metadata_only_collector": true,
+      "native_tokenizer_executed": false
+    }
+  ],
+  "focused_tests": {
+    "ordinary_package_tokenizer_runner_passed": 82,
+    "ordinary_package_tokenizer_runner_seconds": 22.83,
+    "new_package_tests": 16
+  },
+  "full_suite": {
+    "passed": 2304,
+    "skipped": 1,
+    "seconds": 454.22,
+    "junit_path": "results/phase5_ordinary_package_v1_cpu01_pytest.xml",
+    "junit_sha256": "43bfd99e571bae9b3a71688dc6444508ce7ad1ea62884bb5f1294dc0b0cb0daf",
+    "skip_reason": "Existing optional native tqdm test unavailable in default CPU environment."
+  },
+  "checks": {
+    "setup": "pass",
+    "ruff": "pass",
+    "mypy_files": 302,
+    "knowledge": "pass",
+    "git_diff_check": "pass",
+    "prior_seals_unchanged": true
+  },
+  "kaggle_preflight_access": {
+    "account": "huylmhuhu",
+    "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+    "dataset_status": "ready",
+    "dataset_version": 1,
+    "gpu_remaining_hours": 29.93,
+    "quota_refresh_at": "2026-09-19T00:00:00",
+    "kernel_identity": "huylmhuhu/react-vn-ordinary-pair-v1",
+    "private": true,
+    "default_cli_account_without_dataset_access": "lamhuy8904"
+  },
+  "native_model_loads": 0,
+  "native_tensor_execution": false,
+  "new_gpu_runs": 0,
+  "new_kaggle_submissions": 0,
+  "held_out_test_access": "No Test payload or private ground truth; only prerequisite hash checks and public Dev Dummy tasks.",
+  "scope": "Exact archive/expanded package, isolated imports, eight tools, Dummy/resume and synthetic ordinary audit rehearsal. Not native/GPU evidence, quality, remote source authentication or Phase 5 acceptance.",
+  "remaining": [
+    "Push source and package receipt, then submit one new private Tesla T4 kernel with owner credential; audit remote source/model/tokenizer and native A/B/A outputs.",
+    "Agent-only A0/A1 ownership, runtime A0-A6 differential/lifecycle, A4/general final and grouped Dev gates."
+  ]
+}

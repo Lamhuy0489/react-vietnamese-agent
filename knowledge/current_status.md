@@ -2,10 +2,11 @@
 
 ## Đính chính hiện hành và việc tiếp theo — 2026-09-12
 
-Mới nhất [exact ordinary Kaggle package](ordinary_package_v1.md): source `c9749fa`,
+Mới nhất [exact ordinary Kaggle package](ordinary_package_v1.md): source `a412e57`,
 56-file overlay; archive/expanded isolated preflight đều pass 8 tools, 21 Dummy,
-resume 20 checkpoint, ordinary stub 6-call và joined synthetic audits. 16 package
-tests pass (combined focused 82); full QA đang chạy. Kaggle owner credential
+ resume 20 checkpoint, ordinary stub 6-call và joined synthetic audits. 16 package
+ tests pass (combined focused 82); full QA 2.304 pass/1 optional skip trong 454,22 giây,
+ không lỗi ([release QA](../experiments/manifests/phase5_ordinary_package_cpu_v1_release_qa01.json)). Kaggle owner credential
 `huylmhuhu` còn 29,93 giờ GPU, Dataset private ready v1; credential mặc định
 `lamhuy8904` bị 403 với Dataset này. Chưa upload kernel/GPU.
 

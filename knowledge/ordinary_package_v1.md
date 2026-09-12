@@ -20,8 +20,9 @@ subprocess `PYTHONPATH`, and rejects stale selected Git bytes. It does not
 include the source-envelope tokenizer fixture in the model payload.
 
 Package unit tests: 16 focused tests pass (the combined package/tokenizer/runner
-set is 82 pass). Full QA is still running; JUnit and release receipt will be
-added after it finishes. Current Kaggle checks with credential `kaggle1` (owner
+set is 82 pass). Full QA completed with 2,304 pass/1 optional skip in 454.22s;
+JUnit and the concise [release QA receipt](../experiments/manifests/phase5_ordinary_package_cpu_v1_release_qa01.json)
+bind the package hashes. Current Kaggle checks with credential `kaggle1` (owner
 `huylmhuhu`) show GPU 29.93h remaining and Dataset status `ready`, version 1.
 No kernel has been uploaded yet. The default CLI credential is `lamhuy8904`
 and cannot read this private Dataset (403), so future commands must explicitly
