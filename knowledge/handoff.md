@@ -6,8 +6,12 @@ Cập nhật: 2026-09-13. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 Đang làm [seven-level runtime package](phase5_security_runtime_probe_v1.md):
 agent-only factory, public synthetic A0–A6 checkpointed runner, native sidecar
-auditor, builder/wrapper 83-file overlay. 22 focused tests pass; cần full QA,
-exact archive/expanded mount rồi push/upload. Không có GPU mới tại mốc này.
+auditor, builder/wrapper 82-file overlay. CPU02 đạt 2.583 pass/1 skip,
+23 focused tests; setup/Ruff/mypy 327 files/knowledge đạt. 456 source/2.859 raw
+hashes khớp; 169 data hashes không đổi. Exact preflight03 archive/expanded đạt
+7/7 runtime levels, 8 tools/recovery, 21 Dummy/resume; 426 raw files/88 source
+files đã kiểm. Source `372d685`; cần push evidence rồi upload GPU một lần.
+CPU01 và preflight01/02 giữ như development history, không chọn acceptance.
 Source pair/runtime v2 và mọi raw lịch sử giữ nguyên.
 
 [Pair/runtime v2](phase5_pair_runtime_v2.md) đã hoàn tất bounded CPU QA:
@@ -46,17 +50,18 @@ commit `be73761`, không đổi nhãn lịch sử thành clean release.
 ## Bước tiếp theo
 
 1. Giữ nguyên identity đã hoàn tất; không chạy trùng hoặc ghi thêm vào output.
-2. Tiếp [native package/runtime](phase5_pair_runtime_kaggle_next.md): thêm native
-   agent-only factory có cùng attention/request policy với paired agent; runner
-   v2 và independent native artifact join. Nguồn đã QA phải commit/push trước upload.
-   Base bundle03/pins đã kiểm, dependency traversal 90 files/22 bổ sung, chưa
-   exact mount preflight. Gói mới cần 8 tools/recovery, 21 public Dummy/resume.
+2. Push source/evidence rồi upload đúng gói
+   `build/kaggle/phase5_security_runtime_v1_preflight03/kernel` một lần với
+   `NvidiaTeslaT4`. Kernel mới `huylmhuhu/react-vn-security-runtime-v1`.
+   Download vào thư mục mới, authenticate remote source, join native artifacts;
+   không retry semantic errors. Xem [package receipt](phase5_security_runtime_probe_v1.md).
 3. Sau exact package, kiểm native GPU lifecycle, guard
    quality trên grouped Dev, kiểm broader coverage và freeze. Chưa mở Phase 6/7.
 
 Pending access: không cần tài khoản mới. Đã đọc Kaggle skill/preflight và kiểm
 quota owner `huylmhuhu` ngày 2026-09-13: GPU còn 29,86h, refresh 2026-09-19.
-Đây là snapshot, không reservation; kiểm lại owner/private Dataset trước upload.
+Đây là snapshot, không reservation. Đã kiểm SDK Dataset private/ready/version 1
+và kernel name chưa trùng trước upload (2026-09-13).
 Không cycling credential.
 Tác vụ model nặng chỉ chạy Kaggle, không chạy local.
 

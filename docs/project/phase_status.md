@@ -243,6 +243,13 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 
 ## Phase 5 progress
 
+- [x] Native seven-level package CPU02 and exact offline preflight03 (2026-09-13):
+  2,583 tests pass/one optional native-tqdm skip; 23 focused tests and
+  setup/Ruff/mypy/knowledge pass. 456 source/2,859 raw hashes match and 169 data
+  hashes unchanged. Both archive/expanded mounts pass public A0–A6 runtime,
+  eight tools/recovery and 21-task Dummy/resume. Source `372d685`.
+  [Package evidence](../../knowledge/phase5_security_runtime_probe_v1.md).
+  No new native inference/quality acceptance from these CPU checks.
 - [x] Owner explicitly authorized Phase 5 on 2026-09-07.
 - [x] Pair/runtime v2 failure-evidence CPU validation (2026-09-13): real process
   death after a worker response preserves worker OK vs pair/host ERROR through

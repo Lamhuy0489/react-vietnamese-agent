@@ -4,7 +4,14 @@ Cập nhật: 2026-09-13. **Phase 5 đang làm, chưa nghiệm thu.**
 
 ## Hiện hành — sửa lỗi sau audit
 
-Mốc mới nhất: [pair/runtime v2 failure evidence](phase5_pair_runtime_v2.md).
+Mốc mới nhất: [seven-level native package](phase5_security_runtime_probe_v1.md)
+đạt CPU02: **2.583 pass/1 skip**, 23 focused tests; setup/Ruff/mypy/knowledge đạt.
+456 source/2.859 raw hashes khớp, 169 data hashes không đổi. Exact preflight03
+archive/expanded đều đạt 7/7 synthetic runtime levels và base tool/Dummy/resume.
+Source `372d685`; bước tiếp push source/evidence, gửi private Kaggle technical
+probe rồi audit native output. Chưa có kết quả native mới tại mốc này.
+
+Mốc trước: [pair/runtime v2 failure evidence](phase5_pair_runtime_v2.md).
 Đã kiểm process chết sau worker response cho cả hai role/victim, nối host outcome
 với pair event ledger; failed startup có elapsed thực tế và cờ completion.
 64 focused tests, full QA **2.560 pass/1 skip** (551,55s), 63 joined receipts;

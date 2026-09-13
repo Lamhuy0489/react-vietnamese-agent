@@ -1,6 +1,6 @@
 # Seven-level native runtime package v1
 
-2026-09-13. Đang triển khai; 22 focused tests pass/15,02s, chưa có GPU run mới.
+2026-09-13. CPU02 và exact preflight03 đạt; chưa có GPU run tại mốc receipt này.
 
 ## Nguồn mới
 
@@ -18,14 +18,29 @@ checkpoint boundary được gắn rõ, không tính như native execution.
 ## Package và xác minh cần hoàn tất
 
 Builder `scripts/prepare_phase5_security_runtime.py`, wrapper
-`notebooks/kaggle/security_runtime_kernel_v1.py`: 83 overlay files, kế thừa base
-bundle03 và giữ source cũ. Exact archive/expanded isolated mount cần chạy trước
-upload: 8 tools/fault recovery, 21 public Dummy/resume, ordinary diagnostics và
+`notebooks/kaggle/security_runtime_kernel_v1.py`: 82 overlay files, kế thừa base
+bundle03 và giữ source cũ. Exact archive/expanded isolated mount đã đạt:
+8 tools/fault recovery, 21 public Dummy/resume, ordinary diagnostics và
 7-level new stub runtime/resume. Native metrics parent phải tạo sau fresh-root
 validation, trước worker start (đã có regression test).
 
-Full QA runner `scripts/verify_phase5_security_runtime_probe.py` dự kiến output
-`results/phase5_security_runtime_probe_v1_cpu01`. Không gọi accepted trước receipt.
+Full QA CPU02: **2.583 pass/1 native-tqdm skip**, pytest 550,20s;
+23 focused tests, setup/Ruff/mypy 327 files/knowledge đạt.
+Source `372d68588eab3fbdeabf7464a9173cbdac9b6ba0`; 456 source/2.859 raw hashes
+được kiểm độc lập, 169 data hashes không đổi. 8 real-spawn synthetic receipts;
+42 mocked native-shaped fixture records không phải native inference.
+[CPU02 receipt](../experiments/manifests/phase5_security_runtime_probe_v1_cpu02.json)
+SHA-256 `f255b93ab023013b2cf7c4ba21ff134fe3804034347e0aed1da139715855e336`.
+[Preflight03 receipt](../experiments/manifests/phase5_security_runtime_v1_preflight03.json)
+SHA-256 `fc3e43ff648263cbceea5d7e30590edb7061dac11c8aab6fc5baa30ba8fb75f7`:
+88 selected source files, 82 overlay files, 426 raw files; mỗi mount 7/7 levels
+completed/recovered, missing-only resume giữ checkpoint. Không load model local.
+CPU01 source thay đổi trong lúc QA nên không chọn, raw giữ nguyên.
+
+Kaggle read-only pre-upload: owner `huylmhuhu`, Dataset
+`react-vn-guard15-probe-data-v1` private/ready/current version 1; tên kernel
+`react-vn-security-runtime-v1` chưa tồn tại khi kiểm. Quota snapshot 29,86h GPU
+còn lại, không phải reservation. Upload chỉ sau source/evidence push.
 
 ## Giới hạn
 
