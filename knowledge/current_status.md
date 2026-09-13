@@ -4,6 +4,17 @@
 
 ## Mốc mới — private-record final entitlement component v1 (2026-09-13)
 
+## Mốc tiếp theo — runtime v6 entitlement adapter (preflight)
+
+`security_runtime_v6_entitlement_adapter` đã qua 10 synthetic conditions và 25
+focused runtime/entitlement tests; preflight full QA đạt 2.353 pass/1
+intentional native-tqdm skip, setup/Ruff/mypy/knowledge đều đạt. Adapter dùng
+per-call host-bound final dependency trên loop v5, giữ Broker/warm guard/A0–A5
+và không sửa hay nhân bản `runtime_v5.py`; raw-user grant được hash-check trước
+output, extraction lỗi fail closed. Preflight source còn dirty, selected clean
+receipt chưa chạy; không model/Kaggle/Test/private GT. `phase5_accepted=false`;
+production guard/GPU, broader A4/origin và grouped Dev vẫn mở.
+
 Component host-only `final_entitlement_v1` đã qua 12 điều kiện synthetic và 17
 focused tests; selected clean-release QA đạt 2.333 pass/13 optional/native skips
 (preflight: 2.345 pass/1 skip), cùng setup/Ruff/mypy/knowledge. Nó bind raw-user final clause bằng hash, yêu cầu exact

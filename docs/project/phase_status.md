@@ -330,6 +330,15 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   This is a
   host-only component milestone; runtime A0-A6 adoption, broader origin coverage,
   semantic completeness and the general private-final gate remain open.
+- [x] Bounded `security_runtime_v6_entitlement_adapter`: 10 deterministic
+  synthetic runtime conditions and 25 focused runtime/entitlement tests cover
+  trusted explicit/auto extraction, redaction, wrong-source/untrusted and
+  normalized-only denial, public no-match, parse terminal, A0 pass-through and
+  host hash rejection. Preflight full QA: 2,353 pass / 1 intentional native-tqdm
+  skip; setup/Ruff/mypy/knowledge pass. [Contract](../architecture/phase5_runtime_v6_entitlement_contract.md)
+  and [report](../evaluation/phase5_runtime_v6_entitlement_v1_report.md). This
+  adapter milestone does not close runtime production guard/GPU, broader A4 or
+  grouped Dev/freeze gates.
 - [x] Task-local warm guard and v5 runtime: 891 tests pass (46 new), setup/Ruff/
   mypy 194 files/knowledge pass. 22 cold/warm parity pairs = 44 Replay plus nine
   lifecycle conditions; 140 mock Broker calls and 240 fake guard classifications

@@ -63,6 +63,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Native pair T4×2: [ordinary A/B/A GPU evidence](ordinary_pair_gpu_v1.md).
 - A4 processing scope: [bounded host-only component](processing_scope_v1.md).
 - Private final access: [bounded entitlement component](final_entitlements_v1.md).
+- Runtime v6 final access: [entitlement adapter](runtime_v6_entitlement_v1.md).
 - Bằng chứng lịch sử: [Phase 1](phase1_evidence.md),
   [Phase 2 v1 cũ](phase2_evidence.md),
   [audit v1 và withdrawal](integrity_audit_20260905.md).

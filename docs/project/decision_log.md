@@ -1238,3 +1238,17 @@ and are not inferred here.
   complete origin coverage, runtime A0–A6 adoption, ASR/utility evidence or Phase
   5 acceptance. QA uses synthetic data only (12 cases, no model/Kaggle/Test),
   and all prior seals/receipts remain unchanged.
+
+# 2026-09-13 — Add versioned runtime v6 entitlement adapter
+
+- Add `security_runtime_v6_entitlement_adapter` as a host-only A6 composition
+  over the frozen task-local v5 loop. A per-call function-global map supplies
+  the entitlement final bound without modifying or duplicating `runtime_v5.py`.
+- A supplied `FinalEntitlement` must hash-bind to the raw task instruction before
+  any output/guard worker is created. When omitted, only the raw user clause is
+  extracted at the final sink; extraction failure becomes an empty grant. The
+  existing Broker, warm-guard, A0–A5 policy and observable traces remain active.
+- QA is limited to ten synthetic runtime conditions and 25 focused tests using
+  `data/smoke`; no real model/Kaggle/Dev/Test/private-GT inference. This does
+  not close production guard/GPU lifecycle, broader A4/origin coverage, grouped
+  Dev freeze or Phase 5 acceptance; prior seals remain unchanged.

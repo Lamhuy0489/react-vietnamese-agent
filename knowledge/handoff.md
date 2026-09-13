@@ -2,6 +2,16 @@
 
 Cập nhật: 2026-09-13. Đây là chỉ dẫn tiếp tục, không thay thế contract.
 
+## Mốc mới — runtime v6 entitlement adapter (preflight)
+
+`security_runtime_v6_entitlement_adapter` đã qua 10 synthetic cases, 25 focused
+runtime/entitlement tests và preflight full QA 2.353 pass/1 native-tqdm skip;
+setup/Ruff/mypy/knowledge đều đạt. Adapter giữ nguyên loop v5 qua per-call
+function map, hash-binds supplied entitlement trước output và auto-extracts raw
+user only at final A6. Chưa sửa/nhân bản runtime v5. Cần selected clean run để
+tạo manifest; sau đó mới xử lý broader A4/origin, production guard/GPU và
+grouped Dev.
+
 ## Mốc mới — private-record final entitlement component v1
 
 `final_entitlement_v1` đã qua 12 synthetic cases, 17 focused tests và selected
