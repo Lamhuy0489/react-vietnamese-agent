@@ -2,10 +2,18 @@
 
 ## Hiện hành — remediation v2 / runtime v7
 
+2026-09-14: [pair/runtime v3](pair_runtime_v3.md) đã nối observed shutdown vào
+cả pair và agent-only trên CPU. 74 focused tests, 63 joined receipts và bốn
+pair teardown fixtures; full **2.704 pass/1 skip**, 670,56s. Setup/Ruff/mypy
+335 files/knowledge đạt; 468 source/646 raw hashes khớp, 169 data hashes không
+đổi. Native factory/runner/auditor và exact package là bước tiếp; gate GPU,
+guard quality và freeze vẫn mở. [Report](../docs/evaluation/phase5_pair_runtime_v3_report.md).
+
 2026-09-14: [standalone observed shutdown v2](worker_shutdown_v2.md) đạt 80 focused
 tests, full 2.630 pass/1 skip; 462 source/677 raw hashes khớp, 169 data hashes
 không đổi. Hai synthetic cases GRACEFUL, các fault cases vẫn bounded/reaped.
-Chưa nối pair/native, không đóng thêm production lifecycle gate từ CPU.
+Ở mốc standalone chưa nối pair/native; CPU v3 phía trên bổ sung pair wiring,
+không đóng thêm production lifecycle gate từ CPU.
 
 Native runtime technical pilot đã COMPLETE/audit: 205 raw/2 remote files khớp,
 7/7 terminal và VRAM recovery. Nhưng **0 tool calls/0 guard calls**, 12 workers
@@ -42,7 +50,7 @@ không đổi. Chưa gọi là production-ready.
 | Repair CPU, receipt toàn vẹn | Đạt working-tree CPU QA; lịch sử sai hash giữ riêng |
 | Bounded A4 runtime integration | V7 đã qua regression/full QA |
 | Bounded private-final/origin fixes | V2 đã qua regression/full QA |
-| ModelPair/runtime host ownership + trace join CPU | V2 bổ sung failure/timing đạt QA; v1 CPU02 giữ nguyên |
+| ModelPair/runtime host ownership + trace join CPU | V3 thêm observed shutdown và cold/warm/PID joins đạt QA; v1/v2 giữ nguyên |
 | Production ModelPair/runtime + graceful GPU lifecycle | Chưa đóng |
 | Production guard quality + grouped Dev differential | Chưa đóng |
 | Broader semantic coverage + formal Phase 5 freeze | Chưa đóng |

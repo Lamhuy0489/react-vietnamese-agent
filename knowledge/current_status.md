@@ -4,11 +4,18 @@ Cập nhật: 2026-09-14. **Phase 5 đang làm, chưa nghiệm thu.**
 
 ## Hiện hành — sửa lỗi sau audit
 
-Đã chốt [worker shutdown v2](worker_shutdown_v2.md): standalone CPU, chưa nối
+Đã chốt CPU [pair/runtime v3](pair_runtime_v3.md), source `c4afb83`: 74 focused
+tests, 63 runtime receipts join hợp lệ; full **2.704 pass/1 optional-tqdm skip**,
+670,56s. Setup/Ruff/mypy 335 files/knowledge đạt; 468 source/646 raw hashes khớp,
+169 data hashes không đổi. [Receipt](../experiments/manifests/phase5_pair_runtime_v3_cpu01.json)
+đã selected; không còn QA chạy, không có GPU mới. Bước tiếp là native wiring/
+runner/auditor và exact package, chưa đóng gate GPU/quality/freeze.
+
+Mốc đã chốt trước là [worker shutdown v2](worker_shutdown_v2.md): standalone CPU, chưa nối
 ModelPair/GPU. 80 focused tests đạt (34 mới + 46 regression cũ); full QA
 **2.630 pass/1 optional-tqdm skip**, 581,50s. 462 source/677 raw hashes khớp,
-169 data hashes không đổi. Không còn job CPU/GPU chạy. Bước tiếp là
-[pair/agent-only wiring và lifecycle audit](worker_shutdown_integration_next.md).
+169 data hashes không đổi. Job standalone đã xong. Bước tiếp sau CPU v3 là
+[native wiring và lifecycle audit](worker_shutdown_integration_next.md).
 Tra tài nguyên chung tại [sổ notebook/Dataset Kaggle](kaggle_resources.md).
 
 Mốc native gần nhất: [seven-level native package](phase5_security_runtime_probe_v1.md)

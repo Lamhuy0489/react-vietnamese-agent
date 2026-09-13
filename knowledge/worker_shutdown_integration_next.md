@@ -1,7 +1,9 @@
 # Điểm nối tiếp sau standalone shutdown CPU
 
-2026-09-13. Đây là bản đồ triển khai kế tiếp, **chưa phải code đã tích hợp**.
-[Worker v2](worker_shutdown_v2.md) và [handoff](handoff.md) quyết định mốc hiện hành.
+2026-09-14. Bản đồ ban đầu lập ngày 2026-09-13; ba điểm CPU đầu bảng đã có
+[pair/runtime v3](pair_runtime_v3.md), 74 focused tests và full 2.704 pass/1 skip đạt.
+Hai điểm native cuối bảng vẫn chưa tích hợp. [Handoff](handoff.md) quyết định
+mốc đã được chọn nghiệm thu; không dùng bảng lịch sử để chạy lại việc đã xong.
 
 ## Các điểm cần version cùng nhau
 
@@ -21,8 +23,9 @@
   worker death, timeout, close idempotence, partial cleanup và reaped handles.
 - Chỉ gọi GRACEFUL khi ACK + serve returned + process exit 0 + reaped; worker
   trả zero exit đột ngột không có serve return vẫn là EXITED.
-- Current event validator chỉ kiểm consistency một event; chưa có cross-worker,
-  cross-receipt PID/hash proof cho v2. Không quảng cáo nó như pair/native auditor.
+- Standalone event validator chỉ kiểm consistency một event. Pair/runtime auditor
+  v3 đã bổ sung PID/config/event joins trên CPU; native auditor vẫn cần version
+  riêng. Không quảng cáo standalone validator như pair/native auditor.
 - Exact archive/expanded worker mounts, offline import closure, 8 tools/recovery,
   public Dummy/resume, source hashes/identity pinned, rồi mới native diagnostic.
 
@@ -35,3 +38,27 @@ tool/guard coverage được định trước và identity mới, không gọi l
 Không thay task/prompt âm thầm, không ghép kết quả của hai identity.
 
 [Sổ notebook/Dataset](kaggle_resources.md) phải cập nhật mỗi lượt Kaggle mới.
+
+## Bước triển khai native cụ thể sau CPU acceptance
+
+1. Tạo entry point native riêng trả về `ShutdownPair`, cấu hình
+   `ShutdownPairConfig` với identity model/revision hiện hành. Không sửa
+   `ordinary_pair_probe_v1.native_pair` hoặc `request_policy_pair_v1.policy_pair`:
+   các hàm frozen này vẫn tạo `ModelPair` v1. Không tạo pair v1 rồi thay workers.
+2. Giữ cùng stack lazy cho mỗi role: `ThreadProgressFactory` →
+   `RequestPolicyFactory` → `EfficientRequestFactory` → native factory.
+   Kiểm lại model input/evidence path isolation, pinned snapshot, no eager load.
+   A0/A1 dùng agent stack tương đương nhưng `AgentWorkerConfig`/runtime v3,
+   không khởi tạo guard. Các native factory bên dưới có thể tái sử dụng nguyên
+   trạng; composition và run identity cần version mới.
+3. Version runner và native/release auditor cùng profile runtime v3. Bind
+   sidecar metrics, request/generation/config hashes, PID và shutdown observations;
+   kiểm partial failure, forced exit và VRAM recovery riêng, không suy từ ACK.
+4. Đóng gói exact archive/expanded mounts, subprocess import/worker tests, public
+   Dummy/resume và bộ regression; source phải được push trước inference.
+   Ghi trước task IDs, coverage mong đợi và điều kiện dừng của diagnostic mới.
+5. Chỉ sau preflight mới kiểm lại quyền/quota Kaggle và submit identity mới;
+   cập nhật directory với URL/version/source/receipt thực tế. Kết quả calculator
+   v1 zero-tool/guard vẫn giữ nguyên, không phải missing task để retry.
+
+Đây là checklist chuẩn bị, không phải bằng chứng code native hoặc GPU đã đạt.

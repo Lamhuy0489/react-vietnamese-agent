@@ -243,13 +243,22 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 
 ## Phase 5 progress
 
+- [x] Observed-shutdown pair/runtime v3 bounded CPU integration (2026-09-14):
+  both paired roles and A0/A1 use worker v2, separate startup/call identities,
+  PID/config/lifecycle joins. 74 focused tests, 63 joined runtime receipts and
+  four pair teardown fixtures; full 2,704 pass/one optional-tqdm skip (670.56s).
+  Setup/Ruff/mypy 335 files/knowledge pass; 468 source/646 raw hashes re-audited,
+  169 data hashes unchanged. [Report](../evaluation/phase5_pair_runtime_v3_report.md)
+  and [receipt](../../experiments/manifests/phase5_pair_runtime_v3_cpu01.json).
+  Native composition/package/GPU, guard quality and Phase 5 freeze remain open.
 - [x] Standalone observed shutdown v2 CPU QA (2026-09-14): 80 focused tests
   (34 new/46 existing), full 2,630 pass/one optional-tqdm skip in 581.50s;
   setup/Ruff/mypy 331 files/knowledge pass. 462 source/677 raw hashes match,
   169 data hashes unchanged. Eight observed v2 cases and one v1 control reaped;
   two synthetic GRACEFUL cases do not establish native graceful cleanup.
   [Report](../evaluation/phase5_worker_shutdown_v2_report.md). ModelPair/runtime
-  wiring, native diagnostic and production lifecycle acceptance remain open.
+  wiring was pending at that milestone and is covered by CPU v3 above; native
+  diagnostic and production lifecycle acceptance remain open.
 - [x] Native runtime technical pilot version 1 COMPLETE and artifact audit passed:
   205 raw/two remote files match, seven terminal/recovered levels; 12 native model
   loads and seven agent generations. Zero tool/guard calls and 12 TERMINATE/-15

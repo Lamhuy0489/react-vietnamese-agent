@@ -4,22 +4,28 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 ## Đang làm
 
-Tiếp [pair/runtime v3](pair_runtime_v3.md): cả agent-only và pair dùng observed
+Đã chốt CPU [pair/runtime v3](pair_runtime_v3.md): cả agent-only và pair dùng observed
 shutdown v2, A0/A1 tách start/call deadline; auditor nối PID/config/lifecycle.
-63 tests sơ bộ đạt; đang chốt focused mở rộng/full QA, chưa có GPU mới.
-Output dự kiến `results/phase5_pair_runtime_v3_cpu01`; không chạy trùng.
+Source `c4afb83`, 74 focused tests đạt 76,90s; 63 receipts đã join độc lập.
+Full QA **2.704 pass/1 optional-tqdm skip**, 670,56s; setup/Ruff/mypy 335 files/
+knowledge đạt. 468 source/646 raw hashes khớp, 169 data hashes không đổi.
+[Receipt](../experiments/manifests/phase5_pair_runtime_v3_cpu01.json) SHA-256
+`fc86feb846340e8e323e6f5fc842ab0f977f49463853decdbe2e3ba94aa183d8`;
+[report](../docs/evaluation/phase5_pair_runtime_v3_report.md). Không còn QA chạy;
+chưa có GPU mới. Output `results/phase5_pair_runtime_v3_cpu01` đã chốt,
+không chạy trùng/ghi thêm. Native wiring là phần đang chờ triển khai tiếp.
 
 Sổ tài nguyên cho nhóm: [Kaggle notebook/Dataset links](kaggle_resources.md),
 gồm mốc hiện hành/lịch sử, version, receipts và lưu ý quyền private. Tiếp phần
-versioned graceful worker shutdown dưới đây; không gửi GPU hoặc đọc Test mới.
+native wiring sau khi chốt CPU dưới đây; không gửi GPU hoặc đọc Test mới.
 
-[Worker shutdown v2](worker_shutdown_v2.md) đã chốt standalone CPU: 80 focused
+[Worker shutdown v2](worker_shutdown_v2.md) là mốc standalone CPU trước: 80 focused
 tests đạt (34 mới + 46 cũ), 8 v2 events + một legacy control; chưa tích hợp
-ModelPair/native. Full QA **2.630 pass/1 optional-tqdm skip**, 581,50s;
+ModelPair/native ở mốc đó. Full QA **2.630 pass/1 optional-tqdm skip**, 581,50s;
 setup/Ruff/mypy 331 files/knowledge đạt. Source `a45696b`, output riêng
 `results/phase5_worker_shutdown_v2_cpu01`; [receipt](../experiments/manifests/phase5_worker_shutdown_v2_cpu01.json).
-462 source/677 raw hashes kiểm lại khớp, 169 data hashes không đổi. Không còn
-job CPU/GPU chạy. [Report](../docs/evaluation/phase5_worker_shutdown_v2_report.md).
+462 source/677 raw hashes kiểm lại khớp, 169 data hashes không đổi. Job mốc
+standalone đã xong. [Report](../docs/evaluation/phase5_worker_shutdown_v2_report.md).
 Đã kiểm riêng 26 Kaggle handles trong directory đều có manifest đã lưu; không
 phải live access check. README/AGENTS liên kết và quy định cập nhật directory.
 
@@ -92,11 +98,12 @@ commit `be73761`, không đổi nhãn lịch sử thành clean release.
 ## Bước tiếp theo
 
 1. Giữ nguyên identity đã hoàn tất; không chạy trùng hoặc ghi thêm vào output.
-2. Tích hợp worker v2 vào **cả pair và agent-only** bằng version riêng, không sửa
-   frozen v1. [Bản đồ điểm nối](worker_shutdown_integration_next.md) chỉ rõ factory,
-   cold/warm budget và auditor. Standalone CPU đã xong; cần pair/runtime parity,
-   cross-worker PID/config/event joins và fault cases trước exact mount/GPU.
-   Không coi CPU ACK là bằng chứng đã sửa native teardown hoặc GPU recovery.
+2. Tạo native factory composition trả `ShutdownPair` và nối runner/auditor mới
+   với runtime v3. [Bản đồ điểm nối](worker_shutdown_integration_next.md) có
+   checklist cụ thể. Pair/agent-only CPU parity, PID/config/event joins và fault
+   cases đã đạt; không chạy lại standalone hoặc sửa frozen factory v1. Kiểm
+   exact archive/expanded mounts và source identity trước GPU. Không coi CPU
+   ACK là bằng chứng đã sửa native teardown hoặc GPU recovery.
 3. Định trước diagnostic mới cho tool/guard-path coverage (pilot calculator có
    zero tool/guard calls phải giữ nguyên). Sau đó grouped Dev guard quality,
    broader coverage và freeze. Không retry semantic hoặc mở Phase 6/7/Test.
