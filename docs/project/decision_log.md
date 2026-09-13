@@ -1328,3 +1328,17 @@ and are not inferred here.
 - New exact package extends the frozen ordinary overlay to 83 files and retains
   base source/model/wheel pins. CPU tests and exact mount checks precede GPU use.
   Guard selection, grouped Dev, general coverage and Phase 5 freeze remain open.
+
+# 2026-09-13 — Preserve native runtime pilot limitations
+
+- Exact local preflights corrected two public-package import dependencies;
+  selected preflight03 has 82 overlay files, not the initial 83. Failed local
+  identities remain historical. Only one native kernel version was submitted.
+- Native version 1 completed with seven direct final answers, no tool/guard
+  calls and forced cleanup for all 12 workers. Keep this result unchanged:
+  terminal/numeric correctness is not tool-use compliance or guard validation.
+- Artifact/metadata/native joins passed independently. Record timing as a
+  single-task technical observation, not a controlled defense-speed comparison.
+- Next lifecycle/guard-path diagnostics need separate identities and predeclared
+  coverage. No semantic retry of this calculator task, Test tuning or automatic
+  production guard selection. This records a coverage limitation, not scope change.

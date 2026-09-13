@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: runtime v7/components v2 and task-owned ModelPair pass bounded CPU QA; native runtime/GPU, guard quality and freeze remain open**
+- Current stage: **Phase 5 in progress: native seven-level artifact audit passes; graceful lifecycle, guard-path/quality coverage and freeze remain open**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-13
 
@@ -243,6 +243,12 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 
 ## Phase 5 progress
 
+- [x] Native runtime technical pilot version 1 COMPLETE and artifact audit passed:
+  205 raw/two remote files match, seven terminal/recovered levels; 12 native model
+  loads and seven agent generations. Zero tool/guard calls and 12 TERMINATE/-15
+  cleanups mean this does not close production lifecycle, guard quality or freeze.
+  Release auditor QA: 2,596 tests pass/one optional tqdm skip; setup/Ruff/mypy/
+  knowledge pass. [Native report](../evaluation/phase5_security_runtime_gpu_v1_report.md).
 - [x] Native seven-level package CPU02 and exact offline preflight03 (2026-09-13):
   2,583 tests pass/one optional native-tqdm skip; 23 focused tests and
   setup/Ruff/mypy/knowledge pass. 456 source/2,859 raw hashes match and 169 data

@@ -10,20 +10,38 @@ auditor, builder/wrapper 82-file overlay. CPU02 đạt 2.583 pass/1 skip,
 23 focused tests; setup/Ruff/mypy 327 files/knowledge đạt. 456 source/2.859 raw
 hashes khớp; 169 data hashes không đổi. Exact preflight03 archive/expanded đạt
 7/7 runtime levels, 8 tools/recovery, 21 Dummy/resume; 426 raw files/88 source
-files đã kiểm. Source `372d685`; cần push evidence rồi upload GPU một lần.
+files đã kiểm. Source inference cố định `372d685`.
 CPU01 và preflight01/02 giữ như development history, không chọn acceptance.
 Source/evidence đã push `d1e3e27`. **Đã submit kernel version 1**
-`huylmhuhu/react-vn-security-runtime-v1`, timeout 7200s, T4; remote status RUNNING.
-Không push lại. Theo dõi lượt hiện tại, download output mới khi terminal.
-Pull với suffix `/1` bị API 403; đang pull tên hiện hành vào
-`results/phase5_security_runtime_gpu_v1_remote02` để authenticate source.
+`huylmhuhu/react-vn-security-runtime-v1`, timeout 7200s, T4; status **COMPLETE**.
+Đã tải và audit `results/phase5_security_runtime_gpu_v1_output01`: 205 raw/two
+remote files khớp, local joins bằng byte với remote. 7/7 terminal/recovered;
+**0 tool calls/0 guard calls**, 12 workers TERMINATE/-15. Không gọi là 7/7 utility
+hoặc native guard/graceful acceptance. Không còn job hay downloader đang chạy.
+Không push lại, ghi đè hoặc retry semantic result.
+Pull với suffix `/1` bị API 403; pull tên hiện hành vào
+`results/phase5_security_runtime_gpu_v1_remote02` thành công, wrapper SHA-256
+khớp preflight; metadata private/offline/T4/image/mount đúng. Live logs trả HTTP
+500 trong lúc chạy; không nhầm lỗi đọc log thành lỗi inference.
+
+Auditor local `scripts/audit_phase5_security_runtime_gpu.py` và 13 tests mới đạt;
+commit `d83d79b`, không sửa inference. Full release QA đã xong:
+**2.596 pass/1 skip**, 566,82s, setup/Ruff/mypy 328 files/knowledge đạt.
+Output `results/phase5_security_runtime_gpu_release_cpu01`;
+receipt `experiments/manifests/phase5_security_runtime_gpu_release_cpu01.json`.
+458 source/2.859 raw hashes kiểm lại khớp, 169 data hashes không đổi.
+[GPU receipt](../experiments/manifests/phase5_security_runtime_gpu_v1_audit01.json)
+SHA-256 `e132a46c23f7ae71abcd8c5c4097fcd8adb6d0aa050c07788841b301ec8e6d5f`.
+[Report](../docs/evaluation/phase5_security_runtime_gpu_v1_report.md) ghi timing,
+limits và command audit không inference. Scan 207 files/four credential values:
+zero matches. Raw generated files không track Git; receipts/report được chọn lưu.
 Source pair/runtime v2 và mọi raw lịch sử giữ nguyên.
 
 [Pair/runtime v2](phase5_pair_runtime_v2.md) đã hoàn tất bounded CPU QA:
 event-bound host outcomes và explicit failed-startup timing. 64 focused tests;
 full **2.560 pass/1 native-tqdm skip** (551,55s), setup/Ruff/mypy 320 files/knowledge đạt.
 63 joined receipts, 445 source/641 raw hashes khớp, 169 data hashes không đổi;
-971 entries CPU02 v1 kiểm lại vẫn khớp. Không có job CPU/GPU còn chạy.
+971 entries CPU02 v1 kiểm lại vẫn khớp. Mốc CPU v2 này đã kết thúc.
 [Receipt v2](../experiments/manifests/phase5_pair_runtime_v2_cpu01.json) SHA-256
 `0832ae8c29f925f8bc522ac3138fa6d41132d3dae53ac68d44ffd7bd58a453b9`.
 Working-tree CPU QA anchored parent `817da23`; không đổi thành clean release.
@@ -55,17 +73,19 @@ commit `be73761`, không đổi nhãn lịch sử thành clean release.
 ## Bước tiếp theo
 
 1. Giữ nguyên identity đã hoàn tất; không chạy trùng hoặc ghi thêm vào output.
-2. Theo dõi kernel version 1 đã gửi từ gói
-   `build/kaggle/phase5_security_runtime_v1_preflight03/kernel` với
-   `NvidiaTeslaT4`. Không submit trùng `huylmhuhu/react-vn-security-runtime-v1`.
-   Download vào thư mục mới khi terminal, authenticate remote source, join native artifacts;
-   không retry semantic errors. Xem [package receipt](phase5_security_runtime_probe_v1.md).
-3. Sau exact package, kiểm native GPU lifecycle, guard
-   quality trên grouped Dev, kiểm broader coverage và freeze. Chưa mở Phase 6/7.
+2. Thiết kế versioned graceful lifecycle: v1 `WarmGuardBackend._cleanup` dùng
+   chung 0,5s cho stop/join và terminate; không có stop acknowledgement để phân
+   biệt teardown chậm với worker chưa nhận stop. Đây là hạn chế quan sát, chưa
+   chứng minh nguyên nhân native forced cleanup. Không sửa frozen v1 tại chỗ.
+   Cần CPU tests cho stop acknowledgement/slow teardown/unresponsive worker,
+   giữ bounded fallback/cancellation trước native diagnostic identity mới.
+3. Định trước diagnostic mới cho tool/guard-path coverage (pilot calculator có
+   zero tool/guard calls phải giữ nguyên). Sau đó grouped Dev guard quality,
+   broader coverage và freeze. Không retry semantic hoặc mở Phase 6/7/Test.
 
 Pending access: không cần tài khoản mới. Đã đọc Kaggle skill/preflight và kiểm
-quota owner `huylmhuhu` ngày 2026-09-13: GPU còn 29,86h, refresh 2026-09-19.
-Đây là snapshot, không reservation. Đã kiểm SDK Dataset private/ready/version 1
+quota owner `huylmhuhu` trước run ngày 2026-09-13: GPU còn 29,86h, refresh 2026-09-19.
+Đây là snapshot trước run, không quota hiện tại/reservation. Đã kiểm SDK Dataset private/ready/version 1
 và kernel name chưa trùng trước upload (2026-09-13).
 Không cycling credential.
 Tác vụ model nặng chỉ chạy Kaggle, không chạy local.

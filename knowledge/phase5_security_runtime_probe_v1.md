@@ -1,6 +1,22 @@
 # Seven-level native runtime package v1
 
-2026-09-13. CPU02 và exact preflight03 đạt; chưa có GPU run tại mốc receipt này.
+2026-09-13. CPU02/preflight03 đạt; GPU version 1 COMPLETE, independent audit đạt.
+
+## Kết quả hiện hành
+
+205 raw/2 remote files khớp; local joined audits bằng byte với remote receipt.
+7/7 terminal completed và VRAM recovered, nhưng **0 tool calls, 0 guard calls**:
+model trả lời thẳng 391. Không phải 7/7 utility hoặc kiểm chứng guard protection.
+12 workers TERMINATE/-15, chưa graceful. Không retry kết quả semantic này.
+[GPU report](../docs/evaluation/phase5_security_runtime_gpu_v1_report.md) và
+[receipt](../experiments/manifests/phase5_security_runtime_gpu_v1_audit01.json).
+Release auditor full QA: 2.596 pass/1 skip, 566,82s; 13 tests mới,
+setup/Ruff/mypy 328 files/knowledge đạt. 458 source/2.859 raw hashes khớp,
+169 data hashes không đổi. Không còn job CPU/GPU đang chạy ở mốc này.
+
+Tiếp: graceful worker lifecycle bằng version mới/CPU acknowledgement negatives,
+sau đó native diagnostic mới có mục tiêu coverage được định trước. Giữ nguyên
+source/runtime/prompt/output của calculator pilot; không sửa để lấy điểm cao hơn.
 
 ## Nguồn mới
 

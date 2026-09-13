@@ -2,6 +2,12 @@
 
 ## Hiện hành — remediation v2 / runtime v7
 
+Native runtime technical pilot đã COMPLETE/audit: 205 raw/2 remote files khớp,
+7/7 terminal và VRAM recovery. Nhưng **0 tool calls/0 guard calls**, 12 workers
+TERMINATE/-15. Package/native model execution đã có bằng chứng; gate production
+lifecycle vẫn mở. [Báo cáo](../docs/evaluation/phase5_security_runtime_gpu_v1_report.md).
+Release QA 2.596 pass/1 skip; không suy phần trăm từ số test tăng thêm.
+
 Mốc tiếp theo [pair/runtime v2](phase5_pair_runtime_v2.md) đã đóng phần CPU
 post-response worker death và failed-startup timing: 64 focused tests,
 2.560 pass/1 skip full QA (551,55s), 63 joined receipts, 445 source/641 raw

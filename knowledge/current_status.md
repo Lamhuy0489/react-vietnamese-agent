@@ -9,9 +9,12 @@ Mốc mới nhất: [seven-level native package](phase5_security_runtime_probe_v
 456 source/2.859 raw hashes khớp, 169 data hashes không đổi. Exact preflight03
 archive/expanded đều đạt 7/7 synthetic runtime levels và base tool/Dummy/resume.
 Source `372d685`; bước tiếp push source/evidence, gửi private Kaggle technical
-probe rồi audit native output. Đã push `d1e3e27` và submit kernel version 1
-`huylmhuhu/react-vn-security-runtime-v1`; trạng thái đầu RUNNING. Chưa có kết quả
-native đã audit; không submit trùng. [Handoff](handoff.md) có đường dẫn tiếp tục.
+probe rồi audit native output. Kernel version 1 đã **COMPLETE và audit đạt**:
+205 raw/2 remote files khớp; 7/7 terminal completed, VRAM recovered. Nhưng 0 tool
+calls/0 guard calls, 12 worker TERMINATE/-15. Chưa đóng native lifecycle/quality.
+Release auditor QA 2.596 pass/1 skip; 13 tests mới, setup/Ruff/mypy/knowledge đạt.
+Không còn job chạy; [báo cáo](../docs/evaluation/phase5_security_runtime_gpu_v1_report.md)
+và [handoff](handoff.md) ghi kết quả/bước tiếp, không submit trùng.
 
 Mốc trước: [pair/runtime v2 failure evidence](phase5_pair_runtime_v2.md).
 Đã kiểm process chết sau worker response cho cả hai role/victim, nối host outcome

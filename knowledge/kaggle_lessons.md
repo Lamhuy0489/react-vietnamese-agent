@@ -1,5 +1,22 @@
 # Ghi chú Kaggle Phase 1
 
+## Seven-level runtime package / CLI reads — 2026-09-13
+
+- Exact isolated mount found repository `validation/__init__.py` importing
+  benchmark QA absent from the worker. Keep worker namespace packaging; do not
+  add private/evaluator modules merely to satisfy an import. A second preflight
+  caught an authoring-schema import; use a local public-only task schema instead.
+  Both failed local identities remain intact; only preflight03 was submitted.
+- Installed CLI 2.2.4 `kernels pull owner/slug/1` returned API 403 for this private
+  kernel, while `pull owner/slug` succeeded. Authenticate returned code against
+  the frozen wrapper hash and explicit remote private/offline/model/image/GPU
+  metadata. Do not infer account failure or submit a replacement job from this.
+- One-shot logs were empty while RUNNING; live `--follow` returned HTTP 500.
+  Status subsequently became COMPLETE. Log-access failure is not evidence of
+  inference failure. Preserve output, keep polling the same identity and never
+  rerun semantic results to obtain a better score.
+- [Run evidence and source pins](phase5_security_runtime_probe_v1.md).
+
 ## Combined cancellation GPU v1 — 2026-09-09
 
 - Exact archive/expanded/PAX13file overlay preflight +17newtests trước submit;
