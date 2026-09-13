@@ -4,6 +4,11 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 ## Đang làm
 
+Tiếp [pair/runtime v3](pair_runtime_v3.md): cả agent-only và pair dùng observed
+shutdown v2, A0/A1 tách start/call deadline; auditor nối PID/config/lifecycle.
+63 tests sơ bộ đạt; đang chốt focused mở rộng/full QA, chưa có GPU mới.
+Output dự kiến `results/phase5_pair_runtime_v3_cpu01`; không chạy trùng.
+
 Sổ tài nguyên cho nhóm: [Kaggle notebook/Dataset links](kaggle_resources.md),
 gồm mốc hiện hành/lịch sử, version, receipts và lưu ý quyền private. Tiếp phần
 versioned graceful worker shutdown dưới đây; không gửi GPU hoặc đọc Test mới.

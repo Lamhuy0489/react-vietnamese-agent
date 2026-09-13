@@ -1354,3 +1354,14 @@ and are not inferred here.
 - Project resource index `knowledge/kaggle_resources.md` records saved notebook/
   Dataset handles with evidence, versions and private-access caveats for the team.
   It is development memory only, never model-prompt context or credentials.
+
+# 2026-09-14 — Version observed shutdown integration and agent-only deadlines
+
+- New pair/runtime v3 uses observed shutdown workers in both branches. Keep v1/v2
+  sources and the native calculator run unchanged. Inherit frozen pair ownership,
+  generation and failure semantics; version snapshot/profile and identity joins.
+- Agent-only now has separately recorded start/call deadlines, default 1200s/180s
+  matching paired agent. This fixes a diagnostic comparison limitation by creating
+  a new configuration, not by relabelling old timing. No policy/model/prompt change.
+- CPU parity/fault evidence cannot close native factory/cleanup or guard quality.
+  No new Kaggle identity until exact package and native auditor are prepared.
