@@ -4,6 +4,9 @@ Cập nhật 2026-09-13 từ receipts/report đã lưu trong Git. Đây là **me
 triển cho nhóm**, không đưa vào prompt benchmark. Trạng thái dưới đây là mốc
 bằng chứng lịch sử, không phải kiểm tra trực tuyến lại mọi URL hôm nay.
 
+Kiểm offline: 26 URL code/Dataset/model trong sổ đều có handle tương ứng trong
+`experiments/manifests/`. Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
+
 ## Bạn mới tham gia bắt đầu ở đâu?
 
 1. Đọc [trạng thái hiện tại](current_status.md) và [bàn giao](handoff.md).

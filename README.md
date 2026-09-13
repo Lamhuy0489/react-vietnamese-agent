@@ -11,8 +11,10 @@ công cụ trong môi trường tiếng Việt giả lập (hành chính–học
   **Phase 4 đã nghiệm thu**: runtime artifact/provenance, metadata và hooks;
   244 tests đạt, deep Dev parity và overhead đã kiểm chứng.
   Xem [báo cáo 12 DoD và giới hạn](docs/architecture/phase4_report.md).
-  Phase 5 đã có vòng ReAct chung A0/A1, chặn trước Broker và trace đầy đủ;
-  366 tests đạt. A2–A6 và nghiệm thu toàn Phase 5 còn đang triển khai.
+  **Phase 5 chưa nghiệm thu**: runtime v7/A0–A6 và native technical pilot đã có
+  artifact audit. Pilot hoàn tất nhưng chưa gọi tool/guard; native worker vẫn
+  forced cleanup. Đang bổ sung observed shutdown v2; xem
+  [trạng thái mới nhất](knowledge/current_status.md) và [bàn giao](knowledge/handoff.md).
 - Pilot đo hiệu suất Gemma 4 / Qwen 7B đã hoàn tất: strict 6/21 và 3/21 Dev,
   trung bình 11,66 và 10,92 giây/task; chưa phải kết quả Test hay kết luận chọn
   model. Xem [báo cáo](docs/evaluation/measured_dev_pilot_report.md).
@@ -68,6 +70,10 @@ mypy src scripts
 
 ## Kaggle Phase 1
 
+Tra tất cả mốc đang dùng và lịch sử tại **[Sổ notebook/Dataset Kaggle](knowledge/kaggle_resources.md)**:
+link, phiên bản, mục đích, report/receipt và lưu ý quyền private cho thành viên mới.
+Đây là memory phát triển của nhóm, không đưa vào prompt benchmark.
+
 Run được chấp nhận dùng Qwen2.5-3B-Instruct v1, Dataset v5 và kernel v4 trên
 NVIDIA T4 với internet tắt. Trước mọi lần upload phải chạy:
 
@@ -117,6 +123,7 @@ Thiết kế và hạn chế dữ liệu được mô tả tại
 - [Architecture](ARCHITECTURE.md)
 - [Team workflow](docs/project/team_workflow.md)
 - [Project knowledge index](knowledge/README.md)
+- [Kaggle notebook / Dataset directory](knowledge/kaggle_resources.md)
 
 Không commit credential. Các file Kaggle hiện có trong `credential kaggle/` được
 giữ ở local và bị `.gitignore` loại trừ toàn bộ.

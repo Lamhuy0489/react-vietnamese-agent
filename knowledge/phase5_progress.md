@@ -2,6 +2,11 @@
 
 ## Hiện hành — remediation v2 / runtime v7
 
+2026-09-14: [standalone observed shutdown v2](worker_shutdown_v2.md) đạt 80 focused
+tests, full 2.630 pass/1 skip; 462 source/677 raw hashes khớp, 169 data hashes
+không đổi. Hai synthetic cases GRACEFUL, các fault cases vẫn bounded/reaped.
+Chưa nối pair/native, không đóng thêm production lifecycle gate từ CPU.
+
 Native runtime technical pilot đã COMPLETE/audit: 205 raw/2 remote files khớp,
 7/7 terminal và VRAM recovery. Nhưng **0 tool calls/0 guard calls**, 12 workers
 TERMINATE/-15. Package/native model execution đã có bằng chứng; gate production

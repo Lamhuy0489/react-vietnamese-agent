@@ -1,6 +1,6 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-09-13. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch sử, không thay thế mục này.
+Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch sử, không thay thế mục này.
 
 ## Đang làm
 
@@ -8,10 +8,15 @@ Sổ tài nguyên cho nhóm: [Kaggle notebook/Dataset links](kaggle_resources.md
 gồm mốc hiện hành/lịch sử, version, receipts và lưu ý quyền private. Tiếp phần
 versioned graceful worker shutdown dưới đây; không gửi GPU hoặc đọc Test mới.
 
-[Worker shutdown v2](worker_shutdown_v2.md) đã triển khai standalone: 34 test mới
-đạt sơ bộ; chưa tích hợp ModelPair/native. Tiếp full QA output riêng
-`results/phase5_worker_shutdown_v2_cpu01`, receipt dự kiến
-`experiments/manifests/phase5_worker_shutdown_v2_cpu01.json`. Không chạy trùng.
+[Worker shutdown v2](worker_shutdown_v2.md) đã chốt standalone CPU: 80 focused
+tests đạt (34 mới + 46 cũ), 8 v2 events + một legacy control; chưa tích hợp
+ModelPair/native. Full QA **2.630 pass/1 optional-tqdm skip**, 581,50s;
+setup/Ruff/mypy 331 files/knowledge đạt. Source `a45696b`, output riêng
+`results/phase5_worker_shutdown_v2_cpu01`; [receipt](../experiments/manifests/phase5_worker_shutdown_v2_cpu01.json).
+462 source/677 raw hashes kiểm lại khớp, 169 data hashes không đổi. Không còn
+job CPU/GPU chạy. [Report](../docs/evaluation/phase5_worker_shutdown_v2_report.md).
+Đã kiểm riêng 26 Kaggle handles trong directory đều có manifest đã lưu; không
+phải live access check. README/AGENTS liên kết và quy định cập nhật directory.
 
 Đang làm [seven-level runtime package](phase5_security_runtime_probe_v1.md):
 agent-only factory, public synthetic A0–A6 checkpointed runner, native sidecar
@@ -82,12 +87,11 @@ commit `be73761`, không đổi nhãn lịch sử thành clean release.
 ## Bước tiếp theo
 
 1. Giữ nguyên identity đã hoàn tất; không chạy trùng hoặc ghi thêm vào output.
-2. Thiết kế versioned graceful lifecycle: v1 `WarmGuardBackend._cleanup` dùng
-   chung 0,5s cho stop/join và terminate; không có stop acknowledgement để phân
-   biệt teardown chậm với worker chưa nhận stop. Đây là hạn chế quan sát, chưa
-   chứng minh nguyên nhân native forced cleanup. Không sửa frozen v1 tại chỗ.
-   Cần CPU tests cho stop acknowledgement/slow teardown/unresponsive worker,
-   giữ bounded fallback/cancellation trước native diagnostic identity mới.
+2. Tích hợp worker v2 vào **cả pair và agent-only** bằng version riêng, không sửa
+   frozen v1. [Bản đồ điểm nối](worker_shutdown_integration_next.md) chỉ rõ factory,
+   cold/warm budget và auditor. Standalone CPU đã xong; cần pair/runtime parity,
+   cross-worker PID/config/event joins và fault cases trước exact mount/GPU.
+   Không coi CPU ACK là bằng chứng đã sửa native teardown hoặc GPU recovery.
 3. Định trước diagnostic mới cho tool/guard-path coverage (pilot calculator có
    zero tool/guard calls phải giữ nguyên). Sau đó grouped Dev guard quality,
    broader coverage và freeze. Không retry semantic hoặc mở Phase 6/7/Test.

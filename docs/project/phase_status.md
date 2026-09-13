@@ -2,7 +2,7 @@
 
 - Current stage: **Phase 5 in progress: native seven-level artifact audit passes; graceful lifecycle, guard-path/quality coverage and freeze remain open**
 - Setup owner: Lâm Quang Huy
-- Last updated: 2026-09-13
+- Last updated: 2026-09-14
 
 ## Setup acceptance
 
@@ -243,6 +243,13 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 
 ## Phase 5 progress
 
+- [x] Standalone observed shutdown v2 CPU QA (2026-09-14): 80 focused tests
+  (34 new/46 existing), full 2,630 pass/one optional-tqdm skip in 581.50s;
+  setup/Ruff/mypy 331 files/knowledge pass. 462 source/677 raw hashes match,
+  169 data hashes unchanged. Eight observed v2 cases and one v1 control reaped;
+  two synthetic GRACEFUL cases do not establish native graceful cleanup.
+  [Report](../evaluation/phase5_worker_shutdown_v2_report.md). ModelPair/runtime
+  wiring, native diagnostic and production lifecycle acceptance remain open.
 - [x] Native runtime technical pilot version 1 COMPLETE and artifact audit passed:
   205 raw/two remote files match, seven terminal/recovered levels; 12 native model
   loads and seven agent generations. Zero tool/guard calls and 12 TERMINATE/-15

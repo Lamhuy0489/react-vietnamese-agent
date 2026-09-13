@@ -16,6 +16,13 @@ credentials, private ground truth or held-out payloads in project memory.
 Run `make knowledge-check` after changing knowledge links or handoff structure.
 This is development memory only: do not inject it into benchmark model prompts.
 
+Keep `knowledge/kaggle_resources.md` as the team's notebook/Dataset directory.
+After a Kaggle submission or terminal audit, record the actual notebook URL and
+version, Dataset URL/version, source commit, dated status, and report/receipt
+links. Preserve failed/historical identities; distinguish requested aliases
+from actual handles. Record access caveats, never credentials. Do not claim
+remote availability from local link checks or make private resources public.
+
 ## Source-of-truth order
 
 1. Explicit user instruction for the current task.

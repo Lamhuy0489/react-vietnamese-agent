@@ -1,19 +1,25 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-09-13. **Phase 5 đang làm, chưa nghiệm thu.**
+Cập nhật: 2026-09-14. **Phase 5 đang làm, chưa nghiệm thu.**
 
 ## Hiện hành — sửa lỗi sau audit
 
-Mốc mới nhất: [seven-level native package](phase5_security_runtime_probe_v1.md)
+Đã chốt [worker shutdown v2](worker_shutdown_v2.md): standalone CPU, chưa nối
+ModelPair/GPU. 80 focused tests đạt (34 mới + 46 regression cũ); full QA
+**2.630 pass/1 optional-tqdm skip**, 581,50s. 462 source/677 raw hashes khớp,
+169 data hashes không đổi. Không còn job CPU/GPU chạy. Bước tiếp là
+[pair/agent-only wiring và lifecycle audit](worker_shutdown_integration_next.md).
+Tra tài nguyên chung tại [sổ notebook/Dataset Kaggle](kaggle_resources.md).
+
+Mốc native gần nhất: [seven-level native package](phase5_security_runtime_probe_v1.md)
 đạt CPU02: **2.583 pass/1 skip**, 23 focused tests; setup/Ruff/mypy/knowledge đạt.
 456 source/2.859 raw hashes khớp, 169 data hashes không đổi. Exact preflight03
 archive/expanded đều đạt 7/7 synthetic runtime levels và base tool/Dummy/resume.
-Source `372d685`; bước tiếp push source/evidence, gửi private Kaggle technical
-probe rồi audit native output. Kernel version 1 đã **COMPLETE và audit đạt**:
+Source `372d685` đã push trước native run. Kernel version 1 **COMPLETE và audit đạt**:
 205 raw/2 remote files khớp; 7/7 terminal completed, VRAM recovered. Nhưng 0 tool
 calls/0 guard calls, 12 worker TERMINATE/-15. Chưa đóng native lifecycle/quality.
 Release auditor QA 2.596 pass/1 skip; 13 tests mới, setup/Ruff/mypy/knowledge đạt.
-Không còn job chạy; [báo cáo](../docs/evaluation/phase5_security_runtime_gpu_v1_report.md)
+Không còn job GPU chạy; [báo cáo](../docs/evaluation/phase5_security_runtime_gpu_v1_report.md)
 và [handoff](handoff.md) ghi kết quả/bước tiếp, không submit trùng.
 
 Mốc trước: [pair/runtime v2 failure evidence](phase5_pair_runtime_v2.md).
