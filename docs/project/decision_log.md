@@ -1300,3 +1300,16 @@ and are not inferred here.
 - CPU02 uses fresh output/receipt identities and a joined auditor with deliberate
   corruption tests. This is an evidence-format correction, not a policy/prompt,
   model, decoding or benchmark change; no Test inspection is authorized.
+
+# 2026-09-13 — Version pair outcome and failed-startup evidence
+
+- Continue the owner-requested Phase 5 work with a v2 receipt/runtime/auditor,
+  preserving selected v1 CPU02 source and raw bytes. This is not a scope change.
+- Real process termination after a successful worker response reproduces the
+  pair post-response liveness failure. Worker OK and host ERROR are both true;
+  bind host proposals to exact pair event ranges instead of equating statuses.
+- Record elapsed startup on all exit paths and explicit completion. On startup
+  failure the interval can contain pair-internal cleanup; it is not weight-load
+  time. Outer cleanup and runtime-including-inner-cleanup remain separate.
+- Keep all policy/model/prompt/tool/decoding behavior and public interfaces.
+  CPU fault tests are not native GPU cleanup/guard quality or Phase 5 freeze.

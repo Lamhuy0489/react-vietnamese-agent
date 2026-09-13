@@ -7,7 +7,8 @@ Dataset readiness/version và quota phải được kiểm lại ngay trước s
 
 ## Nguồn cần đóng gói
 
-Entry point CPU mới: `react_agent.security_v1.pair_runtime_v1.run_pair_task`.
+Entry point đã kiểm CPU: `react_agent.security_v1.pair_runtime_v2.run_pair_task`.
+V1 CPU02 vẫn giữ làm bằng chứng lịch sử, không thay file tại chỗ.
 Static import traversal tìm 51 project modules, không unresolved absolute project
 imports. Đây chỉ là inventory; relative imports, templates, dữ liệu và dependency
 native phải được exact preflight. Không dùng lại overlay ordinary 56 files mà
@@ -17,6 +18,15 @@ Rà thêm ba entry points `pair_runtime_v1`, `pair_runtime_audit_v1` và
 `ordinary_pair_probe_v1`: closure absolute project imports + package init hiện
 có 74 file, không unresolved absolute imports. Không cộng cơ học 74 vào 56:
 builder cần trừ đúng các file đã nằm trong base bundle và kiểm tất cả hash.
+
+Inventory read-only mới cho v2 runtime + v2 auditor + ordinary native factory +
+`tools.factory`: 90 source/init files, không unresolved absolute imports; 22 file
+chưa nằm trong base và ordinary overlay, không có base-file hash conflict.
+Manifest của `build/kaggle/phase5_guard_probe_v1_bundle03/dataset` và các prior
+pins đã xác minh bằng `check_pins()`. Wheel sẵn tại
+`build/kaggle/worker_progress_v1_wheels/tqdm-4.67.3-py3-none-any.whl`.
+Đây chưa phải exact mount/runtime preflight. Runner/factory/auditor native mới
+sẽ thêm dependencies; tính lại allowlist sau khi code các entry points đó.
 
 Builder trước: `scripts/prepare_phase5_ordinary_pair.py`, wrapper trước:
 `notebooks/kaggle/ordinary_pair_kernel_v1.py`. Tạo builder/wrapper mới thay vì
@@ -43,15 +53,18 @@ CPU mới chỉ chứng minh control flow và worker ownership. Model không đ�
 trả câu trả lời mong muốn trong native measurement; parse/semantic failure phải
 giữ nguyên. Grouped Dev quality/guard selection là bước riêng trước freeze.
 
-## Fault/timing cases cần bổ sung trước native acceptance
+## Fault/timing follow-up trước native acceptance
 
-- CPU integration hiện kiểm load/timeout/invalid-output/cancel, chưa kiểm worker
+- CPU02 v1 kiểm load/timeout/invalid-output/cancel, chưa kiểm worker
   sibling chết đúng sau khi worker đang gọi đã trả response. `ModelPair.generate`
   có liveness check sau response: host có thể ERROR dù transport attempt là OK.
   Auditor native phải giữ cả hai sự kiện, không đồng nhất hai status này.
-- Startup thất bại hiện để outer `startup_seconds=0` (chưa hoàn tất startup),
+- Startup thất bại ở v1 để outer `startup_seconds=0` (chưa hoàn tất startup),
   không phải load latency bằng không. Dùng attempt elapsed làm bằng chứng failure;
   trước bảng timing native cần ghi explicit elapsed/complete cho failed startup.
+- [V2](phase5_pair_runtime_v2.md) đã sửa hai điểm trên và qua 64 integration tests;
+  full QA 2.560 pass/1 skip, source/raw/data và CPU02 v1 audit đạt. Receipt v2 đã
+  lưu; dùng source snapshot v2 sau commit/push cho package, không sửa bytes v1.
 - Không dùng auditor CPU như chứng nhận toàn bộ lỗi native. Cần nối thêm model
   snapshot/tokenizer, attention/request policy và GPU memory evidence trên gói mới.
 

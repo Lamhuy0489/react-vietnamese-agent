@@ -244,6 +244,15 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 ## Phase 5 progress
 
 - [x] Owner explicitly authorized Phase 5 on 2026-09-07.
+- [x] Pair/runtime v2 failure-evidence CPU validation (2026-09-13): real process
+  death after a worker response preserves worker OK vs pair/host ERROR through
+  event-bound proposals; failed startup retains elapsed and explicit completion.
+  64 focused tests, 63 joined receipts; full 2,560 pass/one native-tqdm skip
+  (551.55s), setup/Ruff/mypy 320 files/knowledge pass. 445 source/641 raw hashes
+  match, 169 data hashes unchanged and all 971 prior CPU02 entries still match.
+  [Report](../evaluation/phase5_pair_runtime_v2_report.md) and
+  [receipt](../../experiments/manifests/phase5_pair_runtime_v2_cpu01.json).
+  This extends bounded CPU coverage, not native GPU/quality/freeze acceptance.
 - [x] Task-owned ModelPair/runtime v7 bounded CPU integration (2026-09-13):
   A0/A1 agent-only; A2–A6 parent-owned role adapters with two sibling workers,
   dedicated pair trace schema and host-proposal/transport-attempt ledger.

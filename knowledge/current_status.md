@@ -4,7 +4,15 @@ Cập nhật: 2026-09-13. **Phase 5 đang làm, chưa nghiệm thu.**
 
 ## Hiện hành — sửa lỗi sau audit
 
-Mốc mới nhất là [ModelPair/runtime v7 bounded CPU integration](phase5_pair_runtime_v1.md):
+Mốc mới nhất: [pair/runtime v2 failure evidence](phase5_pair_runtime_v2.md).
+Đã kiểm process chết sau worker response cho cả hai role/victim, nối host outcome
+với pair event ledger; failed startup có elapsed thực tế và cờ completion.
+64 focused tests, full QA **2.560 pass/1 skip** (551,55s), 63 joined receipts;
+445 source/641 raw hashes khớp, 169 data hashes không đổi và CPU02 v1 nguyên vẹn.
+Chưa có runtime GPU mới. Bước tiếp: native agent-only factory tương đương paired
+agent, runner và exact archive/expanded package preflight.
+
+Mốc trước là [ModelPair/runtime v7 bounded CPU integration](phase5_pair_runtime_v1.md):
 A0/A1 chỉ agent, A2–A6 hai worker sibling qua parent role adapters. Đã tách schema
 pair và host proposals khỏi transport attempts. CPU02 có 52 focused tests,
 full QA **2.496 pass/1 skip** (477,43s), 51 joined receipts, 441 source/530 raw

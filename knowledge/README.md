@@ -23,6 +23,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - **Sửa lỗi Phase 5 hiện hành:** [runtime v7 / components v2](phase5_remediation_v2.md).
 - Điểm nối tiếp theo: [ModelPair/runtime ownership và acceptance](phase5_modelpair_runtime_next.md).
 - Tích hợp hiện hành: [ModelPair/runtime v7 CPU](phase5_pair_runtime_v1.md).
+- Đang củng cố: [Pair/runtime v2 — lỗi sau response và startup timing](phase5_pair_runtime_v2.md).
 - Native follow-up: [đóng gói runtime mới lên Kaggle](phase5_pair_runtime_kaggle_next.md).
 - Lưu trữ trước sửa lỗi: [status lịch sử](history_20260913_current_status.md),
   [handoff lịch sử](history_20260913_handoff.md); không dùng làm chỉ dẫn hiện hành.

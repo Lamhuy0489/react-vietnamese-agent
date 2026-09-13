@@ -4,12 +4,22 @@ Cập nhật: 2026-09-13. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 ## Đang làm
 
-Mốc hiện hành: [ModelPair/runtime v7 integration](phase5_pair_runtime_v1.md).
+[Pair/runtime v2](phase5_pair_runtime_v2.md) đã hoàn tất bounded CPU QA:
+event-bound host outcomes và explicit failed-startup timing. 64 focused tests;
+full **2.560 pass/1 native-tqdm skip** (551,55s), setup/Ruff/mypy 320 files/knowledge đạt.
+63 joined receipts, 445 source/641 raw hashes khớp, 169 data hashes không đổi;
+971 entries CPU02 v1 kiểm lại vẫn khớp. Không có job CPU/GPU còn chạy.
+[Receipt v2](../experiments/manifests/phase5_pair_runtime_v2_cpu01.json) SHA-256
+`0832ae8c29f925f8bc522ac3138fa6d41132d3dae53ac68d44ffd7bd58a453b9`.
+Working-tree CPU QA anchored parent `817da23`; không đổi thành clean release.
+CPU02 v1 bên dưới là lịch sử, không sửa source đã hash hoặc output cũ.
+
+Mốc trước: [ModelPair/runtime v7 integration](phase5_pair_runtime_v1.md).
 Role adapters đã triển khai; 52 integration tests pass. CPU01 full QA đạt
 2.492 pass/1 skip nhưng chưa chọn làm acceptance vì sai nhãn schema trace.
 Snapshot source CPU01 là `819af7a`; remediation `be73761` đã push origin/main.
 CPU02 hoàn tất tại `results/phase5_pair_runtime_v1_cpu02`: 2.496 pass/1 skip,
-477,43s; setup/Ruff/mypy 317 files/knowledge đạt. Không có job CPU/GPU còn chạy.
+477,43s; setup/Ruff/mypy 317 files/knowledge đạt. Lượt CPU02 đã kết thúc.
 Schema pair/host ledger audit đạt 51 receipts; 441 source/530 raw hashes khớp,
 169 tracked data hashes không đổi. [Receipt](../experiments/manifests/phase5_pair_runtime_v1_cpu02.json)
 SHA-256 `1bc819d51f47e90f2fb35ad904087626cbb958ea8665b250a848ec335009312e`.
@@ -30,11 +40,12 @@ commit `be73761`, không đổi nhãn lịch sử thành clean release.
 ## Bước tiếp theo
 
 1. Giữ nguyên identity đã hoàn tất; không chạy trùng hoặc ghi thêm vào output.
-2. Trước native package, bổ sung fault test worker sibling chết sau response:
-   worker OK không đồng nghĩa pair/host OK. Bổ sung explicit failed-startup timing;
-   bản CPU hiện lưu zero completion sentinel, không phải zero load time.
-   Giữ CPU02/source snapshot làm bằng chứng bounded, tạo identity mới cho thay đổi.
-3. Tiếp [native package/runtime](phase5_pair_runtime_kaggle_next.md), guard
+2. Tiếp [native package/runtime](phase5_pair_runtime_kaggle_next.md): thêm native
+   agent-only factory có cùng attention/request policy với paired agent; runner
+   v2 và independent native artifact join. Nguồn đã QA phải commit/push trước upload.
+   Base bundle03/pins đã kiểm, dependency traversal 90 files/22 bổ sung, chưa
+   exact mount preflight. Gói mới cần 8 tools/recovery, 21 public Dummy/resume.
+3. Sau exact package, kiểm native GPU lifecycle, guard
    quality trên grouped Dev, kiểm broader coverage và freeze. Chưa mở Phase 6/7.
 
 Pending access: không cần tài khoản mới. Đã đọc Kaggle skill/preflight và kiểm
