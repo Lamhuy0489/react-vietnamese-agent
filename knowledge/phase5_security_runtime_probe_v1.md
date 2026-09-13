@@ -44,5 +44,10 @@ Overlay mới 82 files. Giữ build/preflight01 và QA CPU01 làm development hi
 source thay đổi nên CPU01 không chọn làm acceptance. Chạy preflight02 và QA CPU02
 từ commit mới. Chưa GPU submission, không phải model/semantic retry.
 
+Preflight02 chạy xong base import/8 tools/21 Dummy/resume/ordinary audits, rồi
+phát hiện runner còn import `schemas.adversarial_workbench`. Thay bằng schema
+public hai trường ngay trong probe, không đưa authoring schema vào worker.
+Giữ preflight02; tiếp preflight03 sau source commit mới. Chưa gửi GPU.
+
 [Contract](../docs/architecture/phase5_security_runtime_probe_contract.md) ·
 [Handoff](handoff.md).

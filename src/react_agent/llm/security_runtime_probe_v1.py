@@ -10,6 +10,8 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
+from pydantic import BaseModel, ConfigDict
+
 from react_agent.agent.state import RuntimeConfig
 from react_agent.foundation.normalization import text_hash
 from react_agent.foundation.runtime_hooks import SourceCatalog
@@ -20,14 +22,23 @@ from react_agent.llm.model_pair_probe_v1 import TOLERANCE, PairObserver, validat
 from react_agent.llm.model_pair_v1 import ModelIdentity, ModelPair, PairConfig
 from react_agent.llm.native_agent_only_v1 import native_agent
 from react_agent.llm.ordinary_pair_probe_v1 import native_config, native_pair
-from react_agent.schemas.adversarial_workbench import PublicWorkbenchTask
 from react_agent.security_v1.contracts import Level, configuration
 from react_agent.security_v1.pair_runtime_v2 import run_pair_task
 from react_agent.tools.factory import build_clean_registry
 from react_agent.validation.pair_runtime_audit_v2 import audit_task
 
 LEVELS: tuple[Level, ...] = ("A0", "A1", "A2", "A3", "A4", "A5", "A6")
-TASK = PublicWorkbenchTask(
+
+
+class ProbeTask(BaseModel):
+    """Only public runtime fields; no benchmark authoring/evaluator dependency."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    task_id: str
+    instruction: str
+
+
+TASK = ProbeTask(
     task_id="awb_runtimecalculator",
     instruction="Dùng công cụ calculator để tính 17 * 23, sau đó trả lời kết quả bằng tiếng Việt.",
 )

@@ -31,6 +31,16 @@ def test_source_allowlist_and_pins(builder, wrapper):
         assert not any(s in name.lower() for s in ("credential", "/private/", "/test", "/pool/"))
 
 
+def test_probe_task_has_only_public_runtime_fields():
+    from react_agent.llm.security_runtime_probe_v1 import TASK
+
+    assert set(TASK.model_dump()) == {"task_id", "instruction"}
+    assert (
+        "adversarial_workbench"
+        not in (ROOT / "src/react_agent/llm/security_runtime_probe_v1.py").read_text()
+    )
+
+
 @pytest.mark.parametrize("fault", ["hash", "missing", "extra", "overwrite"])
 def test_overlay_mutations(wrapper, tmp_path, fault):
     helper = importlib.import_module("test_policy_native_compat_v1")
