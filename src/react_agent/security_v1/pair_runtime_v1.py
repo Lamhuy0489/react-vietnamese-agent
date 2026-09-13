@@ -15,6 +15,7 @@ from time import perf_counter
 from typing import Any, cast
 
 from react_agent.agent.state import RuntimeConfig
+from react_agent.foundation.artifacts import canonical_json
 from react_agent.foundation.normalization import text_hash
 from react_agent.foundation.runtime_hooks import SourceCatalog
 from react_agent.llm.base import GenerationConfig, LLMBackend, ModelResponse
@@ -47,6 +48,7 @@ class PairRoleBackend:
         identity = pair.config.agent if role == "agent" else pair.config.guard
         self.model_id, self.model_revision = identity.model_id, identity.model_revision
         self.config = pair.config.execution(role, cold=False)
+        self.host_attempts: list[dict[str, Any]] = []
 
     @property
     def attempts(self) -> list[dict[str, Any]]:
@@ -68,7 +70,29 @@ class PairRoleBackend:
         return self.pair.state != "READY" or self.closed
 
     def generate(self, messages: list[dict[str, str]], config: GenerationConfig) -> ModelResponse:
-        return self.pair.generate(self.role, messages, config)
+        before = len(self.attempts)
+        status = "ERROR"
+        error_class: str | None = None
+        try:
+            response = self.pair.generate(self.role, messages, config)
+            status = "OK"
+            return response
+        except BaseException as exc:
+            error_class = type(exc).__name__
+            raise
+        finally:
+            self.host_attempts.append(
+                {
+                    "sequence": len(self.host_attempts) + 1,
+                    "role": self.role,
+                    "status": status,
+                    "error_class": error_class,
+                    "request_sha256": text_hash(canonical_json(messages)),
+                    "generation_sha256": text_hash(canonical_json(config.model_dump())),
+                    "worker_attempts_before": before,
+                    "worker_attempts_after": len(self.attempts),
+                }
+            )
 
     def close(self) -> None:
         self.pair.close()
@@ -116,6 +140,8 @@ def run_pair_task(
     root.mkdir(parents=True, exist_ok=False)
     started = perf_counter()
     worker: WarmGuardBackend | None = None
+    agent_role: PairRoleBackend | None = None
+    guard: PairRoleBackend | None = None
     result: SecurityRun | None = None
     error_class: str | None = None
     cleanup_error: str | None = None
@@ -125,7 +151,8 @@ def run_pair_task(
         if pair is not None:
             pair.start()
             backend: LLMBackend = PairRoleBackend(pair, "agent")
-            guard: PairRoleBackend | None = PairRoleBackend(pair, "guard")
+            agent_role = cast(PairRoleBackend, backend)
+            guard = PairRoleBackend(pair, "guard")
         else:
             if agent_factory is None or agent_execution is None:
                 raise ValueError("agent-only inputs missing")
@@ -153,6 +180,24 @@ def run_pair_task(
             )
         finally:
             run_seconds = perf_counter() - run_started
+        metadata_path = root / "runtime/run_metadata.json"
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        metadata["pair_runtime_profile"] = PROFILE
+        if guard is not None:
+            # Pair readiness is a transport request but not a classification.
+            # Preserve actual worker sequence/cold flags and name a new schema.
+            metadata["guard_trace_schema"] = "guard_trace_pair_v1"
+            trace_path = root / "runtime/trace_guard.jsonl"
+            rows = [json.loads(line) for line in trace_path.read_text().splitlines()]
+            for row in rows:
+                row["schema_version"] = "guard_trace_pair_v1"
+            trace_path.write_text(
+                "".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows),
+                encoding="utf-8",
+            )
+        metadata_path.write_text(
+            json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
         return result
     except BaseException as exc:
         error_class = type(exc).__name__
@@ -194,6 +239,12 @@ def run_pair_task(
                 "pair_config": asdict(pair.config) if pair else None,
                 "agent_execution": asdict(agent_execution) if agent_execution else None,
                 "snapshot": snapshot,
+                "host_role_attempts": {
+                    "agent": agent_role.host_attempts if agent_role else [],
+                    "guard": guard.host_attempts if guard else [],
+                }
+                if pair is not None
+                else None,
                 "startup_seconds": startup_seconds,
                 "runtime_seconds_including_inner_cleanup": run_seconds,
                 "outer_cleanup_seconds": perf_counter() - cleanup_started,

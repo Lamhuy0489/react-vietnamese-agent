@@ -22,6 +22,7 @@ from react_agent.security_v1.pair_runtime_v1 import run_pair_task
 from react_agent.security_v1.runtime_v7 import SecurityRuntime
 from react_agent.security_v1.warm_guard import WarmGuardConfig
 from react_agent.tools.factory import build_smoke_registry
+from react_agent.validation.pair_runtime_audit_v1 import audit_task
 
 ROOT = Path(__file__).resolve().parents[2]
 SAFE = '{"risk":"SAFE","labels":[],"confidence":"HIGH"}'
@@ -105,6 +106,7 @@ def invoke(
 
 
 def check_cleanup(path, level):
+    assert audit_task(path)["valid"]
     receipt = json.loads((path / "pair_runtime.json").read_text())
     workers = receipt["snapshot"]["workers"]
     assert set(workers) == ({"agent", "guard"} if int(level[1:]) >= 2 else {"agent"})
@@ -296,3 +298,36 @@ def test_pair_retains_guard_veto_on_external_sink(tmp_path):
     assert result.denied_tool_count == 1
     assert result.control.tool_call_count == 0
     check_cleanup(tmp_path / "run", "A2")
+
+
+@pytest.mark.parametrize("fault", ["schema", "attempt", "readiness", "host_count"])
+def test_joined_audit_detects_corrupt_views_without_rewriting_raw_files(
+    tmp_path, monkeypatch, fault
+):
+    root = tmp_path / "run"
+    invoke(root)
+    assert audit_task(root)["valid"]
+    original_read = Path.read_text
+
+    def corrupted_read(path, *args, **kwargs):
+        raw = original_read(path, *args, **kwargs)
+        if path == root / "runtime/run_metadata.json" and fault == "schema":
+            value = json.loads(raw)
+            value["guard_trace_schema"] = "guard_trace_warm_v1"
+            return json.dumps(value)
+        if path == root / "pair_runtime.json" and fault in {"attempt", "readiness"}:
+            value = json.loads(raw)
+            attempts = value["snapshot"]["workers"]["guard"]["attempts"]
+            attempts[0 if fault == "readiness" else 1]["request_sha256"] = "0" * 64
+            return json.dumps(value)
+        if path == root / "pair_runtime.json" and fault == "host_count":
+            value = json.loads(raw)
+            value["host_role_attempts"]["agent"].pop()
+            return json.dumps(value)
+        return raw
+
+    with monkeypatch.context() as patch:
+        patch.setattr(Path, "read_text", corrupted_read)
+        with pytest.raises(ValueError):
+            audit_task(root)
+    assert audit_task(root)["valid"]

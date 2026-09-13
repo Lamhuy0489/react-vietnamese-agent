@@ -14,6 +14,12 @@ All components run in their existing locations: two sibling inference workers,
 parent-owned role adapters, parent-owned security policy and Tool Broker. No
 pair is transferred to a child and no third guard worker is created. READY
 acknowledgements are stored separately from actual model-generation attempts.
+The dedicated `guard_trace_pair_v1` schema preserves transport sequence numbers:
+READY is sequence 1, inference starts at 2 with `cold_start=false`. It must not
+be validated as `guard_trace_warm_v1`. Host role proposals are recorded separately
+from worker attempts: a closed pair can reject a proposal before dispatch.
+The joined auditor checks these counts, request identities, gate coverage,
+cache evidence and worker cleanup rather than assuming every proposal was sent.
 A0/A1 never construct a guard worker. Their single execution deadline is supplied
 explicitly and currently applies to startup and calls; separate agent-only cold
 and warm deadlines are not claimed by this version.

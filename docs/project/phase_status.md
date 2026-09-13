@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: corrective runtime v7/components v2 pass CPU QA; production pair/GPU, guard quality and freeze remain open**
+- Current stage: **Phase 5 in progress: runtime v7/components v2 and task-owned ModelPair pass bounded CPU QA; native runtime/GPU, guard quality and freeze remain open**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-13
 
@@ -244,6 +244,16 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 ## Phase 5 progress
 
 - [x] Owner explicitly authorized Phase 5 on 2026-09-07.
+- [x] Task-owned ModelPair/runtime v7 bounded CPU integration (2026-09-13):
+  A0/A1 agent-only; A2–A6 parent-owned role adapters with two sibling workers,
+  dedicated pair trace schema and host-proposal/transport-attempt ledger.
+  52 focused tests, seven exact v7 parity comparisons and 51 joined task receipts;
+  full QA 2,496 pass/one native-tqdm skip (477.43s), setup/Ruff/mypy 317 files
+  and knowledge checks pass. 441 source/530 raw hashes independently match;
+  169 tracked data hashes unchanged. [Report](../evaluation/phase5_pair_runtime_report.md)
+  and [CPU02 receipt](../../experiments/manifests/phase5_pair_runtime_v1_cpu02.json).
+  CPU01 is development history, superseded for a trace-schema mismatch; its
+  bytes are preserved. This is not native fault coverage/model quality or freeze.
 - [x] Corrective runtime v7/components v2 CPU validation (2026-09-13): clause-bound
   grants, canonical host validation, mixed raw/normalized final screening, paired
   A4 table/column scope integrated at A4–A6, level-correct metadata and bounded

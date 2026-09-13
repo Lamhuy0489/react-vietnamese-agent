@@ -1270,3 +1270,33 @@ and are not inferred here.
   overwritten logs. v6's byte-valid receipt does not establish behavioral safety.
 - CPU repair QA is not grouped Dev/model quality or Phase 5 freeze. ModelPair
   runtime/GPU, production guard, broader coverage and formal acceptance stay open.
+
+# 2026-09-13 — Compose task-owned ModelPair with runtime v7
+
+- Add `pair_runtime_v1.run_pair_task` and parent-owned role adapters. A2–A6
+  receive a fresh pair; A0/A1 receive only a bounded agent factory/execution
+  configuration. No nested guard spawn or pair transfer across owner PIDs.
+- Preserve the existing v7 loop, A4 scope and A6 entitlement/origin behavior.
+  READY startup attempts remain in the outer receipt and are excluded from
+  actual guard generation counts. Guard errors retire the pair and clear cache
+  through the existing WarmModelGuard semantics.
+- Outer lifecycle receipts survive startup failures and cancellation. Record
+  actual worker methods/PIDs/handles, separate startup/runtime/outer-cleanup
+  timing, and explicitly state that runtime includes inner cleanup.
+- Acceptance for this milestone is real-spawn synthetic CPU integration and
+  source/raw/data integrity. Native Kaggle packaging, GPU cleanup/performance,
+  production guard quality/grouped Dev and Phase 5 freeze remain separate gates.
+
+## CPU01 trace-schema deviation and CPU02 rerun
+
+- CPU01 at source snapshot `819af7a` passed 2,492 tests (one dependency skip),
+  but independent trace inspection found READY sequence 1 being interpreted by
+  the warm-only trace schema. Keep its receipt/raw bytes unchanged as development
+  history; it is not the selected integration acceptance evidence.
+- Use `guard_trace_pair_v1`, preserve actual transport sequence/cold-start fields,
+  and join guard traces with the outer worker snapshot. Record host proposals
+  independently: after guard failure a closed pair can reject a further agent
+  proposal before any worker attempt. Do not count that as model inference.
+- CPU02 uses fresh output/receipt identities and a joined auditor with deliberate
+  corruption tests. This is an evidence-format correction, not a policy/prompt,
+  model, decoding or benchmark change; no Test inspection is authorized.

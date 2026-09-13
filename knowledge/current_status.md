@@ -4,6 +4,13 @@ Cập nhật: 2026-09-13. **Phase 5 đang làm, chưa nghiệm thu.**
 
 ## Hiện hành — sửa lỗi sau audit
 
+Mốc mới nhất là [ModelPair/runtime v7 bounded CPU integration](phase5_pair_runtime_v1.md):
+A0/A1 chỉ agent, A2–A6 hai worker sibling qua parent role adapters. Đã tách schema
+pair và host proposals khỏi transport attempts. CPU02 có 52 focused tests,
+full QA **2.496 pass/1 skip** (477,43s), 51 joined receipts, 441 source/530 raw
+hashes khớp và 169 tracked data hashes không đổi. CPU01 giữ làm lịch sử, không
+selected acceptance vì schema trace cũ sai. Không có GPU run mới; xem [handoff](handoff.md).
+
 Bản phát triển mới là `security_runtime_v7`, đi với final entitlement v2,
 processing scope v2 và typed value origin v2. Không dùng v1 entitlement/runtime v6
 cho thí nghiệm mới: audit phát hiện cấp quyền chéo, supplied-grant validation yếu,
@@ -32,7 +39,8 @@ CPU QA, không gọi là clean release; xem [handoff](handoff.md).
 
 ## Các gate còn mở
 
-1. Production ModelPair/runtime integration và GPU lifecycle.
+1. Native ModelPair/runtime packaging và GPU lifecycle; CPU integration đã đạt
+   phạm vi kiểm thử đã ghi, chưa chứng nhận mọi native failure/timing condition.
 2. Production guard quality và grouped Dev differential validation.
 3. Broader semantic origin/scope coverage và formal Phase 5 freeze.
 

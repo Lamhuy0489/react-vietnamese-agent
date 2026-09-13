@@ -2,6 +2,11 @@
 
 ## Hiện hành — remediation v2 / runtime v7
 
+Tiếp theo remediation, [pair/runtime CPU02](phase5_pair_runtime_v1.md) đã đạt:
+52 focused tests, full 2.496 pass/1 skip (477,43s), 51 joined receipts, 441 source/
+530 raw hashes khớp và 169 tracked data hashes không đổi. Chỉ bounded CPU
+integration; native fault/timing/package/GPU và guard quality còn mở.
+
 [Repair notes](phase5_remediation_v2.md) và [handoff](handoff.md) là chỉ dẫn hiện hành.
 V1 entitlement/v6 chỉ giữ cho đối chiếu lịch sử; không dùng cho inference mới.
 Audit đã tái hiện cấp quyền chéo, supplied grant không canonical, mixed raw/zero-width
@@ -21,6 +26,7 @@ không đổi. Chưa gọi là production-ready.
 | Repair CPU, receipt toàn vẹn | Đạt working-tree CPU QA; lịch sử sai hash giữ riêng |
 | Bounded A4 runtime integration | V7 đã qua regression/full QA |
 | Bounded private-final/origin fixes | V2 đã qua regression/full QA |
+| ModelPair/runtime host ownership + trace join CPU | CPU02 đạt bounded QA; CPU01 chỉ lịch sử |
 | Production ModelPair/runtime + graceful GPU lifecycle | Chưa đóng |
 | Production guard quality + grouped Dev differential | Chưa đóng |
 | Broader semantic coverage + formal Phase 5 freeze | Chưa đóng |

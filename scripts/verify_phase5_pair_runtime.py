@@ -21,6 +21,8 @@ from verify_phase5_remediation import (
     tracked_data_hashes,
 )
 
+from react_agent.validation.pair_runtime_audit_v1 import audit_task
+
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -85,6 +87,9 @@ def main() -> int:
         json.loads(path.read_text())
         for path in sorted((output / "cases").rglob("pair_runtime.json"))
     ]
+    joined_audits = [
+        audit_task(path.parent) for path in sorted((output / "cases").rglob("pair_runtime.json"))
+    ]
     cleanup_valid = bool(cases) and all(
         case["cleanup_error_class"] is None
         and all(
@@ -122,6 +127,7 @@ def main() -> int:
         "raw_sha256": raw,
         "pair_runtime_receipts": len(cases),
         "cleanup_valid": cleanup_valid,
+        "joined_audits": joined_audits,
         "python": platform.python_version(),
         "real_model_runs": 0,
         "benchmark_dev_runs": 0,
