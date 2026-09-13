@@ -1365,3 +1365,16 @@ and are not inferred here.
   a new configuration, not by relabelling old timing. No policy/model/prompt change.
 - CPU parity/fault evidence cannot close native factory/cleanup or guard quality.
   No new Kaggle identity until exact package and native auditor are prepared.
+
+# 2026-09-14 — Native observed-shutdown composition and checkpoint version
+
+- Keep frozen ordinary/policy/native runtime v1 sources intact. New native
+  composition returns ShutdownPair directly; probe v2 uses runtime v3 and typed
+  agent-only deadlines. Model identities, prompts and underlying HF factories
+  are unchanged. Checkpoints explicitly reject old protocol/config identities.
+- This stage exercises the public calculator as a synthetic CPU wiring control,
+  not a retry of its historical native semantic failure. A later GPU diagnostic
+  needs predeclared lifecycle/guard-path coverage and an exact package receipt.
+- Native joined audit separates observed graceful lifecycle from recovered
+  memory; mocked sidecar fixtures do not authenticate actual native execution.
+  No Phase 5 gate closes from code presence or this bounded CPU milestone alone.

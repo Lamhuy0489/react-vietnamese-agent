@@ -4,6 +4,11 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 ## Đang làm
 
+Tiếp [native shutdown wiring v2](native_shutdown_wiring_v2.md): factory/runner/
+auditor riêng đã triển khai; 36 focused tests đạt, đang chốt full CPU QA.
+Output kế tiếp `results/phase5_native_shutdown_wiring_v2_cpu01`; không chạy trùng.
+Chưa package v2/GPU mới; calculator giữ làm CPU control, không semantic retry.
+
 Đã chốt CPU [pair/runtime v3](pair_runtime_v3.md): cả agent-only và pair dùng observed
 shutdown v2, A0/A1 tách start/call deadline; auditor nối PID/config/lifecycle.
 Source `c4afb83`, 74 focused tests đạt 76,90s; 63 receipts đã join độc lập.
@@ -13,7 +18,7 @@ knowledge đạt. 468 source/646 raw hashes khớp, 169 data hashes không đổ
 `fc86feb846340e8e323e6f5fc842ab0f977f49463853decdbe2e3ba94aa183d8`;
 [report](../docs/evaluation/phase5_pair_runtime_v3_report.md). Không còn QA chạy;
 chưa có GPU mới. Output `results/phase5_pair_runtime_v3_cpu01` đã chốt,
-không chạy trùng/ghi thêm. Native wiring là phần đang chờ triển khai tiếp.
+không chạy trùng/ghi thêm. Mốc CPU v3 này đã kết thúc; wiring v2 đang QA phía trên.
 
 Sổ tài nguyên cho nhóm: [Kaggle notebook/Dataset links](kaggle_resources.md),
 gồm mốc hiện hành/lịch sử, version, receipts và lưu ý quyền private. Tiếp phần
