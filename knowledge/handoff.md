@@ -12,6 +12,11 @@ hashes khớp; 169 data hashes không đổi. Exact preflight03 archive/expanded
 7/7 runtime levels, 8 tools/recovery, 21 Dummy/resume; 426 raw files/88 source
 files đã kiểm. Source `372d685`; cần push evidence rồi upload GPU một lần.
 CPU01 và preflight01/02 giữ như development history, không chọn acceptance.
+Source/evidence đã push `d1e3e27`. **Đã submit kernel version 1**
+`huylmhuhu/react-vn-security-runtime-v1`, timeout 7200s, T4; remote status RUNNING.
+Không push lại. Theo dõi lượt hiện tại, download output mới khi terminal.
+Pull với suffix `/1` bị API 403; đang pull tên hiện hành vào
+`results/phase5_security_runtime_gpu_v1_remote02` để authenticate source.
 Source pair/runtime v2 và mọi raw lịch sử giữ nguyên.
 
 [Pair/runtime v2](phase5_pair_runtime_v2.md) đã hoàn tất bounded CPU QA:
@@ -50,10 +55,10 @@ commit `be73761`, không đổi nhãn lịch sử thành clean release.
 ## Bước tiếp theo
 
 1. Giữ nguyên identity đã hoàn tất; không chạy trùng hoặc ghi thêm vào output.
-2. Push source/evidence rồi upload đúng gói
-   `build/kaggle/phase5_security_runtime_v1_preflight03/kernel` một lần với
-   `NvidiaTeslaT4`. Kernel mới `huylmhuhu/react-vn-security-runtime-v1`.
-   Download vào thư mục mới, authenticate remote source, join native artifacts;
+2. Theo dõi kernel version 1 đã gửi từ gói
+   `build/kaggle/phase5_security_runtime_v1_preflight03/kernel` với
+   `NvidiaTeslaT4`. Không submit trùng `huylmhuhu/react-vn-security-runtime-v1`.
+   Download vào thư mục mới khi terminal, authenticate remote source, join native artifacts;
    không retry semantic errors. Xem [package receipt](phase5_security_runtime_probe_v1.md).
 3. Sau exact package, kiểm native GPU lifecycle, guard
    quality trên grouped Dev, kiểm broader coverage và freeze. Chưa mở Phase 6/7.

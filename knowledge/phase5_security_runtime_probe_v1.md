@@ -42,6 +42,12 @@ Kaggle read-only pre-upload: owner `huylmhuhu`, Dataset
 `react-vn-security-runtime-v1` chưa tồn tại khi kiểm. Quota snapshot 29,86h GPU
 còn lại, không phải reservation. Upload chỉ sau source/evidence push.
 
+Sau khi push `d1e3e27`, đã submit kernel **version 1**, timeout 7200s,
+`NvidiaTeslaT4`; status đầu tiên RUNNING. Không có lần GPU retry.
+CLI pull với `/1` trả 403 trong khi status tên hiện hành đọc được; dùng tên
+hiện hành để kiểm hash source (chưa tạo version 2). Đây là lỗi đọc metadata,
+không phải lỗi model hoặc lý do submit lại.
+
 ## Giới hạn
 
 Agent-only có deadline startup/call chung 1200s, paired 1200s startup/180s call;
