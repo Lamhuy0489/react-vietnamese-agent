@@ -4,6 +4,12 @@ Cập nhật: 2026-09-13. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 ## Đang làm
 
+Đang làm [seven-level runtime package](phase5_security_runtime_probe_v1.md):
+agent-only factory, public synthetic A0–A6 checkpointed runner, native sidecar
+auditor, builder/wrapper 83-file overlay. 22 focused tests pass; cần full QA,
+exact archive/expanded mount rồi push/upload. Không có GPU mới tại mốc này.
+Source pair/runtime v2 và mọi raw lịch sử giữ nguyên.
+
 [Pair/runtime v2](phase5_pair_runtime_v2.md) đã hoàn tất bounded CPU QA:
 event-bound host outcomes và explicit failed-startup timing. 64 focused tests;
 full **2.560 pass/1 native-tqdm skip** (551,55s), setup/Ruff/mypy 320 files/knowledge đạt.

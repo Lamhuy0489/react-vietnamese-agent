@@ -1313,3 +1313,18 @@ and are not inferred here.
   time. Outer cleanup and runtime-including-inner-cleanup remain separate.
 - Keep all policy/model/prompt/tool/decoding behavior and public interfaces.
   CPU fault tests are not native GPU cleanup/guard quality or Phase 5 freeze.
+
+# 2026-09-13 — Seven-level native runtime technical pilot
+
+- Add agent-only composition identical to the paired agent factory stack without
+  constructing a guard. Keep model, decoding, prompt, policy and eight tools.
+- Use one public synthetic calculator task across seven levels, fresh workers,
+  immutable checkpoints/missing-only resume and post-cleanup memory observations.
+  Native metadata/policy/attention audit preserves failed or zero-call roles as
+  partial/unassessed. Synthetic fixtures are never promoted to GPU execution.
+- The inherited single-agent deadline remains 1200s startup/call vs paired
+  agent 1200s startup/180s call. Record this difference; this technical pilot
+  cannot support a controlled cross-level timeout/latency advantage claim.
+- New exact package extends the frozen ordinary overlay to 83 files and retains
+  base source/model/wheel pins. CPU tests and exact mount checks precede GPU use.
+  Guard selection, grouped Dev, general coverage and Phase 5 freeze remain open.
