@@ -27,7 +27,9 @@ joins. Zero guard generation is recorded, not called an operational guard test.
 All timings include instrumentation. Artifact consistency is separate from remote
 source authentication. No quality, ASR, full GPU cleanup or Phase 5 acceptance claim.
 
-Package v1 extends the old immutable 56-file overlay by 27 files (83 total).
+Package v1 extends the old immutable 56-file overlay by 26 files (82 total).
+Keep validation as a worker namespace package: the repository's validation
+initializer imports clean-pool QA and must not enter the inference payload.
 It reuses the pinned private base bundle, wheel/model hashes and Kaggle bootstrap;
 selected bytes must be committed and pushed before GPU upload. Exact archive and
 expanded mounts run in offline isolated venvs, with all eight tools/fault recovery,

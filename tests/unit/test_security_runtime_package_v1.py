@@ -22,7 +22,9 @@ def wrapper(builder):
 def test_source_allowlist_and_pins(builder, wrapper):
     prior = builder.check_pins()
     assert set(prior["overlay_sha256"]) < wrapper.OVERLAY_PATHS
-    assert len(wrapper.OVERLAY_PATHS) == 83
+    assert len(wrapper.OVERLAY_PATHS) == 82
+    # Preserve the worker namespace package; repository __init__ imports pool QA.
+    assert "src/react_agent/validation/__init__.py" not in wrapper.OVERLAY_PATHS
     assert "src/react_agent/security_v1/pair_runtime_v2.py" in wrapper.OVERLAY_PATHS
     for name in wrapper.OVERLAY_PATHS:
         assert (ROOT / name).is_file()

@@ -35,5 +35,14 @@ agent/model/decoding/prompt/tools/attention. Đây là technical pilot, không f
 security benchmark. Không đọc Test/privateGT hoặc đổi policy theo Test.
 Phase 5 còn GPU lifecycle, production guard/grouped Dev, broader coverage/freeze.
 
+## Preflight01 deviation
+
+Exact archive mount bắt được `ModuleNotFoundError: validation.clean_pool` từ
+repository validation initializer. Không thêm benchmark QA vào worker để chữa lỗi;
+bỏ initializer khỏi overlay, giữ namespace package như ordinary bundle cũ.
+Overlay mới 82 files. Giữ build/preflight01 và QA CPU01 làm development history;
+source thay đổi nên CPU01 không chọn làm acceptance. Chạy preflight02 và QA CPU02
+từ commit mới. Chưa GPU submission, không phải model/semantic retry.
+
 [Contract](../docs/architecture/phase5_security_runtime_probe_contract.md) ·
 [Handoff](handoff.md).

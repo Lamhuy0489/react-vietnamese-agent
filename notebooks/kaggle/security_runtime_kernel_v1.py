@@ -44,7 +44,6 @@ OVERLAY_PATHS = {
     "src/react_agent/security_v1/value_origin.py",
     "src/react_agent/security_v1/value_origin_v2.py",
     "src/react_agent/security_v1/value_release.py",
-    "src/react_agent/validation/__init__.py",
     "src/react_agent/validation/pair_runtime_audit_v2.py",
     "scripts/audit_phase5_ordinary_pair.py",
     "scripts/audit_phase5_ordinary_tokenizer.py",
