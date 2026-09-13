@@ -4,6 +4,15 @@ Cập nhật: 2026-09-13. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 ## Đang làm
 
+Sổ tài nguyên cho nhóm: [Kaggle notebook/Dataset links](kaggle_resources.md),
+gồm mốc hiện hành/lịch sử, version, receipts và lưu ý quyền private. Tiếp phần
+versioned graceful worker shutdown dưới đây; không gửi GPU hoặc đọc Test mới.
+
+[Worker shutdown v2](worker_shutdown_v2.md) đã triển khai standalone: 34 test mới
+đạt sơ bộ; chưa tích hợp ModelPair/native. Tiếp full QA output riêng
+`results/phase5_worker_shutdown_v2_cpu01`, receipt dự kiến
+`experiments/manifests/phase5_worker_shutdown_v2_cpu01.json`. Không chạy trùng.
+
 Đang làm [seven-level runtime package](phase5_security_runtime_probe_v1.md):
 agent-only factory, public synthetic A0–A6 checkpointed runner, native sidecar
 auditor, builder/wrapper 82-file overlay. CPU02 đạt 2.583 pass/1 skip,

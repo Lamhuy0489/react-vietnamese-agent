@@ -1342,3 +1342,15 @@ and are not inferred here.
 - Next lifecycle/guard-path diagnostics need separate identities and predeclared
   coverage. No semantic retry of this calculator task, Test tuning or automatic
   production guard selection. This records a coverage limitation, not scope change.
+
+# 2026-09-13 — Opt-in observed shutdown, preserve frozen worker
+
+- Add standalone worker/config v2, separate identity-hashed normal-stop budget
+  and explicit stop/serve-return observations. Retain v1 request transport and
+  bounded cancellation; AST parity protects the copied generate method.
+- GRACEFUL requires observed stop/serve return and reaped zero exit, not just an
+  acknowledgement. Synthetic slow/hung teardown controls are not proof of the
+  native forced-cleanup cause. No automatic ModelPair adoption or GPU submission.
+- Project resource index `knowledge/kaggle_resources.md` records saved notebook/
+  Dataset handles with evidence, versions and private-access caveats for the team.
+  It is development memory only, never model-prompt context or credentials.
