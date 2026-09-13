@@ -1252,3 +1252,21 @@ and are not inferred here.
   `data/smoke`; no real model/Kaggle/Dev/Test/private-GT inference. This does
   not close production guard/GPU lifecycle, broader A4/origin coverage, grouped
   Dev freeze or Phase 5 acceptance; prior seals remain unchanged.
+
+# 2026-09-13 — Correct entitlement/scope integrity without rewriting evidence
+
+- Owner requested remediation following audit. New development uses runtime v7
+  and versioned v2 entitlement/scope/origin components; v1/v6 stay unchanged as
+  historical reproduction targets, not recommended security implementations.
+- Fix clause Cartesian grants, hash-only supplied authorization, mixed raw and
+  zero-width finals, A0 metadata contamination, and table/column scope binding.
+  Compose bounded scope at A4–A6 before Broker while retaining coarse vetoes.
+- An actual smoke DB row regression exposed silently omitted `SV_SYN_*` IDs.
+  Add their bounded typed/lexical extraction; unsupported recognized typed fields
+  invalidate coverage. No dataset, tools, prompts or decoding changes.
+- Entitlement v1's selected pytest log fails its recorded raw hash. Preserve
+  both files, withdraw reliance on that receipt, record independent audit and
+  rerun repairs under a fresh identity. Never rewrite expected hashes to match
+  overwritten logs. v6's byte-valid receipt does not establish behavioral safety.
+- CPU repair QA is not grouped Dev/model quality or Phase 5 freeze. ModelPair
+  runtime/GPU, production guard, broader coverage and formal acceptance stay open.

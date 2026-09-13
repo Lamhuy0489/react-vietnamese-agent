@@ -1,84 +1,37 @@
 # Phase 5 — tiến độ và các gate còn lại
 
-## Hiện hành
+## Hiện hành — remediation v2 / runtime v7
 
-Mốc tiếp theo [runtime v6 entitlement adapter](runtime_v6_entitlement_v1.md) đã
-qua 10 synthetic conditions và 25 focused runtime/entitlement tests; selected
-clean-release full repository đạt 2.341 pass/13 optional-native skips (preflight
-2.353/1), setup/Ruff/mypy/knowledge đều đạt. Adapter compose final-bound v5
-bằng per-call host dependency, tự động extract raw-user clause khi không truyền
-grant và bắt hash mismatch trước khi tạo output; không sửa/nhân bản runtime v5.
-Receipt commit `8ec215d` đã hash-bound trong manifest; runtime A0–A6/guard/GPU,
-general A4 và grouped Dev vẫn mở.
+[Repair notes](phase5_remediation_v2.md) và [handoff](handoff.md) là chỉ dẫn hiện hành.
+V1 entitlement/v6 chỉ giữ cho đối chiếu lịch sử; không dùng cho inference mới.
+Audit đã tái hiện cấp quyền chéo, supplied grant không canonical, mixed raw/zero-width
+lọt và metadata A0 bị gắn policy A6. Selected entitlement receipt còn có hash
+pytest log sai; không được coi `valid=true` là đủ.
 
-Mốc mới [private-record final-entitlement component v1](final_entitlements_v1.md)
-đã hoàn tất QA host-only: 12 điều kiện synthetic, 17 unit test riêng và selected
-clean-release full repository 2.333 pass/13 optional/native skip; setup/Ruff/mypy/
-knowledge đều đạt. Preflight trước đó là 2.345 pass/1 skip. Component chỉ
-cho phép raw-user clause affirmative với exact resource/table và value type, giữ
-trusted origin phù hợp, redact/deny untrusted hoặc sai nguồn/kiểu, và fail closed
-khi normalized-only hay coverage chưa đủ. Không sửa public-final/value-origin/v5,
-không chạy model/Kaggle/Test và chưa đóng runtime, semantic completeness hay
-general private-final gate. Selected release đã hash-bound từ worktree sạch trong
-manifest; bước kế tiếp là compose với runtime A0–A6.
+Bản sửa có clause-bound source/type grants, residual scan, table/column scope pairs,
+A4–A6 PRE integration, task-local scope audit và typed synthetic student IDs.
+91 focused tests pass; full QA 2.444 pass/1 native-tqdm skip, 460 giây.
+Receipt mới đã re-audit 436 source/573 raw hashes khớp; 169 tracked data hashes
+không đổi. Chưa gọi là production-ready.
 
-Mốc mới [A4 processing-scope component v1](processing_scope_v1.md) đã hoàn tất
-QA host-only: 14 điều kiện synthetic, 21 unit test riêng và full repository
-2.327 pass/1 skip; setup/Ruff/mypy/knowledge đều đạt. Release từ commit `e9710c7`
-được ghi trong [manifest](../experiments/manifests/phase5_processing_scope_v1_validation01.json).
-Component trích exact
-anchor từ raw user, giữ state task-local và chặn scope mở rộng sau untrusted
-source; search/SQL không đánh giá được thì fail closed, external sinks vẫn giao
-cho gate hiện có. Đây chưa phải runtime adoption, private-final authorization,
-Dev/model evidence hay Phase 5 acceptance. Bước kế tiếp là runtime version mới
-ghép component với A0–A6 mà không sửa frozen v5.
+## Gate để nghiệm thu
 
-Native ordinary pair follow-up đã COMPLETE trên kernel mới với metadata
-`NvidiaTeslaT4`: 21/21 Dummy, hai model cùng resident trên hai T4, 6/6 A/B/A
-generation và recovery residual 0.  Source/package/remote metadata/raw inventory
-được release-audit độc lập; worker audit và hai local audits byte-identical.
-Đây là technical feasibility evidence, không phải guard quality/ASR hay Phase 5
-acceptance. Xem [tri thức native pair](ordinary_pair_gpu_v1.md) và
-[release audit](../experiments/manifests/phase5_ordinary_pair_t4x2_v1_audit01.json).
+| Gate | Trạng thái |
+|---|---|
+| Repair CPU, receipt toàn vẹn | Đạt working-tree CPU QA; lịch sử sai hash giữ riêng |
+| Bounded A4 runtime integration | V7 đã qua regression/full QA |
+| Bounded private-final/origin fixes | V2 đã qua regression/full QA |
+| Production ModelPair/runtime + graceful GPU lifecycle | Chưa đóng |
+| Production guard quality + grouped Dev differential | Chưa đóng |
+| Broader semantic coverage + formal Phase 5 freeze | Chưa đóng |
 
-Mốc mới nhất xem [current status](current_status.md) và [handoff](handoff.md).
-Combined small-context/cancellation GPU đã audit;6workers reaped/18VRAM samples
-trở về nền. [IPC-origin diagnostic](pair_ipc_v1.md) đã xác định ba observed
-registrations thuộc khóa tqdm; không chứng minh mọi IPC đều sạch. Bản sửa
-[worker progress](worker_progress_v1.md) đã qua CPU và
-[kiểm chứng GPU riêng](pair_progress_v1.md): 6 child registrations bằng 0,
-owner 90/90, không semaphore warning, 18 VRAM samples về nền; 6 exits vẫn forced.
-Không sửa frozen transport hoặc che warning.
-[Native-library policy CPU](policy_native_compat_v1.md) đã COMPLETE một lần
-submit,4cases/68rawfiles và hai audit byte-identical; không model.generate/GPU.
-Outer publisher-metadata audit và GPU stress wrapper đã có. Context/policy v1
-lỗi thứ tự factory trước READY, đã giữ 59 raw files; không tính là stress pass.
-[Bản sửa v2](context_policy_gpu_v1.md) đã qua factory-spawn controls, hai exact
-layouts và full QA 1.825 pass/1 optional skip. GPU v2 đã chạy: cả hai model READY
-nhưng agent OOM ở stress 4096 token; 69 raw files giữ nguyên, không retry.
-Owner đã đồng ý memory/attention; tensor gate và
-[efficient model stress](efficient_stress_v1.md) version1 đã COMPLETE/audited.
-Full4096+512/128, KV4608/4224 đủ28layers/model, không OOM trong frozen caps.
-90raw/2remote,hai audits byte-identical;2TERM/reaped,0graceful,6recovery samples
-residual0 haiGPU. Không sửa frozen transport hoặc tự adopt benchmark attention.
+Native ordinary pair T4×2 trước đó đã có 6/6 calls, repeat hashes và recovery
+samples; chỉ là technical transport/residency/timing evidence. Forced cleanup
+không đồng nghĩa graceful. Efficient 4096-token diagnostic pass không tự chứng
+minh general ReAct/runtime performance.
 
-Phase5 chưa accepted. Những nhóm việc cần hoàn tất theo phase_status/plan:
-
-1. Đóng chẩn đoán lifecycle/IPC ở phạm vi đo được; giữ riêng forced/graceful và
-   VRAM/IPC. Không coi absence-of-warning là chứng minh mọi resource đã sạch.
-2. Native maximum-context/forced-length gate đã đạt cho efficient diagnostic
-   riêng; kiểm lại behavior khi tích hợp general request/runtime, không suy
-   single-use stress thành task-local multi-request parity hoặc model quality.
-3. Tích hợp ModelPair vào một runtime version riêng, A0–A6 config isolation,
-   cold/warm accounting, task cleanup, parity và Broker/final gate coverage.
-4. Hoàn thiện A4 processing-scope anchors và general private-record final
-   entitlements; chưa dùng benchmark GT làm policy authority.
-5. Grouped Dev tuning/validation/model decision, differential evidence và freeze.
-   Qwen1.5B guard chưa được chọn production; four-call diagnostic có B=SAFE và
-   outputs giống nhau, không phải bằng chứng chất lượng đủ.
-
-Không dùng tỷ lệ test pass để suy phần trăm hoàn thành Phase5. Không chuyển
-Phase6/7 hoặc mở held-out Test. Mỗi gate cần receipt/trace/reproduction phù hợp.
+Không suy phần trăm từ test count. Phase 5 chưa accepted, không mở Phase 6/7 hoặc
+held-out Test. Các đoạn phía dưới là lịch sử, không phải nhiệm vụ kế tiếp.
 
 ## Lịch sử: guard-only GPU preflight
 

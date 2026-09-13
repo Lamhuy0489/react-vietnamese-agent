@@ -20,6 +20,11 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
+- **Sửa lỗi Phase 5 hiện hành:** [runtime v7 / components v2](phase5_remediation_v2.md).
+- Điểm nối tiếp theo: [ModelPair/runtime ownership và acceptance](phase5_modelpair_runtime_next.md).
+- Lưu trữ trước sửa lỗi: [status lịch sử](history_20260913_current_status.md),
+  [handoff lịch sử](history_20260913_handoff.md); không dùng làm chỉ dẫn hiện hành.
+
 - Lệnh kiểm tra và chạy local: [runbook](runbook.md).
 - Quyết định, lý do và ngoại lệ: [decision log](../docs/project/decision_log.md).
 - Pilot LLM: [nhật ký](multimodel_dev_pilot.md),

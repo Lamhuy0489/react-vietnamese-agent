@@ -1,6 +1,6 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: bounded native efficient-context stress validated; runtime integration and quality gaps remain**
+- Current stage: **Phase 5 in progress: corrective runtime v7/components v2 pass CPU QA; production pair/GPU, guard quality and freeze remain open**
 - Setup owner: Lâm Quang Huy
 - Last updated: 2026-09-13
 
@@ -244,6 +244,22 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 ## Phase 5 progress
 
 - [x] Owner explicitly authorized Phase 5 on 2026-09-07.
+- [x] Corrective runtime v7/components v2 CPU validation (2026-09-13): clause-bound
+  grants, canonical host validation, mixed raw/normalized final screening, paired
+  A4 table/column scope integrated at A4–A6, level-correct metadata and bounded
+  synthetic student-ID extraction. 91 focused tests; full QA 2,444 pass/1
+  native-tqdm skip, setup/Ruff/mypy 314 files/knowledge pass. 28 exact Replay
+  pairs and 69 focused runtime records; 436 source/573 raw hashes re-audited,
+  169 tracked data hashes unchanged. [Report](../evaluation/phase5_remediation_v2_report.md)
+  and [receipt](../../experiments/manifests/phase5_remediation_v2_cpu01.json).
+  Working-tree CPU QA only, not a clean-source/model release or Phase 5 acceptance.
+
+**Audit correction:** the entitlement v1 receipt's actual pytest log does not
+match its recorded hash. Reliance on its integrity claim is withdrawn; old
+bytes remain untouched. v1 entitlement/runtime v6 also have confirmed behavioral
+defects and are historical reproduction targets, not recommended new-run code.
+The historical milestones below do not override the corrective report above.
+
 - [x] Cumulative A0–A6 config matrix, strict config/decision/public-observation
   schemas and first [policy contract](../architecture/phase5_policy_contract.md).
 - [x] A1 raw/normalized detector, bounded raw-user destination authorization,
