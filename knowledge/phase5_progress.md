@@ -3,12 +3,13 @@
 ## Hiện hành
 
 Mốc tiếp theo [runtime v6 entitlement adapter](runtime_v6_entitlement_v1.md) đã
-qua 10 synthetic conditions và 25 focused runtime/entitlement tests; preflight
-full repository đạt 2.353 pass/1 native-tqdm skip, setup/Ruff/mypy/knowledge
-đều đạt. Adapter compose final-bound v5 bằng per-call host dependency, tự động
-extract raw-user clause khi không truyền grant và bắt hash mismatch trước khi
-tạo output; không sửa/nhân bản runtime v5. Selected clean release còn cần chạy
-và hash-bind; runtime A0–A6/guard/GPU, general A4 và grouped Dev vẫn mở.
+qua 10 synthetic conditions và 25 focused runtime/entitlement tests; selected
+clean-release full repository đạt 2.341 pass/13 optional-native skips (preflight
+2.353/1), setup/Ruff/mypy/knowledge đều đạt. Adapter compose final-bound v5
+bằng per-call host dependency, tự động extract raw-user clause khi không truyền
+grant và bắt hash mismatch trước khi tạo output; không sửa/nhân bản runtime v5.
+Receipt commit `8ec215d` đã hash-bound trong manifest; runtime A0–A6/guard/GPU,
+general A4 và grouped Dev vẫn mở.
 
 Mốc mới [private-record final-entitlement component v1](final_entitlements_v1.md)
 đã hoàn tất QA host-only: 12 điều kiện synthetic, 17 unit test riêng và selected

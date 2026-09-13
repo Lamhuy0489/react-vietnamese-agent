@@ -2,15 +2,17 @@
 
 Cập nhật: 2026-09-13. Đây là chỉ dẫn tiếp tục, không thay thế contract.
 
-## Mốc mới — runtime v6 entitlement adapter (preflight)
+## Mốc mới — runtime v6 entitlement adapter (selected)
 
 `security_runtime_v6_entitlement_adapter` đã qua 10 synthetic cases, 25 focused
-runtime/entitlement tests và preflight full QA 2.353 pass/1 native-tqdm skip;
-setup/Ruff/mypy/knowledge đều đạt. Adapter giữ nguyên loop v5 qua per-call
-function map, hash-binds supplied entitlement trước output và auto-extracts raw
-user only at final A6. Chưa sửa/nhân bản runtime v5. Cần selected clean run để
-tạo manifest; sau đó mới xử lý broader A4/origin, production guard/GPU và
-grouped Dev.
+runtime/entitlement tests và selected clean full QA 2.341 pass/13
+optional-native skips (preflight 2.353/1); setup/Ruff/mypy/knowledge đều đạt.
+Adapter giữ nguyên loop v5 qua per-call function map, hash-binds supplied
+entitlement trước output và auto-extracts raw user only at final A6. Receipt
+commit `8ec215d` đã hash-bound trong [manifest](../experiments/manifests/phase5_runtime_v6_entitlement_v1_validation01.json)
+(SHA-256 `ab94057b7e79287d535f0dbf17027b48149f9b5223f1c1b890046ba49da35a23`).
+Chưa sửa/nhân bản runtime v5; tiếp theo xử lý broader A4/origin, production
+guard/GPU và grouped Dev.
 
 ## Mốc mới — private-record final entitlement component v1
 

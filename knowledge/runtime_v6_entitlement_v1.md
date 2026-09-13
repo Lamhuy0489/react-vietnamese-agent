@@ -15,9 +15,11 @@ released; untrusted, mismatched, normalized-only or uncovered values are
 redacted or denied.
 
 The [QA report](../docs/evaluation/phase5_runtime_v6_entitlement_v1_report.md)
-records the preflight's 10 synthetic conditions and full repository checks;
-the selected clean-release manifest will be linked here after its receipt is
-sealed. This is a composition milestone only: no real model/Kaggle/Test
+and [selected manifest](../experiments/manifests/phase5_runtime_v6_entitlement_v1_validation01.json)
+record 10 synthetic conditions, 25 focused tests and clean-release full QA
+(2,341 passed / 13 optional-native skips) from commit `8ec215d`; stable case
+summary is `15c14e2fffbad36a0d803cb439022353bf12bc88bad19f9f7ebba0bc2870a5fc`.
+This is a composition milestone only: no real model/Kaggle/Test
 inference, no ASR/utility result, and no Phase 5 acceptance. Remaining work is
 production guard/GPU lifecycle, broader A4 and origin/semantic coverage,
 grouped Dev differential validation and freeze.
