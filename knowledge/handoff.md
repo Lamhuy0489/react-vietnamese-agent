@@ -4,6 +4,14 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 ## Đang làm
 
+**Ưu tiên hiện hành:** [document diagnostic v1](document_diagnostic_v1.md).
+CPU draft01 phát hiện A4–A6 chặn CDOC; scope v3/runtime v8 sửa namespace có giới
+hạn, giữ v7 frozen. Draft02 đạt 42 focused tests/8,64s, đủ stub doc/Pre/Post paths.
+Bước kế: full QA và exact archive/expanded preflight, push source trước GPU.
+Chưa submit notebook mới; tên dự kiến `huylmhuhu/react-vn-document-runtime-v1`.
+Pending access: không cần tài khoản mới, kiểm live Dataset/private mounts/quota
+owner huylmhuhu trước submission; local không load model. Các mốc bên dưới đã xong.
+
 Đã chốt [shutdown package v2](shutdown_package_v2.md): wrapper/builder/release auditor
 riêng và package checkpoint check, source `fa28401`; 24 focused tests đạt 7,11s.
 Exact archive/expanded preflight01 đạt, 101 source/430 raw hashes khớp; receipt

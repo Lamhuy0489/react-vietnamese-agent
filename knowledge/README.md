@@ -20,6 +20,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
+- **Diagnostic tài liệu hiện hành:** [CDOC scope fix và thực nghiệm mới](document_diagnostic_v1.md).
 - **Notebook / Dataset Kaggle:** [sổ link, phiên bản, mục đích và quyền truy cập](kaggle_resources.md).
 - **Đang làm worker shutdown:** [v2 CPU evidence và native gate còn mở](worker_shutdown_v2.md).
 - **Tích hợp shutdown runtime:** [pair/runtime v3](pair_runtime_v3.md).

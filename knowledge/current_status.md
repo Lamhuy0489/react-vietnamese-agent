@@ -4,6 +4,11 @@ Cập nhật: 2026-09-14. **Phase 5 đang làm, chưa nghiệm thu.**
 
 ## Hiện hành — sửa lỗi sau audit
 
+Đang triển khai [document diagnostic v1](document_diagnostic_v1.md): CPU phát hiện
+scope v2 không nhận CDOC; v3/runtime v8 đã sửa có giới hạn, 42 focused tests đạt.
+Full QA và exact package đang chuẩn bị; chưa có submission GPU mới. Không coi
+các mốc package/wiring lịch sử bên dưới là bước cần làm lại.
+
 Đã chốt [shutdown package v2](shutdown_package_v2.md), source `fa28401`:
 exact archive/expanded preflight01 đạt (101 source/430 raw hashes khớp), 24 focused
 tests; full **2.764 pass/1 skip**, 693,35s, setup/Ruff/mypy 346 files/knowledge đạt.

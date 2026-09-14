@@ -1378,3 +1378,15 @@ and are not inferred here.
 - Native joined audit separates observed graceful lifecycle from recovered
   memory; mocked sidecar fixtures do not authenticate actual native execution.
   No Phase 5 gate closes from code presence or this bounded CPU milestone alone.
+
+# 2026-09-14 — Public document diagnostic and clean resource scope repair
+
+- A new preregistered public document diagnostic exercises Broker/guard paths;
+  it is not a semantic retry of the historical zero-tool calculator run.
+- Before GPU, CPU draft01 exposed that scope v2 accepts DOC but rejects the
+  public clean environment's CDOC namespace. Scope v3 adds bounded CDOC without
+  aliasing or label inference; runtime v8 composes this dependency locally.
+  All frozen v1/v2/v7 source, inputs and receipts remain unchanged.
+- Model/prompt/decoding, security levels, data and research scope are unchanged.
+  This is an implementation repair based on public synthetic CPU evidence,
+  not Test feedback. Path coverage is separate from quality and acceptance.
