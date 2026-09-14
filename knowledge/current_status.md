@@ -18,7 +18,9 @@ Shard3: 14 completed nhưng 0 tool/guard calls, đều nói đã gửi mã bằn
 mà không thực hiện mock send. Shard4: 4 completed/10 model_error, 10 PRE JSON
 errors và 4 POST backend failures; 12 tool calls. 918 raw/remote files scan sạch;
 28 task recovered/48 workers reaped. Tổng 50 completed/20 model_error, không phải
-semantic success. Tiếp theo shards5 QUERYLEAK/6 QUOTED, audit rồi shard7 ROWLIST.
+semantic success. **Shards5 QUERYLEAK/6 QUOTED v1 đang RUNNING**, kiểm
+2026-09-14 20:15 UTC; remote source/hash khớp. [Report/URL/receipts](../docs/evaluation/phase5_grouped_v3_batch56_report.md).
+28 ca đang chạy chưa cộng vào audited coverage; audit xong rồi shard7 ROWLIST.
 
 Nền đã chốt:
 

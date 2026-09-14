@@ -4,6 +4,15 @@ Cập nhật: 2026-09-15. Chỉ dẫn hiện hành; lịch sử không thay th�
 
 ## Đang làm
 
+**Việc tiếp tục ngay: theo dõi shards5 QUERYLEAK / 6 QUOTED, không submit lại.**
+Cả hai v1 RUNNING lúc 2026-09-14 20:15 UTC, IDs134393202/134393213.
+[Report, actual URLs, receipts và raw paths](../docs/evaluation/phase5_grouped_v3_batch56_report.md).
+Source `0d86536`, GitHub evidence `80a8bae` đã push; 175source và kernel pins
+khớp, mã tải ngược xác thực. Dataset private ready/v1, quota trước gửi25,34h;
+offline T4x2/14.400s. 28 ca mới chưa có kết quả để audit. Khi terminal, kiểm
+current version/source, tải fresh batch56, release audit hai lần/summary/scan;
+sau đó mới gửi shard7 ROWLIST. Không đổi model/prompt/data, không rerun lỗi.
+
 **Shard 0 COMPLETE, terminal audit đã đạt**. Xem
 [báo cáo](../docs/evaluation/phase5_grouped_v3_s0_report.md),
 [audit](../experiments/manifests/phase5_grouped_v3_s0_audit01.json),
@@ -85,13 +94,13 @@ Native v2 source `3486dbf` đã ghép. **Thu hồi kết luận package/import i
 của hai receipt cũ: overlay nằm dưới `configs`, editable install đã cung cấp
 module từ repo. Giữ nguyên raw/receipt. Xem phần đính chính trong báo cáo native.
 Package v3 preflight đã đạt; 14 regression tests đạt, Ruff/mypy392 đạt trước freeze.
-Trạng thái native mới nhất ở đầu trang: 0–4 audited; 5–7 chưa gửi.
+Trạng thái native mới nhất ở đầu trang: 0–4 audited; 5/6 RUNNING; 7 chưa gửi.
 
 1. CPU QA và preflight đã hoàn tất; không chạy lại. Selected QA receipt đính chính
    scope Test của full historical suite, không coi flag cũ là filesystem audit.
 2. Shards 0–4 đã terminal/audit; raw và summaries đã đóng, không tải/rerun trùng.
-   Sau GitHub push và live quota/Dataset check, gửi shards5 QUERYLEAK/6 QUOTED
-   cùng package. Audit từng shard trước khi gửi shard7 ROWLIST.
+   Shards5 QUERYLEAK/6 QUOTED đã RUNNING, không gửi lại. Tải/audit khi terminal;
+   giữ lỗi. Sau GitHub push/live quota/Dataset check mới gửi shard7 ROWLIST.
 3. Theo [contract v3](../docs/architecture/phase5_grouped_package_v3_contract.md),
    giữ source `0d86536`, package đã khóa, timeout 14.400s mỗi shard; ghi URL/version
    thực tế như receipts trên. Audit từng shard trước khi mở rộng shard 5–7.

@@ -7,7 +7,9 @@
 Shard3 14 completed nhưng 0 tools, tự nói đã gửi mã; shard4 4 completed/10
 model_error, 10 PRE JSON errors/4 POST backend failures. Tổng **70/112 (62,5%)**
 lịch native, 50 completed/20 model_error; chưa semantic utility/ASR/FPR.
-Tiếp theo shards5/6 rồi7, không đổi source/prompt/data. Gate vẫn4/7≈57%.
+[Shards5/6 v1 RUNNING](../docs/evaluation/phase5_grouped_v3_batch56_report.md) lúc
+2026-09-14 20:15 UTC; 28 ca chưa tính audited. Audit rồi shard7; không đổi
+source/prompt/data. Gate vẫn4/7≈57%.
 
 Mốc trước:
 

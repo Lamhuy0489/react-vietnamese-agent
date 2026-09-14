@@ -21,6 +21,22 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**Grouped v3 shards5/6 v1 RUNNING**, kiểm 2026-09-14 20:15 UTC:
+
+| Notebook thật | Version / ID | Bằng chứng |
+|---|---|---|
+| [shard-5 QUERYLEAK](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-5) | v1 / 134393202 | [submission](../experiments/manifests/phase5_grouped_v3_s5_submission01.json) |
+| [shard-6 QUOTED](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-6) | v1 / 134393213 | [submission](../experiments/manifests/phase5_grouped_v3_s6_submission01.json) |
+
+[Report và raw paths](../docs/evaluation/phase5_grouped_v3_batch56_report.md).
+Source `0d865365b7881144756f804441ca24ed48935f7f`, GitHub evidence `80a8bae` trước
+push; [Dataset guard15](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+private/ready/v1; quota25,34h trước gửi. Offline T4x2/model v1/14.400s/image pins
+không đổi. Mã tải ngược khớp. Requested `...-s5`/`...-s6` khác actual handles.
+Chưa terminal/audit; không cộng 28 ca này vào70/112 audited. Không submit trùng.
+
+### Grouped v3 shards3/4 — terminal đã kiểm
+
 **Grouped v3 shards 3/4 v1 COMPLETE/audit**, kiểm 2026-09-14 20:02 UTC:
 
 | Notebook thật | Version / ID | Bằng chứng |
@@ -39,7 +55,7 @@ Requested aliases `...-s3`/`...-s4` không phải handle thật.
 version/hash/scan; report liên kết audit và summaries. 380+534 raw/4 remote hashes
 khớp, scan918files/0credentials. Shard3 0tools; shard4 10 model_error do guard JSON.
 Tổng70/112 audited, chưa Phase5 acceptance. API last_run_time bất thường không
-dùng cho thời gian chạy; giữ nguyên để đối chiếu. Shards5/6 đang chuẩn bị.
+dùng cho thời gian chạy; giữ nguyên để đối chiếu. Shards5/6 RUNNING ở đầu trang.
 Shards0–2 COMPLETE/audit ở dưới; không submit trùng. Quyền GitHub không cấp quyền
 Kaggle private; không đổi public hoặc lưu credentials để chia sẻ.
 
