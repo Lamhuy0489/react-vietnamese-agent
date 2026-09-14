@@ -1,5 +1,22 @@
 # Decision Log
 
+## 2026-09-15 — Owner authorizes concurrent remaining grouped Dev shard
+
+- Owner explicitly requested running the missing work concurrently. Submit the
+  last preselected shard 7 ROWLIST without waiting for terminal audits of shards
+  5/6, subject to live account quota, Dataset readiness and Kaggle admission.
+  This supersedes the local batch56 handoff's sequential dispatch preference,
+  not the package contract's initial shard-0 audit prerequisite (already passed).
+- Keep all 112 task identities, source `0d86536`, model/data/generation pins,
+  offline private T4x2 topology, per-task isolation and 14,400s notebook timeout.
+  No extra workers within a notebook, semantic retries, new conditions, Test
+  access or ROWLIST column grants. Platform rejection/queuing must be recorded;
+  do not cycle accounts or duplicate a successful submission.
+- Each terminal shard still requires a full independent artifact/runtime audit
+  before results are counted. Record overlapping notebook execution separately
+  from native per-task timing; no assumption that concurrency proves quality or
+  closes Phase 5. Shards 0–4 remain immutable audited evidence.
+
 ## 2026-09-12 — Classify ordinary GPU v1 accelerator mismatch
 
 - Submit exactly one new private ordinary package under owner `huylmhuhu` after
