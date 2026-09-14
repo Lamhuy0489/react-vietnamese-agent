@@ -2,6 +2,13 @@
 
 ## Hiện hành — remediation v2 / runtime v7
 
+2026-09-14: [shutdown package v2](shutdown_package_v2.md) đạt exact archive/
+expanded isolated preflight: 8 tools, 21 public Dummy/resume, 7 synthetic levels
+mỗi layout; 101 source/430 raw hashes khớp. Full CPU QA **2.764 pass/1 skip**,
+24 focused tests, setup/Ruff/mypy 346 files/knowledge đạt; 485 source/137 raw
+hashes khớp, 169 data hashes không đổi. Chưa submit GPU, không đóng thêm gate.
+[Report](../docs/evaluation/phase5_shutdown_package_v2_report.md).
+
 2026-09-14: [native shutdown wiring v2](native_shutdown_wiring_v2.md) đạt bounded
 CPU: 36 focused tests, full 2.740 pass/1 skip, 719,76s; setup/Ruff/mypy 342 files/
 knowledge đạt. 478 source/4.726 raw hashes khớp, 169 data hashes không đổi.

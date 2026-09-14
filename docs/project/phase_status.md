@@ -243,6 +243,14 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 
 ## Phase 5 progress
 
+- [x] Observed-shutdown package v2 exact offline preflight and CPU QA (2026-09-14):
+  94-file overlay; archive/expanded mounts each pass eight tools/recovery, 21 public
+  Dummy/missing-only resume and seven synthetic levels. 101 source/430 raw hashes
+  re-audited. Full QA 2,764 pass/one optional-tqdm skip (693.35s), 24 focused tests;
+  setup/Ruff/mypy 346 files/knowledge pass, 485 source/137 raw hashes match and
+  169 data hashes unchanged. [Report](../evaluation/phase5_shutdown_package_v2_report.md).
+  No native submission: a predeclared new lifecycle/tool/guard-path diagnostic,
+  GPU evidence, guard quality/grouped Dev and formal Phase 5 freeze remain open.
 - [x] Native observed-shutdown factory/runner/auditor v2 bounded CPU QA (2026-09-14):
   36 focused tests, full 2,740 pass/one optional-tqdm skip (719.76s); setup/Ruff/
   mypy 342 files/knowledge pass. 478 source/4,726 raw hashes re-audited, 169 data

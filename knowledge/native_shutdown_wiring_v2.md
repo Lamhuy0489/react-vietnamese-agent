@@ -24,12 +24,13 @@ Factory tests không tải model; seven-level tests dùng synthetic subprocess.
 Native-shaped sidecar tests mock checkpoint rõ ràng, không phải GPU evidence.
 
 CLI mới: `scripts/run_phase5_shutdown_runtime_probe.py` và
-`scripts/audit_phase5_shutdown_runtime_probe.py`. Chưa có wrapper/bundle v2 được
-nghiệm thu. Calculator chỉ dùng làm CPU control ở mốc này; native diagnostic
+`scripts/audit_phase5_shutdown_runtime_probe.py`. Ở mốc wiring chưa có wrapper;
+[shutdown package v2](shutdown_package_v2.md) nay đã đạt exact offline preflight.
+Calculator chỉ dùng làm CPU control ở mốc này; native diagnostic
 tiếp theo cần mục tiêu tool/guard-path định trước, không retry kết quả v1.
 
-Còn: exact archive/expanded package + release auditor/source authentication,
-native lifecycle/guard-path diagnostic trên Kaggle, grouped Dev quality, broader
+Còn: xác thực source/terminal remote, native lifecycle/guard-path diagnostic
+trên Kaggle, grouped Dev quality, broader
 semantic coverage và freeze. [Sổ Kaggle](kaggle_resources.md) chưa có lượt mới.
 
 ## Checklist gói worker kế tiếp

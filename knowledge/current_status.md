@@ -4,13 +4,20 @@ Cập nhật: 2026-09-14. **Phase 5 đang làm, chưa nghiệm thu.**
 
 ## Hiện hành — sửa lỗi sau audit
 
+Đã chốt [shutdown package v2](shutdown_package_v2.md), source `fa28401`:
+exact archive/expanded preflight01 đạt (101 source/430 raw hashes khớp), 24 focused
+tests; full **2.764 pass/1 skip**, 693,35s, setup/Ruff/mypy 346 files/knowledge đạt.
+485 source/137 raw hashes CPU QA khớp, 169 data hashes không đổi.
+Không còn QA chạy; không submit GPU mới. Tên kernel v2 chỉ là tên dự kiến.
+Bước tiếp là diagnostic native mới có mục tiêu lifecycle/tool/guard-path định
+trước và identity/package riêng, không retry calculator v1; rồi grouped Dev/freeze.
+
 Đã chốt CPU [native shutdown wiring v2](native_shutdown_wiring_v2.md), source
 `dfbd54f`: factory/runner/auditor mới, 36 focused tests; full **2.740 pass/1 skip**,
 719,76s. Setup/Ruff/mypy 342 files/knowledge đạt; 478 source/4.726 raw hashes khớp,
 169 data hashes không đổi. 15 actual runtime receipts và 70 mocked native-shaped
-records tách riêng. Không còn QA chạy, chưa package v2/GPU mới.
-Bước tiếp: wrapper/builder, release auditor và exact mount preflight; sau đó
-diagnostic native mới đã định trước, không retry calculator v1.
+records tách riêng. Mốc wiring đã xong; package v2 phía trên nối tiếp mốc này.
+Chưa GPU mới; không dùng calculator v1 để semantic retry.
 
 Đã chốt CPU [pair/runtime v3](pair_runtime_v3.md), source `c4afb83`: 74 focused
 tests, 63 runtime receipts join hợp lệ; full **2.704 pass/1 optional-tqdm skip**,

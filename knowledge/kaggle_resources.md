@@ -20,6 +20,10 @@ Kiểm offline: 26 URL code/Dataset/model trong sổ đều có handle tương �
 
 ## Mốc hiện hành — đọc mục này trước
 
+Chuẩn bị local mới nhất: [shutdown package v2](shutdown_package_v2.md) đã đạt
+CPU/exact mounts ngày 2026-09-14, **chưa submit**. Tên v2 trong metadata là tên
+dự kiến, không có notebook URL/version mới để thay mốc native v1 bên dưới.
+
 | Tài nguyên | Link | Phiên bản/bằng chứng |
 |---|---|---|
 | Notebook runtime A0–A6 | [react-vn-security-runtime-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-security-runtime-v1) | v1 COMPLETE; [GPU report](../docs/evaluation/phase5_security_runtime_gpu_v1_report.md), [receipt](../experiments/manifests/phase5_security_runtime_gpu_v1_audit01.json) |

@@ -3,7 +3,8 @@
 2026-09-14. Bản đồ ban đầu lập ngày 2026-09-13; ba điểm CPU đầu bảng đã có
 [pair/runtime v3](pair_runtime_v3.md), 74 focused tests và full 2.704 pass/1 skip đạt.
 Hai điểm native cuối bảng nay có [wiring v2 CPU](native_shutdown_wiring_v2.md);
-exact package/release auditor và GPU chưa đạt. [Handoff](handoff.md) quyết định
+[exact package/release-auditor CPU](shutdown_package_v2.md) cũng đã đạt, GPU vẫn
+chưa đóng. [Handoff](handoff.md) quyết định
 mốc đã được chọn nghiệm thu; không dùng bảng lịch sử để chạy lại việc đã xong.
 
 ## Các điểm cần version cùng nhau
@@ -43,8 +44,8 @@ Không thay task/prompt âm thầm, không ghép kết quả của hai identity.
 ## Bước triển khai native cụ thể sau CPU acceptance
 
 Factory/runner/joined auditor ở các bước 1–3 đã đạt bounded CPU wiring v2;
-không làm lại. Phần release auditor, exact package và diagnostic ở bước 3–5
-vẫn là công việc kế tiếp. Checklist dưới đây giữ để đối chiếu thiết kế.
+không làm lại. Release auditor/exact package đã qua CPU; diagnostic/GPU ở bước 5
+vẫn còn mở. Checklist dưới đây giữ để đối chiếu thiết kế.
 
 1. Tạo entry point native riêng trả về `ShutdownPair`, cấu hình
    `ShutdownPairConfig` với identity model/revision hiện hành. Không sửa

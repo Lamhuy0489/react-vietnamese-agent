@@ -4,9 +4,20 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 ## Đang làm
 
-Tiếp [shutdown package v2](shutdown_package_v2.md): wrapper/builder/release auditor
-riêng và package checkpoint check; 24 focused tests sơ bộ đạt. Đang chốt exact
-archive/expanded preflight và full QA; chưa GPU mới. Không chạy lại native wiring.
+Đã chốt [shutdown package v2](shutdown_package_v2.md): wrapper/builder/release auditor
+riêng và package checkpoint check, source `fa28401`; 24 focused tests đạt 7,11s.
+Exact archive/expanded preflight01 đạt, 101 source/430 raw hashes khớp; receipt
+đã lưu trong manifests. Full **2.764 pass/1 optional-tqdm skip**, 693,35s; setup/
+Ruff/mypy 346 files/knowledge đạt. 485 source/137 raw hashes CPU khớp, 169 data
+hashes không đổi. [Report](../docs/evaluation/phase5_shutdown_package_v2_report.md),
+[CPU receipt](../experiments/manifests/phase5_shutdown_package_v2_cpu01.json) và
+[preflight receipt](../experiments/manifests/phase5_shutdown_package_v2_preflight01.json).
+CPU SHA-256 `1802c3c635c6cf431540afd2046d779eba6dfc290d93bcb4f7c256dc506d7e7d`;
+preflight SHA-256 `b768d70b934e5aea4bced61a9dbfeac07303b8862c43a9bf92d91c363e184e45`.
+Output `results/phase5_shutdown_package_v2_cpu01` và
+`build/kaggle/phase5_shutdown_package_v2_preflight01` đã chốt; không ghi thêm/
+chạy trùng. Không còn QA hoặc GPU job mới. Native submission chưa sẵn sàng:
+calculator chỉ là CPU control, cần diagnostic mới định trước.
 
 Đã chốt CPU [native shutdown wiring v2](native_shutdown_wiring_v2.md), source
 `dfbd54f`: factory/runner/auditor riêng; 36 focused tests (27,70s), full
@@ -16,8 +27,8 @@ receipts, 70 native-shaped mocked records tách riêng. [Report](../docs/evaluat
 và [receipt](../experiments/manifests/phase5_native_shutdown_wiring_v2_cpu01.json),
 SHA-256 `fd4c7a3fcc773811545a286d5b23e3b1bfa214526ba115bd54eb3052c1a8e911`.
 Output `results/phase5_native_shutdown_wiring_v2_cpu01` đã chốt, không ghi thêm/
-chạy trùng; không còn QA chạy. Chưa package v2/GPU mới. Bước tiếp là exact
-wrapper/builder và release auditor; calculator chỉ là CPU control, không retry v1.
+chạy trùng; mốc này đã xong. Package v2 phía trên nối tiếp; chưa GPU mới,
+calculator chỉ là CPU control, không retry v1.
 
 Đã chốt CPU [pair/runtime v3](pair_runtime_v3.md): cả agent-only và pair dùng observed
 shutdown v2, A0/A1 tách start/call deadline; auditor nối PID/config/lifecycle.
@@ -113,12 +124,13 @@ commit `be73761`, không đổi nhãn lịch sử thành clean release.
 ## Bước tiếp theo
 
 1. Giữ nguyên identity đã hoàn tất; không chạy trùng hoặc ghi thêm vào output.
-2. Version wrapper/builder và release auditor theo [checklist exact package](native_shutdown_wiring_v2.md).
-   Native composition/runner/auditor v2 đã đạt bounded CPU; không làm lại factory
-   hoặc sửa v1 frozen. Kiểm exact archive/expanded mounts, import closure, 8 tools,
-   21 public Dummy/resume và CLI mới trước GPU. Giữ riêng partial/unverified native
-   evidence; CPU ACK không chứng minh native teardown hoặc GPU recovery.
-3. Định trước diagnostic mới cho tool/guard-path coverage (pilot calculator có
+2. Exact package v2 đã đạt; không làm lại factory/wrapper hoặc sửa v1/v2 frozen.
+   Chốt diagnostic native mới: public tasks/coverage và điều kiện dừng định trước,
+   input/run identity riêng, source và package được kiểm rồi push trước inference.
+   Kiểm lại quyền/quota/private mounts khi sắp submit, cập nhật sổ Kaggle sau
+   submission/terminal thật. Giữ riêng partial/unverified evidence; CPU ACK không
+   chứng minh native teardown hoặc GPU recovery.
+3. Diagnostic phải kiểm tool/guard-path coverage (pilot calculator có
    zero tool/guard calls phải giữ nguyên). Sau đó grouped Dev guard quality,
    broader coverage và freeze. Không retry semantic hoặc mở Phase 6/7/Test.
 
