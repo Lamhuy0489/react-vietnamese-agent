@@ -54,6 +54,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Canonical/split hiện hành: [70 canonical cho authoring, grouped 40/30](../docs/benchmark/canonical_selection_summary.md).
 - Phần trăm Phase 3 và tiêu chí còn thiếu: [readiness theo DoD](phase3_readiness.md).
 - Tránh lặp lỗi Kaggle: [lessons](kaggle_lessons.md).
+- Grouped Dev worker độc lập: [package v3 và đính chính import](../docs/evaluation/phase5_grouped_package_v3_report.md).
 - Guard model/GPU preflight: [nguồn ứng viên và giới hạn](guard_model_preflight_evidence.md).
 - Guard GPU probe đang triển khai: [upload, audit và bước tiếp](guard_gpu_probe_v1.md).
 - Guard cancellation/VRAM recovery: [protocol và tiến độ](guard_cancellation_v1.md).

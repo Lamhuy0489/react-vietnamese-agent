@@ -243,6 +243,15 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 
 ## Phase 5 progress
 
+- [x] Grouped package v3 independent CPU rehearsal (2026-09-14), source `0d86536`:
+  complete 170-file worker, archive/generated-expanded fresh venvs, 128 package
+  module origins each; eight tools/recovery, 21 clean Dummy and 112 grouped stub
+  keys/resume per layout. 175 source/4,166 raw/16 kernel hashes independently match.
+  [Receipt](../../experiments/manifests/phase5_grouped_package_v3_preflight01.json),
+  [report](../evaluation/phase5_grouped_package_v3_report.md). Full repository QA
+  passes 3,113 tests/one optional-tqdm skip (1,060.05s), setup/Ruff/mypy392/knowledge;
+  555 source/seven raw/169 data hashes rechecked. No additional aggregate gate.
+  [CPU QA receipt](../../experiments/manifests/phase5_grouped_package_v3_cpu01.json).
 - [x] Grouped Dev CPU runner/checkpoint v1 (2026-09-14), source `354b75b`:
   all 112 variant+level keys across eight shards audited, immutable prefix resume,
   tampering/failure-retention controls. 27 focused tests; full 3,055 pass/1 optional
@@ -253,10 +262,12 @@ matches its preflight stable summary; this earlier primitive receipt is historic
   [report](../evaluation/phase5_grouped_runner_v1_report.md). Native grouped adapter,
   exact package, GPU quality/lifecycle and Phase 5 freeze remain open.
 - [x] Grouped native runner/auditor v2 topology and recovery contract prepared:
-  44 focused routing/audit tests pass; archive/expanded overlay preflight compiles
-  and verifies hashes/path traversal. This is compile-only (`actual_model_loads=0`,
-  `gpu_runs=0`, `native_submission_ready=false`), not native inference or quality
-  acceptance. Kaggle import, model output, timing/VRAM and grouped guard quality remain open.
+  44 focused routing/audit tests pass. The old compile/import receipts are retained,
+  but exact package/import isolation is withdrawn: the overlay was nested below
+  `configs` and an editable install supplied development modules. See the
+  [correction](../evaluation/phase5_grouped_native_v2_report.md). Syntax compilation
+  was not transitive-import or safe-extraction evidence. Native model output,
+  timing/VRAM and grouped guard quality remain open.
 
 - [x] Observed-shutdown package v2 exact offline preflight and CPU QA (2026-09-14):
   94-file overlay; archive/expanded mounts each pass eight tools/recovery, 21 public

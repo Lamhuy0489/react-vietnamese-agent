@@ -1,13 +1,25 @@
 # Phase 5 — tiến độ và các gate còn lại
 
-## Hiện hành — grouped Dev runner/checkpoint
+## Hiện hành — grouped Dev package v3
+
+2026-09-14: [package v3](../docs/evaluation/phase5_grouped_package_v3_report.md),
+source `0d86536`, đã đạt 170-file complete archive, hai layout/fresh venv,
+8 tools/recovery + 21 clean Dummy + 112 grouped stub/resume mỗi layout.
+175 source/4.166 raw/16 kernel hashes recheck khớp. Full QA **3.113 pass/1 skip**
+(1.060,05s), setup/Ruff/mypy392/knowledge đạt; 555 source/7 raw/169 data hashes khớp.
+Chưa submit GPU. Quota owner `huylmhuhu` 29,02h, Dataset private ready/v1.
+Giữ **4/7≈57%** aggregate gates; CPU package không chứng minh LLM quality.
+Kết luận isolation của v2 compile/import receipts đã thu hồi do editable-install
+fallback và root `configs`; giữ raw lịch sử, không dùng valid=true để nghiệm thu.
+
+## Mốc trước — grouped Dev runner/checkpoint
 
 2026-09-14: [grouped runner v1](grouped_runner_v1.md), source `354b75b`, đã đạt
 27 focused tests (112 ca/8 shards + kiểm tra resume, tampering và giữ lỗi).
 Full QA **3.055 pass/1 skip/973,70s** đã đạt; setup/Ruff/mypy381/knowledge đạt,
 537 source/1.783 raw/169 data hashes kiểm lại khớp. [CPU receipt](../experiments/manifests/phase5_grouped_runner_v1_cpu01.json)
 đã chốt, không còn QA chạy; không đóng thêm aggregate gate. Native v2 adapter đã
-ghép; offline archive/expanded preflight đạt compile/hash/path nhưng chưa load model.
+ghép; preflight v2 chỉ có compile/hash, kết luận exact import bị thu hồi như trên.
 Native exact
 package, grouped Dev LLM/lifecycle/quality và freeze còn mở; vẫn 4/7≈57% theo
 aggregate gates, không phải 57% thời gian/công sức. Không GPU job mới.

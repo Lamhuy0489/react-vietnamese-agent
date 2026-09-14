@@ -76,6 +76,16 @@ receipt của đúng lượt, không tự nâng phiên bản.
 
 ## Terminal audit ngày 2026-09-14
 
+Kiểm tra đúng owner cho grouped package v3:
+[live receipt](../experiments/manifests/phase5_grouped_package_v3_live01.json).
+`huylmhuhu` còn 29,02/30h GPU, refresh 2026-09-19; Dataset
+[guard15-probe-data-v1](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+**private, ready, v1**; Qwen model instance v1 truy cập được. Source package
+`0d86536`; [preflight](../experiments/manifests/phase5_grouped_package_v3_preflight01.json)
+đã đạt; [full QA 3.113 pass/1 skip](../experiments/manifests/phase5_grouped_package_v3_cpu01.json)
+đã chốt. Chưa có URL/version notebook grouped v3 thực tế, chưa
+submit. Không suy đoán notebook tồn tại/không tồn tại từ lỗi status của tên dự kiến.
+
 Đính chính: snapshot quota và lỗi permission dưới đây được lấy bằng credential
 mặc định, **không xác thực owner `huylmhuhu`**; không dùng chúng làm quota/quyền
 của dự án. Chọn explicit owner từ credential project đã kiểm lại status notebook

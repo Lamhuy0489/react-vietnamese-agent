@@ -1,0 +1,36 @@
+{
+  "protocol": "grouped_v3_live_prerequisites",
+  "observed_date": "2026-09-14",
+  "owner": "huylmhuhu",
+  "dataset_url": "https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1",
+  "dataset_id": 11942593,
+  "dataset_private": true,
+  "dataset_version": 1,
+  "dataset_status": "ready",
+  "model_handle": "qwen-lm/qwen2.5/transformers/7b-instruct/1",
+  "model_instance_id": 141469,
+  "model_version_id": 166258,
+  "gpu_remaining_hours": 29.02,
+  "gpu_total_hours": 30,
+  "quota_reserved": false,
+  "raw_output": "results/phase5_grouped_livecheck01",
+  "raw_sha256": {
+    "kernel_collision_check.log": "9182d47568fc27a578f59c7ad4685c2493dddfe74e131d3ac228ba2f2a41794b",
+    "react-vn-grouped-dev-v3-s0_before.log": "8349c925d957ed0af2ded6909c110127172bc16b197f80ea787c5fda98de790f",
+    "react-vn-grouped-dev-v3-shard-0_before.log": "bcdcd7e35d1285f057bdde4bb4806396e65a992ee486d8c9f9b8682246a36ba9",
+    "commands.json": "ab48ac6bb1c53bd27a6713e2d6bc385164829d719b20661d9934400001636581",
+    "secret_scan.json": "cd0adc3a410110f93af40dcf8d8fbb8f7c2eb32096b9a239343963c6f50181a9",
+    "check_3.log": "a3f017453f151ec9c0bf8e9bd5e70038370ae855ca28c9818249ec41e17253c2",
+    "check_2.log": "eb82f466ef7ea9d24b17584835930de4bffdc93b9555d08fdccc3626edbebeef",
+    "check_0.log": "473b1dad0291c005c7572e77316a04cd32d66d5620d3a9cd059e0e5c80fb59e4",
+    "check_1.log": "56f63d893f166f7cf38d5d212a5335798fcfde2198cc01dfaae24bb316aec585",
+    "model_retry.log": "1c50366ad1503bd29a32abb96ffb124e5777e8c4672963c4816b3b0b68dc5ef7",
+    "dataset/dataset-metadata.json": "ed5456f5a5e813574580380b34673ed4efa493146b49e2453a0b6ff42d68ffa5",
+    "model/model-instance-metadata.json": "bc430d7c137ceea3bba1c384cab136235460587b0b1db56409efee71b4865651"
+  },
+  "caveats": [
+    "Initial model metadata read failed only because destination directory was missing; read-only retry succeeded",
+    "Kernel search returned unrelated results; direct candidate status denials do not prove nonexistence",
+    "No model weights downloaded and no GPU submitted by these checks"
+  ]
+}

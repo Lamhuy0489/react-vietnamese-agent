@@ -9,8 +9,13 @@ phạm vi/owner waiver trong [phase status](../docs/project/phase_status.md).
 Native grouped v2 đã ghép (source `3486dbf`), nhưng bằng chứng package/import cũ
 bị false positive do root `configs` và editable install. Đã đính chính trong
 [báo cáo native](../docs/evaluation/phase5_grouped_native_v2_report.md).
-Đang kiểm [package v3](../docs/architecture/phase5_grouped_package_v3_contract.md)
-với source closure đầy đủ, hai layout và fresh venv. Chưa có native run mới.
+[Package v3](../docs/evaluation/phase5_grouped_package_v3_report.md), source `0d86536`,
+đã đạt hai layout/fresh venv: 8 tools + 21 clean Dummy + 112 grouped stub/resume
+mỗi layout. 4.357 hashes recheck khớp. Full QA **3.113 pass/1 skip/1.060,05s**,
+setup/Ruff/mypy392/knowledge đạt; 555 source/7 raw/169 data hashes khớp.
+[QA receipt](../experiments/manifests/phase5_grouped_package_v3_cpu01.json).
+Output `results/phase5_grouped_package_v3_qa01` đã đóng; không chạy lại. Chưa có
+native run mới; bước kế là push source và submit shard 0.
 
 [grouped Dev runner/checkpoint v1](grouped_runner_v1.md), source `354b75b`:
 27 focused tests đạt/130,62s; 112 khóa riêng biệt trên tám shard, 106 tool calls,
@@ -20,7 +25,7 @@ ca; ca terminal lỗi được giữ nguyên. Đây là scripted CPU, không ph�
 Full QA **3.055 pass/1 skip/973,70s**; setup/Ruff/mypy381/knowledge đạt.
 537 source/1.783 raw/169 data hashes kiểm lại khớp;
 [receipt](../experiments/manifests/phase5_grouped_runner_v1_cpu01.json) đã chốt.
-Output `results/phase5_grouped_runner_v1_cpu01` đã đóng, không còn QA đang chạy.
+Output nền `results/phase5_grouped_runner_v1_cpu01` đã đóng; không chạy lại mốc này.
 Không GPU job mới, không mở Test/private oracle, không đổi benchmark.
 
 ## Đã chốt và dùng làm nền

@@ -260,3 +260,24 @@ Failed SaveKernel requests are not completed or failed inference attempts.
 - A different attention path may change rounding. The proposed opt-in correction
   needs approval, numerical checks and a new identity; no automatic benchmark
   adoption or shorter-context substitute for the declared boundary test.
+
+## Grouped package false-positive imports — 2026-09-14
+
+- Never choose the first directory of an extracted archive as its project root.
+  The v2 builder chose `configs` and created an incomplete nested source tree.
+  Compileall cannot detect missing transitive imports or wrong package roots.
+- `python -I` disables user paths, not an editable install already installed in
+  that interpreter's venv. The v2 import audit actually loaded the development
+  repo. Its original receipts are retained but the isolation claim is withdrawn
+  in the [correction](../docs/evaluation/phase5_grouped_native_v2_report.md).
+- Use a new offline venv and a complete, commit-bound source package; verify
+  actual module `__file__` and namespace `__path__`, not just import success.
+  Run the selected workload/resume in both archive and generated-expanded layouts.
+  [Package v3 contract](../docs/architecture/phase5_grouped_package_v3_contract.md).
+- `KAGGLE_CONFIG_DIR` selects a directory, not `kaggle1.json`. Explicitly select
+  the intended owner without logging keys; an unrelated default account caused
+  both misleading quota evidence and a 403 for the project's private notebook.
+  Correct owner `huylmhuhu` can read that notebook. Never cycle accounts for quota.
+- CLI model metadata download requires its destination directory to exist.
+  A local missing-directory error is not a model-access denial; preserve the
+  failed command, create the destination and repeat only this read-only check.

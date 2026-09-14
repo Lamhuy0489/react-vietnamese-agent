@@ -4,25 +4,37 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; lịch sử không thay th�
 
 ## Đang làm
 
+Package v3 source `0d86536` đã chạy xong exact preflight; mỗi layout archive và
+expanded đạt 8 tools, 21 clean Dummy, 112 grouped stub/resume, 128 module origins.
+4.357 hashes recheck khớp, 4.360 files secret scan/0 matches. Xem
+[report v3](../docs/evaluation/phase5_grouped_package_v3_report.md) và
+[preflight receipt](../experiments/manifests/phase5_grouped_package_v3_preflight01.json).
+**Full QA đã đạt 3.113 pass/1 skip/1.060,05s** tại
+`results/phase5_grouped_package_v3_qa01`; setup/Ruff/mypy392/knowledge đạt.
+555 source/7 raw/169 data hashes kiểm lại khớp; output đã đóng, không chạy lại.
+[QA receipt](../experiments/manifests/phase5_grouped_package_v3_cpu01.json).
+Chưa push source/GPU submission v3. Quota đúng owner: 29,02h; Dataset private ready/v1,
+model Qwen v1 đọc metadata được. Đây là snapshot, không phải reservation.
+
+Mốc CPU nền trước đó (đã đóng):
+
 Đã chốt [grouped Dev runner/checkpoint v1](grouped_runner_v1.md), source `354b75b`.
 27 focused tests đạt/130,62s; 112 ca/8 shards, resume/tampering/failure retention
 đã kiểm. Full QA **3.055 pass/1 skip/973,70s**; setup/Ruff/mypy381/knowledge đạt.
 537 source/1.783 raw/169 data hashes kiểm lại khớp; selected receipt đã lưu.
-Output `results/phase5_grouped_runner_v1_cpu01` đã đóng, không còn QA hoặc GPU job
-mới. Không chạy trùng, sửa source đã khóa hoặc ghi thêm raw. Việc tiếp theo là
-native grouped adapter/auditor, không phải chạy lại các mốc CPU đã hoàn tất.
+Output `results/phase5_grouped_runner_v1_cpu01` đã đóng. Không chạy trùng, sửa
+source đã khóa hoặc ghi thêm raw của mốc này.
 
 ## Bước tiếp theo
 
 Native v2 source `3486dbf` đã ghép. **Thu hồi kết luận package/import isolation**
 của hai receipt cũ: overlay nằm dưới `configs`, editable install đã cung cấp
 module từ repo. Giữ nguyên raw/receipt. Xem phần đính chính trong báo cáo native.
-Đang làm package v3; 14 regression tests đạt, Ruff/mypy392 đạt trước freeze.
+Package v3 preflight đã đạt; 14 regression tests đạt, Ruff/mypy392 đạt trước freeze.
 Chưa có native submission mới.
 
-1. Freeze package v3; chạy `prepare_phase5_grouped_package_v3.py` ở output mới:
-   archive/expanded, fresh venv, origins, 8 tools, 21 clean Dummy và 112 grouped
-   stub/resume mỗi layout. Chạy full QA bằng `verify_phase5_grouped_package_v3.py`.
+1. CPU QA và preflight đã hoàn tất; không chạy lại. Selected QA receipt đính chính
+   scope Test của full historical suite, không coi flag cũ là filesystem audit.
 2. Kiểm hash receipt/source/raw, push GitHub; kiểm live owner `huylmhuhu`,
    Dataset/model private và quota. `kaggle1.json` là owner này; chọn owner explicit,
    không dùng default credential path rồi suy đoán tài khoản. Status document v1
