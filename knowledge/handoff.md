@@ -13,8 +13,20 @@ expanded đạt 8 tools, 21 clean Dummy, 112 grouped stub/resume, 128 module ori
 `results/phase5_grouped_package_v3_qa01`; setup/Ruff/mypy392/knowledge đạt.
 555 source/7 raw/169 data hashes kiểm lại khớp; output đã đóng, không chạy lại.
 [QA receipt](../experiments/manifests/phase5_grouped_package_v3_cpu01.json).
-Chưa push source/GPU submission v3. Quota đúng owner: 29,02h; Dataset private ready/v1,
-model Qwen v1 đọc metadata được. Đây là snapshot, không phải reservation.
+Source/evidence đã push GitHub `93dc9a2`. **Shard 0 đã submit v1 và đang RUNNING**:
+[notebook thực tế](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-0),
+[submission receipt](../experiments/manifests/phase5_grouped_v3_s0_submission01.json).
+14 ca, private/offline T4x2, timeout 14.400s; không submit lại. Source remote khớp
+hash package. Kaggle đổi alias `...-s0` thành `...-shard-0` theo title.
+Quota trước submit: 29,02h; Dataset private ready/v1, Qwen model v1.
+Raw monitor: `results/phase5_grouped_v3_s0_monitor02`; source/metadata pull thành
+công khi bỏ `/1`, versioned pull trả 403 dù status v1 hoạt động. Chưa có log
+nội dung; không suy đoán số ca hoặc nguyên nhân từ log rỗng.
+
+Bộ kiểm terminal local mới: `scripts/audit_phase5_grouped_gpu_v3.py`,
+[audit notes](../docs/evaluation/phase5_grouped_gpu_v3_audit_notes.md); 32 focused
+tests đạt, Ruff/mypy393 đạt. Không thay frozen worker. Monitor03 cho biết RUNNING,
+failureMessage=null, files=[], log rỗng; chưa có kết quả để audit.
 
 Mốc CPU nền trước đó (đã đóng):
 
@@ -31,17 +43,15 @@ Native v2 source `3486dbf` đã ghép. **Thu hồi kết luận package/import i
 của hai receipt cũ: overlay nằm dưới `configs`, editable install đã cung cấp
 module từ repo. Giữ nguyên raw/receipt. Xem phần đính chính trong báo cáo native.
 Package v3 preflight đã đạt; 14 regression tests đạt, Ruff/mypy392 đạt trước freeze.
-Chưa có native submission mới.
+Đã có native submission shard 0 nêu trên; bảy shard khác chưa chạy.
 
 1. CPU QA và preflight đã hoàn tất; không chạy lại. Selected QA receipt đính chính
    scope Test của full historical suite, không coi flag cũ là filesystem audit.
-2. Kiểm hash receipt/source/raw, push GitHub; kiểm live owner `huylmhuhu`,
-   Dataset/model private và quota. `kaggle1.json` là owner này; chọn owner explicit,
-   không dùng default credential path rồi suy đoán tài khoản. Status document v1
-   đã đọc lại thành công: COMPLETE; không phải thiếu quyền người dùng.
+2. Theo dõi đúng notebook `...-shard-0`, owner `huylmhuhu` explicit từ kaggle1.json.
+   Không gửi job trùng; khi terminal tải toàn bộ output vào thư mục mới.
 3. Theo [contract v3](../docs/architecture/phase5_grouped_package_v3_contract.md),
-   submit shard 0/14 ca trước, timeout 14.400s, không chạy trùng/semantic retry.
-   Audit native terminal artifacts trước khi chạy tiếp bảy shard còn lại.
+   audit source/bootstrap/112-key identity và 14 ca shard 0, native metrics,
+   checkpoint, lifecycle và recovery trước khi chạy tiếp bảy shard còn lại.
 4. Báo matched Dev guard structured-output/Pre/Post, lỗi, startup/generation/
    end-to-end timing và lifecycle; không retry ngữ nghĩa hoặc mở Test để tuning.
 

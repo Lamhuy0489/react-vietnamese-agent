@@ -48,7 +48,13 @@ checks ([live receipt](../../experiments/manifests/phase5_grouped_package_v3_liv
 not a quota reservation. An initial local model-metadata destination
 error was corrected without downloading weights or changing remote state.
 
-Full QA has passed. After GitHub push, submit one private/offline T4x2 shard (14 keys),
+Full QA passed and source/evidence pushed as `93dc9a2`. One private/offline T4x2
+shard (14 keys) has been submitted as
+[react-vn-grouped-dev-v3-shard-0](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-0)
+v1, currently RUNNING. [Submission receipt](../../experiments/manifests/phase5_grouped_v3_s0_submission01.json).
+Remote wrapper SHA-256 matches the frozen package; private/offline/image/model/
+Dataset metadata verified. Requested `...-s0` became `...-shard-0` due to title.
+
 14,400s timeout, as frozen in the [contract](../architecture/phase5_grouped_package_v3_contract.md).
 Record the returned notebook URL/version, not an assumed slug. Preserve native
 failures; independently authenticate downloaded source and audit artifacts before

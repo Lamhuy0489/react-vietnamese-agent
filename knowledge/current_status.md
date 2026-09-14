@@ -14,8 +14,12 @@ bị false positive do root `configs` và editable install. Đã đính chính t
 mỗi layout. 4.357 hashes recheck khớp. Full QA **3.113 pass/1 skip/1.060,05s**,
 setup/Ruff/mypy392/knowledge đạt; 555 source/7 raw/169 data hashes khớp.
 [QA receipt](../experiments/manifests/phase5_grouped_package_v3_cpu01.json).
-Output `results/phase5_grouped_package_v3_qa01` đã đóng; không chạy lại. Chưa có
-native run mới; bước kế là push source và submit shard 0.
+Output `results/phase5_grouped_package_v3_qa01` đã đóng; không chạy lại.
+Source/evidence đã push `93dc9a2`; **native shard 0 v1 RUNNING** trên
+[Kaggle](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-0).
+[Submission](../experiments/manifests/phase5_grouped_v3_s0_submission01.json):
+14 ca, private/offline T4x2, timeout 14.400s. Source remote hash khớp; chưa có
+kết quả terminal, không chạy trùng hoặc submit bảy shard còn lại trước audit.
 
 [grouped Dev runner/checkpoint v1](grouped_runner_v1.md), source `354b75b`:
 27 focused tests đạt/130,62s; 112 khóa riêng biệt trên tám shard, 106 tool calls,
@@ -26,7 +30,7 @@ Full QA **3.055 pass/1 skip/973,70s**; setup/Ruff/mypy381/knowledge đạt.
 537 source/1.783 raw/169 data hashes kiểm lại khớp;
 [receipt](../experiments/manifests/phase5_grouped_runner_v1_cpu01.json) đã chốt.
 Output nền `results/phase5_grouped_runner_v1_cpu01` đã đóng; không chạy lại mốc này.
-Không GPU job mới, không mở Test/private oracle, không đổi benchmark.
+Mốc CPU cũ không có GPU; job mới duy nhất là shard 0 nêu trên. Không đổi benchmark.
 
 ## Đã chốt và dùng làm nền
 

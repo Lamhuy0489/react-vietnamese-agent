@@ -1,0 +1,62 @@
+{
+  "protocol": "phase5_grouped_v3_submission",
+  "observed_date": "2026-09-14",
+  "requested_kernel": "huylmhuhu/react-vn-grouped-dev-v3-s0",
+  "actual_kernel": "huylmhuhu/react-vn-grouped-dev-v3-shard-0",
+  "notebook_url": "https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-0",
+  "kernel_version": 1,
+  "kernel_id": 134340826,
+  "submission_confirmed": true,
+  "observed_status": "RUNNING",
+  "status_is_terminal": false,
+  "source_commit": "0d865365b7881144756f804441ca24ed48935f7f",
+  "github_evidence_commit": "93dc9a2",
+  "github_pushed_before_submission": true,
+  "preflight_sha256": "d929631e5557e656e21b1394b39a4175aec310883367d2a1ac3fedd8cbe1ec52",
+  "cpu_qa_sha256": "34b045a651ab19931d37cced4295da42224ef208f3a4ed8ae05565800b905ec7",
+  "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+  "dataset_version_pre_submit": 1,
+  "model_handle": "qwen-lm/qwen2.5/transformers/7b-instruct/1",
+  "shard": 0,
+  "expected_tasks": 14,
+  "expected_total_schedule": 112,
+  "timeout_seconds": 14400,
+  "requested_accelerator": "NvidiaTeslaT4",
+  "remote_metadata": {
+    "id": "huylmhuhu/react-vn-grouped-dev-v3-shard-0",
+    "id_no": 134340826,
+    "title": "ReAct VN Grouped Dev v3 shard 0",
+    "code_file": "react-vn-grouped-dev-v3-shard-0.py",
+    "language": "python",
+    "kernel_type": "script",
+    "is_private": true,
+    "enable_gpu": true,
+    "enable_tpu": false,
+    "enable_internet": false,
+    "keywords": [],
+    "dataset_sources": [
+      "huylmhuhu/react-vn-guard15-probe-data-v1"
+    ],
+    "kernel_sources": [],
+    "competition_sources": [],
+    "model_sources": [
+      "qwen-lm/qwen2.5/Transformers/7b-instruct/1"
+    ],
+    "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+    "machine_shape": "NvidiaTeslaT4"
+  },
+  "remote_sha256": {
+    "react-vn-grouped-dev-v3-shard-0.py": "a15f2e6fefcb337a8acb699012bb3f59797b037309e931e68709768a62204a13",
+    "kernel-metadata.json": "97abf630be24774396e35089d1f8d27a28663760c3245894787fb63b39f63572"
+  },
+  "remote_source_hash_matches": true,
+  "versioned_pull_supported": false,
+  "pull_scope": "Unversioned current code; hash equals submitted v1. Version-qualified CLI pull returned 403; status supports version",
+  "submission_raw_sha256": {
+    "push.log": "5ad725ad2fa1010801db28442f6405e598a189416af9a0c264e8afb3138ccc5e",
+    "quota_before.log": "473b1dad0291c005c7572e77316a04cd32d66d5620d3a9cd059e0e5c80fb59e4",
+    "command.json": "abd3a7b6f672ee3cef3efb5a124cf43e2139056219d7e961b6abc2cbba6c64f4"
+  },
+  "phase5_accepted": false,
+  "semantic_retry": false
+}

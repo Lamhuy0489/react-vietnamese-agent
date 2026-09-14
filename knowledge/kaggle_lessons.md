@@ -281,3 +281,8 @@ Failed SaveKernel requests are not completed or failed inference attempts.
 - CLI model metadata download requires its destination directory to exist.
   A local missing-directory error is not a model-access denial; preserve the
   failed command, create the destination and repeat only this read-only check.
+- In the installed CLI, `kernels status` and `logs` parse but do not forward a
+  supplied version to the session API. `pull handle/1` returned 403 while an
+  unversioned pull succeeded and matched submitted v1 code. Keep submission
+  version evidence separate from latest-session observations; do not label a
+  latest-session read as independently version-authenticated.

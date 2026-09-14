@@ -76,6 +76,18 @@ receipt của đúng lượt, không tự nâng phiên bản.
 
 ## Terminal audit ngày 2026-09-14
 
+### Grouped Dev native v3 — shard 0 đang chạy
+
+[Notebook thực tế](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-0)
+**v1, RUNNING**, kiểm ngày 2026-09-14; kernel ID `134340826`.
+Alias yêu cầu `huylmhuhu/react-vn-grouped-dev-v3-s0` đã được Kaggle đổi theo title.
+Source `0d865365b7881144756f804441ca24ed48935f7f`, push GitHub qua `93dc9a2` trước
+submission. Dataset guard15 v1 private và model Qwen v1 như dưới. 14 ca/shard0,
+T4x2/offline/private, timeout 14.400s. [Submission receipt](../experiments/manifests/phase5_grouped_v3_s0_submission01.json),
+[report](../docs/evaluation/phase5_grouped_package_v3_report.md).
+Remote source hash khớp; pull có `/1` trả 403 nhưng pull handle không version
+thành công. Chưa có terminal audit hoặc kết quả chất lượng; không rerun job này.
+
 Kiểm tra đúng owner cho grouped package v3:
 [live receipt](../experiments/manifests/phase5_grouped_package_v3_live01.json).
 `huylmhuhu` còn 29,02/30h GPU, refresh 2026-09-19; Dataset
@@ -83,8 +95,8 @@ Kiểm tra đúng owner cho grouped package v3:
 **private, ready, v1**; Qwen model instance v1 truy cập được. Source package
 `0d86536`; [preflight](../experiments/manifests/phase5_grouped_package_v3_preflight01.json)
 đã đạt; [full QA 3.113 pass/1 skip](../experiments/manifests/phase5_grouped_package_v3_cpu01.json)
-đã chốt. Chưa có URL/version notebook grouped v3 thực tế, chưa
-submit. Không suy đoán notebook tồn tại/không tồn tại từ lỗi status của tên dự kiến.
+đã chốt. Shard 0 đã submit như trên; bảy shard khác chưa có URL/version thực tế.
+Không suy đoán notebook tồn tại/không tồn tại từ lỗi status của tên dự kiến.
 
 Đính chính: snapshot quota và lỗi permission dưới đây được lấy bằng credential
 mặc định, **không xác thực owner `huylmhuhu`**; không dùng chúng làm quota/quyền

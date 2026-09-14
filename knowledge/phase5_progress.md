@@ -7,7 +7,8 @@ source `0d86536`, đã đạt 170-file complete archive, hai layout/fresh venv,
 8 tools/recovery + 21 clean Dummy + 112 grouped stub/resume mỗi layout.
 175 source/4.166 raw/16 kernel hashes recheck khớp. Full QA **3.113 pass/1 skip**
 (1.060,05s), setup/Ruff/mypy392/knowledge đạt; 555 source/7 raw/169 data hashes khớp.
-Chưa submit GPU. Quota owner `huylmhuhu` 29,02h, Dataset private ready/v1.
+Native shard 0 [v1 RUNNING](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-0),
+source remote hash khớp. Quota trước submit 29,02h, Dataset private ready/v1.
 Giữ **4/7≈57%** aggregate gates; CPU package không chứng minh LLM quality.
 Kết luận isolation của v2 compile/import receipts đã thu hồi do editable-install
 fallback và root `configs`; giữ raw lịch sử, không dùng valid=true để nghiệm thu.
