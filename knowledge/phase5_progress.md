@@ -2,6 +2,15 @@
 
 ## Hiện hành — grouped Dev package v3
 
+2026-09-15: [shards3/4 COMPLETE/audit](../docs/evaluation/phase5_grouped_v3_batch34_report.md),
+914 raw/4 remote hash khớp, scan918files/0credentials, hai audits/shard giống nhau.
+Shard3 14 completed nhưng 0 tools, tự nói đã gửi mã; shard4 4 completed/10
+model_error, 10 PRE JSON errors/4 POST backend failures. Tổng **70/112 (62,5%)**
+lịch native, 50 completed/20 model_error; chưa semantic utility/ASR/FPR.
+Tiếp theo shards5/6 rồi7, không đổi source/prompt/data. Gate vẫn4/7≈57%.
+
+Mốc trước:
+
 2026-09-15: [shards 1/2 native COMPLETE/audit](../docs/evaluation/phase5_grouped_v3_batch12_report.md),
 1.244 raw/4 remote hashes khớp. Shard1 4 completed/10 model_error do guard JSON
 syntax; shard2 14 completed và 21 guard responses hợp lệ (11 PRE/10 POST).

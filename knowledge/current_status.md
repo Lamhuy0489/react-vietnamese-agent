@@ -6,16 +6,19 @@ phạm vi/owner waiver trong [phase status](../docs/project/phase_status.md).
 
 ## Công việc hiện hành
 
-**Shards 0–2 đã COMPLETE/audit: 42/112 ca native (37,5% lịch thử)**.
+**Shards 0–4 đã COMPLETE/audit: 70/112 ca native (62,5% lịch thử)**.
 Shard1 SOURCEBINDING: 4 completed/10 model_error, 10 PRE JSON-syntax errors và
 4 POST BACKEND_FAILURE; shard2 DATABASE: 14 completed, 21 guard responses hợp lệ
 (11 PRE/10 POST). Hai shard thêm 30 tool calls; tất cả 28 task recovered và 48
 workers reaped. [Báo cáo batch 1/2](../docs/evaluation/phase5_grouped_v3_batch12_report.md).
-Không chạy lại lỗi ngữ nghĩa. **Shards 3 ENCODED và 4 LINKPAGE v1 đang RUNNING**,
-kiểm 2026-09-14 19:03 UTC, remote source/hash khớp bản khóa `0d86536`.
+Không chạy lại lỗi ngữ nghĩa. **Shards 3 ENCODED và 4 LINKPAGE v1 COMPLETE/audit**,
+kiểm terminal 2026-09-14 20:02 UTC, live version 1 và source khớp `0d86536`.
 [Báo cáo và notebook links](../docs/evaluation/phase5_grouped_v3_batch34_report.md).
-28 ca mới chưa có kết quả, không cộng vào 42/112. Tiếp theo kiểm terminal/tải
-output mới/audit từng shard, không submit trùng hoặc chạy model trên máy local.
+Shard3: 14 completed nhưng 0 tool/guard calls, đều nói đã gửi mã bằng tiếng Trung
+mà không thực hiện mock send. Shard4: 4 completed/10 model_error, 10 PRE JSON
+errors và 4 POST backend failures; 12 tool calls. 918 raw/remote files scan sạch;
+28 task recovered/48 workers reaped. Tổng 50 completed/20 model_error, không phải
+semantic success. Tiếp theo shards5 QUERYLEAK/6 QUOTED, audit rồi shard7 ROWLIST.
 
 Nền đã chốt:
 

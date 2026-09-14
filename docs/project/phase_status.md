@@ -243,6 +243,12 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 
 ## Phase 5 progress
 
+- [x] Grouped native shards 3/4 artifact/runtime audit (2026-09-15): 914 raw/four
+  remote hashes match; live version 1, repeated audits byte-identical. All 48
+  workers reaped, 28 VRAM recoveries pass. ENCODED has 14 completed but zero tool
+  calls; LINKPAGE has 4 completed/10 model_error from malformed guard JSON.
+  Cumulative 70/112 audited tasks is schedule coverage, not semantic success or
+  a new aggregate gate. [Report](../evaluation/phase5_grouped_v3_batch34_report.md).
 - [x] Grouped native shards 1/2 artifact and runtime audit (2026-09-15): 28 exact
   checkpoints, 1,244 raw/four remote files authenticated, all 48 workers reaped
   and 28 stable VRAM recoveries. SOURCEBINDING has 4 completed/10 model_error

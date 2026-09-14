@@ -58,7 +58,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Grouped Dev trên GPU: [shard 0 và kiểm kết quả](../docs/evaluation/phase5_grouped_gpu_v3_audit_notes.md).
 - Grouped shard 0 terminal: [thời gian, lifecycle và thiếu tool/guard coverage](../docs/evaluation/phase5_grouped_v3_s0_report.md).
 - Grouped shards 1/2 terminal: [guard JSON errors và PRE/POST hợp lệ](../docs/evaluation/phase5_grouped_v3_batch12_report.md).
-- Grouped shards 3/4 đang chạy: [notebook/version, source pins và bước audit](../docs/evaluation/phase5_grouped_v3_batch34_report.md).
+- Grouped shards 3/4 terminal: [action omission, guard JSON errors và native timing](../docs/evaluation/phase5_grouped_v3_batch34_report.md).
 - Guard model/GPU preflight: [nguồn ứng viên và giới hạn](guard_model_preflight_evidence.md).
 - Guard GPU probe đang triển khai: [upload, audit và bước tiếp](guard_gpu_probe_v1.md).
 - Guard cancellation/VRAM recovery: [protocol và tiến độ](guard_cancellation_v1.md).

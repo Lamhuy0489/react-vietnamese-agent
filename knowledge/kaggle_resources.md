@@ -21,7 +21,7 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
-**Grouped v3 shards 3/4 v1 RUNNING**, kiểm 2026-09-14 19:03 UTC:
+**Grouped v3 shards 3/4 v1 COMPLETE/audit**, kiểm 2026-09-14 20:02 UTC:
 
 | Notebook thật | Version / ID | Bằng chứng |
 |---|---|---|
@@ -32,8 +32,14 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 Source `0d865365b7881144756f804441ca24ed48935f7f`, GitHub evidence `7078593` trước
 push. Cùng [Dataset guard15 v1](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
 đã live ready/v1; private/offline T4x2, model v1, timeout 14.400s; quota snapshot
-26,79h. Mã tải lại khớp bản khóa. Requested aliases `...-s3`/`...-s4` không phải
-handle thật. Chưa có terminal audit; không tính 28 ca đang chạy thành kết quả.
+26,79h trước submit. Mã tải lại khớp bản khóa; live current_version=1 đúng IDs.
+Requested aliases `...-s3`/`...-s4` không phải handle thật.
+[Terminal3](../experiments/manifests/phase5_grouped_v3_s3_terminal01.json),
+[terminal4](../experiments/manifests/phase5_grouped_v3_s4_terminal01.json) có status/
+version/hash/scan; report liên kết audit và summaries. 380+534 raw/4 remote hashes
+khớp, scan918files/0credentials. Shard3 0tools; shard4 10 model_error do guard JSON.
+Tổng70/112 audited, chưa Phase5 acceptance. API last_run_time bất thường không
+dùng cho thời gian chạy; giữ nguyên để đối chiếu. Shards5/6 đang chuẩn bị.
 Shards0–2 COMPLETE/audit ở dưới; không submit trùng. Quyền GitHub không cấp quyền
 Kaggle private; không đổi public hoặc lưu credentials để chia sẻ.
 
