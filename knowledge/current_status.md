@@ -4,6 +4,10 @@ Cập nhật: 2026-09-14. **Phase 5 đang làm, chưa nghiệm thu.**
 
 ## Hiện hành — sửa lỗi sau audit
 
+Đang làm [guard diagnostics v1](guard_diagnostics_v1.md): sanitized observer và
+CPU retirement/parity controls; kế hoạch Dev chọn cố định8pairs/16cases, chưa
+dispatch GPU. Full QA đang chuẩn bị, không gọi là guard-quality acceptance.
+
 Đang triển khai [document diagnostic v1](document_diagnostic_v1.md), source
 `54aa3ec`: scope v3/runtime v8 sửa bounded CDOC. Full **2.813 pass/1 skip**,
 693,77s; 49 focused tests; setup/Ruff/mypy 357 files/knowledge đạt. 501 source/

@@ -4,6 +4,14 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 ## Đang làm
 
+**Ưu tiên mới:** [guard diagnostics v1](guard_diagnostics_v1.md), nối tiếp native
+document đã xong. Thêm sanitized structural observer opt-in và actual-spawn
+failure/parity controls; metadata-only grouped Dev planner (8pairs/16cases/112
+runtime tasks), dispatch-disabled. Chưa đổi frozen guard parser/prompt/native
+factory, không retry v1. Bước kế full QA và chốt planning receipt; sau đó worker
+integration/exact package cho Dev mới. Pending access không cần tài khoản mới,
+không GPU job; giữ mọi raw/receipt document v1 bên dưới.
+
 **Ưu tiên hiện hành:** [document diagnostic v1](document_diagnostic_v1.md).
 CPU draft01 phát hiện A4–A6 chặn CDOC; scope v3/runtime v8 sửa namespace có giới
 hạn, giữ v7 frozen. Source `54aa3ec`. Full **2.813 pass/1 skip**, 693,77s;
