@@ -51,6 +51,12 @@ Raw CPU nằm local dưới `results/` và không track Git; bạn cùng máy đ
 được. Clone GitHub chỉ có source, report và selected receipt sau khi commit,
 không tự tải được raw CPU. Chưa upload hoặc công khai artifacts này lên Kaggle.
 
+## Native v2 đã ghép
+
+Offline archive/expanded preflight `build/kaggle/phase5_grouped_native_v2_preflight01`
+đạt compile/hash/path checks; `actual_model_loads=0`, `gpu_runs=0`,
+`native_submission_ready=false`. Chưa upload Kaggle.
+
 ## Bước tiếp
 
 QA CPU01 đã chốt; tiếp ghép adapter native riêng: agent/guard factory, sanitized
@@ -65,6 +71,7 @@ Kaggle phải kiểm live trước submission, không dùng snapshot cũ như re
 
 - [Contract](../docs/architecture/phase5_grouped_runner_v1_contract.md).
 - [Báo cáo và giới hạn](../docs/evaluation/phase5_grouped_runner_v1_report.md).
+- [Native v2 preflight report](../docs/evaluation/phase5_grouped_native_v2_report.md).
 - [SQL scope/runtime prerequisite](sql_scope_v5.md).
 - [Native diagnostics đã kiểm CPU](guard_diagnostics_v1.md).
 - [Notebook/Dataset hiện có](kaggle_resources.md): lượt này chưa tạo tài nguyên mới.

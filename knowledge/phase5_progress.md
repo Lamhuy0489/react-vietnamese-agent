@@ -6,7 +6,9 @@
 27 focused tests (112 ca/8 shards + kiểm tra resume, tampering và giữ lỗi).
 Full QA **3.055 pass/1 skip/973,70s** đã đạt; setup/Ruff/mypy381/knowledge đạt,
 537 source/1.783 raw/169 data hashes kiểm lại khớp. [CPU receipt](../experiments/manifests/phase5_grouped_runner_v1_cpu01.json)
-đã chốt, không còn QA chạy; không đóng thêm aggregate gate. Native adapter/exact
+đã chốt, không còn QA chạy; không đóng thêm aggregate gate. Native v2 adapter đã
+ghép; offline archive/expanded preflight đạt compile/hash/path nhưng chưa load model.
+Native exact
 package, grouped Dev LLM/lifecycle/quality và freeze còn mở; vẫn 4/7≈57% theo
 aggregate gates, không phải 57% thời gian/công sức. Không GPU job mới.
 

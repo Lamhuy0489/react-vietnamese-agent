@@ -14,6 +14,9 @@ native grouped adapter/auditor, không phải chạy lại các mốc CPU đã h
 
 ## Bước tiếp theo
 
+Native v2 source đã ghép; offline overlay preflight đạt compile/hash/path checks,
+`actual_model_loads=0`, `native_submission_ready=false`. Chưa submit Kaggle.
+
 1. Ghép native runner phiên bản riêng: A0/A1 agent-only; A2–A6 dùng
    `native_guard_diagnostics_v1.native_pair`, runtime v10 và catalog public Dev.
    Identity cần model/snapshot/inventory/config pins, 112 variant+level keys và
@@ -38,6 +41,8 @@ public tài nguyên private. Tác vụ model nặng chỉ chạy Kaggle.
 - [Báo cáo runner hiện hành](../docs/evaluation/phase5_grouped_runner_v1_report.md).
 - [Grouped CPU receipt](../experiments/manifests/phase5_grouped_runner_v1_cpu01.json),
   SHA-256 `6233354ab9445569d83c020f4b3a4f1f4d65bcd81fec4a85bea53ea80243f9f3`.
+- [Native v2 preflight](../docs/evaluation/phase5_grouped_native_v2_report.md) và
+  [receipt](../build/kaggle/phase5_grouped_native_v2_preflight01/preflight_receipt.json).
 - [SQL CPU prerequisite](../experiments/manifests/phase5_sql_scope_v5_cpu01.json),
   source `3667529`: 3.028 pass/1 skip, 531 source/463 raw/169 data hashes khớp.
   Output đã đóng, không chạy trùng/ghi thêm.
