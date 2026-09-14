@@ -6,7 +6,12 @@ và không submit Kaggle. Preflight tại `build/kaggle/phase5_grouped_native_v2
 `actual_model_loads=0`, `gpu_runs=0`, `test_payload_accessed=false`,
 `native_submission_ready=false`.
 
-Đây chỉ là bằng chứng toàn vẹn package, không chứng minh import trên Kaggle,
+Sau khi sửa root detection của archive, isolated import audit đạt **11 tests
+liên quan / 1,09s** và import được runner/auditor trong Python `-I`; không có
+`torch`, `transformers` hoặc `tokenizers` trong module graph. [Import receipt](../../experiments/manifests/phase5_grouped_native_v2_import01.json)
+ghi `model_imported=false`, `actual_model_loads=0`.
+
+Đây chỉ là bằng chứng toàn vẹn/import cục bộ, không chứng minh import trên Kaggle,
 chất lượng guard, latency, VRAM recovery, ASR/FPR hoặc utility. Bước kế là
 kiểm live quota/private mounts rồi submit shard native mới với identity riêng.
 

@@ -1,0 +1,23 @@
+{
+  "protocol": "grouped_dev_native_isolated_import_audit_v1",
+  "valid": true,
+  "source_commit": "3486dbf",
+  "preflight_receipt_sha256": "89c860e5ac5db9431057d80671866a2f9dc0fd545b39382f5ceb455e7b7fb6bb",
+  "expanded_source_sha256": {
+    "docs/architecture/phase5_grouped_native_v2_contract.md": "8536b55dbf9ecb54b9eedd7d0b42ca28345cd40d492fb471895487888fa1470e",
+    "scripts/audit_phase5_grouped_dev.py": "031415efbe8f3f420d283b925270d1963a85024819eeea215b315674e5271a87",
+    "scripts/run_phase5_grouped_dev.py": "4e5e135077b8a35106a10d5c2202339bcf1f0679f42a019acc13cde7d7b9ed1f",
+    "src/react_agent/llm/grouped_dev_identity_v2.py": "d93bb0e55134fa6f47156bea07e9c1cacad36312d6d4e39487f6cd5e39f39269",
+    "src/react_agent/llm/grouped_dev_runner_v2.py": "5cd89dafad76c27e4086e149ca0a16166e7b94ba5c3bf8d26890145dd30fec35",
+    "src/react_agent/validation/grouped_dev_checkpoint_v2.py": "8bd34da4ce7371ae537dd16a08bdee900f68643c0c676cf108b8d9be9d71e1d4",
+    "src/react_agent/validation/grouped_dev_native_audit_v2.py": "ed9fe897f446005f6970d6e5dd3a906bc653e915494fd1318940cc494073296c"
+  },
+  "isolated_python": true,
+  "stdout_marker": "GROUPED_NATIVE_ISOLATED_IMPORT_OK",
+  "model_imported": false,
+  "actual_model_loads": 0,
+  "gpu_runs": 0,
+  "test_payload_accessed": false,
+  "native_submission_ready": false,
+  "scope": "Expanded overlay imports only; no model, weights, GPU or Kaggle execution."
+}

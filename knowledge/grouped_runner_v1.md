@@ -56,6 +56,8 @@ không tự tải được raw CPU. Chưa upload hoặc công khai artifacts nà
 Native v2 source `3486dbf`; offline archive/expanded preflight `build/kaggle/phase5_grouped_native_v2_preflight01`
 đạt compile/hash/path checks; `actual_model_loads=0`, `gpu_runs=0`,
 `native_submission_ready=false`. Chưa upload Kaggle.
+Import audit isolated Python cũng đạt 11 test liên quan; [receipt](../experiments/manifests/phase5_grouped_native_v2_import01.json)
+ghi không import model/torch.
 
 ## Bước tiếp
 
@@ -72,6 +74,7 @@ Kaggle phải kiểm live trước submission, không dùng snapshot cũ như re
 - [Contract](../docs/architecture/phase5_grouped_runner_v1_contract.md).
 - [Báo cáo và giới hạn](../docs/evaluation/phase5_grouped_runner_v1_report.md).
 - [Native v2 preflight report](../docs/evaluation/phase5_grouped_native_v2_report.md).
+- [Native isolated import receipt](../experiments/manifests/phase5_grouped_native_v2_import01.json).
 - [SQL scope/runtime prerequisite](sql_scope_v5.md).
 - [Native diagnostics đã kiểm CPU](guard_diagnostics_v1.md).
 - [Notebook/Dataset hiện có](kaggle_resources.md): lượt này chưa tạo tài nguyên mới.
