@@ -7,7 +7,9 @@
 syntax; shard2 14 completed và 21 guard responses hợp lệ (11 PRE/10 POST).
 30 tool calls, 48 reaped workers, 28 recovered tasks. Tổng shards0–2 đạt
 **42/112 ca native (37,5% lịch thử)**; không đồng nghĩa Phase5 accepted.
-Chuẩn bị shards3/4, không rerun/đổi prompt cho ca thất bại. Gate vẫn 4/7≈57%.
+[Shards3/4 v1 đang RUNNING](../docs/evaluation/phase5_grouped_v3_batch34_report.md),
+kiểm 2026-09-14 19:03 UTC; 28 ca mới chưa cộng vào audited coverage.
+Không rerun/đổi prompt cho ca thất bại. Gate vẫn 4/7≈57%.
 
 2026-09-14: [package v3](../docs/evaluation/phase5_grouped_package_v3_report.md),
 source `0d86536`, đã đạt 170-file complete archive, hai layout/fresh venv,

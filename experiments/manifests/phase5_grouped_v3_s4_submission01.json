@@ -1,0 +1,88 @@
+{
+  "protocol": "phase5_grouped_v3_submission",
+  "observed_at_utc": "2026-09-14T19:02:45.050386+00:00",
+  "requested_kernel": "huylmhuhu/react-vn-grouped-dev-v3-s4",
+  "actual_kernel": "huylmhuhu/react-vn-grouped-dev-v3-shard-4",
+  "notebook_url": "https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-4",
+  "kernel_version": 1,
+  "submission_confirmed": true,
+  "observed_status": "RUNNING",
+  "status_is_terminal": false,
+  "source_commit": "0d865365b7881144756f804441ca24ed48935f7f",
+  "github_evidence_commit": "707859311be626ea03dc60ab9712fd40370f4533",
+  "github_pushed_before_submission": true,
+  "preflight_sha256": "d929631e5557e656e21b1394b39a4175aec310883367d2a1ac3fedd8cbe1ec52",
+  "cpu_qa_sha256": "34b045a651ab19931d37cced4295da42224ef208f3a4ed8ae05565800b905ec7",
+  "preceding_shards_audit_sha256": {
+    "1": "a6269f374893f1619774af1cb5585da9176626983ee03c1df10990a7661dd240",
+    "2": "c3027ca371b54f810edc47ca4154600a37526886ad1fe73e2d57e192064dc100"
+  },
+  "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+  "dataset_version_pre_submit": 1,
+  "model_handle": "qwen-lm/qwen2.5/transformers/7b-instruct/1",
+  "shard": 4,
+  "expected_tasks": 14,
+  "expected_total_schedule": 112,
+  "timeout_seconds": 14400,
+  "requested_accelerator": "NvidiaTeslaT4",
+  "private": true,
+  "internet_enabled": false,
+  "semantic_retry": false,
+  "phase5_accepted": false,
+  "remote_source_hash_matches": true,
+  "submission_command": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "-m",
+    "kaggle",
+    "kernels",
+    "push",
+    "-p",
+    "build/kaggle/phase5_grouped_package_v3_preflight01/kernel_s4",
+    "--timeout",
+    "14400",
+    "--accelerator",
+    "NvidiaTeslaT4"
+  ],
+  "submission_log_sha256": "7ac11896b4204415b595be84f3d804edc6b45cdf4eafaf6933322a9bb712bb07",
+  "access_evidence_sha256": {
+    "quota.log": "4f21356b6f5c5bfff1ac38f8f0e6d65b7701090ecdea8dacd96aa23d21c12ae6",
+    "dataset.log": "56f63d893f166f7cf38d5d212a5335798fcfde2198cc01dfaae24bb316aec585"
+  },
+  "kernel_id": 134383829,
+  "remote_metadata": {
+    "id": "huylmhuhu/react-vn-grouped-dev-v3-shard-4",
+    "id_no": 134383829,
+    "title": "ReAct VN Grouped Dev v3 shard 4",
+    "code_file": "react-vn-grouped-dev-v3-shard-4.py",
+    "language": "python",
+    "kernel_type": "script",
+    "is_private": true,
+    "enable_gpu": true,
+    "enable_tpu": false,
+    "enable_internet": false,
+    "keywords": [],
+    "dataset_sources": [
+      "huylmhuhu/react-vn-guard15-probe-data-v1"
+    ],
+    "kernel_sources": [],
+    "competition_sources": [],
+    "model_sources": [
+      "qwen-lm/qwen2.5/Transformers/7b-instruct/1"
+    ],
+    "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+    "machine_shape": "NvidiaTeslaT4"
+  },
+  "remote_sha256": {
+    "kernel-metadata.json": "0c5f5c90f03224c5caa6f7d078b0966881e4f27059df503091569f60784fa524",
+    "react-vn-grouped-dev-v3-shard-4.py": "6bf686ba036bdd86ec75bf7e349b1204426b86bdfc563ecd6d5abf797bf1956a"
+  },
+  "original_submission_sha256": "30c3bc2c881b6c5c35017fa8c0b6f1880a0be1e699f5e425e680c3c6a87c8767",
+  "status_observation": {
+    "observed_at_utc": "2026-09-14T19:03:52.099886+00:00",
+    "actual_kernel": "huylmhuhu/react-vn-grouped-dev-v3-shard-4",
+    "session_status": {
+      "status": "RUNNING",
+      "failureMessage": null
+    }
+  }
+}

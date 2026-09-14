@@ -22,7 +22,15 @@ Remote/status/log ở `results/phase5_grouped_v3_batch12_monitor01`.
 shard2 678 raw/2 remote, 14 completed và 21 guard PRE/POST hợp lệ. 1.248 file scan
 không credential values. [Báo cáo](../docs/evaluation/phase5_grouped_v3_batch12_report.md).
 35 relevant tests/setup/Ruff/mypy394/knowledge đạt; worker source không đổi.
-Tổng native coverage 42/112 (37,5%), không phải Phase5 acceptance. Chuẩn bị shard3/4.
+Tổng native coverage 42/112 (37,5%), không phải Phase5 acceptance.
+
+**Shards 3 ENCODED / 4 LINKPAGE đã gửi v1, RUNNING lúc 19:03 UTC ngày 2026-09-14**.
+Kernel IDs 134383821 / 134383829; actual handles dùng `...-shard-3` / `...-shard-4`.
+[Báo cáo/URL/receipts](../docs/evaluation/phase5_grouped_v3_batch34_report.md).
+Source `0d86536`, GitHub evidence `7078593` đã push trước submit. 175 source pins,
+hai wrapper/metadata pins và mã tải ngược đều khớp; quota trước gửi 26,79h,
+Dataset private ready/v1, offline T4x2/14.400s. Không có kết quả của 28 ca mới.
+Raw submission/access/monitor lưu theo đường dẫn trong báo cáo; không ghi đè.
 
 Nền đã chốt và lịch sử submission (RUNNING dưới đây đã được terminal thay thế):
 
@@ -69,12 +77,14 @@ Native v2 source `3486dbf` đã ghép. **Thu hồi kết luận package/import i
 của hai receipt cũ: overlay nằm dưới `configs`, editable install đã cung cấp
 module từ repo. Giữ nguyên raw/receipt. Xem phần đính chính trong báo cáo native.
 Package v3 preflight đã đạt; 14 regression tests đạt, Ruff/mypy392 đạt trước freeze.
-Đã có native submission shard 0 nêu trên; bảy shard khác chưa chạy.
+Trạng thái native mới nhất ở đầu trang: 0–2 audited, 3/4 RUNNING; 5–7 chưa gửi.
 
 1. CPU QA và preflight đã hoàn tất; không chạy lại. Selected QA receipt đính chính
    scope Test của full historical suite, không coi flag cũ là filesystem audit.
 2. Shards 0–2 đã terminal/audit; raw và summaries đã đóng, không tải/rerun trùng.
-   Kiểm live quota/Dataset rồi submit shards 3 ENCODED và 4 LINKPAGE đã chọn trước.
+   Shards 3/4 đã RUNNING; kiểm status actual handles, không submit lại.
+   Khi terminal tải toàn bộ outputs vào thư mục batch34 mới, xác minh version và
+   chạy release auditor rồi descriptive summary; lưu scan/hash/receipts.
 3. Theo [contract v3](../docs/architecture/phase5_grouped_package_v3_contract.md),
    giữ source `0d86536`, package đã khóa, timeout 14.400s mỗi shard; ghi URL/version
    thực tế như receipts trên. Audit từng shard trước khi mở rộng shard 5–7.

@@ -1,12 +1,12 @@
 # Sổ tra cứu Kaggle của đồ án
 
-Cập nhật 2026-09-14 từ receipts/report đã lưu trong Git và terminal audit quota.
+Cập nhật 2026-09-15 từ receipts/report đã lưu trong Git và live submission checks.
 Đây là **memory phát
 triển cho nhóm**, không đưa vào prompt benchmark. Trạng thái dưới đây là mốc
 bằng chứng lịch sử, không phải kiểm tra trực tuyến lại mọi URL hôm nay.
 
-Kiểm offline: 26 URL code/Dataset/model trong sổ đều có handle tương ứng trong
-`experiments/manifests/`. Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
+Các URL code/Dataset/model có receipts đối chiếu trong `experiments/manifests/`.
+Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Bạn mới tham gia bắt đầu ở đâu?
 
@@ -20,6 +20,24 @@ Kiểm offline: 26 URL code/Dataset/model trong sổ đều có handle tương �
    không chuyển public chỉ để mở được link. 403/404 có thể là thiếu quyền.
 
 ## Mốc hiện hành — đọc mục này trước
+
+**Grouped v3 shards 3/4 v1 RUNNING**, kiểm 2026-09-14 19:03 UTC:
+
+| Notebook thật | Version / ID | Bằng chứng |
+|---|---|---|
+| [shard-3 ENCODED](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-3) | v1 / 134383821 | [submission/status/source hash](../experiments/manifests/phase5_grouped_v3_s3_submission01.json) |
+| [shard-4 LINKPAGE](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-4) | v1 / 134383829 | [submission/status/source hash](../experiments/manifests/phase5_grouped_v3_s4_submission01.json) |
+
+[Report và raw paths](../docs/evaluation/phase5_grouped_v3_batch34_report.md).
+Source `0d865365b7881144756f804441ca24ed48935f7f`, GitHub evidence `7078593` trước
+push. Cùng [Dataset guard15 v1](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+đã live ready/v1; private/offline T4x2, model v1, timeout 14.400s; quota snapshot
+26,79h. Mã tải lại khớp bản khóa. Requested aliases `...-s3`/`...-s4` không phải
+handle thật. Chưa có terminal audit; không tính 28 ca đang chạy thành kết quả.
+Shards0–2 COMPLETE/audit ở dưới; không submit trùng. Quyền GitHub không cấp quyền
+Kaggle private; không đổi public hoặc lưu credentials để chia sẻ.
+
+### Mốc trước — document runtime và security runtime
 
 Ngày 2026-09-14 đã gửi **version 1** notebook private mới
 [react-vn-document-runtime-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-document-runtime-v1).
@@ -90,7 +108,7 @@ submit. Cùng [Dataset guard15 v1](https://www.kaggle.com/datasets/huylmhuhu/rea
 private/offline T4x2, Qwen model v1. Requested aliases `...-s1`/`...-s2` không phải
 handle thật. 566+678 raw/4 remote hashes verified. [Report/summary/scan links](../docs/evaluation/phase5_grouped_v3_batch12_report.md).
 Shard1 10 model_error do guard JSON syntax; shard2 21 valid guard responses.
-Không retry; chưa suy ra utility/ASR/FPR. Shards 3/4 đang chuẩn bị, chưa có URL/version.
+Không retry; chưa suy ra utility/ASR/FPR. Shards 3/4 đã RUNNING theo mục hiện hành.
 
 ### Grouped Dev native v3 — shard 0 COMPLETE/audit
 

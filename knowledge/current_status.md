@@ -11,7 +11,11 @@ Shard1 SOURCEBINDING: 4 completed/10 model_error, 10 PRE JSON-syntax errors và
 4 POST BACKEND_FAILURE; shard2 DATABASE: 14 completed, 21 guard responses hợp lệ
 (11 PRE/10 POST). Hai shard thêm 30 tool calls; tất cả 28 task recovered và 48
 workers reaped. [Báo cáo batch 1/2](../docs/evaluation/phase5_grouped_v3_batch12_report.md).
-Không chạy lại lỗi ngữ nghĩa. Chuẩn bị shards 3/4 cùng source/policy/data đã khóa.
+Không chạy lại lỗi ngữ nghĩa. **Shards 3 ENCODED và 4 LINKPAGE v1 đang RUNNING**,
+kiểm 2026-09-14 19:03 UTC, remote source/hash khớp bản khóa `0d86536`.
+[Báo cáo và notebook links](../docs/evaluation/phase5_grouped_v3_batch34_report.md).
+28 ca mới chưa có kết quả, không cộng vào 42/112. Tiếp theo kiểm terminal/tải
+output mới/audit từng shard, không submit trùng hoặc chạy model trên máy local.
 
 Nền đã chốt:
 
@@ -45,7 +49,7 @@ Full QA **3.055 pass/1 skip/973,70s**; setup/Ruff/mypy381/knowledge đạt.
 537 source/1.783 raw/169 data hashes kiểm lại khớp;
 [receipt](../experiments/manifests/phase5_grouped_runner_v1_cpu01.json) đã chốt.
 Output nền `results/phase5_grouped_runner_v1_cpu01` đã đóng; không chạy lại mốc này.
-Mốc CPU cũ không có GPU; job mới duy nhất là shard 0 nêu trên. Không đổi benchmark.
+Mốc CPU cũ không có GPU; trạng thái native hiện hành nằm ở đầu trang. Không đổi benchmark.
 
 ## Đã chốt và dùng làm nền
 
