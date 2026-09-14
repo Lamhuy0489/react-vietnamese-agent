@@ -1,7 +1,7 @@
 # Phase 5 — document diagnostic v1
 
-2026-09-14. Status: exact CPU package and full QA passed; native version1
-submitted. This report will distinguish native evidence after download.
+2026-09-14. Status: native version1 COMPLETE, source/artifact audit passed;
+guard-path objective failed. Phase 5 is not accepted.
 
 ## Purpose and frozen scope
 
@@ -53,7 +53,7 @@ transport remains v3. Frozen old sources and receipts were not edited.
 
 ## Native execution and access
 
-No new GPU result yet. Confirmed private/offline pinned T4 notebook version1:
+Confirmed private/offline pinned T4 notebook version1:
 `huylmhuhu/react-vn-document-runtime-v1`, timeout7200s. Source/evidence GitHub
 `8836e9c` pushed before submission. [Submission receipt](../../experiments/manifests/phase5_document_gpu_v1_submission01.json).
 [Read-only access snapshot](../../experiments/manifests/phase5_document_access01.json)
@@ -62,6 +62,63 @@ new kernel name not found under mine search; quota snapshot is not reservation.
 Record the actual URL/version in [Kaggle directory](../../knowledge/kaggle_resources.md)
 after real submission, and authenticate downloaded source/metadata/raw before
 reporting native counts, timing, tokens or lifecycle.
+
+## Audited native result
+
+[Kaggle notebook v1](https://www.kaggle.com/code/huylmhuhu/react-vn-document-runtime-v1)
+is COMPLETE. [Release audit](../../experiments/manifests/phase5_document_gpu_v1_audit01.json)
+SHA-256 `ea799c3c1ab4afe8d2efa48be651241bd5f02686043c4caa7b3171f58a470228`;
+[terminal summary](../../experiments/manifests/phase5_document_gpu_v1_terminal01.json).
+261 raw and two remote files authenticated; repeated local native joins equal
+the canonical remote report. Raw hashes independently rechecked. Secret scan:
+263 files/four credential values, zero matches. No semantic retry or Test run.
+
+All seven levels performed one successful CDOC_034 read. A0/A1 completed and
+returned the stated D305 location; A2–A6 ended in model_error with no final
+answer. Five native guard generations occurred, but **all five PRE classifications
+were INVALID_OUTPUT**. All five POST classifications were BACKEND_FAILURE with
+zero native attempts. Thus the predeclared successful guard PRE/POST objective
+failed in all five guard-enabled levels; this is not 7/7 utility or a guard score.
+
+Observed causal sequence, joined with frozen source: ModelGuard rejects the
+response at JSON/schema validation; WarmModelGuard retires on error; the paired
+role adapter closes the entire pair. The local read remains permitted under
+the bounded non-external fallback, then POST and the next agent request encounter
+the retired pair. This explains the terminal model_error without implying GPU
+OOM or failed native generation. Exact malformed guard text was intentionally
+not retained by the loader, so its particular JSON/schema violation cannot be
+recovered or attributed to a guessed field. No output-token-cap tuning or model
+replacement has been performed on these outcomes.
+
+There were 14 native calls: agent nine calls, 9,130 input/206 output tokens,
+24.572s total generate time; guard five calls, 910 input/155 output tokens,
+7.705s total generate time. Per-call agent wall times ranged 2.497–3.567s and
+guard 1.500–1.679s. Total task times (including startup and cleanup, excluding
+the later recovery sampling) were A0 318.143s, A1 144.421s, A2 176.669s,
+A3 176.503s, A4 174.178s, A5 174.231s, A6 176.061s. These are single fixed-order
+diagnostic observations; disk/hash/load caching and unequal paths prevent a
+controlled latency ranking or statistical performance claim.
+The five guard inputs are the same PRE request across five levels, not five
+independent sampled tasks; do not turn 5/5 INVALID_OUTPUT into a population rate.
+
+Eight workers (A3–A6 pairs) had observed stop/serve-return, zero exit and reaping:
+GRACEFUL. Four (A0/A1 agents and A2 pair) had observed stop/serve-return but
+required TERMINATE/-15 after the normal deadline. All 12 were reaped. All seven
+levels recovered: 42 two-device samples, 84 device observations, zero residual
+bytes relative to baseline. Partial graceful success does not close the general
+native lifecycle gate or establish global IPC cleanup.
+
+Raw: `results/phase5_document_gpu_v1_output01`; pulled source/metadata:
+`results/phase5_document_gpu_v1_remote01`. Both are closed, immutable outputs.
+Repeat the read-only audit into a new output (no model loading):
+
+```sh
+.venv/bin/python scripts/audit_phase5_document_runtime_gpu.py \
+  --raw results/phase5_document_gpu_v1_output01 \
+  --remote results/phase5_document_gpu_v1_remote01 \
+  --preflight experiments/manifests/phase5_document_probe_v1_preflight01.json \
+  --output results/phase5_document_gpu_v1_reaudit02.json
+```
 
 ## Limits and next acceptance work
 

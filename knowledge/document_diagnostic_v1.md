@@ -1,6 +1,34 @@
 # Document diagnostic v1
 
-2026-09-14 — đã submit native version1; Phase 5 chưa accepted.
+2026-09-14 — native version1 COMPLETE và artifact audit đạt; Phase 5 chưa accepted.
+
+## Kết quả hiện hành
+
+[Release audit](../experiments/manifests/phase5_document_gpu_v1_audit01.json)
+SHA-256 `ea799c3c1ab4afe8d2efa48be651241bd5f02686043c4caa7b3171f58a470228`:
+261 raw/2 remote files khớp, local joined audit khớp canonical remote bytes.
+7 doc_read thành công; A0/A1 completed, A2–A6 model_error. Có 9 agent native calls
+và 5 guard native calls nhưng PRE cả 5 INVALID_OUTPUT; POST cả 5 BACKEND_FAILURE,
+không có native POST attempt. Guard error retire đóng cả pair; không suy là OOM.
+Loader không lưu guard response text nên chưa biết trường/JSON nào sai.
+8 workers GRACEFUL (A3–A6), 4 TERMINATE/-15; 12 reaped. 42 recovery samples trên
+hai GPU/84 device observations đều zero residual so baseline. Secret scan263files/
+4values/zero matches. [Terminal summary](../experiments/manifests/phase5_document_gpu_v1_terminal01.json).
+Raw `results/phase5_document_gpu_v1_output01`, remote `...remote01` đã đóng;
+không download đè, ghi thêm hoặc retry semantic. Không còn job/downloader đang chạy.
+
+## Bước tiếp theo
+
+1. Không chạy lại calculator/document để chọn kết quả tốt hơn. Giữ inputs/source.
+2. Tái hiện bằng CPU synthetic các loại INVALID_OUTPUT và chuỗi retire→pair-close→
+   POST/agent failure; xác định diagnostic schema lỗi đã sanitize (không hidden
+   reasoning/raw secret-bearing response), trước mọi thay đổi adapter/transport.
+3. Định trước grouped Dev guard structured-output/quality protocol và controls;
+   không dùng task document này để tune hay tự đổi model/prompt/deadline.
+4. Broad scope kiểm cue `cho biết`, explicit anchors và nguồn không trusted;
+   formal freeze vẫn mở. 4/7 aggregate gates≈57%, không ước lượng công sức.
+
+## Chuẩn bị đã hoàn tất
 
 Theo [preregistration](../docs/architecture/phase5_document_diagnostic_v1_contract.md),
 chạy một task công khai tổng hợp đọc CDOC_034, một lần ở mỗi A0–A6, cùng model/
@@ -27,7 +55,7 @@ Output `results/phase5_document_probe_v1_cpu01` đã xong, không chạy trùng/
 GitHub đã push evidence `8836e9c`, rồi submit private notebook
 `huylmhuhu/react-vn-document-runtime-v1` **version1**, T4/7200s/offline.
 [Submission receipt](../experiments/manifests/phase5_document_gpu_v1_submission01.json)
-và [sổ link](kaggle_resources.md). Tiếp: theo dõi version1 và tải/audit khi terminal;
+và [sổ link](kaggle_resources.md). Version1 đã terminal/audit như phần hiện hành;
 không gửi trùng. Dataset dùng lại private
 `huylmhuhu/react-vn-guard15-probe-data-v1` v1. Live 2026-09-14 đã xác nhận private/
 ready/v1 và quyền model version1; mine search tên mới trả Not found.

@@ -26,8 +26,12 @@ Source `54aa3ec`, GitHub evidence `8836e9c` đã push trước submit; T4/7200s/
 Dataset [react-vn-guard15-probe-data-v1](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
 v1 đã kiểm live private/ready. [Submission receipt](../experiments/manifests/phase5_document_gpu_v1_submission01.json),
 [report](../docs/evaluation/phase5_document_diagnostic_v1_report.md) và
-[memory](document_diagnostic_v1.md). Chưa có kết quả terminal/audit ở mốc gửi này;
-không submit trùng. Quyền GitHub không tự cấp quyền mở notebook private.
+[memory](document_diagnostic_v1.md). **Terminal COMPLETE, audit đạt** ngày 2026-09-14:
+[GPU receipt](../experiments/manifests/phase5_document_gpu_v1_audit01.json),
+[terminal summary](../experiments/manifests/phase5_document_gpu_v1_terminal01.json).
+261raw/2remote hashes khớp; 7 reads, A0/A1 completed, A2–A6 model_error do guard
+INVALID_OUTPUT rồi pair retirement. 8GRACEFUL/4TERMINATE, 7recovered; chưa quality/
+Phase5 acceptance. Không submit trùng. Quyền GitHub không tự cấp quyền notebook.
 
 Chuẩn bị local mới nhất: [shutdown package v2](shutdown_package_v2.md) đã đạt
 CPU/exact mounts ngày 2026-09-14, **chưa submit**. Tên v2 trong metadata là tên

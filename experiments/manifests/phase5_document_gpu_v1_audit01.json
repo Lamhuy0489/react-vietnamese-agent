@@ -1,0 +1,695 @@
+{
+  "artifact_integrity_valid": true,
+  "audit_script_sha256": "53e6d4c188a9f688d3f68fb07a84182952e3c52b59ea80e2bf3e8a5e35906f0e",
+  "dummy": {
+    "events": 84,
+    "scope": "Dummy transport/checkpoints only, not semantic task success",
+    "tasks": 21,
+    "unique_run_ids": 21,
+    "valid": true
+  },
+  "guard_quality_validated": false,
+  "joined_audit_byte_identical": true,
+  "levels": [
+    {
+      "cleanup_methods": [
+        "TERMINATE"
+      ],
+      "level": "A0",
+      "observed_graceful": false,
+      "path_coverage": {
+        "executed_tool_calls": 1,
+        "final_answer": "V\u1ecb tr\u00ed c\u1ee7a Lab M\u1ea1ng ghi trong t\u00e0i li\u1ec7u l\u00e0 D305.",
+        "guard_execution_attempts": 0,
+        "guard_successful_uncached_stages": {
+          "FINAL": 0,
+          "POST": 0,
+          "PRE": 0
+        },
+        "path_covered": true,
+        "semantic_quality_scored": false,
+        "successful_document_reads": 1
+      },
+      "recovered": true,
+      "roles": {
+        "agent": {
+          "calls": [
+            {
+              "call_seconds": 3.566860657999996,
+              "generate_seconds": 3.5312656779999543,
+              "index": 1,
+              "input_tokens": 988,
+              "output_tokens": 22,
+              "tokens_per_generate_second": 6.230060835428391
+            },
+            {
+              "call_seconds": 2.496859550999943,
+              "generate_seconds": 2.481976923999923,
+              "index": 2,
+              "input_tokens": 1107,
+              "output_tokens": 26,
+              "tokens_per_generate_second": 10.475520440415185
+            }
+          ],
+          "failed_or_partial": false,
+          "load_verified": true,
+          "policy_attention_verified": true,
+          "worker_attempts": 2
+        }
+      },
+      "terminal": "completed"
+    },
+    {
+      "cleanup_methods": [
+        "TERMINATE"
+      ],
+      "level": "A1",
+      "observed_graceful": false,
+      "path_coverage": {
+        "executed_tool_calls": 1,
+        "final_answer": "V\u1ecb tr\u00ed c\u1ee7a Lab M\u1ea1ng ghi trong t\u00e0i li\u1ec7u l\u00e0 D305.",
+        "guard_execution_attempts": 0,
+        "guard_successful_uncached_stages": {
+          "FINAL": 0,
+          "POST": 0,
+          "PRE": 0
+        },
+        "path_covered": true,
+        "semantic_quality_scored": false,
+        "successful_document_reads": 1
+      },
+      "recovered": true,
+      "roles": {
+        "agent": {
+          "calls": [
+            {
+              "call_seconds": 2.6537649519999604,
+              "generate_seconds": 2.626341830000001,
+              "index": 1,
+              "input_tokens": 988,
+              "output_tokens": 22,
+              "tokens_per_generate_second": 8.376670450396013
+            },
+            {
+              "call_seconds": 2.5515863120000404,
+              "generate_seconds": 2.5367968860000474,
+              "index": 2,
+              "input_tokens": 1107,
+              "output_tokens": 26,
+              "tokens_per_generate_second": 10.249145346829913
+            }
+          ],
+          "failed_or_partial": false,
+          "load_verified": true,
+          "policy_attention_verified": true,
+          "worker_attempts": 2
+        }
+      },
+      "terminal": "completed"
+    },
+    {
+      "cleanup_methods": [
+        "TERMINATE",
+        "TERMINATE"
+      ],
+      "level": "A2",
+      "observed_graceful": false,
+      "path_coverage": {
+        "executed_tool_calls": 1,
+        "final_answer": null,
+        "guard_execution_attempts": 1,
+        "guard_successful_uncached_stages": {
+          "FINAL": 0,
+          "POST": 0,
+          "PRE": 0
+        },
+        "path_covered": false,
+        "semantic_quality_scored": false,
+        "successful_document_reads": 1
+      },
+      "recovered": true,
+      "roles": {
+        "agent": {
+          "calls": [
+            {
+              "call_seconds": 2.7027066719999766,
+              "generate_seconds": 2.6742578519999824,
+              "index": 1,
+              "input_tokens": 988,
+              "output_tokens": 22,
+              "tokens_per_generate_second": 8.226581435872752
+            }
+          ],
+          "failed_or_partial": false,
+          "load_verified": true,
+          "policy_attention_verified": true,
+          "worker_attempts": 1
+        },
+        "guard": {
+          "calls": [
+            {
+              "call_seconds": 1.6791217609998057,
+              "generate_seconds": 1.6631673780000256,
+              "index": 1,
+              "input_tokens": 182,
+              "output_tokens": 31,
+              "tokens_per_generate_second": 18.639134226693283
+            }
+          ],
+          "failed_or_partial": false,
+          "load_verified": true,
+          "policy_attention_verified": true,
+          "worker_attempts": 1
+        }
+      },
+      "terminal": "model_error"
+    },
+    {
+      "cleanup_methods": [
+        "GRACEFUL",
+        "GRACEFUL"
+      ],
+      "level": "A3",
+      "observed_graceful": true,
+      "path_coverage": {
+        "executed_tool_calls": 1,
+        "final_answer": null,
+        "guard_execution_attempts": 1,
+        "guard_successful_uncached_stages": {
+          "FINAL": 0,
+          "POST": 0,
+          "PRE": 0
+        },
+        "path_covered": false,
+        "semantic_quality_scored": false,
+        "successful_document_reads": 1
+      },
+      "recovered": true,
+      "roles": {
+        "agent": {
+          "calls": [
+            {
+              "call_seconds": 2.692517161999831,
+              "generate_seconds": 2.663334741000199,
+              "index": 1,
+              "input_tokens": 988,
+              "output_tokens": 22,
+              "tokens_per_generate_second": 8.260321040883518
+            }
+          ],
+          "failed_or_partial": false,
+          "load_verified": true,
+          "policy_attention_verified": true,
+          "worker_attempts": 1
+        },
+        "guard": {
+          "calls": [
+            {
+              "call_seconds": 1.5176387150002029,
+              "generate_seconds": 1.5013191079999615,
+              "index": 1,
+              "input_tokens": 182,
+              "output_tokens": 31,
+              "tokens_per_generate_second": 20.6485082583794
+            }
+          ],
+          "failed_or_partial": false,
+          "load_verified": true,
+          "policy_attention_verified": true,
+          "worker_attempts": 1
+        }
+      },
+      "terminal": "model_error"
+    },
+    {
+      "cleanup_methods": [
+        "GRACEFUL",
+        "GRACEFUL"
+      ],
+      "level": "A4",
+      "observed_graceful": true,
+      "path_coverage": {
+        "executed_tool_calls": 1,
+        "final_answer": null,
+        "guard_execution_attempts": 1,
+        "guard_successful_uncached_stages": {
+          "FINAL": 0,
+          "POST": 0,
+          "PRE": 0
+        },
+        "path_covered": false,
+        "semantic_quality_scored": false,
+        "successful_document_reads": 1
+      },
+      "recovered": true,
+      "roles": {
+        "agent": {
+          "calls": [
+            {
+              "call_seconds": 2.721951893000096,
+              "generate_seconds": 2.693189321000091,
+              "index": 1,
+              "input_tokens": 988,
+              "output_tokens": 22,
+              "tokens_per_generate_second": 8.168753614332061
+            }
+          ],
+          "failed_or_partial": false,
+          "load_verified": true,
+          "policy_attention_verified": true,
+          "worker_attempts": 1
+        },
+        "guard": {
+          "calls": [
+            {
+              "call_seconds": 1.5004990799998268,
+              "generate_seconds": 1.4837911280001208,
+              "index": 1,
+              "input_tokens": 182,
+              "output_tokens": 31,
+              "tokens_per_generate_second": 20.892428465846358
+            }
+          ],
+          "failed_or_partial": false,
+          "load_verified": true,
+          "policy_attention_verified": true,
+          "worker_attempts": 1
+        }
+      },
+      "terminal": "model_error"
+    },
+    {
+      "cleanup_methods": [
+        "GRACEFUL",
+        "GRACEFUL"
+      ],
+      "level": "A5",
+      "observed_graceful": true,
+      "path_coverage": {
+        "executed_tool_calls": 1,
+        "final_answer": null,
+        "guard_execution_attempts": 1,
+        "guard_successful_uncached_stages": {
+          "FINAL": 0,
+          "POST": 0,
+          "PRE": 0
+        },
+        "path_covered": false,
+        "semantic_quality_scored": false,
+        "successful_document_reads": 1
+      },
+      "recovered": true,
+      "roles": {
+        "agent": {
+          "calls": [
+            {
+              "call_seconds": 2.706236762999879,
+              "generate_seconds": 2.678140801000154,
+              "index": 1,
+              "input_tokens": 988,
+              "output_tokens": 22,
+              "tokens_per_generate_second": 8.214653983757717
+            }
+          ],
+          "failed_or_partial": false,
+          "load_verified": true,
+          "policy_attention_verified": true,
+          "worker_attempts": 1
+        },
+        "guard": {
+          "calls": [
+            {
+              "call_seconds": 1.536475479000046,
+              "generate_seconds": 1.5184884610000609,
+              "index": 1,
+              "input_tokens": 182,
+              "output_tokens": 31,
+              "tokens_per_generate_second": 20.415038241109663
+            }
+          ],
+          "failed_or_partial": false,
+          "load_verified": true,
+          "policy_attention_verified": true,
+          "worker_attempts": 1
+        }
+      },
+      "terminal": "model_error"
+    },
+    {
+      "cleanup_methods": [
+        "GRACEFUL",
+        "GRACEFUL"
+      ],
+      "level": "A6",
+      "observed_graceful": true,
+      "path_coverage": {
+        "executed_tool_calls": 1,
+        "final_answer": null,
+        "guard_execution_attempts": 1,
+        "guard_successful_uncached_stages": {
+          "FINAL": 0,
+          "POST": 0,
+          "PRE": 0
+        },
+        "path_covered": false,
+        "semantic_quality_scored": false,
+        "successful_document_reads": 1
+      },
+      "recovered": true,
+      "roles": {
+        "agent": {
+          "calls": [
+            {
+              "call_seconds": 2.714836600999888,
+              "generate_seconds": 2.686237333000008,
+              "index": 1,
+              "input_tokens": 988,
+              "output_tokens": 22,
+              "tokens_per_generate_second": 8.189894366269659
+            }
+          ],
+          "failed_or_partial": false,
+          "load_verified": true,
+          "policy_attention_verified": true,
+          "worker_attempts": 1
+        },
+        "guard": {
+          "calls": [
+            {
+              "call_seconds": 1.5547387340000114,
+              "generate_seconds": 1.538031200999967,
+              "index": 1,
+              "input_tokens": 182,
+              "output_tokens": 31,
+              "tokens_per_generate_second": 20.15563792193879
+            }
+          ],
+          "failed_or_partial": false,
+          "load_verified": true,
+          "policy_attention_verified": true,
+          "worker_attempts": 1
+        }
+      },
+      "terminal": "model_error"
+    }
+  ],
+  "phase5_accepted": false,
+  "preflight_sha256": "419c4b28f7d6f79120c3e8bccbec8345dfac7062818020a7208546058e926c0e",
+  "protocol": "document_runtime_gpu_release_audit_v1",
+  "raw_sha256": {
+    "dummy/identity.json": "4c31213415554ea47a0dbae53cca860d9e90dfd292a848f49309032ef2a7f4f6",
+    "dummy/results.json": "fba3b53084d97bbabd5b033ee5ba44312d4cc348e9b7675965436899c241d860",
+    "dummy/summary.json": "46d758be1a227591f5170a73be257da3eb1a402236e83794fc8a2f08d7b5bc8a",
+    "dummy/tasks/clean_0002/result.json": "36af892e70f8a3c53d4667019399a7ca82e2eb7e0fbbb5b8b4ec1cf34ad82cd0",
+    "dummy/tasks/clean_0002/trace.jsonl": "27b08c63e0ffa370180af0e2fca724dd078d69a846d5495f5d9a0a3e8aa7b49b",
+    "dummy/tasks/clean_0004/result.json": "013e491228ce76cc35f4187b161d880c5500f22d51d2103c3f01853667a3c9ed",
+    "dummy/tasks/clean_0004/trace.jsonl": "2bbbf86cf2cb99f4845f62a46c63c8a74985efde0dceb83129f8bc91e35653bd",
+    "dummy/tasks/clean_0005/result.json": "fce77a6545812e9b95d7658087214368920c674515671501ad45a5f523029ee0",
+    "dummy/tasks/clean_0005/trace.jsonl": "b35bd51bcd556cb353eac7197fe0718ff375c01ec77aebdf88d71d054611476e",
+    "dummy/tasks/clean_0042/result.json": "3375d73efa651959689326c450c0c00f1792b9addf48f3577be6a74df8ab7221",
+    "dummy/tasks/clean_0042/trace.jsonl": "fb909efe21fea1058a2f580ae290fd48d5ed5cf861548ac3bdccdfaeb4aab2e8",
+    "dummy/tasks/clean_0046/result.json": "c5098741c9f03759bc435e60cacacbc1569b4f9289d1024e987972af85e7a35b",
+    "dummy/tasks/clean_0046/trace.jsonl": "0611a311c85f171cdfdd479fc424f2fdf7af9403a8983938d518a110292dc33d",
+    "dummy/tasks/clean_0047/result.json": "7c22f9a7fe4bfa1fb2bee5fc2edbfb4eb43fc76e551b74ee8dab7c0668934cc7",
+    "dummy/tasks/clean_0047/trace.jsonl": "ba55e6138485e6b0077f7b40f9bce3a3906a6de097a6113343cf59f1a93b9b56",
+    "dummy/tasks/clean_0081/result.json": "06e475e40ad6a91d4ef827c6e7359b4fe62764b0672bf97af7b80c35a59ae8c2",
+    "dummy/tasks/clean_0081/trace.jsonl": "d6310140da67d51b1bbc16600d0752f3f23dc122b19af72b50cc48b07cb685f2",
+    "dummy/tasks/clean_0082/result.json": "52f299998541d6ef078cd4ebcad9e4b519fb91fba0b6f1c4f7ebde2ab60ccadc",
+    "dummy/tasks/clean_0082/trace.jsonl": "1f3a67113f4eb639ebdb3cb93290e6dbb4f9628ff02b1c2c4562dab2c8b67e21",
+    "dummy/tasks/clean_0083/result.json": "a5c98fe94c3a327c47faa4e07543add71d7e26b4406cf64b95d9abeda0522dbd",
+    "dummy/tasks/clean_0083/trace.jsonl": "47946196ba26a63ce076aae98f39bc885b8824c33cb366360367461645802ed1",
+    "dummy/tasks/clean_0132/result.json": "dde49689404fbf7eb2d28c6aa764131e397e880c284c3efd5d4a224ce2b9f34f",
+    "dummy/tasks/clean_0132/trace.jsonl": "e7f16ee3bd530a3c0ec65b38fee715042dc9c999eb77d70a825f7ed65cc7e67c",
+    "dummy/tasks/clean_0134/result.json": "13bba4472d6bd0db9abfc7e3fe105a22d4efe7faa531eb9966e946e83a769b03",
+    "dummy/tasks/clean_0134/trace.jsonl": "63a387024839ed9e9b6c557d1b22a9a5ae18e67a10ada1e849f13557cb942912",
+    "dummy/tasks/clean_0135/result.json": "bcd4fe007df954be40c0ff9a8812fdd217089ed8703867e85270a9dee2ccec7a",
+    "dummy/tasks/clean_0135/trace.jsonl": "5eeb1368fee65323ae5180976ce0067ecf5667c2c16cadfbb630a45f00829dd0",
+    "dummy/tasks/clean_0171/result.json": "ac99d56208cc98aa53e46930ac81bc683638a61245f502d202bafd5da7261d52",
+    "dummy/tasks/clean_0171/trace.jsonl": "84f2cef592b4d8366908918a75b80ea5fb7318dfb76bae2cc0b1da781eec1853",
+    "dummy/tasks/clean_0173/result.json": "687c7e3aabcb138eaaf907ffcd3b33f1559063f007194e46243e7ca35d1aeb42",
+    "dummy/tasks/clean_0173/trace.jsonl": "ff4b7d7c3f7096a9f3cd7e9148774f6010eae9fb1a9172a38211cdd28aa978f2",
+    "dummy/tasks/clean_0174/result.json": "e6a0d11e0e266825377f5418e7deec1da7c676c9ed9364151b828b690fe372e7",
+    "dummy/tasks/clean_0174/trace.jsonl": "099c2bccc672a9c99c5ace507af57bb5e338d2058225b5ba2d7bd997863a6679",
+    "dummy/tasks/clean_0197/result.json": "b4492c3be02b736c38519d6a52c9b0294bbc10cbc992f73825ef145753ac0c79",
+    "dummy/tasks/clean_0197/trace.jsonl": "2eb5d1ee24a440bcab5841dd956b31bafcaeda20c72d4c6a93daea42670d24bf",
+    "dummy/tasks/clean_0199/result.json": "54a16fc50232113ac10488c77c4263a3abcdb51aae0830a3a42492a27396f8d7",
+    "dummy/tasks/clean_0199/trace.jsonl": "20116a8cfeda0ac3b893c3dde7536944995370f2a3921ab7c40617634ce61cd7",
+    "dummy/tasks/clean_0200/result.json": "be74a68536ffe442b70f82a1f7ec5b884bfd1678da4adc52f7c8335a31cb66c5",
+    "dummy/tasks/clean_0200/trace.jsonl": "0024e4122009611623ad2bc1ed04cf434ce831a5773930dbe8ff58d6b50a6f97",
+    "dummy/tasks/clean_0226/result.json": "a668ca2673d1eb8d63cc9522dde2c05de3879310563b6cbda16639827fb0b6a1",
+    "dummy/tasks/clean_0226/trace.jsonl": "37852c70a68b7a0850d6b48dd67a9f3be3a8871bb229e726137b6ad18b219b4c",
+    "dummy/tasks/clean_0228/result.json": "5db6b5db6ac700df7178636d2eb709f939fb9c83aaaf19069597a319db79a624",
+    "dummy/tasks/clean_0228/trace.jsonl": "9abc8d4ba5a200e5e46a209d92e0b59180b5f6ed49be7be3fd452fe656b769cd",
+    "dummy/tasks/clean_0229/result.json": "2ab8bea6d3f23be4c8fd6c534b6ca2b23f715806e18b911c5fee1140469c4930",
+    "dummy/tasks/clean_0229/trace.jsonl": "d0782288418c25b143c9b851795de451b39f2734fb647fa38f08fc75cd72dc34",
+    "publishers/agent_generation_config.json": "3a8f9087e486054c8a4a08dae2e5a3ba62e23da212b5b8c08bc42cb983c3459f",
+    "publishers/guard_generation_config.json": "e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6",
+    "react-vn-document-runtime-v1.log": "018b54839b9d324dfbf6f5fd6c0741c3a1cc1d96dab16a2f04e46127cc79da9b",
+    "security_runtime/identity.json": "cc0b82d86245e260a30cddfe754d964bcca3aa4b69bc1a14ca812beb78be0cbb",
+    "security_runtime/tasks/A0/attention/agent/request_000001/completed.json": "0259994515ecc55bead7156aefc5b707455fb508afad0dae3b3830afcf2da823",
+    "security_runtime/tasks/A0/attention/agent/request_000001/entered.json": "b44bf82977a9e692e977676a9b4073e48579b1e9b91b82a064c1c15959387668",
+    "security_runtime/tasks/A0/attention/agent/request_000001/restored.json": "7a366ed1219f4e5af7fe4080a6b6768c1bbca696188cae0c45ca5af7ee53313d",
+    "security_runtime/tasks/A0/attention/agent/request_000002/completed.json": "e5efb91635fd5b8e3b62d3f226e5b296a029aa6fb66b07638d6f23e0430c07d8",
+    "security_runtime/tasks/A0/attention/agent/request_000002/entered.json": "64a7fbdd2e70734a963b9bbea3ff90a696a1d1a593f70525ffb511daff90fb4b",
+    "security_runtime/tasks/A0/attention/agent/request_000002/restored.json": "cd5daf28ecdc8dec279b1d2ab3ab01308244668b6d4e4dfc12606a5a97e442f8",
+    "security_runtime/tasks/A0/baseline.json": "ea5e75eb4fc1e10a100d236c84f346d5f6589fb7b9d53cb89d065f2fec6884d2",
+    "security_runtime/tasks/A0/checkpoint.json": "1465ad4b86534d9c0516a6a3460d2af8f15764ce368e953f9ac52df454e549fa",
+    "security_runtime/tasks/A0/execution/pair_runtime.json": "7565d3ade4d6b28ad004cf0152a3b94fef6d94e4a4c3fa96ea92464b5c176020",
+    "security_runtime/tasks/A0/execution/runtime/artifacts/artifacts.jsonl": "ec85f3ae006f630653e94345a23cfda8aa52507cc1d725a1a978a2cefa28c1b8",
+    "security_runtime/tasks/A0/execution/runtime/artifacts/provenance_edges.jsonl": "622c58f13b5d4d013ac7089695d4bcfd1a7e2fc609ee566999f0b9589e7af21e",
+    "security_runtime/tasks/A0/execution/runtime/run_metadata.json": "95f1dba845fbe5af2f66fdf6f2cfa4f9abba0fcf40d344e13ebede4d138f0cfa",
+    "security_runtime/tasks/A0/execution/runtime/trace_legacy.jsonl": "bb906de430e05111b2ef877d1520f57d836655813ff3d8b891a949df3b357628",
+    "security_runtime/tasks/A0/execution/runtime/trace_security.jsonl": "675f00491b85a3d0b907dcdd200e5e653072b1838b269ea79bbe306781fd2913",
+    "security_runtime/tasks/A0/execution/runtime/trace_v2.jsonl": "9c7abfb128628c821d47a371a603869824d4c20a660b63263715284820212c2b",
+    "security_runtime/tasks/A0/native/agent_hf_metrics.jsonl": "01117e112a1d538b990792ed135d00536fe843296f47316ea64056ed00019e3d",
+    "security_runtime/tasks/A0/policy/agent/request_000001/completed.json": "dc57d59734417ff956e6efaa7348602e49a339d0252f769eb69a9cd93b71b285",
+    "security_runtime/tasks/A0/policy/agent/request_000001/entered.json": "b65d919b872b492c8c1692a5e6064c2083fb010a932d89cc20af35ea14fd5dc5",
+    "security_runtime/tasks/A0/policy/agent/request_000001/length.json": "1916623fab417ca6cd86da728397a751c5e4f03894a3d0cba75248d2b5ec8f4b",
+    "security_runtime/tasks/A0/policy/agent/request_000001/resolved.json": "f631402663a363dafdca6e713ff644ccde3e2459fce8d19a7b161a5a8ae445f9",
+    "security_runtime/tasks/A0/policy/agent/request_000001/restored.json": "d8b4cc8f034e4ab988fae4f5016ffd9326c3dd1c560a902306fe3ce9f1152d9d",
+    "security_runtime/tasks/A0/policy/agent/request_000002/completed.json": "86ed2b45afa0398397ddf57131a183e5f424a33c3002f5b069339d0cd710e744",
+    "security_runtime/tasks/A0/policy/agent/request_000002/entered.json": "899abfb897fab35982cc00bcce765a5b820ccd2cf31ea573da2033834b94d8c3",
+    "security_runtime/tasks/A0/policy/agent/request_000002/length.json": "5949eb0ec2f85fffe34787cc18af770fe5be4956293ed74d724d8afc2eaec11b",
+    "security_runtime/tasks/A0/policy/agent/request_000002/resolved.json": "15b9f9e872bf094d7e6be0f06020be410a1cb6c5ae1cf2760d3387f5c055c9d2",
+    "security_runtime/tasks/A0/policy/agent/request_000002/restored.json": "73fcbfe31b23a521fcb0e932bc3ec8dcf764ea32bc1f195e66c90b13cd635d97",
+    "security_runtime/tasks/A0/recovery.json": "82caa35bf1003a6cf1255b01df613bcbb39c85827457362a907e39c7eb8c08cb",
+    "security_runtime/tasks/A1/attention/agent/request_000001/completed.json": "d7a760c12c23cc53b5b5b0f8813026555b2bb893cbbe63af2a1603db0c6ea7c8",
+    "security_runtime/tasks/A1/attention/agent/request_000001/entered.json": "50081ef8337d4c979f7086bfb0aa4d3a0fe36026c7e9073942cc7fea96dcfe0e",
+    "security_runtime/tasks/A1/attention/agent/request_000001/restored.json": "e97ed88acb427fd4bc9ca9781aa60ac4c63f398c7fbf09d8d400ae1abdecffc6",
+    "security_runtime/tasks/A1/attention/agent/request_000002/completed.json": "3c3f62fb1a38c35fb5661ba8e504e16645139ad11b49a9d501a5f5db79ac1b99",
+    "security_runtime/tasks/A1/attention/agent/request_000002/entered.json": "987d6dfcc3ddfd617efbe1ebc0fe3d1183e0de57b1bcdf5a9c434d3bf9e87d99",
+    "security_runtime/tasks/A1/attention/agent/request_000002/restored.json": "c2270a1d00a5a4edd7d4c2cf2436ef5a521fc579c1770efd266526fadd9add8b",
+    "security_runtime/tasks/A1/baseline.json": "ea5e75eb4fc1e10a100d236c84f346d5f6589fb7b9d53cb89d065f2fec6884d2",
+    "security_runtime/tasks/A1/checkpoint.json": "7d25a56956b10dac0605bf3959b81c366b495fd9adb4c38b7fa307af588841b9",
+    "security_runtime/tasks/A1/execution/pair_runtime.json": "74ff820efb9d77f13f434ff189592d22d1083eb5767da39b74b161c01becfcfc",
+    "security_runtime/tasks/A1/execution/runtime/artifacts/artifacts.jsonl": "76d7adbca0f8571416dc0d1c43408e6aa33c29ef7488e7d12328d30a6adc2640",
+    "security_runtime/tasks/A1/execution/runtime/artifacts/provenance_edges.jsonl": "d1adb0069335f7d19a85fc7e9fa0224559243bb20f8c1985f612ff52ee4b92ba",
+    "security_runtime/tasks/A1/execution/runtime/run_metadata.json": "9b23ad78e5c6d30a4a831aaa309de9574375bb0256deae8037ca43645401f33a",
+    "security_runtime/tasks/A1/execution/runtime/trace_legacy.jsonl": "696811aaf7c382a841c793fa40704e86784f9235576f178d58ac405bdc0f3b56",
+    "security_runtime/tasks/A1/execution/runtime/trace_security.jsonl": "8b7a82dcaf94365603b48b3ec2f7e005f9481384543ed95818deea38b3b349c8",
+    "security_runtime/tasks/A1/execution/runtime/trace_v2.jsonl": "9e70ca7c84364562a3c4e220f088dae8b29611f7cf14f77a4ec14cc3b4195951",
+    "security_runtime/tasks/A1/native/agent_hf_metrics.jsonl": "2eda302dd5a082e069e142b70fbb1390694fb8fa8f812306b3a2eaa082e2eae5",
+    "security_runtime/tasks/A1/policy/agent/request_000001/completed.json": "133a8eb1555620049d6edf69398fed10b209d98c0aa2f839b8f4dad2f868b784",
+    "security_runtime/tasks/A1/policy/agent/request_000001/entered.json": "afc9d10fc32febb64b1d63a4182073e17ab60071160393073c7787123eee669d",
+    "security_runtime/tasks/A1/policy/agent/request_000001/length.json": "8f79197c78215cdfd803e8a9119d2f9d0c41fe4028f7165eb90bb535d2dbf43e",
+    "security_runtime/tasks/A1/policy/agent/request_000001/resolved.json": "587e6a89f304c5814db57e7ba625797d591642ab108b94454c7fcd28e93cf203",
+    "security_runtime/tasks/A1/policy/agent/request_000001/restored.json": "3a7244d23f6249608d5704466c6beb2f8563a6e6a60b4c9ebe6d235616fcbbcf",
+    "security_runtime/tasks/A1/policy/agent/request_000002/completed.json": "21ac62b4b247c852103e65fd9b167733cecd2169ce449359d2b66c134e19f784",
+    "security_runtime/tasks/A1/policy/agent/request_000002/entered.json": "3932d2f639f4d898a26f0298d5ef9623b9f8e1a67e34ec5f5cce55b67b6ec916",
+    "security_runtime/tasks/A1/policy/agent/request_000002/length.json": "8a69195b1100ffca5b7ae422ba431393ce7719423544a0f2597cf521f4721614",
+    "security_runtime/tasks/A1/policy/agent/request_000002/resolved.json": "436a776e75647923ab4273242b7dde7fb510cf0a7289fe89f385cef80c6e408b",
+    "security_runtime/tasks/A1/policy/agent/request_000002/restored.json": "28c1bf951e8927082bfcb71c08178d71b0700816e3dbbd47f353e7d56abde9c5",
+    "security_runtime/tasks/A1/recovery.json": "82caa35bf1003a6cf1255b01df613bcbb39c85827457362a907e39c7eb8c08cb",
+    "security_runtime/tasks/A2/attention/agent/request_000001/completed.json": "a5026614b465af12f888281440617f9441aa570d0b746c4950a4a89693ef7349",
+    "security_runtime/tasks/A2/attention/agent/request_000001/entered.json": "a37d68aa037218a516f6a3c577525df11d6ee2cbf1a43f49276b55f2cbd0baf0",
+    "security_runtime/tasks/A2/attention/agent/request_000001/restored.json": "6dba183e326b92d6f3b63e31c1afa25752229733517eedf91dcbfca43985f49e",
+    "security_runtime/tasks/A2/attention/guard/request_000001/completed.json": "a6cb0ff7aff777b945b48454e60b4449acd3dcf437f9f1bebd5cfb4c1e746632",
+    "security_runtime/tasks/A2/attention/guard/request_000001/entered.json": "678d95aca29bffb5d1f0f23d71c3173e2eff423cd38700a89117100a621a040c",
+    "security_runtime/tasks/A2/attention/guard/request_000001/restored.json": "dcbd388bcaf11b81efee7a3653e026793a752ca04ffce14960e1eb49a90ef641",
+    "security_runtime/tasks/A2/baseline.json": "ea5e75eb4fc1e10a100d236c84f346d5f6589fb7b9d53cb89d065f2fec6884d2",
+    "security_runtime/tasks/A2/checkpoint.json": "eeeb33726bd6d21d124bd052428ded06342835fe8cce5d4a2d99a28f073f47bb",
+    "security_runtime/tasks/A2/execution/pair_runtime.json": "3486fe89442273e16684fe02f97f7f9e50a8e4398b4a8b630bdd10fc28352bf5",
+    "security_runtime/tasks/A2/execution/runtime/artifacts/artifacts.jsonl": "2ef9160ae19355f319e9cb27b0a115a96f0c95ac5262c032b732fb5e785dff25",
+    "security_runtime/tasks/A2/execution/runtime/artifacts/provenance_edges.jsonl": "ffe07668cbd17c60dda1a010762f0019158f4170d3c841728e387414084cc2a3",
+    "security_runtime/tasks/A2/execution/runtime/run_metadata.json": "43521653e285914b37dc384d55b35fa6f453b58cb313712dec9fcc8e9206f707",
+    "security_runtime/tasks/A2/execution/runtime/trace_guard.jsonl": "b46cce748f9826e1bf562363b044e79845bbf053d55e9642d773f9847bc19151",
+    "security_runtime/tasks/A2/execution/runtime/trace_legacy.jsonl": "eabc868951ea14e9a897e15f8f7467f2078073327bf3779533003f867d12663e",
+    "security_runtime/tasks/A2/execution/runtime/trace_security.jsonl": "643a53267c53e0ee6e8ca648e9051186ddf5033875e1a3c3f3563f12f60091d4",
+    "security_runtime/tasks/A2/execution/runtime/trace_v2.jsonl": "418bb85d9aea146e9d57366edb3c4e21869b120ce1ecb2566da5b37e82270213",
+    "security_runtime/tasks/A2/native/agent_hf_metrics.jsonl": "cac2baf158272f6f9334e697a5626ed33763c10f71a838e81ad3154373f228ed",
+    "security_runtime/tasks/A2/native/guard_hf_metrics.jsonl": "3f815ab40c1d3d7e876272c64b3f61ac1a673c8532439f7eb00bfa3502f32e82",
+    "security_runtime/tasks/A2/policy/agent/request_000001/completed.json": "6b23e2610f6eb790f8055e5bc0723e3d237d35a6b37fd7b50437794ea7377920",
+    "security_runtime/tasks/A2/policy/agent/request_000001/entered.json": "359d100e090839a195f6ee0933b75c08dc33dae6d4fe8afdcac7347e7fcb4eb3",
+    "security_runtime/tasks/A2/policy/agent/request_000001/length.json": "0bc1096c434f9740831eebb887b2d01108e978f2e961e8fa404fb4d47771c18d",
+    "security_runtime/tasks/A2/policy/agent/request_000001/resolved.json": "8f738b7a0eff7ff40f46aaa04cce7be86dd994a347fefff96de9a69a1ac804da",
+    "security_runtime/tasks/A2/policy/agent/request_000001/restored.json": "956a60cf32a7c3c6966d6026f8ddbf957ab53e5d2124951eb2507e9642085dc0",
+    "security_runtime/tasks/A2/policy/guard/request_000001/completed.json": "59bbba6e74ce3363bdc89edfe10f9d226c32c8b470daf281b3847c88599d97f5",
+    "security_runtime/tasks/A2/policy/guard/request_000001/entered.json": "f41b0a42290288280a3c607c153d34030fd3c8177a3c29884234395bbddbce9f",
+    "security_runtime/tasks/A2/policy/guard/request_000001/length.json": "f092944de7653fbae74e0ba757df1934bab1106a3f203e74e20bb8bfbe688257",
+    "security_runtime/tasks/A2/policy/guard/request_000001/resolved.json": "fe2d4c2d80b699cbe1f8e87a49b2b325cdebec1aea42028932a120dd29049b0a",
+    "security_runtime/tasks/A2/policy/guard/request_000001/restored.json": "60a459a7175ed28ba422314bb546f2dcf9106f307490c4995d3e636eff074a8a",
+    "security_runtime/tasks/A2/recovery.json": "82caa35bf1003a6cf1255b01df613bcbb39c85827457362a907e39c7eb8c08cb",
+    "security_runtime/tasks/A3/attention/agent/request_000001/completed.json": "2bcca04e0aac56521695e23f2091accae4962f4fda4ad883ff09491818d8452e",
+    "security_runtime/tasks/A3/attention/agent/request_000001/entered.json": "9e6b0af339fe52e7b4cfd760e4d6eb6d260955f37e4bdde6558830f863e85392",
+    "security_runtime/tasks/A3/attention/agent/request_000001/restored.json": "54cb3d70f288b12f18780701b1d15b5d0da7c8e4303d15ed0e1bfe2830e38d73",
+    "security_runtime/tasks/A3/attention/guard/request_000001/completed.json": "a60db00c17f9ae22fe438528bf9b3a6366e99c7dfc5de0e128b53a97f0c645c3",
+    "security_runtime/tasks/A3/attention/guard/request_000001/entered.json": "5959fb2d5eed252fdc28a0143e804174a311565cf130f3e08adde1a67d5dd7e9",
+    "security_runtime/tasks/A3/attention/guard/request_000001/restored.json": "c40c5abe1c8304a4861ad8b5eb10f5fd826697dcbf2dea85e6e78e0f61f3e275",
+    "security_runtime/tasks/A3/baseline.json": "ea5e75eb4fc1e10a100d236c84f346d5f6589fb7b9d53cb89d065f2fec6884d2",
+    "security_runtime/tasks/A3/checkpoint.json": "d747c74a3009995e59b5e243c3fd31236711fdb573037d707c0f59e4c03fc431",
+    "security_runtime/tasks/A3/execution/pair_runtime.json": "8bab3a4f9349973117f29cdc9b6b37d9570dc2cb532e1ef9ae9b3e501ae506c6",
+    "security_runtime/tasks/A3/execution/runtime/artifacts/artifacts.jsonl": "1ca3116f898fe3168d410babec02aae5c0c5457365466fda2b55a90f5f96f2c0",
+    "security_runtime/tasks/A3/execution/runtime/artifacts/provenance_edges.jsonl": "ee2c6cd6bcb90eb3ccc8093d554c8457fd51a6d080b6ca585530f2ad888527a5",
+    "security_runtime/tasks/A3/execution/runtime/run_metadata.json": "8531badfd2d1d8b97b92f5874ccb48aad7c8072e1d1aa4e9a3ca397566bd0b95",
+    "security_runtime/tasks/A3/execution/runtime/trace_guard.jsonl": "060ed18273e886adc759384333aed01ee1cccc56e5c73573df19204ea4d8365a",
+    "security_runtime/tasks/A3/execution/runtime/trace_legacy.jsonl": "fc55168f2668ac058482b88f81b56ea173635e01dc48a0effd93acee89d05267",
+    "security_runtime/tasks/A3/execution/runtime/trace_security.jsonl": "947c9c07a6ad1795e421ef317038e79669cf8f7f5a34b0af5fab597fe5c1c456",
+    "security_runtime/tasks/A3/execution/runtime/trace_session.jsonl": "b681ddd317a5aa4e5c0528070e629a1504ff10a1c9a2751fb85a42ac17d69643",
+    "security_runtime/tasks/A3/execution/runtime/trace_v2.jsonl": "9ed2667c75f059684271a27679a271222c381ec36b1fd2664d7cb487e9b94065",
+    "security_runtime/tasks/A3/native/agent_hf_metrics.jsonl": "844dae48486a07309df06f672a0a907c46b53f762e4d5ad50adfe15d1488b270",
+    "security_runtime/tasks/A3/native/guard_hf_metrics.jsonl": "caa48db07f346ca93e354c1f5faca1b56206e92f37f96ab8d0e8a3880d17eecf",
+    "security_runtime/tasks/A3/policy/agent/request_000001/completed.json": "05571b8d042aa7ef6eaf5fadfda7795811fae53da3f50351282fad08349fed19",
+    "security_runtime/tasks/A3/policy/agent/request_000001/entered.json": "d70f5c4883ec0c45a6645924b654442ae06187a0ccbe541b5238170c285c2717",
+    "security_runtime/tasks/A3/policy/agent/request_000001/length.json": "12a31c632eac2dacf2ca742f084b6d3837c84f9f14fc798cfe8d82aa32cc82c7",
+    "security_runtime/tasks/A3/policy/agent/request_000001/resolved.json": "964c3085138d3481532c935bcb56e6d861b78edc336b9ce21d6ddcb22616f74e",
+    "security_runtime/tasks/A3/policy/agent/request_000001/restored.json": "bce4aab9351c93afbc673331203737d8b48b3edeb01afb767f4120d61ffa11d6",
+    "security_runtime/tasks/A3/policy/guard/request_000001/completed.json": "f35842b1e207f31ecd972a4fe0eed8ae56e3cdcc8c9a5e9ed5bee283a95e640e",
+    "security_runtime/tasks/A3/policy/guard/request_000001/entered.json": "6fee3592e917d274c055addcc40abd200d6f770ad506c6f14ab451b34a5adfd3",
+    "security_runtime/tasks/A3/policy/guard/request_000001/length.json": "fb7f5452a5a8e470b167788590f1e800aae93133820fed7514ff4d74f98076e9",
+    "security_runtime/tasks/A3/policy/guard/request_000001/resolved.json": "1f1c4df2f735b6a34de4e0641506e190059a516f094586cf80c3fd6fcc80f640",
+    "security_runtime/tasks/A3/policy/guard/request_000001/restored.json": "e812588d840526f94e8faaa814d1f4f81e32c02aa3d523a2f966677fdab21a0a",
+    "security_runtime/tasks/A3/recovery.json": "82caa35bf1003a6cf1255b01df613bcbb39c85827457362a907e39c7eb8c08cb",
+    "security_runtime/tasks/A4/attention/agent/request_000001/completed.json": "4eeaad77e18109617d5f8567e3091cb226c3c7075bdbd07b1f87add2cc2c85ae",
+    "security_runtime/tasks/A4/attention/agent/request_000001/entered.json": "9bfb5e239267650283417c2be1e969af84ac9903e69170eda8e2e6c81fa6ab84",
+    "security_runtime/tasks/A4/attention/agent/request_000001/restored.json": "830710e22c4fa3ca6ab6f7921e16b6c8e1fe8f3b1d8a002b07c2757bb27c4405",
+    "security_runtime/tasks/A4/attention/guard/request_000001/completed.json": "a526c85cd39738cab3dc8e78e9edfdd4d465eecc843fabe70772cdf35c7e376b",
+    "security_runtime/tasks/A4/attention/guard/request_000001/entered.json": "f348e0203b00df04aa6bde50447cc538090109e7fb3c4b16b09603c442aa377b",
+    "security_runtime/tasks/A4/attention/guard/request_000001/restored.json": "e1fdf720b7cece835f084f60c8c5d339ed9ea425b69cfb5432a133eaccc2e487",
+    "security_runtime/tasks/A4/baseline.json": "ea5e75eb4fc1e10a100d236c84f346d5f6589fb7b9d53cb89d065f2fec6884d2",
+    "security_runtime/tasks/A4/checkpoint.json": "2e5428cc1b1fe5d8221d178bc9fbb26c7d9f7b0b9941e2411e80fa638a97f801",
+    "security_runtime/tasks/A4/execution/pair_runtime.json": "23043a84e9c1acd3271d38f993c0fc5c01946ca8895c08cc2f63f0df84b97a94",
+    "security_runtime/tasks/A4/execution/runtime/artifacts/artifacts.jsonl": "2b4dd04d8e17ae0f67c5a165c1236baf21580d56ea03f6f25cee4fc398026c6c",
+    "security_runtime/tasks/A4/execution/runtime/artifacts/provenance_edges.jsonl": "01b34a9516b53b626a186d5fac3471af1a84bd0f6b99c375e00e73251f250ef3",
+    "security_runtime/tasks/A4/execution/runtime/run_metadata.json": "3f401c569bae4772387d1681ead5a42e7e80536414d13ab0d4a78de337ccdd07",
+    "security_runtime/tasks/A4/execution/runtime/trace_guard.jsonl": "0b99341e53b933695af495f2be7fcb19fd8854e4d2fd12515c3dd0d2cbd708a2",
+    "security_runtime/tasks/A4/execution/runtime/trace_legacy.jsonl": "86b0020fd116d3dab6a79b5f2883cbacc320a234d2ddcf46dc42f5c54faee3e1",
+    "security_runtime/tasks/A4/execution/runtime/trace_scope.jsonl": "fa05609f379696b3725de0435e0b6f5c6309e84472475533303263f4d5e6ebd0",
+    "security_runtime/tasks/A4/execution/runtime/trace_security.jsonl": "0d34f07b12ef495411ff4cd538b984b562a58f9ee11acfbd81118a31fc12d854",
+    "security_runtime/tasks/A4/execution/runtime/trace_session.jsonl": "516d17b135525310eb3e9cc71e98bb7530856d03b667fe59e44cf89654a90f75",
+    "security_runtime/tasks/A4/execution/runtime/trace_v2.jsonl": "7e0f70c0c2cb86efbfa5601497f7228d5425563f53bf56f37d12554db9ce08a0",
+    "security_runtime/tasks/A4/native/agent_hf_metrics.jsonl": "60db6524acd393c9f6ffc3ff95635c9dfeab7614871d7073629394ead5b18ed0",
+    "security_runtime/tasks/A4/native/guard_hf_metrics.jsonl": "f0ddd13c06b122e513497acf04bdaef29e5def14525b7573db2f8f020815b4cf",
+    "security_runtime/tasks/A4/policy/agent/request_000001/completed.json": "090d4a75d2efef1062ee3b4f4a8f0ac464ee3fc0a7731ae4c6670103a45de791",
+    "security_runtime/tasks/A4/policy/agent/request_000001/entered.json": "d775a6db34275edf93efb01389d849e266036ecedfdb8c94dd858ee0ffc377c6",
+    "security_runtime/tasks/A4/policy/agent/request_000001/length.json": "f4fdc2c897b0f49159a7b89ff9d620acce1796fdbd17c705b6f3a76ba74a0590",
+    "security_runtime/tasks/A4/policy/agent/request_000001/resolved.json": "642edfbc563848f669689f7a1e4f6075d52cdf62d486dc5855326234875b3b41",
+    "security_runtime/tasks/A4/policy/agent/request_000001/restored.json": "6c05342c41ee5fb65eb19e56ec3d12ac1e80cd2975ca0f9d6caef280c8e2c2aa",
+    "security_runtime/tasks/A4/policy/guard/request_000001/completed.json": "28a734b02c8b9961983f429fd821a8bee21e439710ca67ba271c78f388062a9e",
+    "security_runtime/tasks/A4/policy/guard/request_000001/entered.json": "f676aeae93a56423c855402d16515655d7a9865b6d904531affa7308d6f71728",
+    "security_runtime/tasks/A4/policy/guard/request_000001/length.json": "45de4132588438244c3875314105544ee4429165ff6da8a79553762a4ab7888a",
+    "security_runtime/tasks/A4/policy/guard/request_000001/resolved.json": "dcf0daae384a801700016e05b9d7b25c3277ed158185f72cf7e195a7b7c94769",
+    "security_runtime/tasks/A4/policy/guard/request_000001/restored.json": "5dde856aa6d86c90db5b94be7bcbe8cd48ef722bb048570ac3fafdaa4294b431",
+    "security_runtime/tasks/A4/recovery.json": "82caa35bf1003a6cf1255b01df613bcbb39c85827457362a907e39c7eb8c08cb",
+    "security_runtime/tasks/A5/attention/agent/request_000001/completed.json": "14704837611ae1563f45e07372df22db0a590de21f6fe1ab965eeeec668c449c",
+    "security_runtime/tasks/A5/attention/agent/request_000001/entered.json": "15174ab2dbc3dd664994a2db87765b02a9d1bc33f74ea15c5e2d3d4f63055c76",
+    "security_runtime/tasks/A5/attention/agent/request_000001/restored.json": "e1fd56ac62ae7bf781ce1d1703a6794fb8507bb304f0804b53cb20c5b093b685",
+    "security_runtime/tasks/A5/attention/guard/request_000001/completed.json": "ac9a7290cac43478a4954871006ac6772d5be3cd84146a6ca51beb867ac54e1f",
+    "security_runtime/tasks/A5/attention/guard/request_000001/entered.json": "e627baf86eb4fd746b8d70e69ec945414a132e4bccab47b841d95b5964a1f5e1",
+    "security_runtime/tasks/A5/attention/guard/request_000001/restored.json": "c9d904c363dd5b13960a150ed763363475351956ba33cc6edc0866127ea0cdd2",
+    "security_runtime/tasks/A5/baseline.json": "ea5e75eb4fc1e10a100d236c84f346d5f6589fb7b9d53cb89d065f2fec6884d2",
+    "security_runtime/tasks/A5/checkpoint.json": "44140e897ec147ef608b125a1dc4752d294469dffc3d23042dbfc5d200cfb5cc",
+    "security_runtime/tasks/A5/execution/pair_runtime.json": "2e22a93c892e366b3c72898aa6616ee68cdc174d2e96b12ab0e718269d0e2c4e",
+    "security_runtime/tasks/A5/execution/runtime/artifacts/artifacts.jsonl": "24458717f79c97f99a99f4dd85799a98157126b9004c79382dea123f5e1ef09e",
+    "security_runtime/tasks/A5/execution/runtime/artifacts/provenance_edges.jsonl": "6d39a100239c65fb8dfbf77a5874e5daa2fab7ea363225dad741a81dddd73e71",
+    "security_runtime/tasks/A5/execution/runtime/run_metadata.json": "637146b3779f6c8637af55f837e76494bebde4c4cca58c08b1efd5971c869984",
+    "security_runtime/tasks/A5/execution/runtime/trace_guard.jsonl": "8de151606df25698f344e8784abda8e0088c564e335ff15c1ac4128ab7fe470a",
+    "security_runtime/tasks/A5/execution/runtime/trace_legacy.jsonl": "abab4102f4d68a0c162d80f51af128ef169091c6439e8d52833f6bacb409fb2f",
+    "security_runtime/tasks/A5/execution/runtime/trace_scope.jsonl": "c9319721455118f0d2a19cbddc0f05e0be56e4ba9c8c3750d103d8bd6afb4626",
+    "security_runtime/tasks/A5/execution/runtime/trace_security.jsonl": "7cc7048bf48f5ab15debbbfd3aed305e6529fb9f4fea7378e417797bf8b9c37d",
+    "security_runtime/tasks/A5/execution/runtime/trace_session.jsonl": "b1dec31d644b558c3a1efd1b89bf5d2f16613decd258db2d5ab20c735f268285",
+    "security_runtime/tasks/A5/execution/runtime/trace_v2.jsonl": "c09f9acca41f8213782eb9590ad5e2dc0ec4a756daa3083e7c71e472efad8bcf",
+    "security_runtime/tasks/A5/native/agent_hf_metrics.jsonl": "9ed9a2e87d3732bff2b9627c182bafc97faf9e997eaba710f0fea4c5db39f3b1",
+    "security_runtime/tasks/A5/native/guard_hf_metrics.jsonl": "cffbeae1977b937bf13cf068cc4dcc83ca172fd0354e355fe8bf8abe0069b91b",
+    "security_runtime/tasks/A5/policy/agent/request_000001/completed.json": "513804da15349e42f173d1f6be69f4debd4b2d134433b3f658ec87e90fe8159a",
+    "security_runtime/tasks/A5/policy/agent/request_000001/entered.json": "97e243a8264a5ca68470e82386bd0edcecb12708f75ea4b5a54559d9848cfb28",
+    "security_runtime/tasks/A5/policy/agent/request_000001/length.json": "634a0641f538fbea69f9c673fe5cd7d49d40d4810b515fd552f0d493e7021120",
+    "security_runtime/tasks/A5/policy/agent/request_000001/resolved.json": "01c0eb4ca6d9fa83d9251fcdd2a8f5c8e7794378074a9497e10d790969311410",
+    "security_runtime/tasks/A5/policy/agent/request_000001/restored.json": "24afc80fc98714826883e39f2838f73e50ed7ad7eabe79393d28eefa750e230a",
+    "security_runtime/tasks/A5/policy/guard/request_000001/completed.json": "beac4098236abf1fbafeb3f07ae235bf2fd51b3d66a307686dec25503d9fd3dc",
+    "security_runtime/tasks/A5/policy/guard/request_000001/entered.json": "1701703177b6dd20db9e0bf6d525c0b1750863aa6a3d7d23597f6089305de274",
+    "security_runtime/tasks/A5/policy/guard/request_000001/length.json": "b3d608455a833cb79dd26feda7cc1b35ddf2553792e48e5a2b26c607a48a1307",
+    "security_runtime/tasks/A5/policy/guard/request_000001/resolved.json": "3e8921f6534eac2bb97f88646a11435086b155ad13b370fe660d2381d93247f1",
+    "security_runtime/tasks/A5/policy/guard/request_000001/restored.json": "cfebfcfe80cd65772cd33540efa7aa6641e7d755292f09d38d3fdd80803c9218",
+    "security_runtime/tasks/A5/recovery.json": "82caa35bf1003a6cf1255b01df613bcbb39c85827457362a907e39c7eb8c08cb",
+    "security_runtime/tasks/A6/attention/agent/request_000001/completed.json": "82bbbd18194cab9ece0439645bf08a9308d1b66e078758ed1ba262f249c82e3b",
+    "security_runtime/tasks/A6/attention/agent/request_000001/entered.json": "9173463dcdbf22c2719bfa1f786cd8a4244f8b0fc91e02684ab72e3cfe2f96a1",
+    "security_runtime/tasks/A6/attention/agent/request_000001/restored.json": "2b4170b0e2ae114e44b1590923bdd6bfd93146a50c736a700a7379946cc07be3",
+    "security_runtime/tasks/A6/attention/guard/request_000001/completed.json": "bacf0f2e6f9976b404378463a3ade0e7798ac6c96ab350f28222c0967f9e63a9",
+    "security_runtime/tasks/A6/attention/guard/request_000001/entered.json": "ee4c9f35aa96c2b08fc5bec76067670ebe241f6359af338805e62dac13924623",
+    "security_runtime/tasks/A6/attention/guard/request_000001/restored.json": "0ebe0ed9dce872671e4f3d80559f38d4c32580bc6e02b149a1e68db4e101c28c",
+    "security_runtime/tasks/A6/baseline.json": "ea5e75eb4fc1e10a100d236c84f346d5f6589fb7b9d53cb89d065f2fec6884d2",
+    "security_runtime/tasks/A6/checkpoint.json": "1f1de11800ac14aa00f2b8de01709f45517a76ff999d95c393c8a1a691374c27",
+    "security_runtime/tasks/A6/execution/pair_runtime.json": "4a0ced3ede9702dbcf10658c042eaa81be16aa49f10882bc35131b9d0d980ef5",
+    "security_runtime/tasks/A6/execution/runtime/artifacts/artifacts.jsonl": "68c599ee8098886e4b65a5258e092069c5dd45f8e49dd70e2fee8df2f363934c",
+    "security_runtime/tasks/A6/execution/runtime/artifacts/provenance_edges.jsonl": "28dc75e9b02149a3a87729f320f9f345778155f0c240fb74aaade5db0e2ece56",
+    "security_runtime/tasks/A6/execution/runtime/run_metadata.json": "369a19cf3ac9832a32ee3a1ccec60d98efba0d821985f2716c45d4499371953a",
+    "security_runtime/tasks/A6/execution/runtime/trace_guard.jsonl": "a423426f9fa3987a27a70b8c2ad286d49afe711777d83bb21292f4631e1777bd",
+    "security_runtime/tasks/A6/execution/runtime/trace_legacy.jsonl": "1bc61adc69a1b89744eeff998ecd3d473a5912b099358781fa68932861c876d5",
+    "security_runtime/tasks/A6/execution/runtime/trace_scope.jsonl": "9cb3ac8931255203826cfb733cadfb9cb53ceb20513836be397e706bb476e2d6",
+    "security_runtime/tasks/A6/execution/runtime/trace_security.jsonl": "7ba9ce1d374e84d88c676b633dbc2196f598de847021d71b6b22999ebb8363f5",
+    "security_runtime/tasks/A6/execution/runtime/trace_session.jsonl": "8698aa27483f1f8941fac48ddcb78203257b75c23af35927e96bbca4fa8a744d",
+    "security_runtime/tasks/A6/execution/runtime/trace_v2.jsonl": "14a49512bee5772127c787d3d25f4bf95a694b865ef05f16dcd4f1021bca24be",
+    "security_runtime/tasks/A6/execution/runtime/trace_value.jsonl": "afc1b6193207e8f7aa9a4e7743d04199e5a90143d7a01867fa3ac50a285807d2",
+    "security_runtime/tasks/A6/execution/runtime/value_index.json": "561730008492947a0ba5c12eeea636f43f0a70cea2c51b35ee4c59dbfb03e2ee",
+    "security_runtime/tasks/A6/native/agent_hf_metrics.jsonl": "680e774016e2e23b893fddac7f127f6373f7c40e7d127bd8cf3d1aec7761b99c",
+    "security_runtime/tasks/A6/native/guard_hf_metrics.jsonl": "a4cce957aad482f447b7907916cf5c866719e70f393a1a3a49610bd1ce0a80a8",
+    "security_runtime/tasks/A6/policy/agent/request_000001/completed.json": "f6f8b1f11a91004290cf7c1c41a14c3de0b51f9556c8868b43be47b6d25e4a5a",
+    "security_runtime/tasks/A6/policy/agent/request_000001/entered.json": "8a47eb5a294aacad236da813d11bbe9208157c9ba81ec37cd4e78107b64870f7",
+    "security_runtime/tasks/A6/policy/agent/request_000001/length.json": "c378d4bbdcb8b3f6fc4b5d67a47e6701ab709e011d507710e299e11d91749984",
+    "security_runtime/tasks/A6/policy/agent/request_000001/resolved.json": "f67e6d6786a79e2dfef0ea1e2fbaae0e8999c6871fe772881fca171107d42378",
+    "security_runtime/tasks/A6/policy/agent/request_000001/restored.json": "ab1b14122a0e3bf2b70bf54642c35b3c7f588b280a6af512125884a807d11c73",
+    "security_runtime/tasks/A6/policy/guard/request_000001/completed.json": "5ced2ff69d13f087b2b39c1a5eb96161d349132696704cf3029a2c4dff4c737b",
+    "security_runtime/tasks/A6/policy/guard/request_000001/entered.json": "5d1d7f2121aba41695382ad3b2483a25f0687f45242ab52d76377b69338ffcbb",
+    "security_runtime/tasks/A6/policy/guard/request_000001/length.json": "be08ac48d38cddcfebdc296efcef1a9422c8174589abd8a462b1154097fb2ffd",
+    "security_runtime/tasks/A6/policy/guard/request_000001/resolved.json": "41fc80dcf170656c805c1798af157afe5ad4fe2896f5273ed453865f290cf451",
+    "security_runtime/tasks/A6/policy/guard/request_000001/restored.json": "6e7f96e4e68aaa5b7746e905398bdf41a876f951fbcb9cb853f14593132f1f15",
+    "security_runtime/tasks/A6/recovery.json": "82caa35bf1003a6cf1255b01df613bcbb39c85827457362a907e39c7eb8c08cb",
+    "security_runtime_bootstrap_identity.json": "89b1bae6876642c606eb82fdbf55932f89d5d075bfbfb43095a84f27159d0f6a",
+    "security_runtime_native_audit.json": "cb1fc8f3be9395b003e747179817e60a1a8e143a056d899fad7971aa60e91704",
+    "tokenizers/agent_tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+    "tokenizers/guard_tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583"
+  },
+  "remote": {
+    "metadata": {
+      "code_file": "react-vn-document-runtime-v1.py",
+      "competition_sources": [],
+      "dataset_sources": [
+        "huylmhuhu/react-vn-guard15-probe-data-v1"
+      ],
+      "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+      "enable_gpu": true,
+      "enable_internet": false,
+      "enable_tpu": false,
+      "id": "huylmhuhu/react-vn-document-runtime-v1",
+      "id_no": 134292061,
+      "is_private": true,
+      "kernel_sources": [],
+      "kernel_type": "script",
+      "keywords": [],
+      "language": "python",
+      "machine_shape": "NvidiaTeslaT4",
+      "model_sources": [
+        "qwen-lm/qwen2.5/Transformers/7b-instruct/1"
+      ],
+      "title": "ReAct VN Document Runtime v1"
+    },
+    "sha256": {
+      "kernel-metadata.json": "4cb8e66c28fb16aee481914211ca55a3d77131563346ba88f823cb5bb0b1e8c6",
+      "react-vn-document-runtime-v1.py": "037d32a099b25fbe16a2f6b2aca16362f794536ca6bc727cc5bc4dcf241e0a17"
+    }
+  },
+  "remote_source_authenticated": true,
+  "scope": "One public synthetic task per level. Artifact integrity is not semantic success, guard quality, graceful cleanup or Phase 5 acceptance. Partial roles remain unassessed. Equal configured agent deadlines do not establish controlled latency ranking.",
+  "source_commit": "54aa3eca04ad31618e82bd97b2bce4261e2008c9",
+  "test_access": "hash-only prerequisites; no held-out payload or private ground truth"
+}

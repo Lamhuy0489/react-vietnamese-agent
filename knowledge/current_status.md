@@ -11,7 +11,12 @@ Cập nhật: 2026-09-14. **Phase 5 đang làm, chưa nghiệm thu.**
 169 data hashes không đổi. GitHub `8836e9c` đã push; **đã submit notebook
 `huylmhuhu/react-vn-document-runtime-v1` version1**, T4/7200s/private/offline.
 [Submission receipt](../experiments/manifests/phase5_document_gpu_v1_submission01.json).
-Bước kế theo dõi/tải/audit, không submit trùng. Không làm lại các mốc cũ bên dưới.
+**Version1 COMPLETE/artifact audit đạt**: 261raw/2remote khớp; 7doc reads,
+A0/A1 completed, A2–A6 model_error: guard PRE INVALID_OUTPUT, retire đóng pair,
+POST BACKEND_FAILURE. 8GRACEFUL/4TERMINATE, 12reaped, 7recovered. Không còn job/
+downloader; [GPU receipt](../experiments/manifests/phase5_document_gpu_v1_audit01.json).
+Bước kế CPU error-diagnostic/fallback audit rồi prereg grouped Dev guard quality;
+không retry semantic. Không làm lại các mốc cũ bên dưới.
 
 Đã chốt [shutdown package v2](shutdown_package_v2.md), source `fa28401`:
 exact archive/expanded preflight01 đạt (101 source/430 raw hashes khớp), 24 focused

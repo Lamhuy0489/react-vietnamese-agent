@@ -6,7 +6,11 @@
 đã sửa bounded CDOC bằng scope v3/runtime v8. 49 focused tests, full **2.813 pass/
 1 skip**, 693,77s; setup/Ruff/mypy357/knowledge đạt. CPU501source/158raw và exact
 110source/430raw hashes khớp, 169 data unchanged. Chuẩn bị submission mới;
-chưa đóng gate native/quality/freeze. [Report](../docs/evaluation/phase5_document_diagnostic_v1_report.md).
+chưa đóng gate native/quality/freeze. **Native v1 đã COMPLETE/audit**:
+261raw/2remote khớp, 7doc reads; A0/A1completed, A2–A6model_error do guard
+INVALID_OUTPUT/retired pair. 8GRACEFUL/4TERMINATE, 7recovered. Mục tiêu successful
+guard Pre/Post không đạt; không tăng số gate đã nghiệm thu.
+[Report](../docs/evaluation/phase5_document_diagnostic_v1_report.md).
 
 2026-09-14: [shutdown package v2](shutdown_package_v2.md) đạt exact archive/
 expanded isolated preflight: 8 tools, 21 public Dummy/resume, 7 synthetic levels

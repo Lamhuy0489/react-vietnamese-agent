@@ -14,8 +14,16 @@ hashes khớp. [CPU receipt](../experiments/manifests/phase5_document_probe_v1_c
 Hai output01 đã xong, không chạy trùng/ghi thêm. GitHub đã push `8836e9c`.
 **Đã submit notebook `huylmhuhu/react-vn-document-runtime-v1` version 1**,
 T4/7200s/private/offline; [submission](../experiments/manifests/phase5_document_gpu_v1_submission01.json).
-Bước kế: theo dõi version1, tải raw/source vào thư mục mới khi terminal, audit;
-không gửi lại hoặc retry semantic. Link nhóm trong [sổ Kaggle](kaggle_resources.md).
+**Version1 COMPLETE/artifact audit đạt**, [receipt](../experiments/manifests/phase5_document_gpu_v1_audit01.json)
+SHA-256 `ea799c3c1ab4afe8d2efa48be651241bd5f02686043c4caa7b3171f58a470228`.
+261raw/2remote khớp; 7doc reads, A0/A1 completed, A2–A6 model_error. PRE guard
+INVALID_OUTPUT dẫn tới retire đóng cả pair; POST không có native attempt.
+8GRACEFUL/4TERMINATE, 12reaped; 7recovered/42samples/zero residual2GPU.
+Raw `results/phase5_document_gpu_v1_output01`, remote `...remote01` đã đóng;
+không còn job/downloader, không ghi thêm/retry semantic. Link trong [sổ Kaggle](kaggle_resources.md).
+Bước kế: CPU synthetic INVALID_OUTPUT/fallback/retirement causal audit và
+sanitized parser-error diagnostics, rồi prereg grouped Dev guard quality.
+Không biết field JSON cụ thể vì loader không lưu raw guard output; không đoán.
 Pending access: không cần tài khoản mới, kiểm live Dataset/private mounts/quota
 owner huylmhuhu đã kiểm live Dataset ready/private/v1 và model listing ngày
 2026-09-14; quota còn 29,43h tại snapshot, không reservation. Local không load model.
