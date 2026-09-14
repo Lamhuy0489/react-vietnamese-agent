@@ -4,6 +4,11 @@ Cập nhật: 2026-09-14. **Phase 5 đang làm, chưa nghiệm thu.**
 
 ## Hiện hành — sửa lỗi sau audit
 
+Ưu tiên mới: [host-bound resource scope v4/runtime v9](resource_scope_v4.md).
+Đã ghép catalog public Dev và quyền đọc AWB/AUX theo host metadata + raw user.
+Đang kiểm full QA; SQL row scope và exact Dev package còn thiếu. Không có GPU
+job mới, không đổi benchmark hoặc mở Test, chưa tăng gate nghiệm thu.
+
 Đang làm [guard diagnostics v1](guard_diagnostics_v1.md): sanitized observer và
 CPU retirement/parity controls đạt full2.871pass/1skip (714,93s), 510source/424raw
 hashes khớp, 169data unchanged. Kế hoạch Dev cố định8pairs/16cases đã lưu, chưa

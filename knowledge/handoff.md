@@ -4,7 +4,15 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 ## Đang làm
 
-**Ưu tiên mới:** [guard diagnostics v1](guard_diagnostics_v1.md).
+**Ưu tiên hiện tại:** [resource scope v4/runtime v9](resource_scope_v4.md).
+Host resource index, public Dev catalog, scope và pair adapter đã triển khai;
+đang chốt tests và full CPU QA trước push. Output dự kiến
+`results/phase5_resource_scope_v4_cpu01`, receipt cùng tên trong manifests.
+Giữ raw/receipt cũ immutable. Bước kế sau QA là bounded SQL row scope, rồi Dev
+runner/input identity/exact package và mới submit Kaggle. Không cần account mới,
+không GPU job, không Test/private oracle. Các mốc bên dưới đã kết thúc.
+
+**Đã chốt:** [guard diagnostics v1](guard_diagnostics_v1.md).
 CPU01 đã đạt full2.871pass/1skip/714,93s; source `284590d`, 510source/424raw hashes
 khớp, 169data unchanged; 40runtime receipts/25sidecars. Dev schedule metadata
 đã chốt. Native factory/independent auditor source `c7fa18c` đã đạt full
