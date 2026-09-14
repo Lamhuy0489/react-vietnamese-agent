@@ -1,0 +1,203 @@
+{
+  "automatic_semantic_retry": false,
+  "dev_source_sha256": {
+    "dev_attack.jsonl": "764cf63ac986d89c747c9baa9019d7025a3bc38c5b9cf9c8cf151edfb7d4beba",
+    "dev_benign.jsonl": "93c9e7a70758ed8d5f8a8fa35c5c605edf4d05d57432fa86c6d1872c6a7de739"
+  },
+  "dispatch_allowed": false,
+  "expected_runtime_tasks": 112,
+  "families": 40,
+  "groups": 8,
+  "guard_model_selected": false,
+  "levels": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6"
+  ],
+  "phase5_accepted": false,
+  "protocol": "phase5_grouped_dev_plan_v1",
+  "remaining_dev_families": [
+    "CAND_AGGREGATE",
+    "CAND_ALLOCATION",
+    "CAND_ATOMIC",
+    "CAND_ATTRIBUTION",
+    "CAND_AUDIENCE",
+    "CAND_AUDITFLAG",
+    "CAND_BACKDATE",
+    "CAND_CHANNEL",
+    "CAND_CONSENT",
+    "CAND_CROSSGRANT",
+    "CAND_CURRENCY",
+    "CAND_DELEGATION",
+    "CAND_FINALGRANT",
+    "CAND_IDEMPOTENCY",
+    "CAND_LEASE",
+    "CAND_MAIL",
+    "CAND_OPERATION",
+    "CAND_PRIORITY",
+    "CAND_PURGE",
+    "CAND_QUANTITY",
+    "CAND_REDACTION",
+    "CAND_REFUND",
+    "CAND_REPAIR",
+    "CAND_RETENTION",
+    "CAND_ROUNDRULE",
+    "CAND_ROWDIRECT",
+    "CAND_ROWWIDE",
+    "CAND_SIGNATURE",
+    "CAND_SOURCECLAIM",
+    "CAND_TIMEZONE",
+    "CAND_TITLECLAIM",
+    "CAND_VISIBILITY"
+  ],
+  "scope": "Planning metadata only. Paired screening sample, not final ASR/FPR; freeze worker inputs, policies and exact package before dispatch.",
+  "selected_families": [
+    "CAND_LINKMAIL",
+    "CAND_SOURCEBINDING",
+    "CAND_DATABASE",
+    "CAND_ENCODED",
+    "CAND_LINKPAGE",
+    "CAND_QUERYLEAK",
+    "CAND_QUOTED",
+    "CAND_ROWLIST"
+  ],
+  "selected_pairs": [
+    {
+      "attack": {
+        "family_id": "CAND_LINKMAIL",
+        "group_id": "GROUP_01",
+        "pair_id": "CAND_LINKMAIL_PARAPHRASE",
+        "variant_id": "ATK_CAND_LINKMAIL_PARAPHRASE",
+        "variant_type": "paraphrase"
+      },
+      "benign": {
+        "family_id": "CAND_LINKMAIL",
+        "group_id": "GROUP_01",
+        "pair_id": "CAND_LINKMAIL_PARAPHRASE",
+        "variant_id": "BEN_CAND_LINKMAIL_PARAPHRASE",
+        "variant_type": "paraphrase"
+      }
+    },
+    {
+      "attack": {
+        "family_id": "CAND_SOURCEBINDING",
+        "group_id": "GROUP_02",
+        "pair_id": "CAND_SOURCEBINDING_PARAPHRASE",
+        "variant_id": "ATK_CAND_SOURCEBINDING_PARAPHRASE",
+        "variant_type": "paraphrase"
+      },
+      "benign": {
+        "family_id": "CAND_SOURCEBINDING",
+        "group_id": "GROUP_02",
+        "pair_id": "CAND_SOURCEBINDING_PARAPHRASE",
+        "variant_id": "BEN_CAND_SOURCEBINDING_PARAPHRASE",
+        "variant_type": "paraphrase"
+      }
+    },
+    {
+      "attack": {
+        "family_id": "CAND_DATABASE",
+        "group_id": "GROUP_04",
+        "pair_id": "CAND_DATABASE_PARAPHRASE",
+        "variant_id": "ATK_CAND_DATABASE_PARAPHRASE",
+        "variant_type": "paraphrase"
+      },
+      "benign": {
+        "family_id": "CAND_DATABASE",
+        "group_id": "GROUP_04",
+        "pair_id": "CAND_DATABASE_PARAPHRASE",
+        "variant_id": "BEN_CAND_DATABASE_PARAPHRASE",
+        "variant_type": "paraphrase"
+      }
+    },
+    {
+      "attack": {
+        "family_id": "CAND_ENCODED",
+        "group_id": "GROUP_08",
+        "pair_id": "CAND_ENCODED_PARAPHRASE",
+        "variant_id": "ATK_CAND_ENCODED_PARAPHRASE",
+        "variant_type": "paraphrase"
+      },
+      "benign": {
+        "family_id": "CAND_ENCODED",
+        "group_id": "GROUP_08",
+        "pair_id": "CAND_ENCODED_PARAPHRASE",
+        "variant_id": "BEN_CAND_ENCODED_PARAPHRASE",
+        "variant_type": "paraphrase"
+      }
+    },
+    {
+      "attack": {
+        "family_id": "CAND_LINKPAGE",
+        "group_id": "GROUP_13",
+        "pair_id": "CAND_LINKPAGE_PARAPHRASE",
+        "variant_id": "ATK_CAND_LINKPAGE_PARAPHRASE",
+        "variant_type": "paraphrase"
+      },
+      "benign": {
+        "family_id": "CAND_LINKPAGE",
+        "group_id": "GROUP_13",
+        "pair_id": "CAND_LINKPAGE_PARAPHRASE",
+        "variant_id": "BEN_CAND_LINKPAGE_PARAPHRASE",
+        "variant_type": "paraphrase"
+      }
+    },
+    {
+      "attack": {
+        "family_id": "CAND_QUERYLEAK",
+        "group_id": "GROUP_16",
+        "pair_id": "CAND_QUERYLEAK_PARAPHRASE",
+        "variant_id": "ATK_CAND_QUERYLEAK_PARAPHRASE",
+        "variant_type": "paraphrase"
+      },
+      "benign": {
+        "family_id": "CAND_QUERYLEAK",
+        "group_id": "GROUP_16",
+        "pair_id": "CAND_QUERYLEAK_PARAPHRASE",
+        "variant_id": "BEN_CAND_QUERYLEAK_PARAPHRASE",
+        "variant_type": "paraphrase"
+      }
+    },
+    {
+      "attack": {
+        "family_id": "CAND_QUOTED",
+        "group_id": "GROUP_17",
+        "pair_id": "CAND_QUOTED_PARAPHRASE",
+        "variant_id": "ATK_CAND_QUOTED_PARAPHRASE",
+        "variant_type": "paraphrase"
+      },
+      "benign": {
+        "family_id": "CAND_QUOTED",
+        "group_id": "GROUP_17",
+        "pair_id": "CAND_QUOTED_PARAPHRASE",
+        "variant_id": "BEN_CAND_QUOTED_PARAPHRASE",
+        "variant_type": "paraphrase"
+      }
+    },
+    {
+      "attack": {
+        "family_id": "CAND_ROWLIST",
+        "group_id": "GROUP_20",
+        "pair_id": "CAND_ROWLIST_PARAPHRASE",
+        "variant_id": "ATK_CAND_ROWLIST_PARAPHRASE",
+        "variant_type": "paraphrase"
+      },
+      "benign": {
+        "family_id": "CAND_ROWLIST",
+        "group_id": "GROUP_20",
+        "pair_id": "CAND_ROWLIST_PARAPHRASE",
+        "variant_id": "BEN_CAND_ROWLIST_PARAPHRASE",
+        "variant_type": "paraphrase"
+      }
+    }
+  ],
+  "selected_public_cases": 16,
+  "selection_seed": "phase5-grouped-dev-structured-output-v1",
+  "source_commit": "284590d78c50d4da6ed93495ec60b7befaa63301",
+  "test_payload_accessed": false,
+  "worker_payload_included": false
+}

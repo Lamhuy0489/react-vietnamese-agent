@@ -3,7 +3,17 @@
 2026-09-14. Bước nối tiếp [document diagnostic](document_diagnostic_v1.md).
 Native v1 đã kết thúc và giữ nguyên; không retry semantic hoặc mở Test.
 
-## Đã triển khai, đang kiểm
+## Đã đạt CPU
+
+Source `284590d`; [CPU01 receipt](../experiments/manifests/phase5_guard_diagnostics_v1_cpu01.json)
+SHA-256 `3cf5a5e1ed2dfcf9cfa1848bbccafba4afa89b02f66b53003d2f4632628c2907`.
+Full **2.871 pass/1 optional skip**, 714,93s; setup/Ruff/mypy362/knowledge đạt.
+510 source/424 raw hashes khớp, 169 data unchanged. 40 runtime receipts và 25
+diagnostic sidecars đã kiểm. Output `results/phase5_guard_diagnostics_v1_cpu01`
+đã xong, không chạy trùng. [Dev schedule](../experiments/manifests/phase5_grouped_dev_plan_v1.json)
+đã chốt metadata, dispatch-disabled.
+
+## Đã triển khai
 
 - `guard_diagnostics_v1`: phân loại JSON/schema lỗi bằng danh mục cho phép,
   không ghi text, giá trị, unknown field names hay exception context.
@@ -22,9 +32,9 @@ Focused development: 50 tests đạt 50,55s trước thêm planner; planner8test
 
 ## Bước tiếp theo
 
-Chốt source rồi chạy `scripts/verify_phase5_guard_diagnostics.py` vào output mới,
-đợi setup/Ruff/mypy/full pytest/hashes. Tạo selected Dev plan bằng
-`scripts/prepare_phase5_grouped_dev_plan.py`, chỉ có scheduling metadata.
+CPU diagnostics và Dev schedule đã xong. Đang tiếp [native diagnostic integration](../docs/architecture/phase5_native_diagnostics_v1_contract.md):
+factory ghép observer ngoài native policy/attention, độc lập PID/request/sequence
+auditor. 17 focused tests đạt 14,64s; chuẩn bị full QA với script riêng.
 Giữ `dispatch_allowed=false` đến khi worker input/catalog/manifest, runtime
 diagnostic integration, exact package và QA được chốt. Không nới schema/prompt/
 deadline hay đổi guard model để làm đẹp lỗi native document. Cần native diagnostic

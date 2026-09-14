@@ -5,6 +5,14 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 ## Đang làm
 
 **Ưu tiên mới:** [guard diagnostics v1](guard_diagnostics_v1.md), nối tiếp native
+CPU01 đã đạt full2.871pass/1skip/714,93s; source `284590d`, 510source/424raw hashes
+khớp, 169data unchanged; 40runtime receipts/25sidecars. Dev schedule metadata
+đã chốt. Đang nối native factory và independent sidecar auditor; 17focused tests
+đạt. Bước kế chạy `verify_phase5_native_diagnostics.py` vào output/receipt mới,
+chờ full QA, rồi đóng gói Dev. Chưa GPU mới.
+
+Lịch sử bước CPU (đã hoàn tất):
+native
 document đã xong. Thêm sanitized structural observer opt-in và actual-spawn
 failure/parity controls; metadata-only grouped Dev planner (8pairs/16cases/112
 runtime tasks), dispatch-disabled. Chưa đổi frozen guard parser/prompt/native

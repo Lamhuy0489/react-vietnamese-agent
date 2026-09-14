@@ -5,8 +5,9 @@ Cập nhật: 2026-09-14. **Phase 5 đang làm, chưa nghiệm thu.**
 ## Hiện hành — sửa lỗi sau audit
 
 Đang làm [guard diagnostics v1](guard_diagnostics_v1.md): sanitized observer và
-CPU retirement/parity controls; kế hoạch Dev chọn cố định8pairs/16cases, chưa
-dispatch GPU. Full QA đang chuẩn bị, không gọi là guard-quality acceptance.
+CPU retirement/parity controls đạt full2.871pass/1skip (714,93s), 510source/424raw
+hashes khớp, 169data unchanged. Kế hoạch Dev cố định8pairs/16cases đã lưu, chưa
+dispatch GPU. Đang nối native observer/auditor (17focused pass), rồi full QA.
 
 Đang triển khai [document diagnostic v1](document_diagnostic_v1.md), source
 `54aa3ec`: scope v3/runtime v8 sửa bounded CDOC. Full **2.813 pass/1 skip**,
