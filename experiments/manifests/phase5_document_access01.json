@@ -1,0 +1,22 @@
+{
+  "protocol": "phase5_document_readonly_access_v1",
+  "observed_date_utc": "2026-09-14",
+  "owner": "huylmhuhu",
+  "global_account_changed": false,
+  "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+  "dataset_status": "ready",
+  "dataset_version": 1,
+  "dataset_is_private": true,
+  "dataset_id": 11942593,
+  "metadata_download": "results/phase5_document_access01/dataset/dataset-metadata.json",
+  "model_version": "qwen-lm/qwen2.5/transformers/7b-instruct/1",
+  "model_files_list_access": true,
+  "model_weights_downloaded_locally": false,
+  "proposed_kernel": "huylmhuhu/react-vn-document-runtime-v1",
+  "mine_exact_name_search_result": "Not found",
+  "kernel_submitted": false,
+  "gpu_quota_remaining_hours_snapshot": 29.43,
+  "quota_is_reservation": false,
+  "source_commit": "54aa3eca04ad31618e82bd97b2bce4261e2008c9",
+  "scope": "Observed read-only API/CLI access, not a reservation, inference result or future availability guarantee. No credentials retained."
+}

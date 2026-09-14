@@ -2,6 +2,12 @@
 
 ## Hiện hành — remediation v2 / runtime v7
 
+2026-09-14: [document diagnostic v1](document_diagnostic_v1.md), source `54aa3ec`,
+đã sửa bounded CDOC bằng scope v3/runtime v8. 49 focused tests, full **2.813 pass/
+1 skip**, 693,77s; setup/Ruff/mypy357/knowledge đạt. CPU501source/158raw và exact
+110source/430raw hashes khớp, 169 data unchanged. Chuẩn bị submission mới;
+chưa đóng gate native/quality/freeze. [Report](../docs/evaluation/phase5_document_diagnostic_v1_report.md).
+
 2026-09-14: [shutdown package v2](shutdown_package_v2.md) đạt exact archive/
 expanded isolated preflight: 8 tools, 21 public Dummy/resume, 7 synthetic levels
 mỗi layout; 101 source/430 raw hashes khớp. Full CPU QA **2.764 pass/1 skip**,

@@ -6,11 +6,18 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 **Ưu tiên hiện hành:** [document diagnostic v1](document_diagnostic_v1.md).
 CPU draft01 phát hiện A4–A6 chặn CDOC; scope v3/runtime v8 sửa namespace có giới
-hạn, giữ v7 frozen. Draft02 đạt 42 focused tests/8,64s, đủ stub doc/Pre/Post paths.
-Bước kế: full QA và exact archive/expanded preflight, push source trước GPU.
+hạn, giữ v7 frozen. Source `54aa3ec`. Full **2.813 pass/1 skip**, 693,77s;
+49 focused/7,25s, setup/Ruff/mypy 357 files/knowledge đạt. CPU01 có 501 source/
+158 raw hashes khớp, 169 data unchanged; exact preflight01 có 110 source/430 raw
+hashes khớp. [CPU receipt](../experiments/manifests/phase5_document_probe_v1_cpu01.json),
+[preflight](../experiments/manifests/phase5_document_probe_v1_preflight01.json).
+Hai output01 đã xong, không chạy trùng/ghi thêm. Bước kế: push evidence rồi GPU.
 Chưa submit notebook mới; tên dự kiến `huylmhuhu/react-vn-document-runtime-v1`.
 Pending access: không cần tài khoản mới, kiểm live Dataset/private mounts/quota
-owner huylmhuhu trước submission; local không load model. Các mốc bên dưới đã xong.
+owner huylmhuhu đã kiểm live Dataset ready/private/v1 và model listing ngày
+2026-09-14; quota còn 29,43h tại snapshot, không reservation. Local không load model.
+Các mốc bên dưới đã xong; cue `cho biết` không tạo scope anchor là limitation
+đã ghi riêng, không kết luận authorization quality từ diagnostic này.
 
 Đã chốt [shutdown package v2](shutdown_package_v2.md): wrapper/builder/release auditor
 riêng và package checkpoint check, source `fa28401`; 24 focused tests đạt 7,11s.
