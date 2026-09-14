@@ -7,9 +7,14 @@ Cập nhật: 2026-09-14. **Phase 5 đang làm, chưa nghiệm thu.**
 Đang làm [guard diagnostics v1](guard_diagnostics_v1.md): sanitized observer và
 CPU retirement/parity controls đạt full2.871pass/1skip (714,93s), 510source/424raw
 hashes khớp, 169data unchanged. Kế hoạch Dev cố định8pairs/16cases đã lưu, chưa
-dispatch GPU. Đang nối native observer/auditor (17focused pass), rồi full QA.
+dispatch GPU. Native observer/auditor đạt full **2.888pass/1skip**, 785,14s;
+75focused/64,83s, setup/Ruff/mypy365/knowledge đạt, source `c7fa18c`.
+515source/567raw/169data hashes kiểm lại khớp; 51 runtime receipts được audit.
+[Native CPU receipt](../experiments/manifests/phase5_native_diagnostics_v1_cpu01.json)
+đã chốt; không còn QA chạy. Bước kế Dev input/catalog, bounded scope và package.
+[Báo cáo hiện hành](../docs/evaluation/phase5_guard_diagnostics_v1_report.md).
 
-Đang triển khai [document diagnostic v1](document_diagnostic_v1.md), source
+Đã chốt [document diagnostic v1](document_diagnostic_v1.md), source
 `54aa3ec`: scope v3/runtime v8 sửa bounded CDOC. Full **2.813 pass/1 skip**,
 693,77s; 49 focused tests; setup/Ruff/mypy 357 files/knowledge đạt. 501 source/
 158 raw hashes CPU và 110 source/430 raw hashes exact preflight đều khớp,

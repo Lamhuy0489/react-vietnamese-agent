@@ -4,23 +4,20 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 ## Đang làm
 
-**Ưu tiên mới:** [guard diagnostics v1](guard_diagnostics_v1.md), nối tiếp native
+**Ưu tiên mới:** [guard diagnostics v1](guard_diagnostics_v1.md).
 CPU01 đã đạt full2.871pass/1skip/714,93s; source `284590d`, 510source/424raw hashes
 khớp, 169data unchanged; 40runtime receipts/25sidecars. Dev schedule metadata
-đã chốt. Đang nối native factory và independent sidecar auditor; 17focused tests
-đạt. Bước kế chạy `verify_phase5_native_diagnostics.py` vào output/receipt mới,
-chờ full QA, rồi đóng gói Dev. Chưa GPU mới.
+đã chốt. Native factory/independent auditor source `c7fa18c` đã đạt full
+**2.888pass/1skip/785,14s**, 75focused/64,83s; setup/Ruff/mypy365/knowledge đạt.
+515source/567raw/169data hashes kiểm lại khớp, 51 actual runtime receipts.
+[Native CPU receipt](../experiments/manifests/phase5_native_diagnostics_v1_cpu01.json)
+SHA-256 `1ae96fa272782a174d94687ce9c808fc3ab88830023c915a61d2969662b2f994`.
+Output `results/phase5_native_diagnostics_v1_cpu01` đã đóng; không chạy trùng/
+ghi thêm. Không còn QA chạy. Bước kế ghép runner Dev với input/catalog manifest,
+bounded scope rồi exact package. Pending access không cần tài khoản mới;
+chưa có GPU job mới và chưa chứng nhận observer chạy native GPU.
 
-Lịch sử bước CPU (đã hoàn tất):
-native
-document đã xong. Thêm sanitized structural observer opt-in và actual-spawn
-failure/parity controls; metadata-only grouped Dev planner (8pairs/16cases/112
-runtime tasks), dispatch-disabled. Chưa đổi frozen guard parser/prompt/native
-factory, không retry v1. Bước kế full QA và chốt planning receipt; sau đó worker
-integration/exact package cho Dev mới. Pending access không cần tài khoản mới,
-không GPU job; giữ mọi raw/receipt document v1 bên dưới.
-
-**Ưu tiên hiện hành:** [document diagnostic v1](document_diagnostic_v1.md).
+**Đã kết thúc:** [document diagnostic v1](document_diagnostic_v1.md).
 CPU draft01 phát hiện A4–A6 chặn CDOC; scope v3/runtime v8 sửa namespace có giới
 hạn, giữ v7 frozen. Source `54aa3ec`. Full **2.813 pass/1 skip**, 693,77s;
 49 focused/7,25s, setup/Ruff/mypy 357 files/knowledge đạt. CPU01 có 501 source/
@@ -165,16 +162,22 @@ commit `be73761`, không đổi nhãn lịch sử thành clean release.
 
 ## Bước tiếp theo
 
-1. Giữ nguyên identity đã hoàn tất; không chạy trùng hoặc ghi thêm vào output.
-2. Exact package v2 đã đạt; không làm lại factory/wrapper hoặc sửa v1/v2 frozen.
-   Chốt diagnostic native mới: public tasks/coverage và điều kiện dừng định trước,
-   input/run identity riêng, source và package được kiểm rồi push trước inference.
-   Kiểm lại quyền/quota/private mounts khi sắp submit, cập nhật sổ Kaggle sau
-   submission/terminal thật. Giữ riêng partial/unverified evidence; CPU ACK không
-   chứng minh native teardown hoặc GPU recovery.
-3. Diagnostic phải kiểm tool/guard-path coverage (pilot calculator có
-   zero tool/guard calls phải giữ nguyên). Sau đó grouped Dev guard quality,
-   broader coverage và freeze. Không retry semantic hoặc mở Phase 6/7/Test.
+1. CPU native diagnostics v1 đã chốt và kiểm độc lập receipt/source/raw.
+   Giữ nguyên các output đã hoàn tất; không chạy trùng hoặc sửa source đã hash.
+2. Ghép public Dev input/catalog theo lịch 8 pairs/16 cases đã chốt; không chọn
+   lại family theo model outcome. Scope v3 đánh dấu cả 16 trigger là unassessed:
+   document/page dùng AWB/AUX; SQL shape hiện tại còn hẹp. Đây là static check,
+   không phải 16 model failures hay tỷ lệ chặn đúng. Thêm version riêng cho scope,
+   kiểm positive/negative controls, không cấp quyền chỉ vì ID tồn tại trong data.
+   Giữ host trust/sensitivity độc lập, unknown sources conservative; không lấy
+   private oracle làm catalog. Chi tiết trong [báo cáo](../docs/evaluation/phase5_guard_diagnostics_v1_report.md).
+3. Ghép runner/checkpoint/native observer/auditor, freeze run identity và exact
+   offline archive/expanded package; kiểm GitHub source trước inference. Chỉ khi
+   QA này đạt mới bỏ dispatch-disabled. Kiểm live quyền/quota/private mounts lúc
+   submit, ghi notebook/Dataset version thật vào sổ Kaggle. Không cần account mới.
+4. Đo đủ guard structured-output/Pre/Post coverage, lỗi và timing cho matched Dev;
+   giữ mọi semantic failures, không retry để đổi kết quả. Native lifecycle,
+   broader scope và formal freeze còn mở. Không mở Phase 6/7/Test.
 
 Pending access: không cần tài khoản mới. Đã đọc Kaggle skill/preflight và kiểm
 quota owner `huylmhuhu` trước run ngày 2026-09-13: GPU còn 29,86h, refresh 2026-09-19.

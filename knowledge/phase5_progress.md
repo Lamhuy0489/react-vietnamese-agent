@@ -1,6 +1,14 @@
 # Phase 5 — tiến độ và các gate còn lại
 
-## Hiện hành — remediation v2 / runtime v7
+## Hiện hành — guard diagnostics / runtime v8
+
+2026-09-14: [guard diagnostics v1](guard_diagnostics_v1.md) đạt CPU full2.871pass/
+1skip; 510source/424raw hashes khớp. Native observer/independent auditor tiếp theo
+đạt full **2.888pass/1skip/785,14s**, 75focused/64,83s; 515source/567raw/169data
+hashes kiểm lại khớp, 51 runtime receipts. Không còn QA chạy; chưa có GPU mới.
+Lịch Dev cố định 8pairs/16cases/112 A0–A6 tasks chỉ
+là metadata, chưa dispatch. Còn worker input/catalog và scope coverage; không
+tăng gate từ số test. [Báo cáo](../docs/evaluation/phase5_guard_diagnostics_v1_report.md).
 
 2026-09-14: [document diagnostic v1](document_diagnostic_v1.md), source `54aa3ec`,
 đã sửa bounded CDOC bằng scope v3/runtime v8. 49 focused tests, full **2.813 pass/
