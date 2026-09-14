@@ -2,6 +2,12 @@
 
 ## Hiện hành — remediation v2 / runtime v7
 
+2026-09-14: [native shutdown wiring v2](native_shutdown_wiring_v2.md) đạt bounded
+CPU: 36 focused tests, full 2.740 pass/1 skip, 719,76s; setup/Ruff/mypy 342 files/
+knowledge đạt. 478 source/4.726 raw hashes khớp, 169 data hashes không đổi.
+Factory/runner/auditor mới đã nối; exact package/release auditor và GPU còn mở.
+Không đóng thêm gate nghiệm thu từ CPU. [Report](../docs/evaluation/phase5_native_shutdown_wiring_v2_report.md).
+
 2026-09-14: [pair/runtime v3](pair_runtime_v3.md) đã nối observed shutdown vào
 cả pair và agent-only trên CPU. 74 focused tests, 63 joined receipts và bốn
 pair teardown fixtures; full **2.704 pass/1 skip**, 670,56s. Setup/Ruff/mypy
@@ -44,6 +50,11 @@ Receipt mới đã re-audit 436 source/573 raw hashes khớp; 169 tracked data h
 không đổi. Chưa gọi là production-ready.
 
 ## Gate để nghiệm thu
+
+Theo bảng tổng hợp bên dưới, hiện **4/7 nhóm gate đã đạt ≈57%**, tính mỗi nhóm
+ngang nhau. Đây không phải ước lượng công sức/thời gian, không phải số DoD trong
+`plan/phase5.md` đã nghiệm thu, và không suy từ số test pass. Native wiring v2
+đạt CPU nhưng chưa đóng thêm gate GPU. Ba nhóm còn lại phải có bằng chứng riêng.
 
 | Gate | Trạng thái |
 |---|---|

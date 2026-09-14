@@ -4,12 +4,20 @@ Cập nhật: 2026-09-14. **Phase 5 đang làm, chưa nghiệm thu.**
 
 ## Hiện hành — sửa lỗi sau audit
 
+Đã chốt CPU [native shutdown wiring v2](native_shutdown_wiring_v2.md), source
+`dfbd54f`: factory/runner/auditor mới, 36 focused tests; full **2.740 pass/1 skip**,
+719,76s. Setup/Ruff/mypy 342 files/knowledge đạt; 478 source/4.726 raw hashes khớp,
+169 data hashes không đổi. 15 actual runtime receipts và 70 mocked native-shaped
+records tách riêng. Không còn QA chạy, chưa package v2/GPU mới.
+Bước tiếp: wrapper/builder, release auditor và exact mount preflight; sau đó
+diagnostic native mới đã định trước, không retry calculator v1.
+
 Đã chốt CPU [pair/runtime v3](pair_runtime_v3.md), source `c4afb83`: 74 focused
 tests, 63 runtime receipts join hợp lệ; full **2.704 pass/1 optional-tqdm skip**,
 670,56s. Setup/Ruff/mypy 335 files/knowledge đạt; 468 source/646 raw hashes khớp,
 169 data hashes không đổi. [Receipt](../experiments/manifests/phase5_pair_runtime_v3_cpu01.json)
-đã selected; không còn QA chạy, không có GPU mới. Bước tiếp là native wiring/
-runner/auditor và exact package, chưa đóng gate GPU/quality/freeze.
+đã selected; mốc này đã xong. Wiring CPU v2 phía trên nối tiếp mốc này;
+exact package/GPU/quality/freeze vẫn chưa đóng.
 
 Mốc đã chốt trước là [worker shutdown v2](worker_shutdown_v2.md): standalone CPU, chưa nối
 ModelPair/GPU. 80 focused tests đạt (34 mới + 46 regression cũ); full QA

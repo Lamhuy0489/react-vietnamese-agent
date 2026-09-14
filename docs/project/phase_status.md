@@ -243,6 +243,12 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 
 ## Phase 5 progress
 
+- [x] Native observed-shutdown factory/runner/auditor v2 bounded CPU QA (2026-09-14):
+  36 focused tests, full 2,740 pass/one optional-tqdm skip (719.76s); setup/Ruff/
+  mypy 342 files/knowledge pass. 478 source/4,726 raw hashes re-audited, 169 data
+  hashes unchanged. 15 actual synthetic runtime receipts and 70 mocked native-shaped
+  records counted separately, no native model load. [Report](../evaluation/phase5_native_shutdown_wiring_v2_report.md).
+  Exact package/release authentication, GPU diagnostic, quality and freeze remain open.
 - [x] Observed-shutdown pair/runtime v3 bounded CPU integration (2026-09-14):
   both paired roles and A0/A1 use worker v2, separate startup/call identities,
   PID/config/lifecycle joins. 74 focused tests, 63 joined runtime receipts and
