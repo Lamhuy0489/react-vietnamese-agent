@@ -1,6 +1,6 @@
 # Grouped Dev native v2 — package preflight
 
-2026-09-14. Native runner/auditor source đã ghép, nhưng bước này không tải model
+2026-09-14. Native runner/auditor source `3486dbf` đã ghép, nhưng bước này không tải model
 và không submit Kaggle. Preflight tại `build/kaggle/phase5_grouped_native_v2_preflight01`
 đạt archive/expanded overlay hash, path traversal và compile; receipt ghi
 `actual_model_loads=0`, `gpu_runs=0`, `test_payload_accessed=false`,

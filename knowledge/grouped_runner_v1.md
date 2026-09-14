@@ -53,7 +53,7 @@ không tự tải được raw CPU. Chưa upload hoặc công khai artifacts nà
 
 ## Native v2 đã ghép
 
-Offline archive/expanded preflight `build/kaggle/phase5_grouped_native_v2_preflight01`
+Native v2 source `3486dbf`; offline archive/expanded preflight `build/kaggle/phase5_grouped_native_v2_preflight01`
 đạt compile/hash/path checks; `actual_model_loads=0`, `gpu_runs=0`,
 `native_submission_ready=false`. Chưa upload Kaggle.
 

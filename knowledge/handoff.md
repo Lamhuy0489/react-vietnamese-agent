@@ -14,7 +14,7 @@ native grouped adapter/auditor, không phải chạy lại các mốc CPU đã h
 
 ## Bước tiếp theo
 
-Native v2 source đã ghép; offline overlay preflight đạt compile/hash/path checks,
+Native v2 source `3486dbf` đã ghép; offline overlay preflight đạt compile/hash/path checks,
 `actual_model_loads=0`, `native_submission_ready=false`. Chưa submit Kaggle.
 
 1. Ghép native runner phiên bản riêng: A0/A1 agent-only; A2–A6 dùng

@@ -6,7 +6,7 @@ phạm vi/owner waiver trong [phase status](../docs/project/phase_status.md).
 
 ## Công việc hiện hành
 
-Native grouped v2 đã ghép và preflight offline đạt; chưa load model, chưa submit
+Native grouped v2 đã ghép (source `3486dbf`) và preflight offline đạt; chưa load model, chưa submit
 Kaggle. Xem [báo cáo native](../docs/evaluation/phase5_grouped_native_v2_report.md).
 
 [grouped Dev runner/checkpoint v1](grouped_runner_v1.md), source `354b75b`:
