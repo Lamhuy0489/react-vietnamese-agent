@@ -1,6 +1,13 @@
 # Phase 5 — tiến độ và các gate còn lại
 
-## Hiện hành — host-bound resource scope / runtime v9
+## Hiện hành — bounded SQL row scope / runtime v10
+
+2026-09-14: [SQL scope v5/runtime v10](sql_scope_v5.md) đạt bounded CPU:
+full **3.028pass/1skip/847,08s**, 120focused/44,59s; setup/Ruff/mypy376/knowledge.
+531source/463raw/169data hashes khớp; 30scripted runtime receipts. Row/column
+permission và pre-Broker controls đạt, không đồng nghĩa model quality. Còn Dev
+runner/checkpoint/exact package, native GPU lifecycle/guard quality và freeze.
+Không đóng thêm gate từ CPU; vẫn 4/7≈57%, không GPU job mới.
 
 2026-09-14: [resource scope v4/runtime v9](resource_scope_v4.md) đạt bounded CPU:
 full **2.945pass/1skip/865,40s**, 75focused/25,18s, setup/Ruff/mypy371/knowledge.

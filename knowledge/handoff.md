@@ -4,11 +4,15 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 ## Đang làm
 
-**Ưu tiên mới:** [SQL scope v5/runtime v10](sql_scope_v5.md). Đã triển khai pure
-parser, host row bindings, per-row column grants và pair/runtime integration.
-Chốt focused/full QA tại `results/phase5_sql_scope_v5_cpu01` trước selected receipt
-và push; không chạy trùng/ghi thêm output cũ. Bước kế Dev runner/input identity/
-checkpoint/exact package. Không cần account mới, không GPU job/Test/private GT.
+**Ưu tiên mới:** [SQL scope v5/runtime v10](sql_scope_v5.md), source `3667529`.
+Pure parser, host row bindings, per-row column grants/pair integration đã đạt
+full **3.028pass/1skip/847,08s**, 120focused/44,59s; setup/Ruff/mypy376/knowledge.
+531source/463raw/169data hashes khớp; 30runtime receipts/70synthetic guard sidecars.
+[Receipt](../experiments/manifests/phase5_sql_scope_v5_cpu01.json) SHA-256
+`fe423d620aaefe424d11ad0936e84b046f6d84c4192dbb4bbd2178713d5258a8`.
+Output `results/phase5_sql_scope_v5_cpu01` đã đóng; không chạy trùng/ghi thêm.
+Không còn QA chạy. Bước kế Dev runner/input identity/checkpoint/exact package.
+Không cần account mới, không GPU job/Test/private GT.
 
 **Ưu tiên hiện tại:** [resource scope v4/runtime v9](resource_scope_v4.md).
 Host resource index, public Dev catalog, scope/pair adapter source `d9f11df`
@@ -179,13 +183,18 @@ commit `be73761`, không đổi nhãn lịch sử thành clean release.
 
 ## Bước tiếp theo
 
+0. SQL scope v5 full QA/receipt đã audit; giữ immutable. Bản mới không còn thiếu
+   bounded row parser; broader SQL/column-language coverage vẫn hạn chế.
+   Tiếp [grouped Dev runner/checkpoint/shards](../docs/evaluation/phase5_sql_scope_v5_report.md)
+   với key variant_id+level, không dùng task_id chung để trộn attack/benign.
+
 1. Native diagnostics v1 và resource scope v4/runtime v9 đã chốt CPU, receipts
    đã kiểm độc lập. Không chạy trùng, ghi thêm raw hoặc sửa source đã hash.
-2. Public Dev input/catalog và document/page scope đã ghép; 8/8 selected trigger
-   document/page assessed ở v4, 8 SQL trigger còn unassessed. Tiếp bounded SQL row
-   scope với projected/predicate columns và exact row constraints; không lấy
-   authoring oracle helpers vào runtime. Inventory không là user grant; nguồn
-   phụ không thừa hưởng S0/trust. [Báo cáo](../docs/evaluation/phase5_resource_scope_v4_report.md).
+2. Public Dev catalog/resource/SQL scope đã ghép: v5 describe được 16/16 selected
+   triggers, 14scope ALLOW/2DENY do explicit column thiếu ở matched ROWLIST.
+   Không sửa data hoặc tự cấp cột. Broader semantics vẫn hạn chế; inventory
+   không là user grant, nguồn phụ không thừa hưởng S0/trust. Không import oracle
+   helpers vào runtime. [Báo cáo](../docs/evaluation/phase5_sql_scope_v5_report.md).
 3. Ghép runner/checkpoint/native observer/auditor, freeze run identity và exact
    offline archive/expanded package; kiểm GitHub source trước inference. Chỉ khi
    QA này đạt mới bỏ dispatch-disabled. Kiểm live quyền/quota/private mounts lúc
