@@ -1,6 +1,7 @@
 # Sổ tra cứu Kaggle của đồ án
 
-Cập nhật 2026-09-13 từ receipts/report đã lưu trong Git. Đây là **memory phát
+Cập nhật 2026-09-14 từ receipts/report đã lưu trong Git và terminal audit quota.
+Đây là **memory phát
 triển cho nhóm**, không đưa vào prompt benchmark. Trạng thái dưới đây là mốc
 bằng chứng lịch sử, không phải kiểm tra trực tuyến lại mọi URL hôm nay.
 
@@ -72,6 +73,16 @@ receipt của đúng lượt, không tự nâng phiên bản.
 | [efficient-stress-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-efficient-stress-v1) | [Efficient stress](efficient_stress_v1.md) |
 | [ordinary-pair-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-ordinary-pair-v1) | [Lượt lỗi giữ nguyên](../experiments/manifests/phase5_ordinary_pair_gpu_v1_error01.json) |
 | [ordinary-pair-t4x2-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-ordinary-pair-t4x2-v1) | [A/B/A native transport evidence](ordinary_pair_gpu_v1.md) |
+
+## Terminal audit ngày 2026-09-14
+
+CLI dùng credential path của project, không in credential values. Quota live:
+GPU used `0.09h`, remaining `29.91h`, total `30.00h`, refresh
+`2026-09-19T00:00:00`; TPU remaining `20.00h`. Đây là snapshot tại thời điểm
+audit, không phải reservation. Kiểm tra status notebook private
+`huylmhuhu/react-vn-document-runtime-v1` trả permission denied; không đổi URL
+hoặc suy đoán COMPLETE mới. Native grouped v2 chưa có notebook/Dataset URL hay
+version thực tế; compile-only preflight vẫn ghi `native_submission_ready=false`.
 
 ## Phase 1/2 và pilot nhiều model
 
