@@ -6,6 +6,10 @@ auditor below is local, read-only, and does not change model/runtime/Dev selecti
 
 ## Actual run
 
+Update: shard 0 reached COMPLETE at 15:02:53 UTC and its independent release
+audit passed. [Terminal report and coverage limitations](phase5_grouped_v3_s0_report.md).
+Earlier RUNNING observations below are historical, not current state.
+
 [Notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-0),
 version 1, kernel ID 134340826; requested alias ended in `-s0`, but Kaggle chose
 `-shard-0` from the title. One shard, 14 matched Dev/A0–A6 keys, timeout 14,400s,

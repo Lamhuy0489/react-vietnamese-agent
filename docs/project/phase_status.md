@@ -243,6 +243,13 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 
 ## Phase 5 progress
 
+- [x] Grouped native shard 0 package/runtime release audit (2026-09-14): 14 exact
+  checkpoints, 380 raw/two remote hashes verified, 14 stable VRAM recoveries,
+  22 GRACEFUL/two TERMINATE and all 24 workers reaped. **Zero tool calls and zero
+  guard classifications**: all tasks finalize immediately from user-visible M208.
+  This does not close guard-quality, benign utility or an aggregate Phase 5 gate.
+  [Terminal report](../evaluation/phase5_grouped_v3_s0_report.md),
+  [audit receipt](../../experiments/manifests/phase5_grouped_v3_s0_audit01.json).
 - [x] Grouped package v3 independent CPU rehearsal (2026-09-14), source `0d86536`:
   complete 170-file worker, archive/generated-expanded fresh venvs, 128 package
   module origins each; eight tools/recovery, 21 clean Dummy and 112 grouped stub

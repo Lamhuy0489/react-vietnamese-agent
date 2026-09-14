@@ -15,15 +15,17 @@ mỗi layout. 4.357 hashes recheck khớp. Full QA **3.113 pass/1 skip/1.060,05s
 setup/Ruff/mypy392/knowledge đạt; 555 source/7 raw/169 data hashes khớp.
 [QA receipt](../experiments/manifests/phase5_grouped_package_v3_cpu01.json).
 Output `results/phase5_grouped_package_v3_qa01` đã đóng; không chạy lại.
-Source/evidence đã push `93dc9a2`; **native shard 0 v1 RUNNING** trên
+Source/evidence đã push `93dc9a2`; **native shard 0 v1 COMPLETE/audit đạt** trên
 [Kaggle](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-0).
 [Submission](../experiments/manifests/phase5_grouped_v3_s0_submission01.json):
-14 ca, private/offline T4x2, timeout 14.400s. Source remote hash khớp; chưa có
-kết quả terminal, không chạy trùng hoặc submit bảy shard còn lại trước audit.
+14 ca, private/offline T4x2, timeout 14.400s. 380 raw/2 remote hash khớp,
+14 completed/14 VRAM recovered; 22 GRACEFUL + 2 TERMINATE, 24 workers reaped.
+Nhưng cả 14 trả ngay M208, **0 tool calls/0 guard classifications**: chưa kiểm
+được chất lượng guard và không thực hiện các bước đọc/gửi được yêu cầu.
+[Terminal report](../docs/evaluation/phase5_grouped_v3_s0_report.md).
 
-Kiểm gần nhất **2026-09-14 14:59:33 UTC: RUNNING, failureMessage=null**;
-Kaggle chưa trả output/log tại lần đọc trước đó. Bộ kiểm terminal local đã sẵn
-sàng, 32 focused tests đạt; [audit notes](../docs/evaluation/phase5_grouped_gpu_v3_audit_notes.md).
+Kiểm terminal **2026-09-14 15:02:53 UTC: COMPLETE**; output đã tải và audit.
+Bước kế là shards 1/2 theo lịch chọn trước, không sửa prompt hoặc retry shard 0.
 
 [grouped Dev runner/checkpoint v1](grouped_runner_v1.md), source `354b75b`:
 27 focused tests đạt/130,62s; 112 khóa riêng biệt trên tám shard, 106 tool calls,
@@ -48,8 +50,8 @@ Mốc CPU cũ không có GPU; job mới duy nhất là shard 0 nêu trên. Khôn
 
 ## Việc còn thiếu
 
-Native grouped adapter/auditor v2 đã có; còn exact offline Kaggle package + full QA →
-grouped Dev quality/timing/lifecycle → broader scope assessment và Phase 5 freeze.
+Native grouped adapter, exact package/full QA và shard-0 release audit đã có;
+còn grouped Dev tool/guard quality/lifecycle coverage và Phase 5 freeze.
 Aggregate **4/7≈57%** giữ nguyên; không phải phần trăm thời gian/công sức.
 Sáu ROWLIST cases A4–A6 chưa được đọc do thiếu explicit column grant; không tự
 cấp quyền từ oracle hoặc sửa data. Không chuyển Phase 6/7/Test.

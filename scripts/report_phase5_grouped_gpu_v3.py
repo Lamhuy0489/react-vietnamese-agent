@@ -84,6 +84,30 @@ def summarize(tasks: list[dict[str, Any]]) -> dict[str, Any]:
     )
 
 
+def path_coverage(raw: Path) -> dict[str, Any]:
+    """Count observable events, including action omission; never infer a semantic score."""
+    events: Counter[str] = Counter()
+    answers: Counter[str] = Counter()
+    lifecycle: Counter[str] = Counter()
+    for task in sorted((raw / "grouped/tasks").iterdir()):
+        trace = task / "execution/runtime/trace_legacy.jsonl"
+        for line in trace.read_text().splitlines():
+            record = json.loads(line)
+            events[record["event"]] += 1
+            if record["event"] == "final_answer":
+                answers[record["data"]["answer"]] += 1
+        runtime = json.loads((task / "execution/pair_runtime.json").read_text())
+        for worker in runtime["snapshot"]["workers"].values():
+            for event in worker["lifecycle"]:
+                lifecycle[event["method"] + (":reaped" if event["reaped"] else ":unreaped")] += 1
+    return dict(
+        trace_events=dict(events),
+        distinct_final_answers=len(answers),
+        lifecycle=dict(lifecycle),
+        quality_scoring=False,
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("audit", "raw", "output"):
@@ -112,6 +136,7 @@ def main() -> None:
     before = inventory(args.raw)
     equal(before, audit["raw_sha256"], "raw evidence unchanged since audit")
     summary = summarize(audit["tasks"])
+    summary["path_coverage"] = path_coverage(args.raw)
     summary.update(
         protocol="grouped_gpu_v3_descriptive_summary",
         audit_sha256=audit_hash,

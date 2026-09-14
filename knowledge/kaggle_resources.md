@@ -76,17 +76,24 @@ receipt của đúng lượt, không tự nâng phiên bản.
 
 ## Terminal audit ngày 2026-09-14
 
-### Grouped Dev native v3 — shard 0 đang chạy
+### Grouped Dev native v3 — shard 0 COMPLETE/audit
 
 [Notebook thực tế](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-0)
-**v1, RUNNING**, kiểm ngày 2026-09-14 lúc 14:59:33 UTC; kernel ID `134340826`.
+**v1, COMPLETE**, kiểm ngày 2026-09-14 lúc 15:02:53 UTC; kernel ID `134340826`.
 Alias yêu cầu `huylmhuhu/react-vn-grouped-dev-v3-s0` đã được Kaggle đổi theo title.
 Source `0d865365b7881144756f804441ca24ed48935f7f`, push GitHub qua `93dc9a2` trước
 submission. Dataset guard15 v1 private và model Qwen v1 như dưới. 14 ca/shard0,
 T4x2/offline/private, timeout 14.400s. [Submission receipt](../experiments/manifests/phase5_grouped_v3_s0_submission01.json),
 [report](../docs/evaluation/phase5_grouped_package_v3_report.md).
 Remote source hash khớp; pull có `/1` trả 403 nhưng pull handle không version
-thành công. Chưa có terminal audit hoặc kết quả chất lượng; không rerun job này.
+thành công. [Terminal report](../docs/evaluation/phase5_grouped_v3_s0_report.md),
+[audit](../experiments/manifests/phase5_grouped_v3_s0_audit01.json),
+[summary](../experiments/manifests/phase5_grouped_v3_s0_summary01.json),
+[preservation](../experiments/manifests/phase5_grouped_v3_s0_terminal01.json):
+380 raw/2 remote hash khớp, 14 completed/recovered, 0 tool/guard requests;
+22 graceful/2 terminate, 24 reaped. Không coi đây là utility/guard quality.
+Quota sau shard 0 còn 28,23h; Dataset vẫn ready/v1. Chuẩn bị shards 1/2 theo lịch
+đã chọn, không retry shard 0. Chưa có URL/version của hai job tiếp theo.
 
 Kiểm tra đúng owner cho grouped package v3:
 [live receipt](../experiments/manifests/phase5_grouped_package_v3_live01.json).

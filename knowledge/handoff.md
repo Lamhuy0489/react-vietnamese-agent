@@ -4,6 +4,18 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; lịch sử không thay th�
 
 ## Đang làm
 
+**Shard 0 COMPLETE, terminal audit đã đạt**. Xem
+[báo cáo](../docs/evaluation/phase5_grouped_v3_s0_report.md),
+[audit](../experiments/manifests/phase5_grouped_v3_s0_audit01.json),
+[summary](../experiments/manifests/phase5_grouped_v3_s0_summary01.json).
+380 raw/2 remote hash khớp; 14 completed/recovered, 24 workers reaped (22 graceful,
+2 terminate). Cả 14 trả ngay M208 đã có trong user instruction: 0 tool calls và
+0 guard classification. Không coi completed là utility/guard quality; không retry.
+Raw `results/phase5_grouped_v3_s0_download01` và audit/summary đã đóng.
+Đang chuẩn bị hai shard tiếp theo đã chọn trước: 1 SOURCEBINDING, 2 DATABASE.
+
+Nền đã chốt và lịch sử submission (RUNNING dưới đây đã được terminal thay thế):
+
 Package v3 source `0d86536` đã chạy xong exact preflight; mỗi layout archive và
 expanded đạt 8 tools, 21 clean Dummy, 112 grouped stub/resume, 128 module origins.
 4.357 hashes recheck khớp, 4.360 files secret scan/0 matches. Xem
@@ -51,11 +63,11 @@ Package v3 preflight đã đạt; 14 regression tests đạt, Ruff/mypy392 đạ
 
 1. CPU QA và preflight đã hoàn tất; không chạy lại. Selected QA receipt đính chính
    scope Test của full historical suite, không coi flag cũ là filesystem audit.
-2. Theo dõi đúng notebook `...-shard-0`, owner `huylmhuhu` explicit từ kaggle1.json.
-   Không gửi job trùng; khi terminal tải toàn bộ output vào thư mục mới.
+2. Shard 0 đã terminal/audit: không theo dõi hoặc chạy lại. Kiểm live quota/Dataset,
+   source/package hashes cho shards 1/2; push evidence rồi submit hai job mới.
 3. Theo [contract v3](../docs/architecture/phase5_grouped_package_v3_contract.md),
-   audit source/bootstrap/112-key identity và 14 ca shard 0, native metrics,
-   checkpoint, lifecycle và recovery trước khi chạy tiếp bảy shard còn lại.
+   giữ source `0d86536`, package đã khóa, timeout 14.400s mỗi shard; ghi URL/version
+   thực tế ngay sau submission. Audit từng shard trước khi mở rộng tiếp.
 4. Báo matched Dev guard structured-output/Pre/Post, lỗi, startup/generation/
    end-to-end timing và lifecycle; không retry ngữ nghĩa hoặc mở Test để tuning.
 

@@ -1,6 +1,7 @@
 """Synthetic descriptive summaries retain failures and distinguish timing denominators."""
 
 import importlib
+import json
 from pathlib import Path
 
 
@@ -60,3 +61,28 @@ def test_agent_only_benign_has_no_guard_counts(monkeypatch):
     assert result["tasks"][0]["branch"] == "benign"
     assert result["task_wall_seconds_total"] == 12
     assert result["startup_seconds_total"] == 2
+
+
+def test_observable_path_counts_no_implicit_tool_success(monkeypatch, tmp_path):
+    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[2] / "scripts"))
+    report = importlib.import_module("report_phase5_grouped_gpu_v3")
+    execution = tmp_path / "grouped/tasks/case/execution"
+    (execution / "runtime").mkdir(parents=True)
+    records = [
+        dict(event="model_output", data={}),
+        dict(event="final_answer", data=dict(answer="synthetic")),
+    ]
+    (execution / "runtime/trace_legacy.jsonl").write_text("\n".join(json.dumps(r) for r in records))
+    (execution / "pair_runtime.json").write_text(
+        json.dumps(
+            dict(
+                snapshot=dict(
+                    workers=dict(agent=dict(lifecycle=[dict(method="TERMINATE", reaped=True)]))
+                )
+            )
+        )
+    )
+    result = report.path_coverage(tmp_path)
+    assert result["trace_events"] == {"model_output": 1, "final_answer": 1}
+    assert result["distinct_final_answers"] == 1
+    assert result["lifecycle"] == {"TERMINATE:reaped": 1}
