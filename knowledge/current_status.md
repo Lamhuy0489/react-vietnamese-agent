@@ -21,6 +21,10 @@ Source/evidence đã push `93dc9a2`; **native shard 0 v1 RUNNING** trên
 14 ca, private/offline T4x2, timeout 14.400s. Source remote hash khớp; chưa có
 kết quả terminal, không chạy trùng hoặc submit bảy shard còn lại trước audit.
 
+Kiểm gần nhất **2026-09-14 14:59:33 UTC: RUNNING, failureMessage=null**;
+Kaggle chưa trả output/log tại lần đọc trước đó. Bộ kiểm terminal local đã sẵn
+sàng, 32 focused tests đạt; [audit notes](../docs/evaluation/phase5_grouped_gpu_v3_audit_notes.md).
+
 [grouped Dev runner/checkpoint v1](grouped_runner_v1.md), source `354b75b`:
 27 focused tests đạt/130,62s; 112 khóa riêng biệt trên tám shard, 106 tool calls,
 154 synthetic guard responses, 192 workers GRACEFUL/reaped. Resume không trùng

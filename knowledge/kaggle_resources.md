@@ -79,7 +79,7 @@ receipt của đúng lượt, không tự nâng phiên bản.
 ### Grouped Dev native v3 — shard 0 đang chạy
 
 [Notebook thực tế](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-0)
-**v1, RUNNING**, kiểm ngày 2026-09-14; kernel ID `134340826`.
+**v1, RUNNING**, kiểm ngày 2026-09-14 lúc 14:59:33 UTC; kernel ID `134340826`.
 Alias yêu cầu `huylmhuhu/react-vn-grouped-dev-v3-s0` đã được Kaggle đổi theo title.
 Source `0d865365b7881144756f804441ca24ed48935f7f`, push GitHub qua `93dc9a2` trước
 submission. Dataset guard15 v1 private và model Qwen v1 như dưới. 14 ca/shard0,

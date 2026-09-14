@@ -15,7 +15,7 @@ private/offline/image/model/Dataset metadata matches. A version-qualified pull
 returned 403. Installed CLI status/log methods parse but do not forward the
 version argument: do not claim they authenticate a historical session version.
 
-At the 14:50–14:55 UTC checks Kaggle reported RUNNING, `failureMessage=null`;
+At the latest 14:59:33 UTC check Kaggle reported RUNNING, `failureMessage=null`;
 output listing was empty and log length zero. This does not establish completed
 task count, whether the worker has started inference, or a failure cause. Do not
 retry/overwrite this run or submit the other seven shards while this gate is open.
@@ -35,7 +35,10 @@ denominator. Partial/ERROR runs are retained for diagnosis, not declared accepte
 32 focused tests passed during implementation: 25 new release-boundary tests and
 seven existing native per-task join tests. Synthetic boundary fixtures are not
 model evidence; package identity and model-native metrics have separate checks.
-Ruff and mypy393 passed. Full worker QA remains the earlier 3,113 pass/one skip
+Source `05da583`; [frozen focused QA receipt](../../experiments/manifests/phase5_grouped_release_auditor_v3_cpu01.json)
+SHA-256 `7c4ccd8cc5a04dfb27fc7626225c420f342a205123edaa6cf0133d4d041156a2`.
+Setup, Ruff, mypy393 and knowledge checks passed, source/raw/data hashes re-audited.
+Full worker QA remains the earlier 3,113 pass/one skip
 receipt, not a claim that the new local auditor has been included in that run.
 
 Once terminal, download all output to a fresh directory, preserve its status/log,

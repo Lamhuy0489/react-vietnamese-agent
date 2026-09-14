@@ -25,8 +25,12 @@ nội dung; không suy đoán số ca hoặc nguyên nhân từ log rỗng.
 
 Bộ kiểm terminal local mới: `scripts/audit_phase5_grouped_gpu_v3.py`,
 [audit notes](../docs/evaluation/phase5_grouped_gpu_v3_audit_notes.md); 32 focused
-tests đạt, Ruff/mypy393 đạt. Không thay frozen worker. Monitor03 cho biết RUNNING,
-failureMessage=null, files=[], log rỗng; chưa có kết quả để audit.
+tests đạt, setup/Ruff/mypy393/knowledge đạt; source `05da583`,
+[focused receipt](../experiments/manifests/phase5_grouped_release_auditor_v3_cpu01.json).
+Không thay frozen worker. Monitor04 lúc **14:59:33 UTC** cho biết RUNNING,
+failureMessage=null; monitor03 files=[], log rỗng. Chưa có kết quả để audit.
+Không chạy lại QA/preflight đã chốt; việc kế tiếp duy nhất của shard này là
+kiểm terminal, tải output mới và chạy read-only release auditor.
 
 Mốc CPU nền trước đó (đã đóng):
 
