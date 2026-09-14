@@ -10,6 +10,6 @@ và không submit Kaggle. Preflight tại `build/kaggle/phase5_grouped_native_v2
 chất lượng guard, latency, VRAM recovery, ASR/FPR hoặc utility. Bước kế là
 kiểm live quota/private mounts rồi submit shard native mới với identity riêng.
 
-[Preflight receipt](../../build/kaggle/phase5_grouped_native_v2_preflight01/preflight_receipt.json) ·
+[Preflight receipt](../../experiments/manifests/phase5_grouped_native_v2_preflight01.json) ·
 [Native contract](../architecture/phase5_grouped_native_v2_contract.md) ·
 [CPU runner evidence](phase5_grouped_runner_v1_report.md).

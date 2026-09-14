@@ -42,7 +42,7 @@ public tài nguyên private. Tác vụ model nặng chỉ chạy Kaggle.
 - [Grouped CPU receipt](../experiments/manifests/phase5_grouped_runner_v1_cpu01.json),
   SHA-256 `6233354ab9445569d83c020f4b3a4f1f4d65bcd81fec4a85bea53ea80243f9f3`.
 - [Native v2 preflight](../docs/evaluation/phase5_grouped_native_v2_report.md) và
-  [receipt](../build/kaggle/phase5_grouped_native_v2_preflight01/preflight_receipt.json).
+  [receipt](../experiments/manifests/phase5_grouped_native_v2_preflight01.json).
 - [SQL CPU prerequisite](../experiments/manifests/phase5_sql_scope_v5_cpu01.json),
   source `3667529`: 3.028 pass/1 skip, 531 source/463 raw/169 data hashes khớp.
   Output đã đóng, không chạy trùng/ghi thêm.
