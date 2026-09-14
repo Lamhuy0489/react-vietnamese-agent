@@ -20,7 +20,8 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
-- **Hiện hành — SQL theo dòng/cột:** [SQL scope v5/runtime v10](sql_scope_v5.md).
+- **Hiện hành — chạy nhóm và checkpoint:** [grouped Dev runner v1](grouped_runner_v1.md).
+- **SQL theo dòng/cột đã chốt CPU:** [SQL scope v5/runtime v10](sql_scope_v5.md).
 - **Quyền đọc public Dev đã chốt CPU:** [resource scope v4/runtime v9](resource_scope_v4.md).
 - **Chẩn đoán guard đã chốt CPU:** [guard diagnostics v1](guard_diagnostics_v1.md).
 - **Diagnostic tài liệu hiện hành:** [CDOC scope fix và thực nghiệm mới](document_diagnostic_v1.md).
@@ -37,6 +38,9 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Native follow-up: [đóng gói runtime mới lên Kaggle](phase5_pair_runtime_kaggle_next.md).
 - Lưu trữ trước sửa lỗi: [status lịch sử](history_20260913_current_status.md),
   [handoff lịch sử](history_20260913_handoff.md); không dùng làm chỉ dẫn hiện hành.
+- Lưu trữ khi thu gọn ngày 2026-09-14: [status](history_20260914_grouped_runner_current_status.md),
+  [handoff](history_20260914_grouped_runner_handoff.md); giữ nguyên lịch sử trước
+  khi chốt grouped runner, không mô tả job hiện tại.
 
 - Lệnh kiểm tra và chạy local: [runbook](runbook.md).
 - Quyết định, lý do và ngoại lệ: [decision log](../docs/project/decision_log.md).

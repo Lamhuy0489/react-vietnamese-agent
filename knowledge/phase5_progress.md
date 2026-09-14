@@ -1,6 +1,16 @@
 # Phase 5 — tiến độ và các gate còn lại
 
-## Hiện hành — bounded SQL row scope / runtime v10
+## Hiện hành — grouped Dev runner/checkpoint
+
+2026-09-14: [grouped runner v1](grouped_runner_v1.md), source `354b75b`, đã đạt
+27 focused tests (112 ca/8 shards + kiểm tra resume, tampering và giữ lỗi).
+Full QA **3.055 pass/1 skip/973,70s** đã đạt; setup/Ruff/mypy381/knowledge đạt,
+537 source/1.783 raw/169 data hashes kiểm lại khớp. [CPU receipt](../experiments/manifests/phase5_grouped_runner_v1_cpu01.json)
+đã chốt, không còn QA chạy; không đóng thêm aggregate gate. Native adapter/exact
+package, grouped Dev LLM/lifecycle/quality và freeze còn mở; vẫn 4/7≈57% theo
+aggregate gates, không phải 57% thời gian/công sức. Không GPU job mới.
+
+## Mốc trước — bounded SQL row scope / runtime v10
 
 2026-09-14: [SQL scope v5/runtime v10](sql_scope_v5.md) đạt bounded CPU:
 full **3.028pass/1skip/847,08s**, 120focused/44,59s; setup/Ruff/mypy376/knowledge.

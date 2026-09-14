@@ -243,6 +243,16 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 
 ## Phase 5 progress
 
+- [x] Grouped Dev CPU runner/checkpoint v1 (2026-09-14), source `354b75b`:
+  all 112 variant+level keys across eight shards audited, immutable prefix resume,
+  tampering/failure-retention controls. 27 focused tests; full 3,055 pass/1 optional
+  native-tqdm skip (973.70s); setup/Ruff/mypy381/knowledge pass. 537 source/1,783 raw/
+  169 data hashes rechecked. 106 tool results, 154 synthetic guard sidecars,
+  192 GRACEFUL/reaped workers; no native/quality claim or additional aggregate gate.
+  [Receipt](../../experiments/manifests/phase5_grouped_runner_v1_cpu01.json),
+  [report](../evaluation/phase5_grouped_runner_v1_report.md). Native grouped adapter,
+  exact package, GPU quality/lifecycle and Phase 5 freeze remain open.
+
 - [x] Observed-shutdown package v2 exact offline preflight and CPU QA (2026-09-14):
   94-file overlay; archive/expanded mounts each pass eight tools/recovery, 21 public
   Dummy/missing-only resume and seven synthetic levels. 101 source/430 raw hashes
