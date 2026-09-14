@@ -20,7 +20,8 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
-- **Hiện hành — quyền đọc public Dev:** [resource scope v4/runtime v9](resource_scope_v4.md).
+- **Hiện hành — SQL theo dòng/cột:** [SQL scope v5/runtime v10](sql_scope_v5.md).
+- **Quyền đọc public Dev đã chốt CPU:** [resource scope v4/runtime v9](resource_scope_v4.md).
 - **Chẩn đoán guard đã chốt CPU:** [guard diagnostics v1](guard_diagnostics_v1.md).
 - **Diagnostic tài liệu hiện hành:** [CDOC scope fix và thực nghiệm mới](document_diagnostic_v1.md).
 - **Notebook / Dataset Kaggle:** [sổ link, phiên bản, mục đích và quyền truy cập](kaggle_resources.md).

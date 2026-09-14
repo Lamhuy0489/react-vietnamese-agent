@@ -4,6 +4,12 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 ## Đang làm
 
+**Ưu tiên mới:** [SQL scope v5/runtime v10](sql_scope_v5.md). Đã triển khai pure
+parser, host row bindings, per-row column grants và pair/runtime integration.
+Chốt focused/full QA tại `results/phase5_sql_scope_v5_cpu01` trước selected receipt
+và push; không chạy trùng/ghi thêm output cũ. Bước kế Dev runner/input identity/
+checkpoint/exact package. Không cần account mới, không GPU job/Test/private GT.
+
 **Ưu tiên hiện tại:** [resource scope v4/runtime v9](resource_scope_v4.md).
 Host resource index, public Dev catalog, scope/pair adapter source `d9f11df`
 đã đạt full **2.945pass/1skip/865,40s**, 75focused/25,18s; setup/Ruff/mypy371/

@@ -4,6 +4,10 @@ Cập nhật: 2026-09-14. **Phase 5 đang làm, chưa nghiệm thu.**
 
 ## Hiện hành — sửa lỗi sau audit
 
+Đang chốt [SQL scope v5/runtime v10](sql_scope_v5.md): finite row filters và
+table/key/row/column grants; source cũ giữ nguyên. Còn full QA trước push và
+grouped Dev runner/exact package. Chưa có GPU job, không mở Test hoặc đổi data.
+
 Ưu tiên mới: [host-bound resource scope v4/runtime v9](resource_scope_v4.md).
 Đã ghép catalog public Dev và quyền đọc AWB/AUX theo host metadata + raw user.
 Full **2.945pass/1skip/865,40s**, 75focused/25,18s, setup/Ruff/mypy371/knowledge

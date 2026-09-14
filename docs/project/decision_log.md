@@ -1390,3 +1390,14 @@ and are not inferred here.
 - Model/prompt/decoding, security levels, data and research scope are unchanged.
   This is an implementation repair based on public synthetic CPU evidence,
   not Test feedback. Path coverage is separate from quality and acceptance.
+
+# 2026-09-14 — Host-bound finite SQL row scope
+
+- Versioned scope v5/runtime v10 extends public metadata-driven v4/v9 with a
+  non-executing SQL grammar and table/key/row/projected-column user grants.
+  Host row inventory is not permission; no authoring oracle helpers enter policy.
+- Guard/model/prompt, raw benchmark and source labels remain unchanged. This is
+  a bounded implementation repair, not research-scope expansion or Test tuning.
+- One matched selected Dev pair lacks explicit column authorization; retain it
+  as denied/unresolved, do not infer a column from expected answers or remove it.
+  Native quality and full Phase 5 acceptance remain open after CPU validation.
