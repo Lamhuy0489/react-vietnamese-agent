@@ -14,21 +14,22 @@ native grouped adapter/auditor, không phải chạy lại các mốc CPU đã h
 
 ## Bước tiếp theo
 
-Native v2 source `3486dbf` đã ghép; offline overlay preflight đạt compile/hash/path checks,
-`actual_model_loads=0`, `native_submission_ready=false`. Chưa submit Kaggle.
-Import audit isolated đã đạt; receipt `phase5_grouped_native_v2_import01.json`.
+Native v2 source `3486dbf` đã ghép. **Thu hồi kết luận package/import isolation**
+của hai receipt cũ: overlay nằm dưới `configs`, editable install đã cung cấp
+module từ repo. Giữ nguyên raw/receipt. Xem phần đính chính trong báo cáo native.
+Đang làm package v3; 14 regression tests đạt, Ruff/mypy392 đạt trước freeze.
+Chưa có native submission mới.
 
-1. Ghép native runner phiên bản riêng: A0/A1 agent-only; A2–A6 dùng
-   `native_guard_diagnostics_v1.native_pair`, runtime v10 và catalog public Dev.
-   Identity cần model/snapshot/inventory/config pins, 112 variant+level keys và
-   tám shards đã chọn trước. Không đổi nhãn CPU thành native.
-2. Ghép auditor native cho từng variant: metrics/policy/attention/guard sidecar
-   nối PID/request/runtime, baseline/recovery và timing. Auditor document v1 chỉ
-   biết CDOC/bảy level, không chứng nhận grouped Dev nguyên trạng. Giữ cả failed
-   attempts, không biến classification ERROR thành successful guard path.
-3. Freeze native run/package, kiểm exact archive/expanded offline mounts và
-   source đã push GitHub, rồi mới submit Kaggle. Khóa timeout/schedule trước chạy;
-   không mặc định 112 ca vừa một notebook. Ghi URL/version thật sau submission.
+1. Freeze package v3; chạy `prepare_phase5_grouped_package_v3.py` ở output mới:
+   archive/expanded, fresh venv, origins, 8 tools, 21 clean Dummy và 112 grouped
+   stub/resume mỗi layout. Chạy full QA bằng `verify_phase5_grouped_package_v3.py`.
+2. Kiểm hash receipt/source/raw, push GitHub; kiểm live owner `huylmhuhu`,
+   Dataset/model private và quota. `kaggle1.json` là owner này; chọn owner explicit,
+   không dùng default credential path rồi suy đoán tài khoản. Status document v1
+   đã đọc lại thành công: COMPLETE; không phải thiếu quyền người dùng.
+3. Theo [contract v3](../docs/architecture/phase5_grouped_package_v3_contract.md),
+   submit shard 0/14 ca trước, timeout 14.400s, không chạy trùng/semantic retry.
+   Audit native terminal artifacts trước khi chạy tiếp bảy shard còn lại.
 4. Báo matched Dev guard structured-output/Pre/Post, lỗi, startup/generation/
    end-to-end timing và lifecycle; không retry ngữ nghĩa hoặc mở Test để tuning.
 

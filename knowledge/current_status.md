@@ -6,8 +6,11 @@ phạm vi/owner waiver trong [phase status](../docs/project/phase_status.md).
 
 ## Công việc hiện hành
 
-Native grouped v2 đã ghép (source `3486dbf`) và preflight offline đạt; chưa load model, chưa submit
-Kaggle. Xem [báo cáo native](../docs/evaluation/phase5_grouped_native_v2_report.md).
+Native grouped v2 đã ghép (source `3486dbf`), nhưng bằng chứng package/import cũ
+bị false positive do root `configs` và editable install. Đã đính chính trong
+[báo cáo native](../docs/evaluation/phase5_grouped_native_v2_report.md).
+Đang kiểm [package v3](../docs/architecture/phase5_grouped_package_v3_contract.md)
+với source closure đầy đủ, hai layout và fresh venv. Chưa có native run mới.
 
 [grouped Dev runner/checkpoint v1](grouped_runner_v1.md), source `354b75b`:
 27 focused tests đạt/130,62s; 112 khóa riêng biệt trên tám shard, 106 tool calls,
@@ -32,7 +35,7 @@ Không GPU job mới, không mở Test/private oracle, không đổi benchmark.
 
 ## Việc còn thiếu
 
-Native grouped adapter/observer/VRAM auditor → exact offline Kaggle package →
+Native grouped adapter/auditor v2 đã có; còn exact offline Kaggle package + full QA →
 grouped Dev quality/timing/lifecycle → broader scope assessment và Phase 5 freeze.
 Aggregate **4/7≈57%** giữ nguyên; không phải phần trăm thời gian/công sức.
 Sáu ROWLIST cases A4–A6 chưa được đọc do thiếu explicit column grant; không tự

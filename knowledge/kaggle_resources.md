@@ -76,6 +76,14 @@ receipt của đúng lượt, không tự nâng phiên bản.
 
 ## Terminal audit ngày 2026-09-14
 
+Đính chính: snapshot quota và lỗi permission dưới đây được lấy bằng credential
+mặc định, **không xác thực owner `huylmhuhu`**; không dùng chúng làm quota/quyền
+của dự án. Chọn explicit owner từ credential project đã kiểm lại status notebook
+document v1 thành công: **COMPLETE**. Không cần tài khoản hoặc quyền mới vì lỗi
+403 trước đó. Quota đúng owner phải đọc live trước submission tiếp theo.
+
+Nội dung lịch sử giữ lại (không phải gate quyền/quota hiện hành):
+
 CLI dùng credential path của project, không in credential values. Quota live:
 GPU used `0.09h`, remaining `29.91h`, total `30.00h`, refresh
 `2026-09-19T00:00:00`; TPU remaining `20.00h`. Đây là snapshot tại thời điểm

@@ -1,5 +1,21 @@
 # Grouped Dev native v2 — package preflight
 
+## Đính chính 2026-09-14: chưa chứng minh package độc lập
+
+Hai receipt dưới đây được giữ nguyên để truy vết, **không dùng làm bằng chứng
+isolated import hoặc exact archive/expanded execution**. Kiểm tra lại cho thấy
+builder chọn thư mục đầu tiên `configs` làm root, đặt bảy file overlay vào đó.
+Lệnh `python -I` vẫn dùng `.venv` có editable install; `react_agent.__file__` và
+runner thực tế trỏ về `src/` của repo, không phải gói đã giải nén. Compile chỉ
+kiểm cú pháp; 11 tests được dẫn không kiểm lỗi nguồn import này.
+
+Đang thay bằng [package v3](../architecture/phase5_grouped_package_v3_contract.md):
+gói đầy đủ, fresh venv, kiểm module origins, cả hai layout và toàn bộ selected
+Dev stub/resume. Các câu kết luận preflight/import ở phần lịch sử sau đây bị
+thu hồi về phạm vi nêu trên. Không có model/GPU run mới từ hai receipt này.
+
+## Nội dung lịch sử (không phải kết luận hiện hành)
+
 2026-09-14. Native runner/auditor source `3486dbf` đã ghép, nhưng bước này không tải model
 và không submit Kaggle. Preflight tại `build/kaggle/phase5_grouped_native_v2_preflight01`
 đạt archive/expanded overlay hash, path traversal và compile; receipt ghi
