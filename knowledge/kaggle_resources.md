@@ -76,6 +76,22 @@ receipt của đúng lượt, không tự nâng phiên bản.
 
 ## Terminal audit ngày 2026-09-14
 
+### Grouped Dev native v3 — shards 1/2 COMPLETE/audit
+
+Kiểm 2026-09-14 18:41 UTC (2026-09-15 tại Việt Nam):
+
+| Notebook thật | Version / ID | Trạng thái / bằng chứng |
+|---|---|---|
+| [shard-1 SOURCEBINDING](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-1) | v1 / 134350547 | COMPLETE; [submission](../experiments/manifests/phase5_grouped_v3_s1_submission01.json), [audit](../experiments/manifests/phase5_grouped_v3_s1_audit01.json) |
+| [shard-2 DATABASE](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-2) | v1 / 134350561 | COMPLETE; [submission](../experiments/manifests/phase5_grouped_v3_s2_submission01.json), [audit](../experiments/manifests/phase5_grouped_v3_s2_audit01.json) |
+
+Source `0d865365b7881144756f804441ca24ed48935f7f`, GitHub push `2a8df8d` trước
+submit. Cùng [Dataset guard15 v1](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1),
+private/offline T4x2, Qwen model v1. Requested aliases `...-s1`/`...-s2` không phải
+handle thật. 566+678 raw/4 remote hashes verified. [Report/summary/scan links](../docs/evaluation/phase5_grouped_v3_batch12_report.md).
+Shard1 10 model_error do guard JSON syntax; shard2 21 valid guard responses.
+Không retry; chưa suy ra utility/ASR/FPR. Shards 3/4 đang chuẩn bị, chưa có URL/version.
+
 ### Grouped Dev native v3 — shard 0 COMPLETE/audit
 
 [Notebook thực tế](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-shard-0)

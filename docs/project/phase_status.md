@@ -243,6 +243,13 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 
 ## Phase 5 progress
 
+- [x] Grouped native shards 1/2 artifact and runtime audit (2026-09-15): 28 exact
+  checkpoints, 1,244 raw/four remote files authenticated, all 48 workers reaped
+  and 28 stable VRAM recoveries. SOURCEBINDING has 4 completed/10 model_error
+  (10 malformed-JSON PRE responses, four subsequent POST backend failures).
+  DATABASE has 14 completed, 21 valid PRE/POST guard responses. These establish
+  bounded native tool/guard path execution, not semantic quality or overall Phase5
+  acceptance. [Report](../evaluation/phase5_grouped_v3_batch12_report.md).
 - [x] Grouped native shard 0 package/runtime release audit (2026-09-14): 14 exact
   checkpoints, 380 raw/two remote hashes verified, 14 stable VRAM recoveries,
   22 GRACEFUL/two TERMINATE and all 24 workers reaped. **Zero tool calls and zero

@@ -1,10 +1,19 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-09-14. **Phase 5 đang làm, chưa nghiệm thu.**
+Cập nhật: 2026-09-15. **Phase 5 đang làm, chưa nghiệm thu.**
 Phase 1, clean_v1.1 Phase 2, adversarial_v2 Phase 3 và Phase 4 đã accepted theo
 phạm vi/owner waiver trong [phase status](../docs/project/phase_status.md).
 
 ## Công việc hiện hành
+
+**Shards 0–2 đã COMPLETE/audit: 42/112 ca native (37,5% lịch thử)**.
+Shard1 SOURCEBINDING: 4 completed/10 model_error, 10 PRE JSON-syntax errors và
+4 POST BACKEND_FAILURE; shard2 DATABASE: 14 completed, 21 guard responses hợp lệ
+(11 PRE/10 POST). Hai shard thêm 30 tool calls; tất cả 28 task recovered và 48
+workers reaped. [Báo cáo batch 1/2](../docs/evaluation/phase5_grouped_v3_batch12_report.md).
+Không chạy lại lỗi ngữ nghĩa. Chuẩn bị shards 3/4 cùng source/policy/data đã khóa.
+
+Nền đã chốt:
 
 Native grouped v2 đã ghép (source `3486dbf`), nhưng bằng chứng package/import cũ
 bị false positive do root `configs` và editable install. Đã đính chính trong
@@ -25,7 +34,7 @@ Nhưng cả 14 trả ngay M208, **0 tool calls/0 guard classifications**: chưa 
 [Terminal report](../docs/evaluation/phase5_grouped_v3_s0_report.md).
 
 Kiểm terminal **2026-09-14 15:02:53 UTC: COMPLETE**; output đã tải và audit.
-Bước kế là shards 1/2 theo lịch chọn trước, không sửa prompt hoặc retry shard 0.
+Bước 1/2 đã hoàn tất theo báo cáo ở trên; không sửa prompt hoặc retry shard 0–2.
 
 [grouped Dev runner/checkpoint v1](grouped_runner_v1.md), source `354b75b`:
 27 focused tests đạt/130,62s; 112 khóa riêng biệt trên tám shard, 106 tool calls,

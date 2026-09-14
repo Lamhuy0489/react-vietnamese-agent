@@ -1,6 +1,6 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; lịch sử không thay thế mục này.
+Cập nhật: 2026-09-15. Chỉ dẫn hiện hành; lịch sử không thay thế mục này.
 
 ## Đang làm
 
@@ -12,7 +12,17 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; lịch sử không thay th�
 2 terminate). Cả 14 trả ngay M208 đã có trong user instruction: 0 tool calls và
 0 guard classification. Không coi completed là utility/guard quality; không retry.
 Raw `results/phase5_grouped_v3_s0_download01` và audit/summary đã đóng.
-Đang chuẩn bị hai shard tiếp theo đã chọn trước: 1 SOURCEBINDING, 2 DATABASE.
+Shards 1 SOURCEBINDING và 2 DATABASE đã submit v1, **COMPLETE** lúc kiểm
+2026-09-14 18:41 UTC; source remote hashes khớp. Đã tải xong và audit raw tại
+`results/phase5_grouped_v3_batch12_download01/raw_s1` và `raw_s2`.
+Remote/status/log ở `results/phase5_grouped_v3_batch12_monitor01`.
+[Submission 1](../experiments/manifests/phase5_grouped_v3_s1_submission01.json),
+[submission 2](../experiments/manifests/phase5_grouped_v3_s2_submission01.json).
+**Cả hai release audit đã đạt**: shard1 566 raw/2 remote, 4 completed/10 model_error;
+shard2 678 raw/2 remote, 14 completed và 21 guard PRE/POST hợp lệ. 1.248 file scan
+không credential values. [Báo cáo](../docs/evaluation/phase5_grouped_v3_batch12_report.md).
+35 relevant tests/setup/Ruff/mypy394/knowledge đạt; worker source không đổi.
+Tổng native coverage 42/112 (37,5%), không phải Phase5 acceptance. Chuẩn bị shard3/4.
 
 Nền đã chốt và lịch sử submission (RUNNING dưới đây đã được terminal thay thế):
 
@@ -63,11 +73,11 @@ Package v3 preflight đã đạt; 14 regression tests đạt, Ruff/mypy392 đạ
 
 1. CPU QA và preflight đã hoàn tất; không chạy lại. Selected QA receipt đính chính
    scope Test của full historical suite, không coi flag cũ là filesystem audit.
-2. Shard 0 đã terminal/audit: không theo dõi hoặc chạy lại. Kiểm live quota/Dataset,
-   source/package hashes cho shards 1/2; push evidence rồi submit hai job mới.
+2. Shards 0–2 đã terminal/audit; raw và summaries đã đóng, không tải/rerun trùng.
+   Kiểm live quota/Dataset rồi submit shards 3 ENCODED và 4 LINKPAGE đã chọn trước.
 3. Theo [contract v3](../docs/architecture/phase5_grouped_package_v3_contract.md),
    giữ source `0d86536`, package đã khóa, timeout 14.400s mỗi shard; ghi URL/version
-   thực tế ngay sau submission. Audit từng shard trước khi mở rộng tiếp.
+   thực tế như receipts trên. Audit từng shard trước khi mở rộng shard 5–7.
 4. Báo matched Dev guard structured-output/Pre/Post, lỗi, startup/generation/
    end-to-end timing và lifecycle; không retry ngữ nghĩa hoặc mở Test để tuning.
 
