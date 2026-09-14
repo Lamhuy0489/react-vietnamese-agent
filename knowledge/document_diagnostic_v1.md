@@ -1,6 +1,6 @@
 # Document diagnostic v1
 
-2026-09-14 — đang kiểm trước inference; Phase 5 chưa accepted.
+2026-09-14 — đã submit native version1; Phase 5 chưa accepted.
 
 Theo [preregistration](../docs/architecture/phase5_document_diagnostic_v1_contract.md),
 chạy một task công khai tổng hợp đọc CDOC_034, một lần ở mỗi A0–A6, cùng model/
@@ -24,9 +24,11 @@ SHA-256 `159b2269d234b89530177094498085364af9a52d1bba3fb30f09b6eb431e9196`.
 Output `results/phase5_document_probe_v1_cpu01` đã xong, không chạy trùng/ghi thêm.
 7 actual synthetic runtime receipts; không có mocked native-shaped records ở focused QA.
 
-Tiếp: push source/evidence rồi mới
-submit notebook private `huylmhuhu/react-vn-document-runtime-v1` (tên dự kiến,
-chưa phải tài nguyên đã tạo). Dataset dự kiến dùng lại private
+GitHub đã push evidence `8836e9c`, rồi submit private notebook
+`huylmhuhu/react-vn-document-runtime-v1` **version1**, T4/7200s/offline.
+[Submission receipt](../experiments/manifests/phase5_document_gpu_v1_submission01.json)
+và [sổ link](kaggle_resources.md). Tiếp: theo dõi version1 và tải/audit khi terminal;
+không gửi trùng. Dataset dùng lại private
 `huylmhuhu/react-vn-guard15-probe-data-v1` v1. Live 2026-09-14 đã xác nhận private/
 ready/v1 và quyền model version1; mine search tên mới trả Not found.
 [Access snapshot](../experiments/manifests/phase5_document_access01.json) không phải reservation.

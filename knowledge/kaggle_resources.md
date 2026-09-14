@@ -20,6 +20,15 @@ Kiểm offline: 26 URL code/Dataset/model trong sổ đều có handle tương �
 
 ## Mốc hiện hành — đọc mục này trước
 
+Ngày 2026-09-14 đã gửi **version 1** notebook private mới
+[react-vn-document-runtime-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-document-runtime-v1).
+Source `54aa3ec`, GitHub evidence `8836e9c` đã push trước submit; T4/7200s/offline.
+Dataset [react-vn-guard15-probe-data-v1](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+v1 đã kiểm live private/ready. [Submission receipt](../experiments/manifests/phase5_document_gpu_v1_submission01.json),
+[report](../docs/evaluation/phase5_document_diagnostic_v1_report.md) và
+[memory](document_diagnostic_v1.md). Chưa có kết quả terminal/audit ở mốc gửi này;
+không submit trùng. Quyền GitHub không tự cấp quyền mở notebook private.
+
 Chuẩn bị local mới nhất: [shutdown package v2](shutdown_package_v2.md) đã đạt
 CPU/exact mounts ngày 2026-09-14, **chưa submit**. Tên v2 trong metadata là tên
 dự kiến, không có notebook URL/version mới để thay mốc native v1 bên dưới.

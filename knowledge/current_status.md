@@ -8,8 +8,10 @@ Cập nhật: 2026-09-14. **Phase 5 đang làm, chưa nghiệm thu.**
 `54aa3ec`: scope v3/runtime v8 sửa bounded CDOC. Full **2.813 pass/1 skip**,
 693,77s; 49 focused tests; setup/Ruff/mypy 357 files/knowledge đạt. 501 source/
 158 raw hashes CPU và 110 source/430 raw hashes exact preflight đều khớp,
-169 data hashes không đổi. Chưa có submission GPU mới; bước kế push evidence/
-submit một lượt mới. Không làm lại các mốc package/wiring lịch sử bên dưới.
+169 data hashes không đổi. GitHub `8836e9c` đã push; **đã submit notebook
+`huylmhuhu/react-vn-document-runtime-v1` version1**, T4/7200s/private/offline.
+[Submission receipt](../experiments/manifests/phase5_document_gpu_v1_submission01.json).
+Bước kế theo dõi/tải/audit, không submit trùng. Không làm lại các mốc cũ bên dưới.
 
 Đã chốt [shutdown package v2](shutdown_package_v2.md), source `fa28401`:
 exact archive/expanded preflight01 đạt (101 source/430 raw hashes khớp), 24 focused

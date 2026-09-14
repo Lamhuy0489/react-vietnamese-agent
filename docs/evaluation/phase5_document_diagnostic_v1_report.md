@@ -1,7 +1,7 @@
 # Phase 5 — document diagnostic v1
 
-2026-09-14. Status: exact CPU package and full QA passed; no native
-submission yet. This report will distinguish native evidence after download.
+2026-09-14. Status: exact CPU package and full QA passed; native version1
+submitted. This report will distinguish native evidence after download.
 
 ## Purpose and frozen scope
 
@@ -53,8 +53,9 @@ transport remains v3. Frozen old sources and receipts were not edited.
 
 ## Native execution and access
 
-No new GPU result yet. Planned private/offline pinned T4 notebook identity:
-`huylmhuhu/react-vn-document-runtime-v1`. Source/evidence must be pushed first.
+No new GPU result yet. Confirmed private/offline pinned T4 notebook version1:
+`huylmhuhu/react-vn-document-runtime-v1`, timeout7200s. Source/evidence GitHub
+`8836e9c` pushed before submission. [Submission receipt](../../experiments/manifests/phase5_document_gpu_v1_submission01.json).
 [Read-only access snapshot](../../experiments/manifests/phase5_document_access01.json)
 confirms shared Dataset ready/private/v1, model-version listing access, and
 new kernel name not found under mine search; quota snapshot is not reservation.

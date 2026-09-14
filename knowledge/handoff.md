@@ -11,8 +11,11 @@ hạn, giữ v7 frozen. Source `54aa3ec`. Full **2.813 pass/1 skip**, 693,77s;
 158 raw hashes khớp, 169 data unchanged; exact preflight01 có 110 source/430 raw
 hashes khớp. [CPU receipt](../experiments/manifests/phase5_document_probe_v1_cpu01.json),
 [preflight](../experiments/manifests/phase5_document_probe_v1_preflight01.json).
-Hai output01 đã xong, không chạy trùng/ghi thêm. Bước kế: push evidence rồi GPU.
-Chưa submit notebook mới; tên dự kiến `huylmhuhu/react-vn-document-runtime-v1`.
+Hai output01 đã xong, không chạy trùng/ghi thêm. GitHub đã push `8836e9c`.
+**Đã submit notebook `huylmhuhu/react-vn-document-runtime-v1` version 1**,
+T4/7200s/private/offline; [submission](../experiments/manifests/phase5_document_gpu_v1_submission01.json).
+Bước kế: theo dõi version1, tải raw/source vào thư mục mới khi terminal, audit;
+không gửi lại hoặc retry semantic. Link nhóm trong [sổ Kaggle](kaggle_resources.md).
 Pending access: không cần tài khoản mới, kiểm live Dataset/private mounts/quota
 owner huylmhuhu đã kiểm live Dataset ready/private/v1 và model listing ngày
 2026-09-14; quota còn 29,43h tại snapshot, không reservation. Local không load model.
