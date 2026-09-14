@@ -5,10 +5,13 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 ## Đang làm
 
 **Ưu tiên hiện tại:** [resource scope v4/runtime v9](resource_scope_v4.md).
-Host resource index, public Dev catalog, scope và pair adapter đã triển khai;
-đang chốt tests và full CPU QA trước push. Output dự kiến
-`results/phase5_resource_scope_v4_cpu01`, receipt cùng tên trong manifests.
-Giữ raw/receipt cũ immutable. Bước kế sau QA là bounded SQL row scope, rồi Dev
+Host resource index, public Dev catalog, scope/pair adapter source `d9f11df`
+đã đạt full **2.945pass/1skip/865,40s**, 75focused/25,18s; setup/Ruff/mypy371/
+knowledge đạt. 524source/295raw/169data hashes khớp; 20 completed runtime,
+21 tool results/37 synthetic guard sidecars. [CPU receipt](../experiments/manifests/phase5_resource_scope_v4_cpu01.json)
+SHA-256 `6735b6205bf6a094cc2fe79cadfd9c522f850870e7d6ada75ebe2a37aa2904d0`.
+Output `results/phase5_resource_scope_v4_cpu01` đã đóng; không ghi thêm/chạy lại.
+Không còn QA chạy. Giữ raw/receipt cũ immutable. Bước kế bounded SQL row scope, rồi Dev
 runner/input identity/exact package và mới submit Kaggle. Không cần account mới,
 không GPU job, không Test/private oracle. Các mốc bên dưới đã kết thúc.
 
@@ -170,15 +173,13 @@ commit `be73761`, không đổi nhãn lịch sử thành clean release.
 
 ## Bước tiếp theo
 
-1. CPU native diagnostics v1 đã chốt và kiểm độc lập receipt/source/raw.
-   Giữ nguyên các output đã hoàn tất; không chạy trùng hoặc sửa source đã hash.
-2. Ghép public Dev input/catalog theo lịch 8 pairs/16 cases đã chốt; không chọn
-   lại family theo model outcome. Scope v3 đánh dấu cả 16 trigger là unassessed:
-   document/page dùng AWB/AUX; SQL shape hiện tại còn hẹp. Đây là static check,
-   không phải 16 model failures hay tỷ lệ chặn đúng. Thêm version riêng cho scope,
-   kiểm positive/negative controls, không cấp quyền chỉ vì ID tồn tại trong data.
-   Giữ host trust/sensitivity độc lập, unknown sources conservative; không lấy
-   private oracle làm catalog. Chi tiết trong [báo cáo](../docs/evaluation/phase5_guard_diagnostics_v1_report.md).
+1. Native diagnostics v1 và resource scope v4/runtime v9 đã chốt CPU, receipts
+   đã kiểm độc lập. Không chạy trùng, ghi thêm raw hoặc sửa source đã hash.
+2. Public Dev input/catalog và document/page scope đã ghép; 8/8 selected trigger
+   document/page assessed ở v4, 8 SQL trigger còn unassessed. Tiếp bounded SQL row
+   scope với projected/predicate columns và exact row constraints; không lấy
+   authoring oracle helpers vào runtime. Inventory không là user grant; nguồn
+   phụ không thừa hưởng S0/trust. [Báo cáo](../docs/evaluation/phase5_resource_scope_v4_report.md).
 3. Ghép runner/checkpoint/native observer/auditor, freeze run identity và exact
    offline archive/expanded package; kiểm GitHub source trước inference. Chỉ khi
    QA này đạt mới bỏ dispatch-disabled. Kiểm live quyền/quota/private mounts lúc

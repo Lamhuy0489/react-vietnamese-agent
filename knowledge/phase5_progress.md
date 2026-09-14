@@ -1,6 +1,13 @@
 # Phase 5 — tiến độ và các gate còn lại
 
-## Hiện hành — guard diagnostics / runtime v8
+## Hiện hành — host-bound resource scope / runtime v9
+
+2026-09-14: [resource scope v4/runtime v9](resource_scope_v4.md) đạt bounded CPU:
+full **2.945pass/1skip/865,40s**, 75focused/25,18s, setup/Ruff/mypy371/knowledge.
+524source/295raw/169data hashes khớp; 20 scripted Dev runtime checks/21 reads.
+Host-bound AWB/AUX document/page scope và catalog đã ghép; SQL row scope, native
+Dev package/GPU/quality/freeze còn thiếu. Không đóng thêm aggregate gate chỉ từ
+CPU checks; vẫn 4/7≈57%, không có GPU job mới.
 
 2026-09-14: [guard diagnostics v1](guard_diagnostics_v1.md) đạt CPU full2.871pass/
 1skip; 510source/424raw hashes khớp. Native observer/independent auditor tiếp theo

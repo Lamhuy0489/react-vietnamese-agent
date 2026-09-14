@@ -6,7 +6,10 @@ Cập nhật: 2026-09-14. **Phase 5 đang làm, chưa nghiệm thu.**
 
 Ưu tiên mới: [host-bound resource scope v4/runtime v9](resource_scope_v4.md).
 Đã ghép catalog public Dev và quyền đọc AWB/AUX theo host metadata + raw user.
-Đang kiểm full QA; SQL row scope và exact Dev package còn thiếu. Không có GPU
+Full **2.945pass/1skip/865,40s**, 75focused/25,18s, setup/Ruff/mypy371/knowledge
+đạt; 524source/295raw/169data hashes khớp. Source `d9f11df`,
+[CPU receipt](../experiments/manifests/phase5_resource_scope_v4_cpu01.json).
+Không còn QA chạy; SQL row scope và exact Dev package còn thiếu. Không có GPU
 job mới, không đổi benchmark hoặc mở Test, chưa tăng gate nghiệm thu.
 
 Đang làm [guard diagnostics v1](guard_diagnostics_v1.md): sanitized observer và

@@ -3,7 +3,7 @@
 2026-09-14. Nối tiếp [guard diagnostics](guard_diagnostics_v1.md).
 [Contract](../docs/architecture/phase5_resource_scope_v4_contract.md).
 
-## Đã triển khai, đang kiểm thử
+## Đã triển khai và chốt CPU
 
 - `ResourceBindings` lấy đúng AWB/AUX ID, tool, arguments và source type từ host
   catalog; reject ambiguous cross-type IDs, extras và vượt budget. Inventory
@@ -18,14 +18,20 @@
 - Chỉ đọc hai Dev files theo hash pin và public seal. Lịch chọn 8pairs/16cases
   không đổi; không dùng held-out payload/private oracle/GT hay model output.
 
-75 focused tests đạt 25,51s: 37 unit mới, 20 actual-spawn integration, 18 legacy
-scope regression; có no-network controls. Mypy371/Ruff đạt. Full QA cần chốt
-trước selected receipt và push; không claim CPU release từ focused tests.
+Source `d9f11df`. Frozen-source 75 focused tests đạt 25,18s: 37 unit mới,
+20 actual-spawn integration, 18 legacy scope regression; no-network controls.
+Full **2.945pass/1 optional native-tqdm skip/865,40s**; setup/Ruff/mypy371/
+knowledge đạt. 524source/295raw/169data hashes kiểm lại khớp. 20 completed runtime,
+21 successful tool results, 37 synthetic guard sidecars; scope PRE 11ALLOW/3DENY.
+Đây là CPU plumbing evidence, không phải model utility hay guard quality.
+[Receipt](../experiments/manifests/phase5_resource_scope_v4_cpu01.json) SHA-256
+`6735b6205bf6a094cc2fe79cadfd9c522f850870e7d6ada75ebe2a37aa2904d0`.
+[Báo cáo](../docs/evaluation/phase5_resource_scope_v4_report.md).
 
 ## Bước tiếp theo và giới hạn
 
-Chốt full QA/receipt source/raw/data hashes tại output mới
-`results/phase5_resource_scope_v4_cpu01`. Không ghi đè output đã có.
+Full QA và receipt đã chốt, không còn QA chạy. Output
+`results/phase5_resource_scope_v4_cpu01` đã đóng; không ghi thêm/chạy lại.
 Tiếp theo bounded SQL row scope và runner/input identity/exact package; vẫn
 `dispatch_allowed=false`. Scope parser đánh giá được 8/16 document/page trigger
 đã chọn, 8 SQL trigger còn unassessed. Đây không phải utility hay success rate.
