@@ -4,6 +4,10 @@ Cập nhật: 2026-09-14. Chỉ dẫn hiện hành; các mốc v1/v6 là lịch 
 
 ## Đang làm
 
+Tiếp [shutdown package v2](shutdown_package_v2.md): wrapper/builder/release auditor
+riêng và package checkpoint check; 24 focused tests sơ bộ đạt. Đang chốt exact
+archive/expanded preflight và full QA; chưa GPU mới. Không chạy lại native wiring.
+
 Đã chốt CPU [native shutdown wiring v2](native_shutdown_wiring_v2.md), source
 `dfbd54f`: factory/runner/auditor riêng; 36 focused tests (27,70s), full
 **2.740 pass/1 optional-tqdm skip**, 719,76s. Setup/Ruff/mypy 342 files/knowledge
