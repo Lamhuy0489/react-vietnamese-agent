@@ -1,0 +1,270 @@
+{
+  "all_workers_reaped": true,
+  "guard_categories": {
+    "json_syntax": 4,
+    "valid": 2
+  },
+  "guard_classifications": {
+    "ERROR": 4,
+    "OK": 2
+  },
+  "guard_framing": {
+    "fenced": 4,
+    "object": 2
+  },
+  "guard_quality_validated": false,
+  "guard_stage_categories": {
+    "POST:json_syntax": 2,
+    "PRE:json_syntax": 2,
+    "PRE:valid": 2
+  },
+  "guard_syntax": {
+    "expected_value": 4,
+    "none": 2
+  },
+  "kernel_version": 1,
+  "limitations": [
+    "Four diagnostic tasks are not independent quality or acceptance samples.",
+    "Framing hints are hash-bound worker telemetry, not a reconstruction of raw text.",
+    "Only joined native calls enter timing denominators; startup is reported separately.",
+    "Task total excludes runner recovery sampling and notebook bootstrap/download."
+  ],
+  "notebook_url": "https://www.kaggle.com/code/huylmhuhu/react-vn-guard-bare-json-v1",
+  "phase5_accepted": false,
+  "protocol": "observer_native_descriptive_report_v2",
+  "raw_files_verified": 157,
+  "recovered_tasks": 4,
+  "remote_files_verified": 2,
+  "role_totals": {
+    "agent": {
+      "call_seconds": 13.96936172600033,
+      "failed_or_partial_tasks": 0,
+      "generate_seconds": 13.817213288000062,
+      "input_tokens": 3930,
+      "joined_calls": 4,
+      "output_tokens": 82,
+      "pooled_output_tokens_per_generate_second": 5.934626490221089
+    },
+    "guard": {
+      "call_seconds": 6.798491013999978,
+      "failed_or_partial_tasks": 0,
+      "generate_seconds": 6.724330023999983,
+      "input_tokens": 1218,
+      "joined_calls": 6,
+      "output_tokens": 136,
+      "pooled_output_tokens_per_generate_second": 20.22506324267233
+    }
+  },
+  "semantic_utility_measured": false,
+  "shutdown_methods": {
+    "GRACEFUL": 7,
+    "TERMINATE": 1
+  },
+  "source_authenticated": true,
+  "source_commit": "f7492fae80876891237fcd37084e79ed5af60a2e",
+  "summed_task_startup_seconds": 951.3545608369998,
+  "summed_task_total_seconds": 984.9068809859999,
+  "tasks": [
+    {
+      "executed_tool_calls": 1,
+      "forced_workers": 1,
+      "graceful_workers": 1,
+      "guard_backend_failure_events": 0,
+      "guard_invalid": 1,
+      "guard_invalid_output_events": 1,
+      "guard_responses": 2,
+      "guard_valid": 1,
+      "recovered": true,
+      "startup_seconds": 294.744777068,
+      "task": "CALC_A2",
+      "terminal": "model_error",
+      "total_seconds": 304.308392855
+    },
+    {
+      "executed_tool_calls": 1,
+      "forced_workers": 0,
+      "graceful_workers": 2,
+      "guard_backend_failure_events": 0,
+      "guard_invalid": 1,
+      "guard_invalid_output_events": 1,
+      "guard_responses": 2,
+      "guard_valid": 1,
+      "recovered": true,
+      "startup_seconds": 213.46739948899994,
+      "task": "CALC_A6",
+      "terminal": "model_error",
+      "total_seconds": 221.56290384
+    },
+    {
+      "executed_tool_calls": 1,
+      "forced_workers": 0,
+      "graceful_workers": 2,
+      "guard_backend_failure_events": 1,
+      "guard_invalid": 1,
+      "guard_invalid_output_events": 1,
+      "guard_responses": 1,
+      "guard_valid": 0,
+      "recovered": true,
+      "startup_seconds": 212.97880610499988,
+      "task": "DOC_A2",
+      "terminal": "model_error",
+      "total_seconds": 220.75190734699993
+    },
+    {
+      "executed_tool_calls": 1,
+      "forced_workers": 0,
+      "graceful_workers": 2,
+      "guard_backend_failure_events": 1,
+      "guard_invalid": 1,
+      "guard_invalid_output_events": 1,
+      "guard_responses": 1,
+      "guard_valid": 0,
+      "recovered": true,
+      "startup_seconds": 230.16357817499988,
+      "task": "DOC_A6",
+      "terminal": "model_error",
+      "total_seconds": 238.28367694400004
+    }
+  ],
+  "terminal_counts": {
+    "model_error": 4
+  },
+  "workers": [
+    {
+      "elapsed_seconds": 1.717321372000015,
+      "exitcode": 0,
+      "graceful_requested": true,
+      "graceful_shutdown_seconds": 2.0,
+      "method": "GRACEFUL",
+      "pid": 39,
+      "reaped": true,
+      "role": "agent",
+      "schema_version": "worker_shutdown_v2",
+      "sequence": 1,
+      "serve_returned": true,
+      "serve_returned_after_stop_seconds": 0.0417289230000506,
+      "stop_received": true,
+      "stop_received_seconds": 0.00015887500001099397,
+      "task": "CALC_A2"
+    },
+    {
+      "elapsed_seconds": 2.346228492000023,
+      "exitcode": -15,
+      "graceful_requested": true,
+      "graceful_shutdown_seconds": 2.0,
+      "method": "TERMINATE",
+      "pid": 66,
+      "reaped": true,
+      "role": "guard",
+      "schema_version": "worker_shutdown_v2",
+      "sequence": 1,
+      "serve_returned": true,
+      "serve_returned_after_stop_seconds": 0.044777541000030396,
+      "stop_received": true,
+      "stop_received_seconds": 0.0013127070000109597,
+      "task": "CALC_A2"
+    },
+    {
+      "elapsed_seconds": 1.506177171000104,
+      "exitcode": 0,
+      "graceful_requested": true,
+      "graceful_shutdown_seconds": 2.0,
+      "method": "GRACEFUL",
+      "pid": 99,
+      "reaped": true,
+      "role": "agent",
+      "schema_version": "worker_shutdown_v2",
+      "sequence": 1,
+      "serve_returned": true,
+      "serve_returned_after_stop_seconds": 0.04947797299996637,
+      "stop_received": true,
+      "stop_received_seconds": 0.00017542199998388242,
+      "task": "CALC_A6"
+    },
+    {
+      "elapsed_seconds": 1.3519971120000491,
+      "exitcode": 0,
+      "graceful_requested": true,
+      "graceful_shutdown_seconds": 2.0,
+      "method": "GRACEFUL",
+      "pid": 126,
+      "reaped": true,
+      "role": "guard",
+      "schema_version": "worker_shutdown_v2",
+      "sequence": 1,
+      "serve_returned": true,
+      "serve_returned_after_stop_seconds": 0.04742789300007644,
+      "stop_received": true,
+      "stop_received_seconds": 0.0001380290000270179,
+      "task": "CALC_A6"
+    },
+    {
+      "elapsed_seconds": 1.4646867160001875,
+      "exitcode": 0,
+      "graceful_requested": true,
+      "graceful_shutdown_seconds": 2.0,
+      "method": "GRACEFUL",
+      "pid": 159,
+      "reaped": true,
+      "role": "agent",
+      "schema_version": "worker_shutdown_v2",
+      "sequence": 1,
+      "serve_returned": true,
+      "serve_returned_after_stop_seconds": 0.04500998499997877,
+      "stop_received": true,
+      "stop_received_seconds": 0.00015548999999737134,
+      "task": "DOC_A2"
+    },
+    {
+      "elapsed_seconds": 1.226598302999946,
+      "exitcode": 0,
+      "graceful_requested": true,
+      "graceful_shutdown_seconds": 2.0,
+      "method": "GRACEFUL",
+      "pid": 186,
+      "reaped": true,
+      "role": "guard",
+      "schema_version": "worker_shutdown_v2",
+      "sequence": 1,
+      "serve_returned": true,
+      "serve_returned_after_stop_seconds": 0.04256059199997253,
+      "stop_received": true,
+      "stop_received_seconds": 0.00015984600008778216,
+      "task": "DOC_A2"
+    },
+    {
+      "elapsed_seconds": 1.525138932000118,
+      "exitcode": 0,
+      "graceful_requested": true,
+      "graceful_shutdown_seconds": 2.0,
+      "method": "GRACEFUL",
+      "pid": 219,
+      "reaped": true,
+      "role": "agent",
+      "schema_version": "worker_shutdown_v2",
+      "sequence": 1,
+      "serve_returned": true,
+      "serve_returned_after_stop_seconds": 0.04510392700012744,
+      "stop_received": true,
+      "stop_received_seconds": 0.0001566710000133753,
+      "task": "DOC_A6"
+    },
+    {
+      "elapsed_seconds": 1.2693150669999795,
+      "exitcode": 0,
+      "graceful_requested": true,
+      "graceful_shutdown_seconds": 2.0,
+      "method": "GRACEFUL",
+      "pid": 246,
+      "reaped": true,
+      "role": "guard",
+      "schema_version": "worker_shutdown_v2",
+      "sequence": 1,
+      "serve_returned": true,
+      "serve_returned_after_stop_seconds": 0.0433853409999756,
+      "stop_received": true,
+      "stop_received_seconds": 0.00016161200005626597,
+      "task": "DOC_A6"
+    }
+  ]
+}

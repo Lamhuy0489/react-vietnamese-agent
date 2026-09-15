@@ -1,32 +1,26 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-09-15. **Phase 5 đang làm, chưa nghiệm thu.**
-Phase 1, clean_v1.1 Phase 2, adversarial_v2 Phase 3 và Phase 4 đã accepted theo
-phạm vi/owner waiver trong [phase status](../docs/project/phase_status.md).
+Cập nhật: 2026-09-16. **Phase 5 đang làm, chưa nghiệm thu (4/7≈57% nhóm acceptance).**
+Phase1, clean_v1.1 Phase2, adversarial_v2 Phase3 và Phase4 accepted theo
+[phase status](../docs/project/phase_status.md); không đổi phạm vi/waiver.
 
 ## Công việc hiện hành
 
-**Observer native v2 v1 COMPLETE và audit xong**, kiểm11:52:53UTC,ID134481763.
-[Run report/notebook/Dataset](../docs/evaluation/phase5_observer_native_v2_run.md).
-4/4terminal nhưng đều model_error;4toolcalls,6guard responses(2valid/4fenced JSON
-errors),2POST backendfailures không response.8workers reaped(5graceful/3terminate),
-4VRAMrecoveries.159source/158raw/2remote hashes đạt, hai audits/JSON/CSV giống nhau.
-Source`c0930bf`, phiên bản/private xác minh trước và sau download.67focused tests,
-setup/Ruff/mypy409 đạt; không chạy full suite có authoring Test fixtures.
-Không còn jobpending. Bước tiếp: candidate prompt-only cấm Markdown với identity
-riêng và CPU regression; khảo sát thời gian thoát sau serve-loop riêng biệt.
-Chưa sửa prompt/parser/timeout hoặc submit candidate; giữ mọi lỗi native.
-[Phần còn thiếu theo DoD](phase5_remaining.md); Phase5gate vẫn4/7≈57%.
+**Bare-JSON candidate đã terminal và recovery-audit xong**:
+[báo cáo, timing, receipts](../docs/evaluation/phase5_guard_bare_json_terminal_v1.md).
+Notebook v1/ID134511636 vẫn ERROR do final auditCLI thiếu --condition;
+4 inference checkpoints đã xong. Hai local audits/summary giống nhau:
+155 source/157 raw/2 remote xác minh; không chạy thêm model/GPU.
+Cả4 model_error, 2/6 guard responses valid và 4/6 fenced JSON errors,
+2 POST backend failures không response. 8 reaped (7 graceful/1 terminate),
+4 VRAM recoveries. Prompt-only không cải thiện định dạng trên4ca này.
 
-Candidate bare-JSON prompt source `f7492fa` đã đạt preflight01 archive/expanded
-(8tools,21cleanDummy,4task×3conditions,resume); [report/receipt](../docs/evaluation/phase5_guard_bare_json_preflight_v1.md).
-Access mới: GPU22.80h, Datasetguard15 ready/v1. Chưa có candidate GPU run;
-notebook private mới chỉ được submit một lần sau khi kiểm metadata/package hash.
-
-Candidate đã submit một lần: [notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-guard-bare-json-v1),
-v1/ID134511636, receipt lúc16:29UTC ghi RUNNING; source hash khớp.
-[Submission receipt](../experiments/manifests/phase5_guard_bare_json_submission01.json).
-Chờ terminal để tải fresh output và audit hai lượt; không submit lại.
+Đã sửa auditor để HF bắt buộc native metadata, CPU không được giả nhận GPU.
+**Không submit bare-json-v2 đã chuẩn bị, không retry4ca**; preflight02 là lịch sử.
+Bước tiếp: thiết kế constrained-output candidate riêng với CPU controls và
+protocol trước native; khảo sát shutdown riêng. Chưa triển khai candidate kế.
+[Bàn giao ngắn](handoff.md), [DoD còn thiếu](phase5_remaining.md).
+Không có jobpending trong lịch đã audit; không cần tài khoản mới.
 
 Các mục bên dưới là lịch sử trước terminalaudit, không dùng làm chỉ dẫn submit lại.
 

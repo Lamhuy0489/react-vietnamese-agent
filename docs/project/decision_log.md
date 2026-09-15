@@ -1556,3 +1556,21 @@ and are not inferred here.
 - The correction makes `--condition` default to the native-valid condition and
   changes only the new package/notebook identity to v2. v1 raw output and source
   package remain immutable; no completed inference is resumed or retried.
+
+# 2026-09-16 — Recover saved native evidence; supersede v2 rerun preparation
+
+- Supersedes the preceding packaging correction as a next submission plan.
+  All four v1 native checkpoints exist. Audit them locally with authenticated
+  Git/source/archive/bootstrap/native evidence; do not submit the prepared v2
+  package or repeat inference. Preserve Kaggle ERROR and both CPU preflights.
+- The old audit CLI ignored native metadata and performed CPU-only checks.
+  Defaulting --condition alone was insufficient. The repaired CLI dispatches by
+  backend and requires native model/tokenizer/publisher inputs; CPU auditing
+  verifies the complete four-task identity. Saved-run recovery never executes
+  downloaded code and checks all reused local source dependencies.
+- Two recovered audits agree: four model_error, two valid and four fenced JSON
+  responses, two additional backend failures; prompt-only format did not improve
+  on these diagnostic tasks. No Test feedback, raw guard text, parser repair,
+  source/runtime mutation or new inference was used. Phase5 acceptance stays open.
+- Any constrained-output follow-up needs a separately versioned design and
+  preregistered CPU/native protocol. Lifecycle timeout experiments stay separate.

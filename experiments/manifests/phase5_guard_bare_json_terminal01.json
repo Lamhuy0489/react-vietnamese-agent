@@ -1,0 +1,18 @@
+{
+  "protocol": "bare_json_terminal_observation_v1",
+  "observed_at_utc": "2026-09-15T17:10:52.066560+00:00",
+  "actual_kernel": "huylmhuhu/react-vn-guard-bare-json-v1",
+  "kernel_id": 134511636,
+  "kernel_version": 1,
+  "private": true,
+  "session_status": {
+    "status": "ERROR",
+    "failureMessage": null
+  },
+  "remote_source_sha256": "101c5f7b33d4664fdfbf464648f292e59f980436f904ee14d5d179a16694f299",
+  "remote_sha256": {
+    "kernel-metadata.json": "4ef5b6178840cf191ddc91259d75a05f755a5a2640f9ac3395dded882ace0990",
+    "react-vn-guard-bare-json-v1.py": "101c5f7b33d4664fdfbf464648f292e59f980436f904ee14d5d179a16694f299"
+  },
+  "submission_sha256": "59964ffb52cfb4b8b2a68687db3f7155b06cf6f24722f8af8548dafa3a56d9de"
+}

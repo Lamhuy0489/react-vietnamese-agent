@@ -1,6 +1,6 @@
 # Sổ tra cứu Kaggle của đồ án
 
-Cập nhật 2026-09-15 từ receipts/report đã lưu trong Git và live submission checks.
+Cập nhật 2026-09-16 từ receipts/report đã lưu trong Git và live terminal checks.
 Đây là **memory phát
 triển cho nhóm**, không đưa vào prompt benchmark. Trạng thái dưới đây là mốc
 bằng chứng lịch sử, không phải kiểm tra trực tuyến lại mọi URL hôm nay.
@@ -20,6 +20,21 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
    không chuyển public chỉ để mở được link. 403/404 có thể là thiếu quyền.
 
 ## Mốc hiện hành — đọc mục này trước
+
+**Bare-JSON candidate v1 ERROR, inference đã recovery-audit đủ**, kiểm
+2026-09-15 17:10:52UTC. Actual=requested
+[huylmhuhu/react-vn-guard-bare-json-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-guard-bare-json-v1),
+version1/ID134511636, source `f7492fae80876891237fcd37084e79ed5af60a2e`.
+[Dataset guard15](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+version1/private; offline T4×2/14400s. Source tải ngược khớp submission.
+[Terminal identity](../experiments/manifests/phase5_guard_bare_json_terminal01.json),
+[audit](../experiments/manifests/phase5_guard_bare_json_recovered_audit01.json),
+[report, summary và raw paths](../docs/evaluation/phase5_guard_bare_json_terminal_v1.md).
+4model_error,2/6valid/4fenced guard responses; auditCLI lỗi sau khi đã chạy4ca.
+Hai local audits giống nhau; không mới inference. **Không submit gói v2 đã chuẩn bị**;
+requested alias `huylmhuhu/react-vn-guard-bare-json-v2` chỉ là local artifact,
+không có actual notebook/version đã xác minh. Quyền private giữ nguyên; không
+khẳng định người cùngGitHub mở đượcKaggle. Các mục dưới là lịch sử.
 
 **Observer native v2 v1 COMPLETE/audit**, kiểm2026-09-15 11:52:53UTC;
 ID134481763. [Notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-observer-native-v2),

@@ -1,5 +1,17 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — candidate terminal audit, 2026-09-16
+
+[Bare-JSON v1 report](../docs/evaluation/phase5_guard_bare_json_terminal_v1.md):
+4/4 checkpoints đã audit, notebook vẫn ERROR ở bước auditCLI. Hai local audits
+giống nhau, không chạy lạiGPU. 2/6 guard responses valid,4fenced lỗi:
+chưa cải thiện so observer baseline. 8reaped/4recovered, còn1forcedshutdown.
+Phase5 vẫn4/7≈57% acceptance groups; không tăng vì chỉ hoàn thành audit.
+Bước tiếp: constrained-output design/CPU controls theo protocol riêng, lifecycle
+study riêng, utility và formal freeze. Không submit gói bare-json-v2 cũ.
+
+Các mốc bên dưới là lịch sử, không phải chỉ dẫn submit hiện hành.
+
 ## Hiện hành — observer native v2
 
 2026-09-15: notebookv1COMPLETE/audit,4taskCALC/DOC×A2/A6; version/source xác minh.

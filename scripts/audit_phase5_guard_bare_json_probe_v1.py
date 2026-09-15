@@ -5,26 +5,41 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+from typing import Any
 
 from react_agent.llm.agent_mount_v1 import no_links, write_receipt
-from react_agent.llm.guard_bare_json_probe_v1 import checkpoint
+from react_agent.llm.document_runtime_probe_v1 import inventory
+from react_agent.llm.guard_bare_json_probe_v1 import SCHEDULE, checkpoint, fixed_identity
+from react_agent.llm.guard_snapshot_v1 import GuardSnapshot
 from react_agent.validation.guard_bare_json_audit_v1 import audit_task
+from react_agent.validation.guard_bare_json_native_audit_v1 import audit as native_audit
 
 
-def audit_probe(probe: Path, condition: str, source_commit: str) -> dict[str, object]:
+def audit_probe(probe: Path, condition: str, source_commit: str) -> dict[str, Any]:
+    before = inventory(probe)
     identity = json.loads((probe / "identity.json").read_text())
-    if len(source_commit) != 40 or identity.get("source_commit") != source_commit:
+    if (
+        len(source_commit) != 40
+        or any(c not in "0123456789abcdef" for c in source_commit)
+        or identity.get("source_commit") != source_commit
+    ):
         raise ValueError("source commit mismatch")
+    if any(identity.get(k) != v for k, v in fixed_identity("stub", condition).items()):
+        raise ValueError("CPU backend/condition identity mismatch; use native audit for HF")
+    if sorted(p.name for p in (probe / "tasks").iterdir()) != sorted(SCHEDULE):
+        raise ValueError("exact four-task schedule required")
     tasks = []
-    for folder in sorted((probe / "tasks").iterdir()):
-        if folder.is_dir():
-            tasks.append(
-                dict(
-                    key=folder.name,
-                    checkpoint=checkpoint(folder),
-                    audit=audit_task(folder / "execution"),
-                )
+    for key in SCHEDULE:
+        folder = probe / "tasks" / key
+        tasks.append(
+            dict(
+                key=folder.name,
+                checkpoint=checkpoint(folder),
+                audit=audit_task(folder / "execution"),
             )
+        )
+    if inventory(probe) != before:
+        raise ValueError("audit input changed")
     return dict(
         protocol="guard_bare_json_probe_v1_cpu_audit",
         valid=True,
@@ -46,17 +61,41 @@ def main() -> None:
         "--condition", choices=("valid", "trailing_comma", "fenced"), default="valid"
     )
     parser.add_argument("--source-commit", required=True)
-    # Accepted for launcher parity; candidate audit uses its own bound identity.
     parser.add_argument("--tokenizers", type=Path)
     parser.add_argument("--publishers", type=Path)
     parser.add_argument("--snapshot", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    for path in (args.probe, args.output, Path("data")):
+    metadata_paths = (args.tokenizers, args.publishers, args.snapshot)
+    protected = [args.probe, Path("data"), *[p for p in metadata_paths if p is not None]]
+    for path in [args.output, *protected]:
         no_links(path)
-    if args.output.exists() or args.output.resolve().is_relative_to(args.probe.resolve()):
+    if args.output.exists() or any(
+        args.output.resolve().is_relative_to(p.resolve())
+        or p.resolve().is_relative_to(args.output.resolve())
+        for p in protected
+    ):
         raise ValueError("fresh audit destination outside inputs required")
-    write_receipt(args.output, audit_probe(args.probe, args.condition, args.source_commit))
+    identity = json.loads((args.probe / "identity.json").read_text())
+    if identity.get("backend") == "hf":
+        if args.tokenizers is None or args.publishers is None or args.snapshot is None:
+            raise ValueError("native tokenizer/publisher/snapshot inputs required")
+        if args.condition != "valid":
+            raise ValueError("native injected condition forbidden")
+        result = native_audit(
+            args.probe,
+            args.tokenizers,
+            args.publishers,
+            GuardSnapshot.model_validate_json(args.snapshot.read_text()),
+            args.source_commit,
+            Path("docs/evaluation/qwen7b_upstream_inventory_v1.json"),
+            Path("data/clean/v1_1/environment"),
+        )
+    else:
+        if any(p is not None for p in metadata_paths):
+            raise ValueError("native metadata forbidden for CPU audit")
+        result = audit_probe(args.probe, args.condition, args.source_commit)
+    write_receipt(args.output, result)
     print("BARE_JSON_PROBE_AUDIT_COMPLETE", flush=True)
 
 

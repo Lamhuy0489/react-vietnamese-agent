@@ -1,5 +1,12 @@
 # Phase 5 bare-JSON candidate — CPU preflight
 
+Current 2026-09-16: [terminal/recovered audit report](phase5_guard_bare_json_terminal_v1.md).
+v1 remains ERROR at its final audit CLI; all four completed inferences have
+been audited locally, preserving every model error. No rerun is needed.
+Preflight01/02 are historical CPU evidence, not native end-to-end acceptance.
+The prepared v2 notebook must not be submitted to repeat this inference.
+The remaining text records the earlier submission-time state.
+
 2026-09-15. Candidate source `f7492fae80876891237fcd37084e79ed5af60a2e`.
 
 The candidate is a separate prompt-only protocol following the terminal observer
