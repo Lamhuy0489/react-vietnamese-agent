@@ -16,6 +16,12 @@ mutations. [Observer/host witness contract](../architecture/phase5_guard_observe
 Neither component is wired into native workers. Next is a separate synthetic
 native protocol and isolated package preflight, not a Dev rerun or prompt repair.
 
+Update after package acceptance: the lazy HF observer composition and separate
+four-task synthetic runner now have an [accepted CPU package rehearsal](phase5_observer_package_v2_report.md).
+Both archive/expanded layouts pass; actual HF execution remains pending. Next
+are the native metrics/source audit and notebook launcher for this schedule,
+followed by a freshly verified package and remote admission.
+
 Observed:30 PRE responses are malformed JSON on SOURCEBINDING/LINKPAGE/QUERYLEAK;
 all30 become model_error, with18 further POST backend failures after retirement.
 The current sidecar stores only hash, character count and `json_syntax`; this

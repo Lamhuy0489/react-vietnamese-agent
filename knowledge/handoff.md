@@ -4,13 +4,27 @@ Cập nhật: 2026-09-15. Chỉ dẫn hiện hành; lịch sử không thay th�
 
 ## Đang làm
 
-**Đang kiểm gói observer v2:** phát hiện và sửa thứ tự tạo `native/` ở nhánh HF;
-test mới đi qua factory thật, dừng trước tải model. CPU auditor nhận commit
-tường minh, kiểm đủ task/stage/recovery. Runner mới khóa6source hashes và kiểm
-tất cả checkpoint trước resume.31tests native/probe đạt; đang chuẩn bị chạy
-`prepare_phase5_observer_package_v2.py` hai layout/fresh venv. Chưa submit GPU.
-Hai probe `valid01`/`malformed01` cũ giữ nguyên; source_commit trong đó là base
-HEAD lúc code chưa commit, không phải chứng cứ code tương ứng nằm trong HEAD.
+**Hiện hành: gói observer v2 CPU preflight02 đã đạt**, source `ed0f6db`.
+[Report/receipts](../docs/evaluation/phase5_observer_package_v2_report.md).
+Hai layouts/fresh venv: mỗi layout8tools/21cleanDummy và4observer tasks×2conditions,
+missing-only resume đạt.706raw/145source hashes kiểm lại,175worker pins nguyên.
+99focused tests(41.02s)/setup/Ruff/mypy405/knowledge đạt; preflight67.31s.
+Raw/package: `build/kaggle/phase5_observer_package_v2_preflight02`;
+log: `results/phase5_observer_package_v2_preflight02`. Giữ preflight01 thất bại.
+HF factory regression kiểm đúng thứ tự tạo metricsdir; runner khóa6sourcehashes,
+kiểm toàn bộ checkpoint trước resume. Audit nhận commit tường minh.
+Hai probe `valid01`/`malformed01` cũ có historical re-audit; baseHEAD cũ không
+chứa code workingtree lúc chạy, không được nâng thành chứng cứ source-pinned.
+
+**Bước tiếp cụ thể:** thêm native metrics/source audit cho lịch4tasks, ghép
+tokenizer/publisher/attention/policy và worker/host response/lifecycle/GPU memory;
+khóa notebook launcher dùng runner đã chuẩn bị, chạy package preflight mới sau
+khi thêm source, rồi kiểm quota/Dataset/model mounts để submit. Owner đã cho
+phép workflow Kaggle/GitHub; không cần hỏi lại ý định. Chưa có native launch
+hayGPUjob; `native_submission_ready=false` là tình trạng kỹ thuật của gói.
+Không ghi đè output/identity đã đóng; không chạy lại helper preflight01/02.
+
+Các đoạn bên dưới ghi lại các mốc đã hoàn tất trước preflight02.
 
 **Lịch native112/112 đã terminal/audit; không submit/rerun hoặc tải lại.**
 [Report tổng](../docs/evaluation/phase5_grouped_v3_complete_report.md),

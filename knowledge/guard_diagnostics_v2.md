@@ -2,6 +2,21 @@
 
 Cập nhật: 2026-09-15.
 
+## Mốc mới nhất: package CPU đã đạt
+
+[Báo cáo](../docs/evaluation/phase5_observer_package_v2_report.md),
+[receipt](../experiments/manifests/phase5_observer_package_v2_cpu02.json).
+Source `ed0f6db`;140files package/145source pins/706raw reverified.
+Hai layout riêng/fresh venv đều chạy8tools,21cleanDummy và4task observer với
+valid/malformed, cả resume hoàn tất và thiếu-only đạt.99focused tests đạt.
+Sửa thứ tự tạo `native/` trước HF startup và kiểm audit theo commit thí nghiệm;
+source6pins mới ngăn resume bằng code đã thay đổi. Preflight01 thất bại vì
+so cả timestamp invocation clean được giữ nguyên,02 đã kiểm đúng task/identity.
+
+Gói chưa có notebook launcher và native metrics audit cho4task. Đây là bước
+tiếp theo trước gửi GPU; không có URL notebook mới. Raw/nguồn cũ giữ nguyên.
+Các mốc dưới mô tả component và probe CPU đã có trước package này.
+
 Đã có component CPU opt-in theo [contract](../docs/architecture/phase5_guard_diagnostics_v2_contract.md).
 Giữ nguyên parser/diagnostic v1; thêm framing(enum), syntax error(enum), offset
 và boolean end-of-input/trailing-comma/fence. Không lưu text/exception/schema

@@ -6,6 +6,15 @@ phạm vi/owner waiver trong [phase status](../docs/project/phase_status.md).
 
 ## Công việc hiện hành
 
+**Gói observer v2 đã đạt CPU preflight ở cả archive/expanded**, source `ed0f6db`:
+140files đóng gói/145source pins/706raw files kiểm lại; mỗi layout8tools,
+21clean Dummy,4observer tasks×2conditions và missing-only resume đạt.
+[Báo cáo/receipts](../docs/evaluation/phase5_observer_package_v2_report.md).
+99focused tests/setup/Ruff/mypy405/knowledge đạt. Đã sửa lỗi tạo `native/` sớm
+ở nhánh HF và lỗi auditor phụ thuộc GitHEAD; giữ preflight01 thất bại.
+Bước tiếp: native metrics audit và notebook launcher rồi mới có thể submit.
+Chưa cóGPUjob mới; Phase5vẫn4/7≈57%. Chi tiết cũ bên dưới là các mốc trước gói này.
+
 **Đã audit đủ112/112 ca native, không còn notebook đang chạy trong lịch này.**
 82completed/30model_error;78tool calls;55valid/30malformed JSON guard responses
 và18backend failures không response.192workers reaped(179graceful/13terminate),
