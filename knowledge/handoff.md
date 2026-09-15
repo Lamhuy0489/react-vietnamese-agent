@@ -4,6 +4,17 @@ Cập nhật: 2026-09-15. Chỉ dẫn hiện hành; lịch sử không thay th�
 
 ## Đang làm
 
+**Việc hiện hành: observer native v2 v1 RUNNING**, kiểm11:19:36UTC,
+ID134481763; [report/links/receipts](../docs/evaluation/phase5_observer_native_v2_run.md).
+Source`c0930bf`, actual `huylmhuhu/react-vn-observer-native-v2`, mã tải ngược khớp,
+private/offlineT4x2/14400s. Đã gửi một lần; không chạy lại submit helper.
+Khi terminal: verifyversion mới, tải outputfresh; nếuCOMPLETE dùng
+`scripts/audit_phase5_observer_gpu_v2.py` kiểmsource/bootstrap/nativejoin hai lần,
+scancredentials, thống kê4task và syntax/lifecycle/timing. NếuERROR giữ raw/log,
+xác định nguyên nhân trước quyết định retry hạ tầng. [Queue DoD](phase5_remaining.md).
+Release auditor8mutation tests đạt; source/nativeQA53tests và package03 đạt.
+Các câu“chưa submit”dưới đây là lịch sử. Không cần thêm tài khoản lúc này.
+
 **Observer native đã sẵn sàng gửi:** source `c0930bf`, notebook và native audit
 cho4tasks;53focused checks/setup/Ruff/mypy407 đạt, helper đối chiếu logGPU cũ đạt.
 Preflight03 hai layouts bằng source nhúng đã đạt66.21s:153packagefiles,

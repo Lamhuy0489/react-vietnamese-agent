@@ -1,0 +1,20 @@
+{
+  "protocol": "observer_native_v2_remote_observation",
+  "observed_at_utc": "2026-09-15T11:16:45.860742+00:00",
+  "actual_kernel": "huylmhuhu/react-vn-observer-native-v2",
+  "kernel_id": 134481763,
+  "kernel_version": 1,
+  "notebook_url": "https://www.kaggle.com/code/huylmhuhu/react-vn-observer-native-v2",
+  "session_status": {
+    "status": "RUNNING",
+    "failureMessage": null
+  },
+  "remote_source_hash_matches": true,
+  "private": true,
+  "remote_sha256": {
+    "kernel-metadata.json": "e07fb3863604b75c65fd5c6e4a6376428161446619d0baf3ff5dbe2d669d2c6b",
+    "react-vn-observer-native-v2.py": "70ebcc0b7c106e5faa3933088163444aa52f54a63d68f31776cbf42d71ddaf0f"
+  },
+  "source_commit": "c0930bfafc1a8bf0e894f5be8e52772cb4f511a5",
+  "submission_sha256": "cadf8128d7b590baeba6baef19990e6d2c2923367b48d08c143551911cfaf185"
+}

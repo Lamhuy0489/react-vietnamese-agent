@@ -20,6 +20,8 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
+- **Hiện hành:** [observer native v1 RUNNING và cách audit](../docs/evaluation/phase5_observer_native_v2_run.md).
+- **Các phần còn thiếu trong plan/phase5.md:** [hàng đợi DoD và bằng chứng cần bổ sung](phase5_remaining.md).
 - **Hiện hành — chạy nhóm và checkpoint:** [grouped Dev runner v1](grouped_runner_v1.md).
 - **SQL theo dòng/cột đã chốt CPU:** [SQL scope v5/runtime v10](sql_scope_v5.md).
 - **Quyền đọc public Dev đã chốt CPU:** [resource scope v4/runtime v9](resource_scope_v4.md).

@@ -6,6 +6,12 @@ phạm vi/owner waiver trong [phase status](../docs/project/phase_status.md).
 
 ## Công việc hiện hành
 
+**Observer native v2 v1 RUNNING trên Kaggle**, kiểm11:19:36UTC,ID134481763.
+[Run report/notebook/Dataset](../docs/evaluation/phase5_observer_native_v2_run.md).
+Đã gửi4tasksCALC/DOC×A2/A6, actualversion/source/private xác minh; source`c0930bf`.
+Chờ terminal để tải/audit bằng `audit_phase5_observer_gpu_v2.py` và thống kê.
+[Phần còn thiếu theo DoD](phase5_remaining.md); Phase5gate vẫn4/7≈57%.
+
 **Observer native launcher/audit đã xong và preflight03 đạt**, source `c0930bf`.
 53focused tests + historical GPU role-helper re-audit đạt. Hai layouts source
 nhúng:153files/159source pins/706raw reverified; [receipt](../experiments/manifests/phase5_observer_package_v2_cpu03.json).

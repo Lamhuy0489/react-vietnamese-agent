@@ -21,6 +21,18 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**Observer native v2 v1 đang RUNNING**, kiểm2026-09-15 11:19:36UTC;
+ID134481763. [Notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-observer-native-v2),
+[report và đường dẫn raw](../docs/evaluation/phase5_observer_native_v2_run.md),
+[submission](../experiments/manifests/phase5_observer_native_v2_submission01.json),
+[version/source receipt](../experiments/manifests/phase5_observer_native_v2_monitor01.json).
+Requested=actual `huylmhuhu/react-vn-observer-native-v2`, source`c0930bf`,v1.
+[Datasetguard15](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+v1ready, private; GitHubcf871a3pushed trước gửi.4tasksCALC/DOC×A2/A6,T4x2/offline.
+Mã tải ngược khớp, chưa có kết quả để audit. Không gửi lại.
+
+Lịch112ca trước đó:
+
 **Cả8notebooks đã terminal/audit,112/112ca; không còn jobpending.**
 [Báo cáo tổng](../docs/evaluation/phase5_grouped_v3_complete_report.md).
 ROWLIST R3 đã COMPLETE lúc2026-09-15 05:53:41UTC, v1/ID134443063;

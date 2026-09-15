@@ -1,0 +1,49 @@
+{
+  "protocol": "observer_native_v2_submission",
+  "observed_at_utc": "2026-09-15T11:13:39.954665+00:00",
+  "requested_kernel": "huylmhuhu/react-vn-observer-native-v2",
+  "actual_kernel": "huylmhuhu/react-vn-observer-native-v2",
+  "notebook_url": "https://www.kaggle.com/code/huylmhuhu/react-vn-observer-native-v2",
+  "kernel_version": 1,
+  "submission_confirmed": true,
+  "observed_status": "SUBMITTED",
+  "source_commit": "c0930bfafc1a8bf0e894f5be8e52772cb4f511a5",
+  "github_evidence_commit": "cf871a330a3aeb6963e3d2c6f706f89fa2a2e7de",
+  "github_pushed_before_submission": true,
+  "preflight_sha256": "a652b920469f99c94854bf9e91696ca81d5981f41f3d747a24ee2f73faca6624",
+  "kernel_sha256": {
+    "__pycache__/observer_native_kernel_v2.cpython-311.pyc": "7796aeb30d8ceeb2fca7f02c0322a36f7b50acb87f34c0b2993a2f037cc0c0dc",
+    "kernel-metadata.json": "743624f103e08a48b44a830d8a81315ac7971a3b6cb657fd2a9119abee4c990b",
+    "observer_native_kernel_v2.py": "70ebcc0b7c106e5faa3933088163444aa52f54a63d68f31776cbf42d71ddaf0f"
+  },
+  "expected_tasks": 4,
+  "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+  "dataset_version": 1,
+  "dataset_url": "https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1",
+  "model_handle": "qwen-lm/qwen2.5/transformers/7b-instruct/1",
+  "private": true,
+  "internet_enabled": false,
+  "timeout_seconds": 14400,
+  "requested_accelerator": "NvidiaTeslaT4",
+  "remote_source_hash_matches": null,
+  "phase5_accepted": false,
+  "submission_command": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "-m",
+    "kaggle",
+    "kernels",
+    "push",
+    "-p",
+    "/Users/huylam/Downloads/Do an tot nghiep/build/kaggle/phase5_observer_package_v2_preflight03/kernel",
+    "--timeout",
+    "14400",
+    "--accelerator",
+    "NvidiaTeslaT4"
+  ],
+  "submission_log_sha256": "faaf21006fc60967c730f780606fbfa9dc0b12e45141d38db8eb5f2044256fb6",
+  "access_sha256": {
+    "quota.log": "52cd8d52fcf3bb57b12e246b8345cca9ea7ceb1c281408afd19c458dd9f66fcc",
+    "dataset.log": "56f63d893f166f7cf38d5d212a5335798fcfde2198cc01dfaae24bb316aec585",
+    "observed_at.json": "921ad59bba9091ddc05d6c0712aa00876ba145f6104c48f87698e739b85de3f5"
+  }
+}

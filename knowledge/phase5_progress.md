@@ -1,5 +1,12 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — observer native v2
+
+2026-09-15: notebookv1RUNNING,4taskCALC/DOC×A2/A6; version/source xác minh.
+[Run report](../docs/evaluation/phase5_observer_native_v2_run.md),
+[các DoD còn phải đóng](phase5_remaining.md). Chưa có terminalaudit mới;
+Phase5vẫn4/7≈57%. Notebook này bổ sung chẩn đoán guard và hostresponse.
+
 ## Hiện hành — grouped Dev package v3
 
 2026-09-15: **112/112 native terminal/audit**, [báo cáo toàn lịch](../docs/evaluation/phase5_grouped_v3_complete_report.md).
