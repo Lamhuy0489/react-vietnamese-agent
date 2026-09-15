@@ -1,0 +1,57 @@
+{
+  "protocol": "guard_structural_v2_cpu_qa",
+  "valid": true,
+  "commands": {
+    "setup.log": [
+      ".venv/bin/python",
+      "scripts/verify_setup.py"
+    ],
+    "ruff.log": [
+      ".venv/bin/ruff",
+      "check",
+      "."
+    ],
+    "mypy.log": [
+      ".venv/bin/mypy",
+      "src",
+      "scripts"
+    ],
+    "pytest.log": [
+      ".venv/bin/pytest",
+      "-q",
+      "tests/unit/test_guard_diagnostics_v2.py",
+      "tests/unit/test_guard_diagnostics_v1.py",
+      "tests/unit/test_guard_diagnostic_backend_v1.py",
+      "tests/integration/test_guard_diagnostic_join_v1.py",
+      "tests/unit/test_native_guard_diagnostics_v1.py"
+    ]
+  },
+  "elapsed_seconds": {
+    "setup.log": 0.15765194599225651,
+    "ruff.log": 0.02346553999814205,
+    "mypy.log": 0.2922427480079932,
+    "pytest.log": 14.29097781398741
+  },
+  "source_sha256": {
+    "src/react_agent/security_v1/guard_diagnostics_v2.py": "524fcccdaf0a926ebef1de2cd620a8410c8f425397bc9dba9d7acbde73936cc2",
+    "tests/unit/test_guard_diagnostics_v2.py": "8ec3f3d747cc76fc0724690561085245fa066d53f7d76f098970301fce7e8662",
+    "docs/architecture/phase5_guard_diagnostics_v2_contract.md": "043555008d97c545e4b849be2d67aca396297313c7571dc67a62ba314b1aeae7"
+  },
+  "raw_output": "results/phase5_guard_structural_v2_cpu01",
+  "raw_sha256": {
+    "pytest.log": "59c71f97dacda99e398ed1b6f042e138ad9ed2ed124040c3551d3705cb646f0f",
+    "setup.log": "31e836b9c814fcf7126ef63fd608df0cbce6fc9b307ebc95c71ffe9d66d52280",
+    "mypy.log": "dcbf59c8f805b83a5bd8e80ed667ca2ba50c98ce83542e83f41127d7a1af57ab",
+    "ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "frozen_preflight_sha256": "d929631e5557e656e21b1394b39a4175aec310883367d2a1ac3fedd8cbe1ec52",
+  "frozen_worker_source_pins_verified": 175,
+  "source_git_commit_before_changes": "32df34d3d34e39a1918b09d9c278ef11ab472501",
+  "test_payload_accessed": false,
+  "new_inference": false,
+  "actual_model_loads": 0,
+  "phase5_accepted": false,
+  "native_wiring": false,
+  "parser_behavior_changed": false,
+  "scope": "71 focused synthetic CPU tests; source pins unchanged. Not full-suite QA or native rollout. No historical raw guard response recovery, semantic retry or prompt repair."
+}

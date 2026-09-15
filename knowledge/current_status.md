@@ -17,6 +17,8 @@ ROWLIST v1 COMPLETE05:53UTC:14completed nhưng8lượtSQL hỏi bảng không t�
 59focused tests/setup/Ruff/mypy395 đạt; hai suite summaries byte-identical.
 4316raw/16remote hashes kiểm lại,scan4332files/0credentials. Tiếp theo chẩn đoán
 JSON guard bằng synthetic CPU, không sửa prompt/parser/model hoặc dùngTest.
+**Đã làm tiếp component diagnostic v2 CPU**,71 focused checks đạt; chưa nối
+native worker. [Memory và bước observer/join tiếp theo](guard_diagnostics_v2.md).
 
 ## Lịch sử trước khi đóng lịch112ca
 

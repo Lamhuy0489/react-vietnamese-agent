@@ -14,8 +14,12 @@ uniform graceful shutdown chưa đạt; Phase5vẫn4/7≈57%. Không cóGPUjobpe
 ROWLIST COMPLETE05:53:41UTC/v1, source/version xác minh;614raw/2remote khớp.
 Suite reporter re-audit8shards/fullrunidentity/112uniquekeys; hai outputJSON/CSV
 byte-identical.59focused/setup/Ruff/mypy395/knowledge đạt; scan4332files sạch.
-Raw outputs đã đóng. Bước mới: versioned structural guard diagnostics CPU bằng
-synthetic fixtures, không sửa frozen parser/prompt/model hay thu raw guard text.
+Raw outputs đã đóng. **Component structural diagnostic v2 CPU đã xong**,
+71focused checks/setup/Ruff/mypy396; không đổi175worker pins.
+[Memory/QA/contract](guard_diagnostics_v2.md). Bước mới: observer sidecar v2 và
+join auditor request/PID/sequence/response bằng synthetic CPU + mutation tests.
+Chưa native wiring/package/inference; không sửa frozen parser/prompt/model hay
+thu raw guard text. Không suy đoán raw30lỗi cũ từ enum/hash.
 
 Các mục dưới là lịch sử trước khi đóng lịch; không thực hiện chỉ dẫn submit cũ.
 
@@ -118,7 +122,7 @@ source đã khóa hoặc ghi thêm raw của mốc này.
 
 ## Bước tiếp theo
 
-**Chỉ dẫn hiện hành:** làm diagnostic CPU theo follow-up ở đầu trang, giữ baseline
+**Chỉ dẫn hiện hành:** làm observer/join CPU cho diagnostic v2 ở đầu trang, giữ baseline
 112ca bất biến. Các bước native bên dưới đã hoàn tất và chỉ là lịch sử.
 
 Native v2 source `3486dbf` đã ghép. **Thu hồi kết luận package/import isolation**

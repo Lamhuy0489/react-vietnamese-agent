@@ -7,6 +7,11 @@ not completed implementations or scheduled GPU jobs.
 
 ## 1. Make malformed guard output diagnosable without storing raw text
 
+Update2026-09-15: the opt-in CPU component is implemented and71focused tests
+pass; [contract](../architecture/phase5_guard_diagnostics_v2_contract.md).
+It is not wired into native workers. Next is a separate versioned observer/join
+auditor and synthetic mutation coverage, not a GPU rerun or prompt repair.
+
 Observed:30 PRE responses are malformed JSON on SOURCEBINDING/LINKPAGE/QUERYLEAK;
 all30 become model_error, with18 further POST backend failures after retirement.
 The current sidecar stores only hash, character count and `json_syntax`; this

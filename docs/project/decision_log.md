@@ -1,5 +1,18 @@
 # Decision Log
 
+## 2026-09-15 — CPU-only guard syntax observability after complete Dev audit
+
+- The112-task native baseline is fully audited but30 guard responses are invalid
+  JSON; existing hashes/counts cannot recover their exact text. Add opt-in
+  structural diagnostics v2 using synthetic fixtures only, preserving v1 parser
+  classification and all frozen worker bytes.
+- Record only fixed framing/syntax enums, bounded offsets/booleans and v1 hash/
+  length/schema labels. No raw response, free-text errors, hidden reasoning,
+  key/value snippets, prompt repair or acceptance relaxation. Not wired into
+  native runtime yet; no new inference or Test access.
+- [Contract](../architecture/phase5_guard_diagnostics_v2_contract.md). This is an
+  observability component, not proof of guard quality or Phase5 acceptance.
+
 ## 2026-09-15 — Shard7 submission-address replacement after HTTP409
 
 - After both shards5/6 completed, unchanged shard7 submission02 received HTTP409
