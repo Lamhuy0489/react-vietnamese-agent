@@ -6,6 +6,12 @@ phạm vi/owner waiver trong [phase status](../docs/project/phase_status.md).
 
 ## Công việc hiện hành
 
+**Observer native launcher/audit đã xong và preflight03 đạt**, source `c0930bf`.
+53focused tests + historical GPU role-helper re-audit đạt. Hai layouts source
+nhúng:153files/159source pins/706raw reverified; [receipt](../experiments/manifests/phase5_observer_package_v2_cpu03.json).
+Kaggleaccess:23.08hGPU, Datasetready/v1; bước hiện tại push evidence và gửi một
+notebook riêng cho4tasksCALC/DOC×A2/A6. Chưa có kết quảnative mới.
+
 **Gói observer v2 đã đạt CPU preflight ở cả archive/expanded**, source `ed0f6db`:
 140files đóng gói/145source pins/706raw files kiểm lại; mỗi layout8tools,
 21clean Dummy,4observer tasks×2conditions và missing-only resume đạt.

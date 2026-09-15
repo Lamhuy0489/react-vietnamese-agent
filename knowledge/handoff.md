@@ -4,11 +4,15 @@ Cập nhật: 2026-09-15. Chỉ dẫn hiện hành; lịch sử không thay th�
 
 ## Đang làm
 
-**Đang hoàn thiện native rollout observer:** đã thêm notebook
-`observer_native_kernel_v2.py` và native audit cho4tasks.22unit checks đạt;
-đang chạy QA53checks + đối chiếu helper với log GPU lịch sử, rồi preflight03
-qua hai layout dùng chính source nhúng trong notebook. Requested handle mới:
-`huylmhuhu/react-vn-observer-native-v2`; chưa submit. Owner đã cho phép workflow.
+**Observer native đã sẵn sàng gửi:** source `c0930bf`, notebook và native audit
+cho4tasks;53focused checks/setup/Ruff/mypy407 đạt, helper đối chiếu logGPU cũ đạt.
+Preflight03 hai layouts bằng source nhúng đã đạt66.21s:153packagefiles,
+159source pins/706raw kiểm lại;175baseline pins nguyên. [Receipt](../experiments/manifests/phase5_observer_package_v2_cpu03.json).
+Requested handle `huylmhuhu/react-vn-observer-native-v2`; chưa submit tại mốc này.
+Access01:23.08hGPU, Datasetready/v1. Sau push source/evidence lênGitHub, gửi một
+lần từ `build/kaggle/phase5_observer_package_v2_preflight03/kernel`, private/offline
+T4x2/14400s, rồi verifyactualhandle/version/source và cập nhậtKaggle directory.
+Owner đã cho phép workflow. Những mục“thiếu notebook/auditor”bên dưới là lịch sử.
 
 **Hiện hành: gói observer v2 CPU preflight02 đã đạt**, source `ed0f6db`.
 [Report/receipts](../docs/evaluation/phase5_observer_package_v2_report.md).

@@ -2,6 +2,16 @@
 
 Cập nhật: 2026-09-15.
 
+## Native launcher/audit và preflight03
+
+Đã hoàn thiện notebook `observer_native_kernel_v2.py`, nativeaudit cho4task,
+[53focused QA](../experiments/manifests/phase5_observer_native_v2_qa01.json) và
+[package03](../experiments/manifests/phase5_observer_package_v2_cpu03.json).
+Nguồn `c0930bf`; hai layout/freshvenv đạt,153packagefiles/159sourcepins/706raw
+kiểm lại. Helper model-load/policy/timing mới đối chiếu được lognative lịch sử;
+v2hostwitness vẫn cần lượtGPU mới. Access01 cho23.08hGPU/readyDatasetv1.
+Tiếp theo gửi notebook private/offline4task rồi kiểmactualversion/source.
+
 ## Mốc mới nhất: package CPU đã đạt
 
 [Báo cáo](../docs/evaluation/phase5_observer_package_v2_report.md),
