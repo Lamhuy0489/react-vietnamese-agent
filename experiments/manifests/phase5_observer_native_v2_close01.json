@@ -1,0 +1,15 @@
+{
+  "protocol": "observer_native_terminal_memory_check_v2",
+  "valid": true,
+  "qa_receipt_sha256": "a78cb7bbd207c4950bfc940287b3284551c288744f82379dd10d637f4332bf53",
+  "prior_verification_files_rechecked": 182,
+  "baseline_source_pins_unchanged": 175,
+  "knowledge_check": {
+    "command": "make knowledge-check",
+    "returncode": 0,
+    "log": "results/phase5_observer_native_v2_close01/knowledge.log",
+    "sha256": "78c84ad170022bf4bd205a0a9abf804350ca190e83a245d9c2ae59b534b958c4"
+  },
+  "earlier_knowledge_check": "Before selected manifests existed, links failed; preserved in terminal_qa01/knowledge.log. This post-selection check passes.",
+  "phase5_accepted": false
+}

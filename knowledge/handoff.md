@@ -4,16 +4,29 @@ Cập nhật: 2026-09-15. Chỉ dẫn hiện hành; lịch sử không thay th�
 
 ## Đang làm
 
-**Việc hiện hành: observer native v2 v1 RUNNING**, kiểm11:19:36UTC,
+**Việc hiện hành: terminalaudit observer native v2 đã đóng**, kiểm11:52:53UTC,
 ID134481763; [report/links/receipts](../docs/evaluation/phase5_observer_native_v2_run.md).
 Source`c0930bf`, actual `huylmhuhu/react-vn-observer-native-v2`, mã tải ngược khớp,
-private/offlineT4x2/14400s. Đã gửi một lần; không chạy lại submit helper.
-Khi terminal: verifyversion mới, tải outputfresh; nếuCOMPLETE dùng
-`scripts/audit_phase5_observer_gpu_v2.py` kiểmsource/bootstrap/nativejoin hai lần,
-scancredentials, thống kê4task và syntax/lifecycle/timing. NếuERROR giữ raw/log,
-xác định nguyên nhân trước quyết định retry hạ tầng. [Queue DoD](phase5_remaining.md).
-Release auditor8mutation tests đạt; source/nativeQA53tests và package03 đạt.
-Các câu“chưa submit”dưới đây là lịch sử. Không cần thêm tài khoản lúc này.
+private/offlineT4x2/14400s, v1COMPLETE trước/sau download.4model_error,4toolcalls,
+6guardresponses(2valid/4fenced syntax),2POST backendfailures không response.
+8workersreaped/4VRAMrecoveries nhưng3TERMINATE; tất cả3đã ACK và serve-return.
+Hai releaseaudits/summaryJSON/CSV byte-identical;159source/158raw/2remote verified.
+Raw đóng: `results/phase5_observer_native_v2_terminal02`; reports01/02 và
+terminal_qa01 theo cùng prefix.67focused tests/setup/Ruff/mypy409 đạt.
+182files scan/0credentials,175baseline pins nguyên; knowledge-check sau selection
+đạt ([receipt](../experiments/manifests/phase5_observer_native_v2_close01.json)).
+Reporter mới tự releaseaudit trước thống kê; không chạy downloaded source.
+Không full pytest vì Test-assigned authoring fixtures; không mới model/Test/GT.
+
+**Bước tiếp cụ thể:** làm candidate prompt-only bareJSON/noMarkdown trong version
+riêng, giữ parser/schema/model/generation/fallback. CPU tests phải kiểm prompt/cache
+identity, strict rejection, retirement và untrusted-input isolation; sau đó khóa
+protocol mới, exact package preflight, GitHub rồi Kaggle riêng. Chưa triển khai
+candidate này. Khảo sát shutdown sau serve-return bằng synthetic controls riêng,
+không gộp đổi timeout vào thí nghiệm prompt. [Queue DoD](phase5_remaining.md).
+Giữ mọi lỗi4ca/112baseline; không resubmit helper, ghi đè outputs hoặc sửa159pins.
+Pending access: không cần tài khoản mới; phải live check quota/private mounts
+trước GPUjob mới. Các câu“RUNNING/chưa submit”dưới đây là lịch sử.
 
 **Observer native đã sẵn sàng gửi:** source `c0930bf`, notebook và native audit
 cho4tasks;53focused checks/setup/Ruff/mypy407 đạt, helper đối chiếu logGPU cũ đạt.

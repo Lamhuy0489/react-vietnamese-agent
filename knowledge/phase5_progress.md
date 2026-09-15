@@ -2,10 +2,12 @@
 
 ## Hiện hành — observer native v2
 
-2026-09-15: notebookv1RUNNING,4taskCALC/DOC×A2/A6; version/source xác minh.
+2026-09-15: notebookv1COMPLETE/audit,4taskCALC/DOC×A2/A6; version/source xác minh.
 [Run report](../docs/evaluation/phase5_observer_native_v2_run.md),
-[các DoD còn phải đóng](phase5_remaining.md). Chưa có terminalaudit mới;
-Phase5vẫn4/7≈57%. Notebook này bổ sung chẩn đoán guard và hostresponse.
+[các DoD còn phải đóng](phase5_remaining.md).4model_error,2valid/4fenced guard
+responses;4toolcalls,8workersreaped/4VRAMrecoveries nhưng3forcedshutdown.
+Hai audits/tables giống nhau,67focused tests đạt. Phase5vẫn4/7≈57%; mới xác định
+được framing lỗi và vị trí chậm shutdown, chưa chứng minh candidate khắc phục.
 
 ## Hiện hành — grouped Dev package v3
 

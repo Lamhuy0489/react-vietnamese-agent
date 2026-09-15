@@ -6,11 +6,19 @@ phạm vi/owner waiver trong [phase status](../docs/project/phase_status.md).
 
 ## Công việc hiện hành
 
-**Observer native v2 v1 RUNNING trên Kaggle**, kiểm11:19:36UTC,ID134481763.
+**Observer native v2 v1 COMPLETE và audit xong**, kiểm11:52:53UTC,ID134481763.
 [Run report/notebook/Dataset](../docs/evaluation/phase5_observer_native_v2_run.md).
-Đã gửi4tasksCALC/DOC×A2/A6, actualversion/source/private xác minh; source`c0930bf`.
-Chờ terminal để tải/audit bằng `audit_phase5_observer_gpu_v2.py` và thống kê.
+4/4terminal nhưng đều model_error;4toolcalls,6guard responses(2valid/4fenced JSON
+errors),2POST backendfailures không response.8workers reaped(5graceful/3terminate),
+4VRAMrecoveries.159source/158raw/2remote hashes đạt, hai audits/JSON/CSV giống nhau.
+Source`c0930bf`, phiên bản/private xác minh trước và sau download.67focused tests,
+setup/Ruff/mypy409 đạt; không chạy full suite có authoring Test fixtures.
+Không còn jobpending. Bước tiếp: candidate prompt-only cấm Markdown với identity
+riêng và CPU regression; khảo sát thời gian thoát sau serve-loop riêng biệt.
+Chưa sửa prompt/parser/timeout hoặc submit candidate; giữ mọi lỗi native.
 [Phần còn thiếu theo DoD](phase5_remaining.md); Phase5gate vẫn4/7≈57%.
+
+Các mục bên dưới là lịch sử trước terminalaudit, không dùng làm chỉ dẫn submit lại.
 
 **Observer native launcher/audit đã xong và preflight03 đạt**, source `c0930bf`.
 53focused tests + historical GPU role-helper re-audit đạt. Hai layouts source

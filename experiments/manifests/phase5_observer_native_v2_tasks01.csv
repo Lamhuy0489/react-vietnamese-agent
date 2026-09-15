@@ -1,0 +1,5 @@
+task,terminal,executed_tool_calls,guard_responses,guard_valid,guard_invalid,guard_invalid_output_events,guard_backend_failure_events,recovered,graceful_workers,forced_workers,startup_seconds,total_seconds
+CALC_A2,model_error,1,2,1,1,1,0,True,0,2,284.467263116,295.67565275999993
+CALC_A6,model_error,1,2,1,1,1,0,True,1,1,180.65018873300005,190.3189329779999
+DOC_A2,model_error,1,1,0,1,1,1,True,2,0,179.76021911099997,187.34976975899997
+DOC_A6,model_error,1,1,0,1,1,1,True,2,0,181.1165684990001,188.6457610770001

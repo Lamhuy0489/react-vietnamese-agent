@@ -21,15 +21,20 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
-**Observer native v2 v1 đang RUNNING**, kiểm2026-09-15 11:19:36UTC;
+**Observer native v2 v1 COMPLETE/audit**, kiểm2026-09-15 11:52:53UTC;
 ID134481763. [Notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-observer-native-v2),
 [report và đường dẫn raw](../docs/evaluation/phase5_observer_native_v2_run.md),
 [submission](../experiments/manifests/phase5_observer_native_v2_submission01.json),
-[version/source receipt](../experiments/manifests/phase5_observer_native_v2_monitor01.json).
+[terminal/version/source receipt](../experiments/manifests/phase5_observer_native_v2_terminal01.json),
+[releaseaudit](../experiments/manifests/phase5_observer_native_v2_audit01.json),
+[summary](../experiments/manifests/phase5_observer_native_v2_summary01.json).
 Requested=actual `huylmhuhu/react-vn-observer-native-v2`, source`c0930bf`,v1.
 [Datasetguard15](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
 v1ready, private; GitHubcf871a3pushed trước gửi.4tasksCALC/DOC×A2/A6,T4x2/offline.
-Mã tải ngược khớp, chưa có kết quả để audit. Không gửi lại.
+Mã tải ngược khớp trước/sau download;159source/158raw/2remote verified.
+4model_error;2valid/4fenced guardresponses,8reaped/4recovered nhưng3forcedshutdown.
+Raw `results/phase5_observer_native_v2_terminal02`, hai reports01/02 đã đóng;
+chi tiết timing/receipts trong report. Không gửi lại. Quyền truy cập private giữ nguyên.
 
 Lịch112ca trước đó:
 
