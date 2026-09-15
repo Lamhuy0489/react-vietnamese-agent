@@ -51,7 +51,8 @@ runtime and not evidence of native model generation or guard quality.
    candidate text, hidden reasoning, credentials or private ground truth.
    Cache keys bind model/revision, unchanged prompt, API generation, input and
    constrained execution identity (language/tokenizer, policy and source pins).
-   Check identity/retirement before a cache hit; clear cache on any failure.
+   Check live native model/tokenizer/config and publisher-policy identity, not
+   only public identifier strings, before a cache hit; clear cache on any failure.
 
 ## Evidence boundaries and next gate
 

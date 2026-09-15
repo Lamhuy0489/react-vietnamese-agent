@@ -240,6 +240,7 @@ class ConstrainedGuardBackend:
         self.model_id, self.model_revision = native.model_id, native.model_revision
         self.constraint_identity = execution_identity(language)
         self._model, self._tokenizer = native.model, native.tokenizer
+        self._publisher = config_snapshot(native.model.generation_config)
         self._owner, self._retired, self._index = os.getpid(), False, 0
         self._lock = threading.Lock()
 
@@ -251,7 +252,8 @@ class ConstrainedGuardBackend:
         self._retired = True
         self.native._retired = True
 
-    def _check_identity(self) -> None:
+    def verify_identity(self) -> None:
+        """Validate live decoding state even when a classifier would serve a cache hit."""
         if (self.native.model_id, self.native.model_revision) != (
             self.model_id,
             self.model_revision,
@@ -260,6 +262,7 @@ class ConstrainedGuardBackend:
             or self.native.tokenizer is not self._tokenizer
             or self.native.config != GuardHFConfig()
             or self.constraint_identity != execution_identity(self.language)
+            or config_snapshot(self._model.generation_config) != self._publisher
         ):
             raise ValueError("adapter identity changed")
         if self.retired:
@@ -274,7 +277,7 @@ class ConstrainedGuardBackend:
             try:
                 if config != GenerationConfig(max_new_tokens=128):
                     raise ValueError("guard generation limits changed")
-                self._check_identity()
+                self.verify_identity()
                 self._index += 1
                 target = self.output / f"request_{self._index:06d}"
                 no_links(target)
@@ -295,7 +298,7 @@ class ConstrainedGuardBackend:
 
                 def invoke() -> ModelResponse:
                     response = self.native.generate(messages, config)
-                    self._check_identity()
+                    self.verify_identity()
                     if (response.model_id, response.model_revision) != (
                         self.model_id,
                         self.model_revision,

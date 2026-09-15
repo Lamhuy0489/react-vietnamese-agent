@@ -240,6 +240,12 @@ class Backend:
     def retire(self):
         self.retired = True
 
+    def verify_identity(self):
+        if self.fault == "hidden_drift":
+            raise ValueError("SECRET_config_drift")
+        if self.fault == "check_interrupt":
+            raise KeyboardInterrupt()
+
     def generate(self, messages, config):
         self.calls.append((messages, config))
         if self.fault == "interrupt":
@@ -315,6 +321,7 @@ def adapter(language, tmp_path):
     backend.model_id, backend.model_revision = "fake", "v1"
     backend.constraint_identity = impl.execution_identity(language)
     backend._model, backend._tokenizer = model, backend.native.tokenizer
+    backend._publisher = impl.config_snapshot(model.generation_config)
     backend._types = (Repetition, Prefix)
     backend._owner, backend._retired, backend._index = os.getpid(), False, 0
     backend._lock = threading.Lock()
@@ -387,3 +394,30 @@ def test_effective_policy_fixture_matches_pinned_identity():
     from react_agent.foundation.normalization import text_hash
 
     assert text_hash(canonical_json(EFFECTIVE)) == impl.POLICY_SHA
+
+
+@pytest.mark.parametrize("fault", ["hidden_drift", "check_interrupt"])
+def test_classifier_checks_live_identity_before_cache_hit(fault):
+    backend = Backend()
+    guard = ConstrainedClassifier(backend)
+    assert guard.classify(REQUEST).status == "OK"
+    backend.fault = fault
+    if fault == "check_interrupt":
+        with pytest.raises(KeyboardInterrupt):
+            guard.classify(REQUEST)
+    else:
+        assert guard.classify(REQUEST).error_code == "IDENTITY_CHANGED"
+    assert backend.retired and not guard._cache and len(backend.calls) == 1
+
+
+@pytest.mark.parametrize("field", ["model", "tokenizer", "model_revision", "config", "publisher"])
+def test_adapter_internal_drift_cannot_serve_classifier_cache(adapter, field):
+    guard = ConstrainedClassifier(adapter)
+    assert guard.classify(REQUEST).status == "OK"
+    if field == "publisher":
+        adapter._model.generation_config.repetition_penalty = 1.0
+    else:
+        setattr(adapter.native, field, object())
+    outcome = guard.classify(REQUEST)
+    assert outcome.error_code == "IDENTITY_CHANGED" and not outcome.cache_hit
+    assert adapter.retired and not guard._cache and adapter._index == 1

@@ -20,6 +20,8 @@ class ConstrainedBackend(LLMBackend, Protocol):
 
     def retire(self) -> None: ...
 
+    def verify_identity(self) -> None: ...
+
 
 class ConstrainedClassifier:
     def __init__(self, backend: ConstrainedBackend) -> None:
@@ -53,6 +55,14 @@ class ConstrainedClassifier:
             )
 
             def stable() -> bool:
+                try:
+                    self.backend.verify_identity()
+                except Exception:  # Fail closed; do not retain diagnostic text.
+                    return False
+                except BaseException:
+                    self._cache.clear()
+                    self.backend.retire()
+                    raise
                 return (
                     self.backend.model_id,
                     self.backend.model_revision,
@@ -66,10 +76,10 @@ class ConstrainedClassifier:
                 self.backend.retire()
                 return GuardOutcome(status="ERROR", error_code=code, cache_key=key)
 
-            if not stable():
-                return error("IDENTITY_CHANGED")
             if self.backend.retired:
                 return error("BACKEND_FAILURE")
+            if not stable():
+                return error("IDENTITY_CHANGED")
             if key in self._cache:
                 return GuardOutcome(
                     status="OK", result=self._cache[key], cache_key=key, cache_hit=True
@@ -88,10 +98,10 @@ class ConstrainedClassifier:
                 self._cache.clear()
                 self.backend.retire()
                 raise
-            if not stable() or (response.model_id, response.model_revision) != self._identity[:2]:
-                return error("IDENTITY_CHANGED")
             if self.backend.retired:
                 return error("BACKEND_FAILURE")
+            if not stable() or (response.model_id, response.model_revision) != self._identity[:2]:
+                return error("IDENTITY_CHANGED")
             try:
                 result = parse_guard(response.text)
             except ValueError:
