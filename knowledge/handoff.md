@@ -28,6 +28,13 @@ Giữ mọi lỗi4ca/112baseline; không resubmit helper, ghi đè outputs hoặ
 Pending access: không cần tài khoản mới; phải live check quota/private mounts
 trước GPUjob mới. Các câu“RUNNING/chưa submit”dưới đây là lịch sử.
 
+Candidate đã có source `f7492fa`, CPU preflight01 đạt ở archive/expanded với
+8tools/21cleanDummy/4task×3conditions và missing-only resume; [receipt/report](../docs/evaluation/phase5_guard_bare_json_preflight_v1.md).
+Access01 lúc2026-09-15: owner `huylmhuhu`, GPU còn22.80h, Datasetguard15 ready/v1.
+Gói `build/kaggle/phase5_guard_bare_json_package_v1_preflight01` đủ điều kiện
+cho **một** notebook private mới. Nếu submit: dùng actual handle mới, verify
+version/source rồi download/audit hai lượt; không submit lại baseline/candidate.
+
 **Observer native đã sẵn sàng gửi:** source `c0930bf`, notebook và native audit
 cho4tasks;53focused checks/setup/Ruff/mypy407 đạt, helper đối chiếu logGPU cũ đạt.
 Preflight03 hai layouts bằng source nhúng đã đạt66.21s:153packagefiles,

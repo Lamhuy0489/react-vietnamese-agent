@@ -36,6 +36,17 @@ Mã tải ngược khớp trước/sau download;159source/158raw/2remote verifie
 Raw `results/phase5_observer_native_v2_terminal02`, hai reports01/02 đã đóng;
 chi tiết timing/receipts trong report. Không gửi lại. Quyền truy cập private giữ nguyên.
 
+### Bare-JSON candidate preflight
+
+Source `f7492fae80876891237fcd37084e79ed5af60a2e`; [CPU preflight report](../docs/evaluation/phase5_guard_bare_json_preflight_v1.md)
+and [manifest](../experiments/manifests/phase5_guard_bare_json_package_v1_preflight01.json).
+Requested notebook `huylmhuhu/react-vn-guard-bare-json-v1` (not submitted yet),
+private/offline T4×2/14.400s, same guard15 Dataset v1 and Qwen mounts. Access check
+2026-09-15: GPU22.80h remaining, Dataset ready/current v1. CPU package has no
+model loads/GPU/Test access; candidate valid=4/4, injected trailing/fenced=0/4
+as expected plumbing controls. Preserve candidate failure identities and submit
+at most once after GitHub/source/package verification.
+
 Lịch112ca trước đó:
 
 **Cả8notebooks đã terminal/audit,112/112ca; không còn jobpending.**

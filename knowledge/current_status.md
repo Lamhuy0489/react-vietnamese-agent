@@ -18,6 +18,11 @@ riêng và CPU regression; khảo sát thời gian thoát sau serve-loop riêng 
 Chưa sửa prompt/parser/timeout hoặc submit candidate; giữ mọi lỗi native.
 [Phần còn thiếu theo DoD](phase5_remaining.md); Phase5gate vẫn4/7≈57%.
 
+Candidate bare-JSON prompt source `f7492fa` đã đạt preflight01 archive/expanded
+(8tools,21cleanDummy,4task×3conditions,resume); [report/receipt](../docs/evaluation/phase5_guard_bare_json_preflight_v1.md).
+Access mới: GPU22.80h, Datasetguard15 ready/v1. Chưa có candidate GPU run;
+notebook private mới chỉ được submit một lần sau khi kiểm metadata/package hash.
+
 Các mục bên dưới là lịch sử trước terminalaudit, không dùng làm chỉ dẫn submit lại.
 
 **Observer native launcher/audit đã xong và preflight03 đạt**, source `c0930bf`.

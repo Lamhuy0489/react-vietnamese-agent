@@ -5,9 +5,14 @@
 2026-09-15: notebookv1COMPLETE/audit,4taskCALC/DOC×A2/A6; version/source xác minh.
 [Run report](../docs/evaluation/phase5_observer_native_v2_run.md),
 [các DoD còn phải đóng](phase5_remaining.md).4model_error,2valid/4fenced guard
-responses;4toolcalls,8workersreaped/4VRAMrecoveries nhưng3forcedshutdown.
+ responses;4toolcalls,8workersreaped/4VRAMrecoveries nhưng3forcedshutdown.
 Hai audits/tables giống nhau,67focused tests đạt. Phase5vẫn4/7≈57%; mới xác định
 được framing lỗi và vị trí chậm shutdown, chưa chứng minh candidate khắc phục.
+
+2026-09-15: bare-JSON prompt candidate `f7492fa` CPU preflight01 đạt hai layout;
+32 candidate tests + package checks, không model/GPU/Test. Synthetic fenced and
+trailing-comma outputs remain rejected as designed. Access quota22.80h and
+Datasetready/v1 recorded; candidate GPU submission is the next isolated run.
 
 ## Hiện hành — grouped Dev package v3
 
