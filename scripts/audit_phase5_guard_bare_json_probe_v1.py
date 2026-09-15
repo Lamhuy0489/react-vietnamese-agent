@@ -42,7 +42,9 @@ def audit_probe(probe: Path, condition: str, source_commit: str) -> dict[str, ob
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--probe", type=Path, required=True)
-    parser.add_argument("--condition", choices=("valid", "trailing_comma", "fenced"), required=True)
+    parser.add_argument(
+        "--condition", choices=("valid", "trailing_comma", "fenced"), default="valid"
+    )
     parser.add_argument("--source-commit", required=True)
     # Accepted for launcher parity; candidate audit uses its own bound identity.
     parser.add_argument("--tokenizers", type=Path)

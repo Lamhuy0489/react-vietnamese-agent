@@ -1545,3 +1545,14 @@ and are not inferred here.
 - This is a preregistered diagnostic follow-up, not a Phase 5 acceptance or
   semantic retry. A separate shutdown-delay study remains open. Native inference
   requires a fresh exact package, source commit and Kaggle notebook identity.
+
+# 2026-09-15 — Candidate v1 launcher failure and versioned correction
+
+- Candidate v1 (kernel134511636) completed all four native task checkpoints and
+  retained model-error/guard artifacts, but the notebook launcher invoked its
+  candidate audit without the required `--condition` argument. Kaggle therefore
+  reported `ERROR` at the audit step (CLI exit2); this is preserved as a
+  packaging failure, not a semantic model result.
+- The correction makes `--condition` default to the native-valid condition and
+  changes only the new package/notebook identity to v2. v1 raw output and source
+  package remain immutable; no completed inference is resumed or retried.

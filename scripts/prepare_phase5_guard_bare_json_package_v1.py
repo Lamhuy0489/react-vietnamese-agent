@@ -217,8 +217,8 @@ def main() -> None:
     kernel.mkdir()
     (kernel / "guard_bare_json_kernel_v1.py").write_text(code)
     metadata = dict(
-        id="huylmhuhu/react-vn-guard-bare-json-v1",
-        title="ReAct VN Guard Bare JSON v1",
+        id="huylmhuhu/react-vn-guard-bare-json-v2",
+        title="ReAct VN Guard Bare JSON v2",
         code_file="guard_bare_json_kernel_v1.py",
         language="python",
         kernel_type="script",
