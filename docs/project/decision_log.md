@@ -1589,3 +1589,18 @@ and are not inferred here.
   requires the staged checks in
   [the candidate contract](../architecture/phase5_guard_token_language_v1_contract.md).
   No new Kaggle submission, Test/private-GT use or semantic retry is performed.
+
+# 2026-09-16 — Tokenizer and logits compatibility CPU scope
+
+- Prepare a separate private CPU-only worker for authenticated Qwen tokenizer
+  compilation and actual Transformers5.5 prefix-mask checks, not inference.
+  Read six small tokenizer/config files, never the model-weight payload.
+- All3069values remain reachable; a fixed12-path native mask schedule includes
+  every prefix and explicit conflict/error/interruption controls. Later processor
+  override is retained as negative evidence requiring future composition admission.
+- Local package checks use explicit metadata-only mode and do not claim native
+  libraries ran. The worker has no model mounts/accelerator/Internet and reuses
+  the pinned private Dataset. Source/version authentication follows terminal status.
+- Existing parser/runtime/models/generation results stay frozen; this is not
+  a semantic retry or Phase5 acceptance. See
+  [CPU diagnostic contract](../architecture/phase5_guard_language_native_v1_contract.md).
