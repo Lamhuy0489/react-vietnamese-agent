@@ -5,7 +5,7 @@ Source `2269fefa979a6027531516560c838a478c331914`.
 
 ## Preflight and scope
 
-[Preflight02 receipt](../../experiments/manifests/phase5_guard_language_cpu_preflight02.json):
+[Corrected preflight02 receipt](../../experiments/manifests/phase5_guard_language_cpu_preflight02_corrected.json):
 86source pins, archive/expanded source, actual launcher CLI in metadata-only
 mode, both tokenizer layouts, eight tools,21Dummy and missing-only resume.
 214raw files across two layouts; six tokenizer/config files are read and
@@ -15,6 +15,10 @@ setup/Ruff/mypy423 passed; fullpytest with Test-assigned fixtures excluded.
 Logs/check timings: `results/phase5_guard_language_package02`.
 The failed package01 is retained: checking mutable aggregate run reports during
 resume incorrectly failed; corrected checks bind task checkpoints and identity.
+Original selected preflight02 is retained as invalid: a locale warning was
+mistakenly copied into its full-receipt digest. Submission01 rejected this
+locally before any Kaggle call. The corrected selection preserves the original
+package/preflight bytes; no package or model run is repeated for this correction.
 
 Package: `build/kaggle/phase5_guard_language_cpu_package02`.
 Access01 verifies ownerhuylmhuhu and private guard15 Datasetready/version1.
