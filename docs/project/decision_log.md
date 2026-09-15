@@ -1,5 +1,22 @@
 # Decision Log
 
+## 2026-09-15 — Resume final shard after Kaggle slot rejection
+
+- The concurrent shard7 push was rejected with `Maximum batch GPU session count
+  of 2 reached`; the CLI returned exit code 0 despite reporting an error. No
+  successful notebook/version submission was confirmed. Preserve the original
+  log in `results/phase5_grouped_v3_s7_submission01`; it is not a native run.
+- Owner then instructed waiting for shards5/6 to finish. Both are now observed
+  COMPLETE at 2026-09-15 04:50 UTC, failureMessage=null. Recheck quota/Dataset and
+  submit the unchanged shard7 package once, writing a fresh submission02 receipt.
+  Requested alias lookup returns403 and title-derived handle lookup500; these
+  do not prove remote absence. Record the actual admitted version and source,
+  stop to investigate any unexpected identity rather than pushing again.
+- This is a capacity-admission retry, not a semantic rerun. Keep worker/source,
+  all112 task keys, models, data, timeouts and per-notebook topology frozen.
+  Download/audit shards5/6 independently while shard7 runs; aggregate gates and
+  Test protection remain unchanged. No account cycling or new GPU parallelism.
+
 ## 2026-09-15 — Owner authorizes concurrent remaining grouped Dev shard
 
 - Owner explicitly requested running the missing work concurrently. Submit the
