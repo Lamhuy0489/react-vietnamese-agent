@@ -6,6 +6,16 @@ Phase1, clean_v1.1 Phase2, adversarial_v2 Phase3 và Phase4 accepted theo
 
 ## Công việc hiện hành
 
+**Finite token-language CPU đã xong**, source `2017e24`:
+[report/receipt](../docs/evaluation/phase5_guard_token_language_v1_report.md).
+3069tổ hợp schema/202846prefix/6138EOS checks;46tests (30new), setup/Ruff/mypy420
+đạt. Hai source-pinned probes giống nhau;175baseline pins/184priorfiles nguyên.
+Chưa nối model thật hay submitKaggle; bước tiếp là actual-Qwen-tokenizer admission
+và Transformers5.5 CPU masking trước native adapter/audit/package.
+Không suy ra quality từ đúngschema; Phase5vẫn4/7≈57%.
+
+Mốc liền trước (đã đóng; chỉ dẫn thiết kế bên dưới đã được CPU candidate thay thế):
+
 **Bare-JSON candidate đã terminal và recovery-audit xong**:
 [báo cáo, timing, receipts](../docs/evaluation/phase5_guard_bare_json_terminal_v1.md).
 Notebook v1/ID134511636 vẫn ERROR do final auditCLI thiếu --condition;

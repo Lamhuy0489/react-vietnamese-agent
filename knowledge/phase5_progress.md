@@ -1,5 +1,14 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — finite-token language CPU, 2026-09-16
+
+[Report/receipt](../docs/evaluation/phase5_guard_token_language_v1_report.md).
+Đã triển khai bộ ràng buộc3069JSON schema-value combinations, không repair,
+46focused tests (30new) đạt; hai probes từ source2017e24 giống nhau.
+Chỉ dùng codec CPU giả lập; chưa actualtokenizer/nativeadapter/GPU/quality.
+Bước tiếp: Qwen tokenizer admission + Transformers5.5 mask CPU, rồi adapter
+và exactpackage. Phase5vẫn4/7≈57%; không submit bare-json-v2 cũ.
+
 ## Hiện hành — candidate terminal audit, 2026-09-16
 
 [Bare-JSON v1 report](../docs/evaluation/phase5_guard_bare_json_terminal_v1.md):

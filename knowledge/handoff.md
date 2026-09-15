@@ -1,56 +1,53 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-09-16. Phase 5 đang làm, chưa nghiệm thu.
+Cập nhật: 2026-09-16. Phase5 đang làm, chưa nghiệm thu (4/7≈57% nhóm acceptance).
 
 ## Đang làm
 
-Đã đóng audit của bare-JSON candidate; [báo cáo và receipts](../docs/evaluation/phase5_guard_bare_json_terminal_v1.md).
-Notebook v1/ID134511636 `huylmhuhu/react-vn-guard-bare-json-v1` vẫn ERROR:
-4 inference checkpoints đã xong, chỉ audit CLI cuối thiếu --condition.
-Local recovery xác thực source `f7492fa`, 155 source pins, 157 raw/2 remote;
-hai audits và summary byte-identical. Không chạy lại model/GPU.
-
-Kết quả: 4/4 model_error; 6 guard responses có 2 valid và 4 fenced syntax errors;
-thêm 2 POST backend failures không response. 4 tools, 8 workers reaped
-(7 graceful/1 terminate), 4 VRAM recoveries. Prompt-only chưa cải thiện format.
-Tổng task984,907s/startup951,355s; timing chi tiết trong report.
-Phase5 vẫn 4/7≈57% acceptance groups; không phải tỷ lệ giờ công.
-
-Đã sửa auditor phân biệt CPU/HF, yêu cầu đủ native metadata và đúng4task.
-Đã bổ sung recovery kiểm source Git/archive/bootstrap/native metrics/telemetry.
-Không sửa frozen runtime, parser, prompt hoặc inference outputs.
+**Đã hoàn tất bộ ràng buộc token JSON trên CPU, chưa nối model thật.**
+[Report/receipt](../docs/evaluation/phase5_guard_token_language_v1_report.md),
+[contract và native gates](../docs/architecture/phase5_guard_token_language_v1_contract.md).
+Source `2017e2468467cf3d13d4facbc60e977562e9fd8d`: immutable trie, callback
+tách prompt/output, completion check; không repair/fallback sang unconstrained.
+Toàn bộ3069tổ hợp schema,202846prefix checks,6138EOS checks; longest76tokens
+chỉ là synthetic ASCII-pair, không phải Qwen. Không sửa guard/parser/runtime cũ.
 
 ## Bước tiếp theo
 
-Chuẩn bị thiết kế constrained-output thành candidate/protocol riêng, trước hết
-CPU synthetic controls và tiêu chí native preregistered; chưa triển khai hay gửi.
-Không strip/repair JSON hoặc chọn cấu hình bằng Test. Khảo sát shutdown wait bằng
-synthetic lifecycle riêng, không gộp thay đổi timeout với prompt/model.
-Đối chiếu [các DoD còn thiếu](phase5_remaining.md) trước formal freeze.
+1. Xác thực tokenizer Qwen từ snapshot đã pin và EOS/vocabulary; compile đủ3069
+   đường đi trong128tokens. Không pruning nhãn để vừa budget.
+2. Chạy processor Transformers5.5 thực bằng CPU synthetic logits: masking,
+   EOS/prompt slicing, conflicting processors, exception restoration.
+3. Chỉ sau đó nối guard-only adapter với identity generation/cache/audit riêng,
+   khóa native protocol/exact package preflight rồi GitHub và notebook mới.
 
-**Không submit gói bare-json-v2 đã chuẩn bị**: nó không cần thiết cho việc audit
-v1 và sẽ lặp lại4 inference đã hoàn tất. Preflight02 là chứng cứ CPU lịch sử,
-không phải native acceptance. Không resume/retry các semantic failures đã chốt.
+Môi trường .venv hiện không có Torch/Transformers/tokenizers. Không cần tải
+model lớn về máy; compatibility CPU có thể dùng môi trường worker đóng gói.
+Chưa có native adapter, actual-tokenizer admission hay gói sẵn sàng submit.
+Thí nghiệm thời gian shutdown làm riêng, không gộp đổi decoding/timeout.
 
 ## Bằng chứng
 
-- Raw bất biến: `results/phase5_guard_bare_json_terminal_error01/raw`.
-- Live observation/source: `results/phase5_guard_bare_json_terminal04`;
-  kiểm 2026-09-15 17:10:52UTC, private/version1/ERROR.
-- Audits: `results/phase5_guard_bare_json_recovery_audit01` và `..._audit02`.
-- QA: `results/phase5_guard_bare_json_recovery_qa01`; focused suite,
-  87 tests/49,99s, setup/Ruff/mypy418/knowledge đạt;
-  [receipt](../experiments/manifests/phase5_guard_bare_json_recovered_qa01.json).
-  175 baseline pins nguyên, scan184files/0credentials. Không full pytest chứa
-  Test-assigned authoring fixtures.
-- [Notebook/Dataset directory](kaggle_resources.md), [tiến độ](phase5_progress.md).
-- [Bàn giao lịch sử](phase5_handoff_history_20260915.md); các lệnh submit ở đó đã cũ.
+46focused tests (30new)/8,19s; setup/Ruff/mypy420 đạt.
+Hai probe từ sourcecommit byte-identical, giữ175baseline pins và184prior
+evidence/source files. Logs `results/phase5_guard_language_qa01`, frozen runs
+`results/phase5_guard_language_cpu03.json` và `..._cpu04.json`.
+[Receipt](../experiments/manifests/phase5_guard_token_language_cpu01.json).
+Runs01/02 là working-tree history, không được đổi thành source-pinned evidence.
+
+[Bare-JSON kết quả âm đã chốt](../docs/evaluation/phase5_guard_bare_json_terminal_v1.md):
+notebookv1/ID134511636 vẫn ERROR ở auditCLI;4inferences đã recovered-audit,
+4model_error,2/6valid/4fenced,8reaped/4VRAMrecovered. Không chạy lại.
+[Sổ Kaggle](kaggle_resources.md), [DoD còn thiếu](phase5_remaining.md).
+[Bàn giao lịch sử](phase5_handoff_history_20260915.md) không phải lệnh submit mới.
 
 ## Giới hạn
 
-Không cần tài khoản mới; không có inference pending trong lịch đã audit.
-Phải live-check quota/private mounts trước một GPU experiment mới được chuẩn bị.
-GitHub `Lamhuy0489` khác owner Kaggle `huylmhuhu`; không chia sẻ credential
-trong memory, không chuyển private resource sang public.
-Giữ nguyên thay đổi riêng ở plan/phase6–9 và docs/BAO_CAO_TIEN_DO_DO_AN.*,
-docs/figures/. Không đưa development memory vào benchmark prompts.
+Chưa chứng minh native JSON, guard quality/utility hay graceful shutdown.
+Không mới model/GPU/Test/private-GT; không fullpytest có Test-assigned fixtures.
+**Không submit bare-json-v2 cũ** hoặc retry semantic failures đã chốt.
+Không có jobpending trong lịch đã audit; chưa cần tài khoản mới, phải live-check
+quota/private access khi gói mới sẵn sàng. Owner Kaggle huylmhuhu khác GitHub
+Lamhuy0489; không chia sẻ credential hay chuyển tài nguyên private sang public.
+Giữ thay đổi riêng ở plan/phase6–9, docs/BAO_CAO_TIEN_DO_DO_AN.* và docs/figures/.
+Development memory không đưa vào benchmark prompts.

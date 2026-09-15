@@ -1,0 +1,110 @@
+{
+  "protocol": "guard_token_language_cpu_qa_v1",
+  "valid": true,
+  "source_commit": "2017e2468467cf3d13d4facbc60e977562e9fd8d",
+  "source_sha256": {
+    "src/react_agent/llm/guard_token_language_v1.py": "bb55b0dd8d80807da0ede5b088f63827cf6a698dd68471cddf5c9756fab1624b",
+    "scripts/probe_phase5_guard_language_v1.py": "9ed5e5040f69c9835bf0ef189b3f798e51ed3eb61e0210b572de68922c1b774a",
+    "tests/unit/test_guard_token_language_v1.py": "d70c01dbd0995dbe2fce7cceb2cfb2608aa25606ef730c38d85eeae33b62f375",
+    "docs/architecture/phase5_guard_token_language_v1_contract.md": "3514b5b026ec63d49f160d2932ef08de23717b6a7339b5dfbe07cfdc865a3e96"
+  },
+  "checks": {
+    "setup": {
+      "command": [
+        ".venv/bin/python",
+        "scripts/verify_setup.py"
+      ],
+      "returncode": 0,
+      "seconds": 0.17419926699949428
+    },
+    "ruff": {
+      "command": [
+        ".venv/bin/ruff",
+        "check",
+        "."
+      ],
+      "returncode": 0,
+      "seconds": 0.029622196016134694
+    },
+    "mypy": {
+      "command": [
+        ".venv/bin/mypy",
+        "src",
+        "scripts"
+      ],
+      "returncode": 0,
+      "seconds": 0.3817066519986838
+    },
+    "pytest": {
+      "command": [
+        ".venv/bin/pytest",
+        "-q",
+        "tests/unit/test_guard_token_language_v1.py",
+        "tests/unit/test_guard_bare_json_v1.py",
+        "tests/unit/test_guard_bare_json_runner_v1.py"
+      ],
+      "returncode": 0,
+      "seconds": 8.866729330999078
+    },
+    "probe03": {
+      "command": [
+        ".venv/bin/python",
+        "scripts/probe_phase5_guard_language_v1.py",
+        "--output",
+        "results/phase5_guard_language_cpu03.json"
+      ],
+      "returncode": 0,
+      "seconds": 5.341230837017065
+    },
+    "probe04": {
+      "command": [
+        ".venv/bin/python",
+        "scripts/probe_phase5_guard_language_v1.py",
+        "--output",
+        "results/phase5_guard_language_cpu04.json"
+      ],
+      "returncode": 0,
+      "seconds": 4.953789691004204
+    }
+  },
+  "probe": {
+    "codec": "synthetic_ascii_pair_v1",
+    "guard_quality_validated": false,
+    "identity_sha256": "c91ae5ab2530b657caccb0afdf86bf782cb2d1a7399920ff03f0c2ce4ea3df80",
+    "max_response_tokens_with_eos": 76,
+    "model_inference_runs": 0,
+    "native_generation_validated": false,
+    "native_tokenizer_validated": false,
+    "phase5_accepted": false,
+    "prefix_membership_checks": 202846,
+    "private_ground_truth_accessed": false,
+    "protocol": "guard_token_language_synthetic_probe_v1",
+    "schema_value_combinations": 3069,
+    "terminal_eos_checks": 6138,
+    "test_payload_accessed": false,
+    "trie_nodes": 30016,
+    "valid": true
+  },
+  "repeat_probes_byte_identical": true,
+  "probe_sha256": {
+    "results/phase5_guard_language_cpu03.json": "4e1ac628e16b01010cfbf3e150e013a1b0f22a62cb28fbde91e6aa564733156f",
+    "results/phase5_guard_language_cpu04.json": "4e1ac628e16b01010cfbf3e150e013a1b0f22a62cb28fbde91e6aa564733156f"
+  },
+  "baseline_source_pins_unchanged": 175,
+  "prior_evidence_files_unchanged": 184,
+  "log_sha256": {
+    "results/phase5_guard_language_qa01/mypy.log": "84ba76825fa67a22240b7ba6058a71ceabbe3d85ea41a46337fafd8a5ab0d533",
+    "results/phase5_guard_language_qa01/probe03.log": "e6653a841b8766ecb1e9eba1de59a90469b552f243979bfb3ccea8983b49d4f5",
+    "results/phase5_guard_language_qa01/probe04.log": "e6653a841b8766ecb1e9eba1de59a90469b552f243979bfb3ccea8983b49d4f5",
+    "results/phase5_guard_language_qa01/pytest.log": "51f24c949ae7f43573f5e4fb7a2817326b307439848ac23d6425df73d1d22ca0",
+    "results/phase5_guard_language_qa01/ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "results/phase5_guard_language_qa01/setup.log": "31e836b9c814fcf7126ef63fd608df0cbce6fc9b307ebc95c71ffe9d66d52280"
+  },
+  "full_repository_pytest_run": false,
+  "full_suite_exclusion_reason": "Contains Test-assigned authoring fixtures; focused synthetic tests only.",
+  "model_inference_runs": 0,
+  "test_payload_accessed": false,
+  "private_ground_truth_accessed": false,
+  "native_submission_ready": false,
+  "phase5_accepted": false
+}

@@ -7,7 +7,7 @@ Chỉ số4/7≈57% là nhóm acceptance trong [progress](phase5_progress.md).
 
 | Phần cần hoàn thiện | Bằng chứng còn thiếu / bước cụ thể |
 |---|---|
-| DoD-5: A2 end-to-end, structured output ổn định | Bare-JSON prompt candidate đã audit: vẫn2/6valid,4/6fenced errors và4model_error như observer. Tiếp: thiết kế constrained-output riêng, CPU synthetic controls và protocol trước native. Không strip/repair parser hoặc suy diễn toàn bộ30lỗi baseline. |
+| DoD-5: A2 end-to-end, structured output ổn định | Bare-JSON vẫn2/6valid/4model_error. Finite token-language CPU mới đã đạt3069tổ hợp/46tests; còn Qwen tokenizer admission, actual Transformers masking, native adapter/audit/package và quality. Không strip/repair parser hoặc suy diễn toàn bộ30lỗi baseline. |
 | Lifecycle GPU của runtime | Baseline192reaped/13TERMINATE; observer8/3; bare-JSON8/1. Chưa chứng minh graceful ổn định hay hiệu ứng prompt. Kiểm synthetic post-serve delay và thời gian chờ trong study riêng. |
 | DoD-9/13/14/16: A6 provenance, egress/final sink, unknown origin | Có bounded CPU controls; còn đối chiếu phạm vi hỗ trợ và các trường hợp ngoài phạm vi. Không đồng nhất “có sensitive artifact” với payload xuất ra. |
 | DoD-15: benign utility đại diện | Native112ca chưa chứng minh utility: có ca không gọi tool, SQL sai bảng, thiếu column grant. Kiểm từ user instruction và public tool/catalog; lưu cả successful/denied/error. |
@@ -16,6 +16,7 @@ Chỉ số4/7≈57% là nhóm acceptance trong [progress](phase5_progress.md).
 
 Mục đầu đã có [kết quả âm của bare-JSON candidate](../docs/evaluation/phase5_guard_bare_json_terminal_v1.md).
 Notebookv1 vẫn ERROR do auditCLI nhưng4inferences đã recovery-audit đủ; không
-submit bare-json-v2 để lặp lại. Bước tiếp là thiết kế riêng, chưa có candidate
-GPU mới. Tiếp tục giữ separation/Test/mock-side-effect invariants; không dùng
+submit bare-json-v2 để lặp lại. Bước tiếp là kiểm chứng native compatibility,
+chưa có candidate GPU mới. [Finite-language CPU evidence](../docs/evaluation/phase5_guard_token_language_v1_report.md)
+đã hoàn tất; còn các native gates trong contract. Tiếp tục giữ separation/Test/mock-side-effect invariants; không dùng
 Test để lựa chọn phương án sửa. Formal freeze vẫn chưa đủ bằng chứng.
