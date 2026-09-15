@@ -1530,3 +1530,18 @@ and are not inferred here.
 - One matched selected Dev pair lacks explicit column authorization; retain it
   as denied/unresolved, do not infer a column from expected answers or remove it.
   Native quality and full Phase 5 acceptance remain open after CPU validation.
+
+# 2026-09-15 — Bare-JSON prompt candidate after native observer evidence
+
+- Observer native v2 terminal evidence found four of six returned guard responses
+  framed as Markdown code fences and rejected by the unchanged strict parser.
+  A separate `guard_bare_json_probe_v1` candidate adds only an explicit bare-JSON
+  framing instruction; model, schema/parser, decoding, fallback, tools, data,
+  lifecycle limits and Test separation remain fixed.
+- Candidate prompt, runtime and audit identities are task-local and hash-bound;
+  baseline source/outputs are not modified. CPU synthetic valid/trailing/fenced
+  checks pass (32 focused tests including worker resume/tamper and isolation).
+  Fenced fixtures remain expected failures and do not claim model quality.
+- This is a preregistered diagnostic follow-up, not a Phase 5 acceptance or
+  semantic retry. A separate shutdown-delay study remains open. Native inference
+  requires a fresh exact package, source commit and Kaggle notebook identity.
