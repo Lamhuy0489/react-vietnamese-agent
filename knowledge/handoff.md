@@ -14,12 +14,16 @@ uniform graceful shutdown chưa đạt; Phase5vẫn4/7≈57%. Không cóGPUjobpe
 ROWLIST COMPLETE05:53:41UTC/v1, source/version xác minh;614raw/2remote khớp.
 Suite reporter re-audit8shards/fullrunidentity/112uniquekeys; hai outputJSON/CSV
 byte-identical.59focused/setup/Ruff/mypy395/knowledge đạt; scan4332files sạch.
-Raw outputs đã đóng. **Component structural diagnostic v2 CPU đã xong**,
-71focused checks/setup/Ruff/mypy396; không đổi175worker pins.
-[Memory/QA/contract](guard_diagnostics_v2.md). Bước mới: observer sidecar v2 và
-join auditor request/PID/sequence/response bằng synthetic CPU + mutation tests.
-Chưa native wiring/package/inference; không sửa frozen parser/prompt/model hay
-thu raw guard text. Không suy đoán raw30lỗi cũ từ enum/hash.
+Raw outputs đã đóng. **Observer/join diagnostic v2 CPU đã xong**:
+worker sidecar + host witness hash độc lập;139focused checks/setup/Ruff/mypy399.
+A2–A6 CPU spawn/parity/retirement và mutations đạt; không đổi175worker pins.
+[Memory/QA/contract](guard_diagnostics_v2.md). Raw QA/process fixtures giữ tại
+`results/phase5_guard_observer_v2_cpu01`, không ghi đè hoặc chạy lại helper cùng output.
+Bước mới: khóa synthetic native diagnostic protocol/expected calls, ghép opt-in
+factory riêng và exact isolated package preflight. Chưa native wiring/package/
+inference; không sửa frozen parser/prompt/model hay thu raw guard text.
+Host witness không tồn tại trong baseline cũ; không suy đoán raw30lỗi từ enum/hash.
+Không có access pending ở mốc CPU; cần kiểm quota/mount/model access khi chuẩn bị GPU.
 
 Các mục dưới là lịch sử trước khi đóng lịch; không thực hiện chỉ dẫn submit cũ.
 

@@ -1,0 +1,68 @@
+{
+  "protocol": "guard_observer_v2_cpu_qa",
+  "valid": true,
+  "commands": {
+    "setup.log": [
+      ".venv/bin/python",
+      "scripts/verify_setup.py"
+    ],
+    "ruff.log": [
+      ".venv/bin/ruff",
+      "check",
+      "."
+    ],
+    "mypy.log": [
+      ".venv/bin/mypy",
+      "src",
+      "scripts"
+    ],
+    "pytest.log": [
+      ".venv/bin/pytest",
+      "-q",
+      "--basetemp",
+      "/Users/huylam/Downloads/Do an tot nghiep/results/phase5_guard_observer_v2_cpu01/pytest_tmp",
+      "tests/unit/test_guard_diagnostics_v2.py",
+      "tests/unit/test_guard_diagnostics_v1.py",
+      "tests/unit/test_guard_diagnostic_backend_v1.py",
+      "tests/integration/test_guard_diagnostic_join_v1.py",
+      "tests/unit/test_native_guard_diagnostics_v1.py",
+      "tests/unit/test_guard_diagnostic_backend_v2.py",
+      "tests/integration/test_guard_diagnostic_join_v2.py"
+    ]
+  },
+  "elapsed_seconds": {
+    "setup.log": 0.15292688697809353,
+    "ruff.log": 0.032582973013632,
+    "mypy.log": 0.2867372000182513,
+    "pytest.log": 33.12616612500278
+  },
+  "source_sha256": {
+    "src/react_agent/llm/guard_diagnostic_backend_v2.py": "8e486423488320590d7e5b3fa5281669d4fc9fcb880ee185925cea2e1bec6104",
+    "src/react_agent/llm/guard_diagnostic_pair_v2.py": "f190c4b1284b75c9ed5f1241197500cf27666e28841a96a6a9833e02f48b91f7",
+    "src/react_agent/validation/guard_diagnostic_audit_v2.py": "1326671aa953e807a50ab611e05c78954e05a1342e2d6a86778bc44bc81c0b20",
+    "src/react_agent/security_v1/guard_diagnostics_v2.py": "524fcccdaf0a926ebef1de2cd620a8410c8f425397bc9dba9d7acbde73936cc2",
+    "tests/unit/test_guard_diagnostic_backend_v2.py": "9fa0342c83fb63c7cc657feb0a4de8db320f25e358095d60a7e02ccd2598ea79",
+    "tests/integration/test_guard_diagnostic_join_v2.py": "120ccea9dc7cb55ef9e2c19f1559eea18b03e4d225b23354e112192a6cfcac61",
+    "docs/architecture/phase5_guard_observer_v2_contract.md": "1a42152544dcb370b84c5cc8ed384ed92670804f8c8f70a92b09ad74629261fd"
+  },
+  "raw_output": "results/phase5_guard_observer_v2_cpu01",
+  "raw_file_count": 805,
+  "raw_inventory_sha256": "bab6539b7bfef97b95f85510158839e56bd056b21345846b4bb1715bcb741fdb",
+  "raw_sha256": {
+    "setup.log": "31e836b9c814fcf7126ef63fd608df0cbce6fc9b307ebc95c71ffe9d66d52280",
+    "ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "mypy.log": "731a3b68a4d1815100d83a713a11ca9bd8c08418e760fed1ec0673147daa122e",
+    "pytest.log": "d1c039a2c8639137e6db6e7437ee15ae17a000688cea12828f97a22527455c4d"
+  },
+  "qa_driver_sha256": "e8d557776e00eab0fe3788907b871bbf1f3735607ba7ee7f1ec42da7e9384822",
+  "frozen_preflight_sha256": "d929631e5557e656e21b1394b39a4175aec310883367d2a1ac3fedd8cbe1ec52",
+  "frozen_worker_source_pins_verified": 175,
+  "source_git_commit_before_changes": "1d86fa67a011dac8e93d1fe6f239916f800bb590",
+  "test_payload_accessed": false,
+  "new_inference": false,
+  "actual_model_loads": 0,
+  "phase5_accepted": false,
+  "native_wiring": false,
+  "parser_behavior_changed": false,
+  "scope": "139 focused synthetic CPU tests including actual spawned A2-A6 joins, observer passthrough/retirement and evidence mutations. Not full-suite QA, guard quality, native authentication or GPU rollout. Historical 112-task baseline and 175 worker source pins unchanged."
+}

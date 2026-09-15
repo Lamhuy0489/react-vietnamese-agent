@@ -1,5 +1,19 @@
 # Decision Log
 
+## 2026-09-15 — Independent host witness for CPU observer v2
+
+- Runtime v3 attempts bind requests/PIDs but do not retain response hashes.
+  A worker diagnostic alone therefore cannot independently bind its response.
+  Add an opt-in ShutdownPair subclass that hashes the received guard response
+  in the host, separate from the v2 worker sidecar. No frozen transport rewrite.
+- New read-only auditor requires three-way runtime/worker/host joins and strict
+  diagnostic shape checks. No response repair, prompt change, new model, Test
+  use or GPU job. Preserve invalid-output retirement and all112 native baseline
+  results. Witness sink errors fail closed and are not semantic retries.
+- [Contract](../architecture/phase5_guard_observer_v2_contract.md). Shape/hashes
+  are not proof of exact syntax, native model identity or guard quality. Native
+  rollout remains a separately frozen synthetic protocol/package task.
+
 ## 2026-09-15 — CPU-only guard syntax observability after complete Dev audit
 
 - The112-task native baseline is fully audited but30 guard responses are invalid

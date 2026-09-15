@@ -9,8 +9,12 @@ not completed implementations or scheduled GPU jobs.
 
 Update2026-09-15: the opt-in CPU component is implemented and71focused tests
 pass; [contract](../architecture/phase5_guard_diagnostics_v2_contract.md).
-It is not wired into native workers. Next is a separate versioned observer/join
-auditor and synthetic mutation coverage, not a GPU rerun or prompt repair.
+The separate versioned observer/join is now also implemented:139 focused CPU
+tests pass, including real spawned A2–A6 scripted runs and adversarial evidence
+mutations. [Observer/host witness contract](../architecture/phase5_guard_observer_v2_contract.md),
+[QA](../../experiments/manifests/phase5_guard_observer_v2_cpu01.json).
+Neither component is wired into native workers. Next is a separate synthetic
+native protocol and isolated package preflight, not a Dev rerun or prompt repair.
 
 Observed:30 PRE responses are malformed JSON on SOURCEBINDING/LINKPAGE/QUERYLEAK;
 all30 become model_error, with18 further POST backend failures after retirement.
