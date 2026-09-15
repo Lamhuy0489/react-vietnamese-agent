@@ -1,5 +1,18 @@
 # Decision Log
 
+## 2026-09-15 — Finish observer native launcher and evidence audit
+
+- Freeze a private/offline notebook for the four previously declared synthetic
+  tasks, using Qwen7B/guard1.5B and existing model/Dataset/image pins. Collect
+  tokenizer metadata before HF execution and audit saved output afterward.
+- Audit task/source/config identity and model-load/policy/attention/timing with
+  existing validators; join the new v2 host response witness. Keep model_error
+  and zero-path outcomes as observed results, and explicitly leave full remote
+  source authentication to downloaded-version/package checks.
+- A new preflight includes rendered notebook source and isolated CPU runs. After
+  it passes, use the owner's existing authorization to check access/quota, push
+  source to GitHub and submit the notebook once. Preserve any admission failure.
+
 ## 2026-09-15 — Repair HF pre-start root ordering and independent CPU audit
 
 - The previous runner created `native/` before the HF factory required it to

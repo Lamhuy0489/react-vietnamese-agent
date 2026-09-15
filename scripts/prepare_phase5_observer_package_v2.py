@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import base64
 import json
 import os
 import shutil
@@ -21,12 +22,15 @@ from react_agent.llm.document_runtime_probe_v1 import inventory
 ROOT = Path(__file__).resolve().parents[1]
 BUILDER = "scripts/prepare_phase5_observer_package_v2.py"
 CONTRACT = "docs/architecture/phase5_observer_native_v2_contract.md"
+TEMPLATE = "notebooks/kaggle/observer_native_kernel_v2.py"
 ENTRYPOINTS = {
     "scripts/check_phase5_observer_package_v2.py",
     "scripts/run_phase5_guard_observer_v2.py",
     "scripts/audit_phase5_guard_observer_probe_v2.py",
     "scripts/preflight_clean_worker.py",
     "scripts/run_clean_v11_dev.py",
+    "scripts/collect_phase5_tokenizer_metadata.py",
+    "scripts/audit_phase5_observer_native_v2.py",
 }
 PUBLIC = {
     "configs/agent/A0.yaml",
@@ -48,10 +52,15 @@ def rehearse(
 ) -> dict[str, Any]:
     evidence = output / "cpu" / layout
     evidence.mkdir(parents=True)
-    base = load(ROOT / BASE)
     archive = output / "source.tar.gz"
     with tempfile.TemporaryDirectory(prefix="observer-v2-exact-") as temporary:
         scratch = Path(temporary).resolve()
+        wrapper = load(output / "kernel/observer_native_kernel_v2.py")
+        base = wrapper.bootstrap(scratch)
+        embedded = scratch / "embedded.tar.gz"
+        wrapper.source_archive(embedded)
+        if digest(embedded) != digest(archive) or wrapper.SOURCE_FILES != files:
+            raise ValueError("launcher archive differs from preflight source")
         mount = scratch / "input/dataset"
         mount.mkdir(parents=True)
         if layout == "archive":
@@ -92,6 +101,7 @@ def rehearse(
             "assert not {'torch','transformers','tokenizers'} & sys.modules.keys(); "
             "print('OBSERVER_ISOLATED_IMPORT_OK')",
         )
+        run("scripts/audit_phase5_observer_native_v2.py", "--help")
         run("scripts/preflight_clean_worker.py")
         dummy, partial = evidence / "dummy", evidence / "dummy_partial"
         run("scripts/run_clean_v11_dev.py", "--output", str(dummy))
@@ -172,6 +182,7 @@ def main() -> None:
             BUILDER,
             CONTRACT,
             BASE,
+            TEMPLATE,
             "scripts/prepare_phase5_document_probe.py",
             "scripts/prepare_phase5_grouped_package_v3.py",
         },
@@ -187,6 +198,42 @@ def main() -> None:
             raise ValueError("baseline worker changed")
     output.mkdir(parents=True)
     make_archive(ROOT, files, output / "source.tar.gz")
+    code = (ROOT / TEMPLATE).read_text()
+    for key, replacement in {
+        "__SOURCE_COMMIT__": commit,
+        "__BASE_SOURCE__": base64.b64encode((ROOT / BASE).read_bytes()).decode(),
+        "__BASE_SHA__": source[BASE],
+        "__ARCHIVE__": base64.b64encode((output / "source.tar.gz").read_bytes()).decode(),
+        "__ARCHIVE_SHA__": digest(output / "source.tar.gz"),
+        "__BUNDLE_SHA__": BUNDLE_SHA,
+        "{}  # __SOURCE_FILES__": repr(files),
+    }.items():
+        if code.count(key) != 1:
+            raise ValueError("unique launcher placeholder required")
+        code = code.replace(key, replacement)
+    kernel = output / "kernel"
+    kernel.mkdir()
+    (kernel / "observer_native_kernel_v2.py").write_text(code)
+    metadata = dict(
+        id="huylmhuhu/react-vn-observer-native-v2",
+        title="ReAct VN Observer Native v2",
+        code_file="observer_native_kernel_v2.py",
+        language="python",
+        kernel_type="script",
+        is_private=True,
+        enable_gpu=True,
+        enable_tpu=False,
+        enable_internet=False,
+        dataset_sources=[value["dataset"]],
+        model_sources=["qwen-lm/qwen2.5/transformers/7b-instruct/1"],
+        kernel_sources=[],
+        competition_sources=[],
+        machine_shape="NvidiaTeslaT4",
+        docker_image_pinning_type="original",
+        docker_image="gcr.io/kaggle-private-byod/python@sha256:"
+        "37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+    )
+    write_receipt(kernel / "kernel-metadata.json", metadata)
     write_receipt(
         output / "source_manifest.json",
         dict(
@@ -218,12 +265,13 @@ def main() -> None:
             actual_model_loads=0,
             gpu_runs=0,
             test_payload_accessed=False,
-            native_submission_ready=False,
+            native_submission_ready=True,
+            kernel_sha256=inventory(kernel),
+            requested_notebook=metadata["id"],
             phase5_accepted=False,
             remaining=[
-                "notebook launcher",
-                "native metrics/source audit",
                 "remote admission and inference",
+                "download/version/source authentication",
             ],
         ),
     )

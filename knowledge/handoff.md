@@ -4,6 +4,12 @@ Cập nhật: 2026-09-15. Chỉ dẫn hiện hành; lịch sử không thay th�
 
 ## Đang làm
 
+**Đang hoàn thiện native rollout observer:** đã thêm notebook
+`observer_native_kernel_v2.py` và native audit cho4tasks.22unit checks đạt;
+đang chạy QA53checks + đối chiếu helper với log GPU lịch sử, rồi preflight03
+qua hai layout dùng chính source nhúng trong notebook. Requested handle mới:
+`huylmhuhu/react-vn-observer-native-v2`; chưa submit. Owner đã cho phép workflow.
+
 **Hiện hành: gói observer v2 CPU preflight02 đã đạt**, source `ed0f6db`.
 [Report/receipts](../docs/evaluation/phase5_observer_package_v2_report.md).
 Hai layouts/fresh venv: mỗi layout8tools/21cleanDummy và4observer tasks×2conditions,

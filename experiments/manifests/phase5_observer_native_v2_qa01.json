@@ -1,0 +1,134 @@
+{
+  "protocol": "observer_native_v2_cpu_qa",
+  "valid": true,
+  "quality": {
+    "setup": {
+      "command": [
+        ".venv/bin/python",
+        "scripts/verify_setup.py"
+      ],
+      "returncode": 0,
+      "seconds": 0.155360262026079
+    },
+    "ruff": {
+      "command": [
+        ".venv/bin/ruff",
+        "check",
+        "."
+      ],
+      "returncode": 0,
+      "seconds": 0.028280737984459847
+    },
+    "mypy": {
+      "command": [
+        ".venv/bin/mypy",
+        "src",
+        "scripts"
+      ],
+      "returncode": 0,
+      "seconds": 0.3057091280061286
+    },
+    "pytest": {
+      "command": [
+        ".venv/bin/pytest",
+        "-q",
+        "tests/unit/test_observer_native_audit_v2.py",
+        "tests/unit/test_observer_native_kernel_v2.py",
+        "tests/unit/test_native_guard_diagnostics_v2.py",
+        "tests/integration/test_guard_observer_probe_v2.py"
+      ],
+      "returncode": 0,
+      "seconds": 19.545577408978716
+    }
+  },
+  "source_sha256": {
+    "src/react_agent/validation/observer_native_audit_v2.py": "8c992129639876cf88c66fb6717026a8bbe4078d3e621408dd5f82108f39cf01",
+    "scripts/audit_phase5_observer_native_v2.py": "14dcdd2969f69e8147c1843cb9abce6ede565b4de2ca1c02d06beaf0dad53173",
+    "notebooks/kaggle/observer_native_kernel_v2.py": "6e53db5d3ccc7efabf70479282fc42700d3f0ef4461247e2074df9caf7fb2c2a",
+    "scripts/prepare_phase5_observer_package_v2.py": "c50b4f32020d5a5ecf1f93b4c27578587d7ea1d3dcccdd49939658ca07b9806d",
+    "tests/unit/test_observer_native_audit_v2.py": "30f5ca7fdc7badfd7aba2f5ade5d3783097e96091d4fe3313c6dc0d123f87042",
+    "tests/unit/test_observer_native_kernel_v2.py": "a82992271ffab41d68b0ced8e1fe61096ab7c134f536875ace96ddbe797cea7f"
+  },
+  "raw_output": "results/phase5_observer_native_v2_qa01",
+  "raw_sha256": {
+    "mypy.log": "592cbaef74e3025f28eedaf3e8b080f2d8dc087e15429c6b923eef93b0c9d9d3",
+    "pytest.log": "2472de38d1cd8f2f2a8ab62348e08917588662f30aec379c9d1d78f0b0778fb0",
+    "ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "setup.log": "31e836b9c814fcf7126ef63fd608df0cbce6fc9b307ebc95c71ffe9d66d52280"
+  },
+  "historical_role_reaudit": {
+    "path": "results/phase5_grouped_v3_batch12_download01/raw_s2/grouped/tasks/ATK_CAND_DATABASE_PARAPHRASE__A6",
+    "roles": {
+      "agent": {
+        "worker_attempts": 3,
+        "load_verified": true,
+        "policy_attention_verified": true,
+        "failed_or_partial": false,
+        "calls": [
+          {
+            "index": 1,
+            "input_tokens": 990,
+            "output_tokens": 31,
+            "generate_seconds": 3.27636868899981,
+            "call_seconds": 3.3110189630001514,
+            "tokens_per_generate_second": 9.461694620657449
+          },
+          {
+            "index": 2,
+            "input_tokens": 1203,
+            "output_tokens": 32,
+            "generate_seconds": 3.1989782040000136,
+            "call_seconds": 3.2155120030001854,
+            "tokens_per_generate_second": 10.003194132422374
+          },
+          {
+            "index": 3,
+            "input_tokens": 1267,
+            "output_tokens": 27,
+            "generate_seconds": 2.905188096999609,
+            "call_seconds": 2.921491705000335,
+            "tokens_per_generate_second": 9.293718375028725
+          }
+        ]
+      },
+      "guard": {
+        "worker_attempts": 3,
+        "load_verified": true,
+        "policy_attention_verified": true,
+        "failed_or_partial": false,
+        "calls": [
+          {
+            "index": 1,
+            "input_tokens": 193,
+            "output_tokens": 27,
+            "generate_seconds": 1.4078928170001745,
+            "call_seconds": 1.427863084999899,
+            "tokens_per_generate_second": 19.17759624452765
+          },
+          {
+            "index": 2,
+            "input_tokens": 244,
+            "output_tokens": 27,
+            "generate_seconds": 0.8670016670002951,
+            "call_seconds": 0.8704219950000152,
+            "tokens_per_generate_second": 31.14180863505861
+          },
+          {
+            "index": 3,
+            "input_tokens": 194,
+            "output_tokens": 27,
+            "generate_seconds": 0.8786739429997397,
+            "call_seconds": 0.8819996929996705,
+            "tokens_per_generate_second": 30.72812186489067
+          }
+        ]
+      }
+    },
+    "raw_files_verified": 678,
+    "scope": "existing native load/policy/timing helpers only; no historical v2 host witness exists"
+  },
+  "new_model_loads": 0,
+  "gpu_runs": 0,
+  "test_payload_accessed": false,
+  "phase5_accepted": false
+}

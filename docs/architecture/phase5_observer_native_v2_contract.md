@@ -65,3 +65,27 @@ base HEAD during development, not proof that HEAD contained the working source.
 Historical CPU audits remain available with that limitation explicitly reported.
 CPU audit CLI requires `--source-commit` for the recorded run rather than using
 the repository's current HEAD. HF runs need a separate native evidence audit.
+
+## Native launcher and audit, 2026-09-15
+
+`observer_native_kernel_v2.py` embeds the committed archive and bootstrap with
+SHA-256 checks, uses the existing private guard Dataset v1 and agent mount,
+collects tokenizer metadata, executes the four-task HF runner once, then writes
+`native_audit.json`. Requested handle is `huylmhuhu/react-vn-observer-native-v2`,
+private/offline with the previously pinned two-T4 image, timeout14400seconds.
+`observer_bootstrap.json` records the actual source/Dataset/snapshot/wheel pins.
+
+`observer_native_audit_v2.audit` verifies full schedule/checkpoints and pins,
+model-load records, tokenizer/publisher admission, role PID/policy/attention,
+native time bounded by worker time, and v2 worker/host response joins. It records
+all terminal statuses, tool-call counts, cleanup methods and GPU recovery.
+Transport failures exclude unjoined generation from timing denominators; zero
+guard/tool calls remain visible. The verdict concerns artifact consistency;
+`source_authenticated=false` until an external release audit matches downloaded
+version/source/bootstrap to the submitted package. Quality/Phase5 flags stay false.
+
+CPU tests use explicitly mocked evidence boundaries; load/policy/timing helpers
+are additionally checked against immutable historical native logs. Those logs
+cannot validate the new host witness. Native v2 evidence requires the new run.
+Preflight03 must use the rendered launcher's embedded source in both mount
+layouts, import the native audit CLI, and rerun the packaged CPU conditions.
