@@ -4,6 +4,17 @@ Cập nhật: 2026-09-16. Phase5 đang làm, chưa nghiệm thu (4/7≈57% nhóm
 
 ## Đang làm
 
+**Hiện hành: native-library CPU package02 đã preflight đủ, chưa submit.**
+[Report/preflight/access](../docs/evaluation/phase5_guard_language_native_v1_run.md).
+Source2269fef;86pins,214rawfiles, hai layouts8tools/21Dummy/resume và actual
+launcher metadata-only. 38tests/setup/Ruff/mypy423 đạt. Datasetready/v1/private,
+ownerhuylmhuhu. Bước ngay: push source/evidence, gửi đúng một CPU notebook riêng
+`huylmhuhu/react-vn-guard-language-cpu-v1`, timeout3600s/noGPU/noInternet/no model
+mount, rồi verifyterminal/version/source/download/audit. Không chạy helper submit
+trùng nếu đã có receipt. Metadata-only không chứng minh native libraries.
+Package01 thất bại resume tổng hợp được giữ; package02 đã sửa đúng task identity.
+Các mục dưới là nền/bước dài hạn trước package02, không phải lệnh submit cũ.
+
 **Đã hoàn tất bộ ràng buộc token JSON trên CPU, chưa nối model thật.**
 [Report/receipt](../docs/evaluation/phase5_guard_token_language_v1_report.md),
 [contract và native gates](../docs/architecture/phase5_guard_token_language_v1_contract.md).
