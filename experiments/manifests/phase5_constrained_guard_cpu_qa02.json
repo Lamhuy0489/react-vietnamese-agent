@@ -1,0 +1,107 @@
+{
+  "protocol": "constrained_guard_cpu_qa_v1",
+  "valid": true,
+  "checked_at_utc": "2026-09-15T19:01:22.117813+00:00",
+  "source_commit": "964c51bac46d06691d1571f404c548f9398a649f",
+  "source_sha256": {
+    "configs/guard/constrained_v1_effective.json": "518a0636ef62c40b6ca741f402fb970fd0ef9fe759102b636889361efc0458af",
+    "docs/architecture/phase5_constrained_guard_v1_contract.md": "983a38e050268c3b6ef2d1312bda81d0e9f8fe7ce570cf02f30300d6b12560bc",
+    "src/react_agent/llm/constrained_guard_v1.py": "5c445406ad476b8d8e73c0aa618d35800ce8c895dd8b0c82acd276be520dc475",
+    "src/react_agent/security_v1/constrained_classifier_v1.py": "77b043f59336e62ec6cfac9d9654737c0a95422769651eef920f90f09505f3a4",
+    "tests/unit/test_constrained_guard_v1.py": "93b918ed85e504fe51bf79252fa94deb6be5f1100d1d48f56ca54045cd36f323"
+  },
+  "source_matches_git": true,
+  "checks": {
+    "setup": {
+      "command": [
+        ".venv/bin/python",
+        "scripts/verify_setup.py"
+      ],
+      "returncode": 0,
+      "seconds": 0.16115126601653174
+    },
+    "ruff": {
+      "command": [
+        ".venv/bin/ruff",
+        "check",
+        "."
+      ],
+      "returncode": 0,
+      "seconds": 0.025079193990677595
+    },
+    "mypy": {
+      "command": [
+        ".venv/bin/mypy",
+        "src",
+        "scripts"
+      ],
+      "returncode": 0,
+      "seconds": 0.31516929998178966
+    },
+    "pytest": {
+      "command": [
+        ".venv/bin/pytest",
+        "-q",
+        "tests/unit/test_constrained_guard_v1.py",
+        "tests/unit/test_guard_token_language_v1.py",
+        "tests/unit/test_guard_language_native_v1.py",
+        "tests/unit/test_guard_language_release_v1.py",
+        "tests/unit/test_guard_bare_json_v1.py",
+        "tests/unit/test_guard_hf_v1.py",
+        "tests/unit/test_generation_policy_v1.py",
+        "tests/unit/test_request_policy_v1.py",
+        "tests/unit/test_efficient_requests_v1.py",
+        "tests/unit/test_request_policy_pair_v1.py"
+      ],
+      "returncode": 0,
+      "seconds": 16.19006906999857
+    },
+    "knowledge": {
+      "command": [
+        "make",
+        "knowledge-check"
+      ],
+      "returncode": 0,
+      "seconds": 0.15019624997512437
+    },
+    "diff": {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "seconds": 0.0315090749936644
+    }
+  },
+  "log_sha256": {
+    "results/phase5_constrained_guard_cpu_qa02/diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "results/phase5_constrained_guard_cpu_qa02/knowledge.log": "78c84ad170022bf4bd205a0a9abf804350ca190e83a245d9c2ae59b534b958c4",
+    "results/phase5_constrained_guard_cpu_qa02/mypy.log": "0eb3934a452ad76b508bf4fb703496c628e79a1e66413d5840b06cbd5d3ba98b",
+    "results/phase5_constrained_guard_cpu_qa02/pytest.log": "1cea398e41b9ee64d28adc38eb77ed007e2f279da012b677c6d3fd721c140b8c",
+    "results/phase5_constrained_guard_cpu_qa02/ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "results/phase5_constrained_guard_cpu_qa02/setup.log": "31e836b9c814fcf7126ef63fd608df0cbce6fc9b307ebc95c71ffe9d66d52280"
+  },
+  "frozen_pins_unchanged": {
+    "native_cpu": {
+      "manifest": "experiments/manifests/phase5_guard_language_cpu_preflight02_corrected.json",
+      "manifest_sha256": "dfc3813d266f5f984b2720b80333ffb9d4e1e03d5e36d5c020f7d11be1df239c",
+      "verified_source_files": 86
+    },
+    "baseline": {
+      "manifest": "experiments/manifests/phase5_grouped_package_v3_preflight01.json",
+      "manifest_sha256": "d929631e5557e656e21b1394b39a4175aec310883367d2a1ac3fedd8cbe1ec52",
+      "verified_source_files": 175
+    }
+  },
+  "new_synthetic_tests": 47,
+  "native_generation_validated": false,
+  "paired_runtime_integrated": false,
+  "model_inference_runs": 0,
+  "gpu_used": false,
+  "test_payload_accessed": false,
+  "private_ground_truth_accessed": false,
+  "phase5_accepted": false,
+  "full_repository_pytest_run": false,
+  "full_suite_exclusion_reason": "Test-assigned authoring fixtures excluded."
+}

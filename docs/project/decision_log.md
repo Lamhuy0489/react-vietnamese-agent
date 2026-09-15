@@ -1617,3 +1617,19 @@ and are not inferred here.
   success does not authorize silent production adoption or certify guard quality.
 - Preserve package01 failure and invalid selected-preflight02 history. Corrected
   selection and package02 were used for the sole CPU submission; no model retry.
+
+# 2026-09-16 — Isolated constrained adapter, retain repetition penalty
+
+- Implement request-local constrained generation and a decoding-bound classifier
+  cache as new opt-in modules. Existing effective guard policy has repetition1.1;
+  retain it before the prefix processor rather than changing two variables.
+  Preserve bare-JSON prompt, model, strict parser and shutdown behavior.
+- Require exact ordered processor types/state, native source and policy pins,
+  per-step callback accounting, terminal EOS/text correspondence, identity checks
+  before completion, hook restoration and no-retry retirement. Failed output is
+  never repaired or passed through as unconstrained generation.
+- CPU fixtures establish bounded implementation behavior, not actual native
+  generation. The new adapter is not yet composed into paired runtime/factory or
+  its auditor. No Kaggle/model/Test run or acceptance update in this step. See
+  [contract](../architecture/phase5_constrained_guard_v1_contract.md) and
+  [CPU evidence](../evaluation/phase5_constrained_guard_v1_cpu.md).

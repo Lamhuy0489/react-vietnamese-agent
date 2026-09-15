@@ -4,7 +4,14 @@ Cập nhật: 2026-09-16. Phase5 đang làm, chưa nghiệm thu (4/7≈57% nhóm
 
 ## Đang làm
 
-**Native tokenizer/logits CPU v1 COMPLETE và đã audit.**
+**Candidate constrained adapter + cache riêng đã triển khai CPU.**
+[Contract](../docs/architecture/phase5_constrained_guard_v1_contract.md),
+[report/QA](../docs/evaluation/phase5_constrained_guard_v1_cpu.md).
+47tests mới dùng fake CPU đạt; giữ repetition1.1 → prefix, kiểm policy/identity/
+completion/cache, restore hook khi lỗi/interrupt và retire backend không retry.
+Chưa nối paired factory/observer auditor, chưa actualmodel.generate của adapter.
+
+Nền trước: **Native tokenizer/logits CPU v1 COMPLETE và đã audit.**
 [Report/receipts](../docs/evaluation/phase5_guard_language_native_v1_run.md),
 [protocol](../docs/architecture/phase5_guard_language_native_v1_contract.md).
 Actual `huylmhuhu/react-vn-guard-language-cpu-v1`, version1/ID134521565;
@@ -19,20 +26,26 @@ Không thay frozen guard/parser/runtime hay kết quả đã đo.
 
 ## Bước tiếp theo
 
-Triển khai opt-in guard-only adapter cho candidate, chưa nối vào baseline.
-Phải khóa đúng processor composition (không ForcedBOS/EOS/stop/sampling lạ),
-generation/cache/audit identity có grammar/tokenizer hash, và kiểm completion.
-Không fallthrough sang unconstrained generation hoặc sửa JSON sau sinh.
-Sau CPU integration/exception/identity tests: exactpackage và native protocol
-riêng trước một GPU diagnostic mới. Giữ prompt/model/parser/fallback/shutdown2s
-để tách hiệu ứng decoding; study shutdown làm riêng.
+Nối candidate bằng paired-factory/composition version riêng với request-policy,
+efficient-request và observer/auditor; không sửa frozen baseline/factory.
+Đóng protocol actual GenerationMixin CPU integration để kiểm hooks tương tác
+đúng với thư viện pin, receipt và exception restoration; không tải weights.
+Sau đó exactpackage/native protocol riêng trước GPU diagnostic mới. Giữ
+prompt/model/parser/fallback/shutdown2s để tách hiệu ứng decoding; study shutdown riêng.
 
-Chưa có adapter hoặc inference package sẵn sàng. Native libraries chỉ được kiểm
-trên CPU Kaggle; local .venv vẫn không có Torch/Transformers/tokenizers.
-Không tải model lớn về máy để làm bước này.
+Chưa có paired-runtime integration/inference package sẵn sàng. Không submit GPU
+chỉ từ47fake tests hoặc248mask checks cũ. Local .venv chưa có Torch/Transformers/
+tokenizers; native compatibility trước chạy CPU Kaggle, không trên máy này.
 
 ## Bằng chứng
 
+- Adapter source964c51b:340focused tests/15,57s (47mới); setup/Ruff/mypy426/
+  knowledge đạt,175baseline+86nativeCPU sourcepins nguyên. Có kiểm live backend
+  config trước cache hit. [QA/source/log hashes](../experiments/manifests/phase5_constrained_guard_cpu_qa02.json).
+  Raw `results/phase5_constrained_guard_cpu_qa02`; QA01 source99fb189 giữ làm lịch sử.
+- Config `configs/guard/constrained_v1_effective.json` chỉ là generation metadata;
+  canonical SHA231f3e0b…2efc6, không response/GT. Không submission mới ở bước này.
+- Các receipts và58tests dưới đây thuộc mốc native-library CPU trước:
 - [Terminal](../experiments/manifests/phase5_guard_language_cpu_terminal01.json),
   [audit](../experiments/manifests/phase5_guard_language_cpu_audit01.json),
   [summary](../experiments/manifests/phase5_guard_language_cpu_summary01.json),

@@ -1,5 +1,16 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — constrained adapter CPU, 2026-09-16
+
+[Contract/report](../docs/evaluation/phase5_constrained_guard_v1_cpu.md):
+adapter opt-in + classifier cache bound decoding đã triển khai;47tests mới đạt.
+Giữ repetition1.1, exact chain admission, completion/identity/retirement và
+restoration. Chưa paired-factory/observer composition hoặc native model.generate.
+QA source964c51b:340focused tests/15,57s; setup/Ruff/mypy426/knowledge đạt,
+175baseline+86nativeCPU sourcepins nguyên; kiểm live config trước cache hit.
+Tiếp theo native CPU integration rồi package/protocol mới; không GPU job mới.
+Phase5vẫn4/7≈57%; các mốc bên dưới là lịch sử, không phải chỉ dẫn hiện hành.
+
 ## Hiện hành — native-library CPU COMPLETE/audit, 2026-09-16
 
 [Report/receipts](../docs/evaluation/phase5_guard_language_native_v1_run.md):

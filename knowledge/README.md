@@ -20,7 +20,8 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
-- **Hiện hành:** [Qwen tokenizer và Transformers CPU COMPLETE/audit; adapter còn thiếu](../docs/evaluation/phase5_guard_language_native_v1_run.md).
+- **Hiện hành:** [constrained adapter + cache đã có CPU tests; còn native composition](../docs/evaluation/phase5_constrained_guard_v1_cpu.md).
+- **Nền native-library:** [Qwen tokenizer và Transformers CPU COMPLETE/audit](../docs/evaluation/phase5_guard_language_native_v1_run.md).
 - **Nền finite token-language:** [CPU evidence và native gates](../docs/evaluation/phase5_guard_token_language_v1_report.md).
 - **Kết quả guard trước:** [bare-JSON v1: kết quả âm, recovered audit và timing](../docs/evaluation/phase5_guard_bare_json_terminal_v1.md).
 - **Các phần còn thiếu trong plan/phase5.md:** [hàng đợi DoD và bằng chứng cần bổ sung](phase5_remaining.md).

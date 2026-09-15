@@ -6,6 +6,18 @@ Phase1, clean_v1.1 Phase2, adversarial_v2 Phase3 và Phase4 accepted theo
 
 ## Công việc hiện hành
 
+**Đã triển khai candidate constrained guard adapter + classifier cache riêng**:
+[contract](../docs/architecture/phase5_constrained_guard_v1_contract.md),
+[CPU evidence](../docs/evaluation/phase5_constrained_guard_v1_cpu.md).
+47synthetic tests mới đạt; giữ repetition1.1 → prefix, kiểm policy/identity/
+completion và khôi phục hook khi lỗi/interrupt; backend lỗi không retry.
+QA source964c51b:340focused tests/15,57s, setup/Ruff/mypy426/knowledge đạt;
+175baseline+86nativeCPU sourcepins nguyên. Kiểm live config cả trước cache hit.
+Chưa nối paired factory/observer auditor, chưa actualmodel.generate của adapter.
+Bước tiếp: composition version mới và native GenerationMixin CPU integration,
+rồi exactpackage/protocol trước GPU. Không có submission mới, không đọcTest.
+Phase5vẫn4/7≈57%; các mốc dưới là lịch sử và bằng chứng nền, không phải next-step.
+
 **Native tokenizer/logits CPU v1 COMPLETE và audit xong**:
 [report/receipts](../docs/evaluation/phase5_guard_language_native_v1_run.md).
 Qwen thật đủ3069combinations/max36tokensinclEOS;248mask checks qua Transformers
