@@ -25,6 +25,16 @@ inference; không sửa frozen parser/prompt/model hay thu raw guard text.
 Host witness không tồn tại trong baseline cũ; không suy đoán raw30lỗi từ enum/hash.
 Không có access pending ở mốc CPU; cần kiểm quota/mount/model access khi chuẩn bị GPU.
 
+**Đã hoàn tất mốc protocol/probe CPU:** [contract](../docs/architecture/phase5_observer_native_v2_contract.md),
+runner/auditor `scripts/run_phase5_guard_observer_v2.py` và
+`scripts/audit_phase5_guard_observer_probe_v2.py`; valid 4/4, malformed 0/4,
+8/4 guard responses tương ứng, PRE/POST và recovery đều đúng. Raw:
+`results/phase5_guard_observer_probe_v2_valid01`,
+`results/phase5_guard_observer_probe_v2_malformed01`; audit:
+`experiments/manifests/phase5_guard_observer_probe_v2_cpu01.json`.
+Commit tiếp theo phải giữ nguyên hai raw probe; exact package preflight là bước
+cụ thể kế tiếp. Chưa gửi Kaggle/GPU và chưa cập nhật Phase5 acceptance.
+
 Các mục dưới là lịch sử trước khi đóng lịch; không thực hiện chỉ dẫn submit cũ.
 
 **Việc tiếp tục ngay: theo dõi shard7 ROWLIST R3 v1 RUNNING, không gửi lại.**

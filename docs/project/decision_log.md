@@ -1,5 +1,20 @@
 # Decision Log
 
+## 2026-09-15 — Freeze a separate native-shaped observer probe (CPU only)
+
+- Add four public synthetic tasks (CALC/DOC × A2/A6) and two explicit scripted
+  guard conditions to exercise valid PRE/POST and malformed-output retirement.
+  The condition is not a benchmark variant, oracle answer or native model
+  output; HF mode forbids output injection. Keep the 112-task Dev schedule,
+  prompts, model identities, deadlines and source pins unchanged.
+- Add a versioned native adapter that composes the existing HF/policy factories
+  with the v2 worker sidecar and host witness. It is lazy and unexecuted locally;
+  the CPU probe uses only synthetic backends. Missing-only resume and immutable
+  checkpoints are required; semantic errors remain terminal.
+- This milestone can establish observer wiring/checkpoint integrity only. It
+  cannot establish guard quality, native model authentication or Phase5
+  acceptance. Exact isolated package and any later GPU run require a new receipt.
+
 ## 2026-09-15 — Independent host witness for CPU observer v2
 
 - Runtime v3 attempts bind requests/PIDs but do not retain response hashes.

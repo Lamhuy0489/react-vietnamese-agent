@@ -31,9 +31,26 @@ Giới hạn: shape hợp lệ không chứng minh đúng từng syntax hint n�
 response; không xác thực weights hoặc chống đồng thời sửa tất cả artifacts.
 Host witness là mới, không suy ra được cho những lần native trước đây.
 
-**Chưa làm:** native wiring/package và thực nghiệm synthetic GPU riêng. Bước kế
-là khóa protocol synthetic diagnostic (expected calls/response coverage và fail
-cases), ghép observer opt-in vào native factory riêng, rồi exact isolated CPU
-package preflight trước khi submit. Không tự bật vào worker/lịch Dev đã chốt.
+## Native-shaped observer probe — CPU milestone
+
+Đã khóa protocol riêng trong [contract](../docs/architecture/phase5_observer_native_v2_contract.md)
+và thêm `run_phase5_guard_observer_v2.py`/auditor. Bốn task công khai tổng hợp
+(CALC/DOC × A2/A6), mỗi task một pair mới, chạy hai điều kiện:
+
+- `valid`: 4/4 completed, 8 guard responses, đủ PRE/POST, lifecycle/recovery đạt.
+- `trailing_comma`: 0/4 completed, 4 model_error, 4 PRE response rồi POST
+  BACKEND_FAILURE do retirement; không repair/retry.
+
+Đây là backend scripted CPU, không tải model. Hai raw probe và manifest audit
+được lưu tại `results/phase5_guard_observer_probe_v2_*` và
+`experiments/manifests/phase5_guard_observer_probe_v2_cpu01.json`; auditor
+re-audit checkpoint/hash, source commit, coverage và worker reaping.
+26 kiểm thử native/probe bổ sung cùng 139 test observer trước đó; mypy403.
+
+Native HF adapter v2 đã được viết nhưng chưa chạy: model mount, CUDA, Kaggle
+package và remote identity vẫn là cổng riêng. Không dùng Test, không đổi175 pin
+hay112 baseline; không coi scripted pass là guard quality/Phase5 acceptance.
+Bước tiếp theo là exact isolated package preflight cho probe, sau đó mới cân
+nhắc một GPU submission riêng nếu quota/mount được xác minh.
 Không cần tài khoản mới ở mốc CPU; GPU quota/model access phải kiểm lại khi gửi.
 Không kết luận30lỗi trước là Markdown hay truncation vì không có raw guard text.

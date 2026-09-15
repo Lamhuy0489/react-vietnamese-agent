@@ -21,6 +21,9 @@ JSON guard bằng synthetic CPU, không sửa prompt/parser/model hoặc dùngTe
 lập;139 focused tests/setup/Ruff/mypy399 đạt. Không đổi175frozen worker pins,
 không tải model hoặc dùngTest. [Memory/QA và bước native package](guard_diagnostics_v2.md).
 Chưa nối native worker/GPU; gate Phase5 vẫn4/7≈57%, chưa tăng acceptance.
+Đã thêm native-shaped synthetic probe (CALC/DOC × A2/A6): valid4/4, malformed
+0/4, mọi checkpoint/recovery/audit đạt; raw+audit manifest lưu riêng. Native HF
+adapter chưa chạy, không có GPU job mới.
 
 ## Lịch sử trước khi đóng lịch112ca
 

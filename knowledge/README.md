@@ -63,6 +63,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Grouped shard7 admission: [slot rejection, HTTP409 và launcher id/title-only](../docs/evaluation/phase5_grouped_v3_s7_admission_report.md).
 - Grouped112/112 terminal: [báo cáo tổng/CSV/QA](../docs/evaluation/phase5_grouped_v3_complete_report.md), [việc còn thiếu](../docs/evaluation/phase5_post_native_actions_v1.md).
 - Guard diagnostic v2 CPU: [component, worker/host join, QA và bước native package](guard_diagnostics_v2.md).
+- Native-shaped guard observer probe CPU: [protocol, conditions, raw/audit và bước package](guard_diagnostics_v2.md).
 - Guard model/GPU preflight: [nguồn ứng viên và giới hạn](guard_model_preflight_evidence.md).
 - Guard GPU probe đang triển khai: [upload, audit và bước tiếp](guard_gpu_probe_v1.md).
 - Guard cancellation/VRAM recovery: [protocol và tiến độ](guard_cancellation_v1.md).
