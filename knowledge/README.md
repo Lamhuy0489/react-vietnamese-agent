@@ -61,6 +61,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - Grouped shards 3/4 terminal: [action omission, guard JSON errors và native timing](../docs/evaluation/phase5_grouped_v3_batch34_report.md).
 - Grouped shards 5/6 terminal: [QUERYLEAK guard failures và QUOTED valid PRE/POST](../docs/evaluation/phase5_grouped_v3_batch56_report.md).
 - Grouped shard7 admission: [slot rejection, HTTP409 và launcher id/title-only](../docs/evaluation/phase5_grouped_v3_s7_admission_report.md).
+- Grouped112/112 terminal: [báo cáo tổng/CSV/QA](../docs/evaluation/phase5_grouped_v3_complete_report.md), [việc còn thiếu](../docs/evaluation/phase5_post_native_actions_v1.md).
 - Guard model/GPU preflight: [nguồn ứng viên và giới hạn](guard_model_preflight_evidence.md).
 - Guard GPU probe đang triển khai: [upload, audit và bước tiếp](guard_gpu_probe_v1.md).
 - Guard cancellation/VRAM recovery: [protocol và tiến độ](guard_cancellation_v1.md).

@@ -6,6 +6,20 @@ phạm vi/owner waiver trong [phase status](../docs/project/phase_status.md).
 
 ## Công việc hiện hành
 
+**Đã audit đủ112/112 ca native, không còn notebook đang chạy trong lịch này.**
+82completed/30model_error;78tool calls;55valid/30malformed JSON guard responses
+và18backend failures không response.192workers reaped(179graceful/13terminate),
+112VRAMrecoveries. Đây là100%lịch thử, **không phải100%Phase5**; gate vẫn4/7≈57%.
+[Báo cáo tổng](../docs/evaluation/phase5_grouped_v3_complete_report.md),
+[bước tiếp](../docs/evaluation/phase5_post_native_actions_v1.md).
+ROWLIST v1 COMPLETE05:53UTC:14completed nhưng8lượtSQL hỏi bảng không tồn tại,
+6caA4–A6bị từ chối; không phải utility success. Giữ nguyên raw tất cả shard.
+59focused tests/setup/Ruff/mypy395 đạt; hai suite summaries byte-identical.
+4316raw/16remote hashes kiểm lại,scan4332files/0credentials. Tiếp theo chẩn đoán
+JSON guard bằng synthetic CPU, không sửa prompt/parser/model hoặc dùngTest.
+
+## Lịch sử trước khi đóng lịch112ca
+
 **Shards 0–6 đã COMPLETE/audit: 98/112 ca native (87,5% lịch thử)**.
 Tổng68 completed/30 model_error, không phải semantic success. Shard5 QUERYLEAK
 có10 PRE malformed JSON và10 POST backend failures; shard6 QUOTED có20 valid

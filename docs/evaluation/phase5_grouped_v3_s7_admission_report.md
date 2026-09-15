@@ -1,5 +1,10 @@
 # Grouped v3 shard7 ROWLIST — admission recovery
 
+**Terminal update2026-09-15:** ROWLIST R3 v1 COMPLETE05:53:41UTC/audit đạt,
+không còn pending. Xem [full schedule report](phase5_grouped_v3_complete_report.md)
+và [terminal receipt](../../experiments/manifests/phase5_grouped_v3_s7_terminal01.json).
+Các đoạnRUNNINGbên dưới giữ lịch sử admission, không phải chỉ dẫn chạy lại.
+
 2026-09-15. Source `0d865365b7881144756f804441ca24ed48935f7f`; 14 preselected
 Dev tasks, all A0–A6 attack/benign branches. **Attempt03 admitted v1, RUNNING**
 at2026-09-15 05:06:57UTC; no terminal output audit or task results yet.

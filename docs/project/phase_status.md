@@ -243,6 +243,12 @@ matches its preflight stable summary; this earlier primitive receipt is historic
 
 ## Phase 5 progress
 
+- [x] Complete native public Dev schedule audited (2026-09-15):112unique tasks,
+  eight matching full run identities, failures retained.82runtime completed/
+  30model_error;55valid/30malformed guard responses and18no-response backend
+  failures.192workers reaped/112VRAMrecoveries, but13forced shutdowns.59focused
+  checks and repeated full aggregation pass. No new aggregate acceptance gate;
+  quality/semantic coverage/lifecycle/freeze remain open. [Report](../evaluation/phase5_grouped_v3_complete_report.md).
 - [x] Grouped native shards5/6 artifact/runtime audit (2026-09-15):1164raw/four
   remote hashes verified; repeat audits identical, live version1 authenticated.
   All48workers reaped/28VRAMrecoveries pass. QUERYLEAK4completed/10model_error;

@@ -21,6 +21,17 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**Cả8notebooks đã terminal/audit,112/112ca; không còn jobpending.**
+[Báo cáo tổng](../docs/evaluation/phase5_grouped_v3_complete_report.md).
+ROWLIST R3 đã COMPLETE lúc2026-09-15 05:53:41UTC, v1/ID134443063;
+[terminal/version/hashes](../experiments/manifests/phase5_grouped_v3_s7_terminal01.json),
+[audit](../experiments/manifests/phase5_grouped_v3_s7_audit01.json).
+Actual notebook/Dataset/source vẫn như dưới;614raw/2remote hashes khớp.
+Nguồn `0d86536`, Datasetguard15v1, GitHubevidence875399d trước submit giữ nguyên.
+Không dùng các câuRUNNINGlịch sử dưới đây để submit/tải lại.
+
+### Lịch sử admission trước terminal
+
 **Shard7 ROWLIST R3 v1 RUNNING**, kiểm2026-09-15 05:06:57UTC:
 [notebook thật](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3),
 kernel ID134443063; [submission03](../experiments/manifests/phase5_grouped_v3_s7_submission03.json),

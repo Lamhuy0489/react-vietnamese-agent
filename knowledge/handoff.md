@@ -4,6 +4,21 @@ Cập nhật: 2026-09-15. Chỉ dẫn hiện hành; lịch sử không thay th�
 
 ## Đang làm
 
+**Lịch native112/112 đã terminal/audit; không submit/rerun hoặc tải lại.**
+[Report tổng](../docs/evaluation/phase5_grouped_v3_complete_report.md),
+[summary/CSV/QA](../experiments/manifests/phase5_grouped_v3_suite01.json),
+[follow-up](../docs/evaluation/phase5_post_native_actions_v1.md).
+82completed/30model_error,55valid/30invalid guard responses+18backend failures;
+192reaped(179graceful/13terminate),112recovered. Guard quality/semantic utility/
+uniform graceful shutdown chưa đạt; Phase5vẫn4/7≈57%. Không cóGPUjobpending.
+ROWLIST COMPLETE05:53:41UTC/v1, source/version xác minh;614raw/2remote khớp.
+Suite reporter re-audit8shards/fullrunidentity/112uniquekeys; hai outputJSON/CSV
+byte-identical.59focused/setup/Ruff/mypy395/knowledge đạt; scan4332files sạch.
+Raw outputs đã đóng. Bước mới: versioned structural guard diagnostics CPU bằng
+synthetic fixtures, không sửa frozen parser/prompt/model hay thu raw guard text.
+
+Các mục dưới là lịch sử trước khi đóng lịch; không thực hiện chỉ dẫn submit cũ.
+
 **Việc tiếp tục ngay: theo dõi shard7 ROWLIST R3 v1 RUNNING, không gửi lại.**
 [Admission report/receipt](../docs/evaluation/phase5_grouped_v3_s7_admission_report.md).
 Actual `huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3`, kernel ID134443063,
@@ -102,6 +117,9 @@ Output `results/phase5_grouped_runner_v1_cpu01` đã đóng. Không chạy trùn
 source đã khóa hoặc ghi thêm raw của mốc này.
 
 ## Bước tiếp theo
+
+**Chỉ dẫn hiện hành:** làm diagnostic CPU theo follow-up ở đầu trang, giữ baseline
+112ca bất biến. Các bước native bên dưới đã hoàn tất và chỉ là lịch sử.
 
 Native v2 source `3486dbf` đã ghép. **Thu hồi kết luận package/import isolation**
 của hai receipt cũ: overlay nằm dưới `configs`, editable install đã cung cấp

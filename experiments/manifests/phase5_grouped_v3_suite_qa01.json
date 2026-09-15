@@ -1,0 +1,67 @@
+{
+  "protocol": "grouped_v3_suite_cpu_qa",
+  "valid": true,
+  "source_git_commit_before_changes": "4c068c1bdbb2e8912384c842c730703c5d574477",
+  "changed_source_sha256": {
+    "scripts/report_phase5_grouped_suite_v3.py": "34a2df6b9abba68541c6c552d5a6e0042ec93bdf43ae7800ba3303e4165776be",
+    "tests/unit/test_grouped_gpu_suite_v3.py": "3dda37a11c5f44aed8daa12d3b12284a02f4515caba0b966e7a712a0ac24e326"
+  },
+  "commands": {
+    "setup.log": [
+      ".venv/bin/python",
+      "scripts/verify_setup.py"
+    ],
+    "ruff.log": [
+      ".venv/bin/ruff",
+      "check",
+      "."
+    ],
+    "mypy.log": [
+      ".venv/bin/mypy",
+      "src",
+      "scripts"
+    ],
+    "pytest.log": [
+      ".venv/bin/pytest",
+      "-q",
+      "tests/unit/test_grouped_package_v3.py",
+      "tests/unit/test_grouped_gpu_release_v3.py",
+      "tests/unit/test_grouped_gpu_summary_v3.py",
+      "tests/unit/test_grouped_native_audit_v2.py",
+      "tests/unit/test_grouped_gpu_suite_v3.py"
+    ],
+    "knowledge.log": [
+      "make",
+      "knowledge-check"
+    ]
+  },
+  "elapsed_seconds": {
+    "setup.log": 0.15162273999885656,
+    "ruff.log": 0.024332056011189707,
+    "mypy.log": 0.2904419459955534,
+    "pytest.log": 2.1359270090033533,
+    "knowledge.log": 0.13948635599808767
+  },
+  "raw_sha256": {
+    "pytest.log": "44019ce374335c1894bfb8e9c0a429b1460d28c9516f19cef9f1d51521c86ddb",
+    "setup.log": "31e836b9c814fcf7126ef63fd608df0cbce6fc9b307ebc95c71ffe9d66d52280",
+    "mypy.log": "2565146eeeaf8e16240f2731ab2e3a1d9e2572f404067eaa28173f404d827af8",
+    "ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "knowledge.log": "78c84ad170022bf4bd205a0a9abf804350ca190e83a245d9c2ae59b534b958c4"
+  },
+  "suite_output": "results/phase5_grouped_v3_suite01",
+  "suite_sha256": {
+    "summary.json": "a86afb09b16002189011d71c43b12112ee1f269f8d8585e1df0e029abac247b5",
+    "tasks.csv": "d6566ee87a72d996d831cea149c411a01b3ac3a63a361d17ca5e6a6de980ae72"
+  },
+  "repeated_suite_byte_identical": true,
+  "raw_files_rechecked": 4316,
+  "remote_files_rechecked": 16,
+  "files_credential_scanned": 4332,
+  "credential_value_matches": 0,
+  "actual_model_loads": 0,
+  "new_inference": false,
+  "test_payload_accessed": false,
+  "phase5_accepted": false,
+  "scope": "59 focused tests, setup/Ruff/mypy/knowledge. Re-audit frozen public Dev outputs only. Full historical worker suite not rerun; prior 3113pass/1skip receipt retained. Postprocessing is not a new worker release, utility score or phase acceptance."
+}

@@ -2,6 +2,13 @@
 
 ## Hiện hành — grouped Dev package v3
 
+2026-09-15: **112/112 native terminal/audit**, [báo cáo toàn lịch](../docs/evaluation/phase5_grouped_v3_complete_report.md).
+82completed/30model_error;192reaped/112recovered nhưng13forcedshutdown;
+55guardvalid/30JSONinvalid+18backendfailures. Đây là100%lịchthử, **gate4/7≈57%**
+không đổi. Không có jobpending; [follow-up CPU](../docs/evaluation/phase5_post_native_actions_v1.md).
+
+Lịch sử:
+
 2026-09-15: [shards5/6 COMPLETE/audit](../docs/evaluation/phase5_grouped_v3_batch56_report.md).
 Tổng98/112audited(87,5%lịchnative),68completed/30model_error; guard41valid/30invalid
 responses và18backend failures không có response.168workers reaped/98VRAMrecoveries.
