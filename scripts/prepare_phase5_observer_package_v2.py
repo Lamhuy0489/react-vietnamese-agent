@@ -95,9 +95,14 @@ def rehearse(
         run("scripts/preflight_clean_worker.py")
         dummy, partial = evidence / "dummy", evidence / "dummy_partial"
         run("scripts/run_clean_v11_dev.py", "--output", str(dummy))
-        before = inventory(dummy)
+        before = inventory(dummy / "tasks")
+        dummy_identity = digest(dummy / "identity.json")
         run("scripts/run_clean_v11_dev.py", "--output", str(dummy), "--resume")
-        if inventory(dummy) != before or len(list((dummy / "tasks").iterdir())) != 21:
+        if (
+            inventory(dummy / "tasks") != before
+            or digest(dummy / "identity.json") != dummy_identity
+            or len(list((dummy / "tasks").iterdir())) != 21
+        ):
             raise ValueError("clean completed resume mismatch")
         partial.mkdir()
         shutil.copy2(dummy / "identity.json", partial / "identity.json")
@@ -141,7 +146,9 @@ def main() -> None:
     if output.exists() or not output.is_relative_to(ROOT / "build/kaggle"):
         raise ValueError("fresh build/kaggle output required")
     commit = subprocess.check_output(  # noqa: S603,S607 - fixed read-only git command
-        ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True  # noqa: S607
+        ["git", "rev-parse", "HEAD"],  # noqa: S607
+        cwd=ROOT,
+        text=True,
     ).strip()
     dataset = ROOT / "build/kaggle/phase5_guard_probe_v1_bundle03/dataset"
     manifest = dataset / "guard_bundle.json"

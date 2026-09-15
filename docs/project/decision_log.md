@@ -16,6 +16,11 @@
   layout, eight tools,21public clean Dummy tasks, both observer conditions and
   missing-only resume. Notebook/native metrics audit and remote execution are
   subsequent steps; no Phase5 acceptance changes at this CPU milestone.
+- First isolated package rehearsal stopped at the clean resume check: its
+  invocation summary records new timestamps by design. Scope immutability to
+  task checkpoints and run identity, matching the existing clean runner contract.
+  Retain preflight01 logs/output and use a new preflight02 path after the check
+  correction. No model was loaded and no GPU submission occurred.
 
 ## 2026-09-15 — Freeze a separate native-shaped observer probe (CPU only)
 
