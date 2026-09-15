@@ -11,9 +11,11 @@ Tổng68 completed/30 model_error, không phải semantic success. Shard5 QUERYL
 có10 PRE malformed JSON và10 POST backend failures; shard6 QUOTED có20 valid
 PRE/POST responses.1168 raw/remote files scan/0credentials; cả28 task recovered.
 [Báo cáo mới nhất](../docs/evaluation/phase5_grouped_v3_batch56_report.md).
-Shard7 ROWLIST chưa xác nhận chạy: attempt01 hết2GPU slots, attempt02 HTTP409
-dù5/6đã COMPLETE. [Admission recovery](../docs/evaluation/phase5_grouped_v3_s7_admission_report.md).
-Chuẩn bị attempt03 với tên đích mới, chỉ đổi id/title, giữ nguyên executable.
+**Shard7 ROWLIST attempt03 v1 RUNNING**, kiểm2026-09-15 05:06:57UTC, ID134443063.
+[Actual notebook/receipt và lịch sử lỗi](../docs/evaluation/phase5_grouped_v3_s7_admission_report.md).
+Actual handle `huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3`; nguồn tải ngược
+khớp executable đã khóa. Attempt01 hết2GPUslots,02HTTP409 được giữ nguyên.
+Đã gửi đủ112ca;14ca cuối chưa có kết quả để audit, không cộng vào98/112.
 
 Lịch sử đã chốt:
 Shard1 SOURCEBINDING: 4 completed/10 model_error, 10 PRE JSON-syntax errors và

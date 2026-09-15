@@ -4,12 +4,16 @@ Cập nhật: 2026-09-15. Chỉ dẫn hiện hành; lịch sử không thay th�
 
 ## Đang làm
 
-**Việc tiếp tục ngay: gửi launcher03 cho shard7 ROWLIST, nếu không xung đột tiếp.**
+**Việc tiếp tục ngay: theo dõi shard7 ROWLIST R3 v1 RUNNING, không gửi lại.**
 [Admission report/receipt](../docs/evaluation/phase5_grouped_v3_s7_admission_report.md).
-Attempt01 bị giới hạn2GPU; attempt02 HTTP409. Chưa có confirmed7version/session;
-không chạy helper submit cũ hoặc ghi đè outputs. Launcher03 chỉ đổi id/title
-sang `huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3`, wrapper/source nguyên khóa.
-Nếu409lặp lại, giữ raw và dừng để xử lý nền tảng; không đổi tài khoản/xóa notebook.
+Actual `huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3`, kernel ID134443063,
+v1RUNNING lúc2026-09-15 05:06:57UTC, failureMessage=null. Source/metadata tải
+ngược khớp; GitHub evidence875399d trước push. [Submission03](../experiments/manifests/phase5_grouped_v3_s7_submission03.json).
+Attempt01 bị giới hạn2GPU/02HTTP409 được giữ nguyên; không dùng địa chỉ cũ.
+Launcher03 chỉ đổi id/title, wrapper/source nguyên khóa. Không chạy helper
+submit cũ hoặc ghi đè outputs; cả112ca đã gửi,14ca cuối đang chờ kết quả.
+Khi terminal: verifyversion/tải fresh output/releaseaudit hai lần bằng
+submission03, summary/scan/timing/lifecycle. Không tự thêm ROWLIST column grants.
 
 **Shards5 QUERYLEAK / 6 QUOTED v1 COMPLETE/audit**, kiểm2026-09-15 04:51UTC.
 IDs134393202/134393213;502+662raw/4remote hashes khớp, scan1168files/0credentials.
@@ -103,12 +107,12 @@ Native v2 source `3486dbf` đã ghép. **Thu hồi kết luận package/import i
 của hai receipt cũ: overlay nằm dưới `configs`, editable install đã cung cấp
 module từ repo. Giữ nguyên raw/receipt. Xem phần đính chính trong báo cáo native.
 Package v3 preflight đã đạt; 14 regression tests đạt, Ruff/mypy392 đạt trước freeze.
-Trạng thái native mới nhất ở đầu trang:0–6audited;7chưa có confirmed submission.
+Trạng thái native mới nhất ở đầu trang:0–6audited;7ROWLIST R3 v1RUNNING.
 
 1. CPU QA và preflight đã hoàn tất; không chạy lại. Selected QA receipt đính chính
    scope Test của full historical suite, không coi flag cũ là filesystem audit.
-2. Shards0–6 terminal/audit; raw/summaries đã đóng. Gửi shard7 launcher03 sau
-   GitHub push và pin/live access check; không dùng hai địa chỉ submission lỗi.
+2. Shards0–6 terminal/audit; raw/summaries đã đóng. Shard7R3đangRUNNING,
+   kiểm terminal/tải mới/audit, không gửi lại hoặc dùng hai địa chỉ lỗi.
 3. Theo [contract v3](../docs/architecture/phase5_grouped_package_v3_contract.md),
    giữ source `0d86536`, package đã khóa, timeout 14.400s mỗi shard; ghi URL/version
    thực tế như receipts trên. Audit từng shard trước khi mở rộng shard 5–7.

@@ -1,7 +1,8 @@
 # Grouped v3 shard7 ROWLIST — admission recovery
 
 2026-09-15. Source `0d865365b7881144756f804441ca24ed48935f7f`; 14 preselected
-Dev tasks, all A0–A6 attack/benign branches. No ROWLIST inference confirmed yet.
+Dev tasks, all A0–A6 attack/benign branches. **Attempt03 admitted v1, RUNNING**
+at2026-09-15 05:06:57UTC; no terminal output audit or task results yet.
 
 ## Preserved attempts
 
@@ -10,9 +11,11 @@ Dev tasks, all A0–A6 attack/benign branches. No ROWLIST inference confirmed ye
    CLI exit0 did not mean successful submission; no version/URL success line.
 2. `results/phase5_grouped_v3_s7_submission02/push_s7.log`: after shards5/6
    COMPLETE, SaveKernel returned HTTP409 Conflict. No version/session confirmed.
-3. Prepared only: new matching title/slug
-   `huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3`; no confirmed URL/version yet.
-   R3 labels admission attempt3, not the A3 defense condition.
+3. New matching title/slug admitted **version1**, kernel ID134443063:
+   [react-vn-grouped-dev-v3-rowlist-r3](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3).
+   R3 labels admission attempt3, not the A3 defense condition. GitHub evidence
+   `875399dfeeb0a5feb99c674a479c90ab72ceef94` verified before submission.
+   [Submission/status/source receipt](../../experiments/manifests/phase5_grouped_v3_s7_submission03.json).
 
 Owner first allowed concurrency, then requested waiting after Kaggle rejected
 the third simultaneous GPU batch. This account's observed cap was two; quota
@@ -41,7 +44,18 @@ archive/expanded fresh-venv and full-QA evidence applies to identical executable
 bytes; do not claim a new full rehearsal was run for changing a remote address.
 Private/offline T4x2, model v1, pinned image and14,400s timeout retained.
 
-Next: push this fresh address once; record actual URL/version/id and pull/verify
-source before marking RUNNING. If another conflict occurs, preserve it and stop
-submission attempts pending platform resolution. Terminal audit remains required
-before counting the final14 tasks. No held-out Test/private oracle access.
+Pulled wrapper hash matches the original frozen shard7 executable; remote
+metadata confirms private/offline, T4, image and Dataset/model pins. Initial
+status is RUNNING/failureMessage=null. Raw push/receipt in
+`results/phase5_grouped_v3_s7_submission03`; remote/status in
+`results/phase5_grouped_v3_s7_monitor01`. Both earlier failed identities remain
+unchanged. Successful new-address submission does not prove why the old409 arose.
+
+Next: monitor **actual ROWLIST R3 handle**, not the rejected `...-shard-7` alias.
+Do not push again. At terminal, verify live version, download every output page
+into a fresh directory, run existing release auditor twice using submission03,
+then descriptive summary/scan. Audit log filename follows actual rowlist-r3
+handle; semantic shard index stays7. Only after audit count the final14 tasks.
+All112 tasks have now been submitted in eight admitted notebooks;98/112(87.5%)
+are audited,14 still pending. Phase5 stays4/7≈57%, not accepted. No Test/private
+oracle access, new model conditions or ROWLIST grant changes.

@@ -5,8 +5,9 @@
 2026-09-15: [shards5/6 COMPLETE/audit](../docs/evaluation/phase5_grouped_v3_batch56_report.md).
 Tổng98/112audited(87,5%lịchnative),68completed/30model_error; guard41valid/30invalid
 responses và18backend failures không có response.168workers reaped/98VRAMrecoveries.
-Shard7 admission01 hết2GPUslots;02HTTP409; [launcher03](../docs/evaluation/phase5_grouped_v3_s7_admission_report.md)
-chỉ đổi id/title, không đổi thực nghiệm. Phase5gate vẫn4/7≈57%.
+Shard7 admission01 hết2GPUslots;02HTTP409; [attempt03 v1RUNNING](../docs/evaluation/phase5_grouped_v3_s7_admission_report.md)
+lúc2026-09-15 05:06UTC chỉ đổi id/title, không đổi thực nghiệm. Đã gửi đủ112ca,
+14ca cuối chưa audit; Phase5gate vẫn4/7≈57%.
 
 Mốc trước:
 

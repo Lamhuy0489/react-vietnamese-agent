@@ -21,6 +21,20 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**Shard7 ROWLIST R3 v1 RUNNING**, kiểm2026-09-15 05:06:57UTC:
+[notebook thật](https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3),
+kernel ID134443063; [submission03](../experiments/manifests/phase5_grouped_v3_s7_submission03.json),
+[admission report](../docs/evaluation/phase5_grouped_v3_s7_admission_report.md).
+Source `0d865365b7881144756f804441ca24ed48935f7f`, GitHub evidence875399d trước
+push; [Dataset guard15](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+v1private/ready, modelv1, offlineT4x2/14.400s/image pins giữ nguyên. Quota trước
+attempt02/03 snapshot23,83h. Source tải ngược khớp. R3=admissionattempt3,
+không phải securitylevelA3; vẫn đủ14taskA0–A6 của shard7. Không submit lại.
+Giữ hai attempt cũ: hết2GPUslots rồiHTTP409; chúng không có confirmed run/version.
+Tên mới chỉ thay id/title để phục hồi admission, chưa có terminal result.
+
+### Shards5/6 đã terminal audit
+
 **Grouped v3 shards5/6 v1 COMPLETE/audit**, kiểm2026-09-15 04:51UTC:
 
 | Notebook thật | Version / ID | Bằng chứng |
@@ -37,10 +51,10 @@ Terminal/audit:502+662raw/4remote hashes khớp;scan1168files/0credentials.
 [Terminal5](../experiments/manifests/phase5_grouped_v3_s5_terminal01.json),
 [terminal6](../experiments/manifests/phase5_grouped_v3_s6_terminal01.json); report
 có audits/summaries/timing. Tổng98/112audited, không phải semantic success.
-Không submit lại5/6. Shard7 chưa xác nhận URL/version: hết2GPUslots rồiHTTP409;
+Không submit lại5/6. Shard7 hai lượt đầu lỗi: hết2GPUslots rồiHTTP409;
 [admission report](../docs/evaluation/phase5_grouped_v3_s7_admission_report.md).
-Tên launcher03 `huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3` hiện mới dự kiến,
-không coi là notebook đã có; giữ nguyên danh tính hai attempt lỗi trước.
+Tên launcher03 `huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3` đã v1RUNNING
+theo mục đầu trang; giữ nguyên danh tính hai attempt lỗi trước.
 
 ### Grouped v3 shards3/4 — terminal đã kiểm
 

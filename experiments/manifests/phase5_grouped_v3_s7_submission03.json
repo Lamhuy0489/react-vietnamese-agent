@@ -1,0 +1,112 @@
+{
+  "protocol": "phase5_grouped_v3_submission",
+  "observed_at_utc": "2026-09-15T05:06:28.556007+00:00",
+  "requested_kernel": "huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3",
+  "original_preflight_requested_id": "huylmhuhu/react-vn-grouped-dev-v3-s7",
+  "launcher_receipt_sha256": "17bd24331535df255d7405a7050fb326174c002575d5a0690f2cee9fbd0fb162",
+  "actual_kernel": "huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3",
+  "notebook_url": "https://www.kaggle.com/code/huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3",
+  "kernel_version": 1,
+  "submission_confirmed": true,
+  "observed_status": "RUNNING",
+  "status_is_terminal": false,
+  "source_commit": "0d865365b7881144756f804441ca24ed48935f7f",
+  "github_evidence_commit": "875399dfeeb0a5feb99c674a479c90ab72ceef94",
+  "github_pushed_before_submission": true,
+  "preflight_sha256": "d929631e5557e656e21b1394b39a4175aec310883367d2a1ac3fedd8cbe1ec52",
+  "cpu_qa_sha256": "34b045a651ab19931d37cced4295da42224ef208f3a4ed8ae05565800b905ec7",
+  "preceding_shards_audit_sha256": {
+    "5": "cfe5593dcd33754085f08e6374cbb254131e09f96ad2dd7862f791759c3d6436",
+    "6": "95bb0b6bd8966c6315123b2ea034b6199c74b4feb1155a29d0ec21644c398ef9"
+  },
+  "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+  "dataset_version_pre_submit": 1,
+  "model_handle": "qwen-lm/qwen2.5/transformers/7b-instruct/1",
+  "shard": 7,
+  "expected_tasks": 14,
+  "expected_total_schedule": 112,
+  "timeout_seconds": 14400,
+  "requested_accelerator": "NvidiaTeslaT4",
+  "private": true,
+  "internet_enabled": false,
+  "semantic_retry": false,
+  "phase5_accepted": false,
+  "remote_source_hash_matches": true,
+  "submission_command": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "-m",
+    "kaggle",
+    "kernels",
+    "push",
+    "-p",
+    "build/kaggle/phase5_grouped_v3_s7_launcher03",
+    "--timeout",
+    "14400",
+    "--accelerator",
+    "NvidiaTeslaT4"
+  ],
+  "submission_log_sha256": "7cb294dbfd84f44ebdf384192479f14a39ae0fe8a9bfdcb21624114a49c1b8a7",
+  "access_evidence_sha256": {
+    "quota.log": "827499baf197d9a902d9c1be2bbd70158ec9de97b033b9c8b940d6b0a7ed8686",
+    "dataset.log": "56f63d893f166f7cf38d5d212a5335798fcfde2198cc01dfaae24bb316aec585"
+  },
+  "dispatch_scope": "Admission attempt3 after slot rejection and HTTP409; metadata id/title-only replacement, unchanged executable package. Shards5/6 COMPLETE/audited. Not a semantic retry.",
+  "prior_capacity_rejection_log_sha256": "c7d2ae0c175b9314a2d53a5bfeb1cadc3433ac4c073ae786297dc6ed375c96ea",
+  "prior_submission_confirmed": false,
+  "concurrent_status_observations": {
+    "5": {
+      "observed_at_utc": "2026-09-15T04:51:21.277146+00:00",
+      "actual_kernel": "huylmhuhu/react-vn-grouped-dev-v3-shard-5",
+      "session_status": {
+        "status": "COMPLETE",
+        "failureMessage": null
+      }
+    },
+    "6": {
+      "observed_at_utc": "2026-09-15T04:51:21.621244+00:00",
+      "actual_kernel": "huylmhuhu/react-vn-grouped-dev-v3-shard-6",
+      "session_status": {
+        "status": "COMPLETE",
+        "failureMessage": null
+      }
+    }
+  },
+  "decision_log_sha256": "1e549488cde29837c9c23f214eab0baecc5b2167a83c77378fc1aa38cf343826",
+  "kernel_id": 134443063,
+  "remote_metadata": {
+    "id": "huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3",
+    "id_no": 134443063,
+    "title": "ReAct VN Grouped Dev v3 ROWLIST R3",
+    "code_file": "react-vn-grouped-dev-v3-rowlist-r3.py",
+    "language": "python",
+    "kernel_type": "script",
+    "is_private": true,
+    "enable_gpu": true,
+    "enable_tpu": false,
+    "enable_internet": false,
+    "keywords": [],
+    "dataset_sources": [
+      "huylmhuhu/react-vn-guard15-probe-data-v1"
+    ],
+    "kernel_sources": [],
+    "competition_sources": [],
+    "model_sources": [
+      "qwen-lm/qwen2.5/Transformers/7b-instruct/1"
+    ],
+    "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+    "machine_shape": "NvidiaTeslaT4"
+  },
+  "remote_sha256": {
+    "kernel-metadata.json": "8857387698181cad5e81847bded472fb6067f797cb9b5c3b395613d30cea430b",
+    "react-vn-grouped-dev-v3-rowlist-r3.py": "2f0e3980ccdfc17a6b832a51358fbba3e64d6ea827d6d96c855432a7b7142616"
+  },
+  "original_submission_sha256": "3c2560506971a12600d1e2a9313b159886d639e72903617a80f22c2035c62c86",
+  "status_observation": {
+    "observed_at_utc": "2026-09-15T05:06:57.848478+00:00",
+    "actual_kernel": "huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3",
+    "session_status": {
+      "status": "RUNNING",
+      "failureMessage": null
+    }
+  }
+}
