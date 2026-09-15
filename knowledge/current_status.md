@@ -23,6 +23,11 @@ Candidate bare-JSON prompt source `f7492fa` đã đạt preflight01 archive/expa
 Access mới: GPU22.80h, Datasetguard15 ready/v1. Chưa có candidate GPU run;
 notebook private mới chỉ được submit một lần sau khi kiểm metadata/package hash.
 
+Candidate đã submit một lần: [notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-guard-bare-json-v1),
+v1/ID134511636, receipt lúc16:29UTC ghi RUNNING; source hash khớp.
+[Submission receipt](../experiments/manifests/phase5_guard_bare_json_submission01.json).
+Chờ terminal để tải fresh output và audit hai lượt; không submit lại.
+
 Các mục bên dưới là lịch sử trước terminalaudit, không dùng làm chỉ dẫn submit lại.
 
 **Observer native launcher/audit đã xong và preflight03 đạt**, source `c0930bf`.

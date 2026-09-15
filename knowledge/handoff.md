@@ -34,6 +34,9 @@ Access01 lúc2026-09-15: owner `huylmhuhu`, GPU còn22.80h, Datasetguard15 ready
 Gói `build/kaggle/phase5_guard_bare_json_package_v1_preflight01` đủ điều kiện
 cho **một** notebook private mới. Nếu submit: dùng actual handle mới, verify
 version/source rồi download/audit hai lượt; không submit lại baseline/candidate.
+Đã thực hiện submit đúng một lần: actual `huylmhuhu/react-vn-guard-bare-json-v1`,
+v1/ID134511636, receipt ghi RUNNING và source hash khớp. Bước hiện tại là verify
+terminal, tải output mới và audit; không gửi version thứ hai.
 
 **Observer native đã sẵn sàng gửi:** source `c0930bf`, notebook và native audit
 cho4tasks;53focused checks/setup/Ruff/mypy407 đạt, helper đối chiếu logGPU cũ đạt.

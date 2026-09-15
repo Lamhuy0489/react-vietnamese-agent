@@ -1,0 +1,30 @@
+{
+  "protocol": "guard_bare_json_submission_v1",
+  "submission_confirmed": true,
+  "submitted_at_utc": "2026-09-15T16:29:51.854329+00:00",
+  "actual_kernel": "huylmhuhu/react-vn-guard-bare-json-v1",
+  "notebook_url": "https://www.kaggle.com/code/huylmhuhu/react-vn-guard-bare-json-v1",
+  "kernel_id": 134511636,
+  "kernel_version": 1,
+  "session_status": {
+    "status": "RUNNING",
+    "failureMessage": null
+  },
+  "source_commit": "f7492fae80876891237fcd37084e79ed5af60a2e",
+  "github_evidence_commit": "1f630ce",
+  "preflight_sha256": "a2bc5b8550838410d2156be7cadbf0e1b8a695df8c4affa868e13ac7a31f9afa",
+  "preflight_path": "experiments/manifests/phase5_guard_bare_json_package_v1_preflight01.json",
+  "remote_source_sha256": "101c5f7b33d4664fdfbf464648f292e59f980436f904ee14d5d179a16694f299",
+  "local_kernel_sha256": "101c5f7b33d4664fdfbf464648f292e59f980436f904ee14d5d179a16694f299",
+  "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+  "dataset_version": 1,
+  "private": true,
+  "internet": false,
+  "machine_shape": "NvidiaTeslaT4",
+  "model_sources": [
+    "qwen-lm/qwen2.5/transformers/7b-instruct/1"
+  ],
+  "timeout_seconds": 14400,
+  "push_log_sha256": "ab68357c8c845f49b05bb5aa734a12e3cf82d96966ff2e12460c33ccc75635b0",
+  "phase5_accepted": false
+}

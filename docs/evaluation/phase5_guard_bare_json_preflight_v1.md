@@ -18,10 +18,12 @@ not LLM quality or a claim that prompt wording fixes native behavior.
 Receipt: [preflight manifest](../../experiments/manifests/phase5_guard_bare_json_package_v1_preflight01.json).
 Package: `build/kaggle/phase5_guard_bare_json_package_v1_preflight01`.
 Access check 2026-09-15: owner `huylmhuhu`, GPU remaining 22.80h, guard15
-Dataset ready/current v1. A fresh private Kaggle notebook is now eligible for
-one submission; it must use this source/package and a new run identity.
+Dataset ready/current v1. Candidate was submitted once as private notebook
+[guard-bare-json-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-guard-bare-json-v1),
+version1, kernel ID134511636; remote source hash matches the package. It was
+`RUNNING` at submission receipt time. [Submission receipt](../../experiments/manifests/phase5_guard_bare_json_submission01.json).
 
-Open: submit once, verify actual handle/version/source, download fresh output,
-run a source/bootstrap/native audit twice, and record guard framing, tool path,
-timing and lifecycle. Keep the closed observer v2 output immutable. Phase 5
-acceptance remains open; no Test run or semantic retry is authorized.
+Open: verify terminal, download fresh output, run a source/bootstrap/native audit
+twice, and record guard framing, tool path, timing and lifecycle. Keep the closed
+observer v2 output immutable. Phase 5 acceptance remains open; no Test run or
+semantic retry is authorized.
