@@ -6,7 +6,16 @@ phạm vi/owner waiver trong [phase status](../docs/project/phase_status.md).
 
 ## Công việc hiện hành
 
-**Shards 0–4 đã COMPLETE/audit: 70/112 ca native (62,5% lịch thử)**.
+**Shards 0–6 đã COMPLETE/audit: 98/112 ca native (87,5% lịch thử)**.
+Tổng68 completed/30 model_error, không phải semantic success. Shard5 QUERYLEAK
+có10 PRE malformed JSON và10 POST backend failures; shard6 QUOTED có20 valid
+PRE/POST responses.1168 raw/remote files scan/0credentials; cả28 task recovered.
+[Báo cáo mới nhất](../docs/evaluation/phase5_grouped_v3_batch56_report.md).
+Shard7 ROWLIST chưa xác nhận chạy: attempt01 hết2GPU slots, attempt02 HTTP409
+dù5/6đã COMPLETE. [Admission recovery](../docs/evaluation/phase5_grouped_v3_s7_admission_report.md).
+Chuẩn bị attempt03 với tên đích mới, chỉ đổi id/title, giữ nguyên executable.
+
+Lịch sử đã chốt:
 Shard1 SOURCEBINDING: 4 completed/10 model_error, 10 PRE JSON-syntax errors và
 4 POST BACKEND_FAILURE; shard2 DATABASE: 14 completed, 21 guard responses hợp lệ
 (11 PRE/10 POST). Hai shard thêm 30 tool calls; tất cả 28 task recovered và 48
@@ -18,9 +27,8 @@ Shard3: 14 completed nhưng 0 tool/guard calls, đều nói đã gửi mã bằn
 mà không thực hiện mock send. Shard4: 4 completed/10 model_error, 10 PRE JSON
 errors và 4 POST backend failures; 12 tool calls. 918 raw/remote files scan sạch;
 28 task recovered/48 workers reaped. Tổng 50 completed/20 model_error, không phải
-semantic success. **Shards5 QUERYLEAK/6 QUOTED v1 đang RUNNING**, kiểm
-2026-09-14 20:15 UTC; remote source/hash khớp. [Report/URL/receipts](../docs/evaluation/phase5_grouped_v3_batch56_report.md).
-28 ca đang chạy chưa cộng vào audited coverage; audit xong rồi shard7 ROWLIST.
+semantic success. Shards5/6 ban đầu RUNNING ngày2026-09-14; nay đã COMPLETE/audit
+theo mục đầu trang. Không submit/rerun lại các shard0–6.
 
 Nền đã chốt:
 

@@ -1,0 +1,31 @@
+{
+  "protocol": "grouped_v3_launcher_address_delta",
+  "shard": 7,
+  "source_commit": "0d865365b7881144756f804441ca24ed48935f7f",
+  "preflight_sha256": "d929631e5557e656e21b1394b39a4175aec310883367d2a1ac3fedd8cbe1ec52",
+  "metadata_delta": {
+    "id": {
+      "before": "huylmhuhu/react-vn-grouped-dev-v3-s7",
+      "after": "huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3"
+    },
+    "title": {
+      "before": "ReAct VN Grouped Dev v3 shard 7",
+      "after": "ReAct VN Grouped Dev v3 ROWLIST R3"
+    }
+  },
+  "source_pins_verified": 175,
+  "launcher_sha256": {
+    "kernel-metadata.json": "21438209eec2294b63472224054630d0b63f9a534bc5142759b9b6849eae26eb",
+    "grouped_native_kernel_v3.py": "2f0e3980ccdfc17a6b832a51358fbba3e64d6ea827d6d96c855432a7b7142616"
+  },
+  "prior_admission_evidence_sha256": {
+    "results/phase5_grouped_v3_s7_submission01/push_s7.log": "c7d2ae0c175b9314a2d53a5bfeb1cadc3433ac4c073ae786297dc6ed375c96ea",
+    "results/phase5_grouped_v3_s7_submission02/push_s7.log": "ab0a4083f65d3d295cb5072e54124cac880b652a41d219ba524bcdb8bc438d97",
+    "results/phase5_grouped_v3_s7_admission01/observations.json": "5a3feb2cfb93148e6afc4a01b65bc55ee5f1e88298198c5a698b451182555d70",
+    "results/phase5_grouped_v3_s7_conflict01/observations.json": "d73695d4ee2832b97f61aaa7ff09fffec271cf38e4ec3b8351f30b2a53f78acb"
+  },
+  "prior_submission_confirmed": false,
+  "semantic_retry": false,
+  "phase5_accepted": false,
+  "scope": "Remote address only. Executable package unchanged; preserve both failed admissions; no confirmed shard7 run yet."
+}

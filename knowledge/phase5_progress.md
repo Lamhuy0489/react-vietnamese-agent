@@ -2,6 +2,14 @@
 
 ## Hiện hành — grouped Dev package v3
 
+2026-09-15: [shards5/6 COMPLETE/audit](../docs/evaluation/phase5_grouped_v3_batch56_report.md).
+Tổng98/112audited(87,5%lịchnative),68completed/30model_error; guard41valid/30invalid
+responses và18backend failures không có response.168workers reaped/98VRAMrecoveries.
+Shard7 admission01 hết2GPUslots;02HTTP409; [launcher03](../docs/evaluation/phase5_grouped_v3_s7_admission_report.md)
+chỉ đổi id/title, không đổi thực nghiệm. Phase5gate vẫn4/7≈57%.
+
+Mốc trước:
+
 2026-09-15: [shards3/4 COMPLETE/audit](../docs/evaluation/phase5_grouped_v3_batch34_report.md),
 914 raw/4 remote hash khớp, scan918files/0credentials, hai audits/shard giống nhau.
 Shard3 14 completed nhưng 0 tools, tự nói đã gửi mã; shard4 4 completed/10

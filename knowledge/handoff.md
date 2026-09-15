@@ -4,14 +4,23 @@ Cập nhật: 2026-09-15. Chỉ dẫn hiện hành; lịch sử không thay th�
 
 ## Đang làm
 
-**Việc tiếp tục ngay: theo dõi shards5 QUERYLEAK / 6 QUOTED, không submit lại.**
-Cả hai v1 RUNNING lúc 2026-09-14 20:15 UTC, IDs134393202/134393213.
+**Việc tiếp tục ngay: gửi launcher03 cho shard7 ROWLIST, nếu không xung đột tiếp.**
+[Admission report/receipt](../docs/evaluation/phase5_grouped_v3_s7_admission_report.md).
+Attempt01 bị giới hạn2GPU; attempt02 HTTP409. Chưa có confirmed7version/session;
+không chạy helper submit cũ hoặc ghi đè outputs. Launcher03 chỉ đổi id/title
+sang `huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3`, wrapper/source nguyên khóa.
+Nếu409lặp lại, giữ raw và dừng để xử lý nền tảng; không đổi tài khoản/xóa notebook.
+
+**Shards5 QUERYLEAK / 6 QUOTED v1 COMPLETE/audit**, kiểm2026-09-15 04:51UTC.
+IDs134393202/134393213;502+662raw/4remote hashes khớp, scan1168files/0credentials.
+Hai audits/shard byte-identical. QUERYLEAK4completed/10model_error; QUOTED14
+completed/20valid PRE/POST. Tổng98/112audited(87,5%),68completed/30model_error.
 [Report, actual URLs, receipts và raw paths](../docs/evaluation/phase5_grouped_v3_batch56_report.md).
 Source `0d86536`, GitHub evidence `80a8bae` đã push; 175source và kernel pins
 khớp, mã tải ngược xác thực. Dataset private ready/v1, quota trước gửi25,34h;
-offline T4x2/14.400s. 28 ca mới chưa có kết quả để audit. Khi terminal, kiểm
-current version/source, tải fresh batch56, release audit hai lần/summary/scan;
-sau đó mới gửi shard7 ROWLIST. Không đổi model/prompt/data, không rerun lỗi.
+offline T4x2/14.400s. Raw/summary đã đóng, không tải/rerun trùng; xem report.
+49focused tests/setup/Ruff/mypy394 đạt; full worker QA không chạy lại.
+Chỉ còn14caROWLIST trong lịch native; Phase5 vẫn4/7≈57%, chưa quality/freeze.
 
 **Shard 0 COMPLETE, terminal audit đã đạt**. Xem
 [báo cáo](../docs/evaluation/phase5_grouped_v3_s0_report.md),
@@ -94,13 +103,12 @@ Native v2 source `3486dbf` đã ghép. **Thu hồi kết luận package/import i
 của hai receipt cũ: overlay nằm dưới `configs`, editable install đã cung cấp
 module từ repo. Giữ nguyên raw/receipt. Xem phần đính chính trong báo cáo native.
 Package v3 preflight đã đạt; 14 regression tests đạt, Ruff/mypy392 đạt trước freeze.
-Trạng thái native mới nhất ở đầu trang: 0–4 audited; 5/6 RUNNING; 7 chưa gửi.
+Trạng thái native mới nhất ở đầu trang:0–6audited;7chưa có confirmed submission.
 
 1. CPU QA và preflight đã hoàn tất; không chạy lại. Selected QA receipt đính chính
    scope Test của full historical suite, không coi flag cũ là filesystem audit.
-2. Shards 0–4 đã terminal/audit; raw và summaries đã đóng, không tải/rerun trùng.
-   Shards5 QUERYLEAK/6 QUOTED đã RUNNING, không gửi lại. Tải/audit khi terminal;
-   giữ lỗi. Sau GitHub push/live quota/Dataset check mới gửi shard7 ROWLIST.
+2. Shards0–6 terminal/audit; raw/summaries đã đóng. Gửi shard7 launcher03 sau
+   GitHub push và pin/live access check; không dùng hai địa chỉ submission lỗi.
 3. Theo [contract v3](../docs/architecture/phase5_grouped_package_v3_contract.md),
    giữ source `0d86536`, package đã khóa, timeout 14.400s mỗi shard; ghi URL/version
    thực tế như receipts trên. Audit từng shard trước khi mở rộng shard 5–7.

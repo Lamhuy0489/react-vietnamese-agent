@@ -1,5 +1,23 @@
 # Decision Log
 
+## 2026-09-15 — Shard7 submission-address replacement after HTTP409
+
+- After both shards5/6 completed, unchanged shard7 submission02 received HTTP409
+  from SaveKernel. Preserve both admission failures. Read-only probes return403
+  for the requested alias,500 for title-derived GetKernel,404 for its status;
+  listing147 entries yields shards0–6 but no shard7. This does not prove absence
+  or establish a server root cause; no shard7 version/session is confirmed.
+- Prepare a fresh address `huylmhuhu/react-vn-grouped-dev-v3-rowlist-r3`, title
+  `ReAct VN Grouped Dev v3 ROWLIST R3` (R3 means third admission attempt, not A3).
+  Only metadata id/title values change, with title/slug now matching. Wrapper,
+  embedded package, all175 source pins and every runtime/mount setting remain
+  byte-bound to the existing full-QA preflight. Do not overwrite old metadata.
+- Attempt this new address once after pushing its launcher-delta receipt.
+  Preserve any further conflict and stop for platform resolution if repeated;
+  do not delete resources, cycle accounts, retry semantic outcomes or change the
+  112-task schedule. Original raw rejection logs and lookup observations remain
+  linked in the shard7 admission report.
+
 ## 2026-09-15 — Resume final shard after Kaggle slot rejection
 
 - The concurrent shard7 push was rejected with `Maximum batch GPU session count
