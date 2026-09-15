@@ -1,5 +1,14 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — native-library CPU COMPLETE/audit, 2026-09-16
+
+[Report/receipts](../docs/evaluation/phase5_guard_language_native_v1_run.md):
+tokenizerQwen đủ3069values/max36tokensinclEOS,248actualTransformersmask checks;
+10raw/2remote/86sourcepins, hai local audits giống nhau.58tests đạt.
+Đã đóng tokenizer/CPU-library compatibility, chưa native model generation hay
+quality. Còn adapter/processor-composition admission/audit/package; không jobpending.
+Phase5vẫn4/7≈57% acceptance; không quy đổi sốchecks thành acceptance.
+
 ## Hiện hành — finite-token language CPU, 2026-09-16
 
 [Report/receipt](../docs/evaluation/phase5_guard_token_language_v1_report.md).

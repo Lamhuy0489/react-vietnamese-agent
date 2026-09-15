@@ -1,0 +1,26 @@
+{
+  "protocol": "guard_language_cpu_submission_v1",
+  "submission_confirmed": true,
+  "observed_at_utc": "2026-09-15T18:28:13.711552+00:00",
+  "actual_kernel": "huylmhuhu/react-vn-guard-language-cpu-v1",
+  "notebook_url": "https://www.kaggle.com/code/huylmhuhu/react-vn-guard-language-cpu-v1",
+  "kernel_id": 134521565,
+  "kernel_version": 1,
+  "private": true,
+  "gpu_used": false,
+  "internet": false,
+  "timeout_seconds": 3600,
+  "source_commit": "2269fefa979a6027531516560c838a478c331914",
+  "github_evidence_commit": "cfd1dd9",
+  "preflight_path": "experiments/manifests/phase5_guard_language_cpu_preflight02_corrected.json",
+  "preflight_sha256": "dfc3813d266f5f984b2720b80333ffb9d4e1e03d5e36d5c020f7d11be1df239c",
+  "remote_source_sha256": "fdbbcce82d9f12c68dbd4fbcbe157dc5af34d768518c629b9d2c79f08b3c10e1",
+  "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+  "dataset_version": 1,
+  "session_status": {
+    "status": "QUEUED",
+    "failureMessage": null
+  },
+  "push_log_sha256": "a2d21584e2f74102e5d4daf98ad30dde277ebd0e1f5d06a724466555d4b2f784",
+  "phase5_accepted": false
+}

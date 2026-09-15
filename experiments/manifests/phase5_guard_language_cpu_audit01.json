@@ -1,0 +1,71 @@
+{
+  "limitations": "Authenticates executing source and bounded reported CPU checks; does not rerun native libraries or prove model generation.",
+  "native_metrics_recomputed_locally": false,
+  "observation_sha256": "4e1131b3965930a7da51ed28fc8da29dbb4e67dcf43acf0628d506735b2992e7",
+  "phase5_accepted": false,
+  "protocol": "guard_language_cpu_release_audit_v1",
+  "raw_sha256": {
+    "language/admission.json": "abf9ea48b156dac78197b91d800b269857671b8d98536bf436ce70873cb21fb6",
+    "language/summary.json": "2abe9f0e74f165afae3f9a24d58bb5031c228328aebe6b74bfadcac81cb0d060",
+    "language/tokenizer/config.json": "98d2ff8cc47488d08a2b0b3acf4eb99ef210779b42bd48605f6b8e36acdbf670",
+    "language/tokenizer/generation_config.json": "e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6",
+    "language/tokenizer/merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+    "language/tokenizer/tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "language/tokenizer/tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+    "language/tokenizer/vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+    "language_bootstrap.json": "e0b0d4769ce275be167478282b97257348d829d3548c8d3cf75dbbd66274adfe",
+    "react-vn-guard-language-cpu-v1.log": "c251a78cf9ce4b580676aec0e1b5cabcf92f9f5b574dd25bbdd8d927a93bc73e"
+  },
+  "remote_sha256": {
+    "kernel-metadata.json": "2f7f25bae7072dc826c6e8fca63e045b1d9b302b337244103ed3aed98f156c56",
+    "react-vn-guard-language-cpu-v1.py": "fdbbcce82d9f12c68dbd4fbcbe157dc5af34d768518c629b9d2c79f08b3c10e1"
+  },
+  "source_authenticated": true,
+  "source_pins_verified": 86,
+  "summary": {
+    "case_indices": [
+      0,
+      1,
+      2,
+      3,
+      27,
+      111,
+      1022,
+      1023,
+      2045,
+      2046,
+      3066,
+      3068
+    ],
+    "compilation_seconds": 0.8390655780000316,
+    "conflicting_processor_can_override": true,
+    "documents": 3069,
+    "failures_propagated": [
+      "ValueError",
+      "ValueError",
+      "KeyboardInterrupt"
+    ],
+    "gpu_used": false,
+    "guard_quality_validated": false,
+    "language_identity": "f8df0c2892984e8c6520a8e3bcf4e91dc793d8950165e99284c904a93f6bc3fb",
+    "library_verified": true,
+    "mask_seconds": 0.5213040539999838,
+    "max_response_tokens_with_eos": 36,
+    "model_generate_calls": 0,
+    "model_weights_loaded": 0,
+    "native_generation_validated": false,
+    "native_mask_checks": 248,
+    "phase5_accepted": false,
+    "private_ground_truth_accessed": false,
+    "processor_source_sha256": "c2cb748555325f429689a12cb4a9607dd3e2f9503b4eca6287702790c14fd780",
+    "protocol": "guard_language_native_cpu_v1",
+    "source_commit": "2269fefa979a6027531516560c838a478c331914",
+    "test_payload_accessed": false,
+    "tokenizers": "0.22.2",
+    "torch": "2.10.0+cu128",
+    "torch_threads_restored": true,
+    "transformers": "5.5.0",
+    "valid": true
+  },
+  "valid": true
+}

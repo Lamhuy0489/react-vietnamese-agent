@@ -6,6 +6,16 @@ Phase1, clean_v1.1 Phase2, adversarial_v2 Phase3 và Phase4 accepted theo
 
 ## Công việc hiện hành
 
+**Native tokenizer/logits CPU v1 COMPLETE và audit xong**:
+[report/receipts](../docs/evaluation/phase5_guard_language_native_v1_run.md).
+Qwen thật đủ3069combinations/max36tokensinclEOS;248mask checks qua Transformers
+thực.86source/10raw/2remote xác minh, hai audits giống nhau;58tests/setup/Ruff/
+mypy424/knowledge đạt. Không model.generate/GPU/Test; không jobpending.
+Bước tiếp: guard-only native adapter với generation/cache/audit identity riêng
+và admission chống conflicting processors, rồi exactpackage/native protocol.
+Phát hiện ForcedBOS phía sau có thể ghi đè mask; không được bỏ qua kiểm tra này.
+Phase5vẫn4/7≈57%; các mốc CPU trước bên dưới là lịch sử.
+
 **Finite token-language CPU đã xong**, source `2017e24`:
 [report/receipt](../docs/evaluation/phase5_guard_token_language_v1_report.md).
 3069tổ hợp schema/202846prefix/6138EOS checks;46tests (30new), setup/Ruff/mypy420

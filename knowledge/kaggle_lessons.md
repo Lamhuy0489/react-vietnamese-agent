@@ -1,5 +1,24 @@
 # Ghi chú Kaggle Phase 1
 
+## Guard tokenizer / logits CPU compatibility — 2026-09-16
+
+- [Native CPU report](../docs/evaluation/phase5_guard_language_native_v1_run.md):
+  reuse pinned private Dataset but read only six tokenizer/config files, no
+  weight payload/model.generate/GPU. Test actual libraries before inference.
+- Source mount and tokenizer mount each need archive/expanded coverage. Execute
+  the actual launcher CLI in an explicitly labelled metadata-only local rehearsal;
+  it does not claim native imports passed. This CPU notebook completed at v1.
+- Resume validation binds task checkpoints and identity; aggregate reports may
+  legitimately change. Preserve failed preflight rather than weakening checkpoint
+  checks or retrying model tasks.
+- Do not extract a digest by splitting merged shell stdout/stderr: macOS locale
+  warnings polluted a selected hash. Hash file bytes directly and require64hex;
+  admission rejected this locally before any Kaggle submission. Keep the invalid
+  selection and corrected selection distinct; do not rerun the package for it.
+- Prefix masking alone is not full decoding-policy admission. Actual ForcedBOS
+  after the mask can override it. Bind/check the complete processor chain and
+  completion rules before opting a guard adapter into constrained generation.
+
 ## Seven-level runtime package / CLI reads — 2026-09-13
 
 - Exact isolated mount found repository `validation/__init__.py` importing

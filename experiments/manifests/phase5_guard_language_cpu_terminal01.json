@@ -1,0 +1,13 @@
+{
+  "observed_at_utc": "2026-09-15T18:36:08.232044+00:00",
+  "actual_kernel": "huylmhuhu/react-vn-guard-language-cpu-v1",
+  "kernel_version": 1,
+  "kernel_id": 134521565,
+  "private": true,
+  "remote_source_sha256": "fdbbcce82d9f12c68dbd4fbcbe157dc5af34d768518c629b9d2c79f08b3c10e1",
+  "session_status": {
+    "status": "COMPLETE",
+    "failureMessage": null
+  },
+  "submission_sha256": "a3e88dfd83854b566e52fe048e4aaca55f6dcb8ccfd9473e525ff03bdd0725e8"
+}

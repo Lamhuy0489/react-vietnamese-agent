@@ -21,6 +21,30 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**Guard language CPU v1 COMPLETE/audit**, xác minh sau download lúc
+2026-09-15 18:36:08UTC; actual=requested
+[huylmhuhu/react-vn-guard-language-cpu-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-guard-language-cpu-v1),
+v1/ID134521565, source2269fef, private/offline/CPU/no external model mount.
+[Datasetguard15](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+v1/private. [Terminal](../experiments/manifests/phase5_guard_language_cpu_terminal01.json),
+[audit](../experiments/manifests/phase5_guard_language_cpu_audit01.json),
+[report/summary/QA/raw paths](../docs/evaluation/phase5_guard_language_native_v1_run.md).
+Qwentokenizer3069combinations/max36tokensinclEOS;248actualCPUmask checks.
+10raw/2remote/86sourcepins; hai local audits khớp. Không model.generate/GPU/Test.
+Không còn jobpending ở lịch này, không gửi lại. Quyền private giữ nguyên;
+QUEUED/RUNNING bên dưới là lịch sử, không dùng làm trạng thái mới.
+
+**Guard language native-library CPU v1 QUEUED**, kiểm2026-09-15 18:28:13UTC.
+Actual=requested [huylmhuhu/react-vn-guard-language-cpu-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-guard-language-cpu-v1),
+version1/ID134521565, source `2269fefa979a6027531516560c838a478c331914`,
+GitHub evidencecfd1dd9 trước submit. [Submission](../experiments/manifests/phase5_guard_language_cpu_submission01.json),
+[report/preflight](../docs/evaluation/phase5_guard_language_native_v1_run.md).
+[Datasetguard15](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+v1/private/ready. CPU/no accelerator, noInternet/modelmount,3600s; chỉ tokenizer
+và synthetic logits, không model.generate. Code tải ngược khớp. Không submit lại.
+Private access không tự có từ tài khoản GitHub; không chuyển public. Các mốc dưới
+là lịch sử, không ghi đè raw/identity hoặc dùng làm chỉ dẫn retry.
+
 **Bare-JSON candidate v1 ERROR, inference đã recovery-audit đủ**, kiểm
 2026-09-15 17:10:52UTC. Actual=requested
 [huylmhuhu/react-vn-guard-bare-json-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-guard-bare-json-v1),

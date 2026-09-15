@@ -1604,3 +1604,16 @@ and are not inferred here.
 - Existing parser/runtime/models/generation results stay frozen; this is not
   a semantic retry or Phase5 acceptance. See
   [CPU diagnostic contract](../architecture/phase5_guard_language_native_v1_contract.md).
+
+# 2026-09-16 — Native-library compatibility result, not model adoption
+
+- Private CPU notebookv1/ID134521565 COMPLETE; authenticated Qwen tokenizer
+  fits all3069values within36tokens including EOS. Actual pinned Transformers
+  passes248mask checks and fixed fault propagation controls; no weights or
+  model.generate. Source2269fef, local audits authenticate10raw/2remote files.
+- Later ForcedBOS override is confirmed negative evidence. Keep the candidate
+  isolated until an adapter admits the exact processor chain, binds constrained
+  generation identity and rejects incomplete/off-language outputs. Compatibility
+  success does not authorize silent production adoption or certify guard quality.
+- Preserve package01 failure and invalid selected-preflight02 history. Corrected
+  selection and package02 were used for the sole CPU submission; no model retry.

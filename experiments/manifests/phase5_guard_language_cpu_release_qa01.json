@@ -1,0 +1,70 @@
+{
+  "protocol": "guard_language_release_qa_v1",
+  "valid": true,
+  "checks": {
+    "setup": {
+      "command": [
+        ".venv/bin/python",
+        "scripts/verify_setup.py"
+      ],
+      "returncode": 0,
+      "seconds": 0.15366449998691678
+    },
+    "ruff": {
+      "command": [
+        ".venv/bin/ruff",
+        "check",
+        "."
+      ],
+      "returncode": 0,
+      "seconds": 0.028166825009975582
+    },
+    "mypy": {
+      "command": [
+        ".venv/bin/mypy",
+        "src",
+        "scripts"
+      ],
+      "returncode": 0,
+      "seconds": 0.5118544220167678
+    },
+    "pytest": {
+      "command": [
+        ".venv/bin/pytest",
+        "-q",
+        "tests/unit/test_guard_language_release_v1.py",
+        "tests/unit/test_guard_language_native_v1.py",
+        "tests/unit/test_guard_token_language_v1.py"
+      ],
+      "returncode": 0,
+      "seconds": 6.9816715299966745
+    },
+    "knowledge": {
+      "command": [
+        "make",
+        "knowledge-check"
+      ],
+      "returncode": 0,
+      "seconds": 0.15451804900658317
+    }
+  },
+  "source_sha256": {
+    "scripts/audit_phase5_guard_language_native_v1.py": "59c97ec873f489ae96fc6fe4bd16ba469bf32ae5b89dca23f293ec6555aea0df",
+    "tests/unit/test_guard_language_release_v1.py": "4a701eae7b22787f2f598261719c93682965cbdfa6ad77e9ce24aa88d604d4c1"
+  },
+  "log_sha256": {
+    "results/phase5_guard_language_release_qa02/pytest.log": "27a577bc19a86b45f9588dfd1ad0e07206a5a112f3ed8cf2ef8df0c630981830",
+    "results/phase5_guard_language_release_qa02/setup.log": "31e836b9c814fcf7126ef63fd608df0cbce6fc9b307ebc95c71ffe9d66d52280",
+    "results/phase5_guard_language_release_qa02/mypy.log": "bbd2a1ef49b860599957ed2810c6834d0195dba521d794a15fd8eaa6048099db",
+    "results/phase5_guard_language_release_qa02/ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "results/phase5_guard_language_release_qa02/knowledge.log": "78c84ad170022bf4bd205a0a9abf804350ca190e83a245d9c2ae59b534b958c4"
+  },
+  "package_source_pins_unchanged": 86,
+  "baseline_source_pins_unchanged": 175,
+  "full_repository_pytest_run": false,
+  "full_suite_exclusion_reason": "Test-assigned authoring fixtures excluded.",
+  "model_inference_runs": 0,
+  "test_payload_accessed": false,
+  "private_ground_truth_accessed": false,
+  "phase5_accepted": false
+}
