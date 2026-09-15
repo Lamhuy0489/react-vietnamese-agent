@@ -1574,3 +1574,18 @@ and are not inferred here.
   source/runtime mutation or new inference was used. Phase5 acceptance stays open.
 - Any constrained-output follow-up needs a separately versioned design and
   preregistered CPU/native protocol. Lifecycle timeout experiments stay separate.
+
+# 2026-09-16 — Isolated finite-token language CPU candidate
+
+- Continue the owner-authorized Phase5 follow-up as a new CPU-only module,
+  not a modification/adoption of frozen runtime or generation. Enumerate all
+  3,069 existing schema value combinations with fixed compact serialization;
+  retain label order/duplicates and all risk/confidence values.
+- Restrict token paths before generation, never repair an already generated
+  answer. Reject the whole compilation on round-trip/budget/EOS mismatch.
+  Separate candidate identity binds tokenizer/schema/token paths/config.
+- Exhaustive synthetic codec evidence does not establish native Qwen admission,
+  Transformers masking, classification quality or acceptance. Native integration
+  requires the staged checks in
+  [the candidate contract](../architecture/phase5_guard_token_language_v1_contract.md).
+  No new Kaggle submission, Test/private-GT use or semantic retry is performed.
