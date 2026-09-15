@@ -85,9 +85,14 @@ def rehearse(
         run("scripts/preflight_clean_worker.py")
         dummy = evidence / "dummy"
         run("scripts/run_clean_v11_dev.py", "--output", str(dummy))
-        before = inventory(dummy)
+        before = inventory(dummy / "tasks")
+        identity = digest(dummy / "identity.json")
         run("scripts/run_clean_v11_dev.py", "--output", str(dummy), "--resume")
-        if inventory(dummy) != before or len(list((dummy / "tasks").iterdir())) != 21:
+        if (
+            inventory(dummy / "tasks") != before
+            or digest(dummy / "identity.json") != identity
+            or len(list((dummy / "tasks").iterdir())) != 21
+        ):
             raise ValueError("Dummy completed resume mismatch")
         partial = evidence / "partial"
         partial.mkdir()
