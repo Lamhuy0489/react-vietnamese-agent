@@ -4,6 +4,14 @@ Cập nhật: 2026-09-15. Chỉ dẫn hiện hành; lịch sử không thay th�
 
 ## Đang làm
 
+**Đang kiểm gói observer v2:** phát hiện và sửa thứ tự tạo `native/` ở nhánh HF;
+test mới đi qua factory thật, dừng trước tải model. CPU auditor nhận commit
+tường minh, kiểm đủ task/stage/recovery. Runner mới khóa6source hashes và kiểm
+tất cả checkpoint trước resume.31tests native/probe đạt; đang chuẩn bị chạy
+`prepare_phase5_observer_package_v2.py` hai layout/fresh venv. Chưa submit GPU.
+Hai probe `valid01`/`malformed01` cũ giữ nguyên; source_commit trong đó là base
+HEAD lúc code chưa commit, không phải chứng cứ code tương ứng nằm trong HEAD.
+
 **Lịch native112/112 đã terminal/audit; không submit/rerun hoặc tải lại.**
 [Report tổng](../docs/evaluation/phase5_grouped_v3_complete_report.md),
 [summary/CSV/QA](../experiments/manifests/phase5_grouped_v3_suite01.json),

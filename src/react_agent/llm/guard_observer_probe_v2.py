@@ -10,9 +10,10 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, cast
 
+from react_agent.foundation.normalization import text_hash
 from react_agent.foundation.runtime_hooks import SourceCatalog
 from react_agent.llm.agent_mount_v1 import no_links, write_receipt
-from react_agent.llm.base import GenerationConfig, ModelResponse
+from react_agent.llm.base import GenerationConfig, LLMBackend, ModelResponse
 from react_agent.llm.document_runtime_probe_v1 import (
     CATALOG,
     GENERATION,
@@ -37,6 +38,20 @@ PROFILE = "guard_observer_probe_v2"
 SCHEDULE = ("CALC_A2", "CALC_A6", "DOC_A2", "DOC_A6")
 SAFE = '{"risk":"SAFE","labels":[],"confidence":"HIGH"}'
 MALFORMED = '{"risk":"SAFE","labels":[],"confidence":"HIGH",}'
+
+
+def execution_sources() -> dict[str, str]:
+    """Bind this rollout's code bytes even when the working tree is ahead of Git."""
+    source = Path(__file__).resolve().parents[1]
+    names = (
+        "llm/guard_observer_probe_v2.py",
+        "llm/native_guard_diagnostics_v2.py",
+        "llm/guard_diagnostic_backend_v2.py",
+        "llm/guard_diagnostic_pair_v2.py",
+        "security_v1/guard_diagnostics_v2.py",
+        "validation/guard_diagnostic_audit_v2.py",
+    )
+    return {name: hashlib.sha256((source / name).read_bytes()).hexdigest() for name in names}
 
 
 def case(key: str) -> tuple[ProbeTask, SourceCatalog, Level]:
@@ -154,6 +169,11 @@ def checkpoint(root: Path) -> dict[str, Any]:
     if value["raw_sha256"] != raw or value["key"] != root.name:
         raise ValueError("checkpoint hash/key mismatch")
     identity = json.loads((root.parent.parent / "identity.json").read_text())
+    if (
+        "execution_source_sha256" in identity
+        and identity["execution_source_sha256"] != execution_sources()
+    ):
+        raise ValueError("checkpoint execution source changed")
     if any(
         identity.get(k) != v
         for k, v in fixed_identity(identity["backend"], identity["condition"]).items()
@@ -167,6 +187,7 @@ def checkpoint(root: Path) -> dict[str, Any]:
             receipt[k] != v
             for k, v in dict(
                 task_id=task.task_id,
+                task_sha256=text_hash(task.instruction),
                 pair_config=identity["pair_config"],
                 security=configuration(level).model_dump(mode="json"),
                 runtime_config=identity["runtime"],
@@ -221,6 +242,7 @@ def run(
         raise ValueError("backend/native options mismatch")
     identity.update(
         source_commit=commit,
+        execution_source_sha256=execution_sources(),
         environment_sha256=inventory(environment),
         snapshot_sha256=snapshot.sha256 if snapshot else None,
         model_inventory_sha256=hashlib.sha256(model_inventory.read_bytes()).hexdigest()
@@ -237,6 +259,15 @@ def run(
     tasks.mkdir(exist_ok=True)
     if set(p.name for p in tasks.iterdir()) - set(SCHEDULE):
         raise ValueError("unexpected task checkpoint")
+    # Check all existing records before launching any missing task, even when a
+    # corrupt/partial directory is later in the schedule.
+    for key in SCHEDULE:
+        saved_root = tasks / key
+        if saved_root.exists():
+            if not (saved_root / "checkpoint.json").is_file():
+                raise ValueError("partial attempt retained; no automatic retry")
+            if not checkpoint(saved_root)["recovered"]:
+                raise ValueError("unrecovered task; no automatic continuation")
     results = []
     for key in SCHEDULE:
         root = tasks / key
@@ -249,7 +280,6 @@ def run(
             results.append(saved)
             continue
         root.mkdir()
-        (root / "native").mkdir()
         observer = observer_factory()
         baseline = observer.sample("baseline")
         validate_memory(baseline)
@@ -271,7 +301,7 @@ def run(
             pair = DiagnosticPair(
                 StubFactory("agent", key, condition),
                 cast(
-                    Callable[[], Any],
+                    Callable[[], LLMBackend],
                     DiagnosticFactory(
                         StubFactory("guard", key, condition),
                         root / "native/guard_response_diagnostics.jsonl",
@@ -280,6 +310,9 @@ def run(
                 config(backend),
                 root / "witness.jsonl",
             )
+        # Both factories are lazy. Native validation must see fresh roots; the
+        # metrics directory must exist only when the workers actually start.
+        (root / "native").mkdir()
         task, catalog, level = case(key)
         try:
             result = run_pair_task(
@@ -324,8 +357,11 @@ def run(
         if not saved["recovered"]:
             raise ValueError("unrecovered task; stop before starting next pair")
         print(f"{key}: {saved['terminal']}; recovered=True", flush=True)
-    if inventory(environment) != identity["environment_sha256"]:
-        raise ValueError("environment changed during run")
+    if (
+        inventory(environment) != identity["environment_sha256"]
+        or execution_sources() != identity["execution_source_sha256"]
+    ):
+        raise ValueError("environment or execution source changed during run")
     return dict(
         protocol=PROFILE,
         tasks=len(results),

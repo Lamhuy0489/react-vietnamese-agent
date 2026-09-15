@@ -107,6 +107,86 @@ def test_native_injection_rejected():
         fixed_identity("hf", "trailing_comma")
 
 
+def test_hf_branch_validates_fresh_roots_before_start(tmp_path, monkeypatch):
+    """Execute actual HF factory/path validation; stop at runtime before model load."""
+    import react_agent.llm.guard_observer_probe_v2 as module
+    from react_agent.llm.guard_diagnostic_pair_v2 import DiagnosticPair
+    from react_agent.llm.guard_snapshot_v1 import GuardSnapshot
+
+    pin = GuardSnapshot.model_validate_json(
+        (ROOT / "tests/fixtures/ordinary_pair_guard_snapshot.json").read_text()
+    )
+    model_inventory = tmp_path / "inventory.json"
+    model_inventory.write_text("{}")
+    visited = []
+
+    class StopBeforeWeights(Exception):
+        pass
+
+    def stop(task, **kwargs):
+        pair = kwargs["pair"]
+        assert isinstance(pair, DiagnosticPair)
+        assert (tmp_path / "hf/tasks/CALC_A2/native").is_dir()
+        assert all(not w.attempts for w in pair._workers.values())
+        visited.append(task.task_id)
+        raise StopBeforeWeights
+
+    monkeypatch.setattr(module, "run_pair_task", stop)
+    with pytest.raises(StopBeforeWeights):
+        run(
+            tmp_path / "hf",
+            ENVIRONMENT,
+            backend="hf",
+            commit=COMMIT,
+            observer_factory=SyntheticPairObserver,
+            agent=tmp_path / "agent",
+            model_inventory=model_inventory,
+            guard=tmp_path / "guard",
+            snapshot=pin,
+        )
+    assert visited == ["awb_observer_calc_a2"]
+    assert (tmp_path / "hf/tasks/CALC_A2/recovery.json").is_file()
+
+
+def test_audit_does_not_depend_on_current_git_head(source, monkeypatch):
+    import subprocess
+    import sys
+
+    sys.path.insert(0, str(ROOT / "scripts"))
+    try:
+        from audit_phase5_guard_observer_probe_v2 import audit_probe
+    finally:
+        sys.path.pop(0)
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("historical audit must not query current Git HEAD")
+
+    monkeypatch.setattr(subprocess, "check_output", forbidden)
+    root, condition, _ = source
+    report = audit_probe(root, condition, COMMIT)
+    assert report["tasks"] == 4 and report["execution_source_pins_verified"]
+    with pytest.raises(ValueError, match="source commit mismatch"):
+        audit_probe(root, condition, "2" * 40)
+
+
+def test_resume_checks_later_partial_before_any_new_task(source, tmp_path, monkeypatch):
+    import react_agent.llm.guard_observer_probe_v2 as module
+
+    root, condition, _ = source
+    partial = tmp_path / "later_partial"
+    (partial / "tasks" / SCHEDULE[-1]).mkdir(parents=True)
+    shutil.copy2(root / "identity.json", partial / "identity.json")
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("must reject before any new process")
+
+    monkeypatch.setattr(module, "DiagnosticPair", forbidden)
+    before = inventory(partial)
+    with pytest.raises(ValueError, match="partial attempt"):
+        invoke(partial, condition, resume=True)
+    assert inventory(partial) == before
+
+
 def test_unrecovered_stops_before_second_pair(tmp_path):
     class Unrecovered(SyntheticPairObserver):
         def sample(self, phase):

@@ -1,5 +1,22 @@
 # Decision Log
 
+## 2026-09-15 — Repair HF pre-start root ordering and independent CPU audit
+
+- The previous runner created `native/` before the HF factory required it to
+  be absent. Move directory creation after lazy factory validation, before
+  worker startup. The new regression reaches the actual HF composition and
+  stops at the runtime boundary before any weights load. Prior scripted
+  evidence did not exercise this branch and remains historical CPU evidence.
+- Pin six rollout source files in new run identities. Check all retained tasks
+  before resuming missing tasks. The CPU auditor takes an explicit historical
+  source commit, rejects HF input, and requires exact task/stage/terminal and
+  recovery coverage. Earlier artifacts lack rollout source pins; report that
+  limit instead of claiming their recorded Git HEAD contained the new code.
+- Add an offline archive/expanded package rehearsal with a fresh venv per
+  layout, eight tools,21public clean Dummy tasks, both observer conditions and
+  missing-only resume. Notebook/native metrics audit and remote execution are
+  subsequent steps; no Phase5 acceptance changes at this CPU milestone.
+
 ## 2026-09-15 — Freeze a separate native-shaped observer probe (CPU only)
 
 - Add four public synthetic tasks (CALC/DOC × A2/A6) and two explicit scripted

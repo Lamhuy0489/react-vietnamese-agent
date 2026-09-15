@@ -52,3 +52,16 @@ Acceptance of this milestone is CPU composition/checkpoint/package evidence,
 not native submission approval or native library execution. Before GPU: freeze
 the actual notebook launcher, native source/metrics audit, exact package receipt,
 model/Dataset versions and quota. Keep the existing worker and175pins unchanged.
+
+## Preflight correction, 2026-09-15
+
+Native metrics directory creation occurs after the lazy factory validates fresh
+roots and before worker start. A CPU regression exercises the actual HF branch
+through factory validation and stops before weights load. All retained tasks
+are audited before any missing task starts. New identities additionally bind
+six rollout source file hashes; changed source cannot resume old checkpoints.
+The original `cpu01` artifacts predate these pins: their `source_commit` is the
+base HEAD during development, not proof that HEAD contained the working source.
+Historical CPU audits remain available with that limitation explicitly reported.
+CPU audit CLI requires `--source-commit` for the recorded run rather than using
+the repository's current HEAD. HF runs need a separate native evidence audit.
