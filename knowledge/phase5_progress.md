@@ -1,5 +1,15 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — constrained worker composition / native CPU, 2026-09-16
+
+[Report](../docs/evaluation/phase5_constrained_generate_cpu_v1_run.md).
+Worker nối policy/attention/observer đã có30tests mới; góiCPU01 qua cả2layout.
+ActualGenerationMixin CPUv1 đãERROR trướcchainadmission,0completed cases,hook restored.
+Đã reproduce6int/float expected-policy mismatches từ pinnedwheel; sourceb4ae0f7
+sửa expectedpin và regression (78focused tests). Chuẩn bị riêngCPUv2; khôngGPU.
+Còn hostclassifier/cache/auditor và productionguardquality/lifecycle/utility.
+Phase5vẫn4/7≈57%. Các mục dưới là lịch sử, không dùng làm chỉ dẫn gửi lại.
+
 ## Hiện hành — constrained adapter CPU, 2026-09-16
 
 [Contract/report](../docs/evaluation/phase5_constrained_guard_v1_cpu.md):

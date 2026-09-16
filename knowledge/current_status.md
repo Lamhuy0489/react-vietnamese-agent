@@ -12,8 +12,13 @@ Source999d658;30tests composition mới,148focused tests đạt; archive/expande
 đều qua8tools/21Dummy/missing-only resume. Gói
 `build/kaggle/phase5_constrained_generate_cpu_package01` gồm141sourcepins.
 Sửa source-admission do torch.no_grad bọc generate; không đổi frozen baseline.
-Bước hiện tại: gửi notebook CPU riêng để kiểm actualGenerationMixin bằng tiny
-randomQwen, chưa weights/GPU/quality. Còn hostclassifier/cache/auditor integration.
+Bước hiện tại: notebookCPUv1/ID134578096 ERROR07:58:28UTC2026-09-16,
+source/private khớp,0completed cases; raw/failure audit giữ nguyên.
+Static pinned-wheel defaults tái hiện6int/float mismatches trong expected policy;
+sourceb4ae0f7 sửaexpectedconfig và regression, không đổi native decoding.
+Đang chuẩn bị một lượt CPUv2 riêng; nếu admission tái diễn phải dừng submit/reproduce.
+[Failure/diagnosis](../docs/evaluation/phase5_constrained_generate_cpu_v1_run.md).
+Không pretrainedweights/GPU/quality. Còn hostclassifier/cache/auditor integration.
 Các mốc dưới là lịch sử; Phase5vẫn4/7≈57%.
 
 **Đã triển khai candidate constrained guard adapter + classifier cache riêng**:

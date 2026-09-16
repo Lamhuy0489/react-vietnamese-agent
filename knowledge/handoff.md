@@ -34,9 +34,13 @@ Không thay frozen guard/parser/runtime hay kết quả đã đo.
 
 ## Bước tiếp theo
 
-Gửi đúng một notebook CPU mới từ package01/source999d658, sau live-check Datasetv1
-và push source/evidence. Protocol4tiny-random-Qwen cases kiểm actualGenerationMixin,
-không tải pretrained weights. Sau terminal: authenticate version/source/raw và audit.
+CPU notebookv1/ID134578096 đã ERROR07:58:28UTC2026-09-16; raw giữ tại
+`results/phase5_constrained_generate_monitor02`. [Failure audit](../experiments/manifests/phase5_constrained_generate_cpu_failure01.json).
+0completed cases, success01 ValueError trước processor admission; hooks restored.
+Static pinned-wheel AST tái hiện6int/float mismatches trong policy hash; configv2
+giữ đúngfloat, không sửa thông số sinh. Sourceb4ae0f7, chuẩn bị package02/CPU notebookv2
+riêng. Nếu lỗi admission tái diễn sau bản sửa này, dừng gửi và reproduce trước.
+Sau terminal v2: tải mới/authenticate/audit; không đánh đồng CPU với GPU hoặcquality.
 Worker factory composition đã có; còn nối hostclassifier/cache/benchmark auditor.
 Sau đó exactpackage/native protocol riêng trước GPU diagnostic mới. Giữ
 prompt/model/parser/fallback/shutdown2s để tách hiệu ứng decoding; study shutdown riêng.
