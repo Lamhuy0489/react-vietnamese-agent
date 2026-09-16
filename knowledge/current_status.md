@@ -6,6 +6,15 @@ không phải phần trăm công sức hoặc số dòng mã. Phase 1–4 đã a
 
 ## Kết quả mới nhất
 
+**Host classifier/cache đã nối với paired runtime và read-only auditor riêng.**
+[Report](../docs/evaluation/phase5_constrained_host_v1_report.md), source `e04cd8d`.
+37 tests mới qua, gồm spawned CALC/DOC × A2/A6, cache không thêm IPC, lỗi worker,
+đổi identity và thay receipt bị chặn. Đây là synthetic CPU, chưa production guard.
+Final QA: 438 focused + 90 integration tests đạt; setup/Ruff/mypy437/knowledge đạt.
+142 active + 86 prior-native + 175 baseline source pins nguyên. Không có GPU job mới.
+
+Mốc native CPU trước, giữ nguyên:
+
 **Native constrained-generation CPU v2 COMPLETE và audit đạt.**
 [Report và bằng chứng](../docs/evaluation/phase5_constrained_generate_cpu_v2_run.md).
 Notebook `huylmhuhu/react-vn-constrained-generate-cpu-v2`, version 1/ID 134579648,
@@ -25,10 +34,10 @@ không đổi numerical decoding/prompt/model/parser.
 
 ## Việc đang nối tiếp
 
-Worker composition policy/attention/observer đã triển khai; classifier cache
-candidate có unit tests. **Chưa nối host classifier/cache và benchmark auditor
-thành runtime hoàn chỉnh.** Đây là bước kế tiếp, rồi exact-package rehearsal
-và protocol GPU riêng. Native CPU pass không chứng minh production guard 1.5B,
+Worker composition và host classifier/cache/runtime join đã có CPU tests.
+**Còn native release wrapper nối constraint với policy/attention/HF metrics,
+runner/checkpoint identity và exact-package rehearsal**, rồi protocol GPU riêng.
+Native CPU pass không chứng minh production guard 1.5B,
 CUDA attention, chất lượng phân loại, benign utility hoặc graceful lifecycle.
 
 Giữ baseline 175 source pins, native tokenizer 86 pins và package CPU 142 pins.

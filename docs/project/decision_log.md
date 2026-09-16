@@ -1677,3 +1677,18 @@ and are not inferred here.
   guard/CUDA/quality acceptance. Host classifier/cache/benchmark auditor integration
   is next; keep 4/7 Phase5 acceptance unchanged, no new GPU submission or Test access.
   [Terminal report](../evaluation/phase5_constrained_generate_cpu_v2_run.md).
+
+# 2026-09-16 — Host receipt-bound cache and candidate runtime integration
+
+- Add separate constrained host/runtime/auditor modules; retain frozen source pins,
+  prompt, parser, generation settings, policy bodies and worker shutdown. Native
+  entry admits the constrained factory; synthetic execution is separately named.
+- Cache verification checks host ownership/config/factory, worker health and exact
+  receipt history. It is not remote live-model introspection and adds no hidden IPC.
+  Complete responses require PID/request/hash/processor/count/restoration joins.
+- Record local admission failures with zero new worker attempts; preserve partial
+  failures and do not certify them as successful generation. New source/runtime
+  identity; no alteration of earlier experiment results or use of Test/private GT.
+- CPU integration is not native release/package/quality acceptance. Next join
+  policy/attention/HF metrics into the native wrapper and freeze a new package/
+  diagnostic protocol before GPU. [Report](../evaluation/phase5_constrained_host_v1_report.md).

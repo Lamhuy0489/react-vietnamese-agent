@@ -1,5 +1,14 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — constrained host/runtime CPU, 2026-09-16
+
+[Report](../docs/evaluation/phase5_constrained_host_v1_report.md), source `e04cd8d`:
+37 tests mới qua; final QA 438 focused + 90 integration tests đạt.
+Host classifier/cache và runtime/sidecar/witness/constraint join
+đã nối. CALC/DOC × A2/A6 dùng spawned synthetic workers; không native inference.
+Còn native release metrics join, candidate runner/checkpoint/package, rồi GPU.
+Phase 5 vẫn 4/7≈57%; các mục dưới là lịch sử.
+
 ## Hiện hành — native generation CPU v2 COMPLETE/audit, 2026-09-16
 
 [Report/receipts](../docs/evaluation/phase5_constrained_generate_cpu_v2_run.md):

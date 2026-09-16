@@ -4,6 +4,17 @@ Cập nhật: 2026-09-16. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptan
 
 ## Đang làm
 
+**Đã nối constrained host/cache/runtime + read-only join**, source `e04cd8d`.
+[Report](../docs/evaluation/phase5_constrained_host_v1_report.md),
+[contract](../docs/architecture/phase5_constrained_host_v1_contract.md).
+37 tests mới đạt, gồm CALC/DOC × A2/A6 qua spawned workers và các lỗi identity,
+cache/receipt/worker; synthetic CPU, không production guard. Final QA đã đạt:
+438 focused + 90 integration tests, setup/Ruff/mypy437/knowledge.
+Host cache kiểm ownership/worker health và receipt history, không giả nhận đã
+introspect live model từ xa. Lỗi không dispatch được ghi rõ không thêm inference.
+
+Nền native CPU đã đóng:
+
 Đã chốt **native constrained generation CPU v2 COMPLETE/audit**;
 [report](../docs/evaluation/phase5_constrained_generate_cpu_v2_run.md).
 Actual notebook `huylmhuhu/react-vn-constrained-generate-cpu-v2`,
@@ -17,12 +28,11 @@ guard 1.5B hoặc benchmark quality. CPU v1 thất bại vẫn lưu, không xóa
 
 ## Bước tiếp theo
 
-1. Đọc [worker contract](../docs/architecture/phase5_constrained_policy_v1_contract.md)
-   và `src/react_agent/llm/native_constrained_pair_v1.py`.
-   Nối host classifier/cache identity vào paired runtime riêng; không sửa baseline.
-2. Nối benchmark auditor: join worker constraint receipts, request-policy,
-   attention/sidecar/host witness theo PID/request index/hashes; bắt thiếu,
-   sai identity, duplicate và lỗi; thêm synthetic CPU tests.
+1. Dùng `constrained_runtime_v1.run_pair_task` và `constrained_runtime_audit_v1.audit_join`
+   (host join đã xong); không sửa các baseline đã pin.
+2. Nối native release wrapper với request-policy/attention/HF metrics và constraint
+   receipts theo PID/request index/input/output counts. Tạo candidate runner và
+   checkpoint identity riêng; lỗi/partial receipts không được tính completion.
 3. Exact-package preflight archive/expanded và freeze một protocol GPU mới
    trước submission. Giữ prompt/model/parser/fallback/shutdown 2s để chỉ đo
    thay đổi decoding. Không chạy GPU chỉ từ bằng chứng tiny CPU hiện tại.
@@ -30,6 +40,10 @@ guard 1.5B hoặc benchmark quality. CPU v1 thất bại vẫn lưu, không xóa
 
 ## Bằng chứng
 
+- [Host integration report](../docs/evaluation/phase5_constrained_host_v1_report.md):
+  37 tests mới qua; [final QA](../experiments/manifests/phase5_constrained_host_cpu_qa02.json)
+  có 438 focused/42,30s + 90 integration tests đạt, raw ở `results/phase5_constrained_host_cpu_qa02`.
+  Source `d270830`/QA01 trước hardening giữ lịch sử, không ghi đè.
 - [Submission v2](../experiments/manifests/phase5_constrained_generate_cpu_submission02.json),
   [terminal](../experiments/manifests/phase5_constrained_generate_cpu_terminal01.json),
   [audit](../experiments/manifests/phase5_constrained_generate_cpu_audit01.json),
@@ -49,7 +63,7 @@ guard 1.5B hoặc benchmark quality. CPU v1 thất bại vẫn lưu, không xóa
 
 ## Giới hạn
 
-Host benchmark integration, production guard/CUDA/quality, benign utility,
+Native release/package integration, production guard/CUDA/quality, benign utility,
 graceful shutdown và formal freeze vẫn mở. Không full pytest vì Test-assigned
 authoring fixtures; không Test/private GT access. Không cần tài khoản mới;
 kiểm quota/private mounts lại khi GPU package thực sự sẵn sàng.
