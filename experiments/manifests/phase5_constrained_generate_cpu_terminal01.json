@@ -1,0 +1,13 @@
+{
+  "observed_at_utc": "2026-09-16T08:25:13.183689+00:00",
+  "actual_kernel": "huylmhuhu/react-vn-constrained-generate-cpu-v2",
+  "kernel_version": 1,
+  "kernel_id": 134579648,
+  "private": true,
+  "remote_source_sha256": "a6bc8d15a8496e80ffb2fefbf7c98d4d0bf0617abed04775d1099b9e1ed001f3",
+  "session_status": {
+    "status": "COMPLETE",
+    "failureMessage": null
+  },
+  "submission_sha256": "2fa117b9149945d66b15e4b7f990b7588cdfca1f6b4ff3b7515ecdebd9d12f14"
+}

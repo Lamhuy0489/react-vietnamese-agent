@@ -1,0 +1,108 @@
+{
+  "limitations": "Authenticates executing source and bounded reported CPU checks; does not rerun native libraries or prove production guard quality/CUDA.",
+  "native_metrics_recomputed_locally": false,
+  "observation_sha256": "8a132f3e2adc5640c93af876ae6fa86464ecc2db099fd905298bba3f742e64bb",
+  "phase5_accepted": false,
+  "protocol": "constrained_generate_cpu_release_audit_v1",
+  "raw_sha256": {
+    "language/admission.json": "abf9ea48b156dac78197b91d800b269857671b8d98536bf436ce70873cb21fb6",
+    "language/generation/forced_bos/entered.json": "55d25a73193ef22731316d4ce287dc5eb2123a86d7041b8bbb8508a96751d11a",
+    "language/generation/forced_bos/error.json": "a66d1dc6893a377c0d3c4b872d64a2756c488b7b48c928882f1189c663b8338b",
+    "language/generation/forced_bos/restored.json": "1292458a71c6cb6d3778a95701c548fd91e00c8cff7ef106253aa6c2ff233724",
+    "language/generation/interrupt/admitted.json": "25a808804005261070f4920414dfae79d01fcf9bf353eaac7bced16486ee3a8d",
+    "language/generation/interrupt/entered.json": "4601a906905dcc9d08799fa8bc3c940f86569b49eba919171ad9730946c2b806",
+    "language/generation/interrupt/error.json": "87818ba52fe50a9cedf377a7011261d96a133bc968b46459d81ae6266df71f94",
+    "language/generation/interrupt/restored.json": "d536d19d6be2b4ae61c5343963e7537fa9209360c5465951635f9db6a626ab28",
+    "language/generation/success01/admitted.json": "be45b52c4576b0d9cf23c34d3a794484eaae3c4811d92bd1e6d13d222886dfd2",
+    "language/generation/success01/completed.json": "934cdbe20f7dccead651b851e33ef4ea8a75ec20d10f1b8d259511849fafe7c6",
+    "language/generation/success01/entered.json": "46802b5298b15bfc10a6798522f59fdf9266d559e34740d6a1cf670a275a5d16",
+    "language/generation/success01/restored.json": "0b3e8d91741ea7308fdcbdcc138ea00b7fe6303c810d59b229ccb2686d72db04",
+    "language/generation/success02/admitted.json": "d41ff8b3025da54a7ee8ba267c08ac39d60f8bcccc84875abb7ff28d651da9e9",
+    "language/generation/success02/completed.json": "f6560538570bfae568058ac592367198a05acc0e1f97d8d396a61b7422d20dcf",
+    "language/generation/success02/entered.json": "6da8223256f9a514b65b87a808bf31db7fbe9d8b9392075ffa3771b627e55b2f",
+    "language/generation/success02/restored.json": "6cbae9f36f4be79c087d4598d45f16a7f533238b85d201dc09a7ddb3d428470f",
+    "language/summary.json": "ec6680155d587f36154352d17903e65781626c3629251c14f61140c7da65cb8c",
+    "language/tokenizer/config.json": "98d2ff8cc47488d08a2b0b3acf4eb99ef210779b42bd48605f6b8e36acdbf670",
+    "language/tokenizer/generation_config.json": "e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6",
+    "language/tokenizer/merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+    "language/tokenizer/tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "language/tokenizer/tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+    "language/tokenizer/vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+    "language_bootstrap.json": "6b4a25b6db50fc03c3bec5931496c05452faa4c2fa8c9c7ae2bbd4cd767c0fdd",
+    "react-vn-constrained-generate-cpu-v2.log": "badcc34367cb850c390781e80d05f65b13e0046e608bc475756efed438e1dad7"
+  },
+  "remote_sha256": {
+    "kernel-metadata.json": "37fe6468f5bddbb6d278b47117d9b96ce4a40befb3b35c1257599dca3d147fd4",
+    "react-vn-constrained-generate-cpu-v2.py": "a6bc8d15a8496e80ffb2fefbf7c98d4d0bf0617abed04775d1099b9e1ed001f3"
+  },
+  "source_authenticated": true,
+  "source_pins_verified": 142,
+  "summary": {
+    "architecture": {
+      "bos_token_id": 151643,
+      "eos_token_id": 151645,
+      "hidden_size": 8,
+      "intermediate_size": 16,
+      "max_position_embeddings": 4096,
+      "num_attention_heads": 1,
+      "num_hidden_layers": 1,
+      "num_key_value_heads": 1,
+      "pad_token_id": 151643,
+      "tie_word_embeddings": true,
+      "vocab_size": 151936
+    },
+    "cases": [
+      {
+        "case": "success01",
+        "error_class": null,
+        "forward_calls": 28,
+        "methods_restored": true,
+        "seconds": 0.2361727690000066
+      },
+      {
+        "case": "success02",
+        "error_class": null,
+        "forward_calls": 28,
+        "methods_restored": true,
+        "seconds": 0.1461984840000241
+      },
+      {
+        "case": "forced_bos",
+        "error_class": "ValueError",
+        "forward_calls": 0,
+        "methods_restored": true,
+        "seconds": 0.02049207199996772
+      },
+      {
+        "case": "interrupt",
+        "error_class": "KeyboardInterrupt",
+        "forward_calls": 1,
+        "methods_restored": true,
+        "seconds": 0.024273080999989816
+      }
+    ],
+    "gpu_used": false,
+    "guard_quality_validated": false,
+    "language_identity": "f8df0c2892984e8c6520a8e3bcf4e91dc793d8950165e99284c904a93f6bc3fb",
+    "library_verified": true,
+    "native_generation_mixin_validated": true,
+    "phase5_accepted": false,
+    "pretrained_weights_loaded": 0,
+    "private_ground_truth_accessed": false,
+    "production_guard_generation_validated": false,
+    "protocol": "constrained_generate_cpu_v1",
+    "random_models_initialized": 4,
+    "seed": 42,
+    "source_commit": "b4ae0f7ff8ba698cc09bbd10a08ab4fb9156d2aa",
+    "source_sha256": {
+      "generation/logits_process.py": "c2cb748555325f429689a12cb4a9607dd3e2f9503b4eca6287702790c14fd780",
+      "generation/utils.py": "dde2df36821c0d724b5af47cb0ff71c3c4c1990c86d81b821911127ae4dc1254",
+      "models/qwen2/configuration_qwen2.py": "281986fef33b2c5226389a479113eb963c8336467e76e1b8d49fd3d18ee4a882",
+      "models/qwen2/modeling_qwen2.py": "99fa98c5676604cf6ef505892b70fda5c1c4cd835971459f38d61090cccab1e4"
+    },
+    "test_payload_accessed": false,
+    "torch_threads_restored": true,
+    "valid": true
+  },
+  "valid": true
+}

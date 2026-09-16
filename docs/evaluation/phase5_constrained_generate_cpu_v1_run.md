@@ -1,5 +1,9 @@
 # Phase5 — constrained worker composition and native generation CPU control
 
+Historical v1 failure/preflight record. The corrected v2 is now COMPLETE/audited:
+[current report](phase5_constrained_generate_cpu_v2_run.md). Statements below
+about preparing a run describe the historical state, not a new submission request.
+
 2026-09-16. Source `999d6587923ab66dc717703f27f0f465eb1029ae`.
 [Protocol](../architecture/phase5_constrained_policy_v1_contract.md),
 [package preflight](../../experiments/manifests/phase5_constrained_generate_cpu_preflight01.json).

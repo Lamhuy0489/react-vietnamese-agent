@@ -1664,3 +1664,16 @@ and are not inferred here.
   fails again, stop submissions and reproduce before any further remote attempt.
   Remote v1 sanitized error alone is not proof of its exact inner exception;
   the local hash defect is independently reproduced, not guessed from model outputs.
+
+# 2026-09-16 — Close bounded native CPU generation control, retain production gates
+
+- Corrected CPU v2 version 1/ID134579648 COMPLETE under source b4ae0f7;
+  two successful JSON+EOS cases and two expected failure controls pass. Preserve
+  v1 ERROR and typed-policy diagnosis; no numerical decoding or semantic retry.
+- Independent read-only audits authenticate remote source/settings and receipts;
+  repeated audit outputs match. 401 focused CPU tests pass, including 22 new
+  auditor negative controls. Existing frozen source pins remain unchanged.
+- Native GenerationMixin compatibility on tiny random CPU is not production
+  guard/CUDA/quality acceptance. Host classifier/cache/benchmark auditor integration
+  is next; keep 4/7 Phase5 acceptance unchanged, no new GPU submission or Test access.
+  [Terminal report](../evaluation/phase5_constrained_generate_cpu_v2_run.md).

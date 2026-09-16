@@ -1,5 +1,14 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — native generation CPU v2 COMPLETE/audit, 2026-09-16
+
+[Report/receipts](../docs/evaluation/phase5_constrained_generate_cpu_v2_run.md):
+hai ca JSON + EOS thật, 28 token/ca; ForcedBOS/interrupt xử lý đúng và restore.
+Hai audits byte-identical, 142 source pins; 401 focused tests / 21,87s đạt.
+Không pretrained weights/GPU/quality. Không còn job CPU pending; bước tiếp là
+host classifier/cache/benchmark auditor integration, rồi GPU preflight riêng.
+Phase 5 vẫn 4/7≈57%; các mục dưới là lịch sử, không phải lệnh submit hiện hành.
+
 ## Hiện hành — constrained worker composition / native CPU, 2026-09-16
 
 [Report](../docs/evaluation/phase5_constrained_generate_cpu_v1_run.md).

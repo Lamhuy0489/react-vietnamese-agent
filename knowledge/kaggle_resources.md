@@ -21,6 +21,22 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**Constrained generation CPU v2 COMPLETE/audit**, post-download check
+2026-09-16 08:25:13 UTC. Actual=requested
+[huylmhuhu/react-vn-constrained-generate-cpu-v2](https://www.kaggle.com/code/huylmhuhu/react-vn-constrained-generate-cpu-v2),
+version 1/ID 134579648, source `b4ae0f7ff8ba698cc09bbd10a08ab4fb9156d2aa`.
+[Dataset guard15](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+version 1/private, unchanged; notebook private/offline/CPU/no model mounts.
+Hai success + hai negative controls đạt; chỉ tiny random Qwen, không guard quality.
+[Report/raw paths](../docs/evaluation/phase5_constrained_generate_cpu_v2_run.md),
+[submission](../experiments/manifests/phase5_constrained_generate_cpu_submission02.json),
+[terminal](../experiments/manifests/phase5_constrained_generate_cpu_terminal01.json),
+[audit](../experiments/manifests/phase5_constrained_generate_cpu_audit01.json).
+Không còn job pending ở lịch này; không submit lại. Quyền private không tự cấp
+qua GitHub; không khẳng định tài khoản khác mở được link. V1 ERROR giữ bên dưới.
+
+Mốc trước:
+
 **Constrained generation CPU v1 ERROR**, live-check2026-09-16 07:58:28UTC.
 Actual=requested [huylmhuhu/react-vn-constrained-generate-cpu-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-constrained-generate-cpu-v1),
 v1/ID134578096, source999d658; private/offline/CPU, không model mounts.

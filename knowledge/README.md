@@ -20,7 +20,8 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
-- **Hiện hành:** [constrained worker composition + gói CPU actual-generation preflight](../docs/evaluation/phase5_constrained_generate_cpu_v1_run.md).
+- **Hiện hành:** [native constrained generation CPU v2 COMPLETE/audit và bước host integration](../docs/evaluation/phase5_constrained_generate_cpu_v2_run.md).
+- **Lịch sử trước CPU v2:** [status/handoff đã lưu](history_20260916_constrained_cpu.md).
 - **Nền adapter/cache:** [synthetic CPU tests và identity gates](../docs/evaluation/phase5_constrained_guard_v1_cpu.md).
 - **Nền native-library:** [Qwen tokenizer và Transformers CPU COMPLETE/audit](../docs/evaluation/phase5_guard_language_native_v1_run.md).
 - **Nền finite token-language:** [CPU evidence và native gates](../docs/evaluation/phase5_guard_token_language_v1_report.md).
