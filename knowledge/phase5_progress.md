@@ -1,5 +1,15 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — constrained exact package, 2026-09-16
+
+[Report](../docs/evaluation/phase5_constrained_package_v1_report.md):
+notebook/bootstrap/builder mới qua development archive + expanded offline rehearsal;
+166 worker files/172 source pins, đủ 8 tools, 21 Dummy và constrained controls/resume.
+15 unit tests mới đạt; final QA 495 focused + 105 integration,
+setup/Ruff/mypy444/knowledge đạt. Development mode chặn native để QA trước commit an toàn.
+Còn committed release preflight/remote authentication rồi GPU; chưa job mới,
+không quality claim. Phase 5 vẫn 4/7≈57%. Skill đã ghi quy tắc gom commit theo owner.
+
 ## Hiện hành — constrained runner/native join, 2026-09-16
 
 [Report](../docs/evaluation/phase5_constrained_probe_v1_report.md):

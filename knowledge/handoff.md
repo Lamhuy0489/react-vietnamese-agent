@@ -4,6 +4,20 @@ Cập nhật: 2026-09-16. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptan
 
 ## Đang làm
 
+**Constrained exact package development và QA đã đạt; đang khóa source/release.**
+[Report](../docs/evaluation/phase5_constrained_package_v1_report.md),
+[receipt](../experiments/manifests/phase5_constrained_probe_package_dev01.json).
+Builder `scripts/prepare_phase5_constrained_probe_package_v1.py`, template
+`notebooks/kaggle/constrained_probe_kernel_v1.py`. Development package ở
+`build/kaggle/phase5_constrained_probe_package_dev01`: 166 worker files,
+172 source pins; mỗi layout 8 tools, 21 Dummy, 10 fresh constrained tasks và
+6 retained checkpoints. 15 tests mới đạt; final QA 495 focused + 105 integration,
+setup/Ruff/mypy444/knowledge/diff đạt; 142/86/175 frozen pins nguyên.
+Đã cập nhật skill commit cadence và knowledge index: không commit mỗi status,
+gom việc hoàn chỉnh; source freeze là ngoại lệ cần thông báo trước.
+
+Nền runner đã đóng:
+
 **Đã nối constrained runner/checkpoint/native evidence join**, QA đạt.
 [Report](../docs/evaluation/phase5_constrained_probe_v1_report.md),
 [contract](../docs/architecture/phase5_constrained_probe_v1_contract.md).
@@ -39,18 +53,23 @@ guard 1.5B hoặc benchmark quality. CPU v1 thất bại vẫn lưu, không xóa
 
 ## Bước tiếp theo
 
-1. Dùng `constrained_probe_v1.run/checkpoint`, `constrained_native_audit_v1.audit`
-   và các CLI `run/audit/check_phase5_constrained_probe_v1.py`; runner/join đã xong.
-2. Chuẩn bị notebook/bootstrap và builder từ source đã kiểm thử. Không dùng lại
-   bare-json notebook/package identity; không giả nhận controls là exact package.
-3. Exact-package preflight archive/expanded (fresh offline venv, 8 tools, 21 Dummy,
-   new controls/resume) và freeze một protocol GPU mới
-   trước submission. Giữ prompt/model/parser/fallback/shutdown 2s để chỉ đo
-   thay đổi decoding. Không chạy GPU chỉ từ bằng chứng tiny CPU hiện tại.
+1. QA đạt: gom code/tests/skill/evidence/memory trong một source-freeze commit.
+2. Rebuild builder **không `--development`**, output mới
+   `build/kaggle/phase5_constrained_probe_package01`; chạy lại exact hai layout.
+   Development receipt không đại diện committed release, không đưa lên GPU.
+3. Nối/kiểm remote source/version/output authentication; kiểm quota/account,
+   private Dataset/model mounts trước submission mới. Giữ prompt/model/parser/
+   fallback/shutdown 2s để chỉ đo thay đổi decoding. Chưa submit notebook mới;
+   requested alias `huylmhuhu/react-vn-constrained-guard-v1` chưa phải actual resource.
 4. Tiếp tục guard quality/benign utility/lifecycle và mapping 20 DoD trước freeze.
 
 ## Bằng chứng
 
+- Development package: 433 raw files/layout, 1.043 file scan không credential match.
+  Source base `f5e97ae` + exact working-tree hashes, native submission disabled.
+- [Package QA](../experiments/manifests/phase5_constrained_package_cpu_qa01.json):
+  495 focused/42,96s + 105 integration/111,91s; logs trong
+  `results/phase5_constrained_package_cpu_qa01`.
 - [Runner/native join report](../docs/evaluation/phase5_constrained_probe_v1_report.md):
   raw `results/phase5_constrained_probe_cpu_controls02`; base Git `e655658`,
   execution source hashes bind working-tree code, chưa GPU release identity.

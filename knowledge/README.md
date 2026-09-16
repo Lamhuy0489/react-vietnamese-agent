@@ -20,7 +20,8 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
-- **Hiện hành:** [constrained runner/checkpoint/native join và bước exact package](../docs/evaluation/phase5_constrained_probe_v1_report.md).
+- **Hiện hành:** [constrained exact package và quy tắc giảm commit](../docs/evaluation/phase5_constrained_package_v1_report.md).
+- **Nền runner:** [constrained runner/checkpoint/native join](../docs/evaluation/phase5_constrained_probe_v1_report.md).
 - **Nền host/runtime:** [cache/receipt-bound CPU integration](../docs/evaluation/phase5_constrained_host_v1_report.md).
 - **Nền native CPU:** [constrained generation v2 COMPLETE/audit](../docs/evaluation/phase5_constrained_generate_cpu_v2_run.md).
 - **Lịch sử trước CPU v2:** [status/handoff đã lưu](history_20260916_constrained_cpu.md).
@@ -117,8 +118,11 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 - `handoff.md` ghi việc đã kiểm tra, việc đang dở, bước kế tiếp và điều kiện
   được tiếp tục. Không ghi “đã xong” khi chỉ mới có file.
 - Kết quả phải liên kết report/manifest; giữ riêng lỗi hạ tầng và lỗi ngữ nghĩa.
-- Cuối mỗi mốc: cập nhật bàn giao, chạy `make knowledge-check`, rồi commit
-  những thay đổi đã kiểm tra. Không giả định toàn bộ lịch sử chat sẽ còn sẵn.
+- Cuối mỗi phần việc hoàn chỉnh: gom code, tests, bằng chứng và bàn giao; chạy
+  kiểm tra rồi mới commit khi cần. Không commit lẻ mỗi cập nhật/trạng thái;
+  freeze source cho thực nghiệm là ngoại lệ phải giải thích trước. Bằng chứng
+  phát sinh sau freeze có thể để local chờ gộp, không amend commit thực nghiệm.
+  Không giả định toàn bộ lịch sử chat sẽ còn sẵn.
 - Không chép token, credentials, private GT, nội dung held-out Test hoặc hidden
   chain-of-thought vào bộ nhớ. Chỉ giữ trạng thái/quy trình/bằng chứng cho phép.
 - Validator chỉ kiểm tra cấu trúc/link, không tự chứng minh nội dung còn đúng;

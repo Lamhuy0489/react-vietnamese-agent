@@ -6,6 +6,20 @@ không phải phần trăm công sức hoặc số dòng mã. Phase 1–4 đã a
 
 ## Kết quả mới nhất
 
+**Constrained notebook/bootstrap và exact package đã có, development rehearsal đạt.**
+[Report](../docs/evaluation/phase5_constrained_package_v1_report.md),
+[receipt](../experiments/manifests/phase5_constrained_probe_package_dev01.json).
+166 file worker/172 source pins; archive và expanded đều đạt 8 tools,
+21 Dummy, valid/failure controls và immutable/missing-only resume trong venv
+offline mới. Không load model/GPU. Bản development bị chặn native execution;
+cần grouped source freeze rồi committed release preflight và remote authentication.
+Final QA: 495 focused + 105 integration tests, setup/Ruff/mypy444/knowledge đạt;
+142/86/175 frozen source pins nguyên.
+Đã cập nhật hai skill dự án: gom việc hoàn chỉnh/QA/memory, không commit lẻ từng
+trạng thái; freeze source cần thiết cho thực nghiệm là ngoại lệ giải thích trước.
+
+Nền runner đã đóng:
+
 **Runner/checkpoint và native-auditor join đã nối xong, QA đạt.**
 [Report](../docs/evaluation/phase5_constrained_probe_v1_report.md).
 32 tests mới qua; controls02 có 4 completed/4 lỗi chủ động được giữ nguyên,
@@ -46,8 +60,9 @@ không đổi numerical decoding/prompt/model/parser.
 
 Worker composition và host classifier/cache/runtime join đã có CPU tests.
 Native wrapper đã nối constraint với policy/attention/HF metrics và runner có
-checkpoint identity riêng. **Còn notebook/bootstrap, exact-package rehearsal và
-remote release authentication**, rồi thực nghiệm GPU theo protocol riêng.
+checkpoint identity riêng. Notebook/bootstrap đã qua development exact rehearsal.
+**Còn committed release preflight và remote release authentication**, rồi thực
+nghiệm GPU theo protocol riêng.
 Native CPU pass không chứng minh production guard 1.5B,
 CUDA attention, chất lượng phân loại, benign utility hoặc graceful lifecycle.
 

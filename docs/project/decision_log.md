@@ -1708,3 +1708,17 @@ and are not inferred here.
 - Controls01's incorrect manually supplied base SHA is retained and excluded;
   controls02 uses the actual base and new raw directory. No native/model retry.
   [Report](../evaluation/phase5_constrained_probe_v1_report.md).
+
+# 2026-09-16 — Batch commits and explicitly non-native development packages
+
+- Owner preference is now durable in the project capstone/experiment skills:
+  one tested coherent work item per needed commit, not each edit/status update.
+  An experiment source freeze is an explained exception; do not amend frozen
+  source commits or add unrelated user changes.
+- New constrained package builder supports explicit working-tree CPU rehearsal
+  with file hashes and labeled Git base. Development launcher rejects native
+  execution at both entry points and disables GPU metadata. Release remains
+  committed-only with exact archive/expanded rehearsal after source freeze.
+- This changes packaging workflow, not research scope, model/prompt/parser or
+  acceptance criteria. Remote source authentication and native quality/lifecycle
+  gates remain open. [Report](../evaluation/phase5_constrained_package_v1_report.md).

@@ -26,3 +26,17 @@ Python work.
 Never cross into a later phase for convenience. Do not change frozen research
 scope silently; add a decision-log entry and explain the impact. GitHub is the
 source of truth and Kaggle is only an inference worker.
+
+## Commit cadence for this project
+
+The owner prefers fewer commits. Group one coherent finished work item with its
+tests, selected evidence and knowledge update; commit only after relevant checks
+pass. Do not commit each small edit, status update or failed intermediate attempt.
+Keep unfinished work local and record the next step in the handoff. Before-commit
+CPU QA may bind working-tree hashes plus an explicitly labeled Git base; never
+claim that base alone contains the new code.
+
+Commit earlier only when a validated source freeze is genuinely required for an
+experiment/package, or the owner explicitly asks; explain that need first. Batch
+later evidence instead of making a second routine status-only commit. Never
+amend/rewrite a commit already used by an experiment or include unrelated edits.

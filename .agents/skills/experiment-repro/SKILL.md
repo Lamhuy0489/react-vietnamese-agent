@@ -26,6 +26,10 @@ an explicit rerun scope.
 Never use held-out Test failures to modify prompts, policies, thresholds,
 architecture, model choice, or dataset content.
 
+Follow the project [commit cadence](../react-vn-capstone/SKILL.md#commit-cadence-for-this-project):
+batch finished, verified work; a required experiment source freeze is an explicit
+exception, not a reason to commit every preparation or receipt update.
+
 ## Kaggle runs in this repository
 
 Before packaging, uploading, or resuming a Kaggle run, read
