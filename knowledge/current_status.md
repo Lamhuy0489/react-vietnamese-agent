@@ -6,6 +6,16 @@ không phải phần trăm công sức hoặc số dòng mã. Phase 1–4 đã a
 
 ## Kết quả mới nhất
 
+**Runner/checkpoint và native-auditor join đã nối xong, QA đạt.**
+[Report](../docs/evaluation/phase5_constrained_probe_v1_report.md).
+32 tests mới qua; controls02 có 4 completed/4 lỗi chủ động được giữ nguyên,
+resume không chạy lại ca terminal. Đây là synthetic CPU, chưa gói Kaggle/GPU.
+480 focused + 105 integration tests đạt; setup/Ruff/mypy443/knowledge đạt.
+142 active + 86 prior-native + 175 baseline source pins nguyên.
+Pre-commit working-tree source hashes được lưu; gom một commit sau khi QA đạt.
+
+Nền host/runtime trước:
+
 **Host classifier/cache đã nối với paired runtime và read-only auditor riêng.**
 [Report](../docs/evaluation/phase5_constrained_host_v1_report.md), source `e04cd8d`.
 37 tests mới qua, gồm spawned CALC/DOC × A2/A6, cache không thêm IPC, lỗi worker,
@@ -35,8 +45,9 @@ không đổi numerical decoding/prompt/model/parser.
 ## Việc đang nối tiếp
 
 Worker composition và host classifier/cache/runtime join đã có CPU tests.
-**Còn native release wrapper nối constraint với policy/attention/HF metrics,
-runner/checkpoint identity và exact-package rehearsal**, rồi protocol GPU riêng.
+Native wrapper đã nối constraint với policy/attention/HF metrics và runner có
+checkpoint identity riêng. **Còn notebook/bootstrap, exact-package rehearsal và
+remote release authentication**, rồi thực nghiệm GPU theo protocol riêng.
 Native CPU pass không chứng minh production guard 1.5B,
 CUDA attention, chất lượng phân loại, benign utility hoặc graceful lifecycle.
 

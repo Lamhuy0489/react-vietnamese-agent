@@ -1,5 +1,14 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — constrained runner/native join, 2026-09-16
+
+[Report](../docs/evaluation/phase5_constrained_probe_v1_report.md):
+runner/checkpoint và token-count join vào native policy/attention/HF metrics đã có;
+32 tests mới qua; final QA 480 focused + 105 integration tests đạt.
+Controls02 giữ 4 completed/4 expected errors, resume không retry.
+Còn notebook/bootstrap/exact-package/remote authentication trước GPU. Không mới
+native inference, không quality claim; Phase 5 vẫn 4/7≈57%.
+
 ## Hiện hành — constrained host/runtime CPU, 2026-09-16
 
 [Report](../docs/evaluation/phase5_constrained_host_v1_report.md), source `e04cd8d`:

@@ -4,6 +4,17 @@ Cập nhật: 2026-09-16. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptan
 
 ## Đang làm
 
+**Đã nối constrained runner/checkpoint/native evidence join**, QA đạt.
+[Report](../docs/evaluation/phase5_constrained_probe_v1_report.md),
+[contract](../docs/architecture/phase5_constrained_probe_v1_contract.md).
+32 tests mới qua; final QA 480 focused + 105 integration tests đạt,
+setup/Ruff/mypy443/knowledge đạt. Controls02: 4 completed + 4 deliberate model_error, missing-only
+resume đúng; hai valid audits byte-identical. Native boundary tests dùng mock,
+runner dùng spawned synthetic workers, không phải pretrained/native GPU proof.
+Owner yêu cầu bớt commit: gom implementation + QA/memory trong một commit cuối.
+
+Mốc host/cache làm nền:
+
 **Đã nối constrained host/cache/runtime + read-only join**, source `e04cd8d`.
 [Report](../docs/evaluation/phase5_constrained_host_v1_report.md),
 [contract](../docs/architecture/phase5_constrained_host_v1_contract.md).
@@ -28,18 +39,25 @@ guard 1.5B hoặc benchmark quality. CPU v1 thất bại vẫn lưu, không xóa
 
 ## Bước tiếp theo
 
-1. Dùng `constrained_runtime_v1.run_pair_task` và `constrained_runtime_audit_v1.audit_join`
-   (host join đã xong); không sửa các baseline đã pin.
-2. Nối native release wrapper với request-policy/attention/HF metrics và constraint
-   receipts theo PID/request index/input/output counts. Tạo candidate runner và
-   checkpoint identity riêng; lỗi/partial receipts không được tính completion.
-3. Exact-package preflight archive/expanded và freeze một protocol GPU mới
+1. Dùng `constrained_probe_v1.run/checkpoint`, `constrained_native_audit_v1.audit`
+   và các CLI `run/audit/check_phase5_constrained_probe_v1.py`; runner/join đã xong.
+2. Chuẩn bị notebook/bootstrap và builder từ source đã kiểm thử. Không dùng lại
+   bare-json notebook/package identity; không giả nhận controls là exact package.
+3. Exact-package preflight archive/expanded (fresh offline venv, 8 tools, 21 Dummy,
+   new controls/resume) và freeze một protocol GPU mới
    trước submission. Giữ prompt/model/parser/fallback/shutdown 2s để chỉ đo
    thay đổi decoding. Không chạy GPU chỉ từ bằng chứng tiny CPU hiện tại.
 4. Tiếp tục guard quality/benign utility/lifecycle và mapping 20 DoD trước freeze.
 
 ## Bằng chứng
 
+- [Runner/native join report](../docs/evaluation/phase5_constrained_probe_v1_report.md):
+  raw `results/phase5_constrained_probe_cpu_controls02`; base Git `e655658`,
+  execution source hashes bind working-tree code, chưa GPU release identity.
+  Controls01 nhập nhầm base SHA được giữ/excluded. Không sửa raw hoặc chọn kết quả.
+- [Final QA](../experiments/manifests/phase5_constrained_probe_cpu_qa01.json):
+  480 tests/42,60s + 105 integration/112,49s; raw `results/phase5_constrained_probe_cpu_qa01`.
+  [Integrity/controls](../experiments/manifests/phase5_constrained_probe_cpu_close01.json).
 - [Host integration report](../docs/evaluation/phase5_constrained_host_v1_report.md):
   37 tests mới qua; [final QA](../experiments/manifests/phase5_constrained_host_cpu_qa02.json)
   có 438 focused/42,30s + 90 integration tests đạt, raw ở `results/phase5_constrained_host_cpu_qa02`.
@@ -63,7 +81,7 @@ guard 1.5B hoặc benchmark quality. CPU v1 thất bại vẫn lưu, không xóa
 
 ## Giới hạn
 
-Native release/package integration, production guard/CUDA/quality, benign utility,
+Exact package/remote release authentication, production guard/CUDA/quality, benign utility,
 graceful shutdown và formal freeze vẫn mở. Không full pytest vì Test-assigned
 authoring fixtures; không Test/private GT access. Không cần tài khoản mới;
 kiểm quota/private mounts lại khi GPU package thực sự sẵn sàng.

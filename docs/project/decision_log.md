@@ -1692,3 +1692,19 @@ and are not inferred here.
 - CPU integration is not native release/package/quality acceptance. Next join
   policy/attention/HF metrics into the native wrapper and freeze a new package/
   diagnostic protocol before GPU. [Report](../evaluation/phase5_constrained_host_v1_report.md).
+
+# 2026-09-16 — Constrained runner/native evidence join, pre-commit CPU QA
+
+- New constrained probe identity retains CALC/DOC × A2/A6, prompt/model/parser/
+  fallback/shutdown settings; separate explicit synthetic receipt controls from HF.
+  Native injection/fallback forbidden; all existing checkpoints audited before
+  missing work and terminal errors never retried.
+- Join constrained guard input/output token counts to policy/attention/native
+  metrics and host witness; partial roles excluded from timing denominators.
+  This does not authenticate a remote release or establish guard quality.
+- Owner requested fewer commits: test working-tree source with exact hashes and
+  an explicitly labeled Git base, then group the completed code/evidence in one
+  commit. A pre-commit CPU receipt is not a committed GPU execution claim.
+- Controls01's incorrect manually supplied base SHA is retained and excluded;
+  controls02 uses the actual base and new raw directory. No native/model retry.
+  [Report](../evaluation/phase5_constrained_probe_v1_report.md).
