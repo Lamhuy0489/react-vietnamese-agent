@@ -7,6 +7,7 @@ from typing import Any, cast
 
 from react_agent.foundation.artifacts import canonical_json
 from react_agent.foundation.normalization import text_hash
+from react_agent.llm.agent_mount_v1 import no_links
 from react_agent.security_v1.constrained_runtime_v1 import RUNTIME_VERSION
 from react_agent.security_v1.guard_bare_json_v1 import PROMPT, bind
 from react_agent.validation.constrained_worker_audit_v1 import IDENTITY, complete
@@ -40,6 +41,7 @@ def audit_task(output: Path) -> dict[str, Any]:
 
 
 def audit_join(execution: Path, sidecar: Path, witness: Path, constrained: Path) -> dict[str, Any]:
+    no_links(constrained)
     before = inventory(constrained) if constrained.exists() else {}
     result = cast(
         dict[str, Any], bind(original_join, audit_task=audit_task)(execution, sidecar, witness)

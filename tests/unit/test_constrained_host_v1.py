@@ -239,7 +239,7 @@ def test_failed_runtime_preserves_partial_receipts_and_local_rejection(tmp_path)
 
 
 @pytest.mark.parametrize(
-    "fault", ["identity", "model", "factory", "history", "owner", "dead", "config"]
+    "fault", ["identity", "model", "factory", "history", "owner", "dead", "config", "directory"]
 )
 def test_host_identity_and_health_gate_before_cache(tmp_path, fault):
     pair = pair_for(tmp_path)
@@ -260,6 +260,8 @@ def test_host_identity_and_health_gate_before_cache(tmp_path, fault):
             backend._owner = -1
         elif fault == "config":
             backend.config = pair.config.execution("agent", cold=False)
+        elif fault == "directory":
+            (tmp_path / "constraints/request_000001/extra").mkdir()
         else:
             pair._workers["guard"].retire()
         outcome = guard.classify(REQUEST)
@@ -316,6 +318,13 @@ def test_cache_encoding_only_extends_cache_objects():
     assert item == before
     for other in ({}, [item], dict(item, extra=True), {"generation": {}}):
         assert cache_encoding(other) == canonical_json(other)
+
+
+def test_dangling_constraint_link_rejected_before_runtime_read(tmp_path):
+    root = tmp_path / "constraints"
+    root.symlink_to(tmp_path / "missing")
+    with pytest.raises(ValueError):
+        audit_join(tmp_path / "execution", tmp_path / "sidecar", tmp_path / "witness", root)
 
 
 @pytest.fixture

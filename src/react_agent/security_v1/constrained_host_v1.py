@@ -8,6 +8,7 @@ from typing import Any
 
 from react_agent.foundation.artifacts import canonical_json
 from react_agent.foundation.normalization import text_hash
+from react_agent.llm.agent_mount_v1 import no_links
 from react_agent.llm.base import GenerationConfig, ModelResponse
 from react_agent.llm.constrained_policy_v1 import ConstrainedPolicyFactory
 from react_agent.llm.guard_diagnostic_backend_v2 import DiagnosticFactory
@@ -72,13 +73,16 @@ class ConstrainedRoleBackend(PairRoleBackend):
             raise ValueError("host model/factory changed")
         if len(self.attempts) != self._validated:
             raise ValueError("unwitnessed guard request history")
+        no_links(self.root)
         actual = inventory(self.root) if self.root.exists() else {}
         equal(actual, self._hashes, "validated receipt history")
-        if self._validated:
+        if self.root.exists():
             equal(
-                sorted(p.name for p in self.root.iterdir()),
-                [f"request_{i:06d}" for i in range(1, self._validated + 1)],
-                "exact constrained request roots",
+                sorted(p.relative_to(self.root).as_posix() for p in self.root.rglob("*")),
+                sorted(
+                    set(self._hashes) | {f"request_{i:06d}" for i in range(1, self._validated + 1)}
+                ),
+                "exact constrained request tree",
             )
 
     def generate(self, messages: list[dict[str, str]], config: GenerationConfig) -> ModelResponse:
