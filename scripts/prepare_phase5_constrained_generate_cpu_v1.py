@@ -30,7 +30,7 @@ ENTRYPOINTS = {
     "scripts/preflight_clean_worker.py",
     "scripts/run_clean_v11_dev.py",
 }
-PUBLIC: set[str] = set()
+PUBLIC: set[str] = {"configs/guard/constrained_v2_effective.json"}
 
 
 def rehearse(
@@ -210,8 +210,8 @@ def main() -> None:
     kernel.mkdir()
     (kernel / "constrained_generate_cpu_kernel_v1.py").write_text(code)
     metadata = dict(
-        id="huylmhuhu/react-vn-constrained-generate-cpu-v1",
-        title="ReAct VN Constrained Generate CPU v1",
+        id="huylmhuhu/react-vn-constrained-generate-cpu-v2",
+        title="ReAct VN Constrained Generate CPU v2",
         code_file="constrained_generate_cpu_kernel_v1.py",
         language="python",
         kernel_type="script",

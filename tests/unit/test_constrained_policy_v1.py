@@ -9,7 +9,6 @@ from types import SimpleNamespace as NS
 
 import pytest
 from test_constrained_guard_v1 import (
-    EFFECTIVE,
     Matrix,
     Prefix,
     Repetition,
@@ -41,22 +40,6 @@ from react_agent.llm.worker_progress_v1 import ThreadProgressFactory
 
 class Model(PolicyModel):
     _get_logits_processor = ConstraintModel._get_logits_processor
-
-    def _prepare_generation_config(self, generation_config, **kwargs):
-        result, unused = super()._prepare_generation_config(generation_config, **kwargs)
-        # Legacy fake defaults use 0.0/1.0; actual TF5.5 receipts use integer JSON
-        # for these fields. Match the observed representation, not a relaxed hash.
-        for key in (
-            "diversity_penalty",
-            "encoder_repetition_penalty",
-            "epsilon_cutoff",
-            "eta_cutoff",
-            "length_penalty",
-            "typical_p",
-        ):
-            assert getattr(result, key) == EFFECTIVE[key]
-            setattr(result, key, EFFECTIVE[key])
-        return result, unused
 
     def generate(self, input_ids, attention_mask, generation_config, prefix_allowed_tokens_fn):
         resolved, _ = self._prepare_generation_config(

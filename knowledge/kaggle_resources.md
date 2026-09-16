@@ -21,6 +21,22 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**Constrained generation CPU v1 ERROR**, live-check2026-09-16 07:58:28UTC.
+Actual=requested [huylmhuhu/react-vn-constrained-generate-cpu-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-constrained-generate-cpu-v1),
+v1/ID134578096, source999d658; private/offline/CPU, không model mounts.
+[Datasetguard15](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+v1 ready; không thay Dataset.4fixed tiny-random-Qwen cases, không pretrained weights
+hay quality/production guard latency. Source tải ngược khớp;0completed cases,
+success01 lỗi trước processor admission, hook restored. Raw đã tải và giữ nguyên.
+[Failure audit](../experiments/manifests/phase5_constrained_generate_cpu_failure01.json),
+[typed-policy diagnosis](../experiments/manifests/phase5_constrained_policy_diagnosis01.json).
+[Submission](../experiments/manifests/phase5_constrained_generate_cpu_submission01.json),
+[preflight](../experiments/manifests/phase5_constrained_generate_cpu_preflight01.json),
+[report](../docs/evaluation/phase5_constrained_generate_cpu_v1_run.md).
+Rawsubmission: `results/phase5_constrained_generate_submission01`.
+
+Mốc trước:
+
 **Guard language CPU v1 COMPLETE/audit**, xác minh sau download lúc
 2026-09-15 18:36:08UTC; actual=requested
 [huylmhuhu/react-vn-guard-language-cpu-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-guard-language-cpu-v1),

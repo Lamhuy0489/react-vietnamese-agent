@@ -18,7 +18,7 @@ from react_agent.security_v1.guard import GuardInput
 from react_agent.security_v1.guard_bare_json_v1 import PROMPT, BareJsonModelGuard
 
 ROOT = Path(__file__).resolve().parents[2]
-EFFECTIVE = json.loads((ROOT / "configs/guard/constrained_v1_effective.json").read_text())
+EFFECTIVE = json.loads((ROOT / "configs/guard/constrained_v2_effective.json").read_text())
 
 
 class Row:
@@ -394,6 +394,26 @@ def test_effective_policy_fixture_matches_pinned_identity():
     from react_agent.foundation.normalization import text_hash
 
     assert text_hash(canonical_json(EFFECTIVE)) == impl.POLICY_SHA
+
+
+def test_policy_preserves_native_numeric_types_not_historical_serialization():
+    from react_agent.foundation.artifacts import canonical_json
+    from react_agent.foundation.normalization import text_hash
+    from react_agent.validation.generation_policy_audit_v1 import GLOBAL_DEFAULTS
+
+    old = json.loads((ROOT / "configs/guard/constrained_v1_effective.json").read_text())
+    assert old == EFFECTIVE  # Python equality alone silently ignores the six type mismatches.
+    assert text_hash(canonical_json(old)) != impl.POLICY_SHA
+    for field in (
+        "diversity_penalty",
+        "encoder_repetition_penalty",
+        "epsilon_cutoff",
+        "eta_cutoff",
+        "length_penalty",
+        "typical_p",
+    ):
+        assert type(EFFECTIVE[field]) is float and type(old[field]) is int
+        assert canonical_json(EFFECTIVE[field]) == canonical_json(GLOBAL_DEFAULTS[field])
 
 
 @pytest.mark.parametrize("fault", ["hidden_drift", "check_interrupt"])

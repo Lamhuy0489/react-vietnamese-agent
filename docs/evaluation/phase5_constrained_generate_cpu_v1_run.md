@@ -21,10 +21,26 @@
 
 ## Native control status
 
-Prepared, not yet submitted at this report revision. Requested notebook:
-`huylmhuhu/react-vn-constrained-generate-cpu-v1`. Use private Datasetv1
-`huylmhuhu/react-vn-guard15-probe-data-v1`; live access/version must be checked
-before push. Four fixed tiny-random-Qwen CPU cases, no pretrained weights.
+**ERROR**, observed2026-09-16 07:58:28UTC; raw downloaded and preserved.
+Actual=requested notebook
+[huylmhuhu/react-vn-constrained-generate-cpu-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-constrained-generate-cpu-v1),
+v1/ID134578096, private/offline/CPU, no external model mounts, timeout3600s.
+[Submission receipt](../../experiments/manifests/phase5_constrained_generate_cpu_submission01.json).
+Remote source matches source999d658; GitHub evidencecb1b7f8. Existing private
+Dataset `huylmhuhu/react-vn-guard15-probe-data-v1` confirmedready/v1 before push.
+First case `success01` failed before chain admission: generate1/processors0/
+callbacks0, hooks restored, no completed cases. No native-success/quality claim.
+[Failure audit](../../experiments/manifests/phase5_constrained_generate_cpu_failure01.json)
+authenticates141source pins against Git, remote source/settings and12raw/2remote
+files; scan14files/0credentials. Raw: `results/phase5_constrained_generate_monitor02`.
+
+[Static policy diagnosis](../../experiments/manifests/phase5_constrained_policy_diagnosis01.json)
+reproduces six integer/float type mismatches between historical selected config
+and pinned native defaults. The original remote inner message was sanitized;
+this is a definite admission defect consistent with that boundary, not a complete
+remote traceback. New typed configv2 is selected; one corrected CPU technical
+schedule uses a new source/package/notebook, not a semantic retry. See deviation
+in the contract. No second submission yet at this report revision.
 Do not interpret local metadata rehearsal as actual GenerationMixin execution.
 
 ## Remaining

@@ -22,7 +22,7 @@ from react_agent.security_v1.guard import parse_guard
 
 PROFILE = "constrained_guard_adapter_v1"
 LANGUAGE_SHA = "f8df0c2892984e8c6520a8e3bcf4e91dc793d8950165e99284c904a93f6bc3fb"
-POLICY_SHA = "231f3e0b7e56f54043efa1002e6d1b37c132a28ca049294a32865d49c7b2efc6"
+POLICY_SHA = "fbe63d97727be376a45d5b484ea70147e7724231dc625118515e5f2188c2d69f"
 PROCESSOR_SHA = "c2cb748555325f429689a12cb4a9607dd3e2f9503b4eca6287702790c14fd780"
 UTILS_SHA = "dde2df36821c0d724b5af47cb0ff71c3c4c1990c86d81b821911127ae4dc1254"
 METHODS = ("generate", "_get_logits_processor")

@@ -61,3 +61,26 @@ tasks and missing-only resume; native launcher runs metadata-only locally and
 must state that native libraries were not executed. All source and raw hashes
 are retained. Terminal source/version/download audit is required before claiming
 this native gate passed. Phase5 acceptance remains open.
+
+## Deviation after CPU notebook v1, 2026-09-16
+
+The first technical case failed before chain admission, with hooks restored and
+no completed cases. Preserve v1/source999d658/raw and do not label it successful.
+Static extraction of `_get_default_generation_params` from the pinned wheel
+reproduces a six-field hash mismatch: the historical selected JSON used integer
+0/1 where the native defaults are float0.0/1.0. Python dict equality hid this.
+This is a proven admission defect consistent with the observed boundary, not a
+claim that the sanitized remote exception identified every possible cause.
+
+Correct the **expected config**, not native decoding, in
+`configs/guard/constrained_v2_effective.json`; canonical SHA
+`fbe63d97727be376a45d5b484ea70147e7724231dc625118515e5f2188c2d69f`.
+Keep the original v1 config immutable. Preserve numeric types in tests; do not
+coerce native defaults to match historical files. Execution/cache identity changes
+through the policy pin. Unexpected CPU-case errors now retain their traceback
+(fixed synthetic inputs only). No relaxation of processor/schema/hash checks.
+
+One corrected technical schedule may run under a new source/package/notebook
+`huylmhuhu/react-vn-constrained-generate-cpu-v2`, not a semantic retry or v1 resume.
+If the same admission failure recurs after this correction, stop submissions and
+reproduce it before any further remote attempt. GPU admission remains closed.

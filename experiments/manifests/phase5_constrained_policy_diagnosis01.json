@@ -1,0 +1,49 @@
+{
+  "protocol": "constrained_policy_type_diagnosis_v1",
+  "wheel_sha256": "821a9ff0961abbb29eb1eb686d78df1c85929fdf213a3fe49dc6bd94f9efa944",
+  "config_source_sha256": "0aaf06e21d844256eee23aac663672d0aa9d06ca1f7f59e9be655c761ccdb0a0",
+  "differences": {
+    "typical_p": {
+      "selected": 1,
+      "selected_type": "int",
+      "native_default": 1.0,
+      "native_type": "float"
+    },
+    "eta_cutoff": {
+      "selected": 0,
+      "selected_type": "int",
+      "native_default": 0.0,
+      "native_type": "float"
+    },
+    "diversity_penalty": {
+      "selected": 0,
+      "selected_type": "int",
+      "native_default": 0.0,
+      "native_type": "float"
+    },
+    "epsilon_cutoff": {
+      "selected": 0,
+      "selected_type": "int",
+      "native_default": 0.0,
+      "native_type": "float"
+    },
+    "length_penalty": {
+      "selected": 1,
+      "selected_type": "int",
+      "native_default": 1.0,
+      "native_type": "float"
+    },
+    "encoder_repetition_penalty": {
+      "selected": 1,
+      "selected_type": "int",
+      "native_default": 1.0,
+      "native_type": "float"
+    }
+  },
+  "old_policy_sha256": "231f3e0b7e56f54043efa1002e6d1b37c132a28ca049294a32865d49c7b2efc6",
+  "corrected_policy_sha256": "fbe63d97727be376a45d5b484ea70147e7724231dc625118515e5f2188c2d69f",
+  "exact_native_code_executed": false,
+  "static_ast_defaults_and_precedence_reproduced": true,
+  "model_inference_runs": 0,
+  "remote_full_error_message_available": false
+}

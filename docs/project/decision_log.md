@@ -1648,3 +1648,19 @@ and are not inferred here.
   Host classifier/cache and benchmark release auditor remain separate open work.
   [Protocol](../architecture/phase5_constrained_policy_v1_contract.md),
   [report](../evaluation/phase5_constrained_generate_cpu_v1_run.md).
+
+# 2026-09-16 — Typed policy-pin correction after native CPU admission failure
+
+- CPUv1/ID134578096 ERROR at success01 before processor admission (generate1,
+  processors0, callbacks0); hooks restored, no completed case. Retain raw,
+  source999d658 and failure receipt; no model-quality claim or GPU use.
+- Pinned wheel AST defaults reproduce six int-versus-float mismatches in the
+  historical selected effective JSON. The synthetic test's coercion to those
+  historical ints was wrong; remove it. Python equality is insufficient for
+  canonical JSON identity. Select a new typed config/hash, keep v1 config intact.
+- No numerical decoding, prompt, model, parser, timeout or threshold change.
+  Cache identity changes with the corrected policy pin. Permit one corrected
+  CPU-only technical schedule under a new notebook/source identity; if admission
+  fails again, stop submissions and reproduce before any further remote attempt.
+  Remote v1 sanitized error alone is not proof of its exact inner exception;
+  the local hash defect is independently reproduced, not guessed from model outputs.

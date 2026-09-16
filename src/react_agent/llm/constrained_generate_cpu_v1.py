@@ -157,6 +157,10 @@ def probe(
                 )
             except (ValueError, KeyboardInterrupt) as caught:
                 error = type(caught).__name__
+                if case in {"success01", "success02"}:
+                    # Fixed public CPU inputs only: preserve the actual failure location.
+                    # Do not replace a useful technical traceback with an aggregate error.
+                    raise
             finally:
                 hook.remove()
             expected_error = (

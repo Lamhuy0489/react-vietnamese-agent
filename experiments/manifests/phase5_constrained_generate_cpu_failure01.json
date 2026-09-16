@@ -1,0 +1,42 @@
+{
+  "protocol": "constrained_generate_failure_audit_v1",
+  "valid": true,
+  "source_commit": "999d6587923ab66dc717703f27f0f465eb1029ae",
+  "source_pins_verified": 141,
+  "actual_kernel": "huylmhuhu/react-vn-constrained-generate-cpu-v1",
+  "kernel_version": 1,
+  "kernel_id": 134578096,
+  "observed_at_utc": "2026-09-16T07:58:28.414875+00:00",
+  "status": "ERROR",
+  "completed_cases": 0,
+  "failed_case": "success01",
+  "error_class": "ValueError",
+  "counts": {
+    "callbacks": 0,
+    "generate": 1,
+    "processors": 0
+  },
+  "methods_restored": true,
+  "outcome": "native control failed before chain admission; no successful generation claim",
+  "observation_sha256": "a01858f07fcd9c6becfb63be49c3ba09316821e3bc46190d8c00bb409900a54f",
+  "raw_remote_sha256": {
+    "results/phase5_constrained_generate_monitor02/raw/react-vn-constrained-generate-cpu-v1.log": "a705bbd0dfd26d7a67b2ee401202518f95ab083df745a1efbefa87ea82bc7155",
+    "results/phase5_constrained_generate_monitor02/raw/language_bootstrap.json": "98ba8053cdb435211308f9532ed1090b865d5b8123c37a8836439c5f64004707",
+    "results/phase5_constrained_generate_monitor02/raw/language/admission.json": "abf9ea48b156dac78197b91d800b269857671b8d98536bf436ce70873cb21fb6",
+    "results/phase5_constrained_generate_monitor02/raw/language/tokenizer/tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+    "results/phase5_constrained_generate_monitor02/raw/language/tokenizer/config.json": "98d2ff8cc47488d08a2b0b3acf4eb99ef210779b42bd48605f6b8e36acdbf670",
+    "results/phase5_constrained_generate_monitor02/raw/language/tokenizer/tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "results/phase5_constrained_generate_monitor02/raw/language/tokenizer/generation_config.json": "e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6",
+    "results/phase5_constrained_generate_monitor02/raw/language/tokenizer/merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+    "results/phase5_constrained_generate_monitor02/raw/language/tokenizer/vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+    "results/phase5_constrained_generate_monitor02/raw/language/generation/success01/error.json": "66ff33f557f8557d844d332ea909f051f2f65a2d89f8ca242ccb445783f7a028",
+    "results/phase5_constrained_generate_monitor02/raw/language/generation/success01/entered.json": "48b503a9e48065257ca2229a91d4b5669608f28af9b1cb90b370faf25e27f426",
+    "results/phase5_constrained_generate_monitor02/raw/language/generation/success01/restored.json": "ddceb093b4b88b2353f95bda042e617cf612c214a321df14ce88bf726b157079",
+    "results/phase5_constrained_generate_monitor02/remote/kernel-metadata.json": "4da961c0e816be80f2f1ddbae4df85669699fa5aee479a7100e9a146a521ddf8",
+    "results/phase5_constrained_generate_monitor02/remote/react-vn-constrained-generate-cpu-v1.py": "b951704b20a46df67544630a8b7c110ddc8cddc01825e8a4195a72626a446923"
+  },
+  "credential_value_scan_files": 14,
+  "credential_value_matches": 0,
+  "model_quality_evaluated": false,
+  "phase5_accepted": false
+}
