@@ -228,13 +228,22 @@ class ConstrainedGuardBackend:
             raise ValueError("pinned native libraries required")
         self.native, self.language, self.output = native, language, output
         self._types = RepetitionPenaltyLogitsProcessor, PrefixConstrainedLogitsProcessor
+        bound_generate = native.model.generate
+        if (
+            not inspect.ismethod(bound_generate)
+            or id(bound_generate.__self__) != id(native.model)
+            or bound_generate.__func__ is not native.transformers.GenerationMixin.generate
+        ):
+            raise ValueError("original native GenerationMixin method required")
         for obj, expected in (
             (self._types[0], PROCESSOR_SHA),
             (self._types[1], PROCESSOR_SHA),
             (native.model.generate, UTILS_SHA),
             (native.model._get_logits_processor, UTILS_SHA),
         ):
-            path = inspect.getsourcefile(obj)
+            # torch.no_grad wraps generate in torch/utils/_contextlib.py.
+            # Authenticate the exact SDK method above, then hash its unwrapped body.
+            path = inspect.getsourcefile(inspect.unwrap(obj))
             if path is None or hashlib.sha256(Path(path).read_bytes()).hexdigest() != expected:
                 raise ValueError("native implementation pin mismatch")
         self.model_id, self.model_revision = native.model_id, native.model_revision
