@@ -1633,3 +1633,18 @@ and are not inferred here.
   its auditor. No Kaggle/model/Test run or acceptance update in this step. See
   [contract](../architecture/phase5_constrained_guard_v1_contract.md) and
   [CPU evidence](../evaluation/phase5_constrained_guard_v1_cpu.md).
+
+# 2026-09-16 — Compose worker observers and test actual native generation on CPU
+
+- Owner requested faster continuation. Reuse unchanged policy/attention/sidecar/
+  host-witness bodies through a separate lazy constrained factory; no agent,
+  prompt, parser, shutdown or benchmark split changes.
+- Fix candidate source admission: torch.no_grad wraps GenerationMixin.generate;
+  require the exact SDK bound method, then hash inspect.unwrap's native body.
+  Prior synthetic tests bypassed constructor admission and could not detect this.
+- Predeclare four fresh tiny random Qwen CPU cases, real native generation but
+  no pretrained weights/quality evaluation or GPU. Source999d658/package01 passes
+  both offline layouts; new private notebook identity, not a rerun of CPU v1.
+  Host classifier/cache and benchmark release auditor remain separate open work.
+  [Protocol](../architecture/phase5_constrained_policy_v1_contract.md),
+  [report](../evaluation/phase5_constrained_generate_cpu_v1_run.md).

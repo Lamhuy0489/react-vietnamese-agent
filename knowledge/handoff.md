@@ -4,6 +4,14 @@ Cập nhật: 2026-09-16. Phase5 đang làm, chưa nghiệm thu (4/7≈57% nhóm
 
 ## Đang làm
 
+**Constrained worker composition và CPU package01 đã preflight xong**.
+[Report/protocol](../docs/evaluation/phase5_constrained_generate_cpu_v1_run.md),
+[receipt](../experiments/manifests/phase5_constrained_generate_cpu_preflight01.json).
+Source999d658:30tests mới/148focused tests đạt; setup/Ruff/mypy431 đạt.
+141source pins; archive/expanded offline đều qua8tools/21Dummy/resume.
+Sửa source check phải unwrap torch.no_grad sau exact SDK-method admission.
+Mốc adapter dưới đây là nền lịch sử, không phải trạng thái integration mới nhất.
+
 **Candidate constrained adapter + cache riêng đã triển khai CPU.**
 [Contract](../docs/architecture/phase5_constrained_guard_v1_contract.md),
 [report/QA](../docs/evaluation/phase5_constrained_guard_v1_cpu.md).
@@ -26,14 +34,14 @@ Không thay frozen guard/parser/runtime hay kết quả đã đo.
 
 ## Bước tiếp theo
 
-Nối candidate bằng paired-factory/composition version riêng với request-policy,
-efficient-request và observer/auditor; không sửa frozen baseline/factory.
-Đóng protocol actual GenerationMixin CPU integration để kiểm hooks tương tác
-đúng với thư viện pin, receipt và exception restoration; không tải weights.
+Gửi đúng một notebook CPU mới từ package01/source999d658, sau live-check Datasetv1
+và push source/evidence. Protocol4tiny-random-Qwen cases kiểm actualGenerationMixin,
+không tải pretrained weights. Sau terminal: authenticate version/source/raw và audit.
+Worker factory composition đã có; còn nối hostclassifier/cache/benchmark auditor.
 Sau đó exactpackage/native protocol riêng trước GPU diagnostic mới. Giữ
 prompt/model/parser/fallback/shutdown2s để tách hiệu ứng decoding; study shutdown riêng.
 
-Chưa có paired-runtime integration/inference package sẵn sàng. Không submit GPU
+Chưa có host benchmark integration/GPU inference package sẵn sàng. Không submit GPU
 chỉ từ47fake tests hoặc248mask checks cũ. Local .venv chưa có Torch/Transformers/
 tokenizers; native compatibility trước chạy CPU Kaggle, không trên máy này.
 

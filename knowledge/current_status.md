@@ -6,6 +6,16 @@ Phase1, clean_v1.1 Phase2, adversarial_v2 Phase3 và Phase4 accepted theo
 
 ## Công việc hiện hành
 
+**Đã nối constrained worker qua policy/attention/observer; gói CPU mới preflight đạt.**
+[Report](../docs/evaluation/phase5_constrained_generate_cpu_v1_run.md).
+Source999d658;30tests composition mới,148focused tests đạt; archive/expanded offline
+đều qua8tools/21Dummy/missing-only resume. Gói
+`build/kaggle/phase5_constrained_generate_cpu_package01` gồm141sourcepins.
+Sửa source-admission do torch.no_grad bọc generate; không đổi frozen baseline.
+Bước hiện tại: gửi notebook CPU riêng để kiểm actualGenerationMixin bằng tiny
+randomQwen, chưa weights/GPU/quality. Còn hostclassifier/cache/auditor integration.
+Các mốc dưới là lịch sử; Phase5vẫn4/7≈57%.
+
 **Đã triển khai candidate constrained guard adapter + classifier cache riêng**:
 [contract](../docs/architecture/phase5_constrained_guard_v1_contract.md),
 [CPU evidence](../docs/evaluation/phase5_constrained_guard_v1_cpu.md).
