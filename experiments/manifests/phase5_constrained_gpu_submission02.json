@@ -1,0 +1,26 @@
+{
+  "protocol": "constrained_gpu_submission_v1",
+  "submission_confirmed": true,
+  "observed_at_utc": "2026-09-17T03:01:23.015420+00:00",
+  "actual_kernel": "huylmhuhu/react-vn-constrained-guard-v1",
+  "notebook_url": "https://www.kaggle.com/code/huylmhuhu/react-vn-constrained-guard-v1",
+  "kernel_id": 134673914,
+  "kernel_version": 1,
+  "private": true,
+  "gpu_requested": true,
+  "internet": false,
+  "timeout_seconds": 3600,
+  "source_commit": "0d4e82f50b65ac8eaf86193f1a8147321626bb68",
+  "preflight_path": "experiments/manifests/phase5_constrained_probe_package01.json",
+  "preflight_sha256": "41235a36cf212e368fcd45a51bbc27f743e9b513161938341f0e83240f4890bd",
+  "remote_source_sha256": "7d762835b8d07f74e486a5f891a639fe4ed298d8eb2cef21d94199d5381f191d",
+  "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+  "dataset_version": 1,
+  "session_status": {
+    "status": "RUNNING",
+    "failureMessage": null
+  },
+  "push_log_sha256": "bd00af91ecc03a8e4836fc5164f6f91fb5a46ea0822cf4a4d77d3e889a47634f",
+  "qa_sha256": "80417ee191cc7f2d9884075cef459749835e6cb91db94c09b3cb0610140de108",
+  "phase5_accepted": false
+}

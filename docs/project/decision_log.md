@@ -1722,3 +1722,17 @@ and are not inferred here.
 - This changes packaging workflow, not research scope, model/prompt/parser or
   acceptance criteria. Remote source authentication and native quality/lifecycle
   gates remain open. [Report](../evaluation/phase5_constrained_package_v1_report.md).
+
+# 2026-09-17 — Authenticate constrained GPU v1; retain lifecycle and quality gates
+
+- One native GPU submission from unchanged worker commit `0d4e82f` completed;
+  source/version/private settings authenticated before/after download and two
+  release audits agree. New host auditor/summary do not change runtime behavior.
+- Four tasks completed, eight valid PRE/POST guard responses, eight reaped
+  workers/four VRAM recoveries. Four workers still required TERMINATE despite
+  STOP/serve-return evidence. No broad guard-quality or lifecycle acceptance.
+- Preserve preparation01 metadata-envelope error (before push, zero GPU runs)
+  and earlier negative inference results. No semantic rerun or held-out access.
+- Batch terminal evidence, 64 new host tests, QA and memory in one completed-work
+  commit; do not amend the frozen worker. Next is separately controlled teardown
+  evidence, representative quality/utility and DoD mapping. [Report](../evaluation/phase5_constrained_gpu_v1_report.md).

@@ -1,5 +1,16 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — constrained GPU v1 COMPLETE/audit, 2026-09-17
+
+[Report](../docs/evaluation/phase5_constrained_gpu_v1_report.md),
+[submission](../experiments/manifests/phase5_constrained_gpu_submission02.json):
+actual `huylmhuhu/react-vn-constrained-guard-v1`, version 1/ID134673914,
+COMPLETE post-download 03:43:34 UTC, source `0d4e82f` remote khớp. Private/offline/T4.
+Release wrapper/summary có 64 tests mới; final QA02 573 focused + 105 integration đạt.
+Hai audits byte-identical: 172 source/238 raw/2 remote, 4 completed/8 valid
+guard responses; 8 workers reaped/4 recoveries, nhưng 4 forced terminations.
+Còn quality/lifecycle analysis; không submit lại, chưa quality claim. Phase 5 vẫn 4/7≈57%.
+
 ## Hiện hành — constrained exact package, 2026-09-16
 
 [Report](../docs/evaluation/phase5_constrained_package_v1_report.md):
@@ -7,7 +18,9 @@ notebook/bootstrap/builder mới qua development archive + expanded offline rehe
 166 worker files/172 source pins, đủ 8 tools, 21 Dummy và constrained controls/resume.
 15 unit tests mới đạt; final QA 495 focused + 105 integration,
 setup/Ruff/mypy444/knowledge đạt. Development mode chặn native để QA trước commit an toàn.
-Còn committed release preflight/remote authentication rồi GPU; chưa job mới,
+Source `0d4e82f` đã push main; committed package01 lặp hai layout đạt,
+[receipt](../experiments/manifests/phase5_constrained_probe_package01.json).
+Còn remote authentication rồi GPU; chưa job mới,
 không quality claim. Phase 5 vẫn 4/7≈57%. Skill đã ghi quy tắc gom commit theo owner.
 
 ## Hiện hành — constrained runner/native join, 2026-09-16

@@ -1,0 +1,50 @@
+{
+  "guard_quality_validated": false,
+  "kernel_version": 1,
+  "notebook_url": "https://www.kaggle.com/code/huylmhuhu/react-vn-constrained-guard-v1",
+  "observation_sha256": "cfa13c70fca505d5fd11ee2843653e9ca0b0c73a16f4f9691fa770c4aa40f59e",
+  "phase5_accepted": false,
+  "preflight_sha256": "41235a36cf212e368fcd45a51bbc27f743e9b513161938341f0e83240f4890bd",
+  "protocol": "constrained_gpu_release_audit_v1",
+  "source_authenticated": true,
+  "source_commit": "0d4e82f50b65ac8eaf86193f1a8147321626bb68",
+  "source_pins_verified": 172,
+  "submission_sha256": "82210e0130684e209395c1fd4d8b17d03c6825b684488c7463942beb017403f2",
+  "valid": true,
+  "checked_at_utc": "2026-09-17T03:46:00.600731+00:00",
+  "full_audit_path": "results/phase5_constrained_gpu_audit01.json",
+  "full_audit_sha256": "7d6a4583cc2709cabe56bb3663ba895f66d237217f1f36c2a1c05d249ff78f8b",
+  "repeated_audit_path": "results/phase5_constrained_gpu_report01/release_audit.json",
+  "repeated_audits_byte_identical": true,
+  "summary_path": "results/phase5_constrained_gpu_report01/summary.json",
+  "summary_sha256": "c96bfcdb81fbc1c5285e8db647ef15809baeee7e73a7d51577b43e4117cd25a0",
+  "raw_directory": "results/phase5_constrained_gpu_monitor02/raw",
+  "raw_files_verified": 238,
+  "remote_directory": "results/phase5_constrained_gpu_monitor02/remote",
+  "remote_files_verified": 2,
+  "terminal_observation_path": "results/phase5_constrained_gpu_monitor02/observation.json",
+  "host_auditor_source_identity": "working-tree hashes; worker release commit remains 0d4e82f",
+  "host_auditor_source_sha256": {
+    "docs/architecture/phase5_constrained_release_v1_contract.md": "441352af587523ec0b39ba59e830ab857e63e881ac4760b44f7fdfc292ba3026",
+    "scripts/audit_phase5_constrained_gpu_v1.py": "ede3635e5f0bdd20ac98097b050eb9c3de2185996ed564d035c7810b509ba280",
+    "scripts/report_phase5_constrained_gpu_v1.py": "018350d101dec1a802959baaa9332e5e1c5f7a6ab91f28f492274da0d88840e4",
+    "tests/unit/test_constrained_gpu_release_v1.py": "c4f677fdda8efc967345a8ebe474658f11f6881fab673c60507b1f076ffee51b",
+    "tests/unit/test_constrained_gpu_report_v1.py": "2f90fdf905ff78640ad8cdca74ce1a6c772c5257b90b805df5640bc46d1e3b8d"
+  },
+  "credential_value_scan_files": 256,
+  "credential_value_matches": 0,
+  "test_payload_accessed": false,
+  "private_ground_truth_accessed": false,
+  "new_model_retries": 0,
+  "terminal_counts": {
+    "completed": 4
+  },
+  "constraint_completed_requests": 8,
+  "guard_categories": {
+    "valid": 8
+  },
+  "shutdown_methods": {
+    "GRACEFUL": 4,
+    "TERMINATE": 4
+  }
+}

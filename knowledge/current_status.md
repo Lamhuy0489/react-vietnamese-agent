@@ -1,18 +1,40 @@
 # Trạng thái hiện tại
 
-Cập nhật 2026-09-16. **Phase 5 đang làm: 4/7 ≈ 57% nhóm nghiệm thu**,
+Cập nhật 2026-09-17. **Phase 5 đang làm: 4/7 ≈ 57% nhóm nghiệm thu**,
 không phải phần trăm công sức hoặc số dòng mã. Phase 1–4 đã accepted theo
 [trạng thái chính thức](../docs/project/phase_status.md); Test vẫn khóa.
 
 ## Kết quả mới nhất
 
-**Constrained notebook/bootstrap và exact package đã có, development rehearsal đạt.**
+**Constrained guard GPU v1 COMPLETE; hai release audits khớp byte-for-byte.**
+[Report](../docs/evaluation/phase5_constrained_gpu_v1_report.md),
+[submission](../experiments/manifests/phase5_constrained_gpu_submission02.json).
+Actual `huylmhuhu/react-vn-constrained-guard-v1`, version 1/ID 134673914;
+private/offline/T4, source `0d4e82f` khớp remote, guard Dataset v1.
+Post-download check 03:43:34 UTC ngày 2026-09-17 vẫn COMPLETE/v1/private.
+[Summary](../experiments/manifests/phase5_constrained_gpu_summary01.json):
+4/4 tasks completed, 8/8 guard responses valid (4 PRE/4 POST), 0 incomplete
+constraints/backend errors; 8 workers reaped/4 VRAM recoveries.
+**Còn 4 TERMINATE/4 GRACEFUL**; chưa lifecycle acceptance. 172 source/238 raw/2 remote
+files authenticated; scan 256 files/0 credential matches. Không còn job pending,
+không submit lại. Đây là syntax/integration evidence, chưa guard quality/utility.
+Host auditor/summary có 64 tests mới. [Final QA](../experiments/manifests/phase5_constrained_release_cpu_qa02.json):
+573 focused + 105 integration tests; setup/Ruff/mypy446/knowledge đạt.
+Gom host code/tests/evidence/memory trong một commit sau khi thực nghiệm đóng;
+không amend source worker hoặc commit lẻ mỗi status.
+
+Nền package đã đóng:
+
+**Constrained notebook/bootstrap và exact package đã đạt cả development và committed rehearsal.**
 [Report](../docs/evaluation/phase5_constrained_package_v1_report.md),
 [receipt](../experiments/manifests/phase5_constrained_probe_package_dev01.json).
 166 file worker/172 source pins; archive và expanded đều đạt 8 tools,
 21 Dummy, valid/failure controls và immutable/missing-only resume trong venv
 offline mới. Không load model/GPU. Bản development bị chặn native execution;
-cần grouped source freeze rồi committed release preflight và remote authentication.
+source-freeze `0d4e82f` đã push `main`; committed package01 chạy lại hai layout đạt.
+[Release receipt](../experiments/manifests/phase5_constrained_probe_package01.json).
+Terminal remote authentication đã đạt. Biên bản sau freeze được gộp với host
+auditor/report khi đóng thực nghiệm, không thêm status-only commit.
 Final QA: 495 focused + 105 integration tests, setup/Ruff/mypy444/knowledge đạt;
 142/86/175 frozen source pins nguyên.
 Đã cập nhật hai skill dự án: gom việc hoàn chỉnh/QA/memory, không commit lẻ từng
@@ -61,10 +83,10 @@ không đổi numerical decoding/prompt/model/parser.
 Worker composition và host classifier/cache/runtime join đã có CPU tests.
 Native wrapper đã nối constraint với policy/attention/HF metrics và runner có
 checkpoint identity riêng. Notebook/bootstrap đã qua development exact rehearsal.
-**Còn committed release preflight và remote release authentication**, rồi thực
-nghiệm GPU theo protocol riêng.
-Native CPU pass không chứng minh production guard 1.5B,
-CUDA attention, chất lượng phân loại, benign utility hoặc graceful lifecycle.
+Committed release preflight và GPU v1 terminal/release authentication đã đạt.
+**Bước tiếp là controlled post-serve teardown/lifecycle study**, rồi đại diện
+guard quality/benign utility và mapping 20 DoD. Native v1 chứng minh 8 phản hồi
+đúng syntax trong 4 ca, không thay thế chất lượng phân loại hay graceful lifecycle.
 
 Giữ baseline 175 source pins, native tokenizer 86 pins và package CPU 142 pins.
 Không submit lại bare-json-v2, CPU v1/v2 hoặc retry semantic failures.

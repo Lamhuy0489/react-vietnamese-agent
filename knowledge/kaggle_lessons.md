@@ -305,3 +305,8 @@ Failed SaveKernel requests are not completed or failed inference attempts.
   unversioned pull succeeded and matched submitted v1 code. Keep submission
   version evidence separate from latest-session observations; do not label a
   latest-session read as independently version-authenticated.
+- Installed Dataset metadata CLI writes a response envelope: private visibility
+  is `info.isPrivate`, not a root field. Preparation01 for constrained GPU stopped
+  before push on that shape; preserve its logs and check the actual saved metadata
+  before changing adapters. Corrected preparation02 sent exactly one GPU job.
+  See [report](../docs/evaluation/phase5_constrained_gpu_v1_report.md).

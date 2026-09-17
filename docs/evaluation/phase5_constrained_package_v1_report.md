@@ -3,6 +3,10 @@
 2026-09-16. [Contract](../architecture/phase5_constrained_package_v1_contract.md).
 Phase 5 remains **4/7 ≈ 57% acceptance groups**; no new Kaggle run or model result.
 
+Follow-up 2026-09-17: the [native GPU release](phase5_constrained_gpu_v1_report.md)
+is now COMPLETE/audited. The preparation/remaining-gate text below records the
+earlier package milestone; its post-freeze receipts are grouped with that release.
+
 ## Implemented and rehearsed
 
 The new constrained launcher packages the existing runner, native metrics join
@@ -42,10 +46,23 @@ and 175 baseline source pins are unchanged. The development package scan checked
 Full repository pytest is excluded because
 Test-assigned authoring fixtures must remain sealed.
 
+## Committed release preflight
+
+Source freeze `0d4e82f50b65ac8eaf86193f1a8147321626bb68` was pushed to `origin/main`
+in one grouped commit after QA. Rebuilt without development mode at
+`build/kaggle/phase5_constrained_probe_package01`;
+[selected release receipt](../../experiments/manifests/phase5_constrained_probe_package01.json).
+Both exact layouts passed again; all 172 selected source files match the Git
+tree and all 166 packaged files are bound. Rehashed 433 raw files per layout;
+1,043 source/evidence files had zero credential-value matches.
+
+The release receipt and this post-freeze memory update are deliberately local,
+pending the next coherent commit; the experiment source commit is not amended.
+`native_submission_ready=true` only means local committed preflight passed.
+
 ## Remaining gate
 
-After grouped source freeze, rebuild without `--development` and repeat both
-layouts. Before GPU submission, implement/verify the remote source/version/output
+Before GPU submission, implement/verify the remote source/version/output
 authentication path and check actual private account, mounts, Dataset version and
 quota. Requested notebook `huylmhuhu/react-vn-constrained-guard-v1` has not been
 submitted or authenticated. Do not claim its remote existence from this name.

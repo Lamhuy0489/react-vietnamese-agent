@@ -1,10 +1,29 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-09-16. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptance.
+Cập nhật: 2026-09-17. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptance.
 
 ## Đang làm
 
-**Constrained exact package development và QA đã đạt; đang khóa source/release.**
+**Constrained GPU v1 COMPLETE/audit; không submit lại.**
+Actual `huylmhuhu/react-vn-constrained-guard-v1`, v1/ID134673914;
+Post-download 03:43:34 UTC ngày 2026-09-17, source `0d4e82f` authenticated,
+private/offline/T4/timeout3600s/guard Dataset v1.
+[Report](../docs/evaluation/phase5_constrained_gpu_v1_report.md),
+[submission](../experiments/manifests/phase5_constrained_gpu_submission02.json).
+Host auditor `scripts/audit_phase5_constrained_gpu_v1.py` đã có 59 tests mới,
+thêm summary adapter5tests; final QA02 573 focused + 105 integration,
+setup/Ruff/mypy446/knowledge đạt. Gom host code/tests/receipts/memory trong một
+commit khi đóng thực nghiệm; không đổi/amend source worker.
+Hai release audits byte-identical: 172 source pins/238 raw/2 remote files.
+4 completed tasks, 8/8 valid guard responses, zero incomplete constraints/backend
+errors; 8 workers reaped/4 VRAM recoveries. Còn 4 TERMINATE/4 GRACEFUL,
+chưa guard semantic quality/utility hoặc lifecycle acceptance.
+[Summary](../experiments/manifests/phase5_constrained_gpu_summary01.json),
+[audit](../experiments/manifests/phase5_constrained_gpu_audit01.json).
+
+Nền package đã đóng:
+
+**Constrained exact package đã đạt development + committed release preflight.**
 [Report](../docs/evaluation/phase5_constrained_package_v1_report.md),
 [receipt](../experiments/manifests/phase5_constrained_probe_package_dev01.json).
 Builder `scripts/prepare_phase5_constrained_probe_package_v1.py`, template
@@ -13,6 +32,11 @@ Builder `scripts/prepare_phase5_constrained_probe_package_v1.py`, template
 172 source pins; mỗi layout 8 tools, 21 Dummy, 10 fresh constrained tasks và
 6 retained checkpoints. 15 tests mới đạt; final QA 495 focused + 105 integration,
 setup/Ruff/mypy444/knowledge/diff đạt; 142/86/175 frozen pins nguyên.
+Đã gom một commit `0d4e82f`, push `origin/main`; release rebuild ở
+`build/kaggle/phase5_constrained_probe_package01` cũng qua hai layout.
+[Release receipt](../experiments/manifests/phase5_constrained_probe_package01.json).
+Biên bản release và memory sau freeze được gộp vào phần host release audit/report;
+không thêm status-only commit, không amend source thực nghiệm.
 Đã cập nhật skill commit cadence và knowledge index: không commit mỗi status,
 gom việc hoàn chỉnh; source freeze là ngoại lệ cần thông báo trước.
 
@@ -53,20 +77,36 @@ guard 1.5B hoặc benchmark quality. CPU v1 thất bại vẫn lưu, không xóa
 
 ## Bước tiếp theo
 
-1. QA đạt: gom code/tests/skill/evidence/memory trong một source-freeze commit.
-2. Rebuild builder **không `--development`**, output mới
-   `build/kaggle/phase5_constrained_probe_package01`; chạy lại exact hai layout.
-   Development receipt không đại diện committed release, không đưa lên GPU.
-3. Nối/kiểm remote source/version/output authentication; kiểm quota/account,
-   private Dataset/model mounts trước submission mới. Giữ prompt/model/parser/
-   fallback/shutdown 2s để chỉ đo thay đổi decoding. Chưa submit notebook mới;
-   requested alias `huylmhuhu/react-vn-constrained-guard-v1` chưa phải actual resource.
-4. Tiếp tục guard quality/benign utility/lifecycle và mapping 20 DoD trước freeze.
+1. Không còn pending notebook; **không push/resubmit constrained GPU v1**.
+   Giữ raw `results/phase5_constrained_gpu_monitor02`, hai audits tại
+   `results/phase5_constrained_gpu_audit01.json` và
+   `results/phase5_constrained_gpu_report01/release_audit.json`.
+2. Controlled lifecycle follow-up: 4 CALC workers nhận STOP/serve-return trong
+   53–61ms nhưng vẫn TERMINATE sau deadline2s. Thiết kế CPU post-serve delay /
+   teardown controls và protocol riêng trước GPU; chưa đổi deadline hay model.
+3. Giữ syntax success8/8 tách khỏi guard semantic quality/benign utility;
+   lập representative Dev follow-up rồi mapping20DoD trước formal freeze.
+4. Tiếp tục quy tắc gom commit sau phần việc hoàn chỉnh/QA đạt;
+   không status-only commit hoặc amend worker source `0d4e82f`.
 
 ## Bằng chứng
 
+- [Terminal](../experiments/manifests/phase5_constrained_gpu_terminal01.json),
+  [audit](../experiments/manifests/phase5_constrained_gpu_audit01.json),
+  [summary](../experiments/manifests/phase5_constrained_gpu_summary01.json).
+  Scan 256 files/0 matches. Summed startup901,127s/task total947,261s;
+  agent7,196 token/s và guard17,041 token/s chỉ từ joined generation, không startup.
+- [Final release/report QA02](../experiments/manifests/phase5_constrained_release_cpu_qa02.json):
+  573 tests/44,43s + 105 integration/111,61s; 142/86/175 frozen pins nguyên.
+  [QA01 trước summary](../experiments/manifests/phase5_constrained_release_cpu_qa01.json)
+  giữ nguyên (562 + 105), không ghi đè.
+- Live access `results/phase5_constrained_gpu_access01`: còn 22,50h GPU,
+  Dataset ready/v1. Preparation01 dừng trước push do metadata `info.isPrivate`;
+  corrected submission02 mới là một job GPU thật, raw được giữ cả hai.
 - Development package: 433 raw files/layout, 1.043 file scan không credential match.
   Source base `f5e97ae` + exact working-tree hashes, native submission disabled.
+- Committed package01: source `0d4e82f`, 172 Git source pins/166 worker files;
+  hai layout/433 raw files mỗi layout xác minh lại; scan 1.043 file/0 matches.
 - [Package QA](../experiments/manifests/phase5_constrained_package_cpu_qa01.json):
   495 focused/42,96s + 105 integration/111,91s; logs trong
   `results/phase5_constrained_package_cpu_qa01`.
@@ -100,7 +140,7 @@ guard 1.5B hoặc benchmark quality. CPU v1 thất bại vẫn lưu, không xóa
 
 ## Giới hạn
 
-Exact package/remote release authentication, production guard/CUDA/quality, benign utility,
+Bounded constrained native syntax/release đã đạt; representative guard quality, benign utility,
 graceful shutdown và formal freeze vẫn mở. Không full pytest vì Test-assigned
 authoring fixtures; không Test/private GT access. Không cần tài khoản mới;
 kiểm quota/private mounts lại khi GPU package thực sự sẵn sàng.

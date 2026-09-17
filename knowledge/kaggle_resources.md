@@ -1,6 +1,7 @@
 # Sổ tra cứu Kaggle của đồ án
 
-Cập nhật 2026-09-16 từ receipts/report đã lưu trong Git và live terminal checks.
+Cập nhật 2026-09-17 từ receipts/report và live checks; biên bản sau source
+freeze được gộp với host release audit/report trong một commit hoàn chỉnh.
 Đây là **memory phát
 triển cho nhóm**, không đưa vào prompt benchmark. Trạng thái dưới đây là mốc
 bằng chứng lịch sử, không phải kiểm tra trực tuyến lại mọi URL hôm nay.
@@ -20,6 +21,29 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
    không chuyển public chỉ để mở được link. 403/404 có thể là thiếu quyền.
 
 ## Mốc hiện hành — đọc mục này trước
+
+**Constrained guard GPU v1 COMPLETE/audit**, post-download 2026-09-17 03:43:34 UTC.
+Actual=requested
+[huylmhuhu/react-vn-constrained-guard-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-constrained-guard-v1),
+version 1 / ID 134673914, source `0d4e82f50b65ac8eaf86193f1a8147321626bb68`.
+[Dataset guard15](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+version 1/private/ready; notebook private/offline, T4, timeout 3600s,
+Qwen2.5 7B v1 mount authenticated. Remote source hash and version match.
+[Report](../docs/evaluation/phase5_constrained_gpu_v1_report.md),
+[submission](../experiments/manifests/phase5_constrained_gpu_submission02.json),
+[package](../experiments/manifests/phase5_constrained_probe_package01.json).
+[Terminal](../experiments/manifests/phase5_constrained_gpu_terminal01.json),
+[audit](../experiments/manifests/phase5_constrained_gpu_audit01.json),
+[summary](../experiments/manifests/phase5_constrained_gpu_summary01.json).
+4 completed tasks/8 valid guard responses; 8 workers reaped/4 recoveries,
+nhưng 4 TERMINATE/4 GRACEFUL. Hai audits khớp, không acceptance/quality claim.
+Raw `results/phase5_constrained_gpu_submission02`; preparation01 stopped before
+push on CLI metadata envelope, no GPU consumed there. Raw terminal tại
+`results/phase5_constrained_gpu_monitor02`. Không còn pending job, không submit lại.
+Private access is
+not granted by GitHub membership. No quality/acceptance claim yet.
+
+Mốc trước:
 
 **Constrained generation CPU v2 COMPLETE/audit**, post-download check
 2026-09-16 08:25:13 UTC. Actual=requested

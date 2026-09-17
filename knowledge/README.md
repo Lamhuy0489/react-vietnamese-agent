@@ -20,7 +20,8 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
-- **Hiện hành:** [constrained exact package và quy tắc giảm commit](../docs/evaluation/phase5_constrained_package_v1_report.md).
+- **Hiện hành:** [constrained GPU v1 và release authentication](../docs/evaluation/phase5_constrained_gpu_v1_report.md).
+- **Nền package:** [constrained exact package và quy tắc giảm commit](../docs/evaluation/phase5_constrained_package_v1_report.md).
 - **Nền runner:** [constrained runner/checkpoint/native join](../docs/evaluation/phase5_constrained_probe_v1_report.md).
 - **Nền host/runtime:** [cache/receipt-bound CPU integration](../docs/evaluation/phase5_constrained_host_v1_report.md).
 - **Nền native CPU:** [constrained generation v2 COMPLETE/audit](../docs/evaluation/phase5_constrained_generate_cpu_v2_run.md).
