@@ -1,0 +1,100 @@
+{
+  "actual_task_executions": 8,
+  "actual_workers_reaped": 16,
+  "artifact_sha256": {
+    "results/phase5_exit_pair_cpu_controls02/failure_audit01.json": "504956c640f46b19941d3f7b3feb81ab90cba665c6d322ac197d6dc0432aaf95",
+    "results/phase5_exit_pair_cpu_controls02/failure_audit02.json": "504956c640f46b19941d3f7b3feb81ab90cba665c6d322ac197d6dc0432aaf95",
+    "results/phase5_exit_pair_cpu_controls02/valid_audit01.json": "e7ec597c563cb251ef70e0917fd038f3b96067ac76a29e6e4f84aed4460dd0c9",
+    "results/phase5_exit_pair_cpu_controls02/valid_audit02.json": "e7ec597c563cb251ef70e0917fd038f3b96067ac76a29e6e4f84aed4460dd0c9",
+    "results/phase5_exit_pair_cpu_qa02/receipt.json": "0f2f955b1a156575c9cb60d7a898705737a213c96046571b6ba7e80467e7d3c3"
+  },
+  "checked_at_utc": "2026-09-20T16:32:03.524595+00:00",
+  "controls": [
+    {
+      "audits_byte_identical_after_complete_resume": true,
+      "boundaries": {
+        "observed_stages_returned": 8
+      },
+      "condition": "valid",
+      "identity_sha256": "2d33ee33f8bff47d174859b2445acf6d4f30c75946618ebd1fe7991201b4fcce",
+      "methods": {
+        "GRACEFUL": 8
+      },
+      "raw_directory": "results/phase5_exit_pair_cpu_controls02/valid",
+      "raw_files": 101,
+      "source_pins": 31,
+      "tasks": 4,
+      "terminal": "completed",
+      "workers_reaped": 8
+    },
+    {
+      "audits_byte_identical_after_complete_resume": true,
+      "boundaries": {
+        "observed_stages_returned": 8
+      },
+      "condition": "backend_failure",
+      "identity_sha256": "9b1159720983f0c765d228d19a00d6e90c83d0693469d24ffa938a35f7faa27b",
+      "methods": {
+        "GRACEFUL": 4,
+        "TERMINATE": 4
+      },
+      "raw_directory": "results/phase5_exit_pair_cpu_controls02/backend_failure",
+      "raw_files": 77,
+      "source_pins": 31,
+      "tasks": 4,
+      "terminal": "model_error",
+      "workers_reaped": 8
+    }
+  ],
+  "excluded_preparation": "controls01/qa01/close01 preserved; host-runtime comparison corrected before native release",
+  "execution_source_sha256": {
+    "llm/constrained_guard_v1.py": "88c0c6e5226288d4e9147ee25b8dd6d270b5cf13173360a194b6bf42a0aefdc7",
+    "llm/constrained_policy_v1.py": "bd411bb2de7dc21c2502b4c4cdbba700cb3660bf11e1b1ccb70cf42535427889",
+    "llm/constrained_probe_stub_v1.py": "40ecd6a44822ff51975549ca3637458a5d959b5cb86b1399af55f8cf8f000887",
+    "llm/constrained_probe_v1.py": "d3697fff2fc89978721deb39f6260520699e4e3d0faccaceab0b490fa7006ad2",
+    "llm/exit_pair_probe_v1.py": "0dc16fd1136db11290db12fefa98759b27cbf81dee9b9e6bc182810daa0a7640",
+    "llm/exit_pair_v1.py": "d338dd2c07a17e0f3dc3791d605a5da6b7d875b8bcb4be9a8ace5955fbae216e",
+    "llm/guard_diagnostic_backend_v2.py": "8e486423488320590d7e5b3fa5281669d4fc9fcb880ee185925cea2e1bec6104",
+    "llm/guard_diagnostic_pair_v2.py": "f190c4b1284b75c9ed5f1241197500cf27666e28841a96a6a9833e02f48b91f7",
+    "llm/guard_observer_probe_v2.py": "b5d24f665efcb44034af419ae12692dbf429077c531a4dae46773c0f7538e9ca",
+    "llm/guard_token_language_v1.py": "bb55b0dd8d80807da0ede5b088f63827cf6a698dd68471cddf5c9756fab1624b",
+    "llm/model_pair_v1.py": "e5de61646922d382ff312e2fb982597b11610fea4e018b93230c7a9c2c1719cf",
+    "llm/model_pair_v2.py": "ab0c7a85d4668debf85891901c43b63c83773873744cb80ca2886875d1c5fb2b",
+    "llm/native_constrained_pair_v1.py": "f4608496672bc8c8f494020eb9a97d2ea35a5e59677d245f41ed283abbd1ba6e",
+    "llm/native_exit_pair_v1.py": "53f60d21d1f54b20147fa11b84109ca1f7075604522089efbf22cf195956086c",
+    "llm/native_guard_diagnostics_v2.py": "da79fcc94b0377a63301c7d3ec44f012210cd2fe47e2d50e6b0ad3a51654b4bc",
+    "security_v1/constrained_classifier_v1.py": "77b043f59336e62ec6cfac9d9654737c0a95422769651eef920f90f09505f3a4",
+    "security_v1/constrained_host_v1.py": "c841076c23dc09747d36d9737966a43d8726c45bdf6b1c05da58d35a1db523ed",
+    "security_v1/constrained_runtime_v1.py": "391426ce7e5f1e680e5334f71b2c14478dd1f3bf4a6b3000e74406033d27f20e",
+    "security_v1/exit_milestones_v1.py": "64c367f35c9e00a992a6d1d40a4d1c3917a1cfd3654c233667e257f7761b0797",
+    "security_v1/exit_pair_runtime_v1.py": "ea9101706f09dffb0cbb7304c1c7179564628b8c1faf13d2790049515e97437b",
+    "security_v1/guard_bare_json_v1.py": "968106ff9a4ec3546f0547e0cb1d3cc2452a5c2793417c13fcc987b1b3062f8b",
+    "security_v1/guard_diagnostics_v2.py": "524fcccdaf0a926ebef1de2cd620a8410c8f425397bc9dba9d7acbde73936cc2",
+    "security_v1/warm_guard.py": "894def8d990f470e5583e6d440bbe452cabba640b5d520997a848c418eac9b7d",
+    "security_v1/worker_shutdown_v2.py": "9fec31241455aa9a93fd3cb0e11234e5bfdae80d5f997e7b927ce863ce4d3b1c",
+    "validation/constrained_native_audit_v1.py": "1c81ceae59e7db78e03800dea712dfebcca335ad8df0aaa063352b4e5277a387",
+    "validation/constrained_runtime_audit_v1.py": "06f6e63c7178363e3a2a90c37320e0e6eef1109f0a80917b2a32688fe0b723af",
+    "validation/constrained_worker_audit_v1.py": "abc98f579f5911cda23fe6a6c8b677163574d759bf3b83d81f06cd7c6aede15e",
+    "validation/exit_milestones_v1.py": "226d4d06862ec6422486dbac690a2f537fbd16ef3ffe2b3957f2a902b6a35137",
+    "validation/exit_native_audit_v1.py": "e5235b4addfa519c0df7f42287366485d058135b15969b5fe8b1c56a5f05dffe",
+    "validation/exit_pair_audit_v1.py": "4d300930c542df5b03dd291fe9c634f60f3ae02b96b0d3907e6edeaf80f86057",
+    "validation/guard_diagnostic_audit_v2.py": "1326671aa953e807a50ab611e05c78954e05a1342e2d6a86778bc44bc81c0b20"
+  },
+  "full_repository_pytest_run": false,
+  "git_base_commit": "5875bb7046c6c4364adb322425aa5b450f0c6a55",
+  "git_commit_created": false,
+  "git_push_performed": false,
+  "gpu_runs": 0,
+  "model_inference_runs": 0,
+  "native_boundary_tests": "mocked/lazy only; no pretrained execution",
+  "native_package_validated": false,
+  "new_tests": 54,
+  "phase5_accepted": false,
+  "private_ground_truth_accessed": false,
+  "protocol": "exit_pair_cpu_close_v1",
+  "qa_receipt": "results/phase5_exit_pair_cpu_qa02/receipt.json",
+  "qa_receipt_sha256": "0f2f955b1a156575c9cb60d7a898705737a213c96046571b6ba7e80467e7d3c3",
+  "source_identity": "uncommitted working tree; Git base alone does not contain new work",
+  "test_payload_accessed": false,
+  "valid": true
+}

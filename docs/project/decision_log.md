@@ -1,5 +1,16 @@
 # Decision Log
 
+## 2026-09-20 — Separate ExitPair native package identity
+
+- Reuse the proven constrained package pipeline with new native CLI, launcher,
+  source manifest and release auditor. Keep all frozen model/runtime/worker
+  pins unchanged; collect task/PID-bound exit milestones for four public Dev
+  tasks. No deadline, prompt, policy or research scope change.
+- Require isolated archive/expanded rehearsals before one committed source
+  freeze. This commit is needed for a real Kaggle run, not a status update.
+  Use new private notebook identity; never overwrite/resubmit the completed
+  constrained run. Phase 5 acceptance and guard quality remain unclaimed.
+
 ## 2026-09-15 — Finish observer native launcher and evidence audit
 
 - Freeze a private/offline notebook for the four previously declared synthetic
@@ -1765,3 +1776,19 @@ and are not inferred here.
 - Native wiring, package rehearsal and GPU diagnosis remain open; no increase to
   grace2s, no frozen-source modification, no new acceptance group closed.
   [Report](../evaluation/phase5_exit_milestones_cpu_v1_report.md).
+
+# 2026-09-20 — Paired exit observer, recorded-runtime audit and local handoff
+
+- Add a separate ExitPair/config/runner, preserving frozen native factories and
+  runtime transport. Task/role/PID/cold-warm bindings join a new sidecar to the
+  original receipt; do not replace or rewrite old experimental results.
+- Controls01/QA01/close01 remain historical after correcting a host-audit defect:
+  Kaggle interpreter identity must be compared with the recorded run, not the
+  auditing Mac's interpreter. Controls02 binds corrected sources; native remote
+  identity authentication remains a separate release gate.
+- CPU controls retain four successes and four deliberate backend errors, all
+  16 workers reaped. Forced cancellation is not a graceful or GPU-cause claim.
+  Native composition coverage is mocked/lazy; no pretrained inference locally.
+- Owner re-emphasized fewer commits: keep this work local, even after successful
+  QA; commit only when requested or source freeze is actually needed. No new
+  Kaggle job or phase acceptance. [Report](../evaluation/phase5_exit_pair_cpu_v1_report.md).

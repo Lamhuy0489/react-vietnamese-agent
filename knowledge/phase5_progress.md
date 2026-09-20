@@ -1,5 +1,23 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — ExitPair exact package, 2026-09-20
+
+[Report](../docs/evaluation/phase5_exit_pair_package_v1_report.md): hai isolated
+offline layouts đạt, 176 worker files/182 source pins, 74 package/release tests.
+Final QA 763 focused + 180 integration, setup/Ruff/mypy467/knowledge đạt.
+Remote owner/quota/private Dataset admission đã đọc trực tiếp. Còn source freeze/
+release preflight và actual submission; chưa GPU result mới.
+Phase5 vẫn4/7≈57%; không đồng nhất số tests hoặc việc đóng gói với acceptance.
+
+## Hiện hành — ExitPair/runner và native audit wiring local, 2026-09-20
+
+[Report](../docs/evaluation/phase5_exit_pair_cpu_v1_report.md):
+54 tests mới, QA02 689 focused + 180 integration, setup/Ruff/mypy462/knowledge đạt.
+Controls02 có 4 completed + 4 lỗi guard dự kiến, 16 reaped;
+audits trước/sau resume khớp. Không đổi frozen workers; chưa native package/GPU.
+Đã sửa host audit để bind interpreter run identity, không dùng OS/Python máy Mac.
+Giữ local theo owner, không mặc định commit sau QA. Phase 5 vẫn 4/7 ≈ 57%.
+
 ## Hiện hành — exit milestones CPU acceptance, 2026-09-20
 
 [Report](../docs/evaluation/phase5_exit_milestones_cpu_v1_report.md):

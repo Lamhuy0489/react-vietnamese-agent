@@ -23,7 +23,9 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
-- **Hiện hành:** [exit milestones CPU acceptance và native wiring gate](../docs/evaluation/phase5_exit_milestones_cpu_v1_report.md).
+- **Hiện hành:** [ExitPair exact package và chuẩn bị GPU](../docs/evaluation/phase5_exit_pair_package_v1_report.md).
+- **Nền pair/runner:** [CPU integration và native audit wiring](../docs/evaluation/phase5_exit_pair_cpu_v1_report.md).
+- **Nền observer:** [exit milestones CPU acceptance](../docs/evaluation/phase5_exit_milestones_cpu_v1_report.md).
 - **Nền teardown:** [post-serve synthetic CPU controls](../docs/evaluation/phase5_teardown_cpu_v1_report.md).
 - **Nền native:** [constrained GPU v1 và release authentication](../docs/evaluation/phase5_constrained_gpu_v1_report.md).
 - **Nền package:** [constrained exact package và quy tắc giảm commit](../docs/evaluation/phase5_constrained_package_v1_report.md).
@@ -128,6 +130,8 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
   kiểm tra rồi mới commit khi cần. Không commit lẻ mỗi cập nhật/trạng thái;
   freeze source cho thực nghiệm là ngoại lệ phải giải thích trước. Bằng chứng
   phát sinh sau freeze có thể để local chờ gộp, không amend commit thực nghiệm.
+  Chủ đồ án nhắc lại ngày 2026-09-20: QA đạt không có nghĩa mỗi lượt phải commit;
+  mặc định giữ local, chỉ commit khi được yêu cầu hoặc cần source freeze thực sự.
   Không giả định toàn bộ lịch sử chat sẽ còn sẵn.
 - Không chép token, credentials, private GT, nội dung held-out Test hoặc hidden
   chain-of-thought vào bộ nhớ. Chỉ giữ trạng thái/quy trình/bằng chứng cho phép.

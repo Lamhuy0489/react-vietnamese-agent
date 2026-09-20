@@ -4,6 +4,28 @@ Cập nhật: 2026-09-20. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptan
 
 ## Đang làm
 
+**ExitPair exact package development đã qua cả hai layout.**
+[Report](../docs/evaluation/phase5_exit_pair_package_v1_report.md): 176 worker files,
+182 source pins; mỗi layout 8 tools, 21 Dummy, 10 fresh controls/6 retained.
+74 tests package/release mới đạt; final QA 763 focused + 180 integration,
+setup/Ruff/mypy467/knowledge/diff đạt; frozen pins nguyên.
+Remote read-only đã xác nhận owner huylmhuhu, quota30h, Dataset private/ready/v1.
+Bước cụ thể: một source-freeze commit/push cần thiết, release rehearsal + package
+authentication rồi gửi một job mới `huylmhuhu/react-vn-exit-milestones-v1`.
+Chưa có version actual; chưa native cause/acceptance. Không commit mỗi status.
+Quyền đang chờ: không thiếu credentials; chỉ các phê duyệt network/Git của sandbox.
+
+Các mốc trước (không thay trạng thái hiện hành ở trên):
+
+**ExitPair/runner và native audit wiring đã đóng CPU QA02, chưa commit/push.**
+Owner nhắc lại: không mặc định commit cuối mỗi lượt dù checks đạt. Giữ local;
+chỉ commit theo yêu cầu hoặc khi cần chốt nguồn cho thực nghiệm thật.
+Đã nối role/task/PID/cold-warm identity qua sidecar riêng, giữ frozen sources.
+Đã sửa kiểm toán native để bind interpreter theo run identity, không theo máy Mac
+đang audit. Controls01/QA01 giữ lịch sử; controls02/QA02 bind source sửa.
+Chưa package/release/GPU. Final QA02: 689 focused + 180 integration, setup/Ruff/
+mypy462/knowledge/diff đạt. [Report](../docs/evaluation/phase5_exit_pair_cpu_v1_report.md).
+
 **Exit-milestone observer đã đóng CPU gate; chưa nối native runner.**
 [Report](../docs/evaluation/phase5_exit_milestones_cpu_v1_report.md),
 [protocol](../docs/architecture/phase5_exit_milestones_v1_contract.md).
@@ -108,17 +130,27 @@ guard 1.5B hoặc benchmark quality. CPU v1 thất bại vẫn lưu, không xóa
    Giữ raw `results/phase5_constrained_gpu_monitor02`, hai audits tại
    `results/phase5_constrained_gpu_audit01.json` và
    `results/phase5_constrained_gpu_report01/release_audit.json`.
-2. Observer + CPU controls đã đóng. Nối MilestoneBackend vào native diagnostic
-   runner riêng, bind milestones với PID/role/task receipts và giữ partial failures.
-   Không đổi ownership/transport/signal/model outputs; không thay frozen runner.
-   Rehearse archive/expanded + interpreter hash trong exact package riêng, rồi mới
-   source-freeze/GPU diagnostic. Chưa tăng grace2s hoặc resubmit old diagnostic.
+2. Exact notebook/package + release auditor mới đã có; development rehearsal
+   archive/expanded đạt. Chốt final QA, một source freeze và release rehearsal,
+   rồi xác thực nguồn/settings từ xa cho job ExitPair mới. Interpreter native
+   vẫn phải qua gate; không tăng grace2s hoặc resubmit old diagnostic.
 3. Giữ syntax success8/8 tách khỏi guard semantic quality/benign utility;
    lập representative Dev follow-up rồi mapping20DoD trước formal freeze.
-4. Tiếp tục quy tắc gom commit sau phần việc hoàn chỉnh/QA đạt;
-   không status-only commit hoặc amend worker source `0d4e82f`.
+4. Giữ thay đổi local qua các lượt, không commit chỉ vì QA đạt. Commit khi owner
+   yêu cầu hoặc cần source freeze thật; không status-only/amend nguồn thực nghiệm.
 
 ## Bằng chứng
+
+- [ExitPair close02](../experiments/manifests/phase5_exit_pair_cpu_close02.json),
+  [QA02](../experiments/manifests/phase5_exit_pair_cpu_qa02.json):
+  `results/phase5_exit_pair_cpu_controls02` có valid4 + deliberate model_error4,
+  16 workers reaped; valid8 GRACEFUL, failure4 GRACEFUL/4 TERMINATE.
+  Hai audits mỗi condition trước/sau complete-resume byte-identical,
+  101 valid/77 failure raw files, 31 runner source pins.
+  689 focused/50,98s + 180 integration/180,37s; 172/142/86/175 frozen pins nguyên.
+  Controls01/QA01/close01 giữ/excluded sau sửa cross-host interpreter binding.
+  Base `5875bb7` + exact working-tree pins, không commit/push hoặc job GPU mới.
+  Native wrapper tests chỉ mock/lazy; raw chưa backup ngoài máy.
 
 - [Exit milestones close](../experiments/manifests/phase5_exit_milestones_cpu_close01.json),
   [QA](../experiments/manifests/phase5_exit_milestones_cpu_qa01.json):

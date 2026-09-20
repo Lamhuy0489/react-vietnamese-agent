@@ -6,6 +6,27 @@ không phải phần trăm công sức hoặc số dòng mã. Phase 1–4 đã a
 
 ## Kết quả mới nhất
 
+**ExitPair exact package đã qua development rehearsal archive + expanded.**
+[Report](../docs/evaluation/phase5_exit_pair_package_v1_report.md): 176 worker files,
+182 source pins; đủ tools/Dummy/valid-failure/resume controls, 74 tests mới đạt.
+Final QA 763 focused + 180 integration, setup/Ruff/mypy467/knowledge đạt.
+Kaggle owner huylmhuhu còn30h GPU; Dataset private/ready/v1. Tiếp theo là
+một source freeze cần thiết và committed preflight trước submit notebook mới.
+Chưa GPU run mới, chưa tăng acceptance. Các đoạn dưới là mốc lịch sử.
+
+**ExitPair/runner và native audit wiring đã triển khai local.**
+[Report](../docs/evaluation/phase5_exit_pair_cpu_v1_report.md).
+Role/task/PID/cold-warm config được nối qua sidecar riêng, frozen worker không đổi.
+54 tests mới đạt; final QA02 689 focused + 180 integration,
+setup/Ruff/mypy462/knowledge/diff đạt. Controls02 gồm 4 completed + 4 deliberate model_error,
+16 worker reaped; audits trước/sau complete-resume khớp. Native composition tests
+là mock/lazy, chưa pretrained execution hay package. Cross-environment audit dùng
+interpreter trong run identity, không nhầm với OS/Python của máy đang kiểm toán.
+Không commit/push: owner nhắc lại giữ local, QA đạt không tự động tạo commit.
+Tiếp theo là exact notebook/package và release authentication trước GPU.
+
+Nền observer đã đóng:
+
 **Opt-in exit milestones đã đạt CPU acceptance.**
 [Report](../docs/evaluation/phase5_exit_milestones_cpu_v1_report.md),
 [close receipt](../experiments/manifests/phase5_exit_milestones_cpu_close01.json).

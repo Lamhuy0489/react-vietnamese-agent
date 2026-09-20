@@ -60,6 +60,12 @@ Không tự di chuyển/xóa credentials, sửa vault settings hay tạo vault l
 Manifest chứa hash, không chứa toàn bộ raw; mất raw thì không thể tái tạo bằng
 hash. Các tập ưu tiên đang cần giữ để tiếp tục Phase 5:
 
+- ExitPair: `results/phase5_exit_pair_cpu_controls02`, QA logs
+  `results/phase5_exit_pair_cpu_qa02`; giữ cả controls01/QA01/close01 excluded.
+  [Close02](../experiments/manifests/phase5_exit_pair_cpu_close02.json),
+  [QA02](../experiments/manifests/phase5_exit_pair_cpu_qa02.json). Code/selected
+  manifests mới đang local theo owner, chưa commit/push hoặc backup ngoài máy.
+
 - Exit milestones: `results/phase5_exit_milestones_cpu_controls02`, hai audits
   `results/phase5_exit_milestones_cpu_audit01.json` / `...audit02.json`,
   QA logs `results/phase5_exit_milestones_cpu_qa01`; giữ cả controls01 excluded.
