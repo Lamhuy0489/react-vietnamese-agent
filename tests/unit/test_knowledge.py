@@ -42,3 +42,33 @@ def test_memory_does_not_follow_remote_or_private_links(tmp_path: Path) -> None:
     failures = module().validate(tmp_path)
     assert len([f for f in failures if f.startswith("restricted_memory_link:")]) == 3
     assert not any("example.invalid" in f for f in failures)
+
+
+def test_root_dashboard_links_are_checked(tmp_path: Path) -> None:
+    (tmp_path / "START_HERE.md").write_text(
+        "[missing](knowledge/absent.md)\n"
+        "[escape](../outside.md)\n"
+        "[secret](credential%20kaggle/kaggle.json)\n"
+        "[web](https://example.invalid/not-fetched)\n"
+    )
+    failures = module().validate(tmp_path)
+    assert "broken_link:START_HERE.md:knowledge/absent.md" in failures
+    assert "outside_repository:START_HERE.md:../outside.md" in failures
+    assert "restricted_memory_link:START_HERE.md:credential%20kaggle/kaggle.json" in failures
+    assert not any("example.invalid" in f for f in failures)
+
+
+def test_dashboard_uses_root_relative_navigation(tmp_path: Path) -> None:
+    memory = tmp_path / "knowledge"
+    memory.mkdir()
+    (memory / "README.md").write_text("[home](../START_HERE.md)\n")
+    (tmp_path / "START_HERE.md").write_text("[index](knowledge/README.md)\n")
+    failures = module().validate(tmp_path)
+    assert not any("link:" in failure for failure in failures)
+
+
+def test_memory_checker_does_not_scan_vault_settings(tmp_path: Path) -> None:
+    vault = tmp_path / ".obsidian"
+    vault.mkdir()
+    (vault / "README.md").write_text("[not-project-memory](absent.md)\n")
+    assert not any("absent.md" in failure for failure in module().validate(tmp_path))

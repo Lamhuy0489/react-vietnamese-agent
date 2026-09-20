@@ -1,5 +1,13 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — post-serve teardown CPU controls, 2026-09-17
+
+[Report](../docs/evaluation/phase5_teardown_cpu_v1_report.md):
+18 workers/6 modes×3 repeats, đủ 18 reaped; 6 GRACEFUL/9 TERMINATE/3 KILL là
+expected fault controls. Hai audits khớp; final QA 623 focused + 133 integration,
+setup/Ruff/mypy450/knowledge đạt. Chưa xác định GPU teardown cause, chưa tăng grace2s.
+Cần native exit milestones/protocol riêng. Không Kaggle run mới; Phase5 vẫn4/7≈57%.
+
 ## Hiện hành — constrained GPU v1 COMPLETE/audit, 2026-09-17
 
 [Report](../docs/evaluation/phase5_constrained_gpu_v1_report.md),

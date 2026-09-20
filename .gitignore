@@ -2,6 +2,10 @@
 .idea/
 .vscode/
 
+# Obsidian settings/plugins/layout and local trash are not shared project memory.
+.obsidian/
+.trash/
+
 # Python
 __pycache__/
 *.py[cod]

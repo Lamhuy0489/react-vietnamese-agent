@@ -24,7 +24,11 @@ def validate(root: Path) -> list[str]:
                 failures.append(f"handoff_section:{section}")
         if not re.search(r"^Cập nhật: \d{4}-\d{2}-\d{2}\.", text, re.MULTILINE):
             failures.append("handoff_date")
-    for path in sorted(memory.glob("*.md")):
+    paths = list(memory.glob("*.md"))
+    dashboard = root / "START_HERE.md"
+    if dashboard.is_file():
+        paths.append(dashboard)
+    for path in sorted(paths):
         # This repository uses inline links; code fences are not navigation.
         text = re.sub(r"```.*?```", "", path.read_text(encoding="utf-8"), flags=re.DOTALL)
         for link in re.findall(r"\]\(([^)]+)\)", text):

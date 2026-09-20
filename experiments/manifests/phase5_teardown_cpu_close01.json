@@ -1,0 +1,139 @@
+{
+  "protocol": "teardown_cpu_close_v1",
+  "valid": true,
+  "checked_at_utc": "2026-09-17T04:06:11.195808+00:00",
+  "git_base_commit": "27626b1f7b0e1845e0bf1e49924ca86c6a8abc29",
+  "source_identity": "working_tree_hashes_with_git_base",
+  "source_sha256": {
+    "docs/architecture/phase5_teardown_probe_v1_contract.md": "01a43da0dba517bfcc946be81c6fbf98f1f40a35ed24539ee187547c1dfba8bb",
+    "scripts/audit_phase5_teardown_probe_v1.py": "f48301891c4e58455dabc57a389fd0936873235e1126a35afb2d8ef1ae29410c",
+    "scripts/run_phase5_teardown_probe_v1.py": "3da9a019055c9c4d8ee1c279214120767144ef7316180a345971119e3a9d4ffe",
+    "src/react_agent/llm/base.py": "afc6c9b9fe2810f1cf1616f228f08806065a1300193187d2b79244e258adaa86",
+    "src/react_agent/llm/teardown_probe_v1.py": "89cfe03fef5cf87748899f010bf9d6f8e8ec0970fa8ae18f46c45256f485e7cf",
+    "src/react_agent/security_v1/process_guard.py": "185351fc86e5ee22793f14d6faca9b0b6adee1e3d1c33b313e5be2e4e9192521",
+    "src/react_agent/security_v1/warm_guard.py": "894def8d990f470e5583e6d440bbe452cabba640b5d520997a848c418eac9b7d",
+    "src/react_agent/security_v1/worker_shutdown_v2.py": "9fec31241455aa9a93fd3cb0e11234e5bfdae80d5f997e7b927ce863ce4d3b1c",
+    "src/react_agent/validation/teardown_probe_audit_v1.py": "7ff7aed74c468490de6c241af11f96127791c7f28d0e91586a2a8a2c7e3f1764",
+    "src/react_agent/validation/worker_shutdown_audit_v2.py": "767619efaf320ae54388bcdbf7b457ab3f0c1771c189d49ad186fbaada5c7d45"
+  },
+  "plan": {
+    "blocked_delay_seconds": 5.0,
+    "bounded_delay_seconds": 0.25,
+    "calls_per_worker": 2,
+    "graceful_seconds": 2.0,
+    "kill_seconds": 1.0,
+    "modes": [
+      "fast",
+      "bounded",
+      "finalizer_block",
+      "finalizer_ignore_term",
+      "destructor_block",
+      "thread_block"
+    ],
+    "protocol": "teardown_probe_v1",
+    "repetitions": 3,
+    "terminate_seconds": 0.2
+  },
+  "plan_sha256": "d124f65c48a36a33e8ff9fd58cd4ba2eca0765b5e189c29d566b849b0ecf2b34",
+  "python_runtime": {
+    "bootstrap_sha256": "7c40bc1968c8769a5d9b93ef3cd750db422d65d4b0d739bfb818795e22658739",
+    "exit_function_sha256": "9f4df12998fad5813e9e4cb0160a13b41a8f9c6f62eda0ce8a68864b88395897",
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "system": "Darwin",
+    "version": "3.11.0"
+  },
+  "raw_directory": "results/phase5_teardown_cpu_controls02",
+  "raw_sha256": {
+    "cases/r1_bounded.json": "02afd30b05a484f6567f1f5f12ae3df73fe2db0598f7810afefe3a9b7398588f",
+    "cases/r1_destructor_block.json": "73dd72293bee7a92865a951223ff73561ebcd8ac906a0995fe26b0b32b82e9d4",
+    "cases/r1_fast.json": "223b62f730b856503df4ebaeb0818878883470ce69cb388236a18a78bcf2a72c",
+    "cases/r1_finalizer_block.json": "c5090b0b6adf9fa294323127243cf9e940e8fc0cbccfdd0cc807fb33a170e1d8",
+    "cases/r1_finalizer_ignore_term.json": "7825695f9b3083136d7a7e99880a60943d9b58f5b154b29ef419958e417237fc",
+    "cases/r1_thread_block.json": "78e93b3e4bf4afd916a22ae71214aa60a9075d3744b6994ae3b85544f7a734f8",
+    "cases/r2_bounded.json": "cde9359f99e99f3ea151e68c2203fe10b3a0fcfc0cae802313f003445113383f",
+    "cases/r2_destructor_block.json": "ac0af9b4fa88609aac180e7f261686720e537d3da7b055f6cc21e77e9d7453b4",
+    "cases/r2_fast.json": "f19822dd0133299e14913c9f2cb9ff451fc98451a709ea04c531fae7e748157e",
+    "cases/r2_finalizer_block.json": "d2f4a41253682acf6beb3fd07db2890e9b24a1e4503768e069da3845402ca045",
+    "cases/r2_finalizer_ignore_term.json": "e8cf6c33b96b5b8d7b08c9ed1de1f8020e159fde7275c67b00cb564b63392e61",
+    "cases/r2_thread_block.json": "01c7b903b9c89cc285da7627d65d7f85a28835e3694c020c85c82b960e8333a4",
+    "cases/r3_bounded.json": "bc546d41d2afe8174034bf63ff8c83c3115422b9c54294085062ec7da48f2703",
+    "cases/r3_destructor_block.json": "f4e7428ba1952ac02d2ccb9079e2177aa52327d86affb2b41acd4596190e5825",
+    "cases/r3_fast.json": "72b36b94d7993c501e8d7d6e062ec143303d484e7e28efb846f01e4e8c2c8370",
+    "cases/r3_finalizer_block.json": "0932b05e90debf374faa5c7c27aa02f7ad3b028d394925689bc325f3c02be56a",
+    "cases/r3_finalizer_ignore_term.json": "0b2c53c0a74db895cca8535bcf4c0c790f860d9b295bd040a3673e68a13a7122",
+    "cases/r3_thread_block.json": "50befe573d2b72c210f8f680c1535e29586c9b82196036deb80bf50a1fcee8c6",
+    "identity.json": "00c0e293fda17215ceab7b650474c439d5bb5536d3dc03103c4c836280e8fba9"
+  },
+  "independent_audits_byte_identical": true,
+  "audit_paths": {
+    "results/phase5_teardown_cpu_audit01.json": "ec1bca1c51d59f6d85c5b1041d23550988656aab10260e8a773037339dc0d04c",
+    "results/phase5_teardown_cpu_audit02.json": "ec1bca1c51d59f6d85c5b1041d23550988656aab10260e8a773037339dc0d04c"
+  },
+  "serial_nonoverlap_verified": true,
+  "completed_control_cases": 18,
+  "workers_reaped": 18,
+  "methods": {
+    "GRACEFUL": 6,
+    "KILL": 3,
+    "TERMINATE": 9
+  },
+  "summary": [
+    {
+      "mode": "fast",
+      "repetitions": 3,
+      "method": "GRACEFUL",
+      "mean_close_seconds": 0.03445932665878596,
+      "serve_returned": 3
+    },
+    {
+      "mode": "bounded",
+      "repetitions": 3,
+      "method": "GRACEFUL",
+      "mean_close_seconds": 0.28760682433494367,
+      "serve_returned": 3
+    },
+    {
+      "mode": "finalizer_block",
+      "repetitions": 3,
+      "method": "TERMINATE",
+      "mean_close_seconds": 2.0042549796635285,
+      "serve_returned": 3
+    },
+    {
+      "mode": "finalizer_ignore_term",
+      "repetitions": 3,
+      "method": "KILL",
+      "mean_close_seconds": 2.2065238506669025,
+      "serve_returned": 3
+    },
+    {
+      "mode": "destructor_block",
+      "repetitions": 3,
+      "method": "TERMINATE",
+      "mean_close_seconds": 2.0045356646781634,
+      "serve_returned": 0
+    },
+    {
+      "mode": "thread_block",
+      "repetitions": 3,
+      "method": "TERMINATE",
+      "mean_close_seconds": 2.005047806664758,
+      "serve_returned": 3
+    }
+  ],
+  "credential_value_scan_files": 31,
+  "credential_value_matches": 0,
+  "excluded_preparation": {
+    "path": "results/phase5_teardown_cpu_controls01",
+    "reason": "missing cases directory before first receipt write; identity retained, not selected"
+  },
+  "actual_model_loads": 0,
+  "gpu_runs": 0,
+  "new_kaggle_submissions": 0,
+  "test_payload_accessed": false,
+  "private_ground_truth_accessed": false,
+  "native_teardown_cause_identified": false,
+  "native_lifecycle_validated": false,
+  "phase5_accepted": false
+}

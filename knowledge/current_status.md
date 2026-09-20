@@ -1,10 +1,29 @@
 # Trạng thái hiện tại
 
-Cập nhật 2026-09-17. **Phase 5 đang làm: 4/7 ≈ 57% nhóm nghiệm thu**,
+Cập nhật 2026-09-20. **Phase 5 đang làm: 4/7 ≈ 57% nhóm nghiệm thu**,
 không phải phần trăm công sức hoặc số dòng mã. Phase 1–4 đã accepted theo
 [trạng thái chính thức](../docs/project/phase_status.md); Test vẫn khóa.
 
 ## Kết quả mới nhất
+
+Đã thêm [trang bắt đầu](../START_HERE.md) và
+[quy ước lưu trữ/Obsidian](storage_and_obsidian.md): dùng lại Markdown hiện có,
+không tạo memory song song; settings/trash của vault ngoài Git. Không đổi cấu hình
+Obsidian, không bật sync/plugin hoặc sao lưu raw ra ngoài máy. Native milestones
+vẫn là bước kỹ thuật tiếp theo; việc tổ chức ghi chú không tăng acceptance.
+
+**CPU post-serve teardown controls đã hoàn tất: 18/18 worker được thu hồi.**
+[Report](../docs/evaluation/phase5_teardown_cpu_v1_report.md),
+[receipt](../experiments/manifests/phase5_teardown_cpu_close01.json).
+6 cơ chế × 3 lần, giữ grace2s: 6 GRACEFUL/9 TERMINATE/3 KILL đúng các đối chứng
+đã định trước. Finalizer bị kẹt và non-daemon thread còn sống đều có thể tạo
+serve-returned + forced exit; chưa xác định cơ chế thật trên GPU.
+Hai audits byte-identical, 44 tests mới; final QA 623 focused + 133 integration,
+setup/Ruff/mypy450/knowledge đạt. Giữ nguyên 172/142/86/175 source pins.
+Không dùng GPU, không submit lại notebook. Tiếp theo là native exit-milestone
+instrumentation riêng, chưa tăng deadline hoặc sửa model/prompt.
+
+Mốc native trước:
 
 **Constrained guard GPU v1 COMPLETE; hai release audits khớp byte-for-byte.**
 [Report](../docs/evaluation/phase5_constrained_gpu_v1_report.md),
@@ -84,7 +103,8 @@ Worker composition và host classifier/cache/runtime join đã có CPU tests.
 Native wrapper đã nối constraint với policy/attention/HF metrics và runner có
 checkpoint identity riêng. Notebook/bootstrap đã qua development exact rehearsal.
 Committed release preflight và GPU v1 terminal/release authentication đã đạt.
-**Bước tiếp là controlled post-serve teardown/lifecycle study**, rồi đại diện
+**CPU controlled teardown đã đạt; bước tiếp là native exit-milestone diagnostic**,
+rồi đại diện
 guard quality/benign utility và mapping 20 DoD. Native v1 chứng minh 8 phản hồi
 đúng syntax trong 4 ca, không thay thế chất lượng phân loại hay graceful lifecycle.
 

@@ -1736,3 +1736,17 @@ and are not inferred here.
 - Batch terminal evidence, 64 new host tests, QA and memory in one completed-work
   commit; do not amend the frozen worker. Next is separately controlled teardown
   evidence, representative quality/utility and DoD mapping. [Report](../evaluation/phase5_constrained_gpu_v1_report.md).
+
+# 2026-09-17 — Separate synthetic post-serve controls from native cause claims
+
+- Six fixed synthetic modes × three repetitions around unchanged ShutdownBackend
+  v2 show destructor, process-finalizer and non-daemon-thread failure patterns.
+  All18 workers reaped; forced exits are predeclared controls, not discarded errors.
+- Both finalizer blocking and live threads can yield the native run's coarse
+  STOP/serve-returned/forced-exit pattern. CPU timings cannot identify the real
+  GPU cause or justify a larger production budget; leave grace2s unchanged.
+- Preserve failed preparation01 (missing case directory) and select corrected
+  controls02 with regression and hash-bound, repeated read-only audits. No native
+  retry, model loading, network or Test/private GT access.
+- Next gate is opt-in native exit milestones with separately frozen protocol,
+  source/package and partial-failure evidence. [Report](../evaluation/phase5_teardown_cpu_v1_report.md).

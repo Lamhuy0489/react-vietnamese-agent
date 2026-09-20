@@ -3,6 +3,9 @@
 Đây là bộ nhớ phát triển đồ án, được quản lý phiên bản cùng GitHub; không phải
 memory của agent đang được benchmark. Không cần tài khoản hoặc graph database.
 
+[Trang bắt đầu chung cho Obsidian/GitHub](../START_HERE.md) ·
+[Quy ước lưu trữ, bảo vệ dữ liệu và sao lưu](storage_and_obsidian.md).
+
 ## Bắt đầu phiên làm việc
 
 1. [Trạng thái phase chính thức](../docs/project/phase_status.md).
@@ -20,7 +23,8 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
-- **Hiện hành:** [constrained GPU v1 và release authentication](../docs/evaluation/phase5_constrained_gpu_v1_report.md).
+- **Hiện hành:** [post-serve teardown CPU controls và native milestone gate](../docs/evaluation/phase5_teardown_cpu_v1_report.md).
+- **Nền native:** [constrained GPU v1 và release authentication](../docs/evaluation/phase5_constrained_gpu_v1_report.md).
 - **Nền package:** [constrained exact package và quy tắc giảm commit](../docs/evaluation/phase5_constrained_package_v1_report.md).
 - **Nền runner:** [constrained runner/checkpoint/native join](../docs/evaluation/phase5_constrained_probe_v1_report.md).
 - **Nền host/runtime:** [cache/receipt-bound CPU integration](../docs/evaluation/phase5_constrained_host_v1_report.md).

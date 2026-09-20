@@ -1,8 +1,26 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-09-17. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptance.
+Cập nhật: 2026-09-20. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptance.
 
 ## Đang làm
+
+Đã củng cố điều hướng/lưu trữ cho vault Obsidian hiện có:
+[START_HERE](../START_HERE.md), [quy ước](storage_and_obsidian.md).
+Không thay settings/plugin/sync; `.obsidian/` và `.trash/` ngoài Git.
+Raw vẫn local, chưa có bản sao ngoài máy; chưa chọn đích backup riêng tư.
+
+**Post-serve teardown CPU probe v1 đã hoàn tất; cần native instrumentation riêng.**
+[Report](../docs/evaluation/phase5_teardown_cpu_v1_report.md),
+[contract](../docs/architecture/phase5_teardown_probe_v1_contract.md).
+18 fresh spawned workers: 6 modes × 3 reps, 2 public responses/worker. Đủ 18 reaped;
+6 GRACEFUL/9 TERMINATE/3 KILL đúng fault controls. Hai audits byte-identical,
+19 raw files/31 source-evidence scan/0 credential matches. 44 tests mới;
+final QA 623 focused + 133 integration, setup/Ruff/mypy450/knowledge đạt.
+Finalizer bị kẹt và live non-daemon thread cùng tái hiện serve-returned+forced exit;
+đây là phân biệt cơ chế CPU, **không xác định native GPU root cause**.
+Không đổi frozen worker, grace2s, model, prompt, Test; không job Kaggle mới.
+
+Mốc native trước:
 
 **Constrained GPU v1 COMPLETE/audit; không submit lại.**
 Actual `huylmhuhu/react-vn-constrained-guard-v1`, v1/ID134673914;
@@ -81,9 +99,11 @@ guard 1.5B hoặc benchmark quality. CPU v1 thất bại vẫn lưu, không xóa
    Giữ raw `results/phase5_constrained_gpu_monitor02`, hai audits tại
    `results/phase5_constrained_gpu_audit01.json` và
    `results/phase5_constrained_gpu_report01/release_audit.json`.
-2. Controlled lifecycle follow-up: 4 CALC workers nhận STOP/serve-return trong
-   53–61ms nhưng vẫn TERMINATE sau deadline2s. Thiết kế CPU post-serve delay /
-   teardown controls và protocol riêng trước GPU; chưa đổi deadline hay model.
+2. CPU controls đã đóng. Thiết kế opt-in native milestones: post-serve,
+   process finalizer enter/return, non-daemon thread counts/exit; bind PID/timing,
+   giữ partial failures. Không chép thread names/payloads hay đổi ownership,
+   transport/signal/model outputs. Exact package/protocol riêng trước GPU;
+   chưa tăng grace2s hoặc resubmit old diagnostic.
 3. Giữ syntax success8/8 tách khỏi guard semantic quality/benign utility;
    lập representative Dev follow-up rồi mapping20DoD trước formal freeze.
 4. Tiếp tục quy tắc gom commit sau phần việc hoàn chỉnh/QA đạt;
@@ -91,6 +111,21 @@ guard 1.5B hoặc benchmark quality. CPU v1 thất bại vẫn lưu, không xóa
 
 ## Bằng chứng
 
+- Kiểm lại ngày 2026-09-20: 50 tests chọn lọc (knowledge + teardown unit và
+  integration) đạt/11,24s; setup/Ruff/mypy450/knowledge/diff đạt.
+  56 source/QA-log pins và 19 raw pins khớp; audit mới ở
+  `results/phase5_teardown_cpu_audit_20260920_01.json` byte-identical với audit01.
+  Validator đã kiểm thêm links của START_HERE, có regression cho link hỏng,
+  đường dẫn ra ngoài repo, credential link và bỏ qua vault settings.
+  Ví dụ Markdown ban đầu tạo broken link giả đã sửa; rerun 50/50 đạt.
+  Không chạy full pytest hoặc model, không đổi receipt thực nghiệm cũ.
+- [Teardown close](../experiments/manifests/phase5_teardown_cpu_close01.json),
+  [final QA](../experiments/manifests/phase5_teardown_cpu_qa01.json):
+  raw `results/phase5_teardown_cpu_controls02`, audit01/02 byte-identical.
+  CPU CPython3.11.0/Darwin; runtime internals và 10 execution sources hash-bound,
+  Git base27626b1 + working-tree pins. 172/142/86/175 frozen source pins không đổi.
+  Preparation01 thiếu cases directory, giữ identity/excluded; regression đã thêm,
+  không GPU/model rerun. Final QA 623/44,37s + 133/125,28s.
 - [Terminal](../experiments/manifests/phase5_constrained_gpu_terminal01.json),
   [audit](../experiments/manifests/phase5_constrained_gpu_audit01.json),
   [summary](../experiments/manifests/phase5_constrained_gpu_summary01.json).
@@ -140,13 +175,15 @@ guard 1.5B hoặc benchmark quality. CPU v1 thất bại vẫn lưu, không xóa
 
 ## Giới hạn
 
-Bounded constrained native syntax/release đã đạt; representative guard quality, benign utility,
+Bounded constrained native syntax/release và synthetic teardown controls đã đạt;
+native teardown cause, representative guard quality, benign utility,
 graceful shutdown và formal freeze vẫn mở. Không full pytest vì Test-assigned
 authoring fixtures; không Test/private GT access. Không cần tài khoản mới;
 kiểm quota/private mounts lại khi GPU package thực sự sẵn sàng.
 
 GitHub `Lamhuy0489` khác Kaggle `huylmhuhu`; quyền GitHub không cấp quyền Kaggle.
 Giữ notebook/Dataset private, credentials ngoài Git. Không đưa memory vào prompt.
-Giữ nguyên chỉnh sửa riêng tại plan/phase6–9, docs/BAO_CAO_TIEN_DO_DO_AN.*,
-docs/figures/. [Lịch sử bàn giao](history_20260916_constrained_cpu.md) không phải
+Giữ nguyên tài liệu riêng tại docs/BAO_CAO_TIEN_DO_DO_AN.*,
+docs/figures/ và cấu hình Obsidian. Ngày 2026-09-20 plan/phase6–9 không còn dirty;
+không phục hồi các thay đổi cũ. [Lịch sử bàn giao](history_20260916_constrained_cpu.md) không phải
 chỉ dẫn submit hiện hành.

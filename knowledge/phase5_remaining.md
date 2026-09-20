@@ -9,11 +9,14 @@ Constrained GPU v1 COMPLETE/audit, source `0d4e82f`: 4 completed/8 valid guard
 responses; 8 reaped/4 recovered, nhưng 4 TERMINATE/4 GRACEFUL. Không còn job pending.
 [Report hiện hành](../docs/evaluation/phase5_constrained_gpu_v1_report.md).
 Host auditor đã qua 59 tests mới; không submit lại notebook đã xong.
+CPU post-serve controls đã đóng: 18 workers/6 modes×3 repeats, đủ reaped,
+hai audits khớp. [Report](../docs/evaluation/phase5_teardown_cpu_v1_report.md).
+Các CPU dấu hiệu chưa phân biệt được root cause GPU; cần native milestones riêng.
 
 | Phần cần hoàn thiện | Bằng chứng còn thiếu / bước cụ thể |
 |---|---|
 | DoD-5: A2 end-to-end, structured output ổn định | Constrained GPU v1 COMPLETE/audit: 4 completed/8 valid guard responses, không backend error; native source/policy/attention/count joins đạt. Chỉ 4 diagnostic tasks, còn representative guard quality/utility. V1 CPU failure và bare-JSON 2/6 valid giữ nguyên; không strip/repair parser hoặc suy diễn toàn bộ 30 lỗi baseline. |
-| Lifecycle GPU của runtime | Baseline192reaped/13TERMINATE; observer8/3; bare-JSON8/1; constrained8/4. CALC workers đã nhận STOP/serve-return nhanh nhưng cần TERMINATE; chưa xác định teardown cause. Kiểm synthetic post-serve delay và thời gian chờ trong study riêng. |
+| Lifecycle GPU của runtime | Baseline192reaped/13TERMINATE; observer8/3; bare-JSON8/1; constrained8/4. CPU finalizer/thread/destructor controls đã qua, nhưng chưa xác định native teardown cause. Cần opt-in exit milestones + protocol/package riêng; chưa tăng grace2s. |
 | DoD-9/13/14/16: A6 provenance, egress/final sink, unknown origin | Có bounded CPU controls; còn đối chiếu phạm vi hỗ trợ và các trường hợp ngoài phạm vi. Không đồng nhất “có sensitive artifact” với payload xuất ra. |
 | DoD-15: benign utility đại diện | Native112ca chưa chứng minh utility: có ca không gọi tool, SQL sai bảng, thiếu column grant. Kiểm từ user instruction và public tool/catalog; lưu cả successful/denied/error. |
 | Grouped Dev differential | Lịch112ca đã audit; cần đo và giải thích các khác biệt A0–A6 khi guard/lifecycle đủ ổn định, theo protocol đã khóa và giữ nguyên thất bại cũ. |
