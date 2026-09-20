@@ -1,0 +1,149 @@
+{
+  "all_18_response_attempt_exit_comparisons_match": true,
+  "audit_sha256": {
+    "results/phase5_exit_milestones_cpu_audit01.json": "426829eef6480e495ae998b3512f41b8424429ed5f738e6fab16d8fa759539ec",
+    "results/phase5_exit_milestones_cpu_audit02.json": "426829eef6480e495ae998b3512f41b8424429ed5f738e6fab16d8fa759539ec"
+  },
+  "baseline_receipt": "experiments/manifests/phase5_teardown_cpu_close01.json",
+  "baseline_receipt_sha256": "8139129fd46ba21de84d74c28c41ebb15ccf9c683ae373143ae1ba0c1bbf6b38",
+  "checked_at_utc": "2026-09-20T15:52:18.677459+00:00",
+  "config_sha256": "621c1140756746c5fd8d7108332a9289a8df4e0f400245c12f738adfb0d9f273",
+  "excluded_preparation": {
+    "identity_sha256": "6dbb33afc33f5eef13382f6ca0b05157960286312260a3a6790d87b16c148a15",
+    "path": "results/phase5_exit_milestones_cpu_controls01",
+    "reason": "Pre-hardening auditor could read a linked identity before inventory. Retained; fresh controls02 bind corrected source. No model run."
+  },
+  "git_base_commit": "3cb2b54b418cd253c0391abf9cc9c02e305c258d",
+  "gpu_runs": 0,
+  "independent_audits_byte_identical": true,
+  "methods": {
+    "GRACEFUL": 6,
+    "KILL": 3,
+    "TERMINATE": 9
+  },
+  "model_inference_runs": 0,
+  "native_cause_identified": false,
+  "native_package_validated": false,
+  "phase5_accepted": false,
+  "plan": {
+    "calls_per_worker": 2,
+    "modes": [
+      "fast",
+      "bounded",
+      "finalizer_block",
+      "finalizer_ignore_term",
+      "destructor_block",
+      "thread_block"
+    ],
+    "protocol": "exit_milestone_probe_v1",
+    "repetitions": 3,
+    "synthetic": true
+  },
+  "private_ground_truth_accessed": false,
+  "protocol": "exit_milestones_cpu_close_v1",
+  "qa_receipt": "results/phase5_exit_milestones_cpu_qa01/receipt.json",
+  "qa_receipt_sha256": "6120fbf68a66f69c40b2ca4ece51b55bb2479bf245a7476b8b30d0308520a928",
+  "raw_directory": "results/phase5_exit_milestones_cpu_controls02",
+  "raw_sha256": {
+    "cases/r1_bounded.json": "d2d446278bba66e6c182dfd18dc19f9fca722266996c446b8adc19ddc4f859bf",
+    "cases/r1_destructor_block.json": "ff9383a7554b7999d61f5050e7e75a2fcd066da86f4eba4d2df27d91d70f5041",
+    "cases/r1_fast.json": "89453e070d8c0d8cf37c4c9edefd8ba331ab205086b913c511798ad2216584d2",
+    "cases/r1_finalizer_block.json": "c6aca8926846fb342d67e0f6b06337815d80020405420e1e5e9c7e366c345dee",
+    "cases/r1_finalizer_ignore_term.json": "7ff6d5579399af1fec88dd993452373b8c12cf167c9a1c29616ee13abe9bf046",
+    "cases/r1_thread_block.json": "e2a73907bfeb7ae1e3f34c9556240f9dd025cc640244ce3e9a6998651240f9cb",
+    "cases/r2_bounded.json": "6f4fb23c9daacf7eb44fab000f927e5c4a61582fecb77fa09695cd0b9954cda3",
+    "cases/r2_destructor_block.json": "b0394fb41f348feaec78ce4c1025d5664415117e1188465336d4607f4f265bc1",
+    "cases/r2_fast.json": "615d5d28c0ae2b2d721e92ce2728b774f7c1ac78e4169229330a729c5eddd172",
+    "cases/r2_finalizer_block.json": "2315c8058f7703bd883d0217bb841b5ca626ef240dbc4776d6deec7f0236bc76",
+    "cases/r2_finalizer_ignore_term.json": "7c19e5cd3eb1345788b66562ffdc2c97472d397131c94e784507b5ec2cec0cae",
+    "cases/r2_thread_block.json": "4da8f144836c14c0c4146c6a785b2737c27a5f8e025badb860bf0f4fa0706a7e",
+    "cases/r3_bounded.json": "050fe6286f250605060f7aefabe9048b8b38da1c1d40fe6bbbddfbbfbfda9e38",
+    "cases/r3_destructor_block.json": "d21e1b244ba68c6304554e31b150d3454364a0659c89d2d48a694c4d9a1ab42c",
+    "cases/r3_fast.json": "96bb2bcab4e16c53669eb5c7b99fa6f6c1c89992e5361a971c39157b0e522fdd",
+    "cases/r3_finalizer_block.json": "81892459737a78f83e8119e3480e110937921e826c390a4296c5cdffde387006",
+    "cases/r3_finalizer_ignore_term.json": "44e366218b9c10e2dfd2e89a61e5330259d5f680d08b8e1165b2b41bb71d663c",
+    "cases/r3_thread_block.json": "3457043256b82bc57cd2e8d58340857d585580c2d2a4f65cbf0a09bb05b49dbb",
+    "identity.json": "8f08024c35aaf5cb569307cae598425248a2f0b1a9694536e08403ad4abb3cad"
+  },
+  "runtime": {
+    "bootstrap_sha256": "7c40bc1968c8769a5d9b93ef3cd750db422d65d4b0d739bfb818795e22658739",
+    "finalizers_sha256": "9f4df12998fad5813e9e4cb0160a13b41a8f9c6f62eda0ce8a68864b88395897",
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "system": "Darwin",
+    "threads_sha256": "8d9c72eb9178c6a36f24f28ef3a2f055080730110dc3d5def8a3ce0685d6725b",
+    "version": "3.11.0"
+  },
+  "source_identity": "working_tree_hashes_with_git_base",
+  "source_sha256": {
+    "docs/architecture/phase5_exit_milestones_v1_contract.md": "ddf74cb5aa5afe92f47ba5ecc2629d73fdb5530bc7ffa50eddc1ac7201de55c8",
+    "docs/architecture/phase5_teardown_probe_v1_contract.md": "01a43da0dba517bfcc946be81c6fbf98f1f40a35ed24539ee187547c1dfba8bb",
+    "scripts/audit_phase5_teardown_probe_v1.py": "f48301891c4e58455dabc57a389fd0936873235e1126a35afb2d8ef1ae29410c",
+    "scripts/phase5_exit_milestones_v1.py": "7a2d4d90759a481454a8fabd003ebe178a510be369ab704c86b5dd1fb961796d",
+    "scripts/run_phase5_teardown_probe_v1.py": "3da9a019055c9c4d8ee1c279214120767144ef7316180a345971119e3a9d4ffe",
+    "src/react_agent/llm/base.py": "afc6c9b9fe2810f1cf1616f228f08806065a1300193187d2b79244e258adaa86",
+    "src/react_agent/llm/exit_milestone_probe_v1.py": "e3cc1734403f71521a9a24ff31c547ae3fa90581af722165a724d8801ed1bdfb",
+    "src/react_agent/llm/teardown_probe_v1.py": "89cfe03fef5cf87748899f010bf9d6f8e8ec0970fa8ae18f46c45256f485e7cf",
+    "src/react_agent/security_v1/exit_milestones_v1.py": "64c367f35c9e00a992a6d1d40a4d1c3917a1cfd3654c233667e257f7761b0797",
+    "src/react_agent/security_v1/process_guard.py": "185351fc86e5ee22793f14d6faca9b0b6adee1e3d1c33b313e5be2e4e9192521",
+    "src/react_agent/security_v1/warm_guard.py": "894def8d990f470e5583e6d440bbe452cabba640b5d520997a848c418eac9b7d",
+    "src/react_agent/security_v1/worker_shutdown_v2.py": "9fec31241455aa9a93fd3cb0e11234e5bfdae80d5f997e7b927ce863ce4d3b1c",
+    "src/react_agent/validation/exit_milestones_v1.py": "226d4d06862ec6422486dbac690a2f537fbd16ef3ffe2b3957f2a902b6a35137",
+    "src/react_agent/validation/teardown_probe_audit_v1.py": "7ff7aed74c468490de6c241af11f96127791c7f28d0e91586a2a8a2c7e3f1764",
+    "src/react_agent/validation/worker_shutdown_audit_v2.py": "767619efaf320ae54388bcdbf7b457ab3f0c1771c189d49ad186fbaada5c7d45"
+  },
+  "summary": [
+    {
+      "baseline_mean_close_seconds": 0.03445932665878596,
+      "method": "GRACEFUL",
+      "mode": "fast",
+      "observed_boundary": "observed_stages_returned",
+      "observed_mean_close_seconds": 0.03828223833018759,
+      "repetitions": 3
+    },
+    {
+      "baseline_mean_close_seconds": 0.28760682433494367,
+      "method": "GRACEFUL",
+      "mode": "bounded",
+      "observed_boundary": "observed_stages_returned",
+      "observed_mean_close_seconds": 0.29205554533594597,
+      "repetitions": 3
+    },
+    {
+      "baseline_mean_close_seconds": 2.0042549796635285,
+      "method": "TERMINATE",
+      "mode": "finalizer_block",
+      "observed_boundary": "finalizers_entered_only",
+      "observed_mean_close_seconds": 2.0057771090020347,
+      "repetitions": 3
+    },
+    {
+      "baseline_mean_close_seconds": 2.2065238506669025,
+      "method": "KILL",
+      "mode": "finalizer_ignore_term",
+      "observed_boundary": "finalizers_entered_only",
+      "observed_mean_close_seconds": 2.2055799066632367,
+      "repetitions": 3
+    },
+    {
+      "baseline_mean_close_seconds": 2.0045356646781634,
+      "method": "TERMINATE",
+      "mode": "destructor_block",
+      "observed_boundary": "target_entered_only",
+      "observed_mean_close_seconds": 2.005466629333872,
+      "repetitions": 3
+    },
+    {
+      "baseline_mean_close_seconds": 2.005047806664758,
+      "method": "TERMINATE",
+      "mode": "thread_block",
+      "observed_boundary": "threads_entered_only",
+      "observed_mean_close_seconds": 2.0048405553340367,
+      "repetitions": 3
+    }
+  ],
+  "test_payload_accessed": false,
+  "timing_scope": "Descriptive sequential CPU timings, not paired randomized overhead or native performance.",
+  "valid": true,
+  "workers_reaped": 18
+}

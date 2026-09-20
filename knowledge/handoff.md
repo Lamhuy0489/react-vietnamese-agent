@@ -4,12 +4,21 @@ Cập nhật: 2026-09-20. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptan
 
 ## Đang làm
 
+**Exit-milestone observer đã đóng CPU gate; chưa nối native runner.**
+[Report](../docs/evaluation/phase5_exit_milestones_cpu_v1_report.md),
+[protocol](../docs/architecture/phase5_exit_milestones_v1_contract.md).
+Backend opt-in kế thừa generate/cleanup cũ; hooks chỉ trong child, PID/timing và
+Python non-daemon thread counts, không payload/tên luồng. Config identity riêng.
+18/18 worker reaped; đối chứng phân biệt kẹt target/finalizers/thread shutdown,
+không chứng minh native GPU cause. 53 tests mới; 666 focused + 149 integration,
+setup/Ruff/mypy454/knowledge/diff đạt. Không Kaggle/model/Test/private GT access.
+
 Đã củng cố điều hướng/lưu trữ cho vault Obsidian hiện có:
 [START_HERE](../START_HERE.md), [quy ước](storage_and_obsidian.md).
 Không thay settings/plugin/sync; `.obsidian/` và `.trash/` ngoài Git.
 Raw vẫn local, chưa có bản sao ngoài máy; chưa chọn đích backup riêng tư.
 
-**Post-serve teardown CPU probe v1 đã hoàn tất; cần native instrumentation riêng.**
+**Nền post-serve teardown CPU probe v1 đã hoàn tất.**
 [Report](../docs/evaluation/phase5_teardown_cpu_v1_report.md),
 [contract](../docs/architecture/phase5_teardown_probe_v1_contract.md).
 18 fresh spawned workers: 6 modes × 3 reps, 2 public responses/worker. Đủ 18 reaped;
@@ -99,17 +108,27 @@ guard 1.5B hoặc benchmark quality. CPU v1 thất bại vẫn lưu, không xóa
    Giữ raw `results/phase5_constrained_gpu_monitor02`, hai audits tại
    `results/phase5_constrained_gpu_audit01.json` và
    `results/phase5_constrained_gpu_report01/release_audit.json`.
-2. CPU controls đã đóng. Thiết kế opt-in native milestones: post-serve,
-   process finalizer enter/return, non-daemon thread counts/exit; bind PID/timing,
-   giữ partial failures. Không chép thread names/payloads hay đổi ownership,
-   transport/signal/model outputs. Exact package/protocol riêng trước GPU;
-   chưa tăng grace2s hoặc resubmit old diagnostic.
+2. Observer + CPU controls đã đóng. Nối MilestoneBackend vào native diagnostic
+   runner riêng, bind milestones với PID/role/task receipts và giữ partial failures.
+   Không đổi ownership/transport/signal/model outputs; không thay frozen runner.
+   Rehearse archive/expanded + interpreter hash trong exact package riêng, rồi mới
+   source-freeze/GPU diagnostic. Chưa tăng grace2s hoặc resubmit old diagnostic.
 3. Giữ syntax success8/8 tách khỏi guard semantic quality/benign utility;
    lập representative Dev follow-up rồi mapping20DoD trước formal freeze.
 4. Tiếp tục quy tắc gom commit sau phần việc hoàn chỉnh/QA đạt;
    không status-only commit hoặc amend worker source `0d4e82f`.
 
 ## Bằng chứng
+
+- [Exit milestones close](../experiments/manifests/phase5_exit_milestones_cpu_close01.json),
+  [QA](../experiments/manifests/phase5_exit_milestones_cpu_qa01.json):
+  15 execution source pins, 19 raw files tại `results/phase5_exit_milestones_cpu_controls02`;
+  audits `results/phase5_exit_milestones_cpu_audit01.json`/`...audit02.json` byte-identical.
+  QA logs `results/phase5_exit_milestones_cpu_qa01`: 666/44,72s + 149/138,93s.
+  Base Git `3cb2b54` + working-tree pins, chưa native release.
+  Controls01 giữ/excluded sau harden thứ tự kiểm symlink trước đọc JSON;
+  controls02 bind source mới, không semantic model retry. Raw mới vẫn local,
+  chưa backup ngoài máy; không cần account mới trước bước native preflight.
 
 - Kiểm lại ngày 2026-09-20: 50 tests chọn lọc (knowledge + teardown unit và
   integration) đạt/11,24s; setup/Ruff/mypy450/knowledge/diff đạt.

@@ -1750,3 +1750,18 @@ and are not inferred here.
   retry, model loading, network or Test/private GT access.
 - Next gate is opt-in native exit milestones with separately frozen protocol,
   source/package and partial-failure evidence. [Report](../evaluation/phase5_teardown_cpu_v1_report.md).
+
+# 2026-09-20 — Opt-in child exit milestones, CPU gate only
+
+- Add a distinct-config diagnostic backend inheriting frozen generate/cleanup;
+  only spawned target observation changes. Child-local interpreter hooks delegate
+  original functions and restore them on return/error; this is not zero-overhead.
+- Fixed synthetic controls distinguish target, multiprocessing exit function and
+  thread-shutdown boundaries. Preserve partial marks; bind PID/runtime/source and
+  reaped outcomes. Never record thread names, stacks, raw exceptions or payloads.
+- Controls01 remains excluded after auditor symlink-order hardening; controls02
+  binds corrected sources. Eighteen workers reaped, unchanged response/attempt/exit
+  comparisons, repeated identical audits. No inference or Test/GT access.
+- Native wiring, package rehearsal and GPU diagnosis remain open; no increase to
+  grace2s, no frozen-source modification, no new acceptance group closed.
+  [Report](../evaluation/phase5_exit_milestones_cpu_v1_report.md).

@@ -6,11 +6,24 @@ không phải phần trăm công sức hoặc số dòng mã. Phase 1–4 đã a
 
 ## Kết quả mới nhất
 
+**Opt-in exit milestones đã đạt CPU acceptance.**
+[Report](../docs/evaluation/phase5_exit_milestones_cpu_v1_report.md),
+[close receipt](../experiments/manifests/phase5_exit_milestones_cpu_close01.json).
+18/18 worker reaped, 6 GRACEFUL/9 TERMINATE/3 KILL; responses và normalized attempts
+khớp đối chứng cũ. Dấu mốc mới tách target chưa return, exit finalizers bị kẹt,
+và thread shutdown bị kẹt. Không phải native GPU root-cause/fix.
+Hai audits byte-identical; 53 tests mới, final QA 666 focused + 149 integration,
+setup/Ruff/mypy454/knowledge đạt; 172/142/86/175 frozen pins không đổi.
+Chưa có job Kaggle mới. Bước tiếp theo: native runner/receipt join và exact package
+riêng, giữ worker cũ và grace2s; không tăng acceptance chỉ từ CPU controls.
+
+Mốc tổ chức tri thức:
+
 Đã thêm [trang bắt đầu](../START_HERE.md) và
 [quy ước lưu trữ/Obsidian](storage_and_obsidian.md): dùng lại Markdown hiện có,
 không tạo memory song song; settings/trash của vault ngoài Git. Không đổi cấu hình
-Obsidian, không bật sync/plugin hoặc sao lưu raw ra ngoài máy. Native milestones
-vẫn là bước kỹ thuật tiếp theo; việc tổ chức ghi chú không tăng acceptance.
+Obsidian, không bật sync/plugin hoặc sao lưu raw ra ngoài máy. Việc tổ chức ghi
+chú không tăng acceptance.
 
 **CPU post-serve teardown controls đã hoàn tất: 18/18 worker được thu hồi.**
 [Report](../docs/evaluation/phase5_teardown_cpu_v1_report.md),

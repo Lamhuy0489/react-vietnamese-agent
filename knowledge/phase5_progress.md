@@ -1,5 +1,14 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — exit milestones CPU acceptance, 2026-09-20
+
+[Report](../docs/evaluation/phase5_exit_milestones_cpu_v1_report.md):
+backend opt-in, kế thừa worker methods frozen; hooks chỉ trong child. 18/18 reaped,
+hai audits khớp; phân biệt kẹt target/finalizers/thread shutdown bằng PID/timing.
+53 tests mới; final QA 666 focused + 149 integration, setup/Ruff/mypy454/knowledge
+đạt; 172/142/86/175 frozen pins nguyên. Chưa native cause/fix; còn native runner
+receipt join + exact package trước GPU. Phase 5 vẫn 4/7 ≈ 57%, không job mới.
+
 ## Hiện hành — post-serve teardown CPU controls, 2026-09-17
 
 [Report](../docs/evaluation/phase5_teardown_cpu_v1_report.md):

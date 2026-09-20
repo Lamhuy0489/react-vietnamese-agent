@@ -58,7 +58,13 @@ Không tự di chuyển/xóa credentials, sửa vault settings hay tạo vault l
 ## Raw evidence và phục hồi
 
 Manifest chứa hash, không chứa toàn bộ raw; mất raw thì không thể tái tạo bằng
-hash. Hai tập đang cần giữ để tiếp tục Phase 5:
+hash. Các tập ưu tiên đang cần giữ để tiếp tục Phase 5:
+
+- Exit milestones: `results/phase5_exit_milestones_cpu_controls02`, hai audits
+  `results/phase5_exit_milestones_cpu_audit01.json` / `...audit02.json`,
+  QA logs `results/phase5_exit_milestones_cpu_qa01`; giữ cả controls01 excluded.
+  [Close receipt](../experiments/manifests/phase5_exit_milestones_cpu_close01.json),
+  [QA receipt](../experiments/manifests/phase5_exit_milestones_cpu_qa01.json).
 
 - CPU teardown: `results/phase5_teardown_cpu_controls02`, hai file
   `results/phase5_teardown_cpu_audit01.json` / `phase5_teardown_cpu_audit02.json`,

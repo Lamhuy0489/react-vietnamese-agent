@@ -23,7 +23,8 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
-- **Hiện hành:** [post-serve teardown CPU controls và native milestone gate](../docs/evaluation/phase5_teardown_cpu_v1_report.md).
+- **Hiện hành:** [exit milestones CPU acceptance và native wiring gate](../docs/evaluation/phase5_exit_milestones_cpu_v1_report.md).
+- **Nền teardown:** [post-serve synthetic CPU controls](../docs/evaluation/phase5_teardown_cpu_v1_report.md).
 - **Nền native:** [constrained GPU v1 và release authentication](../docs/evaluation/phase5_constrained_gpu_v1_report.md).
 - **Nền package:** [constrained exact package và quy tắc giảm commit](../docs/evaluation/phase5_constrained_package_v1_report.md).
 - **Nền runner:** [constrained runner/checkpoint/native join](../docs/evaluation/phase5_constrained_probe_v1_report.md).
