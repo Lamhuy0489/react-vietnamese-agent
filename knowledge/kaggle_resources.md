@@ -1,6 +1,6 @@
 # Sổ tra cứu Kaggle của đồ án
 
-Cập nhật 2026-09-17 từ receipts/report và live checks; biên bản sau source
+Cập nhật 2026-09-21 từ receipts/report và live checks; biên bản sau source
 freeze được gộp với host release audit/report trong một commit hoàn chỉnh.
 Đây là **memory phát
 triển cho nhóm**, không đưa vào prompt benchmark. Trạng thái dưới đây là mốc
@@ -21,6 +21,46 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
    không chuyển public chỉ để mở được link. 403/404 có thể là thiếu quyền.
 
 ## Mốc hiện hành — đọc mục này trước
+
+**ExitPair GPU v1 COMPLETE/audit**, post-download2026-09-21 07:28:29UTC.
+Actual=requested
+[huylmhuhu/react-vn-exit-milestones-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-exit-milestones-v1),
+v1/ID135130970, source `6d039e255a0a0a91f6e514cfebe889c4b7ae8aed`.
+[Dataset guard15](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+v1; private/offline/T4/timeout3600s và source/model/image settings khớp.
+[Report](../docs/evaluation/phase5_exit_gpu_v1_report.md),
+[terminal](../experiments/manifests/phase5_exit_gpu_terminal01.json),
+[audit](../experiments/manifests/phase5_exit_gpu_audit01.json),
+[summary](../experiments/manifests/phase5_exit_gpu_summary01.json).
+4completed/8validguard,8GRACEFUL/0forced,4VRAM recoveries. Hai audits khớp,
+182source/242raw/2remote; không root cause/fix hoặc guard quality claim.
+Raw `results/phase5_exit_gpu_monitor01`; không pending, không resubmit notebook.
+Private access vẫn cần quyền Kaggle riêng; không chuyển public. Evidence/memory
+local, không commit trạng thái lẻ.
+
+Mốc submission lịch sử (không phải trạng thái RUNNING hiện tại):
+
+**ExitPair exit milestones GPU v1 RUNNING**, live check 2026-09-20 16:57:50 UTC.
+Actual=requested
+[huylmhuhu/react-vn-exit-milestones-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-exit-milestones-v1),
+version1/ID135130970, source `6d039e255a0a0a91f6e514cfebe889c4b7ae8aed` đã push main.
+[Dataset guard15](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+v1/private/ready đã xác minh; notebook private/offline/T4/timeout3600s,
+Qwen2.5-7B revision1 và Docker image giữ nguyên. Remote source/settings/version
+khớp package. Đây là mốc RUNNING, chưa terminal/output audit hoặc root cause.
+[Report](../docs/evaluation/phase5_exit_pair_package_v1_report.md),
+[release package](../experiments/manifests/phase5_exit_pair_package01.json),
+[submission](../experiments/manifests/phase5_exit_gpu_submission01.json),
+[QA](../experiments/manifests/phase5_exit_pair_package_qa01.json).
+Raw admission `results/phase5_exit_kaggle_preflight02`; raw push/remote source
+`results/phase5_exit_gpu_submission01`. API trả ref `/code/owner/slug`, host
+equality check dừng sau push đã thành công; read-only verification hoàn tất,
+không gửi thêm version/job. Không resubmit khi pending. Terminal bước tiếp:
+tải vào thư mục mới, xác thực version/source trước-sau rồi hai release audits.
+Quyền private Kaggle riêng, không tự cấp theo GitHub. Biên bản sau source freeze
+giữ local đến meaningful closeout, không status-only commit.
+
+Mốc trước (câu “không còn pending” dưới đây chỉ tại thời điểm lịch sử):
 
 **Constrained guard GPU v1 COMPLETE/audit**, post-download 2026-09-17 03:43:34 UTC.
 Actual=requested

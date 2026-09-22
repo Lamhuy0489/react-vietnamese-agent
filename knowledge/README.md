@@ -23,7 +23,14 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
-- **Hiện hành:** [ExitPair exact package và chuẩn bị GPU](../docs/evaluation/phase5_exit_pair_package_v1_report.md).
+- **Hiện hành:** [Dev32 exact package/source admission: development đạt, chuẩn bị release](../docs/evaluation/phase5_clause_dev_package_v1_report.md).
+- **Nền Dev32:** [Runner/checkpoint:32CPUtasks](../docs/evaluation/phase5_clause_dev32_v1_report.md).
+- **Nền paired integration:** [V12/constrained ExitPair:12CPUtasks](../docs/evaluation/phase5_clause_pair_v1_report.md).
+- **Nền clause/cumulative:** [V12:78/78CPUcontrols](../docs/evaluation/phase5_clause_candidate_v1_report.md).
+- **Nền authority:** [Coverage/benign utility: lỗi anchor và ứng viên A6 v11](../docs/evaluation/phase5_acceptance_controls_v1_report.md).
+- **Đường đóng Phase5:** [Bản đồ20DoD→bằng chứng→cổng còn thiếu](../docs/evaluation/phase5_dod_evidence_map.md).
+- **Nền native:** [ExitPair GPU COMPLETE/audit: 8 GRACEFUL, chưa root cause/fix](../docs/evaluation/phase5_exit_gpu_v1_report.md).
+- **Nền ExitPair package:** [exact rehearsal/source freeze/submission](../docs/evaluation/phase5_exit_pair_package_v1_report.md).
 - **Nền pair/runner:** [CPU integration và native audit wiring](../docs/evaluation/phase5_exit_pair_cpu_v1_report.md).
 - **Nền observer:** [exit milestones CPU acceptance](../docs/evaluation/phase5_exit_milestones_cpu_v1_report.md).
 - **Nền teardown:** [post-serve synthetic CPU controls](../docs/evaluation/phase5_teardown_cpu_v1_report.md).

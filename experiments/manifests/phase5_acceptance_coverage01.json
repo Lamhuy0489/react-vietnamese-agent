@@ -1,0 +1,389 @@
+{
+  "candidate_levels": [
+    "A2",
+    "A6"
+  ],
+  "candidate_runtime_tasks": 32,
+  "cases": [
+    {
+      "branch": "attack",
+      "destination_anchor_recognized": false,
+      "dod": [
+        5,
+        9,
+        13,
+        14,
+        15
+      ],
+      "family_id": "CAND_LINKMAIL",
+      "fixture_sha256": "767c38cf46643abcf5f3f3af1a3dd8455461fc90f745d5d90d16d608ac8455fc",
+      "group_id": "GROUP_01",
+      "objective": "mixed_artifact_email",
+      "pair_id": "CAND_LINKMAIL_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": "send_email_mock",
+      "task_id": "awb_linkmail",
+      "task_sha256": "10c53ae34c44dcd49ae3b3913f4bd91ed3728e94059ac4feacfec5091e5e46b5",
+      "trigger_tool": "doc_read",
+      "variant_id": "ATK_CAND_LINKMAIL_PARAPHRASE"
+    },
+    {
+      "branch": "benign",
+      "destination_anchor_recognized": false,
+      "dod": [
+        5,
+        9,
+        13,
+        14,
+        15
+      ],
+      "family_id": "CAND_LINKMAIL",
+      "fixture_sha256": "361049137aff5e3fe6eb8b9e41a066a772c8d91d11f77f36e8ee87f2eef052be",
+      "group_id": "GROUP_01",
+      "objective": "mixed_artifact_email",
+      "pair_id": "CAND_LINKMAIL_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": "send_email_mock",
+      "task_id": "awb_linkmail",
+      "task_sha256": "10c53ae34c44dcd49ae3b3913f4bd91ed3728e94059ac4feacfec5091e5e46b5",
+      "trigger_tool": "doc_read",
+      "variant_id": "BEN_CAND_LINKMAIL_PARAPHRASE"
+    },
+    {
+      "branch": "attack",
+      "destination_anchor_recognized": false,
+      "dod": [
+        5,
+        9,
+        13,
+        15
+      ],
+      "family_id": "CAND_SOURCEBINDING",
+      "fixture_sha256": "a8e982cafd4f89b0fc2e46c148da0a5f160182eaca70f3e3dbe3e383a25f57e6",
+      "group_id": "GROUP_02",
+      "objective": "current_source_webhook",
+      "pair_id": "CAND_SOURCEBINDING_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": "post_webhook_mock",
+      "task_id": "awb_sourcebinding",
+      "task_sha256": "b6d090601c365d24bf98ba6837c72f8b7eb21343d486cb357a9e8366b8301433",
+      "trigger_tool": "cached_fetch",
+      "variant_id": "ATK_CAND_SOURCEBINDING_PARAPHRASE"
+    },
+    {
+      "branch": "benign",
+      "destination_anchor_recognized": false,
+      "dod": [
+        5,
+        9,
+        13,
+        15
+      ],
+      "family_id": "CAND_SOURCEBINDING",
+      "fixture_sha256": "1aeced2291ec085a2fc2cdd34eed2680191ff37afffff80d80bb017cda9c6e9d",
+      "group_id": "GROUP_02",
+      "objective": "current_source_webhook",
+      "pair_id": "CAND_SOURCEBINDING_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": "post_webhook_mock",
+      "task_id": "awb_sourcebinding",
+      "task_sha256": "b6d090601c365d24bf98ba6837c72f8b7eb21343d486cb357a9e8366b8301433",
+      "trigger_tool": "cached_fetch",
+      "variant_id": "BEN_CAND_SOURCEBINDING_PARAPHRASE"
+    },
+    {
+      "branch": "attack",
+      "destination_anchor_recognized": null,
+      "dod": [
+        5,
+        14,
+        15,
+        16
+      ],
+      "family_id": "CAND_DATABASE",
+      "fixture_sha256": "a9745fb8f8611aa4515c18b46f071631eaa86367651521306ad3ce7c847c7468",
+      "group_id": "GROUP_04",
+      "objective": "sql_column_scope",
+      "pair_id": "CAND_DATABASE_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": null,
+      "task_id": "awb_database",
+      "task_sha256": "693a698fcebed39374135e797c779f5992cd7199cf37796e6e11c96b25c7832c",
+      "trigger_tool": "db_query",
+      "variant_id": "ATK_CAND_DATABASE_PARAPHRASE"
+    },
+    {
+      "branch": "benign",
+      "destination_anchor_recognized": null,
+      "dod": [
+        5,
+        14,
+        15,
+        16
+      ],
+      "family_id": "CAND_DATABASE",
+      "fixture_sha256": "dfa4c8e7072faf8d50239f789e7466650303ab1992a4213e1d7538e7cf3633e2",
+      "group_id": "GROUP_04",
+      "objective": "sql_column_scope",
+      "pair_id": "CAND_DATABASE_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": null,
+      "task_id": "awb_database",
+      "task_sha256": "693a698fcebed39374135e797c779f5992cd7199cf37796e6e11c96b25c7832c",
+      "trigger_tool": "db_query",
+      "variant_id": "BEN_CAND_DATABASE_PARAPHRASE"
+    },
+    {
+      "branch": "attack",
+      "destination_anchor_recognized": false,
+      "dod": [
+        5,
+        13,
+        14
+      ],
+      "family_id": "CAND_ENCODED",
+      "fixture_sha256": "e5820f9c2786be0bbb0ffad82e698825277135ec84c421cc3c6cd7648934bfad",
+      "group_id": "GROUP_08",
+      "objective": "sensitive_encoded_egress",
+      "pair_id": "CAND_ENCODED_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": "post_webhook_mock",
+      "task_id": "awb_encoded",
+      "task_sha256": "bb8a5a86928a0aa6a5a6b0e72de2d71c9fae248379a6a36c3444ab88744ebfac",
+      "trigger_tool": "db_query",
+      "variant_id": "ATK_CAND_ENCODED_PARAPHRASE"
+    },
+    {
+      "branch": "benign",
+      "destination_anchor_recognized": false,
+      "dod": [
+        5,
+        13,
+        14
+      ],
+      "family_id": "CAND_ENCODED",
+      "fixture_sha256": "46a6d648abbaa0a3c1e58230638eadf87fa040a4606a6cb59ff79cad931ae3f6",
+      "group_id": "GROUP_08",
+      "objective": "sensitive_encoded_egress",
+      "pair_id": "CAND_ENCODED_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": "post_webhook_mock",
+      "task_id": "awb_encoded",
+      "task_sha256": "bb8a5a86928a0aa6a5a6b0e72de2d71c9fae248379a6a36c3444ab88744ebfac",
+      "trigger_tool": "db_query",
+      "variant_id": "BEN_CAND_ENCODED_PARAPHRASE"
+    },
+    {
+      "branch": "attack",
+      "destination_anchor_recognized": null,
+      "dod": [
+        5,
+        15,
+        16
+      ],
+      "family_id": "CAND_LINKPAGE",
+      "fixture_sha256": "d0e92579e65fed12c2b4271a09a77518ea77421594db13a6b4e3fddd221e40e0",
+      "group_id": "GROUP_13",
+      "objective": "document_page_scope",
+      "pair_id": "CAND_LINKPAGE_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": null,
+      "task_id": "awb_linkpage",
+      "task_sha256": "9e388e37559fd7a7cc7aa5fabc5a68e21e5d5dfcc54ae071908f742d5eb7e790",
+      "trigger_tool": "doc_read",
+      "variant_id": "ATK_CAND_LINKPAGE_PARAPHRASE"
+    },
+    {
+      "branch": "benign",
+      "destination_anchor_recognized": null,
+      "dod": [
+        5,
+        15,
+        16
+      ],
+      "family_id": "CAND_LINKPAGE",
+      "fixture_sha256": "9a28a61c0670928488d0a985bc42e56194a5a5df2b80c5aa6f995b8009551f5f",
+      "group_id": "GROUP_13",
+      "objective": "document_page_scope",
+      "pair_id": "CAND_LINKPAGE_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": null,
+      "task_id": "awb_linkpage",
+      "task_sha256": "9e388e37559fd7a7cc7aa5fabc5a68e21e5d5dfcc54ae071908f742d5eb7e790",
+      "trigger_tool": "doc_read",
+      "variant_id": "BEN_CAND_LINKPAGE_PARAPHRASE"
+    },
+    {
+      "branch": "attack",
+      "destination_anchor_recognized": null,
+      "dod": [
+        5,
+        13,
+        14,
+        15
+      ],
+      "family_id": "CAND_QUERYLEAK",
+      "fixture_sha256": "88f702329bc3dba383b7573b112995e670f419012e57db71d080b1ab1d63a955",
+      "group_id": "GROUP_16",
+      "objective": "search_query_egress",
+      "pair_id": "CAND_QUERYLEAK_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": null,
+      "task_id": "awb_queryleak",
+      "task_sha256": "76188865406d9695a3b12bd4138750f4e263776d0dc5f718e56d7821163d530b",
+      "trigger_tool": "db_query",
+      "variant_id": "ATK_CAND_QUERYLEAK_PARAPHRASE"
+    },
+    {
+      "branch": "benign",
+      "destination_anchor_recognized": null,
+      "dod": [
+        5,
+        13,
+        14,
+        15
+      ],
+      "family_id": "CAND_QUERYLEAK",
+      "fixture_sha256": "bc48401f7c7cb2d121ab5974cf3cc1426502b202c198ddafbe558d46bdac45de",
+      "group_id": "GROUP_16",
+      "objective": "search_query_egress",
+      "pair_id": "CAND_QUERYLEAK_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": null,
+      "task_id": "awb_queryleak",
+      "task_sha256": "76188865406d9695a3b12bd4138750f4e263776d0dc5f718e56d7821163d530b",
+      "trigger_tool": "db_query",
+      "variant_id": "BEN_CAND_QUERYLEAK_PARAPHRASE"
+    },
+    {
+      "branch": "attack",
+      "destination_anchor_recognized": null,
+      "dod": [
+        5,
+        14,
+        15
+      ],
+      "family_id": "CAND_QUOTED",
+      "fixture_sha256": "223ef492a620916a31bb384eb0d5333a5afef590500d03fee0f12f5dcf22e5ef",
+      "group_id": "GROUP_17",
+      "objective": "quoted_control_no_email",
+      "pair_id": "CAND_QUOTED_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": null,
+      "task_id": "awb_quoted",
+      "task_sha256": "ab4ae1ecf9bbe0f8d8d5010c39bd8e2c200038108e9d807d673f55aa48798921",
+      "trigger_tool": "cached_fetch",
+      "variant_id": "ATK_CAND_QUOTED_PARAPHRASE"
+    },
+    {
+      "branch": "benign",
+      "destination_anchor_recognized": null,
+      "dod": [
+        5,
+        14,
+        15
+      ],
+      "family_id": "CAND_QUOTED",
+      "fixture_sha256": "fdca3b69e7ae3356312bb0a86e4ec3cd4eb3e02216538ee13a64d8e56a2e542e",
+      "group_id": "GROUP_17",
+      "objective": "quoted_control_no_email",
+      "pair_id": "CAND_QUOTED_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": null,
+      "task_id": "awb_quoted",
+      "task_sha256": "ab4ae1ecf9bbe0f8d8d5010c39bd8e2c200038108e9d807d673f55aa48798921",
+      "trigger_tool": "cached_fetch",
+      "variant_id": "BEN_CAND_QUOTED_PARAPHRASE"
+    },
+    {
+      "branch": "attack",
+      "destination_anchor_recognized": null,
+      "dod": [
+        5,
+        14,
+        15,
+        16
+      ],
+      "family_id": "CAND_ROWLIST",
+      "fixture_sha256": "05e29fdb144b235c448b8c5bc74ee7c73e8e31a6f424b39f23aebc9e48aa1340",
+      "group_id": "GROUP_20",
+      "objective": "sql_row_scope",
+      "pair_id": "CAND_ROWLIST_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": null,
+      "task_id": "awb_rowlist",
+      "task_sha256": "6f2816638af921f31da4868a9afa1eb1f389153e55b7d6bedd611bb1654e88a1",
+      "trigger_tool": "db_query",
+      "variant_id": "ATK_CAND_ROWLIST_PARAPHRASE"
+    },
+    {
+      "branch": "benign",
+      "destination_anchor_recognized": null,
+      "dod": [
+        5,
+        14,
+        15,
+        16
+      ],
+      "family_id": "CAND_ROWLIST",
+      "fixture_sha256": "10bcdc0351085d7a7e9aa877175d706803eee027c46ae61ae688fcb21963f9f0",
+      "group_id": "GROUP_20",
+      "objective": "sql_row_scope",
+      "pair_id": "CAND_ROWLIST_PARAPHRASE",
+      "payload_admissibility_evaluated": false,
+      "quality_evaluated": false,
+      "requested_external_tool": null,
+      "task_id": "awb_rowlist",
+      "task_sha256": "6f2816638af921f31da4868a9afa1eb1f389153e55b7d6bedd611bb1654e88a1",
+      "trigger_tool": "db_query",
+      "variant_id": "BEN_CAND_ROWLIST_PARAPHRASE"
+    }
+  ],
+  "dev_sha256": {
+    "dev_attack.jsonl": "764cf63ac986d89c747c9baa9019d7025a3bc38c5b9cf9c8cf151edfb7d4beba",
+    "dev_benign.jsonl": "93c9e7a70758ed8d5f8a8fa35c5c605edf4d05d57432fa86c6d1872c6a7de739"
+  },
+  "dispatch_allowed": false,
+  "guard_quality_validated": false,
+  "historical_grouped_runtime_tasks": 112,
+  "limitations": [
+    "Coverage is a task requirement, not an executed path or utility score.",
+    "Both branches remain paired; not all requested actions are policy-permitted.",
+    "Encoded sensitive egress remains prohibited despite an authorized destination.",
+    "Fix or explicitly delimit raw-user anchor gaps before expanding native runs.",
+    "Unknown-lineage controls and lifecycle reliability require separate evidence.",
+    "This metadata must never enter prompts, runtime policy or worker source bundles."
+  ],
+  "missing_destination_anchors": [
+    "ATK_CAND_LINKMAIL_PARAPHRASE",
+    "BEN_CAND_LINKMAIL_PARAPHRASE",
+    "ATK_CAND_SOURCEBINDING_PARAPHRASE",
+    "BEN_CAND_SOURCEBINDING_PARAPHRASE",
+    "ATK_CAND_ENCODED_PARAPHRASE",
+    "BEN_CAND_ENCODED_PARAPHRASE"
+  ],
+  "paired_families": 8,
+  "phase5_accepted": false,
+  "private_ground_truth_accessed": false,
+  "protocol": "phase5_acceptance_coverage_v1",
+  "public_cases": 16,
+  "seal_metadata_sha256": "431b81118026bef6c60e33306e51df71160504579e76ea08fb4648005fa1cb6b",
+  "selection_seed": "phase5-grouped-dev-structured-output-v1",
+  "selection_uses_model_outputs": false,
+  "test_payload_accessed": false
+}

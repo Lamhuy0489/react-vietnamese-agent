@@ -1,0 +1,26 @@
+{
+  "actual_kernel": "huylmhuhu/react-vn-exit-milestones-v1",
+  "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+  "dataset_version": 1,
+  "gpu_requested": true,
+  "internet": false,
+  "kernel_id": 135130970,
+  "kernel_version": 1,
+  "notebook_url": "https://www.kaggle.com/code/huylmhuhu/react-vn-exit-milestones-v1",
+  "observed_at_utc": "2026-09-20T16:57:50.124365+00:00",
+  "phase5_accepted": false,
+  "preflight_path": "experiments/manifests/phase5_exit_pair_package01.json",
+  "preflight_sha256": "33bf3f2ab173fc850fda7dc5c280ec202db94b2cef27de11d4fb42330a9582cb",
+  "private": true,
+  "protocol": "exit_pair_gpu_submission_v1",
+  "push_response_sha256": "88b9d0f03a0167731fa7d74a3d752344ce55315cd6324667e5bd9275912dbdc4",
+  "qa_sha256": "837efbc75103c411431b8f390f0784e41f0c6ee07dac846a8ba8d90dbf4e995a",
+  "remote_source_sha256": "05eff38e81453cc04090ec5bf2195b27b1aefc34c46b82fb9b77824b166da166",
+  "session_status": {
+    "failureMessage": "",
+    "status": "RUNNING"
+  },
+  "source_commit": "6d039e255a0a0a91f6e514cfebe889c4b7ae8aed",
+  "submission_confirmed": true,
+  "timeout_seconds": 3600
+}

@@ -1,0 +1,25 @@
+{
+  "execution_source_count": 184,
+  "full_audit_path": "results/phase5_clause_pair_selected01/phase5_clause_pair_audit01.json",
+  "full_audit_sha256": "c852f661eb59428dc971ae0710260c6c3e792a8aec6930c4de9c47fcd795ce86",
+  "join_validity": {
+    "backend_failure/CALC_A2": true,
+    "backend_failure/CALC_A6": true,
+    "backend_failure/DOC_A2": true,
+    "backend_failure/DOC_A6": true,
+    "egress/public_a5": true,
+    "egress/public_a6": true,
+    "egress/sensitive_a6": true,
+    "egress/unknown_a6": true,
+    "valid/CALC_A2": true,
+    "valid/CALC_A6": true,
+    "valid/DOC_A2": true,
+    "valid/DOC_A6": true
+  },
+  "phase5_accepted": false,
+  "protocol": "clause_pair_readonly_audit_v1",
+  "raw_files_verified": 348,
+  "runtime_tasks": 12,
+  "summary_sha256": "a96fd84ce1714f65ebef61068abbed9132cfd9b20548033f151666dfffecf6d8",
+  "valid": true
+}

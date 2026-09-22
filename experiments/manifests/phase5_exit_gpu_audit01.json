@@ -1,0 +1,52 @@
+{
+  "all_workers_reaped": true,
+  "checked_at_utc": "2026-09-21T07:31:28.858573+00:00",
+  "credential_value_matches": 0,
+  "credential_value_scan_files": 253,
+  "exit_boundary_counts": {
+    "observed_stages_returned": 8
+  },
+  "full_audit_path": "results/phase5_exit_gpu_audit01.json",
+  "full_audit_sha256": "4ebdef959d5719934e86c26e3cc7d1289bdd16cdea78215827d77993ba7f9251",
+  "guard_categories": {
+    "valid": 8
+  },
+  "guard_quality_validated": false,
+  "host_summary_source_identity": "working-tree hashes; worker source remains 6d039e2",
+  "host_summary_source_sha256": {
+    "scripts/audit_phase5_exit_gpu_v1.py": "428778d1cabadc286beff28d1be80d97b81582a7b053457fa6560f6293ec49f3",
+    "scripts/report_phase5_exit_gpu_v1.py": "3e99e1d12dcb87b0e537500edf5fba7f779d59c7992f34cf0869a531838ba145",
+    "tests/unit/test_exit_gpu_report_v1.py": "e8aaa62062cd86f8b3e60822a5a6b5b2090d213d1e3e357f3eed4b1c8b62e7c9"
+  },
+  "kernel_version": 1,
+  "native_cause_identified": false,
+  "new_model_retries": 0,
+  "notebook_url": "https://www.kaggle.com/code/huylmhuhu/react-vn-exit-milestones-v1",
+  "observation_sha256": "be199ae17843afebb6ce86b76e5cbf83759c53b8d42c0ead59c534dd2366d90f",
+  "phase5_accepted": false,
+  "preflight_sha256": "33bf3f2ab173fc850fda7dc5c280ec202db94b2cef27de11d4fb42330a9582cb",
+  "private_ground_truth_accessed": false,
+  "protocol": "exit_pair_gpu_release_audit_v1",
+  "raw_directory": "results/phase5_exit_gpu_monitor01/raw",
+  "raw_files_verified": 242,
+  "recovered_tasks": 4,
+  "remote_directory": "results/phase5_exit_gpu_monitor01/remote",
+  "remote_files_verified": 2,
+  "repeated_audit_path": "results/phase5_exit_gpu_report01/release_audit.json",
+  "repeated_audits_byte_identical": true,
+  "shutdown_methods": {
+    "GRACEFUL": 8
+  },
+  "source_authenticated": true,
+  "source_commit": "6d039e255a0a0a91f6e514cfebe889c4b7ae8aed",
+  "source_pins_verified": 182,
+  "submission_sha256": "91cf591aa2a89792d3be6b2a02748e1a0f5a609ff35bd2d424ccd97945d40c05",
+  "summary_path": "results/phase5_exit_gpu_report01/summary.json",
+  "summary_sha256": "1513b0bc7c2173bb549b56d69dedbf343a706b31843f7199824838b64f687181",
+  "terminal_counts": {
+    "completed": 4
+  },
+  "terminal_observation_path": "results/phase5_exit_gpu_monitor01/observation.json",
+  "test_payload_accessed": false,
+  "valid": true
+}

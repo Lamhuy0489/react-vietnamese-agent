@@ -1,5 +1,76 @@
 # Decision Log
 
+## 2026-09-22 — Dev32 exact package and necessary experiment source freeze
+
+- Keep measured CPU/native sources unchanged. Add separate source-admitted
+  dispatch/CLI/launcher and release authenticator for the fixed32 A2/A6 tasks.
+- Development packages remain native-disabled. Both isolated archive/expanded
+  layouts pass8tools/21Dummy/32Dev and checkpoint/resume/audit checks. Preserve
+  all failed preparation directories; no GPU retry was used to debug packaging.
+- Run eight shards sequentially in one private/offline T4 notebook, prospective
+  session cap14400s. Do not change frozen per-task/model budgets or retry semantics.
+- After stable976+395 QA, a single source-freeze commit is justified for the real
+  experiment; no routine/status-only commit. Committed rehearsal and remote
+  admission still precede submission. [Report](../evaluation/phase5_clause_dev_package_v1_report.md).
+
+## 2026-09-22 — Fixed Dev32 candidate runner, native dispatch still closed
+
+- Derive32 A2/A6 tasks from the existing16 public-Dev fixtures; preserve the
+  historical112task experiment and all frozen settings/sources. No output selection.
+- Pin candidate source/config/interpreter and join authority/origin, constraints,
+  exit evidence and recovery in immutable checkpoints. Resume missing tasks only;
+  preserve semantic errors. Native call/token adapter is not release authentication.
+- CPU32tasks/64GRACEFUL workers,23new tests and expanded888+395checks establish
+  runner plumbing, not quality or GPU reliability. No Test/private GT parsing.
+- HF remains blocked pending separate source/release admission, launcher and exact
+  package rehearsal. No routine commit; next freeze must serve the actual native
+  experiment. [Report](../evaluation/phase5_clause_dev32_v1_report.md).
+
+## 2026-09-22 — Versioned constrained ExitPair host integration for v12
+
+- Compose clause runtimev12 and originv3 with the unchanged constrained classifier,
+  guard prompt/cache/decoding and ExitPair workers; bind scopev5 at both outer and
+  inner host boundaries. Keep old native runtime and source receipts intact.
+- Require a new runtime/probe/checkpoint identity and read-only authority/origin
+  replay in the auditor. Cross-host validation binds the recorded interpreter.
+  Preserve deliberate model_error results and never regenerate completed checkpoints.
+- Twelve synthetic tasks/24workers and36targeted tests close bounded CPU wiring,
+  not native model quality, GPU reliability or phase acceptance. The four egress
+  fixtures declare four steps; frozen native budgets are not changed.
+- Next is32Dev runner/native release audit +exact package; do not submit another
+  four-task GPU diagnostic merely to reproduce historical results. No benchmark/
+  Test edits, source freeze or routine commit yet. [Report](../evaluation/phase5_clause_pair_v1_report.md).
+
+## 2026-09-21 — Cumulative raw-clause authorization candidate, CPU only
+
+- Add versioned raw-clause anchors v3 and cumulative runtimev12; leave all measured
+  v1/v2/v10/v11 sources and receipts untouched. A0 delegates frozen v10; A1–A6
+  share the parser, including A6 coarse and value gates. No scope expansion.
+- Quoted/reported/conditional instructions fail closed. Unscoped revocation
+  overrides grants; a narrowly parsed named-resource prohibition preserves only
+  destination authority, never sensitive-payload or final-release permission.
+- Reproduced an additional origin gap for user email before sentence punctuation.
+  Supplement exact raw host-user destination literals, retaining source labels,
+  hashes and budgets. Do not fake tool/model origins or bypass unknown payloads.
+- 78/78 synthetic controls and six public-Dev destination checks pass. Counts are
+  not model utility/ASR evidence. No Test/private GT parsing, native dispatch,
+  Phase5 acceptance or routine commit. Constrained pair/runtime/audit integration
+  and a separate exact-source release remain required before the32task workload.
+  [Report](../evaluation/phase5_clause_candidate_v1_report.md).
+
+## 2026-09-21 — Record benign-utility anchor gap and bounded CPU candidate
+
+- Freeze coverage to the existing eight paired Dev families; no selection from
+  model outcomes, no benchmark/Test changes. Coverage metadata is host-only.
+- Runtime_v10 meets26/26semicolon controls but17/26period controls: nine benign
+  actions lack raw-user destination anchors. Preserve all negative evidence.
+- Add separate raw-user anchor v2/A6 runtime_v11 candidate, CPU-only;52/52controls
+  meet expectations without editing frozen v1/v10 workers. Quotes, negation and
+  conditionals suppress extensions; sensitive egress and guard vetoes remain.
+- Do not treat this as a cumulative A0–A6 release or fix for all six Dev anchor
+  gaps. Compound instruction/prohibition, native integration and guard quality
+  remain gates. No Phase5 acceptance change or new GPU submission yet.
+
 ## 2026-09-20 — Separate ExitPair native package identity
 
 - Reuse the proven constrained package pipeline with new native CLI, launcher,

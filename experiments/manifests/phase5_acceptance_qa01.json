@@ -1,0 +1,141 @@
+{
+  "checked_at_utc": "2026-09-21T07:59:55.183895+00:00",
+  "checks": {
+    "diff": {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "seconds": 0.03676582399930339
+    },
+    "integration": {
+      "command": [
+        ".venv/bin/pytest",
+        "-q",
+        "tests/integration/test_teardown_probe_v1.py",
+        "tests/integration/test_phase5_worker_shutdown_v2.py",
+        "tests/integration/test_constrained_probe_v1.py",
+        "tests/integration/test_guard_bare_json_probe_v1.py",
+        "tests/integration/test_phase5_pair_runtime_v3.py",
+        "tests/integration/test_exit_milestones_v1.py",
+        "tests/integration/test_exit_pair_probe_v1.py",
+        "tests/integration/test_acceptance_controls_v1.py",
+        "tests/integration/test_sentence_runtime_v11.py"
+      ],
+      "returncode": 0,
+      "seconds": 256.9112497159949
+    },
+    "knowledge": {
+      "command": [
+        "make",
+        "knowledge-check"
+      ],
+      "returncode": 0,
+      "seconds": 0.21810473799996544
+    },
+    "mypy": {
+      "command": [
+        ".venv/bin/mypy",
+        "src",
+        "scripts"
+      ],
+      "returncode": 0,
+      "seconds": 0.6100527300004615
+    },
+    "pytest": {
+      "command": [
+        ".venv/bin/pytest",
+        "-q",
+        "tests/unit/test_teardown_probe_audit_v1.py",
+        "tests/unit/test_worker_shutdown_audit_v2.py",
+        "tests/unit/test_constrained_gpu_report_v1.py",
+        "tests/unit/test_observer_native_report_v2.py",
+        "tests/unit/test_constrained_gpu_release_v1.py",
+        "tests/unit/test_observer_gpu_release_v2.py",
+        "tests/unit/test_constrained_probe_package_v1.py",
+        "tests/unit/test_constrained_native_audit_v1.py",
+        "tests/unit/test_observer_native_audit_v2.py",
+        "tests/unit/test_guard_bare_json_native_audit_v1.py",
+        "tests/unit/test_constrained_host_v1.py",
+        "tests/unit/test_constrained_generate_audit_v1.py",
+        "tests/unit/test_constrained_policy_v1.py",
+        "tests/unit/test_native_guard_diagnostics_v2.py",
+        "tests/unit/test_constrained_guard_v1.py",
+        "tests/unit/test_guard_token_language_v1.py",
+        "tests/unit/test_guard_language_native_v1.py",
+        "tests/unit/test_guard_language_release_v1.py",
+        "tests/unit/test_guard_bare_json_v1.py",
+        "tests/unit/test_guard_hf_v1.py",
+        "tests/unit/test_generation_policy_v1.py",
+        "tests/unit/test_request_policy_v1.py",
+        "tests/unit/test_efficient_requests_v1.py",
+        "tests/unit/test_request_policy_pair_v1.py",
+        "tests/unit/test_exit_milestones_audit_v1.py",
+        "tests/unit/test_knowledge.py",
+        "tests/unit/test_exit_pair_bindings_v1.py",
+        "tests/unit/test_exit_native_audit_v1.py",
+        "tests/unit/test_exit_pair_package_v1.py",
+        "tests/unit/test_exit_gpu_release_v1.py",
+        "tests/unit/test_exit_gpu_report_v1.py",
+        "tests/unit/test_acceptance_coverage_v1.py",
+        "tests/unit/test_authorization_anchors_v2.py"
+      ],
+      "returncode": 0,
+      "seconds": 54.094568700995296
+    },
+    "ruff": {
+      "command": [
+        ".venv/bin/ruff",
+        "check",
+        "."
+      ],
+      "returncode": 0,
+      "seconds": 0.09149188500305172
+    },
+    "setup": {
+      "command": [
+        ".venv/bin/python",
+        "scripts/verify_setup.py"
+      ],
+      "returncode": 0,
+      "seconds": 0.21642349800094962
+    }
+  },
+  "exclusion": "Sealed Test-authoring fixtures excluded",
+  "exit_package_source_pins_unchanged": 182,
+  "full_repository_pytest_run": false,
+  "git_base_commit": "6d039e255a0a0a91f6e514cfebe889c4b7ae8aed",
+  "git_commit_created": false,
+  "log_sha256": {
+    "results/phase5_acceptance_qa01/diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "results/phase5_acceptance_qa01/integration.log": "718108ff559e966fba866665b09e51f2d312a8ce2d0a7db1d462f558b2f5800f",
+    "results/phase5_acceptance_qa01/knowledge.log": "78c84ad170022bf4bd205a0a9abf804350ca190e83a245d9c2ae59b534b958c4",
+    "results/phase5_acceptance_qa01/mypy.log": "43626c355456e97038846141bfa55493cb13915f119321fad576fdc284623b5a",
+    "results/phase5_acceptance_qa01/pytest.log": "6398f8fe24684c0bb883063028e861ac2b7507b5dce7a7e4e6452714e101ad6e",
+    "results/phase5_acceptance_qa01/ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "results/phase5_acceptance_qa01/setup.log": "31e836b9c814fcf7126ef63fd608df0cbce6fc9b307ebc95c71ffe9d66d52280"
+  },
+  "model_inference_runs": 0,
+  "native_dispatch_allowed": false,
+  "phase5_accepted": false,
+  "prior_qa_source_pins_unchanged": 96,
+  "private_ground_truth_accessed": false,
+  "protocol": "phase5_acceptance_cpu_qa_v1",
+  "source_identity": "uncommitted candidate working-tree hashes",
+  "source_sha256": {
+    "scripts/run_phase5_acceptance_controls_v1.py": "ad906dacc2c22890ca0e44c1f31eb00cd137253c01788edd7859f1f821e0a819",
+    "scripts/run_phase5_sentence_candidate_v1.py": "529d4b1f7fc548a10a704ff23058649c43a07dec6fec07195336c64f6ab55484",
+    "src/react_agent/security_v1/authorization_anchors_v2.py": "ccda1b4f92fff226b56801079145f24e7505d39c0dbddfdd097670ccd8a74959",
+    "src/react_agent/security_v1/runtime_v11.py": "4b86f1d7464a23983ca94938b6170be6038dbcfdab21dce8d7168ae0e5806bb0",
+    "src/react_agent/validation/acceptance_controls_v1.py": "67d717bc3ad74e7250e5e0d78ac610889ce1de4c4d3469060519b5fd471e99c7",
+    "src/react_agent/validation/acceptance_coverage_v1.py": "22d84607f86e271e6d5d530d7b096fb4253248329ca93ec487889c3ac7da959c",
+    "tests/integration/test_acceptance_controls_v1.py": "ff73f3901ca8b0b3770da60e693674dc5b7400e3a7a1cbc79560b03e6d3aa54f",
+    "tests/integration/test_sentence_runtime_v11.py": "78a996c3527c1c51f5d785a85993e4b010019f66f4e6afe39c841cd2430215d3",
+    "tests/unit/test_acceptance_coverage_v1.py": "3d15d96486e42ae15d1882a9e89349e627f52ef91e58dc9dd64b4ab4474b1d77",
+    "tests/unit/test_authorization_anchors_v2.py": "ee47c250843d08d594c55a7b5df77dd3933e7fb7b6670c403119b40f7bd59ced"
+  },
+  "test_payload_accessed": false,
+  "valid": true
+}

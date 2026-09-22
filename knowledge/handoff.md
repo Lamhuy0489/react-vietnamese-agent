@@ -1,19 +1,187 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-09-20. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptance.
+Cập nhật: 2026-09-22. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptance.
 
 ## Đang làm
 
-**ExitPair exact package development đã qua cả hai layout.**
-[Report](../docs/evaluation/phase5_exit_pair_package_v1_report.md): 176 worker files,
-182 source pins; mỗi layout 8 tools, 21 Dummy, 10 fresh controls/6 retained.
-74 tests package/release mới đạt; final QA 763 focused + 180 integration,
-setup/Ruff/mypy467/knowledge/diff đạt; frozen pins nguyên.
-Remote read-only đã xác nhận owner huylmhuhu, quota30h, Dataset private/ready/v1.
-Bước cụ thể: một source-freeze commit/push cần thiết, release rehearsal + package
-authentication rồi gửi một job mới `huylmhuhu/react-vn-exit-milestones-v1`.
-Chưa có version actual; chưa native cause/acceptance. Không commit mỗi status.
-Quyền đang chờ: không thiếu credentials; chỉ các phê duyệt network/Git của sandbox.
+**Dev32 exact package đã qua development preflight; đang chuẩn bị source freeze.**
+[Report](../docs/evaluation/phase5_clause_dev_package_v1_report.md),
+[package](../experiments/manifests/phase5_clause_dev_package_dev01.json),
+[QA02](../experiments/manifests/phase5_clause_dev_package_qa02.json).
+211worker/218source pins; hai layouts mỗi layout8tools/21Dummy/32Dev,
+prefix/missing-only/complete-resume và8auditCLI đạt;1.027raw/layout.
+88tests mới;976focused/56,23s+395integration/403,50s đạt;setup/Ruff/mypy495/knowledge/diff đạt.
+182native/169data pins giữ nguyên;scan2.278files/0credentials. Raw build
+`build/kaggle/phase5_clause_dev_package_dev04`; development01–03 giữ lỗi cũ.
+Native đường mới chỉ chấp nhận committed source; oldCPU runner vẫn khóa HF.
+QA01 bị từ chối source đổi giữa run; QA02 ổn định là bằng chứng dùng.
+
+Bước cụ thể: một source-freeze commit/push cần thiết, committed rehearsal vào
+thư mục mới và `audit_phase5_clause_dev_gpu_v1.validate_package`, rồi submit một lần.
+Lịch32Dev giữ nguyên;8shards tuần tự,session cap14400s,T4/private/offline;
+không đổi deadline/model/prompt, không thêm4taskGPU diagnostic. Chưa submission.
+Live `results/phase5_clause_dev_kaggle_preflight03`:ownerhuylmhuhu,29,75hGPU,
+Dataset guard15 private/ready/v1;notebook cũ COMPLETE. Dùng systempython3 cho
+KaggleCLI2.2.4;venv không có kaggle. Requested `huylmhuhu/react-vn-clause-dev32-v1`
+chưa actual. Không cần account mới;raw chưa backup riêng. Test/privateGT không đọc.
+Formal4/7≈57% chưa đổi. Sau submit chỉ monitor/tải/audit, không push trùng.
+
+Mốc trước — Dev32 CPU runner:
+
+**Đã đóng CPU gate cho runner32Dev A2/A6; native dispatch chưa mở.**
+[Report](../docs/evaluation/phase5_clause_dev32_v1_report.md),
+[contract](../docs/architecture/phase5_clause_dev32_v1_contract.md),
+[controls](../experiments/manifests/phase5_clause_dev32_cpu01.json),
+[audit](../experiments/manifests/phase5_clause_dev32_audit01.json).
+32completed/8shards/16publicDev;64GRACEFUL workers reaped,32synthetic recovery.
+188source/928raw pins kiểm riêng, hai audits/shard và complete-resume không đổi raw.
+23tests mới; [QA02](../experiments/manifests/phase5_clause_dev32_qa02.json):888focused+
+395integration,setup/Ruff/mypy488/knowledge/diff đạt;182native/169data pins nguyên.
+Raw `results/phase5_clause_dev32_cpu01`, audits `results/phase5_clause_dev32_audit01`,
+QA `results/phase5_clause_dev32_qa02`; QA01 cũng hoàn tất và giữ lại.
+Không chấm utility/ASR từ scripted agent; recovery/teardown chỉ synthetic.
+`clause_dev_native_audit_v1` nối token/count/constraint evidence nhưng KHÔNG
+model-source/release authentication. `clause_dev_runner_v1.run` từ chối HF trước output.
+
+Bước cụ thể tiếp theo: native source/release admission và launcher cho32Dev,
+rồi exact archive/expanded rehearsal. Đọc Kaggle preflight +skill trước đóng gói.
+Chỉ mở HF sau cổng này; source freeze/commit chỉ khi cần cho thực nghiệm thật,
+không commit status. Giữ manifest32ca/seed/model/settings, frozen worker và
+mọi failure; không lặp4task GPU diagnostic, không chọn ca theo model output.
+Source hiện là base6d039e2 +working-tree pins, chưa GitHub source freeze mới.
+Không pending Kaggle hoặc model/GPU/commit/push mới, không Test/private GT parsing.
+Quyền còn thiếu: chưa cần tài khoản mới; raw chưa có backup riêng ngoài máy.
+Formal4/7≈57% chưa đổi: native quality/utility, lifecycle và DoD freeze còn mở.
+
+Mốc trước — constrained ExitPair integration:
+
+**Đã nối v12 vào constrained ExitPair và kiểm toán riêng, CPU gate đạt.**
+[Report](../docs/evaluation/phase5_clause_pair_v1_report.md),
+[contract](../docs/architecture/phase5_clause_pair_v1_contract.md),
+[controls](../experiments/manifests/phase5_clause_pair_controls01.json),
+[audit](../experiments/manifests/phase5_clause_pair_audit01.json).
+Raw `results/phase5_clause_pair_controls01`; full audits `results/phase5_clause_pair_selected01`.
+12tasks/24workers reaped:4valid completed +4deliberate model_error +4egress controls.
+20GRACEFUL/4TERMINATE (forced chỉ ở deliberate failures), chưa native reliability.
+Egress A6public ALLOW; A6sensitive/A6unknown/A5public DENY đúng kỳ vọng. Hai audits
+và complete-resume không đổi raw.184source/348raw pins khớp;scan349files/0credentials.
+36new tests đạt; [final QA](../experiments/manifests/phase5_clause_pair_qa01.json):
+879focused/50,17s +381integration/305,62s, setup/Ruff/mypy483/knowledge/diff đạt.
+Logs `results/phase5_clause_pair_qa01`;182native pins +7prior candidate pins
++169tracked data hashes không đổi. Full pytest loại sealed Test-authoring fixtures.
+Nguồn cũ v12/78controls và native182pins giữ nguyên; không Test/private GT parsing.
+Không model lớn/GPU/commit/push mới; không có Kaggle job pending.
+
+Bước cụ thể: chuẩn bị runner/manifest32Dev A2/A6 + independent native release
+audit trên `clause_pair_runtime_v1`; profile mới `security_runtime_v12_constrained_exit_v1`.
+Không chạy GPU4task probe mới chỉ để lặp dữ liệu teardown. Probe4task hiện là
+CPU/package control. Phải gắn source closure, input/environment/model/generation
+hashes, scopev5 + originv3, constraint cache/exit joins vào32task checkpoint;
+giữ failures và missing-only resume. Sau đó exact archive/expanded rehearsal,
+kiểm quota/private mounts, source freeze cần thiết rồi submit một lần.
+Outer scope pre-start cũng cần ResourceBindings/RowBindings từ host catalog;
+đừng chỉ nối constructor trong inner runtime. Audit cross-host dùng recorded
+interpreter, không dùng mặc định máy Mac. Không dùng metadata version để giả nâng runtime.
+Quyền còn thiếu: chưa cần account mới; raw chưa có backup riêng ngoài máy.
+Formal acceptance không đổi: quality/utility, native lifecycle và DoD freeze còn mở.
+
+Mốc trước — clause/warm-runtime CPU (đã có paired integration ở trên):
+
+**Clause authorization v3/runtime v12 đã qua 78/78 CPU controls.**
+[Report](../docs/evaluation/phase5_clause_candidate_v1_report.md),
+[contract](../docs/architecture/phase5_clause_authorization_v3_contract.md),
+[receipt](../experiments/manifests/phase5_clause_candidate01.json),
+[Dev coverage](../experiments/manifests/phase5_clause_coverage01.json).
+Raw `results/phase5_clause_candidate01`; selected `results/phase5_clause_selected01`.
+157source/1.400raw pins kiểm riêng;scan1.401files/0credentials. 67new unit +65new
+integration đạt; [final QA](../experiments/manifests/phase5_clause_qa01.json):
+873focused/60,91s +351integration/310,06s, setup/Ruff/mypy478/knowledge/diff đạt.
+Logs `results/phase5_clause_qa01`;182native pins +169data hashes không đổi;
+10prior acceptance source pins nguyên. Không full pytest vì Test-authoring fixtures.
+Cumulative A1–A6 dùng cùng parser; A0 giữ v10. Sáu Dev đích gửi đã nhận đúng;
+payload sensitivity/unknown-lineage/guard veto/final gates vẫn độc lập.
+`value_origin_v3` chỉ bổ sung literal đích từ raw host-user, giữ labels/hash/budgets;
+sửa false-denial email trước dấu chấm, không chữa toàn bộ extractor punctuation.
+Không Test/private GT parsing, không model/GPU/commit/push; source base6d039e2
++working-tree pins, không được gán source mới cho GitHub commit cũ.
+
+Bước cụ thể tiếp theo: tích hợp runtimev12 và originv3 vào constrained ExitPair
+(native hiện vẫn dùng scopev3/runtimev8, KHÔNG tự coi đã nâng cấp). Cần bind
+HostClassifier/PROMPT giữ finite-language/cache identity, metadata runtime mới,
+independent audits/runner checkpoint/source closure và tests spawned pair; giữ
+frozen worker/old receipts. Sau đó exact archive+expanded rehearsal, source freeze
+thật sự cần thiết, rồi32Dev A2/A6 đã chọn. Không resubmit diagnostic cũ.
+Parser cố ý từ chối toàn bộ quoted/conditional/reported instructions và unsupported
+prefix; chưa phải parser ngôn ngữ tổng quát. Native quality/lifecycle/freeze còn mở.
+Quyền còn thiếu: không cần account mới; raw chưa có đích backup riêng ngoài máy.
+Không job Kaggle pending, formal acceptance vẫn4/7≈57%.
+
+Mốc trước (v11 là lịch sử, đã có v12 CPU ở trên):
+
+**Coverage + bounded A6 authorization candidate đã có CPU evidence.**
+[Report](../docs/evaluation/phase5_acceptance_controls_v1_report.md),
+[matrix](../experiments/manifests/phase5_acceptance_coverage01.json),
+[baseline](../experiments/manifests/phase5_acceptance_baseline01.json),
+[candidate](../experiments/manifests/phase5_acceptance_candidate01.json).
+Không đổi benchmark/Test/frozen worker. Public Dev16fixtures/8cặp giữ seed cũ;
+native candidate workload32taskA2/A6 vẫn dispatch=false. Sáu fixtures có raw-user
+destination anchor chưa nhận; không đồng nghĩa sensitive payload được phép gửi.
+Synthetic baselinev10:26/26semicolon,17/26period;9failures giữ nguyên.
+Opt-in A6runtimev11+anchorv2:52/52controls đạt;A0–A5 delegatev10, chưa cumulative
+native release.27parser+6coverage+54baseline+52candidate tests mới;
+[final QA](../experiments/manifests/phase5_acceptance_qa01.json):806focused+
+286integration đạt, setup/Ruff/mypy474/knowledge/diff đạt,182nativepins nguyên.
+Raw `results/phase5_acceptance_controls01`, `results/phase5_sentence_candidate01`;
+52executions/run,933raw/run;scan1868files/0credentials. Không model/GPU/commit/push.
+Bước cụ thể: thiết kế/test quyền-cấm theo raw clause spans và quote context;
+giải quyết6Dev anchor gaps mà không cho sensitive egress, kiểm cumulative/A0
+parity/native pair trước exact package/source freeze. V11 chỉ giải quyết bounded
+read-then-send, không coi compound prohibition đã giải quyết. Không job pending.
+Hardening bắt buộc trước promote: read-prefix dạng tường thuật không quote,
+quote xuyên mệnh đề và thu hồi quyền; lexical READ không phải resource grammar.
+Quyền còn thiếu: chưa cần account mới; backup raw riêng tư vẫn chưa có đích.
+[Bản đồ20DoD](../docs/evaluation/phase5_dod_evidence_map.md) ghi rõ evidence và
+cổng candidate/quality/lifecycle/freeze; không phải acceptance20/20.
+
+Mốc trước:
+
+**ExitPair GPU v1 COMPLETE; terminal release audits đã khớp byte-for-byte.**
+[Report](../docs/evaluation/phase5_exit_gpu_v1_report.md),
+[audit](../experiments/manifests/phase5_exit_gpu_audit01.json),
+[summary](../experiments/manifests/phase5_exit_gpu_summary01.json).
+Post-download07:28:29UTC ngày2026-09-21:actual `huylmhuhu/react-vn-exit-milestones-v1`,
+v1/ID135130970, source `6d039e2`, private/offline/T4; remote pins/settings/version khớp.
+4 completed/8 valid guard responses;8GRACEFUL/0TERMINATE/0KILL,4VRAM recoveries.
+Tất cả target/finalizers/threads return; lỗi teardown cũ không tái hiện, chưa root
+cause/fix. Hai audits182source/242raw/2remote;scan253files/0credential matches.
+Raw `results/phase5_exit_gpu_monitor01`, report `results/phase5_exit_gpu_report01`.
+Không còn job pending, không submit lại. Host summary +10 tests mới; final
+[QA](../experiments/manifests/phase5_exit_gpu_qa01.json):773focused +180integration,
+setup/Ruff/mypy468/knowledge/diff đạt; frozen pins nguyên. Không commit/push;
+giữ nguồn worker frozen, gom evidence về sau.
+Bước cụ thể: chuẩn bị coverage matrix public Dev cho guard quality/benign utility
+và DoD5/9/13/14/15/16; đọc nhiệm vụ và policy expectations trước chọn run manifest,
+không chọn theo model success. Lifecycle cần prospective paired comparison nếu
+muốn kết luận reliability/fix; không tự tăng grace hoặc rerun v1.
+Quyền đang chờ: không thiếu credentials; raw chưa có backup riêng ngoài máy.
+
+Mốc submit dưới đây là lịch sử, không phải trạng thái RUNNING hiện tại:
+
+**ExitPair GPU v1 đã submit một lần, RUNNING lúc 16:57:50 UTC ngày 2026-09-20.**
+Actual `huylmhuhu/react-vn-exit-milestones-v1`, v1/ID135130970;
+[submission](../experiments/manifests/phase5_exit_gpu_submission01.json),
+[report](../docs/evaluation/phase5_exit_pair_package_v1_report.md).
+Private/offline/T4/timeout3600s/guard Dataset v1; source `6d039e2` đã push main.
+Remote code/settings/version khớp. API trả ref có `/code/`; host check ban đầu
+dừng sau push thành công, đã sửa bằng read-only verification, không submit lại.
+Development + committed archive/expanded đạt:176worker/182source pins,
+mỗi layout8tools/21Dummy/10fresh controls/6retained. Final QA763focused +180integration,
+setup/Ruff/mypy467/knowledge/diff đạt. Không đổi frozen worker/grace2s/Test.
+Bước cụ thể: kiểm tra job hiện tại; khi terminal tải vào thư mục mới, xác thực
+version/source trước-sau download, chạy hai release audits và phân tích milestones.
+Chưa terminal/download/native cause/acceptance. Không submit trùng, không commit
+status: receipts/memory sau freeze đang local. Không thiếu credentials; chỉ cần
+network approval của sandbox khi monitor. Raw chưa có backup riêng ngoài máy.
 
 Các mốc trước (không thay trạng thái hiện hành ở trên):
 
@@ -126,16 +294,17 @@ guard 1.5B hoặc benchmark quality. CPU v1 thất bại vẫn lưu, không xóa
 
 ## Bước tiếp theo
 
-1. Không còn pending notebook; **không push/resubmit constrained GPU v1**.
+1. Không còn pending ExitPair GPU v1; **không resubmit ExitPair hoặc constrained v1**.
    Giữ raw `results/phase5_constrained_gpu_monitor02`, hai audits tại
    `results/phase5_constrained_gpu_audit01.json` và
    `results/phase5_constrained_gpu_report01/release_audit.json`.
-2. Exact notebook/package + release auditor mới đã có; development rehearsal
-   archive/expanded đạt. Chốt final QA, một source freeze và release rehearsal,
-   rồi xác thực nguồn/settings từ xa cho job ExitPair mới. Interpreter native
-   vẫn phải qua gate; không tăng grace2s hoặc resubmit old diagnostic.
-3. Giữ syntax success8/8 tách khỏi guard semantic quality/benign utility;
-   lập representative Dev follow-up rồi mapping20DoD trước formal freeze.
+2. Terminal outputs đã tải/kiểm toán; giữ raw/audits trong các thư mục mới nêu
+   ở đầu. Lỗi không tái hiện, không suy diễn instrumentation là fix.
+3. Clause/cumulative candidate v12 đã nối constrained ExitPair và audit CPU;
+   chuẩn bị32task runner/native release audit +exact package trước GPU.
+   Giữ syntax8/8 tách khỏi semantic quality, không resubmit4task probe cũ.
+   Lifecycle follow-up nếu cần phải khóa repeat/order budget riêng trước chạy;
+   hoàn tất mapping20DoD trước formal freeze.
 4. Giữ thay đổi local qua các lượt, không commit chỉ vì QA đạt. Commit khi owner
    yêu cầu hoặc cần source freeze thật; không status-only/amend nguồn thực nghiệm.
 

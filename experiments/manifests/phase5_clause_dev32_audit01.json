@@ -1,0 +1,32 @@
+{
+  "checked_at_utc": "2026-09-21T21:07:07.974987+00:00",
+  "checks_per_shard": 2,
+  "full_audit_path": "results/phase5_clause_dev32_audit01/full_audits.json",
+  "full_audit_sha256": "4cf60e941db04e419c2394ec0625095d81efb21412817141628e6873ae98e41e",
+  "git_base_commit": "6d039e255a0a0a91f6e514cfebe889c4b7ae8aed",
+  "gpu_runs": 0,
+  "model_inference_runs": 0,
+  "native_dispatch_allowed": false,
+  "phase5_accepted": false,
+  "private_ground_truth_parsed": false,
+  "protocol": "clause_dev32_independent_audit_v1",
+  "public_dev_rows": 16,
+  "quality_scored": false,
+  "raw_directory": "results/phase5_clause_dev32_cpu01",
+  "raw_pins_verified": 928,
+  "raw_unchanged": true,
+  "shards": 8,
+  "source_identity": "uncommitted working-tree pins",
+  "source_pins_verified": 188,
+  "summary_sha256": "f8d3a3ba6d1cb3adbf19d92471dad6f5ede9145d791382d3eba785e31c3b17e7",
+  "synthetic_recovered_tasks": 32,
+  "terminal_statuses": {
+    "completed": 32
+  },
+  "test_payload_parsed": false,
+  "unique_tasks": 32,
+  "valid": true,
+  "worker_lifecycle_methods": {
+    "GRACEFUL": 64
+  }
+}

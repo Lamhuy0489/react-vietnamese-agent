@@ -1,5 +1,32 @@
 # Ghi chú Kaggle Phase 1
 
+## Dev32 exact packaging — 2026-09-22
+
+- Static imports miss filenames explicitly hashed by old identity functions.
+  Union the identity source list into the dependency closure before archiving.
+- JSON canonical equality cannot compare Python sets; normalize field-name sets
+  to sorted lists. Audit CLI must create a fresh output parent after containment
+  checks. Both failures were caught offline; development01–03 remain preserved.
+- Execute the audit CLI in both mount rehearsals, not merely its `--help`.
+  Check launcher/builder manifest bytes agree. New package passed32Dev per layout.
+- The project venv has no Kaggle CLI; systempython3 has2.2.4. Use the known CLI
+  interpreter instead of adding unrelated dependencies. Never print credentials.
+  [Evidence](../docs/evaluation/phase5_clause_dev_package_v1_report.md).
+
+## Candidate host integration before GPU — 2026-09-22
+
+- A new runtime file does not upgrade the native runner. Bind candidate policy,
+  constrained classifier, scope and origin index into the actual pair path, and
+  require distinct runtime/checkpoint/audit identities. [CPU report](../docs/evaluation/phase5_clause_pair_v1_report.md).
+- Scopev5 needs host ResourceBindings/RowBindings in both outer pre-start admission
+  and inner runtime. The old one-argument outer constructor failed locally; catch
+  this with real spawned CPU controls before exact bundle/GPU submission.
+- Scripted two-read/send/final controls need four steps. Keep that explicit fixture
+  budget separate from frozen three-step diagnostic/native budgets; do not silently
+  increase a model run's deadline or retry semantic failures.
+- Keep the recorded interpreter in cross-host audits. Synthetic constraint receipts
+  test joining/plumbing only, never authenticate a pretrained model or GPU behavior.
+
 ## Guard tokenizer / logits CPU compatibility — 2026-09-16
 
 - [Native CPU report](../docs/evaluation/phase5_guard_language_native_v1_run.md):
@@ -305,6 +332,11 @@ Failed SaveKernel requests are not completed or failed inference attempts.
   unversioned pull succeeded and matched submitted v1 code. Keep submission
   version evidence separate from latest-session observations; do not label a
   latest-session read as independently version-authenticated.
+- The 2026-09-20 push API returned `ref=/code/owner/slug` while metadata used
+  `owner/slug`. Preserve the raw response before checking normalized identity.
+  If a host assertion fails after version/id are returned, verify the accepted
+  job read-only; never rerun push. ExitPair v1 was submitted once and authenticated
+  afterward; see [report](../docs/evaluation/phase5_exit_pair_package_v1_report.md).
 - Installed Dataset metadata CLI writes a response envelope: private visibility
   is `info.isPrivate`, not a root field. Preparation01 for constrained GPU stopped
   before push on that shape; preserve its logs and check the actual saved metadata

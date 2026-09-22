@@ -1,12 +1,76 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — Dev32 exact package development, 2026-09-22
+
+[Report](../docs/evaluation/phase5_clause_dev_package_v1_report.md):211worker/
+218source pins;hai layouts mỗi layout8tools/21Dummy/32Dev+audit/resume đạt.
+976focused+395integration,setup/Ruff/mypy495/knowledge/diff đạt;182native/169data
+pins không đổi. Chưa source-freeze/committed package hoặc native inference mới.
+Live Kaggle quota29,75h và privateDatasetv1ready;tiếp theo release+submit một lần.
+Formal4/7≈57% giữ nguyên,không dùng packaging làm model quality proof.
+
+## Hiện hành — Dev32 runner/checkpoint CPU, 2026-09-22
+
+[Report](../docs/evaluation/phase5_clause_dev32_v1_report.md):32/32synthetic tasks,
+8shards/16Dev fixtures A2/A6;64GRACEFUL workers, complete-resume và hai audits/shard
+không đổi raw.188source/928raw pins khớp;23tests mới. [QA02](../experiments/manifests/phase5_clause_dev32_qa02.json):
+888focused+395integration,setup/Ruff/mypy488/knowledge/diff đạt;182native/169data pins nguyên.
+Native artifact adapter có kiểm token/count nhưng chưa source/release admission;
+HF vẫn khóa. Tiếp theo native launcher/release gate +exact package, không thêm
+4task diagnostic. Chưa model quality/GPU/commit/push;formal4/7≈57% giữ nguyên.
+
+## Mốc trước — V12/constrained ExitPair CPU, 2026-09-22
+
+[Report](../docs/evaluation/phase5_clause_pair_v1_report.md): đã nối v12/scopev5/
+originv3 vào paired constrained host, giữ frozen workers.12tasks/24workers reaped,
+4deliberate model_error giữ nguyên,4egress controls đạt;20GRACEFUL/4TERMINATE chỉ
+ở failure controls.184source/348raw pins khớp,scan349files/0credentials.
+36newtests đạt; [final QA](../experiments/manifests/phase5_clause_pair_qa01.json):
+879focused+381integration đạt; setup/Ruff/mypy483/knowledge/diff đạt;
+182native/169data pins nguyên. Chưa32Dev native runner/package hoặc GPU;
+không commit/push mới, formal4/7≈57% giữ nguyên.
+
+## Mốc trước — Clause/cumulative candidate CPU, 2026-09-21
+
+[Report](../docs/evaluation/phase5_clause_candidate_v1_report.md):78/78 synthetic
+controls đạt, gồm26compound permission/prohibition;6Dev destination gaps đóng
+ở parser, chưa payload/utility proof. CumulativeA1–A6, A0 raw parity và host-only
+destination provenance có tests. 67new unit+65new integration đạt;157source/
+1.400raw hashes kiểm riêng;scan1.401files/0credentials.
+[Final QA](../experiments/manifests/phase5_clause_qa01.json):873focused+
+351integration đạt; setup/Ruff/mypy478/knowledge/diff đạt;182native/169data pins nguyên.
+Chưa constrained/native integration, package, model/GPU/commit/push mới;
+formal4/7≈57% không đổi. Bước tiếp theo rõ trong [handoff](handoff.md).
+
+## Mốc trước — Coverage và benign authorization CPU, 2026-09-21
+
+[Report](../docs/evaluation/phase5_acceptance_controls_v1_report.md):16public Dev
+fixtures/8cặp giữ seed, không chọn theo model output. Đã tái hiện9/26false-denials
+dạng dấu chấm ở v10;ứng viên A6v11 đạt52/52controls nhưng chưa compound/cumulative/
+native rollout.6Dev anchor gaps chưa đóng. Không GPU/commit mới;4/7≈57% giữ nguyên.
+Final QA806focused+286integration, setup/Ruff/mypy474/knowledge/diff đạt;
+182nativepins không đổi. Không dùng số tests làm tỷ lệ nghiệm thu.
+
+## Hiện hành — ExitPair GPU terminal audit, 2026-09-21
+
+[Report](../docs/evaluation/phase5_exit_gpu_v1_report.md):4completed/8validguard,
+8GRACEFUL/0forced,4VRAM recoveries; tất cả exit stages return. Hai audits khớp,
+182source/242raw/2remote;scan253files/0credentials. Source `6d039e2` không đổi,
+final QA773focused +180integration, setup/Ruff/mypy468/knowledge/diff đạt;
+actual notebookv1/ID135130970 COMPLETE sau download07:28:29UTC.
+Không pending/resubmit; chưa root cause/fix vì lỗi không tái hiện. Còn coverage
+matrix/representative quality/utility, lifecycle reliability và20DoD freeze.
+Phase5 vẫn4/7≈57%; không nâng acceptance từ một diagnostic thành công.
+
 ## Hiện hành — ExitPair exact package, 2026-09-20
 
 [Report](../docs/evaluation/phase5_exit_pair_package_v1_report.md): hai isolated
 offline layouts đạt, 176 worker files/182 source pins, 74 package/release tests.
 Final QA 763 focused + 180 integration, setup/Ruff/mypy467/knowledge đạt.
-Remote owner/quota/private Dataset admission đã đọc trực tiếp. Còn source freeze/
-release preflight và actual submission; chưa GPU result mới.
+Source `6d039e2` đã push main; committed release hai layouts cũng đạt.
+Actual `huylmhuhu/react-vn-exit-milestones-v1` v1/ID135130970 RUNNING lúc
+2026-09-20 16:57:50 UTC, code/settings/version đã xác thực. Một submit;
+còn terminal download/audit, chưa GPU result mới.
 Phase5 vẫn4/7≈57%; không đồng nhất số tests hoặc việc đóng gói với acceptance.
 
 ## Hiện hành — ExitPair/runner và native audit wiring local, 2026-09-20

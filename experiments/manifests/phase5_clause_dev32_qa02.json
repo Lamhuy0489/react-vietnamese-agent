@@ -1,0 +1,147 @@
+{
+  "checked_at_utc": "2026-09-21T21:06:54.981420+00:00",
+  "checks": {
+    "diff": {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "seconds": 0.03394862200366333
+    },
+    "integration": {
+      "command": [
+        ".venv/bin/pytest",
+        "-q",
+        "tests/integration/test_teardown_probe_v1.py",
+        "tests/integration/test_phase5_worker_shutdown_v2.py",
+        "tests/integration/test_constrained_probe_v1.py",
+        "tests/integration/test_guard_bare_json_probe_v1.py",
+        "tests/integration/test_phase5_pair_runtime_v3.py",
+        "tests/integration/test_exit_milestones_v1.py",
+        "tests/integration/test_exit_pair_probe_v1.py",
+        "tests/integration/test_acceptance_controls_v1.py",
+        "tests/integration/test_sentence_runtime_v11.py",
+        "tests/integration/test_clause_runtime_v12.py",
+        "tests/integration/test_clause_pair_probe_v1.py",
+        "tests/integration/test_clause_pair_egress_v1.py",
+        "tests/integration/test_clause_dev_runner_v1.py"
+      ],
+      "returncode": 0,
+      "seconds": 351.84893021600146
+    },
+    "knowledge": {
+      "command": [
+        "make",
+        "knowledge-check"
+      ],
+      "returncode": 0,
+      "seconds": 0.18911374600429554
+    },
+    "mypy": {
+      "command": [
+        ".venv/bin/mypy",
+        "src",
+        "scripts"
+      ],
+      "returncode": 0,
+      "seconds": 0.5722775110043585
+    },
+    "pytest": {
+      "command": [
+        ".venv/bin/pytest",
+        "-q",
+        "tests/unit/test_teardown_probe_audit_v1.py",
+        "tests/unit/test_worker_shutdown_audit_v2.py",
+        "tests/unit/test_constrained_gpu_report_v1.py",
+        "tests/unit/test_observer_native_report_v2.py",
+        "tests/unit/test_constrained_gpu_release_v1.py",
+        "tests/unit/test_observer_gpu_release_v2.py",
+        "tests/unit/test_constrained_probe_package_v1.py",
+        "tests/unit/test_constrained_native_audit_v1.py",
+        "tests/unit/test_observer_native_audit_v2.py",
+        "tests/unit/test_guard_bare_json_native_audit_v1.py",
+        "tests/unit/test_constrained_host_v1.py",
+        "tests/unit/test_constrained_generate_audit_v1.py",
+        "tests/unit/test_constrained_policy_v1.py",
+        "tests/unit/test_native_guard_diagnostics_v2.py",
+        "tests/unit/test_constrained_guard_v1.py",
+        "tests/unit/test_guard_token_language_v1.py",
+        "tests/unit/test_guard_language_native_v1.py",
+        "tests/unit/test_guard_language_release_v1.py",
+        "tests/unit/test_guard_bare_json_v1.py",
+        "tests/unit/test_guard_hf_v1.py",
+        "tests/unit/test_generation_policy_v1.py",
+        "tests/unit/test_request_policy_v1.py",
+        "tests/unit/test_efficient_requests_v1.py",
+        "tests/unit/test_request_policy_pair_v1.py",
+        "tests/unit/test_exit_milestones_audit_v1.py",
+        "tests/unit/test_knowledge.py",
+        "tests/unit/test_exit_pair_bindings_v1.py",
+        "tests/unit/test_exit_native_audit_v1.py",
+        "tests/unit/test_exit_pair_package_v1.py",
+        "tests/unit/test_exit_gpu_release_v1.py",
+        "tests/unit/test_exit_gpu_report_v1.py",
+        "tests/unit/test_acceptance_coverage_v1.py",
+        "tests/unit/test_authorization_anchors_v2.py",
+        "tests/unit/test_authorization_anchors_v3.py",
+        "tests/unit/test_value_origin_v3.py",
+        "tests/unit/test_clause_pair_bindings_v1.py",
+        "tests/unit/test_clause_dev_native_audit_v1.py"
+      ],
+      "returncode": 0,
+      "seconds": 47.90686210599961
+    },
+    "ruff": {
+      "command": [
+        ".venv/bin/ruff",
+        "check",
+        "."
+      ],
+      "returncode": 0,
+      "seconds": 0.0719140779983718
+    },
+    "setup": {
+      "command": [
+        ".venv/bin/python",
+        "scripts/verify_setup.py"
+      ],
+      "returncode": 0,
+      "seconds": 0.15098868998757098
+    }
+  },
+  "exclusion": "Sealed Test-authoring fixtures excluded",
+  "exit_package_source_pins_unchanged": 182,
+  "full_repository_pytest_run": false,
+  "git_base_commit": "6d039e255a0a0a91f6e514cfebe889c4b7ae8aed",
+  "git_commit_created": false,
+  "log_sha256": {
+    "results/phase5_clause_dev32_qa02/diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "results/phase5_clause_dev32_qa02/integration.log": "b71b2c80b32d7a3ee6abef464f0a87e34bbeb7c7cf3f50a78898a820550a256a",
+    "results/phase5_clause_dev32_qa02/knowledge.log": "78c84ad170022bf4bd205a0a9abf804350ca190e83a245d9c2ae59b534b958c4",
+    "results/phase5_clause_dev32_qa02/mypy.log": "6d9921aa4da74366fdf5f19e36b5318921364ff696e50698166a54deca471280",
+    "results/phase5_clause_dev32_qa02/pytest.log": "00869eba58b4b1c06780eaa38f7f1d19a61875075e0a2b7561f2abe09a27853f",
+    "results/phase5_clause_dev32_qa02/ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "results/phase5_clause_dev32_qa02/setup.log": "31e836b9c814fcf7126ef63fd608df0cbce6fc9b307ebc95c71ffe9d66d52280"
+  },
+  "model_inference_runs": 0,
+  "native_dispatch_allowed": false,
+  "phase5_accepted": false,
+  "prior_qa_source_pins_unchanged": 8,
+  "private_ground_truth_parsed": false,
+  "protocol": "phase5_clause_dev32_qa_v1",
+  "source_identity": "uncommitted working-tree hashes",
+  "source_sha256": {
+    "scripts/run_phase5_clause_dev32_cpu_v1.py": "1767d56fb06d20d7cf35fe3261659d9e1f37df03332d66c1b5ab7d9ef5a33d7a",
+    "src/react_agent/llm/clause_dev_identity_v1.py": "efea90fef951142479aa6937a33d952fc693aed241b3758ad48c818859f594e7",
+    "src/react_agent/llm/clause_dev_runner_v1.py": "dbe052dcd75828a365e1a71eea094b388a1acd17068debf44ec4e7aea8eeb4d1",
+    "src/react_agent/validation/clause_dev_checkpoint_v1.py": "1f2107331e1e975e29c9b2267f5eabef37888f53a1f243eea1bca19684c0cec1",
+    "src/react_agent/validation/clause_dev_native_audit_v1.py": "97a236efa8ad285d17cac71b34ff029350c09021230c0f734e4a8b7a65363207",
+    "tests/integration/test_clause_dev_runner_v1.py": "bbd09bc0acc6370aa78790dfd56df74ee2010cbda7655b42ce0fb6adb324fca9",
+    "tests/unit/test_clause_dev_native_audit_v1.py": "e0f21058a5d385236398b7354458457402bd2a49bdbda38222c10f79dca0d4f1"
+  },
+  "test_payload_parsed": false,
+  "tracked_data_hashes_unchanged": 169,
+  "valid": true
+}
