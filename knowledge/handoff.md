@@ -7,7 +7,7 @@ Cập nhật: 2026-09-23. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptan
 **Dev32 v1 terminal ERROR; v2 đã qua development package và QA, chưa submit.**
 [Failure report](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md),
 [v2 report](../docs/evaluation/phase5_clause_dev_package_v2_report.md),
-[QA02](../experiments/manifests/phase5_clause_dev_package_v2_qa02.json),
+[QA03](../experiments/manifests/phase5_clause_dev_package_v2_qa03.json),
 raw `results/phase5_clause_dev_gpu_monitor01`, audit
 `results/phase5_clause_dev_failure_audit01` và `audit02`.
 Actual [v1](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v1)
@@ -22,10 +22,14 @@ QA02: 980 focused + 395 integration, setup/Ruff/mypy501/knowledge/diff đạt;
 182 native source và 169 tracked data pins giữ nguyên. Read-only Kaggle preflight
 ngày 2026-09-23: GPU còn 29,73h, Dataset guard15 private/ready/v1, v1 ERROR.
 
-Bước cụ thể: chốt một commit nguồn mới sau khi kiểm tra pins, dựng committed
-package hai layouts và xác thực release; kiểm tra v2 notebook chưa tồn tại rồi
-submit một lần v2 private/offline/T4 cho đúng 32 ca cố định. Không resume v1,
-không semantic retry.
+Source freeze `24164d8` đã push main. Rehearsal committed
+`build/kaggle/phase5_clause_dev_package_v2_release01` qua hai layouts nhưng
+host validator có allowlist cache v1 thay vì v2; release01 bị từ chối trước
+Kaggle. Sửa riêng auditor và regression test đã qua QA03: 981 focused,
+395 integration, Ruff/mypy501/setup/knowledge. Bước cụ thể: chốt commit sửa
+lỗi, dựng release02 từ commit đó, xác thực release,
+kiểm tra v2 notebook chưa tồn tại rồi submit một lần v2 private/offline/T4
+cho đúng 32 ca cố định. Không dùng release01; không resume v1 hay semantic retry.
 Sau v2 terminal mới download/source audit/quality analysis. Hiện không Kaggle
 job pending của v1; v2 chưa submit. Không Test/privateGT; formal4/7≈57% chưa đổi.
 

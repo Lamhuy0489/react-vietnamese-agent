@@ -2,11 +2,13 @@
 
 Dev32 v1 đã terminal ERROR trước worker start:
 [failure report](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md).
-V2 correction/package/QA đang làm; cần committed release và một run mới cho
+V2 correction/package/QA03 đã đạt; committed release01 bị từ chối do host
+auditor cache allowlist sai, chưa gửi notebook v2. Cần commit sửa lỗi, một
+committed release02 được xác thực và một run mới cho
 32ca chưa thực thi, rồi quality/utility và lifecycle analysis. Không dùng v1
 CPU pass hay v1 ERROR làm model quality proof.
 
-Cập nhật2026-09-22, đối chiếu `plan/phase5.md` mụcCXXVI(20DoD) và
+Cập nhật 2026-09-23, đối chiếu `plan/phase5.md` mục CXXVI (20DoD) và
 [trạng thái chính thức](../docs/project/phase_status.md).
 Đây là hàng đợi phần còn mở, không phải tuyên bố mọi DoD khác đã được nghiệm thu.
 Chỉ số4/7≈57% là nhóm acceptance trong [progress](phase5_progress.md).
@@ -21,9 +23,10 @@ Runner32Dev/checkpoint đã qua32CPUtasks, native artifact adapter đã có:
 [Dev32 report](../docs/evaluation/phase5_clause_dev32_v1_report.md).
 Source admission/launcher và exact development package đã đạt:
 [package report](../docs/evaluation/phase5_clause_dev_package_v1_report.md).
-Sourcefreeze`5a23528`và committedrehearsal/release audit đã đạt;native32Dev đã
-submit một lần,v1RUNNING07:10:42UTC2026-09-22. Còn terminaldownload/authentication,
-quality/utility và lifecycle analysis. DevelopmentHF vẫn khóa,không resubmitjob.
+Source freeze `5a23528` và v1 committed release audit đã đạt; native32Dev v1
+đã submit một lần nhưng terminal ERROR trước worker start. [V1 failure](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md)
+đã audit; không resubmit v1. V2 [package report](../docs/evaluation/phase5_clause_dev_package_v2_report.md)
+và QA03 có; còn release02, native run, quality/utility và lifecycle analysis.
 
 ExitPair GPU v1 COMPLETE/audit (2026-09-21 07:28:29 UTC), actual
 `huylmhuhu/react-vn-exit-milestones-v1`, source `6d039e2`:4completed/8validguard,

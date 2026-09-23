@@ -1,0 +1,13 @@
+{
+  "protocol": "clause_dev32_release_rejection_v1",
+  "source_commit": "24164d8add9a34a472e6fe96205b590f3b841ee7",
+  "package_path": "build/kaggle/phase5_clause_dev_package_v2_release01",
+  "preflight_receipt_sha256": "94da692597375d62d11448203dd6d11c64a572aff5dde4d79ff8f95e753f927a",
+  "rehearsal_layouts_passed": ["archive", "expanded"],
+  "runtime_tasks_per_layout": 32,
+  "host_release_audit_valid": false,
+  "reason": "Auditor allowed the v1 launcher bytecode cache name; the v2 rehearsal generated clause_dev32_kernel_v2.cpython-311.pyc.",
+  "native_submission_performed": false,
+  "gpu_runs": 0,
+  "phase5_accepted": false
+}

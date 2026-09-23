@@ -5,8 +5,13 @@
 [Failure report](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md):
 v1remote/source/version khớp,nhưng dừng trước worker do duplicate`constrained`.
 0/32tasks có result,12rawfiles đã giữ vàhai audits khớp;không quality proof.
-V2 sửa ở đường native riêng,đang package/QA. Chỉ gửi new identity sau gates;
-formal4/7≈57% không đổi.
+V2 sửa ở đường native riêng. Development package qua hai layouts; QA03 sau
+regression cache đạt 981 focused + 395 integration, Ruff/mypy501/setup.
+Source freeze đầu `24164d8` đã push main; committed release01 qua rehearsal
+nhưng [bị từ chối](../experiments/manifests/phase5_clause_dev_package_v2_release01_rejected.json)
+do host auditor còn cache allowlist v1. Chưa gửi notebook v2. Tiếp theo chốt
+commit sửa auditor, dựng release02, chạy release audit rồi mới submit một lần.
+Formal 4/7≈57% không đổi; packaging không phải quality proof.
 
 ## Hiện hành — Dev32 native submitted, 2026-09-22
 

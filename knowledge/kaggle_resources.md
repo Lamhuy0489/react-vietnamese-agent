@@ -27,10 +27,12 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 version1/ID135340687,source`5a23528`xác thực,Dataset guard15v1/private.
 [Failure report](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md).
 Raw12files `results/phase5_clause_dev_gpu_monitor01`,hai failure audits;
-0/32ca có result,không model-generation receipt. [V2 QA](../experiments/manifests/phase5_clause_dev_package_v2_qa02.json)
+0/32ca có result,không model-generation receipt. [V2 QA03](../experiments/manifests/phase5_clause_dev_package_v2_qa03.json)
 đạt; requested alias `huylmhuhu/react-vn-clause-dev32-v2` **chưa phải actual
 remote notebook**. Read-only preflight `results/phase5_clause_dev_v2_kaggle_preflight01`
 ngày 2026-09-23: GPU còn 29,73h, Dataset guard15 private/ready/v1.
+Committed release01 qua hai CPU layouts nhưng [bị từ chối](../experiments/manifests/phase5_clause_dev_package_v2_release01_rejected.json)
+vì host validator nhận nhầm cache launcher v1; chưa có GPU/submission v2.
 V1 link giữ làm lịch sử;không submit lại v1 hoặc biến
 notebook private thành public. Link private cần quyền Kaggle riêng.
 

@@ -27,6 +27,16 @@ def test_v2_builder_has_new_identity_and_both_routes(monkeypatch):
     assert builder.BUNDLE_SHA == "b14976413b72898b6c0c1b8c46c1ebb0f62f63633f647ab2064fbc048262240f"
 
 
+def test_v2_package_auditor_allows_only_its_own_cache():
+    auditor = load("scripts/audit_phase5_clause_dev_gpu_v2.py")
+    files = auditor.permitted_kernel_files(Path("package/kernel"))
+    assert "clause_dev32_kernel_v2.py" in files
+    assert "kernel-metadata.json" in files
+    assert len(files) == 3
+    assert all("clause_dev32_kernel_v1" not in name for name in files)
+    assert any(name.startswith("__pycache__/clause_dev32_kernel_v2.") for name in files)
+
+
 def test_v2_launcher_rejects_development_and_routes_native(tmp_path):
     worker = load("notebooks/kaggle/clause_dev32_kernel_v2.py")
     worker.SOURCE_MODE = "working_tree"

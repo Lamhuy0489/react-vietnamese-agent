@@ -16,8 +16,12 @@ Raw, log và 12 files đã tải/lưu; hai failure audits khớp. Đã sửa ri�
 test tái hiện lỗi v1 và xác nhận v2 dùng constraint root của guard factory.
 Development package hai layouts qua đủ 32 Dev và 21 Dummy; QA02 qua 980 focused,
 395 integration, Ruff/mypy501/setup/knowledge. Kaggle read-only: GPU còn 29,73h,
-Dataset guard15 private/ready/v1. Tiếp theo một source-freeze commit, committed
-package/release audit rồi mới submit notebook v2 private/offline/T4 một lần.
+Dataset guard15 private/ready/v1. Source freeze `24164d8` đã push main;
+committed rehearsal release01 qua cả hai layouts nhưng host validator còn
+allowlist cache v1, nên release01 bị từ chối, chưa submit. Sửa validator và
+regression test đã qua QA03 (981 focused/395 integration/Ruff/mypy501/setup);
+cần chốt commit sửa lỗi, dựng release02 và
+validate release trước notebook v2 private/offline/T4 một lần.
 Không resume v1 hay gửi lại cùng phiên bản. Phase5 vẫn 4/7≈57%, Test khóa.
 
 Mốc trước — submission status lịch sử:

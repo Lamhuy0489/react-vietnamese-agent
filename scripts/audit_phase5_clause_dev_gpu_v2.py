@@ -6,6 +6,7 @@ import argparse
 import ast
 import base64
 import hashlib
+import importlib.util
 import re
 import subprocess
 import tarfile
@@ -23,6 +24,12 @@ from react_agent.validation.guard_probe_audit_v2 import require
 ROOT = Path(__file__).resolve().parents[1]
 BUNDLE = ROOT / "build/kaggle/phase5_guard_probe_v1_bundle03/dataset/guard_bundle.json"
 CODE = "clause_dev32_kernel_v2.py"
+
+
+def permitted_kernel_files(kernel: Path) -> set[str]:
+    """Allow only the launcher, metadata and its local rehearsal bytecode cache."""
+    cached = Path(importlib.util.cache_from_source(str(kernel / CODE)))
+    return {CODE, "kernel-metadata.json", cached.relative_to(kernel).as_posix()}
 
 
 def digest(path: Path) -> str:
@@ -132,7 +139,7 @@ def validate_package(preflight_path: Path) -> dict[str, Any]:
     # Frozen rehearsal imported the launcher once, retaining this local-only cache.
     # Hash it without executing it; Kaggle source pull must still contain exactly two files.
     required = {CODE, "kernel-metadata.json"}
-    permitted = required | {"__pycache__/clause_dev32_kernel_v1.cpython-311.pyc"}
+    permitted = permitted_kernel_files(package / "kernel")
     require(required <= set(full["kernel_sha256"]) <= permitted, "kernel files")
     metadata = read_record(package / "kernel/kernel-metadata.json")
     for key, value in {
