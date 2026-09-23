@@ -3,6 +3,23 @@
 2026-09-22. Development package passes both isolated offline mount layouts.
 No native result or Phase5 acceptance is claimed by this CPU milestone.
 
+Update07:10:42UTC: source `5a2352834a791b11824a7c0c69e82f2390a03ca0`
+was frozen/pushed once. Committed rehearsal and218-source release authentication
+passed. [Release receipt](../../experiments/manifests/phase5_clause_dev_package_release01.json).
+Actual [Dev32 notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v1)
+v1/ID135340687 is **RUNNING** at this observation, private/offline/T4/14400s.
+[Submission](../../experiments/manifests/phase5_clause_dev_gpu_submission01.json)
+authenticates remote executable/settings/version and private guard Datasetv1.
+One push; no model result yet. Next: monitor this version, retain terminal output,
+authenticate source/version before and after download, then independent native
+and quality audits. Do not resubmit while pending. Post-freeze receipts/memory
+stay local until meaningful closeout, not another status-only commit.
+
+Terminal update: v1 ended `ERROR` before its first worker started. The
+[failure report](phase5_clause_dev_gpu_v1_failure_report.md) contains the
+authenticated traceback and correction scope. The earlier RUNNING status is
+historical; this notebook must not be resubmitted or treated as quality evidence.
+
 [Contract](../architecture/phase5_clause_dev_package_v1_contract.md),
 [development package](../../experiments/manifests/phase5_clause_dev_package_dev01.json),
 [QA](../../experiments/manifests/phase5_clause_dev_package_qa02.json),
@@ -54,7 +71,7 @@ owner `huylmhuhu`, GPU29.75h remaining, private guard Dataset ready/version1 and
 old ExitPair notebook COMPLETE. CLI runs with system `python3` (2.2.4), not the
 project venv; first checks retained module-missing/DNS failures, no submissions.
 
-Next: one necessary source-freeze commit/push, committed-source package rehearsal
+Historical pre-submit next step (now completed above): one necessary source-freeze commit/push, committed-source package rehearsal
 and independent release validation, then one private/offline T4 submission.
 Requested handle `huylmhuhu/react-vn-clause-dev32-v1` is not yet an actual notebook
 or a verified URL. Terminal download must pin actual version/source before and

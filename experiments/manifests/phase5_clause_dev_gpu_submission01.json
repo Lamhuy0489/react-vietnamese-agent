@@ -1,0 +1,26 @@
+{
+  "actual_kernel": "huylmhuhu/react-vn-clause-dev32-v1",
+  "dataset": "huylmhuhu/react-vn-guard15-probe-data-v1",
+  "dataset_version": 1,
+  "gpu_requested": true,
+  "internet": false,
+  "kernel_id": 135340687,
+  "kernel_version": 1,
+  "notebook_url": "https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v1",
+  "observed_at_utc": "2026-09-22T07:10:42.243120+00:00",
+  "phase5_accepted": false,
+  "preflight_path": "experiments/manifests/phase5_clause_dev_package_release01.json",
+  "preflight_sha256": "6aca1692807de6d98a9be619f2c079eda6bcadf2fc47c00fa99a8a75736eec8d",
+  "private": true,
+  "protocol": "clause_dev32_gpu_submission_v1",
+  "push_response_sha256": "9816b1d1537960fd79f927e4069ce251db5eaf875b594ec019afc2362581280f",
+  "qa_sha256": "30f93eeb371b1c298e22c130d685e6fb70730a0284b5472e0b01e7285d48c5f8",
+  "remote_source_sha256": "5c41134a2c46c11531bcb8d218de5e6db104dd393fb129a07164591d244ba29b",
+  "session_status": {
+    "failureMessage": "",
+    "status": "RUNNING"
+  },
+  "source_commit": "5a2352834a791b11824a7c0c69e82f2390a03ca0",
+  "submission_confirmed": true,
+  "timeout_seconds": 14400
+}

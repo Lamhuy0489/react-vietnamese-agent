@@ -1,10 +1,38 @@
 # Trạng thái hiện tại
 
-Cập nhật 2026-09-22. **Phase 5 đang làm: 4/7 ≈ 57% nhóm nghiệm thu**,
+Cập nhật 2026-09-23. **Phase 5 đang làm: 4/7 ≈ 57% nhóm nghiệm thu**,
 không phải phần trăm công sức hoặc số dòng mã. Phase 1–4 đã accepted theo
 [trạng thái chính thức](../docs/project/phase_status.md); Test vẫn khóa.
 
 ## Kết quả mới nhất
+
+**Kaggle Dev32 v1 kết thúc ERROR trước worker đầu tiên; gói v2 qua QA, chưa submit.**
+[Failure report](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md),
+[v2 report](../docs/evaluation/phase5_clause_dev_package_v2_report.md),
+[QA02](../experiments/manifests/phase5_clause_dev_package_v2_qa02.json).
+V1/version1/ID135340687 source`5a23528` đã xác thực;0/32tasks hoàn tất,
+0model-generation evidence. Lỗi `constrained` được truyền hai lần ở native path.
+Raw, log và 12 files đã tải/lưu; hai failure audits khớp. Đã sửa riêng dispatch v2;
+test tái hiện lỗi v1 và xác nhận v2 dùng constraint root của guard factory.
+Development package hai layouts qua đủ 32 Dev và 21 Dummy; QA02 qua 980 focused,
+395 integration, Ruff/mypy501/setup/knowledge. Kaggle read-only: GPU còn 29,73h,
+Dataset guard15 private/ready/v1. Tiếp theo một source-freeze commit, committed
+package/release audit rồi mới submit notebook v2 private/offline/T4 một lần.
+Không resume v1 hay gửi lại cùng phiên bản. Phase5 vẫn 4/7≈57%, Test khóa.
+
+Mốc trước — submission status lịch sử:
+
+**Đã submit32Dev lên Kaggle một lần; RUNNING lúc07:10:42UTC ngày2026-09-22.**
+[Notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v1),
+v1/ID135340687,source`5a23528` đã pushmain;private/offline/T4/session14400s.
+[Submission](../experiments/manifests/phase5_clause_dev_gpu_submission01.json),
+[report](../docs/evaluation/phase5_clause_dev_package_v1_report.md).
+Committed package hai layouts đạt,218source pins xác thực;remote code/settings/version khớp.
+Đang chờ native kết quả32ca,không submit trùng. Tiếp theo terminal download và
+source/version audit trước chấm chất lượng. Một commit source-freeze cần thiết;
+không commit status tiếp. Formal4/7≈57% vẫn giữ,Test khóa.
+
+Mốc trước — chuẩn bị release:
 
 **Dev32 đã có exact package +source admission/launcher; development preflight đạt.**
 [Report](../docs/evaluation/phase5_clause_dev_package_v1_report.md).

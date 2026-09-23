@@ -1,5 +1,21 @@
 # Phase 5 — tiến độ và các gate còn lại
 
+## Hiện hành — Dev32 v1 terminal ERROR, 2026-09-23
+
+[Failure report](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md):
+v1remote/source/version khớp,nhưng dừng trước worker do duplicate`constrained`.
+0/32tasks có result,12rawfiles đã giữ vàhai audits khớp;không quality proof.
+V2 sửa ở đường native riêng,đang package/QA. Chỉ gửi new identity sau gates;
+formal4/7≈57% không đổi.
+
+## Hiện hành — Dev32 native submitted, 2026-09-22
+
+[Report](../docs/evaluation/phase5_clause_dev_package_v1_report.md):source`5a23528`
+commit/pushmain một lần;committedpackage hai layouts đạt,218source pins xác thực.
+Actual`huylmhuhu/react-vn-clause-dev32-v1`v1/ID135340687,RUNNING07:10:42UTC;
+private/offline/T4/14400s,32Dev. Remote source/settings/version khớp. Chờ terminal
+download/audit,không gửi lại. Phase5formal4/7≈57%không đổi từ submission.
+
 ## Hiện hành — Dev32 exact package development, 2026-09-22
 
 [Report](../docs/evaluation/phase5_clause_dev_package_v1_report.md):211worker/

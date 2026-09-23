@@ -1,5 +1,17 @@
 # Decision Log
 
+## 2026-09-23 — Dev32 v1 infrastructure failure and bounded v2 correction
+
+- Authenticate v1 terminal ERROR and preserve its12raw files. No task checkpoint,
+  worker start or generation receipt exists. The native caller supplied the
+  constraint root already derived by the admitted guard factory, causing a
+  duplicate keyword error. This is not a semantic model failure.
+- Create versioned v2 dispatch/package/launcher; keep v1 source and output
+  immutable. Limit any follow-up to the original32unexecuted Dev tasks under
+  a new committed source identity after exact package and QA.
+- Keep Test/private GT sealed and the formal4/7 acceptance unchanged.
+  [Failure report](../evaluation/phase5_clause_dev_gpu_v1_failure_report.md).
+
 ## 2026-09-22 — Dev32 exact package and necessary experiment source freeze
 
 - Keep measured CPU/native sources unchanged. Add separate source-admitted

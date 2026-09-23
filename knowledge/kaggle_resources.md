@@ -1,6 +1,6 @@
 # Sổ tra cứu Kaggle của đồ án
 
-Cập nhật 2026-09-21 từ receipts/report và live checks; biên bản sau source
+Cập nhật 2026-09-23 từ receipts/report và live checks; biên bản sau source
 freeze được gộp với host release audit/report trong một commit hoàn chỉnh.
 Đây là **memory phát
 triển cho nhóm**, không đưa vào prompt benchmark. Trạng thái dưới đây là mốc
@@ -21,6 +21,37 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
    không chuyển public chỉ để mở được link. 403/404 có thể là thiếu quyền.
 
 ## Mốc hiện hành — đọc mục này trước
+
+**Dev32 v1 ERROR trước worker start**,terminal thấy08:39:20UTC2026-09-22.
+[Notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v1)
+version1/ID135340687,source`5a23528`xác thực,Dataset guard15v1/private.
+[Failure report](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md).
+Raw12files `results/phase5_clause_dev_gpu_monitor01`,hai failure audits;
+0/32ca có result,không model-generation receipt. [V2 QA](../experiments/manifests/phase5_clause_dev_package_v2_qa02.json)
+đạt; requested alias `huylmhuhu/react-vn-clause-dev32-v2` **chưa phải actual
+remote notebook**. Read-only preflight `results/phase5_clause_dev_v2_kaggle_preflight01`
+ngày 2026-09-23: GPU còn 29,73h, Dataset guard15 private/ready/v1.
+V1 link giữ làm lịch sử;không submit lại v1 hoặc biến
+notebook private thành public. Link private cần quyền Kaggle riêng.
+
+Mốc trước — v1 RUNNING chỉ là quan sát lúc submit:
+
+**Dev32 clause candidate v1 RUNNING**,live2026-09-22 07:10:42UTC,submit một lần.
+Actual=requested [huylmhuhu/react-vn-clause-dev32-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v1),
+version1/ID135340687;source`5a2352834a791b11824a7c0c69e82f2390a03ca0`đãpushmain.
+[Guard Dataset](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+v1,private/ready verified;notebookprivate/offline/T4/timeout14400s,modelQwen7Bv1.
+32DevA2/A6,8shards tuần tự,không Test. Remote source/settings/version khớp.
+[Report](../docs/evaluation/phase5_clause_dev_package_v1_report.md),
+[package](../experiments/manifests/phase5_clause_dev_package_release01.json),
+[submission](../experiments/manifests/phase5_clause_dev_gpu_submission01.json),
+[QA](../experiments/manifests/phase5_clause_dev_package_qa02.json).
+Raw`results/phase5_clause_dev_gpu_submission01`;read-onlyadmission
+`results/phase5_clause_dev_kaggle_preflight03`. Chưa terminal download/nativequality.
+Không resubmit;privateaccess vẫn cần quyềnKaggle riêng,khôngpublic. Nextmonitorv1,
+authenticate trước-sau download rồi độc lập audit,không commit status lẻ.
+
+Mốc trước (không phải job pending hiện tại):
 
 **ExitPair GPU v1 COMPLETE/audit**, post-download2026-09-21 07:28:29UTC.
 Actual=requested

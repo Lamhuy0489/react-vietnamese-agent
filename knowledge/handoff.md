@@ -1,8 +1,59 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-09-22. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptance.
+Cập nhật: 2026-09-23. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptance.
 
 ## Đang làm
+
+**Dev32 v1 terminal ERROR; v2 đã qua development package và QA, chưa submit.**
+[Failure report](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md),
+[v2 report](../docs/evaluation/phase5_clause_dev_package_v2_report.md),
+[QA02](../experiments/manifests/phase5_clause_dev_package_v2_qa02.json),
+raw `results/phase5_clause_dev_gpu_monitor01`, audit
+`results/phase5_clause_dev_failure_audit01` và `audit02`.
+Actual [v1](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v1)
+version1/ID135340687 ERROR lúc08:39:20UTC2026-09-22;remote source/settings
+vàdownload-before/after version khớp.12raw files;0/32completed,
+0native-generation receipts;baseline/environment/recovery của ca đầu giữ nguyên.
+Traceback native `constrained` truyền hai lần, trước worker start.
+`clause_dev_dispatch_v2` bỏ caller-supplied root ở native; test tái hiện v1 TypeError
+và xác nhận v2 dùng root của factory, không load weights. V1 source/output bất biến.
+Gói v2 development hai layouts mỗi layout 8 tools/21 Dummy/32 Dev/8 shard audits;
+QA02: 980 focused + 395 integration, setup/Ruff/mypy501/knowledge/diff đạt;
+182 native source và 169 tracked data pins giữ nguyên. Read-only Kaggle preflight
+ngày 2026-09-23: GPU còn 29,73h, Dataset guard15 private/ready/v1, v1 ERROR.
+
+Bước cụ thể: chốt một commit nguồn mới sau khi kiểm tra pins, dựng committed
+package hai layouts và xác thực release; kiểm tra v2 notebook chưa tồn tại rồi
+submit một lần v2 private/offline/T4 cho đúng 32 ca cố định. Không resume v1,
+không semantic retry.
+Sau v2 terminal mới download/source audit/quality analysis. Hiện không Kaggle
+job pending của v1; v2 chưa submit. Không Test/privateGT; formal4/7≈57% chưa đổi.
+
+Mốc trước — submission v1 khi còn RUNNING (lịch sử):
+
+**32Dev đang chạy Kaggle, một submission; không gửi lại.**
+Live07:10:42UTC2026-09-22: actual=requested
+[huylmhuhu/react-vn-clause-dev32-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v1),
+v1/ID135340687,RUNNING;source`5a2352834a791b11824a7c0c69e82f2390a03ca0`
+đã commit/pushmain một lần. Private/offline/T4/timeout14400s;Dataset guard15v1.
+[Submission](../experiments/manifests/phase5_clause_dev_gpu_submission01.json),
+[committed package](../experiments/manifests/phase5_clause_dev_package_release01.json),
+[report](../docs/evaluation/phase5_clause_dev_package_v1_report.md).
+Hai committed layouts mỗi8tools/21Dummy/32Dev đạt;218source release pins xác thực;
+remote code/settings/version khớp. QA976focused+395integration/setup/Ruff/mypy495
+đạt trướcfreeze;model generation/deadlines không đổi. Không final/Test inference.
+Rawsubmission `results/phase5_clause_dev_gpu_submission01`;releasebundle
+`build/kaggle/phase5_clause_dev_package_release01`;QA `results/phase5_clause_dev_package_qa02`.
+
+Bước cụ thể: read-only monitor đúngv1. Khi terminal tải vào thư mục mới, lưu
+version/source trước-sau download và chạy`audit_phase5_clause_dev_gpu_v1.py`hai lần.
+Nếu ERROR: giữ partial checkpoints/logs, phân loại infrastructure/semantic;
+không tự repush hoặc retry semantic. Model outcomes chưa biết,không suy từCPU32/32.
+Nguồn đã freeze: không sửa218pinned files. Receipt/memory saufreeze đanglocal;
+không tạo status-onlycommit. Quyền:account đã đủ,networkapproval sandbox khi cần;
+raw chưabackup riêng. Formal4/7≈57%chưađổi;quality/lifecycle/DoDfreeze cònmở.
+
+Mốc trước — development package:
 
 **Dev32 exact package đã qua development preflight; đang chuẩn bị source freeze.**
 [Report](../docs/evaluation/phase5_clause_dev_package_v1_report.md),

@@ -1,0 +1,30 @@
+{
+  "protocol": "clause_dev32_failure_selected_v1",
+  "valid": true,
+  "actual_kernel": "https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v1",
+  "kernel_version": 1,
+  "source_commit": "5a2352834a791b11824a7c0c69e82f2390a03ca0",
+  "source_authenticated": true,
+  "terminal_status": "ERROR",
+  "native": {
+    "completed_tasks": 0,
+    "error_class": "TypeError",
+    "failed_task": "ATK_CAND_LINKMAIL_PARAPHRASE__A2",
+    "failure_class": "infrastructure_wiring",
+    "inference_result_available": false,
+    "memory_recovered": true,
+    "model_generation_evidence_count": 0,
+    "planned_tasks": 32,
+    "pre_worker_start_from_source_and_log": true,
+    "protocol": "clause_dev32_prestart_failure_v1",
+    "quality_scored": false
+  },
+  "retry_scope": "all32 unexecuted tasks under a corrected new source identity",
+  "raw_pins_verified": 12,
+  "remote_pins_verified": 2,
+  "first_audit_sha256": "perl:",
+  "second_audit_sha256": "perl:",
+  "observation_sha256": "10bfa02e1de41c72a022265e486839a8d0d24e535267a36fb5f98427016cfc0f",
+  "submitted_source_version_unchanged": true,
+  "phase5_accepted": false
+}

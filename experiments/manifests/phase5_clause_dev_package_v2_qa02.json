@@ -1,0 +1,153 @@
+{
+  "checked_at_utc": "2026-09-23T07:57:39.844031+00:00",
+  "checks": {
+    "diff": {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "seconds": 0.03730015302426182
+    },
+    "integration": {
+      "command": [
+        ".venv/bin/pytest",
+        "-q",
+        "tests/integration/test_teardown_probe_v1.py",
+        "tests/integration/test_phase5_worker_shutdown_v2.py",
+        "tests/integration/test_constrained_probe_v1.py",
+        "tests/integration/test_guard_bare_json_probe_v1.py",
+        "tests/integration/test_phase5_pair_runtime_v3.py",
+        "tests/integration/test_exit_milestones_v1.py",
+        "tests/integration/test_exit_pair_probe_v1.py",
+        "tests/integration/test_acceptance_controls_v1.py",
+        "tests/integration/test_sentence_runtime_v11.py",
+        "tests/integration/test_clause_runtime_v12.py",
+        "tests/integration/test_clause_pair_probe_v1.py",
+        "tests/integration/test_clause_pair_egress_v1.py",
+        "tests/integration/test_clause_dev_runner_v1.py"
+      ],
+      "returncode": 0,
+      "seconds": 367.45074726099847
+    },
+    "knowledge": {
+      "command": [
+        "make",
+        "knowledge-check"
+      ],
+      "returncode": 0,
+      "seconds": 0.3606179909838829
+    },
+    "mypy": {
+      "command": [
+        ".venv/bin/mypy",
+        "src",
+        "scripts"
+      ],
+      "returncode": 0,
+      "seconds": 0.6129606419999618
+    },
+    "pytest": {
+      "command": [
+        ".venv/bin/pytest",
+        "-q",
+        "tests/unit/test_teardown_probe_audit_v1.py",
+        "tests/unit/test_worker_shutdown_audit_v2.py",
+        "tests/unit/test_constrained_gpu_report_v1.py",
+        "tests/unit/test_observer_native_report_v2.py",
+        "tests/unit/test_constrained_gpu_release_v1.py",
+        "tests/unit/test_observer_gpu_release_v2.py",
+        "tests/unit/test_constrained_probe_package_v1.py",
+        "tests/unit/test_constrained_native_audit_v1.py",
+        "tests/unit/test_observer_native_audit_v2.py",
+        "tests/unit/test_guard_bare_json_native_audit_v1.py",
+        "tests/unit/test_constrained_host_v1.py",
+        "tests/unit/test_constrained_generate_audit_v1.py",
+        "tests/unit/test_constrained_policy_v1.py",
+        "tests/unit/test_native_guard_diagnostics_v2.py",
+        "tests/unit/test_constrained_guard_v1.py",
+        "tests/unit/test_guard_token_language_v1.py",
+        "tests/unit/test_guard_language_native_v1.py",
+        "tests/unit/test_guard_language_release_v1.py",
+        "tests/unit/test_guard_bare_json_v1.py",
+        "tests/unit/test_guard_hf_v1.py",
+        "tests/unit/test_generation_policy_v1.py",
+        "tests/unit/test_request_policy_v1.py",
+        "tests/unit/test_efficient_requests_v1.py",
+        "tests/unit/test_request_policy_pair_v1.py",
+        "tests/unit/test_exit_milestones_audit_v1.py",
+        "tests/unit/test_knowledge.py",
+        "tests/unit/test_exit_pair_bindings_v1.py",
+        "tests/unit/test_exit_native_audit_v1.py",
+        "tests/unit/test_exit_pair_package_v1.py",
+        "tests/unit/test_exit_gpu_release_v1.py",
+        "tests/unit/test_exit_gpu_report_v1.py",
+        "tests/unit/test_acceptance_coverage_v1.py",
+        "tests/unit/test_authorization_anchors_v2.py",
+        "tests/unit/test_authorization_anchors_v3.py",
+        "tests/unit/test_value_origin_v3.py",
+        "tests/unit/test_clause_pair_bindings_v1.py",
+        "tests/unit/test_clause_dev_native_audit_v1.py",
+        "tests/unit/test_clause_dev_release_v1.py",
+        "tests/unit/test_clause_dev_gpu_release_v1.py",
+        "tests/unit/test_clause_dev_dispatch_v2.py",
+        "tests/unit/test_clause_dev_package_v2.py"
+      ],
+      "returncode": 0,
+      "seconds": 55.43224158100202
+    },
+    "ruff": {
+      "command": [
+        ".venv/bin/ruff",
+        "check",
+        "."
+      ],
+      "returncode": 0,
+      "seconds": 0.10200842999620363
+    },
+    "setup": {
+      "command": [
+        ".venv/bin/python",
+        "scripts/verify_setup.py"
+      ],
+      "returncode": 0,
+      "seconds": 0.16373705500154756
+    }
+  },
+  "exclusion": "Sealed Test-authoring fixtures excluded",
+  "exit_package_source_pins_unchanged": 182,
+  "full_repository_pytest_run": false,
+  "git_base_commit": "5a2352834a791b11824a7c0c69e82f2390a03ca0",
+  "git_commit_created": false,
+  "log_sha256": {
+    "results/phase5_clause_dev_package_v2_qa02/diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "results/phase5_clause_dev_package_v2_qa02/integration.log": "ac99a1f9abd369f312c3fbaf92b8538b77927061186608b6720f5a7c12cc6009",
+    "results/phase5_clause_dev_package_v2_qa02/knowledge.log": "78c84ad170022bf4bd205a0a9abf804350ca190e83a245d9c2ae59b534b958c4",
+    "results/phase5_clause_dev_package_v2_qa02/mypy.log": "8b8b753894fa53d50b3ae14741617da533999b0078dddcacee0594106d078752",
+    "results/phase5_clause_dev_package_v2_qa02/pytest.log": "ebeeb0af9d359c38f50b348305774da894fee4a62c27481eda1496acfa028196",
+    "results/phase5_clause_dev_package_v2_qa02/ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "results/phase5_clause_dev_package_v2_qa02/setup.log": "31e836b9c814fcf7126ef63fd608df0cbce6fc9b307ebc95c71ffe9d66d52280"
+  },
+  "model_inference_runs": 0,
+  "native_dispatch_allowed": false,
+  "phase5_accepted": false,
+  "prior_qa_source_pins_unchanged": 10,
+  "private_ground_truth_parsed": false,
+  "protocol": "phase5_clause_dev_package_v2_qa_v1",
+  "source_identity": "uncommitted working-tree hashes",
+  "source_sha256": {
+    "notebooks/kaggle/clause_dev32_kernel_v2.py": "ceb2770d459ba48795b3239f36086a4cb8cf80dfa36108b5fb1ecbf8dcecd9d9",
+    "scripts/audit_phase5_clause_dev_failure_v1.py": "0b433687bc63ef92e8a5bcedb1afa905728a0de0b29e4add648ed8961276ce9d",
+    "scripts/audit_phase5_clause_dev_gpu_v2.py": "f2dcff7ebd814b7e952d3a742f9e756b873b37e273771b25744c725b6d24b07f",
+    "scripts/check_phase5_clause_dev_package_v2.py": "6b6e81c7df1627480c411a4579dd4e1d34a5f4e46a747999d7e476f51908f81a",
+    "scripts/prepare_phase5_clause_dev_package_v2.py": "f7821707edaa71f37e6c3d50ef4555b0e4840d85b5a1ef9b217070f61c698ab2",
+    "scripts/run_phase5_clause_dev_native_v2.py": "15545216c5e8a0bde459edb224a06787c19f507ca97aa32ca9798bfd2aff4e8e",
+    "src/react_agent/llm/clause_dev_dispatch_v2.py": "743ccb497b65f9f8bb0b51d5a5eaea7a9cc45c8c451053a60781d96a46816744",
+    "tests/unit/test_clause_dev_dispatch_v2.py": "3ba598822b4f5931824eea786bd703ef47e887d7a60240101d8559ec4e61c610",
+    "tests/unit/test_clause_dev_package_v2.py": "86c584243c12b46ce705f3e579bbe2d4125b585522a38fb0bf6201261f09703c"
+  },
+  "test_payload_parsed": false,
+  "tracked_data_hashes_unchanged": 169,
+  "valid": true
+}
