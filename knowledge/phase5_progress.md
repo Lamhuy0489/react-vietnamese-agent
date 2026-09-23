@@ -1,14 +1,79 @@
 # Phase 5 — tiến độ và các gate còn lại
 
-## Hiện hành — Dev32 v2 COMPLETE/audit, 2026-09-23
+## Hiện hành — three-arm prospective CPU gate, 2026-09-24
+
+[Report](../docs/evaluation/phase5_room_prospective_three_arm_cpu_v2_report.md):
+baseline/metadata giữ v12, ticket dùng adapter riêng; manifest v2 và triplet
+audit khóa cùng task/environment/model/seed/source/pin trên ba arm. CPU clean
+specimen phân biệt ba nhánh; fault/checkpoint tests và 163 focused tests đạt.
+Package08 qua hai layout với 186 worker files, 21/21 clean Dummy mỗi layout.
+Chưa source freeze, pin/payload sản xuất, native inference hoặc model-quality
+evidence. Formal Phase 5 vẫn 4/7≈57%.
+
+## Hiện hành — prospective ticket run manifest CPU, 2026-09-24
+
+[Report](../docs/evaluation/phase5_room_ticket_run_manifest_cpu_v1_report.md):
+ticket-arm launcher khóa external run SHA, nguồn, pin, task, environment,
+model revision, generation/seed và output overlap. 157 focused tests đạt;
+development package06 qua hai layout, 180 worker files, 21/21 clean Dummy
+mỗi layout. Chưa baseline/metadata launcher tương đương, chưa source freeze,
+pin/payload thật hoặc native inference. Formal Phase 5 vẫn 4/7≈57%.
+
+## Hiện hành — native room-ticket gate CPU, 2026-09-24
+
+[Report](../docs/evaluation/phase5_room_ticket_native_gate_cpu_v1_report.md):
+source admission và read-only release auditor đã tách, task-level checkpoint
+chỉ cho resume hoàn tất sau audit; failed join/partial không tự retry. Exact
+development package04 qua hai layout với 178 worker files, 21/21 clean Dummy
+mỗi layout; 154 focused tests đạt. Chưa chạy model/native thật, chưa committed
+source/pin/launcher hoặc payload pilot. Formal Phase 5 vẫn 4/7≈57%.
+
+## Hiện hành — room-ticket package development preflight, 2026-09-24
+
+[Report](../docs/evaluation/phase5_room_ticket_package_dev_v1_report.md):
+172 worker files, hai layout nguồn và venv offline độc lập qua 8 mock tools,
+21/21 clean Dummy, checkpoint/resume và hash/tree admission; 147 test liên
+quan qua. Đây là CPU working-tree rehearsal, `source_commit=null`, chưa có
+prospective content/pin, native inference hay release admission. Formal Phase 5
+vẫn 4/7≈57%; bước tiếp là native dispatch/auditor và source freeze có QA.
+
+## Hiện hành — prospective inventory approved, run chưa freeze, 2026-09-24
+
+[Owner review](../docs/evaluation/phase5_room_inventory_review_request_v1.md)
+đã xác nhận trước nội dung hai nguồn mới S0/S2 UNTRUSTED; draft SHA và
+[record](../experiments/manifests/phase5_room_prospective_inventory_review_v1.json)
+được kiểm bằng [admission code](../src/react_agent/validation/room_inventory_review_v1.py).
+[Protocol](../docs/evaluation/phase5_room_prospective_v1_protocol.md) predeclare
+ba arm và controls. [Adapter pinned A6/ExitPair](../docs/evaluation/phase5_room_ticket_pair_cpu_v1_report.md)
+đã qua paired synthetic CPU và versioned audit; chưa có source commit/pin,
+pilot document content, exact native package hoặc model run; Dev32/Test bất
+biến. Owner self-review không phải
+independent audit. Formal acceptance vẫn 4/7≈57%.
+
+## Mốc trước — giải pháp kỹ thuật sau Dev32 scoring, 2026-09-23
+
+[Lộ trình hoàn thiện](../docs/evaluation/phase5_completion_strategy_v1.md)
+tách ba nguyên nhân: false block A6 cần proof-carrying provenance có nhãn nguồn
+trước nội dung; guard quality phải tách model không đề xuất action khỏi guard
+phân loại sai; lifecycle cần đo OS exit riêng, không tính reaped là GRACEFUL.
+[Scoring](../docs/evaluation/phase5_clause_dev32_scoring_v1_report.md) đã hoàn
+thành: attack success A2 1/8, A6 0/8; benign typed utility A2 4/8, A6 3/8;
+một A6 canonical safe-action false block. [Exit diagnostic](../docs/evaluation/phase5_clause_guard_exit_diagnostic_v1_report.md):
+guard 31/32 GRACEFUL, một TERMINATE/-15. Đây là selected public Dev, không
+phải full ASR/FPR. V13/v14 mới là synthetic CPU ablation, chưa sửa Dev32.
+Formal Phase5 vẫn 4/7≈57%; bước tiếp là inventory prospective được duyệt
+trước nội dung và protocol native/lifecycle mới, không rerun Dev32/Test.
+
+## Mốc trước — Dev32 v2 COMPLETE/audit, 2026-09-23
 
 [Terminal report](../docs/evaluation/phase5_clause_dev_gpu_v2_terminal_report.md):
 32/32 public Dev A2/A6, 8/8 shards, 2.073 raw/2 remote hashes, 222 source
 pins; hai audits và hai host reports khớp byte. 65/65 returned guard syntax
 OK nhưng 8 tasks không gọi guard; 31/32 all-workers GRACEFUL, một guard
-TERMINATE. Chưa chấm ASR/FPR/benign utility/final semantic safety; model weight
-SHA chưa xác thực. Formal Phase5 vẫn 4/7≈57%, không tăng từ completion.
-Tiếp theo evaluator-only Dev scoring và DoD review, không rerun/Test.
+TERMINATE. Tại thời điểm terminal audit chưa chấm ASR/FPR/benign utility/final
+semantic safety; model weight SHA chưa xác thực. Sau đó đã có evaluator-only
+scoring ở mục hiện hành phía trên. Formal Phase5 vẫn 4/7≈57%, không tăng từ
+completion; không rerun/Test.
 
 ## Mốc trước — Dev32 v2 submitted/RUNNING, 2026-09-23
 

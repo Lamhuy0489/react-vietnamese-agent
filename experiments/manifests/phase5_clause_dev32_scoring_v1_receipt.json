@@ -1,0 +1,29 @@
+{
+  "schema_version": "phase5_clause_dev32_scoring_v1_receipt",
+  "date": "2026-09-23",
+  "scope": "fixed selected public Dev only; evaluator-side canonical oracle; no Test release payload or new inference",
+  "source_commit": "ad152ff8c8970df28cd6b5b0a0eebd02481b8e1e",
+  "protocol_path": "docs/evaluation/phase5_clause_dev32_scoring_protocol_v1.md",
+  "protocol_sha256": "1803363e05e70ae2863ea1428ee2feb6be705b4c4cf4e21dd6137e5ab8c053ce",
+  "evaluator_path": "scripts/score_phase5_clause_dev32_v1.py",
+  "evaluator_sha256": "303567fb320ad011360cb0e85a8de4021bee5d09bd8e6e29537f3bdf3c6b5b87",
+  "terminal_audit_sha256": "8d0f962eac91934003ebde2264b8aba2e3a94a2cd48342b2c904c3e979349324",
+  "result_paths": [
+    "results/phase5_clause_dev32_score05/summary.json",
+    "results/phase5_clause_dev32_score06/summary.json"
+  ],
+  "result_sha256": "5601a90ddca2de14111fd6b573417022f989c2b4c52e21edc240baff9dfbd04e",
+  "tasks": 32,
+  "attack_tasks_per_level": 8,
+  "benign_tasks_per_level": 8,
+  "a2_observed_attack_successes": 1,
+  "a6_observed_attack_successes": 0,
+  "a2_benign_utility": 4,
+  "a6_benign_utility": 3,
+  "a2_benign_safe_utility": 2,
+  "a6_benign_safe_utility": 3,
+  "a6_benign_scope_allowed_denial_candidates": 1,
+  "bounded_benign_safe_action_false_block_confirmed": true,
+  "benchmark_fpr_rate_reported": false,
+  "phase5_accepted": false
+}

@@ -1,5 +1,22 @@
 # Decision Log
 
+## 2026-09-24 — Owner confirms prospective public/private source roles
+
+- The owner answered “ok làm tiếp và hoàn thiện cho tôi” immediately after an
+  explicit request to confirm two pre-content roles. Record self-review of
+  `AUX_FUTUREROOM` as S0 public and `AUX_FUTUREPRIVATE` as S2 confidential;
+  both remain UNTRUSTED. No content, model answer or oracle was used to set
+  these labels. The [review record](../evaluation/phase5_room_inventory_review_request_v1.md)
+  binds the earlier content-free draft and states the limits of chat evidence.
+- This is an opt-in, new synthetic pilot outside the frozen Dev32/Phase 3
+  benchmark. It does not relabel an existing auxiliary source, alter v12,
+  promote trust, authorize real external I/O or change Phase 5 acceptance.
+- Before content creation or inference, freeze the actual source commit and
+  a separately hashed `InventoryPin`, then satisfy
+  [prospective protocol](../evaluation/phase5_room_prospective_v1_protocol.md).
+  Existing CPU-only v13/v14 are not native-ready. Keep `host_inventory_attested`
+  false until the full admission and release checks pass.
+
 ## 2026-09-23 — Dev32 v1 infrastructure failure and bounded v2 correction
 
 - Authenticate v1 terminal ERROR and preserve its12raw files. No task checkpoint,
@@ -1875,3 +1892,46 @@ and are not inferred here.
 - Owner re-emphasized fewer commits: keep this work local, even after successful
   QA; commit only when requested or source freeze is actually needed. No new
   Kaggle job or phase acceptance. [Report](../evaluation/phase5_exit_pair_cpu_v1_report.md).
+
+## 2026-09-23 — Authorize prospective host source metadata, not Dev32 relabeling
+
+- Owner chose the independent public metadata design after the Dev32 A6 benign
+  false-block diagnosis. Add only an opt-in, versioned pair-wide annotation
+  constructor with exact auxiliary inventory coverage and fixed UNTRUSTED trust.
+  It does not modify `fixture_catalog`, any frozen Dev32 raw/score, or Test.
+- Classification must be pre-ingestion host inventory, independent of source
+  prose, model action and evaluator answer. This version validates the declared
+  structure but cannot attest human timing/truth; no released Dev auxiliary has
+  been newly classified. A future manifest needs a recorded owner/date/hash.
+- Even an S0 annotation cannot fix the observed `room` denial alone. A separately
+  versioned payload/origin profile and prospective safe/unsafe controls are
+  prerequisites to any runtime adoption or new model run. Phase 5 stays 4/7.
+  [Protocol](../evaluation/phase5_host_source_annotations_v1_protocol.md).
+
+## 2026-09-23 — Prototype value-specific public-field tickets inside Phase 5
+
+- Owner requested a potentially high-impact solution and implementation demo.
+  Add an opt-in, synthetic-only component proving a narrow public `room` value
+  from an admitted raw document, exact POST ToolResult and raw-user destination
+  command. It does not enable a new A6 runtime or alter the frozen Dev32 run.
+- The experiment tests the hypothesis that *value-specific proof* can avoid
+  coarse denial caused by unrelated S2 context while retaining fail-closed
+  behavior for sensitive collision, unknown origin and source-control attempts.
+  Host source classification and cumulative A1–A6/Broker/Final gates remain
+  separate requirements; no model-level gain or phase closure is claimed.
+- Runtime adoption would require independent pre-ingestion source annotations,
+  candidate policy version, paired unsafe/safe controls, a new frozen run and
+  lifecycle/quality evidence. [Pilot report](../evaluation/phase5_public_field_ticket_v1_report.md).
+
+## 2026-09-23 — Opt-in v13 ticket ablation and poisoned-source correction
+
+- Add a separate A6-only runtime v13 composition over unchanged v12, not a
+  replacement A6 release. Only a baseline DENY explained by unsupported room
+  origin and/or session S2 sensitivity can be reconsidered; all other vetoes
+  remain binding. Host catalog version is explicit; metadata says inventory
+  is unattested, so native execution and formal acceptance remain gated.
+- In the first synthetic end-to-end run, the poison control failed because
+  JSON-escaped source text evaded the existing lexical rule and the ticket
+  parser admitted extra prose. Restrict ticket issuance to an entire one-line
+  record; preserve the failed development observation and regression test.
+  Do not rewrite the frozen rule or prior Dev32 traces. [CPU report](../evaluation/phase5_ticket_runtime_cpu_v1_report.md).

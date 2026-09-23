@@ -8,8 +8,12 @@ do host auditor cache allowlist sai. Actual
 version1/ID135499833 đã COMPLETE, tải và
 [terminal audit](../docs/evaluation/phase5_clause_dev_gpu_v2_terminal_report.md)
 cho 32/32 ca; 65/65 returned guard syntax OK, một guard TERMINATE.
-Còn evaluator-only Dev quality/utility, lifecycle interpretation và formal
-freeze; không dùng v1
+Cập nhật 2026-09-23: evaluator-only [Dev scoring](../docs/evaluation/phase5_clause_dev32_scoring_v1_report.md)
+đã xong, thấy một A6 benign canonical safe-action false block; [exit
+diagnostic](../docs/evaluation/phase5_clause_guard_exit_diagnostic_v1_report.md)
+đã xác định một TERMINATE sau Python milestones nhưng chưa root cause. Còn
+prospective remedy/guard quality, lifecycle reliability và formal freeze;
+không dùng v1
 CPU pass hay v1 ERROR làm model quality proof.
 
 Cập nhật 2026-09-23, đối chiếu `plan/phase5.md` mục CXXVI (20DoD) và
@@ -29,8 +33,9 @@ Source admission/launcher và exact development package đã đạt:
 [package report](../docs/evaluation/phase5_clause_dev_package_v1_report.md).
 Source freeze `5a23528` và v1 committed release audit đã đạt; native32Dev v1
 đã submit một lần nhưng terminal ERROR trước worker start. [V1 failure](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md)
-đã audit; không resubmit v1. V2 [package report](../docs/evaluation/phase5_clause_dev_package_v2_report.md)
-và QA03 có; còn release02, native run, quality/utility và lifecycle analysis.
+đã audit; không resubmit v1. V2 [package report](../docs/evaluation/phase5_clause_dev_package_v2_report.md),
+release02, native run và evaluator-only scoring đã hoàn tất; còn remedy
+prospective, representative quality/utility và lifecycle reliability.
 
 ExitPair GPU v1 COMPLETE/audit (2026-09-21 07:28:29 UTC), actual
 `huylmhuhu/react-vn-exit-milestones-v1`, source `6d039e2`:4completed/8validguard,
@@ -54,7 +59,7 @@ root cause. Exact notebook/package development + committed release hai layout
 | DoD-5: A2 end-to-end, structured output ổn định | Constrained GPU v1 COMPLETE/audit: 4 completed/8 valid guard responses, không backend error; native source/policy/attention/count joins đạt. Chỉ 4 diagnostic tasks, còn representative guard quality/utility. V1 CPU failure và bare-JSON 2/6 valid giữ nguyên; không strip/repair parser hoặc suy diễn toàn bộ 30 lỗi baseline. |
 | Lifecycle GPU của runtime | Baseline192reaped/13TERMINATE; observer8/3; bare-JSON8/1; constrained8/4; ExitPair8/0. Native milestones đã audited, lỗi không tái hiện nên chưa cause/fix/reliability. Muốn so sánh cần khóa prospective paired repeat/order budget riêng, không rerun v1 hoặc tăng grace2s theo kết quả. |
 | DoD-9/13/14/16: A6 provenance, egress/final sink, unknown origin | Có bounded CPU controls; còn đối chiếu phạm vi hỗ trợ và các trường hợp ngoài phạm vi. Không đồng nhất “có sensitive artifact” với payload xuất ra. |
-| DoD-15: benign utility đại diện | V12 đạt78CPUcontrols, paired12tasks và Dev32 CPU runner. Sáu Dev destination gaps đóng ở parser. Còn native release/launcher/package và quality/utility; native112ca cũ vẫn không phải utility proof. Giữ mọi denied/error. |
+| DoD-15: benign utility đại diện | V12 đạt78CPUcontrols, paired12tasks và Dev32 native đã chấm: typed benign utility A2 4/8, A6 3/8 trên 8 families selected; một A6 canonical safe-action false block. V13/v14 proof-carrying public-field synthetic CPU là remedy prospective, chưa chứng minh Dev/model utility. Giữ mọi denied/error. |
 | Grouped Dev differential | Lịch112ca đã audit; cần đo và giải thích các khác biệt A0–A6 khi guard/lifecycle đủ ổn định, theo protocol đã khóa và giữ nguyên thất bại cũ. |
 | DoD-20: formal freeze và báo cáo nghiệm thu | Chỉ khóa rules/guard/model/config/architecture khi các gate trên có bằng chứng. Lập mapping20DoD→tests/receipts/giới hạn trước chuyển phase. |
 

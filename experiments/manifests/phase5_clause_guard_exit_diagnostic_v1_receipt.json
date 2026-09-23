@@ -1,0 +1,22 @@
+{
+  "schema_version": "phase5_clause_guard_exit_diagnostic_v1_receipt",
+  "date": "2026-09-23",
+  "scope": "32 authenticated public Dev worker-exit receipts; no Test/oracle/inference",
+  "source_commit": "ad152ff8c8970df28cd6b5b0a0eebd02481b8e1e",
+  "protocol_path": "docs/evaluation/phase5_clause_guard_exit_diagnostic_protocol_v1.md",
+  "protocol_sha256": "fcb4f13abb042cb37562e72d60998e9936f02c8dc10f50001a503fa9487aec75",
+  "script_path": "scripts/diagnose_phase5_clause_guard_exit_v1.py",
+  "script_sha256": "86426d8a679f8914eca519189f8fac965b9230fe25673a7c606e9fc57c2f5143",
+  "terminal_audit_sha256": "8d0f962eac91934003ebde2264b8aba2e3a94a2cd48342b2c904c3e979349324",
+  "result_paths": [
+    "results/phase5_clause_guard_exit_diagnostic01/diagnostic.json",
+    "results/phase5_clause_guard_exit_diagnostic02/diagnostic.json"
+  ],
+  "result_sha256": "1ced49b8d0adecbf5ced88b9f674cc8ea15849c7383eb1b9e6f2281ebdbbcb54",
+  "agent_graceful": 32,
+  "guard_graceful": 31,
+  "guard_terminate": 1,
+  "all_workers_reaped": true,
+  "root_cause_proven": false,
+  "phase5_lifecycle_accepted": false
+}

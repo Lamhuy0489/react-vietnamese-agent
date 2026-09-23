@@ -23,7 +23,23 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
 
 ## Tra theo công việc
 
-- **Hiện hành:** [Dev32 exact package/source admission: development đạt, chuẩn bị release](../docs/evaluation/phase5_clause_dev_package_v1_report.md).
+- **Owner review prospective đã ghi, chưa pin/run:** [nhãn nguồn và giới hạn xác thực](../docs/evaluation/phase5_room_inventory_review_request_v1.md), [protocol ba arm](../docs/evaluation/phase5_room_prospective_v1_protocol.md).
+- **Pinned adapter CPU mới:** [A6/ExitPair với admission trước worker và versioned audit](../docs/evaluation/phase5_room_ticket_pair_cpu_v1_report.md).
+- **Gói worker mới:** [room-ticket development preflight hai layout; chưa release/native](../docs/evaluation/phase5_room_ticket_package_dev_v1_report.md).
+- **Native gate CPU mới:** [source-admitted dispatch, independent read-only audit, checkpoint/fault controls và package04](../docs/evaluation/phase5_room_ticket_native_gate_cpu_v1_report.md).
+- **Run manifest ticket arm:** [external SHA, source/pin/model/task/environment/generation admission và package06](../docs/evaluation/phase5_room_ticket_run_manifest_cpu_v1_report.md).
+- **Ba arm prospective:** [v12 baseline/metadata, v15 ticket, matched manifest/checkpoint và package08 CPU](../docs/evaluation/phase5_room_prospective_three_arm_cpu_v2_report.md).
+- **Đường giải kỹ thuật Phase 5:** [provenance A6, guard quality, lifecycle và thử nghiệm prospective](../docs/evaluation/phase5_completion_strategy_v1.md).
+- **Ứng viên mới nhất:** [Dated-room ticket v2/runtime v14, grammar có giới hạn và paired CPU](../docs/evaluation/phase5_dated_room_v1_report.md).
+- **Mới nhất:** [Inventory synthetic không chứa payload, cặp CPU mới và giới hạn xác nhận](../docs/evaluation/phase5_room_synthetic_inventory_v1_report.md).
+- **Mốc trước:** [Phiếu ID/nhãn nguồn trước owner review; chưa có payload](../docs/evaluation/phase5_room_inventory_review_request_v1.md).
+- **Tích hợp mới:** [A6 v13 ticket ablation, paired CPU controls và lỗi poison đã giữ lại](../docs/evaluation/phase5_ticket_runtime_cpu_v1_report.md).
+- **Ứng viên mới:** [Vé chứng cứ cho public-field egress: pilot synthetic và giới hạn](../docs/evaluation/phase5_public_field_ticket_v1_report.md).
+- **Hiện hành:** [Dev32 guard exit diagnostic và lifecycle còn mở](../docs/evaluation/phase5_clause_guard_exit_diagnostic_v1_report.md).
+- **Nhánh false-block:** [Root cause A6 benign](../docs/evaluation/phase5_clause_falseblock_root_cause_v1_report.md); [giao thức metadata host prospective](../docs/evaluation/phase5_host_source_annotations_v1_protocol.md) đã được chọn, chưa kích hoạt runtime.
+- **Mốc trước:** [Dev32 v2 evaluator-only scoring, kết quả và giới hạn](../docs/evaluation/phase5_clause_dev32_scoring_v1_report.md).
+- **Giao thức chấm Dev32:** [denominator, oracle separation, denied-proposal handling](../docs/evaluation/phase5_clause_dev32_scoring_protocol_v1.md).
+- **Mốc trước:** [Dev32 v2 terminal artifact audit](../docs/evaluation/phase5_clause_dev_gpu_v2_terminal_report.md), [exact package/source admission](../docs/evaluation/phase5_clause_dev_package_v1_report.md).
 - **Nền Dev32:** [Runner/checkpoint:32CPUtasks](../docs/evaluation/phase5_clause_dev32_v1_report.md).
 - **Nền paired integration:** [V12/constrained ExitPair:12CPUtasks](../docs/evaluation/phase5_clause_pair_v1_report.md).
 - **Nền clause/cumulative:** [V12:78/78CPUcontrols](../docs/evaluation/phase5_clause_candidate_v1_report.md).

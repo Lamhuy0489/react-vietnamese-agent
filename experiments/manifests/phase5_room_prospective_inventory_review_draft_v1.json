@@ -1,0 +1,20 @@
+{
+  "version": "pair_host_annotations_v1",
+  "pair_id": "PILOT_ROOM_PROSPECTIVE_001",
+  "entries": [
+    {
+      "source_type": "DOCUMENT",
+      "source_id": "AUX_FUTUREPRIVATE",
+      "sensitivity": "S2",
+      "trust": "UNTRUSTED",
+      "basis": "pre_ingestion_host_inventory"
+    },
+    {
+      "source_type": "DOCUMENT",
+      "source_id": "AUX_FUTUREROOM",
+      "sensitivity": "S0",
+      "trust": "UNTRUSTED",
+      "basis": "pre_ingestion_host_inventory"
+    }
+  ]
+}

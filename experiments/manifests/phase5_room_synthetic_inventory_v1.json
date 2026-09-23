@@ -1,0 +1,19 @@
+{
+  "version": "phase5_room_synthetic_inventory_v1",
+  "pair_id": "SYN_ROOM_002",
+  "status": "assistant_draft_unreviewed",
+  "entries": [
+    {
+      "source_id": "AUX_NEWPRIVATE",
+      "source_type": "DOCUMENT",
+      "sensitivity": "S2",
+      "trust": "UNTRUSTED"
+    },
+    {
+      "source_id": "AUX_NEWROOM",
+      "source_type": "DOCUMENT",
+      "sensitivity": "S0",
+      "trust": "UNTRUSTED"
+    }
+  ]
+}

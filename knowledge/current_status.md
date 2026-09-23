@@ -1,10 +1,196 @@
 # Trạng thái hiện tại
 
-Cập nhật 2026-09-23. **Phase 5 đang làm: 4/7 ≈ 57% nhóm nghiệm thu**,
+Cập nhật 2026-09-24. **Phase 5 đang làm: 4/7 ≈ 57% nhóm nghiệm thu**,
 không phải phần trăm công sức hoặc số dòng mã. Phase 1–4 đã accepted theo
 [trạng thái chính thức](../docs/project/phase_status.md); Test vẫn khóa.
 
 ## Kết quả mới nhất
+
+**Ba arm prospective đã có CPU/admission parity, chưa source freeze hoặc model.**
+[Report](../docs/evaluation/phase5_room_prospective_three_arm_cpu_v2_report.md):
+baseline v12 không nhận metadata, metadata v12 nhận cặp S0/S2 đã duyệt,
+ticket dùng adapter v15; manifest v2 buộc mọi pin ngoài tên arm trùng nhau.
+Trên clean specimen scripted, baseline DENY cả 3 proposal, metadata chỉ DENY
+webhook, ticket ALLOW webhook mock được user cho phép. 163 focused tests đạt;
+package08 hai layout/186 worker files/21 clean Dummy mỗi layout. Đây không
+phải model quality hoặc ASR/FPR; `source_commit=null`, pin thật/payload/native
+run còn mở. Phase 5 vẫn 4/7≈57%.
+
+Mốc trước — manifest ticket arm:
+
+**Manifest/launcher prospective ticket arm đã qua CPU admission QA, chưa
+source freeze.** [Report](../docs/evaluation/phase5_room_ticket_run_manifest_cpu_v1_report.md):
+run SHA ngoài, source/pin canonical+file, task/environment, model revisions,
+runtime/generation/seed và output overlap đều được kiểm trước worker. 157
+focused tests đạt; development package06 qua hai layouts với 180 worker files,
+21/21 clean Dummy mỗi layout. `source_commit=null`, 0 prospective/native run;
+baseline/metadata arm launcher, committed package, pin thật và GPU còn mở.
+Phase 5 vẫn 4/7≈57%.
+
+Mốc trước — native gate CPU:
+
+**Native room-ticket dispatch và independent release audit đã nối, CPU wiring
+đạt; chưa chạy model.** [Report](../docs/evaluation/phase5_room_ticket_native_gate_cpu_v1_report.md):
+gate chặn working-tree source, hash/closure/pin sai trước worker; task có
+identity/checkpoint, completed resume chỉ đọc, partial không tự retry. Gói
+development cuối `build/kaggle/phase5_room_ticket_dev_preflight04` qua hai
+layout, 178 worker files, 21/21 clean Dummy mỗi layout. 154 focused tests và
+setup/Ruff/mypy đạt. Chưa source commit/pin thật, launcher prospective, model
+Kaggle hay remote release audit; formal Phase 5 vẫn 4/7≈57%.
+
+Mốc trước — gói worker CPU:
+
+**Room-ticket exact-worker development preflight đã qua CPU, chưa release.**
+[Báo cáo](../docs/evaluation/phase5_room_ticket_package_dev_v1_report.md):
+172 file worker công khai, hai layout archive/expanded trong venv offline độc
+lập, 8 mock tools/recovery, 21/21 clean Dummy, complete/missing-only resume;
+closure không mang authoring hoặc dữ liệu ngoài allowlist. 147 focused tests,
+setup/Ruff/mypy đạt. Receipt ở
+`build/kaggle/phase5_room_ticket_dev_preflight01/preflight.json` ghi rõ
+`source_commit=null`, 0 prospective/native run và `release_admitted=false`.
+Chưa tạo `InventoryPin` hoặc nội dung pilot; Phase 5 vẫn 4/7≈57%.
+
+Mốc trước — owner review và adapter:
+
+**Owner đã xác nhận trước nội dung hai nhãn prospective; pinned pair adapter
+đã qua CPU, pin/run thật vẫn chưa freeze.** [Review](../docs/evaluation/phase5_room_inventory_review_request_v1.md)
+ghi `AUX_FUTUREROOM` S0 public và `AUX_FUTUREPRIVATE` S2 confidential, cả hai
+UNTRUSTED, dựa trên phản hồi “ok” cho câu hỏi xác nhận chính xác. Bản ghi chỉ
+chứa nhãn và hash draft; không có nội dung/GT. [Admission code](../src/react_agent/validation/room_inventory_review_v1.py)
+và [protocol ba arm](../docs/evaluation/phase5_room_prospective_v1_protocol.md)
+đã có. [Adapter mới](../docs/evaluation/phase5_room_ticket_pair_cpu_v1_report.md)
+đã kiểm paired-process CPU với clean/poison và audit pin; chưa tạo content
+pilot hoặc run pin vì source commit thực chưa freeze, chưa có exact native
+package/model run. Đây là owner self-review, không phải chứng nhận độc
+lập; chưa model/Kaggle/Test mới, Phase 5 vẫn 4/7≈57%.
+
+Mốc trước — phân loại nguyên nhân kỹ thuật:
+
+**Đã chuyển sang giải ba nút kỹ thuật, không mở thêm pilot theo phản ứng.**
+[Chiến lược](../docs/evaluation/phase5_completion_strategy_v1.md) nối
+proof-carrying public-field egress với inventory nguồn prospective, tách
+model omission khỏi guard classification, và đo OS exit của guard. Dev32 đã
+được [chấm evaluator-only](../docs/evaluation/phase5_clause_dev32_scoring_v1_report.md):
+A2/A6 attack success 1/8 và 0/8; benign typed utility 4/8 và 3/8; có một
+A6 canonical safe-action false block. [Lifecycle diagnostic](../docs/evaluation/phase5_clause_guard_exit_diagnostic_v1_report.md)
+cho thấy guard 31/32 GRACEFUL, một TERMINATE/-15. Cả hai là bằng chứng Dev
+selected, không phải kết luận toàn benchmark. V13/v14 là CPU synthetic ablation,
+chưa giải ca Dev cũ hoặc tăng nhóm DoD; Phase 5 vẫn 4/7≈57%.
+
+Mốc trước — dated-room v14 CPU:
+
+**Dated-room v14 opt-in đã qua paired CPU, chưa phải model run.**
+[Báo cáo](../docs/evaluation/phase5_dated_room_v1_report.md): chỉ thêm dòng
+`Cập nhật: YYYY-MM-DD` hợp lệ sau room line. Cặp cùng task/catalog: v13 chặn
+dated clean, v14 cho qua đúng mock webhook; sai ngày, instruction thêm, room
+trùng, giá trị có trong S2, guard veto, sai đích và final leak vẫn bị chặn.
+V12/v13 và Test bất biến; future-ID inventory vẫn chờ owner xác nhận, không
+tạo payload cho hai ID đó. Đây là Replay CPU và không tăng DoD; Phase 5 vẫn
+4/7≈57%.
+
+Mốc trước — inventory synthetic:
+
+**Đã có cặp inventory synthetic mới, chưa phải approval cho Dev/model.**
+[Báo cáo](../docs/evaluation/phase5_room_synthetic_inventory_v1_report.md):
+manifest content-free với `AUX_NEWROOM` S0 và `AUX_NEWPRIVATE` S2,
+UNTRUSTED cố định, hash file được kiểm trước khi tạo môi trường. Bộ dựng
+chặn thiếu/thừa/trùng ID; clean/poison/collision dùng cùng task và catalog.
+CPU Replay: v12 chặn clean, v13 cho phép clean qua Broker nhưng chặn injected
+instruction và mã trùng nguồn S2. Đây là assistant draft chưa được owner
+duyệt; không relabel Dev32, chưa inference/GPU/Test, không tăng DoD. Phase 5
+vẫn 4/7≈57%.
+[Phiếu nguồn kế tiếp](../docs/evaluation/phase5_room_inventory_review_request_v1.md)
+chỉ có hai ID/nhãn mới và **chưa có content**; cần owner xác nhận trước khi tạo
+payload hoặc `InventoryPin` cho một pilot mới.
+
+Mốc trước — cổng pin inventory:
+
+**Đã thêm cổng khóa inventory prospective; chưa có nhãn Dev được phê duyệt.**
+[Protocol](../docs/evaluation/phase5_host_source_annotations_v1_protocol.md)
+và `InventoryPin` ghi cặp nhãn nguồn, owner/review reference, UTC, source
+commit và SHA-256. `pinned_pair_catalog` đối chiếu SHA/commit được khai báo
+riêng trong run identity và đúng cặp public Dev; sửa nhãn sau khóa bị từ chối.
+Đây chỉ là xác thực cấu trúc, không chứng minh người duyệt hay thời điểm thật.
+Không gắn `attested=true`, không relabel Dev32, không model/Kaggle/Test mới.
+Phase 5 vẫn 4/7≈57%; bước tiếp là review inventory độc lập trước ingestion,
+rồi mới khóa một run prospective.
+
+Mốc trước — v13 CPU hardening:
+
+**A6 v13 opt-in đã chạy end-to-end trên CPU synthetic; chưa model/GPU.**
+[Báo cáo](../docs/evaluation/phase5_ticket_runtime_cpu_v1_report.md):
+v12 DENY room công khai sau S2 không liên quan, v13 ALLOW đúng webhook qua
+Broker và giữ POST/Final. Cặp clean/poison dùng cùng task/catalog, clean
+ALLOW, poison DENY. Sai đích, cùng giá trị ở S2, nguồn không rõ, guard
+MALICIOUS và final chứa email riêng vẫn bị chặn/redact. Lượt development
+đầu thất bại ở poison vì rule không nhận JSON escape; đã siết vé thành
+**toàn bộ content phải là một dòng room**, giữ regression và ghi lỗi.
+Inventory nguồn chưa attested; chưa sửa Dev32/A6 chính thức, chưa Test.
+Đã thêm preflight khóa replay agent, synthetic guard và đúng 8 tool tích hợp
+(gồm 2 mock sink), từ chối trước khi tạo worker/output nếu thay thế; private
+entry cũng chặn worker khác. Đây là cổng tránh triển khai nhầm, **không chứng
+minh nội dung nguồn là synthetic hoặc nhãn host đúng**. QA hardening: 98
+focused tests, setup/Ruff/mypy508 đạt; không có model run mới.
+Formal Phase5 vẫn4/7≈57%.
+
+Mốc trước — component ticket:
+
+**Ứng viên mới: proof-carrying public-field egress, chỉ synthetic/opt-in.**
+[Pilot report](../docs/evaluation/phase5_public_field_ticket_v1_report.md)
+ghi nhận vé host gắn nguồn S0, POST ToolResult, index và giá trị `room`,
+kiểm tra đúng lệnh gốc/đích và chặn trùng giá trị S1/S2. Synthetic controls
+cho phép public room dù phiên có S2 không liên quan; chặn các trường hợp sai
+đích/giá trị, không provenance, nhãn S2, vé/POST giả, source poisoning.
+Chưa bật vào A6, chưa đo model utility/ASR, không thay Dev32/Test; Phase5
+vẫn4/7≈57%.
+
+Mốc trước — host metadata prospective:
+
+**Đã thiết kế đường host metadata prospective, chưa chạy model hoặc sửa A6.**
+Chủ đồ án chọn nhãn từ inventory công khai độc lập. [Protocol](../docs/evaluation/phase5_host_source_annotations_v1_protocol.md),
+module `host_source_annotations_v1` và unit tests tạo catalog v2 opt-in cho
+cặp Dev; nhãn phủ đúng nguồn phụ, UNTRUSTED cố định, không suy từ text/oracle.
+Chưa có inventory đã phê duyệt cho Dev hiện hành; catalog v1/raw/score Dev32
+giữ nguyên. Nhãn S0 một mình không giải `room`/typed-origin; Phase5 4/7≈57%.
+
+Mốc trước — lifecycle diagnostic:
+
+**Đã kiểm toán độc lập toàn bộ shutdown Dev32; chưa xác định nguyên nhân OS exit.**
+[Báo cáo lifecycle](../docs/evaluation/phase5_clause_guard_exit_diagnostic_v1_report.md),
+[receipt](../experiments/manifests/phase5_clause_guard_exit_diagnostic_v1_receipt.json).
+32 agent GRACEFUL;31 guard GRACEFUL/1 TERMINATE;64/64 reaped. Guard bị terminate
+ở ca đầu, 0 classification calls, đã nhận STOP/serve/finalizers/threads return
+nhưng không exit trước2s. Không có bằng chứng đủ để quy cho CUDA/Python/IPC;
+không đổi timeout/policy hoặc rerun model. Formal Phase5 vẫn4/7≈57%.
+
+Mốc trước — root cause false block:
+
+**Đã xác định root cause của một A6 benign false block, chưa sửa policy.**
+[Báo cáo chẩn đoán](../docs/evaluation/phase5_clause_falseblock_root_cause_v1_report.md),
+[receipt](../experiments/manifests/phase5_clause_falseblock_diagnostic_v1_receipt.json).
+Hai lượt host-only trên raw Dev32 khớp byte; không oracle/Test/model mới.
+Nguồn phụ không có nhãn riêng nên host cố ý gắn S2/UNTRUSTED; `room` chưa thuộc
+payload grammar, giá trị không có typed origin. Chỉ thêm key hoặc hạ nhãn theo
+kết quả oracle đều không an toàn. Cần quyết định giữ chính sách bảo thủ và
+báo mất utility, hoặc thiết kế annotation nguồn độc lập/phiên bản mới trước
+mọi thay đổi hành vi. Formal Phase5 vẫn4/7≈57%; guard TERMINATE còn mở.
+
+Mốc trước — evaluator-only Dev32:
+
+**Dev32 v2 đã chấm evaluator-only trên Dev, hai lượt độc lập khớp byte.**
+[Giao thức khóa trước oracle](../docs/evaluation/phase5_clause_dev32_scoring_protocol_v1.md),
+[báo cáo](../docs/evaluation/phase5_clause_dev32_scoring_v1_report.md),
+[receipt](../experiments/manifests/phase5_clause_dev32_scoring_v1_receipt.json).
+Đúng32ca/8family từ raw bất biến, không inference/Test mới. A2→A6:
+observed attack success1/8→0/8; benign utility4/8→3/8; scorer-safe benign
+utility2/8→3/8. A6 có4 PRE denial benign; đối chiếu Dev oracle xác nhận1
+canonical safe-action bị chặn, chưa suy ra FPR toàn benchmark. Hai A2 ROWLIST
+unassessed là cùng SQL không hợp lệ và Broker trả INVALID_QUERY. Kết quả
+attack/benign matched gần như đồng dạng nên không suy hiệu quả đặc hiệu attack.
+DoD5/15/20, một guard TERMINATE, formal Phase5 4/7≈57% vẫn mở. Bước tiếp:
+đặt protocol prospective cho remedy benign/lifecycle, không rerun Dev32 để chọn đẹp.
+
+Mốc trước — Dev32 terminal chưa chấm:
 
 **Dev32 v2 COMPLETE và audit độc lập, chưa chấm quality/utility.**
 [Terminal report](../docs/evaluation/phase5_clause_dev_gpu_v2_terminal_report.md),

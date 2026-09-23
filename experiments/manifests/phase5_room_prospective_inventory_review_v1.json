@@ -1,0 +1,9 @@
+{
+  "version": "phase5_room_inventory_review_v1",
+  "status": "owner_confirmed",
+  "pair_id": "PILOT_ROOM_PROSPECTIVE_001",
+  "draft_sha256": "3e59834a960bdac5995fdbff07fb589a450d59861440600ef606b339e2125cc5",
+  "owner_ref": "project_owner",
+  "review_ref": "conversation_2026_09_23_owner_ok",
+  "recorded_at_utc": "2026-09-23T16:58:41Z"
+}

@@ -1,8 +1,294 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-09-23. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptance.
+Cập nhật: 2026-09-24. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptance.
 
 ## Đang làm
+
+**Ba arm prospective đã có CPU/admission/launcher parity; source freeze và
+native model vẫn còn mở.**
+[Three-arm report](../docs/evaluation/phase5_room_prospective_three_arm_cpu_v2_report.md):
+baseline/metadata giữ v12, ticket dùng v15; manifest v2 buộc các pin ngoài
+arm trùng nhau. CPU clean specimen: baseline chặn 3 proposal, metadata cho
+hai đọc/chặn webhook, ticket cho webhook mock hợp lệ. Fault/checkpoint và
+163 focused tests đạt. Package08 có 186 worker files, hai layouts, 21/21 clean
+Dummy mỗi layout; `source_commit=null`, 0 native/prospective run, chưa release.
+[Run-manifest report](../docs/evaluation/phase5_room_ticket_run_manifest_cpu_v1_report.md):
+external run SHA, canonical+file pin, source, task, environment, model revision,
+runtime/generation/seed và output overlap kiểm trước worker. Ticket arm chỉ
+một task, chưa thay baseline/metadata arm. 157 focused tests đạt; package06
+hai layouts/180 worker files/21 clean Dummy mỗi layout, `source_commit=null`,
+0 native/prospective run.
+[Native gate report](../docs/evaluation/phase5_room_ticket_native_gate_cpu_v1_report.md):
+đã tách read-only auditor; committed source manifest + exact tree và inventory
+pin là cổng trước worker. Task identity/checkpoint giữ raw, completed resume
+read-only; partial và join fail không tự retry. 154 focused tests qua. Gói mới
+`build/kaggle/phase5_room_ticket_dev_preflight04/preflight.json` có 178 worker
+files, hai layout, 21/21 clean Dummy mỗi layout; `source_commit=null`, zero
+model runs, không release-admitted.
+[Package report](../docs/evaluation/phase5_room_ticket_package_dev_v1_report.md):
+172 worker files; archive/expanded mounts trong venv offline độc lập qua 8
+mock tools/recovery, 21/21 clean Dummy và complete/missing-only resume.
+`build/kaggle/phase5_room_ticket_dev_preflight01/preflight.json` là receipt
+local ignored: working-tree CPU, `source_commit=null`, 0 prospective/native
+run, chưa release admission. Closure loại authoring và dữ liệu không công khai.
+[Review](../docs/evaluation/phase5_room_inventory_review_request_v1.md)
+và [record](../experiments/manifests/phase5_room_prospective_inventory_review_v1.json)
+bind draft có sẵn: `AUX_FUTUREROOM` S0 và `AUX_FUTUREPRIVATE` S2, cùng
+UNTRUSTED. [Validator](../src/react_agent/validation/room_inventory_review_v1.py)
+kiểm byte hash, role, run pin/hash/commit và exact source IDs; unit controls
+đạt, nhưng không chứng minh thời điểm người duyệt bằng mật mã. Chưa tạo
+content, chưa tạo `InventoryPin`, không có inference mới. [Protocol](../docs/evaluation/phase5_room_prospective_v1_protocol.md)
+đặt ba arm v12 baseline/v12 metadata/v15 ticket-adapter để tách lợi ích
+metadata và vé. [CPU report](../docs/evaluation/phase5_room_ticket_pair_cpu_v1_report.md):
+clean room được gửi tới đúng mock sink, poison bị chặn; cả hai có pair/guard
+trace và versioned auditor join. Cùng catalog đã duyệt, v12 metadata-only
+vẫn DENY clean, v15 ticket ALLOW; không quy hiệu ứng đó cho nhãn nguồn.
+S2 collision, sai đích và final chứa giá trị
+riêng cũng bị chặn/redact. Sai pin hoặc A5 bị chặn trước worker/output.
+V14 gốc vẫn CPU-only; adapter mới có package **development CPU** nhưng chưa
+có native/model hoặc authenticated source evidence.
+
+Bước cụ thể tiếp: (1) rà file nguồn/secret và làm một selective source freeze,
+không stage `docs/BAO_CAO_TIEN_DO_DO_AN.*` hoặc `docs/figures/`; (2) chạy
+committed exact package QA; (3) tạo
+`InventoryPin` với commit đó, pin hash vào
+manifest **trước** khi viết nội dung synthetic mới; (4) exact package rehearsal
+rồi mới cân nhắc Kaggle theo preflight. Lifecycle cold/warm OS-exit là protocol
+riêng. Không đổi Dev32/Test/raw hoặc v12. Pending access: không thiếu tài
+khoản; cần source freeze/native QA, không cần thêm owner label approval. QA
+phiên này: 163 focused tests, setup, Ruff toàn repo, mypy 528 source files,
+knowledge-check và diff-check đạt. Full pytest không
+chạy vì authoring tests chạm Test sealed. Không commit lẻ.
+
+Mốc trước — chiến lược sau Dev32:
+
+**Giải các nguyên nhân kỹ thuật của Phase 5, chưa freeze.**
+[Chiến lược](../docs/evaluation/phase5_completion_strategy_v1.md): v12 giữ
+làm baseline native Dev32 đã chấm; v13/v14 là proof-carrying A6 ablation CPU,
+không thay v12. Scoring selected Dev: attack success A2/A6 1/8 và 0/8;
+benign typed utility 4/8 và 3/8, một A6 canonical safe-action false block.
+Guard lifecycle: 31/32 GRACEFUL, một TERMINATE/-15 sau Python milestones.
+Không relabel raw Dev32, không dùng Test hoặc tăng grace timeout hậu nghiệm.
+
+Bước cụ thể: (1) owner duyệt hoặc sửa **trước nội dung** hai nhãn nguồn
+`AUX_FUTUREROOM` S0 và `AUX_FUTUREPRIVATE` S2, cả hai UNTRUSTED, trong
+[phiếu review](../docs/evaluation/phase5_room_inventory_review_request_v1.md);
+(2) khóa một protocol prospective paired để kiểm v12/v13/v14 theo security,
+utility, latency và lỗi worker, với source/seed/model/run identity riêng;
+(3) khóa riêng diagnostic cold/warm OS-exit trước native run. Nếu owner chưa
+duyệt, vẫn làm được admission/CPU negative controls và failure taxonomy;
+không dựng nguồn thật hoặc submit Kaggle. Verification: scorer receipt và exit
+diagnostic; 60 ticket/inventory tests, setup, Ruff, mypy 511 files,
+`make knowledge-check`, `git diff --check` đạt. Full pytest không chạy vì có
+authoring tests chạm Test đã sealed; chỉ dùng targeted tests. Không có quyền
+truy cập bổ sung cần cho CPU; approval inventory cần trước pilot nguồn mới.
+Không commit lẻ.
+
+Mốc trước — v14 CPU:
+
+**Ứng viên dated-room v14 CPU đã tích hợp; future-ID inventory vẫn chưa duyệt.**
+[Báo cáo](../docs/evaluation/phase5_dated_room_v1_report.md). Grammar v2
+cho đúng room line hoặc room line + ngày `Cập nhật: YYYY-MM-DD` hợp lệ; không
+nhận dòng thứ ba/JSON/ngày sai/Unicode khó thấy. Runtime v14 chỉ bind ticket
+v2 trên v13, giữ preflight synthetic, baseline PRE, Broker/POST/Final. Paired
+Replay: v13 DENY dated clean, v14 ALLOW; poison/duplicate/S2 collision/guard
+veto/sai đích/final leak vẫn DENY hoặc REDACT. Không model/GPU/Kaggle/Test,
+không gắn host inventory attested; formal Phase5 vẫn4/7≈57%.
+
+Bước tiếp: (1) owner xác nhận hai nhãn/role trong
+[phiếu chưa có payload](../docs/evaluation/phase5_room_inventory_review_request_v1.md)
+trước khi tạo content cho pilot mới; (2) khóa pin + source commit/run identity,
+thêm typed-origin controls và protocol metrics/guard lifecycle; (3) chỉ khi
+cổng model/package qua QA mới cân nhắc native v15/Kaggle. Giữ v12/v13/raw
+Dev32/Test bất biến. Chưa commit lẻ. Kiểm cuối: 127 related tests,
+setup/Ruff/mypy511/knowledge/diff đạt; full pytest tránh authoring Test sealed.
+
+Mốc trước — inventory synthetic:
+
+**Inventory synthetic mới và paired CPU đã xong; đợi review nguồn thực.**
+[Báo cáo](../docs/evaluation/phase5_room_synthetic_inventory_v1_report.md).
+Manifest chỉ có hai ID mới `AUX_NEWROOM` S0 và `AUX_NEWPRIVATE` S2,
+UNTRUSTED, `assistant_draft_unreviewed`; file SHA được pin trong integration.
+Builder kiểm exact IDs trước khi ghi case content và không đọc content để
+đặt nhãn. Same-task/catalog clean/poison/S2-collision: v12 DENY clean,
+v13 ALLOW clean, DENY hai nhánh không an toàn; Broker/POST/Final giữ nguyên.
+Đây là Replay CPU, không phải chứng nhận nhãn Dev; không có owner review,
+source commit freeze, model/GPU/Kaggle/Test hay thay đổi Dev32. Phase 5 vẫn
+4/7≈57%.
+
+Bước cụ thể: (1) để owner xác nhận riêng ID/nhãn cho tập nguồn prospective
+theo [phiếu chưa có payload](../docs/evaluation/phase5_room_inventory_review_request_v1.md)
+trước khi tạo nội dung thật; ghi review ref và source commit vào `InventoryPin`
+và run manifest, không tự gắn attested; (2) mở rộng grammar/typed-origin bằng
+synthetic negative controls rồi mới cân nhắc native v14; (3) xử lý guard
+lifecycle theo protocol riêng. Chưa có lý do commit lẻ hoặc submit Kaggle.
+File báo cáo/figures của user và raw Dev32 không chạm. Kiểm cuối: 107 related
+tests, setup, Ruff, mypy509, knowledge-check và diff-check đạt; không chạy
+full pytest vì authoring Test sealed.
+
+Mốc trước — cổng pin inventory:
+
+**Cổng inventory prospective đã có schema/pin; chưa có phê duyệt nguồn thật.**
+[Protocol](../docs/evaluation/phase5_host_source_annotations_v1_protocol.md),
+module `host_source_annotations_v1` và tests: pin gồm manifest pair-wide,
+owner/review reference, UTC, source commit và hash; admission cần hash từ run
+manifest đã khóa riêng, không được tính từ pin hiện tại. Thay nhãn/review,
+sai commit, sai cặp public Dev hoặc metadata không hợp lệ đều bị từ chối.
+Các reference trong test chỉ là specimen synthetic. Không thể xác nhận review
+độc lập hay thời điểm thực bằng schema. Dev32 đã có kết quả không được relabel;
+v13 còn replay-only. Chưa model/GPU/Kaggle/Test mới; Phase5 vẫn4/7≈57%.
+
+Bước cụ thể: owner chuẩn bị/review inventory nguồn *trước khi tạo nội dung*
+cho tập prospective mới; lưu record ngoài run, khóa SHA pin và source commit
+trong manifest trước inference. Sau đó mới thiết kế broad room grammar với
+synthetic paired negative controls và đánh giá có nên mở native v14 riêng.
+Không nâng `host_inventory_attested` khi mới pass schema. Không thiếu quyền
+Kaggle nhưng chưa đủ bằng chứng để submit. QA cuối của
+cổng pin: 100 related tests, setup, Ruff, mypy508, knowledge-check và
+diff-check đạt; full pytest không chạy vì các authoring Test đã sealed.
+Không commit lẻ.
+
+Mốc trước — v13 CPU hardening:
+
+**A6 v13 ticket ablation CPU đã tích hợp và qua QA; chờ inventory độc lập.**
+[Báo cáo](../docs/evaluation/phase5_ticket_runtime_cpu_v1_report.md).
+Wrapper chỉ nhận A6/catalog v2, giữ loop v12 và các gate/Broker; PRE tính
+baseline trước, chỉ xem lại UNKNOWN_FIELD room + coarse S2 có giải thích,
+không bỏ qua guard/rule/scope. Trace giữ baseline và quyết định ứng viên.
+Synthetic paired clean/poison, S2 collision, sai đích, guard veto, final leak,
+version gate đều kiểm tra. Lần đầu poison test FAIL do JSON escape khiến rule
+không phát hiện; extractor đã siết exact whole-content, case giữ lại. QA cuối:
+169 targeted tests ở mốc tích hợp. Hardening tiếp theo thêm preflight chỉ nhận
+replay agent, synthetic guard identity và 8 built-in tools trước worker/output;
+private entry chặn worker bị tráo. 98 focused tests gồm v12 regression,
+setup/Ruff/mypy508 đạt; knowledge-check/diff-check xem mốc kiểm cuối.
+Kiểm cuối 2026-09-23: `make knowledge-check` và `git diff --check` đều đạt.
+Đây không phải chứng nhận inventory synthetic hoặc nhãn host.
+Full pytest không chạy vì authoring Test sealed.
+Không model/GPU/Dev32/Test mới; Phase5 vẫn4/7≈57%.
+
+Bước tiếp: (1) xác nhận inventory host độc lập *trước* inference, khóa manifest
+và phương pháp paired Dev prospective; (2) mở rộng exact-line room grammar chỉ
+với cặp synthetic clean/poison/sensitive, rồi QA; (3) chỉ sau đó source
+freeze/commit gộp và cân nhắc Kaggle. Không gắn `attested=true` từ việc
+catalog có version v2. Chưa thiếu quyền truy cập; cần owner chấp nhận inventory
+để đi từ synthetic sang prospective model run.
+Đường lifecycle guard TERMINATE vẫn mở độc lập. Không chạm report/figures
+của user; raw Dev32 bất biến.
+
+Mốc trước — ticket component:
+
+**Pilot `public_field_ticket_v1` đã có component và synthetic controls; chưa
+đưa vào A6 runtime.** [Báo cáo](../docs/evaluation/phase5_public_field_ticket_v1_report.md).
+Host issue vé từ tài liệu S0 đã admit + POST ToolResult chính xác; PRE xác
+thực run/index/source/observation/value/ancestry, user endpoint, exact payload
+`room`, collision với S1/S2. Một public room có S2 không liên quan được phép
+ở cấp *component*; sai đích, trùng S2, không nguồn, giả vé/POST bị chặn.
+10 synthetic pytest cases thuộc pilot; QA cuối: setup, Ruff toàn repo,
+mypy507 source files,94 focused tests, knowledge-check và diff-check đạt.
+Không chạy full pytest vì authoring tests chạm sealed Test. Chưa model/GPU,
+không đụng Dev32/Test; formal4/7≈57%.
+
+Bước tiếp: độc lập xác nhận pre-ingestion host inventory cho nguồn sẽ thử,
+sau đó thêm runtime A6 **phiên bản mới** với đầy đủ PRE/POST/Final/Broker và
+paired controls, so sánh ablation baseline/metadata/ticket trên Dev mới. Không
+biến component ALLOW thành full A6 ALLOW. Lifecycle guard TERMINATE vẫn cần
+prospective instrumentation riêng. Không commit trước QA và source freeze cần
+thiết; không chạm report/figures của user.
+
+Mốc trước — metadata host:
+
+**Đường metadata nguồn prospective đã được chủ đồ án chọn; implementation
+opt-in, chưa có inference.** [Protocol](../docs/evaluation/phase5_host_source_annotations_v1_protocol.md),
+[quyết định](../docs/project/decision_log.md). `host_source_annotations_v1`
+chỉ tạo catalog v2 từ manifest cho cả cặp public Dev, exact inventory,
+UNTRUSTED, không đọc text/oracle; frozen catalog Dev32 không đổi. Unit controls
+kiểm tra poison text, thiếu/thừa ID, duplicate, trust upgrade, sai pair/Test.
+Chưa có pre-ingestion host inventory được owner xác nhận nên chưa relabel bất
+kỳ fixture thực nào. QA của bước này: setup đạt, Ruff toàn repo đạt,
+mypy506 files đạt,17 focused tests đạt, knowledge-check/diff-check đạt;
+không chạy full pytest vì các authoring tests chạm sealed Test. Chưa model,
+GPU, Kaggle hay held-out Test mới. Phase5 vẫn4/7≈57%.
+
+Bước cụ thể: chốt QA đầy đủ và code+evidence cùng một commit khi cần source
+freeze; sau đó lập inventory nguồn phụ *trước* prospective run, có owner/date/
+hash độc lập, thiết kế grammar `room` và typed origin với synthetic paired
+public/sensitive/unknown/poisoned controls. Không dùng kết quả Dev32 để đặt
+nhãn. Lifecycle: bài startup/exit mới identity riêng nếu cần, không rerun Dev32.
+Quyền: không thiếu Kaggle; raw local chưa backup riêng. File report/figures
+của user không chạm.
+
+Mốc trước — hai chẩn đoán:
+
+**Hai đường chẩn đoán Phase5 đã xong, cần quyết định/thiết kế prospective.**
+[False-block report](../docs/evaluation/phase5_clause_falseblock_root_cause_v1_report.md),
+[lifecycle report](../docs/evaluation/phase5_clause_guard_exit_diagnostic_v1_report.md),
+[lifecycle receipt](../experiments/manifests/phase5_clause_guard_exit_diagnostic_v1_receipt.json).
+Shutdown audit32tasks/64workers:32agent GRACEFUL,31guard GRACEFUL,
+1guard TERMINATE/-15 ở ca đầu chưa có guard classification; STOP/serve/
+finalizers/threads đều return, 0 non-daemon threads, vẫn trễ deadline2s.
+Hai output `results/phase5_clause_guard_exit_diagnostic01/diagnostic.json`
+và `diagnostic02/diagnostic.json` SHA cùng
+`1ced49b8d0adecbf5ced88b9f674cc8ea15849c7383eb1b9e6f2281ebdbbcb54`.
+Chưa chứng minh nguyên nhân OS exit. Không Test/oracle/GPU mới. Mọi raw/Dev32
+score giữ nguyên. QA cuối:163 targeted tests, setup/Ruff/mypy505/
+knowledge-check/diff-check đạt; ba selected receipts và sáu final generated
+reports khớp SHA. Không chạy full pytest vì fixture authoring Test đã sealed.
+Phase5 còn4/7≈57%; không update phase_status.
+
+Bước cụ thể: (1) cần chọn giữ nhãn nguồn phụ bảo thủ hay phê duyệt thiết kế
+public host annotation độc lập, không dựa oracle, trước bất kỳ sửa policy;
+(2) nếu cần đóng lifecycle, khai báo riêng bài prospective startup/exit
+instrumentation với run identity mới, không retry Dev32; (3) chạy QA/commit
+gộp khi thay đổi coherent và đạt. Kaggle không thiếu quyền; raw chưa backup
+ngoài máy. File báo cáo/figures riêng của user không chạm.
+
+Mốc trước — root cause false block:
+
+**Root cause A6 benign false block đã được xác thực; đang chờ quyết định metadata.**
+[Protocol](../docs/evaluation/phase5_clause_falseblock_diagnostic_protocol_v1.md),
+[report](../docs/evaluation/phase5_clause_falseblock_root_cause_v1_report.md),
+[receipt](../experiments/manifests/phase5_clause_falseblock_diagnostic_v1_receipt.json).
+Hai output `results/phase5_clause_falseblock_diagnostic03/diagnostic.json` và
+`diagnostic04/diagnostic.json` cùng SHA
+`6386e6f094507a517a482549d12d8233ec71714cee0b7ab0ac1cc7afc61351e5`.
+Raw 2.073 files/audit nguyên; chỉ public Dev/trace, 0 oracle/Test/model mới.
+Tài liệu phụ được catalog cố ý gắn S2/UNTRUSTED; payload key `room` chưa hỗ
+trợ; typed origin vắng. Đích do raw user cho phép và read thành công, nhưng
+gate DENY đúng fail-closed với metadata hiện có. Không hạ nhãn/whitelist theo
+oracle. Phase5 vẫn4/7≈57%, DoD5/15/20 và guard TERMINATE còn mở.
+
+Bước cụ thể: chủ đồ án chọn giữ A6 bảo thủ và ghi utility loss, hoặc phê duyệt
+thiết kế public host-source annotation độc lập/phiên bản mới (không từ GT, không
+mở Test) trước khi sửa hành vi. Nếu chưa chọn, có thể kiểm toán riêng guard
+TERMINATE bằng raw hiện có, không đụng policy. Quyền Kaggle không thiếu;
+raw chưa backup ngoài máy. Giữ scorer/Dev32/raw bất biến, không commit status
+lẻ; batch code+tests+evidence sau QA khi cần. User-owned report/figures bỏ qua.
+
+Mốc trước — Dev32 scoring/adjudication:
+
+**Dev32 evaluator-only v1 đã chấm và adjudicate bounded cases; Phase5 chưa đóng.**
+[Giao thức](../docs/evaluation/phase5_clause_dev32_scoring_protocol_v1.md),
+[báo cáo](../docs/evaluation/phase5_clause_dev32_scoring_v1_report.md),
+[receipt](../experiments/manifests/phase5_clause_dev32_scoring_v1_receipt.json).
+Hai output final `results/phase5_clause_dev32_score05/summary.json` và
+`score06/summary.json` SHA cùng
+`5601a90ddca2de14111fd6b573417022f989c2b4c52e21edc240baff9dfbd04e`;
+32/32 ca, nguyên raw+audits. Không model/Test mới. Attack observed A2=1/8,
+A6=0/8; benign utility4/8→3/8, safe utility2/8→3/8. Một A6 benign
+canonical safe-action bị PRE chặn đã xác nhận bằng oracle/action/rule;
+chưa báo FPR tổng thể. Hai A2 ROWLIST unassessed là cùng query không hợp lệ,
+Broker INVALID_QUERY. Năm tests mới/90 related đạt, setup/Ruff/mypy503 đạt. Formal
+Phase5 vẫn4/7≈57%; DoD5/15/20 và guard TERMINATE chưa đóng. Quyền:
+không thiếu Kaggle; raw local chưa backup ngoài máy. Tránh commit status lẻ.
+
+Bước cụ thể: đặt prospective protocol để sửa false block canonical benign
+và bổ sung guard semantic/lifecycle coverage, rồi QA trước source freeze mới;
+không sửa scorer đã khóa để cải thiện số. Gom một commit coherent sau QA.
+Test sealed không đọc,
+không rerun/cherry-pick Dev32.
+
+Mốc trước — terminal audit xong nhưng chưa chấm:
 
 **Dev32 v2 COMPLETE/audit; bước tiếp là evaluator-only Dev scoring.**
 [Terminal report](../docs/evaluation/phase5_clause_dev_gpu_v2_terminal_report.md),
