@@ -6,7 +6,31 @@ không phải phần trăm công sức hoặc số dòng mã. Phase 1–4 đã a
 
 ## Kết quả mới nhất
 
-**Kaggle Dev32 v1 kết thúc ERROR trước worker đầu tiên; gói v2 qua QA, chưa submit.**
+**Dev32 v2 COMPLETE và audit độc lập, chưa chấm quality/utility.**
+[Terminal report](../docs/evaluation/phase5_clause_dev_gpu_v2_terminal_report.md),
+[selected receipt](../experiments/manifests/phase5_clause_dev_v2_gpu_terminal01.json).
+Actual notebook version1/ID135499833, source `ad152ff`; 32/32 fixed public Dev,
+8/8 shards, 2.073 raw/2 remote files và 222 source pins xác thực. Hai audits
+và hai báo cáo mô tả có SHA khớp. 65/65 returned guard responses syntax `OK`;
+8 ca không gọi guard, 31/32 graceful toàn bộ workers, một guard TERMINATE.
+Không Test/private GT, không retry. ASR/FPR/benign utility và final semantics
+chưa chấm; formal Phase5 vẫn 4/7≈57%. Bước tiếp: evaluator-only Dev scoring
+trên raw bất biến, không chạy lại model.
+
+Mốc trước — submission/RUNNING (quan sát lịch sử):
+
+**Dev32 v2 đã submit một lần lên Kaggle; RUNNING lúc 09:55:43 UTC 2026-09-23.**
+[Notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v2)
+v1/ID135499833, private/offline/T4, source commit `ad152ff8c8970df28cd6b5b0a0eebd02481b8e1e`.
+[Release02](../experiments/manifests/phase5_clause_dev_package_v2_release02.json),
+[submission](../experiments/manifests/phase5_clause_dev_v2_gpu_submission01.json).
+Remote source/settings/version khớp; chưa có terminal output hoặc quality score.
+Tiếp theo chỉ monitor read-only, khi terminal thì tải vào thư mục mới và audit
+version/source trước-sau download; không submit trùng.
+
+Mốc trước — v1 ERROR và chuẩn bị v2:
+
+**Kaggle Dev32 v1 kết thúc ERROR trước worker đầu tiên; gói v2 đã qua QA.**
 [Failure report](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md),
 [v2 report](../docs/evaluation/phase5_clause_dev_package_v2_report.md),
 [QA02](../experiments/manifests/phase5_clause_dev_package_v2_qa02.json).
@@ -20,8 +44,7 @@ Dataset guard15 private/ready/v1. Source freeze `24164d8` đã push main;
 committed rehearsal release01 qua cả hai layouts nhưng host validator còn
 allowlist cache v1, nên release01 bị từ chối, chưa submit. Sửa validator và
 regression test đã qua QA03 (981 focused/395 integration/Ruff/mypy501/setup);
-cần chốt commit sửa lỗi, dựng release02 và
-validate release trước notebook v2 private/offline/T4 một lần.
+Cổng này đã đóng bằng release02/commit `ad152ff` ở trên.
 Không resume v1 hay gửi lại cùng phiên bản. Phase5 vẫn 4/7≈57%, Test khóa.
 
 Mốc trước — submission status lịch sử:

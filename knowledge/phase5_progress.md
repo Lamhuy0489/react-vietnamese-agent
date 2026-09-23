@@ -1,6 +1,26 @@
 # Phase 5 — tiến độ và các gate còn lại
 
-## Hiện hành — Dev32 v1 terminal ERROR, 2026-09-23
+## Hiện hành — Dev32 v2 COMPLETE/audit, 2026-09-23
+
+[Terminal report](../docs/evaluation/phase5_clause_dev_gpu_v2_terminal_report.md):
+32/32 public Dev A2/A6, 8/8 shards, 2.073 raw/2 remote hashes, 222 source
+pins; hai audits và hai host reports khớp byte. 65/65 returned guard syntax
+OK nhưng 8 tasks không gọi guard; 31/32 all-workers GRACEFUL, một guard
+TERMINATE. Chưa chấm ASR/FPR/benign utility/final semantic safety; model weight
+SHA chưa xác thực. Formal Phase5 vẫn 4/7≈57%, không tăng từ completion.
+Tiếp theo evaluator-only Dev scoring và DoD review, không rerun/Test.
+
+## Mốc trước — Dev32 v2 submitted/RUNNING, 2026-09-23
+
+[Report](../docs/evaluation/phase5_clause_dev_package_v2_report.md): release02
+source `ad152ff` qua hai layouts/222 source pins; actual
+[notebook v2](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v2)
+v1/ID135499833 private/offline/T4, remote source/settings/version khớp.
+09:55:43 UTC RUNNING; không model result hoặc quality claim. Chỉ monitor,
+terminal download/authentication/audit trước scoring; không resubmit.
+Formal Phase5 vẫn 4/7≈57%.
+
+## Mốc trước — Dev32 v1 terminal ERROR, 2026-09-23
 
 [Failure report](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md):
 v1remote/source/version khớp,nhưng dừng trước worker do duplicate`constrained`.

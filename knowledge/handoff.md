@@ -4,6 +4,52 @@ Cập nhật: 2026-09-23. Phase 5 chưa nghiệm thu: 4/7 ≈ 57% nhóm acceptan
 
 ## Đang làm
 
+**Dev32 v2 COMPLETE/audit; bước tiếp là evaluator-only Dev scoring.**
+[Terminal report](../docs/evaluation/phase5_clause_dev_gpu_v2_terminal_report.md),
+[selected receipt](../experiments/manifests/phase5_clause_dev_v2_gpu_terminal01.json).
+Actual notebook [v2](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v2)
+version1/ID135499833, source `ad152ff8c8970df28cd6b5b0a0eebd02481b8e1e`,
+private/offline/T4, Dataset guard15v1. Terminal trước/sau download COMPLETE,
+source/metadata/version khớp. Raw `results/phase5_clause_dev_v2_gpu_monitor01/raw`
+có 2.073 files; 2 remote files, 222 source pins, 8 shards/32 tasks được hai
+audits độc lập byte-identical. Host descriptive report chạy lại từ hai audits
+cũng byte-identical; 67 targeted tests/setup/Ruff/mypy502 đạt. 65/65 guard
+responses `OK`, 8 tasks không gọi guard, 31/32 all-workers graceful, một
+guard TERMINATE; không tự suy ra ASR/FPR/utility. Known credential scan
+2.077 files/3 values có 0 matches. Không Test/private GT, không inference mới.
+
+Bước cụ thể: khóa evaluator-only Dev scoring protocol/denominators/error handling
+trước khi đối chiếu traces với oracle Dev; giữ raw và v1 ERROR/release01 rejection
+bất biến. Không rerun notebook để chọn kết quả tốt hơn, không mở held-out Test.
+Sau đó cập nhật DoD5/15/20 theo bằng chứng, quality/lifecycle limitations và
+formal freeze. Phase5 vẫn 4/7≈57%. Quyền: không thiếu Kaggle; raw chưa backup
+riêng ngoài máy. Receipt/báo cáo terminal hiện local, gom một commit sau khi
+QA/knowledge-check đầy đủ; không status-only commit hoặc amend source worker.
+
+Mốc trước — v2 RUNNING (quan sát lịch sử):
+
+**Dev32 v2 RUNNING; không submit lại.** Actual
+[huylmhuhu/react-vn-clause-dev32-v2](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v2)
+version 1/ID 135499833, private/offline/T4, source
+`ad152ff8c8970df28cd6b5b0a0eebd02481b8e1e` đã push GitHub main.
+[Release02](../experiments/manifests/phase5_clause_dev_package_v2_release02.json)
+qua hai layouts/222 committed source pins/213 worker files;
+[QA03](../experiments/manifests/phase5_clause_dev_package_v2_qa03.json)
+981 focused + 395 integration, Ruff/mypy501/setup/knowledge đạt.
+[Submission](../experiments/manifests/phase5_clause_dev_v2_gpu_submission01.json)
+đã xác minh remote source/settings/version; live 09:55:43 UTC 2026-09-23 là
+RUNNING, chưa có model result. Dataset guard15 private/ready/v1; quota còn
+29,73h lúc submit. Không Test/private GT, không semantic retry.
+
+Bước cụ thể: monitor v2 read-only. Khi terminal, tải một lần vào thư mục mới,
+ghi source/version/status trước-sau và chạy `audit_phase5_clause_dev_gpu_v2.py`
+hai lần độc lập trên raw bất biến. Nếu ERROR, giữ partial và phân loại lỗi trước
+mọi lần thử khác. Sau audit mới chấm quality/benign utility/lifecycle; formal
+Phase5 vẫn 4/7≈57%. Quyền: tài khoản Kaggle hiện có đủ; bạn Minh cần quyền
+Kaggle riêng nếu dùng tài khoản khác. Raw chưa có backup riêng ngoài máy.
+
+Mốc trước — v1 failure và chuẩn bị v2 (không phải trạng thái hiện hành):
+
 **Dev32 v1 terminal ERROR; v2 đã qua development package và QA, chưa submit.**
 [Failure report](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md),
 [v2 report](../docs/evaluation/phase5_clause_dev_package_v2_report.md),

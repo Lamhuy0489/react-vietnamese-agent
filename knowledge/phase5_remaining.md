@@ -2,10 +2,14 @@
 
 Dev32 v1 đã terminal ERROR trước worker start:
 [failure report](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md).
-V2 correction/package/QA03 đã đạt; committed release01 bị từ chối do host
-auditor cache allowlist sai, chưa gửi notebook v2. Cần commit sửa lỗi, một
-committed release02 được xác thực và một run mới cho
-32ca chưa thực thi, rồi quality/utility và lifecycle analysis. Không dùng v1
+V2 correction/package/QA03 và release02 đã đạt; committed release01 bị từ chối
+do host auditor cache allowlist sai. Actual
+[notebook v2](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v2)
+version1/ID135499833 đã COMPLETE, tải và
+[terminal audit](../docs/evaluation/phase5_clause_dev_gpu_v2_terminal_report.md)
+cho 32/32 ca; 65/65 returned guard syntax OK, một guard TERMINATE.
+Còn evaluator-only Dev quality/utility, lifecycle interpretation và formal
+freeze; không dùng v1
 CPU pass hay v1 ERROR làm model quality proof.
 
 Cập nhật 2026-09-23, đối chiếu `plan/phase5.md` mục CXXVI (20DoD) và

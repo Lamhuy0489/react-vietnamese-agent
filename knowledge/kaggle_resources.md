@@ -22,6 +22,41 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**Dev32 v2 COMPLETE/audit; không resubmit.** Actual
+[notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v2)
+version1/ID135499833, source commit
+`ad152ff8c8970df28cd6b5b0a0eebd02481b8e1e`, private/offline/T4;
+[Guard Dataset](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+version1/private. [Terminal report](../docs/evaluation/phase5_clause_dev_gpu_v2_terminal_report.md),
+[receipt](../experiments/manifests/phase5_clause_dev_v2_gpu_terminal01.json),
+[release02](../experiments/manifests/phase5_clause_dev_package_v2_release02.json),
+[submission](../experiments/manifests/phase5_clause_dev_v2_gpu_submission01.json).
+Before/after remote identity khớp; 32/32 tasks, 8/8 shards, 2.073 raw và
+2 remote hashes, 222 committed source pins; hai audits giống byte-for-byte.
+Raw `results/phase5_clause_dev_v2_gpu_monitor01/raw`, audit01/02 và report01/02
+dưới `results/phase5_clause_dev_v2_gpu_*`. Chưa Dev-oracle quality/utility,
+formal Phase5 chưa nghiệm thu; private link cần quyền Kaggle riêng, GitHub
+access không đủ. Không đưa credential vào repo, không chuyển public.
+
+Mốc trước — v2 RUNNING lúc submit (không phải trạng thái hiện hành):
+
+**Dev32 v2 RUNNING lúc 09:55:43 UTC 2026-09-23; chỉ monitor read-only.**
+Actual=requested [notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v2)
+version 1/ID 135499833, source commit
+`ad152ff8c8970df28cd6b5b0a0eebd02481b8e1e` đã push GitHub main.
+Private/offline/T4/timeout 14400s; fixed 32 public Dev A2/A6,
+model Qwen2.5-7B mount. [Guard Dataset](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+version 1/private/ready đã kiểm tra ngày 2026-09-23. Remote source/settings/
+version khớp [submission receipt](../experiments/manifests/phase5_clause_dev_v2_gpu_submission01.json)
+và [release02](../experiments/manifests/phase5_clause_dev_package_v2_release02.json).
+[Report](../docs/evaluation/phase5_clause_dev_package_v2_report.md); raw push
+`results/phase5_clause_dev_v2_gpu_submission01`, read-only admission
+`results/phase5_clause_dev_v2_kaggle_preflight01`. Chưa terminal download,
+quality score hoặc acceptance. Link private cần quyền Kaggle; GitHub access
+không đủ. Không gửi lại version/job này; release01 bị từ chối trước upload.
+
+Mốc trước — v1 terminal ERROR (không phải job hiện hành):
+
 **Dev32 v1 ERROR trước worker start**,terminal thấy08:39:20UTC2026-09-22.
 [Notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v1)
 version1/ID135340687,source`5a23528`xác thực,Dataset guard15v1/private.

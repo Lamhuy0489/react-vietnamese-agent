@@ -48,3 +48,28 @@ files, setup and knowledge checks; 7 unaffected QA02 source pins, 182 frozen
 native source pins and 169 tracked data hashes remain unchanged. A new
 committed release is required; the earlier QA02 remains immutable evidence for
 the pre-correction source.
+
+Release02 was built from GitHub main commit
+`ad152ff8c8970df28cd6b5b0a0eebd02481b8e1e` and passed independent
+[package authentication](../../experiments/manifests/phase5_clause_dev_package_v2_release02.json):
+222 committed source pins, 213 worker files and both archive/expanded layouts,
+each with 21 Dummy and 32 fixed Dev tasks. The release01 bundle remains
+rejected and was not uploaded.
+
+One private/offline/T4 Kaggle submission was accepted as the actual
+[Dev32 v2 notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v2),
+version 1/ID 135499833, using the unchanged private
+[guard Dataset](https://www.kaggle.com/datasets/huylmhuhu/react-vn-guard15-probe-data-v1)
+version 1 and Qwen2.5-7B model mount. The remote source, metadata, version and
+source commit matched the [submission receipt](../../experiments/manifests/phase5_clause_dev_v2_gpu_submission01.json).
+At 2026-09-23 09:55:43 UTC a read-only check reported RUNNING. No terminal
+output or native quality score exists yet; do not resubmit or reuse v1 partial
+output. Next: wait for terminal status, download to a fresh directory, record
+before/after remote identity and independently audit the immutable raw files.
+
+Terminal update: the notebook subsequently finished COMPLETE. The fresh
+download, two byte-identical release audits, 32/32 task coverage and the
+host-only descriptive results are documented in the
+[v2 terminal report](phase5_clause_dev_gpu_v2_terminal_report.md). This
+supersedes the RUNNING observation above but does not constitute guard-quality
+or Phase 5 acceptance.
