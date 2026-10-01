@@ -29,6 +29,7 @@ WORKER_FILES = (
     "react_agent/__init__.py",
     "react_agent/serving/__init__.py",
     "react_agent/serving/structured_api_v1.py",
+    "react_agent/serving/public_llama_source_v1.py",
     "react_agent/serving/quiescent_engine_v3.py",
     "react_agent/serving/request_storage_v3.py",
     "react_agent/serving/request_lifecycle_v3.py",
@@ -128,7 +129,8 @@ if __name__ == "__main__":
 '''
 
 
-def prepare(directory: Path, source_commit: str, *, owners: dict[str, str] | None = None) -> None:
+def prepare(directory: Path, source_commit: str, *, owners: dict[str, str] | None = None,
+            public_guard: bool = False) -> None:
     """Build owner-operated packages; never authenticate or submit accounts."""
     accounts = owners if owners is not None else {
         role: target["account"] for role, target in TARGETS.items()}
@@ -186,6 +188,10 @@ def prepare(directory: Path, source_commit: str, *, owners: dict[str, str] | Non
             "cloudflared_sha256": TUNNEL_SHA,
             "lifetime_seconds": 28800,
         }
+        if role == "guard" and public_guard:
+            cfg.update(model_acquisition="public_unsloth_llama32_3b_v1",
+                       model_source="unsloth/Llama-3.2-3B-Instruct@"
+                                    "006f5dcd1393c3add266de40994ba96225e9689d")
         code_file = target["slug"] + ".py"
         (folder / code_file).write_text(_wrapper(sources, cfg), encoding="utf-8")
         metadata = {
@@ -201,7 +207,8 @@ def prepare(directory: Path, source_commit: str, *, owners: dict[str, str] | Non
             "dataset_sources": [],
             "competition_sources": [],
             "kernel_sources": [],
-            "model_sources": [target["model_source"]],
+            "model_sources": [] if role == "guard" and public_guard
+                             else [target["model_source"]],
         }
         save(folder / "kernel-metadata.json", metadata)
         files = {
@@ -255,7 +262,10 @@ for name, module in tuple(sys.modules.items()):
         origin = Path(module.__file__).resolve()
         assert origin.is_relative_to(mount)
         origins[name] = str(origin.relative_to(mount))
-assert len(origins) == 9
+assert set(origins.values()) == set(namespace["BUNDLE"])
+if config.get("model_acquisition"):
+    from react_agent.serving.public_llama_source_v1 import validate_configuration
+    validate_configuration(config)
 calls = []
 def engine(spec, stop):
     calls.append(spec.request_id)
@@ -367,13 +377,15 @@ def main() -> None:
     parser.add_argument("--source-commit", default="development")
     parser.add_argument("--agent-owner")
     parser.add_argument("--guard-owner")
+    parser.add_argument("--public-guard", action="store_true",
+                        help="Use the pinned public Hugging Face guard snapshot")
     args = parser.parse_args()
     if args.action == "prepare":
         if bool(args.agent_owner) != bool(args.guard_owner):
             parser.error("provide both owner names together")
         owners = ({"agent": args.agent_owner, "guard": args.guard_owner}
                   if args.agent_owner else None)
-        prepare(args.directory, args.source_commit, owners=owners)
+        prepare(args.directory, args.source_commit, owners=owners, public_guard=args.public_guard)
         print(canonical({"prepared": True, "profile": PROFILE,
                          "network_actions": [], "notebook_submitted": False}))
     else:
