@@ -1,50 +1,44 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-10-02. **Phase 5 accepted; sẵn sàng bắt đầu Phase 6 trong phiên mai.**
-Owner yêu cầu lưu thông số, dọn file tạm và lưu tri thức trước khi tiếp tục.
+Cập nhật: 2026-10-23. Đang ở **R0 (Reset)** của
+[lộ trình v2](../docs/project/roadmap_v2_rebuild.md). Đã chốt 3 quyết định R0;
+phần dọn repo của R0 chưa làm.
 
 ## Đang làm
 
-Đã khóa điểm tiếp nối và lưu [thông số Phase 5](phase5_parameters.md), gồm model
-revision, source/config/prompt/data hashes, generation, timeout và các run roots.
-Xem [kế hoạch mở đầu Phase 6](phase6_start.md); hôm nay chưa code Phase 6.
-Cleanup chỉ áp dụng cache/bytecode không được track hoặc pin trong evidence.
-Không xóa build/pytest_* hàng loạt: có trace lịch sử được manifest tham chiếu.
+R0, tuần 24/10–30/10. Đã xong:
+
+- Commit/push toàn bộ việc còn dở.
+- Dọn local storage: khoảng 18 GB xuống 2,3 GB; xem [storage](storage_and_obsidian.md).
+- Chốt model, guard và chỉ số.
+- Kiểm tính toàn vẹn của dữ liệu.
 
 ## Bước tiếp theo
 
-1. Đọc Phase 6 ngày 1 và 15 DoD trong plan, rà scorer hiện có.
-2. Chốt `docs/metrics_spec.md`: tử số/mẫu số, eligibility/exposure, error/missing,
-   proposed/executed và per-task scoring trước khi viết evaluator.
-3. Dùng saved Dev traces và synthetic golden cases. Bước đầu không cần API.
-4. Chỉ khi cần Dev inference mới kiểm lại health/identity/boot và khai báo run
-   mới; không resume closure84 hoặc guard80, không gửi key trong chat.
-5. Giữ Test khóa đến khi evaluator được freeze và có scope final evaluation.
-   Phase 6 không tự sửa defense; human-validation protocol chưa được làm thay
-   bằng self-review waiver cũ. Phase 7 là final experiments riêng.
+1. Owner xin quyền HF gated cho Llama 3.1 8B Instruct và Llama Prompt Guard 2 86M,
+   rồi xem hạn mức GPU Kaggle trong Settings.
+2. Merge branch hiện tại vào `main` (qua PR), gắn tag `phase5-closure` trên `6509ae0`.
+3. Dọn trên `main`: gom các script cũ, chưa dùng (v1/v2, preflight, chẩn đoán) vào
+   `scripts/legacy/` hoặc xóa, chỉ giữ dưới 30 script đang dùng. Chạy
+   ruff/mypy/pytest sau khi dọn. Không đổi các đường dẫn mà manifest hash vẫn tham chiếu
+   nếu receipt còn cần audit lại; lịch sử khôi phục qua tag.
+4. Viết `docs/metrics_spec.md` theo các quyết định trong decision log ngày 2026-10-23.
+5. Sang R1: evaluator gọn chạy trên trace Dev đã lưu.
 
 ## Bằng chứng
 
-- [Completion receipt](../experiments/manifests/phase5_completion_20261002.json):
-  20/20 PASS, 467 tests; baseline commit419938b.
-- [Thông số JSON](../experiments/manifests/phase5_frozen_parameters_20261002.json).
-- [Guard report](../docs/evaluation/phase5_guard_quality_v1_report.md):
-  TP21/FN19/FP5/TN35, 80/80 valid; không ASR hoặc task utility.
-- [Closure dossier](../docs/evaluation/phase5_completion_20261002.md).
-- Raw roots và gói5,54MiB nằm trong parameter manifest/completion receipt.
-- Cleanup inventory và before/after hash checks:
-  `build/maintenance/phase5_to_phase6_20261002/cleanup_receipt.json`.
+- Quyết định: [decision log](../docs/project/decision_log.md), mục ngày 2026-10-23.
+- Kiểm dữ liệu: `scripts/assemble_adversarial_release.py --action check`
+  cho kết quả valid, test_sealed, 700 biến thể; 23 file clean v1.1 khớp hash.
+- Phase 5: [completion receipt](../experiments/manifests/phase5_completion_20261002.json).
 
 ## Giới hạn
 
-Native vẫn giữ 72 completed/12 errors; C6 bị A5/A6 chặn dư. 11HTTP422khớp
-OUTPUT_SCHEMA_FAILED, chưa biết sâu hơn vì sao JSON sai. Provenance còn giới hạn.
-Không Test/private GT parse, inference mới, notebook submission hoặc API shutdown
-trong lượt bàn giao. Owner có thể dừng hai notebook; trạng thái tắt chưa được
-xác nhận bằng live check. Boot/session cũ chỉ là lịch sử sau restart.
-
-Các thay đổi mới và backup vẫn local, chưa commit/push hoặc sao lưu ngoài máy.
-Giữ nguyên mọi thay đổi chưa commit của owner và source đã dùng thực nghiệm.
-Không git add toàn dirty tree. Không có lịch tự chạy hoặc monitor cho ngày mai.
-
-[Lịch sử trước bàn giao Phase 6](history_20261002_before_phase6_handoff.md).
+- **Repo GitHub đang PUBLIC** và chứa `data/clean/v1_1/private/*` (GT clean, gồm cả
+  Test) cùng payload Test của adversarial. Owner cần quyết định có chuyển repo sang
+  private trước Phase 7 hay không. Không tự đổi visibility.
+- Không được sửa dữ liệu đã seal. Muốn tinh chỉnh dữ liệu phải tạo version mới
+  và chỉ làm trên Dev.
+- Guard recall 52,5%, 12/84 model_error, C6 bị chặn dư. Các điểm này để R2 xử lý trên Dev.
+- Chưa có reviewer thứ hai; Minh chưa nhận lời mời GitHub.
+- [Handoff trước lộ trình v2](history_20261023_before_roadmap_v2_handoff.md).
