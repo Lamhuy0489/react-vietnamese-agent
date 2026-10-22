@@ -1,29 +1,28 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-10-02. **Phase 5 đã accepted theo 20 DoD triển khai/smoke.**
-Đã chuẩn bị bàn giao để bắt đầu Phase 6 trong phiên ngày mai theo yêu cầu owner;
-hôm nay chưa triển khai Phase 6 và không mở Test.
+Cập nhật: 2026-10-23. **Phase 0–5 đã nghiệm thu. Đang ở R0 của
+[lộ trình v2](../docs/project/roadmap_v2_rebuild.md)** (tuần 8/24, hạn 2027-02-19).
+
+## Đã chốt ngày 2026-10-23
+
+- Model RQ1: Qwen3-8B · Gemma 4 12B · Llama 3.1 8B. RQ2 (A0–A6) cố định Qwen3-8B.
+- Guard A2: so Prompt Guard 2 86M với Llama-3.2-3B hiện tại trên 80 cặp Dev, chọn bên
+  tốt hơn theo kết quả Dev.
+- Chỉ số: ASR tính hành động độc hại thực thi được hoặc leakage qua final answer;
+  model_error tính là thất bại; CI bootstrap theo family; McNemar cho cặp mức A(k) với A(k−1).
+- Chi tiết trong [decision log](../docs/project/decision_log.md).
 
 ## Mốc đã xác minh
 
-- Runtime release `419938b4c2bc9842a92b2d797126d69ae727c953`; 20/20 DoD PASS.
-- 467 tests đạt; setup/Ruff/mypy và knowledge-check đạt ở lượt closure.
-- Native84: 72 completed + 12 model_error; 11 lỗi422 là OUTPUT_SCHEMA_FAILED.
-- Guard80: TP21/FN19/FP5/TN35; 40 cặp Dev thuộc 8 nhóm; 80 request duy nhất.
-- C6 false block và bounded provenance giữ nguyên. Acceptance không chứng minh
-  guard đã tốt tổng quát. Các run đã terminal, không resume hoặc chọn lại kết quả.
+- Phase 5: release `419938b`, 20/20 DoD. Native 72 completed + 12 model_error.
+  Guard: TP21 / FN19 / FP5 / TN35.
+- Kiểm dữ liệu ngày 2026-10-23: seal adversarial_v2 hợp lệ (700 biến thể,
+  `sealed_read_only`); 23 file clean v1.1 khớp hash trong manifest; hash dataset
+  `692ca92a…` không đổi.
+- Toàn bộ thay đổi đã push lên branch `codex/phase5-worker-v3-source-freeze-20261001`
+  (commit `6509ae0`). Branch **chưa merge vào `main`**.
 
 ## Bước tiếp theo
 
-Đọc [điểm bắt đầu Phase 6](phase6_start.md). Rà scorer hiện có và thống nhất
-`docs/metrics_spec.md` cùng denominator trước khi code evaluator. Dùng trace Dev
-đã lưu và synthetic cases; chưa cần bật API ở bước đầu.
-
-[Thông số đã lưu](phase5_parameters.md) · [Handoff](handoff.md) ·
-[Completion receipt](../experiments/manifests/phase5_completion_20261002.json).
-
-File tạm/cache được dọn riêng, không xóa raw, lỗi lịch sử, source snapshots,
-manifest, dữ liệu hay credential. Nhật ký bảo trì ở
-`build/maintenance/phase5_to_phase6_20261002/`. Không có inference hoặc notebook
-submission trong lượt bàn giao này. Chưa kiểm/đổi trạng thái hai API; không coi
-READY cũ là live availability. Bản mới còn local, chưa commit/push.
+Làm R0 theo [handoff](handoff.md). [Prompt cho phiên sau](next_session_prompt.md) ·
+[Nhật ký phiên](session_log.md) · [Trạng thái trước lộ trình v2](history_20261023_before_roadmap_v2_current_status.md).

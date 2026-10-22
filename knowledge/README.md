@@ -8,6 +8,7 @@ memory của agent đang được benchmark. Không cần tài khoản hoặc gr
 
 ## Bắt đầu phiên làm việc
 
+0. **Phiên mới:** [prompt cho phiên sau](next_session_prompt.md), [nhật ký phiên](session_log.md), [lộ trình v2](../docs/project/roadmap_v2_rebuild.md).
 1. [Trạng thái phase chính thức](../docs/project/phase_status.md).
 2. [Tóm tắt hiện tại](current_status.md).
 3. [Bàn giao: đang dở và bước tiếp theo](handoff.md).

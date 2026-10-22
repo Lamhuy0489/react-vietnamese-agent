@@ -5,22 +5,11 @@ trạng thái nghiệm thu. Mở các nguồn bên dưới để đọc thông t
 
 ## Tiếp tục công việc
 
-1. [Phase nào đã nghiệm thu?](docs/project/phase_status.md)
-2. [Kết quả mới nhất](knowledge/current_status.md)
-3. [Đang dở gì, bước kế tiếp và giới hạn truy cập](knowledge/handoff.md)
-4. [Bắt đầu Phase 6 trong phiên ngày mai](knowledge/phase6_start.md)
-5. [Cách tiếp tục thực nghiệm qua API Kaggle](knowledge/api_experiment_runbook.md)
-
-Khi mở chat mới trong workspace này, có thể dùng lời nhắn:
-
-> Đọc AGENTS.md, phase_status, current_status, handoff và API experiment runbook.
-> Bắt đầu Phase 6 từ knowledge/phase6_start.md: rà scorer và chốt metrics_spec
-> cùng denominator trước khi code. Dùng saved Dev traces, giữ Test khóa.
-
-Phase 5 đã đóng; [thông số đã lưu](knowledge/phase5_parameters.md) và runbook
-chỉ dẫn cách tiếp tục sau closure. Không chạy lại
-smoke hoặc upload notebook chỉ vì bắt đầu chat mới. Tài liệu local chưa commit
-và raw/config trong build không tự xuất hiện khi clone repo sang máy khác.
+1. [Prompt cho phiên sau](knowledge/next_session_prompt.md): copy vào chat mới.
+2. [Lộ trình v2 (R0–R7)](docs/project/roadmap_v2_rebuild.md)
+3. [Kết quả mới nhất](knowledge/current_status.md) · [Bàn giao](knowledge/handoff.md)
+4. [Nhật ký các phiên chat](knowledge/session_log.md)
+5. [Phase nào đã nghiệm thu?](docs/project/phase_status.md)
 
 ## Tra cứu và bàn giao cho Minh
 
