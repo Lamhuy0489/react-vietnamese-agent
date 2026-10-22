@@ -79,3 +79,13 @@ reported without tuning on held-out Test or changing the scored Dev32 raw. The
 separate guard OS-exit diagnosis retains its own protocol; this small pilot
 cannot establish lifecycle reliability by itself. No Phase 5 acceptance count
 changes merely from this protocol or inventory approval.
+
+## Post-declaration status (2026-09-24)
+
+The software source and metadata-only pin were subsequently frozen before
+content. The newly authored CPU Replay final-leak control failed. This
+prospective pilot is stopped before native submission; the observations and
+source identities are in the [CPU stop report](phase5_room_prospective_cpu_stop_v1_report.md).
+The prerequisite source commit exposes a sequencing conflict with the later
+“before source freeze” wording. This addendum reports that deviation and
+does not rewrite the original rule or imply an accepted release.

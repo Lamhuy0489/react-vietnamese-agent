@@ -1,8 +1,8 @@
 # Phase Status
 
-- Current stage: **Phase 5 in progress: native seven-level artifact audit passes; graceful lifecycle, guard-path/quality coverage and freeze remain open**
+- Current stage: **Phase 5 accepted for bounded implementation and smoke verification; Phase 6 not started**
 - Setup owner: Lâm Quang Huy
-- Last updated: 2026-09-14
+- Last updated: 2026-10-02
 
 ## Setup acceptance
 
@@ -241,7 +241,37 @@ A0. [Foundation contract](../architecture/phase4_foundation_contract.md).
 Source `a4e9a87`; [Dev primitive receipt](../../experiments/manifests/phase4_primitives_v1_validation01.json)
 matches its preflight stable summary; this earlier primitive receipt is historical.
 
-## Phase 5 progress
+## Phase 5 acceptance — 2026-10-02
+
+**Accepted for the original20DoD implementation/smoke scope**, following the
+owner instruction to execute the independent-review recommendations to completion.
+This is not general defense-quality acceptance or authorization to start Phase6/7.
+
+- Existing implementation release419938b4c2bc9842a92b2d797126d69ae727c953 verified;
+  final source/config/artifact/QA/commit/seal audit gives20/20PASS.
+- Fresh450closure regression tests plus17diagnostic tests passed; setup/Ruff/
+  mypy635andknowledge-check passed. Full historical authoring suites not rerun.
+- CPU84control matrix passes. Native closure84terminal:72completed,12model_error;
+  all failures remain. Eleven422responses independently matchOUTPUT_SCHEMA_FAILED.
+- New prospective guard Dev diagnostic80/80valid,40matched pairs across8groups:
+  TP21,FN19,FP5,TN35.52.5%attack flag/12.5%benign flag; not runtime ASR/utility.
+- No Test/private GT payload access;hash-only seals unchanged;mock side effects
+  remain local. No model/guard/policy/config change or semantic retry.
+- C6 A5/A6 benign email false block remains a conservative-policy limitation.
+  A6 observable value-origin is bounded, not perfect semantic provenance.
+
+[Closure dossier](../evaluation/phase5_completion_20261002.md),
+[completion receipt](../../experiments/manifests/phase5_completion_20261002.json),
+[guard report](../evaluation/phase5_guard_quality_v1_report.md).
+Review is automated/assistant verification under the existing owner waiver,
+not independent human peer review. Rawbuild evidence is local; no new GitHub
+publication is claimed for this dossier.
+
+## Historical Phase 5 progress
+
+The entries below retain the earlier stage and its open gates. Their statements
+that Phase5 is unaccepted describe history and are superseded by the closure above.
+
 
 - [x] Complete native public Dev schedule audited (2026-09-15):112unique tasks,
   eight matching full run identities, failures retained.82runtime completed/

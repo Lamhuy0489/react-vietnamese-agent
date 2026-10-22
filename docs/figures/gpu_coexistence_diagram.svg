@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%">
+  <defs>
+    <style>
+      .gpu-hdr { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 800; font-size: 22px; fill: #0f172a; letter-spacing: -0.02em; }
+      .gpu-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 13px; fill: #64748b; }
+      .gpu-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: 15px; fill: #0f172a; }
+      .gpu-txt { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 12px; fill: #475569; line-height: 1.5; }
+      .gpu-pill { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: 0.03em; }
+      .vram-val { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 800; font-size: 16px; }
+      
+      .conn-blue { fill: none; stroke: #2563eb; stroke-width: 2.5; stroke-linecap: round; }
+    </style>
+    
+    <filter id="g-shadow" x="-4%" y="-4%" width="108%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.05"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#0f172a" flood-opacity="0.03"/>
+    </filter>
+
+    <linearGradient id="grad-gpu0" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eff6ff" />
+      <stop offset="100%" stop-color="#dbeafe" />
+    </linearGradient>
+    <linearGradient id="grad-gpu1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0fdf4" />
+      <stop offset="100%" stop-color="#dcfce7" />
+    </linearGradient>
+
+    <marker id="arr-b" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2563eb" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="750" fill="#ffffff" rx="16" />
+  <rect x="1" y="1" width="1198" height="748" fill="none" stroke="#e2e8f0" stroke-width="1.5" rx="15" />
+
+  <!-- Header -->
+  <g transform="translate(50, 42)">
+    <rect x="0" y="0" width="165" height="24" rx="12" fill="#eff6ff" />
+    <text x="82.5" y="16" class="gpu-pill" fill="#2563eb" text-anchor="middle">HẠ TẦNG PHẦN CỨNG</text>
+    <text x="0" y="52" class="gpu-hdr">Kiến trúc Phân bổ Bộ nhớ Dual-GPU T4 (Coexistence &amp; VRAM Recovery)</text>
+    <text x="0" y="74" class="gpu-sub">Giải pháp vận hành đồng thời Agent 7B và Guard 1.5B trên hạ tầng 2 GPU NVIDIA T4 (Kaggle) kèm cơ chế giải phóng VRAM sạch</text>
+  </g>
+
+  <!-- Supervisor Card -->
+  <g transform="translate(50, 135)" filter="url(#g-shadow)">
+    <rect width="1100" height="90" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="8" height="90" rx="4" fill="#6366f1"/>
+    <rect x="25" y="15" width="175" height="22" rx="4" fill="#e0e7ff" />
+    <text x="112.5" y="30" class="gpu-pill" fill="#4338ca" text-anchor="middle">TIẾN TRÌNH ĐIỀU PHỐI</text>
+    <text x="25" y="58" class="gpu-title" fill="#1e1b4b">Bộ Điều phối Tiến trình Đôi (ModelPair Supervisor)</text>
+    <text x="25" y="76" class="gpu-txt">Quản lý thứ tự nạp (Agent nạp trước, kiểm tra 339 tensor headers), thời hạn ngắt tiến trình (Cold 45s, Warm 5s) và cơ chế ngắt cưỡng chế leo thang: TERMINATE (-15) -> KILL (-9).</text>
+  </g>
+
+  <!-- Connection wires to GPUs -->
+  <path d="M 325 225 L 325 268" class="conn-blue" marker-end="url(#arr-b)"/>
+  <path d="M 875 225 L 875 268" class="conn-blue" marker-end="url(#arr-b)"/>
+
+  <!-- GPU 0 Card -->
+  <g transform="translate(50, 275)" filter="url(#g-shadow)">
+    <rect width="535" height="310" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2"/>
+    <rect x="0" y="0" width="535" height="45" rx="12" fill="url(#grad-gpu0)"/>
+    <text x="22" y="28" class="gpu-title" fill="#1e40af">NVIDIA Tesla T4 - GPU 0 (Tổng dung lượng: 16 GiB)</text>
+    
+    <!-- Progress Bar -->
+    <rect x="22" y="62" width="490" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <rect x="22" y="62" width="300" height="32" rx="6" fill="#3b82f6"/>
+    <text x="35" y="83" class="vram-val" fill="#ffffff">Đã dùng: 9.799 GiB</text>
+    <text x="335" y="83" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#64748b">Trần an toàn: 12.0 GiB (61.2%)</text>
+
+    <!-- Details Box -->
+    <rect x="22" y="108" width="490" height="100" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="35" y="132" class="gpu-title" font-size="13.5px" fill="#1e3a8a">Mô hình Agent: Qwen2.5-7B-Instruct (Phần 1)</text>
+    <text x="35" y="153" class="gpu-txt">• Chuyên trách: Layer 0 đến Layer 19 (20 transformer blocks đầu tiên)</text>
+    <text x="35" y="171" class="gpu-txt">• Chế độ tính toán: FP16 native, SDPA Attention, không CPU offload</text>
+    <text x="35" y="189" class="gpu-txt">• Không đặt thêm tiến trình khác để đảm bảo không nghẽn VRAM</text>
+
+    <rect x="22" y="220" width="490" height="72" rx="8" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="35" y="244" class="gpu-title" font-size="12.5px" fill="#065f46">Kết quả Kiểm toán Thực tế (Kernel pair-gpu-v1):</text>
+    <text x="35" y="264" class="gpu-txt" fill="#047857">Nạp thành công 100%, không phát sinh lỗi tràn bộ nhớ (Out-Of-Memory).</text>
+    <text x="35" y="280" class="gpu-txt" fill="#047857">Độ trễ suy luận ổn định, tốc độ đáp ứng hoàn hảo.</text>
+  </g>
+
+  <!-- GPU 1 Card -->
+  <g transform="translate(615, 275)" filter="url(#g-shadow)">
+    <rect width="535" height="310" rx="12" fill="#ffffff" stroke="#86efac" stroke-width="2"/>
+    <rect x="0" y="0" width="535" height="45" rx="12" fill="url(#grad-gpu1)"/>
+    <text x="22" y="28" class="gpu-title" fill="#065f46">NVIDIA Tesla T4 - GPU 1 (Tổng dung lượng: 16 GiB)</text>
+    
+    <!-- Progress Bar -->
+    <rect x="22" y="62" width="490" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <rect x="22" y="62" width="233" height="32" rx="6" fill="#10b981"/>
+    <text x="35" y="83" class="vram-val" fill="#ffffff">Đã dùng: 7.621 GiB</text>
+    <text x="270" y="83" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#64748b">Trần kết hợp: 12.0 GiB (47.6%)</text>
+
+    <!-- Details Box: Agent Part 2 -->
+    <rect x="22" y="108" width="490" height="50" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="35" y="128" class="gpu-title" font-size="13px" fill="#1e3a8a">1. Agent Qwen2.5-7B (Phần 2): Layer 20 đến 27</text>
+    <text x="35" y="146" class="gpu-txt">Chiếm dụng: ~4.8 GiB VRAM (Giới hạn trần Agent: 7.0 GiB)</text>
+
+    <!-- Details Box: Guard Model -->
+    <rect x="22" y="165" width="490" height="60" rx="8" fill="#fefce8" stroke="#fde047"/>
+    <text x="35" y="185" class="gpu-title" font-size="13px" fill="#854d0e">2. Guard Model: Qwen2.5-1.5B-Instruct (Toàn bộ)</text>
+    <text x="35" y="202" class="gpu-txt">Chiếm dụng: ~2.8 GiB VRAM (Giới hạn trần Guard: 5.0 GiB)</text>
+    <text x="35" y="217" class="gpu-txt" font-weight="600" fill="#713f12">Cơ chế Warm Worker: Suy luận phân loại cực nhanh chỉ mất 0.95s – 1.90s</text>
+
+    <rect x="22" y="235" width="490" height="55" rx="8" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="35" y="255" class="gpu-title" font-size="12.5px" fill="#065f46">Trạng thái Cùng tồn tại (Coexistence):</text>
+    <text x="35" y="273" class="gpu-txt" fill="#047857">Hai mô hình cùng nạp và hoạt động an toàn dưới ngưỡng 8 GiB / 16 GiB.</text>
+  </g>
+
+  <!-- Bottom: Memory Recovery Result Banner -->
+  <g transform="translate(50, 605)" filter="url(#g-shadow)">
+    <rect width="1100" height="110" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="2"/>
+    <rect x="0" y="0" width="8" height="110" rx="4" fill="#10b981"/>
+    <rect x="25" y="14" width="185" height="22" rx="4" fill="#dcfce7" />
+    <text x="117.5" y="29" class="gpu-pill" fill="#15803d" text-anchor="middle">KẾT QUẢ THỰC NGHIỆM THU HỒI</text>
+    <text x="25" y="58" class="gpu-title" fill="#065f46">Khả năng Thu hồi Bộ nhớ VRAM Sạch Hoàn toàn (Busy Cancellation &amp; Recovery)</text>
+    <text x="25" y="77" class="gpu-txt">• Đã kiểm thử trên Kaggle GPU qua cả 3 kịch bản: Agent bị treo, Guard bị treo (CUDA busy loop), và Guard phớt lờ tín hiệu ngắt.</text>
+    <text x="25" y="96" class="gpu-txt" font-weight="700" fill="#047857">• KẾT QUẢ ĐẠT CHUẨN HOÀN TOÀN: Toàn bộ 18 mẫu đo VRAM sau khi dọn dẹp đều ghi nhận mức DƯ THỪA ĐÚNG 0 BYTES (Residual 0 bytes) trên cả 2 GPU.</text>
+  </g>
+</svg>

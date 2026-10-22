@@ -1,0 +1,54 @@
+{
+  "schema": "phase5_native_closure_v2_preparation_qa_v1",
+  "date": "2026-09-30",
+  "phase5_accepted": false,
+  "source_status": "working_tree_not_frozen",
+  "checks": {
+    "runner_and_entrypoint_tests": 15,
+    "transport_and_deployment_tests": 65,
+    "package_layouts": 4,
+    "ruff": "passed",
+    "mypy_source_files": 629,
+    "full_pytest": "not rerun; earlier full run interrupted, not claimed passed"
+  },
+  "native_inference_requests": 0,
+  "notebook_submissions": 0,
+  "test_payloads_loaded": 0,
+  "private_ground_truth_loaded": 0,
+  "quota_observation": {
+    "basis": "Kaggle CLI output in previous interrupted turn; not a new live query",
+    "agent": {
+      "account": "buiquocviet",
+      "used_hours": 38.6,
+      "remaining_hours": 0.0
+    },
+    "guard": {
+      "account": "huylmhuhu",
+      "used_hours": 38.42,
+      "remaining_hours": 0.0
+    },
+    "refresh_at_returned": "2026-10-03T00:00:00"
+  },
+  "remaining_accounts": {
+    "lamhuy8904": "credential present; no quota query or submission",
+    "meanalways": "credential present; no quota query or submission"
+  },
+  "pending": [
+    "source freeze and end-to-end native deployment QA",
+    "permitted compute with available quota",
+    "native Dev and all-DoD evidence"
+  ],
+  "sha256": {
+    "build/kaggle/request_worker_v3_candidate_20260930_01/prepared.json": "6c87b5ae654f83c33800972cefae05d6e725a680fef1e0700025bdb84747986b",
+    "build/kaggle/request_worker_v3_candidate_20260930_01/preflight_v3/receipt.json": "d07fcbaf2324b69d644269920fc986a82881b9cc0db33d272bb851e11a4e07e7",
+    "scripts/run_phase5_native_closure_v2.py": "df9b9ef43d6445bc66cde4912c98942c363fc29c8ab72c2c33bb8e57f56c6529",
+    "scripts/deploy_structured_pair_v3.py": "8fe4c73709cd5f8b6f0839b3a70b4eff0e1739f15df38be7e0173fc38c6238e8",
+    "scripts/evaluate_phase5_native_observations_v2.py": "c524e02b707c538a46e697b1063ddfe420de8e91af3d2143e370c22308822e75",
+    "src/react_agent/serving/request_worker_entrypoint_v3.py": "0d50fa48721790133c121f038712f6c63a1e406039a822b5eefef0b5040cf15c",
+    "src/react_agent/serving/request_lifecycle_v3.py": "4b73b38bc4352f1db474cb6d547c85f6d5cd5c7808cea8f038f2ff1672bf0f13",
+    "tests/integration/test_phase5_native_closure_v2.py": "12f6d6e81b9d14805732fa82ea4df2927d10a37dff719c65edb3526195d94da7",
+    "tests/unit/test_request_worker_entrypoint_v3.py": "72c8d8ccd2b3c8f4f32b6cb2a5dd17675757e34a63630722104b1973f348d903",
+    "tests/unit/test_deploy_structured_pair_v3.py": "9aeee81b75b7134b5969b7892c50ceb92bf1605ec1bcec37f272cd076484577d",
+    "docs/evaluation/phase5_native_closure_protocol_v2.md": "3b952306bf80b94f2a1c47075a8ba63a1cd44ba01cce162af6c96263529c59f1"
+  }
+}

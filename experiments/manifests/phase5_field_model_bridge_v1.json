@@ -1,0 +1,48 @@
+{
+  "protocol": "phase5_field_model_bridge_cpu_qa_v1",
+  "date": "2026-09-25",
+  "git_base": "c87c321b42345e6d7152ca60976363a67a972531",
+  "source_commit": null,
+  "source_mode": "working_tree_cpu_only",
+  "source_sha256": {
+    "src/react_agent/prototypes/field_model_bridge_v1.py": "8908bfbe96abdd0d704414beb9609eb42f7f9e3857a001d68e66d2a06320a352",
+    "docs/architecture/phase5_field_model_bridge_v1_contract.md": "a1b91caee234ddca7fe1fb7a1d636928e4d4cb608622d53016a643b0171c89d9",
+    "tests/unit/test_field_model_bridge_v1.py": "16653d91995fc1b72fc53fc05e96bc6b2112b6d063e69049f66c286c83ff3400"
+  },
+  "qa": {
+    "path": "build/evaluation/phase5_field_model_bridge_qa01.xml",
+    "sha256": "e2ca82e937c6c3ebf74f443045fa32aa0accfd43f2128aabd220ecbb3f33f29a",
+    "passed": 193,
+    "bridge_tests_in_total": 33,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 10.182,
+    "setup": true,
+    "ruff": true,
+    "mypy_files": 555,
+    "diff_check": true,
+    "test_paths": [
+      "tests/unit/test_field_model_bridge_v1.py",
+      "tests/unit/test_field_reference_v1.py",
+      "tests/unit/test_field_reference_audit_v1.py",
+      "tests/unit/test_direction_probe_v1.py",
+      "tests/unit/test_doc_read_final_proof_v1.py",
+      "tests/unit/test_doc_read_native_admission_v1.py",
+      "tests/integration/test_doc_read_pair_runtime_v1.py"
+    ]
+  },
+  "historical_worker_files_unchanged": 191,
+  "native_model_runs": 0,
+  "kaggle_submissions": 0,
+  "held_out_test_loaded": false,
+  "phase5_accepted": false,
+  "owner_execution_choice": "batch_kaggle_no_public_endpoint",
+  "limits": [
+    "scripted backend and fake HF callable, no real model inference",
+    "one-shot reference selection, not ReAct or full A6",
+    "host Grant assumed; final callback only, no native guard/PRE/POST",
+    "model/revision string matching is not weight attestation",
+    "no native batch entrypoint/package/admission for the new bridge yet"
+  ]
+}

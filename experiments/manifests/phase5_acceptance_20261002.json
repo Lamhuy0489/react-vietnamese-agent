@@ -1,0 +1,132 @@
+{
+  "schema": "phase5_acceptance_evidence_v2",
+  "dod": {
+    "1": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "2": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "3": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "4": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "5": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "6": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "7": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "8": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "9": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "10": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "11": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "12": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "13": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "14": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "15": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "16": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "17": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "18": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "19": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "20": {
+      "status": "PASS",
+      "basis": "committed source/model/config and verified quality receipts"
+    }
+  },
+  "phase5_accepted": true,
+  "native_status_counts": {
+    "completed": 72,
+    "model_error": 12
+  },
+  "native_integrity_errors": [],
+  "current_delivery_unresolved": false,
+  "native_observation_counts": {
+    "not_exercised": 56,
+    "unsafe_dispatched": 15,
+    "blocked_by_pre_gate": 13
+  },
+  "guard_risk_counts_not_accuracy": {
+    "SAFE": 186,
+    "SUSPICIOUS": 25,
+    "MALICIOUS": 6
+  },
+  "cpu_control_matrix_passed": true,
+  "seal_check": {
+    "passed": true,
+    "assets_sha256": {
+      "data/clean/v1_1/splits/test.jsonl": "688fddcc4c4cb363515e1247e992cbda9e5268ba8e1cc51e0060d48f5a9dad20",
+      "data/clean/v1_1/private/test_ground_truth.jsonl": "8d11fec78cdf6714ff6d5136e88abb3fd7dbc1f66b0485a77c2c1933696b95a5",
+      "data/clean/v1_1/private/robustness_canonical_ids.json": "18feead8234e8c1461f91077fabcbaee151f5f3791ade1275c8cbf8fc27652d0",
+      "data/adversarial/release_v2/test_attack.jsonl": "ef59b5b156e0199ea1140fb13a917e6607ee0d8dd8e250bd4acbb5771cdfa83c",
+      "data/adversarial/release_v2/test_benign.jsonl": "d97c816c4c58248c33ee3a477cd1cdf2dc509c55cc814fd4d853f75fe244b916"
+    },
+    "payloads_deserialized": 0
+  },
+  "scope": "bounded Phase5 implementation/smoke evidence; not full benchmark quality",
+  "known_limitations": [
+    "12 historical native model_error checkpoints retained",
+    "11 agent requests returned422; worker error code not yet recovered",
+    "C6 authorized public email allowed by A4; A5 and A6 deny this benign action",
+    "No independent guard confusion matrix or general semantic provenance claim"
+  ],
+  "evidence": {
+    "cpu": "build/evaluation/phase5_cpu_acceptance_20261002_01",
+    "native": "build/evaluation/phase5_native_public_guard_20261002_01",
+    "qa": "build/evaluation/phase5_acceptance_qa_20261002_01"
+  },
+  "input_sha256": {
+    "build/evaluation/phase5_cpu_acceptance_20261002_01/manifest.json": "878494290b86347bbbede21c44128292066211e50dbc12b64f1428e000d0290d",
+    "build/evaluation/phase5_native_public_guard_20261002_01/manifest.json": "9e6ad4c4013ce33582748c403b23eb98e19205ca1f883771be7005ca374572b7",
+    "build/evaluation/phase5_acceptance_qa_20261002_01/receipt.json": "aada6b8a03e0a40f3179c7da50e5c761366afc3cd29bc325a8d7ab242fc5584e",
+    "/Users/huylam/Downloads/Do an tot nghiep/docs/evaluation/phase5_acceptance_contract_v2.md": "23f8d93437cf0a472b7cb396c882b1ec417c4e48f0cc6c266659248577b6056a"
+  }
+}

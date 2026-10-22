@@ -10,6 +10,10 @@ then load only the documents relevant to the active phase.
 For continuity, next read `knowledge/current_status.md` and
 `knowledge/handoff.md`. Use `knowledge/README.md` as the navigation index;
 historical notes do not override current status or the research contract.
+For the current Kaggle API experiment workflow, next read
+`knowledge/api_experiment_runbook.md`: it distinguishes completed smoke evidence
+from the Dev runner still to implement, and records safe status/discovery steps.
+Do not infer live endpoint availability from a previous chat's READY message.
 Before handing off meaningful work, update the active task, next concrete step,
 verification evidence and pending access in `knowledge/handoff.md`. Never put
 credentials, private ground truth or held-out payloads in project memory.

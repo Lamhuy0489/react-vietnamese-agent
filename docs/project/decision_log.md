@@ -1,5 +1,127 @@
 # Decision Log
 
+## 2026-09-29 — Close the declared mainline Dev pilot
+
+- The single `Phase5Runtime` integrated the existing email-origin candidate and
+  encoded-final screen. The local runner orchestrated two predeclared benign
+  tasks across A0–A6; Kaggle supplied model inference only.
+- All 14 conditions completed with immutable checkpoints and no uncertain
+  delivery. The saved evaluator reproduced byte-for-byte. Private→public reads
+  were present in 14/14; literal utility was 7/7 and email utility 3/7.
+- A3–A6 email utility failed because the guard returned `SUSPICIOUS` and the
+  host correctly withheld the mock send. Preserve this result; do not tune or
+  rerun after observing it. Phase 5 remains unaccepted.
+- See [protocol](../evaluation/phase5_mainline_protocol.md),
+  [report](../evaluation/phase5_mainline_native_dev_report.md), and
+  [receipt](../../experiments/manifests/phase5_mainline_native_dev.json).
+
+## 2026-09-29 — Clarify API cancellation scope against the original plan
+
+- Owner questioned why request tracking/cancellation was being made the next
+  mandatory step when the ReAct agent runs locally and Kaggle serves inference.
+  Rechecked the master Word plan, Phase 5 guard-failure section and all 20 DoD.
+  Guard timeout/error handling and deterministic fallback are required; a
+  custom remote per-request cancel/status service is not an explicit DoD.
+- Correct the earlier roadmap interpretation: v3 remote cancellation is optional
+  infrastructure work, not a prerequisite for every Phase 5 Dev experiment.
+  Preserve its candidate code and CPU evidence; defer deployment. Keep existing
+  API bounds, local timeouts, durable checkpoints and unresolved-delivery blocks.
+  Client timeout still cannot be reported as proof that remote GPU work stopped.
+- Next priority is local runtime A0–A6 parity, required guard fallback controls,
+  A6 provenance/egress/final protection and benign utility against the original
+  criteria. Check candidate admission before any fresh declared Dev run; do not
+  rerun completed conditions or claim acceptance from READY. No research scope,
+  frozen evidence or phase acceptance has changed.
+
+## 2026-09-29 — Direction audit and Phase 5 closure path
+
+- Đối chiếu master Word plan, research contract, invariants, phase map, 20-DoD
+  readiness, current status/handoff và các API/CPU receipts. Kết luận: RQ1–RQ3
+  và phạm vi nghiên cứu vẫn đúng; Phase 5 chưa accepted.
+- Khóa cách quản trị tiếp theo: v12 cumulative là baseline/closure anchor;
+  v13/v14, doc-read, field-reference, encoded-final và room-ticket giữ vai trò
+  historical hoặc prospective mechanism evidence, không trộn score và không mở
+  thêm v15/v16 candidate.
+- CPU/host evidence chỉ đóng wiring/admission. Native A0–A6 matched Dev,
+  lifecycle, guard quality, provenance/final-release coverage và formal DoD
+  receipt vẫn là các gate riêng. Health API mới nhất đang unavailable nên
+  không mở inference hoặc restart dựa trên snapshot READY cũ.
+- Closure chỉ được tuyên bố sau khi một receipt duy nhất map đủ 20 DoD; nếu
+  blocker còn lại thì phát hành no-go/limitation report và giữ
+  `phase5_accepted=false`. [Audit](../evaluation/phase5_direction_audit_20260929.md).
+
+## 2026-09-27 — Two structured API workers authorized and deployed
+
+- Owner requested selecting/reissuing two appropriate notebooks and confirmed
+  “Tắt hết rồi nhé” for all four previous sessions, then requested continuation.
+  Use Qwen3-8B task agent and Llama3.2-3B guard for this technical API profile;
+  no weight fine-tuning or automatic benchmark-model promotion.
+- Freeze source once at728821e before submission; two private version1 workers
+  only, source audited, JSON constrained decoding and independent validation.
+  Host tools remain behind Broker; no data/oracles packaged into GPU workers.
+- New paired synthetic smoke passes with2agent+2guard calls and final166.
+  Both guard verdicts SAFE/LOW; this does not establish security quality.
+  Future A0–A6 agent format constraints must be identical across levels.
+  Dev profile declaration and guard-quality evaluation precede research use;
+  held-out Test and Phase5acceptance unchanged.
+- [Report and limitations](../evaluation/structured_pair_api_v1_report.md),
+  [serving contract](../architecture/structured_pair_api_v1.md).
+
+## 2026-09-27 — Existing API sessions; small Llama is a guard candidate
+
+- Owner clarified the 3B model is proposed for the guard and permitted adapting
+  the API flow; four accounts already serve models. Use Qwen/Gemma/DeepSeek as
+  task-agent candidates and Llama3B as a guard candidate. This supersedes the
+  batch-only preference for transport development; no automatic formal model
+  selection, A0–A6 replacement or phase acceptance.
+- Add isolated HTTP backend and bounded synthetic technical smoke using current
+  sessions. Local Broker/mock tools remain offline; source/config/task hashes
+  are recorded before inference, rejected raw/reasoning is not stored. Server
+  identity is self-reported/unattested, so this is not a frozen benchmark run.
+- [Protocol](../architecture/kaggle_http_diagnostic_v1.md) and
+  [actual results/limits/next step](../evaluation/kaggle_http_diagnostic_20260927.md).
+
+## 2026-09-25 — Owner selects Kaggle batch, not a public model endpoint
+
+- Explicit answer: “Chưa có, dùng batch Kaggle”. No public tunnel/API key is
+  required. Keep inference in Kaggle; do not execute the pasted third-party
+  serving script or change the fixed benchmark model automatically.
+- Add only an isolated one-shot LLMBackend-to-field-plan bridge with default
+  closed host veto. No main A6/guard/PRE/POST replacement. Source/model/package
+  admission precedes a new native smoke; CPU fake-backend tests are not LLM runs.
+- [Assessment, QA and next step](../evaluation/phase5_field_model_bridge_v1_report.md).
+
+## 2026-09-25 — Owner approves limited field-reference prototype
+
+- Explicit answer: “Tái cấu trúc có giới hạn (khuyến nghị)” to the proposed
+  separate typed-field provenance/final prototype, retaining benchmark and old
+  results, integrating only if controls pass. Supersedes the pending approval
+  below, not the evidence or historical candidate no-go.
+- Implement one bounded component under `src/react_agent/prototypes/`; no core
+  runtime replacement, new benchmark labels or altered phase acceptance.
+- Host authorization is a declared assumption, not a solved NLP task. Compare
+  matched exposure/selected-field component arms; do not call them official
+  A5/A6 runs or transfer old model scores across the representation change.
+  [Pre-implementation contract](../architecture/phase5_field_reference_v1_contract.md).
+
+## 2026-09-25 — Direction audit; targeted redesign proposed, not approved
+
+- Owner requested experiments and an assessment of whether Phase 5 is drifting,
+  including considering a rebuild if necessary. Compare against the original
+  Word plan/20 DoD, do not silently weaken gates or discard prior evidence.
+- Run a declared 12-condition, two-arm synthetic CPU diagnostic without modifying
+  policy/runtime: v12 retains 8/8 benign but omits 0/4 forced disclosures;
+  doc_read candidate retains 2/8 and omits 3/4, with Base64 remaining. This is
+  bounded mechanism evidence, not native/model ASR or project infeasibility.
+- Preserve partial harness failures and resume only missing conditions after
+  re-auditing the completed prefix. Do not promote the narrow candidate as a
+  general remedy or patch it against this diagnostic for a higher score.
+- Propose a separate typed-reference/host dataflow prototype; keep the existing
+  benchmark, Broker, models, sealed Test and historical results. Schema/runtime
+  changes require explicit design approval and same A0–A6 representation.
+  Approval has been requested; no replacement or scope change is enacted.
+  [Evidence and finite decision path](../evaluation/phase5_direction_review_20260925.md).
+
 ## 2026-09-24 — Owner confirms prospective public/private source roles
 
 - The owner answered “ok làm tiếp và hoàn thiện cho tôi” immediately after an
@@ -1935,3 +2057,126 @@ and are not inferred here.
   parser admitted extra prose. Restrict ticket issuance to an entire one-line
   record; preserve the failed development observation and regression test.
   Do not rewrite the frozen rule or prior Dev32 traces. [CPU report](../evaluation/phase5_ticket_runtime_cpu_v1_report.md).
+
+## 2026-09-29 — Exact-email follow-up stopped on uncertain delivery
+
+- A predeclared new-task follow-up tested exact public email semantics at A3–A6.
+  The first A3 condition checkpointed the public final but one Llama guard
+  request ended `uncertain` after local process termination. The shared journal
+  correctly blocked A4–A6; no retry or journal reset is valid.
+- This does not invalidate the completed mainline receipt. It is an
+  infrastructure blocker for the follow-up, not evidence that the policy should
+  be relaxed. A3–A5 coarse session veto and A6 exact-value admission remain the
+  academically correct hypotheses to test after documented worker recovery.
+
+## 2026-09-29 — Exact-email recovery epoch closes the diagnosis
+
+- After preserving the old uncertain epoch, a new declared journal boundary and
+  worker pair (agent v8/guard v6) completed A3–A6 exact-email conditions.
+- A3–A5 retained the intended coarse external-sink veto. A6 failed closed on a
+  model-proposed trailing newline, so no email dispatch was accepted. This
+  supports exact provenance enforcement and identifies a normalization ablation
+  as the only academically defensible utility optimization.
+- Do not relax guard thresholds or session vetoes. Phase 5 remains unaccepted;
+  any line-ending normalization must be predeclared, hash raw/released values,
+  and be evaluated as a separate ablation.
+
+## 2026-09-29 — Terminal-line ablation and formal 20-DoD freeze
+
+- The predeclared `terminal_line_ending_v1` CPU ablation tested nine synthetic
+  candidates. Exactly one terminal LF/CRLF/CR was canonicalized with raw and
+  released hashes; repeated endings, whitespace, extra text, embedded newline,
+  and private-marker text were denied. The frozen mainline and epoch-2 API
+  evidence were not rewritten and no model/API/network request was made.
+- A formal validator now maps all 20 closure rows, verifies the saved artifact
+  hashes and held-out counters, and emits a deterministic freeze receipt. It
+  records `decision=NO_GO`, `phase5_accepted=false`, and all 20 DoD open. This
+  closes the audit/documentation gate while preserving the research boundary;
+  it is not a Phase 5 acceptance claim.
+
+## 2026-09-29 — Native closure deployment and recovery stopped fail-closed
+
+- Read-only status/discovery verified release04a's two existing Kaggle workers
+  as RUNNING and READY with the expected public identities.
+- The first native closure epoch completed C1–C3 across A0–A6 (21 valid
+  condition records) and stopped at C4/A0 after a third agent request became
+  delivery-uncertain following an observable mock-tool execution.
+- A fresh recovery journal was deployed for C4–C12. It reproduced the same
+  C4/A0 delivery uncertainty and therefore stopped before the remaining 62
+  conditions. Both raw epochs are immutable; no semantic retry, prompt change,
+  threshold relaxation, package swap, or Test access was used.
+- The combined evaluator reports 21/84 completed conditions, 63 missing, zero
+  Test/private-ground-truth reads, and `phase5_accepted=false`. This is an
+  infrastructure blocker, not a security-policy verdict. A third attempt needs
+  a separate infrastructure decision and proof that request delivery is
+  resolved.
+
+[Deployment report](../evaluation/phase5_native_closure_recovery_report_20260929.md)
+
+## 2026-09-29 — Root-fix candidate and honest acceptance boundary
+
+- Owner authorized root-level repairs. Select the existing v14 mainline integration
+  as the single candidate under CPU evaluation; v12 and prior native runs remain
+  historical baselines. This resolves the conflicting v12-only recommendation;
+  no research question, dataset, model, guard prompt or threshold is changed.
+- Preserve candidate and constituent runtime metadata. A wrapper label cannot
+  promote native readiness or prove configuration isolation. A0 purity requires
+  actual Phase4/Phase5 Replay result/message comparisons (20 smoke tasks checked).
+- C1–C12 CPU evidence cannot automatically accept twenty DoD; guard risk counts
+  are not a confusion matrix. Keep independent guard fault/separation/seal/mock/
+  source-freeze requirements open until their evidence is bound and checked.
+- v1 native runner cannot strip manifest pins or resume revised fixtures under old
+  uncertain journals. A versioned runner/manifest and final package QA are required
+  before any new native run. V3 request status supports delivery integrity; native
+  GPU cancellation is not added as a new research DoD.
+- All raw epochs remain historical. Explicit deviation: the initial CPU01 webhook
+  schema-failure raw was overwritten earlier; do not claim it is preserved. New
+  CPU04 and packages use fresh output paths with source/checkpoint hashes.
+
+[Root-fix evidence and next steps](../evaluation/phase5_root_fix_20260929.md).
+
+## 2026-10-02 — Owner-approved bounded Phase5 completion and recovery amendment
+
+- Owner approved the acceptance direction review: preserve local Broker/two GPU
+  inference workers, bind evidence to20 original DoD, distinguish deterministic
+  controls from native observations, retain representative utility and Test seals.
+- Add explicit one-shot, exact-ID/full-payload retransmission for reviewed
+  non-evicting v3 worker boots after authenticated UNKNOWN. This relies on locked
+  worker idempotency, not404 as terminal proof. Changed boot/payload, absent
+  original journal, repeated retry or unverified terminal proof stays blocked.
+- Frozen runtime/prompt/model/fixtures and original raw failures are unchanged;
+  maintenance source/receipt is separately hashed. No hidden journal reset or
+  new epoch to evade uncertainty. Original model_error remains in denominators.
+- [Explicit recovery amendment](../evaluation/phase5_recovery_amendment_20261002.md).
+  Acceptance remains evidence-driven; this decision alone closes no DoD.
+
+## 2026-10-02 — Owner-authorized finite Phase 5 closure
+
+- Owner requested execution of the independent-review recommendations until
+  Phase5 completion. Retain release419938b and its original20DoD; acceptance
+  is bounded implementation/smoke, not general defense quality or Phase6/7.
+- Complete fresh source-bound regression and acceptance audit before promotion.
+  Preserve all84native outcomes,12model_errors and C6 conservative false block.
+  Do not modify frozen policy or relax SESSION_COMBINED_RISK for this closure.
+- Diagnose prior422records offline by exact source-defined error-envelope hashes.
+  This identifies worker error codes, not generated text or semantic root causes.
+- Authorize one prospective guard-only diagnostic on all40Dev families,80paired
+  inputs, fixed variant selection and threshold semantics before inference.
+  Same existing guard worker/model/prompt/generation; no agent rerun, notebook
+  upload, Test access or retries of terminal outcomes.
+- [Guard protocol](../evaluation/phase5_guard_quality_v1_protocol.md) governs
+  selection, label isolation, journal reuse and separate error denominators.
+  Classifier diagnostic scores do not add a post-hoc threshold to20DoD.
+
+## 2026-10-02 — Phase 5 accepted with bounded claims
+
+Final20DoD audit passed after fresh450closure regressions and17diagnostic tests.
+Owner-authorized completion adopts the existing419938b baseline without policy
+changes. Guard80Dev diagnostic completed:TP21,FN19,FP5,TN35;valid80/80.
+Two GET-only interruptions were preserved; a source-hashed admission amendment
+used one same-boot client for47never-started inputs with full POST identity/hash
+checks. No duplicate/semantic retry or new notebook. All11prior422error hashes
+match OUTPUT_SCHEMA_FAILED; old errors remain model_error. C6 false block and
+bounded provenance remain limitations. No new ASR/FPR threshold or Phase6/7
+work is introduced. Official phase status is now accepted for implementation/
+smoke, not general security quality. New dossier/diagnostics remain local.

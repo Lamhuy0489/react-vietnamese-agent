@@ -1,0 +1,35 @@
+{
+  "schema": "phase5_public_guard_partial_audit_20261002",
+  "run": "build/evaluation/phase5_native_public_guard_20261002_01",
+  "expected_conditions": 84,
+  "terminal_checkpoints": 16,
+  "status_counts": {
+    "model_error": 1,
+    "completed": 15
+  },
+  "never_started_conditions": 68,
+  "artifact_hashes_verified": 238,
+  "agent_api_attempts": 41,
+  "agent_responses": 40,
+  "guard_attempts": 30,
+  "local_cleanup_counts": {
+    "GRACEFUL": 10
+  },
+  "uncertain_condition": "c3_webhook_public__A1",
+  "uncertain_request_id": "b6f50898c6fa4e3a86fbc3cbd2b980a1",
+  "status_probe_http": 404,
+  "status_probe_code": "REQUEST_UNKNOWN",
+  "execution_resolved": false,
+  "semantic_retry_authorized": false,
+  "native_resume_blocked": true,
+  "phase5_accepted": false,
+  "test_payloads_read": 0,
+  "private_ground_truth_read": 0,
+  "evidence_sha256": {
+    "build/evaluation/phase5_native_public_guard_20261002_01/manifest.json": "9e6ad4c4013ce33582748c403b23eb98e19205ca1f883771be7005ca374572b7",
+    "build/evaluation/phase5_native_public_guard_20261002_01_observations01.json": "8a449f451a964be1736ad0bf4de6268e397825453fe4446908027e3d60babbb7",
+    "build/evaluation/phase5_native_public_guard_20261002_01_controls01.json": "120193ceb4dcc2e50c78d647270457b3c7fd35e077e7d66a78a3abbe51027e53",
+    "build/evaluation/phase5_public_guard_status_resolution_20261002_01.json": "32d2f0a2e96714fabd040a9e9a7b5cd7f7ea2850ab5555d747a245e48f10d002",
+    "build/evaluation/phase5_public_guard_host_qa_20261002.json": "737ff566bf0157dd8a19c61beb22b7c3bcb811c4e409a1e0327938ad19b358ff"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "phase5_public_guard_ready_v1",
+  "checked_at_utc": "2026-10-01T18:45:56.245336+00:00",
+  "guard_kernel": "meanalways/react-vn-llama3-guard-api-v3-candidate",
+  "guard_url": "https://www.kaggle.com/code/meanalways/react-vn-llama3-guard-api-v3-candidate",
+  "guard_version": 3,
+  "guard_source_commit": "77bc456469ec58fb3543931066f365b15292f5f3",
+  "agent_version": 1,
+  "private": true,
+  "kaggle_model_inputs": [],
+  "dataset": null,
+  "public_model_repo": "unsloth/Llama-3.2-3B-Instruct",
+  "public_model_revision": "006f5dcd1393c3add266de40994ba96225e9689d",
+  "public_manifest_matches_live_fingerprint": true,
+  "expected_model_fingerprint": "sha256:fa094cd072ff38bc2e6aefd4a1623fb6304a3265ddc4fc9bfd1f255b2eecde74",
+  "pair_provenance": {
+    "authenticated": true,
+    "native_dev_requests": 0,
+    "pair_connection_sha256": "4d2381f9d1dce64a78717bf75e7bd89fbfffa8b56c69077e0212b1d9a7afbeda",
+    "phase5_accepted": false,
+    "profile": "react-vn-request-lifecycle-v3-candidate",
+    "roles": {
+      "agent": {
+        "identity": {
+          "instance_id": "8dfd98a730cfc8e460fe6030c81d8f41",
+          "model_id": "qwen3-8b",
+          "model_revision": "sha256:c816c705dd33693b0dd32e94c1c13d55e9920a7bcae9010e04be509debc515e2",
+          "role": "agent",
+          "session_id": "a4e03e1bd9894dc69766fa299fd308fd",
+          "source_commit": "e4078d7d5d2fe66a881e53ec5f194e3f9aa66b47",
+          "worker_sha256": "21f66f981e6d9f075b07bc306b0ef802f09b221c5ae4539b06a26f5cf5e521c6"
+        },
+        "metadata_sha256": "7c2b6288ca464e1a18dfb645a5f7eeda2856873d74040ada13b2aec0a5a34d1b",
+        "package": "build/kaggle/collaborator_pair_frozen_20261001_01",
+        "prepared_sha256": "ed7a3752b477dead87adc3329960a1904202a1e3ba6f24378ac74731656eddd5"
+      },
+      "guard": {
+        "identity": {
+          "instance_id": "6f03a9d8954c0fb37e653f279a23be64",
+          "model_id": "llama-3.2-3b-instruct",
+          "model_revision": "sha256:fa094cd072ff38bc2e6aefd4a1623fb6304a3265ddc4fc9bfd1f255b2eecde74",
+          "role": "guard",
+          "session_id": "99d4ce34018642a78adba65f463c031c",
+          "source_commit": "77bc456469ec58fb3543931066f365b15292f5f3",
+          "worker_sha256": "bdce7c2065d39ae4ecca4521cc2c44c80cf8fb740f6bf70eba27c04d743fba68"
+        },
+        "metadata_sha256": "8fe90a2f6b7de85b3545a7afdc83194e8e375e76825d9625823dcbfd67db6f66",
+        "package": "build/kaggle/collaborator_guard_public_20261002_01",
+        "prepared_sha256": "5b3306287d2202195b150bc056dfc004c0e6d450d8efec4722c275bace211867"
+      }
+    }
+  },
+  "gpu_machine": "NvidiaTeslaT4",
+  "remote_source_byte_equal": true,
+  "connection_mode": "0600",
+  "qa": {
+    "targeted_tests": 62,
+    "exact_frozen_package_layouts": 4,
+    "setup": "pass",
+    "ruff": "pass",
+    "mypy_files": 631,
+    "full_pytest": "not rerun"
+  },
+  "phase5_accepted": false,
+  "native_run": "build/evaluation/phase5_native_public_guard_20261002_01",
+  "artifact_sha256": {
+    "build/kaggle/collaborator_guard_public_20261002_01/guard_submission.json": "073a8ed56a632aba3cb0754a0467dedfdde6e8026d50f3aef0b4f4d1b1ed9fdc",
+    "build/kaggle/collaborator_guard_public_20261002_01/preflight_v3/receipt.json": "b013f16b59c165096588060eda4863b06e33dd92d9649fd3751a539b57f58e93",
+    "build/kaggle/phase5_public_guard_pair_20261002_01/provenance.json": "367682693f1af9894331572cef825d19b351e12bd4fd6fbfdf05758b5ea314f7",
+    "build/kaggle/phase5_public_guard_pair_20261002_01/agent_live_metadata.json": "7c2b6288ca464e1a18dfb645a5f7eeda2856873d74040ada13b2aec0a5a34d1b",
+    "build/kaggle/phase5_public_guard_pair_20261002_01/guard_live_metadata.json": "8fe90a2f6b7de85b3545a7afdc83194e8e375e76825d9625823dcbfd67db6f66",
+    "build/evaluation/phase5_native_public_guard_20261002_01/manifest.json": "9e6ad4c4013ce33582748c403b23eb98e19205ca1f883771be7005ca374572b7"
+  }
+}

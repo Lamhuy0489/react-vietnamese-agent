@@ -11,19 +11,48 @@ memory của agent đang được benchmark. Không cần tài khoản hoặc gr
 1. [Trạng thái phase chính thức](../docs/project/phase_status.md).
 2. [Tóm tắt hiện tại](current_status.md).
 3. [Bàn giao: đang dở và bước tiếp theo](handoff.md).
-4. [Contract](../docs/project/research_contract.md),
+4. [API experiment runbook: cách tiếp tục ở chat mới](api_experiment_runbook.md).
+5. [Contract](../docs/project/research_contract.md),
    [invariants](../docs/project/invariants.md), rồi chỉ đọc tài liệu của phần
    đang làm theo [phase map](../docs/project/phase_map.md).
 
+Đợt audit hướng ngày 2026-09-29 là [Phase 5 direction audit](../docs/evaluation/phase5_direction_audit_20260929.md).
+Đây là chỉ mục để chọn một closure path; không coi các prototype lịch sử là
+các queue song song.
+
 Phase 1, clean_v1.1 Phase 2 và adversarial_v2 Phase 3 đã accepted; Test đã khóa.
 Phase 4 đã nghiệm thu runtime pass-through, deep Dev parity và overhead;
-[báo cáo 12 DoD](../docs/architecture/phase4_report.md). Phase 5 đã được mở;
-xem [tiến độ hiện hành](phase5_progress.md).
-Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
+[báo cáo 12 DoD](../docs/architecture/phase4_report.md). Phase 5 đã accepted;
+[phiên mai bắt đầu Phase 6](phase6_start.md), chưa triển khai trong lượt bàn giao này.
+Pilot Gemma 4/Qwen 7B là lịch sử; Qwen3-8B/Llama3.2-3B đã chạy paired API smoke.
 
 ## Tra theo công việc
 
-- **Owner review prospective đã ghi, chưa pin/run:** [nhãn nguồn và giới hạn xác thực](../docs/evaluation/phase5_room_inventory_review_request_v1.md), [protocol ba arm](../docs/evaluation/phase5_room_prospective_v1_protocol.md).
+- **Bắt đầu phiên mai:** [Phase 6 start](phase6_start.md), [thông số Phase 5](phase5_parameters.md). Rà scorer và chốt metrics_spec trước khi code; chưa cần API ngay.
+
+- **Phase5 đã accepted 02/10:** [closure dossier](../docs/evaluation/phase5_completion_20261002.md), [guard80 report](../docs/evaluation/phase5_guard_quality_v1_report.md). Các mốc review/chưa accepted bên dưới là lịch sử;next scope là Phase6 khi được mở.
+
+- **Ưu tiên 02/10 — audit cuối và giải pháp:** [review độc lập](../docs/research/phase5_independent_review_20261002.md): native84terminal, audit20PASS; chốt dossier kỹ thuật và giữ limitation. Các mục hiện hành/mới nhất cũ phía dưới là lịch sử theo phiên bản.
+
+- **Thực nghiệm hiện hành:** [API runbook](api_experiment_runbook.md) — kiểm phiên,
+  đọc evidence, viết runner Dev và các bước chưa triển khai. Các mục cũ bên dưới
+  là nguồn tham khảo theo phiên bản, không là lệnh tự động tiếp tục.
+- **Lịch sử trước thu gọn ngày2026-09-27:** [status](history_20260927_before_api_handoff_current_status.md),
+  [handoff](history_20260927_before_api_handoff_handoff.md).
+- **Tiến độ tổng thể và đường hoàn thiện:** [Tiến độ và lộ trình hoàn thiện qua API](../docs/evaluation/project_status_api_20260927.md); yêu cầu ba task backbones, pilot Dev và các gate Phase5 còn mở.
+- **Mới nhất — hai API structured đã chạy:** [Qwen agent/Llama guard, paired smoke và kết nối](../docs/evaluation/structured_pair_api_v1_report.md), [receipt](../experiments/manifests/structured_pair_api_v1.json).
+- **Readiness 20 DoD:** [audit fail-closed và các native blocker](../docs/evaluation/phase5_gate_readiness_v1_report.md); pilot API chỉ là diagnostic, Phase 5 vẫn chưa accepted.
+- **Mốc trước — model-plan bridge và batch Kaggle:** [CPU wiring, giới hạn guard và đánh giá cloud endpoint](../docs/evaluation/phase5_field_model_bridge_v1_report.md).
+- **Hiện tại — prototype restructure:** [typed-field references,32CPUexecutions và giới hạn host Grant](../docs/evaluation/phase5_field_reference_v1_report.md).
+- **Ưu tiên mới — rà lại hướng:** [thực nghiệm 12 điều kiện, candidate utility2/8 và đề xuất tái cấu trúc có giới hạn](../docs/evaluation/phase5_direction_review_20260925.md).
+- **Hiện hành — doc_read native wiring:** [external admission, actual-source check, full pair/Broker audit và package04 CPU](../docs/evaluation/phase5_doc_read_native_cpu_v1_report.md).
+- **Hiện hành — proof raw doc_read:** [12 paired conditions/24 runtimes, utility 5/5 và target omission 7/7; aggregation recovery](../docs/evaluation/phase5_doc_read_final_proof_v1_report.md), [receipt/hash](../experiments/manifests/phase5_doc_read_final_cpu_v1.json). Public-field FINAL đã CPU-integrated; native admission/package còn mở.
+- **Mốc trước — proof final Dev + paired CPU:** [ma trận 24 ca, runtime FINAL-only, room-ticket và audit 14 outputs](../docs/evaluation/phase5_final_literal_dev_runtime_v1_report.md), [receipt/hash chọn lưu](../experiments/manifests/phase5_final_literal_dev_cpu_v1.json).
+- **Mốc trước — CPU stop prospective:** [source/pin/payload và final-leak false negative](../docs/evaluation/phase5_room_prospective_cpu_stop_v1_report.md), [casebook/failed task drafts](../docs/evaluation/phase5_room_prospective_casebook_v1.md). Giữ failure, không chấm lại pilot để chọn ứng viên.
+- **Ứng viên Dev sau stop:** [index v4 cho mã chữ-số S1/S2 nhúng trong free text; chưa runtime/native](../docs/evaluation/phase5_embedded_identifier_v4_dev_report.md).
+- **Quyết định v4 no-go:** [ma trận Dev 18 ca, 6/6 leak nhưng 3/3 collision utility bị chặn](../docs/evaluation/phase5_embedded_identifier_dev_matrix_v1_report.md); không tích hợp runtime.
+- **Mốc component:** [proof exact final literal v1, 18 CPU controls trước ma trận/runtime](../docs/evaluation/phase5_final_literal_proof_v1_cpu_report.md).
+- **Owner review prospective:** [nhãn nguồn và giới hạn xác thực](../docs/evaluation/phase5_room_inventory_review_request_v1.md), [protocol ba arm đã chốt](../docs/evaluation/phase5_room_prospective_v1_protocol.md).
 - **Pinned adapter CPU mới:** [A6/ExitPair với admission trước worker và versioned audit](../docs/evaluation/phase5_room_ticket_pair_cpu_v1_report.md).
 - **Gói worker mới:** [room-ticket development preflight hai layout; chưa release/native](../docs/evaluation/phase5_room_ticket_package_dev_v1_report.md).
 - **Native gate CPU mới:** [source-admitted dispatch, independent read-only audit, checkpoint/fault controls và package04](../docs/evaluation/phase5_room_ticket_native_gate_cpu_v1_report.md).
@@ -160,3 +189,7 @@ Pilot Gemma 4/Qwen 7B đã hoàn tất; Llama chưa chạy.
   chain-of-thought vào bộ nhớ. Chỉ giữ trạng thái/quy trình/bằng chứng cho phép.
 - Validator chỉ kiểm tra cấu trúc/link, không tự chứng minh nội dung còn đúng;
   cần đối chiếu trạng thái với bằng chứng sau mỗi thay đổi.
+
+- [Restart v2 và Plan API diagnostic](../docs/evaluation/structured_plan_api_v1_report.md): phiên hiện hành, kết quả native và giới hạn.
+
+- 2026-09-28: [journal + public runtime native A0–A6](../docs/evaluation/remote_api_levels_v1_report.md) đã có diagnostic7/7; quality/provenance/remote cancellation/freeze còn mở.

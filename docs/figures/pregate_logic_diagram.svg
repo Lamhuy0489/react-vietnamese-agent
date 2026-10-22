@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 840" width="100%" height="100%">
+  <defs>
+    <style>
+      .t-main { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 800; font-size: 22px; fill: #0f172a; letter-spacing: -0.02em; }
+      .t-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 13px; fill: #64748b; }
+      .c-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: 14.5px; fill: #0f172a; }
+      .c-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 12px; fill: #475569; line-height: 1.45; }
+      .p-txt { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: 0.03em; }
+      .tag-lbl { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 11px; font-weight: 700; text-anchor: middle; }
+      
+      .link-base { fill: none; stroke: #94a3b8; stroke-width: 2; stroke-linecap: round; }
+      .link-green { fill: none; stroke: #059669; stroke-width: 2.5; stroke-linecap: round; }
+      .link-red { fill: none; stroke: #dc2626; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 4 3; }
+    </style>
+    
+    <filter id="card-shadow" x="-4%" y="-4%" width="108%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.05"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#0f172a" flood-opacity="0.03"/>
+    </filter>
+    <filter id="callout-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.07"/>
+    </filter>
+
+    <marker id="arr-g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#059669" />
+    </marker>
+    <marker id="arr-r" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#dc2626" />
+    </marker>
+    <marker id="arr-gray2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#94a3b8" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="840" fill="#ffffff" rx="16" />
+  <rect x="1" y="1" width="1198" height="838" fill="none" stroke="#e2e8f0" stroke-width="1.5" rx="15" />
+
+  <!-- Header -->
+  <g transform="translate(50, 42)">
+    <rect x="0" y="0" width="165" height="24" rx="12" fill="#eff6ff" />
+    <text x="82.5" y="16" class="p-txt" fill="#2563eb" text-anchor="middle">CỔNG BẢO VỆ PREGATE</text>
+    <text x="0" y="52" class="t-main">Sơ đồ Phân nhánh Quyết định An toàn tại Cổng PreGate (A0 – A6)</text>
+    <text x="0" y="74" class="t-sub">Quy trình phân tích, cơ chế phủ quyết thô gây chặn nhầm và giải pháp phục hồi tiện ích của đồ thị Value-Origin DAG</text>
+  </g>
+
+  <!-- Input Proposal Banner -->
+  <g transform="translate(50, 135)" filter="url(#card-shadow)">
+    <rect width="1100" height="65" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="8" height="65" rx="4" fill="#2563eb"/>
+    <text x="24" y="28" class="c-title" fill="#1e40af">Đề xuất Hành động từ Agent (Action Proposal)</text>
+    <text x="24" y="48" class="c-text">Bao gồm: tên công cụ (tool_name) và danh sách tham số cụ thể (arguments: to, subject, body, query, doc_id...)</text>
+  </g>
+
+  <!-- Level Columns -->
+  <!-- Level A0 -->
+  <g transform="translate(50, 225)" filter="url(#card-shadow)">
+    <rect width="145" height="420" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="0" y="0" width="145" height="38" rx="10" fill="#f8fafc"/>
+    <text x="16" y="24" class="c-title" fill="#334155">A0: Baseline</text>
+    
+    <text x="16" y="65" class="c-text" font-weight="700">Đặc điểm:</text>
+    <text x="16" y="85" class="c-text">• Bỏ qua toàn bộ</text>
+    <text x="16" y="102" class="c-text">  kiểm tra bảo mật</text>
+    <text x="16" y="122" class="c-text">• Chỉ giới hạn số</text>
+    <text x="16" y="139" class="c-text">  bước lặp (quota)</text>
+    
+    <path d="M 72 260 L 72 320" class="link-green" marker-end="url(#arr-g)"/>
+    <rect x="22" y="330" width="100" height="36" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="72" y="353" class="tag-lbl" fill="#15803d">ALLOW (100%)</text>
+    <text x="16" y="390" class="c-text" font-size="11" fill="#64748b">Nguy cơ lộ dữ liệu</text>
+  </g>
+
+  <!-- Level A1 -->
+  <g transform="translate(210, 225)" filter="url(#card-shadow)">
+    <rect width="150" height="420" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="0" y="0" width="150" height="38" rx="10" fill="#f1f5f9"/>
+    <text x="16" y="24" class="c-title" fill="#1e293b">A1: Rule Guard</text>
+    
+    <text x="16" y="65" class="c-text" font-weight="700">Bộ lọc Regex:</text>
+    <text x="16" y="85" class="c-text">• Quét chỉ thị ghi đè</text>
+    <text x="16" y="102" class="c-text">• Phát hiện đích đến</text>
+    <text x="16" y="119" class="c-text">  ngoại vi lạ</text>
+    <text x="16" y="139" class="c-text">• Neo lệnh người dùng</text>
+
+    <path d="M 75 220 L 75 255" class="link-base" />
+    <path d="M 75 255 L 40 295" class="link-red" marker-end="url(#arr-r)"/>
+    <path d="M 75 255 L 110 295" class="link-green" marker-end="url(#arr-g)"/>
+
+    <rect x="12" y="305" width="56" height="30" rx="5" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="40" y="324" class="tag-lbl" fill="#b91c1c">DENY</text>
+
+    <rect x="82" y="305" width="56" height="30" rx="5" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="110" y="324" class="tag-lbl" fill="#15803d">PASS</text>
+  </g>
+
+  <!-- Level A2 -->
+  <g transform="translate(375, 225)" filter="url(#card-shadow)">
+    <rect width="155" height="420" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="0" y="0" width="155" height="38" rx="10" fill="#f1f5f9"/>
+    <text x="16" y="24" class="c-title" fill="#1e293b">A2: Model Guard</text>
+    
+    <text x="16" y="65" class="c-text" font-weight="700">Mô hình Guard 1.5B:</text>
+    <text x="16" y="85" class="c-text">• Phân loại ngữ cảnh</text>
+    <text x="16" y="102" class="c-text">• Nhãn rủi ro JSON:</text>
+    <text x="16" y="119" class="c-text">  SAFE, SUSPICIOUS</text>
+    <text x="16" y="136" class="c-text">  hoặc MALICIOUS</text>
+
+    <path d="M 77 220 L 77 255" class="link-base" />
+    <path d="M 77 255 L 40 295" class="link-red" marker-end="url(#arr-r)"/>
+    <path d="M 77 255 L 115 295" class="link-green" marker-end="url(#arr-g)"/>
+
+    <rect x="12" y="305" width="56" height="30" rx="5" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="40" y="324" class="tag-lbl" fill="#b91c1c">DENY</text>
+
+    <rect x="87" y="305" width="56" height="30" rx="5" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="115" y="324" class="tag-lbl" fill="#15803d">PASS</text>
+  </g>
+
+  <!-- Level A3 - A5: The Overblocking Zone -->
+  <g transform="translate(545, 225)" filter="url(#callout-shadow)">
+    <rect width="275" height="420" rx="10" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+    <rect x="0" y="0" width="275" height="38" rx="10" fill="#ffe4e6"/>
+    <text x="16" y="24" class="c-title" fill="#9f1239">A3 – A5: Phủ quyết Thô Cấp phiên</text>
+    
+    <text x="16" y="65" class="c-text" font-weight="700" fill="#881337">Cơ chế siết chặt an toàn:</text>
+    <text x="16" y="85" class="c-text">• A3: Cấm gửi ngoại vi nếu phiên > S0</text>
+    <text x="16" y="102" class="c-text">• A4: Chặn nguồn Untrusted nếu thiếu neo</text>
+    <text x="16" y="119" class="c-text">• A5: Phủ quyết khi có BẤT KỲ cảnh báo</text>
+
+    <!-- Overblocking Warning Box -->
+    <rect x="15" y="145" width="245" height="135" rx="8" fill="#ffffff" stroke="#e11d48" stroke-width="1.5"/>
+    <rect x="25" y="155" width="135" height="20" rx="4" fill="#fee2e2"/>
+    <text x="92.5" y="169" class="p-txt" fill="#b91c1c" text-anchor="middle">HIỆN TƯỢNG CHẶN NHẦM</text>
+    <text x="25" y="193" class="c-text" font-weight="700" fill="#9f1239">Lỗi Chặn nhầm (Overblocking):</text>
+    <text x="25" y="210" class="c-text">Nếu phiên đã đọc bảng điểm S2,</text>
+    <text x="25" y="226" class="c-text">rồi sau đó gửi email lịch thi S0,</text>
+    <text x="25" y="242" class="c-text">A3/A5 VẪN PHỦ QUYẾT CHẶN LUÔN!</text>
+    <text x="25" y="265" class="c-text" font-weight="700" fill="#dc2626">=> Tụt giảm tính hữu dụng (Utility)</text>
+
+    <path d="M 137 290 L 137 325" class="link-red" marker-end="url(#arr-r)"/>
+    <rect x="75" y="335" width="125" height="34" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+    <text x="137.5" y="356" class="tag-lbl" fill="#b91c1c">COARSE DENY</text>
+  </g>
+
+  <!-- Level A6: The Solution (Value-Origin DAG) -->
+  <g transform="translate(835, 225)" filter="url(#callout-shadow)">
+    <rect width="315" height="420" rx="10" fill="#f0fdf4" stroke="#10b981" stroke-width="2.5"/>
+    <rect x="0" y="0" width="315" height="38" rx="10" fill="#dcfce7"/>
+    <text x="16" y="24" class="c-title" fill="#065f46">A6: Value-Origin DAG PreGate</text>
+    
+    <text x="16" y="65" class="c-text" font-weight="700" fill="#065f46">Đóng góp Cốt lõi của Đồ án:</text>
+    <text x="16" y="85" class="c-text">• Soi chiếu nguồn gốc từng đối số (to, body)</text>
+    <text x="16" y="102" class="c-text">• Kiểm tra quan hệ dẫn xuất trên đồ thị DAG</text>
+
+    <!-- Success Resolution Box -->
+    <rect x="15" y="125" width="285" height="155" rx="8" fill="#ffffff" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="25" y="135" width="150" height="20" rx="4" fill="#dcfce7"/>
+    <text x="100" y="149" class="p-txt" fill="#15803d" text-anchor="middle">PHỤC HỒI TIỆN ÍCH HỢP LỆ</text>
+    
+    <text x="25" y="173" class="c-text" font-weight="700" fill="#14532d">Điều kiện gỡ bỏ lệnh cấm (Overrule):</text>
+    <text x="25" y="190" class="c-text">1. Nội dung email được chứng minh</text>
+    <text x="25" y="206" class="c-text">   chỉ bắt nguồn từ thông tin công khai S0.</text>
+    <text x="25" y="222" class="c-text">2. Không chứa bất kỳ giá trị S2 nào.</text>
+    <text x="25" y="245" class="c-text" font-weight="800" fill="#047857">=> PreGate GỠ BỎ LỆNH CẤM THÔ!</text>
+    <text x="25" y="262" class="c-text" font-weight="600" fill="#047857">   Cho phép tác vụ hợp lệ chạy thông suốt.</text>
+
+    <!-- Bifurcation Arrows -->
+    <path d="M 85 290 L 50 330" class="link-red" marker-end="url(#arr-r)"/>
+    <path d="M 230 290 L 265 330" class="link-green" marker-end="url(#arr-g)"/>
+
+    <rect x="15" y="340" width="85" height="32" rx="5" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="57.5" y="360" class="tag-lbl" fill="#b91c1c">DENY (S2)</text>
+
+    <rect x="210" y="340" width="95" height="32" rx="5" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="257.5" y="360" class="tag-lbl" fill="#15803d">ALLOW (S0)</text>
+  </g>
+
+  <!-- Bottom Insight Card -->
+  <g transform="translate(50, 670)" filter="url(#card-shadow)">
+    <rect width="1100" height="135" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="8" height="135" rx="4" fill="#059669"/>
+    <text x="25" y="28" class="c-title" fill="#0f172a">Ý NGHĨA KHOA HỌC ĐỐI VỚI CÂU HỎI NGHIÊN CỨU RQ2:</text>
+    <text x="25" y="52" class="c-text">• Các mức trung gian A3–A5 siết chặt an toàn bằng cách chặn thô toàn bộ phiên làm việc, dẫn đến đánh đổi làm mất đi năng lực phục vụ của Agent trên các tác vụ bình thường.</text>
+    <text x="25" y="74" class="c-text">• Kiến trúc A6 ứng dụng kỹ thuật truy vết nguồn gốc (provenance tracking) giải quyết trọn vẹn bài toán đánh đổi này: đạt mức an toàn tối đa trước các cuộc tấn công gián tiếp nhưng vẫn bảo toàn trọn vẹn tính hữu dụng của tác nhân.</text>
+  </g>
+</svg>

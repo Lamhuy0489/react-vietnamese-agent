@@ -1,0 +1,49 @@
+{
+  "artifact_sha256": {
+    "build/evaluation/structured_plan_api_v1/diagnostic01/artifact_sha256.json": "9fc2b0a036804a641ab50caa188886dc5c5c2c7d488cf3ede38886e80d51ee6c",
+    "build/evaluation/structured_plan_api_v1/diagnostic01/broker.jsonl": "6555f4261962decd6713cd4a13d283c9f141c189fe09ce7c9b182387170f13e8",
+    "build/evaluation/structured_plan_api_v1/diagnostic01/declaration.json": "f0f4eb0bfe27331afe66891148c5ad26ef4d883d70509ccac1c41c782fe771b2",
+    "build/evaluation/structured_plan_api_v1/diagnostic01/result.json": "3c3598dc1f3290bbdc603623e47e7a63b361106fbc5b666dff0d1b289cbf4900",
+    "build/evaluation/structured_plan_api_v1/diagnostic01/started.json": "7cfca2d2b12a0013ab368c0986ac534f6c3ebd5b2bd9b6ff7b64571764575e40",
+    "build/kaggle/structured_pair_release02a/agent_live_metadata.json": "68e35696d689ddc8e8e9be2162b544a392e5b269faa646e1247f1231a9f5c885",
+    "build/kaggle/structured_pair_release02a/agent_submission.json": "03fe1f2ba0e830edc7bd7feded58aed8c65067704c7a4d64d27775356d9a2ea2",
+    "build/kaggle/structured_pair_release02a/guard_live_metadata.json": "79a6bab7adc0b2792a2d6ad00bad26fb7968959696a0f0568b9f92a6808fe4e1",
+    "build/kaggle/structured_pair_release02a/guard_submission.json": "34c25d282998896eff15458b3ec80ae74fb07befc8ca2568e7732575d7471bb9",
+    "build/kaggle/structured_pair_release02a/preflight.json": "480fe224f37c1df958e3c1435ccdb144b6eb04661317f2c1ddda9a6ae54eaf59",
+    "build/kaggle/structured_pair_release02a/restart_audit.json": "abf51fa3f169d6c2c31cf7d0651ff57812d3646011f0abaa1b44d4ac446cdd10",
+    "docs/evaluation/structured_plan_api_v1_protocol.md": "95b0b3447857be705b95fbb2089d3129dac4b8507f7b4f000c84676d1c31390c",
+    "scripts/run_structured_plan_diagnostic_v1.py": "d2d9738680fde9fbd6065f2695a6e96f4520b12ff3fc27fa4a4a04c5c4e6ff9b",
+    "src/react_agent/llm/structured_plan_http_v1.py": "6447fa31631bc6cc89c472b4f0767d4c6dd6f57583f41a653740fa0b6f774f28",
+    "tests/unit/test_structured_plan_http_v1.py": "2a7bee7547ccb07c9da65e15535c0bf1da9ae5da2b255dd93022db269098b35b"
+  },
+  "diagnostic": {
+    "agent_attempts": 1,
+    "allowed": false,
+    "broker_events": 9,
+    "guard_attempts": 1,
+    "reason": "sensitivity"
+  },
+  "held_out_test_accessed": false,
+  "notebooks": {
+    "agent": {
+      "kernel": "buiquocviet/react-vn-qwen3-agent-api-v1",
+      "observed_at": "2026-09-28T06:55:50.491061+00:00",
+      "pull_returncode": 0,
+      "source_bytes_match": true,
+      "url": "https://www.kaggle.com/code/buiquocviet/react-vn-qwen3-agent-api-v1",
+      "version": 2
+    },
+    "guard": {
+      "kernel": "huylmhuhu/react-vn-llama3-guard-api-v1",
+      "observed_at": "2026-09-28T06:55:51.950329+00:00",
+      "pull_returncode": 0,
+      "source_bytes_match": true,
+      "url": "https://www.kaggle.com/code/huylmhuhu/react-vn-llama3-guard-api-v1",
+      "version": 2
+    }
+  },
+  "observed_at": "2026-09-28T06:58:43.796242+00:00",
+  "phase5_accepted": false,
+  "source_commit": "728821ea761b3994eb40ebba91ab8238e4667f82",
+  "source_kind": "working-tree host; committed remote worker"
+}

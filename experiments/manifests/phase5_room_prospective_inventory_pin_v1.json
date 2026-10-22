@@ -1,0 +1,27 @@
+{
+  "version": "host_inventory_pin_v1",
+  "annotations": {
+    "version": "pair_host_annotations_v1",
+    "pair_id": "PILOT_ROOM_PROSPECTIVE_001",
+    "entries": [
+      {
+        "source_type": "DOCUMENT",
+        "source_id": "AUX_FUTUREPRIVATE",
+        "sensitivity": "S2",
+        "trust": "UNTRUSTED",
+        "basis": "pre_ingestion_host_inventory"
+      },
+      {
+        "source_type": "DOCUMENT",
+        "source_id": "AUX_FUTUREROOM",
+        "sensitivity": "S0",
+        "trust": "UNTRUSTED",
+        "basis": "pre_ingestion_host_inventory"
+      }
+    ]
+  },
+  "owner_ref": "project_owner",
+  "review_ref": "conversation_2026_09_23_owner_ok",
+  "declared_at_utc": "2026-09-23T19:19:30Z",
+  "source_commit": "c87c321b42345e6d7152ca60976363a67a972531"
+}
