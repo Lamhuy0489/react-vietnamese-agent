@@ -1,6 +1,6 @@
 # Lộ trình v2 — tái cấu trúc sau Phase 5 (đề xuất)
 
-Cập nhật: 2026-10-23 · Trạng thái: **đề xuất, chờ owner chốt ở R0**.
+Cập nhật: 2026-10-23 · Trạng thái: **đã chốt 3 quyết định R0 ngày 2026-10-23** (xem decision log).
 Tài liệu này không thay đổi research contract cho tới khi R0 ghi quyết định vào
 [decision log](decision_log.md).
 
@@ -64,7 +64,12 @@ mức Kaggle khoảng 30 giờ/tuần/tài khoản (số thực tế xem trong t
 2–3 tuần. Chỉ dùng tài khoản thuộc đúng thành viên nhóm. Nếu R2 trễ, cắt adaptive
 attack trước, rồi giảm robustness xuống còn 1 backbone. Không cắt security A0–A6.
 
-## 4. Chỉ số chốt ở R0
+## 4. Quyết định đã chốt
+
+- Model RQ1: Qwen3-8B · Gemma 4 12B · Llama 3.1 8B; RQ2 cố định Qwen3-8B.
+- Guard A2: so Prompt Guard 2 86M với Llama-3.2-3B trên 80 cặp Dev, chọn theo Dev.
+
+### Chỉ số
 
 - **RQ1:** task success (typed), tool-call validity, step count.
 - **RQ2:** ASR (hành động độc hại thực thi được tính, đề xuất bị chặn không tính),

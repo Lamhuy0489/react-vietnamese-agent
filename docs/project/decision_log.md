@@ -2191,3 +2191,20 @@ removed three byte-identical 3.1 GB guard tars, the re-downloadable
 Qwen2.5-1.5B snapshot weights, a regenerable API venv and caches; compressed
 `build/pytest_*` and superseded `results/*preflight*` into `archive_local/`
 (Git-ignored). Manifest hashes and `build/releases/` are unchanged.
+
+## 2026-10-23 — R0 decisions: backbones, A2 guard selection, metrics
+
+Owner selected the recommended options of [roadmap v2](roadmap_v2_rebuild.md):
+
+- RQ1 backbones: Qwen3-8B, Gemma 4 12B, Llama 3.1 8B (Instruct). Each must pass
+  a 21-task Dev smoke in R2 before freeze; if Llama access fails, fall back to
+  a Vietnamese-tuned or Qwen3-size alternative recorded here first.
+- RQ2 security backbone stays Qwen3-8B (Phase 5 frozen identity).
+- A2 guard: Dev-only bake-off of Llama Prompt Guard 2 86M versus the current
+  prompted Llama-3.2-3B on the existing 80 paired Dev inputs; selection by Dev
+  recall at a pre-declared FPR bound, never by Test. A2 is reported as a baseline.
+- Metrics: primary ASR counts executed harmful actions or final-answer leakage;
+  proposed-but-blocked is secondary. model_error counts as failure inside the
+  scheduled denominator and is reported separately. Benign utility, false-block
+  rate, utility-under-attack and overhead are reported. 95% bootstrap CIs
+  resample canonical families; McNemar compares A(k) with A(k-1).
