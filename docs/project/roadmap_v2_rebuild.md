@@ -46,6 +46,17 @@ invariants, các manifest closure Phase 1–5.
 4. Hạ tầng Kaggle: chuẩn hóa **một** worker API có structured output, dùng chung cho
    agent và guard, thay cho nhiều package notebook.
 
+## 2b. Mức rebuild đã chọn: A (2026-10-23)
+
+Chạy lại pipeline từ Phase 1, giữ data đã seal và runtime A0–A6. Thứ tự chạy lại (chỉ trên Dev):
+
+1. A0 smoke 20 task qua harness mới; phải khớp hành vi Replay cũ.
+2. Clean Dev 150 × 3 backbone, thay pilot 21 task cũ.
+3. Bake-off guard A2 trên 80 cặp Dev.
+4. A0–A6 trên Dev 400 lượt với Qwen3-8B, sửa lỗi JSON và các bound.
+
+Số liệu mô hình cũ của Phase 1–5 chỉ còn là lịch sử, không trộn với kết quả chạy lại.
+
 ## 3. Lộ trình 17 tuần
 
 | Giai đoạn | Tuần (ngày) | Mục tiêu | Tiêu chí hoàn thành |

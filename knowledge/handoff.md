@@ -23,7 +23,8 @@ R0, tuần 24/10–30/10. Đã xong:
    ruff/mypy/pytest sau khi dọn. Không đổi các đường dẫn mà manifest hash vẫn tham chiếu
    nếu receipt còn cần audit lại; lịch sử khôi phục qua tag.
 4. Viết `docs/metrics_spec.md` theo các quyết định trong decision log ngày 2026-10-23.
-5. Sang R1: evaluator gọn chạy trên trace Dev đã lưu.
+5. Sang R1–R2 theo mức rebuild A: harness mới (1 worker API và 1 evaluator), rồi chạy lại
+   A0 smoke → clean Dev × 3 model → bake-off guard → A0–A6 Dev. Xem mục 2b của lộ trình.
 
 ## Bằng chứng
 
