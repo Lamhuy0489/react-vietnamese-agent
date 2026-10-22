@@ -46,5 +46,8 @@ R0, tuần 24/10–30/10. Đã xong:
 - Không được sửa dữ liệu đã seal. Muốn tinh chỉnh dữ liệu phải tạo version mới
   và chỉ làm trên Dev.
 - Guard recall 52,5%, 12/84 model_error, C6 bị chặn dư. Các điểm này để R2 xử lý trên Dev.
+- 3 unit test cũ đang hỏng từ trước (không do harness mới): `test_deploy_structured_pair_v3`
+  (KeyError 'cfg'), `test_document_package_v1` và `test_shutdown_package_v2` (pin hash
+  nguồn cũ). Xử lý khi dọn script cũ ở R0. Còn lại 3.429 unit test đạt.
 - Chưa có reviewer thứ hai; Minh chưa nhận lời mời GitHub.
 - [Handoff trước lộ trình v2](history_20261023_before_roadmap_v2_handoff.md).
