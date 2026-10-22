@@ -15,6 +15,9 @@ R0, tuần 24/10–30/10. Đã xong:
 
 ## Bước tiếp theo
 
+0. **Ngày 2026-10-24:** chạy notebook vLLM với Qwen3-8B, pin revision, chạy
+   `scripts/run_smoke_api_v1.py` theo [runbook](rebuild_a_runbook.md). Owner xin quyền HF
+   theo mục "Việc 1" của runbook.
 1. Owner xin quyền HF gated cho Llama 3.1 8B Instruct và Llama Prompt Guard 2 86M,
    rồi xem hạn mức GPU Kaggle trong Settings.
 2. Merge branch hiện tại vào `main` (qua PR), gắn tag `phase5-closure` trên `6509ae0`.
@@ -31,6 +34,8 @@ R0, tuần 24/10–30/10. Đã xong:
 - Quyết định: [decision log](../docs/project/decision_log.md), mục ngày 2026-10-23.
 - Kiểm dữ liệu: `scripts/assemble_adversarial_release.py --action check`
   cho kết quả valid, test_sealed, 700 biến thể; 23 file clean v1.1 khớp hash.
+- Harness mới: 11 unit test của `openai_compat_v1` đạt; chạy thử runtime với
+  transport giả: completed, và lỗi TIMEOUT được tính là lỗi hạ tầng. Chưa chạy trên Kaggle thật.
 - Phase 5: [completion receipt](../experiments/manifests/phase5_completion_20261002.json).
 
 ## Giới hạn

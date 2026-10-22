@@ -24,3 +24,13 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   repo public chứa GT private, owner chưa quyết.
 - **Còn dở:** merge vào main, tag, dọn script, metrics_spec; owner xin quyền HF Llama.
 - **Bổ sung:** owner cho phép đập đi; chọn mức A, tức chạy lại pipeline từ Phase 1, giữ data và runtime. Không viết lại runtime, không làm lại data.
+
+## 2026-10-23 (tiếp) — Claude Code: harness vLLM cho chạy lại mức A
+
+- **Quyết định:** serve bằng vLLM trên Kaggle qua API (owner đồng ý); R4 dùng API hoặc
+  batch tùy độ ổn định; guard Prompt Guard 2 chạy trên CPU local.
+- **Đã làm:** notebook `vllm_serve_v1`, config `backbones_v2.yaml`, backend
+  `openai_compat_v1` cùng 11 test, script kiểm endpoint, script smoke có checkpoint,
+  [runbook](rebuild_a_runbook.md) kèm hướng dẫn xin quyền HF và Kaggle.
+- **Còn dở:** owner chạy notebook ngày 24/10, pin revision, chạy smoke; Gemma 4 có rủi
+  ro trên T4.

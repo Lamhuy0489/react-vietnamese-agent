@@ -2218,3 +2218,14 @@ clean Dev × 3 backbones → guard bake-off → A0–A6 Dev on Qwen3-8B. Old Pha
 model numbers become historical and are not mixed with re-run results. Rejected:
 rewriting the runtime (6–8 weeks, re-proof of 20 DoD) and rebuilding data/Test
 (10+ weeks; Test is unused for tuning and postdates the chosen models' release).
+
+## 2026-10-23 — Serving: vLLM API from Kaggle for Dev, API or batch for final
+
+Owner approved: one model per Kaggle notebook served by vLLM's OpenAI-compatible
+server with JSON-schema constrained output, seed 42, pinned repo revision exposed
+as the served model name, warmup before READY and idle auto-shutdown; local
+`OpenAICompatBackend` checks identity and separates infrastructure errors
+(rerun) from model errors (kept in the denominator). Guard candidate Prompt
+Guard 2 86M runs on local CPU. R2 uses the API; R4 may use the API with
+checkpoints or switch to in-notebook batch if the tunnel proves unstable.
+Gemma 4 12B on 2xT4 is the highest-risk backbone (nightly vLLM only).

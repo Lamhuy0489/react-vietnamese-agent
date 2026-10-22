@@ -1,0 +1,39 @@
+# Roadmap v2 backbones (decision log 2026-10-23). One model per Kaggle notebook.
+# revision: leave null until the first boot prints the resolved commit SHA, then
+# pin it here and in the notebook before any Dev run that counts.
+qwen3_8b:
+  repo: Qwen/Qwen3-8B
+  revision: null
+  role: rq1_and_rq2
+  gated: false
+  dtype: half
+  tensor_parallel: 2
+  max_model_len: 8192
+  vllm: stable
+  chat_template_kwargs: {enable_thinking: false}
+llama31_8b:
+  repo: meta-llama/Llama-3.1-8B-Instruct
+  revision: null
+  role: rq1
+  gated: true
+  dtype: half
+  tensor_parallel: 2
+  max_model_len: 8192
+  vllm: stable
+  chat_template_kwargs: {}
+gemma4_12b:
+  # Highest risk on 2xT4: vLLM support is nightly-only and Gemma is unstable in
+  # fp16. Fallback order if boot fails: the QAT w4a16 checkpoint, then record a
+  # backbone change in the decision log before choosing another model.
+  repo: google/gemma-4-12B-it
+  revision: null
+  role: rq1
+  gated: true
+  dtype: half
+  tensor_parallel: 2
+  max_model_len: 8192
+  vllm: nightly
+  chat_template_kwargs: {}
+guard_candidates:
+  prompt_guard2_86m: {repo: meta-llama/Llama-Prompt-Guard-2-86M, gated: true, runs: local_cpu}
+  llama32_3b_prompted: {repo: meta-llama/Llama-3.2-3B-Instruct, gated: true, runs: kaggle}

@@ -8,7 +8,9 @@ Tiếp tục đồ án. Đọc theo thứ tự: AGENTS.md, knowledge/current_sta
 knowledge/handoff.md, docs/project/roadmap_v2_rebuild.md, 5 mục cuối của
 knowledge/session_log.md, và mục ngày 2026-10-23 trong docs/project/decision_log.md.
 
-Đang ở R0 của lộ trình v2. Làm tiếp theo "Bước tiếp theo" trong handoff:
+Đang ở R0 của lộ trình v2. Nếu owner vừa chạy notebook vLLM, đọc
+knowledge/rebuild_a_runbook.md, giúp pin revision và đọc kết quả trong
+results/rebuild_a/. Sau đó làm tiếp theo "Bước tiếp theo" trong handoff:
 merge branch vào main qua PR, tag phase5-closure, dọn script cũ, viết
 docs/metrics_spec.md, rồi dựng harness mới để chạy lại từ Phase 1
 (mức rebuild A, mục 2b của lộ trình). Giữ Test khóa, không sửa dữ liệu đã seal.

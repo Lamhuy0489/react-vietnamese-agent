@@ -57,6 +57,8 @@ Chạy lại pipeline từ Phase 1, giữ data đã seal và runtime A0–A6. Th
 
 Số liệu mô hình cũ của Phase 1–5 chỉ còn là lịch sử, không trộn với kết quả chạy lại.
 
+Cách serve: mỗi notebook Kaggle chạy một model bằng vLLM qua API, ép JSON theo schema; local gọi qua `OpenAICompatBackend`. Xem [runbook](../../knowledge/rebuild_a_runbook.md).
+
 ## 3. Lộ trình 17 tuần
 
 | Giai đoạn | Tuần (ngày) | Mục tiêu | Tiêu chí hoàn thành |
