@@ -2180,3 +2180,14 @@ match OUTPUT_SCHEMA_FAILED; old errors remain model_error. C6 false block and
 bounded provenance remain limitations. No new ASR/FPR threshold or Phase6/7
 work is introduced. Official phase status is now accepted for implementation/
 smoke, not general security quality. New dossier/diagnostics remain local.
+
+## 2026-10-23 — Roadmap v2 proposed; local storage cleanup
+
+Owner authorized a restructure ("đập đi xây lại") after Phase 5. Proposed
+[roadmap v2](roadmap_v2_rebuild.md) keeps data/seals and the A0–A6 runtime,
+cuts evidence-process overhead and schedules R0–R7 to 2027-02-19. Not adopted
+until R0 records the metric, backbone and budget decisions. Local cleanup:
+removed three byte-identical 3.1 GB guard tars, the re-downloadable
+Qwen2.5-1.5B snapshot weights, a regenerable API venv and caches; compressed
+`build/pytest_*` and superseded `results/*preflight*` into `archive_local/`
+(Git-ignored). Manifest hashes and `build/releases/` are unchanged.
