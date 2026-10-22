@@ -22,6 +22,11 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-10-23 — vLLM serve v1 (đã dự kiến, chưa upload):** source
+`notebooks/kaggle/vllm_serve_v1/`, id dự kiến `lamhuy8904/react-vn-vllm-serve-v1`
+(private, GPU, Internet). Chưa có URL hoặc version thật. Sau lần chạy đầu, ghi URL,
+version, commit nguồn, SHA model và version vLLM vào đây. Xem [runbook](rebuild_a_runbook.md).
+
 
 ### 2026-10-02 — Guard Dev terminal audit và Phase5 closure
 
