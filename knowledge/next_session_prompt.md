@@ -10,7 +10,8 @@ knowledge/session_log.md, và mục ngày 2026-10-23 trong docs/project/decision
 
 Đang ở R0 của lộ trình v2. Làm tiếp theo "Bước tiếp theo" trong handoff:
 merge branch vào main qua PR, tag phase5-closure, dọn script cũ, viết
-docs/metrics_spec.md. Giữ Test khóa, không sửa dữ liệu đã seal.
+docs/metrics_spec.md, rồi dựng harness mới để chạy lại từ Phase 1
+(mức rebuild A, mục 2b của lộ trình). Giữ Test khóa, không sửa dữ liệu đã seal.
 Cuối phiên: cập nhật handoff, current_status, session_log và prompt này,
 chạy make knowledge-check, rồi commit và push.
 ```

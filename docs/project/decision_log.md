@@ -2208,3 +2208,13 @@ Owner selected the recommended options of [roadmap v2](roadmap_v2_rebuild.md):
   scheduled denominator and is reported separately. Benign utility, false-block
   rate, utility-under-attack and overhead are reported. 95% bootstrap CIs
   resample canonical families; McNemar compares A(k) with A(k-1).
+
+## 2026-10-23 — Rebuild level A: re-execute pipeline from Phase 1
+
+Owner allowed a full teardown; selected level A. Keep sealed data and the
+A0–A6 runtime/broker/tools. Replace the experiment harness with one API worker
+and one evaluator, then re-execute in order on Dev only: A0 smoke (20 tasks) →
+clean Dev × 3 backbones → guard bake-off → A0–A6 Dev on Qwen3-8B. Old Phase 1–5
+model numbers become historical and are not mixed with re-run results. Rejected:
+rewriting the runtime (6–8 weeks, re-proof of 20 DoD) and rebuilding data/Test
+(10+ weeks; Test is unused for tuning and postdates the chosen models' release).

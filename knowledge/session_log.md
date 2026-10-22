@@ -23,3 +23,4 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - **Kiểm dữ liệu:** seal adversarial_v2 hợp lệ; clean v1.1 khớp 23 hash. Phát hiện:
   repo public chứa GT private, owner chưa quyết.
 - **Còn dở:** merge vào main, tag, dọn script, metrics_spec; owner xin quyền HF Llama.
+- **Bổ sung:** owner cho phép đập đi; chọn mức A, tức chạy lại pipeline từ Phase 1, giữ data và runtime. Không viết lại runtime, không làm lại data.
