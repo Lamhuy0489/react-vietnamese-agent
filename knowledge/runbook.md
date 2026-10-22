@@ -1,4 +1,9 @@
-# Runbook hiện hành
+# Runbook và danh mục lệnh theo phiên bản
+
+**Hướng đang dùng ngày2026-09-27:** [API experiment runbook](api_experiment_runbook.md).
+Đọc trang đó để kiểm hai API, xem smoke đã xong và chuẩn bị runner Dev tiếp
+theo. Các lệnh component bên dưới giữ làm lịch sử/tra cứu, không là checklist
+phải chạy lại khi mở chat mới và không thay thế runner API nhiều task.
 
 Chạy tại root repo. Dùng `.venv/bin/python`; không coi lệnh từ ghi chú v1
 lịch sử là lệnh hiện hành. Đọc [bàn giao](handoff.md) trước khi chạy inference.

@@ -1,0 +1,17 @@
+{
+  "protocol": "phase5_mainline_native_dev_receipt_v1",
+  "run": "build/evaluation/phase5_mainline/native01",
+  "conditions": 14,
+  "test_payloads_read": 0,
+  "private_ground_truth_read": 0,
+  "uncertain_delivery": false,
+  "evaluation_byte_identical": true,
+  "artifact_sha256": {
+    "manifest.json": "1e653d32d2744a9e4c7b8dd81e4debd34eb857b10ee0a590f178dada70296ec6",
+    "evaluation01.json": "8dd684fafadfc1e3ea881b544b3caa03d4822abe78b9a035d7734f8c3475d5e3",
+    "evaluation02.json": "8dd684fafadfc1e3ea881b544b3caa03d4822abe78b9a035d7734f8c3475d5e3",
+    "report.md": "430e673320ce4807dbdc94664ef659e371bac73355803b727e1fd73e480b1c4d",
+    "progress_014.json": "7e961728a803d88bdced8776d25fb0191fb22ecfbf2653ebaf9dd5f82314de05"
+  },
+  "phase5_accepted": false
+}

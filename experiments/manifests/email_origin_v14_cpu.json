@@ -1,0 +1,52 @@
+{
+  "protocol": "email_origin_v14_cpu",
+  "candidate_runtime": "security_runtime_v14_email_origin_candidate",
+  "authorization_profile": "raw_user_clause_anchors_v4_candidate",
+  "origin_profile": "host_destination_origin_v4_email_candidate",
+  "value_pre_gate_profile": "value_pre_gate_v2_email_subject_candidate",
+  "baseline_profiles": [
+    "raw_user_clause_anchors_v3",
+    "host_destination_origin_v3",
+    "value_pre_gate_v1"
+  ],
+  "declared_at": "2026-09-29",
+  "scope": "synthetic CPU/Dev A6 candidate controls only",
+  "matrix": {
+    "controls": [
+      "public_email",
+      "private_body",
+      "wrong_destination",
+      "global_revoke",
+      "conditional",
+      "quoted",
+      "unknown_subject",
+      "protected_subject"
+    ],
+    "pytest_tests": 22,
+    "pytest_command": "pytest -q tests/unit/test_value_origin_v4_email_candidate.py tests/unit/test_authorization_anchors_v4.py tests/integration/test_email_origin_candidate_runtime_v14.py",
+    "result": "22 passed"
+  },
+  "source_kind": "working-tree",
+  "source_sha256": {
+    "src/react_agent/security_v1/authorization_anchors_v4.py": "70458a4165f43770e7399c29495efbf71ac08fdf3319f15a4a016a3ab490b252",
+    "src/react_agent/security_v1/email_value_gates_v1.py": "d860ca81b1d349e03b8d8477e2c49e77725fff5f6bddd015e966e4e68d6f7e8e",
+    "src/react_agent/security_v1/runtime_v14_email_origin_candidate.py": "cb7d75cccf71310296ce248dddae1d14623fc91070103c31926829f2c8b08fb5",
+    "src/react_agent/security_v1/value_origin_v4_email_candidate.py": "b542eedb6f71997c62716a7829554f07fdb9f0ce7d146f9bc531efbeb893a1d2",
+    "tests/unit/test_authorization_anchors_v4.py": "5aa35bb857d2ff2fb85b7e4f3fc0d68c989b60fc18181b0b75ca51a2e5ad3b0d",
+    "tests/unit/test_value_origin_v4_email_candidate.py": "f83a5566d9bf1ca72e57b09f915194f2e2cf2aa83c5a31f2e653b4a088d95b43",
+    "tests/integration/test_authorization_anchors_v4_runtime.py": "d7a7a4b8eb732aae053b4e5ff5b7435aec7906d6fbdf7e651ae748f5c8da415d",
+    "tests/integration/test_email_origin_candidate_runtime_v14.py": "fd33942f3ddb4d45fe758fcfe9607a8f9334d539506b1247ee31df8b714aaf7b",
+    "docs/evaluation/email_origin_v14_cpu_protocol.md": "abaf20efabe99acd6d74ce2eb2b6816cd08a6e1f05e4c554acb569137c25cd9c",
+    "docs/evaluation/email_origin_v14_cpu_report.md": "a9c455ed61e9e56bdfeff214485de8ed5b6f74ccc9382bf54baf952557745a17"
+  },
+  "git_base": "728821ea761b3994eb40ebba91ab8238e4667f82",
+  "test_payloads_loaded": 0,
+  "private_oracles_loaded": 0,
+  "model_requests": 0,
+  "network_requests": 0,
+  "api_inference": false,
+  "a6_native_ready": false,
+  "phase5_accepted": false,
+  "test_sealed": true,
+  "notes": "CPU-only opt-in candidate; no Kaggle/API call. Fresh API Dev run requires a new manifest and unchanged negative controls."
+}

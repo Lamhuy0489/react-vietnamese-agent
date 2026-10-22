@@ -1,0 +1,15 @@
+{
+  "protocol": "phase5_followup_email_exact_partial",
+  "run": "build/evaluation/phase5_followup/email_exact01",
+  "completed_conditions": 1,
+  "remaining_conditions": 3,
+  "uncertain_delivery": true,
+  "test_payloads_read": 0,
+  "private_ground_truth_read": 0,
+  "artifact_sha256": {
+    "manifest.json": "7d5994c16f95c6434a6ef5dd8c8b31652d91ad87a9240a548895ca6b8d371400",
+    "progress_001.json": "a69f6cf2b7eb664e4ff3d88df09c9585622e7789be842faa11b804ce542fc99d",
+    "conditions/email_exact_safe__A3/completed.json": "7b6a5baae6c4d7e33786462ef31277ba8478de6335a60970bcae111b80468e2d"
+  },
+  "phase5_accepted": false
+}

@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%">
+  <defs>
+    <style>
+      .c-main-hdr { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 800; font-size: 22px; fill: #0f172a; letter-spacing: -0.02em; }
+      .c-sub-hdr { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 13px; fill: #64748b; }
+      .ax-lbl { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 12px; font-weight: 600; fill: #64748b; }
+      .tick-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 13.5px; font-weight: 800; fill: #1e293b; text-anchor: middle; }
+      .tick-desc { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 11px; fill: #64748b; text-anchor: middle; }
+      .lg-txt { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 12.5px; font-weight: 700; }
+      .call-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 800; font-size: 12.5px; }
+      .call-desc { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 11.5px; fill: #334155; line-height: 1.4; }
+    </style>
+    
+    <filter id="box-shadow" x="-4%" y="-4%" width="108%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.05"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#0f172a" flood-opacity="0.03"/>
+    </filter>
+    <filter id="float-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+
+    <marker id="m-up" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#059669" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="750" fill="#ffffff" rx="16" />
+  <rect x="1" y="1" width="1198" height="748" fill="none" stroke="#e2e8f0" stroke-width="1.5" rx="15" />
+
+  <!-- Header -->
+  <g transform="translate(50, 42)">
+    <rect x="0" y="0" width="165" height="24" rx="12" fill="#eff6ff" />
+    <text x="82.5" y="16" font-family="system-ui, sans-serif" font-weight="700" font-size="10.5px" fill="#2563eb" text-anchor="middle">ĐÁNH GIÁ THỰC NGHIỆM</text>
+    <text x="0" y="52" class="c-main-hdr">Đồ thị Đánh đổi giữa An toàn (Security) và Tiện ích (Utility) tại A0 – A6</text>
+    <text x="0" y="74" class="c-sub-hdr">Minh họa sự sụt giảm tiện ích do hiện tượng chặn nhầm ở A3/A5 và cơ chế phục hồi tiện ích ở A6 (Luận điểm bảo vệ RQ2)</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(760, 40)">
+    <rect x="0" y="0" width="390" height="48" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+    
+    <line x1="20" y1="24" x2="55" y2="24" stroke="#2563eb" stroke-width="4"/>
+    <circle cx="37.5" cy="24" r="5" fill="#2563eb"/>
+    <text x="65" y="28" class="lg-txt" fill="#1e40af">Tiện ích tác vụ hợp lệ (Utility)</text>
+    
+    <line x1="225" y1="24" x2="260" y2="24" stroke="#16a34a" stroke-width="4" stroke-dasharray="6 4"/>
+    <circle cx="242.5" cy="24" r="5" fill="#16a34a"/>
+    <text x="270" y="28" class="lg-txt" fill="#166534">Khả năng chặn tấn công</text>
+  </g>
+
+  <!-- Chart Canvas Area -->
+  <g transform="translate(100, 140)">
+    <!-- Y Axis grid lines & labels -->
+    <line x1="0" y1="0" x2="980" y2="0" stroke="#f1f5f9" stroke-width="1.5"/>
+    <text x="-18" y="5" class="ax-lbl" text-anchor="end">100%</text>
+
+    <line x1="0" y1="90" x2="980" y2="90" stroke="#f1f5f9" stroke-width="1.5"/>
+    <text x="-18" y="95" class="ax-lbl" text-anchor="end">75%</text>
+
+    <line x1="0" y1="180" x2="980" y2="180" stroke="#f1f5f9" stroke-width="1.5"/>
+    <text x="-18" y="185" class="ax-lbl" text-anchor="end">50%</text>
+
+    <line x1="0" y1="270" x2="980" y2="270" stroke="#f1f5f9" stroke-width="1.5"/>
+    <text x="-18" y="275" class="ax-lbl" text-anchor="end">25%</text>
+
+    <line x1="0" y1="360" x2="980" y2="360" stroke="#cbd5e1" stroke-width="2"/>
+    <text x="-18" y="365" class="ax-lbl" text-anchor="end">0%</text>
+
+    <!-- X Axis Ticks (A0 to A6): Width 980 -> Steps: 0, 160, 320, 480, 640, 800, 960 -->
+    <!-- X: A0 -->
+    <text x="15" y="388" class="tick-title">A0</text>
+    <text x="15" y="406" class="tick-desc">Baseline</text>
+
+    <!-- X: A1 -->
+    <text x="170" y="388" class="tick-title">A1</text>
+    <text x="170" y="406" class="tick-desc">Rule Guard</text>
+
+    <!-- X: A2 -->
+    <text x="330" y="388" class="tick-title">A2</text>
+    <text x="330" y="406" class="tick-desc">Model Guard</text>
+
+    <!-- X: A3 -->
+    <text x="490" y="388" class="tick-title">A3</text>
+    <text x="490" y="406" class="tick-desc">Sensitivity S2</text>
+
+    <!-- X: A4 -->
+    <text x="650" y="388" class="tick-title">A4</text>
+    <text x="650" y="406" class="tick-desc">Trust Anchors</text>
+
+    <!-- X: A5 -->
+    <text x="810" y="388" class="tick-title">A5</text>
+    <text x="810" y="406" class="tick-desc">Joint Session</text>
+
+    <!-- X: A6 -->
+    <text x="960" y="388" class="tick-title" fill="#15803d">A6 (DAG)</text>
+    <text x="960" y="406" class="tick-desc" font-weight="700" fill="#166534">Multi-gate</text>
+
+    <!-- OVERBLOCKING ZONE HIGHLIGHT (A3 to A5) -->
+    <rect x="410" y="0" width="475" height="360" rx="8" fill="#fee2e2" fill-opacity="0.35"/>
+    <text x="647.5" y="35" font-family="system-ui, sans-serif" font-size="13px" font-weight="800" fill="#b91c1c" text-anchor="middle">VÙNG CHẶN NHẦM NẶNG NỀ (OVERBLOCKING ZONE)</text>
+
+    <!-- CURVE 1: Security Line (Green Dashed) -->
+    <!-- Points: (15, 355) -> (170, 275) -> (330, 195) -> (490, 85) -> (650, 50) -> (810, 30) -> (960, 20) -->
+    <path d="M 15 355 L 170 275 L 330 195 L 490 85 L 650 50 L 810 30 L 960 20" 
+          fill="none" stroke="#16a34a" stroke-width="4" stroke-dasharray="7 5" stroke-linecap="round"/>
+    <circle cx="15" cy="355" r="6" fill="#16a34a"/>
+    <circle cx="170" cy="275" r="6" fill="#16a34a"/>
+    <circle cx="330" cy="195" r="6" fill="#16a34a"/>
+    <circle cx="490" cy="85" r="6" fill="#16a34a"/>
+    <circle cx="650" cy="50" r="6" fill="#16a34a"/>
+    <circle cx="810" cy="30" r="6" fill="#16a34a"/>
+    <circle cx="960" cy="20" r="7" fill="#15803d"/>
+
+    <!-- CURVE 2: Utility Line (Blue Solid) -->
+    <!-- Points: (15, 75) -> (170, 80) -> (330, 95) -> (490, 260) -> (650, 280) -> (810, 305) -> (960, 90) -->
+    <path d="M 15 75 L 170 80 L 330 95 L 490 260 L 650 280 L 810 305 L 960 90" 
+          fill="none" stroke="#2563eb" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="15" cy="75" r="6" fill="#2563eb"/>
+    <circle cx="170" cy="80" r="6" fill="#2563eb"/>
+    <circle cx="330" cy="95" r="6" fill="#2563eb"/>
+    <circle cx="490" cy="260" r="6" fill="#2563eb"/>
+    <circle cx="650" cy="280" r="6" fill="#2563eb"/>
+    <circle cx="810" cy="305" r="6" fill="#dc2626"/>
+    <circle cx="960" cy="90" r="8" fill="#15803d"/>
+
+    <!-- Callout Box 1: Drop at A3-A5 -->
+    <g transform="translate(500, 180)" filter="url(#float-shadow)">
+      <rect width="240" height="60" rx="8" fill="#ffffff" stroke="#dc2626" stroke-width="1.5"/>
+      <text x="15" y="24" class="call-title" fill="#b91c1c">Suy giảm tiện ích nghiêm trọng</text>
+      <text x="15" y="44" class="call-desc">Chính sách phủ quyết thô chặn luôn</text>
+      <text x="15" y="56" class="call-desc">các tác vụ gửi email công khai S0!</text>
+    </g>
+
+    <!-- Callout Box 2: Recovery at A6 -->
+    <g transform="translate(850, 140)" filter="url(#float-shadow)">
+      <rect width="240" height="68" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+      <text x="15" y="24" class="call-title" fill="#15803d">Phục hồi tiện ích (Utility Recovery)</text>
+      <text x="15" y="44" class="call-desc">A6 soi chiếu đồ thị DAG, gỡ bỏ lệnh cấm</text>
+      <text x="15" y="60" class="call-desc" font-weight="700" fill="#047857">Tiện ích phục hồi trở lại mức Baseline!</text>
+    </g>
+
+    <!-- Green Recovery Arrow -->
+    <path d="M 960 290 L 960 115" stroke="#059669" stroke-width="3" stroke-linecap="round" marker-end="url(#m-up)"/>
+  </g>
+
+  <!-- Bottom Academic Insight Banner -->
+  <g transform="translate(50, 585)" filter="url(#box-shadow)">
+    <rect width="1100" height="120" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="8" height="120" rx="4" fill="#16a34a"/>
+    <text x="25" y="28" class="gpu-title" fill="#0f172a">ĐÓNG GÓP HỌC THUẬT CỐT LÕI CỦA ĐỒ ÁN (TRẢ LỜI RQ2 TRƯỚC HỘI ĐỒNG):</text>
+    <text x="25" y="52" class="call-desc">• Các kỹ thuật phòng vệ thông thường (A1–A5) khi tăng mức độ bảo vệ thì đồng thời "triệt tiêu" tính hữu dụng của tác nhân do chặn nhầm quá nhiều.</text>
+    <text x="25" y="74" class="call-desc">• Kiến trúc A6 ứng dụng công nghệ theo dõi nguồn gốc dữ liệu (DAG provenance tracking) chứng minh thực nghiệm rằng: Hệ thống có thể đạt được độ an toàn tối đa trước các cuộc tấn công rò rỉ dữ liệu mà vẫn bảo toàn năng lực hoàn thành tác vụ hợp lệ cho người dùng.</text>
+  </g>
+</svg>

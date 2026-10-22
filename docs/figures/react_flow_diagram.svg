@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 880" width="100%" height="100%">
+  <defs>
+    <style>
+      .hdr-main { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 800; font-size: 22px; fill: #0f172a; letter-spacing: -0.02em; }
+      .hdr-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 13px; fill: #64748b; }
+      .card-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: 14px; fill: #0f172a; }
+      .card-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 11.5px; fill: #475569; line-height: 1.4; }
+      .pill-txt { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: 0.03em; }
+      .flow-lbl { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 11px; font-weight: 600; fill: #475569; }
+      
+      .wire-base { fill: none; stroke: #94a3b8; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-blue { fill: none; stroke: #2563eb; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-green { fill: none; stroke: #059669; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-red { fill: none; stroke: #dc2626; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 5 4; }
+    </style>
+    
+    <filter id="elev-1" x="-4%" y="-4%" width="108%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.05"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#0f172a" flood-opacity="0.03"/>
+    </filter>
+    <filter id="elev-2" x="-6%" y="-6%" width="112%" height="116%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+
+    <linearGradient id="blue-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eff6ff" />
+      <stop offset="100%" stop-color="#dbeafe" />
+    </linearGradient>
+    <linearGradient id="green-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0fdf4" />
+      <stop offset="100%" stop-color="#dcfce7" />
+    </linearGradient>
+    <linearGradient id="red-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef2f2" />
+      <stop offset="100%" stop-color="#fee2e2" />
+    </linearGradient>
+    <linearGradient id="purple-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf5ff" />
+      <stop offset="100%" stop-color="#f3e8ff" />
+    </linearGradient>
+
+    <marker id="arr-gray" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#94a3b8" />
+    </marker>
+    <marker id="arr-blue" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#2563eb" />
+    </marker>
+    <marker id="arr-green" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#059669" />
+    </marker>
+    <marker id="arr-red" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#dc2626" />
+    </marker>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="880" fill="#ffffff" rx="16" />
+  <rect x="1" y="1" width="1198" height="878" fill="none" stroke="#e2e8f0" stroke-width="1.5" rx="15" />
+
+  <!-- Document Title Header -->
+  <g transform="translate(50, 42)">
+    <rect x="0" y="0" width="145" height="24" rx="12" fill="#eff6ff" />
+    <text x="72.5" y="16" class="pill-txt" fill="#2563eb" text-anchor="middle">KIẾN TRÚC HỆ THỐNG</text>
+    <text x="0" y="52" class="hdr-main">Sơ đồ Luồng Thực thi Tác nhân ReAct và Các Chốt chặn An toàn (A0 – A6)</text>
+    <text x="0" y="74" class="hdr-sub">Hành trình dữ liệu khép kín: từ tiếp nhận yêu cầu, lập luận nhiều bước, kiểm soát cổng an toàn đến xuất bản câu trả lời đã kiểm duyệt</text>
+  </g>
+
+  <!-- STEP 1, 2, 3: Inputs and Initialization -->
+  <g transform="translate(50, 140)">
+    <!-- Node 1 -->
+    <g transform="translate(0, 0)" filter="url(#elev-1)">
+      <rect width="320" height="72" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+      <rect x="0" y="0" width="8" height="72" rx="4" fill="#3b82f6"/>
+      <text x="24" y="28" class="card-title">1. Yêu cầu Người dùng (User Request)</text>
+      <text x="24" y="48" class="card-sub">Câu lệnh, nhiệm vụ học vụ bằng tiếng Việt tự nhiên</text>
+      <text x="24" y="63" class="card-sub" fill="#64748b">(Gán nhãn ban đầu: Sensitivity S0, Trust: Trusted)</text>
+    </g>
+
+    <!-- Arrow 1 to 2 -->
+    <path d="M 320 36 L 380 36" class="wire-base" marker-end="url(#arr-gray)"/>
+
+    <!-- Node 2 -->
+    <g transform="translate(390, 0)" filter="url(#elev-1)">
+      <rect width="320" height="72" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+      <rect x="0" y="0" width="8" height="72" rx="4" fill="#6366f1"/>
+      <text x="24" y="28" class="card-title">2. Khởi tạo Phiên (Session Init)</text>
+      <text x="24" y="48" class="card-sub">Trạng thái nhạy cảm S0, Chưa có nguồn Untrusted</text>
+      <text x="24" y="63" class="card-sub" fill="#6366f1">Khởi tạo Đồ thị Nguồn gốc (Value-Origin DAG Root)</text>
+    </g>
+
+    <!-- Arrow 2 to 3 -->
+    <path d="M 710 36 L 770 36" class="wire-base" marker-end="url(#arr-gray)"/>
+
+    <!-- Node 3 -->
+    <g transform="translate(780, 0)" filter="url(#elev-1)">
+      <rect width="320" height="72" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+      <rect x="0" y="0" width="8" height="72" rx="4" fill="#8b5cf6"/>
+      <text x="24" y="28" class="card-title">3. Đóng gói Ngữ cảnh (Context Bundle)</text>
+      <text x="24" y="48" class="card-sub">System Prompt + Đặc tả 8 Công cụ + Lịch sử hội thoại</text>
+      <text x="24" y="63" class="card-sub" fill="#8b5cf6">Chuẩn bị đầu vào cho vòng lặp ReAct</text>
+    </g>
+  </g>
+
+  <!-- Connect 3 to Loop -->
+  <path d="M 940 212 L 940 248 L 180 248 L 180 278" class="wire-base" marker-end="url(#arr-gray)"/>
+
+  <!-- MAIN REACT LOOP CONTAINER -->
+  <g transform="translate(50, 260)">
+    <rect width="1100" height="425" rx="14" fill="#fafafa" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 4" />
+    
+    <!-- Badge for Loop -->
+    <rect x="25" y="-13" width="280" height="26" rx="6" fill="#334155" />
+    <text x="165" y="4" class="pill-txt" fill="#ffffff" text-anchor="middle">VÒNG LẶP REACT (TỐI ĐA 8 BƯỚC)</text>
+
+    <!-- Node: LLM Agent -->
+    <g transform="translate(30, 45)" filter="url(#elev-2)">
+      <rect width="250" height="90" rx="10" fill="url(#blue-grad)" stroke="#3b82f6" stroke-width="2"/>
+      <rect x="15" y="15" width="70" height="20" rx="4" fill="#2563eb" />
+      <text x="50" y="29" class="pill-txt" fill="#ffffff" text-anchor="middle">AGENT</text>
+      <text x="15" y="55" class="card-title" fill="#1e3a8a">LLM Agent (Qwen 7B)</text>
+      <text x="15" y="73" class="card-sub">Sinh lập luận (Thought) và</text>
+      <text x="15" y="88" class="card-sub">đề xuất hành động (Action/Final)</text>
+    </g>
+
+    <!-- Arrow Agent to Parser -->
+    <path d="M 280 90 L 338 90" class="wire-blue" marker-end="url(#arr-blue)"/>
+
+    <!-- Node: Parser -->
+    <g transform="translate(348, 45)" filter="url(#elev-1)">
+      <rect width="270" height="90" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="20" y="32" class="card-title">Bộ Phân tích Cú pháp (Parser)</text>
+      <text x="20" y="52" class="card-sub">Bóc tách Action JSON nghiêm ngặt</text>
+      <text x="20" y="68" class="card-sub">- tool_name: Tên 1 trong 8 mock tools</text>
+      <text x="20" y="84" class="card-sub">- kwargs: Tham số (arguments)</text>
+    </g>
+
+    <!-- Decision Diamond / Arrow to PreGate -->
+    <path d="M 483 135 L 483 185" class="wire-blue" marker-end="url(#arr-blue)"/>
+    <text x="495" y="162" class="flow-lbl">Đề xuất gọi Tool</text>
+
+    <!-- PreGate Node (A0 - A6) -->
+    <g transform="translate(320, 195)" filter="url(#elev-2)">
+      <rect width="325" height="135" rx="10" fill="url(#red-grad)" stroke="#ef4444" stroke-width="2"/>
+      <rect x="15" y="12" width="130" height="22" rx="4" fill="#dc2626" />
+      <text x="80" y="27" class="pill-txt" fill="#ffffff" text-anchor="middle">CHỐT CHẶN PREGATE</text>
+      <text x="15" y="54" class="card-title" fill="#991b1b">Kiểm soát An toàn PreGate (A0–A6)</text>
+      <text x="15" y="73" class="card-sub">• A1: Quét luật Regex, chặn gửi ngoại vi trái phép</text>
+      <text x="15" y="89" class="card-sub">• A2: Mô hình Guard 1.5B phân loại rủi ro độc hại</text>
+      <text x="15" y="105" class="card-sub">• A3/A5: Phủ quyết thô (Chặn nhầm khi phiên dính S2)</text>
+      <text x="15" y="122" class="card-sub" font-weight="700" fill="#047857">• A6: Value-Origin DAG gỡ chặn nhầm cho S0</text>
+    </g>
+
+    <!-- Branch: PreGate DENY -->
+    <path d="M 320 262 L 155 262 L 155 145" class="wire-red" marker-end="url(#arr-red)"/>
+    <rect x="175" y="248" width="115" height="26" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+    <text x="232" y="265" class="pill-txt" fill="#b91c1c" text-anchor="middle">TỪ CHỐI (DENY)</text>
+    <text x="165" y="200" class="flow-lbl" fill="#b91c1c">Phản hồi lý do từ chối (Denial Feedback)</text>
+
+    <!-- Branch: PreGate ALLOW -->
+    <path d="M 645 262 L 728 262" class="wire-green" marker-end="url(#arr-green)"/>
+    <rect x="655" y="248" width="60" height="26" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="685" y="265" class="pill-txt" fill="#15803d" text-anchor="middle">ALLOW</text>
+
+    <!-- Tool Broker Node -->
+    <g transform="translate(738, 205)" filter="url(#elev-2)">
+      <rect width="320" height="115" rx="10" fill="url(#green-grad)" stroke="#10b981" stroke-width="2"/>
+      <rect x="15" y="12" width="110" height="22" rx="4" fill="#059669" />
+      <text x="70" y="27" class="pill-txt" fill="#ffffff" text-anchor="middle">THỰC THI TOOL</text>
+      <text x="15" y="54" class="card-title" fill="#065f46">Bộ Điều phối Công cụ (Tool Broker)</text>
+      <text x="15" y="73" class="card-sub">Thực thi an toàn trên Môi trường Học vụ Giả lập:</text>
+      <text x="15" y="89" class="card-sub">• Tra cứu văn bản: doc_search, doc_read (documents.json)</text>
+      <text x="15" y="105" class="card-sub">• Cơ sở dữ liệu: db_query trên SQLite university.db</text>
+      <text x="15" y="120" class="card-sub">• Tính toán / Ngoại vi: calculator, send_email, post_webhook</text>
+    </g>
+
+    <!-- Broker to PostGate -->
+    <path d="M 898 320 L 898 355 L 750 355" class="wire-base" marker-end="url(#arr-gray)"/>
+
+    <!-- PostGate Node -->
+    <g transform="translate(420, 345)" filter="url(#elev-1)">
+      <rect width="320" height="65" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="20" y="24" class="card-title">Cổng Xử lý Sau Thực thi (PostGate)</text>
+      <text x="20" y="42" class="card-sub">- Cập nhật mức nhạy cảm phiên: max(S_hiện_tại, S_mới)</text>
+      <text x="20" y="57" class="card-sub">- Cập nhật DAG | A6: Bọc JSON Envelope nếu Untrusted</text>
+    </g>
+
+    <!-- Loop Back Arrow from PostGate to LLM Agent -->
+    <path d="M 420 377 L 100 377 L 100 145" class="wire-base" marker-end="url(#arr-gray)"/>
+    <text x="110" y="368" class="flow-lbl">Cập nhật Ngữ cảnh cho Bước kế tiếp</text>
+
+    <!-- Path: Final Answer Proposed -->
+    <path d="M 618 90 L 1080 90 L 1080 435 L 850 435" class="wire-blue" marker-end="url(#arr-blue)"/>
+    <rect x="750" y="76" width="160" height="24" rx="5" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="830" y="92" class="pill-txt" fill="#1d4ed8" text-anchor="middle">ĐỀ XUẤT FINAL ANSWER</text>
+  </g>
+
+  <!-- BOTTOM SECTION: FINALGATE & EVALUATION -->
+  <g transform="translate(50, 710)">
+    <!-- FinalGate Node -->
+    <g transform="translate(180, 0)" filter="url(#elev-2)">
+      <rect width="660" height="110" rx="10" fill="url(#purple-grad)" stroke="#8b5cf6" stroke-width="2"/>
+      <rect x="20" y="12" width="150" height="22" rx="4" fill="#7c3aed" />
+      <text x="95" y="27" class="pill-txt" fill="#ffffff" text-anchor="middle">CHỐT CHẶN FINALGATE</text>
+      <text x="20" y="54" class="card-title" fill="#4c1d95">Cổng Kiểm duyệt Câu trả lời Cuối cùng (FinalGate A0 – A6)</text>
+      <text x="20" y="74" class="card-sub">• A0 – A5: Xuất bản trực tiếp (Pass-through) toàn bộ văn bản của mô hình.</text>
+      <text x="20" y="90" class="card-sub">• A6: Soi chiếu đồ thị Value-Origin DAG, phát hiện mọi rò rỉ dữ liệu mật S1/S2 vào câu trả lời.</text>
+      <text x="20" y="105" class="card-sub" font-weight="700" fill="#6d28d9">• Hành động A6: Tự động che giấu ([REDACTED]) hoặc Từ chối (DENY) xuất bản nếu rò rỉ nghiêm trọng.</text>
+    </g>
+
+    <!-- Arrow from FinalGate to Output -->
+    <path d="M 840 55 L 905 55" class="wire-green" marker-end="url(#arr-green)"/>
+
+    <!-- Final Output / Trace Box -->
+    <g transform="translate(915, 8)" filter="url(#elev-1)">
+      <rect width="235" height="95" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="2"/>
+      <text x="20" y="28" class="card-title" fill="#065f46">Vết Thực thi (Trace JSONL)</text>
+      <text x="20" y="48" class="card-sub">Lưu toàn bộ hành vi quan sát được</text>
+      <text x="20" y="66" class="card-sub">Bộ Đánh giá Ngoại tuyến (Evaluator)</text>
+      <text x="20" y="82" class="card-sub" font-weight="700" fill="#047857">Đối chiếu Ground Truth độc lập</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,210 @@
+{
+  "schema": "phase5_frozen_parameters_v1",
+  "date": "2026-10-02",
+  "scope": "Historical accepted baseline for reproduction and Phase6 evaluator work; not live connection settings",
+  "runtime_release_commit": "419938b4c2bc9842a92b2d797126d69ae727c953",
+  "runtime_family": "phase5_v14_closure_v1",
+  "runtime_version": "security_runtime_phase5_v14_closure_v1",
+  "worker_identities_at_completed_run": {
+    "agent": {
+      "instance_id": "8dfd98a730cfc8e460fe6030c81d8f41",
+      "model_id": "qwen3-8b",
+      "model_revision": "sha256:c816c705dd33693b0dd32e94c1c13d55e9920a7bcae9010e04be509debc515e2",
+      "role": "agent",
+      "session_id": "a4e03e1bd9894dc69766fa299fd308fd",
+      "source_commit": "e4078d7d5d2fe66a881e53ec5f194e3f9aa66b47",
+      "worker_sha256": "21f66f981e6d9f075b07bc306b0ef802f09b221c5ae4539b06a26f5cf5e521c6"
+    },
+    "guard": {
+      "instance_id": "6f03a9d8954c0fb37e653f279a23be64",
+      "model_id": "llama-3.2-3b-instruct",
+      "model_revision": "sha256:fa094cd072ff38bc2e6aefd4a1623fb6304a3265ddc4fc9bfd1f255b2eecde74",
+      "role": "guard",
+      "session_id": "99d4ce34018642a78adba65f463c031c",
+      "source_commit": "77bc456469ec58fb3543931066f365b15292f5f3",
+      "worker_sha256": "bdce7c2065d39ae4ecca4521cc2c44c80cf8fb740f6bf70eba27c04d743fba68"
+    }
+  },
+  "identities_are_historical_not_restart_credentials": true,
+  "agent_generation": {
+    "max_new_tokens": 512,
+    "seed": 42,
+    "temperature": 0.0
+  },
+  "guard_generation": {
+    "max_new_tokens": 128,
+    "seed": 42,
+    "temperature": 0
+  },
+  "runtime_limits": {
+    "config_id": "A0",
+    "max_format_retries_per_step": 0,
+    "max_steps": 4,
+    "tool_timeout_seconds": 5.0
+  },
+  "timeouts_seconds": {
+    "tool": 5.0,
+    "http": 150,
+    "local_guard_process": 180,
+    "diagnostic_continuation_get": 12,
+    "diagnostic_continuation_post": 150
+  },
+  "security_configurations": {
+    "A0": {
+      "detector_profile": "security_v1",
+      "joint_session": false,
+      "level": "A0",
+      "llm_guard": false,
+      "model_input_profile": "raw_v1",
+      "rule": false,
+      "rule_version": "rules_v1",
+      "session_sensitivity": false,
+      "session_trust": false,
+      "value_origin": false,
+      "version": "security_config_v1"
+    },
+    "A1": {
+      "detector_profile": "security_v1",
+      "joint_session": false,
+      "level": "A1",
+      "llm_guard": false,
+      "model_input_profile": "raw_v1",
+      "rule": true,
+      "rule_version": "rules_v1",
+      "session_sensitivity": false,
+      "session_trust": false,
+      "value_origin": false,
+      "version": "security_config_v1"
+    },
+    "A2": {
+      "detector_profile": "security_v1",
+      "joint_session": false,
+      "level": "A2",
+      "llm_guard": true,
+      "model_input_profile": "raw_v1",
+      "rule": true,
+      "rule_version": "rules_v1",
+      "session_sensitivity": false,
+      "session_trust": false,
+      "value_origin": false,
+      "version": "security_config_v1"
+    },
+    "A3": {
+      "detector_profile": "security_v1",
+      "joint_session": false,
+      "level": "A3",
+      "llm_guard": true,
+      "model_input_profile": "raw_v1",
+      "rule": true,
+      "rule_version": "rules_v1",
+      "session_sensitivity": true,
+      "session_trust": false,
+      "value_origin": false,
+      "version": "security_config_v1"
+    },
+    "A4": {
+      "detector_profile": "security_v1",
+      "joint_session": false,
+      "level": "A4",
+      "llm_guard": true,
+      "model_input_profile": "raw_v1",
+      "rule": true,
+      "rule_version": "rules_v1",
+      "session_sensitivity": true,
+      "session_trust": true,
+      "value_origin": false,
+      "version": "security_config_v1"
+    },
+    "A5": {
+      "detector_profile": "security_v1",
+      "joint_session": true,
+      "level": "A5",
+      "llm_guard": true,
+      "model_input_profile": "raw_v1",
+      "rule": true,
+      "rule_version": "rules_v1",
+      "session_sensitivity": true,
+      "session_trust": true,
+      "value_origin": false,
+      "version": "security_config_v1"
+    },
+    "A6": {
+      "detector_profile": "security_v1",
+      "joint_session": true,
+      "level": "A6",
+      "llm_guard": true,
+      "model_input_profile": "raw_v1",
+      "rule": true,
+      "rule_version": "rules_v1",
+      "session_sensitivity": true,
+      "session_trust": true,
+      "value_origin": true,
+      "version": "security_config_v1"
+    }
+  },
+  "normalizer_version": "normalizer_v1",
+  "actual_A6_model_input_profile": "untrusted_data_view_v1",
+  "actual_A6_final_policy": "final_encoded_full_value_v1",
+  "guard_prompt_sha256": "ebba968dffcd63203702bc49b9b656bba07e6fcf03d2df9c2577ad8480a9f952",
+  "environment_sha256": {
+    "cached_pages/pages.json": "b9439d66c9c7eb46aa08287707a076645b7427f75d0357924a118fb65d2e7c35",
+    "database/seed.json": "0f53d1815c90e32c2470f55e04ad963df8fa1bef0a1bb80c3b5b478fa4a536d7",
+    "database/university.db": "8656ea3bbc92110c0666816f2b7e91992c3a1dcbc25e6384acea05987b926713",
+    "documents/documents.json": "67416cd76dd59a289891cb3fdc87be635a50fb0b43bb7575b53a96fede3a591d",
+    "replay_responses.json": "89aca02f67cd1f43cf4e19d6245dca60a051e6c979ac27feb38c62dda202063e",
+    "tasks.jsonl": "8772a2607b05d5d56a7c0fa5f47f33604363816d461ed41813425486809eea24"
+  },
+  "prepared_environment_sha256": {
+    "cached_pages/pages.json": "b9439d66c9c7eb46aa08287707a076645b7427f75d0357924a118fb65d2e7c35",
+    "database/seed.json": "0f53d1815c90e32c2470f55e04ad963df8fa1bef0a1bb80c3b5b478fa4a536d7",
+    "database/university.db": "8656ea3bbc92110c0666816f2b7e91992c3a1dcbc25e6384acea05987b926713",
+    "documents/documents.json": "7d786a659afbb9a41064c5aa75a2041da0d000aad205cde71fa82ee1426da533",
+    "replay_responses.json": "89aca02f67cd1f43cf4e19d6245dca60a051e6c979ac27feb38c62dda202063e",
+    "tasks.jsonl": "8772a2607b05d5d56a7c0fa5f47f33604363816d461ed41813425486809eea24"
+  },
+  "guard_dev_dataset_sha256": {
+    "data/adversarial/release_v2/dev_attack.jsonl": "764cf63ac986d89c747c9baa9019d7025a3bc38c5b9cf9c8cf151edfb7d4beba",
+    "data/adversarial/release_v2/dev_benign.jsonl": "93c9e7a70758ed8d5f8a8fa35c5c605edf4d05d57432fa86c6d1872c6a7de739",
+    "data/adversarial/release_v2/seal.json": "431b81118026bef6c60e33306e51df71160504579e76ea08fb4648005fa1cb6b"
+  },
+  "guard_quality_selection": "all40sortedDevFamilies; variant rotates across five frozen types",
+  "classifier_positive": [
+    "SUSPICIOUS",
+    "MALICIOUS"
+  ],
+  "completed_runs": {
+    "native_closure": "build/evaluation/phase5_native_public_guard_20261002_01",
+    "cpu_controls": "build/evaluation/phase5_cpu_acceptance_20261002_01",
+    "guard_quality": "build/evaluation/phase5_guard_quality_native_20261002_01",
+    "closure_qa": "build/evaluation/phase5_completion_20261002_01"
+  },
+  "completed_run_counts": {
+    "native_conditions": 84,
+    "native_completed": 72,
+    "native_model_error": 12,
+    "guard_conditions": 80,
+    "guard_TP": 21,
+    "guard_FN": 19,
+    "guard_FP": 5,
+    "guard_TN": 35,
+    "fresh_tests": 467
+  },
+  "evidence_archive": {
+    "archive": "build/releases/phase5_completion_evidence_20261002.tar.gz",
+    "archive_sha256": "32af8673ed86dc96d2476612d6c9c84cc53762862d54db44621a5f9927f7ab01",
+    "bytes": 5814020,
+    "files": 5928,
+    "credential_value_scan_matches": 0,
+    "manifest": "build/releases/phase5_completion_evidence_20261002.manifest.json",
+    "manifest_sha256": "e6e91e637c31f5cb2728e00280906e7c26b0149045139c0bb75fab9ff4ec5ede"
+  },
+  "source_sha256": {
+    "build/evaluation/phase5_native_public_guard_20261002_01/manifest.json": "9e6ad4c4013ce33582748c403b23eb98e19205ca1f883771be7005ca374572b7",
+    "build/evaluation/phase5_guard_quality_native_20261002_01/manifest.json": "05cec353577d2fa32395729a5676ade9527eb78c20eec8a08b53ef7dcf4cbca0",
+    "experiments/manifests/phase5_completion_20261002.json": "942fd4bc23ec5b3d7f8bf0fe26f63f833cfa8e4c553a3ba7b0865731185f80ee",
+    "experiments/manifests/phase5_release_20261002.json": "26b0168705259e1edd451375d8ffd75010d6fad2c5bfc9352dab963ef96025d9"
+  },
+  "restart_rule": "New worker boot or session requires fresh admission and a declared new run identity; never resume the terminal84or80runs",
+  "phase6_first_step": "Inspect existing scorers and freeze metric definitions and denominators before coding; use saved Dev traces and synthetic golden cases",
+  "credentials_included": false
+}

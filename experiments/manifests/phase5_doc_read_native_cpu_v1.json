@@ -1,0 +1,100 @@
+{
+  "archive_sha256": "d4cbb8bd829d77076dc91a22b93e86242b112a369943612a402baa20c3714656",
+  "checks": {
+    "diff_check": true,
+    "knowledge_check": true,
+    "mypy_source_files": 549,
+    "ruff": true,
+    "verify_setup": true
+  },
+  "date": "2026-09-25",
+  "focused_tests_passed": 53,
+  "git_base_commit": "c87c321b42345e6d7152ca60976363a67a972531",
+  "history": [
+    {
+      "root": "build/kaggle/phase5_doc_read_package01",
+      "status": "passed_earlier_source"
+    },
+    {
+      "root": "build/kaggle/phase5_doc_read_package02",
+      "status": "passed_earlier_source"
+    },
+    {
+      "root": "build/kaggle/phase5_doc_read_package03",
+      "status": "failed_namespace_import_gate_no_preflight_receipt"
+    }
+  ],
+  "host_qa_sha256": {
+    "scripts/prepare_phase5_doc_read_package_v1.py": "7f00d72075c66bf45621695286a6c12c4f4cd8c0b48b0284d83a996d7f6c57cb",
+    "tests/integration/test_doc_read_pair_runtime_v1.py": "eacf73aa88a4a02080059fe0f8933eac0ba0c81fa94503b94dcbd07d99fd25d7",
+    "tests/unit/test_doc_read_native_admission_v1.py": "d0add0cc3ddf607fcbd00c941793f8a5889445d0d1258f1de210e30d663ba222",
+    "tests/unit/test_doc_read_package_v1.py": "e4eadcca73f4576dd757988cfec60c4aeb41c6ee036e01e6722c1e863f26cd76"
+  },
+  "layouts": [
+    {
+      "clean_dummy_tasks": 21,
+      "clean_missing_only_resume": true,
+      "committed_source_admitted": false,
+      "doc_read_native_cli_help": true,
+      "doc_read_native_imports": true,
+      "isolated_python": true,
+      "layout": "archive",
+      "native_inference_runs": 0,
+      "offline_wheels": true,
+      "tools": 8,
+      "valid": true
+    },
+    {
+      "clean_dummy_tasks": 21,
+      "clean_missing_only_resume": true,
+      "committed_source_admitted": false,
+      "doc_read_native_cli_help": true,
+      "doc_read_native_imports": true,
+      "isolated_python": true,
+      "layout": "expanded",
+      "native_inference_runs": 0,
+      "offline_wheels": true,
+      "tools": 8,
+      "valid": true
+    }
+  ],
+  "native_inference_runs": 0,
+  "native_model_authenticated": false,
+  "package_root": "build/kaggle/phase5_doc_read_package04",
+  "phase5_accepted": false,
+  "preflight_sha256": "63291dbb7ab7f9ae64bed55a64fde652cddc33ac532f736a2b969c2ba75ac995",
+  "protocol": "phase5_doc_read_native_cpu_evidence_v1",
+  "regression": {
+    "elapsed_seconds": 131.353,
+    "errors": 0,
+    "failures": 0,
+    "passed": 374,
+    "path": "build/evaluation/phase5_doc_read_native_cpu_qa02.xml",
+    "sha256": "ee1f89654ddf93361ddabbbb8bc27ac0ea3fbb4073777af02fdc009c817f1a93",
+    "strict_xfail": 1,
+    "tests": 375
+  },
+  "release_admitted": false,
+  "scope": "CPU integrity/wiring/package evidence only; no prospective/model quality or independent publisher attestation",
+  "selected_prospective_tasks": 0,
+  "source_commit": null,
+  "source_manifest_sha256": "162b5b2eee60450f05797807ec2726faf4fde869198ad5487a2ff3691ec96fc8",
+  "source_mode": "working_tree_cpu_only",
+  "source_sha256": {
+    "scripts/run_phase5_doc_read_native_v1.py": "5c90f3cee06f86be475f83f1ff61f08db3437561e40944dc0e08b45737c0790f",
+    "src/react_agent/llm/doc_read_native_dispatch_v1.py": "2be7c41d59bea1d0a55f19b4037883a35724e261d036b18d8f48fcc9fda97dc8",
+    "src/react_agent/security_v1/doc_read_final_proof_v1.py": "a3a18b7c04265712ca9106cd739f41425e8d2291ab101652b3c29a63438bcf1b",
+    "src/react_agent/security_v1/doc_read_final_runtime_v1.py": "e60eb553265655a03d6cd2f966432d00c53f9f84a6dcf6fc47747b4e1a1d7555",
+    "src/react_agent/security_v1/doc_read_pair_runtime_v1.py": "618e9a035bdaaf802fdaf3d51fa687d3b1427ddf6c050419022c7c50e829682c",
+    "src/react_agent/security_v1/final_literal_proof_v1.py": "eed10d7d543ad6d4dcc1909816715aef7946331b9cc109ab08f0f2b5677e88c9",
+    "src/react_agent/security_v1/final_literal_runtime_v1.py": "11b8c49a9bd4407a7b48aa4912e261ca1d36b9d62aed5d83aaabd222a44ff243",
+    "src/react_agent/security_v1/value_origin_v4.py": "c27b5309ffae0610cc242fedb31b5ba2c51a706135b0f9b5322eae56fa484cd8",
+    "src/react_agent/tools/doc_read.py": "d4e570da52f346dd1ec45673cd49f457fb1e5611d9b672756dd7b5bf6b032912",
+    "src/react_agent/validation/doc_read_final_runtime_audit_v1.py": "d54782d30e787b2c8e0f450d88800482897999772fed40fd385ade597d0d681f",
+    "src/react_agent/validation/doc_read_native_admission_v1.py": "a7ec26577cbef3bc37f56dae2e46085c86594bcd247257bd0b9ace64ced4aeea",
+    "src/react_agent/validation/doc_read_native_release_v1.py": "2d37b11eb22cc722123dec251de3e68065a2954959427f7ff7a5532f08f204d3",
+    "src/react_agent/validation/doc_read_pair_audit_v1.py": "41a76951b3a58869e579fa0e29fef901727b5f8a2d7728b4f52864fefc93a4d2",
+    "src/react_agent/validation/final_literal_runtime_audit_v1.py": "7e2ea9a26c8b6e354d6b6e8c7ee675a46478a01b2a83f9ef948f8e4f440f3c12"
+  },
+  "worker_files": 191
+}

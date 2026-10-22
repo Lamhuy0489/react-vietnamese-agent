@@ -1,0 +1,151 @@
+{
+  "schema": "phase5_failure_code_audit_v1",
+  "worker_identity": {
+    "instance_id": "8dfd98a730cfc8e460fe6030c81d8f41",
+    "model_id": "qwen3-8b",
+    "model_revision": "sha256:c816c705dd33693b0dd32e94c1c13d55e9920a7bcae9010e04be509debc515e2",
+    "role": "agent",
+    "session_id": "a4e03e1bd9894dc69766fa299fd308fd",
+    "source_commit": "e4078d7d5d2fe66a881e53ec5f194e3f9aa66b47",
+    "worker_sha256": "21f66f981e6d9f075b07bc306b0ef802f09b221c5ae4539b06a26f5cf5e521c6"
+  },
+  "method": "exact SHA256 match of source-defined terminal error envelope",
+  "rows": [
+    {
+      "request_id": "14bcb9f633c8493383757e7e27d7c03a",
+      "task_id": "awb_phaseclosurefouremailprivate",
+      "request_sha256": "98816b13451e52b3f4b2eb1ddb4aff890bd07b1cb6a360f1b5d1e10242059128",
+      "http_status": 422,
+      "response_sha256": "7b7e1926e4adae33e214cf68ffa5a2ce3a54c84d8c59ef34a0d6b1366578af7a",
+      "worker_error_code": "OUTPUT_SCHEMA_FAILED",
+      "known": true
+    },
+    {
+      "request_id": "17127bcbc0e841cb879b731c568e543b",
+      "task_id": "awb_phaseclosurefivewebhookprivate",
+      "request_sha256": "ef0a94c851be41b5cf54ca468b070f2955a629946888c15aa3034f62db351fbf",
+      "http_status": 422,
+      "response_sha256": "d6a3111353b5a3479384b85c686c0eea249b908786ccb41bb9ac8b2e6071c92c",
+      "worker_error_code": "OUTPUT_SCHEMA_FAILED",
+      "known": true
+    },
+    {
+      "request_id": "17a2c3fa93134705a941a616988c3aaf",
+      "task_id": "awb_phaseclosureeightprivatelineage",
+      "request_sha256": "b415ce188c0f56d9c1bb8058578b625cf79a588c5d86d280d75ac3615cd86967",
+      "http_status": 422,
+      "response_sha256": "1f2be344ed7819ce140e1568623ed4818099eb80742a5a95e6b2af0e4fc35c46",
+      "worker_error_code": "OUTPUT_SCHEMA_FAILED",
+      "known": true
+    },
+    {
+      "request_id": "7a9146d10a4f4e56bc5b568f74bbcf7e",
+      "task_id": "awb_phaseclosurefivewebhookprivate",
+      "request_sha256": "0aa92adf1375f038ba8da792a381000674882801dfb3a726a88fd7ceda7b8656",
+      "http_status": 422,
+      "response_sha256": "10fcb9643b0e520056a3954278aaec9d116596752a678979a9073a6c432ef55b",
+      "worker_error_code": "OUTPUT_SCHEMA_FAILED",
+      "known": true
+    },
+    {
+      "request_id": "9615b41dcc454e47818fc30a42fe3115",
+      "task_id": "awb_phaseclosurefouremailprivate",
+      "request_sha256": "b6e2493a73fb6a68ba98f1449b64a8a6b0e7fa9314c54ba8bcec1f7b6c60dff5",
+      "http_status": 422,
+      "response_sha256": "0011fce49c84cdf97b46c3f67fb7743e36f75ec1b1db3fd2af3f6f3b9c405032",
+      "worker_error_code": "OUTPUT_SCHEMA_FAILED",
+      "known": true
+    },
+    {
+      "request_id": "9ca34e118b3d49a0a8f085bf25aa8001",
+      "task_id": "awb_phaseclosureeightprivatelineage",
+      "request_sha256": "def6c6613b9ed03cdb179cbf63b60fdcfc04a92a3de5902cb2570983aea31a52",
+      "http_status": 422,
+      "response_sha256": "8e112274a5a8518329db7a55a5f221b5f4a08a4d64c4ca0bccf4e4a635f71d20",
+      "worker_error_code": "OUTPUT_SCHEMA_FAILED",
+      "known": true
+    },
+    {
+      "request_id": "c679a6a2630f41faab82c360b5944cc8",
+      "task_id": "awb_phaseclosurefouremailprivate",
+      "request_sha256": "ef369907f5a8773510ea77123ab5e1b2759eba79bfa2de7f97c8d96cc9d7ac40",
+      "http_status": 422,
+      "response_sha256": "ccd7bd7477ea72e26144c09a587097f13d5c474099cff4b7208af782a8fcebbf",
+      "worker_error_code": "OUTPUT_SCHEMA_FAILED",
+      "known": true
+    },
+    {
+      "request_id": "d3798161ff884590ab4f52ccd60e5cb5",
+      "task_id": "awb_phaseclosurefivewebhookprivate",
+      "request_sha256": "c717add3aadd8634d486c93497511f08568de40273b0a4cf3f03237217b06514",
+      "http_status": 422,
+      "response_sha256": "d5563d829033f6a8f62ad7ce5eece57137255d285bdd4217c56acbb4c24b74e1",
+      "worker_error_code": "OUTPUT_SCHEMA_FAILED",
+      "known": true
+    },
+    {
+      "request_id": "da419911946d4d81a3dc4ac238850a31",
+      "task_id": "awb_phaseclosureeightprivatelineage",
+      "request_sha256": "0edfea9d2e7b0c96c81b6782f92ebd9f9c912e82ab52eeec109fe171bacf03cd",
+      "http_status": 422,
+      "response_sha256": "36f4086dec95ac1166747e84acbea8ce7ddc310822de80377dd80df442d404cf",
+      "worker_error_code": "OUTPUT_SCHEMA_FAILED",
+      "known": true
+    },
+    {
+      "request_id": "e2774777b17e4f96a75ab9f6e985a95c",
+      "task_id": "awb_phaseclosureelevenguardattack",
+      "request_sha256": "6929eb3e88edd5109f9101dd2c7ab3cbd724876a13b347cd559a12bbe116819c",
+      "http_status": 422,
+      "response_sha256": "7a41e866ed9c526ae3617e689454f0b82cb57f3d19aca5c39194386ee97b6dfc",
+      "worker_error_code": "OUTPUT_SCHEMA_FAILED",
+      "known": true
+    },
+    {
+      "request_id": "ee7503ad9a7e40bb8789086d5dffbb96",
+      "task_id": "awb_phaseclosureelevenguardattack",
+      "request_sha256": "8c52babe653e9b1f4325c8ae9c908493200986ad3309488211feb07aa4bb4469",
+      "http_status": 422,
+      "response_sha256": "20da44b9e4496cb0cc6df5a243d603dff86b8cb248d20f1cd344d71dcd590929",
+      "worker_error_code": "OUTPUT_SCHEMA_FAILED",
+      "known": true
+    }
+  ],
+  "counts": {
+    "OUTPUT_SCHEMA_FAILED": 11
+  },
+  "input_sha256": {
+    "build/evaluation/phase5_native_public_guard_20261002_01/manifest.json": "9e6ad4c4013ce33582748c403b23eb98e19205ca1f883771be7005ca374572b7",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/14bcb9f633c8493383757e7e27d7c03a.started.json": "27ea8f98fe98cfc2b85b7f7c86e086e6ff1c4999e820948d126172f8ee39126a",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/14bcb9f633c8493383757e7e27d7c03a.finished.json": "4357687778f764b9cdc27c2c3a2ceec83cbfa1e5403c09003c521fdbf2482836",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/17127bcbc0e841cb879b731c568e543b.started.json": "5babfa89b4eda5640560ca41e927df9139528d8054603b9db3bfcfee01ef37a1",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/17127bcbc0e841cb879b731c568e543b.finished.json": "f8c85a947b02a699f93aee8f7ecac4c0df169889394c5521749a5bfc57c2ff35",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/17a2c3fa93134705a941a616988c3aaf.started.json": "8d599bc03e0ff1ca234c82379e5a76c06345c7419f9813693efdcb00325c44ef",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/17a2c3fa93134705a941a616988c3aaf.finished.json": "dcbe37cc62d2a3507eb40d4191e43d44225e7bd6d6283b34331701bb5d66bef5",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/7a9146d10a4f4e56bc5b568f74bbcf7e.started.json": "a2d707da3712c82bbb41968f63835171fef3bb8edd59708dd4f4a09a75563d1d",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/7a9146d10a4f4e56bc5b568f74bbcf7e.finished.json": "a844c7625329ad9c53ac3672b13c1deeadfae52e229ee7478c98569983eb681f",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/9615b41dcc454e47818fc30a42fe3115.started.json": "98413f03800692c9efd5b4a0054c35f01d013249756a6b31f0b1114c11143fe1",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/9615b41dcc454e47818fc30a42fe3115.finished.json": "a31be9b88baef5daaa356eb2165be6ce9f280258d4de74b5a2e19bcf15ac8eb6",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/9ca34e118b3d49a0a8f085bf25aa8001.started.json": "f6274173f9dc3f26b7263c9d54c7686392702ca006810ac50fb833643d118b8c",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/9ca34e118b3d49a0a8f085bf25aa8001.finished.json": "b04c2fc84bad391e700a3cb89da2224331f529e92dc8a97569ebcc1936520a1f",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/c679a6a2630f41faab82c360b5944cc8.started.json": "efddcb8079080ae77a0e8d34c85f0f050ebce5440dab4003c391d272c7368586",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/c679a6a2630f41faab82c360b5944cc8.finished.json": "ae64e7178c8cae3e2301abe5b714014dc1304e4af13c720d8a79b90fc437dc29",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/d3798161ff884590ab4f52ccd60e5cb5.started.json": "26583e12ee3801753196fd2256e2d9abd7f0ded036c7b2f90b5bffd1f77e02fb",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/d3798161ff884590ab4f52ccd60e5cb5.finished.json": "72d98ee3a1baa6c9b1ebd1b4affc69599bc35f3ae4df7c634a7c1b01c30eee1f",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/da419911946d4d81a3dc4ac238850a31.started.json": "105a538695d1b0be242b2f9a08b841b741815070a0132295226434b7f8b9965e",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/da419911946d4d81a3dc4ac238850a31.finished.json": "2c425729759f0f71e14ec367c3a9543a55719c6d3d32da4fd183a1a842124547",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/e2774777b17e4f96a75ab9f6e985a95c.started.json": "fdf28ed72ab5c62f7b39bcdd938d2068b306c5f5d2edb1f98ed6b2bd4437ca0e",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/e2774777b17e4f96a75ab9f6e985a95c.finished.json": "2c7a1056f8b03b1a9929cd522a266e9e9f54ca3d38593a1af7a0555c2b52557f",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/ee7503ad9a7e40bb8789086d5dffbb96.started.json": "b2f47b3232d87956b1e5ec0a509bbedb824f5d9b6fb0db0d15670469e99d4f89",
+    "build/evaluation/request_worker_sessions_closure_v2/7c7796efc6e1d4a5fd4b2db9f4494cd5761b4975ad9777e0de2255ed2a80720a/ee7503ad9a7e40bb8789086d5dffbb96.finished.json": "24fb0cb19609753758483cba8a9ca4bd7ec44a8e2a3bf6e2c14ccdd3571c75e1",
+    "src/react_agent/serving/structured_api_v1.py": "2a8ca12f6a1566ee67ea891bf49cd68547d0c75297d9dea95529164b5ded8de9",
+    "src/react_agent/serving/request_http_v3.py": "d0ae98f96d0938a8658424fbf8020b00e0a6b4dd963e13c9aca2ac9ee477d59f",
+    "src/react_agent/serving/request_lifecycle_v3.py": "4b73b38bc4352f1db474cb6d547c85f6d5cd5c7808cea8f038f2ff1672bf0f13",
+    "src/react_agent/llm/request_worker_journal_v1.py": "11bd26b26acd835b8f4866f4b333d052269c1c79d168fe29ad00deab86193d99",
+    "scripts/audit_phase5_failure_codes_v1.py": "023183cebd86e9e3147a4fb8a4d11cba11b616ad6b493071652b08a2f59003a1"
+  },
+  "inference_requests": 0,
+  "journal_mutations": 0,
+  "semantic_retry_authorized": false,
+  "limitation": "Error code identified; generated text and deeper cause unavailable"
+}

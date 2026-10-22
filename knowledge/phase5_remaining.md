@@ -1,5 +1,36 @@
 # Phase 5 — phần còn phải đóng theo kế hoạch
 
+> **Đã đóng2026-10-02:** Phase5accepted20/20DoD theo [closure dossier](../docs/evaluation/phase5_completion_20261002.md).
+> Các backlog/NO_GO bên dưới được giữ theo thời điểm lịch sử,không là trạng thái hiện hành.
+
+> **Chỉ mục lịch sử:** danh sách này giữ lại backlog và bằng chứng cũ để audit.
+> Trạng thái và next action hiện hành nằm ở [`current_status.md`](current_status.md),
+> [`handoff.md`](handoff.md) và [direction audit 2026-09-29](../docs/evaluation/phase5_direction_audit_20260929.md).
+> Không dùng các mục cũ để mở thêm nhánh triển khai.
+
+## Rà tiến độ và hướng hoàn thiện — 2026-09-27
+
+[Tiến độ và lộ trình hoàn thiện qua API](../docs/evaluation/project_status_api_20260927.md): Phase1–4 accepted, Phase5 vẫn4/7nhóm nghiệm thu;
+không dùng57% cho toàn đồ án. API pair đã qua technical smoke, chưa native
+fullA6/guard quality. Có thể tiếp tục bằng local runner + Kaggle inference;
+không cần tăng kích thước model hoặc fine-tune để đáp ứng contract.
+RQ1 vẫn cần3task backbones, có thể chạy lần lượt; một agent + một guard chưa
+đủ ba model. RQ2 giữ task backbone/decoding cố định quaA0–A6, A0 không guard.
+
+**Bước cụ thể kế tiếp:** manifest + runner Dev nhỏ có checkpoint/fault QA,
+đo clean utility và guard attack/benign riêng; rồi nối candidate A6 với
+Pre/Post/Final và cumulative parity. Bridge cần schemaPlan adapter riêng,
+HTTP client hiện tại chỉ action/final; không coi bridge đã tích hợp qua API.
+Lifecycle API cần evidence riêng; không tự đóng lỗi worker cũ từ READY.
+
+**Bằng chứng/giới hạn:** đọc contract/20DoD/source và receipt paired smoke
+đã có; không probe uptime hoặc inference mới, không Test. Không thay model
+chính thức/research scope/phase acceptance. Không có access mới cần cấp cho
+lượt tài liệu này; khi chạy tiếp phải kiểm health/session hiện hành. Report
+và memory còn local, không commit/push trạng thái riêng.
+
+## Bằng chứng và backlog lịch sử trước chuyển API
+
 Dev32 v1 đã terminal ERROR trước worker start:
 [failure report](../docs/evaluation/phase5_clause_dev_gpu_v1_failure_report.md).
 V2 correction/package/QA03 và release02 đã đạt; committed release01 bị từ chối
@@ -70,3 +101,5 @@ candidate constrained GPU v1 đã terminal/audit; còn representative quality/li
 [Finite-language CPU evidence](../docs/evaluation/phase5_guard_token_language_v1_report.md)
 đã hoàn tất; còn các native gates trong contract. Tiếp tục giữ separation/Test/mock-side-effect invariants; không dùng
 Test để lựa chọn phương án sửa. Formal freeze vẫn chưa đủ bằng chứng.
+
+- 2026-09-28: [journal + public runtime native A0–A6](../docs/evaluation/remote_api_levels_v1_report.md) đã có diagnostic7/7; quality/provenance/remote cancellation/freeze còn mở.
