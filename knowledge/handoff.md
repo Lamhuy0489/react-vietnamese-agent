@@ -1,6 +1,6 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-10-23. Đang ở **R0 (Reset)** của
+Cập nhật: 2026-10-25. Đang ở **R0 (Reset)** của
 [lộ trình v2](../docs/project/roadmap_v2_rebuild.md). Đã chốt 3 quyết định R0;
 phần dọn repo của R0 chưa làm.
 
@@ -15,11 +15,15 @@ R0, tuần 24/10–30/10. Đã xong:
 
 ## Bước tiếp theo
 
-0. **Ngày 2026-10-24:** chạy notebook vLLM với Qwen3-8B, pin revision, chạy
-   `scripts/run_smoke_api_v1.py` theo [runbook](rebuild_a_runbook.md). Owner xin quyền HF
-   theo mục "Việc 1" của runbook.
-1. Owner xin quyền HF gated cho Llama 3.1 8B Instruct và Llama Prompt Guard 2 86M,
-   rồi xem hạn mức GPU Kaggle trong Settings.
+0. **Xong 2026-10-25:** Qwen3-8B chạy thật trên Kaggle (lamhuy8904, v2), pin revision
+   `b968826d…` và vLLM 0.32.0. A0 smoke: 20/20 completed, 0 lỗi parse/hạ tầng, nhưng chỉ
+   **3/20 success** (6/20 nếu chỉ xét answer facts). Model hay chọn sai nguồn
+   (`cached_search` thay vì `doc_search`/`db_query`), trả lời từ snippet mà không gọi
+   read/fetch, hoặc bịa số (smoke_013). Phase 1 cũ cũng 3/20. Owner cần quyết có sửa mô tả
+   tool hoặc system prompt của A0 (chỉ trên smoke/Dev) trước khi chạy clean Dev hay không.
+1. Token HF của owner đã có quyền Llama-3.1-8B, Prompt-Guard-2-86M, Gemma-4-12B; Llama-3.2-3B
+   còn 403. Gắn `HF_TOKEN` làm Kaggle Secret qua UI cho notebook của tài khoản chạy model gated.
+   Mỗi notebook một model; chạy song song dùng 2 tài khoản.
 2. Merge branch hiện tại vào `main` (qua PR), gắn tag `phase5-closure` trên `6509ae0`.
 3. Dọn trên `main`: gom các script cũ, chưa dùng (v1/v2, preflight, chẩn đoán) vào
    `scripts/legacy/` hoặc xóa, chỉ giữ dưới 30 script đang dùng. Chạy
@@ -30,6 +34,9 @@ R0, tuần 24/10–30/10. Đã xong:
    A0 smoke → clean Dev × 3 model → bake-off guard → A0–A6 Dev. Xem mục 2b của lộ trình.
 
 ## Bằng chứng
+
+- Smoke Qwen3-8B 2026-10-25: `results/rebuild_a/smoke_qwen3_8b/` (local, không track).
+  Notebook: [sổ Kaggle](kaggle_resources.md). Launcher có 2 unit test.
 
 - Quyết định: [decision log](../docs/project/decision_log.md), mục ngày 2026-10-23.
 - Kiểm dữ liệu: `scripts/assemble_adversarial_release.py --action check`

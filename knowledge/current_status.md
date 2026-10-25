@@ -1,6 +1,6 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-10-23. **Phase 0–5 đã nghiệm thu. Đang ở R0 của
+Cập nhật: 2026-10-25. **Phase 0–5 đã nghiệm thu. Đang ở R0 của
 [lộ trình v2](../docs/project/roadmap_v2_rebuild.md)** (tuần 8/24, hạn 2027-02-19).
 
 ## Đã chốt ngày 2026-10-23

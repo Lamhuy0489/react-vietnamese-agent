@@ -1,7 +1,6 @@
 # Runbook chạy lại (mức A): vLLM trên Kaggle, gọi API từ local
 
-Cập nhật: 2026-10-23. Code đã có nhưng **chưa chạy thật trên Kaggle**. Lần chạy đầu
-dự kiến 2026-10-24. Xem [lộ trình v2](../docs/project/roadmap_v2_rebuild.md), mục 2b.
+Cập nhật: 2026-10-25. Đã chạy thật Qwen3-8B (xem [sổ Kaggle](kaggle_resources.md)); Llama và Gemma chưa chạy. Xem [lộ trình v2](../docs/project/roadmap_v2_rebuild.md), mục 2b.
 
 ## Thành phần
 
@@ -60,6 +59,21 @@ export VLLM_API_KEY=<key>
    thiếu. Nếu restart notebook thì URL đổi, phải export lại `VLLM_BASE_URL`.
 6. Xong việc: bấm **Stop session** trên Kaggle. Notebook cũng tự tắt server sau 30 phút
    không có request, nhưng phiên GPU vẫn bị tính quota tới khi bạn Stop.
+
+## Cách nhanh: push qua API (đã dùng 2026-10-25)
+
+Không cần Secrets với model không gated. Notebook tự sinh API key, rồi gửi URL và key
+đã mã hóa RSA qua ntfy. Khóa riêng nằm trong `build/kaggle/...` (Git ignored, 0600).
+
+```bash
+F=$(.venv/bin/python scripts/launch_vllm_serve_v1.py prepare --owner lamhuy8904 --model-key qwen3_8b)
+KAGGLE_CONFIG_DIR=<thư mục chứa kaggle.json> .venv/bin/kaggle kernels push -p "$F" --accelerator NvidiaTeslaT4
+.venv/bin/python scripts/launch_vllm_serve_v1.py discover --folder "$F"   # chờ READY, ghi $F/endpoint.env
+source "$F/endpoint.env"; export SSL_CERT_FILE=$(.venv/bin/python -c "import certifi;print(certifi.where())")
+```
+
+Python của macOS thiếu CA, nên cần `SSL_CERT_FILE` như trên. Model gated vẫn cần gắn
+secret `HF_TOKEN` cho notebook một lần qua UI của tài khoản đó.
 
 ## Việc 3: Llama, rồi Gemma
 
