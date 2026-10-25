@@ -2367,3 +2367,11 @@ changes only blocking, not the attention computation, and applies to no other
 backbone. Smoke (prompt v3, per_tool_v1): bf16 9/20, QAT 7/20, both 20/20
 completed with no parse failure. The bf16 checkpoint is the RQ1 backbone as
 declared; the QAT run stays as evidence that the patch is not checkpoint-specific.
+
+Gemma-4-12B (bf16, T4 tile patch) clean Dev, same harness (v3, per_tool_v1,
+numfix, sequential requests): **99/150**; single 8/24, param 20/24, multi 20/30,
+db_document 24/24, ambiguous 1/15, error_recovery 11/18, no_tool 15/15. One
+infrastructure error (clean_0047) was rerun. Gemma is the only backbone that
+reads the fee table from the document (db_document 24/24 vs 0/24); its main loss
+is single_source, where it answers from `cached_search` snippets without
+fetching the page. A0 Dev baselines are now complete for all three backbones.

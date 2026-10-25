@@ -69,10 +69,10 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 
 - **Gemma-4-12B:** không gated, vLLM 0.32.0 stable. bf16 và QAT đều hỏng ở kernel attention
   (head_dim 512 cần 96 KB shared memory, T4 có 64 KB; FlexAttention cũng vậy). Vá tile trong
-  notebook. Smoke bf16 9/20, QAT 7/20. Clean Dev bf16 đang chạy lúc bàn giao.
+  notebook. Smoke bf16 9/20, QAT 7/20. **Clean Dev bf16 99/150**, cao nhất (db_document 24/24).
 - **Bake-off guard:** luật khai báo trước. Prompt Guard 2 86M (CPU, `build/venv_guard`) TP0
   FP0 trên 80 input Dev; giữ Llama-3.2-3B.
 - **R0:** `docs/metrics_spec.md`. Sửa 3 test hỏng. Trả `evaluate_clean_v11_dev.py` về byte
   đã pin, chuyển phần mới sang `evaluate_clean_rebuild_v1.py`. Full pytest xanh. Mở PR #4.
 - **Owner hỏi tối ưu Llama riêng:** không làm, vì RQ1 cần cùng prompt, tool, schema và bộ chấm.
-- **Còn dở:** Gemma Dev; owner merge PR và gắn tag; dọn script cũ; R1 evaluator; A0–A6 Dev.
+- **Còn dở:** owner merge PR và gắn tag; dọn script cũ; R1 evaluator; A0–A6 Dev.
