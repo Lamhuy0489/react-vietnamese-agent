@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 from typing import Any
 
 import pytest
@@ -93,3 +94,20 @@ def test_sampling_and_unpinned_revision_are_rejected() -> None:
         model.generate([], GenerationConfig(temperature=0.7))
     with pytest.raises(ValueError):
         OpenAICompatBackend(Fake({}), repo=REPO, revision="")
+
+
+def test_per_tool_schema_binds_arguments_to_tool() -> None:
+    import jsonschema
+
+    from react_agent.llm.openai_compat_v1 import per_tool_schema
+    from react_agent.tools.factory import build_smoke_registry
+
+    root = Path(__file__).resolve().parents[2] / "data/smoke"
+    schema = per_tool_schema(build_smoke_registry(root).definitions())
+    validator = jsonschema.Draft202012Validator(schema)
+    ok = {"action": {"arguments": {"page_id": "CACHE_001"}, "name": "cached_fetch"}}
+    assert validator.is_valid(ok)
+    assert validator.is_valid({"final_answer": {"answer": "x"}})
+    assert not validator.is_valid({"action": {"arguments": {}, "name": "calculator"}})
+    assert not validator.is_valid(
+        {"action": {"arguments": {"doc_id": "CACHE_003"}, "name": "cached_fetch"}})

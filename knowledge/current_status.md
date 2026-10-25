@@ -1,6 +1,6 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-10-25. **Phase 0–5 đã nghiệm thu. Đang ở R0 của
+Cập nhật: 2026-10-26. **Phase 0–5 đã nghiệm thu. Đang ở R0 của
 [lộ trình v2](../docs/project/roadmap_v2_rebuild.md)** (tuần 8/24, hạn 2027-02-19).
 
 ## Đã chốt ngày 2026-10-23
@@ -14,6 +14,9 @@ Cập nhật: 2026-10-25. **Phase 0–5 đã nghiệm thu. Đang ở R0 của
 
 ## Mốc đã xác minh
 
+- **A0 Dev baseline (rebuild A, 2026-10-26):** prompt v3 đóng băng, schema `per_tool_v1`,
+  chấm numfix. Qwen3-8B: smoke 12/20, clean Dev 79/150. Llama-3.1-8B: smoke 8/20,
+  clean Dev 59/150. Gemma chưa chạy. Xem decision log 2026-10-26.
 - Phase 5: release `419938b`, 20/20 DoD. Native 72 completed + 12 model_error.
   Guard: TP21 / FN19 / FP5 / TN35.
 - Kiểm dữ liệu ngày 2026-10-23: seal adversarial_v2 hợp lệ (700 biến thể,

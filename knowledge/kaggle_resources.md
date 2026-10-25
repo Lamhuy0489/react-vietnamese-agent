@@ -22,6 +22,17 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-10-26 — vLLM serve v1, Llama-3.1-8B, đã chạy thật:**
+[lamhuy8904/react-vn-vllm-serve-v1-llama31-8b](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-llama31-8b)
+(private, T4×2, notebook riêng cho một model). v1 READY, boot `0d81923d3bc7`, served
+`meta-llama/Llama-3.1-8B-Instruct@0e9e39f249a16976918f6564b8830bc894c89659`.
+- Token HF được launcher chèn thẳng vào bản notebook private (`--hf-token-env`), không qua
+  Kaggle Secret. Bản đó chỉ nằm trong `build/` (gitignored, 0600) và trên Kaggle private;
+  không bao giờ có trong Git. Nên rotate token sau khi xong đợt chạy.
+- Chạy song song với notebook Qwen trên cùng tài khoản, tức đã dùng hết 2 phiên GPU nền
+  của lamhuy8904.
+- Source: working tree trên nhánh hiện tại (commit cùng mục này).
+
 **2026-10-25 — vLLM serve v1, Qwen3-8B, đã chạy thật:**
 [lamhuy8904/react-vn-vllm-serve-v1](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1)
 (private, T4×2, Internet, push qua API bằng `scripts/launch_vllm_serve_v1.py`).

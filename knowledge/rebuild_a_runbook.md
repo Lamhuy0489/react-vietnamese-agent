@@ -1,6 +1,6 @@
 # Runbook chạy lại (mức A): vLLM trên Kaggle, gọi API từ local
 
-Cập nhật: 2026-10-25. Đã chạy thật Qwen3-8B (xem [sổ Kaggle](kaggle_resources.md)); Llama và Gemma chưa chạy. Xem [lộ trình v2](../docs/project/roadmap_v2_rebuild.md), mục 2b.
+Cập nhật: 2026-10-26. Đã chạy thật Qwen3-8B và Llama-3.1-8B (xem [sổ Kaggle](kaggle_resources.md)); Gemma chưa chạy. Xem [lộ trình v2](../docs/project/roadmap_v2_rebuild.md), mục 2b.
 
 ## Thành phần
 
@@ -78,9 +78,13 @@ Clean Dev: `.venv/bin/python scripts/run_clean_dev_api_v1.py --model-key qwen3_8
 Python của macOS thiếu CA, nên cần `SSL_CERT_FILE` như trên. Model gated vẫn cần gắn
 secret `HF_TOKEN` cho notebook một lần qua UI của tài khoản đó.
 
+Mặc định của runner: prompt `v3` (`prompts/a0_rebuild.py`) và schema giải mã
+`per_tool_v1`. Chấm clean Dev luôn thêm `--numfix` (evaluator `clean_v1_1_typed_v1+numfix1`).
+
 ## Việc 3: Llama, rồi Gemma
 
-- Llama 3.1 8B: đổi `MODEL_KEY = "llama31_8b"` sau khi được duyệt quyền.
+- Llama 3.1 8B: **xong 2026-10-26.** `launch_vllm_serve_v1.py prepare --owner <acc>
+  --model-key llama31_8b --hf-token-env HF_TOKEN`, rồi `kaggle kernels push`, rồi `discover`.
 - Gemma 4 12B là **rủi ro cao nhất**: vLLM chỉ hỗ trợ ở bản nightly, nhà phát hành khuyến
   nghị GPU 40 GB, Gemma có thể lỗi ở fp16 trên T4. Nếu không khởi động được: thử
   `ENFORCE_EAGER = True`, sau đó thử checkpoint QAT w4a16. Nếu vẫn không được thì ghi

@@ -21,7 +21,7 @@ from react_agent.agent import AgentRuntime
 from react_agent.config import load_generation_config, load_runtime_config
 from react_agent.llm.http_diagnostic_v1 import HTTPSJSON
 from react_agent.llm.openai_compat_v1 import OpenAICompatBackend
-from react_agent.prompts import a0_v2
+from react_agent.prompts import a0_rebuild
 from react_agent.schemas.task import SmokeTask
 from react_agent.tools.factory import build_smoke_registry
 
@@ -36,7 +36,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--revision", help="override the pinned revision in the config")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--timeout", type=float, default=150)
-    parser.add_argument("--prompt", choices=["v1", "v2"], default="v2")
+    parser.add_argument("--prompt", choices=["v1", "v2", "v3"], default="v3")
     return parser.parse_args()
 
 
@@ -66,13 +66,15 @@ def main() -> int:
 
     backend = OpenAICompatBackend(HTTPSJSON(base_url, api_key, timeout=args.timeout),
                                   repo=spec["repo"], revision=revision,
-                                  chat_template_kwargs=spec.get("chat_template_kwargs"))
+                                  chat_template_kwargs=spec.get("chat_template_kwargs"),
+                                  tool_definitions=build_smoke_registry(DATA_ROOT).definitions())
     backend.probe()
     output = (args.output or ROOT / "results" / "rebuild_a" / f"smoke_{args.model_key}").resolve()
     output.mkdir(parents=True, exist_ok=True)
-    prompt = a0_v2.activate() if args.prompt == "v2" else {"prompt_profile": "a0_v1"}
+    prompt = (a0_rebuild.activate(args.prompt) if args.prompt != "v1"
+              else {"prompt_profile": "a0_v1"})
     identity = {"model_key": args.model_key, "repo": spec["repo"], "revision": revision,
-                "prompt": prompt}
+                "prompt": prompt, "decoding_schema": "per_tool_v1"}
     identity_path = output / "identity.json"
     if identity_path.exists() and json.loads(identity_path.read_text()) != identity:
         raise SystemExit("Output directory belongs to another model identity")

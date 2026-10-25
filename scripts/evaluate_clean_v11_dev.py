@@ -15,6 +15,7 @@ from react_agent.logging import TraceLogger
 from react_agent.schemas.clean_task import CleanGroundTruth
 from react_agent.schemas.trace import TraceEvent
 from react_agent.tools.factory import build_clean_registry
+from react_agent.validation import clean_rebuild_v1
 from react_agent.validation.clean_v11 import EVALUATOR_VERSION, calls_from_trace, score_observation
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,9 +26,12 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("artifacts", type=Path)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--numfix", action="store_true",
+                        help="use the rebuild numeric-token fix (clean_rebuild_v1)")
     parser.add_argument("--full-dev", action="store_true",
                         help="score the tasks listed in identity.json (150-task Dev API run)")
     args = parser.parse_args()
+    evaluator = clean_rebuild_v1.activate() if args.numfix else EVALUATOR_VERSION
     if args.output.exists():
         raise ValueError("evaluation output already exists; preserve prior artifacts")
     identity = json.loads((args.artifacts / "identity.json").read_text())
@@ -88,7 +92,7 @@ def main() -> int:
             {"task_id": task_id, "status": result.status, "trace_events": len(events), **outcome}
         )
     report = {
-        "evaluator": EVALUATOR_VERSION,
+        "evaluator": evaluator,
         "scope": "Dev pilot diagnostic; not thesis Test result",
         "test_tasks_read": 0,
         "evaluated_tasks": len(rows),
