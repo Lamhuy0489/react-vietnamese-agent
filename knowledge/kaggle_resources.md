@@ -22,6 +22,16 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-10-26 — vLLM serve v1, Gemma-4-12B, đã chạy thật (meanalways):**
+[meanalways/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1-gemma4-12b)
+và [...-gemma4-12b-qat](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1-gemma4-12b-qat) (private, T4×2).
+- bf16 v1 và QAT v1/v2 ERROR: kernel attention head_dim 512 cần 96 KB shared memory (T4 có 64 KB);
+  QAT v2 thử FLEX_ATTENTION, hỏng y như vậy.
+- bf16 **v2** và QAT **v3** READY với bản vá tile (commit `6e0dff4`). Served
+  `google/gemma-4-12B-it@707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7` (max_len 4096, eager) và
+  `google/gemma-4-12B-it-qat-w4a16-ct@1d2c2d7f2466070e69d6fb3fd5ce9a7d75f2f6ee`.
+- Không gated nên không chèn token; cảnh báo "unauthenticated requests" của HF là vô hại.
+
 **2026-10-26 — vLLM serve v1, Llama-3.1-8B, đã chạy thật:**
 [lamhuy8904/react-vn-vllm-serve-v1-llama31-8b](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-llama31-8b)
 (private, T4×2, notebook riêng cho một model). v1 READY, boot `0d81923d3bc7`, served
