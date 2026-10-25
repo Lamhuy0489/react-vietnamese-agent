@@ -1,8 +1,14 @@
 # Bàn giao phiên làm việc
 
 Cập nhật: 2026-10-26. Đang ở **R0 (Reset)** của
-[lộ trình v2](../docs/project/roadmap_v2_rebuild.md). Đã chốt 3 quyết định R0;
-phần dọn repo của R0 chưa làm.
+[lộ trình v2](../docs/project/roadmap_v2_rebuild.md). R0 gần xong: còn merge PR #4,
+gắn tag `phase5-closure` và dọn script cũ.
+
+**Đang chạy lúc bàn giao (2026-10-26 ~02:45):** clean Dev 150 × Gemma-4-12B (bf16),
+khoảng 54/150 xong, trên notebook meanalways `react-vn-vllm-serve-v1-gemma4-12b` (v2).
+Runner resume theo checkpoint. Nếu job local bị ngắt, chạy lại đúng lệnh ở mục
+"Tiếp tục Gemma Dev" bên dưới. Nếu notebook đã tắt (idle 30 phút), push lại bằng
+launcher, `discover`, rồi chạy lại lệnh đó với thư mục build mới.
 
 ## Đang làm
 
@@ -29,13 +35,33 @@ R0, tuần 24/10–30/10. Đã xong:
    (`per_tool_v1`), vì Llama bị parse_failure khi `arguments` để tự do.
    **Kết quả (v3 + per_tool + numfix):** Qwen smoke 12/20, Dev 79/150; Llama smoke 8/20,
    Dev 59/150. Bảng theo nhóm nằm trong decision log 2026-10-26.
-   Việc tiếp: Gemma-4-12B (rủi ro cao trên T4, xem runbook), rồi bake-off guard, rồi A0–A6 Dev.
+   **Gemma-4-12B (2026-10-26):** vLLM 0.32.0 stable chạy được, nhưng head_dim 512 vượt
+   shared memory của T4. Notebook vá tile của kernel Triton (decision log 2026-10-26). Smoke:
+   bf16 9/20, QAT 7/20, 0 lỗi parse. Backbone RQ1 dùng bản bf16. Gemma hay trả lời ngay từ
+   snippet của `cached_search`, không gọi fetch/read, nên trượt luật sequence của bộ chấm strict.
+   Đây là hành vi của model, không phải lỗi server: server chỉ trả JSON, tool chạy ở local.
+   **Bake-off guard xong:** Prompt Guard 2 TP0/FP0, giữ Llama-3.2-3B (unsloth, pinned).
+   `docs/metrics_spec.md` đã viết. Full pytest 5201 passed / 3 skipped / 1 xfailed.
+   PR #4 đã mở: https://github.com/Lamhuy0489/react-vietnamese-agent/pull/4 (owner merge;
+   auto mode chặn Claude tự merge).
+
+   **Tiếp tục Gemma Dev** (từ root repo):
+   ```
+   export SSL_CERT_FILE=$(.venv/bin/python -c "import certifi;print(certifi.where())")
+   F=build/kaggle/vllm_serve_v1_gemma4_12b_20261026_020735   # hoặc thư mục build mới
+   (set -a; source $F/endpoint.env; set +a; .venv/bin/python scripts/run_clean_dev_api_v1.py \
+     --model-key gemma4_12b --prompt v3 --output results/rebuild_a/clean_dev_gemma4_12b_v3_pertool)
+   .venv/bin/python scripts/evaluate_clean_rebuild_v1.py results/rebuild_a/clean_dev_gemma4_12b_v3_pertool \
+     --full-dev --numfix --output results/rebuild_a/clean_dev_gemma4_12b_v3_pertool_eval_numfix.json
+   ```
+   Sau đó: thêm hàng Gemma vào bảng per-tool trong decision log, cập nhật current_status,
+   rồi sang R1 (evaluator) và chuẩn bị A0–A6 Dev.
 1. Token HF của owner đã có quyền Llama-3.1-8B, Prompt-Guard-2-86M, Gemma-4-12B; Llama-3.2-3B
    còn 403. Gắn `HF_TOKEN` làm Kaggle Secret qua UI cho notebook của tài khoản chạy model gated.
    Mỗi notebook một model. Kaggle cho tối đa 2 phiên GPU chạy nền mỗi tài khoản.
    Llama đã chạy bằng cách chèn token vào notebook private (`--hf-token-env`); owner nên
    rotate token HF sau đợt chạy.
-2. Merge branch hiện tại vào `main` (qua PR), gắn tag `phase5-closure` trên `6509ae0`.
+2. Owner merge PR #4 vào `main`, gắn tag `phase5-closure` trên `6509ae0`.
 3. Dọn trên `main`: gom các script cũ, chưa dùng (v1/v2, preflight, chẩn đoán) vào
    `scripts/legacy/` hoặc xóa, chỉ giữ dưới 30 script đang dùng. Chạy
    ruff/mypy/pytest sau khi dọn. Không đổi các đường dẫn mà manifest hash vẫn tham chiếu

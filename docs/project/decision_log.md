@@ -2352,3 +2352,18 @@ By the declared rule the **prompted Llama-3.2-3B guard is kept for A2**
 (recall 21/40, benign flags 5/40). Meta's repo is still 403 for the owner's
 token, so A2 will load the public `unsloth/Llama-3.2-3B-Instruct` at the
 revision `006f5dcd…` pinned in `docs/evaluation/phase5_llama_public_source_20261002.md`.
+
+## 2026-10-26 — Gemma 4 12B serving on 2xT4
+
+`google/gemma-4-12B-it@707f0a3b…` (not gated) is registered in stable vLLM
+0.32.0, so no nightly is needed. Both the bf16 checkpoint (served in fp16,
+eager, text-only, max_len 4096; the longest Dev prompt is ~2.9k tokens) and the
+QAT w4a16 fallback loaded, then failed at the first forward: Gemma 4
+full-attention layers have head_dim 512 and the Triton attention kernel needs
+96 KB shared memory per block at tile 32, while T4 (sm75) has 64 KB;
+FLEX_ATTENTION hit the same limit. The serving notebook now patches the vLLM
+kernel launch below sm80 for head_dim ≥ 512: KV tile 16 and num_stages 1. This
+changes only blocking, not the attention computation, and applies to no other
+backbone. Smoke (prompt v3, per_tool_v1): bf16 9/20, QAT 7/20, both 20/20
+completed with no parse failure. The bf16 checkpoint is the RQ1 backbone as
+declared; the QAT run stays as evidence that the patch is not checkpoint-specific.
