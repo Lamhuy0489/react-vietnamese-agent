@@ -4,9 +4,9 @@ Cập nhật: 2026-10-26. Đang ở **R0 (Reset)** của
 [lộ trình v2](../docs/project/roadmap_v2_rebuild.md). R0 gần xong: còn merge PR #4,
 gắn tag `phase5-closure` và dọn script cũ.
 
-**Đang chạy lúc bàn giao (2026-10-26 ~02:45):** clean Dev 150 × Gemma-4-12B (bf16),
-khoảng 54/150 xong, trên notebook meanalways `react-vn-vllm-serve-v1-gemma4-12b` (v2).
-Runner resume theo checkpoint. Nếu job local bị ngắt, chạy lại đúng lệnh ở mục
+**Xong 2026-10-26 03:10:** clean Dev 150 × Gemma-4-12B (bf16) = **99/150**,
+(trước đó chạy trên notebook meanalways `react-vn-vllm-serve-v1-gemma4-12b` (v2).
+). Runner resume theo checkpoint; nếu cần chạy lại, chạy lại đúng lệnh ở mục
 "Tiếp tục Gemma Dev" bên dưới. Nếu notebook đã tắt (idle 30 phút), push lại bằng
 launcher, `discover`, rồi chạy lại lệnh đó với thư mục build mới.
 
