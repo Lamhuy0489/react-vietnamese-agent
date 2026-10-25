@@ -26,7 +26,7 @@ from cryptography.hazmat.primitives.asymmetric import padding, rsa
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "notebooks/kaggle/vllm_serve_v1"
-MODEL_KEYS = ("qwen3_8b", "llama31_8b", "gemma4_12b", "gemma4_12b_qat")
+MODEL_KEYS = ("qwen3_8b", "llama31_8b", "gemma4_12b", "gemma4_12b_qat", "llama32_3b_guard")
 
 
 def prepare(owner: str, model_key: str, hf_token: str | None = None) -> Path:

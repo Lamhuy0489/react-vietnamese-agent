@@ -55,14 +55,20 @@ def per_tool_schema(tool_definitions: list[dict[str, Any]]) -> dict[str, Any]:
 class OpenAICompatBackend:
     def __init__(self, transport: Transport, *, repo: str, revision: str,
                  chat_template_kwargs: dict[str, Any] | None = None,
-                 tool_definitions: list[dict[str, Any]] | None = None) -> None:
+                 tool_definitions: list[dict[str, Any]] | None = None,
+                 response_schema: dict[str, Any] | None = None) -> None:
         if not repo or len(revision) < 7:
             raise ValueError("repo and pinned revision required")
         self.transport = transport
         self.model_id, self.model_revision = repo, revision
         self.served = served_name(repo, revision)
         self.chat_template_kwargs = chat_template_kwargs or {}
-        self.schema = per_tool_schema(tool_definitions) if tool_definitions else AGENT_SCHEMA
+        if tool_definitions and response_schema:
+            raise ValueError("tool_definitions and response_schema are exclusive")
+        # A guard backend passes its own output schema; agent backends constrain to actions.
+        self.schema = response_schema or (
+            per_tool_schema(tool_definitions) if tool_definitions else AGENT_SCHEMA)
+        self.schema_name = "guard_verdict" if response_schema else "agent_turn"
         self.calls: list[dict[str, Any]] = []
         self.infra_failures = 0
 
@@ -91,7 +97,7 @@ class OpenAICompatBackend:
             "seed": config.seed, "max_tokens": config.max_new_tokens, "stream": False,
             "request_id": request_id,
             "response_format": {"type": "json_schema", "json_schema": {
-                "name": "agent_turn", "schema": self.schema, "strict": True}},
+                "name": self.schema_name, "schema": self.schema, "strict": True}},
         }
         if self.chat_template_kwargs:
             payload["chat_template_kwargs"] = self.chat_template_kwargs

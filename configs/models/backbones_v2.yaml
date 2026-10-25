@@ -46,4 +46,6 @@ gemma4_12b_qat:
   chat_template_kwargs: {}
 guard_candidates:
   prompt_guard2_86m: {repo: meta-llama/Llama-Prompt-Guard-2-86M, gated: true, runs: local_cpu}
-  llama32_3b_prompted: {repo: meta-llama/Llama-3.2-3B-Instruct, gated: true, runs: kaggle}
+  # Kept for A2 by the 2026-10-26 bake-off; Meta's repo is 403, so serve the public
+  # unsloth copy at the revision pinned in phase5_llama_public_source_20261002.md.
+  llama32_3b_prompted: {repo: unsloth/Llama-3.2-3B-Instruct, revision: 006f5dcd1393c3add266de40994ba96225e9689d, gated: false, runs: kaggle, notebook_key: llama32_3b_guard}
