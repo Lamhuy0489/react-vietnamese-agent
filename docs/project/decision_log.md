@@ -2278,3 +2278,54 @@ pilot tasks: fault plans configure the mock tool environment and never reach
 the prompt; answers, validators and all Test data stay unread by the worker.
 Sealed v1.1 files are unchanged. Infrastructure failures are rerun; model
 errors stay in the denominator.
+
+## 2026-10-26 — A0 prompt v3 frozen; evaluator numeric-token fix
+
+Owner approved one Dev iteration of the shared prompt, then a freeze. v3 (in
+`src/react_agent/prompts/a0_rebuild.py`, profile `a0_v3`) changes v2 in three
+rules: retry a retryable tool error with the same call and fix only invalid calls
+(v2 forbade any repeat, which broke error recovery); gather every needed source
+before computing; ask a short clarifying question, without tools, when a needed
+slot is missing or the user asks for one. No security wording (unit-tested).
+
+Evaluator bug found while comparing: `clean_comparators.fact_in_text` extracts
+numbers with `(?![\w.])`, so a sentence-final value ("là 8.0.", "bằng 876.") never
+matches. The module is seal-pinned, so `src/react_agent/validation/clean_rebuild_v1.py`
+(`clean_v1_1_typed_v1+numfix1`, `evaluate_clean_v11_dev.py --numfix`) changes only
+the trailing guard to `(?!\w|[.,]\d)`; other comparators are unchanged. The rule
+is defined by the regex semantics, not tuned on outcomes, and applied to both runs.
+
+Qwen3-8B clean Dev 150, numfix scoring: v2 72/150, **v3 79/150**; v3 is equal or
+better in every category (error_recovery 3→8, ambiguous 0→1). v3 is frozen for all
+three backbones; no further prompt changes before R3. Known limits kept as
+findings: db_document 0/24 (fee table looked up in the DB instead of the
+document), and ambiguous answers that ask correctly but paraphrase the required
+terms ("kỳ học" for "học kỳ") fail the lexical clarification check, which is
+left to the R1 evaluator work rather than prompted for.
+
+## 2026-10-26 — Per-tool constrained decoding schema (harness fix)
+
+Llama-3.1-8B under the frozen v3 prompt produced 14/20 smoke `parse_failure`
+(47 INVALID_ARGUMENTS) and 82/150 on clean Dev, scoring 30/150. Cause: the
+transport serialises with sorted keys, so the constrained schema generates
+`arguments` before `name`, and `arguments` was a free-form object; Llama emitted
+`{}` or wrong keys. `OpenAICompatBackend(tool_definitions=...)` now sends
+`per_tool_schema`: one anyOf branch per tool whose `arguments` is that tool's
+own input schema (title/default stripped), plus the unchanged final-answer
+branch. Constrained decoding is a harness property shared by every backbone and
+configuration; it adds no defense and does not change tools, prompt or scoring.
+Recorded as `decoding_schema: per_tool_v1` in run identities. Llama smoke went
+3/20 → 8/20 with 0 parse failures. All reported rebuild numbers are re-run with
+per_tool_v1 for every backbone; free-form-schema runs stay as historical evidence.
+
+Per-tool results (prompt v3, numfix scoring, clean Dev 150; smoke 20):
+
+| Backbone | Smoke | Clean Dev | single | param | multi | db_doc | ambig | err_rec | no_tool |
+|---|---|---|---|---|---|---|---|---|---|
+| Qwen3-8B | 12/20 | 79/150 | 13/24 | 24/24 | 18/30 | 0/24 | 1/15 | 8/18 | 15/15 |
+| Llama-3.1-8B | 8/20 | 59/150 | 13/24 | 15/24 | 12/30 | 0/24 | 0/15 | 4/18 | 15/15 |
+
+Qwen is identical per category to its free-form run (the fix only removes a
+failure mode Qwen did not hit); Llama goes 30 → 59. Remaining Llama failures are
+model behaviour (36 unresolved tool errors, 10 max_steps) and stay in the
+denominator. These are the A0 Dev baselines for R3.

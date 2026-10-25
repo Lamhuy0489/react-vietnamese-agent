@@ -29,7 +29,7 @@ SOURCE = ROOT / "notebooks/kaggle/vllm_serve_v1"
 MODEL_KEYS = ("qwen3_8b", "llama31_8b", "gemma4_12b")
 
 
-def prepare(owner: str, model_key: str) -> Path:
+def prepare(owner: str, model_key: str, hf_token: str | None = None) -> Path:
     """Build a push-ready folder with a fresh discovery key pair."""
     if model_key not in MODEL_KEYS:
         raise ValueError(f"unknown model key {model_key}")
@@ -51,15 +51,21 @@ def prepare(owner: str, model_key: str) -> Path:
         'MODEL_KEY = "qwen3_8b"': f'MODEL_KEY = "{model_key}"',
         "DISCOVERY = None": f"DISCOVERY = {discovery!r}",
     }
+    if hf_token:  # only for a private notebook whose owner has no HF_TOKEN Secret
+        replacements["HF_TOKEN_INLINE = None"] = f"HF_TOKEN_INLINE = {hf_token!r}"
     for old, new in replacements.items():
         if text.count(old) != 1:
             raise ValueError(f"config cell must contain {old!r} exactly once")
         text = text.replace(old, new)
     config["source"] = text
-    (folder / "vllm_serve_v1.ipynb").write_text(json.dumps(notebook, ensure_ascii=False, indent=1),
+    notebook_path = folder / "vllm_serve_v1.ipynb"
+    notebook_path.touch(mode=0o600)
+    notebook_path.write_text(json.dumps(notebook, ensure_ascii=False, indent=1),
                                                encoding="utf-8")
     metadata = json.loads((SOURCE / "kernel-metadata.json").read_text(encoding="utf-8"))
-    metadata["id"] = f"{owner}/react-vn-vllm-serve-v1"
+    suffix = "" if model_key == "qwen3_8b" else "-" + model_key.replace("_", "-")
+    metadata["id"] = f"{owner}/react-vn-vllm-serve-v1{suffix}"
+    metadata["title"] = f"react-vn vLLM serve v1{suffix.replace('-', ' ')}"
     (folder / "kernel-metadata.json").write_text(json.dumps(metadata, indent=2) + "\n",
                                                  encoding="utf-8")
     (folder / "discovery.json").write_text(json.dumps({"topic": discovery["topic"],
@@ -109,12 +115,16 @@ def main() -> None:
     p = sub.add_parser("prepare")
     p.add_argument("--owner", required=True)
     p.add_argument("--model-key", default="qwen3_8b", choices=MODEL_KEYS)
+    p.add_argument("--hf-token-env", help="read an HF token from this environment variable")
     d = sub.add_parser("discover")
     d.add_argument("--folder", type=Path, required=True)
     d.add_argument("--timeout-minutes", type=float, default=45)
     args = parser.parse_args()
     if args.action == "prepare":
-        print(prepare(args.owner, args.model_key))
+        token = os.environ.get(args.hf_token_env) if args.hf_token_env else None
+        if args.hf_token_env and not token:
+            raise SystemExit(f"{args.hf_token_env} is not set")
+        print(prepare(args.owner, args.model_key, token))
     else:
         print(json.dumps(discover(args.folder, args.timeout_minutes), indent=2))
 

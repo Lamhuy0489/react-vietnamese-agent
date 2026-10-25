@@ -28,15 +28,41 @@ def served_name(repo: str, revision: str) -> str:
     return f"{repo}@{revision}"
 
 
+def per_tool_schema(tool_definitions: list[dict[str, Any]]) -> dict[str, Any]:
+    """One anyOf branch per tool, so arguments are constrained by that tool's input schema.
+
+    The transport serialises with sorted keys, so "arguments" is generated before
+    "name"; with a free-form ``arguments`` object some models emit ``{}`` or wrong
+    keys. Per-tool branches bind the two whatever the key order (decision log
+    2026-10-26).
+    """
+    def strip(schema: Any) -> Any:
+        if isinstance(schema, dict):
+            return {k: strip(v) for k, v in schema.items() if k not in {"title", "default"}}
+        return schema
+
+    branches = [
+        {"type": "object", "additionalProperties": False, "required": ["action"],
+         "properties": {"action": {
+             "type": "object", "additionalProperties": False, "required": ["name", "arguments"],
+             "properties": {"name": {"type": "string", "enum": [tool["name"]]},
+                            "arguments": strip(tool["input_schema"])}}}}
+        for tool in tool_definitions
+    ]
+    return {"anyOf": [*branches, AGENT_SCHEMA["anyOf"][1]]}
+
+
 class OpenAICompatBackend:
     def __init__(self, transport: Transport, *, repo: str, revision: str,
-                 chat_template_kwargs: dict[str, Any] | None = None) -> None:
+                 chat_template_kwargs: dict[str, Any] | None = None,
+                 tool_definitions: list[dict[str, Any]] | None = None) -> None:
         if not repo or len(revision) < 7:
             raise ValueError("repo and pinned revision required")
         self.transport = transport
         self.model_id, self.model_revision = repo, revision
         self.served = served_name(repo, revision)
         self.chat_template_kwargs = chat_template_kwargs or {}
+        self.schema = per_tool_schema(tool_definitions) if tool_definitions else AGENT_SCHEMA
         self.calls: list[dict[str, Any]] = []
         self.infra_failures = 0
 
@@ -65,7 +91,7 @@ class OpenAICompatBackend:
             "seed": config.seed, "max_tokens": config.max_new_tokens, "stream": False,
             "request_id": request_id,
             "response_format": {"type": "json_schema", "json_schema": {
-                "name": "agent_turn", "schema": AGENT_SCHEMA, "strict": True}},
+                "name": "agent_turn", "schema": self.schema, "strict": True}},
         }
         if self.chat_template_kwargs:
             payload["chat_template_kwargs"] = self.chat_template_kwargs

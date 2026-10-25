@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the 150 public clean v1.1 Dev tasks with A0 (prompt v2) against a vLLM endpoint.
+"""Run the 150 public clean v1.1 Dev tasks with A0 (rebuild prompt) against a vLLM endpoint.
 
 Endpoint URL and key come from VLLM_BASE_URL / VLLM_API_KEY. Output follows the
 ``run_checkpointed`` layout (``tasks/<id>/result.json`` + ``trace.jsonl``) so
@@ -26,7 +26,7 @@ from react_agent.agent.checkpoint import atomic_json
 from react_agent.config import load_generation_config, load_runtime_config
 from react_agent.llm.http_diagnostic_v1 import HTTPSJSON
 from react_agent.llm.openai_compat_v1 import OpenAICompatBackend
-from react_agent.prompts import a0_v2
+from react_agent.prompts import a0_rebuild
 from react_agent.schemas.clean_task import CleanPublicTask, FaultSpec
 from react_agent.schemas.trace import TraceEvent
 from react_agent.tools.factory import build_clean_registry
@@ -47,8 +47,9 @@ def main() -> int:
     parser.add_argument("--output", type=Path)
     parser.add_argument("--limit", type=int, help="run only the first N Dev tasks")
     parser.add_argument("--timeout", type=float, default=150)
+    parser.add_argument("--prompt", choices=["v2", "v3"], default="v3")
     args = parser.parse_args()
-    prompt_profile = a0_v2.activate()
+    prompt_profile = a0_rebuild.activate(args.prompt)
     spec = yaml.safe_load((ROOT / "configs/models/backbones_v2.yaml").read_text())[args.model_key]
     if not spec["revision"]:
         raise SystemExit("Pin the revision in configs/models/backbones_v2.yaml first")
@@ -70,7 +71,9 @@ def main() -> int:
 
     backend = OpenAICompatBackend(HTTPSJSON(base_url, api_key, timeout=args.timeout),
                                   repo=spec["repo"], revision=spec["revision"],
-                                  chat_template_kwargs=spec.get("chat_template_kwargs"))
+                                  chat_template_kwargs=spec.get("chat_template_kwargs"),
+                                  tool_definitions=build_clean_registry(
+                                      CLEAN_ROOT / "environment").definitions())
     backend.probe()
     output = (args.output or ROOT / "results/rebuild_a" / f"clean_dev_{args.model_key}").resolve()
     identity: dict[str, Any] = {
@@ -83,6 +86,7 @@ def main() -> int:
             "environment_manifest": CLEAN_ROOT / "manifests/environment_manifest.json",
         }.items()},
         "prompt": prompt_profile,
+        "decoding_schema": "per_tool_v1",
         "task_ids": [task.task_id for task in tasks],
     }
     output.mkdir(parents=True, exist_ok=True)

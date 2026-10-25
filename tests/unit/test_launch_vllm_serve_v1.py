@@ -37,13 +37,15 @@ def test_prepare_fills_config_and_keeps_key_private(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     module = load(tmp_path, monkeypatch)
-    folder = module.prepare("someone", "llama31_8b")
+    folder = module.prepare("someone", "llama31_8b", "hf_test_token")
     config = json.loads((folder / "vllm_serve_v1.ipynb").read_text())["cells"][1]["source"]
     assert 'MODEL_KEY = "llama31_8b"' in config
+    assert "HF_TOKEN_INLINE = 'hf_test_token'" in config
+    assert stat.S_IMODE((folder / "vllm_serve_v1.ipynb").stat().st_mode) == 0o600
     assert "DISCOVERY = None" not in config and "PUBLIC KEY" in config
     assert "PRIVATE" not in config
     metadata = json.loads((folder / "kernel-metadata.json").read_text())
-    assert metadata["id"] == "someone/react-vn-vllm-serve-v1" and metadata["is_private"]
+    assert metadata["id"] == "someone/react-vn-vllm-serve-v1-llama31-8b" and metadata["is_private"]
     mode = (folder / "discovery_private.pem").stat().st_mode
     assert stat.S_IMODE(mode) == 0o600
 
@@ -53,6 +55,7 @@ def test_discover_decrypts_sealed_message(
 ) -> None:
     module = load(tmp_path, monkeypatch)
     folder = module.prepare("someone", "qwen3_8b")
+    assert "HF_TOKEN_INLINE = None" in (folder / "vllm_serve_v1.ipynb").read_text()
     private = serialization.load_pem_private_key(
         (folder / "discovery_private.pem").read_bytes(), password=None
     )

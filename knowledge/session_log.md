@@ -51,3 +51,16 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - **Clean Dev 150 × Qwen3-8B (A0, v2):** 71/150 (47,3%), 0 lỗi hạ tầng, khoảng 13 phút.
 - **Còn dở:** prompt v3 cho ambiguous/db_document (owner quyết); Llama, Gemma; gắn secret
   `HF_TOKEN` qua UI cho notebook model gated; quyền Llama-3.2-3B còn 403.
+
+## 2026-10-26 — Claude Code: prompt v3, numfix, per-tool schema, Llama
+
+- **Prompt v3 (owner duyệt):** sửa luật 5 (lỗi retryable thì gọi lại, lỗi do lệnh sai thì sửa
+  lệnh), thêm luật tra đủ nguồn và hỏi lại khi thiếu dữ kiện. Đổi tên module thành
+  `prompts/a0_rebuild.py` (giữ cả v2). Chạy Dev 1 lần rồi đóng băng.
+- **Bộ chấm:** regex số cũ bỏ sót số ở cuối câu ("bằng 876."). Sửa trong
+  `validation/clean_rebuild_v1.py` (`--numfix`), chấm lại cả v2 và v3: 72 so với 79/150.
+- **Harness:** Llama bị parse_failure 82/150 vì `arguments` là object tự do và key bị sắp
+  xếp. Thêm `per_tool_schema` (mỗi tool một nhánh anyOf). Qwen giữ nguyên 79, Llama 30 → 59.
+- **Llama-3.1-8B:** notebook riêng `react-vn-vllm-serve-v1-llama31-8b`, token chèn vào bản
+  private. Smoke 8/20, Dev 59/150.
+- **Còn dở:** Gemma, bake-off guard, A0–A6 Dev, phần dọn R0; owner nên rotate token HF.

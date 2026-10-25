@@ -13,7 +13,7 @@ qwen3_8b:
   chat_template_kwargs: {enable_thinking: false}
 llama31_8b:
   repo: meta-llama/Llama-3.1-8B-Instruct
-  revision: null
+  revision: 0e9e39f249a16976918f6564b8830bc894c89659  # resolved on Kaggle 2026-10-26
   role: rq1
   gated: true
   dtype: half

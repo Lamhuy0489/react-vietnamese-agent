@@ -1,6 +1,6 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-10-25. Đang ở **R0 (Reset)** của
+Cập nhật: 2026-10-26. Đang ở **R0 (Reset)** của
 [lộ trình v2](../docs/project/roadmap_v2_rebuild.md). Đã chốt 3 quyết định R0;
 phần dọn repo của R0 chưa làm.
 
@@ -23,10 +23,18 @@ R0, tuần 24/10–30/10. Đã xong:
    `react_a0.py`, `context.py` hay các file tool, vì seal adversarial pin byte của chúng.
    **Clean Dev 150 × Qwen3-8B: 71/150 = 47,3%.** db_document 0/24, ambiguous 0/15.
    Lệnh chạy: `scripts/run_clean_dev_api_v1.py`, chấm bằng `evaluate_clean_v11_dev.py --full-dev`.
-   Việc tiếp: owner quyết có làm prompt v3 trên Dev cho 2 nhóm 0% không, rồi chạy Llama và Gemma.
+   **2026-10-26:** prompt v3 (`prompts/a0_rebuild.py`, sửa luật lỗi tool và hỏi lại) được
+   owner duyệt, chạy Dev 1 lần rồi **đóng băng**. Sửa bộ chấm số ở cuối câu
+   (`validation/clean_rebuild_v1.py`, `--numfix`). Sửa harness: schema giải mã theo từng tool
+   (`per_tool_v1`), vì Llama bị parse_failure khi `arguments` để tự do.
+   **Kết quả (v3 + per_tool + numfix):** Qwen smoke 12/20, Dev 79/150; Llama smoke 8/20,
+   Dev 59/150. Bảng theo nhóm nằm trong decision log 2026-10-26.
+   Việc tiếp: Gemma-4-12B (rủi ro cao trên T4, xem runbook), rồi bake-off guard, rồi A0–A6 Dev.
 1. Token HF của owner đã có quyền Llama-3.1-8B, Prompt-Guard-2-86M, Gemma-4-12B; Llama-3.2-3B
    còn 403. Gắn `HF_TOKEN` làm Kaggle Secret qua UI cho notebook của tài khoản chạy model gated.
    Mỗi notebook một model. Kaggle cho tối đa 2 phiên GPU chạy nền mỗi tài khoản.
+   Llama đã chạy bằng cách chèn token vào notebook private (`--hf-token-env`); owner nên
+   rotate token HF sau đợt chạy.
 2. Merge branch hiện tại vào `main` (qua PR), gắn tag `phase5-closure` trên `6509ae0`.
 3. Dọn trên `main`: gom các script cũ, chưa dùng (v1/v2, preflight, chẩn đoán) vào
    `scripts/legacy/` hoặc xóa, chỉ giữ dưới 30 script đang dùng. Chạy
