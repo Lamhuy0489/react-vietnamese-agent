@@ -22,17 +22,27 @@ llama31_8b:
   vllm: stable
   chat_template_kwargs: {}
 gemma4_12b:
-  # Highest risk on 2xT4: vLLM support is nightly-only and Gemma is unstable in
-  # fp16. Fallback order if boot fails: the QAT w4a16 checkpoint, then record a
-  # backbone change in the decision log before choosing another model.
+  # bf16 weights are 24 GB, at the edge of 2xT4 in fp16: max_len 4096 (longest Dev
+  # prompt ~2.9k tokens), eager, text-only. Fallback: gemma4_12b_qat below; record
+  # in the decision log which variant is the RQ1 backbone.
   repo: google/gemma-4-12B-it
-  revision: null
+  revision: 707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7  # resolved via HF API 2026-10-26
   role: rq1
-  gated: true
+  gated: false
+  dtype: half
+  tensor_parallel: 2
+  max_model_len: 4096
+  vllm: stable  # 0.32.0 registers Gemma4UnifiedForConditionalGeneration
+  chat_template_kwargs: {}
+gemma4_12b_qat:
+  repo: google/gemma-4-12B-it-qat-w4a16-ct
+  revision: 1d2c2d7f2466070e69d6fb3fd5ce9a7d75f2f6ee  # resolved via HF API 2026-10-26
+  role: rq1_fallback
+  gated: false
   dtype: half
   tensor_parallel: 2
   max_model_len: 8192
-  vllm: nightly
+  vllm: stable
   chat_template_kwargs: {}
 guard_candidates:
   prompt_guard2_86m: {repo: meta-llama/Llama-Prompt-Guard-2-86M, gated: true, runs: local_cpu}

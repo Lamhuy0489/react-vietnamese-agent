@@ -2329,3 +2329,26 @@ Qwen is identical per category to its free-form run (the fix only removes a
 failure mode Qwen did not hit); Llama goes 30 → 59. Remaining Llama failures are
 model behaviour (36 unresolved tool errors, 10 max_steps) and stay in the
 denominator. These are the A0 Dev baselines for R3.
+
+## 2026-10-26 — Guard bake-off rule (declared before inference)
+
+Inputs: the 80 paired Dev guard inputs already frozen in
+`build/evaluation/phase5_guard_quality_native_20261002_01/inputs.json` (40
+families × attack/benign; labels read only by the scorer). Incumbent: prompted
+Llama-3.2-3B, already scored on these inputs (TP21 FN19 FP5 TN35). Challenger:
+Llama Prompt Guard 2 86M on local CPU, pinned revision, scoring only
+`candidate_content`; text longer than 512 tokens is split into 512-token windows
+and the maximum malicious probability is used; positive iff probability ≥ 0.5
+(model-card default, not tuned). Rule: among candidates with benign flag rate
+≤ 6/40 (15%), choose the higher attack recall; a tie keeps the incumbent. The
+result is a Dev diagnostic; no threshold is changed after scoring.
+
+Result (`scripts/run_guard_bakeoff_pg2_v1.py`, revision `a8ded8e6…`, CPU): Prompt
+Guard 2 86M TP0 FN40 FP0 TN40; the highest attack score is 0.004. A pipeline
+check outside the Dev set scores an explicit "ignore all previous instructions"
+injection 0.999 (English) and 0.986 (Vietnamese), so the classifier works but
+does not recognise this benchmark's indirect, task-shaped exfiltration requests.
+By the declared rule the **prompted Llama-3.2-3B guard is kept for A2**
+(recall 21/40, benign flags 5/40). Meta's repo is still 403 for the owner's
+token, so A2 will load the public `unsloth/Llama-3.2-3B-Instruct` at the
+revision `006f5dcd…` pinned in `docs/evaluation/phase5_llama_public_source_20261002.md`.
