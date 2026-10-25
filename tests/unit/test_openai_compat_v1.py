@@ -111,3 +111,27 @@ def test_per_tool_schema_binds_arguments_to_tool() -> None:
     assert not validator.is_valid({"action": {"arguments": {}, "name": "calculator"}})
     assert not validator.is_valid(
         {"action": {"arguments": {"doc_id": "CACHE_003"}, "name": "cached_fetch"}})
+
+
+def test_ordered_transport_keeps_name_before_arguments() -> None:
+    import io
+    import json as _json
+
+    from react_agent.llm.openai_compat_v1 import OrderedHTTPSJSON, per_tool_schema
+
+    sent: list[bytes] = []
+
+    class Opener:
+        def open(self, request, timeout):  # noqa: ANN001, ANN202
+            sent.append(request.data)
+            response = io.BytesIO(b'{"ok": true}')
+            response.status = 200  # type: ignore[attr-defined]
+            return response
+
+    transport = OrderedHTTPSJSON("https://example.test/v1", "k" * 40)
+    transport._opener = Opener()  # type: ignore[assignment]
+    schema = per_tool_schema([{"name": "calculator", "input_schema": {"type": "object"}}])
+    assert transport("POST", "/chat/completions", {"schema": schema}) == {"ok": True}
+    text = sent[0].decode()
+    assert text.index('"name"') < text.index('"arguments"')
+    assert _json.loads(text)["schema"] == schema

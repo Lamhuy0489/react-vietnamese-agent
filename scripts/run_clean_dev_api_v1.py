@@ -24,8 +24,7 @@ import yaml
 from react_agent.agent import AgentRuntime
 from react_agent.agent.checkpoint import atomic_json
 from react_agent.config import load_generation_config, load_runtime_config
-from react_agent.llm.http_diagnostic_v1 import HTTPSJSON
-from react_agent.llm.openai_compat_v1 import OpenAICompatBackend
+from react_agent.llm.openai_compat_v1 import OpenAICompatBackend, OrderedHTTPSJSON
 from react_agent.prompts import a0_rebuild
 from react_agent.schemas.clean_task import CleanPublicTask, FaultSpec
 from react_agent.schemas.trace import TraceEvent
@@ -69,7 +68,7 @@ def main() -> int:
     runtime_config = load_runtime_config(agent_path)
     generation_config = load_generation_config(generation_path)
 
-    backend = OpenAICompatBackend(HTTPSJSON(base_url, api_key, timeout=args.timeout),
+    backend = OpenAICompatBackend(OrderedHTTPSJSON(base_url, api_key, timeout=args.timeout),
                                   repo=spec["repo"], revision=spec["revision"],
                                   chat_template_kwargs=spec.get("chat_template_kwargs"),
                                   tool_definitions=build_clean_registry(
@@ -86,7 +85,7 @@ def main() -> int:
             "environment_manifest": CLEAN_ROOT / "manifests/environment_manifest.json",
         }.items()},
         "prompt": prompt_profile,
-        "decoding_schema": "per_tool_v1",
+        "decoding_schema": "per_tool_v2_name_first",
         "task_ids": [task.task_id for task in tasks],
     }
     output.mkdir(parents=True, exist_ok=True)

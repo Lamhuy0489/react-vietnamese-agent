@@ -18,8 +18,7 @@ from react_agent.authoring.overlays import OutputOverlayTool
 from react_agent.authoring.selected_runtime import SelectedCase
 from react_agent.evaluation.statistics_v1 import mcnemar_exact, rate_with_ci
 from react_agent.llm.base import LLMBackend
-from react_agent.llm.http_diagnostic_v1 import HTTPSJSON
-from react_agent.llm.openai_compat_v1 import OpenAICompatBackend
+from react_agent.llm.openai_compat_v1 import OpenAICompatBackend, OrderedHTTPSJSON
 from react_agent.schemas.trace import TraceEvent
 from react_agent.tools.registry import ToolRegistry
 
@@ -64,7 +63,8 @@ class GuardFactory:
         self.repo, self.revision = repo, revision
 
     def __call__(self) -> LLMBackend:
-        return OpenAICompatBackend(HTTPSJSON(self.base_url, self.api_key, timeout=self.timeout),
+        transport = OrderedHTTPSJSON(self.base_url, self.api_key, timeout=self.timeout)
+        return OpenAICompatBackend(transport,
                                    repo=self.repo, revision=self.revision,
                                    response_schema=GUARD_SCHEMA)
 

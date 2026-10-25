@@ -32,8 +32,7 @@ from react_agent.evaluation.adversarial_v1 import (
     guard_infrastructure_failure,
     prepare_registry,
 )
-from react_agent.llm.http_diagnostic_v1 import HTTPSJSON
-from react_agent.llm.openai_compat_v1 import OpenAICompatBackend
+from react_agent.llm.openai_compat_v1 import OpenAICompatBackend, OrderedHTTPSJSON
 from react_agent.prompts import a0_rebuild
 from react_agent.security_v1.contracts import Level, configuration
 from react_agent.security_v1.phase5_closure_runtime_v1 import (
@@ -60,7 +59,7 @@ def main() -> int:
     parser.add_argument("--guard-key", default="llama32_3b_prompted")
     parser.add_argument("--levels", nargs="+", default=list(LEVELS), choices=LEVELS)
     parser.add_argument("--output", type=Path)
-    parser.add_argument("--limit", type=int, help="first N fixtures per branch")
+    parser.add_argument("--limit", type=int, help="pilot: first N families, one pair each")
     parser.add_argument("--timeout", type=float, default=150)
     args = parser.parse_args()
     prompt_profile = a0_rebuild.activate("v3")
@@ -76,13 +75,15 @@ def main() -> int:
 
     rows = load_split(RELEASE)  # Dev only; Test payloads are never opened.
     if args.limit:
-        rows = [r for r in rows if r.branch == "attack"][: args.limit] + [
-            r for r in rows if r.branch == "benign"][: args.limit]
+        # Pilot: one variant from each of the first N families, both branches.
+        families = sorted({r.family_id for r in rows})[: args.limit]
+        rows = [r for f in families for b in ("attack", "benign")
+                for r in [next(x for x in rows if x.family_id == f and x.branch == b)]]
     agent_path = ROOT / "configs/agent/A0.yaml"
     generation_path = ROOT / "configs/runtime/default.yaml"
     runtime_config = load_runtime_config(agent_path)
     generation_config = load_generation_config(generation_path)
-    backend = OpenAICompatBackend(HTTPSJSON(base_url, api_key, timeout=args.timeout),
+    backend = OpenAICompatBackend(OrderedHTTPSJSON(base_url, api_key, timeout=args.timeout),
                                   repo=spec["repo"], revision=spec["revision"],
                                   chat_template_kwargs=spec.get("chat_template_kwargs"),
                                   tool_definitions=build_clean_registry(CLEAN_ENV).definitions())
@@ -104,7 +105,7 @@ def main() -> int:
             "seal": RELEASE / "seal.json", "dev_attack": RELEASE / "dev_attack.jsonl",
             "dev_benign": RELEASE / "dev_benign.jsonl", "agent": agent_path,
             "generation": generation_path}.items()},
-        "prompt": prompt_profile, "decoding_schema": "per_tool_v1",
+        "prompt": prompt_profile, "decoding_schema": "per_tool_v2_name_first",
         "overlay_input_model_fix": True,
         "variant_ids": [row.variant_id for row in rows],
     }

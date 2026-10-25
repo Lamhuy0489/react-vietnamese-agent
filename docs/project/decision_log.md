@@ -2402,3 +2402,16 @@ Roadmap R0 asked to move unused scripts to `scripts/legacy/`. About 200 receipts
 in `experiments/manifests/` and the Phase 5 native wiring QA pin script paths and
 bytes, so moving them breaks those audits. Instead `scripts/README.md` lists the
 13 scripts of the current workflow and marks the rest historical; no file moves.
+
+## 2026-10-26 — Name-first decoding (`per_tool_v2_name_first`); clean Dev re-run
+
+The A0–A6 pilot ended every Qwen run with `OUTPUT_TRUNCATED` at step 0: the model
+wrote a self-nesting SQL query until 512 tokens. `HTTPSJSON` (pinned by Phase 5
+receipts) serialises requests with sorted keys, so every JSON schema reaches vLLM
+with "arguments" before "name": the model fills arguments before choosing a tool.
+`OrderedHTTPSJSON` keeps payload key order, so the per-tool branches generate
+"name" first, as native function calling does; the same request then yields one
+`db_query` call with a short query. All runners and the guard use it, identities
+record `decoding_schema: per_tool_v2_name_first`. Because this changes how every
+backbone decodes, clean Dev and smoke are re-run for all three backbones; the
+per_tool_v1 tables above stay as history and are not reported as baselines.
