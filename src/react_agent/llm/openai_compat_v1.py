@@ -2,14 +2,24 @@
 
 from __future__ import annotations
 
+import json
+import ssl
 import time
+import urllib.error
+import urllib.request
 import uuid
 from typing import Any
 
 from pydantic import TypeAdapter, ValidationError
 
 from react_agent.llm.base import GenerationConfig, ModelResponse
-from react_agent.llm.http_diagnostic_v1 import APIError, Transport, strict_object
+from react_agent.llm.http_diagnostic_v1 import (
+    HTTPSJSON,
+    MAX_BYTES,
+    APIError,
+    Transport,
+    strict_object,
+)
 from react_agent.schemas.agent_output import ActionTurn, FinalTurn
 from react_agent.serving.structured_api_v1 import AGENT_SCHEMA
 
@@ -31,10 +41,10 @@ def served_name(repo: str, revision: str) -> str:
 def per_tool_schema(tool_definitions: list[dict[str, Any]]) -> dict[str, Any]:
     """One anyOf branch per tool, so arguments are constrained by that tool's input schema.
 
-    The transport serialises with sorted keys, so "arguments" is generated before
-    "name"; with a free-form ``arguments`` object some models emit ``{}`` or wrong
-    keys. Per-tool branches bind the two whatever the key order (decision log
-    2026-10-26).
+    Branches list "name" before "arguments"; with ``OrderedHTTPSJSON`` the model
+    picks the tool first and then fills that tool's arguments (decision log
+    2026-10-26). Under the sorted-key ``HTTPSJSON`` the order is reversed but the
+    branches still bind arguments to one tool.
     """
     def strip(schema: Any) -> Any:
         if isinstance(schema, dict):
@@ -50,6 +60,44 @@ def per_tool_schema(tool_definitions: list[dict[str, Any]]) -> dict[str, Any]:
         for tool in tool_definitions
     ]
     return {"anyOf": [*branches, AGENT_SCHEMA["anyOf"][1]]}
+
+
+class OrderedHTTPSJSON(HTTPSJSON):
+    """``HTTPSJSON`` that keeps payload key order, so a JSON schema's property order holds.
+
+    The parent (pinned by Phase 5 receipts) serialises with sorted keys, which makes
+    constrained decoding emit "arguments" before "name": the model then writes
+    arguments before choosing a tool, and greedy decoding can loop inside them.
+    """
+
+    def __call__(self, method: str, path: str,
+                 payload: dict[str, Any] | None) -> dict[str, Any]:
+        if (method, path) not in {("GET", "/models"), ("POST", "/chat/completions")}:
+            raise APIError("UNSUPPORTED_OPERATION")
+        data = (json.dumps(payload, ensure_ascii=False, allow_nan=False,
+                           separators=(",", ":")).encode() if payload is not None else None)
+        if data is not None and len(data) > MAX_BYTES:
+            raise APIError("REQUEST_TOO_LARGE")
+        request = urllib.request.Request(  # noqa: S310 - parent constructor admits HTTPS only
+            self._base + path, data=data, method=method,
+            headers={"Authorization": "Bearer " + self._key,
+                     "Content-Type": "application/json", "Accept": "application/json"})
+        try:
+            with self._opener.open(request, timeout=self._timeout) as response:
+                if response.status != 200:
+                    raise APIError("HTTP_ERROR", response.status)
+                raw = response.read(MAX_BYTES + 1)
+                if len(raw) > MAX_BYTES:
+                    raise APIError("RESPONSE_TOO_LARGE")
+                return strict_object(raw.decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            raise APIError("HTTP_ERROR", exc.code) from None
+        except urllib.error.URLError as exc:
+            code = "TLS_ERROR" if isinstance(exc.reason, ssl.SSLError) else (
+                "TIMEOUT" if isinstance(exc.reason, TimeoutError) else "NETWORK_ERROR")
+            raise APIError(code) from None
+        except TimeoutError:
+            raise APIError("TIMEOUT") from None
 
 
 class OpenAICompatBackend:

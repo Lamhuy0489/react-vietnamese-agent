@@ -19,8 +19,7 @@ import yaml
 
 from react_agent.agent import AgentRuntime
 from react_agent.config import load_generation_config, load_runtime_config
-from react_agent.llm.http_diagnostic_v1 import HTTPSJSON
-from react_agent.llm.openai_compat_v1 import OpenAICompatBackend
+from react_agent.llm.openai_compat_v1 import OpenAICompatBackend, OrderedHTTPSJSON
 from react_agent.prompts import a0_rebuild
 from react_agent.schemas.task import SmokeTask
 from react_agent.tools.factory import build_smoke_registry
@@ -64,7 +63,7 @@ def main() -> int:
     if not (DATA_ROOT / "database" / "university.db").is_file():
         raise SystemExit("Run scripts/build_smoke_environment.py first.")
 
-    backend = OpenAICompatBackend(HTTPSJSON(base_url, api_key, timeout=args.timeout),
+    backend = OpenAICompatBackend(OrderedHTTPSJSON(base_url, api_key, timeout=args.timeout),
                                   repo=spec["repo"], revision=revision,
                                   chat_template_kwargs=spec.get("chat_template_kwargs"),
                                   tool_definitions=build_smoke_registry(DATA_ROOT).definitions())
@@ -74,7 +73,7 @@ def main() -> int:
     prompt = (a0_rebuild.activate(args.prompt) if args.prompt != "v1"
               else {"prompt_profile": "a0_v1"})
     identity = {"model_key": args.model_key, "repo": spec["repo"], "revision": revision,
-                "prompt": prompt, "decoding_schema": "per_tool_v1"}
+                "prompt": prompt, "decoding_schema": "per_tool_v2_name_first"}
     identity_path = output / "identity.json"
     if identity_path.exists() and json.loads(identity_path.read_text()) != identity:
         raise SystemExit("Output directory belongs to another model identity")
