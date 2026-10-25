@@ -22,7 +22,7 @@ R0, tuần 24/10–30/10. Đã xong:
    Prompt v2 nằm ở `prompts/a0_v2.py` và được bật bằng `activate()`. Không sửa
    `react_a0.py`, `context.py` hay các file tool, vì seal adversarial pin byte của chúng.
    **Clean Dev 150 × Qwen3-8B: 71/150 = 47,3%.** db_document 0/24, ambiguous 0/15.
-   Lệnh chạy: `scripts/run_clean_dev_api_v1.py`, chấm bằng `evaluate_clean_v11_dev.py --full-dev`.
+   Lệnh chạy: `scripts/run_clean_dev_api_v1.py`, chấm bằng `evaluate_clean_rebuild_v1.py --full-dev --numfix`.
    **2026-10-26:** prompt v3 (`prompts/a0_rebuild.py`, sửa luật lỗi tool và hỏi lại) được
    owner duyệt, chạy Dev 1 lần rồi **đóng băng**. Sửa bộ chấm số ở cuối câu
    (`validation/clean_rebuild_v1.py`, `--numfix`). Sửa harness: schema giải mã theo từng tool

@@ -3,7 +3,7 @@
 
 Endpoint URL and key come from VLLM_BASE_URL / VLLM_API_KEY. Output follows the
 ``run_checkpointed`` layout (``tasks/<id>/result.json`` + ``trace.jsonl``) so
-``evaluate_clean_v11_dev.py --full-dev`` can score it. A task that ends with an
+``evaluate_clean_rebuild_v1.py --full-dev`` can score it. A task that ends with an
 infrastructure error is not checkpointed and reruns on the next invocation;
 model errors are kept. Private ground truth and Test are never read.
 """

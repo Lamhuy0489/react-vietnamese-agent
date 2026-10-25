@@ -23,7 +23,8 @@ def prepared(tmp_path, deploy, monkeypatch):
         folder = tmp_path / role
         folder.mkdir()
         (folder / "kernel-metadata.json").write_text(json.dumps({"is_private": True}))
-        roles[role] = {"kernel": account + "/synthetic", "files": {
+        roles[role] = {"kernel": account + "/synthetic", "cfg": {"model_source": "synthetic"},
+                       "files": {
             "kernel-metadata.json": deploy.digest(folder / "kernel-metadata.json")}}
     (tmp_path / "prepared.json").write_text(json.dumps({"source_commit": commit, "roles": roles}))
     qa = tmp_path / "preflight_v3"
@@ -33,6 +34,7 @@ def prepared(tmp_path, deploy, monkeypatch):
         "launcher_sha256": deploy.digest(ROOT / "scripts/launch_structured_pair_v3.py"),
         "profile": deploy.PROFILE, "roles": [{}, {}, {}, {}]}))
     monkeypatch.setattr(deploy, "_check_source_commit", lambda c: None)
+    monkeypatch.setattr(deploy, "verify_model_access", lambda role, source: None)
     monkeypatch.setattr(deploy, "git", lambda *args: commit + "\trefs/heads/synthetic")
     return tmp_path
 
