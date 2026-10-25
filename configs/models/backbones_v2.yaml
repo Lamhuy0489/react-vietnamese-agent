@@ -3,7 +3,7 @@
 # pin it here and in the notebook before any Dev run that counts.
 qwen3_8b:
   repo: Qwen/Qwen3-8B
-  revision: null
+  revision: b968826d9c46dd6066d109eabc6255188de91218  # resolved on Kaggle 2026-10-25
   role: rq1_and_rq2
   gated: false
   dtype: half

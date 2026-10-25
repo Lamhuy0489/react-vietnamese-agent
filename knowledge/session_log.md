@@ -34,3 +34,15 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   [runbook](rebuild_a_runbook.md) kèm hướng dẫn xin quyền HF và Kaggle.
 - **Còn dở:** owner chạy notebook ngày 24/10, pin revision, chạy smoke; Gemma 4 có rủi
   ro trên T4.
+
+## 2026-10-25 — Claude Code: chạy thật Qwen3-8B trên Kaggle, A0 smoke
+
+- **Đã làm:** kiểm 4 tài khoản Kaggle qua API (đều đăng nhập được, còn 20–25 h GPU,
+  không notebook nào đang chạy). Thêm chế độ chạy nền cho `vllm_serve_v1`: tự sinh key,
+  gửi URL đã mã hóa qua ntfy. Thêm `scripts/launch_vllm_serve_v1.py` cùng 2 test. Push lên
+  lamhuy8904: v1 lỗi do torchaudio lệch CUDA; v2 READY. Pin Qwen3-8B `b968826d…`, vLLM 0.32.0.
+- **Kết quả:** A0 smoke 20/20 completed, 0 lỗi parse/hạ tầng, 3/20 success (6/20 theo answer
+  facts). Lỗi chủ yếu do model chọn sai nguồn và không gọi read/fetch.
+- **Quyết định owner:** mỗi notebook một model; chạy song song dùng 2 notebook trên 2 tài khoản.
+- **Còn dở:** owner quyết có sửa mô tả tool/prompt A0 trên smoke/Dev không; gắn secret
+  `HF_TOKEN` qua UI cho notebook model gated; quyền Llama-3.2-3B còn 403.

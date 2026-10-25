@@ -22,10 +22,19 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
-**2026-10-23 — vLLM serve v1 (đã dự kiến, chưa upload):** source
-`notebooks/kaggle/vllm_serve_v1/`, id dự kiến `lamhuy8904/react-vn-vllm-serve-v1`
-(private, GPU, Internet). Chưa có URL hoặc version thật. Sau lần chạy đầu, ghi URL,
-version, commit nguồn, SHA model và version vLLM vào đây. Xem [runbook](rebuild_a_runbook.md).
+**2026-10-25 — vLLM serve v1, Qwen3-8B, đã chạy thật:**
+[lamhuy8904/react-vn-vllm-serve-v1](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1)
+(private, T4×2, Internet, push qua API bằng `scripts/launch_vllm_serve_v1.py`).
+- v1 ERROR: vLLM 0.32.0 kéo torch 2.13+cu130, lệch torchaudio cu128 của Kaggle. Sửa ở v2
+  bằng cách gỡ torchaudio.
+- v2: READY lúc 23:37 (+07), boot `1fafef98e152`, served
+  `Qwen/Qwen3-8B@b968826d9c46dd6066d109eabc6255188de91218`. URL tunnel là tạm, không ghi.
+  Tự tắt sau 30 phút idle.
+- Dataset: không có. Source: working tree trên nhánh hiện tại (commit cùng mục này).
+- Quota 2026-10-25 (refresh 31/10): lamhuy8904 20,5 h, huylmhuhu 24,9 h, meanalways 23,3 h,
+  buiquocviet 23,2 h. Cả 4 tài khoản cũng chạy notebook `astar-*` của dự án khác.
+  Mỗi notebook chỉ serve một model; chạy song song thì dùng 2 tài khoản, ví dụ
+  meanalways cho model thứ hai hoặc guard. Model gated cần secret `HF_TOKEN` gắn qua UI.
 
 
 ### 2026-10-02 — Guard Dev terminal audit và Phase5 closure
