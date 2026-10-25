@@ -135,3 +135,22 @@ def test_ordered_transport_keeps_name_before_arguments() -> None:
     text = sent[0].decode()
     assert text.index('"name"') < text.index('"arguments"')
     assert _json.loads(text)["schema"] == schema
+
+
+def test_response_schema_backend_returns_non_agent_json() -> None:
+    from react_agent.evaluation.adversarial_v1 import GUARD_SCHEMA
+    from react_agent.llm.base import GenerationConfig
+    from react_agent.llm.openai_compat_v1 import OpenAICompatBackend
+
+    verdict = '{"risk":"SAFE","labels":[],"confidence":"HIGH"}'
+
+    def transport(method, path, payload):  # noqa: ANN001, ANN202
+        assert payload["response_format"]["json_schema"]["name"] == "guard_verdict"
+        return {"model": payload["model"], "choices": [
+            {"finish_reason": "stop", "message": {"content": verdict}}]}
+
+    backend = OpenAICompatBackend(transport, repo="org/guard", revision="abcdef1",
+                                  response_schema=GUARD_SCHEMA)
+    reply = backend.generate([{"role": "user", "content": "x"}],
+                             GenerationConfig(temperature=0, max_new_tokens=128, seed=42))
+    assert reply.text == verdict

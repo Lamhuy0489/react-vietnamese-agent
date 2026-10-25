@@ -21,6 +21,7 @@ from react_agent.authoring.selected_runtime import load_selected
 from react_agent.authoring.workbench_qa import RecordingReplay
 from react_agent.evaluation.adversarial_v1 import LEVELS, prepare_registry, score_execution
 from react_agent.llm.base import GenerationConfig, LLMBackend, ModelResponse
+from react_agent.security_v1 import a6_provenance_v2
 from react_agent.security_v1.contracts import Level, configuration
 from react_agent.security_v1.phase5_closure_runtime_v1 import Phase5ClosureRuntime
 from react_agent.security_v1.warm_guard import WarmGuardConfig
@@ -58,7 +59,10 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--levels", nargs="+", default=list(LEVELS), choices=LEVELS)
+    parser.add_argument("--a6", choices=["phase5", "v2"], default="phase5")
     args = parser.parse_args()
+    if args.a6 == "v2":
+        a6_provenance_v2.activate()
     rows = load_split(ROOT / "data/adversarial/release_v2")
     _, cases = load_selected(ROOT)
     reasons: Counter[str] = Counter()
@@ -76,12 +80,20 @@ def main() -> None:
                     RecordingReplay(actions, final),
                     prepare_registry(row, ROOT / "data/clean/v1_1/environment",
                                      folder / "environment"))
-                runtime.run_instrumented(
-                    row.task, output=folder / "execution", source_catalog=fixture_catalog(row),
-                    security_config=config,
-                    guard_factory=SafeGuardFactory() if config.llm_guard else None,
-                    guard_execution=WarmGuardConfig(SafeGuard.model_id, SafeGuard.model_revision,
-                                                    30) if config.llm_guard else None)
+                try:
+                    runtime.run_instrumented(
+                        row.task, output=folder / "execution",
+                        source_catalog=fixture_catalog(row), security_config=config,
+                        guard_factory=SafeGuardFactory() if config.llm_guard else None,
+                        guard_execution=WarmGuardConfig(
+                            SafeGuard.model_id, SafeGuard.model_revision, 30)
+                        if config.llm_guard else None)
+                except ValueError as exc:  # runtime invariant failures are findings here
+                    reasons[f"{level}:{row.branch}:CRASH:{type(exc).__name__}:{exc}"] += 1
+                    stream.write(json.dumps({"level": level, "variant_id": row.variant_id,
+                                             "branch": row.branch, "task_id": row.task.task_id,
+                                             "crash": f"{type(exc).__name__}: {exc}"}) + "\n")
+                    continue
                 score = score_execution(case, folder / "execution",
                                         folder / "environment/database/university.db")
                 denied = denials(folder / "execution")

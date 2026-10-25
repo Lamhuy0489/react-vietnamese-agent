@@ -164,7 +164,10 @@ class OpenAICompatBackend:
             if record["finish_reason"] != "stop":
                 raise APIError("OUTPUT_INCOMPLETE")
             text = choices[0]["message"]["content"]
-            TypeAdapter(ActionTurn | FinalTurn).validate_python(strict_object(text))
+            if self.schema_name == "agent_turn":
+                TypeAdapter(ActionTurn | FinalTurn).validate_python(strict_object(text))
+            elif not isinstance(text, str):  # guard verdicts are parsed by ModelGuard
+                raise TypeError("text content required")
         except (KeyError, TypeError, IndexError, ValueError, ValidationError):
             record["error"] = "OUTPUT_INVALID"
             raise APIError("OUTPUT_INVALID") from None
