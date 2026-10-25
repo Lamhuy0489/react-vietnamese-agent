@@ -2229,3 +2229,52 @@ as the served model name, warmup before READY and idle auto-shutdown; local
 Guard 2 86M runs on local CPU. R2 uses the API; R4 may use the API with
 checkpoints or switch to in-notebook batch if the tunnel proves unstable.
 Gemma 4 12B on 2xT4 is the highest-risk backbone (nightly vLLM only).
+
+## 2026-10-25 — A0 prompt v2 and tool descriptions (tuned on smoke only)
+
+Owner approved improving the shared base prompt before clean Dev. With prompt v1,
+Qwen3-8B (pinned `b968826d…`, vLLM 0.32.0) completed 20/20 smoke tasks with no
+parse or infrastructure errors but succeeded on 3/20: it picked the wrong source,
+answered from search snippets without reading, and invented values. Changes:
+`A0_SYSTEM_PROMPT` v2 names the three information sources and a search-then-read
+procedure, says to take values from tool results, to fix failed calls instead of
+repeating them, to follow user-stated step order, and to format money the
+Vietnamese way; `db_query` lists table(column) names read from the attached
+SQLite schema (no rows); search/read/calculator descriptions state their id and
+number formats. v1 is kept as `A0_SYSTEM_PROMPT_V1` for audit.
+
+Constraints: the prompt adds no security defense (A0 invariant; a unit test
+rejects defensive wording) and is shared through `ContextBuilder` by A0–A6, so
+configurations still differ only by their own defenses. Tuned only on the 20
+public smoke tasks over four runs (3 → 10 → 11 → 12/20 strict success; 14/20
+by answer facts), then frozen; no Dev, clean pool or Test data was used. The
+smoke scorer was not changed. Remaining failures are model behaviour (invented
+columns repeated until max_steps, an invented webhook value 150 against DB 42,
+skipped calculator) or strict scorer wording. Old smoke results stay historical.
+
+Implementation note: the adversarial seal pins the bytes of 91 runtime source files,
+including `prompts/react_a0.py`, `agent/context.py` and the tool modules. v2 therefore
+lives in the new module `src/react_agent/prompts/a0_v2.py`; runners call
+`a0_v2.activate()` and record its profile (prompt sha256 `f09e1b14…`). The pinned
+files are byte-identical to the seal and `assemble_adversarial_release.py --action
+check` stays valid.
+
+Clean Dev 150 with Qwen3-8B, A0, prompt v2 (2026-10-26): 149 completed, 1 max_steps,
+0 infrastructure errors; **71/150 = 47.3%** success by `clean_v1_1_typed_v1`.
+parameter_extraction 24/24, no_tool 15/15, multi_step 17/30, single_source 12/24,
+error_recovery 3/18, db_document 0/24 (fee rate invented instead of reading the fee
+document), ambiguous 0/15 (tools used although the user asked for a clarifying
+question first).
+
+## 2026-10-25 — Clean Dev 150 via API: worker inputs
+
+The API worker `scripts/run_clean_dev_api_v1.py` runs all 150 public Dev tasks
+with A0 prompt v2 and writes the `run_checkpointed` layout, scored by
+`evaluate_clean_v11_dev.py --full-dev`. Its only non-public input is
+`configs/clean/dev_fault_plans_v1.json` (18 tool fault plans exported from Dev
+ground truth by `scripts/export_clean_dev_faults_v1.py`). This extends the
+precedent of `dev_pilot/fault_plans.json`, which copied the same field for 3
+pilot tasks: fault plans configure the mock tool environment and never reach
+the prompt; answers, validators and all Test data stay unread by the worker.
+Sealed v1.1 files are unchanged. Infrastructure failures are rerun; model
+errors stay in the denominator.

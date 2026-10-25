@@ -9,7 +9,7 @@ knowledge/handoff.md, docs/project/roadmap_v2_rebuild.md, 5 mục cuối của
 knowledge/session_log.md, và mục ngày 2026-10-23 trong docs/project/decision_log.md.
 
 Đang ở R0 của lộ trình v2. Qwen3-8B đã chạy thật trên Kaggle (2026-10-25), smoke
-A0 đạt 3/20; xem handoff mục 0 và knowledge/rebuild_a_runbook.md (push qua API bằng
+A0 đạt 12/20 và clean Dev Qwen3-8B đạt 71/150 với prompt v2 (prompts/a0_v2.py, decision log 2026-10-25); xem handoff mục 0 và knowledge/rebuild_a_runbook.md (push qua API bằng
 scripts/launch_vllm_serve_v1.py). Sau đó làm tiếp theo "Bước tiếp theo" trong handoff:
 merge branch vào main qua PR, tag phase5-closure, dọn script cũ, viết
 docs/metrics_spec.md, rồi dựng harness mới để chạy lại từ Phase 1

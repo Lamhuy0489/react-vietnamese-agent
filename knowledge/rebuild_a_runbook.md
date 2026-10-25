@@ -72,6 +72,9 @@ KAGGLE_CONFIG_DIR=<thư mục chứa kaggle.json> .venv/bin/kaggle kernels push 
 source "$F/endpoint.env"; export SSL_CERT_FILE=$(.venv/bin/python -c "import certifi;print(certifi.where())")
 ```
 
+Clean Dev: `.venv/bin/python scripts/run_clean_dev_api_v1.py --model-key qwen3_8b`, rồi
+`scripts/evaluate_clean_v11_dev.py results/rebuild_a/clean_dev_qwen3_8b --full-dev --output ...`.
+
 Python của macOS thiếu CA, nên cần `SSL_CERT_FILE` như trên. Model gated vẫn cần gắn
 secret `HF_TOKEN` cho notebook một lần qua UI của tài khoản đó.
 

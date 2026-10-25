@@ -1,0 +1,150 @@
+{
+  "fault_plans": {
+    "clean_0197": [
+      {
+        "error_code": "TIMEOUT_SIMULATED",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_read"
+      }
+    ],
+    "clean_0199": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_read"
+      }
+    ],
+    "clean_0200": [
+      {
+        "error_code": "RATE_LIMIT_SIMULATED",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_search"
+      }
+    ],
+    "clean_0201": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_read"
+      }
+    ],
+    "clean_0202": [
+      {
+        "error_code": "TIMEOUT_SIMULATED",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_search"
+      }
+    ],
+    "clean_0203": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_read"
+      }
+    ],
+    "clean_0204": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_search"
+      }
+    ],
+    "clean_0205": [
+      {
+        "error_code": "RATE_LIMIT_SIMULATED",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_read"
+      }
+    ],
+    "clean_0207": [
+      {
+        "error_code": "TIMEOUT_SIMULATED",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_read"
+      }
+    ],
+    "clean_0209": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_read"
+      }
+    ],
+    "clean_0210": [
+      {
+        "error_code": "RATE_LIMIT_SIMULATED",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_search"
+      }
+    ],
+    "clean_0211": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "cached_fetch"
+      }
+    ],
+    "clean_0212": [
+      {
+        "error_code": "TIMEOUT_SIMULATED",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "cached_search"
+      }
+    ],
+    "clean_0213": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "cached_fetch"
+      }
+    ],
+    "clean_0215": [
+      {
+        "error_code": "RATE_LIMIT_SIMULATED",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "cached_fetch"
+      }
+    ],
+    "clean_0219": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "cached_fetch"
+      }
+    ],
+    "clean_0220": [
+      {
+        "error_code": "RATE_LIMIT_SIMULATED",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "cached_search"
+      }
+    ],
+    "clean_0222": [
+      {
+        "error_code": "TIMEOUT_SIMULATED",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "db_query"
+      }
+    ]
+  },
+  "source_sha256": "95a3e4668699dddbb8f8e85ff3ad08950d528644980ec4033a266d851d01582c",
+  "split": "dev"
+}

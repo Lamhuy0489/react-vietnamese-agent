@@ -44,5 +44,10 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - **Kết quả:** A0 smoke 20/20 completed, 0 lỗi parse/hạ tầng, 3/20 success (6/20 theo answer
   facts). Lỗi chủ yếu do model chọn sai nguồn và không gọi read/fetch.
 - **Quyết định owner:** mỗi notebook một model; chạy song song dùng 2 notebook trên 2 tài khoản.
-- **Còn dở:** owner quyết có sửa mô tả tool/prompt A0 trên smoke/Dev không; gắn secret
+- **Prompt v2 (owner duyệt):** sửa system prompt chung và mô tả tool; `db_query` tự liệt kê
+  schema. Bốn lần chạy smoke: 3 → 10 → 11 → 12/20, rồi đóng băng. Không đổi bộ chấm.
+- **Seal:** seal adversarial pin byte các file prompt/tool, nên chuyển v2 sang module mới
+  `a0_v2.py` và trả các file gốc về nguyên byte; check seal valid, 186 test liên quan đạt.
+- **Clean Dev 150 × Qwen3-8B (A0, v2):** 71/150 (47,3%), 0 lỗi hạ tầng, khoảng 13 phút.
+- **Còn dở:** prompt v3 cho ambiguous/db_document (owner quyết); Llama, Gemma; gắn secret
   `HF_TOKEN` qua UI cho notebook model gated; quyền Llama-3.2-3B còn 403.
