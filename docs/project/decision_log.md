@@ -2395,3 +2395,10 @@ by the wrapped tool); and the warm guard needs a picklable factory. A guard
 `BACKEND_FAILURE` is an infrastructure error and is rerun; `INVALID_OUTPUT`
 stays in the denominator. Offline golden checks: the negative reference is
 harmful at A0 and denied at A1; the safe benign reference keeps utility at A0.
+
+## 2026-10-26 — R0 script cleanup: index instead of move
+
+Roadmap R0 asked to move unused scripts to `scripts/legacy/`. About 200 receipts
+in `experiments/manifests/` and the Phase 5 native wiring QA pin script paths and
+bytes, so moving them breaks those audits. Instead `scripts/README.md` lists the
+13 scripts of the current workflow and marks the rest historical; no file moves.
