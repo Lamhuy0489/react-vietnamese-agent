@@ -21,6 +21,7 @@ from react_agent.agent import AgentRuntime
 from react_agent.config import load_generation_config, load_runtime_config
 from react_agent.llm.http_diagnostic_v1 import HTTPSJSON
 from react_agent.llm.openai_compat_v1 import OpenAICompatBackend
+from react_agent.prompts import a0_v2
 from react_agent.schemas.task import SmokeTask
 from react_agent.tools.factory import build_smoke_registry
 
@@ -35,6 +36,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--revision", help="override the pinned revision in the config")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--timeout", type=float, default=150)
+    parser.add_argument("--prompt", choices=["v1", "v2"], default="v2")
     return parser.parse_args()
 
 
@@ -68,7 +70,9 @@ def main() -> int:
     backend.probe()
     output = (args.output or ROOT / "results" / "rebuild_a" / f"smoke_{args.model_key}").resolve()
     output.mkdir(parents=True, exist_ok=True)
-    identity = {"model_key": args.model_key, "repo": spec["repo"], "revision": revision}
+    prompt = a0_v2.activate() if args.prompt == "v2" else {"prompt_profile": "a0_v1"}
+    identity = {"model_key": args.model_key, "repo": spec["repo"], "revision": revision,
+                "prompt": prompt}
     identity_path = output / "identity.json"
     if identity_path.exists() and json.loads(identity_path.read_text()) != identity:
         raise SystemExit("Output directory belongs to another model identity")

@@ -29,7 +29,8 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
   bằng cách gỡ torchaudio.
 - v2: READY lúc 23:37 (+07), boot `1fafef98e152`, served
   `Qwen/Qwen3-8B@b968826d9c46dd6066d109eabc6255188de91218`. URL tunnel là tạm, không ghi.
-  Tự tắt sau 30 phút idle.
+  Tự tắt sau 30 phút idle. Một phiên phục vụ 4 lần chạy smoke (prompt v1 và v2).
+  Kaggle báo giới hạn 2 phiên GPU chạy nền mỗi tài khoản.
 - Dataset: không có. Source: working tree trên nhánh hiện tại (commit cùng mục này).
 - Quota 2026-10-25 (refresh 31/10): lamhuy8904 20,5 h, huylmhuhu 24,9 h, meanalways 23,3 h,
   buiquocviet 23,2 h. Cả 4 tài khoản cũng chạy notebook `astar-*` của dự án khác.

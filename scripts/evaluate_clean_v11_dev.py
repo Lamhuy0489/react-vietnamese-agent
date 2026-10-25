@@ -25,6 +25,8 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("artifacts", type=Path)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--full-dev", action="store_true",
+                        help="score the tasks listed in identity.json (150-task Dev API run)")
     args = parser.parse_args()
     if args.output.exists():
         raise ValueError("evaluation output already exists; preserve prior artifacts")
@@ -32,9 +34,16 @@ def main() -> int:
     expected_dev = hashlib.sha256((CLEAN_ROOT / "splits/dev.jsonl").read_bytes()).hexdigest()
     if identity["file_sha256"]["dev"] != expected_dev:
         raise ValueError("public Dev identity mismatch")
-    selection = json.loads((CLEAN_ROOT / "dev_pilot/task_ids.json").read_text())["task_ids"]
-    if identity["task_ids"] != selection:
-        raise ValueError("selected task identity mismatch")
+    if args.full_dev:
+        dev_ids = [json.loads(line)["task_id"]
+                   for line in (CLEAN_ROOT / "splits/dev.jsonl").read_text().splitlines()]
+        selection = identity["task_ids"]
+        if selection != dev_ids[: len(selection)]:
+            raise ValueError("selected task identity mismatch")
+    else:
+        selection = json.loads((CLEAN_ROOT / "dev_pilot/task_ids.json").read_text())["task_ids"]
+        if identity["task_ids"] != selection:
+            raise ValueError("selected task identity mismatch")
     truths = {
         item.task_id: item
         for item in (
