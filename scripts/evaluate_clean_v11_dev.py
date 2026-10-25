@@ -15,7 +15,6 @@ from react_agent.logging import TraceLogger
 from react_agent.schemas.clean_task import CleanGroundTruth
 from react_agent.schemas.trace import TraceEvent
 from react_agent.tools.factory import build_clean_registry
-from react_agent.validation import clean_rebuild_v1
 from react_agent.validation.clean_v11 import EVALUATOR_VERSION, calls_from_trace, score_observation
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,28 +25,16 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("artifacts", type=Path)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--numfix", action="store_true",
-                        help="use the rebuild numeric-token fix (clean_rebuild_v1)")
-    parser.add_argument("--full-dev", action="store_true",
-                        help="score the tasks listed in identity.json (150-task Dev API run)")
     args = parser.parse_args()
-    evaluator = clean_rebuild_v1.activate() if args.numfix else EVALUATOR_VERSION
     if args.output.exists():
         raise ValueError("evaluation output already exists; preserve prior artifacts")
     identity = json.loads((args.artifacts / "identity.json").read_text())
     expected_dev = hashlib.sha256((CLEAN_ROOT / "splits/dev.jsonl").read_bytes()).hexdigest()
     if identity["file_sha256"]["dev"] != expected_dev:
         raise ValueError("public Dev identity mismatch")
-    if args.full_dev:
-        dev_ids = [json.loads(line)["task_id"]
-                   for line in (CLEAN_ROOT / "splits/dev.jsonl").read_text().splitlines()]
-        selection = identity["task_ids"]
-        if selection != dev_ids[: len(selection)]:
-            raise ValueError("selected task identity mismatch")
-    else:
-        selection = json.loads((CLEAN_ROOT / "dev_pilot/task_ids.json").read_text())["task_ids"]
-        if identity["task_ids"] != selection:
-            raise ValueError("selected task identity mismatch")
+    selection = json.loads((CLEAN_ROOT / "dev_pilot/task_ids.json").read_text())["task_ids"]
+    if identity["task_ids"] != selection:
+        raise ValueError("selected task identity mismatch")
     truths = {
         item.task_id: item
         for item in (
@@ -92,7 +79,7 @@ def main() -> int:
             {"task_id": task_id, "status": result.status, "trace_events": len(events), **outcome}
         )
     report = {
-        "evaluator": evaluator,
+        "evaluator": EVALUATOR_VERSION,
         "scope": "Dev pilot diagnostic; not thesis Test result",
         "test_tasks_read": 0,
         "evaluated_tasks": len(rows),

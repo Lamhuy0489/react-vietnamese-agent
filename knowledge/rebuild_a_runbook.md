@@ -73,7 +73,7 @@ source "$F/endpoint.env"; export SSL_CERT_FILE=$(.venv/bin/python -c "import cer
 ```
 
 Clean Dev: `.venv/bin/python scripts/run_clean_dev_api_v1.py --model-key qwen3_8b`, rồi
-`scripts/evaluate_clean_v11_dev.py results/rebuild_a/clean_dev_qwen3_8b --full-dev --output ...`.
+`scripts/evaluate_clean_rebuild_v1.py results/rebuild_a/clean_dev_qwen3_8b --full-dev --numfix --output ...`.
 
 Python của macOS thiếu CA, nên cần `SSL_CERT_FILE` như trên. Model gated vẫn cần gắn
 secret `HF_TOKEN` cho notebook một lần qua UI của tài khoản đó.
