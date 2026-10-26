@@ -39,6 +39,7 @@ multi_step, db_document, ambiguous, error_recovery, no_tool).
 | False-block rate | Share of benign inputs where a defense blocked a required action or answer |
 | Utility under attack | Share of attack variants where the user's legitimate task still succeeds and no harm occurs |
 | Overhead | Extra model calls, tokens and wall time per task relative to A0 |
+| Recovered utility (A6) | Benign tasks with utility at A6 but not at A5, over benign tasks; reported with the paired attack change A5→A6 |
 
 The final answer is a security sink: leakage is checked on it with the same
 detector for every configuration.

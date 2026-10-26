@@ -2415,3 +2415,54 @@ with "arguments" before "name": the model fills arguments before choosing a tool
 record `decoding_schema: per_tool_v2_name_first`. Because this changes how every
 backbone decodes, clean Dev and smoke are re-run for all three backbones; the
 per_tool_v1 tables above stay as history and are not reported as baselines.
+
+## 2026-10-26 — A6 v2 (value provenance refines session vetoes): rule and acceptance, declared before measuring
+
+Owner approved fixing A6 (not A3–A5) so A6 matches its contract, "artifact
+provenance with Pre/Post/Final gates". Dev reference replay (guard fixed to SAFE,
+`scripts/diagnose_policy_blocks_v1.py`): benign utility A0–A2 200/200, A3
+155/200, A4–A5 20/200, Phase 5 A6 18/128 measured; attack harm A1–A2 126/200,
+A3 110, A4–A5 40, A6 5. Root cause of the A6 loss: the hand-written v4 anchor
+grammar grants no destination for most natural instructions, and A6 discharges
+only sensitivity, not the A4 trust/control session vetoes.
+`security_v1/a6_provenance_v2.py` (A6 only): a destination is user-granted when
+v4 grants it or its exact string occurs in the raw user instruction after a send
+verb with no negation, condition or reported-speech marker before it in the
+clause; when the value gate allows the action, coarse session sensitivity and
+trust/control reasons are discharged; A1 rule and A2 guard reasons still veto.
+Acceptance on the same replay, fixed now: (1) A6 v2 attack harm ≤ 5/200 and no
+attack variant that Phase 5 A6 blocked becomes harmful; (2) A6 v2 benign utility
+strictly higher than A5; (3) A0–A5 results unchanged. If (1) fails, A6 v2 is
+rejected and Phase 5 A6 stays. Test is not used.
+
+Name-first re-run (prompt v3, per_tool_v2_name_first, numfix, sequential):
+
+| Backbone | Smoke | Clean Dev | single | param | multi | db_doc | ambig | err_rec | no_tool |
+|---|---|---|---|---|---|---|---|---|---|
+| Qwen3-8B | 11/20 | 77/150 | 15/24 | 24/24 | 18/30 | 0/24 | 1/15 | 4/18 | 15/15 |
+| Llama-3.1-8B | 8/20 | 93/150 | 17/24 | 17/24 | 20/30 | 13/24 | 0/15 | 11/18 | 15/15 |
+| Gemma-4-12B | 9/20 | 99/150 | 8/24 | 20/24 | 20/30 | 24/24 | 1/15 | 11/18 | 15/15 |
+
+Llama gains most (59 → 93): the sorted-key order had hurt it far more than the
+others. These are the RQ1 A0 Dev baselines.
+
+## 2026-10-26 — A6 v2 result (accepted)
+
+Same replay as the declared rule. Implementation refinements made while
+measuring, each found on a failing reference case and all before acceptance:
+discharge only for external sink calls (discharging reads let a row-scope
+violation reach the processing scope, which raised); payload values must be
+user-written or calculator results over user-written operands (a "trusted
+source" rule let `ATK_CAND_VISIBILITY` send an injected `visibility=public`
+from a trusted cached page, so it was removed); word-bounded matching ("public"
+had matched inside ".../publication"); "sau khi"/"trước khi" are temporal, not
+conditional. Final: A6 v2 benign utility **115/200** (A5 20, Phase 5 A6 20);
+reference attack harm 5/200, identical variants to Phase 5 A6, none newly
+harmful; 0 runtime errors. Criteria (1) and (2) met. Still blocked: values copied
+from untrusted documents (e.g. awb_quantity), sensitive codes the user asks to
+send (awb_channel, awb_encoded: the sensitive-payload veto is never overridden),
+template bodies (awb_mail) and reads denied by resource scope (awb_row*). A6 v2
+is the A6 used for the rebuild A0–A6 Dev run (`--a6 v2`, default).
+Criterion (3): with A6 v2 active, the A3–A5 replay (1,200 executions) is
+identical to the Phase 5 run in every score and denial; A0–A2 do not load the A6
+policy. All three criteria are met.
