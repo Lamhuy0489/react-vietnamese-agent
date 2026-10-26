@@ -1,7 +1,7 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-10-26 19:00. **Phase 0–5 đã nghiệm thu. Lộ trình
-[v2](../docs/project/roadmap_v2_rebuild.md), rebuild A:** R1 xong, R2 xong trên Dev (chờ duyệt R3), R0 còn
+Cập nhật: 2026-10-26 19:45. **Phase 0–5 đã nghiệm thu. Lộ trình
+[v2](../docs/project/roadmap_v2_rebuild.md), rebuild A:** R1–R2 xong, **R3 đã đóng băng** (tag `final-config`), R0 còn
 phần dọn (tuần 8/24, hạn 2027-02-19).
 
 ## Đã chốt ngày 2026-10-23
@@ -15,6 +15,8 @@ phần dọn (tuần 8/24, hạn 2027-02-19).
 
 ## Mốc đã xác minh
 
+- **R3 freeze (2026-10-26):** manifest `configs/final/final_config_v1.json` ghim 381 file; Test
+  chỉ chạy được khi khớp manifest. Dry-run Dummy trên Test pass. RQ3 clean robustness chưa có dữ liệu.
 - **R2 Dev (2026-10-26):** A0–A6 đủ 2.800 lượt + A6 v3 400 lượt, 0 model_error. ASR ghép cặp
   (chỉ số chính, owner duyệt) A0 26 → A3 15 → A4–A6 0 /200; A6 v3 benign 60, utility under
   attack 40, ASR thô 20. A6 v3 accepted. Xem [handoff](handoff.md) và decision log.
@@ -29,5 +31,5 @@ phần dọn (tuần 8/24, hạn 2027-02-19).
 
 ## Bước tiếp theo
 
-Owner duyệt đóng băng R3, rồi R4 Test, theo [handoff](handoff.md). [Prompt cho phiên sau](next_session_prompt.md) ·
+R4 chạy Test, theo [handoff](handoff.md). [Prompt cho phiên sau](next_session_prompt.md) ·
 [Nhật ký phiên](session_log.md) · [Trạng thái trước lộ trình v2](history_20261023_before_roadmap_v2_current_status.md).

@@ -1,20 +1,19 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-10-26 19:00. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-10-26 19:45. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái: rebuild A, R1 xong, R2 xong trên Dev. Chỉ số chính RQ2 là ASR ghép cặp
-(attributable ASR): A0 26 → A3 15 → A4–A6 0 /200. A6 v3 accepted (benign 60/200, utility
-under attack 40). Bảng Dev: A0–A5 từ results/rebuild_a/adv_dev_qwen3_8b_a6v2, A6 từ
-results/rebuild_a/adv_dev_qwen3_8b_a6v3; chi tiết trong decision log ngày 2026-10-26.
+Trạng thái: rebuild A. R3 đã đóng băng (tag final-config, manifest
+configs/final/final_config_v1.json). Bảng RQ2 Dev: ASR ghép cặp A0 26 → A4–A6 0; A6 v3
+benign 60/200. Dry-run Dummy trên Test đã pass.
 
-Việc đầu tiên: hỏi owner duyệt đóng băng R3 (model, prompt v3, guard, A6 v3, evaluator có ASR
-ghép cặp). Nếu duyệt thì cập nhật phase_status, rồi chuẩn bị R4 (chạy Test một lần).
-Kiểm PR #4 đã merge và tag phase5-closure chưa.
-Không sửa prompt v3, không đụng Test trước khi đóng băng, không sửa dữ liệu đã seal.
+Việc đầu tiên: hỏi owner hai việc đang chờ quyết: (1) RQ3 clean robustness, vì 250 biến thể
+chưa tồn tại; (2) có chuyển repo sang private trước khi chạy Test không. Sau đó làm R4 theo
+lệnh trong handoff: bật notebook, chạy security Test một lần, rồi clean Test cho 3 backbone.
+Không sửa file nào nằm trong manifest; runner sẽ từ chối chạy Test nếu lệch.
 ```
 
 ## Ghi chú dùng
