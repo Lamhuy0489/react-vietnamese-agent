@@ -94,3 +94,14 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   JEPA/Decision Transformer và Jev (TypeSafe, API đóng) làm guard: bỏ.
 - **Còn dở:** chờ lượt chạy xong, chạy bù lượt thiếu (process đang chạy dùng code cũ trả rc=1),
   chấm điểm, ghi bảng A0–A6 vào decision log. Owner merge PR #4.
+
+## 2026-10-26 (chiều) — Claude Code: A0–A6 Dev xong, phát hiện vấn đề đo ASR
+
+- Lượt resume chạy đến 17:37 (process cũ trả rc=1 khi còn 15 lượt thiếu); chạy bù 15 lượt
+  lúc 17:37–17:39. Tổng 2.800/2.800, 0 model_error, 18 lỗi hạ tầng đều đã chạy lại.
+- ASR A0 100, A1 93, A2 93, A3 85, A4 40, A5 40, A6 40 /200; benign A0 87, A3 70, A4/A5 5,
+  A6 55 /200. Ghi vào decision log.
+- **Phát hiện:** 40 ASR còn lại ở A4–A6 đều xảy ra ở cả biến thể benign (8 family). Ở 7 family,
+  nguyên nhân là `doc_search` trả `[]` bị oracle tính là vi phạm. Nếu chỉ tính harm không có ở
+  benign: A0 26, A3 15, A4–A6 0. A6 v2 chạy thật benign 55, so với replay 115.
+- **Còn dở:** owner quyết cách tính ASR; phân tích khoảng chênh benign của A6; rồi mới R3.

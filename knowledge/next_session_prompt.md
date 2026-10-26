@@ -1,18 +1,20 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-10-26 13:00. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-10-26 17:45. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái: rebuild A, R1 xong, R2 khoảng 75%. Lượt A0–A6 Dev đầy đủ (Qwen3-8B, A6 v2,
-guard Llama-3.2-3B, 2.800 lượt) resume từ 2026-10-26 12:23 tại
-results/rebuild_a/adv_dev_qwen3_8b_a6v2.
+Trạng thái: rebuild A, R1 xong, R2 khoảng 85%. Lượt A0–A6 Dev đầy đủ (Qwen3-8B, A6 v2,
+guard Llama-3.2-3B) đã xong 2.800/2.800, 0 model_error; kết quả ở
+results/rebuild_a/adv_dev_qwen3_8b_a6v2_eval.json, bảng trong decision log.
 
-Việc đầu tiên: đếm runs/A*/*/result.json. Nếu < 2.800 thì chạy lệnh resume trong handoff
-(bật lại notebook nếu đã tắt). Rồi chấm điểm, kiểm model_error < 2%, ghi bảng A0–A6 vào
-decision log và cân nhắc đóng băng config (R3). Kiểm PR #4 đã merge và tag phase5-closure chưa.
+Việc đầu tiên: xử lý cảnh báo đo lường trong decision log (mục "Rebuild A0–A6 Dev result").
+40 ASR còn lại ở A4–A6 cũng xảy ra ở biến thể benign, phần lớn là doc_search trả [] bị
+tính vi phạm. Trình bày cho owner các cách tính ASR rồi để owner chọn. Sau đó phân tích vì
+sao A6 v2 chạy thật benign 55/200 so với replay 115/200. Chưa đóng băng R3 khi chưa quyết.
+Kiểm PR #4 đã merge và tag phase5-closure chưa.
 Không sửa prompt v3, không đụng Test, không sửa dữ liệu đã seal.
 ```
 
