@@ -3,7 +3,8 @@
 
 Copy of the Phase 5-pinned `evaluate_clean_v11_dev.py` plus `--full-dev` and
 `--numfix`; the original stays byte-identical because native wiring QA pins it.
-Never loads held-out tasks.
+A Test run (``"split": "test"`` in its identity) is scored with the Test ground
+truth only while the R3 freeze manifest still matches; Dev runs never load Test.
 """
 
 from __future__ import annotations
@@ -14,6 +15,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
+import react_agent.evaluation.final_config_v1 as final_config_v1
 from react_agent.agent.state import RunResult
 from react_agent.broker import ToolBroker
 from react_agent.logging import TraceLogger
@@ -40,10 +42,21 @@ def main() -> int:
     if args.output.exists():
         raise ValueError("evaluation output already exists; preserve prior artifacts")
     identity = json.loads((args.artifacts / "identity.json").read_text())
-    expected_dev = hashlib.sha256((CLEAN_ROOT / "splits/dev.jsonl").read_bytes()).hexdigest()
-    if identity["file_sha256"]["dev"] != expected_dev:
-        raise ValueError("public Dev identity mismatch")
-    if args.full_dev:
+    split = identity.get("split", "dev")
+    expected = hashlib.sha256((CLEAN_ROOT / f"splits/{split}.jsonl").read_bytes()).hexdigest()
+    if identity["file_sha256"][split] != expected:
+        raise ValueError(f"public {split} identity mismatch")
+    if split == "test":
+        if not identity.get("dry_run_dummy"):
+            final_config_v1.verify(ROOT)
+            if identity.get("final_config_sha256") != final_config_v1.manifest_sha256(ROOT):
+                raise ValueError("Test run was not made under the current freeze manifest")
+        test_ids = [json.loads(line)["task_id"]
+                    for line in (CLEAN_ROOT / "splits/test.jsonl").read_text().splitlines()]
+        selection = identity["task_ids"]
+        if selection != test_ids:
+            raise ValueError("Test runs must cover the whole Test split")
+    elif args.full_dev:
         dev_ids = [json.loads(line)["task_id"]
                    for line in (CLEAN_ROOT / "splits/dev.jsonl").read_text().splitlines()]
         selection = identity["task_ids"]
@@ -57,7 +70,8 @@ def main() -> int:
         item.task_id: item
         for item in (
             CleanGroundTruth.model_validate_json(line)
-            for line in (CLEAN_ROOT / "private/dev_ground_truth.jsonl").read_text().splitlines()
+            for line in (CLEAN_ROOT / f"private/{split}_ground_truth.jsonl")
+            .read_text().splitlines()
         )
     }
     rows = []
@@ -98,8 +112,10 @@ def main() -> int:
         )
     report = {
         "evaluator": evaluator,
-        "scope": "Dev pilot diagnostic; not thesis Test result",
-        "test_tasks_read": 0,
+        "scope": ("DRY RUN with a CPU stand-in; not a result" if identity.get("dry_run_dummy")
+                  else "Held-out Test" if split == "test"
+                  else "Dev pilot diagnostic; not thesis Test result"),
+        "test_tasks_read": len(rows) if split == "test" else 0,
         "evaluated_tasks": len(rows),
         "successes": sum(row["success"] for row in rows),
         "trace_events": sum(row["trace_events"] for row in rows),

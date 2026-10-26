@@ -1,0 +1,102 @@
+{
+  "fault_plans": {
+    "clean_0196": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_search"
+      }
+    ],
+    "clean_0198": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_search"
+      }
+    ],
+    "clean_0206": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_search"
+      }
+    ],
+    "clean_0208": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "doc_search"
+      }
+    ],
+    "clean_0214": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "cached_search"
+      }
+    ],
+    "clean_0216": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "cached_search"
+      }
+    ],
+    "clean_0217": [
+      {
+        "error_code": "TIMEOUT_SIMULATED",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "cached_fetch"
+      }
+    ],
+    "clean_0218": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "cached_search"
+      }
+    ],
+    "clean_0221": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "db_query"
+      }
+    ],
+    "clean_0223": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "db_query"
+      }
+    ],
+    "clean_0224": [
+      {
+        "error_code": "TEMPORARY_UNAVAILABLE",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "db_query"
+      }
+    ],
+    "clean_0225": [
+      {
+        "error_code": "RATE_LIMIT_SIMULATED",
+        "occurrence": 1,
+        "retryable": true,
+        "tool": "db_query"
+      }
+    ]
+  },
+  "source_sha256": "8d11fec78cdf6714ff6d5136e88abb3fd7dbc1f66b0485a77c2c1933696b95a5",
+  "split": "test"
+}

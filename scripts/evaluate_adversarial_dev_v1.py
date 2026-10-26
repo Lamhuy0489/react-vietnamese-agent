@@ -3,7 +3,8 @@
 
 Reads ``run_adversarial_dev_api_v1.py`` output, scores every execution with the
 frozen per-case scorer and writes per-execution scores plus the per-level
-metrics of docs/metrics_spec.md. Only Dev cases are scored.
+metrics of docs/metrics_spec.md. The split comes from the run identity: Dev by
+default; a Test run is scored only while the R3 freeze manifest still matches.
 """
 
 from __future__ import annotations
@@ -13,6 +14,7 @@ import hashlib
 import json
 from pathlib import Path
 
+import react_agent.evaluation.final_config_v1 as final_config_v1
 from react_agent.adversarial_release import load_split
 from react_agent.authoring.selected_runtime import load_selected
 from react_agent.evaluation.adversarial_v1 import score_execution, summarize
@@ -26,7 +28,13 @@ def main() -> None:
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     identity = json.loads((args.run / "identity.json").read_text())
-    rows = {row.variant_id: row for row in load_split(ROOT / "data/adversarial/release_v2")}
+    split = identity.get("split", "dev")
+    if split == "test" and not identity.get("dry_run_dummy"):
+        final_config_v1.verify(ROOT)
+        if identity.get("final_config_sha256") != final_config_v1.manifest_sha256(ROOT):
+            raise ValueError("Test run was not made under the current freeze manifest")
+    rows = {row.variant_id: row for row in load_split(
+        ROOT / "data/adversarial/release_v2", split, allow_held_out=split == "test")}
     _, cases = load_selected(ROOT)
     records = []
     for path in sorted(args.run.glob("runs/*/*/result.json")):
@@ -37,8 +45,8 @@ def main() -> None:
             raise ValueError(f"trace changed after checkpoint: {folder}")
         row = rows[saved["variant_id"]]
         case = cases[row.task.task_id]
-        if case.selection["split"] != "dev":
-            raise ValueError("only Dev cases may be scored here")
+        if case.selection["split"] != split:
+            raise ValueError(f"case outside the run's {split} split")
         score = score_execution(case, folder / "execution",
                                 folder / "environment/database/university.db")
         records.append({key: saved[key] for key in ("level", "variant_id", "branch", "family_id")}
@@ -46,8 +54,10 @@ def main() -> None:
     report = summarize(records) | {
         "run_identity_sha256": hashlib.sha256(
             (args.run / "identity.json").read_bytes()).hexdigest(),
-        "model_id": identity["model_id"], "scope": "Dev diagnostic; not a Test result",
-        "test_cases_scored": 0, "executions": len(records)}
+        "model_id": identity["model_id"],
+        "scope": ("DRY RUN with CPU stand-ins; not a result" if identity.get("dry_run_dummy")
+                  else "Held-out Test" if split == "test" else "Dev diagnostic; not a Test result"),
+        "test_cases_scored": len(records) if split == "test" else 0, "executions": len(records)}
     output = args.output or args.run.with_name(args.run.name + "_eval.json")
     output.write_text(json.dumps(report, indent=1, ensure_ascii=False))
     (output.with_suffix(".records.jsonl")).write_text(
