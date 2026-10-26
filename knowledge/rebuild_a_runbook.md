@@ -43,8 +43,7 @@ kiểm tra lặp lại qua nhiều lượt chat.
 | Notebook Kaggle: slug, version, boot, revision | `knowledge/kaggle_resources.md` (mục "Mốc hiện hành") |
 | Ghi nhớ riêng của Claude | `~/.claude/projects/.../memory/` (không trong Git) |
 
-**Cuối phiên:** cập nhật 4 file knowledge ở trên (và sổ Kaggle nếu đã bật notebook) →
-`make knowledge-check` → commit → `git push`. Không ghi credential, URL tunnel, GT private
+**Cuối phiên:** làm theo danh sách trong `CLAUDE.md`. Không ghi credential, URL tunnel, GT private
 hay payload Test vào bất kỳ file nào.
 
 ## Thành phần
