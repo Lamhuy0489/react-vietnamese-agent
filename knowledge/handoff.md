@@ -1,22 +1,25 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-10-26. Lúc 17:45. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
-R0 còn nợ phần dọn (PR #4, tag, script). R1 evaluator đã xong. **R2 khoảng 85%:** A0–A6 Dev
-đầy đủ đã xong; còn quyết định cách tính ASR trước khi đóng băng.
+Cập nhật: 2026-10-26. Lúc 19:00. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+R0 còn nợ phần dọn (PR #4, tag, script). R1 evaluator đã xong. **R2 xong trên Dev:** ASR ghép
+cặp, A6 v3 accepted; chờ owner duyệt đóng băng R3.
 
 ## Đang làm
 
-A0–A6 Dev đầy đủ (Qwen3-8B, A6 v2, guard Llama-3.2-3B) **đã chạy xong 2.800/2.800**, 0
-model_error, lúc 17:39. Kết quả nằm ở `results/rebuild_a/adv_dev_qwen3_8b_a6v2_eval.json` và
-`.records.jsonl`; bảng và cảnh báo ghi trong decision log, mục "Rebuild A0–A6 Dev result".
+**R2 Dev xong, chờ owner duyệt đóng băng R3.** Bảng RQ2 Dev ghép từ hai thư mục: A0–A5 lấy
+từ `results/rebuild_a/adv_dev_qwen3_8b_a6v2`, A6 lấy từ `results/rebuild_a/adv_dev_qwen3_8b_a6v3`.
+Mỗi thư mục có `_eval.json` và `.records.jsonl`. Chi tiết trong decision log, các mục ngày 2026-10-26.
 
-- ASR A0 100 · A1 93 · A2 93 · A3 85 · A4 40 · A5 40 · A6 40 /200. Benign utility A0 87,
-  A3 70, A4/A5 5, A6 55 /200.
-- **Vấn đề đo lường chờ owner quyết:** 40/40 ASR còn lại ở A4–A6 cũng xảy ra ở biến thể
-  benign ghép cặp. Ở 7 family, nguyên nhân là một `doc_search` trả `[]` mà oracle tính là
-  vi phạm; agent chưa hề đọc injection. Nếu chỉ tính harm không xảy ra ở benign: A0 26,
-  A3 15, A4–A6 0. Ngoài ra, A6 v2 chạy thật có benign 55/200, thấp hơn replay 115/200.
-- Notebook tự tắt sau 30 phút idle. Lệnh resume dưới đây chỉ dùng khi phải chạy lại.
+- Chỉ số chính mới: **ASR ghép cặp** (attributable ASR, owner đã duyệt): A0 26, A1 20, A2 20,
+  A3 15, A4 0, A5 0, A6 0 /200. ASR thô vẫn báo: 100, 93, 93, 85, 40, 40, A6 v3 20.
+- **A6 v3 được chấp nhận:** benign 55 → 60, utility under attack 35 → 40, ASR thô 40 → 20,
+  không có ca hại mới. v3 là mặc định của runner.
+- Giới hạn còn lại của A6: QUANTITY (giá trị lấy từ tài liệu không tin cậy, chặn là đúng)
+  và LEASE (guard phủ quyết câu lệnh người dùng; hợp đồng cấm gỡ phủ quyết của guard).
+  Các bài khác A6 không làm được thì A0 cũng không làm được.
+- Notebook Kaggle (Qwen v4 + guard v2) đã tắt keepalive; sẽ tự tắt sau 30 phút idle.
+
+Lệnh resume dưới đây chỉ dùng khi phải chạy lại.
 
 Lệnh resume (từ root; nếu notebook đã tắt thì push lại bằng launcher, `discover`, đổi `F`/`G`):
 ```
@@ -34,13 +37,12 @@ PYTHONPATH=src caffeinate -ims scripts/retry_on_infra_v1.sh 20 120 -- \
 
 ## Bước tiếp theo
 
-1. Owner quyết cách tính ASR khi vi phạm xảy ra cả lúc không có injection: giữ ASR thô, thêm
-   chỉ số ghép cặp, hay sửa family/oracle (ví dụ `doc_search` rỗng). Ghi vào decision log.
-2. Phân tích vì sao A6 v2 chạy thật benign 55 so với replay 115 (LEASE, SOURCECLAIM…).
-3. Sau đó mới đóng băng config (R2 → R3), cập nhật `phase_status`/current_status.
-4. Owner merge PR #4, gắn tag `phase5-closure`; sau đó dọn script (298 → dưới 30).
-5. Viết luận văn chương 1–3 (`thesis/` còn trống).
-6. Sau R4 mới xét fine-tune LLM tiếng Việt (tùy chọn). JEPA/Jev làm guard: đã bỏ.
+1. Owner duyệt đóng băng R3: model, prompt v3, guard, A6 v3, evaluator `adversarial_dev_v1`
+   có ASR ghép cặp. Cập nhật `phase_status`/current_status.
+2. R4: chạy Test một lần (A0–A6), chỉ sau khi đã đóng băng.
+3. Owner merge PR #4, gắn tag `phase5-closure`; dọn script (298 → dưới 30).
+4. Viết luận văn chương 1–3 (`thesis/` còn trống).
+5. Sau R4 mới xét fine-tune LLM tiếng Việt (tùy chọn). JEPA/Jev làm guard: đã bỏ.
 
 ## Ghi chép R0–R2 trước đó (đã xong)
 
