@@ -1,6 +1,6 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-10-26. Lúc 19:45. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-10-26. Lúc 20:15. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 R0 còn nợ phần dọn (PR #4, tag, script). R1 evaluator đã xong. **R3 đóng băng xong** (tag
 `final-config`); tiếp theo là R4 chạy Test.
 
@@ -13,8 +13,8 @@ clean 100/100, adversarial 2.100/2.100. Ước lượng R4 khoảng 11–12 gi�
 
 - Bảng RQ2 Dev: A0–A5 từ `results/rebuild_a/adv_dev_qwen3_8b_a6v2`, A6 từ `adv_dev_qwen3_8b_a6v3`.
   ASR ghép cặp A0 26 → A3 15 → A4–A6 0; A6 v3 benign 60, utility under attack 40.
-- **Chờ owner quyết:** RQ3 clean robustness (250 biến thể chưa từng được tạo). Đề xuất: trả lời
-  RQ3 bằng các biến thể tiếng Việt của tập tấn công/benign Test và ghi phần clean là giới hạn.
+- **RQ3 (owner quyết 2026-10-26):** tạo đủ 250 biến thể clean robustness (50 task gốc × 5 loại),
+  review, seal rồi đóng băng lại thành final_config_v2. Làm sau khi chạy xong security Test.
 - Repo giữ **public** để bạn cùng nhóm làm (owner quyết 2026-10-26); luận văn phải nêu rằng Test là
   public. HF token giữ nguyên. Luận văn để sau.
 
@@ -49,8 +49,10 @@ PYTHONPATH=src caffeinate -ims scripts/retry_on_infra_v1.sh 20 120 -- \
 
 ## Bước tiếp theo
 
-1. Owner quyết RQ3 robustness.
-2. R4: bật notebook Qwen + guard, chạy security Test (2.100 lượt); rồi clean Test cho 3 backbone.
+1. R4 (owner hẹn ngày 27/10): bật notebook Qwen + guard, chạy **security Test** (2.100 lượt, khoảng
+   4,5 giờ) bằng lệnh ở trên. Clean Test để sau.
+2. Tạo 250 biến thể robustness RQ3 → review → seal → final_config_v2 → clean Test + robustness
+   cho 3 backbone.
    Chạy mỗi thứ đúng một lần, chỉ chạy lại khi lỗi hạ tầng.
 3. R5: thống kê, phân loại lỗi, review 10% trace.
 4. Owner merge PR #4 và gắn tag `phase5-closure`; dọn script.
