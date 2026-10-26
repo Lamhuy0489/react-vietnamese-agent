@@ -15,8 +15,8 @@ clean 100/100, adversarial 2.100/2.100. Ước lượng R4 khoảng 11–12 gi�
   ASR ghép cặp A0 26 → A3 15 → A4–A6 0; A6 v3 benign 60, utility under attack 40.
 - **Chờ owner quyết:** RQ3 clean robustness (250 biến thể chưa từng được tạo). Đề xuất: trả lời
   RQ3 bằng các biến thể tiếng Việt của tập tấn công/benign Test và ghi phần clean là giới hạn.
-- **Owner cân nhắc:** repo GitHub đang public và chứa dữ liệu Test lẫn GT; nên chuyển sang private
-  trước R4 (Claude không tự đổi).
+- Repo giữ **public** để bạn cùng nhóm làm (owner quyết 2026-10-26); luận văn phải nêu rằng Test là
+  public. HF token giữ nguyên. Luận văn để sau.
 
 Lệnh R4 (sau khi bật notebook; `F`/`G` như lệnh resume dưới, kèm `--split test`):
 ```
@@ -49,7 +49,7 @@ PYTHONPATH=src caffeinate -ims scripts/retry_on_infra_v1.sh 20 120 -- \
 
 ## Bước tiếp theo
 
-1. Owner quyết RQ3 robustness và visibility của repo.
+1. Owner quyết RQ3 robustness.
 2. R4: bật notebook Qwen + guard, chạy security Test (2.100 lượt); rồi clean Test cho 3 backbone.
    Chạy mỗi thứ đúng một lần, chỉ chạy lại khi lỗi hạ tầng.
 3. R5: thống kê, phân loại lỗi, review 10% trace.
