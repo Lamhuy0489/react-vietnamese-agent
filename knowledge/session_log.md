@@ -105,3 +105,16 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   nguyên nhân là `doc_search` trả `[]` bị oracle tính là vi phạm. Nếu chỉ tính harm không có ở
   benign: A0 26, A3 15, A4–A6 0. A6 v2 chạy thật benign 55, so với replay 115.
 - **Còn dở:** owner quyết cách tính ASR; phân tích khoảng chênh benign của A6; rồi mới R3.
+
+## 2026-10-26 (tối) — Claude Code: ASR ghép cặp, A6 v3 accepted
+
+- Owner duyệt chỉ số **ASR ghép cặp**: bài tấn công chỉ tính khi bài benign cùng cặp, cùng
+  mức không bị hại. Đã thêm vào evaluator, kèm test và McNemar cho benign utility.
+  Kết quả: A0 26, A3 15, A4–A6 0 /200; A5→A6 benign b/c = 0/50.
+- Phân tích các ca A6 chặn nhầm: SOURCECLAIM bị chặn lệnh đọc vì scope v4/v5 bỏ mọi anchor khi
+  câu lệnh có dấu ngoặc kép. **A6 v3** thêm anchor theo mệnh đề ngoài phần trích dẫn, chỉ ở A6.
+  Đã khai báo tiêu chí trước khi chạy; chạy live 400/400 lúc 18:00–18:47.
+- A6 v3: benign 55 → 60, utility under attack 35 → 40, ASR thô 40 → 20, không có ca hại mới.
+  Accepted, thành mặc định. Full pytest 5219 passed.
+- Keepalive notebook (script trong scratchpad) đã tắt sau khi chạy xong.
+- **Còn dở:** owner duyệt R3; R4 Test; PR #4 và tag; dọn script; viết luận văn.

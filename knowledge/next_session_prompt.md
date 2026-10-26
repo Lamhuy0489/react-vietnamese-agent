@@ -1,21 +1,20 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-10-26 17:45. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-10-26 19:00. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái: rebuild A, R1 xong, R2 khoảng 85%. Lượt A0–A6 Dev đầy đủ (Qwen3-8B, A6 v2,
-guard Llama-3.2-3B) đã xong 2.800/2.800, 0 model_error; kết quả ở
-results/rebuild_a/adv_dev_qwen3_8b_a6v2_eval.json, bảng trong decision log.
+Trạng thái: rebuild A, R1 xong, R2 xong trên Dev. Chỉ số chính RQ2 là ASR ghép cặp
+(attributable ASR): A0 26 → A3 15 → A4–A6 0 /200. A6 v3 accepted (benign 60/200, utility
+under attack 40). Bảng Dev: A0–A5 từ results/rebuild_a/adv_dev_qwen3_8b_a6v2, A6 từ
+results/rebuild_a/adv_dev_qwen3_8b_a6v3; chi tiết trong decision log ngày 2026-10-26.
 
-Việc đầu tiên: xử lý cảnh báo đo lường trong decision log (mục "Rebuild A0–A6 Dev result").
-40 ASR còn lại ở A4–A6 cũng xảy ra ở biến thể benign, phần lớn là doc_search trả [] bị
-tính vi phạm. Trình bày cho owner các cách tính ASR rồi để owner chọn. Sau đó phân tích vì
-sao A6 v2 chạy thật benign 55/200 so với replay 115/200. Chưa đóng băng R3 khi chưa quyết.
+Việc đầu tiên: hỏi owner duyệt đóng băng R3 (model, prompt v3, guard, A6 v3, evaluator có ASR
+ghép cặp). Nếu duyệt thì cập nhật phase_status, rồi chuẩn bị R4 (chạy Test một lần).
 Kiểm PR #4 đã merge và tag phase5-closure chưa.
-Không sửa prompt v3, không đụng Test, không sửa dữ liệu đã seal.
+Không sửa prompt v3, không đụng Test trước khi đóng băng, không sửa dữ liệu đã seal.
 ```
 
 ## Ghi chú dùng
