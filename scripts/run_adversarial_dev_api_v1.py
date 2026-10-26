@@ -42,7 +42,7 @@ from react_agent.llm.openai_compat_v1 import (
     OrderedHTTPSJSON,
 )
 from react_agent.prompts import a0_rebuild
-from react_agent.security_v1 import a6_provenance_v2
+from react_agent.security_v1 import a6_provenance_v2, a6_provenance_v3
 from react_agent.security_v1.contracts import Level, configuration
 from react_agent.security_v1.phase5_closure_runtime_v1 import (
     RUNTIME_VERSION,
@@ -70,11 +70,13 @@ def main() -> int:
     parser.add_argument("--output", type=Path)
     parser.add_argument("--limit", type=int, help="pilot: first N families, one pair each")
     parser.add_argument("--timeout", type=float, default=150)
-    parser.add_argument("--a6", choices=["phase5", "v2"], default="v2",
-                        help="A6 policy: Phase 5 closure or value-provenance v2")
+    parser.add_argument("--a6", choices=["phase5", "v2", "v3"], default="v3",
+                        help="A6 policy: Phase 5 closure, value-provenance v2, or v2 plus "
+                             "clause-level document anchors (v3)")
     args = parser.parse_args()
     prompt_profile = a0_rebuild.activate("v3")
-    a6_profile = a6_provenance_v2.activate() if args.a6 == "v2" else {"name": "phase5"}
+    a6_profile = {"v2": a6_provenance_v2.activate, "v3": a6_provenance_v3.activate}.get(
+        args.a6, lambda: {"name": "phase5"})()
     models = yaml.safe_load((ROOT / "configs/models/backbones_v2.yaml").read_text())
     spec, guard_spec = models[args.model_key], models["guard_candidates"][args.guard_key]
     base_url, api_key = os.environ.get("VLLM_BASE_URL"), os.environ.get("VLLM_API_KEY")
