@@ -2595,3 +2595,12 @@ canonicals × 5 variants = 250 tasks. Only the 50 ids exist
 (`private/robustness_canonical_ids.json`); the 250 variants were never authored.
 RQ3 can still be answered on the security side from the Test attack/benign
 variants, which carry the five Vietnamese variant types. Owner decision pending.
+
+## 2026-10-26 — Repository stays public (owner decision)
+
+The owner keeps the GitHub repository public so a teammate can work on it. The
+held-out Test fixtures and private ground truth are therefore publicly readable.
+Impact: no tuning used Test (the freeze manifest gates every Test run), but the
+thesis must state that Test is public and that the evaluated model revisions are
+pinned and were published before the benchmark existed, so they cannot have
+trained on it. The HF token is kept as is (owner decision).
