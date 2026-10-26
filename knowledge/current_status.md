@@ -1,7 +1,8 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-10-26. **Phase 0–5 đã nghiệm thu. Đang ở R0 của
-[lộ trình v2](../docs/project/roadmap_v2_rebuild.md)** (tuần 8/24, hạn 2027-02-19).
+Cập nhật: 2026-10-26 13:00. **Phase 0–5 đã nghiệm thu. Lộ trình
+[v2](../docs/project/roadmap_v2_rebuild.md), rebuild A:** R1 xong, R2 khoảng 75%, R0 còn
+phần dọn (tuần 8/24, hạn 2027-02-19).
 
 ## Đã chốt ngày 2026-10-23
 
@@ -14,18 +15,16 @@ Cập nhật: 2026-10-26. **Phase 0–5 đã nghiệm thu. Đang ở R0 của
 
 ## Mốc đã xác minh
 
-- **A0 Dev baseline (rebuild A, 2026-10-26):** prompt v3 đóng băng, schema `per_tool_v1`,
-  chấm numfix. Qwen3-8B: smoke 12/20, clean Dev 79/150. Llama-3.1-8B: smoke 8/20,
-  clean Dev 59/150. Gemma-4-12B (bf16, vá tile T4): smoke 9/20, **clean Dev 99/150** (db_document 24/24).
-  Guard A2 giữ Llama-3.2-3B (Prompt Guard 2 TP0/FP0). Xem decision log 2026-10-26.
-- R0: `docs/metrics_spec.md` xong; full pytest xanh; PR #4 chờ owner merge.
-- Phase 5: release `419938b`, 20/20 DoD. Native 72 completed + 12 model_error.
-  Guard: TP21 / FN19 / FP5 / TN35.
-- Kiểm dữ liệu ngày 2026-10-23: seal adversarial_v2 hợp lệ (700 biến thể,
-  `sealed_read_only`); 23 file clean v1.1 khớp hash trong manifest; hash dataset
-  `692ca92a…` không đổi.
-- Toàn bộ thay đổi đã push lên branch `codex/phase5-worker-v3-source-freeze-20261001`
-  (commit `6509ae0`). Branch **chưa merge vào `main`**.
+- **Đang chạy:** A0–A6 Dev đầy đủ, Qwen3-8B + A6 v2 + guard Llama-3.2-3B, 2.800 lượt
+  (`results/rebuild_a/adv_dev_qwen3_8b_a6v2`). Xem [handoff](handoff.md).
+- **A6 v2 accepted (2026-10-26):** replay tham chiếu benign 20 → 115/200, attack harm 5/200
+  không ca mới, A3–A5 1.200 lượt 0 khác biệt. Full pytest 5211 passed.
+- **A0 Dev baseline RQ1 (prompt v3, decoding name-first, numfix):** Qwen3-8B 77/150,
+  Llama-3.1-8B 93/150, Gemma-4-12B 99/150. Guard A2 giữ Llama-3.2-3B.
+- R1 evaluator `adversarial_dev_v1` và runner A0–A6 đã có; `docs/metrics_spec.md` xong.
+- Phase 5: release `419938b`, 20/20 DoD. Dữ liệu seal hợp lệ, hash dataset `692ca92a…`.
+- Toàn bộ thay đổi trên branch `codex/phase5-worker-v3-source-freeze-20261001`; PR #4
+  **chưa merge vào `main`**, chưa có tag `phase5-closure`.
 
 ## Bước tiếp theo
 

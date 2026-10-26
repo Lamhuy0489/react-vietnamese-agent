@@ -22,6 +22,17 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-10-26 12:10 — relaunch Qwen v4 + guard v2 cho A0–A6 Dev đầy đủ (lamhuy8904):**
+[lamhuy8904/react-vn-vllm-serve-v1](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1)
+**v4**, boot `2300d3409d17`, served `Qwen/Qwen3-8B@b968826d9c46dd6066d109eabc6255188de91218`;
+[lamhuy8904/react-vn-vllm-serve-v1-llama32-3b-guard](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-llama32-3b-guard)
+**v2**, boot `dc06a28bb466`, served `unsloth/Llama-3.2-3B-Instruct@006f5dcd1393c3add266de40994ba96225e9689d`.
+- Cả hai READY lúc 12:22. Folder: `build/kaggle/vllm_serve_v1_{qwen3_8b,llama32_3b_guard}_20261026_121043`.
+  Token HF chèn vào bản private như lần trước. Source: commit `a0b7cd6`.
+- Phiên trước (Qwen v3 boot 03:26, guard v1) đã COMPLETE: guard tự tắt lúc 05:04 vì keepalive
+  bỏ qua nó (dùng chung log "bận" với runner), Qwen tắt 05:35 sau khi mạng local rớt.
+  Đã sửa trong runner (ping guard giữa các lượt A0/A1).
+
 **2026-10-26 — vLLM serve v1, Gemma-4-12B, đã chạy thật (meanalways):**
 [meanalways/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1-gemma4-12b)
 và [...-gemma4-12b-qat](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1-gemma4-12b-qat) (private, T4×2).
