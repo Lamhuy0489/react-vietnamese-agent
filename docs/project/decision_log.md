@@ -2604,3 +2604,12 @@ Impact: no tuning used Test (the freeze manifest gates every Test run), but the
 thesis must state that Test is public and that the evaluated model revisions are
 pinned and were published before the benchmark existed, so they cannot have
 trained on it. The HF token is kept as is (owner decision).
+
+## 2026-10-26 — RQ3 clean robustness: author the 250 variants (owner decision)
+
+The owner chose to author the planned 250 clean robustness variants (50 frozen
+Test canonicals × 5 variant types) rather than answer RQ3 from the adversarial
+variants alone. The variants must be built without scoring any model on them, then
+reviewed, sealed and added through a new freeze manifest (final_config_v2) whose
+only change is the robustness input and its runner/evaluator path. Order agreed:
+security Test (R4) first, under final_config_v1, then the robustness data.

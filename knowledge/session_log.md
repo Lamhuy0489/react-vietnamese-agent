@@ -129,3 +129,5 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Ước lượng R4 khoảng 11–12 giờ GPU. Tag `final-config`.
 - Vướng mắc báo owner: RQ3 clean robustness chưa có dữ liệu; repo public chứa Test/GT; luận văn
   chưa viết; cỡ mẫu thực khoảng 30–40 family; chưa có adaptive attack và reviewer thứ hai.
+- Owner quyết: repo giữ public, HF token giữ nguyên, luận văn để sau; RQ3 tạo đủ 250 biến thể.
+  R4 security Test hẹn chạy ngày 27/10 (tối 26/10 dừng trước khi bật notebook).
