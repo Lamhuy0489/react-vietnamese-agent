@@ -1,23 +1,35 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-10-26. Lúc 19:00. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
-R0 còn nợ phần dọn (PR #4, tag, script). R1 evaluator đã xong. **R2 xong trên Dev:** ASR ghép
-cặp, A6 v3 accepted; chờ owner duyệt đóng băng R3.
+Cập nhật: 2026-10-26. Lúc 19:45. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+R0 còn nợ phần dọn (PR #4, tag, script). R1 evaluator đã xong. **R3 đóng băng xong** (tag
+`final-config`); tiếp theo là R4 chạy Test.
 
 ## Đang làm
 
-**R2 Dev xong, chờ owner duyệt đóng băng R3.** Bảng RQ2 Dev ghép từ hai thư mục: A0–A5 lấy
-từ `results/rebuild_a/adv_dev_qwen3_8b_a6v2`, A6 lấy từ `results/rebuild_a/adv_dev_qwen3_8b_a6v3`.
-Mỗi thư mục có `_eval.json` và `.records.jsonl`. Chi tiết trong decision log, các mục ngày 2026-10-26.
+**R3 đã đóng băng (2026-10-26, owner duyệt), tag `final-config`.** Manifest
+`configs/final/final_config_v1.json` (sha256 `ae0ba2ec80464f0c…`) ghim 381 file. Runner và evaluator
+nhận `--split test` và từ chối chạy nếu lệch dù chỉ một file. Dry-run Dummy trên Test:
+clean 100/100, adversarial 2.100/2.100. Ước lượng R4 khoảng 11–12 giờ GPU.
 
-- Chỉ số chính mới: **ASR ghép cặp** (attributable ASR, owner đã duyệt): A0 26, A1 20, A2 20,
-  A3 15, A4 0, A5 0, A6 0 /200. ASR thô vẫn báo: 100, 93, 93, 85, 40, 40, A6 v3 20.
-- **A6 v3 được chấp nhận:** benign 55 → 60, utility under attack 35 → 40, ASR thô 40 → 20,
-  không có ca hại mới. v3 là mặc định của runner.
-- Giới hạn còn lại của A6: QUANTITY (giá trị lấy từ tài liệu không tin cậy, chặn là đúng)
-  và LEASE (guard phủ quyết câu lệnh người dùng; hợp đồng cấm gỡ phủ quyết của guard).
-  Các bài khác A6 không làm được thì A0 cũng không làm được.
-- Notebook Kaggle (Qwen v4 + guard v2) đã tắt keepalive; sẽ tự tắt sau 30 phút idle.
+- Bảng RQ2 Dev: A0–A5 từ `results/rebuild_a/adv_dev_qwen3_8b_a6v2`, A6 từ `adv_dev_qwen3_8b_a6v3`.
+  ASR ghép cặp A0 26 → A3 15 → A4–A6 0; A6 v3 benign 60, utility under attack 40.
+- **Chờ owner quyết:** RQ3 clean robustness (250 biến thể chưa từng được tạo). Đề xuất: trả lời
+  RQ3 bằng các biến thể tiếng Việt của tập tấn công/benign Test và ghi phần clean là giới hạn.
+- **Owner cân nhắc:** repo GitHub đang public và chứa dữ liệu Test lẫn GT; nên chuyển sang private
+  trước R4 (Claude không tự đổi).
+
+Lệnh R4 (sau khi bật notebook; `F`/`G` như lệnh resume dưới, kèm `--split test`):
+```
+PYTHONPATH=src caffeinate -ims scripts/retry_on_infra_v1.sh 20 120 -- .venv/bin/python \
+  scripts/run_adversarial_dev_api_v1.py --split test --output results/rebuild_a/adv_test_qwen3_8b \
+  >> build/kaggle/adv_test.log 2>&1
+.venv/bin/python scripts/evaluate_adversarial_dev_v1.py results/rebuild_a/adv_test_qwen3_8b \
+  --output results/rebuild_a/adv_test_qwen3_8b_eval.json
+# Clean Test, mỗi backbone K (qwen3_8b, llama31_8b, gemma4_12b), một notebook:
+.venv/bin/python scripts/run_clean_dev_api_v1.py --model-key K --split test
+.venv/bin/python scripts/evaluate_clean_rebuild_v1.py results/rebuild_a/clean_test_K --numfix \
+  --output results/rebuild_a/clean_test_K_eval.json
+```
 
 Lệnh resume dưới đây chỉ dùng khi phải chạy lại.
 
@@ -37,12 +49,12 @@ PYTHONPATH=src caffeinate -ims scripts/retry_on_infra_v1.sh 20 120 -- \
 
 ## Bước tiếp theo
 
-1. Owner duyệt đóng băng R3: model, prompt v3, guard, A6 v3, evaluator `adversarial_dev_v1`
-   có ASR ghép cặp. Cập nhật `phase_status`/current_status.
-2. R4: chạy Test một lần (A0–A6), chỉ sau khi đã đóng băng.
-3. Owner merge PR #4, gắn tag `phase5-closure`; dọn script (298 → dưới 30).
-4. Viết luận văn chương 1–3 (`thesis/` còn trống).
-5. Sau R4 mới xét fine-tune LLM tiếng Việt (tùy chọn). JEPA/Jev làm guard: đã bỏ.
+1. Owner quyết RQ3 robustness và visibility của repo.
+2. R4: bật notebook Qwen + guard, chạy security Test (2.100 lượt); rồi clean Test cho 3 backbone.
+   Chạy mỗi thứ đúng một lần, chỉ chạy lại khi lỗi hạ tầng.
+3. R5: thống kê, phân loại lỗi, review 10% trace.
+4. Owner merge PR #4 và gắn tag `phase5-closure`; dọn script.
+5. Viết luận văn (`thesis/` còn trống): chương 1–3 ngay bây giờ.
 
 ## Ghi chép R0–R2 trước đó (đã xong)
 

@@ -2558,3 +2558,40 @@ losses against A0's safe utility (70): QUANTITY (value copied from an untrusted
 document, intended) and LEASE (A2 guard veto on the user's instruction; contract
 forbids refining guard vetoes). Everything else A6 does not complete, A0 does not
 complete either: the ceiling is the agent, and prompt v3 is frozen.
+
+## 2026-10-26 — R3 freeze (owner approved)
+
+The owner approved freezing the configuration after the Dev results above.
+`configs/final/final_config_v1.json` (sha256 `ae0ba2ec80464f0c…`) pins 381 files: all of
+`src/react_agent`, `configs/`, the adversarial and clean runners and evaluators,
+and the two data seals. Frozen decisions: RQ1 backbones Qwen3-8B, Llama-3.1-8B,
+Gemma-4-12B (bf16), revisions in `configs/models/backbones_v2.yaml`; RQ2 Qwen3-8B;
+guard Llama-3.2-3B prompted (unsloth, pinned revision); prompt v3; decoding
+`per_tool_v2_name_first`; Phase 5 closure runtime with A6 v3; evaluators
+`adversarial_dev_v1` (attributable ASR primary) and `clean_rebuild_v1` (numfix).
+
+Test path: `--split test` on both runners and evaluators. A Test run and its
+scoring refuse to start unless every frozen file matches the manifest, and the
+run identity records the manifest hash. Test fault plans for the clean worker
+(`configs/clean/test_fault_plans_v1.json`, 12 plans) were exported from the
+`fault_plan` field only, before the manifest was built. `--dry-run-dummy` runs
+both pipelines with CPU stand-ins (no model sees Test data) to check the path.
+
+Dry run under the manifest: clean Test 100/100 terminal and scored; adversarial
+Test 2,100/2,100 terminal (300 per level) and scored, 0 model_error. It found one
+blocker, fixed before the final manifest: the Phase 5-pinned `fixture_catalog`
+admits Dev rows only, so `run_catalog` (adversarial_v1) builds the same catalog for
+Test rows; the pinned file is unchanged.
+
+GPU estimate for R4, from Dev timings: security Test 2,100 executions × ~7.5 s
+≈ 4.5 h wall on two notebooks (agent + guard), ≈ 9 GPU-hours; clean Test 100 tasks
+× 3 backbones ≈ 1.5–2 GPU-hours including boots. About 11–12 GPU-hours in all.
+
+Any change to a frozen file after this point needs a new manifest and an entry
+here explaining why, and it may not be motivated by Test results.
+
+**Not covered: RQ3 clean robustness.** The contract plans 50 frozen Test
+canonicals × 5 variants = 250 tasks. Only the 50 ids exist
+(`private/robustness_canonical_ids.json`); the 250 variants were never authored.
+RQ3 can still be answered on the security side from the Test attack/benign
+variants, which carry the five Vietnamese variant types. Owner decision pending.

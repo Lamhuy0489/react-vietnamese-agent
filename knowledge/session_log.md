@@ -118,3 +118,14 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   Accepted, thành mặc định. Full pytest 5219 passed.
 - Keepalive notebook (script trong scratchpad) đã tắt sau khi chạy xong.
 - **Còn dở:** owner duyệt R3; R4 Test; PR #4 và tag; dọn script; viết luận văn.
+
+## 2026-10-26 (tối muộn) — Claude Code: R3 freeze
+
+- Owner duyệt đóng băng. Thêm `final_config_v1` (manifest ghim 381 file: src, configs, runner,
+  evaluator, seal), `--split test` cho runner và evaluator adversarial/clean, xuất 12 fault plan
+  Test (chỉ lấy trường fault_plan), thêm `--dry-run-dummy`.
+- Dry-run Test: clean 100/100, adversarial 2.100/2.100. Dry-run bắt được `fixture_catalog` chỉ
+  nhận Dev; sửa bằng `run_catalog`, không đụng file đã pin.
+- Ước lượng R4 khoảng 11–12 giờ GPU. Tag `final-config`.
+- Vướng mắc báo owner: RQ3 clean robustness chưa có dữ liệu; repo public chứa Test/GT; luận văn
+  chưa viết; cỡ mẫu thực khoảng 30–40 family; chưa có adaptive attack và reviewer thứ hai.
