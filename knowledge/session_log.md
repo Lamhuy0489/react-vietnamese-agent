@@ -76,3 +76,21 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   đã pin, chuyển phần mới sang `evaluate_clean_rebuild_v1.py`. Full pytest xanh. Mở PR #4.
 - **Owner hỏi tối ưu Llama riêng:** không làm, vì RQ1 cần cùng prompt, tool, schema và bộ chấm.
 - **Còn dở:** owner merge PR và gắn tag; dọn script cũ; R1 evaluator; A0–A6 Dev.
+
+## 2026-10-26 (đêm → trưa) — Claude Code: name-first, R1 evaluator, A6 v2, A0–A6 Dev
+
+- **Đêm:** R1 evaluator và runner A0–A6 (`6154ecd`). Decoding name-first (`ba1881e`):
+  clean Dev Qwen 77, Llama 93 (từ 59), Gemma 99 /150 — đây là baseline A0 RQ1.
+- **A6 v2 (value provenance) được chấp nhận** (`56c6396`, docs `afdae0f`): replay tham chiếu
+  benign 20 → 115/200, attack harm 5/200 không ca mới, A3–A5 1.200 lượt 0 khác biệt.
+  Full pytest 5211 passed / 3 skipped / 1 xfailed.
+- **Lượt A0–A6 Dev đầy đủ đêm qua chỉ được 312/2.800:** guard idle-out lúc 05:04 vì keepalive
+  dùng chung log "bận" với runner; mạng local rớt khoảng 05:05; vòng retry thoát vì probe
+  crash rc=1. Sửa (`a0b7cd6`, `9ecb8ee`): runner ping guard giữa các lượt không cần guard,
+  probe lỗi và pass còn thiếu đều trả rc=2, `scripts/retry_on_infra_v1.sh` chạy lại có chờ.
+- **Trưa:** relaunch Qwen v4 + guard v2, resume lúc 12:23 cùng identity. 12:47: 555/2.800,
+  0 model_error. Dự kiến xong khoảng 16:30–17:00.
+- **Ý tưởng owner hỏi:** fine-tune LLM tiếng Việt để sau R4 (tùy chọn, tool khác benchmark);
+  JEPA/Decision Transformer và Jev (TypeSafe, API đóng) làm guard: bỏ.
+- **Còn dở:** chờ lượt chạy xong, chạy bù lượt thiếu (process đang chạy dùng code cũ trả rc=1),
+  chấm điểm, ghi bảng A0–A6 vào decision log. Owner merge PR #4.

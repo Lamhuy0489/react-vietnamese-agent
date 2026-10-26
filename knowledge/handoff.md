@@ -1,74 +1,53 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-10-26. Đang ở **R0 (Reset)** của
-[lộ trình v2](../docs/project/roadmap_v2_rebuild.md). R0 gần xong: còn merge PR #4,
-gắn tag `phase5-closure` và dọn script cũ.
-
-**Xong 2026-10-26 03:10:** clean Dev 150 × Gemma-4-12B (bf16) = **99/150**,
-(trước đó chạy trên notebook meanalways `react-vn-vllm-serve-v1-gemma4-12b` (v2).
-). Runner resume theo checkpoint; nếu cần chạy lại, chạy lại đúng lệnh ở mục
-"Tiếp tục Gemma Dev" bên dưới. Nếu notebook đã tắt (idle 30 phút), push lại bằng
-launcher, `discover`, rồi chạy lại lệnh đó với thư mục build mới.
+Cập nhật: 2026-10-26. Lúc 13:00. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+R0 còn nợ phần dọn (PR #4, tag, script). R1 evaluator đã xong. **R2 khoảng 75%:** đang chạy
+A0–A6 Dev đầy đủ với Qwen3-8B và A6 v2.
 
 ## Đang làm
 
-R0, tuần 24/10–30/10. Đã xong:
+A0–A6 Dev đầy đủ (Qwen3-8B, A6 v2, guard Llama-3.2-3B).
 
-- Commit/push toàn bộ việc còn dở.
-- Dọn local storage: khoảng 18 GB xuống 2,3 GB; xem [storage](storage_and_obsidian.md).
-- Chốt model, guard và chỉ số.
-- Kiểm tính toàn vẹn của dữ liệu.
+
+- Output `results/rebuild_a/adv_dev_qwen3_8b_a6v2/` (2.800 lượt = 400 × 7 mức), log
+  `build/kaggle/adv_full.log`. Resume lúc 12:23 trên Qwen v4 + guard v2 (xem
+  [sổ Kaggle](kaggle_resources.md)). 12:47: 555/2.800, 0 model_error. Dự kiến xong 16:30–17:00.
+- Khi chạy xong, lệnh nền tự chấm vào `results/rebuild_a/adv_dev_qwen3_8b_a6v2_eval.json`.
+- **Lưu ý:** process đang chạy nạp code trước `9ecb8ee`, nên khi pass cuối còn thiếu lượt nó
+  trả rc=1 và wrapper dừng. Đếm `runs/A*/*/result.json`; nếu < 2.800, chạy lại lệnh dưới
+  (chỉ chạy lượt thiếu) rồi chấm lại.
+
+Lệnh resume (từ root; nếu notebook đã tắt thì push lại bằng launcher, `discover`, đổi `F`/`G`):
+```
+export SSL_CERT_FILE=$(.venv/bin/python -c "import certifi;print(certifi.where())")
+F=build/kaggle/vllm_serve_v1_qwen3_8b_20261026_121043
+G=build/kaggle/vllm_serve_v1_llama32_3b_guard_20261026_121043
+source $G/endpoint.env; export GUARD_BASE_URL=$VLLM_BASE_URL GUARD_API_KEY=$VLLM_API_KEY
+source $F/endpoint.env; export VLLM_BASE_URL VLLM_API_KEY
+R=results/rebuild_a/adv_dev_qwen3_8b_a6v2
+PYTHONPATH=src caffeinate -ims scripts/retry_on_infra_v1.sh 20 120 -- \
+  .venv/bin/python scripts/run_adversarial_dev_api_v1.py --model-key qwen3_8b --output $R \
+  >> build/kaggle/adv_full.log 2>&1
+.venv/bin/python scripts/evaluate_adversarial_dev_v1.py $R --output ${R}_eval.json
+```
 
 ## Bước tiếp theo
 
-0. **Xong 2026-10-25:** Qwen3-8B chạy thật trên Kaggle (lamhuy8904, v2), pin revision
-   `b968826d…` và vLLM 0.32.0. A0 smoke với prompt v1 đạt 3/20. Owner duyệt sửa prompt chung
-   và mô tả tool, chỉ tinh chỉnh trên smoke. **Prompt v2 đã đóng băng: 12/20 strict, 14/20 theo
-   answer facts** (decision log 2026-10-25). Kết quả tại `results/rebuild_a/smoke_qwen3_8b*`.
-   Prompt v2 nằm ở `prompts/a0_v2.py` và được bật bằng `activate()`. Không sửa
-   `react_a0.py`, `context.py` hay các file tool, vì seal adversarial pin byte của chúng.
-   **Clean Dev 150 × Qwen3-8B: 71/150 = 47,3%.** db_document 0/24, ambiguous 0/15.
-   Lệnh chạy: `scripts/run_clean_dev_api_v1.py`, chấm bằng `evaluate_clean_rebuild_v1.py --full-dev --numfix`.
-   **2026-10-26:** prompt v3 (`prompts/a0_rebuild.py`, sửa luật lỗi tool và hỏi lại) được
-   owner duyệt, chạy Dev 1 lần rồi **đóng băng**. Sửa bộ chấm số ở cuối câu
-   (`validation/clean_rebuild_v1.py`, `--numfix`). Sửa harness: schema giải mã theo từng tool
-   (`per_tool_v1`), vì Llama bị parse_failure khi `arguments` để tự do.
-   **Kết quả (v3 + per_tool + numfix):** Qwen smoke 12/20, Dev 79/150; Llama smoke 8/20,
-   Dev 59/150. Bảng theo nhóm nằm trong decision log 2026-10-26.
-   **Gemma-4-12B (2026-10-26):** vLLM 0.32.0 stable chạy được, nhưng head_dim 512 vượt
-   shared memory của T4. Notebook vá tile của kernel Triton (decision log 2026-10-26). Smoke:
-   bf16 9/20, QAT 7/20, 0 lỗi parse. Backbone RQ1 dùng bản bf16. Gemma hay trả lời ngay từ
-   snippet của `cached_search`, không gọi fetch/read, nên trượt luật sequence của bộ chấm strict.
-   Đây là hành vi của model, không phải lỗi server: server chỉ trả JSON, tool chạy ở local.
-   **Bake-off guard xong:** Prompt Guard 2 TP0/FP0, giữ Llama-3.2-3B (unsloth, pinned).
-   `docs/metrics_spec.md` đã viết. Full pytest 5201 passed / 3 skipped / 1 xfailed.
-   PR #4 đã mở: https://github.com/Lamhuy0489/react-vietnamese-agent/pull/4 (owner merge;
-   auto mode chặn Claude tự merge).
+1. Hoàn tất lượt trên, kiểm model_error < 2%, ghi bảng A0–A6 (ASR, benign utility,
+   utility under attack, false block, McNemar) vào decision log; so với replay tham chiếu.
+2. Nếu đạt: đóng băng config (R2 → R3), cập nhật `phase_status`/current_status.
+3. Owner merge PR #4, gắn tag `phase5-closure`; sau đó dọn script (298 → dưới 30).
+4. Bắt đầu viết luận văn chương 1–3 (`thesis/` còn trống).
+5. Sau R4 mới xét fine-tune LLM tiếng Việt (tùy chọn). Ý tưởng dùng JEPA/Jev làm guard: đã bỏ.
 
-   **Tiếp tục Gemma Dev** (từ root repo):
-   ```
-   export SSL_CERT_FILE=$(.venv/bin/python -c "import certifi;print(certifi.where())")
-   F=build/kaggle/vllm_serve_v1_gemma4_12b_20261026_020735   # hoặc thư mục build mới
-   (set -a; source $F/endpoint.env; set +a; .venv/bin/python scripts/run_clean_dev_api_v1.py \
-     --model-key gemma4_12b --prompt v3 --output results/rebuild_a/clean_dev_gemma4_12b_v3_pertool)
-   .venv/bin/python scripts/evaluate_clean_rebuild_v1.py results/rebuild_a/clean_dev_gemma4_12b_v3_pertool \
-     --full-dev --numfix --output results/rebuild_a/clean_dev_gemma4_12b_v3_pertool_eval_numfix.json
-   ```
-   Sau đó: thêm hàng Gemma vào bảng per-tool trong decision log, cập nhật current_status,
-   rồi sang R1 (evaluator) và chuẩn bị A0–A6 Dev.
-1. Token HF của owner đã có quyền Llama-3.1-8B, Prompt-Guard-2-86M, Gemma-4-12B; Llama-3.2-3B
-   còn 403. Gắn `HF_TOKEN` làm Kaggle Secret qua UI cho notebook của tài khoản chạy model gated.
-   Mỗi notebook một model. Kaggle cho tối đa 2 phiên GPU chạy nền mỗi tài khoản.
-   Llama đã chạy bằng cách chèn token vào notebook private (`--hf-token-env`); owner nên
-   rotate token HF sau đợt chạy.
-2. Owner merge PR #4 vào `main`, gắn tag `phase5-closure` trên `6509ae0`.
-3. Dọn trên `main`: gom các script cũ, chưa dùng (v1/v2, preflight, chẩn đoán) vào
-   `scripts/legacy/` hoặc xóa, chỉ giữ dưới 30 script đang dùng. Chạy
-   ruff/mypy/pytest sau khi dọn. Không đổi các đường dẫn mà manifest hash vẫn tham chiếu
-   nếu receipt còn cần audit lại; lịch sử khôi phục qua tag.
-4. Viết `docs/metrics_spec.md` theo các quyết định trong decision log ngày 2026-10-23.
-5. Sang R1–R2 theo mức rebuild A: harness mới (1 worker API và 1 evaluator), rồi chạy lại
-   A0 smoke → clean Dev × 3 model → bake-off guard → A0–A6 Dev. Xem mục 2b của lộ trình.
+## Ghi chép R0–R2 trước đó (đã xong)
+
+- A0 Dev baseline name-first: Qwen 77, Llama 93, Gemma 99 /150 (decision log 2026-10-26).
+- A6 v2 accepted: benign 20 → 115/200 trên replay, harm 5/200, A3–A5 không đổi.
+- Bake-off guard: giữ Llama-3.2-3B (Prompt Guard 2 TP0/FP0). `docs/metrics_spec.md` xong.
+- Token HF đang chèn vào notebook private (`--hf-token-env`); owner nên rotate token sau đợt chạy.
+  Kaggle cho tối đa 2 phiên GPU nền mỗi tài khoản.
+- PR #4: https://github.com/Lamhuy0489/react-vietnamese-agent/pull/4 (owner merge).
 
 ## Bằng chứng
 
