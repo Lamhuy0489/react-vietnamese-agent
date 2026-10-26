@@ -180,7 +180,8 @@ def main() -> int:
                "private_ground_truth_loaded": 0, "test_payloads_loaded": 0}
     atomic_json(output / "summary.json", summary)
     print(json.dumps(summary, indent=2))
-    return 0 if summary["finished"] == summary["scheduled"] else 1
+    # Executions skipped after an isolated infrastructure error rerun on the next pass.
+    return 0 if summary["finished"] == summary["scheduled"] else 2
 
 
 if __name__ == "__main__":
