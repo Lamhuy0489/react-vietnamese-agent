@@ -1,5 +1,9 @@
 # A6 runtime v4 — bounded integration contract
 
+> Superseded for rebuild-A experiments by A6 v2 (value provenance refines session
+> vetoes); see `security_architecture.md` and decision log 2026-10-26. This file
+> stays as the Phase 5 historical contract.
+
 Predeclared integration of frozen value-origin, PreGate, Post-view and final
 release components. Phase 5 only; synthetic Replay and fake process guard QA,
 no benchmark/Test payloads or model-quality claims. All prior selected source
