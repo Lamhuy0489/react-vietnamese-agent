@@ -1,6 +1,51 @@
 # Runbook chạy lại (mức A): vLLM trên Kaggle, gọi API từ local
 
-Cập nhật: 2026-10-26. Đã chạy thật Qwen3-8B và Llama-3.1-8B (xem [sổ Kaggle](kaggle_resources.md)); Gemma chưa chạy. Xem [lộ trình v2](../docs/project/roadmap_v2_rebuild.md), mục 2b.
+Cập nhật: 2026-10-26. Đã chạy thật cả 3 model và guard (xem [sổ Kaggle](kaggle_resources.md)). Đây là runbook **hiện hành**; `api_experiment_runbook.md` chỉ là lịch sử Phase 5. Xem [lộ trình v2](../docs/project/roadmap_v2_rebuild.md), mục 2b.
+
+## Bản đồ: chạy ở đâu, lưu ở đâu (đọc trước mỗi phiên)
+
+Mục này là nguồn duy nhất. Nếu thêm runner hoặc đổi chỗ lưu, sửa mục này trước.
+
+**Chạy:** luôn từ root repo, bằng `.venv/bin/python`, với
+`export SSL_CERT_FILE=$(.venv/bin/python -c "import certifi;print(certifi.where())")`.
+Model chạy trên Kaggle (mỗi notebook một model, tối đa 2 phiên GPU nền mỗi tài khoản);
+runtime, tool và bộ chấm chạy ở local.
+
+**Endpoint:** `build/kaggle/vllm_serve_v1_<model>_<stamp>/endpoint.env` (gitignored, 0600).
+Bật notebook: `launch_vllm_serve_v1.py prepare` → `kaggle kernels push -p $F --accelerator NvidiaTeslaT4`
+→ `launch_vllm_serve_v1.py discover --folder $F` (xem "Cách nhanh" bên dưới). Notebook tự tắt sau
+30 phút không có request: **không bao giờ suy ra endpoint còn sống** từ file cũ; kiểm bằng
+`.venv/bin/kaggle kernels status <owner>/<slug>`. Slug và version ghi ở [sổ Kaggle](kaggle_resources.md).
+
+| Việc | Lệnh | Kết quả (local, không track) |
+|---|---|---|
+| Smoke 20 task | `scripts/run_smoke_api_v1.py --model-key K` | `results/rebuild_a/smoke_<K>*/` |
+| Clean Dev 150 | `scripts/run_clean_dev_api_v1.py --model-key K --prompt v3` → `evaluate_clean_rebuild_v1.py --full-dev --numfix` | `results/rebuild_a/clean_dev_<K>*` |
+| A0–A6 Dev 400 × 7 | `scripts/run_adversarial_dev_api_v1.py --model-key qwen3_8b --output R` (cần thêm `GUARD_BASE_URL/KEY`) → `evaluate_adversarial_dev_v1.py R --output R_eval.json` | `results/rebuild_a/adv_dev_qwen3_8b_a6v2{,_eval.json}` |
+| Log lượt dài | chuyển hướng `>> build/kaggle/<tên>.log` | `build/kaggle/*.log` |
+
+Lệnh resume đầy đủ của lượt đang dở luôn nằm trong [handoff](handoff.md), mục "Đang làm".
+
+**Lượt dài (> vài phút):** bọc bằng `caffeinate -ims scripts/retry_on_infra_v1.sh 20 120 -- <lệnh>`.
+Runner trả rc=2 khi endpoint không với tới hoặc còn lượt thiếu, nên wrapper tự chạy lại;
+checkpoint theo lượt nên resume không mất kết quả. Chạy nền một lần và chờ thông báo, không
+kiểm tra lặp lại qua nhiều lượt chat.
+
+**Ghi kết quả ở đâu:**
+
+| Nội dung | File |
+|---|---|
+| Số liệu, quyết định, luật chấp nhận khai báo trước | `docs/project/decision_log.md` |
+| Trạng thái ngắn và mốc đã xác minh | `knowledge/current_status.md` |
+| Đang làm, lệnh resume, bước tiếp theo | `knowledge/handoff.md` |
+| Tóm tắt từng phiên | `knowledge/session_log.md` (thêm mục mới ở cuối) |
+| Prompt mở phiên sau | `knowledge/next_session_prompt.md` (viết lại khối `text` mỗi cuối phiên) |
+| Notebook Kaggle: slug, version, boot, revision | `knowledge/kaggle_resources.md` (mục "Mốc hiện hành") |
+| Ghi nhớ riêng của Claude | `~/.claude/projects/.../memory/` (không trong Git) |
+
+**Cuối phiên:** cập nhật 4 file knowledge ở trên (và sổ Kaggle nếu đã bật notebook) →
+`make knowledge-check` → commit → `git push`. Không ghi credential, URL tunnel, GT private
+hay payload Test vào bất kỳ file nào.
 
 ## Thành phần
 
@@ -11,6 +56,9 @@ Cập nhật: 2026-10-26. Đã chạy thật Qwen3-8B và Llama-3.1-8B (xem [s�
 | `src/react_agent/llm/openai_compat_v1.py` | Backend local: ép JSON theo schema, seed 42, request_id, kiểm danh tính model, tách lỗi hạ tầng khỏi lỗi model |
 | `scripts/check_vllm_endpoint_v1.py` | Kiểm danh tính và một lượt sinh |
 | `scripts/run_smoke_api_v1.py` | 20 task A0 smoke, checkpoint theo task; lỗi hạ tầng sẽ chạy lại khi resume |
+| `scripts/launch_vllm_serve_v1.py` | Chuẩn bị notebook và nhận endpoint đã mã hóa (`prepare`/`discover`) |
+| `scripts/run_adversarial_dev_api_v1.py` | A0–A6 Dev; ping guard giữa các lượt không cần guard |
+| `scripts/retry_on_infra_v1.sh` | Chạy lại runner khi nó trả rc=2 |
 
 ## Việc 1: xin quyền (làm một lần)
 

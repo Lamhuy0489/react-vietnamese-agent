@@ -7,6 +7,7 @@ Cuối mỗi phiên, cập nhật lại khối này và [nhật ký phiên](sess
 Tiếp tục đồ án. Đọc theo thứ tự: AGENTS.md, knowledge/current_status.md,
 knowledge/handoff.md, docs/project/roadmap_v2_rebuild.md, 3 mục cuối của
 knowledge/session_log.md, và các mục 2026-10-26 trong docs/project/decision_log.md.
+Chạy ở đâu, lưu ở đâu: knowledge/rebuild_a_runbook.md, mục "Bản đồ" (làm đúng theo đó).
 
 Rebuild A: R1 xong, R2 khoảng 75%. A0 Dev baseline (prompt v3, name-first, numfix):
 Qwen 77, Llama 93, Gemma 99 /150. A6 v2 đã accepted trên replay (benign 20 → 115/200, harm 5/200).
@@ -17,7 +18,8 @@ Việc đầu tiên: đếm runs/A*/*/result.json. Nếu < 2.800 thì chạy l�
 model_error < 2%, ghi bảng A0–A6 vào decision log, cân nhắc đóng băng config (R3).
 Kiểm PR #4 đã merge và tag phase5-closure chưa. Không sửa prompt v3, không đụng Test,
 không sửa dữ liệu đã seal.
-Cuối phiên: cập nhật handoff, current_status, session_log và prompt này,
+Cuối phiên: làm theo mục "Cuối phiên" của Bản đồ (handoff, current_status, session_log,
+viết lại prompt này trong knowledge/next_session_prompt.md, sổ Kaggle nếu đã bật notebook),
 chạy make knowledge-check, rồi commit và push.
 ```
 
@@ -28,3 +30,5 @@ chạy make knowledge-check, rồi commit và push.
 - Muốn mở lại đúng đoạn chat cũ: chạy `claude --continue` (phiên gần nhất) hoặc
   `claude --resume` (chọn phiên trong danh sách).
 - Không dán credential, GT private hay payload Test vào prompt.
+- File này là bản gốc của prompt: agent viết lại khối `text` ở cuối mỗi phiên rồi commit,
+  nên chat mới chỉ cần đọc file này, không cần bản copy trong chat cũ.

@@ -11,8 +11,9 @@ For continuity, next read `knowledge/current_status.md` and
 `knowledge/handoff.md`. Use `knowledge/README.md` as the navigation index;
 historical notes do not override current status or the research contract.
 For the current Kaggle API experiment workflow, next read
-`knowledge/api_experiment_runbook.md`: it distinguishes completed smoke evidence
-from the Dev runner still to implement, and records safe status/discovery steps.
+`knowledge/rebuild_a_runbook.md`, section "Bản đồ": where to run each step, where
+results go and which knowledge file records what. `knowledge/api_experiment_runbook.md`
+is Phase 5 history.
 Do not infer live endpoint availability from a previous chat's READY message.
 Before handing off meaningful work, update the active task, next concrete step,
 verification evidence and pending access in `knowledge/handoff.md`. Never put
