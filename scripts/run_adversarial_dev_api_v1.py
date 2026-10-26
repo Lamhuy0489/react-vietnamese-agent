@@ -6,8 +6,11 @@ GUARD_BASE_URL / GUARD_API_KEY. Every level uses the frozen Phase 5 closure
 runtime, the rebuild prompt and the per-tool decoding schema. Each execution is
 checkpointed as ``runs/<level>/<variant_id>/result.json``; an execution with an
 agent or guard infrastructure error is discarded and reruns on the next
-invocation, model errors are kept. Only public fixtures are read: scoring with
-the private case scorers is ``evaluate_adversarial_dev_v1.py``.
+invocation, model errors are kept. Exit code 2 means an endpoint is unreachable
+(at start or mid-run) and the same command resumes. While levels without the guard
+run, the guard is pinged between executions so its notebook does not idle out.
+Only public fixtures are read: scoring with the private case scorers is
+``evaluate_adversarial_dev_v1.py``.
 """
 
 from __future__ import annotations
@@ -29,10 +32,15 @@ from react_agent.config import load_generation_config, load_runtime_config
 from react_agent.evaluation.adversarial_v1 import (
     LEVELS,
     GuardFactory,
+    GuardKeepalive,
     guard_infrastructure_failure,
     prepare_registry,
 )
-from react_agent.llm.openai_compat_v1 import OpenAICompatBackend, OrderedHTTPSJSON
+from react_agent.llm.openai_compat_v1 import (
+    InfrastructureError,
+    OpenAICompatBackend,
+    OrderedHTTPSJSON,
+)
 from react_agent.prompts import a0_rebuild
 from react_agent.security_v1 import a6_provenance_v2
 from react_agent.security_v1.contracts import Level, configuration
@@ -91,13 +99,18 @@ def main() -> int:
                                   repo=spec["repo"], revision=spec["revision"],
                                   chat_template_kwargs=spec.get("chat_template_kwargs"),
                                   tool_definitions=build_clean_registry(CLEAN_ENV).definitions())
-    backend.probe()
     guard_factory = None
     if needs_guard:
         guard_factory = GuardFactory(cast(str, guard_url), cast(str, guard_key),
                                      guard_spec["repo"], guard_spec["revision"], args.timeout)
-        probe = guard_factory()
-        cast(OpenAICompatBackend, probe).probe()
+    try:
+        backend.probe()
+        if guard_factory:
+            cast(OpenAICompatBackend, guard_factory()).probe()
+    except InfrastructureError as exc:
+        print(f"Endpoint unreachable at start ({exc}); rerun the same command to resume.")
+        return 2
+    keepalive = GuardKeepalive(guard_factory.ping) if guard_factory else None
 
     output = (args.output or ROOT / "results/rebuild_a" / f"adv_dev_{args.model_key}").resolve()
     identity: dict[str, Any] = {
@@ -130,6 +143,8 @@ def main() -> int:
             folder.mkdir(parents=True)
             infra_before = backend.infra_failures
             guard = guard_factory if config.llm_guard else None
+            if keepalive and not guard:
+                keepalive.tick()
             runtime = Phase5ClosureRuntime(
                 backend, prepare_registry(row, CLEAN_ENV, folder / "environment"),
                 runtime_config=runtime_config, generation_config=generation_config)
@@ -150,6 +165,8 @@ def main() -> int:
                     return 2
                 continue
             consecutive_infra = 0
+            if keepalive and guard:
+                keepalive.touch()
             atomic_json(folder / "result.json", {
                 "level": level, "variant_id": row.variant_id, "branch": row.branch,
                 "family_id": row.family_id, "status": run.result.status,
