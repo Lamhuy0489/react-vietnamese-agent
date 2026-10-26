@@ -8,15 +8,15 @@ memory của agent đang được benchmark. Không cần tài khoản hoặc gr
 
 ## Bắt đầu phiên làm việc
 
-0. **Chạy lại mức A:** [runbook vLLM và xin quyền](rebuild_a_runbook.md).
-0. **Phiên mới:** [prompt cho phiên sau](next_session_prompt.md), [nhật ký phiên](session_log.md), [lộ trình v2](../docs/project/roadmap_v2_rebuild.md).
-1. [Trạng thái phase chính thức](../docs/project/phase_status.md).
-2. [Tóm tắt hiện tại](current_status.md).
-3. [Bàn giao: đang dở và bước tiếp theo](handoff.md).
-4. [API experiment runbook: cách tiếp tục ở chat mới](api_experiment_runbook.md).
-5. [Contract](../docs/project/research_contract.md),
-   [invariants](../docs/project/invariants.md), rồi chỉ đọc tài liệu của phần
-   đang làm theo [phase map](../docs/project/phase_map.md).
+1. [Prompt cho phiên sau](next_session_prompt.md): khối cần dán vào chat mới.
+2. [Tóm tắt hiện tại](current_status.md), [bàn giao](handoff.md), [nhật ký phiên](session_log.md).
+3. [Lộ trình v2](../docs/project/roadmap_v2_rebuild.md) và
+   [runbook mức A, mục "Bản đồ"](rebuild_a_runbook.md): chạy ở đâu, lưu ở đâu.
+4. [Contract](../docs/project/research_contract.md),
+   [invariants](../docs/project/invariants.md), [decision log](../docs/project/decision_log.md).
+
+Mọi mục bên dưới (Phase 5, Phase 6 start, API experiment runbook) là **lịch sử**; không
+override 4 bước trên.
 
 Đợt audit hướng ngày 2026-09-29 là [Phase 5 direction audit](../docs/evaluation/phase5_direction_audit_20260929.md).
 Đây là chỉ mục để chọn một closure path; không coi các prototype lịch sử là
