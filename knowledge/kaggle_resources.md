@@ -22,6 +22,12 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-10-26 tối — trạng thái:** Qwen v4 và guard v2 đã chạy xong A0–A6 Dev (2.800 lượt) và
+A6 v3 (400 lượt, 18:00–18:47). Keepalive tắt lúc khoảng 19:00, nên cả hai **đã tự tắt** (idle 30 phút).
+Mai bật lại bằng `launch_vllm_serve_v1.py prepare` (token HF lấy từ notebook private cũ trong
+`build/kaggle/vllm_serve_v1_qwen3_8b_20261026_121043/`, không in ra), push, `discover`; ghi version
+mới vào đây. Kaggle CLI dùng cấu hình sẵn có trên máy owner; credential không bao giờ vào Git.
+
 **2026-10-26 12:10 — relaunch Qwen v4 + guard v2 cho A0–A6 Dev đầy đủ (lamhuy8904):**
 [lamhuy8904/react-vn-vllm-serve-v1](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1)
 **v4**, boot `2300d3409d17`, served `Qwen/Qwen3-8B@b968826d9c46dd6066d109eabc6255188de91218`;
