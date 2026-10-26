@@ -9,7 +9,8 @@ by the runner or the model.
 from __future__ import annotations
 
 import json
-from collections.abc import Sequence
+import time
+from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import Any
 
@@ -18,7 +19,8 @@ from react_agent.authoring.overlays import OutputOverlayTool
 from react_agent.authoring.selected_runtime import SelectedCase
 from react_agent.evaluation.statistics_v1 import mcnemar_exact, rate_with_ci
 from react_agent.llm.base import LLMBackend
-from react_agent.llm.openai_compat_v1 import OpenAICompatBackend, OrderedHTTPSJSON
+from react_agent.llm.http_diagnostic_v1 import APIError
+from react_agent.llm.openai_compat_v1 import OpenAICompatBackend, OrderedHTTPSJSON, served_name
 from react_agent.schemas.trace import TraceEvent
 from react_agent.tools.registry import ToolRegistry
 
@@ -67,6 +69,42 @@ class GuardFactory:
         return OpenAICompatBackend(transport,
                                    repo=self.repo, revision=self.revision,
                                    response_schema=GUARD_SCHEMA)
+
+    def ping(self) -> None:
+        """One-token completion; the serving notebook counts it as activity."""
+        transport = OrderedHTTPSJSON(self.base_url, self.api_key, timeout=60)
+        transport("POST", "/chat/completions", {
+            "model": served_name(self.repo, self.revision),
+            "messages": [{"role": "user", "content": "ping"}],
+            "max_tokens": 1, "temperature": 0})
+
+
+class GuardKeepalive:
+    """Keep the guard notebook alive while levels without the guard run.
+
+    The notebook stops after 30 minutes without a completion and A0–A1 alone run
+    longer than that. ``tick`` is called between executions only, so a ping never
+    shares a batch with a scored guard call. A failed ping is reported, not raised:
+    a dead guard surfaces as an infrastructure error on the first guarded level.
+    """
+
+    def __init__(self, ping: Callable[[], None], every_seconds: float = 600,
+                 clock: Callable[[], float] = time.monotonic) -> None:
+        self._ping, self.every, self.clock = ping, every_seconds, clock
+        self.last = clock()
+
+    def touch(self) -> None:
+        self.last = self.clock()
+
+    def tick(self) -> bool:
+        if self.clock() - self.last < self.every:
+            return False
+        try:
+            self._ping()
+        except APIError as exc:
+            print(f"guard keepalive ping failed: {exc}", flush=True)
+        self.touch()
+        return True
 
 
 def _lines(path: Path) -> list[dict[str, Any]]:
