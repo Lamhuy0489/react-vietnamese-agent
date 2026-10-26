@@ -5,7 +5,8 @@ trạng thái nghiệm thu. Mở các nguồn bên dưới để đọc thông t
 
 ## Tiếp tục công việc
 
-1. [Prompt cho phiên sau](knowledge/next_session_prompt.md): copy vào chat mới.
+1. Mở `claude` ở root repo và dán [prompt cho phiên sau](knowledge/next_session_prompt.md).
+   Quy trình phiên chuẩn nằm trong `CLAUDE.md`.
 2. [Lộ trình v2 (R0–R7)](docs/project/roadmap_v2_rebuild.md)
 3. [Kết quả mới nhất](knowledge/current_status.md) · [Bàn giao](knowledge/handoff.md)
 4. [Nhật ký các phiên chat](knowledge/session_log.md)
