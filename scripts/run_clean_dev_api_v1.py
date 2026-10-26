@@ -5,7 +5,11 @@ Endpoint URL and key come from VLLM_BASE_URL / VLLM_API_KEY. Output follows the
 ``run_checkpointed`` layout (``tasks/<id>/result.json`` + ``trace.jsonl``) so
 ``evaluate_clean_rebuild_v1.py --full-dev`` can score it. A task that ends with an
 infrastructure error is not checkpointed and reruns on the next invocation;
-model errors are kept. Private ground truth and Test are never read.
+model errors are kept. Private ground truth is never read.
+
+``--split test`` runs the 100 held-out Test tasks once, after the R3 freeze (the
+frozen-file check runs first); ``--dry-run-dummy`` uses a CPU stand-in agent to
+check the pipeline (R3) and is never a result.
 """
 
 from __future__ import annotations
@@ -21,9 +25,11 @@ from typing import Any
 
 import yaml
 
+import react_agent.evaluation.final_config_v1 as final_config_v1
 from react_agent.agent import AgentRuntime
 from react_agent.agent.checkpoint import atomic_json
 from react_agent.config import load_generation_config, load_runtime_config
+from react_agent.evaluation.adversarial_v1 import DryRunAgent
 from react_agent.llm.openai_compat_v1 import OpenAICompatBackend, OrderedHTTPSJSON
 from react_agent.prompts import a0_rebuild
 from react_agent.schemas.clean_task import CleanPublicTask, FaultSpec
@@ -32,7 +38,6 @@ from react_agent.tools.factory import build_clean_registry
 
 ROOT = Path(__file__).resolve().parents[1]
 CLEAN_ROOT = ROOT / "data/clean/v1_1"
-FAULTS = ROOT / "configs/clean/dev_fault_plans_v1.json"
 MAX_CONSECUTIVE_INFRA = 3
 
 
@@ -47,40 +52,58 @@ def main() -> int:
     parser.add_argument("--limit", type=int, help="run only the first N Dev tasks")
     parser.add_argument("--timeout", type=float, default=150)
     parser.add_argument("--prompt", choices=["v2", "v3"], default="v3")
+    parser.add_argument("--split", choices=["dev", "test"], default="dev")
+    parser.add_argument("--dry-run-dummy", action="store_true",
+                        help="CPU stand-in agent; pipeline check only")
     args = parser.parse_args()
+    held_out = args.split == "test"
+    if held_out:
+        final_config_v1.verify(ROOT)  # raises when anything changed after R3
+        if args.prompt != "v3" or (args.limit and not args.dry_run_dummy):
+            raise SystemExit("Test runs use the frozen configuration only")
+    if args.dry_run_dummy and not args.output:
+        raise SystemExit("--dry-run-dummy needs an explicit --output outside results/")
     prompt_profile = a0_rebuild.activate(args.prompt)
     spec = yaml.safe_load((ROOT / "configs/models/backbones_v2.yaml").read_text())[args.model_key]
     if not spec["revision"]:
         raise SystemExit("Pin the revision in configs/models/backbones_v2.yaml first")
     base_url, api_key = os.environ.get("VLLM_BASE_URL"), os.environ.get("VLLM_API_KEY")
+    if args.dry_run_dummy:
+        base_url = api_key = "dry-run"
     if not base_url or not api_key:
         raise SystemExit("Set VLLM_BASE_URL (https://.../v1) and VLLM_API_KEY")
 
-    public_path = CLEAN_ROOT / "splits/dev.jsonl"
+    public_path = CLEAN_ROOT / f"splits/{args.split}.jsonl"
+    faults_path = ROOT / f"configs/clean/{args.split}_fault_plans_v1.json"
     tasks = [CleanPublicTask.model_validate_json(line)
              for line in public_path.read_text(encoding="utf-8").splitlines()]
-    if len(tasks) != 150 or any(task.split != "dev" for task in tasks):
-        raise ValueError("worker input must be the exact public Dev split")
+    if len(tasks) != (100 if held_out else 150) or any(t.split != args.split for t in tasks):
+        raise ValueError(f"worker input must be the exact public {args.split} split")
     tasks = tasks[: args.limit] if args.limit else tasks
-    faults = json.loads(FAULTS.read_text())["fault_plans"]
+    faults = json.loads(faults_path.read_text())["fault_plans"]
     agent_path = ROOT / "configs/agent/A0.yaml"
     generation_path = ROOT / "configs/runtime/default.yaml"
     runtime_config = load_runtime_config(agent_path)
     generation_config = load_generation_config(generation_path)
 
-    backend = OpenAICompatBackend(OrderedHTTPSJSON(base_url, api_key, timeout=args.timeout),
-                                  repo=spec["repo"], revision=spec["revision"],
-                                  chat_template_kwargs=spec.get("chat_template_kwargs"),
-                                  tool_definitions=build_clean_registry(
-                                      CLEAN_ROOT / "environment").definitions())
+    backend: Any
+    if args.dry_run_dummy:
+        backend = DryRunAgent(spec["repo"], spec["revision"])
+    else:
+        backend = OpenAICompatBackend(
+            OrderedHTTPSJSON(base_url, api_key, timeout=args.timeout),
+            repo=spec["repo"], revision=spec["revision"],
+            chat_template_kwargs=spec.get("chat_template_kwargs"),
+            tool_definitions=build_clean_registry(CLEAN_ROOT / "environment").definitions())
     backend.probe()
-    output = (args.output or ROOT / "results/rebuild_a" / f"clean_dev_{args.model_key}").resolve()
+    default = ROOT / "results/rebuild_a" / f"clean_{args.split}_{args.model_key}"
+    output = (args.output or default).resolve()
     identity: dict[str, Any] = {
-        "benchmark": "clean_v1.1", "split": "dev", "config_id": "A0",
+        "benchmark": "clean_v1.1", "split": args.split, "config_id": "A0",
         "model_key": args.model_key, "model_id": spec["repo"], "model_revision": spec["revision"],
         "generation": generation_config.model_dump(),
         "file_sha256": {name: sha256(path) for name, path in {
-            "dev": public_path, "faults": FAULTS, "agent": agent_path,
+            args.split: public_path, "faults": faults_path, "agent": agent_path,
             "generation": generation_path,
             "environment_manifest": CLEAN_ROOT / "manifests/environment_manifest.json",
         }.items()},
@@ -88,6 +111,10 @@ def main() -> int:
         "decoding_schema": "per_tool_v2_name_first",
         "task_ids": [task.task_id for task in tasks],
     }
+    if held_out:
+        identity["final_config_sha256"] = final_config_v1.manifest_sha256(ROOT)
+    if args.dry_run_dummy:
+        identity["dry_run_dummy"] = True
     output.mkdir(parents=True, exist_ok=True)
     identity_path = output / "identity.json"
     if identity_path.exists() and json.loads(identity_path.read_text()) != identity:
@@ -133,7 +160,7 @@ def main() -> int:
             for task in tasks if (output / "tasks" / task.task_id / "result.json").exists()]
     summary = {"tasks": len(tasks), "finished": len(done),
                "statuses": dict(Counter(item["status"] for item in done)),
-               "private_ground_truth_loaded": 0, "test_tasks_loaded": 0}
+               "private_ground_truth_loaded": 0, "test_tasks_loaded": len(tasks) if held_out else 0}
     atomic_json(output / "summary.json", summary)
     print(json.dumps(summary, indent=2))
     return 0 if len(done) == len(tasks) else 1

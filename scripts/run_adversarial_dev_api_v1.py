@@ -11,6 +11,11 @@ invocation, model errors are kept. Exit code 2 means an endpoint is unreachable
 run, the guard is pinged between executions so its notebook does not idle out.
 Only public fixtures are read: scoring with the private case scorers is
 ``evaluate_adversarial_dev_v1.py``.
+
+``--split test`` runs the held-out Test fixtures once, after the R3 freeze: it
+refuses to start unless every frozen file matches ``configs/final/final_config_v1.json``.
+``--dry-run-dummy`` replaces both endpoints with deterministic CPU stand-ins to check
+the pipeline end to end (R3); its executions are never results.
 """
 
 from __future__ import annotations
@@ -26,15 +31,19 @@ from typing import Any, cast
 
 import yaml
 
+import react_agent.evaluation.final_config_v1 as final_config_v1
 from react_agent.adversarial_release import load_split
 from react_agent.agent.checkpoint import atomic_json
 from react_agent.config import load_generation_config, load_runtime_config
 from react_agent.evaluation.adversarial_v1 import (
     LEVELS,
+    DryRunAgent,
+    DryRunGuardFactory,
     GuardFactory,
     GuardKeepalive,
     guard_infrastructure_failure,
     prepare_registry,
+    run_catalog,
 )
 from react_agent.llm.openai_compat_v1 import (
     InfrastructureError,
@@ -50,7 +59,6 @@ from react_agent.security_v1.phase5_closure_runtime_v1 import (
 )
 from react_agent.security_v1.warm_guard import WarmGuardConfig
 from react_agent.tools.factory import build_clean_registry
-from react_agent.validation.grouped_dev_inputs_v1 import fixture_catalog
 
 ROOT = Path(__file__).resolve().parents[1]
 RELEASE = ROOT / "data/adversarial/release_v2"
@@ -70,24 +78,39 @@ def main() -> int:
     parser.add_argument("--output", type=Path)
     parser.add_argument("--limit", type=int, help="pilot: first N families, one pair each")
     parser.add_argument("--timeout", type=float, default=150)
+    parser.add_argument("--split", choices=["dev", "test"], default="dev")
+    parser.add_argument("--dry-run-dummy", action="store_true",
+                        help="CPU stand-ins for both endpoints; pipeline check only")
     parser.add_argument("--a6", choices=["phase5", "v2", "v3"], default="v3",
                         help="A6 policy: Phase 5 closure, value-provenance v2, or v2 plus "
                              "clause-level document anchors (v3)")
     args = parser.parse_args()
+    held_out = args.split == "test"
+    freeze: dict[str, Any] | None = None
+    if held_out:
+        freeze = final_config_v1.verify(ROOT)  # raises when anything changed after R3
+        if args.a6 != "v3" or args.model_key != "qwen3_8b" or (
+                args.limit and not args.dry_run_dummy):
+            raise SystemExit("Test runs use the frozen configuration only")
+    if args.dry_run_dummy and not args.output:
+        raise SystemExit("--dry-run-dummy needs an explicit --output outside results/")
     prompt_profile = a0_rebuild.activate("v3")
     a6_profile = {"v2": a6_provenance_v2.activate, "v3": a6_provenance_v3.activate}.get(
         args.a6, lambda: {"name": "phase5"})()
     models = yaml.safe_load((ROOT / "configs/models/backbones_v2.yaml").read_text())
     spec, guard_spec = models[args.model_key], models["guard_candidates"][args.guard_key]
     base_url, api_key = os.environ.get("VLLM_BASE_URL"), os.environ.get("VLLM_API_KEY")
+    if args.dry_run_dummy:
+        base_url = api_key = "dry-run"
     if not base_url or not api_key:
         raise SystemExit("Set VLLM_BASE_URL (https://.../v1) and VLLM_API_KEY")
     needs_guard = any(configuration(cast(Level, level)).llm_guard for level in args.levels)
     guard_url, guard_key = os.environ.get("GUARD_BASE_URL"), os.environ.get("GUARD_API_KEY")
-    if needs_guard and (not guard_url or not guard_key):
+    if needs_guard and not args.dry_run_dummy and (not guard_url or not guard_key):
         raise SystemExit("A2+ needs GUARD_BASE_URL and GUARD_API_KEY")
 
-    rows = load_split(RELEASE)  # Dev only; Test payloads are never opened.
+    # Dev by default; Test payloads are opened only with --split test after the freeze.
+    rows = load_split(RELEASE, args.split, allow_held_out=held_out)
     if args.limit:
         # Pilot: one variant from each of the first N families, both branches.
         families = sorted({r.family_id for r in rows})[: args.limit]
@@ -97,18 +120,26 @@ def main() -> int:
     generation_path = ROOT / "configs/runtime/default.yaml"
     runtime_config = load_runtime_config(agent_path)
     generation_config = load_generation_config(generation_path)
-    backend = OpenAICompatBackend(OrderedHTTPSJSON(base_url, api_key, timeout=args.timeout),
-                                  repo=spec["repo"], revision=spec["revision"],
-                                  chat_template_kwargs=spec.get("chat_template_kwargs"),
-                                  tool_definitions=build_clean_registry(CLEAN_ENV).definitions())
-    guard_factory = None
-    if needs_guard:
-        guard_factory = GuardFactory(cast(str, guard_url), cast(str, guard_key),
-                                     guard_spec["repo"], guard_spec["revision"], args.timeout)
+    backend: Any
+    guard_factory: Any = None
+    if args.dry_run_dummy:
+        backend = DryRunAgent(spec["repo"], spec["revision"])
+        if needs_guard:
+            guard_factory = DryRunGuardFactory(guard_spec["repo"], guard_spec["revision"])
+    else:
+        backend = OpenAICompatBackend(
+            OrderedHTTPSJSON(base_url, api_key, timeout=args.timeout),
+            repo=spec["repo"], revision=spec["revision"],
+            chat_template_kwargs=spec.get("chat_template_kwargs"),
+            tool_definitions=build_clean_registry(CLEAN_ENV).definitions())
+        if needs_guard:
+            guard_factory = GuardFactory(cast(str, guard_url), cast(str, guard_key),
+                                         guard_spec["repo"], guard_spec["revision"],
+                                         args.timeout)
     try:
         backend.probe()
         if guard_factory:
-            cast(OpenAICompatBackend, guard_factory()).probe()
+            guard_factory().probe()
     except InfrastructureError as exc:
         print(f"Endpoint unreachable at start ({exc}); rerun the same command to resume.")
         return 2
@@ -128,6 +159,11 @@ def main() -> int:
         "overlay_input_model_fix": True, "a6_policy": a6_profile,
         "variant_ids": [row.variant_id for row in rows],
     }
+    if held_out:
+        identity |= {"split": "test", "final_config_sha256": final_config_v1.manifest_sha256(ROOT),
+                     "final_config_files_sha256": cast(dict[str, Any], freeze)["files_sha256"]}
+    if args.dry_run_dummy:
+        identity["dry_run_dummy"] = True
     output.mkdir(parents=True, exist_ok=True)
     identity_path = output / "identity.json"
     if identity_path.exists() and json.loads(identity_path.read_text()) != identity:
@@ -151,7 +187,7 @@ def main() -> int:
                 backend, prepare_registry(row, CLEAN_ENV, folder / "environment"),
                 runtime_config=runtime_config, generation_config=generation_config)
             run = runtime.run_instrumented(
-                row.task, output=folder / "execution", source_catalog=fixture_catalog(row),
+                row.task, output=folder / "execution", source_catalog=run_catalog(row),
                 security_config=config, guard_factory=guard,
                 guard_execution=WarmGuardConfig(guard.repo, guard.revision, args.timeout)
                 if guard else None)
@@ -179,7 +215,8 @@ def main() -> int:
             if (path := output / "runs" / level / row.variant_id / "result.json").exists()]
     summary = {"scheduled": len(rows) * len(args.levels), "finished": len(done),
                "statuses": dict(Counter(f"{d['level']}:{d['status']}" for d in done)),
-               "private_ground_truth_loaded": 0, "test_payloads_loaded": 0}
+               "private_ground_truth_loaded": 0,
+               "test_payloads_loaded": len(rows) if held_out else 0}
     atomic_json(output / "summary.json", summary)
     print(json.dumps(summary, indent=2))
     # Executions skipped after an isolated infrastructure error rerun on the next pass.

@@ -18,11 +18,14 @@ from react_agent.adversarial_release import ReleasedFixture
 from react_agent.authoring.overlays import OutputOverlayTool
 from react_agent.authoring.selected_runtime import SelectedCase
 from react_agent.evaluation.statistics_v1 import mcnemar_exact, rate_with_ci
-from react_agent.llm.base import LLMBackend
+from react_agent.foundation.runtime_hooks import SourceCatalog
+from react_agent.llm.base import GenerationConfig, LLMBackend, ModelResponse
+from react_agent.llm.dummy import DummyBackend
 from react_agent.llm.http_diagnostic_v1 import APIError
 from react_agent.llm.openai_compat_v1 import OpenAICompatBackend, OrderedHTTPSJSON, served_name
 from react_agent.schemas.trace import TraceEvent
 from react_agent.tools.registry import ToolRegistry
+from react_agent.validation.grouped_dev_inputs_v1 import fixture_catalog
 
 EVALUATOR_VERSION = "adversarial_dev_v1"
 LEVELS = ("A0", "A1", "A2", "A3", "A4", "A5", "A6")
@@ -56,6 +59,18 @@ def prepare_registry(row: ReleasedFixture, clean: Path, destination: Path) -> To
     return registry
 
 
+def run_catalog(row: ReleasedFixture) -> SourceCatalog:
+    """Host source catalog for a Dev or Test fixture.
+
+    ``fixture_catalog`` (pinned by Phase 5 evidence) admits Dev rows only; its
+    catalog depends on the overlay and resources alone, never on the split, so a
+    Test row is built through it under the Dev label after the split check here.
+    """
+    if row.split not in {"dev", "test"}:
+        raise ValueError("unknown split")
+    return fixture_catalog(row.model_copy(update={"split": "dev"}))
+
+
 class GuardFactory:
     """Picklable guard backend factory: the warm guard runs in a child process."""
 
@@ -77,6 +92,47 @@ class GuardFactory:
             "model": served_name(self.repo, self.revision),
             "messages": [{"role": "user", "content": "ping"}],
             "max_tokens": 1, "temperature": 0})
+
+
+class DryRunAgent(DummyBackend):
+    """R3 dry run: answers at once, never proposes a tool and never touches the network."""
+
+    infra_failures = 0
+
+    def __init__(self, repo: str, revision: str) -> None:
+        super().__init__("Dry run.")
+        self.model_id, self.model_revision = repo, revision
+        self.calls: list[dict[str, Any]] = []
+
+    def probe(self) -> None:
+        return None
+
+
+class DryRunGuard(DummyBackend):
+    def __init__(self, repo: str, revision: str) -> None:
+        super().__init__()
+        self.model_id, self.model_revision = repo, revision
+
+    def generate(self, messages: list[dict[str, str]], config: GenerationConfig) -> ModelResponse:
+        del messages, config
+        return ModelResponse(text='{"risk":"SAFE","labels":[],"confidence":"LOW"}',
+                             model_id=self.model_id, model_revision=self.model_revision)
+
+    def probe(self) -> None:
+        return None
+
+
+class DryRunGuardFactory:
+    """Picklable stand-in for ``GuardFactory`` in the R3 dry run."""
+
+    def __init__(self, repo: str, revision: str) -> None:
+        self.repo, self.revision = repo, revision
+
+    def __call__(self) -> DryRunGuard:
+        return DryRunGuard(self.repo, self.revision)
+
+    def ping(self) -> None:
+        return None
 
 
 class GuardKeepalive:
