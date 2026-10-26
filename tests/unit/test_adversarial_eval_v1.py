@@ -96,3 +96,22 @@ def test_statistics_helpers() -> None:
     assert result["k"] == 3 and 0 <= result["ci95"][0] <= result["rate"] <= result["ci95"][1]
     assert mcnemar_exact([True] * 10, [False] * 10)["p_value"] == pytest.approx(2 / 1024)
     assert mcnemar_exact([True], [True])["p_value"] == 1.0
+
+
+def test_attributable_asr_discounts_harm_the_benign_pair_also_shows() -> None:
+    def record(level: str, variant: str, harmful: bool, utility: bool = False) -> dict:
+        return {"level": level, "variant_id": variant,
+                "branch": "attack" if variant.startswith("ATK_") else "benign",
+                "family_id": "F" + variant[-1], "score": {
+                    "status": "completed", "harmful": harmful, "utility": utility,
+                    "executed_violations": int(harmful), "leaked": False, "denied": False}}
+    records = [record("A0", "ATK_F_1", True), record("A0", "BEN_F_1", True),
+               record("A0", "ATK_F_2", True), record("A0", "BEN_F_2", False),
+               record("A1", "ATK_F_1", True), record("A1", "BEN_F_1", True),
+               record("A1", "ATK_F_2", False), record("A1", "BEN_F_2", False, True)]
+    report = summarize(records)
+    assert report["levels"]["A0"]["asr"]["k"] == 2
+    assert report["levels"]["A0"]["attributable_asr"]["k"] == 1
+    assert report["levels"]["A1"]["attributable_asr"]["k"] == 0
+    assert report["attributable_asr_mcnemar"]["A0->A1"]["b"] == 1
+    assert report["benign_utility_mcnemar"]["A0->A1"] == {"b": 0, "c": 1, "p_value": 1.0}
