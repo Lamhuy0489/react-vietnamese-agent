@@ -12,8 +12,8 @@ câu chữ Dev, guard vô dụng). Owner chọn A+B+C: phòng thủ v2 (user tin
 flow, chỉnh trên Dev), chỉ số harm có tác dụng phụ, Test-2 khoảng 20 family mới seal trước khi chạy
 v2. Test v1 không chạy lại, không dùng để chỉnh. Không sửa file trong manifest v1.
 
-Việc đầu tiên: viết thiết kế phòng thủ v2 và giao thức Test-2 (docs/project/), owner duyệt; rồi
-thêm chỉ số side-effect harm vào evaluator (file mới), tính trên Dev.
+Việc đầu tiên: owner duyệt docs/project/defense_v2_test2_design.md (5 quyết định ở mục 8), ghi
+decision log; rồi làm B: chỉ số side-effect harm (file evaluator mới), chấm lại Dev và Test v1 (phụ).
 Song song: RQ3 250 biến thể robustness. Việc phụ: PR sửa 21 test chỉ hỏng trên CI.
 ```
 

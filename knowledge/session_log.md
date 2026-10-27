@@ -148,3 +148,6 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - **Sáng 28/10:** owner hỏi vì sao Test yếu. Chẩn đoán 4 nguyên nhân (oracle tính đọc vô hại là harm;
   agent mở đầu bằng doc_search 100/150 bài benign; user instruction bị gắn UNTRUSTED và scope A4 overfit
   câu chữ Dev; guard vô dụng). Owner chọn A+B+C: phòng thủ v2 + chỉ số side-effect harm + Test-2.
+- Viết bản nháp `docs/project/defense_v2_test2_design.md` (B: side-effect harm; A: D2 tách control/data,
+  user tin cậy, đích sink phải có nguyên văn trong yêu cầu user; C: Test-2 20 family, seal trước code D2;
+  đề xuất E2 doc_search_v2 cho mọi cấu hình). Chờ owner duyệt.
