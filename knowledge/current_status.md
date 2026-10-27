@@ -1,8 +1,8 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-10-26 19:45. **Phase 0–5 đã nghiệm thu. Lộ trình
-[v2](../docs/project/roadmap_v2_rebuild.md), rebuild A:** R1–R2 xong, **R3 đã đóng băng** (tag `final-config`), R0 còn
-phần dọn (tuần 8/24, hạn 2027-02-19).
+Cập nhật: 2026-10-28 06:10. **Phase 0–5 đã nghiệm thu. Lộ trình
+[v2](../docs/project/roadmap_v2_rebuild.md), rebuild A:** R1–R3 xong, **R4 security Test xong**
+(2026-10-28); R0 còn sửa CI và dọn script (tuần 8/24, hạn 2027-02-19).
 
 ## Đã chốt ngày 2026-10-23
 
@@ -15,6 +15,11 @@ phần dọn (tuần 8/24, hạn 2027-02-19).
 
 ## Mốc đã xác minh
 
+- **R4 security Test (2026-10-28):** 2.100/2.100 lượt, 4 model_error (KEYLEAK, A0–A3), chạy một
+  lần. ASR ghép cặp A0 4 → A3 1 → A4–A6 0 /150, không mức nào có ý nghĩa thống kê. Benign utility
+  A0 30, A3 15, A4–A6 5 /150; A6 v3 không giữ được lợi thế Dev (A6 ≈ A5). Bảng trong decision log.
+- **PR #4 đã merge vào `main` (`5194c77`)**, tag `phase5-closure` → `419938b`. CI còn đỏ 21 test
+  (phụ thuộc `build/`, thiếu `jsonschema`, link knowledge), local xanh.
 - **R3 freeze (2026-10-26):** manifest `configs/final/final_config_v1.json` ghim 381 file; Test
   chỉ chạy được khi khớp manifest. Dry-run Dummy trên Test pass. RQ3 clean robustness chưa có dữ liệu.
 - **R2 Dev (2026-10-26):** A0–A6 đủ 2.800 lượt + A6 v3 400 lượt, 0 model_error. ASR ghép cặp
@@ -26,10 +31,9 @@ phần dọn (tuần 8/24, hạn 2027-02-19).
   Llama-3.1-8B 93/150, Gemma-4-12B 99/150. Guard A2 giữ Llama-3.2-3B.
 - R1 evaluator `adversarial_dev_v1` và runner A0–A6 đã có; `docs/metrics_spec.md` xong.
 - Phase 5: release `419938b`, 20/20 DoD. Dữ liệu seal hợp lệ, hash dataset `692ca92a…`.
-- Toàn bộ thay đổi trên branch `codex/phase5-worker-v3-source-freeze-20261001`; PR #4
-  **chưa merge vào `main`**, chưa có tag `phase5-closure`.
 
 ## Bước tiếp theo
 
-R4 chạy Test, theo [handoff](handoff.md). [Prompt cho phiên sau](next_session_prompt.md) ·
+Tạo 250 biến thể robustness RQ3 → final_config_v2 → clean Test + robustness × 3 backbone, theo
+[handoff](handoff.md). [Prompt cho phiên sau](next_session_prompt.md) ·
 [Nhật ký phiên](session_log.md) · [Trạng thái trước lộ trình v2](history_20261023_before_roadmap_v2_current_status.md).
