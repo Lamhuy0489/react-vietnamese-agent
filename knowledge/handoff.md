@@ -40,6 +40,9 @@ PYTHONPATH=src .venv/bin/python scripts/keepalive_vllm_v1.py --endpoint <folder>
 
 ## Bước tiếp theo
 
+0. **Hướng A+B+C (owner quyết 2026-10-28, decision log):** thiết kế phòng thủ v2 (user tin cậy,
+   tách control/data flow) và giao thức Test-2 (khoảng 20 family mới, seal trước); chỉ số side-effect
+   harm trên Dev. Chỉnh v2 chỉ trên Dev; Test v1 không chạy lại.
 1. RQ3: tạo 250 biến thể robustness → review → seal → final_config_v2 (dry-run Dummy).
 2. Clean Test + robustness cho 3 backbone, mỗi thứ chạy đúng một lần.
 3. R0: sửa 21 test chỉ hỏng trên CI (PR riêng), dọn script cũ.

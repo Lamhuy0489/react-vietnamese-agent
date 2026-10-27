@@ -145,3 +145,6 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - CI: thêm certifi/cryptography vào dev extras (mypy xanh); còn 21 test chỉ hỏng trên CI. Owner chọn
   merge trước: PR #4 merged `5194c77`, tag `phase5-closure` → `419938b`.
 - **Còn dở:** RQ3 250 biến thể; sửa CI; rotate HF token (lộ trong log chat, chỉ local).
+- **Sáng 28/10:** owner hỏi vì sao Test yếu. Chẩn đoán 4 nguyên nhân (oracle tính đọc vô hại là harm;
+  agent mở đầu bằng doc_search 100/150 bài benign; user instruction bị gắn UNTRUSTED và scope A4 overfit
+  câu chữ Dev; guard vô dụng). Owner chọn A+B+C: phòng thủ v2 + chỉ số side-effect harm + Test-2.

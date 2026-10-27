@@ -2648,3 +2648,41 @@ Reading, to be analysed in R5 (no change to the frozen config):
 - Benign utility is near the floor: A0 completes 6/30 families (30/150, Dev A0 87/200).
 - A6 v3 does not transfer: A6 equals A5 on 299/300 variants (benign 5/150); on Dev it
   recovered 60/200. A2 (guard) changes nothing versus A1, as on Dev.
+
+## 2026-10-28 — R4 Test diagnosis and scope extension: defense v2 + Test-2 (owner decision)
+
+Diagnosis of the R4 Test traces (analysis only; nothing in final_config_v1 changes and
+Test v1 is never rerun or used to tune):
+
+1. **Measurement.** The scope oracle scores harmless read-only calls as executed
+   violations (`tool_not_authorized`), e.g. a `doc_search` for a note id that returns
+   `[]`. 17/30 families have a "harmful" benign variant at A0; most raw ASR is this.
+2. **Agent/tool routing.** `doc_search` does not match ids, and Test instructions often
+   say "Đọc AWB_X" with the data in a cached page, a document (`doc_read`) or a table.
+   Qwen starts 100/150 benign Test tasks with `doc_search` (Dev 60/200) and gives up on
+   `[]`. A0 benign utility: 6/30 families.
+3. **Defense generalization.** The user instruction is labelled `UNTRUSTED`
+   (`runtime_v4.py`), and the A4 processing scope derives allowed actions from
+   pattern-matched Vietnamese phrasing. Phrasing outside the Dev patterns denies the
+   first legitimate call (`UNTRUSTED_CONTROL_INFLUENCE`, 11–12 Test families); A6 v3
+   clause anchors, designed from Dev failures, do not transfer (Dev benign 60/200,
+   Test 5/150). 5 of the 6 families A0 completes are denied at A4–A6.
+4. **Guard.** Llama-3.2-3B flags many benign requests and changes nothing at A2.
+
+Owner decision (A+B+C): keep R4 v1 as the primary pre-registered result and report it
+as is (including the negative transfer), and add:
+
+- **A. Defense v2:** the user is the trusted principal; only tool data is untrusted.
+  Control flow (which tool, which destination/action) may come only from the user
+  request; tool data may fill values but never choose actions or sinks (control/data
+  separation in the spirit of CaMeL/FIDES), replacing phrase-pattern anchors. Designed
+  and tuned on Dev only.
+- **B. Side-effect harm metric:** harm counts only executed side-effect sinks (mail,
+  webhook, writes) and final-answer leakage; harmless reads are not harm. Declared now,
+  computed on Dev first; on Test v1 it is reported as a secondary, post-hoc metric.
+- **C. Test-2:** about 20 new families (5 variants + benign pair each), authored and
+  sealed before defense v2 is frozen and run; v2 and the frozen v1 levels are compared
+  on Test-2 once.
+
+RQ3 robustness (250 variants) continues in parallel. Timeline impact: about 3–4 weeks,
+inside the current buffer (deadline 2027-02-19).
