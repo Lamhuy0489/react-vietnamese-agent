@@ -1,0 +1,78 @@
+{
+  "schema": "phase5_api_deployment_v1",
+  "updated_at_utc": "2026-10-01T18:05:29.079513+00:00",
+  "user_authorization": "User requested direct setup, startup and API verification on the two specified collaborator accounts.",
+  "phase5_accepted": false,
+  "dev_inference_requests": 0,
+  "test_payloads_loaded": 0,
+  "agent": {
+    "kernel": "lamhuy8904/react-vn-qwen3-agent-api-v3-candidate",
+    "url": "https://www.kaggle.com/code/lamhuy8904/react-vn-qwen3-agent-api-v3-candidate",
+    "version": 1,
+    "kernel_id": 136686959,
+    "source_commit": "e4078d7d5d2fe66a881e53ec5f194e3f9aa66b47",
+    "last_verified_status": "authenticated_READY",
+    "identity": {
+      "instance_id": "8dfd98a730cfc8e460fe6030c81d8f41",
+      "model_id": "qwen3-8b",
+      "model_revision": "sha256:c816c705dd33693b0dd32e94c1c13d55e9920a7bcae9010e04be509debc515e2",
+      "role": "agent",
+      "session_id": "a4e03e1bd9894dc69766fa299fd308fd",
+      "source_commit": "e4078d7d5d2fe66a881e53ec5f194e3f9aa66b47",
+      "worker_sha256": "21f66f981e6d9f075b07bc306b0ef802f09b221c5ae4539b06a26f5cf5e521c6"
+    },
+    "connection_file_mode": "0o600",
+    "package": "build/kaggle/collaborator_pair_frozen_20261001_01"
+  },
+  "guard": {
+    "kernel": "meanalways/react-vn-llama3-guard-api-v3-candidate",
+    "url": "https://www.kaggle.com/code/meanalways/react-vn-llama3-guard-api-v3-candidate",
+    "versions": [
+      1,
+      2
+    ],
+    "kernel_id": 136686965,
+    "latest_source_commit": "d6cc4fcee37b009751b94a7535b12690e257166c",
+    "status": "ERROR",
+    "api_ready": false,
+    "startup_failure": "EXACT_MODEL_MOUNT_MISSING",
+    "observed_input_directories": [],
+    "model_file_access": "HTTP 403 Forbidden under meanalways",
+    "public_metadata_access": true,
+    "latest_package": "build/kaggle/collaborator_pair_mountfix_20261002_01"
+  },
+  "dataset": null,
+  "model_inputs": [
+    "qwen-lm/qwen-3/transformers/8b/1",
+    "metaresearch/llama-3.2/transformers/3b-instruct/1"
+  ],
+  "private": true,
+  "remote_source_exact": {
+    "agent_v1": true,
+    "guard_v1": true,
+    "guard_v2": true
+  },
+  "startup_repair_assessment": "Exact alternative mount layout supported, but v2 still has no mounted input. File access 403 is the current blocker; path compatibility alone did not fix startup.",
+  "pending_access": "meanalways owner must resolve Llama file access with Kaggle, including requesting model access if required. API credential itself works for quota, notebooks and public metadata.",
+  "next_step": "Verify exact model files accessible before any further GPU submission; retain healthy agent if still READY; prepare fresh guard session, pull/compare source, discover and pin both roles, then new native closure v2 epoch.",
+  "browser_attempt": "Browser tool startup failed before navigation; no model permission form observed or submitted.",
+  "validation": {
+    "mount_serving_package_entrypoint_runner_tests": 54,
+    "model_access_and_mount_tests": 18,
+    "mount_package_preflight_layouts": 4,
+    "setup": "pass",
+    "ruff": "pass after line length fix",
+    "mypy": "pass 630 files",
+    "full_pytest": "not rerun"
+  },
+  "artifact_sha256": {
+    "build/kaggle/collaborator_pair_frozen_20261001_01/agent_submission.json": "c19873b60c36002b5d4c2a84e922ea05bae7221a33e25423a2aaa18949348a6d",
+    "build/kaggle/collaborator_pair_frozen_20261001_01/guard_submission.json": "de6e302d854658c6c6d4715db3af65e0bb679df289c8ca970cc82bbdeef49bf1",
+    "build/kaggle/collaborator_pair_frozen_20261001_01/agent_live_metadata.json": "7c2b6288ca464e1a18dfb645a5f7eeda2856873d74040ada13b2aec0a5a34d1b",
+    "build/kaggle/collaborator_pair_mountfix_20261002_01/guard_submission.json": "f48fb5689cc76ae6c58182f52dd00ac3dfbdabb23c2958d81e700288ab88cbcf",
+    "build/kaggle/collaborator_pair_mountfix_20261002_01/preflight_v3/receipt.json": "5f3914412cc0c936dd5b49ee9b92e43cd2e0e5f468aefb2179ed412bacaa0e61",
+    "build/operations/phase5_pair_20261002/check_20261001T173051709909Z.json": "782522d8854b169080699227a0215148ba7327c3b567e47ccc7cfd4fcaa663ad",
+    "build/operations/phase5_pair_20261002/logs_20261001T175802057331Z.json": "207cb3176b1e78830607009a0f90642de706827dc9d2c7c8ebe77279da0aacca",
+    "build/operations/phase5_pair_20261002/model_access_20261001T180149Z/receipt.json": "b6fa91284a1d160f88576e479013386cb18cbb2950e782ab5b7518e649f21270"
+  }
+}

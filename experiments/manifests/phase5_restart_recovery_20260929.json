@@ -1,0 +1,63 @@
+{
+  "scope": "restart verification and CPU host recovery correction",
+  "source_commit_worker": "728821ea761b3994eb40ebba91ab8238e4667f82",
+  "host_source_state": "working tree candidate; not deployed",
+  "roles": {
+    "agent": {
+      "kernel": "buiquocviet/react-vn-qwen3-agent-api-v1",
+      "version": 7,
+      "status": "RUNNING",
+      "health": "READY",
+      "source_matches": true,
+      "private": true,
+      "model_revision": "sha256:c816c705dd33693b0dd32e94c1c13d55e9920a7bcae9010e04be509debc515e2",
+      "session_id": "c7b220497d3a41e09cf2e2ba88ca0c00",
+      "remote_source_sha256": "a88482a0985b821a83a6168d045e6349d68e51ed14b9c8e49483305ad4c6fd4c"
+    },
+    "guard": {
+      "kernel": "huylmhuhu/react-vn-llama3-guard-api-v1",
+      "version": 5,
+      "status": "RUNNING",
+      "health": "READY",
+      "source_matches": true,
+      "private": true,
+      "model_revision": "sha256:8a1b11855468f3cc288a9f6dc68c258505b8a677541c4a23d7fdbad410ed504d",
+      "session_id": "0316d00d2c16494cbc5acc529dcfa98d",
+      "remote_source_sha256": "0cdf2e1a42b98a15d005174f21eaa1a7ae0d209b554bb8706c56a788ec80789f"
+    }
+  },
+  "artifact_sha256": {
+    "build/kaggle/structured_pair_release03a_20260929/restart_verified.json": "ad9da15156994dc7516b05111949ce93d4d507e163bde627133d7c406de16b03",
+    "build/kaggle/structured_pair_release03a_20260929/preflight.json": "0e419963b96cb126ca5d07a1c0651ab02ab9b4cff60f7798a4c83861d8e10f43",
+    "build/kaggle/structured_pair_release03a_20260929/agent_submission.json": "ef924a1a0ba746537734f3b81991a9ea889b4ec8c5d17d31711ac45d26846da7",
+    "build/kaggle/structured_pair_release03a_20260929/guard_submission.json": "2f975c08170d1f240f2cfeb562ab786a2655524c94f14ef2f304ef11fc2e77b5",
+    "build/evaluation/phase5_gate_readiness_restart03_20260929.json": "39a975d1f18da49d12ca9b648df3e2282d10760e7cede3b0e930bfea6c95aeac",
+    "src/react_agent/llm/request_worker_journal_v1.py": "11bd26b26acd835b8f4866f4b333d052269c1c79d168fe29ad00deab86193d99",
+    "src/react_agent/llm/request_reconciliation_v3.py": "2366b2eb04fea6353b9a3d7d1b101646e7240b35cd24fc11022aa91042e7a252",
+    "tests/unit/test_request_worker_host_recovery.py": "8fd8b32826e991011940668c5ec436e93b31e0e543b0554ce05e410feb5050cb",
+    "tests/unit/test_request_worker_host_v1.py": "7050a3f1cc739cbb4b86f55cfb480c3ee74c8da61010938fccba0ef764e552e9",
+    "docs/evaluation/phase5_restart_recovery_20260929.md": "d43e195a4ebc5c248f9fa48ec854e49a8faf3cd44ba6d09e24e11230ee68c696"
+  },
+  "preserved_host_snapshot": "build/evaluation/request_worker_host_v1_before_recovery_fix",
+  "qa": {
+    "new_regression_cases": 8,
+    "failures_reproduced_before_fix": 6,
+    "host_lifecycle_passed": 64,
+    "http_passed": 12,
+    "ruff": true,
+    "setup": true,
+    "mypy_files": 610,
+    "full_suite_rerun": false
+  },
+  "task_inference_requests": 0,
+  "test_payloads_read": 0,
+  "private_ground_truth_read": false,
+  "native_cancellation_proven": false,
+  "phase5_accepted": false,
+  "pending": [
+    "v3 notebook entrypoint/discovery/lifetime shutdown",
+    "source freeze and final package QA",
+    "predeclared native lifecycle diagnostic",
+    "remaining Phase5 DoD quality/provenance/utility/freeze evidence"
+  ]
+}

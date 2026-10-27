@@ -1,0 +1,52 @@
+{
+  "native_verified": false,
+  "network_actions": [],
+  "notebook_code_matches_script": true,
+  "phase5_accepted": false,
+  "preflight_sha256": "2378cbed9bea6c92914a5501ed8ac6fe3493f1a64de6c7f849d1d56b212b5c97",
+  "prepared_sha256": "ed7a3752b477dead87adc3329960a1904202a1e3ba6f24378ac74731656eddd5",
+  "private_discovery_key_shared": false,
+  "roles": [
+    {
+      "archive": "build/kaggle/collaborator_pair_frozen_20261001_01/owner_handoff/lamhuy8904-agent.zip",
+      "archive_sha256": "65013c9ab209c9de1c9b08f20b52a6a6467853ab5e57caabecbc247f620abe24",
+      "notebook": "build/kaggle/collaborator_pair_frozen_20261001_01/owner_handoff/lamhuy8904-agent/qwen3-8b-api.ipynb",
+      "notebook_sha256": "24cfaabe5a8f1d7b598bd87e448bc2278562d6939478c0a0b1cf3786c455ce0b",
+      "owner": "lamhuy8904",
+      "requested_kernel": "lamhuy8904/react-vn-qwen3-agent-api-v3-candidate",
+      "role": "agent",
+      "script_sha256": "efe64c6c9bb2263c260a14ac354abf7bec19c3a85c00f2b74516736c9e447ee9"
+    },
+    {
+      "archive": "build/kaggle/collaborator_pair_frozen_20261001_01/owner_handoff/meanalways-guard.zip",
+      "archive_sha256": "c90f7e0202f315c079c6e247ff9f40bf9037c4a5ba82e2a435048f5067f482c2",
+      "notebook": "build/kaggle/collaborator_pair_frozen_20261001_01/owner_handoff/meanalways-guard/llama-3.2-3b-instruct-api.ipynb",
+      "notebook_sha256": "8f01428de4c12f58fd94316b433241a037821b30b912e12afe0e4b3060870dc8",
+      "owner": "meanalways",
+      "requested_kernel": "meanalways/react-vn-llama3-guard-api-v3-candidate",
+      "role": "guard",
+      "script_sha256": "d2dbc45c3e87bb97d6b6bc8abd1f6a2eb4c4084f1b57b63e39a85ad4939711a0"
+    }
+  ],
+  "schema": "owner_notebooks_v3_export_v1",
+  "source_commit": "e4078d7d5d2fe66a881e53ec5f194e3f9aa66b47",
+  "submitted": false,
+  "date": "2026-10-01",
+  "github_branch": "codex/phase5-worker-v3-source-freeze-20261001",
+  "github_push_confirmed": true,
+  "github_commit_url": "https://github.com/Lamhuy0489/react-vietnamese-agent/commit/e4078d7d5d2fe66a881e53ec5f194e3f9aa66b47",
+  "package_directory": "build/kaggle/collaborator_pair_frozen_20261001_01",
+  "native_inference_requests": 0,
+  "worker_api_keys_obtained": false,
+  "validation": {
+    "focused_tests": 71,
+    "exact_package_layouts": 4,
+    "exported_notebooks_verified_against_git": 2,
+    "credential_value_matches": 0
+  },
+  "artifact_sha256": {
+    "build/kaggle/collaborator_pair_frozen_20261001_01/prepared.json": "ed7a3752b477dead87adc3329960a1904202a1e3ba6f24378ac74731656eddd5",
+    "build/kaggle/collaborator_pair_frozen_20261001_01/preflight_v3/receipt.json": "2378cbed9bea6c92914a5501ed8ac6fe3493f1a64de6c7f849d1d56b212b5c97",
+    "build/kaggle/collaborator_pair_frozen_20261001_01/owner_handoff_receipt.json": "8e993632cea55764f7f36d645ef8e7508bab89bb78fec269e16a6d0a9b8bcb99"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "protocol": "phase5_followup_email_exact_epoch2_receipt_v1",
+  "run": "build/evaluation/phase5_followup/email_exact02",
+  "conditions": 4,
+  "levels": [
+    "A3",
+    "A4",
+    "A5",
+    "A6"
+  ],
+  "uncertain_delivery": false,
+  "test_payloads_read": 0,
+  "private_ground_truth_read": 0,
+  "evaluation_byte_identical": true,
+  "resume_new_conditions": 0,
+  "artifact_sha256": {
+    "manifest.json": "3ce5e02c77a45b339880b25bf921fbebae1222f40be8c126eaba297966d82e59",
+    "evaluation01.json": "eef819c59a107800a5efa43b736dd9e337d2de01a82b5d854d834dd4b4a34799",
+    "evaluation02.json": "eef819c59a107800a5efa43b736dd9e337d2de01a82b5d854d834dd4b4a34799",
+    "report.md": "425f02a4ee3b04d9933232691df5bfd6a88210901592fd5f7a5b6e2d8869c144",
+    "progress_004.json": "8e55efe0343c857bcb2b54d1fa575132163fb494d8215f08e5c6b1d57abe3b0b"
+  },
+  "phase5_accepted": false
+}

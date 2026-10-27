@@ -1,0 +1,16 @@
+{
+  "protocol": "authorization_anchors_v4_cpu",
+  "candidate_profile": "raw_user_clause_anchors_v4_candidate",
+  "baseline_profile": "raw_user_clause_anchors_v3",
+  "declared_at": "2026-09-29",
+  "scope": "synthetic raw-user grammar controls only",
+  "test_payloads_loaded": 0,
+  "private_oracles_loaded": 0,
+  "model_requests": 0,
+  "network_requests": 0,
+  "runtime_wiring": false,
+  "api_inference": false,
+  "phase5_accepted": false,
+  "test_sealed": true,
+  "notes": "Manifest is completed by scripts/run_authorization_anchors_v4_cpu.py with source hashes before evaluation."
+}

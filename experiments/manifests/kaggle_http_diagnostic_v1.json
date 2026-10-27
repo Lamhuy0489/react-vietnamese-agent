@@ -1,0 +1,104 @@
+{
+  "agent_tasks_completed": 0,
+  "completed_resume_no_inference": true,
+  "credential_value_scan_matches": 0,
+  "date": "2026-09-27",
+  "declaration_sha256": "f20e5090a4c4f3e34272d3d342d113f9a1ea3e25d5082906ec4e9f1ac511a80c",
+  "formal_benchmark": false,
+  "git_base": "c87c321b42345e6d7152ca60976363a67a972531",
+  "guard_checks_passed": 2,
+  "held_out_test_loaded": false,
+  "identity_attested": false,
+  "model_calls": 5,
+  "phase5_accepted": false,
+  "profile": "kaggle_http_diagnostic_v1",
+  "qa": {
+    "focused_tests_passed": 62,
+    "mypy_source_files": 557,
+    "ruff": "pass",
+    "setup": "pass"
+  },
+  "qwen_broker_calls": 1,
+  "raw_hashes": {
+    "agent_deepseek-r1-llama-8b/broker.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "agent_deepseek-r1-llama-8b/checkpoint.json": "de41db28114e78c3df82c087b060f196ddf010a3a52092d0082de8b2f73b691f",
+    "agent_deepseek-r1-llama-8b/model_metadata.json": "9417c231c8e91bd28f394485ea6991a94a38a019e3da7218f760e0b7b3c807cd",
+    "agent_deepseek-r1-llama-8b/observable_turns.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "agent_deepseek-r1-llama-8b/result.json": "e74816f8bacd0a38f2f1025d2050e798b7ae87767db745f1a1689a67c8be33b5",
+    "agent_deepseek-r1-llama-8b/started.json": "4c098220ffeaf307cece0ec7658a7750dffec7e7f81799a17dba2c569c8581f1",
+    "agent_gemma-4-e4b-it/checkpoint.json": "b0b3e292a0feddbb0d88677975976773932d2e0601797c3e35667444803ab295",
+    "agent_gemma-4-e4b-it/result.json": "cf2054aa2d3e546d1720b71f2278f46217b68d2ec0c4eb47d09098de0b76d873",
+    "agent_gemma-4-e4b-it/started.json": "d0d9f2bb3e673f17812f1f74a9e61b67f194e7748604b5a015966d5798a7c5fd",
+    "agent_qwen3-8b/broker.jsonl": "345f400674771b3c0af4149ed9a5840a5b35215ce729c909b73094222930f2a6",
+    "agent_qwen3-8b/checkpoint.json": "f2f464cb75d9b1ad0c93ba1af4ad4ee2638c91fd865aaa8571b1647f0add354f",
+    "agent_qwen3-8b/model_metadata.json": "1b0cd47e71ee827a68565c1ea50b9844d22fbbe98fc145e606bfd425eb0d0b63",
+    "agent_qwen3-8b/observable_turns.json": "9372a17b4c2141925ece5dfd5131cc2b0102beb95eb2b63c756ccc31ba8812b8",
+    "agent_qwen3-8b/result.json": "3dbecae562aacba2c96e60f0291c367b092e0c296268d99e777421c7a0fad265",
+    "agent_qwen3-8b/started.json": "9d15ec2c85a4f217311c5ca23a39cc611dd792c20df24e4db686dcc0175bf981",
+    "declaration.json": "f20e5090a4c4f3e34272d3d342d113f9a1ea3e25d5082906ec4e9f1ac511a80c",
+    "guard_override/checkpoint.json": "2848bbf3288c77ec9ab1a43c3e0b7c125784c4167db9ca8f9deb9e57cbad8bdf",
+    "guard_override/model_metadata.json": "081906a19e8aa84e786fd6a1ce4a772147e261463b42990167db840ea768111b",
+    "guard_override/result.json": "04aedd295cdd940ba3a6c4e9df5c00fd9abd91556d82644c123e0827f4514d92",
+    "guard_override/started.json": "6752a0e8129f39150d0676cd4cf376cdf70cb9aa866b0f04bae8a02baa71423b",
+    "guard_public/checkpoint.json": "59e60395d494a84c7e102a1500e0706bdcaa28e0b138a054bef61669683f9a67",
+    "guard_public/model_metadata.json": "081906a19e8aa84e786fd6a1ce4a772147e261463b42990167db840ea768111b",
+    "guard_public/result.json": "d746397052e4302d6805bd40c395081964c5b5a12d33d81954023cbc5a3c6eef",
+    "guard_public/started.json": "fb48bcabf9b9410012e6a65f1a8c75c674e28de87b848c6dd2441c612fef49ff",
+    "summary.json": "783e299c8482ec5ba08034dc9290d760447ef981ceb962b1776f9522d9acd875"
+  },
+  "raw_root": "build/evaluation/kaggle_http_diagnostic01",
+  "results": [
+    {
+      "call_seconds": [
+        2.3852467209944734,
+        1.5133538069931092
+      ],
+      "error_code": "INVALID_SCHEMA",
+      "model": "qwen3-8b",
+      "model_calls": 2,
+      "status": "invalid_output",
+      "task_id": "agent_qwen3-8b"
+    },
+    {
+      "call_seconds": [],
+      "error_code": "TIMEOUT",
+      "model": "gemma-4-e4b-it",
+      "model_calls": 0,
+      "status": "api_error",
+      "task_id": "agent_gemma-4-e4b-it"
+    },
+    {
+      "call_seconds": [
+        14.051601175000542
+      ],
+      "error_code": "INVALID_JSON_OUTPUT",
+      "model": "deepseek-r1-llama-8b",
+      "model_calls": 1,
+      "status": "model_error",
+      "task_id": "agent_deepseek-r1-llama-8b"
+    },
+    {
+      "call_seconds": [
+        2.981726375001017
+      ],
+      "error_code": null,
+      "model": "llama-3.2-3b-instruct",
+      "model_calls": 1,
+      "status": "OK",
+      "task_id": "guard_public"
+    },
+    {
+      "call_seconds": [
+        3.5206621839897707
+      ],
+      "error_code": null,
+      "model": "llama-3.2-3b-instruct",
+      "model_calls": 1,
+      "status": "OK",
+      "task_id": "guard_override"
+    }
+  ],
+  "source_commit": null,
+  "summary_sha256": "783e299c8482ec5ba08034dc9290d760447ef981ceb962b1776f9522d9acd875",
+  "tasks": 5
+}

@@ -1,0 +1,50 @@
+{
+  "artifact_sha256": {
+    "build/evaluation/request_worker_v3/preflight01/probe.py": "31f9028fe60da386debae8a9e9525fcf572f7bbfb351f2168d58566670d6258a",
+    "build/evaluation/request_worker_v3/preflight01/receipt.json": "56c83249cb3d4d99e3b297a109c536c1e9852c6d84eeafb2623eeea9c4c43fe9",
+    "build/evaluation/request_worker_v3/preflight01/worker.tar": "79b6b7ad9f6a51bccf2e958ad2999fec71c22d1e69b1d72a2a8f32194ed1f640",
+    "docs/architecture/request_worker_v3_contract.md": "68e37bb0bb34cc9db243437dc05972d11bc92e499ea49990a780c8f9d2508b41",
+    "docs/evaluation/request_worker_v3_cpu_report.md": "c11587313473cc034840908013e31ca66c87c11034a99a67478e3dcdd5c29165",
+    "scripts/preflight_request_worker_v3.py": "0be9b446231cfc7ddf804c21ebcb08de3f69d0ab4d0eecf8be5c3d139454fa32",
+    "src/react_agent/llm/request_reconciliation_v3.py": "2366b2eb04fea6353b9a3d7d1b101646e7240b35cd24fc11022aa91042e7a252",
+    "src/react_agent/serving/quiescent_engine_v3.py": "fded52ade7496014c94790bf418c717fa6a9b15ff34b0b05bfb6ec50e363595e",
+    "src/react_agent/serving/request_http_v3.py": "d0ae98f96d0938a8658424fbf8020b00e0a6b4dd963e13c9aca2ac9ee477d59f",
+    "src/react_agent/serving/request_lifecycle_v3.py": "69919810b8552e55018f39c164ff266baa95e15b764cf61ba2829a7837c158f9",
+    "src/react_agent/serving/request_storage_v3.py": "80a56eca1745c9ac7f600cdf0c9d06dcf095b3115d9645d2db7f156613cc106d",
+    "src/react_agent/serving/request_worker_v3.py": "293cc1d0501a76563e47e1fda6e98eb8da73a0b3c2cbf6a49b725cd9109573c5",
+    "tests/unit/test_quiescent_engine_v3.py": "758e168a0c699348d2500b7811e4ba19d151e3e5f7fe6943238a46221aab5394",
+    "tests/unit/test_request_http_v3.py": "27a8ff70bc56d74ec3bc8de801e685a205b77075ba7dc4499d1aef19d5982773",
+    "tests/unit/test_request_lifecycle_v3.py": "6c1b2e3a5ef0ff560ad2e0bc8f7c1f9fa727761cae2742ed3fe6b5fe5485153d",
+    "tests/unit/test_request_reconciliation_v3.py": "eef8578601d716aa31fc716d95c51d8930ed44a582f695b23580cb2994cf87a9"
+  },
+  "date": "2026-09-28",
+  "git_base": "728821ea761b3994eb40ebba91ab8238e4667f82",
+  "gpu_inference": false,
+  "native_cancellation_proven": false,
+  "notebook_submitted": false,
+  "pending": [
+    "host transport/journal/runtime wiring and cached result recovery",
+    "notebook entrypoint/discovery/lifetime shutdown",
+    "commit/push source freeze and final package QA",
+    "predeclared native cancellation diagnostic"
+  ],
+  "phase5_accepted": false,
+  "private_oracles_read": false,
+  "qa": {
+    "archive_probe_hashes_verified": 2,
+    "focused_regression_passed": 103,
+    "historical_receipt_hashes_verified": 387,
+    "isolated_modules_each_case": 8,
+    "isolated_role_layout_cases": 4,
+    "mypy_source_files": 590,
+    "package_source_copies_verified": 32,
+    "pytest_seconds": 37.02,
+    "ruff_passed": true,
+    "setup_passed": true
+  },
+  "scope": "CPU v3 lifecycle, native adapter wiring, HTTP and isolated package; no native evidence",
+  "semantic_retry": false,
+  "source_state": "working-tree candidate; base commit alone does not contain new source",
+  "test_payloads_read": false,
+  "v1_journal_modified": false
+}

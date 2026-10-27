@@ -1,0 +1,73 @@
+{
+  "protocol": "phase5_doc_read_final_cpu_selected_v1",
+  "date": "2026-09-24",
+  "git_base": "c87c321b42345e6d7152ca60976363a67a972531",
+  "source_commit": null,
+  "runtime_count": 24,
+  "case_count": 12,
+  "summary": {
+    "benign": {
+      "baseline": {
+        "total": 5,
+        "passed": 1
+      },
+      "candidate": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "negative": {
+      "baseline": {
+        "total": 7,
+        "passed": 7
+      },
+      "candidate": {
+        "total": 7,
+        "passed": 7
+      }
+    }
+  },
+  "all_gates_passed": true,
+  "declaration_sha256": "2c9bdfb6d2dfef8ede5d01c719da9ac502da50e2b31b7d2f6aa727b15348757e",
+  "working_tree_sources": {
+    "docs/evaluation/phase5_doc_read_final_proof_v1_protocol.md": "5c3772d943bcdf4d3efa2b3fd1a41c2e31b766c54c7cbae0085599f156804277",
+    "src/react_agent/security_v1/doc_read_final_proof_v1.py": "a3a18b7c04265712ca9106cd739f41425e8d2291ab101652b3c29a63438bcf1b",
+    "src/react_agent/security_v1/doc_read_final_runtime_v1.py": "e60eb553265655a03d6cd2f966432d00c53f9f84a6dcf6fc47747b4e1a1d7555",
+    "src/react_agent/validation/doc_read_final_runtime_audit_v1.py": "d54782d30e787b2c8e0f450d88800482897999772fed40fd385ade597d0d681f",
+    "src/react_agent/validation/doc_read_final_controls_v1.py": "52972ee8b8a5c5376ca3d0986de8af67fce760e01cf751cca39aa0d93023b774",
+    "src/react_agent/security_v1/final_literal_proof_v1.py": "eed10d7d543ad6d4dcc1909816715aef7946331b9cc109ab08f0f2b5677e88c9",
+    "src/react_agent/security_v1/final_literal_runtime_v1.py": "11b8c49a9bd4407a7b48aa4912e261ca1d36b9d62aed5d83aaabd222a44ff243",
+    "src/react_agent/security_v1/value_origin_v4.py": "c27b5309ffae0610cc242fedb31b5ba2c51a706135b0f9b5322eae56fa484cd8",
+    "scripts/run_phase5_doc_read_final_cpu_v1.py": "6ab4cce2ce66dff3e11ed6717d55af8c4e34d8fd1bbe61a222a55a235d66d93e"
+  },
+  "source_deviation": {
+    "changed": [
+      "scripts/run_phase5_doc_read_final_cpu_v1.py"
+    ],
+    "reason": "historical runner duplicate protocol keyword in final dict construction",
+    "runtime_control_auditor_sources_unchanged": true,
+    "rerun_agent": false
+  },
+  "selected_audit": {
+    "path": "build/evaluation/phase5_doc_read_final_cpu_audit01.json",
+    "sha256": "fe4d3e10933034196d5a2634b1d13af0970199f490a064e6312baa507d662c4e",
+    "auditor_sha256": "7d924e0d711cf42ff1d1baa855de03a88e06081fb87eee29d3e19646f757fb10",
+    "repeat_audit_identical": true
+  },
+  "raw_file_count": 937,
+  "raw_inventory_sha256": "118c3c3db072e1541b8f27b42343f9224908b2a63e4b0baf6622daa83a33e093",
+  "verification": {
+    "broad_regression_passed": 319,
+    "strict_xfail_preserved_pilot": 1,
+    "new_component_tests": 40,
+    "new_integration_tests": 36,
+    "new_runner_tests": 2,
+    "counts_overlap": true,
+    "mypy_source_files": 542,
+    "setup_ruff_mypy_knowledge_diff_passed": true
+  },
+  "native_model_runs": 0,
+  "native_admitted": false,
+  "held_out_test_loaded": false,
+  "phase5_accepted": false
+}

@@ -1,0 +1,161 @@
+{
+  "schema": "phase5_completion_v1",
+  "date": "2026-10-02",
+  "phase5_accepted": true,
+  "scope": "original20DoD bounded implementation and smoke; no Phase6/7 or general defense quality claim",
+  "runtime_release_commit": "419938b4c2bc9842a92b2d797126d69ae727c953",
+  "diagnostic_source_status": "working-tree hash inventories and saved source snapshot; not newly committed or pushed",
+  "dod": {
+    "1": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "2": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "3": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "4": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "5": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "6": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "7": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "8": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "9": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "10": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "11": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "12": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "13": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "14": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "15": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "16": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "17": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "18": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "19": {
+      "status": "PASS",
+      "basis": "source-bound smoke and integration evidence"
+    },
+    "20": {
+      "status": "PASS",
+      "basis": "committed source/model/config and verified quality receipts"
+    }
+  },
+  "native_closure": {
+    "completed": 72,
+    "model_error": 12
+  },
+  "guard_dev": {
+    "attack_attempted": 40,
+    "FN": 19,
+    "benign_attempted": 40,
+    "TN": 35,
+    "TP": 21,
+    "FP": 5
+  },
+  "guard_conditions": 80,
+  "guard_unique_requests": 80,
+  "guard_groups": 8,
+  "http422_codes": {
+    "OUTPUT_SCHEMA_FAILED": 11
+  },
+  "fresh_pytest": {
+    "closure": 450,
+    "new_diagnostics": 17,
+    "total_distinct": 467
+  },
+  "quality": {
+    "setup": "PASS",
+    "ruff": "PASS",
+    "mypy": "PASS635files",
+    "knowledge_check": "PASS"
+  },
+  "test_payloads_deserialized": 0,
+  "private_ground_truth_loaded": 0,
+  "new_agent_requests": 0,
+  "new_guard_requests": 80,
+  "semantic_retries": 0,
+  "remaining_mandatory_phase5_dod": [],
+  "limitations": [
+    "C6 A5/A6 authorized public email false block retained",
+    "A6 observable origin evidence is bounded",
+    "Guard Dev attack flags21/40 and benign flags5/40; not ASR",
+    "Historical native12model_error retained; deeper cause of schema failure unknown",
+    "Raw artifacts are local and no new commit or push was performed"
+  ],
+  "artifact_sha256": {
+    "docs/project/phase_status.md": "d713bf25e597595e78f31983cb508c56b321685ad2585d0055b88ddbf1a2f0bd",
+    "docs/evaluation/phase5_completion_20261002.md": "10528e28be0b9717b4f2e66f7cc62c63710a085b27cced462c2cdcfc78ab6820",
+    "docs/evaluation/phase5_guard_quality_v1_report.md": "df2e0a3c4acf7cd110d1978f891ed907f96a342276bf22c3588ee2f5c0438586",
+    "docs/evaluation/phase5_guard_quality_v1_protocol.md": "52a4f0c6981caf1b97e9ba371d8e2a6cd1f084bbd93ae4a194e377bcbc345bb4",
+    "experiments/manifests/phase5_acceptance_20261002.json": "b58e1cf76674c70347bdfb04034fccbbd03b275d12b11af4766a844ac6d51649",
+    "experiments/manifests/phase5_release_20261002.json": "26b0168705259e1edd451375d8ffd75010d6fad2c5bfc9352dab963ef96025d9",
+    "experiments/manifests/phase5_failure_codes_20261002.json": "68e8a983dfc62fc70c6e696e9fcd3d03626fd53a047dd2443e66280ac733ce68",
+    "experiments/manifests/phase5_guard_quality_20261002.json": "9e2256723ed4b2aa76eae08313c858b59637f4d709f905e5f29143e3709da925",
+    "scripts/audit_phase5_failure_codes_v1.py": "023183cebd86e9e3147a4fb8a4d11cba11b616ad6b493071652b08a2f59003a1",
+    "scripts/run_phase5_guard_quality_v1.py": "a3d03cead61bdd51bd6acf24a26b4f2079f296fce160ed6c5eabbfccc15f667d",
+    "tests/unit/test_phase5_failure_codes_v1.py": "c9399c8aa5fce14bf0519138b131b7c08ce8a4c05c83e110835e3ec76138cf6b",
+    "tests/unit/test_phase5_guard_quality_v1.py": "20d5fe9fff7691b582d46477a2a63fec51d6592ca0485d11a049029a28b8bd96",
+    "build/evaluation/phase5_completion_20261002_01/acceptance_final.json": "b58e1cf76674c70347bdfb04034fccbbd03b275d12b11af4766a844ac6d51649",
+    "build/evaluation/phase5_completion_20261002_01/junit.xml": "3bb1a3864d0ddb581d056a71da33be70e5f5e511b71fe5ad0dd493fa99be27e6",
+    "build/evaluation/phase5_completion_20261002_01/new_audits_junit.xml": "8ffdc3298b3ff032b6122cbdc4b59cc06ecba0da3271dab5278e49bcad7687c4",
+    "build/evaluation/phase5_completion_20261002_01/checks.json": "fd6c1889eca7cfdb3f20083d133c96271f4f0684b36f109597d3286bf7d31328",
+    "build/evaluation/phase5_completion_20261002_01/phase_status_before.md": "058d56e17193e21dc9eb8c6451cf2e3bb49989f524d7eeb58a5535ae21bc930c",
+    "build/evaluation/phase5_completion_20261002_01/knowledge_check.log": "78c84ad170022bf4bd205a0a9abf804350ca190e83a245d9c2ae59b534b958c4"
+  },
+  "evidence_archive": {
+    "archive": "build/releases/phase5_completion_evidence_20261002.tar.gz",
+    "archive_sha256": "32af8673ed86dc96d2476612d6c9c84cc53762862d54db44621a5f9927f7ab01",
+    "bytes": 5814020,
+    "files": 5928,
+    "credential_value_scan_matches": 0,
+    "manifest": "build/releases/phase5_completion_evidence_20261002.manifest.json",
+    "manifest_sha256": "e6e91e637c31f5cb2728e00280906e7c26b0149045139c0bb75fab9ff4ec5ede"
+  }
+}

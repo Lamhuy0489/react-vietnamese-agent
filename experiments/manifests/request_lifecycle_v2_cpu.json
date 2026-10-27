@@ -1,0 +1,26 @@
+{
+  "scope": "CPU request lifecycle and authenticated HTTP candidate; not deployed",
+  "date": "2026-09-28",
+  "tests_passed": 51,
+  "pytest_seconds": 43.37,
+  "direct_lifecycle_http_tests": 18,
+  "mypy_source_files": 583,
+  "setup_passed": true,
+  "ruff_passed": true,
+  "loopback_test_required_sandbox_escalation": true,
+  "gpu_inference": false,
+  "notebook_submitted": false,
+  "native_cancellation_proven": false,
+  "phase5_accepted": false,
+  "test_payloads_read": false,
+  "private_oracles_read": false,
+  "source_state": "working tree; not committed",
+  "artifact_sha256": {
+    "src/react_agent/serving/request_lifecycle_v2.py": "cbb4f44cec73a350ca0b57799d47c7c2330ebefd7669ea026730396083525183",
+    "src/react_agent/serving/request_http_v2.py": "c5ebfc6302dfb394f1805afb21e6f78a22217be094db5bb311c4713a57eac298",
+    "tests/unit/test_request_lifecycle_v2.py": "7b3754f4368b9b0e7fb8bf509bf165e1bb2be967a6445dd04d5d35a6ca09631c",
+    "tests/unit/test_request_http_v2.py": "a15dbdc559a8caa596509a69b0d741858b1374b67875606c324bd4fa1b4c58cd",
+    "docs/architecture/request_lifecycle_v2_candidate.md": "475247dfd8bd997f3ba9d952e5807cc7b215611a15fed1a90414cee588821bc7",
+    "docs/evaluation/request_lifecycle_v2_cpu_report.md": "6a85d823121813a3baf56cf2f8d923249727f33abfecefd4a1dec4d67840a9fd"
+  }
+}

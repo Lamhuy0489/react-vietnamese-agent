@@ -1,0 +1,84 @@
+{
+  "schema": "phase5_root_fix_cpu_evidence_v1",
+  "date": "2026-09-29",
+  "git_base": "728821ea761b3994eb40ebba91ab8238e4667f82",
+  "source_status": "uncommitted working tree; git base does not contain these changes",
+  "scope": "synthetic CPU and package QA; no native inference or submission",
+  "phase5_accepted": false,
+  "test_payloads_loaded": 0,
+  "private_ground_truth_loaded": 0,
+  "cpu_controls": {
+    "completed": 84,
+    "required_protection_passed": 44,
+    "phase5_accepted": false
+  },
+  "rescore": {
+    "byte_identical": true,
+    "expected_native_identity_failures": 85
+  },
+  "package": {
+    "passed_layouts": 4,
+    "native_model_loads": 0,
+    "network_actions": []
+  },
+  "checks": {
+    "setup": "passed",
+    "ruff": "passed",
+    "mypy": "626 source files passed",
+    "focused_suite": {
+      "passed_initial": 146,
+      "sandbox_bind_failures": 2,
+      "http_rerun_passed": 12,
+      "distinct_tests_passed_after_rerun": 148
+    },
+    "package_regressions": {
+      "passed": 7
+    },
+    "latest_focused_run": {
+      "passed": 31,
+      "includes_previously_passed_tests": true
+    },
+    "full_pytest": {
+      "status": "interrupted_not_complete",
+      "passed_before_interruption": 854,
+      "skipped": 1,
+      "seconds": 978.1,
+      "skip_reason": "jsonschema unavailable",
+      "exit_code": 2
+    },
+    "knowledge_check": "passed",
+    "git_diff_check": "passed"
+  },
+  "artifact_sha256": {
+    "build/evaluation/phase5_native_closure_cpu_admission04/manifest.json": "3c4fbfd35189e65e406b57d0e16192a01dcbe7f041532170c163a489dd14c748",
+    "build/evaluation/phase5_native_closure_cpu_admission04/receipt.json": "4023807433b7003f40992e67a1601caf453c090ee888a485231758134c805865",
+    "build/evaluation/phase5_native_closure_cpu_admission04_controls.json": "18d2671a926ce21c66d028596c58c074b125009710458357977cf7bfc5f4f6b1",
+    "build/evaluation/phase5_native_closure_cpu_admission04_readiness02.json": "89edffa28b94b016d6b67423ba5bd6a9c3db6299e39e76d7e8f14dc8857976a4",
+    "build/evaluation/phase5_native_closure_cpu_admission04_readiness03.json": "89edffa28b94b016d6b67423ba5bd6a9c3db6299e39e76d7e8f14dc8857976a4",
+    "build/kaggle/request_worker_v3_candidate_20260929_04/prepared.json": "6a3689ec84e0ec94eb3293186e4c9f28bf47985d95e5c8a48ff6e924f939a9fc",
+    "build/kaggle/request_worker_v3_candidate_20260929_04/preflight_v3/receipt.json": "0a9c2193782a1e50d1d41cab19967b56490e8c96444e7f7a8b86c7ac2846c1cc",
+    "build/evaluation/phase5_root_fix_full_pytest_20260929.log": "fe5b0e6c956929a9bf333ef438caf54c8774cefd12b814709493a94df7cd8408"
+  },
+  "current_source_sha256": {
+    "src/react_agent/security_v1/phase5_closure_runtime_v1.py": "8f6efeb0d6d89e1af8b2961989141a7bf1376627c0e7025e2d3b69aa7dd622fe",
+    "src/react_agent/llm/request_worker_runtime_v1.py": "b422de8db5fee23e65be16b8fd1c701b7ad8a6cbcd6e9f7834020d68ab0a359f",
+    "src/react_agent/serving/request_worker_entrypoint_v3.py": "4893fc2867531e78e69abeac3ad9f604050e1fbf24058b417adbcee1a44ef37f",
+    "scripts/run_phase5_native_closure_v1.py": "6a3742bbc64795f37cdeefb14f5c7f64ff505dd52bb45b435d799a1514c16940",
+    "scripts/run_phase5_native_closure_cpu_admission_v1.py": "769d766c59416e5e19edbe884faa8366bbfc301ceb646d79bcee8b7afe240926",
+    "scripts/evaluate_phase5_acceptance_v1.py": "8b73269ff7c24bc10e76289ce764b8f914af33b1c555c26b1077aad4a62c0263",
+    "scripts/evaluate_phase5_native_closure_controls_v1.py": "eb5a7fe7936d77c8023fff5f7f160cbc23564adb5135f16b7d783cc4a9aaf665",
+    "scripts/launch_structured_pair_v3.py": "a1ab39e47705731ad15f8f49094a9667b44daa8de98a65e46a489ebd528a7ceb",
+    "tests/unit/test_phase5_acceptance_readiness.py": "db70d9a80e6922ae51118016fa2c10331e10406aebd13436c853ae720a3ce279",
+    "tests/integration/test_phase5_closure_candidate.py": "58430bac7c0399e280aa7081d9fbf4b2093f69a980b0199edb3dd8a5942aacf4",
+    "tests/unit/test_request_worker_session_factory.py": "fdd7ed22f2879acd4accd33a597bcaa9cf7490e59728752e16b4c715e42747f0",
+    "tests/unit/test_request_worker_package_v3.py": "8662557c3218d3eb1f5fa974150f346c2db7d5cb60b7c29f99d12892068d1159"
+  },
+  "source_boundary": "CPU04 binds its own original source snapshot; current evaluator rescoring is separately hashed here.",
+  "pending": [
+    "native runner with immutable pre-request manifest",
+    "entrypoint/discovery/tunnel failure and shutdown QA",
+    "source freeze and private notebook deployment",
+    "native matched Dev and guard fault/classifier evidence",
+    "all twenty DoD evidence links"
+  ]
+}

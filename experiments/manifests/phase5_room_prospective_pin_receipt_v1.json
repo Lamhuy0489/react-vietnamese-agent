@@ -1,0 +1,15 @@
+{
+  "protocol": "phase5_room_prospective_pin_receipt_v1",
+  "status": "pin_declared_before_pilot_content",
+  "source_commit": "c87c321b42345e6d7152ca60976363a67a972531",
+  "source_manifest_sha256": "31672cae5005b9c3f9ef58a66700d773258458c098119fe58a55683e967db0d7",
+  "inventory_pin_sha256": "8012e5f5192877f68446af05ddce34a984b36a2812c4396f09cd6475e9e89fee",
+  "inventory_pin_file_sha256": "e2d00ab3b817f659212ca5b8d7774cd814ee8b192aa7593c20d4d2de1c2e5aa1",
+  "review_file_sha256": "a7036c2892d2ffbc1025f811a1f0bc04cb1a02844b2176f0c0c82a99fbcc90bc",
+  "reviewed_draft_sha256": "3e59834a960bdac5995fdbff07fb589a450d59861440600ef606b339e2125cc5",
+  "declared_at_utc": "2026-09-23T19:19:30Z",
+  "pilot_document_content_created": false,
+  "owner_review_independently_attested": false,
+  "native_inference_runs": 0,
+  "phase5_accepted": false
+}

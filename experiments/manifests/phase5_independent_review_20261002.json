@@ -1,0 +1,85 @@
+{
+  "schema": "phase5_independent_review_v1",
+  "review_date": "2026-10-02",
+  "thread_reviewed": "01a0e3fc-0fdb-7d72-95d6-6aec0d348e8a",
+  "source_commit": "419938b4c2bc9842a92b2d797126d69ae727c953",
+  "scope": "offline research and evidence review; no phase promotion or new inference",
+  "fresh_audit_equals_saved_receipt": true,
+  "audit_dod_counts": {
+    "PASS": 20
+  },
+  "native_status_counts": {
+    "completed": 72,
+    "model_error": 12
+  },
+  "native_by_level": {
+    "A0": {
+      "model_error": 4,
+      "completed": 8
+    },
+    "A1": {
+      "model_error": 5,
+      "completed": 7
+    },
+    "A2": {
+      "model_error": 3,
+      "completed": 9
+    },
+    "A3": {
+      "completed": 12
+    },
+    "A4": {
+      "completed": 12
+    },
+    "A5": {
+      "completed": 12
+    },
+    "A6": {
+      "completed": 12
+    }
+  },
+  "cpu_control_matrix_passed": true,
+  "local_delivery_unresolved": false,
+  "test_seals_hash_only": true,
+  "new_inference_requests": 0,
+  "remote_readiness_checked": false,
+  "official_phase_status_changed": false,
+  "fresh_checks": {
+    "verify_setup": "PASS",
+    "ruff": "PASS",
+    "mypy": "PASS 633 source files",
+    "focused_pytest": "16 passed in 1.20s",
+    "test_files": [
+      "tests/unit/test_phase5_acceptance_evidence_v2.py",
+      "tests/integration/test_phase5_acceptance_paths_v1.py"
+    ],
+    "evidence_form": "command outputs observed in this review turn; historical QA receipts separately verified"
+  },
+  "historical_rechecks": "Older experiment counts read from reports; their complete raw inventories were not reaudited",
+  "artifact_sha256": {
+    "experiments/manifests/phase5_acceptance_20261002.json": "b58e1cf76674c70347bdfb04034fccbbd03b275d12b11af4766a844ac6d51649",
+    "experiments/manifests/phase5_release_20261002.json": "26b0168705259e1edd451375d8ffd75010d6fad2c5bfc9352dab963ef96025d9",
+    "docs/evaluation/phase5_acceptance_contract_v2.md": "23f8d93437cf0a472b7cb396c882b1ec417c4e48f0cc6c266659248577b6056a",
+    "docs/project/phase_status.md": "058d56e17193e21dc9eb8c6451cf2e3bb49989f524d7eeb58a5535ae21bc930c",
+    "docs/research/phase5_independent_review_20261002.md": "174ee10b3fc91042694d8049c5e63cc25ce212b3c0d69d5c298cde9120c2b132",
+    "build/evaluation/phase5_independent_review_20261002_01/acceptance_recheck.json": "b58e1cf76674c70347bdfb04034fccbbd03b275d12b11af4766a844ac6d51649"
+  },
+  "primary_sources": [
+    {
+      "title": "Defeating Prompt Injections by Design",
+      "authors": "Debenedetti et al.",
+      "year": 2025,
+      "url": "https://arxiv.org/html/2503.18813v2",
+      "read_scope": "full HTML with focused review of design and explicit non-goals",
+      "accessed": "2026-10-02"
+    },
+    {
+      "title": "AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents",
+      "authors": "Debenedetti et al.",
+      "year": 2024,
+      "url": "https://arxiv.org/abs/2406.13352v3",
+      "read_scope": "abstract and bibliographic metadata",
+      "accessed": "2026-10-02"
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "protocol": "phase5_final_literal_dev_cpu_summary_v1",
+  "date": "2026-09-24",
+  "source_commit": null,
+  "git_base": "c87c321b42345e6d7152ca60976363a67a972531",
+  "matrix": {
+    "path": "build/evaluation/phase5_final_literal_proof_dev03.json",
+    "sha256": "a1c1421b2f9f70d6395dc08d48acedc3247a7dd046e21548791a6c8e1d83c4e1",
+    "input_sha256": "13fd8a775a45dcf7d4c7b84cb55fed932d0354f5bdd14d03ba806883ac534603",
+    "auditor_sha256": "22946273e006fe1f3d6e37b3e412f1299bb9dba9ef1f6b31870ab7443ad822ce",
+    "component_sha256": {
+      "value_origin_v3": "d293dd4b800207e4dcac0ce13f610064dbd8d55877482a00a50c0949f94d0fec",
+      "value_origin_v4": "c27b5309ffae0610cc242fedb31b5ba2c51a706135b0f9b5322eae56fa484cd8",
+      "final_entitlements_v2": "7e5e75a1bdcaf19d9d2d71d59c7cb2d52d2022534e50406048c0dac2982a3e38",
+      "final_literal_proof_v1": "eed10d7d543ad6d4dcc1909816715aef7946331b9cc109ab08f0f2b5677e88c9"
+    },
+    "summary": {
+      "user_collision": {
+        "v3": {
+          "total": 6,
+          "scored": 6,
+          "desired_pass": 6
+        },
+        "v4": {
+          "total": 6,
+          "scored": 6,
+          "desired_pass": 0
+        },
+        "proof": {
+          "total": 6,
+          "scored": 6,
+          "desired_pass": 6
+        }
+      },
+      "public_collision": {
+        "v3": {
+          "total": 4,
+          "scored": 4,
+          "desired_pass": 4
+        },
+        "v4": {
+          "total": 4,
+          "scored": 4,
+          "desired_pass": 0
+        },
+        "proof": {
+          "total": 4,
+          "scored": 4,
+          "desired_pass": 4
+        }
+      },
+      "leak": {
+        "v3": {
+          "total": 6,
+          "scored": 6,
+          "desired_pass": 0
+        },
+        "v4": {
+          "total": 6,
+          "scored": 6,
+          "desired_pass": 6
+        },
+        "proof": {
+          "total": 6,
+          "scored": 6,
+          "desired_pass": 6
+        }
+      },
+      "invalid_proof": {
+        "v3": {
+          "total": 6,
+          "scored": 0,
+          "desired_pass": null
+        },
+        "v4": {
+          "total": 6,
+          "scored": 0,
+          "desired_pass": null
+        },
+        "proof": {
+          "total": 6,
+          "scored": 6,
+          "desired_pass": 6
+        }
+      },
+      "unsupported": {
+        "v3": {
+          "total": 2,
+          "scored": 0,
+          "desired_pass": null
+        },
+        "v4": {
+          "total": 2,
+          "scored": 0,
+          "desired_pass": null
+        },
+        "proof": {
+          "total": 2,
+          "scored": 0,
+          "desired_pass": null
+        }
+      }
+    },
+    "effects_unchanged_from_receipt02": true
+  },
+  "runtime": {
+    "path": "build/evaluation/phase5_final_literal_runtime_cpu_receipt01.json",
+    "sha256": "1b5948bcf79a40c80e8c363f75556c36904f8f06d65244853c3f124f2e13f61a",
+    "runtime_count": 14,
+    "statuses": {
+      "completed": 11,
+      "max_steps": 1,
+      "parse_failure": 1,
+      "model_error": 1
+    },
+    "final_effects": {
+      "REDACT": 4,
+      "ALLOW": 6,
+      "DENY": 1
+    },
+    "working_tree_sources": {
+      "src/react_agent/security_v1/final_literal_runtime_v1.py": "11b8c49a9bd4407a7b48aa4912e261ca1d36b9d62aed5d83aaabd222a44ff243",
+      "src/react_agent/security_v1/final_literal_proof_v1.py": "eed10d7d543ad6d4dcc1909816715aef7946331b9cc109ab08f0f2b5677e88c9",
+      "src/react_agent/security_v1/value_origin_v4.py": "c27b5309ffae0610cc242fedb31b5ba2c51a706135b0f9b5322eae56fa484cd8",
+      "src/react_agent/validation/final_literal_runtime_audit_v1.py": "7e2ea9a26c8b6e354d6b6e8c7ee675a46478a01b2a83f9ef948f8e4f440f3c12",
+      "tests/integration/test_final_literal_runtime_v1.py": "afc9c9e13e32f10b33df4a16e3084c0c6fe26106b314f03c6edc567f76bfb8a6",
+      "tests/integration/test_final_literal_room_runtime_v1.py": "9f1bbf279dca8fcab0005703fea585888e6a583b09a0b2f753205c5553bad278",
+      "scripts/audit_phase5_final_literal_runtime_v1.py": "9514d11e08eaa3554cf811ee1efd0fd7ec021e5f1ad186e115058a1e26bda68b"
+    }
+  },
+  "model_inference_runs": 0,
+  "held_out_test_loaded": false,
+  "public_field_runtime_enabled": false,
+  "native_admitted": false,
+  "phase5_accepted": false,
+  "qa": {
+    "broad_regression_passed": 240,
+    "broad_regression_strict_xfail": 1,
+    "final_focused_recheck_passed": 34,
+    "qa_counts_overlap": true
+  }
+}

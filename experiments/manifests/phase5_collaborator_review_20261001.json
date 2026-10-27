@@ -1,0 +1,41 @@
+{
+  "schema": "phase5_collaborator_review_export_v1",
+  "date": "2026-10-01",
+  "source_commit": "development",
+  "status": "local_review_only_not_a_release",
+  "package_preflight_cases": 4,
+  "notebook_code_matches_preflighted_script": true,
+  "account_credentials_loaded": false,
+  "network_actions": [],
+  "submitted": false,
+  "worker_api_keys_obtained": false,
+  "phase5_accepted": false,
+  "private_discovery_key_shared": false,
+  "pending": [
+    "source freeze/push before upload",
+    "individual owner execution on permitted resources",
+    "authenticated discovery and native verification"
+  ],
+  "roles": [
+    {
+      "role": "agent",
+      "intended_owner": "lamhuy8904",
+      "requested_kernel": "lamhuy8904/react-vn-qwen3-agent-api-v3-candidate",
+      "notebook": "build/kaggle/collaborator_pair_review_20261001_01/owner_handoff/lamhuy8904/qwen3-8b-api-review.ipynb",
+      "archive": "build/kaggle/collaborator_pair_review_20261001_01/owner_handoff/lamhuy8904-agent-review.zip",
+      "notebook_sha256": "93c69ba360a108474da2f356c6acc58ea6b7e82e9ab31296b31ebe66f9f7e056",
+      "code_sha256": "2e35c2358a90972165d9c64b7ed0d0668d49e91567971d4e45c9a01029062c85",
+      "archive_sha256": "8d8f130294c7120df32fa51ade7c2924818f81967571c644f597a5769832ac58"
+    },
+    {
+      "role": "guard",
+      "intended_owner": "meanalways",
+      "requested_kernel": "meanalways/react-vn-llama3-guard-api-v3-candidate",
+      "notebook": "build/kaggle/collaborator_pair_review_20261001_01/owner_handoff/meanalways/llama-3.2-3b-instruct-api-review.ipynb",
+      "archive": "build/kaggle/collaborator_pair_review_20261001_01/owner_handoff/meanalways-guard-review.zip",
+      "notebook_sha256": "2885d164a376294c8e627cd6c3eba87034de3c39ea2558a503a5cb0aab03c0f9",
+      "code_sha256": "c54c6808f79be4d92f3962b895cf873d245a23549e4c432b5debac4a2a9ad116",
+      "archive_sha256": "6f27afef8cf1b111af04bd40ac0830daed3460430994e7513001b6ae9bba8a57"
+    }
+  ]
+}

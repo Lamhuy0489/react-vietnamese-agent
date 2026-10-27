@@ -1,0 +1,25 @@
+{
+  "artifact_sha256": {
+    "docs/evaluation/request_worker_host_v1_cpu_report.md": "b8333fbae1c3a7e34427c49468b7c090d2b58520c605e3527dfe0b5e9ea1b874",
+    "src/react_agent/llm/request_worker_journal_v1.py": "3e1dc33b1b1fb3a9adb60a6f47e57534fd64b245ae2def789466ee119c8bb7f3",
+    "src/react_agent/llm/request_worker_runtime_v1.py": "61e385c5a2318ef67233f00917dd7973970bdae26f92fac233f337d659a0dcf7",
+    "src/react_agent/llm/request_worker_transport_v1.py": "a084699d4bbbd767fbb57a74f2b4201f788fe8232c01734d956f2306f6000bd3",
+    "tests/unit/test_request_worker_host_v1.py": "7050a3f1cc739cbb4b86f55cfb480c3ee74c8da61010938fccba0ef764e552e9"
+  },
+  "date": "2026-09-29",
+  "gpu_inference": false,
+  "native_cancellation_proven": false,
+  "notebook_submitted": false,
+  "phase5_accepted": false,
+  "private_oracles_read": false,
+  "qa": {
+    "focused_pytest": "6 passed",
+    "mypy_files": 4,
+    "ruff_passed": true
+  },
+  "scope": "credential-free CPU host transport, immutable journal, cached-result recovery and structured backend wiring",
+  "semantic_retry": false,
+  "source_state": "working-tree candidate; not connected to Kaggle notebooks",
+  "test_payloads_read": false,
+  "v1_journal_modified": false
+}
