@@ -22,6 +22,15 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-10-28 01:41 — R4 security Test, Qwen + guard trên meanalways** (lamhuy8904 hết quota GPU):
+[meanalways/react-vn-vllm-serve-v1](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1) **v1**
+(Qwen3-8B) và [meanalways/react-vn-vllm-serve-v1-llama32-3b-guard](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1-llama32-3b-guard)
+**v1** (guard), private, T4×2, token HF chèn như trước. Cả hai READY lúc khoảng 01:54. Folder
+`build/kaggle/vllm_serve_v1_{qwen3_8b_20261028_014125,llama32_3b_guard_20261028_014126}`.
+Kaggle CLI chạy bằng `KAGGLE_CONFIG_DIR` tạm trỏ tới credential meanalways (không vào Git).
+Keepalive `scripts/keepalive_vllm_v1.py --every 10` chạy suốt đợt, log `build/kaggle/keepalive_r4.log`.
+Source: tag `final-config`.
+
 **2026-10-26 tối — trạng thái:** Qwen v4 và guard v2 đã chạy xong A0–A6 Dev (2.800 lượt) và
 A6 v3 (400 lượt, 18:00–18:47). Keepalive tắt lúc khoảng 19:00, nên cả hai **đã tự tắt** (idle 30 phút).
 Mai bật lại bằng `launch_vllm_serve_v1.py prepare` (token HF lấy từ notebook private cũ trong
