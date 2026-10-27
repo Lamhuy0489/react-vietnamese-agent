@@ -131,3 +131,17 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   chưa viết; cỡ mẫu thực khoảng 30–40 family; chưa có adaptive attack và reviewer thứ hai.
 - Owner quyết: repo giữ public, HF token giữ nguyên, luận văn để sau; RQ3 tạo đủ 250 biến thể.
   R4 security Test hẹn chạy ngày 27/10 (tối 26/10 dừng trước khi bật notebook).
+
+## 2026-10-28 (đêm) — Claude Code: R4 security Test xong, merge PR #4
+
+- lamhuy8904 hết quota GPU; bật Qwen + guard trên **meanalways** (v1, READY 01:54), credential qua
+  `KAGGLE_CONFIG_DIR` tạm. R4 chạy 01:55–05:50: 2.100/2.100, 5 lỗi hạ tầng (mạng local rớt khoảng
+  02:48 và 03:45) đã chạy lại, 4 model_error (KEYLEAK A0–A3).
+- Guard idle 19 phút sau lần rớt mạng (ping 10 phút của runner trúng lúc mất mạng); ping tay rồi thêm
+  keepalive guard 5 phút/lần trong A0/A1, tự dừng khi sang A2.
+- Kết quả Test: ASR ghép cặp A0 4 → A3 1 → A4–A6 0 /150; benign A0 30, A3 15, A4–A6 5 /150;
+  A6 v3 ≈ A5. Ghi decision log. Owner hỏi tăng tốc bằng chạy song song: giữ tuần tự cho R4, song song
+  (mỗi nhóm một notebook) để cho clean/robustness.
+- CI: thêm certifi/cryptography vào dev extras (mypy xanh); còn 21 test chỉ hỏng trên CI. Owner chọn
+  merge trước: PR #4 merged `5194c77`, tag `phase5-closure` → `419938b`.
+- **Còn dở:** RQ3 250 biến thể; sửa CI; rotate HF token (lộ trong log chat, chỉ local).

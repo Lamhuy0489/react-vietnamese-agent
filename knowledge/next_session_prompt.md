@@ -1,22 +1,20 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-10-26 20:15. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-10-28 06:10. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái: rebuild A. R3 đã đóng băng (tag final-config, manifest
-configs/final/final_config_v1.json). Dry-run Dummy trên Test đã pass. Repo giữ public,
-HF token giữ nguyên, luận văn để sau (owner quyết).
+Trạng thái: rebuild A. R4 security Test đã xong (2026-10-28, decision log có bảng; chạy một lần,
+không chạy lại). PR #4 đã merge, tag phase5-closure đã gắn. Manifest final_config_v1 giữ nguyên.
 
-Việc đầu tiên: chạy R4 security Test (2.100 lượt, khoảng 4,5 giờ). Bật lại notebook Qwen +
-guard (launch_vllm_serve_v1.py prepare với --hf-token-env, kaggle kernels push, discover), rồi
-chạy lệnh R4 trong handoff bằng retry wrapper, chạy nền, cập nhật tiến độ mỗi 30 phút. Xong
-thì chấm điểm và ghi bảng Test vào decision log. Test chỉ chạy một lần; chạy lại chỉ khi lỗi
-hạ tầng.
-Sau đó: tạo 250 biến thể robustness RQ3 (owner đã chọn), review, seal, final_config_v2.
-Không sửa file nào nằm trong manifest.
+Việc đầu tiên: RQ3 robustness. Tạo 250 biến thể clean (50 task gốc Test × 5 loại), không chấm
+model nào trên chúng; review, seal, rồi đóng băng thành final_config_v2 (chỉ thêm input
+robustness và đường runner/evaluator), dry-run Dummy.
+Sau đó: clean Test + robustness cho Qwen, Llama, Gemma; mỗi backbone một notebook, chạy song song
+trên các tài khoản còn quota (ghi vào decision log trước khi chạy), keepalive suốt đợt.
+Việc phụ: PR riêng sửa 21 test chỉ hỏng trên CI. Không sửa file nào nằm trong manifest.
 ```
 
 ## Ghi chú dùng
