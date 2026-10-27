@@ -40,11 +40,12 @@ PYTHONPATH=src .venv/bin/python scripts/keepalive_vllm_v1.py --endpoint <folder>
 
 ## Bước tiếp theo
 
-0. **Hướng A+B+C (owner quyết 2026-10-28, decision log):** thiết kế phòng thủ v2 (user tin cậy,
-   tách control/data flow) và giao thức Test-2 (khoảng 20 family mới, seal trước); chỉ số side-effect
-   harm trên Dev. Chỉnh v2 chỉ trên Dev; Test v1 không chạy lại. **Bản nháp thiết kế đã viết:**
-   `docs/project/defense_v2_test2_design.md`, chờ owner duyệt 5 quyết định ở mục 8 (thứ tự seal
-   Test-2 trước code D2, D2 tách khỏi thang A, môi trường E1/E2, ai viết câu lệnh Test-2, ma trận chạy).
+0. **Hướng A+B+C (owner duyệt thiết kế 2026-10-28):** `docs/project/defense_v2_test2_design.md`.
+   B xong (decision log "B: side-effect harm metric computed"). Tiếp theo **C: sinh Test-2** (20 family,
+   ma trận phong cách, kiểm n-gram với v1, owner xem 20 câu gốc, seal ghi hash vào decision log) **trước**
+   khi viết code D2; rồi E2 `doc_search_v2` + chạy lại Dev mốc A0/A1/A6; rồi D2 trên Dev (≤3 vòng),
+   `final_config_v2`, chạy Test-2 1.000 lượt (mỗi cấu hình một endpoint để nhanh). Thêm file trong
+   `src/react_agent` làm `final_config_v1.verify` từ chối: đúng thiết kế.
 1. RQ3: tạo 250 biến thể robustness → review → seal → final_config_v2 (dry-run Dummy).
 2. Clean Test + robustness cho 3 backbone, mỗi thứ chạy đúng một lần.
 3. R0: sửa 21 test chỉ hỏng trên CI (PR riêng), dọn script cũ.
