@@ -1,14 +1,140 @@
 # Phase 5 — tiến độ và các gate còn lại
 
-## Hiện hành — three-arm prospective CPU gate, 2026-09-24
+> **Đã đóng2026-10-02:** Phase5accepted20/20DoD theo [closure dossier](../docs/evaluation/phase5_completion_20261002.md).
+> Các backlog/NO_GO bên dưới được giữ theo thời điểm lịch sử,không là trạng thái hiện hành.
+
+> **Chỉ mục lịch sử:** các mục “bước cụ thể kế tiếp” bên dưới được ghi ở
+> 2026-09-27 hoặc sớm hơn và không còn là hàng đợi tự động. Dùng
+> [`current_status.md`](current_status.md), [`handoff.md`](handoff.md) và
+> [direction audit 2026-09-29](../docs/evaluation/phase5_direction_audit_20260929.md)
+> làm nguồn hiện hành; không tạo thêm candidate chỉ vì một mục cũ còn chữ
+> “next”.
+
+## Rà tiến độ và hướng hoàn thiện — 2026-09-27
+
+[Tiến độ và lộ trình hoàn thiện qua API](../docs/evaluation/project_status_api_20260927.md): Phase1–4 accepted, Phase5 vẫn4/7nhóm nghiệm thu;
+không dùng57% cho toàn đồ án. API pair đã qua technical smoke, chưa native
+fullA6/guard quality. Có thể tiếp tục bằng local runner + Kaggle inference;
+không cần tăng kích thước model hoặc fine-tune để đáp ứng contract.
+RQ1 vẫn cần3task backbones, có thể chạy lần lượt; một agent + một guard chưa
+đủ ba model. RQ2 giữ task backbone/decoding cố định quaA0–A6, A0 không guard.
+
+**Bước cụ thể kế tiếp:** manifest + runner Dev nhỏ có checkpoint/fault QA,
+đo clean utility và guard attack/benign riêng; rồi nối candidate A6 với
+Pre/Post/Final và cumulative parity. Bridge cần schemaPlan adapter riêng,
+HTTP client hiện tại chỉ action/final; không coi bridge đã tích hợp qua API.
+Lifecycle API cần evidence riêng; không tự đóng lỗi worker cũ từ READY.
+
+**Bằng chứng/giới hạn:** đọc contract/20DoD/source và receipt paired smoke
+đã có; không probe uptime hoặc inference mới, không Test. Không thay model
+chính thức/research scope/phase acceptance. Không có access mới cần cấp cho
+lượt tài liệu này; khi chạy tiếp phải kiểm health/session hiện hành. Report
+và memory còn local, không commit/push trạng thái riêng.
+
+## Mốc trước — model-plan bridge, 2026-09-25
+
+[Bridge report](../docs/evaluation/phase5_field_model_bridge_v1_report.md): one-shot
+LLMBackend interface đã nối host Broker/ref selection/veto/renderer, CPU controls.
+Chưa real LLM, native guard/PRE/POST hoặc full ReAct. Owner chọn batch Kaggle,
+không tunnel. Next là entrypoint/admission/exact package cho smoke pinned model;
+chưa submit và không có GPU job đang chạy. Formal4/7 giữ nguyên, Test sealed.
+
+## Mốc trước — typed-reference component gate, 2026-09-25
+
+Owner đã duyệt prototype riêng. [Report](../docs/evaluation/phase5_field_reference_v1_report.md),
+[receipt](../experiments/manifests/phase5_field_reference_v1.json):32CPUcomponent
+executions, public8/8 và denied8/8 ở selected-field arm. Exposure baseline0/8,
+denied8/8; không official A5/A6 hoặc LLM quality. Host Grant assumed, ref selections
+scripted, model/guard/external sinks chưa integrate.226tests và2read-only audits
+đạt; giữ191worker source cũ/benchmark/Test. Bước tiếp contract+integration model
+reference selection/host authority/prior veto, không main replacement/GPU ngay.
+Formal4/7 không đổi. Approval pending ở lịch sử bên dưới đã được supersede.
+
+## Mốc trước — direction review, 2026-09-25
+
+[Review và phương án](../docs/evaluation/phase5_direction_review_20260925.md),
+[receipt](../experiments/manifests/phase5_direction_probe_v1.json): 12-condition
+controlled CPU cho thấy doc_read candidate không generalize: benign utility2/8,
+unsafe omissions3/4; v12 tương ứng8/8 và0/4. Đây là diagnostic cố định, không
+ASR/FPR hoặc đánh giá bất khả thi toàn đề tài. Giữ dữ liệu/nguồn/kết quả âm,
+không promote candidate hẹp hoặc sửa để chấm lại matrix này.
+Đề xuất prototype typed reference ở host, giữ benchmark/Tool Broker và điều kiện
+cùng representation A0–A6. Chờ owner duyệt cụ thể; không đổi research contract
+hoặc acceptance4/7. Bước source-freeze/Kaggle doc_read ở lịch sử bên dưới không
+còn là next action tự động. Không commit/push đợt này.
+
+## Hiện hành — doc_read native wiring và package CPU, 2026-09-25
+
+[Report](../docs/evaluation/phase5_doc_read_native_cpu_v1_report.md) và
+[selected evidence](../experiments/manifests/phase5_doc_read_native_cpu_v1.json):
+đã có native-capable adapter/one-task manifest/dispatcher, full pair/Broker/
+final audit, actual model-role identity joins và read-only completed resume.
+Focused 53 tests đạt. Package04 hai layouts/191 worker files/21 Dummy mỗi layout,
+8 mock tools và clean resume, source bytes khớp current worker; package03 lỗi
+namespace được giữ lại và sửa hẹp. Development only, 0 native run, source_commit
+null; chưa multi-arm prospective manifests/payload/scorer hoặc source freeze.
+Tiếp: prospective metadata/matched design mới, source freeze và committed
+rehearsal rồi pin/content/Kaggle. Formal 4/7≈57% không đổi; quality/utility/
+OS-exit cần native evidence. Chưa commit/push.
+
+## Mốc trước — raw doc_read final proof CPU, 2026-09-24
+
+[Report](../docs/evaluation/phase5_doc_read_final_proof_v1_report.md) và
+[selected receipt](../experiments/manifests/phase5_doc_read_final_cpu_v1.json):
+proof từ raw tool result thật bind source hash/call ID/path/approval, tích hợp
+FINAL giữ v3 PRE/POST. 12 paired conditions/24 runtimes: benign utility 1/5→5/5,
+negative target omissions 7/7 cả hai, dispatch/denial parity giữ nguyên. Runner
+lỗi aggregation sau cùng; giữ raw và recovery read-only hai lượt khớp byte,
+không retry agent. Broad regression 319 pass/1 strict XFAIL giữ lỗi pilot cũ;
+40 component/36 integration/2 runner tests mới nằm trong tổng đó.
+Chưa native adapter/package/run hoặc owner timing attestation; bước tiếp native
+admission/full pair audit/exact package/source freeze rồi fresh prospective run.
+Formal 4/7≈57% không đổi; không ghi Test hoặc native quality từ CPU.
+
+## Mốc trước — final proof Dev + paired CPU, 2026-09-24
+
+[Report](../docs/evaluation/phase5_final_literal_dev_runtime_v1_report.md) và
+[selected receipt](../experiments/manifests/phase5_final_literal_dev_cpu_v1.json):
+ma trận mới 24 ca/ba arm; proof giữ 10/10 collision utility, chặn 6/6 leak,
+reject 6/6 proof sai; hai limitations unscored. Runtime final-only giữ v3
+PRE/POST, hai CPU identities clause/room-ticket; năm room conditions mới giữ
+tool utility/denials và sửa embedded final leak. 14 outputs được audit từ raw
+artifacts, gồm 3 terminal không có final; 240 regression passed + 1 strict
+XFAIL lịch sử, final focused 34 passed (overlap). Chưa public-field proof với
+doc_read thật, chưa native launcher/package/model; formal acceptance vẫn
+4/7≈57%. Bước tiếp: proof raw doc_read source/hash/path, CPU utility/security,
+rồi mới source/pin mới và Kaggle; quality/lifecycle còn mở.
+
+## Mốc trước — prospective CPU stop sau source/pin freeze, 2026-09-24
+
+[Stop report](../docs/evaluation/phase5_room_prospective_cpu_stop_v1_report.md):
+source commit `c87c321b42345e6d7152ca60976363a67a972531`, committed package
+hai layout và inventory pin khóa trước content. Payload02 có 5 điều kiện
+synthetic/5 hash môi trường khớp. Replay clean pass, poison/S2 collision/sai
+đích chặn, nhưng final leak từ S2 `FREE_TEXT` được ALLOW. 17 passed,
+1 strict XFAIL; stop trước Kaggle/model, không tính acceptance. Phase 5 vẫn
+4/7≈57%; bước tiếp là ứng viên bảo vệ substring S2 **phiên bản mới** với Dev
+controls độc lập và protocol prospective mới, không sửa ứng viên đã khóa để
+chấm lại cùng pilot.
+[Ứng viên index v4 Dev](../docs/evaluation/phase5_embedded_identifier_v4_dev_report.md)
+đã có 5 unit controls qua. [Ma trận 18 ca Dev](../docs/evaluation/phase5_embedded_identifier_dev_matrix_v1_report.md)
+cho 6/6 leak protected nhưng 0/3 collision utility; v4 **no-go** runtime.
+Chưa native/model; hướng kế tiếp là proof final hẹp cho literal user/S0,
+phiên bản mới, không sửa lại pilot đã dừng.
+[Proof final v1 CPU](../docs/evaluation/phase5_final_literal_proof_v1_cpu_report.md)
+đã qua 18 unit controls nhưng chỉ ở component, chưa runtime/paired audit;
+không tăng 4/7 acceptance.
+
+## Mốc trước — three-arm prospective CPU gate, 2026-09-24
 
 [Report](../docs/evaluation/phase5_room_prospective_three_arm_cpu_v2_report.md):
 baseline/metadata giữ v12, ticket dùng adapter riêng; manifest v2 và triplet
 audit khóa cùng task/environment/model/seed/source/pin trên ba arm. CPU clean
 specimen phân biệt ba nhánh; fault/checkpoint tests và 163 focused tests đạt.
 Package08 qua hai layout với 186 worker files, 21/21 clean Dummy mỗi layout.
-Chưa source freeze, pin/payload sản xuất, native inference hoặc model-quality
-evidence. Formal Phase 5 vẫn 4/7≈57%.
+Tại thời điểm báo cáo chưa source freeze, pin/payload sản xuất, native inference
+hoặc model-quality evidence; các bước source/pin/content và CPU stop đã ghi ở
+mục hiện hành. Formal Phase 5 vẫn 4/7≈57%.
 
 ## Hiện hành — prospective ticket run manifest CPU, 2026-09-24
 
@@ -720,3 +846,5 @@ Tiếp theo:
 Giới hạn: lexical detector có false positives khi trích dẫn hướng dẫn; anchor parser
 không hiểu mọi câu tiếng Việt. Adapter hiện chỉ host-proposal lineage, không phải
 runner để đánh giá LLM. Không thay điểm pilot cũ; Meta access vẫn là việc pilot riêng.
+
+- 2026-09-28: [journal + public runtime native A0–A6](../docs/evaluation/remote_api_levels_v1_report.md) đã có diagnostic7/7; quality/provenance/remote cancellation/freeze còn mở.

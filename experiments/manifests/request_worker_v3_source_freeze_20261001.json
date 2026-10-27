@@ -1,0 +1,45 @@
+{
+  "schema": "request_worker_v3_source_freeze_cpu_v1",
+  "date": "2026-10-01",
+  "git_base": "728821ea761b3994eb40ebba91ab8238e4667f82",
+  "scope": "worker-only source freeze; host runner and other Phase5 work excluded",
+  "source_sha256": {
+    "src/react_agent/__init__.py": "f9b1fa97633906f5940be2ec6020f8e6943d15482849326faa4d6b0cdbd53083",
+    "src/react_agent/serving/__init__.py": "adda3fbbc610d580636779d8be3e0cebd5170e4b493c02c315fa74ee51e4cab2",
+    "src/react_agent/serving/structured_api_v1.py": "c5201d8e3a260cbfcc3fca1839791ac33dcdb179334b37c12523097c325e1e58",
+    "src/react_agent/serving/quiescent_engine_v3.py": "fded52ade7496014c94790bf418c717fa6a9b15ff34b0b05bfb6ec50e363595e",
+    "src/react_agent/serving/request_storage_v3.py": "80a56eca1745c9ac7f600cdf0c9d06dcf095b3115d9645d2db7f156613cc106d",
+    "src/react_agent/serving/request_lifecycle_v3.py": "4b73b38bc4352f1db474cb6d547c85f6d5cd5c7808cea8f038f2ff1672bf0f13",
+    "src/react_agent/serving/request_http_v3.py": "d0ae98f96d0938a8658424fbf8020b00e0a6b4dd963e13c9aca2ac9ee477d59f",
+    "src/react_agent/serving/request_worker_v3.py": "293cc1d0501a76563e47e1fda6e98eb8da73a0b3c2cbf6a49b725cd9109573c5",
+    "src/react_agent/serving/request_worker_entrypoint_v3.py": "0d50fa48721790133c121f038712f6c63a1e406039a822b5eefef0b5040cf15c",
+    "scripts/launch_structured_pair_v3.py": "7a8cd7f08e2bf88ab27d5ca666cc6146c72ad4b39dd7b956a57432e9b7f71098",
+    "scripts/export_structured_pair_notebooks_v3.py": "e301175cd34ecad8b1e5734aab70d0891d9f816d78bfe2861afe15dc2d5db279",
+    "tests/unit/test_structured_api_v1.py": "53b5d2fabbb4e02521dc9f2d284297542cd99e39ac7e9c3f41d166facaf4048b",
+    "tests/unit/test_quiescent_engine_v3.py": "758e168a0c699348d2500b7811e4ba19d151e3e5f7fe6943238a46221aab5394",
+    "tests/unit/test_request_lifecycle_v3.py": "6c1b2e3a5ef0ff560ad2e0bc8f7c1f9fa727761cae2742ed3fe6b5fe5485153d",
+    "tests/unit/test_request_http_v3.py": "27a8ff70bc56d74ec3bc8de801e685a205b77075ba7dc4499d1aef19d5982773",
+    "tests/unit/test_request_worker_entrypoint_v3.py": "72c8d8ccd2b3c8f4f32b6cb2a5dd17675757e34a63630722104b1973f348d903",
+    "tests/unit/test_request_worker_package_v3.py": "8662557c3218d3eb1f5fa974150f346c2db7d5cb60b7c29f99d12892068d1159",
+    "tests/unit/test_owner_notebooks_v3.py": "c8e31f0bd1893c644046b3eb6acd0d2387e20080cc5d239eaa9a25738ee2895c"
+  },
+  "qa": {
+    "worker_unit_tests": 59,
+    "loopback_http_tests": 12,
+    "exact_package_layouts": 4,
+    "setup": "passed",
+    "ruff": "passed",
+    "mypy": {
+      "passed": true,
+      "local_source_files": 630
+    },
+    "full_repository_pytest": "not rerun; focused worker scope only"
+  },
+  "package_preflight_sha256": "b8eafc8dae70747e2c823d1b3845830a0b1fac388448c15d42ea7e5375ef8e09",
+  "package_preflight_path": "build/kaggle/worker_v3_freeze_preflight_20261001/preflight_v3/receipt.json",
+  "native_gpu_verified": false,
+  "notebooks_submitted": false,
+  "phase5_accepted": false,
+  "test_payloads_loaded": 0,
+  "private_ground_truth_loaded": 0
+}

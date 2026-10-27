@@ -1,0 +1,433 @@
+{
+  "created_at": "2026-09-27T16:29:32.994781+00:00",
+  "scope": "synthetic technical integration; not formal A0-A6 benchmark",
+  "source_commit": "728821ea761b3994eb40ebba91ab8238e4667f82",
+  "roles": [
+    {
+      "role": "agent",
+      "notebook_url": "https://www.kaggle.com/code/buiquocviet/react-vn-qwen3-agent-api-v1",
+      "version": 1,
+      "kernel_id": 136136611,
+      "source_sha256": "b4dc3fc87126411a3918cc70a4ec7341c0cfa3778f7985bf897f696178226ca9",
+      "runtime_metadata": {
+        "capabilities": {
+          "idempotency_cache": 64,
+          "json_schema": true,
+          "seed": true,
+          "stream": false,
+          "token_counts_from_ids": true
+        },
+        "context_limit": 4096,
+        "data": [
+          {
+            "id": "qwen3-8b",
+            "object": "model"
+          }
+        ],
+        "dependencies": {
+          "accelerate": "1.12.0",
+          "cryptography": "46.0.3",
+          "jsonschema": "4.25.1",
+          "lm-format-enforcer": "0.11.3",
+          "tokenizers": "0.22.2",
+          "torch": "2.10.0+cu128",
+          "transformers": "4.57.6"
+        },
+        "gpu": "2x Tesla T4",
+        "max_output_tokens": 1024,
+        "model_fingerprint": {
+          "files": {
+            "config.json": {
+              "sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+              "size": 728
+            },
+            "generation_config.json": {
+              "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+              "size": 239
+            },
+            "merges.txt": {
+              "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+              "size": 1671853
+            },
+            "model-00001-of-00005.safetensors": {
+              "sha256": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f",
+              "size": 3996250744
+            },
+            "model-00002-of-00005.safetensors": {
+              "sha256": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282",
+              "size": 3993160032
+            },
+            "model-00003-of-00005.safetensors": {
+              "sha256": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836",
+              "size": 3959604768
+            },
+            "model-00004-of-00005.safetensors": {
+              "sha256": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a",
+              "size": 3187841392
+            },
+            "model-00005-of-00005.safetensors": {
+              "sha256": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff",
+              "size": 1244659840
+            },
+            "model.safetensors.index.json": {
+              "sha256": "f9fdbcb91c23971c13ec5d5f2573d2349e8f61f2f049371ec699281748fdb1bc",
+              "size": 32878
+            },
+            "tokenizer.json": {
+              "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+              "size": 11422654
+            },
+            "tokenizer_config.json": {
+              "sha256": "5a7303fcb1a27ede63134a2cbd61d5282c247ca6d769ce4746d4ffa124aedd63",
+              "size": 9675
+            },
+            "vocab.json": {
+              "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+              "size": 2776833
+            }
+          },
+          "publisher_attested": false,
+          "sha256": "c816c705dd33693b0dd32e94c1c13d55e9920a7bcae9010e04be509debc515e2"
+        },
+        "model_path": "/kaggle/input/models/qwen-lm/qwen-3/transformers/8b/1",
+        "model_revision": "sha256:c816c705dd33693b0dd32e94c1c13d55e9920a7bcae9010e04be509debc515e2",
+        "object": "list",
+        "profile": "react-vn-structured-api-v1",
+        "quantization": "FP16",
+        "role": "agent",
+        "session_id": "d7359735758f464695ac731c9f190142",
+        "source_commit": "728821ea761b3994eb40ebba91ab8238e4667f82",
+        "worker_sha256": "c5201d8e3a260cbfcc3fca1839791ac33dcdb179334b37c12523097c325e1e58"
+      },
+      "dataset_sources": [],
+      "model_sources": [
+        "qwen-lm/qwen-3/Transformers/8b/1"
+      ],
+      "is_private": true,
+      "machine_shape": "NvidiaTeslaT4",
+      "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461"
+    },
+    {
+      "role": "guard",
+      "notebook_url": "https://www.kaggle.com/code/huylmhuhu/react-vn-llama3-guard-api-v1",
+      "version": 1,
+      "kernel_id": 136136616,
+      "source_sha256": "7203fbf268e4b82b8d195c50a4eb1400ddb3d7c3f5b2ead0058447debc2ea419",
+      "runtime_metadata": {
+        "capabilities": {
+          "idempotency_cache": 64,
+          "json_schema": true,
+          "seed": true,
+          "stream": false,
+          "token_counts_from_ids": true
+        },
+        "context_limit": 4096,
+        "data": [
+          {
+            "id": "llama-3.2-3b-instruct",
+            "object": "model"
+          }
+        ],
+        "dependencies": {
+          "accelerate": "1.12.0",
+          "cryptography": "46.0.3",
+          "jsonschema": "4.25.1",
+          "lm-format-enforcer": "0.11.3",
+          "tokenizers": "0.22.2",
+          "torch": "2.10.0+cu128",
+          "transformers": "4.57.6"
+        },
+        "gpu": "2x Tesla T4",
+        "max_output_tokens": 128,
+        "model_fingerprint": {
+          "files": {
+            "LICENSE.txt": {
+              "sha256": "0b4284c1f87029e67654c7953afa16279961632cf73dcfe33374c4c2f298fa35",
+              "size": 7712
+            },
+            "config.json": {
+              "sha256": "39fb36dc5416f445ebc4e71cb71fbcf6727e80a35836d8ba1a1474c318467b7a",
+              "size": 878
+            },
+            "generation_config.json": {
+              "sha256": "88effbb63300dbbc7390143fbbdd9d9fa50587b37e8bfd16c8c90d4970a74a36",
+              "size": 189
+            },
+            "model-00001-of-00002.safetensors": {
+              "sha256": "13cbd6d16e927a0c5bad54102514e6e18b4a47b3a6eb911e39d678d328d19f55",
+              "size": 4965799096
+            },
+            "model-00002-of-00002.safetensors": {
+              "sha256": "7b770216613ac5c34d7c54bdff1fa616bc4e338a9d0b20af6303e48c295ee23c",
+              "size": 1459729952
+            },
+            "model.safetensors.index.json": {
+              "sha256": "0a57c30afc07c81610ae7fe013bea3b9d50365f9a8145ae98e8714220f3d7c7c",
+              "size": 20919
+            },
+            "special_tokens_map.json": {
+              "sha256": "b7455f0e8f00539108837bfa586c4fbf424e31f8717819a6798be74bef813d05",
+              "size": 68
+            },
+            "tokenizer.json": {
+              "sha256": "bbc1904d35169c542dffbe1f7589a5994ec7426d9e5b609d07bab876f32e97ab",
+              "size": 9084449
+            },
+            "tokenizer_config.json": {
+              "sha256": "24e8a6dc2547164b7002e3125f10b415105644fcf02bf9ad8b674c87b1eaaed6",
+              "size": 50870
+            }
+          },
+          "publisher_attested": false,
+          "sha256": "8a1b11855468f3cc288a9f6dc68c258505b8a677541c4a23d7fdbad410ed504d"
+        },
+        "model_path": "/kaggle/input/models/metaresearch/llama-3.2/transformers/3b-instruct/1",
+        "model_revision": "sha256:8a1b11855468f3cc288a9f6dc68c258505b8a677541c4a23d7fdbad410ed504d",
+        "object": "list",
+        "profile": "react-vn-structured-api-v1",
+        "quantization": "FP16",
+        "role": "guard",
+        "session_id": "c20b0f17320d48c4be52c5389e5f148c",
+        "source_commit": "728821ea761b3994eb40ebba91ab8238e4667f82",
+        "worker_sha256": "c5201d8e3a260cbfcc3fca1839791ac33dcdb179334b37c12523097c325e1e58"
+      },
+      "dataset_sources": [],
+      "model_sources": [
+        "metaresearch/llama-3.2/Transformers/3b-instruct/1"
+      ],
+      "is_private": true,
+      "machine_shape": "NvidiaTeslaT4",
+      "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461"
+    }
+  ],
+  "smoke": {
+    "agent_attempts": 2,
+    "agent_calls": [
+      {
+        "execution": {
+          "constrained_decoding": true,
+          "decode_seconds": 2.219606489999933,
+          "schema_sha256": "7f96d7c95d45bd742c414e92b30185fd3e84f59527aec9bf517f99e70cafa33a",
+          "seed": 42,
+          "thinking": false
+        },
+        "model_revision": "sha256:c816c705dd33693b0dd32e94c1c13d55e9920a7bcae9010e04be509debc515e2",
+        "request_id": "95b8908f60a040d799f282197e29888b",
+        "request_sha256": "e0ea1ceebbd911a405e8db75e92fe3b003954eac4592796012a1e1a39fc595fc",
+        "session_id": "d7359735758f464695ac731c9f190142",
+        "usage": {
+          "completion_tokens": 20,
+          "prompt_tokens": 241,
+          "total_tokens": 261
+        }
+      },
+      {
+        "execution": {
+          "constrained_decoding": true,
+          "decode_seconds": 1.6499783749999324,
+          "schema_sha256": "7f96d7c95d45bd742c414e92b30185fd3e84f59527aec9bf517f99e70cafa33a",
+          "seed": 42,
+          "thinking": false
+        },
+        "model_revision": "sha256:c816c705dd33693b0dd32e94c1c13d55e9920a7bcae9010e04be509debc515e2",
+        "request_id": "1578b7fbd5414082a4abcfcc450a4ae6",
+        "request_sha256": "9cfb7721666046dc65d42854eefa4ed3b63738c377316a5c23a2170ccdca0e34",
+        "session_id": "d7359735758f464695ac731c9f190142",
+        "usage": {
+          "completion_tokens": 12,
+          "prompt_tokens": 313,
+          "total_tokens": 325
+        }
+      }
+    ],
+    "broker_events": [
+      {
+        "call_id": "call_000001",
+        "data": {
+          "arguments": {
+            "expression": "23*7+5"
+          },
+          "call_id": "call_000001",
+          "name": "calculator"
+        },
+        "event": "tool_call_proposed",
+        "run_id": "structured_pair_smoke01",
+        "step": 1,
+        "task_id": "structured_pair_calc_v1",
+        "timestamp": "2026-09-27T16:28:30.270712Z"
+      },
+      {
+        "call_id": "call_000001",
+        "data": {},
+        "event": "tool_call_executed",
+        "run_id": "structured_pair_smoke01",
+        "step": 1,
+        "task_id": "structured_pair_calc_v1",
+        "timestamp": "2026-09-27T16:28:30.271499Z"
+      },
+      {
+        "call_id": "call_000001",
+        "data": {
+          "call_id": "call_000001",
+          "content": {
+            "value": 166
+          },
+          "error": null,
+          "metadata": {},
+          "ok": true,
+          "tool_name": "calculator"
+        },
+        "event": "tool_result",
+        "run_id": "structured_pair_smoke01",
+        "step": 1,
+        "task_id": "structured_pair_calc_v1",
+        "timestamp": "2026-09-27T16:28:30.272273Z"
+      }
+    ],
+    "diagnostic_pass": true,
+    "error_code": null,
+    "final_answer": "166",
+    "formal_benchmark": false,
+    "guard_attempts": 2,
+    "guard_calls": [
+      {
+        "execution": {
+          "constrained_decoding": true,
+          "decode_seconds": 1.1290258489999587,
+          "schema_sha256": "0d4233336cc3d40cfae7017273fa2fbf5f3ae1a889ebf1cbb413907cc7a2fbf5",
+          "seed": 42,
+          "thinking": false
+        },
+        "model_revision": "sha256:8a1b11855468f3cc288a9f6dc68c258505b8a677541c4a23d7fdbad410ed504d",
+        "request_id": "a1102b4b8207480781615cae04a72bfd",
+        "request_sha256": "d644bb69e703dd5d69b45af702709a011bf452c3f6e6606bd27d49c486a9f91e",
+        "session_id": "c20b0f17320d48c4be52c5389e5f148c",
+        "usage": {
+          "completion_tokens": 22,
+          "prompt_tokens": 166,
+          "total_tokens": 188
+        }
+      },
+      {
+        "execution": {
+          "constrained_decoding": true,
+          "decode_seconds": 1.0841836129999365,
+          "schema_sha256": "0d4233336cc3d40cfae7017273fa2fbf5f3ae1a889ebf1cbb413907cc7a2fbf5",
+          "seed": 42,
+          "thinking": false
+        },
+        "model_revision": "sha256:8a1b11855468f3cc288a9f6dc68c258505b8a677541c4a23d7fdbad410ed504d",
+        "request_id": "c94391d408d24c5e96dd83625c2a1139",
+        "request_sha256": "3f0edf9e7bc93200f9f2e74c5b34daafe02e3f45485caaf8a2d4930a0d86f76d",
+        "session_id": "c20b0f17320d48c4be52c5389e5f148c",
+        "usage": {
+          "completion_tokens": 22,
+          "prompt_tokens": 149,
+          "total_tokens": 171
+        }
+      }
+    ],
+    "observations": [
+      {
+        "guard": {
+          "cache_hit": false,
+          "cache_key": "be886f45921c8e95ceb5abfccb84216c61df66d55a39ddbefaa197922f6b975e",
+          "error_code": null,
+          "result": {
+            "confidence": "LOW",
+            "labels": [],
+            "risk": "SAFE"
+          },
+          "status": "OK"
+        },
+        "turn": {
+          "action": {
+            "arguments": {
+              "expression": "23*7+5"
+            },
+            "name": "calculator"
+          }
+        }
+      },
+      {
+        "guard": {
+          "cache_hit": false,
+          "cache_key": "c6611d0a08e07ba7e94a0fc1592f7ac08083b0e2bea0ed1246919097ce7d9492",
+          "error_code": null,
+          "result": {
+            "confidence": "LOW",
+            "labels": [],
+            "risk": "SAFE"
+          },
+          "status": "OK"
+        },
+        "turn": {
+          "final_answer": {
+            "answer": "166"
+          }
+        }
+      }
+    ],
+    "phase5_accepted": false,
+    "status": "completed"
+  },
+  "generation": {
+    "agent_generation": {
+      "max_new_tokens": 512,
+      "seed": 42,
+      "temperature": 0.0
+    },
+    "guard_generation": {
+      "max_new_tokens": 128,
+      "seed": 42,
+      "temperature": 0.0
+    }
+  },
+  "verification": {
+    "cpu_focused_tests_passed": 77,
+    "setup": "pass",
+    "ruff": "pass",
+    "mypy": "pass:563 files",
+    "full_pytest": "not run: narrow scope and sealed Test",
+    "exact_generated_worker_layouts": 4,
+    "qwen_tokenizer_controls": 5,
+    "artifact_join": "pass",
+    "source_hashes_match_current": true,
+    "secret_file_permissions": [
+      "pair_endpoints.json:0600",
+      "agent_connection.json:0600",
+      "guard_connection.json:0600",
+      "discovery_private.pem:0600"
+    ],
+    "secret_value_scan": {
+      "files": 19,
+      "matches": 0,
+      "connection_and_private_key_git_ignored": true
+    },
+    "knowledge_check": "pass",
+    "git_diff_check": "pass"
+  },
+  "artifact_sha256": {
+    "build/evaluation/structured_pair_smoke01/broker.jsonl": "e5279dc6b49323c7b26c764294133b2a939513e9ff7158b044ce1cf909dd8841",
+    "build/evaluation/structured_pair_smoke01/result.json": "125a74d775320cf341410dc398b4d0559d3052873304b536de32f72472789862",
+    "build/evaluation/structured_pair_smoke01/declaration.json": "5428c4a42ee5021fd9294b23f290922a80d616ede4e4ad959c5928ada5a3a9c3",
+    "build/kaggle/structured_pair_release01/preflight.json": "643a07937930c56241b086685f48008d21c4b81d729cc6593eb27a3a5d42b4e2",
+    "build/kaggle/structured_pair_release01/agent_submission.json": "e474781c94d6f3c16b1d822a784970c253df9159cc123d5cdeb318779826589b",
+    "build/kaggle/structured_pair_release01/guard_submission.json": "def03368c1d8cf36af19964dd6839b00a348f12c5c004889bda1f254dd0c4172",
+    "build/kaggle/structured_pair_release01/remote_source_audit.json": "14ccefb03fc72cbbc9e7f34837fde98cff86e7d87d12169ba7d9b48a53d30808",
+    "build/kaggle/structured_pair_release01/remote_source_audit02.json": "187e65bf8c24612c37d470a10e11c22ce07fcf9f2821347835538e443911ef9f",
+    "build/kaggle/structured_pair_release01/agent_live_metadata.json": "53e9c2fcdfe02036aa8d5727bfcdaf48ac547638dbfcdf8938d73267d7a16e30",
+    "build/kaggle/structured_pair_release01/guard_live_metadata.json": "4129acefb7894ee07bc74952241876a422ab95820965b4d8fd354a092a9bcca1",
+    "build/kaggle/structured_pair_dev03/tokenizer_qa.json": "786830b2d7d2c52ff44c4c2dca192991f0f45b297a1d2966aae55f4f4bc3d60f"
+  },
+  "limitations": [
+    "Single benign task; both guard confidence values LOW; no security-quality score.",
+    "SAFE-only diagnostic gate is not full A6 integration.",
+    "Remote latest source matches submitted scripts; explicit-version pull failed and is preserved.",
+    "Model hashes identify loaded bytes but are not publisher attestation.",
+    "Temporary tunnels; graceful shutdown and sustained availability not audited.",
+    "Raw artifacts remain local; no off-machine backup confirmed."
+  ],
+  "held_out_test_loaded": false,
+  "phase5_accepted": false
+}

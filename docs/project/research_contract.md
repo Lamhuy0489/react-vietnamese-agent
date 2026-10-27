@@ -25,6 +25,11 @@ generation parameters, which are selected and frozen before final experiments.
 - Security experiment holds one selected backbone fixed across A0–A6.
 - A0–A6 are cumulative defense levels; each level preserves prior components
   unless an explicit ablation is separately named.
+  Preserving a component means its checks still run; a later level may refine
+  a coarse earlier veto only with more precise evidence (A6 discharges A3–A5
+  session vetoes for a sink call whose destination and payload values are proven
+  to come from the user; decision log 2026-10-26). Rule and guard vetoes are never
+  refined away.
 - Attack split occurs before variant generation: 40 canonical families produce
   200 Dev variants and 30 families produce 150 held-out Test variants.
 - Each benign control stays in the same split as its matched attack family.

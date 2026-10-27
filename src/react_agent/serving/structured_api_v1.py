@@ -22,6 +22,8 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
+from react_agent.serving import public_llama_source_v1 as public_llama
+
 PROFILE = "react-vn-structured-api-v1"
 LIMIT = 262144
 PINS = {"torch": "2.10.0", "transformers": "4.57.6", "tokenizers": "0.22.2", "accelerate": "1.12.0",
@@ -134,7 +136,7 @@ def admit(body: dict[str, Any], role: str, model: str) -> Spec:
 def fingerprint(mount: Path) -> dict[str, Any]:
     files = {}
     for path in sorted(mount.iterdir()):
-        if path.suffix not in {".json", ".safetensors", ".model", ".txt"}:
+        if path.suffix not in {".json", ".safetensors", ".model", ".txt", ".jinja"}:
             continue
         if path.is_symlink() or not path.is_file():
             raise ServiceError("INVALID_MODEL_FILE", 503)
@@ -147,6 +149,37 @@ def fingerprint(mount: Path) -> dict[str, Any]:
         raise ServiceError("MODEL_FILES_MISSING", 503)
     return {"files": files, "sha256": sha(canonical(files).encode()),
             "publisher_attested": False}
+
+
+def resolve_model_mount(model_source: str, input_root: Path = Path("/kaggle/input")) -> Path:
+    """Resolve an exact version in the namespaced or legacy Kaggle mount layout."""
+    if not re.fullmatch(
+        r"[a-z0-9_-]+/[a-z0-9_.-]+/transformers/[a-z0-9_.-]+/[1-9][0-9]*",
+        model_source,
+    ) or any(part in {".", ".."} for part in model_source.split("/")):
+        raise ServiceError("INVALID_MODEL_SOURCE", 503)
+    source = Path(model_source)
+    candidates = (input_root / "models" / source, input_root.joinpath(*source.parts[1:]))
+    matches = []
+    for candidate in candidates:
+        current = input_root
+        for part in ("", *candidate.relative_to(input_root).parts):
+            current = current / part
+            if current.is_symlink():
+                raise ServiceError("INVALID_MODEL_MOUNT_LINK", 503)
+        if candidate.is_dir():
+            matches.append(candidate)
+    if len(matches) > 1:
+        raise ServiceError("AMBIGUOUS_MODEL_MOUNT", 503)
+    if not matches:
+        # Public model paths only; never dump environment variables or credentials.
+        print("MODEL_MOUNT_MISSING " + canonical({
+            "source": model_source, "expected_paths": [str(p) for p in candidates],
+            "input_directories": sorted(p.name for p in input_root.iterdir() if p.is_dir())
+            if input_root.is_dir() else [],
+        }), flush=True)
+        raise ServiceError("EXACT_MODEL_MOUNT_MISSING", 503)
+    return matches[0]
 
 
 class HFEngine:
@@ -164,9 +197,11 @@ class HFEngine:
             a = torch.ones((16, 16), dtype=torch.float16, device=f"cuda:{i}")
             if float((a @ a).sum().item()) != 4096:
                 raise ServiceError("CUDA_TENSOR_CHECK_FAILED", 503)
-        mount = Path("/kaggle/input/models") / cfg["model_source"]
-        if not mount.is_dir():
-            raise ServiceError("EXACT_MODEL_MOUNT_MISSING", 503)
+        if cfg.get("model_acquisition") is not None:
+            public_llama.validate_configuration(cfg)
+            mount = public_llama.prepare_model()
+        else:
+            mount = resolve_model_mount(cfg["model_source"])
         identity = fingerprint(mount)
         self.tokenizer = hf.AutoTokenizer.from_pretrained(str(mount), local_files_only=True,
                                                          trust_remote_code=False)

@@ -1,6 +1,6 @@
 # Sổ tra cứu Kaggle của đồ án
 
-Cập nhật 2026-09-23 từ receipts/report và live checks; biên bản sau source
+Cập nhật mục lục 2026-10-02; mỗi mục ghi ngày quan sát remote riêng. Biên bản sau source
 freeze được gộp với host release audit/report trong một commit hoàn chỉnh.
 Đây là **memory phát
 triển cho nhóm**, không đưa vào prompt benchmark. Trạng thái dưới đây là mốc
@@ -13,14 +13,286 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 1. Đọc [trạng thái hiện tại](current_status.md) và [bàn giao](handoff.md).
 2. Source chính thức: [GitHub main](https://github.com/Lamhuy0489/react-vietnamese-agent).
-3. Kaggle là máy chạy inference. Tài khoản sở hữu các tài nguyên bên dưới là
-   `huylmhuhu`; khác với tên GitHub `Lamhuy0489`.
+3. Kaggle là máy chạy inference. Tài khoản sở hữu ghi theo từng tài nguyên bên dưới; cặp hiện tại là
+   `lamhuy8904` và `meanalways` theo deployment 02/10; cặp `buiquocviet`/`huylmhuhu` là lịch sử.
 4. Notebook/Dataset được giữ private. Quyền GitHub không tự cấp quyền Kaggle:
    nếu bạn Minh dùng tài khoản Kaggle riêng thì chủ tài nguyên cần cấp quyền
    cộng tác phù hợp. Không chép API key/token/mật khẩu vào Git hoặc trang này,
    không chuyển public chỉ để mở được link. 403/404 có thể là thiếu quyền.
 
 ## Mốc hiện hành — đọc mục này trước
+
+**2026-10-28 01:41 — R4 security Test, Qwen + guard trên meanalways** (lamhuy8904 hết quota GPU):
+[meanalways/react-vn-vllm-serve-v1](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1) **v1**
+(Qwen3-8B) và [meanalways/react-vn-vllm-serve-v1-llama32-3b-guard](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1-llama32-3b-guard)
+**v1** (guard), private, T4×2, token HF chèn như trước. Cả hai READY lúc khoảng 01:54. Folder
+`build/kaggle/vllm_serve_v1_{qwen3_8b_20261028_014125,llama32_3b_guard_20261028_014126}`.
+Kaggle CLI chạy bằng `KAGGLE_CONFIG_DIR` tạm trỏ tới credential meanalways (không vào Git).
+Keepalive `scripts/keepalive_vllm_v1.py --every 10` chạy suốt đợt, log `build/kaggle/keepalive_r4.log`.
+Source: tag `final-config`.
+
+**2026-10-26 tối — trạng thái:** Qwen v4 và guard v2 đã chạy xong A0–A6 Dev (2.800 lượt) và
+A6 v3 (400 lượt, 18:00–18:47). Keepalive tắt lúc khoảng 19:00, nên cả hai **đã tự tắt** (idle 30 phút).
+Mai bật lại bằng `launch_vllm_serve_v1.py prepare` (token HF lấy từ notebook private cũ trong
+`build/kaggle/vllm_serve_v1_qwen3_8b_20261026_121043/`, không in ra), push, `discover`; ghi version
+mới vào đây. Kaggle CLI dùng cấu hình sẵn có trên máy owner; credential không bao giờ vào Git.
+
+**2026-10-26 12:10 — relaunch Qwen v4 + guard v2 cho A0–A6 Dev đầy đủ (lamhuy8904):**
+[lamhuy8904/react-vn-vllm-serve-v1](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1)
+**v4**, boot `2300d3409d17`, served `Qwen/Qwen3-8B@b968826d9c46dd6066d109eabc6255188de91218`;
+[lamhuy8904/react-vn-vllm-serve-v1-llama32-3b-guard](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-llama32-3b-guard)
+**v2**, boot `dc06a28bb466`, served `unsloth/Llama-3.2-3B-Instruct@006f5dcd1393c3add266de40994ba96225e9689d`.
+- Cả hai READY lúc 12:22. Folder: `build/kaggle/vllm_serve_v1_{qwen3_8b,llama32_3b_guard}_20261026_121043`.
+  Token HF chèn vào bản private như lần trước. Source: commit `a0b7cd6`.
+- Phiên trước (Qwen v3 boot 03:26, guard v1) đã COMPLETE: guard tự tắt lúc 05:04 vì keepalive
+  bỏ qua nó (dùng chung log "bận" với runner), Qwen tắt 05:35 sau khi mạng local rớt.
+  Đã sửa trong runner (ping guard giữa các lượt A0/A1).
+
+**2026-10-26 — vLLM serve v1, Gemma-4-12B, đã chạy thật (meanalways):**
+[meanalways/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1-gemma4-12b)
+và [...-gemma4-12b-qat](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1-gemma4-12b-qat) (private, T4×2).
+- bf16 v1 và QAT v1/v2 ERROR: kernel attention head_dim 512 cần 96 KB shared memory (T4 có 64 KB);
+  QAT v2 thử FLEX_ATTENTION, hỏng y như vậy.
+- bf16 **v2** và QAT **v3** READY với bản vá tile (commit `6e0dff4`). Served
+  `google/gemma-4-12B-it@707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7` (max_len 4096, eager) và
+  `google/gemma-4-12B-it-qat-w4a16-ct@1d2c2d7f2466070e69d6fb3fd5ce9a7d75f2f6ee`.
+- Không gated nên không chèn token; cảnh báo "unauthenticated requests" của HF là vô hại.
+
+**2026-10-26 — vLLM serve v1, Llama-3.1-8B, đã chạy thật:**
+[lamhuy8904/react-vn-vllm-serve-v1-llama31-8b](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-llama31-8b)
+(private, T4×2, notebook riêng cho một model). v1 READY, boot `0d81923d3bc7`, served
+`meta-llama/Llama-3.1-8B-Instruct@0e9e39f249a16976918f6564b8830bc894c89659`.
+- Token HF được launcher chèn thẳng vào bản notebook private (`--hf-token-env`), không qua
+  Kaggle Secret. Bản đó chỉ nằm trong `build/` (gitignored, 0600) và trên Kaggle private;
+  không bao giờ có trong Git. Nên rotate token sau khi xong đợt chạy.
+- Chạy song song với notebook Qwen trên cùng tài khoản, tức đã dùng hết 2 phiên GPU nền
+  của lamhuy8904.
+- Source: working tree trên nhánh hiện tại (commit cùng mục này).
+
+**2026-10-25 — vLLM serve v1, Qwen3-8B, đã chạy thật:**
+[lamhuy8904/react-vn-vllm-serve-v1](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1)
+(private, T4×2, Internet, push qua API bằng `scripts/launch_vllm_serve_v1.py`).
+- v1 ERROR: vLLM 0.32.0 kéo torch 2.13+cu130, lệch torchaudio cu128 của Kaggle. Sửa ở v2
+  bằng cách gỡ torchaudio.
+- v2: READY lúc 23:37 (+07), boot `1fafef98e152`, served
+  `Qwen/Qwen3-8B@b968826d9c46dd6066d109eabc6255188de91218`. URL tunnel là tạm, không ghi.
+  Tự tắt sau 30 phút idle. Một phiên phục vụ 4 lần chạy smoke (prompt v1 và v2).
+  Kaggle báo giới hạn 2 phiên GPU chạy nền mỗi tài khoản.
+- Dataset: không có. Source: working tree trên nhánh hiện tại (commit cùng mục này).
+- Quota 2026-10-25 (refresh 31/10): lamhuy8904 20,5 h, huylmhuhu 24,9 h, meanalways 23,3 h,
+  buiquocviet 23,2 h. Cả 4 tài khoản cũng chạy notebook `astar-*` của dự án khác.
+  Mỗi notebook chỉ serve một model; chạy song song thì dùng 2 tài khoản, ví dụ
+  meanalways cho model thứ hai hoặc guard. Model gated cần secret `HF_TOKEN` gắn qua UI.
+
+
+### 2026-10-02 — Guard Dev terminal audit và Phase5 closure
+
+Đã dùng lại agent [lamhuy8904 v1](https://www.kaggle.com/code/lamhuy8904/react-vn-qwen3-agent-api-v3-candidate)
+chỉ đểGEThealth và guard [meanalways v3](https://www.kaggle.com/code/meanalways/react-vn-llama3-guard-api-v3-candidate)
+để chạy80Devinputs;không submission/Dataset mới. Worker sources e4078d7/77bc456;
+Dataset URL/version:none. Existing private access remains owner-scoped.
+Same-boot READY xác minh live tại admission;80unique guard requests terminal200,
+TP21/FN19/FP5/TN35. HaiGET-only interruptions được ghi riêng;không retry kết quả.
+Host baseline419938b;diagnostic working-tree source636files đã snapshot/hashpin.
+[Report](../docs/evaluation/phase5_guard_quality_v1_report.md),
+[terminal receipt](../experiments/manifests/phase5_guard_quality_20261002.json),
+[Phase5completion](../experiments/manifests/phase5_completion_20261002.json).
+Không cam kết endpoint còn READY sau lượt chạy;không credentials trong mục này.
+
+[Cách kiểm trạng thái phiên và tiếp tục thực nghiệm](api_experiment_runbook.md).
+Mốc mới nhất: local terminal audit ngày2026-10-02, không live-check Kaggle.
+
+### 2026-10-02 — Audit lại closure cuối từ artifact đã lưu
+
+| Actual notebook của saved epoch | Version | Source worker |
+|---|---:|---|
+| [lamhuy8904/react-vn-qwen3-agent-api-v3-candidate](https://www.kaggle.com/code/lamhuy8904/react-vn-qwen3-agent-api-v3-candidate) | 1 | e4078d7 |
+| [meanalways/react-vn-llama3-guard-api-v3-candidate](https://www.kaggle.com/code/meanalways/react-vn-llama3-guard-api-v3-candidate) | 3 | 77bc456 |
+
+Dataset URL/version: không có cho pair này; guard dùng public pinned HF snapshot,
+agent dùng model mount. Đây là notebooks private và access vẫn theo owner;
+không suy URL hoặc endpoint hiện truy cập được từ local audit.
+Host release419938b4c2bc9842a92b2d797126d69ae727c953;84terminal,
+72completed/12model_error;CPUcontrols pass;audit20DoD PASS trong phạm vi smoke.
+Không phase promotion, submission, model call hoặc remote-status check mới.
+[Review/report](../docs/research/phase5_independent_review_20261002.md),
+[receipt](../experiments/manifests/phase5_independent_review_20261002.json),
+[release](../experiments/manifests/phase5_release_20261002.json).
+Giữ guardv1/v2 ERROR và mọi notebook/epoch bên dưới làm lịch sử.
+
+### 2026-09-29 — Release04a closure deployment and recovery audit
+
+| Actual notebook | Version | Trạng thái kiểm read-only trước recovery |
+|---|---:|---|
+| [buiquocviet/react-vn-qwen3-agent-api-v1](https://www.kaggle.com/code/buiquocviet/react-vn-qwen3-agent-api-v1) | 8 | RUNNING; authenticated READY `qwen3-8b` |
+| [huylmhuhu/react-vn-llama3-guard-api-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-llama3-guard-api-v1) | 6 | RUNNING; authenticated READY `llama-3.2-3b-instruct` |
+
+Status/discovery được chạy ngay trước native closure recovery; không chứa
+prompt/response benchmark. Package local là
+`build/kaggle/structured_pair_release04a_20260929`, preflight 4/4, source
+commit `728821ea761b3994eb40ebba91ab8238e4667f82`, Dataset URL/version: không
+có. Closure epoch đầu và recovery epoch đều dừng fail-closed tại C4/A0 do
+request delivery-uncertain; raw journals và combined report giữ riêng tại
+`build/evaluation/`. Xem [deployment report](../docs/evaluation/phase5_native_closure_recovery_report_20260929.md).
+
+### 2026-09-29 — Restart theo owner, source pull và health đã xác thực
+
+| Actual notebook | Version | Trạng thái quan sát lúc 06:40 UTC |
+|---|---|---|
+| [buiquocviet/react-vn-qwen3-agent-api-v1](https://www.kaggle.com/code/buiquocviet/react-vn-qwen3-agent-api-v1) | 7 | RUNNING; authenticated READY; source pull khớp |
+| [huylmhuhu/react-vn-llama3-guard-api-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-llama3-guard-api-v1) | 5 | RUNNING; authenticated READY; source pull khớp |
+
+Source `728821ea761b3994eb40ebba91ab8238e4667f82`, private/T4, model mounts
+không đổi; Dataset URL/version: không có. Phiên mới có session/discovery mới;
+không dùng để bỏ qua request uncertain hoặc resume experiment identity cũ.
+Version lấy từ push receipts, không suy v3 sau v2; chưa audit các version xen
+giữa. Package `build/kaggle/structured_pair_release03a_20260929`, preflight 4/4,
+`restart_verified.json` lưu evidence không secret. Không task inference mới.
+[Report](../docs/evaluation/phase5_restart_recovery_20260929.md),
+[receipt](../experiments/manifests/phase5_restart_recovery_20260929.json).
+
+### 2026-09-29 — Health probe sau khi notebook v2 vẫn chạy
+
+Không submit hoặc đổi version notebook. Read-only probe lúc 19:14:24 UTC ngày
+2026-09-28 (02:14:24 ngày 2026-09-29 theo giờ Việt Nam) dùng
+đúng snapshot endpoint private hiện hành và lưu
+`build/kaggle/structured_pair_endpoint_check_20260928T115147/health_191424_20260929.json`:
+Qwen3-8B agent và Llama3.2-3B guard đều `READY`, identity/model/source/worker
+khớp metadata đã pin. Đây chỉ là trạng thái tại thời điểm kiểm; không chứng minh
+uptime, boot mới, request cancellation hoặc chất lượng model. Hai API không nhận
+benchmark payload trong probe này. Candidate grammar v4 và freeze audit encoded
+đều chạy local CPU/read-only, không cần submit Kaggle mới.
+
+Probe follow-up lúc 19:57:46 UTC ngày 2026-09-28 chỉ gọi `GET /v1/models` và
+không gửi benchmark payload: agent trả `HTTP_ERROR`/530, guard trả
+`NETWORK_ERROR`. Receipt
+`build/kaggle/structured_pair_endpoint_check_20260928T115147/health_195746_20260929_status.json`
+giữ identity, mã lỗi và số inference bằng 0. Không suy notebook đã dừng, không
+retry inference và không đổi version; health này phải trở lại READY cho cả hai
+role trước khi mở Dev run mới.
+
+### 2026-09-28 — Endpoint refresh và hai diagnostic bổ sung
+
+Cùng hai notebookv2/owner/URLs ở bảng bên dưới, không submit version mới.
+Source worker `728821ea761b3994eb40ebba91ab8238e4667f82`; không Dataset.
+Status đúng tài khoản RUNNING; GET12:11:14UTC xác nhận agent/guard READY sau khi
+refresh encrypted discovery vào `build/kaggle/structured_pair_endpoint_check_20260928T115147`.
+Receipt local: `endpoint_refresh_audit.json`, `health_121114.json` trong snapshot.
+Endpoint/key cũ release02a lỗi; giữ nguyên lịch sử. Session/source/model giống
+nhau qua endpoint refresh, không có boot attestation; không reset journal.
+Private access vẫn cần đúng owner; không credentials trong memory.
+
+[Paired report](../docs/evaluation/remote_api_paired_dev_v1_report.md) và
+[receipt](../experiments/manifests/remote_api_paired_dev_v1.json):28/28terminal.
+[Provenance report](../docs/evaluation/remote_api_provenance_v1_report.md) và
+[receipt](../experiments/manifests/remote_api_provenance_v1.json):12/12terminal.
+Tổng155HTTPrequests cho hai diagnostic,0uncertain; không Phase5 acceptance.
+Lifecyclev2 mới là CPU candidate, chưa cài vào hai notebook.
+
+### 2026-09-28 — Cùng hai notebookv2, native public runtime A0–A6
+
+Đã probe cùng agent/guard v2 của release02a trước inference; không submit mới.
+Actual URLs/owner/version ngay bên dưới, Dataset vẫn không có, source worker
+`728821ea761b3994eb40ebba91ab8238e4667f82`. Host source là working-tree325hashes.
+7conditions hoàn tất:14agent+10guard,7calculator/final79,5HTTP child processes
+GRACEFUL. Không remote GPU shutdown/cancel hoặc chất lượng benchmark.
+[Report](../docs/evaluation/remote_api_levels_v1_report.md),
+[receipt](../experiments/manifests/remote_api_levels_v1.json).
+Raw `build/evaluation/remote_api_levels_v1/diagnostic01`; notebook vẫn giữ chạy,
+READY chỉ là quan sát tại probe. Access private/credentials không đổi.
+
+### 2026-09-28 — Restart hai notebook lên v2 theo yêu cầu owner
+
+| Actual notebook | Version | Trạng thái đã quan sát |
+|---|---|---|
+| [buiquocviet/react-vn-qwen3-agent-api-v1](https://www.kaggle.com/code/buiquocviet/react-vn-qwen3-agent-api-v1) | 2 | RUNNING, API READY, source pull khớp |
+| [huylmhuhu/react-vn-llama3-guard-api-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-llama3-guard-api-v1) | 2 | RUNNING, API READY, source pull khớp |
+
+V1 đã COMPLETE trước restart. Source vẫn
+`728821ea761b3994eb40ebba91ab8238e4667f82`; mounts Qwen8B/1 và Llama3B/1 như v1;
+Dataset URL/version: không có. Hai notebook private, cùng tài khoản cũ, T4×2.
+Preflight4/4; mỗi notebook push một lần. Raw/package mới:
+`build/kaggle/structured_pair_release02a`. [Report](../docs/evaluation/structured_plan_api_v1_report.md),
+[receipt](../experiments/manifests/structured_plan_api_v1.json).
+Diagnostic1agent+1guard: Plan hợp lệ, guardSAFE/LOW, host chặnS2, outputnull;
+không public-field utility hoặc nghiệm thuA6. Keys chỉ local; cần đúng owner
+hoặc quyền private. READY không bảo đảm phiên còn online khi đọc lại.
+
+### 2026-09-27 — Hai notebook structured API đã READY, paired smoke đạt
+
+| Actual notebook (requested handle khớp) | Vai trò | Version / ID | Model source/version |
+|---|---|---|---|
+| [buiquocviet/react-vn-qwen3-agent-api-v1](https://www.kaggle.com/code/buiquocviet/react-vn-qwen3-agent-api-v1) | Qwen3-8B agent | 1 / 136136611 | qwen-lm/qwen-3/Transformers/8b/1 |
+| [huylmhuhu/react-vn-llama3-guard-api-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-llama3-guard-api-v1) | Llama3.2-3B guard | 1 / 136136616 | metaresearch/llama-3.2/Transformers/3b-instruct/1 |
+
+Source `728821ea761b3994eb40ebba91ab8238e4667f82`, đã push GitHub trước GPU.
+Dataset URL/version: không có Dataset trong hai notebook này. Private/T4×2,
+FP16; remote metadata/source bytewise khớp. Receipt push xác nhận version1;
+pull latest khớp nhưng pull suffix `/1` không trả source, giữ lỗi riêng.
+[Report](../docs/evaluation/structured_pair_api_v1_report.md),
+[submission/preflight/live metadata/smoke receipt](../experiments/manifests/structured_pair_api_v1.json).
+Ngày kiểm2026-09-27: hai API READY, paired synthetic2agent+2guard calls đạt,
+final166/calculator qua Broker; guardSAFE/LOW. Không terminal lifecycle audit,
+không benchmark quality. Hai server giữ chạy; owner xác nhận đã tắt bốn phiên
+cũ. READY không đảm bảo uptime về sau. Private access cần đúng tài khoản/quyền
+Kaggle, không suy từ link local. Keys/endpoints/topics không lưu trong memory.
+Loaded-file hashes có trong receipt, không publisher attestation. Raw local
+`build/kaggle/structured_pair_release01` và `build/evaluation/structured_pair_smoke01`.
+
+### 2026-09-28 — READY audit and structured Dev pilot complete
+
+Read-only `status`/`discover` authenticated the same two private v1 notebooks:
+
+| Actual notebook | Role | Version / ID | Dated status |
+|---|---|---|---|
+| [buiquocviet/react-vn-qwen3-agent-api-v1](https://www.kaggle.com/code/buiquocviet/react-vn-qwen3-agent-api-v1) | Qwen3-8B agent | 1 / 136136611 | `RUNNING`, `READY` at audit |
+| [huylmhuhu/react-vn-llama3-guard-api-v1](https://www.kaggle.com/code/huylmhuhu/react-vn-llama3-guard-api-v1) | Llama3.2-3B guard | 1 / 136136616 | `RUNNING`, `READY` at audit |
+
+Remote serving source remains `728821ea761b3994eb40ebba91ab8238e4667f82`; no
+Dataset is mounted. The host-only Dev pilot then completed 37/37 checkpoints
+(21 clean tasks and 16 paired guard controls) through these workers. [Pilot
+report](../docs/evaluation/structured_api_dev_v1_report.md), [manifest and raw
+receipt directory](../build/evaluation/structured_api_dev_v1/). This is Dev
+diagnostic evidence, not Test or Phase 5 acceptance. Session/API credentials
+remain local and are not recorded here.
+Post-pilot read-only status check: both kernels remained `RUNNING`; no session
+was stopped by the runner.
+
+### 2026-09-27 — Bốn API do owner dựng, live diagnostic riêng
+
+Owner xác nhận Llama3B là guard candidate, ba model còn lại là task agents.
+[Report và nguồn bằng chứng](../docs/evaluation/kaggle_http_diagnostic_20260927.md),
+[receipt](../experiments/manifests/kaggle_http_diagnostic_v1.json).
+Notebook handles dưới đây từ owner/local launcher; GET API xác nhận alias/mount,
+không xác thực độc lập notebook version/source hoặc quyền truy cập notebook.
+
+| Notebook khai báo | Vai trò | Model mount/version server báo |
+|---|---|---|
+| [buiquocviet/qwen3-8b-gpu-api](https://www.kaggle.com/code/buiquocviet/qwen3-8b-gpu-api) | Agent candidate | qwen-lm/qwen-3/transformers/8b/1 |
+| [lamhuy8904/gemma4-e4b-gpu-api](https://www.kaggle.com/code/lamhuy8904/gemma4-e4b-gpu-api) | Agent candidate | google/gemma-4/transformers/gemma-4-e4b-it/1 |
+| [huylmhuhu/gemma3-gpu-api](https://www.kaggle.com/code/huylmhuhu/gemma3-gpu-api) | Guard candidate Llama3B; slug gemma3 là tên cũ | metaresearch/llama-3.2/transformers/3b-instruct/1 |
+| [meanalways/deepseek-r1-llama8b-gpu-api](https://www.kaggle.com/code/meanalways/deepseek-r1-llama8b-gpu-api) | Agent candidate | deepseek-ai/deepseek-r1/transformers/deepseek-r1-distill-llama-8b/2 |
+
+Ngày kiểm2026-09-27: ban đầu4GET200; runner sau đó Gemma GETtimeout nên uptime
+chưa ổn định. Qwen tool action đạt/final sai schema,DeepSeeknonJSON,Llama2guard
+controls đạt. Không notebook terminal audit/new submission. Kernel version và
+remote source commit: **chưa xác minh**; không dùng Git base local làm nguồn
+remote. Dataset riêng: launcher khai báo không có; mount Model versions như
+trên là self-report, chưa weight-hash attestation. Không đưa endpoint/key hoặc
+ntfy topic vào memory. Resources không chuyển public; owner access không suy
+ra quyền người khác. Batch-only preference bên dưới là lịch sử đã được cập nhật.
+
+### Tham khảo mới 2026-09-25 — chưa triển khai cho dự án
+
+Owner chọn batch Kaggle, không public endpoint. [Đánh giá và kế hoạch](../docs/evaluation/phase5_field_model_bridge_v1_report.md).
+[kaggle-tpu-lab](https://github.com/ARahim3/kaggle-tpu-lab) là repo bên ngoài;
+[Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) là model card đã đọc,
+chưa pin immutable revision/download. Hai Dataset theo notebook user gửi:
+[weights rahim3/qwen3-8-27b-bf16](https://www.kaggle.com/datasets/rahim3/qwen3-8-27b-bf16),
+[cache rahim3/qwen38-tpu-env-v5e8](https://www.kaggle.com/datasets/rahim3/qwen38-tpu-env-v5e8).
+Dataset versions/access/cache hashes chưa xác minh; URL từ mô tả không phải
+receipt mount thành công. Không có source commit/notebook version/submission
+của đồ án dùng chúng. Không thay thế các notebook lịch sử dưới đây. Không lưu key.
 
 **Dev32 v2 COMPLETE/audit; không resubmit.** Actual
 [notebook](https://www.kaggle.com/code/huylmhuhu/react-vn-clause-dev32-v2)
@@ -464,3 +736,140 @@ Chạy `make knowledge-check` sau sửa liên kết. URL ngoài repo được l�
 knowledge-check chỉ kiểm link local/cấu trúc, không xác nhận quyền mở trên Kaggle.
 
 [Kaggle lessons](kaggle_lessons.md) · [Runbook](runbook.md) · [Handoff](handoff.md).
+
+## 2026-09-29 — v3 source-only package, not submitted
+
+Local package: `build/kaggle/request_worker_v3_candidate_20260929_03`.
+Preflight receipt: `preflight_v3/receipt.json`, 4/4 role/layout passed. Source
+identity is working tree/development with nine module hashes; no committed
+release claim. No new Dataset or notebook version. Requested candidate slugs
+in local metadata are not actual published handles and no remote URLs are
+asserted. Existing actual notebooks remain the release04a v8/v6 historical
+identities above; live availability was not checked in this repair turn.
+See [root-fix report](../docs/evaluation/phase5_root_fix_20260929.md).
+
+### 2026-09-29 — local candidate04, chưa submit
+
+`build/kaggle/request_worker_v3_candidate_20260929_04` đã prepare/preflight
+4/4, thêm kiểm từ chối symlink và SHA launcher/probe trong receipt.
+Không có notebook URL/version hoặc Dataset URL/version mới; các handle v3
+trong metadata chỉ là requested targets. Source commit là `development`,
+working-tree hashes trong prepared/receipt; không suy Git base chứa source mới.
+[QA receipt](../experiments/manifests/phase5_root_fix_cpu_20260929.json).
+Không network/model/GPU/submission trong lượt QA này; live availability chưa
+kiểm lại. Credentials không nằm trong receipt.
+
+
+## 2026-09-30 — candidate v3 mới, chưa triển khai
+
+`build/kaggle/request_worker_v3_candidate_20260930_01`:4/4CPUpackageQA;
+source `development` với từng hash trong receipt. Không notebook/Dataset URL
+hoặc version mới. Credential directory nhận diện thêm lamhuy8904/meanalways;
+không query quota hoặc submit hai tài khoản này để vượt quota đã hết.
+CLI ở lượt trước trả buiquocviet38.60hused/0remaining và huylmhuhu38.42hused/
+0remaining, refreshAt2026-10-03T00:00:00. Đây không phải current health.
+Lệnh status trước bị ngắt, không receipt thành công. Actual notebook identities
+release04a v8/v6 giữ nguyên lịch sử; chưa source-pull/nativev3.
+[Report](../docs/evaluation/phase5_native_closure_v2_preparation_20260930.md),
+[receipt](../experiments/manifests/phase5_native_closure_v2_preparation_20260930.json).
+
+
+## 2026-10-01 — gói review cho từng chủ tài khoản, chưa upload
+
+Owner làm rõ lamhuy8904/meanalways là hai người bạn, không phải yêu cầu tạo
+account mới. Chỉ chuẩn bị local để từng chủ tài khoản xem và tự vận hành trong
+phạm vi quota của họ; không dùng credential của họ, không query quota, không
+submit/discover hoặc tự luân phiên account. Không đổi default deployment roles.
+
+- Package: `build/kaggle/collaborator_pair_review_20261001_01`.
+- Intended owner/role: lamhuy8904/Qwen3-8B agent; meanalways/Llama3.2-3B guard.
+- Requested handles chỉ ở metadata: `lamhuy8904/react-vn-qwen3-agent-api-v3-candidate`,
+  `meanalways/react-vn-llama3-guard-api-v3-candidate`; **chưa có actual URL/version**.
+- Không Dataset URL/version mới; hai model input version1 giữ nguyên.
+- Source `development`, chưa Git freeze/push. Mỗi notebook ghi review-only,
+  không hướng dẫn chạy trước khi có release frozen. Native/GPU chưa kiểm.
+- CPU exact-package preflight4/4; codecell ipynb bằng từng byte với source đã
+  preflight; compile2/2; ZIP chỉ gồm notebook, metadata, README. Private discovery
+  key0600 giữ local, Git ignored; không đưa vào gói share.
+- Chưa có worker API keys/endpoint. Không suy READY từ preflight.
+
+[Receipt và hashes](../experiments/manifests/phase5_collaborator_review_20261001.json).
+
+
+## 2026-10-01 — source freeze đã push, owner notebooks chưa upload
+
+- GitHub worker commit `e4078d7d5d2fe66a881e53ec5f194e3f9aa66b47`, nhánh
+  `codex/phase5-worker-v3-source-freeze-20261001`; main giữ nguyên.
+- Package `build/kaggle/collaborator_pair_frozen_20261001_01` preflight4/4;
+ 71tests passed;2notebooks×9modules đối chiếu Git bytes đạt. Không secret trong ZIP.
+- Intended owner/role: lamhuy8904/Qwen3-8B agent, meanalways/Llama3.2-3B guard.
+  Requested handles giữ `react-vn-qwen3-agent-api-v3-candidate` và
+  `react-vn-llama3-guard-api-v3-candidate`; **chưa actual notebook URL/version**.
+- Dataset:none; model inputs Qwen8b/v1 và Llama3b-instruct/v1 giữ nguyên.
+- Không account login/quota query/submission/discovery ở lượt freeze. Không API
+  keys/endpoint mới. Chủ tài khoản tự vận hành trên quota hợp lệ; không account cycling.
+- [Receipt/hash](../experiments/manifests/phase5_owner_notebooks_frozen_20261001.json).
+  Private discovery key giữ local0600/ignored, không có trong owner ZIP.
+
+## 2026-10-02 — đã đọc discovery, chưa nhận API
+
+- Package `build/kaggle/collaborator_pair_frozen_20261001_01`, source commit
+  `e4078d7d5d2fe66a881e53ec5f194e3f9aa66b47`.
+- Discovery qua mạng hoàn tất, exit 0: agent và guard đều `waiting_discovery`.
+  Chưa connection files hoặc pair endpoints; chưa thể probe model/boot identity.
+- Requested handles vẫn là `lamhuy8904/react-vn-qwen3-agent-api-v3-candidate`
+  và `meanalways/react-vn-llama3-guard-api-v3-candidate`;
+  actual notebook URL/version chưa biết. Dataset: none; model input versions
+  giữ nguyên như gói frozen. Không đăng nhập Kaggle/query quota/submit/inference.
+- Không có thông báo kết nối phù hợp không chứng minh notebook đang tắt.
+  Pending: owners chạy gói frozen, cung cấp actual URL/version và tín hiệu READY.
+- [Receipt](../build/evaluation/phase5_owner_discovery_20261002_01.json).
+
+
+## 2026-10-02 — direct deployment và model access blocker
+
+Owner đã yêu cầu trực tiếp vận hành hai worker. Actual private notebooks:
+- [lamhuy8904 agent](https://www.kaggle.com/code/lamhuy8904/react-vn-qwen3-agent-api-v3-candidate):
+  v1/ID136686959, source e4078d7d5d2fe66a881e53ec5f194e3f9aa66b47,
+  authenticated READY, last probe lượt kiểm quyền Llama. Connection0600/local.
+- [meanalways guard](https://www.kaggle.com/code/meanalways/react-vn-llama3-guard-api-v3-candidate):
+  v1/ID136686965 cùng source e4078d7 ERROR; v2 source
+  d6cc4fcee37b009751b94a7535b12690e257166c ERROR EXACT_MODEL_MOUNT_MISSING,
+  log input_directories=[]; chưa API. Cả hai phiên lỗi giữ nguyên evidence.
+- Dataset:none. Model inputs vẫn Qwen8b/v1 và Meta Llama3.2 3b-instruct/v1;
+  remote source 3 submissions khớp byte và metadata private/T4 đúng.
+- Read-only file access Llama: meanalways403, lamhuy8904 cũng403; public metadata
+  vẫn đọc được. Chờ chủ tài khoản giải quyết quyền model. Không GPU retry tiếp.
+- [Deployment receipt](../experiments/manifests/phase5_api_deployment_20261002.json),
+  [lamhuy Llama check](../build/operations/phase5_pair_20261002/lamhuy_llama_access_20261001T180657Z.json).
+
+
+## 2026-10-02 — public guard v3 READY, pair authenticated
+
+- [meanalways guard](https://www.kaggle.com/code/meanalways/react-vn-llama3-guard-api-v3-candidate):
+  actual version3/ID136686965, source77bc456469ec58fb3543931066f365b15292f5f3,
+  private/T4, no Kaggle model input or Dataset. Remote source bytes exact.
+  Public HF input unsloth/Llama-3.2-3B-Instruct revision
+  006f5dcd1393c3add266de40994ba96225e9689d. Download manifest fingerprint matches
+  authenticated live model revision. v1/v2 ERROR retained, not overwritten.
+- [lamhuy8904 agent](https://www.kaggle.com/code/lamhuy8904/react-vn-qwen3-agent-api-v3-candidate):
+  actual version1/ID136686959, sourcee4078d7d5d2fe66a881e53ec5f194e3f9aa66b47,
+  unchanged private/T4, Qwen input qwen-lm/qwen-3/transformers/8b/1, no Dataset.
+- Both authenticated READY after local power interruption; keys recovered through
+  encrypted discovery, local pair snapshot0600, never recorded in project memory.
+- Pair directory:build/kaggle/phase5_public_guard_pair_20261002_01.
+  Native Dev epoch:build/evaluation/phase5_native_public_guard_20261002_01,
+  declared84conditions before inference. Startup/health is not Phase5 acceptance.
+- [Ready receipt](../experiments/manifests/phase5_public_guard_ready_20261002.json),
+  [deployment source/QA](../docs/evaluation/phase5_public_guard_deployment_20261002.md).
+
+## 2026-10-02 — native partial audit, worker versions unchanged
+
+Agent lamhuy8904 v1/source e4078d7 and guard meanalways v3/source77bc456 remain
+the exact notebook identities linked above; no new submission or Dataset.
+Native run stopped16/84:15 normal,1 network/model_error,68never-started.
+Read-only authenticated same-agent probe19:10:40UTC returned404 REQUEST_UNKNOWN;
+no cached result or terminal proof. Journal remains blocked. This is not a
+fresh guard health check or evidence that either notebook has shut down.
+[Report](../docs/evaluation/phase5_public_guard_partial_20261002.md) and
+[receipt](../experiments/manifests/phase5_public_guard_partial_20261002.json).

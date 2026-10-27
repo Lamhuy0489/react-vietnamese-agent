@@ -55,6 +55,18 @@ Có thể dùng Excluded files để giảm nhiễu tìm kiếm/graph với `cre
 `.gitignore` cũng chỉ điều khiển Git; không bảo vệ khỏi plugin hoặc dịch vụ khác.
 Không tự di chuyển/xóa credentials, sửa vault settings hay tạo vault lồng nhau.
 
+## Dọn dẹp ngày 2026-10-23
+
+- Đã xóa (tạo lại hoặc tải lại được): 3 file `guard-model.tar` giống hệt nhau trong
+  `build/kaggle/phase5_guard_probe_v1_bundle0{1,2,3}/dataset/` (so từng byte trước khi
+  xóa), trọng số Qwen2.5-1.5B trong `build/guard_models/` (revision đã ghi trong
+  snapshot.json), `build/structured_api_venv` và cache.
+- Đã nén, không xóa: `build/pytest_*` vào `archive_local/build_pytest_traces.tar.gz`,
+  `results/*preflight*` vào `archive_local/results_preflight.tar.gz`. Git bỏ qua
+  `archive_local/`. Các đường dẫn cũ trong ghi chú lịch sử vẫn giữ nguyên tên; khôi phục
+  bằng `tar -xzf archive_local/<file>.tar.gz` chạy từ root của repo.
+- Nên chép `archive_local/` và `build/releases/` ra ổ ngoài hoặc cloud riêng tư.
+
 ## Raw evidence và phục hồi
 
 Manifest chứa hash, không chứa toàn bộ raw; mất raw thì không thể tái tạo bằng

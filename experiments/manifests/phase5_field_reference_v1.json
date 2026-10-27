@@ -1,0 +1,75 @@
+{
+  "audit": {
+    "byte_identical": true,
+    "paths": [
+      "build/evaluation/phase5_field_reference_audit01.json",
+      "build/evaluation/phase5_field_reference_audit02.json"
+    ],
+    "result": {
+      "cases": 32,
+      "declaration_sha256": "b93993b2a6754e5544aacdeee8511b685ffb151771a2fb03f8b7377c3f82e751",
+      "native_model_runs": 0,
+      "phase5_accepted": false,
+      "protocol": "field_reference_component_audit_v1",
+      "raw_inventory_sha256": "24993d4ee073a9fbd16a3987df94c02216294bcf649cfae9b82ec637d029c1aa",
+      "valid": true
+    },
+    "sha256": "962ae59a6a2e7ee23fdc7511bcbc8b8d72903cd8f24157cd7437a7bd7399764a"
+  },
+  "auditor_source_sha256": "0ba96ad38010d90eb7ff01950f53017b2aa0d955404ba0ec5e8b81fce7a0751b",
+  "broker_calls": 98,
+  "cases": 16,
+  "component_gate": true,
+  "contract_sha256": "cbcc06aa47e882e12ec56cae464f99ce093b626e5de2430e98f871a37cc56a6e",
+  "date": "2026-09-25",
+  "declaration_sha256": "b93993b2a6754e5544aacdeee8511b685ffb151771a2fb03f8b7377c3f82e751",
+  "executions": 32,
+  "git_base": "c87c321b42345e6d7152ca60976363a67a972531",
+  "harness_sha256": "226fa731b7d11845f9660a3987c8641df9c8c212bcb983e03d14dfcfdf36f3a7",
+  "held_out_test_loaded": false,
+  "historical_worker_files_unchanged": 191,
+  "integrated": false,
+  "limits": [
+    "host-issued Grant assumed; no NLP authorization compiler",
+    "scripted component plans; no model reference-selection quality",
+    "no full cumulative A0-A6 comparison",
+    "final text only; no external sink integration",
+    "no guarantee against control or implicit flow"
+  ],
+  "native_model_runs": 0,
+  "phase5_accepted": false,
+  "protocol": "phase5_field_reference_selected_v1",
+  "qa": {
+    "auditor_tests": 7,
+    "component_tests": 57,
+    "diff_check": true,
+    "errors": 0,
+    "failures": 0,
+    "mypy_files": 554,
+    "passed": 226,
+    "path": "build/evaluation/phase5_field_reference_qa02.xml",
+    "ruff": true,
+    "seconds": 11.362,
+    "setup": true,
+    "sha256": "5e19769d4417503b35f03100f658110de4db49ade824618adfb18f1667fb42cf"
+  },
+  "raw_root": "build/evaluation/phase5_field_reference01",
+  "receipt_sha256": "557a365298331d18714515ba35c758cce4346323bbcf2dbb694d9c6340c768bf",
+  "runtime_source_sha256": {
+    "src/react_agent/prototypes/__init__.py": "827eb5f54d69088aa9f196dd9c73494b4cf2e7e37964fe4fc191eeaf4a7ce259",
+    "src/react_agent/prototypes/field_reference_v1.py": "7dec92375d76aba500fac720875910fe6c4222387ba83e409482068e743c44f4"
+  },
+  "source_commit": null,
+  "summary": {
+    "exposure": {
+      "benign_preserved": 0,
+      "elapsed_cpu_seconds": 0.06378727708943188,
+      "negative_denied": 8
+    },
+    "selected": {
+      "benign_preserved": 8,
+      "elapsed_cpu_seconds": 0.0658551930100657,
+      "negative_denied": 8
+    }
+  }
+}
