@@ -1,9 +1,37 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-10-28. Lúc 08:30. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-10-28. Lúc 10:30. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
+
+**E2 Dev mốc (chưa chạy, owner hẹn 29/10).** Code xong (`f6d044b`): `tools/doc_search_v2.py` +
+`scripts/run_adversarial_e2_api_v1.py` (decision log "E2"). Việc mai: bật 4 notebook, chạy A0, A1, A6
+× 400 Dev, mỗi mức một tiến trình và một endpoint riêng (một tài khoản chỉ có một slug Qwen):
+
+| Mức | Qwen3-8B | Guard |
+|---|---|---|
+| A0 | huylmhuhu | — |
+| A1 | buiquocviet | — |
+| A6 | meanalways | huylmhuhu (phiên GPU thứ hai) |
+
+HF token: owner chọn dùng lại token cũ (không rotate); đã lưu `~/.hf_token_r5` (0600, ngoài repo),
+kiểm 2026-10-28 còn hợp lệ và truy cập được Llama-3.2-3B. lamhuy8904 hết quota tới 31/10.
+```
+export SSL_CERT_FILE=$(.venv/bin/python -c "import certifi;print(certifi.where())")
+export HF_TOKEN_R4=$(cat ~/.hf_token_r5)
+# mỗi tài khoản: KAGGLE_CONFIG_DIR tạm (scratchpad) chứa bản sao credential kaggle/kaggleN.json
+# (kaggle1 = huylmhuhu, kaggle2 = meanalways, kaggle3 = buiquocviet), không vào Git
+.venv/bin/python scripts/launch_vllm_serve_v1.py prepare --owner OWNER --model-key qwen3_8b --hf-token-env HF_TOKEN_R4
+.venv/bin/python scripts/launch_vllm_serve_v1.py prepare --owner huylmhuhu --model-key llama32_3b_guard --hf-token-env HF_TOKEN_R4
+KAGGLE_CONFIG_DIR=... .venv/bin/kaggle kernels push -p build/kaggle/<folder> --accelerator NvidiaTeslaT4
+.venv/bin/python scripts/launch_vllm_serve_v1.py discover --folder build/kaggle/<folder> --timeout-minutes 40
+# mỗi mức (nạp endpoint.env tương ứng vào VLLM_BASE_URL/KEY, A6 thêm GUARD_BASE_URL/KEY):
+caffeinate -ims scripts/retry_on_infra_v1.sh 20 120 -- .venv/bin/python scripts/run_adversarial_e2_api_v1.py --levels A0 >> build/kaggle/e2_A0.log 2>&1
+# xong: evaluate_adversarial_dev_v1.py R --output R_eval.json; evaluate_side_effect_harm_v1.py R
+```
+Sau đó: ghi bảng E2 so với v1 Dev vào decision log, rồi viết D2 (`security_v1/control_data_policy_v1.py`,
+`runtime_d2_v1.py`), chỉnh ≤3 vòng trên Dev E2.
 
 **R4 security Test (2026-10-28, chạy một lần, không chạy lại).** `results/rebuild_a/adv_test_qwen3_8b`
 (local, không track), eval `results/rebuild_a/adv_test_qwen3_8b_eval.json` + `.records.jsonl`.
@@ -43,7 +71,7 @@ PYTHONPATH=src .venv/bin/python scripts/keepalive_vllm_v1.py --endpoint <folder>
 0. **Hướng A+B+C (owner duyệt thiết kế 2026-10-28):** `docs/project/defense_v2_test2_design.md`.
    B xong. C xong: **Test-2 đã seal** (`data/adversarial/release_test2/seal.json` sha256 `1576b89a…`,
    decision log "C: Test-2 sealed"); từ giờ Test-2 là held-out, không dùng để thiết kế hay chỉnh D2.
-   Việc kế: **E2** `doc_search_v2` (file mới, nhận id) + chạy lại Dev mốc A0/A1/A6; rồi D2 trên Dev
+   E2 code xong (`f6d044b`); việc kế: chạy Dev mốc A0/A1/A6 trong E2 (mục "Đang làm"); rồi D2 trên Dev
    (≤3 vòng), `final_config_v2`, chạy Test-2 1.000 lượt (mỗi cấu hình một endpoint để nhanh). Thêm file
    trong `src/react_agent` làm `final_config_v1.verify` từ chối: đúng thiết kế.
 1. RQ3: tạo 250 biến thể robustness → review → seal → final_config_v2 (dry-run Dummy).
