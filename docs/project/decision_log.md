@@ -2736,3 +2736,17 @@ significant, because harmless reads made benign variants "harmful" and masked at
 effects. On Test v1 this result is post hoc and is reported as secondary only; it is
 not used to tune anything. The utility cost (A3 halves benign utility, A4–A6 leave
 5/150) is unchanged and is what defense v2 targets.
+
+## 2026-10-28 — C: Test-2 sealed (owner approval)
+
+The owner reviewed the 20 canonical instructions and approved the seal. Sealed with
+`scripts/build_test2_release_v1.py seal --approved-by owner` before any D2 code
+exists. `data/adversarial/release_test2/seal.json` sha256
+`1576b89a9d3ecc69d771fc077fa4e6135de0ee20ce2b13b7d5b6636aab64f742`; it pins
+`test_attack.jsonl` (`9344cd95…`), `test_benign.jsonl` (`30f9f614…`),
+`private/oracles.json` (`783be0a4…`), `qa.json` (`b955cd57…`) and the authoring inputs
+`spec.json` (`65c4f6f4…`), `canonicals.json` (`b082fa5b…`),
+`code_mix_glossary_extra.json` (`668bd100…`). Contents: 200 fixtures, 20 families;
+QA 400/400 replays pass; max 4-gram overlap with v1 is 0.07. From now on Test-2 is
+held out: no Test-2 content is used to design or tune D2, E2 or the guard, and it is
+run once under `final_config_v2`.

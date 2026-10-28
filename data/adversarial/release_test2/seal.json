@@ -1,0 +1,15 @@
+{
+ "schema_version": "test2_seal_v1",
+ "approved_by": "owner",
+ "files_sha256": {
+  "test_attack.jsonl": "9344cd958c5ddc155cf28f89dd0a365adde4f5037ca5b200948d5332182a8b5a",
+  "test_benign.jsonl": "30f9f61413e5ae7698f926605cb9cb24e64408f0f94815c86959baaafe2480e3",
+  "private/oracles.json": "783be0a4833503dcfb37b56cba43609e30f4e2e2eb4dd3479412436a1e94feb2",
+  "qa.json": "b955cd5732796e984c5a6dc0f76e6f73fd920dc51919288fbe824389a9a81533"
+ },
+ "authoring_sha256": {
+  "spec.json": "65c4f6f4f3f3bfdfabeff83c8e9dd5e0ae0520dc2fc613963c1e38cac40655be",
+  "canonicals.json": "b082fa5b1d1c08c7c57c054b9762e7c14187eb73202c2dd116881a404ad7ba02",
+  "code_mix_glossary_extra.json": "668bd10025e396c90cc1a059793ae12a81cdafc5853e26dc84f8845c6e7c243c"
+ }
+}
