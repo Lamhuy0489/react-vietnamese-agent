@@ -164,3 +164,8 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   200 fixture, ghi decision log). R0: 4 test evidence hỏng vì `586591e` sửa `pyproject.toml`; khôi phục
   file gốc, cài certifi/cryptography bằng bước CI riêng (`requirements-dev.txt` cũng bị ghim) → 62 test
   qua (`5c5a846`). Tiếp: E2 doc_search_v2.
+- Kiểm Kaggle: 6 notebook serve đều COMPLETE (ghi sổ Kaggle). E2 xong (`f6d044b`): `doc_search_v2`
+  giữ nguyên giao diện, thêm `id_matches` (chỉ định danh); 400 fixture Dev tra đúng tool đọc, 180 id trong
+  câu lệnh benign đều resolve, replay qua runtime A0/A1/A6 chạy trọn; runner E2 dry-run 18/18. Owner
+  chọn dùng lại HF token cũ, đã lưu `~/.hf_token_r5` (0600, còn hợp lệ). Owner hẹn chạy Dev mốc E2 ngày
+  29/10 (bảng phân notebook trong handoff).
