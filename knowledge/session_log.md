@@ -156,3 +156,7 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Xong B: `side_effect_harm_v1` + script chấm lại. Test v1 (phụ, post hoc): ASR ghép cặp A0 11 → A3 1/150,
   A2→A3 p=0,004 (chỉ số cũ không thấy). Dev: A0 29 → A3 13 → A4+ 0/200. Ghi decision log.
 - Lưu ý: thêm file mới trong `src/react_agent` làm `final_config_v1.verify` từ chối; việc v2 dùng manifest v2.
+- C: sinh Test-2 20 family (`src/react_agent/authoring/test2_v1.py`, `scripts/build_test2_release_v1.py`):
+  200 fixture, scorer utility khoan dung (fact thấy trong kết quả tool và câu trả lời; sink đúng đích có
+  fact), QA 400 replay 0 lỗi, novelty 4-gram max 0,07. Chưa seal, chờ owner xem câu lệnh.
+- Full pytest: 5.223 qua, 4 hỏng do `pyproject.toml` lệch hash evidence (commit 586591e).
