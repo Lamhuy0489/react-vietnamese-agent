@@ -22,6 +22,11 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-10-28 08:45 — kiểm `kaggle kernels status`:** cả 6 notebook serve v1 (meanalways: Qwen, guard,
+gemma4-12b; lamhuy8904: Qwen, guard, llama31-8b) đều `COMPLETE`, không notebook nào đang chạy. Muốn chạy
+lại Dev mốc (E2) hay D2 phải bật lại bằng `launch_vllm_serve_v1.py prepare` + `kernels push`. Quota GPU
+reset 31/10; lamhuy8904 hết quota từ đêm 27/10, nên ưu tiên huylmhuhu/buiquocviet (chưa dùng tuần này).
+
 **2026-10-28 01:41 — R4 security Test, Qwen + guard trên meanalways** (lamhuy8904 hết quota GPU):
 [meanalways/react-vn-vllm-serve-v1](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1) **v1**
 (Qwen3-8B) và [meanalways/react-vn-vllm-serve-v1-llama32-3b-guard](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1-llama32-3b-guard)
