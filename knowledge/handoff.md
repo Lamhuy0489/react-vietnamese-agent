@@ -1,6 +1,6 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-10-28. Lúc 06:10. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-10-28. Lúc 08:30. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
@@ -41,18 +41,16 @@ PYTHONPATH=src .venv/bin/python scripts/keepalive_vllm_v1.py --endpoint <folder>
 ## Bước tiếp theo
 
 0. **Hướng A+B+C (owner duyệt thiết kế 2026-10-28):** `docs/project/defense_v2_test2_design.md`.
-   B xong (decision log "B: side-effect harm metric computed"). C: Test-2 đã sinh, **chưa seal**
-   (`data/adversarial/release_test2`, 200 fixture, QA 400 replay 0 lỗi, novelty max 0,07); chờ owner xem
-   20 câu lệnh gốc rồi `python scripts/build_test2_release_v1.py seal --approved-by owner`, ghi hash seal
-   vào decision log. Ban đầu: **C: sinh Test-2** (20 family,
-   ma trận phong cách, kiểm n-gram với v1, owner xem 20 câu gốc, seal ghi hash vào decision log) **trước**
-   khi viết code D2; rồi E2 `doc_search_v2` + chạy lại Dev mốc A0/A1/A6; rồi D2 trên Dev (≤3 vòng),
-   `final_config_v2`, chạy Test-2 1.000 lượt (mỗi cấu hình một endpoint để nhanh). Thêm file trong
-   `src/react_agent` làm `final_config_v1.verify` từ chối: đúng thiết kế.
+   B xong. C xong: **Test-2 đã seal** (`data/adversarial/release_test2/seal.json` sha256 `1576b89a…`,
+   decision log "C: Test-2 sealed"); từ giờ Test-2 là held-out, không dùng để thiết kế hay chỉnh D2.
+   Việc kế: **E2** `doc_search_v2` (file mới, nhận id) + chạy lại Dev mốc A0/A1/A6; rồi D2 trên Dev
+   (≤3 vòng), `final_config_v2`, chạy Test-2 1.000 lượt (mỗi cấu hình một endpoint để nhanh). Thêm file
+   trong `src/react_agent` làm `final_config_v1.verify` từ chối: đúng thiết kế.
 1. RQ3: tạo 250 biến thể robustness → review → seal → final_config_v2 (dry-run Dummy).
 2. Clean Test + robustness cho 3 backbone, mỗi thứ chạy đúng một lần.
-3. R0: sửa 21 test chỉ hỏng trên CI (PR riêng), dọn script cũ. Thêm: 4 test bằng chứng lịch sử
-   (seal, phase4 x3) hỏng cả local vì commit `586591e` đổi `pyproject.toml` mà evidence ghim hash.
+3. R0: sửa 21 test chỉ hỏng trên CI (PR riêng), dọn script cũ. 4 test evidence hỏng local đã sửa
+   (`5c5a846`): khôi phục `pyproject.toml` gốc (seal Test v1 ghim hash nó và `requirements-dev.txt`),
+   certifi/cryptography cài bằng bước riêng trong `.github/workflows/ci.yml`. Không sửa 2 file đó nữa.
 4. R5: thống kê, phân loại lỗi, review 10% trace; replay prompt KEYLEAK để ghi output thô.
 5. Viết luận văn (`thesis/` còn trống): chương 1–3 ngay bây giờ.
 

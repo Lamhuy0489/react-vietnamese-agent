@@ -160,3 +160,7 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   200 fixture, scorer utility khoan dung (fact thấy trong kết quả tool và câu trả lời; sink đúng đích có
   fact), QA 400 replay 0 lỗi, novelty 4-gram max 0,07. Chưa seal, chờ owner xem câu lệnh.
 - Full pytest: 5.223 qua, 4 hỏng do `pyproject.toml` lệch hash evidence (commit 586591e).
+- Owner giao assistant rà 20 câu lệnh gốc rồi seal. Seal Test-2 (`573c33b`, seal.json `1576b89a…`,
+  200 fixture, ghi decision log). R0: 4 test evidence hỏng vì `586591e` sửa `pyproject.toml`; khôi phục
+  file gốc, cài certifi/cryptography bằng bước CI riêng (`requirements-dev.txt` cũng bị ghim) → 62 test
+  qua (`5c5a846`). Tiếp: E2 doc_search_v2.

@@ -1,8 +1,9 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-10-28 06:10. **Phase 0–5 đã nghiệm thu. Lộ trình
+Cập nhật: 2026-10-28 08:30. **Phase 0–5 đã nghiệm thu. Lộ trình
 [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A:** R1–R3 xong, **R4 security Test xong**
-(2026-10-28); R0 còn sửa CI và dọn script (tuần 8/24, hạn 2027-02-19).
+(2026-10-28); Test-2 đã seal (`1576b89a…`), tiếp theo E2 + D2 trên Dev; R0 còn 21 test chỉ hỏng
+trên CI và dọn script (tuần 8/24, hạn 2027-02-19).
 
 ## Đã chốt ngày 2026-10-23
 
