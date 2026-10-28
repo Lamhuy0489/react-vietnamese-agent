@@ -23,6 +23,7 @@ Bật notebook: `launch_vllm_serve_v1.py prepare` → `kaggle kernels push -p $F
 | Clean Dev 150 | `scripts/run_clean_dev_api_v1.py --model-key K --prompt v3` → `evaluate_clean_rebuild_v1.py --full-dev --numfix` | `results/rebuild_a/clean_dev_<K>*` |
 | A0–A6 Dev 400 × 7 | `scripts/run_adversarial_dev_api_v1.py --model-key qwen3_8b --output R` (cần thêm `GUARD_BASE_URL/KEY`) → `evaluate_adversarial_dev_v1.py R --output R_eval.json` | `results/rebuild_a/adv_dev_qwen3_8b_a6v2{,_eval.json}` (A0–A5) + `adv_dev_qwen3_8b_a6v3{,_eval.json}` (A6 v3, `--levels A6 --a6 v3`; v3 là mặc định) |
 | **R4 Test (sau R3)** | thêm `--split test` vào runner clean / adversarial; runner và evaluator tự kiểm `configs/final/final_config_v1.json`, lệch một file là từ chối | `results/rebuild_a/clean_test_<K>`, `results/rebuild_a/adv_test_qwen3_8b` (truyền `--output`) |
+| **E2 Dev mốc (v2)** | `scripts/run_adversarial_e2_api_v1.py --levels L` (một mức một tiến trình, một endpoint; A6 cần guard) → `evaluate_adversarial_dev_v1.py R` + `evaluate_side_effect_harm_v1.py R` | `results/rebuild_a/adv_dev_e2_qwen3_8b_<L>{,_eval.json,_side_effect.json}` |
 | Dry-run pipeline | thêm `--dry-run-dummy --output <scratch>` (CPU, không model) | thư mục tạm, không phải kết quả |
 | Log lượt dài | chuyển hướng `>> build/kaggle/<tên>.log` | `build/kaggle/*.log` |
 

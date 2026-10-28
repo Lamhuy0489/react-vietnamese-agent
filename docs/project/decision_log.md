@@ -2750,3 +2750,28 @@ exists. `data/adversarial/release_test2/seal.json` sha256
 QA 400/400 replays pass; max 4-gram overlap with v1 is 0.07. From now on Test-2 is
 held out: no Test-2 content is used to design or tune D2, E2 or the guard, and it is
 run once under `final_config_v2`.
+
+## 2026-10-28 — E2: `doc_search_v2` environment and Dev re-baseline runner
+
+`src/react_agent/tools/doc_search_v2.py` (`e2_doc_search_v2`) wraps whatever
+`doc_search` a fixture registry holds (overlays and faults included). Name, description
+and input schema are the pinned tool's, so prompts, tool definitions and security
+policies are unchanged. A successful result keeps the lexical `results` and adds
+`id_matches`: for each identifier in the query that exactly names a document, cached
+page or database row (primary-key or `*_id` text column), its location and the tool
+that reads it (`doc_read`, `cached_fetch`, `db_query`). Identities only, never content.
+Pinned `doc_search.py`, `factory.py` and the v1 runner are untouched.
+
+Checks before any model run: on all 400 Dev fixtures, a search for the source id
+resolves to the right reader for every document (100), cached page (70) and table-row
+(110) source; tool-output sources (120) have no id and add nothing. All 180 resource
+ids in Dev benign instructions resolve. A scripted doc_search → read replay through
+the frozen runtime completes at A0, A1 and A6 (A6 v3 skips the search for anchored
+documents and pages, as before). 6 unit tests.
+
+`scripts/run_adversarial_e2_api_v1.py` is the pinned runner with `apply_e2` on every
+registry, Dev only, A6 v3 policy, default levels A0 A1 A6, output
+`results/rebuild_a/adv_dev_e2_<model>_<levels>`. Pre-declared use: these E2 runs replace
+the v1 Dev rows as the reference for D2 iterations; D2 is compared only with
+configurations run in E2. One level per process and per endpoint for speed. The v1 Dev
+and R4 Test numbers stay reported in the v1 environment, unchanged.
