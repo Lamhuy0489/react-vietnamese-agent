@@ -97,7 +97,7 @@ def test_sampling_and_unpinned_revision_are_rejected() -> None:
 
 
 def test_per_tool_schema_binds_arguments_to_tool() -> None:
-    import jsonschema
+    jsonschema = pytest.importorskip("jsonschema")
 
     from react_agent.llm.openai_compat_v1 import per_tool_schema
     from react_agent.tools.factory import build_smoke_registry

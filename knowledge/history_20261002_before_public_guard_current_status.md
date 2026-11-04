@@ -26,7 +26,7 @@ lamhuy8904/agent và meanalways/guard, để từng chủ tài khoản tự vậ
 Agent chưa upload/chạy notebook mới. Discovery qua mạng ngày 2026-10-02 trả
 `waiting_discovery` cho cả hai role; chưa có API key/endpoint hoặc native GPU proof.
 Trạng thái notebook do chủ tài khoản vận hành chưa xác minh; không suy ra đang tắt.
-[Biên nhận discovery](../build/evaluation/phase5_owner_discovery_20261002_01.json).
+Biên nhận discovery (`build/evaluation/phase5_owner_discovery_20261002_01.json`).
 Không luân phiên account để vượt quota.
 
 ## Bước tiếp theo

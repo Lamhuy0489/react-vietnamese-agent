@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
+GUARD_BUNDLE = ROOT / "build/kaggle/phase5_guard_probe_v1_bundle03/dataset/guard_bundle.json"
 
 
 @pytest.fixture
@@ -15,6 +16,10 @@ def builder(monkeypatch):
     return importlib.import_module("prepare_phase5_doc_read_package_v1")
 
 
+@pytest.mark.skipif(
+    not GUARD_BUNDLE.is_file(),
+    reason="guard_bundle.json artifact not present in build/",
+)
 def test_native_worker_closure(builder):
     bundle = json.loads((builder.DATASET / "guard_bundle.json").read_text())
     files = builder.worker_files(bundle["source_sha256"])

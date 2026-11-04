@@ -104,6 +104,9 @@ def runner(monkeypatch):
     return module
 
 
+@pytest.mark.skipif(
+    not (ROOT / "build/evaluation").is_dir(), reason="build/evaluation directory not present"
+)
 def test_whole_schedule_durable_checkpoints_and_no_semantic_retry(runner, monkeypatch):
     with tempfile.TemporaryDirectory(dir=ROOT / "build/evaluation", prefix="closure_v2_qa_") as tmp:
         root = Path(tmp)
@@ -131,6 +134,9 @@ def test_whole_schedule_durable_checkpoints_and_no_semantic_retry(runner, monkey
             runner.run(root, output, resume=True)
 
 
+@pytest.mark.skipif(
+    not (ROOT / "build/evaluation").is_dir(), reason="build/evaluation directory not present"
+)
 def test_started_only_or_source_tamper_cannot_resume(runner, monkeypatch):
     with tempfile.TemporaryDirectory(dir=ROOT / "build/evaluation", prefix="closure_v2_qa_") as tmp:
         root = Path(tmp)
@@ -147,6 +153,9 @@ def test_started_only_or_source_tamper_cannot_resume(runner, monkeypatch):
             runner.run(root, output, resume=True)
 
 
+@pytest.mark.skipif(
+    not (ROOT / "build/evaluation").is_dir(), reason="build/evaluation directory not present"
+)
 def test_uncertain_journal_blocks_before_any_condition(runner, monkeypatch):
     with tempfile.TemporaryDirectory(dir=ROOT / "build/evaluation", prefix="closure_v2_qa_") as tmp:
         root = Path(tmp)
