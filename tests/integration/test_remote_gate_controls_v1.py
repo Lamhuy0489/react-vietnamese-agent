@@ -10,6 +10,7 @@ from test_remote_api_runtime_v1 import RunnerFactory
 ROOT = Path(__file__).resolve().parents[2]
 
 
+@pytest.mark.skipif(not (ROOT / "build").is_dir(), reason="build/ directory not present")
 def test_controlled_pairs_checkpoint_resume_and_saved_scoring(monkeypatch):
     monkeypatch.syspath_prepend(str(ROOT / "scripts"))
     runner = importlib.import_module("run_remote_gate_controls_v1")

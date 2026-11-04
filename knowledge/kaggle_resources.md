@@ -22,6 +22,11 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-10-28 08:45 — kiểm `kaggle kernels status`:** cả 6 notebook serve v1 (meanalways: Qwen, guard,
+gemma4-12b; lamhuy8904: Qwen, guard, llama31-8b) đều `COMPLETE`, không notebook nào đang chạy. Muốn chạy
+lại Dev mốc (E2) hay D2 phải bật lại bằng `launch_vllm_serve_v1.py prepare` + `kernels push`. Quota GPU
+reset 31/10; lamhuy8904 hết quota từ đêm 27/10, nên ưu tiên huylmhuhu/buiquocviet (chưa dùng tuần này).
+
 **2026-10-28 01:41 — R4 security Test, Qwen + guard trên meanalways** (lamhuy8904 hết quota GPU):
 [meanalways/react-vn-vllm-serve-v1](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1) **v1**
 (Qwen3-8B) và [meanalways/react-vn-vllm-serve-v1-llama32-3b-guard](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1-llama32-3b-guard)
@@ -30,6 +35,7 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 Kaggle CLI chạy bằng `KAGGLE_CONFIG_DIR` tạm trỏ tới credential meanalways (không vào Git).
 Keepalive `scripts/keepalive_vllm_v1.py --every 10` chạy suốt đợt, log `build/kaggle/keepalive_r4.log`.
 Source: tag `final-config`.
+- R4 xong 05:50 (2.100/2.100); keepalive tắt 05:50, hai notebook tự tắt sau 30 phút idle.
 
 **2026-10-26 tối — trạng thái:** Qwen v4 và guard v2 đã chạy xong A0–A6 Dev (2.800 lượt) và
 A6 v3 (400 lượt, 18:00–18:47). Keepalive tắt lúc khoảng 19:00, nên cả hai **đã tự tắt** (idle 30 phút).
@@ -251,8 +257,8 @@ Read-only `status`/`discover` authenticated the same two private v1 notebooks:
 Remote serving source remains `728821ea761b3994eb40ebba91ab8238e4667f82`; no
 Dataset is mounted. The host-only Dev pilot then completed 37/37 checkpoints
 (21 clean tasks and 16 paired guard controls) through these workers. [Pilot
-report](../docs/evaluation/structured_api_dev_v1_report.md), [manifest and raw
-receipt directory](../build/evaluation/structured_api_dev_v1/). This is Dev
+report](../docs/evaluation/structured_api_dev_v1_report.md), manifest and raw
+receipt directory `build/evaluation/structured_api_dev_v1/`. This is Dev
 diagnostic evidence, not Test or Phase 5 acceptance. Session/API credentials
 remain local and are not recorded here.
 Post-pilot read-only status check: both kernels remained `RUNNING`; no session
@@ -823,7 +829,7 @@ submit/discover hoặc tự luân phiên account. Không đổi default deployme
   giữ nguyên như gói frozen. Không đăng nhập Kaggle/query quota/submit/inference.
 - Không có thông báo kết nối phù hợp không chứng minh notebook đang tắt.
   Pending: owners chạy gói frozen, cung cấp actual URL/version và tín hiệu READY.
-- [Receipt](../build/evaluation/phase5_owner_discovery_20261002_01.json).
+- Receipt: `build/evaluation/phase5_owner_discovery_20261002_01.json`.
 
 
 ## 2026-10-02 — direct deployment và model access blocker
@@ -841,7 +847,7 @@ Owner đã yêu cầu trực tiếp vận hành hai worker. Actual private noteb
 - Read-only file access Llama: meanalways403, lamhuy8904 cũng403; public metadata
   vẫn đọc được. Chờ chủ tài khoản giải quyết quyền model. Không GPU retry tiếp.
 - [Deployment receipt](../experiments/manifests/phase5_api_deployment_20261002.json),
-  [lamhuy Llama check](../build/operations/phase5_pair_20261002/lamhuy_llama_access_20261001T180657Z.json).
+  lamhuy Llama check: `build/operations/phase5_pair_20261002/lamhuy_llama_access_20261001T180657Z.json`.
 
 
 ## 2026-10-02 — public guard v3 READY, pair authenticated

@@ -2,11 +2,18 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from react_agent.validation.phase5_formal_freeze_v1 import build_freeze
 
 ROOT = Path(__file__).resolve().parents[2]
+REQUIRED_EVIDENCE = ROOT / "build/evaluation/phase5_mainline/native01/manifest.json"
 
 
+@pytest.mark.skipif(
+    not REQUIRED_EVIDENCE.is_file(),
+    reason="Phase 5 formal freeze evidence missing in build/",
+)
 def test_formal_freeze_maps_all_dod_and_keeps_no_go():
     result = build_freeze(ROOT)
     assert result["decision"] == "NO_GO"

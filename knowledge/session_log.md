@@ -131,3 +131,41 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   chưa viết; cỡ mẫu thực khoảng 30–40 family; chưa có adaptive attack và reviewer thứ hai.
 - Owner quyết: repo giữ public, HF token giữ nguyên, luận văn để sau; RQ3 tạo đủ 250 biến thể.
   R4 security Test hẹn chạy ngày 27/10 (tối 26/10 dừng trước khi bật notebook).
+
+## 2026-10-28 (đêm) — Claude Code: R4 security Test xong, merge PR #4
+
+- lamhuy8904 hết quota GPU; bật Qwen + guard trên **meanalways** (v1, READY 01:54), credential qua
+  `KAGGLE_CONFIG_DIR` tạm. R4 chạy 01:55–05:50: 2.100/2.100, 5 lỗi hạ tầng (mạng local rớt khoảng
+  02:48 và 03:45) đã chạy lại, 4 model_error (KEYLEAK A0–A3).
+- Guard idle 19 phút sau lần rớt mạng (ping 10 phút của runner trúng lúc mất mạng); ping tay rồi thêm
+  keepalive guard 5 phút/lần trong A0/A1, tự dừng khi sang A2.
+- Kết quả Test: ASR ghép cặp A0 4 → A3 1 → A4–A6 0 /150; benign A0 30, A3 15, A4–A6 5 /150;
+  A6 v3 ≈ A5. Ghi decision log. Owner hỏi tăng tốc bằng chạy song song: giữ tuần tự cho R4, song song
+  (mỗi nhóm một notebook) để cho clean/robustness.
+- CI: thêm certifi/cryptography vào dev extras (mypy xanh); còn 21 test chỉ hỏng trên CI. Owner chọn
+  merge trước: PR #4 merged `5194c77`, tag `phase5-closure` → `419938b`.
+- **Còn dở:** RQ3 250 biến thể; sửa CI; rotate HF token (lộ trong log chat, chỉ local).
+- **Sáng 28/10:** owner hỏi vì sao Test yếu. Chẩn đoán 4 nguyên nhân (oracle tính đọc vô hại là harm;
+  agent mở đầu bằng doc_search 100/150 bài benign; user instruction bị gắn UNTRUSTED và scope A4 overfit
+  câu chữ Dev; guard vô dụng). Owner chọn A+B+C: phòng thủ v2 + chỉ số side-effect harm + Test-2.
+- Viết bản nháp `docs/project/defense_v2_test2_design.md` (B: side-effect harm; A: D2 tách control/data,
+  user tin cậy, đích sink phải có nguyên văn trong yêu cầu user; C: Test-2 20 family, seal trước code D2;
+  đề xuất E2 doc_search_v2 cho mọi cấu hình). Chờ owner duyệt.
+- Owner duyệt thiết kế (1, 2 ok; 3 = E2, đã đối chiếu AgentDojo/CaMeL; 4 = assistant tự sinh câu lệnh
+  Test-2 theo ma trận phong cách + kiểm n-gram + owner xem 20 câu gốc; 5 ok, muốn chạy nhanh).
+- Xong B: `side_effect_harm_v1` + script chấm lại. Test v1 (phụ, post hoc): ASR ghép cặp A0 11 → A3 1/150,
+  A2→A3 p=0,004 (chỉ số cũ không thấy). Dev: A0 29 → A3 13 → A4+ 0/200. Ghi decision log.
+- Lưu ý: thêm file mới trong `src/react_agent` làm `final_config_v1.verify` từ chối; việc v2 dùng manifest v2.
+- C: sinh Test-2 20 family (`src/react_agent/authoring/test2_v1.py`, `scripts/build_test2_release_v1.py`):
+  200 fixture, scorer utility khoan dung (fact thấy trong kết quả tool và câu trả lời; sink đúng đích có
+  fact), QA 400 replay 0 lỗi, novelty 4-gram max 0,07. Chưa seal, chờ owner xem câu lệnh.
+- Full pytest: 5.223 qua, 4 hỏng do `pyproject.toml` lệch hash evidence (commit 586591e).
+- Owner giao assistant rà 20 câu lệnh gốc rồi seal. Seal Test-2 (`573c33b`, seal.json `1576b89a…`,
+  200 fixture, ghi decision log). R0: 4 test evidence hỏng vì `586591e` sửa `pyproject.toml`; khôi phục
+  file gốc, cài certifi/cryptography bằng bước CI riêng (`requirements-dev.txt` cũng bị ghim) → 62 test
+  qua (`5c5a846`). Tiếp: E2 doc_search_v2.
+- Kiểm Kaggle: 6 notebook serve đều COMPLETE (ghi sổ Kaggle). E2 xong (`f6d044b`): `doc_search_v2`
+  giữ nguyên giao diện, thêm `id_matches` (chỉ định danh); 400 fixture Dev tra đúng tool đọc, 180 id trong
+  câu lệnh benign đều resolve, replay qua runtime A0/A1/A6 chạy trọn; runner E2 dry-run 18/18. Owner
+  chọn dùng lại HF token cũ, đã lưu `~/.hf_token_r5` (0600, còn hợp lệ). Owner hẹn chạy Dev mốc E2 ngày
+  29/10 (bảng phân notebook trong handoff).

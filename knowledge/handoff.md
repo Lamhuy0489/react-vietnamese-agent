@@ -1,61 +1,85 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-10-26. Lúc 20:15. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
-R0 còn nợ phần dọn (PR #4, tag, script). R1 evaluator đã xong. **R3 đóng băng xong** (tag
-`final-config`); tiếp theo là R4 chạy Test.
+Cập nhật: 2026-10-28. Lúc 10:30. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+**R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
 
-**R3 đã đóng băng (2026-10-26, owner duyệt), tag `final-config`.** Manifest
-`configs/final/final_config_v1.json` (sha256 `ae0ba2ec80464f0c…`) ghim 381 file. Runner và evaluator
-nhận `--split test` và từ chối chạy nếu lệch dù chỉ một file. Dry-run Dummy trên Test:
-clean 100/100, adversarial 2.100/2.100. Ước lượng R4 khoảng 11–12 giờ GPU.
+**E2 Dev mốc (chưa chạy, owner hẹn 29/10).** Code xong (`f6d044b`): `tools/doc_search_v2.py` +
+`scripts/run_adversarial_e2_api_v1.py` (decision log "E2"). Việc mai: bật 4 notebook, chạy A0, A1, A6
+× 400 Dev, mỗi mức một tiến trình và một endpoint riêng (một tài khoản chỉ có một slug Qwen):
 
-- Bảng RQ2 Dev: A0–A5 từ `results/rebuild_a/adv_dev_qwen3_8b_a6v2`, A6 từ `adv_dev_qwen3_8b_a6v3`.
-  ASR ghép cặp A0 26 → A3 15 → A4–A6 0; A6 v3 benign 60, utility under attack 40.
-- **RQ3 (owner quyết 2026-10-26):** tạo đủ 250 biến thể clean robustness (50 task gốc × 5 loại),
-  review, seal rồi đóng băng lại thành final_config_v2. Làm sau khi chạy xong security Test.
-- Repo giữ **public** để bạn cùng nhóm làm (owner quyết 2026-10-26); luận văn phải nêu rằng Test là
-  public. HF token giữ nguyên. Luận văn để sau.
+| Mức | Qwen3-8B | Guard |
+|---|---|---|
+| A0 | huylmhuhu | — |
+| A1 | buiquocviet | — |
+| A6 | meanalways | huylmhuhu (phiên GPU thứ hai) |
 
-Lệnh R4 (sau khi bật notebook; `F`/`G` như lệnh resume dưới, kèm `--split test`):
+HF token: owner chọn dùng lại token cũ (không rotate); đã lưu `~/.hf_token_r5` (0600, ngoài repo),
+kiểm 2026-10-28 còn hợp lệ và truy cập được Llama-3.2-3B. lamhuy8904 hết quota tới 31/10.
 ```
-PYTHONPATH=src caffeinate -ims scripts/retry_on_infra_v1.sh 20 120 -- .venv/bin/python \
-  scripts/run_adversarial_dev_api_v1.py --split test --output results/rebuild_a/adv_test_qwen3_8b \
-  >> build/kaggle/adv_test.log 2>&1
-.venv/bin/python scripts/evaluate_adversarial_dev_v1.py results/rebuild_a/adv_test_qwen3_8b \
-  --output results/rebuild_a/adv_test_qwen3_8b_eval.json
-# Clean Test, mỗi backbone K (qwen3_8b, llama31_8b, gemma4_12b), một notebook:
+export SSL_CERT_FILE=$(.venv/bin/python -c "import certifi;print(certifi.where())")
+export HF_TOKEN_R4=$(cat ~/.hf_token_r5)
+# mỗi tài khoản: KAGGLE_CONFIG_DIR tạm (scratchpad) chứa bản sao credential kaggle/kaggleN.json
+# (kaggle1 = huylmhuhu, kaggle2 = meanalways, kaggle3 = buiquocviet), không vào Git
+.venv/bin/python scripts/launch_vllm_serve_v1.py prepare --owner OWNER --model-key qwen3_8b --hf-token-env HF_TOKEN_R4
+.venv/bin/python scripts/launch_vllm_serve_v1.py prepare --owner huylmhuhu --model-key llama32_3b_guard --hf-token-env HF_TOKEN_R4
+KAGGLE_CONFIG_DIR=... .venv/bin/kaggle kernels push -p build/kaggle/<folder> --accelerator NvidiaTeslaT4
+.venv/bin/python scripts/launch_vllm_serve_v1.py discover --folder build/kaggle/<folder> --timeout-minutes 40
+# mỗi mức (nạp endpoint.env tương ứng vào VLLM_BASE_URL/KEY, A6 thêm GUARD_BASE_URL/KEY):
+caffeinate -ims scripts/retry_on_infra_v1.sh 20 120 -- .venv/bin/python scripts/run_adversarial_e2_api_v1.py --levels A0 >> build/kaggle/e2_A0.log 2>&1
+# xong: evaluate_adversarial_dev_v1.py R --output R_eval.json; evaluate_side_effect_harm_v1.py R
+```
+Sau đó: ghi bảng E2 so với v1 Dev vào decision log, rồi viết D2 (`security_v1/control_data_policy_v1.py`,
+`runtime_d2_v1.py`), chỉnh ≤3 vòng trên Dev E2.
+
+**R4 security Test (2026-10-28, chạy một lần, không chạy lại).** `results/rebuild_a/adv_test_qwen3_8b`
+(local, không track), eval `results/rebuild_a/adv_test_qwen3_8b_eval.json` + `.records.jsonl`.
+2.100/2.100, 5 lỗi hạ tầng đã chạy lại, 4 model_error (KEYLEAK A0–A3). ASR ghép cặp A0 4 → A3 1 →
+A4–A6 0 /150; benign A0 30, A3 15, A4–A6 5 /150; A6 v3 ≈ A5. Bảng và nhận xét: decision log
+2026-10-28. Phân tích sâu (KEYLEAK OUTPUT_INVALID, benign harm 17/30 family, A6 không chuyển giao,
+cỡ mẫu 30 family) để R5.
+
+- Notebook R4 trên **meanalways** (lamhuy8904 hết quota): xem [sổ Kaggle](kaggle_resources.md).
+  Keepalive đã tắt 05:50, notebook tự tắt sau 30 phút idle.
+- Bài học vận hành: runner chỉ ping guard 10 phút/lần ở A0/A1; nếu một ping trùng lúc rớt mạng thì
+  guard có thể idle gần 30 phút. Đợt sau chạy thêm keepalive riêng cho guard 5 phút/lần trong A0/A1.
+- **RQ3 (owner quyết 2026-10-26):** tạo 250 biến thể clean robustness (50 task gốc Test × 5 loại),
+  review, seal, đóng băng thành final_config_v2. Không sửa file nào trong manifest v1.
+- Repo giữ **public**; luận văn phải nêu Test là public. HF token nên rotate (lộ trong log chat
+  2026-10-28, chỉ local).
+
+Lệnh clean Test (sau final_config_v2; mỗi backbone K một notebook, có thể chạy song song trên các
+tài khoản khác nhau, ghi vào decision log trước khi chạy):
+```
 .venv/bin/python scripts/run_clean_dev_api_v1.py --model-key K --split test
 .venv/bin/python scripts/evaluate_clean_rebuild_v1.py results/rebuild_a/clean_test_K --numfix \
   --output results/rebuild_a/clean_test_K_eval.json
 ```
 
-Lệnh resume dưới đây chỉ dùng khi phải chạy lại.
-
-Lệnh resume (từ root; nếu notebook đã tắt thì push lại bằng launcher, `discover`, đổi `F`/`G`):
+Bật notebook (ví dụ meanalways, credential qua `KAGGLE_CONFIG_DIR` tạm, không vào Git):
 ```
 export SSL_CERT_FILE=$(.venv/bin/python -c "import certifi;print(certifi.where())")
-F=build/kaggle/vllm_serve_v1_qwen3_8b_20261026_121043
-G=build/kaggle/vllm_serve_v1_llama32_3b_guard_20261026_121043
-source $G/endpoint.env; export GUARD_BASE_URL=$VLLM_BASE_URL GUARD_API_KEY=$VLLM_API_KEY
-source $F/endpoint.env; export VLLM_BASE_URL VLLM_API_KEY
-R=results/rebuild_a/adv_dev_qwen3_8b_a6v2
-PYTHONPATH=src caffeinate -ims scripts/retry_on_infra_v1.sh 20 120 -- \
-  .venv/bin/python scripts/run_adversarial_dev_api_v1.py --model-key qwen3_8b --output $R \
-  >> build/kaggle/adv_full.log 2>&1
-.venv/bin/python scripts/evaluate_adversarial_dev_v1.py $R --output ${R}_eval.json
+.venv/bin/python scripts/launch_vllm_serve_v1.py prepare --owner OWNER --model-key K --hf-token-env HF_TOKEN_R4
+KAGGLE_CONFIG_DIR=... .venv/bin/kaggle kernels push -p build/kaggle/<folder>
+.venv/bin/python scripts/launch_vllm_serve_v1.py discover --folder build/kaggle/<folder> --timeout-minutes 40
+PYTHONPATH=src .venv/bin/python scripts/keepalive_vllm_v1.py --endpoint <folder>/endpoint.env=<run log> --every 10
 ```
 
 ## Bước tiếp theo
 
-1. R4 (owner hẹn ngày 27/10): bật notebook Qwen + guard, chạy **security Test** (2.100 lượt, khoảng
-   4,5 giờ) bằng lệnh ở trên. Clean Test để sau.
-2. Tạo 250 biến thể robustness RQ3 → review → seal → final_config_v2 → clean Test + robustness
-   cho 3 backbone.
-   Chạy mỗi thứ đúng một lần, chỉ chạy lại khi lỗi hạ tầng.
-3. R5: thống kê, phân loại lỗi, review 10% trace.
-4. Owner merge PR #4 và gắn tag `phase5-closure`; dọn script.
+0. **Hướng A+B+C (owner duyệt thiết kế 2026-10-28):** `docs/project/defense_v2_test2_design.md`.
+   B xong. C xong: **Test-2 đã seal** (`data/adversarial/release_test2/seal.json` sha256 `1576b89a…`,
+   decision log "C: Test-2 sealed"); từ giờ Test-2 là held-out, không dùng để thiết kế hay chỉnh D2.
+   E2 code xong (`f6d044b`); việc kế: chạy Dev mốc A0/A1/A6 trong E2 (mục "Đang làm"); rồi D2 trên Dev
+   (≤3 vòng), `final_config_v2`, chạy Test-2 1.000 lượt (mỗi cấu hình một endpoint để nhanh). Thêm file
+   trong `src/react_agent` làm `final_config_v1.verify` từ chối: đúng thiết kế.
+1. RQ3: tạo 250 biến thể robustness → review → seal → final_config_v2 (dry-run Dummy).
+2. Clean Test + robustness cho 3 backbone, mỗi thứ chạy đúng một lần.
+3. R0: sửa 21 test chỉ hỏng trên CI (PR riêng), dọn script cũ. 4 test evidence hỏng local đã sửa
+   (`5c5a846`): khôi phục `pyproject.toml` gốc (seal Test v1 ghim hash nó và `requirements-dev.txt`),
+   certifi/cryptography cài bằng bước riêng trong `.github/workflows/ci.yml`. Không sửa 2 file đó nữa.
+4. R5: thống kê, phân loại lỗi, review 10% trace; replay prompt KEYLEAK để ghi output thô.
 5. Viết luận văn (`thesis/` còn trống): chương 1–3 ngay bây giờ.
 
 ## Ghi chép R0–R2 trước đó (đã xong)
@@ -65,7 +89,7 @@ PYTHONPATH=src caffeinate -ims scripts/retry_on_infra_v1.sh 20 120 -- \
 - Bake-off guard: giữ Llama-3.2-3B (Prompt Guard 2 TP0/FP0). `docs/metrics_spec.md` xong.
 - Token HF đang chèn vào notebook private (`--hf-token-env`); owner nên rotate token sau đợt chạy.
   Kaggle cho tối đa 2 phiên GPU nền mỗi tài khoản.
-- PR #4: https://github.com/Lamhuy0489/react-vietnamese-agent/pull/4 (owner merge).
+- PR #4: https://github.com/Lamhuy0489/react-vietnamese-agent/pull/4 (đã merge 2026-10-28, `5194c77`).
 
 ## Bằng chứng
 
