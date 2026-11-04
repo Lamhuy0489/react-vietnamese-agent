@@ -1,9 +1,17 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-10-28. Lúc 10:30. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-05. Lúc 01:05. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
+
+**2026-11-05 đêm: E2 Dev mốc đang chạy trên lamhuy8904** (không chia 3 tài khoản như bảng dưới):
+Qwen `react-vn-vllm-serve-v1` v5 + guard v3, folder `build/kaggle/vllm_serve_v1_{qwen3_8b,llama32_3b_guard}_20261105_003223`.
+Một tiến trình `--levels A0 A1 A6 --output results/rebuild_a/adv_dev_e2_qwen3_8b`, log `build/kaggle/e2_dev_1105.log`;
+chấm tự động `build/kaggle/e2_eval_after_run.sh` → `results/rebuild_a/adv_dev_e2_qwen3_8b_eval.json` và
+`..._side_effect_eval.json`. Resume nếu thiếu lượt: bật lại notebook (lệnh dưới, owner lamhuy8904), nạp
+endpoint.env vào VLLM_*, guard vào GUARD_*, chạy lại đúng lệnh runner đó (bỏ qua lượt đã có result.json).
+PR #5 sửa 21 test CI chờ merge.
 
 **E2 Dev mốc (chưa chạy, owner hẹn 29/10).** Code xong (`f6d044b`): `tools/doc_search_v2.py` +
 `scripts/run_adversarial_e2_api_v1.py` (decision log "E2"). Việc mai: bật 4 notebook, chạy A0, A1, A6

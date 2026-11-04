@@ -1,24 +1,22 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-10-28 10:30. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-05 01:05. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái: rebuild A. R4 security Test v1 xong (2026-10-28), kết quả yếu và đã chẩn đoán
-(decision log 2026-10-28: oracle tính đọc vô hại là harm, agent chọn sai tool, scope A4 overfit
-câu chữ Dev, guard vô dụng). Owner chọn A+B+C: phòng thủ v2 (user tin cậy, tách control/data
-flow, chỉnh trên Dev), chỉ số harm có tác dụng phụ, Test-2 khoảng 20 family mới seal trước khi chạy
-v2. Test v1 không chạy lại, không dùng để chỉnh. Không sửa file trong manifest v1.
+Trạng thái: rebuild A, hướng A+B+C (decision log 2026-10-28). B xong, C xong (Test-2 seal 1576b89a…,
+held-out, không dùng để chỉnh). Test v1 không chạy lại, không sửa file trong manifest v1, không sửa
+pyproject.toml hay requirements-dev.txt.
 
-B (side-effect harm) xong. C xong: Test-2 đã seal (seal.json 1576b89a…), là held-out, không dùng
-để chỉnh. E2 code xong (tools/doc_search_v2.py, scripts/run_adversarial_e2_api_v1.py, decision log "E2").
-Việc đầu tiên: bật notebook theo bảng trong handoff mục "Đang làm" (Qwen trên huylmhuhu, buiquocviet,
-meanalways; guard trên huylmhuhu; HF token đọc từ ~/.hf_token_r5, không in ra), chạy A0, A1, A6 × 400 Dev
-trong E2 song song, chấm bằng cả hai evaluator, ghi bảng vào decision log. Sau đó viết D2 và chỉnh
-≤3 vòng trên Dev E2, rồi final_config_v2. Không sửa pyproject.toml hay requirements-dev.txt (seal ghim
-hash). Song song: RQ3 250 biến thể robustness. Việc phụ: PR sửa 21 test chỉ hỏng trên CI.
+Đêm 2026-11-05 đã chạy E2 Dev mốc A0 → A1 → A6 × 400 trên lamhuy8904 (Qwen v5 + guard v3), kết quả
+results/rebuild_a/adv_dev_e2_qwen3_8b, chấm tự động bằng build/kaggle/e2_eval_after_run.sh (log
+build/kaggle/e2_dev_eval_1105.log). Việc đầu tiên: kiểm log runner và log chấm (đủ 1.200 lượt? lỗi?),
+nếu thiếu thì chạy lại lệnh resume trong handoff; rồi ghi bảng E2 so với Dev v1 (cả hai evaluator) vào
+decision log. Sau đó viết D2 và chỉnh ≤3 vòng trên Dev E2, rồi final_config_v2. Song song: RQ3 250 biến
+thể robustness. Kiểm PR #5 (sửa 21 test CI) đã xanh chưa, owner merge. Có thể giao việc phụ cho
+Antigravity CLI (skill antigravity-subagent, Gemini 3.8 Flash), Claude review và chạy test.
 ```
 
 ## Ghi chú dùng
