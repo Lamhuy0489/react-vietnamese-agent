@@ -12,6 +12,10 @@ For speed, run each level as its own process against its own endpoint, e.g.
 ``--levels A0`` and ``--levels A1`` on two agent notebooks and ``--levels A6`` on a
 third with the guard. Each process writes to its own output directory.
 Score with ``evaluate_adversarial_dev_v1.py`` and ``evaluate_side_effect_harm_v1.py``.
+
+``--defense d2 --d2-round N`` runs defense v2 (``runtime_d2_v1``) on the A1 configuration
+instead of the closure runtime; results are stored under ``runs/A1`` of their own output
+directory so the frozen evaluators score them unchanged (decision log, D2 rounds).
 """
 
 from __future__ import annotations
@@ -52,6 +56,8 @@ from react_agent.security_v1.phase5_closure_runtime_v1 import (
     RUNTIME_VERSION,
     Phase5ClosureRuntime,
 )
+from react_agent.security_v1.runtime_d2_v1 import RUNTIME_VERSION as D2_RUNTIME_VERSION
+from react_agent.security_v1.runtime_d2_v1 import D2Runtime
 from react_agent.security_v1.warm_guard import WarmGuardConfig
 from react_agent.tools import doc_search_v2
 from react_agent.tools.factory import build_clean_registry
@@ -74,11 +80,16 @@ def main() -> int:
     parser.add_argument("--output", type=Path)
     parser.add_argument("--limit", type=int, help="pilot: first N families, one pair each")
     parser.add_argument("--timeout", type=float, default=150)
+    parser.add_argument("--defense", choices=["d2"],
+                        help="defense v2 on the A1 configuration (Dev tuning rounds only)")
+    parser.add_argument("--d2-round", type=int, choices=[1, 2, 3])
     parser.add_argument("--dry-run-dummy", action="store_true",
                         help="CPU stand-ins for both endpoints; pipeline check only")
     args = parser.parse_args()
     if args.dry_run_dummy and not args.output:
         raise SystemExit("--dry-run-dummy needs an explicit --output outside results/")
+    if args.defense and (args.levels != ["A1"] or not args.d2_round):
+        raise SystemExit("--defense d2 needs --levels A1 and --d2-round 1-3")
     prompt_profile = a0_rebuild.activate("v3")
     a6_profile = a6_provenance_v3.activate()
     models = yaml.safe_load((ROOT / "configs/models/backbones_v2.yaml").read_text())
@@ -129,6 +140,8 @@ def main() -> int:
     keepalive = GuardKeepalive(guard_factory.ping) if guard_factory else None
 
     name = f"adv_dev_e2_{args.model_key}_{'_'.join(args.levels)}"
+    if args.defense:
+        name = f"adv_dev_e2_d2_r{args.d2_round}_{args.model_key}"
     output = (args.output or ROOT / "results/rebuild_a" / name).resolve()
     identity: dict[str, Any] = {
         "benchmark": "adversarial_release_v2", "split": "dev", "runtime": RUNTIME_VERSION,
@@ -145,8 +158,15 @@ def main() -> int:
         "overlay_input_model_fix": True, "a6_policy": a6_profile,
         "levels": args.levels, "variant_ids": [row.variant_id for row in rows],
     }
+    if args.defense:
+        identity["runtime"] = D2_RUNTIME_VERSION
+        identity["defense"] = {"name": "D2", "round": args.d2_round, "file_sha256": {
+            path.name: sha256(path) for path in (
+                ROOT / "src/react_agent/security_v1/control_data_policy_v1.py",
+                ROOT / "src/react_agent/security_v1/runtime_d2_v1.py")}}
     if args.dry_run_dummy:
         identity["dry_run_dummy"] = True
+    runtime_class = D2Runtime if args.defense else Phase5ClosureRuntime
     output.mkdir(parents=True, exist_ok=True)
     identity_path = output / "identity.json"
     if identity_path.exists() and json.loads(identity_path.read_text()) != identity:
@@ -169,7 +189,7 @@ def main() -> int:
             environment = folder / "environment"
             registry = doc_search_v2.apply_e2(
                 prepare_registry(row, CLEAN_ENV, environment), environment)
-            runtime = Phase5ClosureRuntime(
+            runtime = runtime_class(
                 backend, registry,
                 runtime_config=runtime_config, generation_config=generation_config)
             run = runtime.run_instrumented(
