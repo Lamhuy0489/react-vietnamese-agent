@@ -1,8 +1,8 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-11-05 01:05. **Phase 0–5 đã nghiệm thu. Lộ trình
+Cập nhật: 2026-11-05 03:20. **Phase 0–5 đã nghiệm thu. Lộ trình
 [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A:** R1–R3 xong, **R4 security Test xong**
-(2026-10-28); Test-2 đã seal (`1576b89a…`), E2 Dev mốc xong (05/11: benign A1 110, A6 60 /200), tiếp theo nối D2 vào runtime; PR #5 sửa CI chờ merge; R0 còn 21 test chỉ hỏng
+(2026-10-28); Test-2 đã seal (`1576b89a…`), E2 Dev mốc xong (05/11: benign A1 110, A6 60 /200); D2 và D2+G đã nối runtime, vòng 1 Dev đang chạy đêm 05/11; RQ3 250 biến thể chờ owner review; PR #5 CI xanh chờ merge; R0 còn 21 test chỉ hỏng
 trên CI và dọn script (tuần 8/24, hạn 2027-02-19).
 
 ## Đã chốt ngày 2026-10-23
