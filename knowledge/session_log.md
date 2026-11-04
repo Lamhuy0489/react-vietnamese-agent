@@ -185,3 +185,6 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   vào `build/` thành code); Claude bỏ try/except thừa, sửa thêm 5 link history. Không `build/`: 6 pass, 15 skip.
   **PR #5** (`agy/ci-fix-21`), chờ owner merge.
 - **Còn dở:** đọc kết quả E2, ghi bảng vào decision log; D2; RQ3; luận văn.
+- **02:40 E2 xong:** 1.200/1.200, 0 model_error, 0 lần chạy lại. Benign utility A0/A1 87 → 110/200 (E2 sửa định tuyến
+  tool), paired side-effect ASR A0 29 → 35, A1 23 → 27; A6 v3 không đổi (ASR 0, benign 60). Ghi decision log
+  "E2 Dev re-baseline result"; tiêu chí dừng D2: benign ≥ 105, side-effect ASR ≤ 27 /200. D2 module luật có (`c7b666c`), chưa nối runtime.

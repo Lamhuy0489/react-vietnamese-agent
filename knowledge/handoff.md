@@ -5,7 +5,8 @@ Cập nhật: 2026-11-05. Lúc 01:05. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
-**2026-11-05 đêm: E2 Dev mốc đang chạy trên lamhuy8904** (không chia 3 tài khoản như bảng dưới):
+**2026-11-05: E2 Dev mốc XONG 02:40** (1.200/1.200, 0 lỗi; bảng ở decision log "E2 Dev re-baseline result").
+Trước đó chạy trên lamhuy8904 (không chia 3 tài khoản như bảng dưới):
 Qwen `react-vn-vllm-serve-v1` v5 + guard v3, folder `build/kaggle/vllm_serve_v1_{qwen3_8b,llama32_3b_guard}_20261105_003223`.
 Một tiến trình `--levels A0 A1 A6 --output results/rebuild_a/adv_dev_e2_qwen3_8b`, log `build/kaggle/e2_dev_1105.log`;
 chấm tự động `build/kaggle/e2_eval_after_run.sh` → `results/rebuild_a/adv_dev_e2_qwen3_8b_eval.json` và
