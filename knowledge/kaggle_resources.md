@@ -22,6 +22,13 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-05 00:33 — E2 Dev mốc, Qwen + guard trên lamhuy8904** (quota reset 31/10, trước đó cả 3 notebook COMPLETE):
+[lamhuy8904/react-vn-vllm-serve-v1](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1) **v5** (Qwen3-8B) và
+[lamhuy8904/react-vn-vllm-serve-v1-llama32-3b-guard](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-llama32-3b-guard)
+**v3**, private, T4, token HF chèn như trước. READY khoảng 00:45. Folder
+`build/kaggle/vllm_serve_v1_{qwen3_8b,llama32_3b_guard}_20261105_003223`. Source: commit `3d3de35`.
+Notebook tự tắt sau 30 phút idle khi runner xong.
+
 **2026-10-28 08:45 — kiểm `kaggle kernels status`:** cả 6 notebook serve v1 (meanalways: Qwen, guard,
 gemma4-12b; lamhuy8904: Qwen, guard, llama31-8b) đều `COMPLETE`, không notebook nào đang chạy. Muốn chạy
 lại Dev mốc (E2) hay D2 phải bật lại bằng `launch_vllm_serve_v1.py prepare` + `kernels push`. Quota GPU

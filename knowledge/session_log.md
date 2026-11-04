@@ -169,3 +169,19 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   câu lệnh benign đều resolve, replay qua runtime A0/A1/A6 chạy trọn; runner E2 dry-run 18/18. Owner
   chọn dùng lại HF token cũ, đã lưu `~/.hf_token_r5` (0600, còn hợp lệ). Owner hẹn chạy Dev mốc E2 ngày
   29/10 (bảng phân notebook trong handoff).
+
+## 2026-11-05 (đêm) — Claude Code: E2 Dev mốc đang chạy trên lamhuy8904, PR #5 sửa CI
+
+- lamhuy8904 rảnh (3 notebook COMPLETE, quota reset 31/10): bật Qwen3-8B **v5** + guard **v3** (T4, private),
+  READY khoảng 00:45. Chạy E2 Dev A0 → A1 → A6 × 400 nối tiếp trên một endpoint từ 00:47
+  (`results/rebuild_a/adv_dev_e2_qwen3_8b`, log `build/kaggle/e2_dev_1105.log`), qua `retry_on_infra_v1.sh`.
+  Keepalive guard 5 phút/lần tới khi sang A6 (`build/kaggle/guard_keepalive_until_a6.sh`). Lúc 00:59: A0 144/400, 0 lỗi.
+- Chấm tự động khi runner thoát: `build/kaggle/e2_eval_after_run.sh` → `..._eval.json`,
+  `..._side_effect_eval.json`, log `build/kaggle/e2_dev_eval_1105.log`. Owner để máy chạy qua đêm.
+- Owner cho dùng Antigravity CLI (`agy`) làm sub-agent, model mặc định Gemini 3.8 Flash. Skill Claude
+  `~/.claude/skills/antigravity-subagent` (ngoài repo). Headless print mode tự từ chối lệnh shell, nên giao việc chỉ
+  sửa file trong worktree, Claude chạy test.
+- R0: Antigravity sửa 21 test chỉ hỏng trên CI (skip khi thiếu `build/`, jsonschema ở bước CI riêng, link knowledge
+  vào `build/` thành code); Claude bỏ try/except thừa, sửa thêm 5 link history. Không `build/`: 6 pass, 15 skip.
+  **PR #5** (`agy/ci-fix-21`), chờ owner merge.
+- **Còn dở:** đọc kết quả E2, ghi bảng vào decision log; D2; RQ3; luận văn.
