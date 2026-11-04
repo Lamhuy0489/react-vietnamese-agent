@@ -52,8 +52,8 @@ bên dưới là phương án giữ nguồn cũ, không phải con đường duy
 ## Bằng chứng
 
 - [Deployment receipt](../experiments/manifests/phase5_api_deployment_20261002.json).
-- [lamhuy8904 Llama file access 403](../build/operations/phase5_pair_20261002/lamhuy_llama_access_20261001T180657Z.json).
-- [meanalways Llama file access 403](../build/operations/phase5_pair_20261002/model_access_20261001T180149Z/receipt.json).
+- lamhuy8904 Llama file access 403 (`build/operations/phase5_pair_20261002/lamhuy_llama_access_20261001T180657Z.json`).
+- meanalways Llama file access 403 (`build/operations/phase5_pair_20261002/model_access_20261001T180149Z/receipt.json`).
 - [Mount repair scope](../docs/evaluation/phase5_worker_mount_repair_20261002.md).
 - Guard v1/v2 và agent v1 source remote trùng byte gói tương ứng; v2 preflight4/4.
 - 54 focused tests trước commit; sau access admission:18 access/mount tests và

@@ -257,8 +257,8 @@ Read-only `status`/`discover` authenticated the same two private v1 notebooks:
 Remote serving source remains `728821ea761b3994eb40ebba91ab8238e4667f82`; no
 Dataset is mounted. The host-only Dev pilot then completed 37/37 checkpoints
 (21 clean tasks and 16 paired guard controls) through these workers. [Pilot
-report](../docs/evaluation/structured_api_dev_v1_report.md), [manifest and raw
-receipt directory](../build/evaluation/structured_api_dev_v1/). This is Dev
+report](../docs/evaluation/structured_api_dev_v1_report.md), manifest and raw
+receipt directory `build/evaluation/structured_api_dev_v1/`. This is Dev
 diagnostic evidence, not Test or Phase 5 acceptance. Session/API credentials
 remain local and are not recorded here.
 Post-pilot read-only status check: both kernels remained `RUNNING`; no session
@@ -829,7 +829,7 @@ submit/discover hoặc tự luân phiên account. Không đổi default deployme
   giữ nguyên như gói frozen. Không đăng nhập Kaggle/query quota/submit/inference.
 - Không có thông báo kết nối phù hợp không chứng minh notebook đang tắt.
   Pending: owners chạy gói frozen, cung cấp actual URL/version và tín hiệu READY.
-- [Receipt](../build/evaluation/phase5_owner_discovery_20261002_01.json).
+- Receipt: `build/evaluation/phase5_owner_discovery_20261002_01.json`.
 
 
 ## 2026-10-02 — direct deployment và model access blocker
@@ -847,7 +847,7 @@ Owner đã yêu cầu trực tiếp vận hành hai worker. Actual private noteb
 - Read-only file access Llama: meanalways403, lamhuy8904 cũng403; public metadata
   vẫn đọc được. Chờ chủ tài khoản giải quyết quyền model. Không GPU retry tiếp.
 - [Deployment receipt](../experiments/manifests/phase5_api_deployment_20261002.json),
-  [lamhuy Llama check](../build/operations/phase5_pair_20261002/lamhuy_llama_access_20261001T180657Z.json).
+  lamhuy Llama check: `build/operations/phase5_pair_20261002/lamhuy_llama_access_20261001T180657Z.json`.
 
 
 ## 2026-10-02 — public guard v3 READY, pair authenticated

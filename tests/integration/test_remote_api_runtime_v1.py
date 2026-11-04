@@ -131,6 +131,7 @@ class RunnerFactory(SyntheticFactory):
                    "synthetic", REVISION, "session_" + role, "source", "worker")
 
 
+@pytest.mark.skipif(not (ROOT / "build").is_dir(), reason="build/ directory not present")
 def test_exact_seven_level_runner_cpu(tmp_path, monkeypatch):
     import importlib
     import sys

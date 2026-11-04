@@ -9,6 +9,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
+GUARD_BUNDLE = ROOT / "build/kaggle/phase5_guard_probe_v1_bundle03/dataset/guard_bundle.json"
 
 
 @pytest.fixture
@@ -17,6 +18,10 @@ def builder(monkeypatch: pytest.MonkeyPatch):
     return importlib.import_module("prepare_phase5_room_ticket_package_v1")
 
 
+@pytest.mark.skipif(
+    not GUARD_BUNDLE.is_file(),
+    reason="guard_bundle.json artifact not present in build/",
+)
 def test_worker_closure_contains_adapter_but_no_authoring(builder):
     bundle = json.loads((builder.DATASET / "guard_bundle.json").read_text(encoding="utf-8"))
     files = builder.worker_files(bundle["source_sha256"])
