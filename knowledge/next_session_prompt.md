@@ -14,7 +14,8 @@ pyproject.toml hay requirements-dev.txt.
 results/rebuild_a/adv_dev_e2_qwen3_8b, chấm tự động bằng build/kaggle/e2_eval_after_run.sh (log
 build/kaggle/e2_dev_eval_1105.log). Việc đầu tiên: kiểm log runner và log chấm (đủ 1.200 lượt? lỗi?),
 nếu thiếu thì chạy lại lệnh resume trong handoff; rồi ghi bảng E2 so với Dev v1 (cả hai evaluator) vào
-decision log. Sau đó viết D2 và chỉnh ≤3 vòng trên Dev E2, rồi final_config_v2. Song song: RQ3 250 biến
+decision log. D2: module luật đã có (control_data_policy_v1.py, handoff mục "D2 bắt đầu"); viết runtime_d2_v1 + runner,
+chạy và chỉnh ≤3 vòng trên Dev E2, rồi final_config_v2. Song song: RQ3 250 biến
 thể robustness. Kiểm PR #5 (sửa 21 test CI) đã xanh chưa, owner merge. Có thể giao việc phụ cho
 Antigravity CLI (skill antigravity-subagent, Gemini 3.8 Flash), Claude review và chạy test.
 ```

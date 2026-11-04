@@ -13,6 +13,13 @@ chấm tự động `build/kaggle/e2_eval_after_run.sh` → `results/rebuild_a/a
 endpoint.env vào VLLM_*, guard vào GUARD_*, chạy lại đúng lệnh runner đó (bỏ qua lượt đã có result.json).
 PR #5 sửa 21 test CI chờ merge.
 
+**D2 bắt đầu (2026-11-05 đêm):** `src/react_agent/security_v1/control_data_policy_v1.py` (luật 1–3 + hàm redact luật 4,
+`ControlDataPolicy` = lớp luật A1 + D2) và `tests/unit/test_control_data_policy_v1.py` (9 qua, ruff/mypy sạch). Chưa tích hợp.
+Kế: `runtime_d2_v1.py` theo mẫu `runtime_v14_email_origin_candidate.py`: chạy cấu hình A1 (rule bật, guard tắt), `bind(V5Runtime._run_task,
+RuntimePolicy=ControlDataPolicy)`; luật 4 cần thay khối release final (`runtime_v5.py:521–553`: nhánh `index is None` trả `answer` thô) bằng
+bản redact qua `policy.final_redactions(answer)`, không sửa file đã pin. Nhãn user root `Trust.UNTRUSTED` (`runtime_v5.py:420`) không ảnh hưởng
+ở A1 (không có session gate), ghi rõ trong decision log. Rồi runner D2 Dev (E2), khai báo tiêu chí trước, chạy vòng 1.
+
 **E2 Dev mốc (chưa chạy, owner hẹn 29/10).** Code xong (`f6d044b`): `tools/doc_search_v2.py` +
 `scripts/run_adversarial_e2_api_v1.py` (decision log "E2"). Việc mai: bật 4 notebook, chạy A0, A1, A6
 × 400 Dev, mỗi mức một tiến trình và một endpoint riêng (một tài khoản chỉ có một slug Qwen):
