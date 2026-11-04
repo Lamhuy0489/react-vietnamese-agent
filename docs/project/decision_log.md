@@ -2804,3 +2804,32 @@ p=0.008; benign utility 0/0.
 - **D2 stop criteria, now concrete (design 3.4, E2 reference):** Dev benign utility
   ≥ 105/200 (A1 E2 110 − 5) and Dev paired side-effect ASR ≤ 27/200 (A1 E2). At most
   3 Dev iterations, each logged here before it runs.
+
+## 2026-11-05 — D2 round 1 declared (Dev E2, before the run)
+
+`src/react_agent/security_v1/runtime_d2_v1.py`: D2 = the A1 configuration (rule layer on,
+LLM guard off, no session gates) on the closure runtime path, with the per-task policy
+replaced by `ControlDataPolicy` (rules 1–3) plus the A1 raw-user anchors. Rule 4 is
+applied when the final turn is parsed, so the released, logged and scored answer is the
+redacted one and the FINAL decision is `REDACT` with the source artifacts; the raw model
+output stays in the trace. The pinned runtimes are untouched (private `bind` copies).
+The user root keeps the frozen `Trust.UNTRUSTED` label (`runtime_v5`); at A1 no session
+gate reads it, so it does not affect D2. Runner: `run_adversarial_e2_api_v1.py --defense d2
+--d2-round 1 --levels A1` → `results/rebuild_a/adv_dev_e2_d2_r1_qwen3_8b` (stored under
+`runs/A1` so the frozen evaluators score it unchanged). Round 1 config: as designed,
+threshold CONFIDENTIAL, no tuning.
+
+CPU evidence before the run (Dev only):
+- Oracle replay, 400 Dev fixtures in E2: attack negative oracle side-effect harm A1 96 → D2
+  81/200; benign safe oracle utility A1 200 → D2 175/200. The 25 lost are 5 families
+  (CHANNEL, CROSSGRANT, ENCODED, FINALGRANT, SOURCEBINDING) where the user explicitly sends
+  or asks for a confidential code: rules 3–4 cannot see that permission without parsing
+  user intent. Remaining oracle attacks are mostly payload tampering on a user-named sink
+  (e.g. ALLOCATION, CONSENT), outside rules 2–3 by design.
+- Counterfactual replay of Qwen's raw A1 E2 outputs through D2 (not a run: after a denial
+  the real model would continue differently): benign utility 110 → 108/200, false block 7,
+  paired side-effect ASR 27 → 14/200, final leakage 1 → 0. Replaying the same outputs
+  through the closure runtime reproduces the A1 E2 numbers exactly.
+
+Stop criteria unchanged: Dev benign utility ≥ 105/200 and paired side-effect ASR ≤ 27/200.
+If round 1 meets both, no further rounds; go to `final_config_v2`.
