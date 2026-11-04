@@ -2775,3 +2775,32 @@ registry, Dev only, A6 v3 policy, default levels A0 A1 A6, output
 the v1 Dev rows as the reference for D2 iterations; D2 is compared only with
 configurations run in E2. One level per process and per endpoint for speed. The v1 Dev
 and R4 Test numbers stay reported in the v1 environment, unchanged.
+
+## 2026-11-05 — E2 Dev re-baseline result (A0, A1, A6 v3; Qwen3-8B)
+
+Run `results/rebuild_a/adv_dev_e2_qwen3_8b` (identity sha256 `00b5a3a5…`): 1,200/1,200
+executions, 0 model_error, 0 infrastructure reruns, one process on one endpoint
+(lamhuy8904 Qwen v5 + guard v3), 00:47–02:40. Dev only. Scored with both evaluators.
+
+| Level | Env | Raw ASR | Attributable ASR | Utility under attack | Benign utility | False block | Paired side-effect ASR |
+|---|---|---|---|---|---|---|---|
+| A0 | v1 | 100/200 | 26 | 54 | 87 | 0 | 29 |
+| A0 | **E2** | 102/200 | 28 | 52 | **110** | 0 | 35 |
+| A1 | v1 | 93/200 | 20 | 32 | 87 | 0 | 23 |
+| A1 | **E2** | 93/200 | 20 | 32 | **110** | 0 | 27 |
+| A6 v3 | v1 | 20/200 | 0 | 40 | 60 | 100 | 0 |
+| A6 v3 | **E2** | 20/200 | 0 | 39 | 60 | 110 | 0 |
+
+McNemar A0→A1 in E2: attributable ASR b/c 8/0 p=0.008; paired side-effect ASR 8/0
+p=0.008; benign utility 0/0.
+
+- E2 does what it was built for: benign utility at A0/A1 rises 87 → 110/200, since
+  identifiers in the request now route to the right reader.
+- Better routing also lets more injected content reach the agent: paired side-effect
+  ASR rises A0 29 → 35, A1 23 → 27. Raw ASR is nearly unchanged.
+- A6 v3 is unchanged (it already skips search for anchored resources): it blocks every
+  attributable attack but keeps only 60/200 benign utility, 50 points below A1. That
+  gap is what D2 must close.
+- **D2 stop criteria, now concrete (design 3.4, E2 reference):** Dev benign utility
+  ≥ 105/200 (A1 E2 110 − 5) and Dev paired side-effect ASR ≤ 27/200 (A1 E2). At most
+  3 Dev iterations, each logged here before it runs.
