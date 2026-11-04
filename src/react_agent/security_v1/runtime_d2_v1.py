@@ -31,6 +31,7 @@ from react_agent.security_v1.control_data_policy_v1 import (
     ControlDataPolicy,
     redact,
 )
+from react_agent.security_v1.guard import ModelGuard
 from react_agent.security_v1.guard_bare_json_v1 import bind
 from react_agent.security_v1.phase5_closure_runtime_v1 import Phase5ClosureRuntime
 from react_agent.security_v1.phase5_runtime import Phase5Runtime
@@ -38,6 +39,7 @@ from react_agent.security_v1.runtime import SecurityRun
 from react_agent.security_v1.runtime_policy import RuntimeVerdict
 from react_agent.security_v1.runtime_v5 import SecurityRuntime as V5Runtime
 from react_agent.security_v1.runtime_v14_email_origin_candidate import (
+    CandidateA2Policy,
     CandidateRuntimePolicy,
 )
 from react_agent.security_v1.runtime_v14_email_origin_candidate import (
@@ -46,6 +48,9 @@ from react_agent.security_v1.runtime_v14_email_origin_candidate import (
 
 RUNTIME_VERSION = "security_runtime_d2_v1"
 DEFENSE = "D2"
+# D2+G (design 2.5, pre-registered ablation): D2 plus the frozen A2 guard layer, run on
+# the A2 configuration. The guard can only add denials; rules 1-4 are unchanged.
+DEFENSE_BY_LEVEL = {"A1": "D2", "A2": "D2+G"}
 
 
 class D2Policy(ControlDataPolicy, CandidateRuntimePolicy):
@@ -70,6 +75,13 @@ class D2Policy(ControlDataPolicy, CandidateRuntimePolicy):
             related_artifact_ids=self.state.related_artifacts(values), component=COMPONENT)
 
 
+class D2GuardPolicy(CandidateA2Policy, D2Policy):
+    """D2+G. MRO: A2 guard -> D2 rules -> A1 rule layer, so a DENY from either stands."""
+
+    def __init__(self, config: SecurityConfig, raw_user: str, guard: ModelGuard) -> None:
+        super().__init__(config, raw_user, guard)
+
+
 class _RedactingParser:
     """Parses like ``StructuredParser``; a final turn passes through rule 4."""
 
@@ -87,10 +99,20 @@ class _RedactingParser:
 _HOLDER: ContextVar[list[D2Policy]] = ContextVar("d2_policy_holder")
 
 
-def _make_policy(security: SecurityConfig, raw_user: str) -> D2Policy:
-    policy = D2Policy(security, raw_user)
-    _HOLDER.get().append(policy)
-    return policy
+class _RegisteredD2Policy(D2Policy):
+    """Registers itself for the running task (the frozen loop builds the policy)."""
+
+    def __init__(self, config: SecurityConfig, raw_user: str) -> None:
+        super().__init__(config, raw_user)
+        _HOLDER.get().append(self)
+
+
+class _RegisteredD2GuardPolicy(D2GuardPolicy):
+    """A class, not a factory: the frozen loop runs ``isinstance(policy, A2Policy)``."""
+
+    def __init__(self, config: SecurityConfig, raw_user: str, guard: ModelGuard) -> None:
+        super().__init__(config, raw_user, guard)
+        _HOLDER.get().append(self)
 
 
 def _make_parser(registry: Any) -> _RedactingParser:
@@ -106,18 +128,19 @@ class _D2Phase5Runtime(Phase5Runtime):
             EmailRuntime._run_task,
             V5Runtime=SimpleNamespace(
                 _run_task=bind(V5Runtime._run_task, StructuredParser=_make_parser)),
-            CandidateRuntimePolicy=_make_policy,
+            CandidateRuntimePolicy=_RegisteredD2Policy,
+            CandidateA2Policy=_RegisteredD2GuardPolicy,
         )),
     )
 
 
 class D2Runtime(Phase5ClosureRuntime, _D2Phase5Runtime):
-    """Closure runtime (same metadata as A1) with D2; A1 configuration only."""
+    """Closure runtime with D2 (A1 configuration) or D2+G (A2 configuration)."""
 
     def _run_task(self, task: RuntimeTask, **kwargs: Any) -> SecurityRun:
         config = kwargs.get("security_config") or configuration("A0")
-        if config.level != "A1" or config.llm_guard:
-            raise ValueError("D2 runs on the A1 configuration (rules on, guard off)")
+        if config.level not in DEFENSE_BY_LEVEL:
+            raise ValueError("D2 runs on A1 (guard off) and D2+G on A2 (guard on)")
         holder: list[D2Policy] = []
         token = _HOLDER.set(holder)
         try:
@@ -130,8 +153,9 @@ class D2Runtime(Phase5ClosureRuntime, _D2Phase5Runtime):
         path = Path(kwargs["output"]) / "run_metadata.json"
         metadata = json.loads(path.read_text(encoding="utf-8"))
         metadata["defense_v2"] = {
-            "defense": DEFENSE, "profile": PROFILE, "runtime_version": RUNTIME_VERSION,
-            "base_configuration": "A1", "llm_guard": False,
+            "defense": DEFENSE_BY_LEVEL[config.level], "profile": PROFILE,
+            "runtime_version": RUNTIME_VERSION,
+            "base_configuration": config.level, "llm_guard": config.llm_guard,
             "threshold": policy.state.threshold.value,
             "protected_value_count": len(policy.state.protected),
             "final_redacted_values": sum(len(v) for v in policy.redactions),
