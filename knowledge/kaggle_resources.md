@@ -22,6 +22,12 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-05 03:13 — D2 / D2+G Dev, lamhuy8904:** Qwen **v5** (folder `..._qwen3_8b_20261105_003223`)
+vẫn RUNNING từ 00:33, dùng tiếp cho D2 vòng 1 (03:00). Guard v3 tự tắt (COMPLETE) lúc ~03:10 vì idle;
+bật lại guard **v4** lúc 03:13 (folder `build/kaggle/vllm_serve_v1_llama32_3b_guard_20261105_031317`, private,
+T4, token HF chèn như trước) cho D2+G vòng 1. Source: commit `caf2d95`. Hai notebook tự tắt sau 30 phút idle;
+Qwen chạm giới hạn phiên 12 giờ khoảng 12:30.
+
 **2026-11-05 00:33 — E2 Dev mốc, Qwen + guard trên lamhuy8904** (quota reset 31/10, trước đó cả 3 notebook COMPLETE):
 [lamhuy8904/react-vn-vllm-serve-v1](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1) **v5** (Qwen3-8B) và
 [lamhuy8904/react-vn-vllm-serve-v1-llama32-3b-guard](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-llama32-3b-guard)

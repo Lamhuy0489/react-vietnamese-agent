@@ -188,3 +188,13 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - **02:40 E2 xong:** 1.200/1.200, 0 model_error, 0 lần chạy lại. Benign utility A0/A1 87 → 110/200 (E2 sửa định tuyến
   tool), paired side-effect ASR A0 29 → 35, A1 23 → 27; A6 v3 không đổi (ASR 0, benign 60). Ghi decision log
   "E2 Dev re-baseline result"; tiêu chí dừng D2: benign ≥ 105, side-effect ASR ≤ 27 /200. D2 module luật có (`c7b666c`), chưa nối runtime.
+
+## 2026-11-05 (rạng sáng) — Claude Code: D2/D2+G runtime, chạy Dev vòng 1 qua đêm, RQ3 250 biến thể
+
+- Máy sập nguồn sau 02:40; không mất gì (E2 đã commit `2b45840`). 4 file báo cáo tiến độ chưa commit từ 28/10
+  (`docs/BAO_CAO_TIEN_DO_DO_AN.*`, `docs/bao_cao_print.html`, `scripts/generate_pdf_report.py`) để nguyên.
+- D2 runtime `c7d8626`, D2+G `caf2d95` (decision log hai mục "declared"). Ước lượng phản thực trên output A1 thật:
+  benign 108, side-effect ASR ghép cặp 14 /200.
+- Chạy qua đêm trên lamhuy8904: D2 vòng 1 từ 03:00 (Qwen v5 còn sống); guard v3 tự tắt, bật guard v4 03:13 cho D2+G.
+- RQ3 `7ba28d0`: 250 biến thể (3 loại cơ học bằng `draft_surface`, 100 câu code-mix/paraphrase Claude viết, không
+  giao Antigravity vì là dữ liệu Test). Chờ owner review rồi seal.
