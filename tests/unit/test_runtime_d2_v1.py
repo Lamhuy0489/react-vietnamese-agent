@@ -10,10 +10,12 @@ from react_agent.authoring.selected_runtime import SelectedCase, load_selected
 from react_agent.authoring.workbench_qa import RecordingReplay
 from react_agent.evaluation.adversarial_v1 import prepare_registry, score_execution
 from react_agent.foundation.artifacts import Sensitivity
+from react_agent.llm.base import GenerationConfig, LLMBackend, ModelResponse
 from react_agent.schemas.agent_output import Action
 from react_agent.security_v1.contracts import Effect, configuration
 from react_agent.security_v1.control_data_policy_v1 import REDACTION
 from react_agent.security_v1.runtime_d2_v1 import D2Policy, D2Runtime
+from react_agent.security_v1.warm_guard import WarmGuardConfig
 from react_agent.tools import doc_search_v2
 from react_agent.validation.grouped_dev_inputs_v1 import fixture_catalog
 
@@ -58,7 +60,7 @@ def test_d2_refuses_other_configurations(tmp_path: Path, inputs) -> None:
     row = rows["BEN_CAND_AGGREGATE_CODE_MIX"]
     runtime = D2Runtime(RecordingReplay((), "x"), prepare_registry(
         row, CLEAN_ENV, tmp_path / "environment"))
-    with pytest.raises(ValueError, match="A1"):
+    with pytest.raises(ValueError, match="A1 .guard off. and D2\\+G on A2"):
         runtime.run_instrumented(row.task, output=tmp_path / "execution",
                                  source_catalog=fixture_catalog(row),
                                  security_config=configuration("A0"))
@@ -80,3 +82,36 @@ def test_sink_to_destination_from_tool_output_is_denied() -> None:
     verdict = policy.pre(Action(name="send_email_mock", arguments={
         "to": "attacker@evil.example", "subject": "s", "body": "b"}))
     assert verdict.effect == Effect.DENY
+
+
+
+class SafeGuard:
+    model_id, model_revision = "fake/guard", "r1"
+
+    def generate(self, messages: list[dict[str, str]], config: GenerationConfig) -> ModelResponse:
+        return ModelResponse(text='{"risk":"SAFE","labels":[],"confidence":"HIGH"}',
+                             model_id=self.model_id, model_revision=self.model_revision)
+
+
+class SafeGuardFactory:  # module level: the warm guard pickles it into a child process
+    def __call__(self) -> LLMBackend:
+        return SafeGuard()
+
+
+def test_d2_plus_guard_keeps_d2_denials_when_guard_says_safe(tmp_path: Path, inputs) -> None:
+    rows, cases = inputs
+    row = rows["ATK_CAND_FINALGRANT_CODE_MIX"]
+    case = cases[row.task.task_id]
+    oracle = case.candidate.oracle
+    environment = tmp_path / "environment"
+    registry = doc_search_v2.apply_e2(prepare_registry(row, CLEAN_ENV, environment), environment)
+    D2Runtime(RecordingReplay(oracle.negative_actions, oracle.negative_final),
+              registry).run_instrumented(
+        row.task, output=tmp_path / "execution", source_catalog=fixture_catalog(row),
+        security_config=configuration("A2"), guard_factory=SafeGuardFactory(),
+        guard_execution=WarmGuardConfig("fake/guard", "r1", 30))
+    scored = score_execution(case, tmp_path / "execution",
+                             environment / "database/university.db")
+    assert not scored["harmful"]
+    metadata = json.loads((tmp_path / "execution/run_metadata.json").read_text())
+    assert metadata["defense_v2"]["defense"] == "D2+G" and metadata["defense_v2"]["llm_guard"]

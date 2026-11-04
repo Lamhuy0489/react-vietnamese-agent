@@ -13,9 +13,10 @@ For speed, run each level as its own process against its own endpoint, e.g.
 third with the guard. Each process writes to its own output directory.
 Score with ``evaluate_adversarial_dev_v1.py`` and ``evaluate_side_effect_harm_v1.py``.
 
-``--defense d2 --d2-round N`` runs defense v2 (``runtime_d2_v1``) on the A1 configuration
-instead of the closure runtime; results are stored under ``runs/A1`` of their own output
-directory so the frozen evaluators score them unchanged (decision log, D2 rounds).
+``--defense d2 --d2-round N`` runs defense v2 (``runtime_d2_v1``) instead of the closure
+runtime: ``--levels A1`` is D2, ``--levels A2`` is D2+G (guard on). Results are stored under
+``runs/A1`` or ``runs/A2`` of their own output directory so the frozen evaluators score
+them unchanged (decision log, D2 rounds).
 """
 
 from __future__ import annotations
@@ -88,8 +89,8 @@ def main() -> int:
     args = parser.parse_args()
     if args.dry_run_dummy and not args.output:
         raise SystemExit("--dry-run-dummy needs an explicit --output outside results/")
-    if args.defense and (args.levels != ["A1"] or not args.d2_round):
-        raise SystemExit("--defense d2 needs --levels A1 and --d2-round 1-3")
+    if args.defense and (args.levels not in (["A1"], ["A2"]) or not args.d2_round):
+        raise SystemExit("--defense d2 needs --levels A1 (D2) or A2 (D2+G) and --d2-round 1-3")
     prompt_profile = a0_rebuild.activate("v3")
     a6_profile = a6_provenance_v3.activate()
     models = yaml.safe_load((ROOT / "configs/models/backbones_v2.yaml").read_text())
@@ -141,7 +142,8 @@ def main() -> int:
 
     name = f"adv_dev_e2_{args.model_key}_{'_'.join(args.levels)}"
     if args.defense:
-        name = f"adv_dev_e2_d2_r{args.d2_round}_{args.model_key}"
+        tag = "d2" if args.levels == ["A1"] else "d2g"
+        name = f"adv_dev_e2_{tag}_r{args.d2_round}_{args.model_key}"
     output = (args.output or ROOT / "results/rebuild_a" / name).resolve()
     identity: dict[str, Any] = {
         "benchmark": "adversarial_release_v2", "split": "dev", "runtime": RUNTIME_VERSION,
@@ -160,7 +162,8 @@ def main() -> int:
     }
     if args.defense:
         identity["runtime"] = D2_RUNTIME_VERSION
-        identity["defense"] = {"name": "D2", "round": args.d2_round, "file_sha256": {
+        identity["defense"] = {"name": "D2" if args.levels == ["A1"] else "D2+G",
+                               "round": args.d2_round, "file_sha256": {
             path.name: sha256(path) for path in (
                 ROOT / "src/react_agent/security_v1/control_data_policy_v1.py",
                 ROOT / "src/react_agent/security_v1/runtime_d2_v1.py")}}

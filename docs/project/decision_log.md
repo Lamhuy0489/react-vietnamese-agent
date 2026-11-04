@@ -2833,3 +2833,16 @@ CPU evidence before the run (Dev only):
 
 Stop criteria unchanged: Dev benign utility ≥ 105/200 and paired side-effect ASR ≤ 27/200.
 If round 1 meets both, no further rounds; go to `final_config_v2`.
+
+## 2026-11-05 — D2+G round 1 declared (Dev E2, before the run)
+
+D2+G (design 2.5, the pre-registered ablation for Test-2) = D2 rules 1–4 plus the frozen
+A2 guard layer (Llama-3.2-3B, same prompt and risk-to-action mapping), run through
+`runtime_d2_v1` on the A2 configuration. Policy MRO: A2 guard → D2 rules → A1 rule layer,
+so a DENY from any layer stands; the guard can only add denials. Runner
+`--defense d2 --d2-round 1 --levels A2` → `results/rebuild_a/adv_dev_e2_d2g_r1_qwen3_8b`
+(`runs/A2`). It runs concurrently with D2 round 1 on the same Qwen endpoint (lamhuy8904,
+vLLM batches requests) with the guard notebook from the E2 baseline. No tuning: D2+G uses
+whatever D2 configuration is frozen; this run gives its Dev numbers for `final_config_v2`.
+The edit that added D2+G leaves the A1 (D2) path unchanged (unit tests), but it changes the
+sha256 of `runtime_d2_v1.py`, so D2 round 1 is not resumed if its process restarts.
