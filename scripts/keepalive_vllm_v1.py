@@ -1,66 +1,73 @@
 #!/usr/bin/env python3
-"""Keep idle vLLM notebooks alive between runs.
+"""Keep a Kaggle vLLM serve notebook from idling out (Study 2).
 
-The serving notebook shuts down after 30 minutes without a successful completion.
-Every ``--every`` minutes this sends a 1-token completion to each endpoint, but
-only while none of that endpoint's log files changed in the last 5 minutes, so a
-ping never shares a batch with a scored request. ``--endpoint`` takes
-``ENV_FILE`` or ``ENV_FILE=LOG1,LOG2``. Stop it with Ctrl-C or kill.
+The serve notebook stops after ``IDLE_MINUTES`` without a *successful* completion
+(``vllm:request_success_total``), so a GET is not enough: every ``--every`` minutes this
+sends one chat completion with ``max_tokens=1`` to the served model. It stops after
+``--hours`` (the notebook itself stops at ``MAX_HOURS``) or after 3 consecutive failures
+(endpoint gone). Reads ``VLLM_BASE_URL``/``VLLM_API_KEY`` from the folder's ``endpoint.env``;
+never prints them.
+
+    .venv/bin/python scripts/keepalive_vllm_v1.py --folder build/kaggle/<serve folder> --hours 6
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import time
+import urllib.request
 from pathlib import Path
 
-from react_agent.llm.http_diagnostic_v1 import APIError
-from react_agent.llm.openai_compat_v1 import OrderedHTTPSJSON
 
-
-def read_env(path: Path) -> dict[str, str]:
+def read_env(folder: Path) -> dict[str, str]:
     values = {}
-    for line in path.read_text().splitlines():
-        key, _, value = line.removeprefix("export ").partition("=")
-        if key and value:
-            values[key.strip()] = value.strip().strip("'\"")
+    for line in (folder / "endpoint.env").read_text().splitlines():
+        if "=" in line and not line.lstrip().startswith("#"):
+            key, value = line.split("=", 1)
+            values[key.strip().removeprefix("export ").strip()] = value.strip().strip("'\"")
     return values
 
 
-def busy(logs: list[Path], quiet_seconds: float = 300) -> bool:
-    now = time.time()
-    return any(log.exists() and now - log.stat().st_mtime < quiet_seconds for log in logs)
+def call(base: str, key: str, path: str, payload: dict[str, object] | None) -> dict[str, object]:
+    request = urllib.request.Request(  # noqa: S310 - https tunnel URL from endpoint.env
+        base.rstrip("/") + path, method="POST" if payload else "GET",
+        data=json.dumps(payload).encode() if payload else None,
+        headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
+    with urllib.request.urlopen(request, timeout=120) as response:  # noqa: S310
+        value: dict[str, object] = json.loads(response.read())
+    return value
 
 
-def ping(env: dict[str, str]) -> str:
-    transport = OrderedHTTPSJSON(env["VLLM_BASE_URL"], env["VLLM_API_KEY"], timeout=60)
-    model = transport("GET", "/models", None)["data"][0]["id"]
-    transport("POST", "/chat/completions", {
-        "model": model, "messages": [{"role": "user", "content": "ping"}],
-        "max_tokens": 1, "temperature": 0})
-    return str(model)
-
-
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--endpoint", nargs="+", required=True,
-                        help="endpoint.env, optionally =comma-separated busy logs")
-    parser.add_argument("--every", type=float, default=10, help="minutes")
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--folder", type=Path, required=True)
+    parser.add_argument("--hours", type=float, default=6)
+    parser.add_argument("--every", type=float, default=20, help="minutes between pings")
     args = parser.parse_args()
-    endpoints = []
-    for item in args.endpoint:
-        env, _, logs = item.partition("=")
-        endpoints.append((Path(env), [Path(log) for log in logs.split(",") if log]))
-    while True:
-        for path, logs in endpoints:
-            if not busy(logs):
-                try:
-                    print(time.strftime("%H:%M"), "ping", ping(read_env(path)), flush=True)
-                except (APIError, KeyError, IndexError, OSError) as exc:
-                    print(time.strftime("%H:%M"), "ping failed", path.parent.name,
-                          type(exc).__name__, flush=True)
+    env = read_env(args.folder)
+    base, key = env["VLLM_BASE_URL"], env["VLLM_API_KEY"]
+    deadline, failures = time.time() + args.hours * 3600, 0
+    while time.time() < deadline:
+        try:
+            models = call(base, key, "/models", None)
+            data = models["data"]
+            served = [m["id"] for m in data] if isinstance(data, list) else []
+            call(base, key, "/chat/completions", {
+                "model": served[-1], "max_tokens": 1, "temperature": 0,
+                "messages": [{"role": "user", "content": "ping"}]})
+            failures = 0
+            print(time.strftime("%H:%M"), "ping ok", flush=True)
+        except Exception as exc:  # noqa: BLE001 - any failure counts; stop after 3
+            failures += 1
+            print(time.strftime("%H:%M"), "ping failed", type(exc).__name__, flush=True)
+            if failures >= 3:
+                print("endpoint gone; stopping", flush=True)
+                return 1
         time.sleep(args.every * 60)
+    print("deadline reached", flush=True)
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

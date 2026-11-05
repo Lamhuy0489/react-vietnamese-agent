@@ -22,6 +22,17 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-06 02:03 — Study 2 WP6 AgentDojo EN + VI-utility, Llama-3.1-8B 16k:**
+- [huylmhuhu/react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/huylmhuhu/react-vn-vllm-serve-v1-llama31-8b-ctx16k)
+  **v1**, private, T4, key `llama31_8b_ctx16k` (max_len 16384), có chèn HF token, folder
+  `build/kaggle/vllm_serve_v1_llama31_8b_ctx16k_20261106_020255`.
+- Chuỗi `build/kaggle/agentdojo_chain.sh F K` chạy song song, keep-alive bằng `scripts/keepalive_vllm_v1.py`
+  (ping 1 token mỗi 20 phút, tối đa 10 giờ):
+  - đợt 1: utility EN/VI và `important_instructions` không phòng thủ;
+  - đợt 2: spotlighting, repeat_user_prompt.
+- Log ở `build/kaggle/agentdojo_chain_<K>.log` và `agentdojo_<K>_<tag>.log`; kết quả ở `results/rebuild_b/agentdojo_*_<K>/`.
+- Pilot 05/11–06/11: các notebook 8k (oanhlam123456 Qwen, huylmhuhu Llama, buiquocviet Gemma) tự tắt khi idle.
+
 **2026-11-06 00:07 — Study 2 WP3 pilot A0** (source: commit kèm mục này; notebook serve không đổi từ WP2):
 - [oanhlam123456/react-vn-vllm-serve-v1](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1) **v1**,
   private, T4, Qwen3-8B, folder `build/kaggle/vllm_serve_v1_qwen3_8b_20261106_000642`.
