@@ -44,12 +44,24 @@ from react_agent.security_v1.phase5_closure_runtime_v1 import (
 )
 from react_agent.security_v1.runtime_d2_v1 import RUNTIME_VERSION as D2_RUNTIME_VERSION
 from react_agent.security_v1.runtime_d2_v1 import D2Runtime
+from react_agent.security_v3.prompt_baselines import PromptBaselineBackend
+from react_agent.security_v3.promptguard import THRESHOLD as PG_THRESHOLD
+from react_agent.security_v3.promptguard import (
+    PromptGuardFilterBackend,
+    local_classifier,
+    local_identity,
+)
 from react_agent.tools import doc_search_v2
 from react_agent.tools.factory import build_clean_registry
 
 ROOT = Path(__file__).resolve().parents[1]
 CLEAN_ENV = ROOT / rel.CLEAN
 MAX_CONSECUTIVE_INFRA = 3
+PROMPT_BASELINES: dict[str, dict[str, Any]] = {
+    "p1": {"spotlight_mode": "datamark"}, "p2": {"sandwich": True},
+    "p1p2": {"spotlight_mode": "datamark", "sandwich": True},
+    "d2p1": {"spotlight_mode": "datamark"}}
+DEFENSES = {"d2", "g1", *PROMPT_BASELINES}
 NO_GUARD_LEVELS = [level for level in LEVELS if not configuration(cast(Level, level)).llm_guard]
 
 
@@ -84,7 +96,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--branches", nargs="+", default=list(rel.BRANCH_CODE),
                         choices=list(rel.BRANCH_CODE))
     parser.add_argument("--levels", nargs="+", default=["A0"], choices=NO_GUARD_LEVELS)
-    parser.add_argument("--defense", choices=["d2"], help="D2 runtime on --levels A1")
+    parser.add_argument("--defense", choices=sorted(DEFENSES),
+                        help="d2 (D2 runtime, --levels A1); p1/p2/p1p2 prompt baselines on A0; "
+                             "d2p1 = D2 + spotlighting")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--timeout", type=float, default=150)
     parser.add_argument("--dry-run-dummy", action="store_true",
@@ -92,8 +106,11 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.dry_run_dummy and not args.output:
         raise SystemExit("--dry-run-dummy needs an explicit --output outside results/")
-    if args.defense and args.levels != ["A1"]:
-        raise SystemExit("--defense d2 runs as --levels A1")
+    d2 = args.defense in ("d2", "d2p1")
+    if d2 and args.levels != ["A1"]:
+        raise SystemExit("--defense d2/d2p1 runs as --levels A1")
+    if args.defense in ("p1", "p2", "p1p2", "g1") and args.levels != ["A0"]:
+        raise SystemExit("prompt baselines run on --levels A0 (no other defense)")
     release = ROOT / (rel.PILOT_RELEASE if args.split == "pilot" else rel.RELEASE)
     prompt_profile = a0_rebuild.activate("v3")
     a6_profile = a6_provenance_v3.activate()
@@ -122,19 +139,31 @@ def main(argv: list[str] | None = None) -> int:
             repo=spec["repo"], revision=spec["revision"],
             chat_template_kwargs=spec.get("chat_template_kwargs"),
             tool_definitions=build_clean_registry(CLEAN_ENV).definitions())
+    prompt_baseline = PROMPT_BASELINES.get(args.defense or "")
+    if prompt_baseline:
+        backend = PromptBaselineBackend(backend, **prompt_baseline)
+    guard_identity: dict[str, Any] | None = None
+    if args.defense == "g1":  # Prompt Guard 2 filter; local CPU service
+        url = os.environ.get("PROMPTGUARD_URL", "http://127.0.0.1:8765")
+        if args.dry_run_dummy:
+            guard_identity = {"dry_run": True}
+            backend = PromptGuardFilterBackend(backend, lambda text: 0.0)
+        else:
+            guard_identity = local_identity(url)
+            backend = PromptGuardFilterBackend(backend, local_classifier(url))
     try:
         backend.probe()
     except InfrastructureError as exc:
         print(f"Endpoint unreachable at start ({exc}); rerun the same command to resume.")
         return 2
 
-    tag = "d2" if args.defense else "_".join(args.levels)
+    tag = args.defense or "_".join(args.levels)
     output = (args.output or ROOT / "results/rebuild_b" /
               f"v3_{args.split}_{tag}_{args.model_key}").resolve()
     files = {f"{args.split}_{b}": release / f"{args.split}_{b}.jsonl" for b in args.branches}
     identity: dict[str, Any] = {
         "benchmark": "vn_agentinject_v3", "split": args.split,
-        "runtime": D2_RUNTIME_VERSION if args.defense else RUNTIME_VERSION,
+        "runtime": D2_RUNTIME_VERSION if d2 else RUNTIME_VERSION,
         "environment": doc_search_v2.ENVIRONMENT_VERSION,
         "model_key": args.model_key, "model_id": spec["repo"], "model_revision": spec["revision"],
         "untrusted_role": spec.get("untrusted_role", "user"),
@@ -150,13 +179,20 @@ def main(argv: list[str] | None = None) -> int:
         "variant_ids": [row.variant_id for row in rows],
     }
     if args.defense:
-        identity["defense"] = {"name": "D2", "file_sha256": {
-            path.name: sha256(path) for path in (
-                ROOT / "src/react_agent/security_v1/control_data_policy_v1.py",
-                ROOT / "src/react_agent/security_v1/runtime_d2_v1.py")}}
+        files_d = [ROOT / "src/react_agent/security_v3/prompt_baselines.py"] if (
+            prompt_baseline) else []
+        if guard_identity is not None:
+            files_d.append(ROOT / "src/react_agent/security_v3/promptguard.py")
+        if d2:
+            files_d += [ROOT / "src/react_agent/security_v1/control_data_policy_v1.py",
+                        ROOT / "src/react_agent/security_v1/runtime_d2_v1.py"]
+        identity["defense"] = {"name": args.defense, "prompt_baseline": prompt_baseline,
+                               "prompt_guard": guard_identity and {
+                                   **guard_identity, "threshold": PG_THRESHOLD},
+                               "file_sha256": {f.name: sha256(f) for f in files_d}}
     if args.dry_run_dummy:
         identity["dry_run_dummy"] = True
-    runtime_class = D2Runtime if args.defense else Phase5ClosureRuntime
+    runtime_class = D2Runtime if d2 else Phase5ClosureRuntime
     output.mkdir(parents=True, exist_ok=True)
     identity_path = output / "identity.json"
     if identity_path.exists() and json.loads(identity_path.read_text()) != identity:
