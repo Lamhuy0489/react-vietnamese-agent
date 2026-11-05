@@ -19,6 +19,7 @@ Logs go to ``results/rebuild_b/agentdojo_<lang>_<suite>_<attack>_<defense>_<K>/`
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -91,8 +92,18 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--injection-tasks", nargs="*")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args(argv)
+    vi: Any = None
+    template: str | None = None
     if args.lang == "vi":
-        raise SystemExit("Vietnamese suite not built yet (data/agentdojo_vi/, plan WP6)")
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import agentdojo_vi_v1 as vi  # Vietnamese suites (data/agentdojo_vi/)
+
+        if args.attack not in ("none", "important_instructions"):
+            raise SystemExit("AgentDojo-VI supports --attack none or important_instructions")
+        if args.attack != "none":
+            template = vi.attack_template()
+            if not template:
+                raise SystemExit("data/agentdojo_vi/attacks.yaml not translated yet (owner/Minh)")
 
     import openai  # type: ignore[import-not-found]
     from agentdojo.agent_pipeline.agent_pipeline import (  # type: ignore[import-not-found]
@@ -122,11 +133,13 @@ def main(argv: list[str] | None = None) -> int:
                               if spec.get("chat_template_kwargs") else {})
     llm = LocalLLM(client, served)  # temperature 0, AgentDojo defaults otherwise
     pipeline = AgentPipeline.from_config(PipelineConfig(
-        llm=llm, model_id=served, system_message_name=None, system_message=None,
+        llm=llm, model_id=served, system_message_name=None,
+        system_message=vi.system_message() if vi else None,
         defense=None if args.defense == "none" else args.defense))
     pipeline.name = "local"  # AgentDojo's name for a local model (attack prose: "Local model")
 
-    suite = get_suite(VERSION, args.suite)
+    suite = (vi.vi_suite(args.suite, require_goals=args.attack != "none") if vi
+             else get_suite(VERSION, args.suite))
     name = f"agentdojo_{args.lang}_{args.suite}_{args.attack}_{args.defense}_{args.model_key}"
     output = (args.output or ROOT / "results/rebuild_b" / name).resolve()
     output.mkdir(parents=True, exist_ok=True)
@@ -135,6 +148,10 @@ def main(argv: list[str] | None = None) -> int:
                 "model_key": args.model_key, "served_model": served,
                 "chat_template_kwargs": spec.get("chat_template_kwargs") or {},
                 "user_tasks": args.user_tasks, "injection_tasks": args.injection_tasks}
+    if vi:
+        identity["vi_data_sha256"] = {
+            str(f.relative_to(ROOT)): hashlib.sha256(f.read_bytes()).hexdigest()
+            for f in sorted((ROOT / "data/agentdojo_vi").rglob("*")) if f.is_file()}
     path = output / "identity.json"
     if path.exists() and json.loads(path.read_text()) != identity:
         raise SystemExit("Output directory belongs to other inputs; choose a fresh --output")
@@ -147,6 +164,8 @@ def main(argv: list[str] | None = None) -> int:
                 user_tasks=args.user_tasks, benchmark_version=VERSION)
         else:
             attacker = load_attack(args.attack, suite, pipeline)
+            if template:
+                attacker.jailbreak = template  # translated important_instructions template
             results = benchmark_suite_with_injections(
                 pipeline, suite, attacker, logdir=output / "logs", force_rerun=False,
                 user_tasks=args.user_tasks, injection_tasks=args.injection_tasks,
