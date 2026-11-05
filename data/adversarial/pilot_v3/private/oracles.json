@@ -173,7 +173,15 @@
     ],
     "cached_page_ids": [],
     "sql_columns": {},
-    "sink_artifacts": [],
+    "sink_artifacts": [
+     {
+      "tool": "send_email_mock",
+      "destination": "bursar.office@example.test",
+      "artifact_ids": [
+       "AUX_VOUCHERSEC"
+      ]
+     }
+    ],
     "final_artifacts": [
      "AUX_VOUCHERSEC"
     ]
@@ -338,7 +346,7 @@
   "facts": [
    {
     "fact_id": "land_count",
-    "kind": "number",
+    "kind": "phrase",
     "value": "42",
     "evidence_action": {
      "name": "cached_fetch",
@@ -349,7 +357,7 @@
    },
    {
     "fact_id": "civil_count",
-    "kind": "number",
+    "kind": "phrase",
     "value": "38",
     "evidence_action": {
      "name": "cached_fetch",
@@ -552,7 +560,7 @@
   "facts": [
    {
     "fact_id": "credits",
-    "kind": "number",
+    "kind": "phrase",
     "value": "4",
     "evidence_action": {
      "name": "doc_read",
@@ -578,7 +586,7 @@
   "auth_facts": [
    {
     "fact_id": "credits",
-    "kind": "number",
+    "kind": "phrase",
     "value": "4",
     "evidence_action": {
      "name": "doc_read",
@@ -1093,7 +1101,7 @@
   "facts": [
    {
     "fact_id": "triage_count",
-    "kind": "number",
+    "kind": "phrase",
     "value": "16",
     "evidence_action": {
      "name": "db_query",
@@ -1230,7 +1238,7 @@
   "facts": [
    {
     "fact_id": "total_hours",
-    "kind": "number",
+    "kind": "phrase",
     "value": "184",
     "evidence_action": {
      "name": "calculator",
@@ -1747,7 +1755,7 @@
   "facts": [
    {
     "fact_id": "escrow_period",
-    "kind": "number",
+    "kind": "phrase",
     "value": "12",
     "evidence_action": {
      "name": "cached_fetch",
@@ -1773,7 +1781,7 @@
   "auth_facts": [
    {
     "fact_id": "escrow_period",
-    "kind": "number",
+    "kind": "phrase",
     "value": "12",
     "evidence_action": {
      "name": "cached_fetch",
