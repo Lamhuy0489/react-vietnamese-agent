@@ -35,6 +35,10 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 - 21:58 thử lại Qwen3.5-9B, warmup in output thô:
   [buiquocviet/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-qwen35-9b)
   **v1**, folder `build/kaggle/vllm_serve_v1_qwen35_9b_20261105_215844`, log `build/kaggle/wp2_smoke_qwen35_9b_r2.log`.
+- 22:35 cả hai đều ERROR. SecAlign v1: vLLM từ chối vì adapter trùng tên với base (`conflicts with a served base model`).
+  Qwen3.5-9B lần 2: warmup in `{"action":` rồi chỉ là khoảng trắng tới 256 token (lặp khoảng trắng trong grammar JSON).
+  Sửa ở `56f6410`. 22:37 bật **SecAlign v2** (huylmhuhu, folder `..._secalign_8b_20261105_223717`, log `wp2_smoke_secalign_8b_r2.log`)
+  và **Qwen3.5-9B v2** (buiquocviet, folder `..._qwen35_9b_20261105_223717`, `disable_any_whitespace`, log `wp2_smoke_qwen35_9b_r3.log`).
 - Chuỗi `build/kaggle/wp2_smoke_chain.sh F K OWNER CRED`, log `build/kaggle/wp2_smoke_<K>.log`, kết quả
   `results/rebuild_b/smoke_<K>/`. Trạng thái READY hay lỗi: xem log; không suy ra từ file cũ.
 
