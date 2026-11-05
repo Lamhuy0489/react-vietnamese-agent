@@ -5,6 +5,17 @@ Cập nhật: 2026-11-05. Lúc 10:20. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
+**2026-11-05 15:10: TẤT CẢ LƯỢT TEST ĐÃ XONG, không còn lượt GPU nào phải chạy.**
+- Test-2 1.000/1.000 (11:35–13:17), clean Test + robustness × 3 backbone (13:18–15:04), 0 lỗi hạ tầng. Bảng ở
+  decision log "Test-2 result" và "Clean Test (RQ1) and clean robustness (RQ3) result". Kết quả local
+  `results/rebuild_a/adv_test2_*`, `clean_{canonical,robustness}_test_<K>*`. Không chạy lại, không chỉnh.
+- Notebook: Qwen v6, guard v5, Llama v2 (lamhuy8904), Gemma v1 (oanhlam123456, tài khoản mới `kaggle6.json`) đều hết
+  việc, tự tắt sau 30 phút idle. lamhuy8904 gần hết quota tuần.
+- **Việc kế:** (1) owner chọn cách trình bày Test-2: hai giả thuyết D2 đạt nhưng D2 trùng A1 200/200, nên Test-2
+  không cho thấy giá trị riêng của D2 (Dev có: A1 27 → D2 14); (2) viết luận văn chương kết quả từ decision log;
+  (3) R0 sau khi owner merge PR #5. Không sửa file ghim trong `final_config_v2` (chỉ cần nếu chạy lại Test, mà
+  không được chạy lại).
+
 **2026-11-05 trưa: final_config_v2 ĐÃ GHIM (`c3f3d66`, manifest `8889e448…`, 393 file); Test-2 đang chạy.**
 - RQ3 seal (`6eb46c0`, `942b69bb…`), runner clean robustness + `--set canonical` (clean Test RQ1 đi qua v2 vì runner
   clean v1 gắn v1), runner Test-2 = `run_adversarial_e2_api_v1.py --release test2`, evaluator

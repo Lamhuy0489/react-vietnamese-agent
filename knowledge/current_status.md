@@ -1,9 +1,10 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-11-05 10:20. **Phase 0–5 đã nghiệm thu. Lộ trình
-[v2](../docs/project/roadmap_v2_rebuild.md), rebuild A:** R1–R3 xong, **R4 security Test xong**
-(2026-10-28); Test-2 đã seal (`1576b89a…`), E2 Dev mốc xong (05/11: benign A1 110, A6 60 /200); D2 vòng 1 Dev đạt tiêu chí dừng (benign 108, side-effect ASR 14 /200), D2+G trùng D2 (guard không chặn thêm); việc kế final_config_v2; RQ3 250 biến thể chờ owner review; PR #5 CI xanh chờ merge; R0 còn 21 test chỉ hỏng
-trên CI và dọn script (tuần 8/24, hạn 2027-02-19).
+Cập nhật: 2026-11-05 15:10. **Phase 0–5 đã nghiệm thu. Lộ trình
+[v2](../docs/project/roadmap_v2_rebuild.md), rebuild A: toàn bộ lượt Test đã chạy xong.** R4 security Test v1
+(2026-10-28); `final_config_v2` ghim 05/11 (`8889e448…`); Test-2 1.000 lượt (D2 = A1, cả hai 0 ASR, benign 62;
+A6 benign 10); clean Test RQ1 Qwen 50 · Llama 62 · Gemma 65 /100; RQ3 chỉ bỏ dấu gây giảm có ý nghĩa ở cả 3
+model. Việc còn lại: viết luận văn, R0 (PR #5 chờ merge) (tuần 8/24, hạn 2027-02-19).
 
 ## Đã chốt ngày 2026-10-23
 
@@ -16,6 +17,10 @@ trên CI và dọn script (tuần 8/24, hạn 2027-02-19).
 
 ## Mốc đã xác minh
 
+- **Test-2 + clean Test + RQ3 (2026-11-05), dưới `final_config_v2`:** Test-2 A0 side-effect ASR ghép cặp 17 →
+  A1/A6/D2/D2+G 0 /100; benign A0/A1/D2/D2+G 62, A6 10 (false block 84). Hai giả thuyết D2 đạt (p≈1,5e-5;
+  p≈4e-16) nhưng D2 trùng A1 ở 200/200 lượt. Clean Test 50/62/65; no_diacritic mất 13/19/7 câu (p<0,02),
+  loại khác không có ý nghĩa. Bảng: decision log 2026-11-05.
 - **R4 security Test (2026-10-28):** 2.100/2.100 lượt, 4 model_error (KEYLEAK, A0–A3), chạy một
   lần. ASR ghép cặp A0 4 → A3 1 → A4–A6 0 /150, không mức nào có ý nghĩa thống kê. Benign utility
   A0 30, A3 15, A4–A6 5 /150; A6 v3 không giữ được lợi thế Dev (A6 ≈ A5). Bảng trong decision log.
@@ -35,6 +40,6 @@ trên CI và dọn script (tuần 8/24, hạn 2027-02-19).
 
 ## Bước tiếp theo
 
-Tạo 250 biến thể robustness RQ3 → final_config_v2 → clean Test + robustness × 3 backbone, theo
-[handoff](handoff.md). [Prompt cho phiên sau](next_session_prompt.md) ·
+Viết luận văn từ các bảng trong decision log (RQ1, RQ2 v1 + Test-2, RQ3); owner chọn cách trình bày D2 = A1
+trên Test-2; R0 sau khi merge PR #5. Theo [handoff](handoff.md). [Prompt cho phiên sau](next_session_prompt.md) ·
 [Nhật ký phiên](session_log.md) · [Trạng thái trước lộ trình v2](history_20261023_before_roadmap_v2_current_status.md).

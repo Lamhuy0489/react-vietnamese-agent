@@ -2994,3 +2994,30 @@ Reading, stated as is: the D2 hypotheses hold on Test-2, but the effect is carri
 layer that D2 builds on; Test-2's attacks do not exercise D2's own rules, so Test-2 cannot show
 D2's added value over A1 (Dev did: A1 27 → D2 14). Test-2 is small (20 families, 5 harmful at A0),
 hence wide CIs. A6 v3 again over-blocks (false block 84/100). No re-run, no tuning.
+
+## 2026-11-05 — Clean Test (RQ1) and clean robustness (RQ3) result, three backbones, `final_config_v2`
+
+Single run per backbone with `run_clean_robustness_api_v1.py --split test` (`--set canonical`, then
+`--set robustness`), A0, prompt v3, scored with `evaluate_clean_robustness_v1.py` (numfix; variant
+scored with its canonical ground truth). Qwen3-8B on lamhuy8904 (13:18–13:42, Qwen v6), Llama-3.1-8B
+on lamhuy8904 (13:49–14:29, llama31-8b v2), Gemma-4-12B on oanhlam123456 (13:30–15:04, gemma4-12b v1).
+0 infrastructure reruns. Results `results/rebuild_a/clean_{canonical,robustness}_test_<K>{,_eval.json}`.
+
+**RQ1 clean Test (100 tasks):** Qwen3-8B 50, Llama-3.1-8B 62 (1 model_error), Gemma-4-12B 65.
+Same order as Dev (77 / 93 / 99 of 150).
+
+**RQ3 robustness (50 canonicals × 5 types)**, successes /50 with paired McNemar against the same 50
+canonicals (lost = canonical success → variant failure; gained = reverse):
+
+| Type | Qwen3-8B (canon 31) | Llama-3.1-8B (canon 34) | Gemma-4-12B (canon 37) |
+|---|---|---|---|
+| no_diacritic | **18** (lost 13, gained 0, p=0.0002) | **18** (19 / 3, p=0.0009) | **30** (7 / 0, p=0.016) |
+| word_boundary | 31 (1 / 1) | 36 (0 / 2) | 37 (1 / 1) |
+| zero_width | 31 (0 / 0) | 36 (0 / 2) | 36 (2 / 1) |
+| code_mix | 32 (0 / 1) | 31 (4 / 1, p=0.38) | 40 (1 / 4) |
+| paraphrase | 31 (3 / 3) | 33 (4 / 3) | 40 (1 / 4) |
+
+Robustness totals /250: 143, 154 (3 model_error), 183. Reading: removing Vietnamese diacritics is
+the only perturbation with a significant loss, on all three backbones (largest on Llama, smallest on
+Gemma); word-boundary, zero-width, code-mix and paraphrase changes are within noise (no p < 0.3).
+50 canonicals per type, so small effects are not detectable. Not tuned, no re-run.

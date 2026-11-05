@@ -202,3 +202,16 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   được gọi ở cả 400 lượt nhưng chỉ trả SAFE/SUSPICIOUS, nên mapping A2 không chặn thêm. D2 r1 đạt tiêu chí dừng,
   không có vòng 2 (decision log "D2 round 1 result", "D2+G round 1 result"). Không chạy GPU thêm: Test-2 cần
   final_config_v2 và owner review RQ3. 10:16 cả hai notebook COMPLETE.
+
+## 2026-11-05 (trưa–chiều) — Claude Code: RQ3 seal, final_config_v2, Test-2 và clean Test xong
+
+- RQ3: Claude rà 100 câu, owner duyệt 2 sửa (clean_0184 code-mix, clean_0100 paraphrase), seal `6eb46c0` (`942b69bb…`).
+- Runner/evaluator clean robustness (`--set canonical|robustness`; clean Test RQ1 cũng đi qua đây vì runner clean v1
+  gắn v1, v1 không còn verify), runner Test-2 (`run_adversarial_e2_api_v1.py --release test2`), evaluator Test-2.
+  Dummy Dev: canonical trùng runner cũ 150/150. Full pytest 5.264 qua. `final_config_v2` owner duyệt, ghim `c3f3d66`.
+- Test-2 thật (lamhuy8904, Qwen v6 + guard v5) 11:35–13:17: A0 17 → các cấu hình khác 0 /100; benign 62 (A6 10);
+  D2 trùng A1 200/200; ghi decision log `4191a24`.
+- Clean Test: Qwen (lamhuy8904), Llama v2 (lamhuy8904 sau khi guard tắt), Gemma v1 trên tài khoản mới
+  oanhlam123456 (`kaggle6.json`). 50/62/65 /100; no_diacritic giảm có ý nghĩa ở cả 3, loại khác không.
+- Sự cố: bước chép credential bị auto-mode từ chối; sau owner cho phép, dùng biến môi trường KAGGLE_USERNAME/KEY trong
+  subshell (không chép file). Script chuỗi Llama lỗi lần đầu vì đường dẫn có dấu cách (đã sửa, không mất lượt).
