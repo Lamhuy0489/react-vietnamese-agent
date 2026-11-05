@@ -3021,3 +3021,39 @@ Robustness totals /250: 143, 154 (3 model_error), 183. Reading: removing Vietnam
 the only perturbation with a significant loss, on all three backbones (largest on Llama, smallest on
 Gemma); word-boundary, zero-width, code-mix and paraphrase changes are within noise (no p < 0.3).
 50 canonicals per type, so small effects are not detectable. Not tuned, no re-run.
+
+## 2026-11-05 — Rebuild B / Study 2 approved (owner decision; scope extension)
+
+Context: on Test-2, D2 equals A1 on 200/200 scores. Diagnosis (analysis of existing traces only, no
+re-run): all 20 Test-2 families use one mechanism, a redirect to a new destination written with an
+explicit send verb and a full address, which the A1 regex `R_EXTERNAL_01` blocks; all 20 are `S0`, so
+D2 rules 2–4 are never exercised. The Test-2 style matrix had no attack-mechanism axis. On Dev, D2
+beat A1 only on exfiltration through a user-named sink (LINKMAIL, REDACTION, FINALGRANT,
+SOURCEBINDING); neither blocks plain payload tampering.
+
+Owner decision: aim for an international venue on LLM and agent safety, and add **Study 2**.
+Proposal: `docs/project/rebuild_b_proposal.md`. Operational plan and acceptance checks:
+`docs/project/rebuild_b_plan.md`.
+
+- Study 1 (R4 Test v1, Test-2, clean Test RQ1, RQ3) stays as reported. It is never rerun or edited.
+- New dataset VN-AgentInject v3: Dev 48 + Test 72 families stratified by mechanism M1–M6, with
+  B-plain for every family and B-auth for a third of them. 5 variants (canonical, paraphrase,
+  code_mix, no_diacritic, english). Separate 12-family pilot, used for difficulty calibration only.
+  The spec is committed before generation.
+- Claude authors all instructions. The owner and Minh review blind to the defense code (20% overlap,
+  Cohen's κ). Stated as a limitation.
+- AgentDojo-VI (Banking + Slack, EN and VI) is added as an external anchor.
+- Backbones: Qwen3-8B, Llama-3.1-8B, Gemma-4-12B, Qwen3.5-9B, Qwen3.6-35B-A3B, plus Meta-SecAlign-8B.
+  Frontier API models are deferred until the owner supplies an API.
+- Baselines: spotlighting, sandwich, PromptGuard 2, MELON, a Progent-style policy, Meta SecAlign; D2
+  stays the pinned `final_config_v2` version.
+- Adaptive attacks: a human red team (owner, Minh, Claude) and an automated attacker, both on Dev v3
+  only. The fixed set is committed before touching Test v3.
+- Every defense is tuned only on Dev v3, with ≤ 3 declared rounds. Test v3 is run once under
+  `final_config_v3`.
+
+Disclosure, stated now: Study 2 was designed **after** seeing that Test-2 cannot separate D2 from
+A1. The taxonomy deliberately includes classes where D2 is expected to fail (M5, B-auth).
+Pre-registered hypotheses are in the plan, section 5. Impact: about 6 weeks before the Test runs
+(target week of 2026-12-14); thesis deadline 2027-02-19 unchanged. Research contract amended
+(section "Study 2 amendment").

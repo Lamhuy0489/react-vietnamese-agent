@@ -47,3 +47,19 @@ generation parameters, which are selected and frozen before final experiments.
 
 The root Word document remains the approved master scope; this contract makes
 the four previously ambiguous implementation decisions explicit.
+
+## Study 2 amendment (owner decision 2026-11-05)
+
+Everything above is frozen and governs **Study 1** (rebuild A). Study 2 extends the scope as
+follows and is governed by `rebuild_b_plan.md`:
+
+- RQs for Study 2: capability across 5 backbones and VI vs EN (AgentDojo-VI); vulnerability by
+  attack mechanism M1–M6 and by backbone; defense comparison (D2 vs published baselines) under
+  static and adaptive attacks; Vietnamese surface effects on utility, ASR and detectors.
+- The security experiment uses several backbones. Defenses are named, non-cumulative configurations,
+  not the A0–A6 ladder.
+- Besides the synthetic university environment, the AgentDojo Banking and Slack mock environments
+  (EN and a Vietnamese translation) are used. They are still synthetic, with no real side effects.
+- Dataset v3: Dev 48 / Test 72 attack families × 5 variants, each with its benign pair, plus a
+  12-family pilot that never enters Dev or Test.
+- Still no fine-tuning by the team. Meta-SecAlign-8B is an existing released model.

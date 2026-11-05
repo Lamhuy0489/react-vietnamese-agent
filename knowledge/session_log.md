@@ -225,3 +225,6 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Owner muốn làm lại dữ liệu, thêm model, nhắm hội nghị top; Claude viết câu lệnh, owner và Minh review. Claude khảo
   sát nghiên cứu 2025–2026 (AgentDojo, ASB, MAPS không có tiếng Việt, The Attacker Moves Second, CaMeL/Progent/
   MELON, Meta SecAlign) và viết `docs/project/rebuild_b_proposal.md`. Chờ duyệt.
+- 17:30 owner duyệt Study 2: hướng chung, quy mô 48/72, AgentDojo-VI, thêm Qwen3.6-35B-A3B, API frontier hoãn,
+  có đủ baseline, Minh tham gia red team, nộp hội nghị quốc tế về LLM/an toàn agent. Ghi decision log, amendment
+  contract, `docs/project/rebuild_b_plan.md` (WP0–WP10, tiêu chí nghiệm thu, ma trận chạy, 6 giả thuyết), Bản đồ.

@@ -1,7 +1,7 @@
 # Rebuild B: đề xuất nâng cấp lên mức hội nghị top (để owner và Minh review)
 
-Trạng thái: **ĐỀ XUẤT, chưa duyệt** (2026-11-05). Chưa sửa dữ liệu, code hay config nào. Khi owner
-duyệt, các quyết định sẽ được ghi vào `decision_log.md` trước khi làm.
+Trạng thái: **ĐÃ DUYỆT** (owner, 2026-11-05). Thêm Qwen3.6-35B-A3B vào backbone chính; API frontier hoãn
+tới khi owner cấp. Kế hoạch thi hành: [rebuild_b_plan.md](rebuild_b_plan.md). File này giữ làm lý do và khảo sát.
 
 ## 0. Tóm tắt
 
