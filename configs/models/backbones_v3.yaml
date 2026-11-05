@@ -21,7 +21,7 @@ qwen35_9b:
 qwen36_35b_a3b_awq:
   repo: QuantTrio/Qwen3.6-35B-A3B-AWQ  # community AWQ of Qwen/Qwen3.6-35B-A3B (apache-2.0), 25.5 GB
   base_repo: Qwen/Qwen3.6-35B-A3B
-  revision: null
+  revision: 119886a1072372348f73ef0df2d801cdcc0f455b  # resolved at first boot 2026-11-05 (oanhlam123456)
   tier: 2
   gated: false
   license: apache-2.0
@@ -31,16 +31,18 @@ qwen36_35b_a3b_awq:
   max_model_len: 4096
   enforce_eager: true
   text_only: true
-  status: unverified  # risk: AWQ MoE kernels on sm75, 25.5 GB on 2x16 GB; fallback in plan section 7
+  status: smoke_passed  # 2026-11-05: 20/20 terminal, 0 model_error, 12/20 success (prompt v3), READY 17 min, 8 min/20 tasks
   also_role: adaptive_attacker_candidate
 secalign_8b:
   # Requests name the adapter (served model name); the base is the llama31_8b repo/revision.
   repo: facebook/Meta-SecAlign-8B
   revision: fb9b039b45ab4fe5e94517efaaf19f80f4fedda1
   base: {repo: meta-llama/Llama-3.1-8B-Instruct, revision: 0e9e39f249a16976918f6564b8830bc894c89659}
-  lora_rank_max: 64  # unverified until the gated adapter_config.json is readable
+  lora_rank_max: 64  # adapter_config.json r=64 (read 2026-11-05 after access was granted)
+  tokenizer: adapter  # card: use the SecAlign tokenizer (modified chat template)
+  untrusted_role: input  # card: untrusted data in the "input" role; tool observations go there
   tier: secalign
-  gated: true  # manual approval by Meta on the owner's HF account
+  gated: true  # manual approval by Meta; granted to the notebook HF account 2026-11-05
   license: llama3.1
   dtype: half
   tensor_parallel: 2
