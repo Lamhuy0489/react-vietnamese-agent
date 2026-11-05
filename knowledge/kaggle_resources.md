@@ -28,6 +28,13 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
   gated). lamhuy8904 gần hết quota tuần, nhưng session đã bật thì chạy trọn ([bài học](kaggle_lessons.md)).
 - [oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq)
   **v1**, private, T4, folder `build/kaggle/vllm_serve_v1_qwen36_35b_a3b_awq_20261105_211931`.
+- 21:45 Qwen3.6 AWQ v1 smoke đạt (revision `119886a1…`, 20/20, 12 đúng). 21:37 **Qwen3.5-9B v1 (lamhuy8904) ERROR**: vLLM
+  lên được, nhưng warmup trả JSON hỏng (`JSONDecodeError` ở ký tự 260), sinh khoảng 9 tok/s; revision `c2022362…`.
+- 21:57 [huylmhuhu/react-vn-vllm-serve-v1-secalign-8b](https://www.kaggle.com/code/huylmhuhu/react-vn-vllm-serve-v1-secalign-8b)
+  **v1**, private, T4, HF token chèn (gated), source `a301e0d`, folder `build/kaggle/vllm_serve_v1_secalign_8b_20261105_215726`.
+- 21:58 thử lại Qwen3.5-9B, warmup in output thô:
+  [buiquocviet/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-qwen35-9b)
+  **v1**, folder `build/kaggle/vllm_serve_v1_qwen35_9b_20261105_215844`, log `build/kaggle/wp2_smoke_qwen35_9b_r2.log`.
 - Chuỗi `build/kaggle/wp2_smoke_chain.sh F K OWNER CRED`, log `build/kaggle/wp2_smoke_<K>.log`, kết quả
   `results/rebuild_b/smoke_<K>/`. Trạng thái READY hay lỗi: xem log; không suy ra từ file cũ.
 
