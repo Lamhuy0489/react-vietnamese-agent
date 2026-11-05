@@ -1,21 +1,21 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-05 19:00. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-05 23:30. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái: Study 1 xong, giữ nguyên. Study 2 (docs/project/rebuild_b_plan.md): WP1 spec v3 đã viết
-(data/adversarial/v3_authoring/spec.json, sha256 1547dc4e…, taxonomy.md), CHỜ OWNER DUYỆT; WP2 đã thêm 3 model
-key (qwen35_9b, qwen36_35b_a3b_awq, secalign_8b) nhưng chưa smoke trên T4.
+Trạng thái: Study 1 xong. Study 2: spec v3 đã duyệt (1547dc4e…), WP2 xong (3 backbone mới qua smoke). WP3: owner/Minh
+tự viết data/adversarial/v3_authoring/pilot_canonicals.json theo AUTHORING_GUIDE.md. Claude không viết hay đọc đoạn
+chèn tấn công.
 
 Việc phiên này:
-1. Hỏi owner đã duyệt spec chưa (và đã xin quyền HF facebook/Meta-SecAlign-8B chưa). Duyệt thì ghi decision log kèm
-   hash, rồi mới viết câu lệnh pilot.
-2. WP2: kiểm kaggle kernels status và quota, bật qwen35_9b, smoke 20 task (lệnh trong Bản đồ runbook), ghi kết quả;
-   rồi qwen36_35b_a3b_awq; SecAlign khi có quyền.
-3. WP3: viết 12 family pilot theo spec, chạy A0 trên Qwen3-8B và Llama-3.1-8B.
+1. Nếu đã có pilot_canonicals.json: chạy scripts/build_v3_release.py check rồi qa (chỉ đọc số đếm và mã lỗi), báo
+   owner lỗi nào cần sửa; sạch thì write và commit.
+2. Phần không cần nội dung tấn công: unit test release.py (chuỗi giả), runner run_v3_api_v1.py, khai báo metric M5 /
+   side_effect_harm_v3 trong decision log trước khi chạy, AgentDojo-VI venv riêng, baseline phòng thủ.
+3. Khi pilot đã write: chạy A0 trên Qwen3-8B và Llama-3.1-8B.
 ```
 
 ## Ghi chú dùng

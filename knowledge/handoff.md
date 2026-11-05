@@ -5,6 +5,17 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
+**2026-11-05 23:30: WP3 chờ owner/Minh viết canonical pilot.** Claude không viết được đoạn chèn tấn công (bộ lọc an toàn chặn, kể cả khi đọc đoạn có sẵn), và không giao việc đó cho subagent. Owner tự giao cho công cụ khác. Đã có:
+- bộ sinh `src/react_agent/authoring/v3/release.py`;
+- `scripts/build_v3_release.py check|qa|write`;
+- định dạng file `data/adversarial/v3_authoring/AUTHORING_GUIDE.md`.
+
+**Resume:** khi có `pilot_canonicals.json`, chạy `check` rồi `qa` (chỉ đọc số đếm), sửa theo mã lỗi rồi `write`. Song song, Claude làm phần không cần nội dung tấn công:
+- unit test release.py (dùng chuỗi giả);
+- runner `run_v3_api_v1.py`;
+- khai báo metric M5 (`side_effect_harm_v3`) trong decision log;
+- AgentDojo-VI venv và các baseline.
+
 **2026-11-05 21:20: spec v3 ĐÃ DUYỆT (`1547dc4e…`). WP2 smoke đang chạy: Qwen3.5-9B (lamhuy8904) và Qwen3.6-35B-A3B
 AWQ (oanhlam123456).** Notebook và log ghi ở [sổ Kaggle](kaggle_resources.md). **Resume:** nếu chuỗi đứt, kiểm
 `kaggle kernels status`; nếu RUNNING thì chạy lại `build/kaggle/wp2_smoke_chain.sh <folder> <key> <owner> <cred>`

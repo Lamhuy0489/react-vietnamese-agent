@@ -232,3 +232,16 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   fixture 28/560/840 (sửa số 720 trong kế hoạch). Sửa chẩn đoán Test-2: có 3 family kiểu M3 nhưng Qwen không làm theo.
   WP2: kiểm HF (Qwen3.5-9B, Qwen3.6-35B-A3B AWQ đều lai linear attention, chưa chắc chạy được trên T4; SecAlign-8B
   gated manual), thêm key serve, `backbones_v3.yaml`, `--models-config`. Chờ owner duyệt spec.
+
+## 2026-11-05 (tối) — Claude Code: WP2 xong, WP3 chuyển việc viết dữ liệu cho owner/Minh
+
+- WP2 nghiệm thu: Qwen3.6-35B-A3B AWQ, Qwen3.5-9B, Meta-SecAlign-8B qua smoke (commit `2e70bca`).
+- WP3: viết `authoring/v3/release.py`:
+  - chèn tại `{{INJECT}}`, nhãn nguồn khai báo;
+  - 3 nhánh;
+  - kiểm sửa payload M5;
+  - QA replay và kiểm độ mới.
+
+  Thêm `scripts/build_v3_release.py` và `AUTHORING_GUIDE.md`.
+- Bộ lọc an toàn chặn Claude khi viết, rồi cả khi đọc đoạn chèn tấn công. Thống nhất: owner/Minh tự viết canonical
+  (tự giao cho công cụ khác), Claude làm hạ tầng và chỉ đọc số đếm từ script.
