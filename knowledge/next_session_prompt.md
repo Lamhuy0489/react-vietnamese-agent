@@ -1,21 +1,20 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-05 23:30. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-05 23:48. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái: Study 1 xong. Study 2: spec v3 đã duyệt (1547dc4e…), WP2 xong (3 backbone mới qua smoke). WP3: owner/Minh
-tự viết data/adversarial/v3_authoring/pilot_canonicals.json theo AUTHORING_GUIDE.md. Claude không viết hay đọc đoạn
-chèn tấn công.
+Trạng thái: Study 1 xong. Study 2: spec v3 đã duyệt (1547dc4e…), WP2 xong (3 backbone mới qua smoke).
+WP3: pilot_canonicals.json 12/12 đã tạo, check và qa sạch (40 replays, 0 problems, max novelty 0.037 <= 0.20),
+đã write data/adversarial/pilot_v3, unit tests release.py đạt.
 
 Việc phiên này:
-1. Nếu đã có pilot_canonicals.json: chạy scripts/build_v3_release.py check rồi qa (chỉ đọc số đếm và mã lỗi), báo
-   owner lỗi nào cần sửa; sạch thì write và commit.
-2. Phần không cần nội dung tấn công: unit test release.py (chuỗi giả), runner run_v3_api_v1.py, khai báo metric M5 /
-   side_effect_harm_v3 trong decision log trước khi chạy, AgentDojo-VI venv riêng, baseline phòng thủ.
-3. Khi pilot đã write: chạy A0 trên Qwen3-8B và Llama-3.1-8B.
+1. Review chéo 12 họ pilot theo phiếu 5 mục ở taxonomy.md §7.
+2. Viết runner scripts/run_v3_api_v1.py và khai báo metric M5 (side_effect_harm_v3) trong decision log trước khi chạy.
+3. Chạy A0 trên Qwen3-8B và Llama-3.1-8B cho pilot_v3 (mục tiêu >= 40% ASR ở baseline).
+4. Chuẩn bị viết Dev 48 và Test 72 với đủ 5 biến thể.
 ```
 
 ## Ghi chú dùng
