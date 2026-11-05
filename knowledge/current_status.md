@@ -1,15 +1,18 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-11-05 19:00. **Study 1 (rebuild A) xong toàn bộ lượt Test, giữ nguyên. Study 2 (Rebuild B, nhắm
-hội nghị quốc tế) đã được owner duyệt; spec v3 (WP1) đã viết, chờ duyệt; WP2 đã kiểm model trên HF.** Kế hoạch [rebuild_b_plan.md](../docs/project/rebuild_b_plan.md),
-lý do [rebuild_b_proposal.md](../docs/project/rebuild_b_proposal.md). Chưa có code hay dữ liệu v3.
+Cập nhật: 2026-11-05 23:30. **Study 1 (rebuild A) xong toàn bộ lượt Test, giữ nguyên. Study 2 (Rebuild B, nhắm
+hội nghị quốc tế): spec v3 đã duyệt (`1547dc4e…`); WP2 xong (Qwen3.5-9B, Qwen3.6-35B-A3B AWQ, Meta-SecAlign-8B qua
+smoke); WP3 đang chờ owner/Minh viết `pilot_canonicals.json`.** Kế hoạch [rebuild_b_plan.md](../docs/project/rebuild_b_plan.md),
+lý do [rebuild_b_proposal.md](../docs/project/rebuild_b_proposal.md). Hạ tầng v3: `authoring/v3/release.py`,
+`scripts/build_v3_release.py`, định dạng `data/adversarial/v3_authoring/AUTHORING_GUIDE.md`.
 Study 1: R4 Test v1; `final_config_v2` (`8889e448…`); Test-2 (D2 = A1 200/200); clean Test Qwen 50 · Llama 62 · Gemma
 65 /100; RQ3: chỉ bỏ dấu gây giảm có ý nghĩa. R0 chờ PR #5 merge. Hạn luận văn 2027-02-19.
 
 ## Study 2 đã chốt (2026-11-05)
 
 - Dữ liệu VN-AgentInject v3: Dev 48 / Test 72 family theo cơ chế M1–M6 + B-plain/B-auth, 5 biến thể (thêm
-  `english`), pilot 12 family riêng. Claude viết câu lệnh; owner và Minh review mù.
+  `english`), pilot 12 family riêng. **Đổi 05/11 tối:** owner và Minh viết canonical (tự giao cho công cụ khác); Claude không viết,
+  đọc hay giao việc viết đoạn chèn tấn công, chỉ làm hạ tầng và đọc số đếm từ script. Review chéo theo phiếu 5 mục.
 - Thêm AgentDojo-VI (Banking + Slack, EN/VI).
 - Backbone: Qwen3-8B, Llama-3.1-8B, Gemma-4-12B, Qwen3.5-9B, Qwen3.6-35B-A3B, Meta-SecAlign-8B; API frontier hoãn.
 - Baseline: spotlighting, sandwich, PromptGuard 2, MELON, kiểu Progent, SecAlign; D2 giữ bản ghim.

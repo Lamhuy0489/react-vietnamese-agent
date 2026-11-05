@@ -3133,3 +3133,13 @@ backbone's identity in Study 2 and are reported:
 
 WP2 accepted: all three candidates meet the acceptance check (20/20 terminal, ≥ 95% parseable
 calls). Tiers stay as in the plan (section 5).
+
+## 2026-11-05 — WP3: người viết canonical v3 đổi sang owner/Minh
+
+- Quyết định: owner và Minh (tự dùng công cụ họ chọn) viết `data/adversarial/v3_authoring/*_canonicals.json` theo
+  `AUTHORING_GUIDE.md`. Claude không viết, đọc hay giao việc viết đoạn chèn tấn công và quỹ đạo âm; Claude làm bộ sinh,
+  kiểm (`scripts/build_v3_release.py`), runner, evaluator, baseline, phân tích.
+- Lý do: bộ lọc an toàn chặn Claude ở nội dung này. Tách người viết dữ liệu khỏi người viết phòng thủ D2 cũng tăng
+  tính độc lập của benchmark.
+- Ảnh hưởng: thay mục "Claude viết câu lệnh; owner và Minh review mù" của quyết định Study 2. Phiếu review 5 mục giữ
+  nguyên, dùng review chéo giữa hai người. Lịch WP3 phụ thuộc tiến độ viết của owner/Minh.
