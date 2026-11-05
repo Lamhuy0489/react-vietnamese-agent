@@ -2947,3 +2947,17 @@ confirming variant → canonical ground-truth mapping. `--split test` refuses wh
   runner + evaluator (150/150).
 - `scripts/freeze_final_config_v2.py --show` prints the decisions to approve; `--approved-by`
   writes the manifest once.
+
+## 2026-11-05 — `final_config_v2` frozen (owner approval)
+
+Owner approved the decisions printed by `scripts/freeze_final_config_v2.py --show` (chat,
+2026-11-05). Manifest `configs/final/final_config_v2.json`: 393 files pinned (all of
+`src/react_agent`, `configs/`, the Test-2 and clean runners/evaluators, the freeze script, the
+Test-2 and robustness seals, the clean benchmark manifest), sha256 `8889e448…`. Full pytest before
+the freeze: 5,264 passed, 3 skipped, 1 xfailed.
+
+Dummy dry runs under the manifest (CPU stand-ins, not results): Test-2 A0/A1/A6 (one process),
+D2, D2+G: 5 × 200 completed and scored by `evaluate_adversarial_test2_v1.py` (0 model_error);
+clean canonical 100 and robustness 250 on Test for each of qwen3_8b, llama31_8b, gemma4_12b
+completed; scored with `evaluate_clean_robustness_v1.py` (robustness paired with canonical).
+Next: the single real Test-2 run (1,000) and clean Test runs; no file pinned above may change.
