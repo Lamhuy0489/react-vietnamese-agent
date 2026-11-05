@@ -13,6 +13,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from react_agent.llm.http_diagnostic_v1 import APIError
 from react_agent.llm.openai_compat_v1 import OpenAICompatBackend
 
 OBSERVATION_PREFIX = "OBSERVATION: "
@@ -37,6 +38,14 @@ class SecAlignInputRoleBackend(OpenAICompatBackend):
     """OpenAI-compatible backend that sends tool observations as ``input``."""
 
     untrusted_role = UNTRUSTED_ROLE
+
+    def probe(self) -> dict[str, Any]:
+        """vLLM lists the base model and the adapter; the adapter must be one of them."""
+        value = self._send("GET", "/models", None)
+        ids = [item.get("id") for item in value.get("data", []) if isinstance(item, dict)]
+        if self.served not in ids or len(ids) != 2:
+            raise APIError("MODEL_MISMATCH")
+        return value
 
     def generate(self, messages: list[dict[str, str]], config: Any) -> Any:
         return super().generate(secalign_messages(messages), config)
