@@ -3252,3 +3252,15 @@ Chạy A0, 28 fixture mỗi lần. Owner/Minh chỉnh dữ liệu giữa các l�
   - tập vị trí chèn ground truth nhìn thấy trùng EN ở 37/37 task;
   - bản EN gốc cũng trượt phép thử injectable mặc định, nên phép đó không dùng làm tiêu chí.
 - **Còn lại trước khi chạy VI có tấn công:** owner/Minh dịch GOAL và mẫu tấn công; review 20% bản dịch của Claude.
+
+## 2026-11-06 — WP4/WP7: Dev v3 vào chạy (vòng 1)
+
+- **Dev v3** (owner/Minh viết, `dev_canonicals.json` sha256 `f88ea7b2…`):
+  - 48 family (8 mỗi cơ chế), 560 fixture (240 attack, 240 benign_plain, 80 benign_auth), đủ 5 biến thể;
+  - `qa`: 800 replay, 0 lỗi, độ trùng tối đa 0,042, không dùng lại literal cũ;
+  - release `release_v3/dev_*` ghi lại 02:4x cho khớp `code_mix_glossary_v3.json`, `dev_attack.jsonl` sha256 `cd1f02fc…`;
+  - chưa seal: WP5 review của owner/Minh vẫn còn.
+- **Vòng 1 WP7** chạy đúng cài đặt đã khai báo 06/11 (không chỉnh gì):
+  - 9 cấu hình A0, R1 (A1), D2, D2+P1, P1, P2, G1, MEL, PRG;
+  - trên Tầng 1: Gemma-4-12B, Llama-3.1-8B, Qwen3.5-9B.
+  - Bảng kết quả ghi vào decision log khi đủ. Mỗi vòng chỉnh sau phải khai báo trước.

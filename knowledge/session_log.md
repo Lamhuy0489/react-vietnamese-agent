@@ -300,3 +300,19 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   - Cập nhật `docs/benchmark/pilot_v3_review_report.md`.
   - Pytest: 5/5 passed.
 - **Việc kế**: Người dùng chạy lại A0 pilot trên Kaggle để vượt qua cổng 40% và phủ đủ M1–M6.
+
+## 2026-11-06 (rạng sáng) — Claude Code: baseline, AgentDojo-VI, pilot qua cổng, bật Dev v3
+
+- WP7: cài P1 (spotlighting kiểu datamark), P2 (sandwich), G1 (Prompt Guard 2, service CPU local), MEL (MELON bản xác
+  định), PRG (Progent-lite), D2+P1. Có unit test và smoke trên pilot; cài đặt ghi decision log trước khi chạy Dev.
+- WP3: owner/Minh chỉnh pilot qua 5 lần; lần 5 Qwen3-8B đạt 6/12 family, đủ M1–M6, benign sạch, nên qua cổng.
+  - Gemma tham khảo: 5/12. Llama: 3/12.
+  - Owner chọn giữ cổng "ít nhất một backbone".
+- WP6: AgentDojo 0.1.35 trong venv riêng. AgentDojo-VI Banking + Slack:
+  - Claude dịch môi trường, 37 user task và system message;
+  - bộ chấm đổi cụm tiếng Việt về cụm tiếng Anh tương đương; ground truth 100%, vị trí chèn trùng EN;
+  - owner/Minh dịch 14 GOAL và mẫu tấn công.
+  - Thêm key serve 16k và keep-alive.
+- Dev v3 (owner/Minh): 48 family, 560 fixture, QA sạch. Ghi lại release cho khớp glossary.
+  - 02:45 bật Dev × 9 cấu hình trên Gemma, Llama, Qwen3.5-9B.
+- Bộ lọc an toàn chặn Claude 3 lần khi chẩn đoán hoặc góp ý nội dung dữ liệu tấn công. Đã ghi memory: Claude chỉ làm hạ tầng.

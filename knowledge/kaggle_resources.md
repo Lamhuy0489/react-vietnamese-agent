@@ -22,6 +22,14 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-06 02:44 — Study 2 WP7 Dev v3 × 9 cấu hình** (source: commit kèm mục này):
+- [buiquocviet/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-gemma4-12b)
+  **v2**, Gemma-4-12B (max_len 4096), folder `build/kaggle/vllm_serve_v1_gemma4_12b_20261106_024408`.
+- [oanhlam123456/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-qwen35-9b)
+  **v1**, Qwen3.5-9B, folder `build/kaggle/vllm_serve_v1_qwen35_9b_20261106_024408`.
+- Llama-3.1-8B dùng chung notebook 16k của AgentDojo (huylmhuhu).
+- Chuỗi `build/kaggle/v3_dev_chain.sh F K 10`, keep-alive 10 giờ. Log `build/kaggle/v3_dev_chain_<K>.log`.
+
 **2026-11-06 02:03 — Study 2 WP6 AgentDojo EN + VI-utility, Llama-3.1-8B 16k:**
 - [huylmhuhu/react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/huylmhuhu/react-vn-vllm-serve-v1-llama31-8b-ctx16k)
   **v1**, private, T4, key `llama31_8b_ctx16k` (max_len 16384), có chèn HF token, folder

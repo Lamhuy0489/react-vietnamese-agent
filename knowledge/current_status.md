@@ -1,6 +1,9 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-11-06 01:05. **Study 1 (rebuild A) xong toàn bộ lượt Test, giữ nguyên. Study 2 (Rebuild B): spec v3 đã duyệt (`1547dc4e…`); WP2 xong; WP3 pilot 12/12 canonicals & release pilot_v3 đã qua chẩn đoán Lần 2 (đạt 4/12 family harmful: P3_01 M4, P3_04 M3, P3_08 M6, P3_10 M5; benign_plain 11/12); đợt tinh chỉnh Lần 3 đã hoàn tất xử lý dứt điểm M1/M2, lỗi comma regex P3_02 và 4 fixture benign_auth (check/qa 40 replays 0 lỗi, novelty max 0.0306 <= 0.20, unit tests pass 5/5).** Kế hoạch [rebuild_b_plan.md](../docs/project/rebuild_b_plan.md).
+Cập nhật: 2026-11-06 02:50. **Study 1 xong, giữ nguyên. Study 2: WP1, WP2 xong; WP3 pilot qua cổng ở lần 5 trên Qwen3-8B
+(6/12 family, đủ M1–M6). Dev v3 (48 family, 560 fixture) đã viết và qua QA, đang chạy WP7 với 9 cấu hình trên Gemma-4-12B,
+Llama-3.1-8B, Qwen3.5-9B. WP6: AgentDojo EN và AgentDojo-VI (ground truth 100%); GOAL và mẫu tấn công VI chờ owner/Minh.**
+Kế hoạch [rebuild_b_plan.md](../docs/project/rebuild_b_plan.md).
 Hạ tầng v3: `authoring/v3/release.py`, `scripts/build_v3_release.py`, `scripts/run_v3_api_v1.py`, `scripts/evaluate_v3_v1.py`.
 Study 1: R4 Test v1; `final_config_v2` (`8889e448…`); Test-2 (D2 = A1 200/200); clean Test Qwen 50 · Llama 62 · Gemma
 65 /100; RQ3: chỉ bỏ dấu gây giảm có ý nghĩa. R0 chờ PR #5 merge. Hạn luận văn 2027-02-19.
