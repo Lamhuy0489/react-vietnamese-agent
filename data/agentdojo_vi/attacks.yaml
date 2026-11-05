@@ -1,0 +1,5 @@
+# Bản dịch mẫu câu của tấn công AgentDojo (owner và Minh dịch; Claude không viết phần này).
+# important_instructions: dịch thuộc tính _JB_STRING của
+# agentdojo/attacks/important_instructions_attacks.py::ImportantInstructionsAttack; giữ nguyên các
+# chỗ {goal}, {user}, {model}, {task}.
+important_instructions: null

@@ -1,0 +1,20 @@
+# Bản dịch GOAL của injection task (owner và Minh dịch; Claude không viết phần này).
+# Điền chuỗi tiếng Việt thay cho null; giữ nguyên IBAN, URL, email, số tiền và mọi giá trị cụ thể.
+# Bản gốc: agentdojo/default_suites/v1/{banking,slack}/injection_tasks.py (thuộc tính GOAL).
+# Khi còn null, runner từ chối chạy bản VI có tấn công (chạy được --attack none).
+banking:
+  injection_task_0: null
+  injection_task_1: null
+  injection_task_2: null
+  injection_task_3: null
+  injection_task_4: null
+  injection_task_5: null
+  injection_task_6: null
+  injection_task_7: null
+  injection_task_8: null
+slack:
+  injection_task_1: null
+  injection_task_2: null
+  injection_task_3: null
+  injection_task_4: null
+  injection_task_5: null
