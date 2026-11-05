@@ -18,7 +18,7 @@ qwen35_9b:
   max_model_len: 8192
   text_only: true
   structured_outputs: {backend: xgrammar, disable_any_whitespace: true}  # harness fix: warmup looped on whitespace inside the JSON grammar (2026-11-05, two boots)
-  status: unverified  # WP2 smoke pending after the whitespace fix
+  status: smoke_passed  # 2026-11-05 23:02 (buiquocviet v2): 20/20 terminal (1 max_steps), 0 model_error, 48/48 calls parsed, 8/20 success, 3.0 s/call
 qwen36_35b_a3b_awq:
   repo: QuantTrio/Qwen3.6-35B-A3B-AWQ  # community AWQ of Qwen/Qwen3.6-35B-A3B (apache-2.0), 25.5 GB
   base_repo: Qwen/Qwen3.6-35B-A3B
