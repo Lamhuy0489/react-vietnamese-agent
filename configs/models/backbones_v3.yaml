@@ -8,7 +8,7 @@ llama31_8b: {from: backbones_v2, tier: 1, status: served}
 gemma4_12b: {from: backbones_v2, tier: 1, status: served}
 qwen35_9b:
   repo: Qwen/Qwen3.5-9B
-  revision: null  # pin the SHA printed at first boot
+  revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a  # resolved at first boot 2026-11-05
   tier: 1
   gated: false
   license: apache-2.0
@@ -17,7 +17,8 @@ qwen35_9b:
   tensor_parallel: 2
   max_model_len: 8192
   text_only: true
-  status: unverified  # WP2 smoke pending
+  structured_outputs: {backend: xgrammar, disable_any_whitespace: true}  # harness fix: warmup looped on whitespace inside the JSON grammar (2026-11-05, two boots)
+  status: unverified  # WP2 smoke pending after the whitespace fix
 qwen36_35b_a3b_awq:
   repo: QuantTrio/Qwen3.6-35B-A3B-AWQ  # community AWQ of Qwen/Qwen3.6-35B-A3B (apache-2.0), 25.5 GB
   base_repo: Qwen/Qwen3.6-35B-A3B
