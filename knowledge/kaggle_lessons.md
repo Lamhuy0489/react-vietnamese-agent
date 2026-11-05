@@ -342,3 +342,9 @@ Failed SaveKernel requests are not completed or failed inference attempts.
   before push on that shape; preserve its logs and check the actual saved metadata
   before changing adapters. Corrected preparation02 sent exactly one GPU job.
   See [report](../docs/evaluation/phase5_constrained_gpu_v1_report.md).
+
+## Quota gần hết vẫn chạy trọn session (owner, 2026-11-05)
+
+Tài khoản sắp hết quota GPU tuần vẫn bật được notebook, và Kaggle để session đó chạy tới khi kết thúc
+(tự tắt khi idle hoặc chạm `MAX_HOURS`). Vì vậy lamhuy8904 gần hết quota vẫn dùng được cho một lượt
+mới; chỉ không bật thêm được sau khi quota đã về 0. Ghi lại lúc bật trong sổ Kaggle.
