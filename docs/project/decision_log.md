@@ -2891,3 +2891,20 @@ Scored with both frozen evaluators.
   so the guard added no denials. All 68 denials come from the D2/A1 rule layers.
 - Not tuned (the declaration forbids it). D2+G stays the pre-registered ablation for Test-2 with
   this frozen mapping, and the Dev finding "guard inert on top of D2" is reported as is.
+
+## 2026-11-05 — RQ3 clean robustness v1 sealed (owner approval)
+
+`data/clean/robustness_v1/variants.jsonl`: 250 variants = 50 Test canonicals × 5 types
+(`no_diacritic`, `word_boundary`, `zero_width` from `draft_surface`; `code_mix`, `paraphrase`
+authored by Claude). Owner chose to let Claude review the 100 authored sentences; Claude flagged
+and the owner approved two fixes before the seal:
+
+- `clean_0184` code-mix: "deadline cấp chứng chỉ" → "processing time cấp chứng chỉ" (the canonical
+  "thời hạn" means processing time, not a deadline).
+- `clean_0100` paraphrase: "nhân đôi con số đó (nhân 2)" → "lấy con số đó nhân với 2".
+
+QA after the fixes: 0 problems (machine literals and quoted titles preserved, zero-width is
+insertion-only), 0 duplicates, ground truth not loaded, no model scored. Seal
+`data/clean/robustness_v1/seal.json` (`942b69bb…`): variants `d64b5e77…`, authored candidates
+`8143da92…`. `scripts/build_robustness_v1.py --check` verifies; `--write` refuses after the seal.
+Every variant keeps its canonical task's ground truth. Admitted to Test only via `final_config_v2`.
