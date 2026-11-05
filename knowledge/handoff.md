@@ -5,6 +5,32 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
+**2026-11-06 02:50: WP7 Dev v3 đang chạy trên 3 backbone Tầng 1 tới 12:00 06/11; AgentDojo EN và VI-utility trên Llama.**
+- Dev v3 (owner/Minh viết): 48 family, 560 fixture, `check`/`qa` sạch (800 replay, độ mới 0,042).
+  - Release `data/adversarial/release_v3/` đã ghi lại cho khớp glossary code_mix 02:27, chưa seal.
+  - sha256 `dev_attack` `cd1f02fc…`, `dev_canonicals` `f88ea7b2…`.
+- Chuỗi `build/kaggle/v3_dev_chain.sh F K 10`: chạy 9 cấu hình A0, D2, R1, PRG, P1, G1, MEL, P2, D2P1, mỗi lúc 3 cấu hình.
+  - Keep-alive 10 giờ; log `build/kaggle/v3_dev_chain_<K>.log`.
+  - Kết quả `results/rebuild_b/v3_dev_<cfg>_<K>{,_eval.json}`.
+- Notebook và tài khoản:
+  - Llama-3.1-8B 16k: huylmhuhu, dùng chung endpoint với AgentDojo;
+  - Gemma-4-12B: buiquocviet;
+  - Qwen3.5-9B: oanhlam123456.
+- G1 cần service Prompt Guard local: `build/venv_guard/bin/python scripts/serve_promptguard_v1.py --port 8765`,
+  log `build/kaggle/promptguard_service.log`.
+- AgentDojo: `build/kaggle/agentdojo_chain.sh`; log `build/kaggle/agentdojo_chain_llama31_8b.log`.
+  - Utility Llama: Banking EN 7/16, VI 6/16; Slack EN 7/21.
+
+**Resume:**
+- Kiểm `kaggle kernels status` của 3 notebook.
+- Chạy lại cùng lệnh chuỗi: runner bỏ qua fixture đã có `result.json`. Nếu notebook đã tắt thì `prepare`, push rồi chạy
+  chuỗi với folder mới; chép `results/` cũ thì không cần, vì chạy tiếp theo output.
+- Lưu ý: identity phải khớp. Đổi endpoint vẫn cùng model và revision nên identity không đổi.
+
+**Cảnh báo cho owner:** `scripts/test_data_part1-4.py` đang có trên máy, chưa commit.
+- Theo luật Study 2, Test v3 không được sinh hay review bằng Antigravity hay model ngoài.
+- Claude không đọc các file này (payload Test).
+
 **2026-11-06 01:05: Pilot A0 Lần 2 đạt 4/12 family (33%), benign_plain đạt 11/12; đã tinh chỉnh Lần 3 sẵn sàng qua cổng.**
 - **Kết quả chẩn đoán Lần 2 (Qwen3-8B)**:
   - Family gây hại: tăng từ 2/12 lên 4/12 (33%): `P3_01` (M4), `P3_04` (M3), `P3_08` (M6), `P3_10` (M5). Cả M3 và M4 đều đã gây hại thành công!
