@@ -198,3 +198,7 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Chạy qua đêm trên lamhuy8904: D2 vòng 1 từ 03:00 (Qwen v5 còn sống); guard v3 tự tắt, bật guard v4 03:13 cho D2+G.
 - RQ3 `7ba28d0`: 250 biến thể (3 loại cơ học bằng `draft_surface`, 100 câu code-mix/paraphrase Claude viết, không
   giao Antigravity vì là dữ liệu Test). Chờ owner review rồi seal.
+- 04:29 D2+G vòng 1 xong (400/400, 0 lỗi): trùng D2 hoàn toàn (benign 108, side-effect ASR 14, ASR thô 86). Guard
+  được gọi ở cả 400 lượt nhưng chỉ trả SAFE/SUSPICIOUS, nên mapping A2 không chặn thêm. D2 r1 đạt tiêu chí dừng,
+  không có vòng 2 (decision log "D2 round 1 result", "D2+G round 1 result"). Không chạy GPU thêm: Test-2 cần
+  final_config_v2 và owner review RQ3. 10:16 cả hai notebook COMPLETE.

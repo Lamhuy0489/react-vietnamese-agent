@@ -1,29 +1,20 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-05. Lúc 03:20. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-05. Lúc 10:20. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
 
-**2026-11-05 đêm (owner ngủ, giao chạy tới ~10h):**
-- D2 runtime xong (`c7d8626`): `security_v1/runtime_d2_v1.py` = cấu hình A1 + `ControlDataPolicy`, luật 4 redact
-  lúc parse final. D2+G (`caf2d95`) = D2 + guard A2, chạy trên cấu hình A2. Runner:
-  `run_adversarial_e2_api_v1.py --defense d2 --d2-round N --levels A1|A2`.
-- Ước lượng CPU (phát lại output thật của Qwen ở A1 E2 qua D2, decision log "D2 round 1 declared"):
-  benign 110 → 108, side-effect ASR ghép cặp 27 → 14 /200 (đạt tiêu chí dừng). Oracle replay: 5 family benign
-  (CHANNEL, CROSSGRANT, ENCODED, FINALGRANT, SOURCEBINDING) mất vì user cho phép gửi/trả mã; tấn công sửa payload
-  trên sink do user chỉ định nằm ngoài luật 2–3.
-- **Đang chạy:** D2 vòng 1 (A1, 400 lượt, từ 03:00) → `results/rebuild_a/adv_dev_e2_d2_r1_qwen3_8b`, log
-  `build/kaggle/d2_r1_1105.log`, eval `build/kaggle/d2_r1_eval.log` (+ `..._eval.json`). D2+G vòng 1 (A2) qua
-  `build/kaggle/d2g_r1_chain.sh` (chờ guard v4 READY rồi chạy) → `results/rebuild_a/adv_dev_e2_d2g_r1_qwen3_8b`,
-  log `build/kaggle/d2g_r1_1105.log`, eval `build/kaggle/d2g_r1_eval.log`.
-  Resume: chạy lại đúng lệnh runner (bỏ lượt đã có result.json). Lưu ý: sha `runtime_d2_v1.py` đổi sau khi D2 r1
-  bắt đầu, nên D2 r1 không resume được nếu tiến trình khởi động lại (nhánh A1 không đổi hành vi).
-  Side-effect eval của D2 r1 chạy không có `--output`: chạy lại
-  `evaluate_side_effect_harm_v1.py R --output R_side_effect_eval.json`.
-- RQ3 (`7ba28d0`): 250 biến thể `data/clean/robustness_v1/variants.jsonl` (builder `scripts/build_robustness_v1.py`,
-  QA sạch). 100 câu viết tay trong `authored_candidates.jsonl` **chờ owner review**, rồi seal. Chưa có runner
-  clean robustness (task_id biến thể → GT canonical).
+**2026-11-05 sáng: D2 và D2+G vòng 1 XONG, tiêu chí dừng đạt, không có vòng 2.**
+- D2 (`runtime_d2_v1`, cấu hình A1): 400/400, 0 lỗi. Benign 108, side-effect ASR ghép cặp 14 /200 (A1 E2 là 27).
+  McNemar A1→D2 side-effect 13/0, p=0.0002. So A6 v3: benign cao hơn 48, nhưng side-effect cao hơn 14 (giả thuyết 2
+  thất bại trên Dev, giữ nguyên để báo cáo). Decision log "D2 round 1 result".
+- D2+G (cấu hình A2): 400/400, kết quả **trùng D2** (0 quỹ đạo khác). Guard chỉ trả SAFE/SUSPICIOUS, không MALICIOUS,
+  nên mapping A2 đã đóng băng không chặn thêm. Decision log "D2+G round 1 result".
+- Kết quả: `results/rebuild_a/adv_dev_e2_d2{,g}_r1_qwen3_8b*` (local). Notebook Qwen v5 và guard v4 đã COMPLETE (tắt).
+- **Việc kế:** `final_config_v2` (manifest mới ghim D2, D2+G, robustness), cần owner duyệt. Trước đó owner review
+  100 câu RQ3 (`data/clean/robustness_v1/authored_candidates.jsonl`) để seal; viết runner clean robustness
+  (task_id biến thể → GT canonical). Rồi freeze, Test-2 1.000 lượt (A0, A1, A6, D2, D2+G).
 - PR #5: CI xanh, chờ owner merge.
 
 **2026-11-05: E2 Dev mốc XONG 02:40** (1.200/1.200, 0 lỗi; bảng ở decision log "E2 Dev re-baseline result").

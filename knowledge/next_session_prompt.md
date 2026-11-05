@@ -1,6 +1,6 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-05 03:20. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-05 10:20. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
@@ -9,13 +9,15 @@ Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 Trạng thái: rebuild A, hướng A+B+C. Test-2 seal 1576b89a… (held-out, không dùng để chỉnh). Test v1 không chạy
 lại, không sửa file trong manifest v1, pyproject.toml, requirements-dev.txt.
 
-Đêm 05/11 Claude chạy qua đêm trên lamhuy8904: D2 vòng 1 (A1) và D2+G vòng 1 (A2) trên Dev E2
-(handoff mục "Đang làm", decision log "D2 round 1 declared", "D2+G round 1 declared"). Việc đầu tiên:
-đọc kết quả (results/rebuild_a/adv_dev_e2_d2_r1_qwen3_8b*, adv_dev_e2_d2g_r1_qwen3_8b*, log build/kaggle/d2*_1105.log),
-so tiêu chí dừng (benign ≥ 105, side-effect ASR ghép cặp ≤ 27 /200); nếu Claude đã ghi bảng vào decision log
-thì kiểm lại. Đạt → final_config_v2 (D2, D2+G, robustness). Chưa đạt → vòng 2 (≤3 vòng, khai báo trước).
-Owner cần: review 100 câu RQ3 (data/clean/robustness_v1/authored_candidates.jsonl) để seal; merge PR #5 (CI xanh).
-Sau đó: runner clean robustness, freeze v2, Test-2 1.000 lượt.
+D2 và D2+G vòng 1 trên Dev E2 đã xong (decision log "D2 round 1 result", "D2+G round 1 result"): D2 benign 108,
+side-effect ASR ghép cặp 14 /200, đạt tiêu chí dừng nên D2 đóng băng; D2+G trùng D2 (guard không chặn thêm).
+Việc phiên này:
+1. Owner review 100 câu RQ3 (data/clean/robustness_v1/authored_candidates.jsonl), Claude sửa theo góp ý rồi seal
+   variants.jsonl (review_status → approved, hash).
+2. Viết runner clean robustness (task_id biến thể → GT canonical), test bằng Dummy trên Dev.
+3. Soạn final_config_v2 (ghim D2, D2+G, robustness), owner duyệt, dry-run Dummy trên Test-2.
+4. Sau freeze: Test-2 1.000 lượt (A0, A1, A6, D2, D2+G), bật lại notebook Qwen + guard (đang COMPLETE).
+Owner cần merge PR #5 (CI xanh).
 ```
 
 ## Ghi chú dùng
