@@ -1,9 +1,20 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-05. Lúc 10:20. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-05. Lúc 16:30. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
+
+**2026-11-05 16:30: ĐỀ XUẤT REBUILD B (Study 2) chờ owner và Minh duyệt, chưa sửa dữ liệu hay code.**
+- Chẩn đoán Test-2: cả 20 family cùng một cơ chế (chuyển hướng tới đích mới, viết lộ). Regex A1 `R_EXTERNAL_01`
+  bắt hết, cả 20 family đều S0, nên luật 2–4 của D2 không được thử. Trên Dev, D2 hơn A1 ở LINKMAIL, REDACTION,
+  FINALGRANT, SOURCEBINDING (lấy cắp qua sink người dùng đã nêu); cả hai đều lọt khi sửa payload thường.
+- Owner muốn: thêm Llama và Gemma, có thể làm lại dữ liệu từ đầu, chọn model phù hợp, nhắm hội nghị top. Claude
+  viết câu lệnh, owner và Minh review.
+- Bản đề xuất `docs/project/rebuild_b_proposal.md`: taxonomy M1–M6 + B-auth, Dev 48/Test 72 family, AgentDojo-VI,
+  backbone (+Qwen3.5-9B, Meta-SecAlign-8B), baseline (spotlighting, PromptGuard, MELON, kiểu Progent), tấn công
+  thích nghi, timeline 7 tuần. Mục 11 là 6 quyết định owner cần chốt.
+- Study 1 (Test v1, Test-2, clean Test, RQ3) giữ nguyên, không chạy lại.
 
 **2026-11-05 15:10: TẤT CẢ LƯỢT TEST ĐÃ XONG, không còn lượt GPU nào phải chạy.**
 - Test-2 1.000/1.000 (11:35–13:17), clean Test + robustness × 3 backbone (13:18–15:04), 0 lỗi hạ tầng. Bảng ở
