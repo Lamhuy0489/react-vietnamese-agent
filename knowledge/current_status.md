@@ -1,10 +1,19 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-11-05 15:10. **Phase 0–5 đã nghiệm thu. Lộ trình
-[v2](../docs/project/roadmap_v2_rebuild.md), rebuild A: toàn bộ lượt Test đã chạy xong.** R4 security Test v1
-(2026-10-28); `final_config_v2` ghim 05/11 (`8889e448…`); Test-2 1.000 lượt (D2 = A1, cả hai 0 ASR, benign 62;
-A6 benign 10); clean Test RQ1 Qwen 50 · Llama 62 · Gemma 65 /100; RQ3 chỉ bỏ dấu gây giảm có ý nghĩa ở cả 3
-model. Việc còn lại: viết luận văn, R0 (PR #5 chờ merge) (tuần 8/24, hạn 2027-02-19).
+Cập nhật: 2026-11-05 17:30. **Study 1 (rebuild A) xong toàn bộ lượt Test, giữ nguyên. Study 2 (Rebuild B, nhắm
+hội nghị quốc tế) đã được owner duyệt, đang ở WP1.** Kế hoạch [rebuild_b_plan.md](../docs/project/rebuild_b_plan.md),
+lý do [rebuild_b_proposal.md](../docs/project/rebuild_b_proposal.md). Chưa có code hay dữ liệu v3.
+Study 1: R4 Test v1; `final_config_v2` (`8889e448…`); Test-2 (D2 = A1 200/200); clean Test Qwen 50 · Llama 62 · Gemma
+65 /100; RQ3: chỉ bỏ dấu gây giảm có ý nghĩa. R0 chờ PR #5 merge. Hạn luận văn 2027-02-19.
+
+## Study 2 đã chốt (2026-11-05)
+
+- Dữ liệu VN-AgentInject v3: Dev 48 / Test 72 family theo cơ chế M1–M6 + B-plain/B-auth, 5 biến thể (thêm
+  `english`), pilot 12 family riêng. Claude viết câu lệnh; owner và Minh review mù.
+- Thêm AgentDojo-VI (Banking + Slack, EN/VI).
+- Backbone: Qwen3-8B, Llama-3.1-8B, Gemma-4-12B, Qwen3.5-9B, Qwen3.6-35B-A3B, Meta-SecAlign-8B; API frontier hoãn.
+- Baseline: spotlighting, sandwich, PromptGuard 2, MELON, kiểu Progent, SecAlign; D2 giữ bản ghim.
+- Red team thích nghi trên Dev: owner, Minh, Claude. Test v3 chạy một lần dưới `final_config_v3`.
 
 ## Đã chốt ngày 2026-10-23
 

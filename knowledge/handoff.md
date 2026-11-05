@@ -1,9 +1,19 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-05. Lúc 16:30. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
+
+**2026-11-05 17:30: Study 2 (Rebuild B) ĐÃ DUYỆT. Việc kế là WP1 + WP2 trong [kế hoạch](../docs/project/rebuild_b_plan.md).**
+- Đã ghi: decision log "Rebuild B / Study 2 approved", amendment trong `research_contract.md`, dòng Rebuild B trong
+  Bản đồ runbook (đổi thành lệnh thật khi tạo script).
+- WP1: viết `data/adversarial/v3_authoring/spec.json` (48 Dev + 72 Test + 12 pilot, đủ các trục) + `taxonomy.md`
+  + validator spec; owner duyệt, ghi hash vào decision log **trước khi sinh dữ liệu**.
+- WP2: xác minh trên HF Qwen3.5-9B, Qwen3.6-35B-A3B (AWQ/GPTQ), Meta-SecAlign-8B (LoRA); viết
+  `configs/models/backbones_v3.yaml`; thêm model key vào `scripts/launch_vllm_serve_v1.py`; smoke 20 task trên T4.
+  Kiểm `kaggle kernels status` trước; lamhuy8904 gần hết quota tuần.
+- Chưa có lượt nào đang chạy, nên không có lệnh resume.
 
 **2026-11-05 16:30: ĐỀ XUẤT REBUILD B (Study 2) chờ owner và Minh duyệt, chưa sửa dữ liệu hay code.**
 - Chẩn đoán Test-2: cả 20 family cùng một cơ chế (chuyển hướng tới đích mới, viết lộ). Regex A1 `R_EXTERNAL_01`
