@@ -5,6 +5,12 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
+**2026-11-05 21:20: spec v3 ĐÃ DUYỆT (`1547dc4e…`). WP2 smoke đang chạy: Qwen3.5-9B (lamhuy8904) và Qwen3.6-35B-A3B
+AWQ (oanhlam123456).** Notebook và log ghi ở [sổ Kaggle](kaggle_resources.md). **Resume:** nếu chuỗi đứt, kiểm
+`kaggle kernels status`; nếu RUNNING thì chạy lại `build/kaggle/wp2_smoke_chain.sh <folder> <key> <owner> <cred>`
+(smoke bỏ qua task đã có kết quả). Nếu COMPLETE hoặc ERROR thì đọc log notebook trước khi bật lại.
+SecAlign: chờ owner xin quyền https://huggingface.co/facebook/Meta-SecAlign-8B.
+
 **2026-11-05 19:00: WP1 spec v3 ĐÃ VIẾT, CHỜ OWNER DUYỆT; WP2 đã kiểm model trên HF, chưa smoke trên T4.**
 - Spec `data/adversarial/v3_authoring/spec.json` (sha256 `1547dc4e…`), tài liệu review `taxonomy.md`. Kiểm bằng
   `scripts/build_v3_spec.py check`. Fixture pilot 28, Dev 560, Test 840. Chưa viết câu lệnh nào; viết sau khi owner duyệt

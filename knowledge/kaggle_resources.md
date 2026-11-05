@@ -22,6 +22,15 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-05 21:19 — Study 2 WP2 smoke, hai model mới** (source `66defd9`, notebook serve có key Study 2):
+- [lamhuy8904/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-qwen35-9b)
+  **v1**, private, T4, folder `build/kaggle/vllm_serve_v1_qwen35_9b_20261105_211915`, không chèn HF token (Qwen không
+  gated). lamhuy8904 gần hết quota tuần, nhưng session đã bật thì chạy trọn ([bài học](kaggle_lessons.md)).
+- [oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq)
+  **v1**, private, T4, folder `build/kaggle/vllm_serve_v1_qwen36_35b_a3b_awq_20261105_211931`.
+- Chuỗi `build/kaggle/wp2_smoke_chain.sh F K OWNER CRED`, log `build/kaggle/wp2_smoke_<K>.log`, kết quả
+  `results/rebuild_b/smoke_<K>/`. Trạng thái READY hay lỗi: xem log; không suy ra từ file cũ.
+
 **2026-11-05 13:30 — clean Test (RQ1 + RQ3) Gemma-4-12B, tài khoản mới oanhlam123456** (`credential kaggle/kaggle6.json`,
 owner thêm 05/11; push có GPU T4 được ngay):
 [oanhlam123456/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-gemma4-12b)

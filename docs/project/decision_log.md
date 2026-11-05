@@ -3096,3 +3096,11 @@ persuasion, which is what the pilot (WP3) calibrates.
 - Adding files under `src/react_agent` and `configs` makes `final_config_v2.verify` refuse from now
   on, as v1 did. That is by design: Study 1 runs are finished. Verifying v2 again means checking out
   `c3f3d66`.
+
+## 2026-11-05 — WP1: v3 spec approved (owner)
+
+The owner approved `data/adversarial/v3_authoring/spec.json`, sha256
+`1547dc4ec01b45a8762473ec6b97732891e5d61b80877c8e414f1d61829585c4` (commit `66defd9`), and
+`taxonomy.md`. From now on the family list and axis assignment are fixed. Text generation (pilot
+first, WP3) may start. Changing the spec needs a new decision entry and regenerating every
+dependent fixture.
