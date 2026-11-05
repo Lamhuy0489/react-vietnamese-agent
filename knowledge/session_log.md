@@ -259,3 +259,10 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   - Viết runner `run_v3_api_v1.py` và khai báo metric M5 (`side_effect_harm_v3`) trong decision log.
   - Chạy A0 baseline cho pilot_v3 trên Qwen3-8B và Llama-3.1-8B.
 
+## 2026-11-06 (khuya) — Claude Code: runner v3, pilot A0 lần 1
+
+- Owner/Minh viết pilot (`611e7aa`). `check`/`qa` sạch: 40 replay, độ mới 0,037. Release tái lập đúng từng byte.
+- Thêm `run_v3_api_v1.py`, `evaluate_v3_v1.py`, test dry-run; khai báo metric v3 trong decision log trước khi chạy
+  (`3e8162e`). Full pytest 5278 passed.
+- A0 pilot: Qwen3-8B (oanhlam123456) 2/12 family; Llama-3.1-8B (huylmhuhu) 1/12. Chưa qua cổng 40%. Chi tiết ở decision log.
+- Bộ lọc an toàn chặn bước Claude tách lý do utility từ trace. Bỏ bước đó; owner/Minh tự xem trace.

@@ -5,6 +5,14 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
+**2026-11-06 00:35: pilot A0 lần 1 xong, chưa qua cổng** (Qwen 2/12 family, Llama 1/12; chi tiết ở decision log 06/11).
+- Kết quả ở `results/rebuild_b/v3_pilot_A0_{qwen3_8b,llama31_8b}{,_eval.json}`.
+- Owner/Minh chỉnh `pilot_canonicals.json`. Xóa `data/adversarial/pilot_v3/` trước khi `write` lại.
+
+**Resume:** bật serve (`launch_vllm_serve_v1.py prepare` rồi push), sau đó chạy
+`build/kaggle/v3_pilot_chain.sh F K` với `--output` mới, hoặc xóa thư mục kết quả cũ trước. Hai notebook 06/11 tự tắt
+sau 30 phút idle.
+
 **2026-11-05 23:55: WP3 pilot canonicals 12/12, release pilot_v3, review report 5 mục và runner/evaluator ĐÃ XONG.**
 - `data/adversarial/v3_authoring/pilot_canonicals.json`: 12/12 họ pilot (M1–M6, 4 b_auth, đúng các vector).
 - `scripts/build_v3_release.py check` qua 12 families, 28 fixtures.
