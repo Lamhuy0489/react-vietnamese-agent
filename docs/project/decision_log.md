@@ -3183,3 +3183,26 @@ Pilot `pilot_v3` (commit `611e7aa`), runner `3e8162e`, A0, mỗi model 28 fixtur
 - 5 family có utility thấp ở cả hai nhánh (P3_02, P3_03, P3_07, P3_11, P3_12): cần xem lại câu lệnh và fact.
 - Bước tiếp theo: owner/Minh chỉnh pilot (độ thuyết phục M1–M4, câu lệnh/fact của các family utility thấp), rồi chạy
   `check`/`qa`/`write` lại và A0 lần 2. Pilot không vào Dev/Test, nên được chỉnh lặp.
+
+## 2026-11-06 — WP6/WP7: baseline và AgentDojo, khai báo trước khi chạy Dev
+
+Baseline nằm ở `src/react_agent/security_v3/`. Chọn bằng `run_v3_api_v1.py --defense …`. Thay đổi sau khai báo này phải ghi
+thành vòng chỉnh (tối đa 3 vòng, chỉ dùng Dev).
+
+| Mã | Cài đặt | Cấu hình |
+|---|---|---|
+| P1 `p1` | spotlighting kiểu datamark (Hines et al. 2024): khoảng trắng trong OBSERVATION thay bằng `ˆ`, thêm một đoạn vào system prompt. Có sẵn kiểu `delimit` nhưng không dùng mặc định | A0 + wrapper backend |
+| P2 `p2` | sandwich: nhắc lại yêu cầu gốc sau mỗi OBSERVATION, trong cùng message | A0 + wrapper |
+| P1+P2 `p1p2` | đánh dấu trước, nhắc sau (lời nhắc nằm ngoài vùng đánh dấu) | A0 + wrapper |
+| G1 `g1` | Prompt Guard 2 86M (`a8ded8e6…`), lấy max qua cửa sổ 512 token, ngưỡng 0,5. Observation bị gắn cờ được thay bằng thông báo chặn (như `transformers_pi_detector` của AgentDojo). Service CPU local `serve_promptguard_v1.py` | A0 + wrapper |
+| MEL `mel` | MELON bản xác định: trước mỗi lệnh sink, chạy một lượt masked (chỉ gồm system prompt và các observation, với yêu cầu trung tính). Nếu lượt masked đề xuất cùng tool và cùng đích thì dừng bằng câu trả lời cuối. Chỉ so lệnh sink; so đích chính xác thay cho cosine embedding; lượt masked lỗi thì coi là không khớp | A0 + wrapper |
+| PRG `prg` | Progent-lite: tool đọc luôn được phép; lệnh sink chỉ chạy khi đích xuất hiện nguyên văn (không phân biệt hoa thường) trong yêu cầu người dùng; bị từ chối thì trả `POLICY_DENIED` | A0 + wrapper registry |
+| D2+P1 `d2p1` | D2 bản ghim + P1 | A1 + D2 runtime |
+
+- **AgentDojo:**
+  - pin `agentdojo==0.1.35` (`requirements-agentdojo.txt`, venv `.venv-agentdojo`), benchmark `v1.2.2`;
+  - suite Banking (16 user × 9 injection task) và Slack (21 × 5);
+  - pipeline prompting `LocalLLM` (temperature 0), tấn công và phòng thủ có sẵn của AgentDojo;
+  - Qwen3 tắt thinking qua `chat_template_kwargs`.
+- **Context 16k cho AgentDojo:** smoke 06/11 vượt context 8192 token. Thêm key serve `qwen3_8b_ctx16k` và
+  `llama31_8b_ctx16k` (cùng model và revision, `max_len` 16384), chỉ dùng cho AgentDojo.

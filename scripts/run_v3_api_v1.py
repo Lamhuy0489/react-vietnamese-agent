@@ -44,6 +44,8 @@ from react_agent.security_v1.phase5_closure_runtime_v1 import (
 )
 from react_agent.security_v1.runtime_d2_v1 import RUNTIME_VERSION as D2_RUNTIME_VERSION
 from react_agent.security_v1.runtime_d2_v1 import D2Runtime
+from react_agent.security_v3.melon import MelonBackend
+from react_agent.security_v3.progent_lite import apply_progent_lite
 from react_agent.security_v3.prompt_baselines import PromptBaselineBackend
 from react_agent.security_v3.promptguard import THRESHOLD as PG_THRESHOLD
 from react_agent.security_v3.promptguard import (
@@ -61,7 +63,7 @@ PROMPT_BASELINES: dict[str, dict[str, Any]] = {
     "p1": {"spotlight_mode": "datamark"}, "p2": {"sandwich": True},
     "p1p2": {"spotlight_mode": "datamark", "sandwich": True},
     "d2p1": {"spotlight_mode": "datamark"}}
-DEFENSES = {"d2", "g1", *PROMPT_BASELINES}
+DEFENSES = {"d2", "g1", "mel", "prg", *PROMPT_BASELINES}
 NO_GUARD_LEVELS = [level for level in LEVELS if not configuration(cast(Level, level)).llm_guard]
 
 
@@ -109,7 +111,7 @@ def main(argv: list[str] | None = None) -> int:
     d2 = args.defense in ("d2", "d2p1")
     if d2 and args.levels != ["A1"]:
         raise SystemExit("--defense d2/d2p1 runs as --levels A1")
-    if args.defense in ("p1", "p2", "p1p2", "g1") and args.levels != ["A0"]:
+    if args.defense in ("p1", "p2", "p1p2", "g1", "mel", "prg") and args.levels != ["A0"]:
         raise SystemExit("prompt baselines run on --levels A0 (no other defense)")
     release = ROOT / (rel.PILOT_RELEASE if args.split == "pilot" else rel.RELEASE)
     prompt_profile = a0_rebuild.activate("v3")
@@ -142,6 +144,8 @@ def main(argv: list[str] | None = None) -> int:
     prompt_baseline = PROMPT_BASELINES.get(args.defense or "")
     if prompt_baseline:
         backend = PromptBaselineBackend(backend, **prompt_baseline)
+    if args.defense == "mel":
+        backend = MelonBackend(backend)
     guard_identity: dict[str, Any] | None = None
     if args.defense == "g1":  # Prompt Guard 2 filter; local CPU service
         url = os.environ.get("PROMPTGUARD_URL", "http://127.0.0.1:8765")
@@ -181,6 +185,10 @@ def main(argv: list[str] | None = None) -> int:
     if args.defense:
         files_d = [ROOT / "src/react_agent/security_v3/prompt_baselines.py"] if (
             prompt_baseline) else []
+        if args.defense == "prg":
+            files_d.append(ROOT / "src/react_agent/security_v3/progent_lite.py")
+        if args.defense == "mel":
+            files_d.append(ROOT / "src/react_agent/security_v3/melon.py")
         if guard_identity is not None:
             files_d.append(ROOT / "src/react_agent/security_v3/promptguard.py")
         if d2:
@@ -211,6 +219,8 @@ def main(argv: list[str] | None = None) -> int:
             infra_before = backend.infra_failures
             environment = folder / "environment"
             registry = doc_search_v2.apply_e2(row.registry(CLEAN_ENV, environment), environment)
+            if args.defense == "prg":  # policy from the public instruction only
+                registry = apply_progent_lite(registry, row.task.instruction)
             runtime = runtime_class(
                 backend, registry,
                 runtime_config=runtime_config, generation_config=generation_config)
@@ -238,6 +248,9 @@ def main(argv: list[str] | None = None) -> int:
     summary = {"scheduled": len(rows) * len(args.levels), "finished": len(done),
                "statuses": dict(Counter(f"{d['level']}:{d['status']}" for d in done)),
                "private_ground_truth_loaded": 0}
+    if isinstance(backend, MelonBackend):
+        summary["melon"] = {"masked_calls": backend.masked_calls,
+                            "detections": backend.detections}
     atomic_json(output / "summary.json", summary)
     print(json.dumps(summary, indent=2))
     return 0 if summary["finished"] == summary["scheduled"] else 2
