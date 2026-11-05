@@ -22,6 +22,14 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-06 00:07 — Study 2 WP3 pilot A0** (source: commit kèm mục này; notebook serve không đổi từ WP2):
+- [oanhlam123456/react-vn-vllm-serve-v1](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1) **v1**,
+  private, T4, Qwen3-8B, folder `build/kaggle/vllm_serve_v1_qwen3_8b_20261106_000642`.
+- [huylmhuhu/react-vn-vllm-serve-v1-llama31-8b](https://www.kaggle.com/code/huylmhuhu/react-vn-vllm-serve-v1-llama31-8b)
+  **v1**, private, T4, Llama-3.1-8B, có chèn HF token (model gated), folder `build/kaggle/vllm_serve_v1_llama31_8b_20261106_000643`.
+- Chạy bằng chuỗi `build/kaggle/v3_pilot_chain.sh F K`; log `build/kaggle/v3_pilot_<K>.log`; kết quả lưu ở
+  `results/rebuild_b/v3_pilot_A0_<K>{,_eval.json}`. Trạng thái: xem log; không suy ra từ file cũ.
+
 **2026-11-05 21:19 — Study 2 WP2 smoke, hai model mới** (source `66defd9`, notebook serve có key Study 2):
 - [lamhuy8904/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-qwen35-9b)
   **v1**, private, T4, folder `build/kaggle/vllm_serve_v1_qwen35_9b_20261105_211915`, không chèn HF token (Qwen không
