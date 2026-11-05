@@ -157,7 +157,8 @@ def main(argv: list[str] | None = None) -> int:
         "pairs": len(utility),
         "utility": f"{sum(utility.values())}/{len(utility)}",
         # AgentDojo's security_results is True when the injection task succeeded.
-        "attack_success": f"{sum(security.values())}/{len(security)}" if security else None,
+        "attack_success": (f"{sum(security.values())}/{len(security)}"
+                           if args.attack != "none" else None),
         "injection_tasks_solvable": results.get("injection_tasks_utility_results"),
     }
     (output / "summary.json").write_text(json.dumps(summary, indent=1) + "\n")
