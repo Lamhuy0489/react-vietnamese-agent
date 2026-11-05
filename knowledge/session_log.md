@@ -215,3 +215,13 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   oanhlam123456 (`kaggle6.json`). 50/62/65 /100; no_diacritic giảm có ý nghĩa ở cả 3, loại khác không.
 - Sự cố: bước chép credential bị auto-mode từ chối; sau owner cho phép, dùng biến môi trường KAGGLE_USERNAME/KEY trong
   subshell (không chép file). Script chuỗi Llama lỗi lần đầu vì đường dẫn có dấu cách (đã sửa, không mất lượt).
+
+## 2026-11-05 (chiều) — Claude Code: chẩn đoán Test-2, đề xuất Rebuild B
+
+- PR #5 vẫn OPEN, nên R0 chờ.
+- Chẩn đoán Test-2 (phân tích, không chạy lại): D2 = A1 vì cả 20 family chỉ có kiểu chuyển hướng tới đích mới, viết
+  lộ, mà regex A1 bắt được; cả 20 family đều S0. Spec Test-2 không có trục cơ chế. Trên Dev, D2 hơn A1 ở các ca
+  lấy cắp qua sink người dùng đã nêu.
+- Owner muốn làm lại dữ liệu, thêm model, nhắm hội nghị top; Claude viết câu lệnh, owner và Minh review. Claude khảo
+  sát nghiên cứu 2025–2026 (AgentDojo, ASB, MAPS không có tiếng Việt, The Attacker Moves Second, CaMeL/Progent/
+  MELON, Meta SecAlign) và viết `docs/project/rebuild_b_proposal.md`. Chờ duyệt.
