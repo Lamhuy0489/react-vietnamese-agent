@@ -1,23 +1,23 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-05 10:20. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-05 15:10. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái: rebuild A, hướng A+B+C. Test-2 seal 1576b89a… (held-out, không dùng để chỉnh). Test v1 không chạy
-lại, không sửa file trong manifest v1, pyproject.toml, requirements-dev.txt.
+Trạng thái: rebuild A xong toàn bộ lượt Test (05/11) dưới final_config_v2 (8889e448…): Test-2 1.000 lượt,
+clean Test RQ1 + robustness RQ3 × Qwen3-8B, Llama-3.1-8B, Gemma-4-12B. Không chạy lại Test nào, không sửa file
+trong manifest v1/v2, pyproject.toml, requirements-dev.txt. Số liệu ở decision log 2026-11-05 ("Test-2 result",
+"Clean Test (RQ1) and clean robustness (RQ3) result").
 
-D2 và D2+G vòng 1 trên Dev E2 đã xong (decision log "D2 round 1 result", "D2+G round 1 result"): D2 benign 108,
-side-effect ASR ghép cặp 14 /200, đạt tiêu chí dừng nên D2 đóng băng; D2+G trùng D2 (guard không chặn thêm).
 Việc phiên này:
-1. Owner review 100 câu RQ3 (data/clean/robustness_v1/authored_candidates.jsonl), Claude sửa theo góp ý rồi seal
-   variants.jsonl (review_status → approved, hash).
-2. Viết runner clean robustness (task_id biến thể → GT canonical), test bằng Dummy trên Dev.
-3. Soạn final_config_v2 (ghim D2, D2+G, robustness), owner duyệt, dry-run Dummy trên Test-2.
-4. Sau freeze: Test-2 1.000 lượt (A0, A1, A6, D2, D2+G), bật lại notebook Qwen + guard (đang COMPLETE).
-Owner cần merge PR #5 (CI xanh).
+1. Hỏi owner cách trình bày Test-2: hai giả thuyết D2 đạt (D2 vs A0 ASR 17→0; D2 vs A6 benign 10→62) nhưng D2
+   trùng A1 ở 200/200 lượt, nên Test-2 không cho thấy giá trị riêng của D2 (Dev: A1 27 → D2 14). Đề xuất báo
+   nguyên trạng kèm giới hạn (5/20 family gây hại ở A0).
+2. Soạn chương kết quả luận văn (RQ1, RQ2 v1 + Test-2, RQ3) từ các bảng trong decision log; hỏi owner định dạng
+   và chỗ lưu trước khi viết dài.
+3. R0: nếu owner đã merge PR #5, dọn script và test còn lại (hạn 2027-02-19).
 ```
 
 ## Ghi chú dùng
