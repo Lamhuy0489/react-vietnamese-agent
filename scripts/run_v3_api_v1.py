@@ -16,6 +16,7 @@ The Test split is refused until ``final_config_v3`` exists (plan WP9).
 from __future__ import annotations
 
 import argparse
+import fcntl
 import hashlib
 import json
 import os
@@ -202,6 +203,11 @@ def main(argv: list[str] | None = None) -> int:
         identity["dry_run_dummy"] = True
     runtime_class = D2Runtime if d2 else Phase5ClosureRuntime
     output.mkdir(parents=True, exist_ok=True)
+    lock = (output / ".lock").open("w")  # one runner per output folder (held until exit)
+    try:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        raise SystemExit(f"{output} is in use by another runner") from None
     identity_path = output / "identity.json"
     if identity_path.exists() and json.loads(identity_path.read_text()) != identity:
         raise SystemExit("Output directory belongs to other inputs; choose a fresh --output")
