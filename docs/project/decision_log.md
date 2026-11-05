@@ -2925,3 +2925,25 @@ are exactly 3× the canonical Dummy run's (e.g. clarification 15 → 45, fault o
 confirming variant → canonical ground-truth mapping. `--split test` refuses while
 `configs/final/final_config_v2.json` is absent. `react_agent.evaluation.final_config_v2` added
 (same mechanism as v1, v1 untouched); its file list is finalised with the manifest.
+
+## 2026-11-05 — Test-2 runner/evaluator and clean Test path for `final_config_v2` (draft, owner approval pending)
+
+- **Test-2 runner:** `run_adversarial_e2_api_v1.py --release test2` (same pipeline as the E2 Dev and
+  D2 runs; Dev identity unchanged). Verifies `final_config_v2` first, refuses `--limit` outside a dry
+  run and D2 rounds other than 1, loads only the public fixtures through
+  `test2_v1.load_test2_public` (seal-hash checked). Output `results/rebuild_a/adv_test2_*`.
+- **Test-2 evaluator:** `evaluate_adversarial_test2_v1.py` + `react_agent.evaluation.test2_eval_v1`.
+  Takes all run directories, maps `runs/<level>` to A0/A1/A6 or the identity's defense name (D2,
+  D2+G), requires 200 fixtures per configuration, one model and the v2 manifest. Scores with the
+  sealed oracle via `score_test2`, plus `denied` from the security trace. Per configuration, under
+  side-effect (primary) and v1 harm: ASR, paired ASR, utility under attack, benign utility, benign
+  harm, false block. Exact McNemar for the pre-registered primary pairs (A0→D2, A6→D2) and the
+  secondary pairs (D2→D2+G, A0→A1, A1→A6).
+- **Clean Test path:** the pinned clean runner/evaluator verify `final_config_v1`, which no longer
+  verifies (files added under `src/` since R3) and must not be edited. So the clean Test of RQ1 runs
+  through `run_clean_robustness_api_v1.py --set canonical --split test` (variant_id = task id,
+  instruction unchanged) and `evaluate_clean_robustness_v1.py`, gated by v2. On the 150 Dev tasks
+  with the Dummy agent the per-task outcomes and failure reasons are identical to the pinned
+  runner + evaluator (150/150).
+- `scripts/freeze_final_config_v2.py --show` prints the decisions to approve; `--approved-by`
+  writes the manifest once.
