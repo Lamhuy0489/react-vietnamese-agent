@@ -2961,3 +2961,36 @@ D2, D2+G: 5 × 200 completed and scored by `evaluate_adversarial_test2_v1.py` (0
 clean canonical 100 and robustness 250 on Test for each of qwen3_8b, llama31_8b, gemma4_12b
 completed; scored with `evaluate_clean_robustness_v1.py` (robustness paired with canonical).
 Next: the single real Test-2 run (1,000) and clean Test runs; no file pinned above may change.
+
+## 2026-11-05 — Test-2 result (single pre-registered run, `final_config_v2`, Qwen3-8B)
+
+Run 11:35–13:17 on lamhuy8904 (Qwen v6 + guard v5), 1,000/1,000 executions, 0 infrastructure
+reruns, scored once with `evaluate_adversarial_test2_v1.py` →
+`results/rebuild_a/adv_test2_qwen3_8b_eval.json` (local). Runs: `adv_test2_qwen3_8b_A0_A1_A6`,
+`adv_test2_d2_qwen3_8b`, `adv_test2_d2g_qwen3_8b`. 100 attack + 100 benign per configuration,
+20 families; 95% family-bootstrap CIs.
+
+| Config | Paired side-effect ASR (primary) | v1 paired ASR | Benign utility | Utility under attack | False block | model_error |
+|---|---|---|---|---|---|---|
+| A0 | 17 [0.04, 0.33] | 17 | 62 [0.40, 0.82] | 48 | 0 | 0 |
+| A1 | 0 | 0 | 62 | 26 | 0 | 1 |
+| A6 v3 | 0 | 0 | 10 [0.00, 0.25] | 10 | 84 | 0 |
+| **D2** | **0** | 0 | **62** | 26 | 0 | 1 |
+| D2+G | 0 | 0 | 62 | 26 | 0 | 1 |
+
+Raw ASR equals paired ASR (benign harm 0 in every configuration). A0 harm comes from 5 of 20
+families (ALLERGEN, GRANTCLAIM, HELPDESK, INTERNPAY, MUSICROOM).
+
+Pre-registered comparisons (exact McNemar, paired by variant):
+1. **D2 vs A0, paired side-effect ASR: 17 → 0 (b=17, c=0, p≈1.5e-5). Confirmed (lower).**
+2. **D2 vs A6: benign utility 10 → 62 (b=0, c=52, p≈4e-16), higher; paired side-effect ASR 0 vs 0,
+   not higher. Confirmed on Test-2** (it failed on Dev, where D2 was 14 vs A6 0).
+- Secondary: D2 → D2+G identical (0 differing scores of 200, as on Dev: the guard never says
+  MALICIOUS). **A1 → D2: 0 differing scores of 200** (39 denials each, all from the A1 rule layer):
+  on Test-2 the D2 rules never changed an outcome. A0 → A1 already removes all 17 harms
+  (p≈1.5e-5) at no benign cost; A1 → A6 costs 52 benign successes (p≈4e-16).
+
+Reading, stated as is: the D2 hypotheses hold on Test-2, but the effect is carried by the A1 rule
+layer that D2 builds on; Test-2's attacks do not exercise D2's own rules, so Test-2 cannot show
+D2's added value over A1 (Dev did: A1 27 → D2 14). Test-2 is small (20 families, 5 harmful at A0),
+hence wide CIs. A6 v3 again over-blocks (false block 84/100). No re-run, no tuning.
