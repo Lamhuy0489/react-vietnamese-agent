@@ -22,6 +22,13 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-05 11:22 — Test-2 (lượt thật duy nhất, final_config_v2), lamhuy8904:**
+[react-vn-vllm-serve-v1](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1) **v6** (Qwen3-8B, folder
+`build/kaggle/vllm_serve_v1_qwen3_8b_20261105_112146`) và
+[react-vn-vllm-serve-v1-llama32-3b-guard](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-llama32-3b-guard)
+**v5** (folder `..._llama32_3b_guard_20261105_112147`), private, T4, source commit `c3f3d66` (manifest v2 `8889e448…`).
+Chuỗi `build/kaggle/test2_chain.sh`, log `build/kaggle/test2_1105.log`.
+
 **2026-11-05 03:13 — D2 / D2+G Dev, lamhuy8904:** Qwen **v5** (folder `..._qwen3_8b_20261105_003223`)
 vẫn RUNNING từ 00:33, dùng tiếp cho D2 vòng 1 (03:00). Guard v3 tự tắt (COMPLETE) lúc ~03:10 vì idle;
 bật lại guard **v4** lúc 03:13 (folder `build/kaggle/vllm_serve_v1_llama32_3b_guard_20261105_031317`, private,
