@@ -2908,3 +2908,20 @@ insertion-only), 0 duplicates, ground truth not loaded, no model scored. Seal
 `data/clean/robustness_v1/seal.json` (`942b69bb…`): variants `d64b5e77…`, authored candidates
 `8143da92…`. `scripts/build_robustness_v1.py --check` verifies; `--write` refuses after the seal.
 Every variant keeps its canonical task's ground truth. Admitted to Test only via `final_config_v2`.
+
+## 2026-11-05 — RQ3 clean robustness runner and evaluator
+
+`scripts/run_clean_robustness_api_v1.py` (A0, prompt v3, same generation/agent config as the clean
+runner) and `scripts/evaluate_clean_robustness_v1.py` (numfix always), core logic in
+`react_agent.evaluation.clean_robustness_v1`. A variant is the canonical public task with only
+`instruction` replaced: `task_id` and the fault plan stay canonical, so the model input differs
+from the canonical run only by wording, and the variant is scored with the canonical ground truth.
+Checkpoints are keyed by `variant_id`. `--split test` loads exactly the sealed 250 variants and
+requires `final_config_v2` (run and score); `--split dev` builds mechanical variants of public Dev
+tasks for pipeline checks only. `--canonical-eval` adds paired lost/gained per variant type.
+
+Dummy check on Dev (150 tasks × 3 mechanical types = 450): 450/450 completed; the failure counts
+are exactly 3× the canonical Dummy run's (e.g. clarification 15 → 45, fault observation 18 → 54),
+confirming variant → canonical ground-truth mapping. `--split test` refuses while
+`configs/final/final_config_v2.json` is absent. `react_agent.evaluation.final_config_v2` added
+(same mechanism as v1, v1 untouched); its file list is finalised with the manifest.
