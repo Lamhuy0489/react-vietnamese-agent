@@ -22,6 +22,14 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-05 13:30 — clean Test (RQ1 + RQ3) Gemma-4-12B, tài khoản mới oanhlam123456** (`credential kaggle/kaggle6.json`,
+owner thêm 05/11; push có GPU T4 được ngay):
+[oanhlam123456/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-gemma4-12b)
+**v1**, private, folder `build/kaggle/vllm_serve_v1_gemma4_12b_20261105_133018`, source `4191a24`. HF token `~/.hf_token_r5`
+kiểm 05/11 còn đọc được Gemma và Llama-3.1-8B. Llama-3.1-8B: bật trên lamhuy8904 khi guard v5 tự tắt
+(`build/kaggle/llama_after_guard.sh`), có thể hụt quota tuần (lamhuy8904 đã dùng nhiều từ 31/10). Chuỗi chung
+`build/kaggle/clean_test_chain.sh K FOLDER`, log `build/kaggle/clean_test_<K>_1105.log`.
+
 **2026-11-05 11:22 — Test-2 (lượt thật duy nhất, final_config_v2), lamhuy8904:**
 [react-vn-vllm-serve-v1](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1) **v6** (Qwen3-8B, folder
 `build/kaggle/vllm_serve_v1_qwen3_8b_20261105_112146`) và
