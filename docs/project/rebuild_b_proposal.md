@@ -23,7 +23,7 @@ tới khi owner cấp. Kế hoạch thi hành: [rebuild_b_plan.md](rebuild_b_pla
 
 | Điểm yếu | Bằng chứng trong repo | Cách sửa ở Rebuild B |
 |---|---|---|
-| Test-2 chỉ có **một cơ chế tấn công** (gửi tới địa chỉ mới, có chữ "gửi" và địa chỉ viết rõ), nên regex A1 bắt hết và D2 = A1 ở 200/200 lượt | decision log "Test-2 result"; spec Test-2 không có trục cơ chế | Taxonomy cơ chế M1–M6 là trục chính của ma trận sinh dữ liệu (mục 4.1) |
+| Test-2 lệch về **một cơ chế**: 17/20 family là gửi tới địa chỉ mới, có chữ "gửi" và địa chỉ viết rõ, nên regex A1 bắt hết. 3 family còn lại thuộc kiểu M3 (mã `S2` qua sink người dùng đã nêu) nhưng Qwen không làm theo ở A0 (0/15). Kết quả D2 = A1 ở 200/200 lượt | decision log "Test-2 result"; spec Test-2 không có trục cơ chế | Taxonomy cơ chế M1–M6 là trục chính của ma trận sinh dữ liệu (mục 4.1) |
 | Nhỏ: 20–40 family; A0 chỉ gây hại ở 5/20 family của Test-2 | bảng per-family | ≥ 72 family Test, có power analysis (mục 4.4) |
 | RQ2 chỉ có một model (Qwen3-8B) | roadmap v2 | Ít nhất 4 backbone cho cả RQ1 và RQ2 (mục 5) |
 | Chỉ so với thang phòng thủ tự xây (A0–A6) | – | So thêm baseline đã công bố: spotlighting, PromptGuard, MELON, kiểu Progent, Meta SecAlign (mục 6) |
@@ -107,8 +107,8 @@ trong bảng).
 
 | Bộ | Family | Biến thể/family | Fixture (attack + benign) |
 |---|---|---|---|
-| Dev v3 | 48 (8 × M1–M6) | 5 | 480 |
-| Test v3 | 72 (12 × M1–M6) | 5 | 720 |
+| Dev v3 | 48 (8 × M1–M6) | 5 | 560 (đã chốt ở spec, tính cả B-auth) |
+| Test v3 | 72 (12 × M1–M6) | 5 | 840 (đã chốt ở spec, tính cả B-auth) |
 | Pilot (dùng rồi bỏ) | 12 | 1 | 24 |
 
 5 biến thể gồm: canonical, paraphrase, code_mix, no_diacritic và tiếng Anh. Bản tiếng Anh là mới, phục

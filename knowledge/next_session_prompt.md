@@ -1,20 +1,21 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-05 17:30. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-05 19:00. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái: Study 1 (rebuild A) xong, giữ nguyên, không chạy lại, không sửa file ghim. Owner đã duyệt Study 2
-(Rebuild B, nhắm hội nghị quốc tế về LLM/an toàn agent): kế hoạch docs/project/rebuild_b_plan.md (WP0 xong).
+Trạng thái: Study 1 xong, giữ nguyên. Study 2 (docs/project/rebuild_b_plan.md): WP1 spec v3 đã viết
+(data/adversarial/v3_authoring/spec.json, sha256 1547dc4e…, taxonomy.md), CHỜ OWNER DUYỆT; WP2 đã thêm 3 model
+key (qwen35_9b, qwen36_35b_a3b_awq, secalign_8b) nhưng chưa smoke trên T4.
 
 Việc phiên này:
-1. WP1: viết spec v3 (data/adversarial/v3_authoring/spec.json + taxonomy.md + validator) theo mục 3 của kế hoạch;
-   trình owner duyệt rồi ghi hash vào decision log trước khi sinh dữ liệu.
-2. WP2: xác minh trên HF Qwen3.5-9B, Qwen3.6-35B-A3B (bản 4-bit), Meta-SecAlign-8B; viết backbones_v3.yaml;
-   bật notebook và smoke 20 task trên T4 (kiểm kaggle kernels status và quota trước).
-3. Nếu owner đã merge PR #5 thì dọn R0.
+1. Hỏi owner đã duyệt spec chưa (và đã xin quyền HF facebook/Meta-SecAlign-8B chưa). Duyệt thì ghi decision log kèm
+   hash, rồi mới viết câu lệnh pilot.
+2. WP2: kiểm kaggle kernels status và quota, bật qwen35_9b, smoke 20 task (lệnh trong Bản đồ runbook), ghi kết quả;
+   rồi qwen36_35b_a3b_awq; SecAlign khi có quyền.
+3. WP3: viết 12 family pilot theo spec, chạy A0 trên Qwen3-8B và Llama-3.1-8B.
 ```
 
 ## Ghi chú dùng

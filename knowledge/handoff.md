@@ -5,6 +5,17 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
+**2026-11-05 19:00: WP1 spec v3 ĐÃ VIẾT, CHỜ OWNER DUYỆT; WP2 đã kiểm model trên HF, chưa smoke trên T4.**
+- Spec `data/adversarial/v3_authoring/spec.json` (sha256 `1547dc4e…`), tài liệu review `taxonomy.md`. Kiểm bằng
+  `scripts/build_v3_spec.py check`. Fixture pilot 28, Dev 560, Test 840. Chưa viết câu lệnh nào; viết sau khi owner duyệt
+  spec và hash đã ghi vào decision log.
+- WP2: thêm key `qwen35_9b`, `qwen36_35b_a3b_awq`, `secalign_8b` vào notebook serve và launcher; tạo
+  `configs/models/backbones_v3.yaml`; smoke runner có `--models-config`. Hai model Qwen mới có kiến trúc lai linear
+  attention, chưa biết chạy fp16 trên T4 được không. SecAlign gated manual: **owner xin quyền
+  facebook/Meta-SecAlign-8B trên HF** với tài khoản có token dùng trong notebook.
+- Việc kế: (1) owner duyệt spec; (2) smoke `qwen35_9b` rồi `qwen36_35b_a3b_awq` trên tài khoản còn quota (kiểm
+  `kaggle kernels status` trước); (3) WP3 pilot.
+
 **2026-11-05 17:30: Study 2 (Rebuild B) ĐÃ DUYỆT. Việc kế là WP1 + WP2 trong [kế hoạch](../docs/project/rebuild_b_plan.md).**
 - Đã ghi: decision log "Rebuild B / Study 2 approved", amendment trong `research_contract.md`, dòng Rebuild B trong
   Bản đồ runbook (đổi thành lệnh thật khi tạo script).
@@ -17,7 +28,7 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 
 **2026-11-05 16:30: ĐỀ XUẤT REBUILD B (Study 2) chờ owner và Minh duyệt, chưa sửa dữ liệu hay code.**
 - Chẩn đoán Test-2: cả 20 family cùng một cơ chế (chuyển hướng tới đích mới, viết lộ). Regex A1 `R_EXTERNAL_01`
-  bắt hết, cả 20 family đều S0, nên luật 2–4 của D2 không được thử. Trên Dev, D2 hơn A1 ở LINKMAIL, REDACTION,
+  bắt hết. 3 family kiểu M3 (mã S2 qua sink người dùng đã nêu) thì Qwen không làm theo ở A0 (0/15), nên luật 2–4 của D2 không có gì để chặn. Trên Dev, D2 hơn A1 ở LINKMAIL, REDACTION,
   FINALGRANT, SOURCEBINDING (lấy cắp qua sink người dùng đã nêu); cả hai đều lọt khi sửa payload thường.
 - Owner muốn: thêm Llama và Gemma, có thể làm lại dữ liệu từ đầu, chọn model phù hợp, nhắm hội nghị top. Claude
   viết câu lệnh, owner và Minh review.

@@ -1,0 +1,49 @@
+# Study 2 backbones (docs/project/rebuild_b_plan.md WP2; decision log 2026-11-05).
+# backbones_v2.yaml is pinned by final_config_v1/v2 and stays unchanged; entries reused
+# from it keep the same repo and revision. Serving keys match MODELS in
+# notebooks/kaggle/vllm_serve_v1/vllm_serve_v1.ipynb. A model counts only after its WP2
+# smoke (20/20 terminal, >= 95% parseable tool calls) is recorded in the decision log.
+qwen3_8b: {from: backbones_v2, tier: 2, status: served}
+llama31_8b: {from: backbones_v2, tier: 1, status: served}
+gemma4_12b: {from: backbones_v2, tier: 1, status: served}
+qwen35_9b:
+  repo: Qwen/Qwen3.5-9B
+  revision: null  # pin the SHA printed at first boot
+  tier: 1
+  gated: false
+  license: apache-2.0
+  architecture: Qwen3_5ForConditionalGeneration (hybrid Gated DeltaNet + full attention every 4th layer, head_dim 256, bf16 weights 19.3 GB)
+  dtype: half  # T4 has no fast bf16; fp16 numerics unverified for linear attention
+  tensor_parallel: 2
+  max_model_len: 8192
+  text_only: true
+  status: unverified  # WP2 smoke pending
+qwen36_35b_a3b_awq:
+  repo: QuantTrio/Qwen3.6-35B-A3B-AWQ  # community AWQ of Qwen/Qwen3.6-35B-A3B (apache-2.0), 25.5 GB
+  base_repo: Qwen/Qwen3.6-35B-A3B
+  revision: null
+  tier: 2
+  gated: false
+  license: apache-2.0
+  architecture: Qwen3_5MoeForConditionalGeneration (256 experts, 8 active, ~3B active params; hybrid attention)
+  dtype: half
+  tensor_parallel: 2
+  max_model_len: 4096
+  enforce_eager: true
+  text_only: true
+  status: unverified  # risk: AWQ MoE kernels on sm75, 25.5 GB on 2x16 GB; fallback in plan section 7
+  also_role: adaptive_attacker_candidate
+secalign_8b:
+  # Requests name the adapter (served model name); the base is the llama31_8b repo/revision.
+  repo: facebook/Meta-SecAlign-8B
+  revision: fb9b039b45ab4fe5e94517efaaf19f80f4fedda1
+  base: {repo: meta-llama/Llama-3.1-8B-Instruct, revision: 0e9e39f249a16976918f6564b8830bc894c89659}
+  lora_rank_max: 64  # unverified until the gated adapter_config.json is readable
+  tier: secalign
+  gated: true  # manual approval by Meta on the owner's HF account
+  license: llama3.1
+  dtype: half
+  tensor_parallel: 2
+  max_model_len: 8192
+  status: unverified  # needs gated access; check the card for how untrusted data must be placed (input role)
+frontier_api: {status: deferred, note: owner provides an API when needed}
