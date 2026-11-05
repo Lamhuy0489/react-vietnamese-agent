@@ -29,6 +29,7 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
   **v1**, private, T4, Llama-3.1-8B, có chèn HF token (model gated), folder `build/kaggle/vllm_serve_v1_llama31_8b_20261106_000643`.
 - Chạy bằng chuỗi `build/kaggle/v3_pilot_chain.sh F K`; log `build/kaggle/v3_pilot_<K>.log`; kết quả lưu ở
   `results/rebuild_b/v3_pilot_A0_<K>{,_eval.json}`. Trạng thái: xem log; không suy ra từ file cũ.
+- Kết quả: Qwen READY 00:18, xong 00:22; Llama READY 00:28, xong 00:32. Cả hai tự tắt khi idle.
 
 **2026-11-05 21:19 — Study 2 WP2 smoke, hai model mới** (source `66defd9`, notebook serve có key Study 2):
 - [lamhuy8904/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-qwen35-9b)
