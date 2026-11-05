@@ -2873,3 +2873,21 @@ McNemar (b/c, p), paired by variant:
   higher") failed on Dev; it stays pre-registered and will be reported as is. Not tuned toward it.
 - Residual D2 harm on Dev (14): payload tampering on a user-named destination; the 2 benign losses
   are user-authorised flows of a confidential code (rules 3–4 cannot see the permission).
+
+## 2026-11-05 — D2+G round 1 result (Dev E2, Qwen3-8B + Llama-3.2-3B guard): identical to D2
+
+Run `results/rebuild_a/adv_dev_e2_d2g_r1_qwen3_8b` (`runs/A2` = D2+G): 400/400 completed,
+0 model_error, 0 infrastructure reruns, finished 04:29 on lamhuy8904 (Qwen v5 + guard v4).
+Scored with both frozen evaluators.
+
+| Config | Raw ASR | Attributable ASR (v1) | Benign utility | Raw side-effect | Paired side-effect ASR |
+|---|---|---|---|---|---|
+| D2 r1 | 86 | 16 | 108 | 19 | 14 |
+| **D2+G r1** | 86 | 16 | 108 | 19 | 14 |
+
+- McNemar D2 → D2+G: 0/0 on every metric. Trajectories that differ from D2: 0 of 400.
+- The guard was called on every run (PRE: 689 SAFE, 192 SUSPICIOUS; POST: 537 SAFE,
+  276 SUSPICIOUS; 0 MALICIOUS). The frozen A2 risk-to-action mapping denies only on MALICIOUS,
+  so the guard added no denials. All 68 denials come from the D2/A1 rule layers.
+- Not tuned (the declaration forbids it). D2+G stays the pre-registered ablation for Test-2 with
+  this frozen mapping, and the Dev finding "guard inert on top of D2" is reported as is.
