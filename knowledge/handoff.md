@@ -5,6 +5,18 @@ Cập nhật: 2026-11-05. Lúc 10:20. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
+**2026-11-05 trưa: final_config_v2 ĐÃ GHIM (`c3f3d66`, manifest `8889e448…`, 393 file); Test-2 đang chạy.**
+- RQ3 seal (`6eb46c0`, `942b69bb…`), runner clean robustness + `--set canonical` (clean Test RQ1 đi qua v2 vì runner
+  clean v1 gắn v1), runner Test-2 = `run_adversarial_e2_api_v1.py --release test2`, evaluator
+  `evaluate_adversarial_test2_v1.py`. Dry-run Dummy trên Test qua hết (decision log "final_config_v2 frozen").
+- **Không sửa file nào trong `src/react_agent`, `configs/` hay 5 script ghim**: Test sẽ bị chặn.
+- Test-2 thật từ 11:22 trên lamhuy8904 (Qwen v6 + guard v5): `build/kaggle/test2_chain.sh` (discover → A0 A1 A6 →
+  D2 → D2+G → chấm), log `build/kaggle/test2_1105.log`. Kết quả `results/rebuild_a/adv_test2_*`, eval
+  `results/rebuild_a/adv_test2_qwen3_8b_eval.json`. **Resume** nếu đứt: kiểm `kaggle kernels status`, nếu COMPLETE thì
+  `prepare` + `push` lại hai notebook, sửa `FQ/FG` trong script theo folder mới, chạy lại `build/kaggle/test2_chain.sh`
+  (lượt đã có result.json được bỏ qua). Không chạy lại lượt đã chấm.
+- Sau Test-2: clean Test canonical 100 + robustness 250 × 3 backbone (lệnh trong Bản đồ runbook).
+
 **2026-11-05 sáng: D2 và D2+G vòng 1 XONG, tiêu chí dừng đạt, không có vòng 2.**
 - D2 (`runtime_d2_v1`, cấu hình A1): 400/400, 0 lỗi. Benign 108, side-effect ASR ghép cặp 14 /200 (A1 E2 là 27).
   McNemar A1→D2 side-effect 13/0, p=0.0002. So A6 v3: benign cao hơn 48, nhưng side-effect cao hơn 14 (giả thuyết 2
