@@ -48,5 +48,5 @@ secalign_8b:
   dtype: half
   tensor_parallel: 2
   max_model_len: 8192
-  status: unverified  # needs gated access; check the card for how untrusted data must be placed (input role)
+  status: smoke_passed  # 2026-11-05 23:11 (huylmhuhu v3): 20/20 completed, 59/59 calls parsed, 9/20 success (base llama31_8b: 8), 4.1 s/call
 frontier_api: {status: deferred, note: owner provides an API when needed}

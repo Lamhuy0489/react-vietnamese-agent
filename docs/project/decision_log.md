@@ -3104,3 +3104,32 @@ The owner approved `data/adversarial/v3_authoring/spec.json`, sha256
 `taxonomy.md`. From now on the family list and axis assignment are fixed. Text generation (pilot
 first, WP3) may start. Changing the spec needs a new decision entry and regenerating every
 dependent fixture.
+
+## 2026-11-05 — WP2 result: three Study 2 backbones pass the smoke (harness adaptations recorded)
+
+The smoke is the 20 smoke tasks with A0 prompt v3 and `per_tool_v2_name_first` decoding, the same
+harness as Study 1. Results `results/rebuild_b/smoke_<K>/` (local).
+
+| Key | Revision | Terminal | model_error | Calls parsed | Success /20 | s/call |
+|---|---|---|---|---|---|---|
+| qwen36_35b_a3b_awq (QuantTrio AWQ of Qwen3.6-35B-A3B) | `119886a1…` | 20/20 | 0 | all | 12 | – |
+| qwen35_9b (Qwen/Qwen3.5-9B) | `c2022362…` | 20/20 (1 max_steps) | 0 | 48/48 | 8 | 3.0 |
+| secalign_8b (facebook/Meta-SecAlign-8B on Llama-3.1-8B-Instruct `0e9e39f2…`) | `fb9b039b…` | 20/20 | 0 | 59/59 | 9 | 4.1 |
+| reference (Study 1): qwen3_8b / gemma4_12b / llama31_8b | – | 20/20 | 0 | – | 12 / 9 / 8 | – |
+
+Harness adaptations (serving level, no prompt, tool or schema change). They are part of each
+backbone's identity in Study 2 and are reported:
+
+1. **Qwen3.5-9B:** with the default JSON grammar it emitted `{"action":` followed by whitespace up
+   to `max_tokens` on two boots. It is served with xgrammar `disable_any_whitespace: true`, applied
+   to this model only. The other backbones keep the default; if reviewers question parity, the
+   control is re-running one backbone with the same flag on Dev.
+2. **Meta-SecAlign-8B:** following its model card, (a) the adapter's tokenizer and chat template are
+   used, and (b) tool observations are sent in the `input` role (`llm/secalign_role_v1.py`). The
+   system prompt, user instruction and corrections are unchanged. The base and the adapter are served
+   under distinct names; the adapter name identifies the requests.
+3. Qwen3.6-35B-A3B is served as a community AWQ 4-bit checkpoint (enforce-eager, max_len 4096)
+   because the bf16 weights do not fit 2×T4. Its results are those of the quantised model.
+
+WP2 accepted: all three candidates meet the acceptance check (20/20 terminal, ≥ 95% parseable
+calls). Tiers stay as in the plan (section 5).

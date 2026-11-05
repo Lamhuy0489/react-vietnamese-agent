@@ -10,6 +10,8 @@ AWQ (oanhlam123456).** Notebook và log ghi ở [sổ Kaggle](kaggle_resources.m
 `kaggle kernels status`; nếu RUNNING thì chạy lại `build/kaggle/wp2_smoke_chain.sh <folder> <key> <owner> <cred>`
 (smoke bỏ qua task đã có kết quả). Nếu COMPLETE hoặc ERROR thì đọc log notebook trước khi bật lại.
 SecAlign: chờ owner xin quyền https://huggingface.co/facebook/Meta-SecAlign-8B.
+- Để sau (owner 05/11): cache model và wheel vLLM vào Kaggle Dataset **private** để khởi động nhanh hơn (Qwen apache-2.0 có
+  thể public; Llama/SecAlign/Gemma chỉ private). Trước đó đo tách thời gian từng bước khởi động.
 
 **2026-11-05 19:00: WP1 spec v3 ĐÃ VIẾT, CHỜ OWNER DUYỆT; WP2 đã kiểm model trên HF, chưa smoke trên T4.**
 - Spec `data/adversarial/v3_authoring/spec.json` (sha256 `1547dc4e…`), tài liệu review `taxonomy.md`. Kiểm bằng
