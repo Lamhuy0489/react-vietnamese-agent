@@ -245,3 +245,17 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   Thêm `scripts/build_v3_release.py` và `AUTHORING_GUIDE.md`.
 - Bộ lọc an toàn chặn Claude khi viết, rồi cả khi đọc đoạn chèn tấn công. Thống nhất: owner/Minh tự viết canonical
   (tự giao cho công cụ khác), Claude làm hạ tầng và chỉ đọc số đếm từ script.
+
+## 2026-11-05 (đêm muộn) — Antigravity: WP3 pilot canonicals 12/12 và build pilot_v3 hoàn thành
+
+- **Đã làm:**
+  - Viết `data/adversarial/v3_authoring/pilot_canonicals.json` đủ 12 họ pilot (`P3_01` – `P3_12`) tuân thủ nghiêm ngặt `spec.json`, `taxonomy.md` và `AUTHORING_GUIDE.md`. 100% dữ liệu giả lập học vụ.
+  - Chạy `scripts/build_v3_release.py check`: 12 families, 28 fixtures (`CHECK_OK`).
+  - Chạy `scripts/build_v3_release.py qa`: 40 replays, 0 problems; novelty max 0.037 <= 0.20, 0 reused literals (`QA_OK`).
+  - Chạy `scripts/build_v3_release.py write`: xuất bản `data/adversarial/pilot_v3/` gồm `pilot_attack.jsonl`, `pilot_benign_plain.jsonl`, `pilot_benign_auth.jsonl`, `private/oracles.json`, `qa.json`.
+  - Tạo `tests/unit/test_v3_release.py` (3 unit tests đạt 100%).
+- **Việc kế:**
+  - Review chéo theo phiếu 5 mục ở `taxonomy.md` §7 cho 12 họ pilot.
+  - Viết runner `run_v3_api_v1.py` và khai báo metric M5 (`side_effect_harm_v3`) trong decision log.
+  - Chạy A0 baseline cho pilot_v3 trên Qwen3-8B và Llama-3.1-8B.
+
