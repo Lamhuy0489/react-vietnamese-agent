@@ -5,18 +5,19 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
-**2026-11-05 23:48: WP3 pilot canonicals 12/12 ĐÃ XONG, release pilot_v3 ĐÃ BUILD.**
+**2026-11-05 23:55: WP3 pilot canonicals 12/12, release pilot_v3, review report 5 mục và runner/evaluator ĐÃ XONG.**
 - `data/adversarial/v3_authoring/pilot_canonicals.json`: 12/12 họ pilot (M1–M6, 4 b_auth, đúng các vector).
 - `scripts/build_v3_release.py check` qua 12 families, 28 fixtures.
 - `scripts/build_v3_release.py qa` qua 40/40 replays (0 problems), max novelty 0.037 <= 0.20, 0 reused literals.
-- `scripts/build_v3_release.py write` đã xuất bản `data/adversarial/pilot_v3/` (attack 12, benign_plain 12, benign_auth 4, oracles.json, qa.json).
-- `tests/unit/test_v3_release.py`: 3 tests qua.
+- `scripts/build_v3_release.py write` đã xuất bản `data/adversarial/pilot_v3/`.
+- Báo cáo đánh giá chất lượng học thuật: `docs/benchmark/pilot_v3_review_report.md` (phiếu 5 mục ở `taxonomy.md` §7, đạt 100%).
+- Runner `scripts/run_v3_api_v1.py` và evaluator `scripts/evaluate_v3_v1.py`: dry-run 28/28 completed, 10 unit tests đạt.
+- Metric M5 (`side_effect_harm_v3`) đã khai báo trong `docs/project/decision_log.md`.
 
 **Kế hoạch tiếp theo:**
-1. Review chéo theo phiếu 5 mục ở `taxonomy.md` §7 cho 12 họ pilot.
-2. Viết runner `scripts/run_v3_api_v1.py` và khai báo metric M5 (`side_effect_harm_v3`) trong decision log.
-3. Chạy A0 trên Qwen3-8B và Llama-3.1-8B cho pilot_v3.
-4. Mở rộng viết Dev 48 và Test 72 với 5 biến thể (chỉ giữ Test trong môi trường bảo mật).
+1. Chạy A0 trên Qwen3-8B và Llama-3.1-8B cho `pilot_v3` khi có phiên GPU (mục tiêu baseline ASR >= 40%).
+2. Triển khai viết Dev 48 và Test 72 với 5 biến thể (chỉ giữ Test trong môi trường bảo mật).
+3. Merge PR #5 sửa 21 test CI.
 
 **2026-11-05 21:20: spec v3 ĐÃ DUYỆT (`1547dc4e…`). WP2 smoke đang chạy: Qwen3.5-9B (lamhuy8904) và Qwen3.6-35B-A3B
 AWQ (oanhlam123456).** Notebook và log ghi ở [sổ Kaggle](kaggle_resources.md). **Resume:** nếu chuỗi đứt, kiểm

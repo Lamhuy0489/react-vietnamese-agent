@@ -1,10 +1,10 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-11-05 23:48. **Study 1 (rebuild A) xong toàn bộ lượt Test, giữ nguyên. Study 2 (Rebuild B, nhắm
-hội nghị quốc tế): spec v3 đã duyệt (`1547dc4e…`); WP2 xong (3 backbone mới qua smoke); WP3 pilot canonicals 12/12
-đã tạo và release pilot_v3 đã build (check/qa 40 replays, 0 problems, novelty max 0.037 <= 0.20, unit tests đạt).**
-Kế hoạch [rebuild_b_plan.md](../docs/project/rebuild_b_plan.md), lý do [rebuild_b_proposal.md](../docs/project/rebuild_b_proposal.md).
-Hạ tầng v3: `authoring/v3/release.py`, `scripts/build_v3_release.py`, định dạng `data/adversarial/v3_authoring/AUTHORING_GUIDE.md`.
+Cập nhật: 2026-11-05 23:55. **Study 1 (rebuild A) xong toàn bộ lượt Test, giữ nguyên. Study 2 (Rebuild B, nhắm
+hội nghị quốc tế): spec v3 đã duyệt (`1547dc4e…`); WP2 xong; WP3 pilot 12/12 canonicals & release pilot_v3 đã build
+(check/qa 40 replays 0 lỗi, novelty max 0.037 <= 0.20); báo cáo đánh giá chuyên gia `docs/benchmark/pilot_v3_review_report.md`
+đạt chuẩn 5/5 mục; runner và evaluator v3 qua dry-run và 10 unit tests.** Kế hoạch [rebuild_b_plan.md](../docs/project/rebuild_b_plan.md).
+Hạ tầng v3: `authoring/v3/release.py`, `scripts/build_v3_release.py`, `scripts/run_v3_api_v1.py`, `scripts/evaluate_v3_v1.py`.
 Study 1: R4 Test v1; `final_config_v2` (`8889e448…`); Test-2 (D2 = A1 200/200); clean Test Qwen 50 · Llama 62 · Gemma
 65 /100; RQ3: chỉ bỏ dấu gây giảm có ý nghĩa. R0 chờ PR #5 merge. Hạn luận văn 2027-02-19.
 
