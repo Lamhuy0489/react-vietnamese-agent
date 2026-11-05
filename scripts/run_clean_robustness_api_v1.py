@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Run RQ3 clean robustness variants with A0 (rebuild prompt v3) against a vLLM endpoint.
+"""Run clean tasks or their RQ3 robustness variants with A0 (rebuild prompt v3) on vLLM.
 
-``--split test`` runs the 250 sealed ``robustness_v1`` variants (50 Test canonicals x 5
-types) once, after ``final_config_v2``; the freeze check runs first. ``--split dev`` builds
-mechanical variants of the first ``--limit`` public Dev tasks for pipeline checks only.
+``--set robustness --split test`` runs the 250 sealed ``robustness_v1`` variants (50 Test
+canonicals x 5 types); ``--set canonical --split test`` runs the 100 clean Test tasks
+unchanged (RQ1 clean Test and the RQ3 paired baseline). Test runs happen once, after
+``final_config_v2``; the freeze check runs first (the v1-gated clean runner stays pinned).
+On Dev, ``--set robustness`` builds mechanical variants of the first ``--limit`` public Dev
+tasks and ``--set canonical`` runs the first ``--limit`` tasks, for pipeline checks only.
 Each variant is the canonical public task with its instruction replaced (task_id and fault
 plan stay canonical), checkpointed under ``tasks/<variant_id>/``. Endpoint from
 VLLM_BASE_URL / VLLM_API_KEY; ``--dry-run-dummy`` uses the CPU stand-in agent and is never
@@ -29,7 +32,11 @@ from react_agent.agent.checkpoint import atomic_json
 from react_agent.authoring.robustness_v1 import SEAL, load_sealed
 from react_agent.config import load_generation_config, load_runtime_config
 from react_agent.evaluation.adversarial_v1 import DryRunAgent
-from react_agent.evaluation.clean_robustness_v1 import dev_smoke_variants, variant_tasks
+from react_agent.evaluation.clean_robustness_v1 import (
+    canonical_variants,
+    dev_smoke_variants,
+    variant_tasks,
+)
 from react_agent.llm.openai_compat_v1 import OpenAICompatBackend, OrderedHTTPSJSON
 from react_agent.prompts import a0_rebuild
 from react_agent.schemas.clean_task import CleanPublicTask, FaultSpec
@@ -49,9 +56,11 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model-key", required=True)
     parser.add_argument("--split", choices=["dev", "test"], default="dev")
+    parser.add_argument("--set", dest="task_set", choices=["robustness", "canonical"],
+                        default="robustness")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--limit", type=int, default=10,
-                        help="dev smoke: first N public Dev tasks x 3 mechanical types")
+                        help="Dev only: first N public Dev tasks")
     parser.add_argument("--timeout", type=float, default=150)
     parser.add_argument("--dry-run-dummy", action="store_true",
                         help="CPU stand-in agent; pipeline check only")
@@ -77,7 +86,12 @@ def main() -> int:
               for line in public_path.read_text(encoding="utf-8").splitlines()]
     if any(t.split != args.split for t in public):
         raise ValueError(f"worker input must be the public {args.split} split")
-    variants = load_sealed(ROOT) if held_out else dev_smoke_variants(public, args.limit)
+    if held_out and len(public) != 100:
+        raise ValueError("worker input must be the exact public Test split")
+    if args.task_set == "canonical":
+        variants = canonical_variants(public if held_out else public[: args.limit])
+    else:
+        variants = load_sealed(ROOT) if held_out else dev_smoke_variants(public, args.limit)
     pairs = variant_tasks({t.task_id: t for t in public}, variants)
     faults = json.loads(faults_path.read_text())["fault_plans"]
     agent_path = ROOT / "configs/agent/A0.yaml"
@@ -95,15 +109,16 @@ def main() -> int:
             chat_template_kwargs=spec.get("chat_template_kwargs"),
             tool_definitions=build_clean_registry(CLEAN_ROOT / "environment").definitions())
     backend.probe()
-    default = ROOT / "results/rebuild_a" / f"clean_robustness_{args.split}_{args.model_key}"
+    default = ROOT / "results/rebuild_a" / f"clean_{args.task_set}_{args.split}_{args.model_key}"
     output = (args.output or default).resolve()
     files = {args.split: public_path, "faults": faults_path, "agent": agent_path,
              "generation": generation_path,
              "environment_manifest": CLEAN_ROOT / "manifests/environment_manifest.json"}
-    if held_out:
+    if held_out and args.task_set == "robustness":
         files["robustness_seal"] = ROOT / SEAL
     identity: dict[str, Any] = {
-        "benchmark": "clean_robustness_v1", "split": args.split, "config_id": "A0",
+        "benchmark": "clean_robustness_v1", "set": args.task_set, "split": args.split,
+        "config_id": "A0",
         "model_key": args.model_key, "model_id": spec["repo"], "model_revision": spec["revision"],
         "generation": generation_config.model_dump(),
         "file_sha256": {name: sha256(path) for name, path in files.items()},

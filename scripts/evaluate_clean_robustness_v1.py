@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Score a clean robustness run: each variant with its canonical task's ground truth.
+"""Score a clean run (canonical tasks or robustness variants) with canonical ground truth.
 
 Always uses the rebuild numeric-token fix (``clean_rebuild_v1``), as the clean rebuild
 runs do. A Test run (``"split": "test"``) is scored only while ``final_config_v2`` still
-matches and the variants are exactly the sealed 250; dry runs and Dev smoke runs skip the
-freeze check. ``--canonical-eval`` (an ``evaluate_clean_rebuild_v1.py`` report for the same
-model and split) adds paired lost/gained counts per variant type.
+matches and the run covers exactly the sealed 250 variants or the 100 Test tasks; dry runs
+and Dev smoke runs skip the freeze check. ``--canonical-eval`` (a report of this script on a
+``--set canonical`` run, or of ``evaluate_clean_rebuild_v1.py``, for the same model and
+split) adds paired lost/gained counts per variant type.
 """
 
 from __future__ import annotations
@@ -44,9 +45,12 @@ def main() -> int:
         raise ValueError(f"public {split} identity mismatch")
     variants = identity["variants"]
     if split == "test":
-        sealed = [r["variant_id"] for r in load_sealed(ROOT)]
-        if [v["variant_id"] for v in variants] != sealed:
-            raise ValueError("Test runs must cover exactly the sealed variants")
+        expected_ids = ([r["variant_id"] for r in load_sealed(ROOT)]
+                        if identity["set"] == "robustness" else
+                        [json.loads(line)["task_id"] for line in
+                         (CLEAN_ROOT / "splits/test.jsonl").read_text().splitlines()])
+        if [v["variant_id"] for v in variants] != expected_ids:
+            raise ValueError("Test runs must cover exactly the sealed variants / Test tasks")
         if not identity.get("dry_run_dummy"):
             final_config_v2.verify(ROOT)
             if identity.get("final_config_sha256") != final_config_v2.manifest_sha256(ROOT):
@@ -60,7 +64,8 @@ def main() -> int:
         if canonical["source_identity"]["model_key"] != identity["model_key"] or (
                 canonical["source_identity"].get("split", "dev") != split):
             raise ValueError("canonical evaluation is for another model or split")
-        canonical_success = {r["task_id"]: bool(r["success"]) for r in canonical["results"]}
+        canonical_success = {r.get("task_id") or r["canonical_task_id"]: bool(r["success"])
+                             for r in canonical["results"]}
     rows = []
     for variant in variants:
         outcome = score_checkpoint(args.artifacts / "tasks" / variant["variant_id"],

@@ -376,3 +376,19 @@ def load_test2(root: Path) -> tuple[list[ReleasedFixture], dict[str, Test2Privat
     if len(rows) != 200 or len({r.variant_id for r in rows}) != 200:
         raise ValueError("Test-2 must hold 200 unique fixtures")
     return rows, {p.family_id: p for p in privates}
+
+
+def load_test2_public(root: Path) -> list[ReleasedFixture]:
+    """The 200 public Test-2 fixtures for a worker; private oracles are never read."""
+    release = root / RELEASE
+    sealed = json.loads((release / "seal.json").read_text())
+    rows = []
+    for branch in ("attack", "benign"):
+        name = f"test_{branch}.jsonl"
+        if _sha(release / name) != sealed["files_sha256"][name]:
+            raise ValueError(f"Test-2 file changed after the seal: {name}")
+        rows += [ReleasedFixture.model_validate_json(line)
+                 for line in (release / name).read_text().splitlines()]
+    if len(rows) != 200 or len({r.variant_id for r in rows}) != 200:
+        raise ValueError("Test-2 must hold 200 unique fixtures")
+    return rows

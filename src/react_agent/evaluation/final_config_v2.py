@@ -19,11 +19,11 @@ from react_agent.evaluation.final_config_v1 import SKIPPED_PARTS, FrozenConfigEr
 MANIFEST = Path("configs/final/final_config_v2.json")
 FROZEN_TREES = ("src/react_agent", "configs")
 FROZEN_FILES = (
-    "scripts/run_clean_dev_api_v1.py",
-    "scripts/evaluate_clean_rebuild_v1.py",
+    "scripts/run_adversarial_e2_api_v1.py",
+    "scripts/evaluate_adversarial_test2_v1.py",
     "scripts/run_clean_robustness_api_v1.py",
     "scripts/evaluate_clean_robustness_v1.py",
-    "scripts/evaluate_side_effect_harm_v1.py",
+    "scripts/freeze_final_config_v2.py",
     "data/adversarial/release_test2/seal.json",
     "data/clean/robustness_v1/seal.json",
     "data/clean/v1_1/manifests/benchmark_manifest.json",

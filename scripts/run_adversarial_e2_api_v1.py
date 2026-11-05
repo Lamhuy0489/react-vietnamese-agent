@@ -5,8 +5,12 @@ Same pipeline as the pinned ``run_adversarial_dev_api_v1.py`` (frozen Phase 5 cl
 runtime, rebuild prompt v3, per-tool decoding schema, A6 v3 policy, checkpoint and
 resume, infrastructure reruns, guard keepalive), with one change: every fixture registry
 is wrapped by ``apply_e2``, so ``doc_search`` also reports exact identifier matches.
-Every configuration runs in the same environment. Dev only: Test-2 runs go through a
-runner gated by ``final_config_v2``.
+Every configuration runs in the same environment.
+
+``--release test2`` runs the 200 sealed Test-2 fixtures once (pre-registered matrix A0, A1,
+A6, D2, D2+G; decision log 2026-10-28) through the same pipeline; ``final_config_v2`` is
+verified first, ``--limit`` is refused outside a dry run and D2 must be the frozen round 1.
+Only public fixtures are loaded; Test-2 oracles stay with the evaluator.
 
 For speed, run each level as its own process against its own endpoint, e.g.
 ``--levels A0`` and ``--levels A1`` on two agent notebooks and ``--levels A6`` on a
@@ -32,8 +36,11 @@ from typing import Any, cast
 
 import yaml
 
+import react_agent.evaluation.final_config_v2 as final_config_v2
 from react_agent.adversarial_release import load_split
 from react_agent.agent.checkpoint import atomic_json
+from react_agent.authoring.test2_v1 import RELEASE as TEST2_RELEASE
+from react_agent.authoring.test2_v1 import load_test2_public
 from react_agent.config import load_generation_config, load_runtime_config
 from react_agent.evaluation.adversarial_v1 import (
     LEVELS,
@@ -76,13 +83,14 @@ def sha256(path: Path) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model-key", default="qwen3_8b")
+    parser.add_argument("--release", choices=["dev", "test2"], default="dev")
     parser.add_argument("--guard-key", default="llama32_3b_prompted")
     parser.add_argument("--levels", nargs="+", default=["A0", "A1", "A6"], choices=LEVELS)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--limit", type=int, help="pilot: first N families, one pair each")
     parser.add_argument("--timeout", type=float, default=150)
     parser.add_argument("--defense", choices=["d2"],
-                        help="defense v2 on the A1 configuration (Dev tuning rounds only)")
+                        help="defense v2 on A1 (Dev rounds; Test-2 frozen round 1)")
     parser.add_argument("--d2-round", type=int, choices=[1, 2, 3])
     parser.add_argument("--dry-run-dummy", action="store_true",
                         help="CPU stand-ins for both endpoints; pipeline check only")
@@ -91,6 +99,13 @@ def main() -> int:
         raise SystemExit("--dry-run-dummy needs an explicit --output outside results/")
     if args.defense and (args.levels not in (["A1"], ["A2"]) or not args.d2_round):
         raise SystemExit("--defense d2 needs --levels A1 (D2) or A2 (D2+G) and --d2-round 1-3")
+    test2 = args.release == "test2"
+    if test2:
+        final_config_v2.verify(ROOT)  # raises when anything changed after the freeze
+        if args.limit and not args.dry_run_dummy:
+            raise SystemExit("Test-2 runs use the whole frozen release")
+        if args.defense and args.d2_round != 1:
+            raise SystemExit("Test-2 runs D2 as frozen after Dev round 1")
     prompt_profile = a0_rebuild.activate("v3")
     a6_profile = a6_provenance_v3.activate()
     models = yaml.safe_load((ROOT / "configs/models/backbones_v2.yaml").read_text())
@@ -105,7 +120,7 @@ def main() -> int:
     if needs_guard and not args.dry_run_dummy and (not guard_url or not guard_key):
         raise SystemExit("A2+ needs GUARD_BASE_URL and GUARD_API_KEY")
 
-    rows = load_split(RELEASE, "dev")
+    rows = load_test2_public(ROOT) if test2 else load_split(RELEASE, "dev")
     if args.limit:
         families = sorted({r.family_id for r in rows})[: args.limit]
         rows = [r for f in families for b in ("attack", "benign")
@@ -144,6 +159,10 @@ def main() -> int:
     if args.defense:
         tag = "d2" if args.levels == ["A1"] else "d2g"
         name = f"adv_dev_e2_{tag}_r{args.d2_round}_{args.model_key}"
+        if test2:
+            name = f"adv_test2_{tag}_{args.model_key}"
+    elif test2:
+        name = f"adv_test2_{args.model_key}_{'_'.join(args.levels)}"
     output = (args.output or ROOT / "results/rebuild_a" / name).resolve()
     identity: dict[str, Any] = {
         "benchmark": "adversarial_release_v2", "split": "dev", "runtime": RUNTIME_VERSION,
@@ -160,6 +179,15 @@ def main() -> int:
         "overlay_input_model_fix": True, "a6_policy": a6_profile,
         "levels": args.levels, "variant_ids": [row.variant_id for row in rows],
     }
+    if test2:
+        t2 = ROOT / TEST2_RELEASE
+        identity |= {"benchmark": "adversarial_release_test2", "split": "test",
+                     "final_config_sha256": final_config_v2.manifest_sha256(ROOT)}
+        identity["file_sha256"] = {name: sha256(path) for name, path in {
+            "seal": t2 / "seal.json", "test_attack": t2 / "test_attack.jsonl",
+            "test_benign": t2 / "test_benign.jsonl", "agent": agent_path,
+            "generation": generation_path,
+            "doc_search_v2": ROOT / "src/react_agent/tools/doc_search_v2.py"}.items()}
     if args.defense:
         identity["runtime"] = D2_RUNTIME_VERSION
         identity["defense"] = {"name": "D2" if args.levels == ["A1"] else "D2+G",
@@ -224,7 +252,8 @@ def main() -> int:
             if (path := output / "runs" / level / row.variant_id / "result.json").exists()]
     summary = {"scheduled": len(rows) * len(args.levels), "finished": len(done),
                "statuses": dict(Counter(f"{d['level']}:{d['status']}" for d in done)),
-               "private_ground_truth_loaded": 0, "test_payloads_loaded": 0}
+               "private_ground_truth_loaded": 0,
+               "test_payloads_loaded": len(rows) if test2 else 0}
     atomic_json(output / "summary.json", summary)
     print(json.dumps(summary, indent=2))
     return 0 if summary["finished"] == summary["scheduled"] else 2

@@ -6,6 +6,8 @@ the canonical id, so the model sees exactly what the canonical run sees except t
 and the canonical fault plan (error-recovery tasks) applies unchanged. Checkpoints live under
 ``tasks/<variant_id>/``. ``dev_smoke_variants`` builds mechanical variants of public Dev tasks
 for pipeline checks only; the held-out set is the sealed ``robustness_v1`` release.
+``canonical_variants`` runs the unmodified tasks through the same pipeline (the clean Test
+of RQ1 and the paired baseline of RQ3).
 """
 
 from __future__ import annotations
@@ -37,6 +39,13 @@ def variant_tasks(public: dict[str, CleanPublicTask], variants: list[dict[str, A
             raise ValueError(f"{variant['variant_id']}: split differs from its canonical")
         out.append((variant, canonical.model_copy(update={"instruction": variant["instruction"]})))
     return out
+
+
+def canonical_variants(tasks: list[CleanPublicTask]) -> list[dict[str, Any]]:
+    """The canonical tasks themselves in variant form (``variant_id`` = task id)."""
+    return [{"schema_version": SCHEMA, "variant_id": t.task_id, "canonical_task_id": t.task_id,
+             "split": t.split, "category": t.category, "variant_type": "canonical",
+             "instruction": t.instruction, "review_status": "canonical"} for t in tasks]
 
 
 def dev_smoke_variants(dev: list[CleanPublicTask], limit: int) -> list[dict[str, Any]]:
