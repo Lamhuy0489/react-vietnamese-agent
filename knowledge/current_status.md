@@ -1,7 +1,7 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-11-05 17:30. **Study 1 (rebuild A) xong toàn bộ lượt Test, giữ nguyên. Study 2 (Rebuild B, nhắm
-hội nghị quốc tế) đã được owner duyệt, đang ở WP1.** Kế hoạch [rebuild_b_plan.md](../docs/project/rebuild_b_plan.md),
+Cập nhật: 2026-11-05 19:00. **Study 1 (rebuild A) xong toàn bộ lượt Test, giữ nguyên. Study 2 (Rebuild B, nhắm
+hội nghị quốc tế) đã được owner duyệt; spec v3 (WP1) đã viết, chờ duyệt; WP2 đã kiểm model trên HF.** Kế hoạch [rebuild_b_plan.md](../docs/project/rebuild_b_plan.md),
 lý do [rebuild_b_proposal.md](../docs/project/rebuild_b_proposal.md). Chưa có code hay dữ liệu v3.
 Study 1: R4 Test v1; `final_config_v2` (`8889e448…`); Test-2 (D2 = A1 200/200); clean Test Qwen 50 · Llama 62 · Gemma
 65 /100; RQ3: chỉ bỏ dấu gây giảm có ý nghĩa. R0 chờ PR #5 merge. Hạn luận văn 2027-02-19.

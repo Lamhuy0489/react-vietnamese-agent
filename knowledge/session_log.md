@@ -220,7 +220,7 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 
 - PR #5 vẫn OPEN, nên R0 chờ.
 - Chẩn đoán Test-2 (phân tích, không chạy lại): D2 = A1 vì cả 20 family chỉ có kiểu chuyển hướng tới đích mới, viết
-  lộ, mà regex A1 bắt được; cả 20 family đều S0. Spec Test-2 không có trục cơ chế. Trên Dev, D2 hơn A1 ở các ca
+  lộ, mà regex A1 bắt được (17/20); 3 family M3 thì Qwen không làm theo ở A0 (đã sửa câu "cả 20 family đều S0" vốn sai). Spec Test-2 không có trục cơ chế. Trên Dev, D2 hơn A1 ở các ca
   lấy cắp qua sink người dùng đã nêu.
 - Owner muốn làm lại dữ liệu, thêm model, nhắm hội nghị top; Claude viết câu lệnh, owner và Minh review. Claude khảo
   sát nghiên cứu 2025–2026 (AgentDojo, ASB, MAPS không có tiếng Việt, The Attacker Moves Second, CaMeL/Progent/
@@ -228,3 +228,7 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - 17:30 owner duyệt Study 2: hướng chung, quy mô 48/72, AgentDojo-VI, thêm Qwen3.6-35B-A3B, API frontier hoãn,
   có đủ baseline, Minh tham gia red team, nộp hội nghị quốc tế về LLM/an toàn agent. Ghi decision log, amendment
   contract, `docs/project/rebuild_b_plan.md` (WP0–WP10, tiêu chí nghiệm thu, ma trận chạy, 6 giả thuyết), Bản đồ.
+- 19:00 WP1: spec v3 sinh xác định (`build_v3_spec.py`, module `authoring/v3/spec.py`, 6 test), sha256 `1547dc4e…`;
+  fixture 28/560/840 (sửa số 720 trong kế hoạch). Sửa chẩn đoán Test-2: có 3 family kiểu M3 nhưng Qwen không làm theo.
+  WP2: kiểm HF (Qwen3.5-9B, Qwen3.6-35B-A3B AWQ đều lai linear attention, chưa chắc chạy được trên T4; SecAlign-8B
+  gated manual), thêm key serve, `backbones_v3.yaml`, `--models-config`. Chờ owner duyệt spec.

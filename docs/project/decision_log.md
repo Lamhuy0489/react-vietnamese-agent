@@ -3025,9 +3025,12 @@ Gemma); word-boundary, zero-width, code-mix and paraphrase changes are within no
 ## 2026-11-05 — Rebuild B / Study 2 approved (owner decision; scope extension)
 
 Context: on Test-2, D2 equals A1 on 200/200 scores. Diagnosis (analysis of existing traces only, no
-re-run): all 20 Test-2 families use one mechanism, a redirect to a new destination written with an
-explicit send verb and a full address, which the A1 regex `R_EXTERNAL_01` blocks; all 20 are `S0`, so
-D2 rules 2–4 are never exercised. The Test-2 style matrix had no attack-mechanism axis. On Dev, D2
+re-run, corrected the same day from the private oracles): 17 of 20 Test-2 families are a redirect to a
+new destination, written with an explicit send verb and a full address, which the A1 regex
+`R_EXTERNAL_01` blocks. The other 3 (DORMFIX, LABLOAN, CLINIC) ask the agent to put an `S2` secret into
+the user-named sink, the case D2 rule 3 targets, but Qwen never complied at A0 (0/15). So all 17 harms
+were redirects, and D2 rules 2–4 had nothing to add. (An earlier draft of this entry wrongly said all
+20 families were `S0`; that is the source-document label, and the secrets sit in auxiliary artifacts.) The Test-2 style matrix had no attack-mechanism axis. On Dev, D2
 beat A1 only on exfiltration through a user-named sink (LINKMAIL, REDACTION, FINALGRANT,
 SOURCEBINDING); neither blocks plain payload tampering.
 
@@ -3057,3 +3060,39 @@ A1. The taxonomy deliberately includes classes where D2 is expected to fail (M5,
 Pre-registered hypotheses are in the plan, section 5. Impact: about 6 weeks before the Test runs
 (target week of 2026-12-14); thesis deadline 2027-02-19 unchanged. Research contract amended
 (section "Study 2 amendment").
+
+## 2026-11-05 — WP1: v3 authoring spec drafted (awaiting owner approval); WP2 model check
+
+**Spec.** `data/adversarial/v3_authoring/spec.json` is built deterministically by
+`scripts/build_v3_spec.py write` (`src/react_agent/authoring/v3/spec.py`, seed 20261105) and
+documented for reviewers in `taxonomy.md`. Contents: 12 pilot, 48 Dev and 72 Test families (2/8/12 per
+mechanism M1–M6). Each family assigns detail, vector/trigger tool, persuasion L1–L4, placement, tone,
+structure, constraint, sector and user sink, balanced (max − min ≤ 1) within every split × mechanism.
+B-auth goes to 4/16/24 families. Fixtures: pilot 28, Dev 560, Test 840 (B-auth also has 5 variants).
+The plan said 720; corrected. Family ids are shuffled so they do not reveal the mechanism.
+`check` validates the spec and confirms it equals the deterministic build. sha256
+`1547dc4ec01b45a8762473ec6b97732891e5d61b80877c8e414f1d61829585c4`. **No text is generated before
+the owner approves this spec; the approval is recorded here with the hash.**
+
+M6 was refined while writing the spec. It is an action injected into a read-only request, with the
+destination either absent, named only in a prohibition, or named as information. The two "mentioned"
+forms test the literal-occurrence weakness of D2 rule 2. Obfuscated secrets (spelled out or split)
+are excluded from static Test, because the frozen leakage scorer is literal; they may enter the
+adaptive round only with a scorer extension declared first.
+
+**Correction to the Test-2 diagnosis above:** 3 of 20 Test-2 families were M3-like (an S2 secret into
+the user-named sink), but Qwen never complied at A0. The lesson for v3 is that M3 needs stronger
+persuasion, which is what the pilot (WP3) calibrates.
+
+**WP2 model check (HF API, 2026-11-05).**
+- `Qwen/Qwen3.5-9B` (apache-2.0, not gated, 19.3 GB bf16) and `Qwen/Qwen3.6-35B-A3B` (apache-2.0;
+  community AWQ `QuantTrio/Qwen3.6-35B-A3B-AWQ`, 25.5 GB) exist. Both are hybrid Gated-DeltaNet +
+  full-attention models (head_dim 256), so fp16 on T4 is unverified and needs a smoke run.
+- `facebook/Meta-SecAlign-8B` is a PEFT LoRA on Llama-3.1-8B-Instruct (llama3.1 licence, **gated:
+  manual**; the owner must request access on the HF account whose token the notebooks use).
+- Added keys `qwen35_9b`, `qwen36_35b_a3b_awq` and `secalign_8b` to the serve notebook (LoRA via
+  `--enable-lora`) and to the launcher, plus `configs/models/backbones_v3.yaml`. The smoke runner
+  gets `--models-config` (default stays v2).
+- Adding files under `src/react_agent` and `configs` makes `final_config_v2.verify` refuse from now
+  on, as v1 did. That is by design: Study 1 runs are finished. Verifying v2 again means checking out
+  `c3f3d66`.

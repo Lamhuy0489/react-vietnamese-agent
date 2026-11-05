@@ -77,3 +77,18 @@ def test_discover_decrypts_sealed_message(
     env = (folder / "endpoint.env").read_text()
     assert "VLLM_API_KEY=" + "k" * 40 in env
     assert stat.S_IMODE((folder / "endpoint.env").stat().st_mode) == 0o600
+
+
+def test_every_launcher_key_is_served_by_the_notebook() -> None:
+    import ast
+
+    module_path = ROOT / "scripts/launch_vllm_serve_v1.py"
+    tree = ast.parse(module_path.read_text(encoding="utf-8"))
+    keys: tuple[str, ...] = ()
+    for node in tree.body:
+        if isinstance(node, ast.Assign) and getattr(node.targets[0], "id", "") == "MODEL_KEYS":
+            keys = ast.literal_eval(node.value)
+    notebook = json.loads((ROOT / "notebooks/kaggle/vllm_serve_v1/vllm_serve_v1.ipynb").read_text())
+    config = "".join(notebook["cells"][1]["source"])
+    assert keys and all(f'"{key}"' in config for key in keys)
+    assert '"lora": {"repo": "facebook/Meta-SecAlign-8B"' in config

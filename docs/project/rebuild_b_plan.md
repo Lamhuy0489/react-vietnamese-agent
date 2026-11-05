@@ -10,7 +10,7 @@ thứ tự WP, mỗi WP chỉ đóng khi đạt tiêu chí nghiệm thu.
 | # | Quyết định |
 |---|---|
 | 1 | Hướng chung: Study 1 (rebuild A) giữ nguyên, không chạy lại. Study 2 dùng bộ dữ liệu mới VN-AgentInject v3 |
-| 2 | Quy mô: Dev 48 family + Test 72 family (taxonomy M1–M6, 5 biến thể/family, B-plain cho mọi family, B-auth cho 1/3 family) + pilot 12 family dùng rồi bỏ |
+| 2 | Quy mô: Dev 48 family + Test 72 family (taxonomy M1–M6, 5 biến thể/family, B-plain cho mọi family, B-auth cho 1/3 family, cũng 5 biến thể) + pilot 12 family dùng rồi bỏ. Fixture: Dev 560, Test 840, pilot 28 (theo `spec.json`) |
 | 3 | Có làm AgentDojo-VI (Banking + Slack, chạy cả EN và VI) |
 | 4 | Backbone: Qwen3-8B, Llama-3.1-8B, Gemma-4-12B, Qwen3.5-9B, **Qwen3.6-35B-A3B**, cùng Meta-SecAlign-8B (phòng thủ mức mô hình) |
 | 5 | Model frontier qua API: **hoãn**. Owner cấp API khi cần; chưa thiết kế phụ thuộc vào nó |
@@ -98,7 +98,7 @@ dịch đúng nghĩa của cả câu lệnh lẫn đoạn chèn. Cùng family th
 ## 5. Ma trận chạy Test (mặc định; chốt ở WP9 theo thông lượng đo ở WP2)
 
 - **Tầng 1 (đầy đủ phòng thủ):** Qwen3.5-9B, Llama-3.1-8B, Gemma-4-12B × {A0, P1, P2, G1, R1, MEL,
-  PRG, D2, D2+P1} × 720 fixture Test v3.
+  PRG, D2, D2+P1} × 840 fixture Test v3 (360 attack + 360 benign_plain + 120 benign_auth).
 - **Tầng 2 (phòng thủ lõi):** Qwen3-8B (nối với Study 1), Qwen3.6-35B-A3B × {A0, R1, PRG, D2}.
 - **SecAlign:** Meta-SecAlign-8B × {A0, D2}, so với Llama-3.1-8B (cùng base).
 - **Thích nghi:** bộ cố định × {R1, PRG, MEL, D2} × backbone Tầng 1.
