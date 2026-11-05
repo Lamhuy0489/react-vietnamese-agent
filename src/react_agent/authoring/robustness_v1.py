@@ -28,6 +28,7 @@ CANONICAL_IDS = Path("data/clean/v1_1/private/robustness_canonical_ids.json")
 TEST_SPLIT = Path("data/clean/v1_1/splits/test.jsonl")
 AUTHORED_PATH = Path("data/clean/robustness_v1/authored_candidates.jsonl")
 OUTPUT = Path("data/clean/robustness_v1/variants.jsonl")
+SEAL = Path("data/clean/robustness_v1/seal.json")
 
 MACHINE = re.compile(
     r"mock://[^\s<>]+|[\w.+-]+@[\w.-]+\w|\b[A-Z]+_?\d+\b|\b[A-Z]{2,}\d*\b|\d+")
@@ -62,7 +63,8 @@ def check_variant(canonical: str, variant: str, variant_type: str) -> list[str]:
     return problems
 
 
-def build(root: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+def build(root: Path, review_status: str = "pending"
+          ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     ids = json.loads((root / CANONICAL_IDS).read_text(encoding="utf-8"))["task_ids"]
     tasks = {row["task_id"]: row for row in map(
         json.loads, (root / TEST_SPLIT).read_text(encoding="utf-8").splitlines())}
@@ -94,7 +96,7 @@ def build(root: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]:
                 "protected_literals": list(literals) + (
                     titles(canonical) if variant_type in AUTHORED else []),
                 "authoring": "draft_surface" if variant_type in MECHANICAL else "authored",
-                "review_status": "pending",
+                "review_status": review_status,
             })
     texts = Counter(row["instruction"] for row in rows)
     report = {
@@ -104,3 +106,38 @@ def build(root: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]:
         "problems": problems, "ground_truth_loaded": 0, "models_scored": 0,
     }
     return rows, report
+
+
+def _file_sha(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def seal(root: Path, approved_by: str) -> dict[str, Any]:
+    """Rebuild with ``review_status=approved``, write variants.jsonl and record hashes."""
+    if (root / SEAL).exists():
+        raise ValueError("robustness v1 is already sealed")
+    rows, report = build(root, review_status="approved")
+    if report["problems"] or report["duplicates"] or len(rows) != 250:
+        raise ValueError("QA problems block the seal")
+    (root / OUTPUT).write_text(
+        "".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows), encoding="utf-8")
+    payload = {"schema_version": "clean_robustness_seal_v1", "approved_by": approved_by,
+               "variants": len(rows), "per_type": report["per_type"],
+               "files_sha256": {str(path.relative_to(SEAL.parent)): _file_sha(root / path)
+                                for path in (OUTPUT, AUTHORED_PATH)}}
+    (root / SEAL).write_text(json.dumps(payload, indent=1) + "\n", encoding="utf-8")
+    return payload | {"seal_sha256": _file_sha(root / SEAL)}
+
+
+def load_sealed(root: Path) -> list[dict[str, Any]]:
+    """Return the 250 sealed variants, refusing any file changed after the seal."""
+    sealed = json.loads((root / SEAL).read_text(encoding="utf-8"))
+    for name, sha in sealed["files_sha256"].items():
+        if _file_sha(root / SEAL.parent / name) != sha:
+            raise ValueError(f"robustness v1 file changed after the seal: {name}")
+    rows = [json.loads(line) for line in
+            (root / OUTPUT).read_text(encoding="utf-8").splitlines()]
+    if len(rows) != 250 or len({r["variant_id"] for r in rows}) != 250 or any(
+            r["review_status"] != "approved" for r in rows):
+        raise ValueError("sealed robustness v1 must hold 250 approved unique variants")
+    return rows

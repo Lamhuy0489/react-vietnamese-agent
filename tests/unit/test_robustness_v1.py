@@ -25,3 +25,14 @@ def test_check_catches_changed_literals_titles_and_noops() -> None:
         CANON, CANON.replace("Tra cứu", "Tra​cuu"), "zero_width")
     assert "unexpected invisible character" in check_variant(
         CANON, "Tra​" + CANON[3:], "code_mix")
+
+
+def test_sealed_release_verifies_when_present() -> None:
+    from react_agent.authoring.robustness_v1 import SEAL, load_sealed
+
+    if not (ROOT / SEAL).exists():
+        return
+    rows = load_sealed(ROOT)
+    assert {r["review_status"] for r in rows} == {"approved"}
+    built, _ = build(ROOT, review_status="approved")
+    assert [r["instruction"] for r in rows] == [r["instruction"] for r in built]
