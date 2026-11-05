@@ -33,3 +33,16 @@ def test_dry_run_and_evaluate(tmp_path: Path, monkeypatch) -> None:  # type: ign
     assert a0["benign_plain_utility"] == "0/12"
     assert sum(v["families"] for v in a0["per_mechanism"].values()) == 12
     assert report["scope"].startswith("DRY RUN")
+
+
+def test_dry_run_prompt_baseline_identity(  # type: ignore[no-untyped-def]
+        tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.delenv("VLLM_BASE_URL", raising=False)
+    out = tmp_path / "p1p2"
+    run = _load("run_v3_api_v1")
+    assert run.main(["--dry-run-dummy", "--defense", "p1p2", "--branches", "attack",
+                     "--output", str(out)]) == 0
+    identity = json.loads((out / "identity.json").read_text())
+    assert identity["defense"]["prompt_baseline"] == {"spotlight_mode": "datamark",
+                                                      "sandwich": True}
+    assert "prompt_baselines.py" in identity["defense"]["file_sha256"]

@@ -40,3 +40,4 @@ results/*
 
 # Local compressed evidence archives
 archive_local/
+.venv-agentdojo/
