@@ -45,6 +45,7 @@ from react_agent.security_v1.phase5_closure_runtime_v1 import (
 )
 from react_agent.security_v1.runtime_d2_v1 import RUNTIME_VERSION as D2_RUNTIME_VERSION
 from react_agent.security_v1.runtime_d2_v1 import D2Runtime
+from react_agent.security_v3.d2_no_rule import D2NoRuleRuntime
 from react_agent.security_v3.melon import MelonBackend
 from react_agent.security_v3.progent_lite import apply_progent_lite
 from react_agent.security_v3.prompt_baselines import PromptBaselineBackend
@@ -63,7 +64,8 @@ MAX_CONSECUTIVE_INFRA = 3
 PROMPT_BASELINES: dict[str, dict[str, Any]] = {
     "p1": {"spotlight_mode": "datamark"}, "p2": {"sandwich": True},
     "p1p2": {"spotlight_mode": "datamark", "sandwich": True},
-    "d2p1": {"spotlight_mode": "datamark"}, "d2p2": {"sandwich": True}}
+    "d2p1": {"spotlight_mode": "datamark"}, "d2p2": {"sandwich": True},
+    "d2nrp2": {"sandwich": True}}
 DEFENSES = {"d2", "g1", "mel", "prg", *PROMPT_BASELINES}
 NO_GUARD_LEVELS = [level for level in LEVELS if not configuration(cast(Level, level)).llm_guard]
 
@@ -101,7 +103,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--levels", nargs="+", default=["A0"], choices=NO_GUARD_LEVELS)
     parser.add_argument("--defense", choices=sorted(DEFENSES),
                         help="d2 (D2 runtime, --levels A1); p1/p2/p1p2 prompt baselines on A0; "
-                             "d2p1 = D2 + spotlighting; d2p2 = D2 + sandwich (Dev round 1)")
+                             "d2p1 = D2 + spotlighting; d2p2 = D2 + sandwich (Dev round 1); "
+                             "d2nrp2 = D2 without the A1 rule layer + sandwich (Dev round 2)")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--timeout", type=float, default=150)
     parser.add_argument("--dry-run-dummy", action="store_true",
@@ -109,7 +112,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.dry_run_dummy and not args.output:
         raise SystemExit("--dry-run-dummy needs an explicit --output outside results/")
-    d2 = args.defense in ("d2", "d2p1", "d2p2")
+    d2 = args.defense in ("d2", "d2p1", "d2p2", "d2nrp2")
     if d2 and args.levels != ["A1"]:
         raise SystemExit("--defense d2/d2p1/d2p2 runs as --levels A1")
     if args.defense in ("p1", "p2", "p1p2", "g1", "mel", "prg") and args.levels != ["A0"]:
@@ -195,13 +198,16 @@ def main(argv: list[str] | None = None) -> int:
         if d2:
             files_d += [ROOT / "src/react_agent/security_v1/control_data_policy_v1.py",
                         ROOT / "src/react_agent/security_v1/runtime_d2_v1.py"]
+        if args.defense == "d2nrp2":
+            files_d.append(ROOT / "src/react_agent/security_v3/d2_no_rule.py")
         identity["defense"] = {"name": args.defense, "prompt_baseline": prompt_baseline,
                                "prompt_guard": guard_identity and {
                                    **guard_identity, "threshold": PG_THRESHOLD},
                                "file_sha256": {f.name: sha256(f) for f in files_d}}
     if args.dry_run_dummy:
         identity["dry_run_dummy"] = True
-    runtime_class = D2Runtime if d2 else Phase5ClosureRuntime
+    runtime_class = (D2NoRuleRuntime if args.defense == "d2nrp2"
+                     else D2Runtime if d2 else Phase5ClosureRuntime)
     output.mkdir(parents=True, exist_ok=True)
     lock = (output / ".lock").open("w")  # one runner per output folder (held until exit)
     try:
