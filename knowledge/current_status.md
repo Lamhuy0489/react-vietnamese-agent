@@ -1,8 +1,8 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-11-06 02:50. **Study 1 xong, giữ nguyên. Study 2: WP1, WP2 xong; WP3 pilot qua cổng ở lần 5 trên Qwen3-8B
-(6/12 family, đủ M1–M6). Dev v3 (48 family, 560 fixture) đã viết và qua QA, đang chạy WP7 với 9 cấu hình trên Gemma-4-12B,
-Llama-3.1-8B, Qwen3.5-9B. WP6: AgentDojo EN và AgentDojo-VI (ground truth 100%); GOAL và mẫu tấn công VI chờ owner/Minh.**
+Cập nhật: 2026-11-06 11:05. **Study 1 xong, giữ nguyên. Study 2: WP1, WP2 xong; WP3 pilot qua cổng (lần 5, Qwen3-8B 6/12).
+Dev v3 vòng 1 XONG: 3 backbone Tầng 1 × 9 cấu hình × 560 lượt; P2 và D2+P1 giảm hại mạnh nhất, G1/MEL ≈ A0
+(decision log 06/11). WP6: AgentDojo EN Llama gần xong; GOAL và mẫu tấn công VI chờ owner/Minh.**
 Kế hoạch [rebuild_b_plan.md](../docs/project/rebuild_b_plan.md).
 Hạ tầng v3: `authoring/v3/release.py`, `scripts/build_v3_release.py`, `scripts/run_v3_api_v1.py`, `scripts/evaluate_v3_v1.py`.
 Study 1: R4 Test v1; `final_config_v2` (`8889e448…`); Test-2 (D2 = A1 200/200); clean Test Qwen 50 · Llama 62 · Gemma
