@@ -8,11 +8,10 @@ Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
 Trạng thái (06/11 11:05): Study 2. Dev v3 vòng 1 XONG: 3 backbone Tầng 1 × 9 cấu hình × 560 lượt, bảng trong decision log 06/11
 "WP7: kết quả Dev v3 vòng 1" (P2 và D2+P1 giảm hại mạnh nhất; G1, MEL ≈ A0; D2/PRG chặn M1–M2, M3–M5 còn lọt; Llama nhiều
-OUTPUT_TRUNCATED). AgentDojo EN Llama gần xong (Slack spotlighting). Claude không viết, đọc hay giao việc viết đoạn chèn tấn công.
+OUTPUT_TRUNCATED). AgentDojo EN Llama xong (số trong decision log). Claude không viết, đọc hay giao việc viết đoạn chèn tấn công.
 
 Việc phiên này:
-1. Kiểm summary AgentDojo Slack spotlighting (results/rebuild_b/agentdojo_en_slack_*_llama31_8b); dở thì serve lại Llama 16k
-   rồi chạy build/kaggle/agentdojo_defense_run.sh F llama31_8b. Bổ sung số vào decision log.
+1. Kiểm kaggle kernels status: các notebook serve 06/11 phải đã tắt (hết keep-alive khoảng 12:20).
 2. Cùng owner chọn vòng chỉnh Dev (tối đa 3, khai báo trước trong decision log trước khi chạy), ví dụ D2+P2, xử lý M3–M5.
 3. Tầng 2 (Qwen3-8B, Qwen3.6-35B-A3B) và SecAlign {A0, D2} trên Dev.
 4. Owner/Minh: WP5 review và seal Dev; dịch injection_tasks.yaml + attacks.yaml cho AgentDojo-VI có tấn công.
