@@ -6,7 +6,7 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 ## Đang làm
 
 **2026-11-06 15:25: máy owner tắt tới tối; các lượt chạy dừng giữa chừng và RESUME được.**
-- Vòng chỉnh Dev 1 = D2+P2 (khai báo `cc62bfa`). Gemma và Qwen3.5 xong (2/48, 3/48 có hại). Llama dừng ở 552/560.
+- Vòng chỉnh Dev 1 = D2+P2 (khai báo `cc62bfa`). Xong cả 3 model 15:26: Gemma 2, Qwen3.5 3, Llama 5 /48 có hại.
 - AgentDojo-VI có tấn công trên Llama (dịch đã commit `54f366e`): 6 lượt Banking/Slack × none/spotlighting/repeat dừng
   giữa chừng. AgentDojo bỏ qua cặp đã có log nên chạy tiếp được.
 - Notebook: không còn keep-alive, nên cả 3 notebook serve tự tắt sau 30 phút idle. Kiểm bằng `kaggle kernels status`.
