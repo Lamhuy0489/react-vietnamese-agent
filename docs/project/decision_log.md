@@ -3321,8 +3321,8 @@ Số family có hại trên 48, utility benign_plain trên 240, benign_auth trê
 |---|---|---|---|---|
 | Gemma-4-12B | 2 | 38 / 7 / 12 | 147 | 45 (54) |
 | Qwen3.5-9B | 3 | 40 / 11 / 14 | 141 | 24 (36) |
-| Llama-3.1-8B | đang chạy (552/560) | 34 / 13 / 8 | | |
+| Llama-3.1-8B | 5 | 34 / 13 / 8 | 82 | 36 (30) |
 
-- D2+P2 thấp nhất trên cả hai model đã xong; còn lọt 1 family ở M3, M5 (và M4 trên Qwen).
+- D2+P2 thấp nhất trên Gemma và Qwen; trên Llama 5 so với D2+P1 8, P2 13. Toàn bộ 3 model đã xong 15:26; còn lọt 1 family ở M3, M5 (và M4 trên Qwen).
 - Utility benign_plain giữ được, nhưng benign_auth giảm mạnh hơn D2 trên Qwen (36 → 24). Đây là cái giá cần nêu.
 - Sự cố: notebook Llama mới lần đầu thiếu HF token (GatedRepoError 401), push lại có token thì chạy.
