@@ -325,3 +325,5 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Sửa `agentdojo_chain.sh`: `wait` không đối số chờ cả keep-alive nên kẹt từ 05:19; phòng thủ AgentDojo chạy bằng
   `agentdojo_defense_run.sh`.
 - Thêm `scripts/aggregate_v3_dev_v1.py`; bảng Dev vòng 1 và AgentDojo EN ghi decision log 06/11.
+- Trưa 06/11: AgentDojo EN Llama xong cả Slack (spotlighting 45/10, repeat 35/10). Kiểm Test v3 bằng số đếm:
+  72 family T3_xx (chưa commit), oracle Dev không đổi. Ghi `knowledge/study2_contributions.md`.

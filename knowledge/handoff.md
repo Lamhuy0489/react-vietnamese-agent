@@ -12,6 +12,10 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 - AgentDojo EN Llama XONG (Banking, Slack × không phòng thủ, spotlighting, repeat_user_prompt); số trong decision log.
   Script `build/kaggle/agentdojo_defense_run.sh`; `agentdojo_chain.sh` đã sửa lỗi `wait` chờ keep-alive.
 - Notebook serve sẽ tự tắt khi hết keep-alive (khoảng 12:20) hoặc MAX_HOURS 11.5.
+- Test v3 (owner): 72 family T3_xx trên máy, chưa commit, chưa seal.
+  - `release.py` đã sửa: gộp oracle khi ghi; phần chấm điểm không đổi.
+  - `release_v3/private/oracles.json` có 120 family, 48 Dev không đổi.
+  - Đề xuất: tách oracle Test sang file riêng, rồi seal bằng hash. Claude làm hạ tầng, không đọc nội dung.
 
 **2026-11-06 02:50: WP7 Dev v3 đang chạy trên 3 backbone Tầng 1 tới 12:00 06/11; AgentDojo EN và VI-utility trên Llama.**
 - Dev v3 (owner/Minh viết): 48 family, 560 fixture, `check`/`qa` sạch (800 replay, độ mới 0,042).

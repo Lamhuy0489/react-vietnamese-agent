@@ -22,6 +22,10 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-06 12:13 — trạng thái:** 3 notebook serve (huylmhuhu Llama 16k, buiquocviet Gemma, oanhlam123456 Qwen3.5) vẫn
+`RUNNING` sau khi Dev và AgentDojo xong; đã dừng keep-alive ở máy để chúng tự tắt sau 30 phút idle (khoảng 12:45).
+Phiên sau kiểm lại bằng `kaggle kernels status`.
+
 **2026-11-06 02:44 — Study 2 WP7 Dev v3 × 9 cấu hình** (source: commit kèm mục này):
 - [buiquocviet/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-gemma4-12b)
   **v2**, Gemma-4-12B (max_len 4096), folder `build/kaggle/vllm_serve_v1_gemma4_12b_20261106_024408`.
