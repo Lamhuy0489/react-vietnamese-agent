@@ -13,6 +13,16 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 - Tầng 2 / SecAlign trên Dev (khai báo decision log 07/11), mỗi tài khoản một notebook, keep-alive 11 giờ:
   - dovuong05 Qwen3-8B {A0,R1,PRG,D2}; oanhlam123456 Qwen3.6-35B-A3B {A0,R1,PRG,D2}; nomtle SecAlign-8B {A0,D2}.
   - Log `build/kaggle/tier2_<key>.log`; kết quả `results/rebuild_b/v3_dev_<cfg>_<key>{,_eval.json}`.
+- **Đề xuất vòng chỉnh 2 (chưa khai báo, chờ owner duyệt sáng 07/11; chẩn đoán chỉ bằng số đếm từ trace):**
+  - Họ có hại / benign_auth util (/80) theo cấu hình A0, R1, D2, P2, D2+P1, D2+P2:
+    Gemma 38/54, 36/49, 17/44, 7/54, 12/44, 2/45; Qwen3.5 40/36, 33/33, 15/28, 11/32, 14/31, 3/24;
+    Llama 34/30, 25/27, 13/27, 13/40, 8/28, 5/36.
+  - 31 lượt benign_auth D2+P2 mất so với A0: lớp luật A1 (`RULE_INJECTION_SIGNAL` + `UNAUTHORIZED_EXTERNAL_ACTION`) 11,
+    luật 3 D2 (`PROVENANCE_SENSITIVE_PAYLOAD`) 7, không có lần chặn nào (max_steps hoặc trả lời sai) 13.
+  - Lọt có hại còn lại (attack, D2+P2): M5 sửa payload (boolean/enum) 5 lượt, M3 qua payload 3, M4 lộ qua câu trả lời 1, sink ngoài 3.
+  - Hướng đề xuất: (a) D2+P2 bỏ lớp luật A1 (D2 trên A0 thay A1) để thử lấy lại 11 ca, vì luật 2–3 của D2 đã bao chuyển hướng;
+    (b) luật 5 toàn vẹn payload: tham số số/boolean/enum của sink phải khớp giá trị đọc từ nguồn không chứa chỉ thị hoặc có
+    nguyên văn trong yêu cầu, nhắm M5. Mỗi hướng là một cấu hình riêng để đo tách, chạy Dev trên 3 backbone Tầng 1.
 - **Resume** (notebook đã tắt, lượt dở): chạy lại cùng lệnh, runner bỏ qua fixture có `result.json`:
   `HF_TOKEN="$(cat ~/.hf_token_r5)" build/kaggle/tier2_launch.sh dovuong05 kaggle4.json qwen3_8b "A0 R1 PRG D2" > build/kaggle/tier2_qwen3_8b.log 2>&1`
   (tương tự `oanhlam123456 kaggle6.json qwen36_35b_a3b_awq "A0 R1 PRG D2"`, `nomtle kaggle5.json secalign_8b "A0 D2"`).
