@@ -16,9 +16,8 @@ Việc phiên này:
    Lượt dở thì resume bằng lệnh trong handoff "Đang làm" (tier2_launch.sh / relaunch_round1.sh). Tắt keep-alive còn sót.
 2. Tổng hợp aggregate_v3_dev_v1.py; ghi decision log: Tầng 2 (Qwen3-8B, Qwen3.6), SecAlign so Llama-3.1-8B cùng base,
    bảng AgentDojo VI so với EN (utility / attack success, 3 cấu hình × 2 suite).
-3. Owner chọn vòng chỉnh 2 (khai báo trước): lớp cho M3–M5 và giảm chặn nhầm benign_auth của D2+P2.
-4. Seal Dev/Test (tách oracle Test, seal.json bằng hash) sau khi owner xác nhận Test v3 do người viết; nếu có dùng công cụ AI
-   thì ghi rõ trong decision log. Các file scripts/test_data_part*.py chưa commit; Claude không đọc.
+3. Vòng chỉnh 2 = D2-NR+P2 (khai báo 07/11 01:40): đọc kết quả Gemma/Llama/Qwen3.5, chạy phần còn thiếu, so với D2+P2.
+4. Seal v3 đã xong 07/11 (cbfc549). Khi không còn lượt chạy: sửa release.py write (oracle theo split, từ chối khi đã seal), thêm test.
 ```
 
 ## Ghi chú dùng

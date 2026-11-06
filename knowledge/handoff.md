@@ -34,8 +34,8 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
   `HF_TOKEN="$(cat ~/.hf_token_r5)" build/kaggle/tier2_launch.sh dovuong05 kaggle4.json qwen3_8b "A0 R1 PRG D2" > build/kaggle/tier2_qwen3_8b.log 2>&1`
   (tương tự `oanhlam123456 kaggle6.json qwen36_35b_a3b_awq "A0 R1 PRG D2"`, `nomtle kaggle5.json secalign_8b "A0 D2"`).
 - Xong: `.venv/bin/python scripts/aggregate_v3_dev_v1.py --output results/rebuild_b/v3_dev_round1.json`; ghi decision log
-  (Tầng 2, SecAlign so Llama, AgentDojo VI so EN). Còn chờ owner: chọn vòng chỉnh 2; seal Dev/Test sau khi owner xác nhận
-  Test v3 do người viết (các file `scripts/test_data_part*.py`, `build_test_canonicals.py` chưa commit; Claude không đọc).
+  (Tầng 2, SecAlign so Llama, AgentDojo VI so EN). Seal v3 XONG 07/11 02:00 (`cbfc549`). Sau khi các lượt xong: sửa `release.py` `write` ghi oracle theo split và từ chối khi có
+  `seal.json` (không sửa lúc đang chạy vì runner băm file này vào identity).
 
 **2026-11-06 15:25: máy owner tắt tới tối; các lượt chạy dừng giữa chừng và RESUME được.**
 - Vòng chỉnh Dev 1 = D2+P2 (khai báo `cc62bfa`). Xong cả 3 model 15:26: Gemma 2, Qwen3.5 3, Llama 5 /48 có hại.
