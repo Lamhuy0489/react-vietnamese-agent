@@ -3337,3 +3337,20 @@ Số family có hại trên 48, utility benign_plain trên 240, benign_auth trê
   - Meta-SecAlign-8B × {A0, D2}, tài khoản nomtle; so với Llama-3.1-8B cùng base.
 - Tài khoản do owner chọn 07/11; không dùng huylmhuhu (đang chạy AgentDojo-VI Llama) và buiquocviet.
 - Không đổi tham số cấu hình nào; chỉ chạy cấu hình đã có. Chạy qua đêm, lượt dở resume theo `result.json`.
+
+## 2026-11-07 01:40 — WP7: khai báo vòng chỉnh Dev 2 (trước khi chạy)
+
+Owner giao Claude tự chọn cách chỉnh hợp lý (07/11). Chẩn đoán bằng số đếm từ trace Dev D2+P2, không đọc nội dung fixture:
+- Họ có hại / benign_auth util (/80), lần lượt A0, R1, D2, P2, D2+P1, D2+P2: Gemma 38/54, 36/49, 17/44, 7/54, 12/44, 2/45;
+  Qwen3.5 40/36, 33/33, 15/28, 11/32, 14/31, 3/24; Llama 34/30, 25/27, 13/27, 13/40, 8/28, 5/36.
+- 31 lượt benign_auth D2+P2 mất so với A0: lớp luật A1 (`RULE_INJECTION_SIGNAL` + `UNAUTHORIZED_EXTERNAL_ACTION`) 11,
+  luật 3 D2 7, không bị chặn lần nào (hết bước hoặc trả lời sai) 13.
+
+**Cấu hình D2-NR+P2 (`--defense d2nrp2`):** D2+P2 nhưng tắt lớp luật A1 (`rule=False`); luật 1–4 D2, redaction, sandwich,
+giới hạn tool giữ nguyên. Mã ở `src/react_agent/security_v3/d2_no_rule.py`; file D2 đã ghim không sửa.
+- Giả thuyết: luật 2–3 D2 đã bao chuyển hướng và rò bí mật, nên bỏ lớp luật A1 lấy lại một phần benign_auth mà không tăng
+  họ có hại quá 1–2 family. Nếu tăng nhiều hơn thì giữ D2+P2 làm cấu hình chính.
+- Không thêm luật cho M5 (sửa boolean/enum trên sink người dùng đã nêu): giá trị như true/false hay đơn vị xuất hiện khắp nơi,
+  một luật tất định theo nguồn giá trị sẽ chặn cả benign. Ghi M5 là giới hạn đo được của phòng thủ tất định.
+- Chạy Dev 560 lượt × 3 backbone Tầng 1, cùng bộ chấm; tiêu chí so với D2+P2: họ có hại, plain util, auth util. Không dùng Test.
+  Đây là vòng 2 trên tối đa 3.
