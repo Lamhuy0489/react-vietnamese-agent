@@ -4,7 +4,7 @@ Cập nhật: 2026-11-07 01:05. **Đêm 07/11 đang chạy: Tầng 2 (Qwen3-8B, 
 Dev v3 vòng 1 XONG: 3 backbone Tầng 1 × 9 cấu hình × 560 lượt; vòng chỉnh 1 D2+P2: Gemma 2, Qwen3.5 3, Llama 5 /48; P2 và D2+P1 giảm hại mạnh nhất, G1/MEL ≈ A0
 (decision log 06/11, Llama chốt 07/11). WP6: AgentDojo EN Llama xong; VI có tấn công đang chạy.**
 Kế hoạch [rebuild_b_plan.md](../docs/project/rebuild_b_plan.md). Đóng góp nghiên cứu: [study2_contributions.md](study2_contributions.md).
-Test v3: owner đã viết 72 family (T3_xx), chưa commit, chưa seal; oracle Dev không đổi (kiểm 06/11).
+Test v3: owner xác nhận do người viết; **release v3 đã seal 07/11** (`seal.json` `c1f698cb…`, Dev 48 + Test 72; oracle Test ở `private/test_oracles.json`).
 Hạ tầng v3: `authoring/v3/release.py`, `scripts/build_v3_release.py`, `scripts/run_v3_api_v1.py`, `scripts/evaluate_v3_v1.py`.
 Study 1: R4 Test v1; `final_config_v2` (`8889e448…`); Test-2 (D2 = A1 200/200); clean Test Qwen 50 · Llama 62 · Gemma
 65 /100; RQ3: chỉ bỏ dấu gây giảm có ý nghĩa. R0 chờ PR #5 merge. Hạn luận văn 2027-02-19.
