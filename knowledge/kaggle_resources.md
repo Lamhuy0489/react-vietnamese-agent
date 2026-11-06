@@ -22,6 +22,8 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-06 15:25 — trạng thái:** notebook mới 14:26–14:55 (buiquocviet Gemma v3, oanhlam123456 Qwen3.5 v2, huylmhuhu Llama 16k v3 có HF token) để chạy D2+P2 và AgentDojo-VI; máy owner tắt 15:25, không còn keep-alive nên tự tắt khi idle.
+
 **2026-11-06 12:13 — trạng thái:** 3 notebook serve (huylmhuhu Llama 16k, buiquocviet Gemma, oanhlam123456 Qwen3.5) vẫn
 `RUNNING` sau khi Dev và AgentDojo xong; đã dừng keep-alive ở máy để chúng tự tắt sau 30 phút idle (khoảng 12:45).
 Phiên sau kiểm lại bằng `kaggle kernels status`.

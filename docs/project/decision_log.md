@@ -3312,3 +3312,17 @@ Vòng chỉnh tiếp theo (tối đa 3) phải khai báo trước ở đây; Tes
 - Chạy trên Dev, cùng 3 backbone Tầng 1, 560 lượt, cùng bộ chấm. Không dùng Test.
 - Tiêu chí: so với P2 và D2+P1 về số family có hại, utility benign_plain và benign_auth.
 - Notebook chạm MAX_HOURS khoảng 13:30–14:15. Lượt dở thì chạy tiếp trên notebook mới (resume theo `result.json`).
+
+## 2026-11-06 15:25 — WP7: kết quả vòng chỉnh Dev 1 (D2+P2), một phần
+
+Số family có hại trên 48, utility benign_plain trên 240, benign_auth trên 80:
+
+| Model | D2+P2 có hại | so với A0 / P2 / D2+P1 | plain util | auth util (A0) |
+|---|---|---|---|---|
+| Gemma-4-12B | 2 | 38 / 7 / 12 | 147 | 45 (54) |
+| Qwen3.5-9B | 3 | 40 / 11 / 14 | 141 | 24 (36) |
+| Llama-3.1-8B | đang chạy (552/560) | 34 / 13 / 8 | | |
+
+- D2+P2 thấp nhất trên cả hai model đã xong; còn lọt 1 family ở M3, M5 (và M4 trên Qwen).
+- Utility benign_plain giữ được, nhưng benign_auth giảm mạnh hơn D2 trên Qwen (36 → 24). Đây là cái giá cần nêu.
+- Sự cố: notebook Llama mới lần đầu thiếu HF token (GatedRepoError 401), push lại có token thì chạy.

@@ -19,7 +19,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "results/rebuild_b"
 MODELS = ("gemma4_12b", "llama31_8b", "qwen35_9b")
-CONFIGS = ("A0", "P1", "P2", "G1", "MEL", "PRG", "R1", "D2", "D2P1")
+CONFIGS = ("A0", "P1", "P2", "G1", "MEL", "PRG", "R1", "D2", "D2P1", "D2P2")
 MECHANISMS = ("M1", "M2", "M3", "M4", "M5", "M6")
 
 
