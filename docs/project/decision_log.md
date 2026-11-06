@@ -3354,3 +3354,19 @@ giới hạn tool giữ nguyên. Mã ở `src/react_agent/security_v3/d2_no_rule
   một luật tất định theo nguồn giá trị sẽ chặn cả benign. Ghi M5 là giới hạn đo được của phòng thủ tất định.
 - Chạy Dev 560 lượt × 3 backbone Tầng 1, cùng bộ chấm; tiêu chí so với D2+P2: họ có hại, plain util, auth util. Không dùng Test.
   Đây là vòng 2 trên tối đa 3.
+
+## 2026-11-07 02:00 — WP5: seal VN-AgentInject v3 (Dev 48 + Test 72)
+
+- **Owner xác nhận 07/11: Test v3 do người viết (owner/Minh).** Claude không đọc, viết hay review nội dung Test; chỉ chạy kiểm
+  bằng script in số đếm.
+- Kiểm trước khi seal: dựng lại từ `dev_canonicals.json`/`test_canonicals.json`, cả 6 file `{dev,test}_{attack,benign_plain,benign_auth}.jsonl`
+  trùng từng byte (Dev 240/240/80, Test 360/360/120); oracle trên đĩa khớp bản dựng; 48 oracle Dev trùng bản đã commit.
+  QA: 2000 replay (Dev 800, Test 1200), 0 lỗi; độ mới tối đa 0,0526 (ngưỡng 0,20).
+- Tách oracle: `private/oracles.json` giữ đúng 48 family Dev như trước (hash không đổi); 72 family Test sang
+  `private/test_oracles.json`. Evaluator Dev không đổi; khi chạy Test một lần dưới `final_config_v3` phải nạp file Test.
+- `data/adversarial/release_v3/seal.json` (sha256 `c1f698cb…`) ghim 9 file release và 4 file authoring (spec, 2 canonical,
+  glossary). Sau seal không được sửa các file này; Test chỉ chạy một lần, không dùng để chỉnh.
+- `release.py` commit nguyên bản owner sửa (gộp oracle khi `write`) vì các lượt Dev đang chạy đã băm bản này vào identity.
+  Việc còn lại sau khi các lượt xong: `write` ghi oracle theo split và từ chối khi đã có `seal.json`.
+- Các script soạn dữ liệu của owner (`scripts/{dev,test}_data_part*.py`, `build_{dev,test}_canonicals.py`) để owner tự quyết có
+  commit hay không; seal ghim kết quả, không phụ thuộc chúng.
