@@ -14,7 +14,8 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
   - dovuong05 Qwen3-8B {A0,R1,PRG,D2}; oanhlam123456 Qwen3.6-35B-A3B {A0,R1,PRG,D2}; nomtle SecAlign-8B {A0,D2}.
   - Log `build/kaggle/tier2_<key>.log`; kết quả `results/rebuild_b/v3_dev_<cfg>_<key>{,_eval.json}`.
 - **Vòng chỉnh 2 đã khai báo 01:40 (owner giao Claude tự chọn): D2-NR+P2 (`--defense d2nrp2`, D2+P2 tắt lớp luật A1).**
-  - Gemma: buiquocviet v4, `round2_launch.sh`, log `build/kaggle/round2_gemma4_12b.log`.
+  - Gemma: buiquocviet v4 XONG 06:26 (560/560: có hại 4/48, plain 150, auth 49/80; D2+P2 2/147/45), `round2_launch.sh`, log `build/kaggle/round2_gemma4_12b.log`.
+  - Qwen3.5: 06:30 bật trên buiquocviet sau khi Gemma tắt; log `build/kaggle/round2_qwen35_9b.log`.
   - Llama: khi relaunch VI xong, chạy trên endpoint còn sống:
     `build/kaggle/round2_launch.sh huylmhuhu kaggle1.json llama31_8b_ctx16k llama31_8b build/kaggle/vllm_serve_v1_llama31_8b_ctx16k_20261107_005809`
   - Qwen3.5: khi nomtle hoặc dovuong05 xong Tầng 2:
