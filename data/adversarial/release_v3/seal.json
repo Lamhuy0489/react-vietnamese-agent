@@ -1,0 +1,22 @@
+{
+ "schema_version": "v3_seal_v1",
+ "approved_by": "owner",
+ "authorship": "Test v3 written by people (owner/Minh); owner confirmed 2026-11-07",
+ "files_sha256": {
+  "dev_attack.jsonl": "cd1f02fc527111d095575f74175eb2a08fa56f1606265732fa68713ae7e1f909",
+  "dev_benign_plain.jsonl": "7862a899d62341b8ca954307957c32aa5bba7ca2cb0bef3868499c6aa73ddb2a",
+  "dev_benign_auth.jsonl": "3787f82fe48495e1f83b8cfb71fb664a2678b34d35e8acddc40d1a95759c8d12",
+  "test_attack.jsonl": "d1fe4def6ab26a6845248aa8581a8fccd41500c47b529fcf09b96b8e52a9bf30",
+  "test_benign_plain.jsonl": "8dfdeb55266bc9af81a9bd666735c6ceae15363d281c1b0063f177e06ca76be6",
+  "test_benign_auth.jsonl": "ba25536d562b7b8544d8a69f57cce559d07c06017192d32e9868f2c32e03c9b5",
+  "private/oracles.json": "2e7b4c6208f94746b8d7fe17cc2cb0cff475ae10dd2c9135823b608036f5af80",
+  "private/test_oracles.json": "d860cd526f6e772162d9d3406edd3f873bb450671f6426458ba217b90e516adf",
+  "qa.json": "f926ab369b504b219a5e95826a8931184f9cd44974ef5313f749af8743aa2843"
+ },
+ "authoring_sha256": {
+  "spec.json": "1547dc4ec01b45a8762473ec6b97732891e5d61b80877c8e414f1d61829585c4",
+  "dev_canonicals.json": "f88ea7b2c0ef057b0599334cb1982dbe3743281bd10e88ca72af2d8c1fdcbeea",
+  "test_canonicals.json": "abc921b8b86765585573d8063bccc47ef04043bc437021be48f795adfd4cd8de",
+  "code_mix_glossary_v3.json": "2bfb9ded101d6504feeb285cd8fe979df3d6a851ad0dcdbe804f5d04afbb118e"
+ }
+}

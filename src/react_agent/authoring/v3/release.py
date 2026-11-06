@@ -698,8 +698,18 @@ def write_release(folder: Path, fixtures: list[FixtureV3], privates: list[Privat
             if rows:
                 (folder / f"{split}_{branch}.jsonl").write_text(
                     "".join(r.model_dump_json() + "\n" for r in rows), encoding="utf-8")
-    (folder / "private/oracles.json").write_text(json.dumps(
-        [p.model_dump(mode="json") for p in privates], ensure_ascii=False, indent=1) + "\n",
-        encoding="utf-8")
+    existing_privates: dict[str, Any] = {}
+    oracles_path = folder / "private/oracles.json"
+    if oracles_path.exists():
+        try:
+            for item in json.loads(oracles_path.read_text(encoding="utf-8")):
+                existing_privates[item["family_id"]] = item
+        except (ValueError, OSError):
+            existing_privates = {}
+    for p in privates:
+        existing_privates[p.family_id] = p.model_dump(mode="json")
+    combined = [existing_privates[k] for k in sorted(existing_privates.keys())]
+    content = json.dumps(combined, ensure_ascii=False, indent=1) + "\n"
+    oracles_path.write_text(content, encoding="utf-8")
     (folder / "qa.json").write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n",
                                     encoding="utf-8")
