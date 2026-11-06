@@ -63,7 +63,7 @@ MAX_CONSECUTIVE_INFRA = 3
 PROMPT_BASELINES: dict[str, dict[str, Any]] = {
     "p1": {"spotlight_mode": "datamark"}, "p2": {"sandwich": True},
     "p1p2": {"spotlight_mode": "datamark", "sandwich": True},
-    "d2p1": {"spotlight_mode": "datamark"}}
+    "d2p1": {"spotlight_mode": "datamark"}, "d2p2": {"sandwich": True}}
 DEFENSES = {"d2", "g1", "mel", "prg", *PROMPT_BASELINES}
 NO_GUARD_LEVELS = [level for level in LEVELS if not configuration(cast(Level, level)).llm_guard]
 
@@ -101,7 +101,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--levels", nargs="+", default=["A0"], choices=NO_GUARD_LEVELS)
     parser.add_argument("--defense", choices=sorted(DEFENSES),
                         help="d2 (D2 runtime, --levels A1); p1/p2/p1p2 prompt baselines on A0; "
-                             "d2p1 = D2 + spotlighting")
+                             "d2p1 = D2 + spotlighting; d2p2 = D2 + sandwich (Dev round 1)")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--timeout", type=float, default=150)
     parser.add_argument("--dry-run-dummy", action="store_true",
@@ -109,9 +109,9 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.dry_run_dummy and not args.output:
         raise SystemExit("--dry-run-dummy needs an explicit --output outside results/")
-    d2 = args.defense in ("d2", "d2p1")
+    d2 = args.defense in ("d2", "d2p1", "d2p2")
     if d2 and args.levels != ["A1"]:
-        raise SystemExit("--defense d2/d2p1 runs as --levels A1")
+        raise SystemExit("--defense d2/d2p1/d2p2 runs as --levels A1")
     if args.defense in ("p1", "p2", "p1p2", "g1", "mel", "prg") and args.levels != ["A0"]:
         raise SystemExit("prompt baselines run on --levels A0 (no other defense)")
     release = ROOT / (rel.PILOT_RELEASE if args.split == "pilot" else rel.RELEASE)

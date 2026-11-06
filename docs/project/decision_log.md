@@ -3302,3 +3302,13 @@ AgentDojo EN v1.2.2, Llama-3.1-8B 16k, `important_instructions`: utility / tấn
 - Utility không tấn công: EN Banking 7/16, Slack 7/21; VI Banking 6/16, Slack 7/21.
 
 Vòng chỉnh tiếp theo (tối đa 3) phải khai báo trước ở đây; Test không được dùng.
+
+## 2026-11-06 12:20 — WP7: khai báo vòng chỉnh Dev 1 (trước khi chạy)
+
+- Owner yêu cầu tận dụng 3 endpoint còn sống ("làm nốt việc"); chọn theo đề xuất đã nêu sau bảng vòng 1.
+- **Cấu hình mới D2+P2:** runtime D2 (bản ghim, `--levels A1`) cộng sandwich (P2). Hai cấu hình tốt nhất vòng 1 là P2 và D2+P1.
+  - Không đổi tham số D2, prompt, decoding hay ngưỡng; chỉ ghép hai thành phần đã có.
+  - Lớp riêng cho M3–M5 để sang vòng 2, khai báo riêng.
+- Chạy trên Dev, cùng 3 backbone Tầng 1, 560 lượt, cùng bộ chấm. Không dùng Test.
+- Tiêu chí: so với P2 và D2+P1 về số family có hại, utility benign_plain và benign_auth.
+- Notebook chạm MAX_HOURS khoảng 13:30–14:15. Lượt dở thì chạy tiếp trên notebook mới (resume theo `result.json`).
