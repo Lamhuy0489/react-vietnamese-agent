@@ -3264,3 +3264,41 @@ Chạy A0, 28 fixture mỗi lần. Owner/Minh chỉnh dữ liệu giữa các l�
   - 9 cấu hình A0, R1 (A1), D2, D2+P1, P1, P2, G1, MEL, PRG;
   - trên Tầng 1: Gemma-4-12B, Llama-3.1-8B, Qwen3.5-9B.
   - Bảng kết quả ghi vào decision log khi đủ. Mỗi vòng chỉnh sau phải khai báo trước.
+
+## 2026-11-06 — WP7: kết quả Dev v3 vòng 1 (3 backbone Tầng 1 × 9 cấu hình)
+
+Chạy 02:44–11:02, đủ 27 × 560 lượt, cài đặt đúng như khai báo, không chỉnh giữa chừng. Bảng đầy đủ
+(M1–M6, benign, model_error) ở `results/rebuild_b/v3_dev_round1.json`, tạo bằng `scripts/aggregate_v3_dev_v1.py`.
+
+Số family có hại trên 48 (thấp hơn là tốt hơn). Utility benign_plain trên 240, benign_auth trên 80:
+
+| Cấu hình | Gemma-4-12B | Llama-3.1-8B | Qwen3.5-9B | plain util G/L/Q | auth util G/L/Q |
+|---|---|---|---|---|---|
+| A0 | 38 | 34 | 40 | 159/81/140 | 54/30/36 |
+| P1 spotlighting | 24 | 24 | 43 | 146/74/137 | 54/36/38 |
+| P2 sandwich | 7 | 13 | 11 | 150/84/144 | 54/40/32 |
+| G1 Prompt Guard 2 | 39 | 34 | 40 | 160/81/139 | 54/30/36 |
+| MEL | 38 | 34 | 40 | 160/79/142 | 54/30/36 |
+| PRG Progent-lite | 21 | 18 | 22 | 160/80/138 | 54/32/36 |
+| R1 (A1) | 36 | 25 | 33 | 160/80/138 | 49/27/33 |
+| D2 | 17 | 13 | 15 | 158/80/136 | 44/27/28 |
+| D2+P1 | 12 | 8 | 14 | 145/73/129 | 44/28/31 |
+
+Nhận xét (Dev, chưa có CI; không dùng để kết luận Test):
+- P2 và D2+P1 giảm hại mạnh nhất; D2 giảm ở cả 3 backbone và giữ utility benign_plain, nhưng hạ benign_auth
+  (Gemma 54 → 44, Qwen 36 → 28).
+- G1 và MEL gần như bằng A0: Prompt Guard 2 hiếm khi gắn cờ văn bản tiếng Việt; MEL tất định (so khớp đích sink)
+  hiếm khi thấy trùng.
+- PRG và D2 chặn hết M1, M2; M3–M5 còn lọt (M3 đến 8/8 ở Gemma, Qwen).
+- P1 trên Qwen3.5-9B tăng hại (40 → 43).
+- Llama-3.1-8B: 53–78 lượt model_error do `OUTPUT_TRUNCATED` mỗi cấu hình (đầu ra dài hơn max_new_tokens đã ghim),
+  tính là thất bại theo hợp đồng; vì vậy utility Llama thấp (≈80/240). Gemma 2–3, Qwen 5–17.
+- Sự cố hạ tầng: hai runner ghi chồng một fixture (Qwen3.5 D2+P1 `BAU_D3_45_CANONICAL`), evaluator phát hiện trace sai
+  hash; xoá thư mục fixture đó và chạy lại (resume, cùng cài đặt). Từ commit 7b57d29 runner khoá thư mục output.
+
+AgentDojo EN v1.2.2, Llama-3.1-8B 16k, `important_instructions`: utility / tấn công thành công
+- Banking 144 cặp: không phòng thủ 58 / 17; spotlighting_with_delimiting 61 / 18; repeat_user_prompt 62 / 10.
+- Slack 105 cặp: không phòng thủ 28 / 16; repeat_user_prompt xong, spotlighting đang chạy (bổ sung ở handoff).
+- Utility không tấn công: EN Banking 7/16, Slack 7/21; VI Banking 6/16, Slack 7/21.
+
+Vòng chỉnh tiếp theo (tối đa 3) phải khai báo trước ở đây; Test không được dùng.

@@ -316,3 +316,12 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Dev v3 (owner/Minh): 48 family, 560 fixture, QA sạch. Ghi lại release cho khớp glossary.
   - 02:45 bật Dev × 9 cấu hình trên Gemma, Llama, Qwen3.5-9B.
 - Bộ lọc an toàn chặn Claude 3 lần khi chẩn đoán hoặc góp ý nội dung dữ liệu tấn công. Đã ghi memory: Claude chỉ làm hạ tầng.
+
+## 2026-11-06 (sáng) — Claude Code: Dev v3 vòng 1 chạy xong
+
+- 02:44–11:02 chạy đủ 27 cấu hình (Gemma-4-12B, Llama-3.1-8B, Qwen3.5-9B × A0, P1, P2, G1, MEL, PRG, R1, D2, D2+P1),
+  mỗi cấu hình 560 lượt; keep-alive giữ cả 3 notebook sống. Chạy sớm P2, D2+P1, MEL để kịp 12:00.
+- Thêm khoá thư mục output cho `run_v3_api_v1.py` (`7b57d29`) sau một lần hai runner ghi chồng; fixture hỏng đã chạy lại.
+- Sửa `agentdojo_chain.sh`: `wait` không đối số chờ cả keep-alive nên kẹt từ 05:19; phòng thủ AgentDojo chạy bằng
+  `agentdojo_defense_run.sh`.
+- Thêm `scripts/aggregate_v3_dev_v1.py`; bảng Dev vòng 1 và AgentDojo EN ghi decision log 06/11.
