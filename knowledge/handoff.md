@@ -5,6 +5,21 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
+**2026-11-07 01:00: chạy qua đêm (máy owner phải bật). 4 notebook: AgentDojo-VI Llama, Tầng 2 Qwen3-8B và Qwen3.6, SecAlign.**
+- Llama D2+P2 đã chốt 560/560: 5/48 (decision log 07/11). Vòng chỉnh 1 xong trên cả 3 model.
+- AgentDojo-VI có tấn công: `relaunch_round1.sh` (huylmhuhu v4), log `build/kaggle/relaunch_llama31_8b_3.log`; 6 lượt
+  Banking/Slack × none/spotlighting/repeat, bỏ qua cặp đã có log. Script không tự tắt keep-alive: xong thì
+  `pkill -f "keepalive_vllm_v1.py --folder build/kaggle/vllm_serve_v1_llama31_8b_ctx16k_20261107"` (folder xem log).
+- Tầng 2 / SecAlign trên Dev (khai báo decision log 07/11), mỗi tài khoản một notebook, keep-alive 11 giờ:
+  - dovuong05 Qwen3-8B {A0,R1,PRG,D2}; oanhlam123456 Qwen3.6-35B-A3B {A0,R1,PRG,D2}; nomtle SecAlign-8B {A0,D2}.
+  - Log `build/kaggle/tier2_<key>.log`; kết quả `results/rebuild_b/v3_dev_<cfg>_<key>{,_eval.json}`.
+- **Resume** (notebook đã tắt, lượt dở): chạy lại cùng lệnh, runner bỏ qua fixture có `result.json`:
+  `HF_TOKEN="$(cat ~/.hf_token_r5)" build/kaggle/tier2_launch.sh dovuong05 kaggle4.json qwen3_8b "A0 R1 PRG D2" > build/kaggle/tier2_qwen3_8b.log 2>&1`
+  (tương tự `oanhlam123456 kaggle6.json qwen36_35b_a3b_awq "A0 R1 PRG D2"`, `nomtle kaggle5.json secalign_8b "A0 D2"`).
+- Xong: `.venv/bin/python scripts/aggregate_v3_dev_v1.py --output results/rebuild_b/v3_dev_round1.json`; ghi decision log
+  (Tầng 2, SecAlign so Llama, AgentDojo VI so EN). Còn chờ owner: chọn vòng chỉnh 2; seal Dev/Test sau khi owner xác nhận
+  Test v3 do người viết (các file `scripts/test_data_part*.py`, `build_test_canonicals.py` chưa commit; Claude không đọc).
+
 **2026-11-06 15:25: máy owner tắt tới tối; các lượt chạy dừng giữa chừng và RESUME được.**
 - Vòng chỉnh Dev 1 = D2+P2 (khai báo `cc62bfa`). Xong cả 3 model 15:26: Gemma 2, Qwen3.5 3, Llama 5 /48 có hại.
 - AgentDojo-VI có tấn công trên Llama (dịch đã commit `54f366e`): 6 lượt Banking/Slack × none/spotlighting/repeat dừng

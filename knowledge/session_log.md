@@ -330,3 +330,12 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Chiều 06/11: owner/Minh dịch AgentDojo-VI (14 GOAL + mẫu tấn công), Claude kiểm literal/placeholder bằng script. Vòng chỉnh
   Dev 1 D2+P2 khai báo rồi chạy: Gemma 2/48, Qwen3.5 3/48. Notebook mới qua `relaunch_round1.sh` (Llama lần đầu thiếu HF token).
   15:25 owner tắt máy; Llama D2+P2 (552/560) và 6 lượt AgentDojo-VI có tấn công để resume.
+
+## 2026-11-07 (rạng sáng) — Claude Code: bật chạy qua đêm Tầng 2, SecAlign, AgentDojo-VI
+
+- Kiểm 3 notebook serve 06/11: đều COMPLETE. Llama D2+P2 đủ 560/560, chốt 5/48 (M3 2, M4 1, M5 2), ghi decision log.
+- Resume AgentDojo-VI có tấn công: `relaunch_round1.sh` push Llama 16k v4 (huylmhuhu).
+- Owner chọn tài khoản oanhlam123456, nomtle, dovuong05 (không dùng huylmhuhu, buiquocviet). Khai báo trong decision log rồi bật
+  Tầng 2 Qwen3-8B, Qwen3.6-35B-A3B × {A0, R1, PRG, D2} và SecAlign × {A0, D2} trên Dev. Thêm `build/kaggle/tier2_launch.sh`;
+  `v3_dev_chain.sh` nhận biến `CONFIGS`. Cả 4 push thành công 01:00.
+- Chưa làm: vòng chỉnh 2 (chờ owner chọn), seal Dev/Test (chờ owner xác nhận Test do người viết).

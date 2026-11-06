@@ -22,6 +22,18 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-07 01:00 — Tầng 2, SecAlign trên Dev v3 và AgentDojo-VI có tấn công** (tài khoản do owner chọn; source: commit kèm mục này):
+- [dovuong05/react-vn-vllm-serve-v1](https://www.kaggle.com/code/dovuong05/react-vn-vllm-serve-v1) **v1**, private, T4, Qwen3-8B,
+  folder `build/kaggle/vllm_serve_v1_qwen3_8b_20261107_010010`; {A0, R1, PRG, D2}, log `build/kaggle/tier2_qwen3_8b.log`.
+- [oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq)
+  **v2**, private, T4, folder `build/kaggle/vllm_serve_v1_qwen36_35b_a3b_awq_20261107_010030`; {A0, R1, PRG, D2}, log `tier2_qwen36_35b_a3b_awq.log`.
+- [nomtle/react-vn-vllm-serve-v1-secalign-8b](https://www.kaggle.com/code/nomtle/react-vn-vllm-serve-v1-secalign-8b) **v1**, private,
+  T4, HF token chèn, folder `build/kaggle/vllm_serve_v1_secalign_8b_20261107_010050`; {A0, D2}, log `tier2_secalign_8b.log`.
+- [huylmhuhu/react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/huylmhuhu/react-vn-vllm-serve-v1-llama31-8b-ctx16k)
+  **v4**, HF token chèn; 6 lượt AgentDojo-VI `important_instructions`, log `build/kaggle/relaunch_llama31_8b_3.log`.
+- Script `build/kaggle/tier2_launch.sh OWNER CRED KEY "CONFIGS"` (prepare, push, `v3_dev_chain.sh` với `CONFIGS`, keep-alive 11 giờ,
+  tắt keep-alive khi xong). Trạng thái thật: `kaggle kernels status`, không suy ra từ mục này.
+
 **2026-11-06 15:25 — trạng thái:** notebook mới 14:26–14:55 (buiquocviet Gemma v3, oanhlam123456 Qwen3.5 v2, huylmhuhu Llama 16k v3 có HF token) để chạy D2+P2 và AgentDojo-VI; máy owner tắt 15:25, không còn keep-alive nên tự tắt khi idle.
 
 **2026-11-06 12:13 — trạng thái:** 3 notebook serve (huylmhuhu Llama 16k, buiquocviet Gemma, oanhlam123456 Qwen3.5) vẫn
