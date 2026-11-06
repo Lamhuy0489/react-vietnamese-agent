@@ -327,3 +327,6 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Thêm `scripts/aggregate_v3_dev_v1.py`; bảng Dev vòng 1 và AgentDojo EN ghi decision log 06/11.
 - Trưa 06/11: AgentDojo EN Llama xong cả Slack (spotlighting 45/10, repeat 35/10). Kiểm Test v3 bằng số đếm:
   72 family T3_xx (chưa commit), oracle Dev không đổi. Ghi `knowledge/study2_contributions.md`.
+- Chiều 06/11: owner/Minh dịch AgentDojo-VI (14 GOAL + mẫu tấn công), Claude kiểm literal/placeholder bằng script. Vòng chỉnh
+  Dev 1 D2+P2 khai báo rồi chạy: Gemma 2/48, Qwen3.5 3/48. Notebook mới qua `relaunch_round1.sh` (Llama lần đầu thiếu HF token).
+  15:25 owner tắt máy; Llama D2+P2 (552/560) và 6 lượt AgentDojo-VI có tấn công để resume.

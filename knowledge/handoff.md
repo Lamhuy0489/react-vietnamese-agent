@@ -5,6 +5,17 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
+**2026-11-06 15:25: máy owner tắt tới tối; các lượt chạy dừng giữa chừng và RESUME được.**
+- Vòng chỉnh Dev 1 = D2+P2 (khai báo `cc62bfa`). Gemma và Qwen3.5 xong (2/48, 3/48 có hại). Llama dừng ở 552/560.
+- AgentDojo-VI có tấn công trên Llama (dịch đã commit `54f366e`): 6 lượt Banking/Slack × none/spotlighting/repeat dừng
+  giữa chừng. AgentDojo bỏ qua cặp đã có log nên chạy tiếp được.
+- Notebook: không còn keep-alive, nên cả 3 notebook serve tự tắt sau 30 phút idle. Kiểm bằng `kaggle kernels status`.
+- **Resume (một lệnh, tự push notebook Llama 16k mới có HF token rồi chạy tiếp D2+P2 và 6 lượt VI):**
+  `HF_TOKEN="$(cat ~/.hf_token_r5)" nohup build/kaggle/relaunch_round1.sh huylmhuhu kaggle1.json llama31_8b llama31_8b_ctx16k react-vn-vllm-serve-v1-llama31-8b-ctx16k 1 > build/kaggle/relaunch_llama31_8b_3.log 2>&1 &`
+  - Script chờ notebook cũ hết RUNNING rồi mới push. Không sửa file script khi nó đang chạy (bash đọc dần).
+  - Xong thì `scripts/aggregate_v3_dev_v1.py --output results/rebuild_b/v3_dev_round1.json`; tóm tắt AgentDojo trong
+    `results/rebuild_b/agentdojo_vi_*_important_instructions_*_llama31_8b/summary.json`. Ghi decision log, tắt keep-alive.
+
 **2026-11-06 11:05: Dev v3 vòng 1 XONG (27 cấu hình × 560 lượt, 3 backbone Tầng 1). Bảng ở decision log 06/11 "WP7: kết quả Dev v3 vòng 1".**
 - Tổng hợp: `.venv/bin/python scripts/aggregate_v3_dev_v1.py --output results/rebuild_b/v3_dev_round1.json`.
 - Mọi `_eval.json` đã qua kiểm hash trace. Một fixture (Qwen3.5 D2+P1 `BAU_D3_45_CANONICAL`) bị hai runner ghi chồng,
