@@ -13,7 +13,14 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 - Tầng 2 / SecAlign trên Dev (khai báo decision log 07/11), mỗi tài khoản một notebook, keep-alive 11 giờ:
   - dovuong05 Qwen3-8B {A0,R1,PRG,D2}; oanhlam123456 Qwen3.6-35B-A3B {A0,R1,PRG,D2}; nomtle SecAlign-8B {A0,D2}.
   - Log `build/kaggle/tier2_<key>.log`; kết quả `results/rebuild_b/v3_dev_<cfg>_<key>{,_eval.json}`.
-- **Đề xuất vòng chỉnh 2 (chưa khai báo, chờ owner duyệt sáng 07/11; chẩn đoán chỉ bằng số đếm từ trace):**
+- **Vòng chỉnh 2 đã khai báo 01:40 (owner giao Claude tự chọn): D2-NR+P2 (`--defense d2nrp2`, D2+P2 tắt lớp luật A1).**
+  - Gemma: buiquocviet v4, `round2_launch.sh`, log `build/kaggle/round2_gemma4_12b.log`.
+  - Llama: khi relaunch VI xong, chạy trên endpoint còn sống:
+    `build/kaggle/round2_launch.sh huylmhuhu kaggle1.json llama31_8b_ctx16k llama31_8b build/kaggle/vllm_serve_v1_llama31_8b_ctx16k_20261107_005809`
+  - Qwen3.5: khi nomtle hoặc dovuong05 xong Tầng 2:
+    `build/kaggle/round2_launch.sh nomtle kaggle5.json qwen35_9b qwen35_9b` (log `build/kaggle/round2_qwen35_9b.log`).
+- Chẩn đoán gốc của vòng 2 (giữ để tham khảo; đề xuất (b) cho M5 không làm, lý do trong decision log):
+
   - Họ có hại / benign_auth util (/80) theo cấu hình A0, R1, D2, P2, D2+P1, D2+P2:
     Gemma 38/54, 36/49, 17/44, 7/54, 12/44, 2/45; Qwen3.5 40/36, 33/33, 15/28, 11/32, 14/31, 3/24;
     Llama 34/30, 25/27, 13/27, 13/40, 8/28, 5/36.

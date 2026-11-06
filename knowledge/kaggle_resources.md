@@ -31,6 +31,9 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
   T4, HF token chèn, folder `build/kaggle/vllm_serve_v1_secalign_8b_20261107_010050`; {A0, D2}, log `tier2_secalign_8b.log`.
 - [huylmhuhu/react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/huylmhuhu/react-vn-vllm-serve-v1-llama31-8b-ctx16k)
   **v4**, HF token chèn; 6 lượt AgentDojo-VI `important_instructions`, log `build/kaggle/relaunch_llama31_8b_3.log`.
+- 01:10 vòng chỉnh Dev 2 (D2-NR+P2): [buiquocviet/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-gemma4-12b)
+  **v4**, private, T4, HF token chèn (buiquocviet không có notebook nào chạy lúc bật); script `build/kaggle/round2_launch.sh`,
+  log `build/kaggle/round2_gemma4_12b.log`. Llama vòng 2 dùng lại endpoint huylmhuhu v4 sau AgentDojo-VI; Qwen3.5 chờ tài khoản Tầng 2 rảnh.
 - Script `build/kaggle/tier2_launch.sh OWNER CRED KEY "CONFIGS"` (prepare, push, `v3_dev_chain.sh` với `CONFIGS`, keep-alive 11 giờ,
   tắt keep-alive khi xong). Trạng thái thật: `kaggle kernels status`, không suy ra từ mục này.
 
