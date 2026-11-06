@@ -9,9 +9,8 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 - Tổng hợp: `.venv/bin/python scripts/aggregate_v3_dev_v1.py --output results/rebuild_b/v3_dev_round1.json`.
 - Mọi `_eval.json` đã qua kiểm hash trace. Một fixture (Qwen3.5 D2+P1 `BAU_D3_45_CANONICAL`) bị hai runner ghi chồng,
   đã xoá và chạy lại; runner nay khoá thư mục output (`7b57d29`).
-- AgentDojo EN Llama: Banking xong 3 cấu hình; Slack spotlighting còn chạy
-  (`build/kaggle/agentdojo_defense_run.sh F llama31_8b`, log `build/kaggle/agentdojo_defense_llama31_8b.log`).
-  Chạy lại cùng lệnh nếu dở (AgentDojo bỏ qua cặp đã có log). `agentdojo_chain.sh` đã sửa lỗi `wait` chờ keep-alive.
+- AgentDojo EN Llama XONG (Banking, Slack × không phòng thủ, spotlighting, repeat_user_prompt); số trong decision log.
+  Script `build/kaggle/agentdojo_defense_run.sh`; `agentdojo_chain.sh` đã sửa lỗi `wait` chờ keep-alive.
 - Notebook serve sẽ tự tắt khi hết keep-alive (khoảng 12:20) hoặc MAX_HOURS 11.5.
 
 **2026-11-06 02:50: WP7 Dev v3 đang chạy trên 3 backbone Tầng 1 tới 12:00 06/11; AgentDojo EN và VI-utility trên Llama.**

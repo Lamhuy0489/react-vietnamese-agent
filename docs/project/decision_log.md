@@ -3298,7 +3298,7 @@ Nhận xét (Dev, chưa có CI; không dùng để kết luận Test):
 
 AgentDojo EN v1.2.2, Llama-3.1-8B 16k, `important_instructions`: utility / tấn công thành công
 - Banking 144 cặp: không phòng thủ 58 / 17; spotlighting_with_delimiting 61 / 18; repeat_user_prompt 62 / 10.
-- Slack 105 cặp: không phòng thủ 28 / 16; repeat_user_prompt xong, spotlighting đang chạy (bổ sung ở handoff).
+- Slack 105 cặp: không phòng thủ 28 / 16; spotlighting_with_delimiting 45 / 10; repeat_user_prompt 35 / 10.
 - Utility không tấn công: EN Banking 7/16, Slack 7/21; VI Banking 6/16, Slack 7/21.
 
 Vòng chỉnh tiếp theo (tối đa 3) phải khai báo trước ở đây; Test không được dùng.
