@@ -3326,3 +3326,14 @@ Số family có hại trên 48, utility benign_plain trên 240, benign_auth trê
 - D2+P2 thấp nhất trên Gemma và Qwen; trên Llama 5 so với D2+P1 8, P2 13. Toàn bộ 3 model đã xong 15:26; còn lọt 1 family ở M3, M5 (và M4 trên Qwen).
 - Utility benign_plain giữ được, nhưng benign_auth giảm mạnh hơn D2 trên Qwen (36 → 24). Đây là cái giá cần nêu.
 - Sự cố: notebook Llama mới lần đầu thiếu HF token (GatedRepoError 401), push lại có token thì chạy.
+
+## 2026-11-07 — WP7: Llama D2+P2 chốt; khai báo chạy Tầng 2 và SecAlign trên Dev (trước khi chạy)
+
+- Llama-3.1-8B D2+P2 đủ 560/560 (eval 06/11 15:26, tổng hợp lại 07/11): 5/48 family có hại (M3 2, M4 1, M5 2),
+  plain util 82/240, auth util 36/80, model_error 60 (đều `OUTPUT_TRUNCATED`). Số này thay chú thích "một phần" ở mục 15:25.
+- Theo kế hoạch Study 2 (`rebuild_b_plan.md` mục Tầng 2), chạy trên Dev v3 (560 lượt), cùng bộ chấm, không dùng Test:
+  - Qwen3-8B × {A0, R1, PRG, D2}, tài khoản dovuong05;
+  - Qwen3.6-35B-A3B (AWQ) × {A0, R1, PRG, D2}, tài khoản oanhlam123456;
+  - Meta-SecAlign-8B × {A0, D2}, tài khoản nomtle; so với Llama-3.1-8B cùng base.
+- Tài khoản do owner chọn 07/11; không dùng huylmhuhu (đang chạy AgentDojo-VI Llama) và buiquocviet.
+- Không đổi tham số cấu hình nào; chỉ chạy cấu hình đã có. Chạy qua đêm, lượt dở resume theo `result.json`.
