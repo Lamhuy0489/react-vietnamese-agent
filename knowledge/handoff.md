@@ -5,6 +5,20 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
+**2026-11-07 11:35: đêm 07/11 xong gần hết. Chỉ còn Qwen3.6-35B-A3B Tầng 2 đang chạy (oanhlam123456 v3).**
+- Xong và ghi decision log 07/11: Llama D2+P2 chốt 5/48; Qwen3-8B {A0,R1,PRG,D2}; SecAlign {A0,D2}; AgentDojo-VI có tấn công
+  (6/6, bảng VI so với EN); vòng chỉnh 2 D2-NR+P2 trên 3 backbone Tầng 1: **bác, giữ D2+P2**; seal v3 (`cbfc549`).
+- Qwen3.6: notebook v1 mất tunnel 08:03; v3 bật 09:09, READY 09:32, keep-alive 11 giờ; log `build/kaggle/tier2_qwen36_35b_a3b_awq_r2.log`.
+  Kết quả `results/rebuild_b/v3_dev_{A0,R1,PRG,D2}_qwen36_35b_a3b_awq`. Lúc 08:40 có A0 329, R1 364, PRG 355 /560; D2 chưa chạy.
+  - Resume nếu dở: chờ kernel hết RUNNING rồi
+    `build/kaggle/tier2_launch.sh oanhlam123456 kaggle6.json qwen36_35b_a3b_awq "A0 R1 PRG D2" > build/kaggle/tier2_qwen36_35b_a3b_awq_r3.log 2>&1`.
+  - Xong: `aggregate_v3_dev_v1.py`, ghi decision log, tắt keep-alive.
+- Việc hạ tầng chờ (sau khi KHÔNG còn runner v3 nào chạy, vì runner băm `release.py` vào identity): sửa `write_release`
+  ghi oracle theo split (`private/test_oracles.json`) và từ chối khi đã có `seal.json`; thêm test.
+- Owner quyết: dùng vòng chỉnh 3 (cuối) hay chốt `final_config_v3` = D2+P2 rồi chạy Test v3 một lần.
+- Script mới: `build/kaggle/tier2_launch.sh`, `build/kaggle/round2_launch.sh`; `v3_dev_chain.sh` nhận `CONFIGS`.
+- Bài học: không `pkill` tiến trình cha chung của nhiều chuỗi (dừng Qwen3.6 đã kéo theo Qwen3-8B); dừng từng chuỗi theo PID.
+
 **2026-11-07 01:00: chạy qua đêm (máy owner phải bật). 4 notebook: AgentDojo-VI Llama, Tầng 2 Qwen3-8B và Qwen3.6, SecAlign.**
 - Llama D2+P2 đã chốt 560/560: 5/48 (decision log 07/11). Vòng chỉnh 1 xong trên cả 3 model.
 - AgentDojo-VI có tấn công: `relaunch_round1.sh` (huylmhuhu v4), log `build/kaggle/relaunch_llama31_8b_3.log`; 6 lượt

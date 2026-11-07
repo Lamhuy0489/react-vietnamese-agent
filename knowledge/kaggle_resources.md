@@ -34,6 +34,10 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 - 01:10 vòng chỉnh Dev 2 (D2-NR+P2): [buiquocviet/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-gemma4-12b)
   **v4**, private, T4, HF token chèn (buiquocviet không có notebook nào chạy lúc bật); script `build/kaggle/round2_launch.sh`,
   log `build/kaggle/round2_gemma4_12b.log`. Llama vòng 2 dùng lại endpoint huylmhuhu v4 sau AgentDojo-VI; Qwen3.5 chờ tài khoản Tầng 2 rảnh.
+- 06:57 [buiquocviet/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-qwen35-9b) **v3**,
+  vòng 2 Qwen3.5, xong 10:56. Gemma v4 xong 06:26; Llama huylmhuhu v4 vòng 2 xong 11:32; Qwen3-8B (dovuong05) và SecAlign (nomtle) xong.
+- 08:03 Qwen3.6 v2 mất tunnel (kernel còn RUNNING, endpoint chết). 09:09 [oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq)
+  **v3**, folder `build/kaggle/vllm_serve_v1_qwen36_35b_a3b_awq_20261107_090958`, READY 09:32, log `tier2_qwen36_35b_a3b_awq_r2.log`.
 - Script `build/kaggle/tier2_launch.sh OWNER CRED KEY "CONFIGS"` (prepare, push, `v3_dev_chain.sh` với `CONFIGS`, keep-alive 11 giờ,
   tắt keep-alive khi xong). Trạng thái thật: `kaggle kernels status`, không suy ra từ mục này.
 
