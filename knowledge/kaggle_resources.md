@@ -38,6 +38,9 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
   vòng 2 Qwen3.5, xong 10:56. Gemma v4 xong 06:26; Llama huylmhuhu v4 vòng 2 xong 11:32; Qwen3-8B (dovuong05) và SecAlign (nomtle) xong.
 - 08:03 Qwen3.6 v2 mất tunnel (kernel còn RUNNING, endpoint chết). 09:09 [oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq)
   **v3**, folder `build/kaggle/vllm_serve_v1_qwen36_35b_a3b_awq_20261107_090958`, READY 09:32, log `tier2_qwen36_35b_a3b_awq_r2.log`.
+- 21:38 Qwen3.6 v3 hết MAX_HOURS (A0, R1, PRG đủ 560; D2 555). 21:39 **v4**, folder
+  `build/kaggle/vllm_serve_v1_qwen36_35b_a3b_awq_20261107_213902`, READY 22:07, chạy nốt 5 lượt D2, xong 22:19, keep-alive tắt
+  (kernel tự dừng khi idle). Log `tier2_qwen36_35b_a3b_awq_r3.log`.
 - Script `build/kaggle/tier2_launch.sh OWNER CRED KEY "CONFIGS"` (prepare, push, `v3_dev_chain.sh` với `CONFIGS`, keep-alive 11 giờ,
   tắt keep-alive khi xong). Trạng thái thật: `kaggle kernels status`, không suy ra từ mục này.
 

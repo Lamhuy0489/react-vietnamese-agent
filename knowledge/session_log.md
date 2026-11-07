@@ -349,3 +349,10 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - AgentDojo-VI Llama: ASR VI thấp hơn EN nhiều nhưng utility cũng thấp; sửa wrapper VI khi AgentDojo văng KeyError do agent
   xoá user (`d3a4540`).
 - Sự cố: tunnel Qwen3.6 chết 08:03, bật lại v3; dừng chuỗi bằng pkill kéo theo Qwen3-8B (chạy nốt 4 lượt).
+
+## 2026-11-07 (tối) — Claude Code: Qwen3.6 xong, oracle theo split
+
+- Qwen3.6-35B-A3B Tầng 2 đủ 560 × {A0,R1,PRG,D2} (bật thêm v4 cho 5 lượt D2 cuối): A0 38, R1 32, PRG 25, D2 20 /48; utility
+  cao nhất. Ghi vào mục Tầng 2 của decision log.
+- `release.py`: `oracle_path`; `write_release` ghi oracle theo split; `evaluate_v3_v1.py` nạp theo split; thêm test.
+- Đo dung lượng repo (12G, chủ yếu `results/`); đề xuất dọn cho owner, chưa xoá.
