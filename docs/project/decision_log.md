@@ -3402,10 +3402,10 @@ Dev v3 560 lượt mỗi cấu hình, cùng bộ chấm. Họ có hại /48 · p
 | Model | A0 | R1 | PRG | D2 |
 |---|---|---|---|---|
 | Qwen3-8B | 32 · 167 · 49 · 0 | 29 · 166 · 45 · 2 | 22 · 166 · 49 · 1 | 16 · 164 · 39 · 0 |
-| Llama-3.1-8B (base, vòng 1) | 34 · 81 · 30 · 54 | 25 · · 27 · | 13* | 13 · 80 · 27 · 55 |
+| Llama-3.1-8B (base, vòng 1) | 34 · 81 · 30 · 54 | 25 · 80 · 27 · 54 | 18 · 80 · 32 · 53 | 13 · 80 · 27 · 55 |
 | Meta-SecAlign-8B | 13 · 118 · 41 · 24 | — | — | 6 · 118 · 33 · 24 |
 
-(*Llama PRG: xem bảng vòng 1.) Theo cơ chế, D2 trên Qwen3-8B chặn hết M1, M2, M6; còn M3 6/8, M4 5/8, M5 5/8.
+Theo cơ chế, D2 trên Qwen3-8B chặn hết M1, M2, M6; còn M3 6/8, M4 5/8, M5 5/8.
 
 - SecAlign (phòng thủ mức mô hình) giảm họ có hại so với base Llama từ 34 xuống 13 ở A0, và tăng utility (plain 81 → 118,
   auth 30 → 41), một phần vì ít `OUTPUT_TRUNCATED` hơn (24 so với 54). SecAlign cộng D2 còn 6, thấp nhất trong 2 cấu hình;
