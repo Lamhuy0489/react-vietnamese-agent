@@ -39,6 +39,8 @@ def row(model: str, config: str) -> dict[str, Any] | None:
     if not path.exists():
         return None
     report = json.loads(path.read_text(encoding="utf-8"))
+    if not report["summary"]:  # evaluated before any fixture finished
+        return None
     (level, s), = report["summary"].items()
     errors = sum(v for k, v in s["statuses"].items() if k.endswith(":model_error"))
     denied = sum(v for k, v in s["statuses"].items()
