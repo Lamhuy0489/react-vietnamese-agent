@@ -72,3 +72,27 @@ def test_pilot_build_and_qa_passes() -> None:
         report = rel.qa(ROOT, fixtures, privates, Path(scratch))
     assert report["problems"] == []
     assert report["replays"] == 40
+
+
+def test_write_release_splits_oracles_and_refuses_sealed() -> None:
+    import json
+
+    import pytest
+
+    fixtures, privates = rel.build(ROOT, "pilot_canonicals.json", "pilot", ("canonical",))
+    held = {p.family_id for p in privates[:3]}
+    fixtures = [f.model_copy(update={"split": "test"}) if f.family_id in held else f
+                for f in fixtures]
+    with tempfile.TemporaryDirectory() as scratch:
+        folder = Path(scratch)
+        rel.write_release(folder, fixtures, privates, {"problems": []})
+        dev = {r["family_id"] for r in json.loads((folder / "private/oracles.json").read_text())}
+        test = {r["family_id"]
+                for r in json.loads((folder / "private/test_oracles.json").read_text())}
+        assert test == held
+        assert dev == {p.family_id for p in privates} - held
+        assert rel.oracle_path(folder, "test").name == "test_oracles.json"
+        assert rel.oracle_path(folder, "dev").name == "oracles.json"
+        (folder / "seal.json").write_text("{}")
+        with pytest.raises(ValueError, match="sealed"):
+            rel.write_release(folder, fixtures, privates, {"problems": []})

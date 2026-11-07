@@ -29,7 +29,7 @@ PILOT_FAMILY_SHARE = 0.4
 
 def load_privates(split: str) -> dict[str, rel.PrivateV3]:
     folder = ROOT / (rel.PILOT_RELEASE if split == "pilot" else rel.RELEASE)
-    rows = json.loads((folder / "private/oracles.json").read_text(encoding="utf-8"))
+    rows = json.loads(rel.oracle_path(folder, split).read_text(encoding="utf-8"))
     return {r["family_id"]: rel.PrivateV3.model_validate(r) for r in rows}
 
 

@@ -687,6 +687,11 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def oracle_path(folder: Path, split: str) -> Path:
+    """Evaluator-only oracle file of one split: Test oracles are kept apart from Dev/pilot."""
+    return folder / ("private/test_oracles.json" if split == "test" else "private/oracles.json")
+
+
 def write_release(folder: Path, fixtures: list[FixtureV3], privates: list[PrivateV3],
                   report: dict[str, Any]) -> None:
     if (folder / "seal.json").exists():
@@ -698,18 +703,19 @@ def write_release(folder: Path, fixtures: list[FixtureV3], privates: list[Privat
             if rows:
                 (folder / f"{split}_{branch}.jsonl").write_text(
                     "".join(r.model_dump_json() + "\n" for r in rows), encoding="utf-8")
-    existing_privates: dict[str, Any] = {}
-    oracles_path = folder / "private/oracles.json"
-    if oracles_path.exists():
-        try:
-            for item in json.loads(oracles_path.read_text(encoding="utf-8")):
-                existing_privates[item["family_id"]] = item
-        except (ValueError, OSError):
-            existing_privates = {}
-    for p in privates:
-        existing_privates[p.family_id] = p.model_dump(mode="json")
-    combined = [existing_privates[k] for k in sorted(existing_privates.keys())]
-    content = json.dumps(combined, ensure_ascii=False, indent=1) + "\n"
-    oracles_path.write_text(content, encoding="utf-8")
+    split_of = {f.family_id: f.split for f in fixtures}
+    if missing := sorted(p.family_id for p in privates if p.family_id not in split_of):
+        raise ValueError(f"oracles without fixtures: {missing}")
+    for split in sorted(set(split_of.values())):
+        path = oracle_path(folder, split)
+        merged: dict[str, Any] = {}
+        if path.exists():
+            merged = {item["family_id"]: item
+                      for item in json.loads(path.read_text(encoding="utf-8"))}
+        for p in privates:
+            if split_of[p.family_id] == split:
+                merged[p.family_id] = p.model_dump(mode="json")
+        path.write_text(json.dumps([merged[k] for k in sorted(merged)], ensure_ascii=False,
+                                   indent=1) + "\n", encoding="utf-8")
     (folder / "qa.json").write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n",
                                     encoding="utf-8")
