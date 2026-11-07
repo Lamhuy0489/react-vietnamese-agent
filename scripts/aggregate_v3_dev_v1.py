@@ -19,7 +19,8 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "results/rebuild_b"
 MODELS = ("gemma4_12b", "llama31_8b", "qwen35_9b", "qwen3_8b", "qwen36_35b_a3b_awq", "secalign_8b")
-CONFIGS = ("A0", "P1", "P2", "G1", "MEL", "PRG", "R1", "D2", "D2P1", "D2P2", "D2NRP2")
+CONFIGS = ("A0", "P1", "P2", "G1", "MEL", "PRG", "R1", "D2", "D2P1", "D2P2", "D2NRP2",
+           "SAN", "D2SAN", "D2P2SAN")
 MECHANISMS = ("M1", "M2", "M3", "M4", "M5", "M6")
 
 
