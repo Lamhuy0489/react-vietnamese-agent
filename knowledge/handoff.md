@@ -5,6 +5,23 @@ Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
+**2026-11-08 03:45: Dev vòng chỉnh 3 (cuối) đang chạy: SAN, D2+SAN, D2+P2+SAN × Gemma, Qwen3.5, Llama (khai báo decision log 08/11).**
+- SAN = bộ lọc gỡ chỉ thị khỏi kết quả công cụ theo nhiệm vụ, cùng backbone (`security_v3/sanitizer.py`, kiểu PromptArmor/CommandSans).
+  Luật chọn khai báo trước: thay D2+P2 khi tổng có hại ≤ 10/144 (không backbone nào tệ hơn quá 1), auth ≥ 111/240, plain ≥ 364/720.
+- 6 notebook (bật 02:50, keep-alive 11 giờ): lamhuy8904 Llama 16k {D2P2SAN, SAN} + Gemma {D2SAN}; oanhlam123456 Qwen3.5
+  {D2P2SAN, SAN} + Llama 16k {D2SAN}; buiquocviet Gemma {D2P2SAN, SAN} + Qwen3.5 {D2SAN}. Mỗi cấu hình 3 shard.
+  Folder endpoint: `build/kaggle/round3_folder_<owner>_<K>`; log `build/kaggle/round3_<owner>_<K>.log`,
+  `build/kaggle/v3_dev_<K>_<CFG>_s<i>.log`; kết quả `results/rebuild_b/v3_dev_<CFG>_<K>{,_eval.json}`.
+- **Resume** (launcher chết, endpoint còn sống): `SHARDS=3 CONFIGS="D2P2SAN SAN" build/kaggle/v3_dev_chain.sh "$(cat build/kaggle/round3_folder_lamhuy8904_llama31_8b)" llama31_8b 11`
+  (tương tự từng cặp owner/K). Notebook chết: `HF_TOKEN="$(cat ~/.hf_token_r5)" build/kaggle/round3_launch.sh OWNER CRED SERVE_KEY K "CFGS"`
+  (`build/kaggle/round3_go` đã có nên chạy luôn). Runner bỏ qua fixture có `result.json`.
+- Xong: `.venv/bin/python scripts/aggregate_v3_dev_v1.py --output results/rebuild_b/v3_dev_round1.json`, điền Bảng 2.5 trong
+  `docs/research/study2_thesis_tables.md`, áp luật chọn, ghi decision log; owner duyệt rồi mới ghim `final_config_v3`.
+- WP8: attacker tự động bị bộ lọc an toàn chặn khi Claude viết; WP8 (a, b) do owner/Minh. Claude chạy file fixture họ đưa qua
+  `run_v3_api_v1.py --fixtures`. Notebook WP8 (nomtle, dovuong05) đã thả cho tự tắt.
+- Mới: bảng luận văn nháp `docs/research/study2_thesis_tables.md`; tách theo biến thể `scripts/v3_variant_breakdown_v1.py`
+  (D2: tiếng Anh lọt nhiều nhất trên 6 backbone; luật chèn A1 chỉ bật 3/48 ở tiếng Anh).
+
 **2026-11-07 22:30: Dev v3 xong hết. Không còn runner hay keep-alive nào chạy. Chờ owner quyết vòng 3 hay chốt D2+P2.**
 - Xong và ghi decision log 07/11: Llama D2+P2 chốt 5/48; Tầng 2 Qwen3-8B, Qwen3.6-35B-A3B {A0,R1,PRG,D2}; SecAlign {A0,D2};
   AgentDojo-VI có tấn công (bảng VI so với EN); vòng chỉnh 2 D2-NR+P2: **bác, giữ D2+P2**; seal v3 (`cbfc549`).

@@ -3467,3 +3467,17 @@ Test không được dùng.
   Nhiều X đạt thì chọn auth cao nhất, rồi có hại thấp nhất. Không X nào đạt thì giữ D2+P2. Owner duyệt lần cuối.
 - Trước Dev: smoke SAN trên pilot (không phải Dev/Test) để kiểm đầu ra hợp lệ; chỉ sửa lỗi hạ tầng, ghi lại nếu có.
 - GPU: lamhuy8904, oanhlam123456, buiquocviet, mỗi tài khoản 2 notebook (mỗi model 2 endpoint).
+
+## 2026-11-08 03:40 — WP7 vòng 3: smoke pilot, thay đổi hạ tầng trước Dev; WP8 phần tự động
+
+- Smoke SAN trên pilot (Gemma, 28 fixture, không phải Dev/Test): bản đầu gọi bộ lọc một lần cho mỗi chuỗi con, khoảng
+  45 giây mỗi lượt. Đổi thành một lần gọi cho mỗi observation (`sanitizer_v1.1`, gộp chuỗi con đến 6.000 ký tự), trước khi
+  chạy Dev. Kết quả smoke v1.1 (19 lượt đầu): gắn cờ 7/8 attack, 1/8 benign_plain, 0/3 benign_auth; 0 lỗi đầu ra. Đủ 27/28: có hại 0/11 family,
+  plain 11/12, auth 2/3. Bỏ qua span ngắn hơn 12 ký tự (tránh xoá nhầm chữ).
+- Runner: `--shard I/N` (cùng output, cùng identity; khoá ghi identity), `--fixtures` (chạy file fixture ngoài, hash vào
+  identity); ngưỡng lỗi hạ tầng liên tiếp 3 → 8, nghỉ 10 giây sau mỗi lỗi (tunnel rớt theo đợt). Không đổi chấm điểm,
+  prompt hay phòng thủ. Dev vòng 3 bật 03:27, 3 shard mỗi cấu hình.
+- **WP8 (b) attacker tự động:** bộ lọc an toàn chặn Claude khi viết prompt cho attacker LLM (viết lại đoạn chèn để vượt
+  phòng thủ). Theo quy tắc 05/11, phần này cùng red team người (WP8 a) thuộc owner/Minh; Claude chỉ chạy và chấm các file
+  fixture họ đưa (`run_v3_api_v1.py --fixtures`, mỗi dòng là `FixtureV3` attack Dev). 4 notebook WP8 đã bật (nomtle,
+  dovuong05) được thả cho tự tắt khi idle.

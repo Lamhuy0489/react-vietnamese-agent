@@ -22,6 +22,17 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-08 02:50 — Dev vòng chỉnh 3 (SAN), 6 notebook serve, private, T4×2, HF token chèn** (source: commit `a5d1332` trở đi):
+- [lamhuy8904/react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-llama31-8b-ctx16k) v1 {D2P2SAN, SAN};
+  [lamhuy8904/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-gemma4-12b) v1 {D2SAN}. Lần đầu dùng tài khoản này cho Study 2.
+- [oanhlam123456/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-qwen35-9b) v3 {D2P2SAN, SAN};
+  [oanhlam123456/react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-llama31-8b-ctx16k) v1 {D2SAN}.
+- [buiquocviet/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-gemma4-12b) v5 {D2P2SAN, SAN};
+  [buiquocviet/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-qwen35-9b) v4 {D2SAN}.
+- Cả 6 READY 03:01–03:27; script `build/kaggle/round3_launch.sh`, keep-alive 11 giờ.
+- 03:14 bật 4 notebook cho WP8 rồi bỏ (attacker tự động không làm được): nomtle `qwen36-35b-a3b-awq` v1, `gemma4-12b` v1;
+  dovuong05 `qwen35-9b` v1, `llama31-8b-ctx16k` v1. Không có request nên tự tắt sau 30 phút idle.
+
 **2026-11-07 01:00 — Tầng 2, SecAlign trên Dev v3 và AgentDojo-VI có tấn công** (tài khoản do owner chọn; source: commit kèm mục này):
 - [dovuong05/react-vn-vllm-serve-v1](https://www.kaggle.com/code/dovuong05/react-vn-vllm-serve-v1) **v1**, private, T4, Qwen3-8B,
   folder `build/kaggle/vllm_serve_v1_qwen3_8b_20261107_010010`; {A0, R1, PRG, D2}, log `build/kaggle/tier2_qwen3_8b.log`.
