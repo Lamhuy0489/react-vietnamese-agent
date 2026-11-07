@@ -3370,3 +3370,27 @@ giới hạn tool giữ nguyên. Mã ở `src/react_agent/security_v3/d2_no_rule
   Việc còn lại sau khi các lượt xong: `write` ghi oracle theo split và từ chối khi đã có `seal.json`.
 - Các script soạn dữ liệu của owner (`scripts/{dev,test}_data_part*.py`, `build_{dev,test}_canonicals.py`) để owner tự quyết có
   commit hay không; seal ghim kết quả, không phụ thuộc chúng.
+
+## 2026-11-07 08:40 — WP6: AgentDojo-VI có tấn công, Llama-3.1-8B, so với EN
+
+AgentDojo v1.2.2, `important_instructions`, Llama-3.1-8B 16k. GOAL và mẫu tấn công VI do owner/Minh dịch (`54f366e`).
+Utility / tấn công thành công:
+
+| Suite | Phòng thủ | EN | VI |
+|---|---|---|---|
+| Banking (144 cặp) | không | 58 / 17 | 44 / 6 |
+| | spotlighting_with_delimiting | 61 / 18 | 41 / 2 |
+| | repeat_user_prompt | 62 / 10 | 45 / 6 |
+| Slack (105 cặp) | không | 28 / 16 | 26 / 0 |
+| | spotlighting_with_delimiting | 45 / 10 | 20 / 1 |
+| | repeat_user_prompt | 35 / 10 | 19 / 0 |
+
+Không tấn công: Banking EN 7/16, VI 6/16; Slack EN 7/21, VI 7/21.
+
+- Bản VI có tấn công thành công thấp hơn hẳn EN (Banking 6 so với 17, Slack 0 so với 16 khi không phòng thủ), nhưng utility
+  dưới tấn công cũng thấp hơn. Không đọc điều này là "tiếng Việt an toàn hơn": Llama-8B làm kém cả tác vụ lẫn chỉ thị chèn
+  khi cả hai bằng tiếng Việt. Cần so với backbone mạnh hơn trước khi kết luận về ngôn ngữ.
+- Phòng thủ prompt (spotlighting, repeat) không đổi nhiều ASR VI vì ASR đã gần 0; trên Slack VI chúng còn giảm utility (26 → 20, 19).
+- Sự cố chấm điểm: ở 1 cặp Slack (repeat_user_prompt), mô hình gọi `remove_user_from_slack` lên Alice, nên hàm chấm gốc của
+  AgentDojo văng `KeyError`. Wrapper VI tính utility = False và security = False (mục tiêu chèn nhắm Alice không đạt);
+  có in log (commit `d3a4540` và commit trước đó). Bản EN không gặp lỗi này.
