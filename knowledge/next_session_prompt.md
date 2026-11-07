@@ -1,23 +1,24 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-07 01:05. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-07 11:35. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái (07/11 01:05): Study 2. Vòng chỉnh Dev 1 D2+P2 xong cả 3 model Tầng 1 (Gemma 2, Qwen3.5 3, Llama 5 /48).
-Đêm 07/11 chạy (khai báo decision log 07/11): Tầng 2 Qwen3-8B (dovuong05) và Qwen3.6-35B-A3B (oanhlam123456) × {A0,R1,PRG,D2},
-SecAlign-8B (nomtle) × {A0,D2} trên Dev; AgentDojo-VI có tấn công trên Llama (huylmhuhu v4). Không dùng buiquocviet.
-Claude không viết, đọc hay giao việc viết đoạn chèn tấn công hay nội dung Test; chỉ làm hạ tầng và đọc số đếm.
+Trạng thái (07/11 11:35): Study 2. Release v3 đã seal (cbfc549). Vòng chỉnh Dev 2 (D2-NR+P2) bị bác; D2+P2 là ứng viên chính
+(Gemma 2, Qwen3.5 3, Llama 5 /48). Tầng 2 Qwen3-8B và SecAlign xong; AgentDojo-VI có tấn công xong (decision log 07/11).
+Còn Qwen3.6-35B-A3B Tầng 2 chạy trên oanhlam123456 v3. Claude không viết, đọc hay giao việc viết đoạn chèn tấn công hay nội
+dung Test; chỉ làm hạ tầng và đọc số đếm. Tài khoản GPU owner cho dùng: oanhlam123456, nomtle, dovuong05 (huylmhuhu,
+buiquocviet chỉ khi không có notebook đang chạy).
 
 Việc phiên này:
-1. kaggle kernels status 4 notebook (xem kaggle_resources 07/11); đếm result.json từng thư mục v3_dev_<cfg>_<key>.
-   Lượt dở thì resume bằng lệnh trong handoff "Đang làm" (tier2_launch.sh / relaunch_round1.sh). Tắt keep-alive còn sót.
-2. Tổng hợp aggregate_v3_dev_v1.py; ghi decision log: Tầng 2 (Qwen3-8B, Qwen3.6), SecAlign so Llama-3.1-8B cùng base,
-   bảng AgentDojo VI so với EN (utility / attack success, 3 cấu hình × 2 suite).
-3. Vòng chỉnh 2 = D2-NR+P2 (khai báo 07/11 01:40): đọc kết quả Gemma/Llama/Qwen3.5, chạy phần còn thiếu, so với D2+P2.
-4. Seal v3 đã xong 07/11 (cbfc549). Khi không còn lượt chạy: sửa release.py write (oracle theo split, từ chối khi đã seal), thêm test.
+1. kaggle kernels status oanhlam123456 Qwen3.6; đếm result.json v3_dev_{A0,R1,PRG,D2}_qwen36_35b_a3b_awq. Dở thì resume theo
+   handoff "Đang làm"; xong thì aggregate_v3_dev_v1.py, ghi decision log Tầng 2 Qwen3.6, tắt keep-alive.
+2. Khi không còn runner v3: sửa release.py write (oracle theo split, từ chối khi đã seal) và thêm test.
+3. Hỏi owner: dùng vòng chỉnh 3 (cuối) hay chốt final_config_v3 = D2+P2; nếu chốt thì ghim manifest rồi chạy Test v3 một lần
+   (nạp private/test_oracles.json).
+4. Bắt đầu bảng luận văn Study 2 từ decision log (Dev vòng 1–2, Tầng 2, SecAlign, AgentDojo-VI).
 ```
 
 ## Ghi chú dùng

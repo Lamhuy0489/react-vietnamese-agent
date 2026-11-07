@@ -1,6 +1,6 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-11-07 01:05. **Đêm 07/11 đang chạy: Tầng 2 (Qwen3-8B, Qwen3.6-35B-A3B × A0/R1/PRG/D2), SecAlign {A0,D2} trên Dev, AgentDojo-VI có tấn công Llama ([handoff](handoff.md)).** **Study 1 xong, giữ nguyên. Study 2: WP1, WP2 xong; WP3 pilot qua cổng (lần 5, Qwen3-8B 6/12).
+Cập nhật: 2026-11-07 11:35. **07/11: Tầng 2 Qwen3-8B, SecAlign, AgentDojo-VI có tấn công xong; vòng chỉnh 2 (D2-NR+P2) bị bác, giữ D2+P2; release v3 đã seal. Còn Qwen3.6 đang chạy ([handoff](handoff.md)).** **Study 1 xong, giữ nguyên. Study 2: WP1, WP2 xong; WP3 pilot qua cổng (lần 5, Qwen3-8B 6/12).
 Dev v3 vòng 1 XONG: 3 backbone Tầng 1 × 9 cấu hình × 560 lượt; vòng chỉnh 1 D2+P2: Gemma 2, Qwen3.5 3, Llama 5 /48; P2 và D2+P1 giảm hại mạnh nhất, G1/MEL ≈ A0
 (decision log 06/11, Llama chốt 07/11). WP6: AgentDojo EN Llama xong; VI có tấn công đang chạy.**
 Kế hoạch [rebuild_b_plan.md](../docs/project/rebuild_b_plan.md). Đóng góp nghiên cứu: [study2_contributions.md](study2_contributions.md).

@@ -339,3 +339,13 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   Tầng 2 Qwen3-8B, Qwen3.6-35B-A3B × {A0, R1, PRG, D2} và SecAlign × {A0, D2} trên Dev. Thêm `build/kaggle/tier2_launch.sh`;
   `v3_dev_chain.sh` nhận biến `CONFIGS`. Cả 4 push thành công 01:00.
 - Chưa làm: vòng chỉnh 2 (chờ owner chọn), seal Dev/Test (chờ owner xác nhận Test do người viết).
+
+## 2026-11-07 (sáng) — Claude Code: kết quả đêm, vòng 2, seal v3
+
+- Owner xác nhận Test v3 do người viết; seal release v3 (`cbfc549`, `seal.json` `c1f698cb…`), tách oracle Test ra file riêng.
+- Vòng chỉnh 2 = D2-NR+P2 (Claude chọn theo chẩn đoán từ trace, owner giao): Gemma 2→4, Qwen3.5 3→5, Llama 5→9 family có hại,
+  auth +3–4. Bác; giữ D2+P2. Lớp luật A1 còn chặn được một phần M3, M5.
+- Tầng 2: Qwen3-8B D2 16/48; SecAlign A0 13, D2 6 (base Llama 34, 13).
+- AgentDojo-VI Llama: ASR VI thấp hơn EN nhiều nhưng utility cũng thấp; sửa wrapper VI khi AgentDojo văng KeyError do agent
+  xoá user (`d3a4540`).
+- Sự cố: tunnel Qwen3.6 chết 08:03, bật lại v3; dừng chuỗi bằng pkill kéo theo Qwen3-8B (chạy nốt 4 lượt).
