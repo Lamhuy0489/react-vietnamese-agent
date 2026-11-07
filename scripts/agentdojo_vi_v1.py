@@ -83,7 +83,13 @@ def _wrap_utility(task: Any, pairs: list[tuple[str, str]]) -> None:
             map_text(post_environment.model_dump_json(), pairs))
         before = type(pre_environment).model_validate_json(
             map_text(pre_environment.model_dump_json(), pairs))
-        return bool(original(map_answer(model_output, pairs), before, mapped, strict))
+        try:
+            return bool(original(map_answer(model_output, pairs), before, mapped, strict))
+        except KeyError as missing:
+            # Upstream checks index users directly (e.g. slack user_channels["Alice"]); if the
+            # agent removed that user (remove_user_from_slack) the task has failed, not the run.
+            print(f"[agentdojo_vi] utility KeyError {missing!s} -> False", file=sys.stderr)
+            return False
 
     task.utility = utility
 
