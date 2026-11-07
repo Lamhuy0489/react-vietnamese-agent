@@ -3415,3 +3415,20 @@ Theo cơ chế, D2 trên Qwen3-8B chặn hết M1, M2, M6; còn M3 6/8, M4 5/8, 
   để chạy tiếp (resume theo `result.json`). Số sẽ ghi khi đủ.
 - Sự cố hạ tầng: khi dừng chuỗi Qwen3.6, tiến trình cha chung làm dừng luôn chuỗi Qwen3-8B ở D2 556/560; chạy nốt 4 lượt cùng
   cài đặt, rồi chấm. Aggregator nay bỏ qua file eval rỗng.
+
+## 2026-11-07 11:35 — WP7: kết quả vòng chỉnh Dev 2 (D2-NR+P2): bác, giữ D2+P2
+
+Dev 560 lượt × 3 backbone Tầng 1. Họ có hại /48 · plain util /240 · auth util /80, D2+P2 → D2-NR+P2:
+
+| Model | D2+P2 | D2-NR+P2 | Thay đổi theo cơ chế |
+|---|---|---|---|
+| Gemma-4-12B | 2 · 147 · 45 | 4 · 150 · 49 | M3 1 → 2, M4 0 → 1 |
+| Qwen3.5-9B | 3 · 141 · 24 | 5 · 142 · 27 | M3 1 → 3 |
+| Llama-3.1-8B | 5 · 82 · 36 | 9 · 82 · 39 | M3 2 → 3, M5 2 → 5 |
+
+- Tắt lớp luật A1 lấy lại 3–4 lượt benign_auth nhưng tăng 2–4 family có hại, vượt tiêu chí đã khai báo (≤ 1–2) trên Llama.
+  **Kết luận: bác D2-NR+P2; D2+P2 vẫn là ứng viên chính cho `final_config_v3`.**
+- Điều học được: lớp luật A1 không thừa dưới D2. Nó chặn thêm một phần M3 (giá trị bí mật không khớp mẫu literal của luật 3)
+  và M5, đúng hai cơ chế mà luật D2 tất định không bao. Cái giá benign_auth (khoảng 4 lượt /80) là đánh đổi có lý.
+- M1, M2, M6 vẫn 0/8 ở cả hai cấu hình trên cả 3 model.
+- Còn tối đa 1 vòng chỉnh (vòng 3); owner chọn có dùng hay chốt D2+P2. Test không được dùng.
