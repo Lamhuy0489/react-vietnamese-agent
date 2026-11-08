@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import Any
 
 from react_agent.authoring.v3 import release as rel
+from react_agent.evaluation import final_config_v3
 from react_agent.schemas.trace import TraceEvent
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,6 +36,10 @@ def load_privates(split: str) -> dict[str, rel.PrivateV3]:
 
 def score_run(run: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     identity = json.loads((run / "identity.json").read_text())
+    if identity["split"] == "test":  # Test v3: frozen manifest must match, before any oracle
+        final_config_v3.verify(ROOT)
+        if identity.get("final_config_v3_sha256") != final_config_v3.manifest_sha256(ROOT):
+            raise final_config_v3.FrozenConfigError("run was not made under this final_config_v3")
     privates = load_privates(identity["split"])
     records = []
     for path in sorted(run.glob("runs/*/*/result.json")):

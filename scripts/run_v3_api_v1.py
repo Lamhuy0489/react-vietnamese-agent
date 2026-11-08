@@ -10,7 +10,8 @@ resume, infrastructure reruns). Differences:
 - models resolve from ``backbones_v3.yaml``; Meta-SecAlign uses the ``input`` role backend;
 - only public fixture files are read; private oracles stay with ``evaluate_v3_v1.py``.
 
-The Test split is refused until ``final_config_v3`` exists (plan WP9).
+The Test split runs only when ``configs/final/final_config_v3.json`` matches every pinned
+file and lists the (model, configuration) pair (plan WP9); its hash enters the identity.
 """
 
 from __future__ import annotations
@@ -31,6 +32,7 @@ import yaml
 from react_agent.agent.checkpoint import atomic_json
 from react_agent.authoring.v3 import release as rel
 from react_agent.config import load_generation_config, load_runtime_config
+from react_agent.evaluation import final_config_v3
 from react_agent.evaluation.adversarial_v1 import LEVELS, DryRunAgent
 from react_agent.llm.openai_compat_v1 import (
     InfrastructureError,
@@ -85,6 +87,14 @@ def model_spec(config: Path, key: str) -> dict[str, Any]:
     return spec
 
 
+def config_name(levels: list[str], defense: str | None) -> str | None:
+    """Configuration name used by the chains and the frozen Test matrix (A0, R1, P2, D2P2...)."""
+    if defense:
+        return defense.upper()
+    names: dict[tuple[str, ...], str] = {("A0",): "A0", ("A1",): "R1"}
+    return names.get(tuple(levels))
+
+
 def load_rows(folder: Path, split: str, branches: list[str]) -> list[rel.FixtureV3]:
     rows: list[rel.FixtureV3] = []
     for branch in branches:
@@ -101,7 +111,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model-key", default="qwen3_8b")
     parser.add_argument("--models-config", default="configs/models/backbones_v3.yaml")
-    parser.add_argument("--split", choices=["pilot", "dev"], default="pilot")
+    parser.add_argument("--split", choices=["pilot", "dev", "test"], default="pilot")
     parser.add_argument("--branches", nargs="+", default=list(rel.BRANCH_CODE),
                         choices=list(rel.BRANCH_CODE))
     parser.add_argument("--levels", nargs="+", default=["A0"], choices=NO_GUARD_LEVELS)
@@ -122,6 +132,19 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--dry-run-dummy", action="store_true",
                         help="CPU stand-in endpoint; pipeline check only")
     args = parser.parse_args(argv)
+    final_sha: str | None = None
+    if args.split == "test":
+        try:
+            manifest = final_config_v3.verify(ROOT)
+        except final_config_v3.FrozenConfigError as exc:
+            raise SystemExit(f"Test v3 refused: {exc}") from exc
+        test_config = config_name(args.levels, args.defense)
+        if test_config is None or not final_config_v3.allowed(manifest, args.model_key,
+                                                               test_config):
+            raise SystemExit(f"Test v3 refused: {args.model_key} {test_config} not in the matrix")
+        if args.fixtures or sorted(args.branches) != sorted(rel.BRANCH_CODE):
+            raise SystemExit("Test v3 runs the sealed release, all branches, no --fixtures")
+        final_sha = final_config_v3.manifest_sha256(ROOT)
     if args.dry_run_dummy and not args.output:
         raise SystemExit("--dry-run-dummy needs an explicit --output outside results/")
     d2 = args.defense in ("d2", "d2p1", "d2p2", "d2nrp2", "d2san", "d2p2san")
@@ -219,6 +242,7 @@ def main(argv: list[str] | None = None) -> int:
         "prompt": prompt_profile, "decoding_schema": "per_tool_v2_name_first",
         "a6_policy": a6_profile, "levels": args.levels,
         "variant_ids": [row.variant_id for row in all_rows],
+        **({"final_config_v3_sha256": final_sha} if final_sha else {}),
     }
     if args.defense:
         files_d = [ROOT / "src/react_agent/security_v3/prompt_baselines.py"] if (

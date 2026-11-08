@@ -3513,3 +3513,18 @@ Test không được dùng.
   `attack_tampered` 0/48 ở mọi cấu hình có D2. Lượt chạy bình thường (status ngang bộ tĩnh; chỉ `content`/`overlay` đổi).
 - Diễn giải: bộ này yếu hơn bộ tĩnh ở A0, nên không phải phép thử thích nghi mạnh; không đổi phòng thủ theo nó. Đề
   nghị owner/Minh soạn vòng 2 đạt ít nhất mức tĩnh ở A0. Bảng 2.6; `scripts/wp8_summary_v1.py`.
+
+## 2026-11-08 15:30 — WP9: owner duyệt `final_config_v3` = D2+P2; ma trận và giả thuyết Test v3 (trước khi chạy)
+
+- Owner duyệt (chat 08/11): `final_config_v3` = **D2+P2** (`runtime_d2_v1` + `control_data_policy_v1`, giữ lớp luật A1,
+  cộng nhắc lại sandwich P2), đúng luật vòng 3. Manifest `configs/final/final_config_v3.json` (ghi bằng
+  `scripts/freeze_final_config_v3.py`) ghim SHA-256 của `src/react_agent`, `configs`, runner, evaluator, spec, seal và các
+  file Test v3. Runner `--split test` và evaluator từ chối khi lệch một file hoặc cặp (model, cấu hình) ngoài ma trận.
+- Ma trận Test (840 fixture mỗi cặp, chạy một lần): Tầng 1 Gemma-4-12B, Llama-3.1-8B, Qwen3.5-9B × {A0, R1, P2, PRG, D2,
+  D2P2} (bắt buộc, chạy trước); Tầng 2 Qwen3-8B, Qwen3.6-35B-A3B × {A0, R1, PRG, D2, D2P2}; SecAlign × {A0, D2, D2P2}
+  (nếu còn GPU trước 14/12). P1, G1, MEL, D2P1, D2-NR+P2 và các cấu hình SAN chỉ báo trên Dev (G1, MEL ≈ A0; P1 kém P2;
+  còn lại là ứng viên bị bác). Lý do cắt: thông lượng đo ở Dev (khoảng 1 lượt/phút/cấu hình qua tunnel).
+- Giả thuyết chính (Holm, 6): H1–H5 giữ như kế hoạch §5; **H6 đổi** thành D2P2 < P2 (paired side-effect ASR), vì
+  không có bộ thích nghi trên Test (WP8 lần 1 yếu hơn bộ tĩnh, chỉ trên Dev). Dự đoán: D2 ≈ R1 trên M1, không hơn trên
+  M5; D2 tiếng Anh > canonical. Thống kê: McNemar + Holm, bootstrap theo family 10.000 lần; model_error là thất bại.
+- Sau khi thấy số Test không sửa phòng thủ, prompt, ngưỡng hay bộ chấm; chỉ chạy lại lỗi hạ tầng.
