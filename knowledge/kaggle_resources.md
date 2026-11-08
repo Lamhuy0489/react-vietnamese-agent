@@ -22,6 +22,8 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-08 15:47 — Test v3 Tầng 1 (`final_config_v3` `456de8d3…`), 6 notebook serve, private, T4×2:** nomtle `gemma4-12b` v2, `qwen35-9b` v1; dovuong05 `gemma4-12b` v1, `llama31-8b-ctx16k` v2; huylmhuhu `qwen35-9b` v1, `llama31-8b-ctx16k` v5. Chọn 3 tài khoản này vì quota tuần còn nhiều (lamhuy8904, oanhlam123456, buiquocviet đã chạy 18–25 giờ). Script `build/kaggle/test_launch.sh`.
+
 **2026-11-08 02:50 — Dev vòng chỉnh 3 (SAN), 6 notebook serve, private, T4×2, HF token chèn** (source: commit `a5d1332` trở đi):
 - [lamhuy8904/react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-llama31-8b-ctx16k) v1 {D2P2SAN, SAN};
   [lamhuy8904/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-gemma4-12b) v1 {D2SAN}. Lần đầu dùng tài khoản này cho Study 2.

@@ -1,9 +1,18 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-08. Lúc 14:50. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-08. Lúc 15:50. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
+
+**2026-11-08 15:50: Test v3 Tầng 1 đang chạy (một lần) dưới `final_config_v3` = D2+P2 (manifest `456de8d3…`, 408 file).**
+- Owner duyệt 08/11; decision log 15:30 (ma trận, H1–H6). Runner/evaluator từ chối khi lệch manifest hay cặp ngoài ma trận.
+- 6 notebook: nomtle Gemma {A0,R1,P2} + Qwen3.5 {A0,R1,P2}; dovuong05 Gemma {PRG,D2,D2P2} + Llama 16k {A0,R1,P2};
+  huylmhuhu Qwen3.5 {PRG,D2,D2P2} + Llama 16k {PRG,D2,D2P2}. Log `build/kaggle/test_logs/`, folder `build/kaggle/test_folder_<owner>_<K>`,
+  kết quả `results/rebuild_b/v3_test_<CFG>_<K>` (840 mỗi ô). Chưa chấm: chỉ chấm khi đủ cả ô.
+- **Resume** (endpoint sống): `SHARDS=3 CONFIGS="A0 R1 P2" build/kaggle/v3_test_chain.sh "$(cat build/kaggle/test_folder_nomtle_gemma4_12b)" gemma4_12b 14`.
+  Notebook chết: `HF_TOKEN="$(cat ~/.hf_token_r5)" build/kaggle/test_launch.sh OWNER CRED SERVE_KEY K "CFGS"` (bật cách nhau vài giây: tên folder theo giây).
+- Xong: `evaluate_v3_v1.py results/rebuild_b/v3_test_<CFG>_<K>` từng ô, rồi phân tích H1–H6 (McNemar + Holm, bootstrap family). Không sửa gì sau khi thấy số.
 
 **2026-11-08 14:50: vòng 3 và WP8 lần 1 xong. Không còn runner hay keep-alive nào chạy. Chờ owner duyệt `final_config_v3`.**
 - Vòng 3 (Bảng 2.5, decision log 08/11 14:00): SAN 20·372·120, D2SAN 6·368·97, D2P2SAN 1·362·97 (có hại /144 · plain /720
