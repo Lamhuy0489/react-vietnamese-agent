@@ -3547,3 +3547,7 @@ Test không được dùng.
   - Test Gemini cần ma trận mới: sau khi Tầng 1 chạy và chấm xong theo `final_config_v3`, ghi manifest phụ lục
     (`final_config_v3` giữ nguyên) thêm `gemini35_flash` × {A0, R1, D2, D2P2} và cấu hình model; không đổi file nào khác.
   - Key API để ngoài repo (`~/.gemini_keys`), không ghi vào repo hay knowledge.
+- 20:15 — Dừng Gemini Dev sau ~76 lượt gọi: 3 key đều là gói miễn phí, giới hạn
+  `GenerateRequestsPerDayPerProjectPerModel-FreeTier` = 20 lượt/ngày; Dev + Test cần cỡ 10.000+ lượt (≈ 2,2 lượt/fixture).
+  Thông báo lỗi ghi model `gemini-3.6-flash`: id `gemini-3.5-flash` đang được Google chuyển sang bản khác, nên phải ghi
+  model trả về thật, không chỉ id yêu cầu. Chờ owner quyết (bật billing có trần chi phí, hoặc bỏ phần Gemini).
