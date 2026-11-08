@@ -356,3 +356,13 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   cao nhất. Ghi vào mục Tầng 2 của decision log.
 - `release.py`: `oracle_path`; `write_release` ghi oracle theo split; `evaluate_v3_v1.py` nạp theo split; thêm test.
 - Đo dung lượng repo (12G, chủ yếu `results/`); đề xuất dọn cho owner, chưa xoá.
+
+## 2026-11-08 — Claude Code: vòng chỉnh 3 (SAN) và WP8 lần 1
+
+- Nghiên cứu và cài SAN: bộ lọc observation theo nhiệm vụ, cùng backbone (PromptArmor/CommandSans/DataFilter), runner chia shard
+  và `--fixtures`. Khai báo vòng 3 trước khi chạy; chạy qua đêm trên 6 notebook (lamhuy8904, oanhlam123456, buiquocviet).
+- Kết quả vòng 3 (tổng /144 · /720 · /240): SAN 20·372·120, D2SAN 6·368·97, D2P2SAN 1·362·97; mốc D2+P2 10·370·105. Không đạt
+  luật → giữ D2+P2. Bộ lọc nhỏ gắn cờ nhầm 33–57% benign (Llama, Qwen3.5); Gemma gần như không nhầm.
+- WP8 attacker tự động: bộ lọc an toàn chặn Claude viết; owner/Minh soạn 48 fixture thích nghi Dev. Claude kiểm hash/cấu trúc,
+  chạy × 5 cấu hình × 3 backbone. A0 thích nghi 4/6/6 so với tĩnh 29/12/22: yếu hơn bộ tĩnh; D2+P2 0/1/0.
+- Bảng luận văn 2.1–2.6; tách theo biến thể (D2 hở nhất với tiếng Anh). Sự cố: tunnel rớt, launcher tắt keep-alive khi xong.

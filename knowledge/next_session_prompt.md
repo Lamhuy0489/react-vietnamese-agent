@@ -6,18 +6,20 @@ quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên)
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái (07/11 22:30): Study 2. Release v3 đã seal (cbfc549). Dev v3 xong hết: Tầng 1 vòng 1–2 (vòng 2 D2-NR+P2 bị bác;
-D2+P2 là ứng viên chính: Gemma 2, Qwen3.5 3, Llama 5 /48), Tầng 2 Qwen3-8B và Qwen3.6-35B-A3B, SecAlign, AgentDojo-VI có
-tấn công (decision log 07/11). release.py/evaluate_v3_v1.py đã ghi và nạp oracle theo split (private/test_oracles.json).
-Không còn notebook nào chạy. Claude không viết, đọc hay giao việc viết đoạn chèn tấn công hay nội dung Test; chỉ làm hạ tầng
-và đọc số đếm. Tài khoản GPU owner cho dùng: oanhlam123456, nomtle, dovuong05 (huylmhuhu, buiquocviet chỉ khi không có
-notebook đang chạy).
+Trạng thái (08/11 14:50): Study 2. Vòng chỉnh 3 (SAN, cuối) xong: không cấu hình nào đạt luật khai báo, giữ D2+P2
+(Bảng 2.5, decision log 08/11 14:00). WP8 lần 1 (fixture owner/Minh `data/adversarial/adaptive_v3/adaptive_dev_attack.jsonl`)
+xong: bộ thích nghi yếu hơn bộ tĩnh ở A0 (4/6/6 so với 29/12/22), D2+P2 lọt 0/1/0 (Bảng 2.6). Không notebook nào cần giữ.
 
-Việc phiên này:
-1. Hỏi owner: dùng vòng chỉnh 3 (cuối) hay chốt final_config_v3 = D2+P2. Nếu chốt: ghi decision log, ghim manifest
-   final_config_v3, rồi chạy Test v3 một lần (A0 và D2+P2, các backbone đã khai báo); không chỉnh gì sau khi thấy số Test.
-2. Bắt đầu bảng luận văn Study 2 từ decision log (Dev vòng 1–2, Tầng 2, SecAlign, AgentDojo-VI).
-3. Dung lượng: owner chưa duyệt xoá build/venv_guard, build/kaggle/phase5_*, cache; nén results cũ ra ổ ngoài (xem handoff).
+Việc của phiên này:
+1. Hỏi owner duyệt final_config_v3. (a) D2+P2: ghi decision log, ghim manifest, chạy Test v3 một lần (3 backbone Tầng 1;
+   hỏi có thêm Tầng 2), bootstrap theo family + McNemar; sau khi thấy số Test không đổi gì. (b) Mở vòng Dev mới với model
+   lọc cố định: phải khai báo trước trong decision log.
+2. Nếu owner/Minh đưa fixture WP8 vòng 2: kiểm hash, dry run, `build/kaggle/wp8_chain.sh` (hoặc `wp8_launch.sh` nếu cần notebook),
+   `scripts/wp8_summary_v1.py`, cập nhật Bảng 2.6.
+3. Treo: A6 (giải thích hay chạy mốc Dev); dọn ổ đĩa (cần owner duyệt, chưa xoá gì).
+
+GPU: lamhuy8904 (kaggle.json), oanhlam123456 (kaggle6.json), buiquocviet (kaggle3.json), nomtle, dovuong05; mỗi tài khoản 2 GPU.
+Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng và số đếm.
 ```
 
 ## Ghi chú dùng

@@ -32,6 +32,8 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 - Cả 6 READY 03:01–03:27; script `build/kaggle/round3_launch.sh`, keep-alive 11 giờ.
 - 03:14 bật 4 notebook cho WP8 rồi bỏ (attacker tự động không làm được): nomtle `qwen36-35b-a3b-awq` v1, `gemma4-12b` v1;
   dovuong05 `qwen35-9b` v1, `llama31-8b-ctx16k` v1. Không có request nên tự tắt sau 30 phút idle.
+- 08/11 10:33 tunnel rớt hết 20 lần thử; resume bằng `round3_resume.sh` trên 5 endpoint còn sống. oanhlam123456 `llama31-8b-ctx16k` v1 đã COMPLETE, bật lại **v2** 10:34 {D2SAN}. Vòng 3 đủ 560 × 9 lúc ~13:14.
+- WP8 lần 1: Qwen3.5 trên oanhlam123456 `qwen35-9b` v3, Llama trên lamhuy8904 `llama31-8b-ctx16k` v1; Gemma: hai notebook Gemma đã tắt, bật lại [lamhuy8904/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-gemma4-12b) **v2** 13:47 (`build/kaggle/wp8_launch.sh`), xong 14:43. 14:50: mọi keep-alive đã dừng, notebook tự tắt khi idle.
 
 **2026-11-07 01:00 — Tầng 2, SecAlign trên Dev v3 và AgentDojo-VI có tấn công** (tài khoản do owner chọn; source: commit kèm mục này):
 - [dovuong05/react-vn-vllm-serve-v1](https://www.kaggle.com/code/dovuong05/react-vn-vllm-serve-v1) **v1**, private, T4, Qwen3-8B,

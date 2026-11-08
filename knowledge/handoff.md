@@ -1,9 +1,22 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-05. Lúc 17:30. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-08. Lúc 14:50. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
+
+**2026-11-08 14:50: vòng 3 và WP8 lần 1 xong. Không còn runner hay keep-alive nào chạy. Chờ owner duyệt `final_config_v3`.**
+- Vòng 3 (Bảng 2.5, decision log 08/11 14:00): SAN 20·372·120, D2SAN 6·368·97, D2P2SAN 1·362·97 (có hại /144 · plain /720
+  · auth /240) so với D2+P2 10·370·105. Không X nào đạt luật → **giữ D2+P2**. Bộ lọc cùng backbone: Gemma chính xác,
+  Llama/Qwen3.5 gắn cờ nhầm 33–57% lượt benign.
+- WP8 lần 1 (Bảng 2.6, decision log 08/11 14:45): fixture owner/Minh `adaptive_dev_attack.jsonl` (sha `4ea53cf8…`). A0 thích nghi
+  4/6/6 so với tĩnh canonical 29/12/22 (Gemma/Llama/Qwen3.5): yếu hơn bộ tĩnh; D2+P2 0/1/0. Cần vòng soạn 2 (owner/Minh).
+- Script mới: `build/kaggle/round3_resume.sh OWNER K "CFGS" H`, `wp8_chain.sh F K`, `wp8_launch.sh OWNER CRED SK K`
+  (bật notebook mới rồi chạy WP8), `scripts/wp8_summary_v1.py`. Bài học: launcher giết keep-alive khi xong, nên lượt dở phải
+  bật keep-alive lại (`round3_resume.sh` làm việc này); tunnel rớt làm hết 20 lần thử, chỉ cần chạy lại.
+- Bước tiếp: owner duyệt (a) D2+P2 → ghim manifest `final_config_v3`, chạy Test v3 một lần (3 backbone Tầng 1, có thể thêm
+  Tầng 2), bootstrap theo family + McNemar; hoặc (b) mở vòng Dev mới với model lọc cố định (phải khai báo).
+- Treo: A6 (giải thích hay chạy mốc Dev), dọn ổ đĩa (chưa xoá gì).
 
 **2026-11-08 03:45: Dev vòng chỉnh 3 (cuối) đang chạy: SAN, D2+SAN, D2+P2+SAN × Gemma, Qwen3.5, Llama (khai báo decision log 08/11).**
 - SAN = bộ lọc gỡ chỉ thị khỏi kết quả công cụ theo nhiệm vụ, cùng backbone (`security_v3/sanitizer.py`, kiểu PromptArmor/CommandSans).

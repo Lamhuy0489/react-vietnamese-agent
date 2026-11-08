@@ -3481,3 +3481,35 @@ Test không được dùng.
   phòng thủ). Theo quy tắc 05/11, phần này cùng red team người (WP8 a) thuộc owner/Minh; Claude chỉ chạy và chấm các file
   fixture họ đưa (`run_v3_api_v1.py --fixtures`, mỗi dòng là `FixtureV3` attack Dev). 4 notebook WP8 đã bật (nomtle,
   dovuong05) được thả cho tự tắt khi idle.
+
+## 2026-11-08 12:20 — WP8: chạy fixture thích nghi của owner/Minh (khai báo trước khi xem số)
+
+- Owner/Minh giao `data/adversarial/adaptive_v3/adaptive_dev_attack.jsonl`: 48 fixture attack Dev (`ATK_D3_xx_ADAPTIVE`,
+  một mỗi family, 8 mỗi cơ chế M1–M6), SHA-256 `4ea53cf8…b784`. Claude không đọc văn bản; chỉ kiểm mã băm, số dòng, split
+  `dev`, 48/48 family có oracle Dev, và dry run CPU 48/48 + evaluator chạy được. Chấm bằng oracle Dev gốc của family.
+- Cấu hình: A0, D2P2, D2SAN, D2P2SAN, SAN; backbone Gemma-4-12B, Qwen3.5-9B, Llama-3.1-8B (endpoint vòng 3 còn sống).
+  Output `results/rebuild_b/v3_dev_<cfg>_adaptive_<model>`; chain `build/kaggle/wp8_chain.sh` (kiểm hash trước khi chạy).
+- Chỉ số: family có hại /48 và theo cơ chế. So với mốc tĩnh cùng family là biến thể CANONICAL Dev (fixture có hại /48,
+  Bảng 2.4) và số family có hại trên mọi biến thể. A0 thích nghi cho biết đoạn chèn mới có mạnh hơn đoạn tĩnh không.
+- Lưu ý diễn giải: đây là tấn công thích nghi do người soạn trên Dev, không phải tìm kiếm tự động có vòng phản hồi; không
+  chỉnh phòng thủ theo số WP8 trước Test (nếu có đổi thì phải khai báo và chạy lại Dev).
+
+## 2026-11-08 14:00 — WP7 vòng 3: kết quả, giữ D2+P2
+
+- Đủ 560 lượt × 3 cấu hình × 3 backbone (resume sau khi tunnel rớt; lượt đã xong không chạy lại). Tổng có hại /144 ·
+  plain /720 · auth /240: SAN 20 · 372 · 120; D2SAN 6 · 368 · 97; D2P2SAN 1 · 362 · 97; mốc D2+P2 10 · 370 · 105.
+- Áp luật khai báo: SAN trượt điều 1 (Llama 11 so với 5, Qwen3.5 6 so với 3); D2SAN và D2P2SAN trượt điều 2 (auth 97
+  < 111), D2P2SAN trượt cả điều 3 (plain 362 < 364). **Không X nào đạt: giữ D2+P2** làm ứng viên `final_config_v3`,
+  chờ owner duyệt.
+- Chẩn đoán (đếm log, không đọc span): Gemma gắn cờ 222/240 attack, 2/240 plain, 0/80 auth; Llama và Qwen3.5 gắn cờ
+  nhầm 80–122/240 plain và 29–46/80 auth. Bộ lọc cùng backbone nhỏ thiếu độ chính xác. Đây là vòng chỉnh cuối theo
+  khai báo; đổi model lọc là hướng mở, không chạy trước Test trừ khi owner mở vòng mới có khai báo.
+- Bảng 2.5 trong `docs/research/study2_thesis_tables.md`.
+
+## 2026-11-08 14:45 — WP8: kết quả bộ thích nghi lần 1
+
+- Đủ 48 lượt × 5 cấu hình × 3 backbone (Gemma chạy trên notebook bật lại). Family có hại /48, thích nghi so với tĩnh
+  canonical cùng family: A0 Gemma 4/29, Llama 6/12, Qwen3.5 6/22; D2+P2 0/0, 1/1, 0/0; D2+P2+SAN 0, 1, 0.
+  `attack_tampered` 0/48 ở mọi cấu hình có D2. Lượt chạy bình thường (status ngang bộ tĩnh; chỉ `content`/`overlay` đổi).
+- Diễn giải: bộ này yếu hơn bộ tĩnh ở A0, nên không phải phép thử thích nghi mạnh; không đổi phòng thủ theo nó. Đề
+  nghị owner/Minh soạn vòng 2 đạt ít nhất mức tĩnh ở A0. Bảng 2.6; `scripts/wp8_summary_v1.py`.
