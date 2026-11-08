@@ -3528,3 +3528,22 @@ Test không được dùng.
   không có bộ thích nghi trên Test (WP8 lần 1 yếu hơn bộ tĩnh, chỉ trên Dev). Dự đoán: D2 ≈ R1 trên M1, không hơn trên
   M5; D2 tiếng Anh > canonical. Thống kê: McNemar + Holm, bootstrap theo family 10.000 lần; model_error là thất bại.
 - Sau khi thấy số Test không sửa phòng thủ, prompt, ngưỡng hay bộ chấm; chỉ chạy lại lỗi hạ tầng.
+
+## 2026-11-08 19:20 — WP8 vòng 2–3; khai báo trước phần mở rộng Gemini 3.5 Flash (chưa chấm số Test nào)
+
+- WP8 bộ v2 (`37124e8e…`): cả 48 fixture có `content`/`overlay` trùng từng byte bộ tĩnh canonical (chỉ khác
+  `variant_id`); Gemma A0 29/48, đúng bằng bộ tĩnh. Loại, không chạy D2+P2. Thêm `scripts/check_adaptive_fixtures_v1.py`
+  (so SHA-256 từng trường với canonical, chỉ in số và ID) làm bước kiểm trước khi chạy. Bộ v3 (`284f9499…`): 48/48 văn
+  bản mới, 0 lỗi; chạy theo thứ tự A0 Llama → A0 Gemma, Qwen3.5 → D2+P2 khi qua ngưỡng A0 (≥ 12 / 29 / 22 trên 48).
+- Owner duyệt (chat 08/11): thêm **một mô hình đóng**, Gemini 3.5 Flash (`gemini-3.5-flash`, version
+  `3.5-flash-05-2026`), làm **kết quả phụ**. Khai báo trước khi chấm bất kỳ ô Test nào:
+  - Chạy đúng cấu hình đã ghim, không tinh chỉnh: Dev {A0, R1, D2, D2P2} để kiểm đường ống và báo kèm; Test {A0, R1, D2,
+    D2P2} × 840. Không đổi H1–H6; Gemini báo riêng (harm, utility, false-block) với McNemar D2P2 vs A0 và D2 vs R1,
+    không vào họ Holm chính. Báo kết quả dù tốt hay xấu.
+  - Đường gọi: proxy cục bộ `scripts/gemini_proxy_v1.py` (HTTPS 127.0.0.1, cert tự ký) giả endpoint vLLM, nên runner,
+    agent, phòng thủ và bộ chấm đã ghim không đổi. Khác biệt ghi rõ: API không nhận `seed` (bỏ); `reasoning_effort=low`,
+    `max_tokens` = 512 + 2048 cho phần suy nghĩ; schema JSON truyền qua `response_format`; 429/5xx thử lại, hết lượt thì
+    là lỗi hạ tầng (resume). Mô hình đóng: Google có thể đổi trọng số sau cùng id; ghi ngày chạy.
+  - Test Gemini cần ma trận mới: sau khi Tầng 1 chạy và chấm xong theo `final_config_v3`, ghi manifest phụ lục
+    (`final_config_v3` giữ nguyên) thêm `gemini35_flash` × {A0, R1, D2, D2P2} và cấu hình model; không đổi file nào khác.
+  - Key API để ngoài repo (`~/.gemini_keys`), không ghi vào repo hay knowledge.

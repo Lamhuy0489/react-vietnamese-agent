@@ -41,13 +41,14 @@ def fmt(h: dict[str, set[str]] | None) -> dict[str, object] | None:
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--models", nargs="+", default=["gemma4_12b", "llama31_8b", "qwen35_9b"])
+    p.add_argument("--tag", default="adaptive", help="adaptive (round 1) or adaptive2")
     p.add_argument("--output", type=Path)
     args = p.parse_args(argv)
     out: dict[str, dict[str, dict[str, dict[str, object] | None]]] = {}
     for model in args.models:
         for cfg in CONFIGS:
             static = ROOT / f"v3_dev_{cfg}_{model}_eval.json"
-            adaptive = ROOT / f"v3_dev_{cfg.lower()}_adaptive_{model}_eval.json"
+            adaptive = ROOT / f"v3_dev_{cfg.lower()}_{args.tag}_{model}_eval.json"
             row = {"adaptive": fmt(harmful(adaptive, None)),
                    "static_canonical": fmt(harmful(static, "CANONICAL")),
                    "static_any_variant": fmt(harmful(static, None))}
