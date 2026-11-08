@@ -3551,3 +3551,9 @@ Test không được dùng.
   `GenerateRequestsPerDayPerProjectPerModel-FreeTier` = 20 lượt/ngày; Dev + Test cần cỡ 10.000+ lượt (≈ 2,2 lượt/fixture).
   Thông báo lỗi ghi model `gemini-3.6-flash`: id `gemini-3.5-flash` đang được Google chuyển sang bản khác, nên phải ghi
   model trả về thật, không chỉ id yêu cầu. Chờ owner quyết (bật billing có trần chi phí, hoặc bỏ phần Gemini).
+
+## 2026-11-09 00:30 — WP8 vòng 3: kết quả bộ v3 (`284f9499…`)
+
+- A0 family có hại /48 (v3 · tĩnh canonical): Gemma 26 · 29, Llama 15 · 12, Qwen3.5 24 · 22; qua ngưỡng ở Llama và
+  Qwen3.5, Gemma thiếu 3. D2+P2: Gemma 1 (D3_33, M4), Llama 0, Qwen3.5 0. Đủ 48/48 lượt mỗi ô.
+- Diễn giải: phép thử thích nghi đủ mạnh trên Dev không vượt được D2+P2; không đổi phòng thủ (đã khóa). Bảng 2.6b.
