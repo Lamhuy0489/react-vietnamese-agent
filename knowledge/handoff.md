@@ -1,9 +1,17 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-10. Lúc 01:50. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-10. Lúc 02:55. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
+
+**2026-11-10 02:40: Test-3 XONG, T1–T3 đều đạt (Holm). Bảng 2.10, decision log 02:40.** Script `scripts/test3_hypotheses_v1.py`
+(branch `study2/test3-seal`, `c2676fa`), số ở `results/rebuild_b/v3_test3_hypotheses.json`. Chưa merge `study2/test3-seal`:
+chờ Gemini Dev xong (merge đổi `release.py`/`run_v3_api_v1.py` = đổi định danh lượt Gemini). Untracked `test3_canonicals.json`
+ở checkout chính sẽ chặn merge: so hash với bản trong branch rồi bỏ bản untracked trước khi merge.
+- Chẩn đoán Llama (decision log 01:50): `build/kaggle/llama_tok_diag.sh` chạy Llama Dev A0 với `--max-new-tokens 2048`
+  (cờ mới, chỉ Dev, `3961b95`) trên notebook Llama 16k → `results/rebuild_b/v3_dev_A0_llama31_8b_tok2048`; so với
+  `v3_dev_A0_llama31_8b` (512) theo từng fixture. Notebook hết hạn ~09:07; resume: chạy lại script.
 
 **2026-11-09 21:50: Test-3 ĐANG CHẠY (một lần), `final_config_v4` sha256 `59f32eea…` (owner duyệt 21:40).**
 - D3 Dev xong 12/12 ô; theo tiêu chí 13:00 chọn **D3DEST** (harm 12 = D2P2 12; utility 490 > 475 / 960). Decision log 21:20.

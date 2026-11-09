@@ -1,6 +1,6 @@
 # Trạng thái hiện tại
 
-**10/11 01:50: Test-3 đang chạy (9 ô, A0 Llama 523/560). Gemini Dev: A0, D2P2 xong; R1, D2 và D3DEST đang chạy; sau đó
+**10/11 02:40: Test-3 XONG, T1–T3 đều đạt (Holm; Bảng 2.10). Trước đó 01:50: Gemini Dev: A0, D2P2 xong; R1, D2 và D3DEST đang chạy; sau đó
 AgentDojo Gemini 16 lượt. Llama: 74 OUTPUT_TRUNCATED ở Test-3 A0, kế hoạch độ nhạy ở decision log 10/11 01:50.**
 
 Cập nhật: 2026-11-09 14:15. **09/11 chiều: D3 (D2 + A1 thu hẹp theo đích + lời nhắc v2 + phản hồi chặn v2) đang chạy trên Dev, branch `study2/d3-dev`; Test v3 không dùng cho D3, khẳng định chính thức cần Test-3 mới.** **09/11: Test v3 Tầng 1 XONG (Bảng 2.7): D2+P2 có hại 5/5/1 /72 (A0 50/41/47); H1, H3, H6 bác H0, H2 chưa chứng minh, H4, H5 không khác. WP8 vòng 3: D2+P2 0–1/48.** Trước đó, 08/11: vòng chỉnh 3 (SAN, cuối) xong: không cấu hình nào đạt luật, giữ D2+P2 (chờ owner duyệt `final_config_v3`, rồi Test v3 một lần). WP8 lần 1 (fixture owner/Minh) xong: bộ thích nghi yếu hơn bộ tĩnh ở A0, D2+P2 lọt 0–1/48; cần vòng soạn 2. Bảng luận văn: `docs/research/study2_thesis_tables.md` (2.1–2.6).**

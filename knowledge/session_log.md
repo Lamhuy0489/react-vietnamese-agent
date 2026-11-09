@@ -404,3 +404,9 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   (`gemini3_followup_chain.sh`). Không chạy Gemini trên Test (ma trận đóng băng, không gửi Test ra ngoài). Decision log 01:30.
 - Sửa script đang chạy bằng thay file nguyên khối (sed > tmp; mv), vì bash đọc script theo offset.
 - Llama: model_error ở Test-3 đều là OUTPUT_TRUNCATED; Test-3 giữ nguyên, owner duyệt 2 phân tích độ nhạy (decision log 01:50).
+
+## 2026-11-10 02:00–02:55 — Test-3 xong; chẩn đoán Llama
+
+- Supervisor qua đêm báo TEST3_DONE 02:18 (9/9 ô 560, đã evaluate); bật lại với SKIP_T3_DONE=1 cho Gemini.
+- T1 +1,0 điểm utility (11/1, Holm 3,2e-3; CI family chạm 0), T2 đạt, T3 0,324 → 0,036. Bảng 2.10, decision log 02:40.
+- Merge test3-seal hoãn tới khi Gemini Dev xong. Llama Dev A0 2048 token đang chạy trên notebook Llama còn sống.
