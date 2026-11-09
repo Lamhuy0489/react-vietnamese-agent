@@ -3613,3 +3613,17 @@ Test không được dùng.
   (attack 240, plain 240, auth 80); `qa` 800 replay, 0 lỗi, novelty max 0,1818, không literal trùng.
 - SHA-256 đóng băng: `6b7dbd67b0e22fdb5deea84e17be74b2409d74d6b83fd67b4143bfa3bd5866ce`. File giữ cục bộ, không sửa nữa;
   commit cùng lúc niêm phong (sau D3 Dev), khi đó `seal.json` phải ghi đúng hash này.
+
+## 2026-11-09 17:45 — Gemini 3 Flash (tham chiếu mô hình mạnh) qua OmniRoute (owner duyệt)
+
+- Owner chọn chạy Gemini 3 Flash qua OmniRoute cục bộ (pool 3 tài khoản Google, provider Antigravity) thay cho API chính thức
+  (gói miễn phí 20 lượt/ngày). Owner chấp nhận rủi ro điều khoản. Model key `gemini3_flash` (`build/gemini/backbones_gemini.yaml`,
+  ngoài repo), kết quả `results/rebuild_b/v3_dev_<CFG>_gemini3_flash`. Chỉ là tham chiếu, ngoài kiểm định chính.
+- Cùng runner v3, prompt v3, môi trường E2. Lệch so với các backbone mở, ghi vào hạn chế:
+  - không ghim phiên bản (server có thể đổi), không seed; không dùng reasoning_effort;
+  - **bỏ `response_format`** khi chuyển tiếp: với JSON schema per-tool, đường Antigravity làm model lặp lại hành động cũ (thử
+    trực tiếp cùng ngữ cảnh: có schema → lặp, không schema → đúng). Runner vẫn kiểm mọi lượt theo schema hành động;
+  - **cache ngữ nghĩa của OmniRoute phải tắt**: lần smoke đầu trả câu trả lời đã cache cho ngữ cảnh khác. Proxy gửi
+    `X-OmniRoute-No-Cache: true` (đã kiểm: gọi lặp vẫn ~1 s, không 0,02 s); `semanticCacheEnabled` cũng đặt false trong cấu hình.
+  - nhịp gọi tối thiểu 4 s (`--min-interval`), retry 429/5xx.
+- Smoke 10 fixture Dev A0 sau sửa: 10/10 completed, benign 5/5 utility. Chạy Dev A0, D2P2, R1, D2 tuần tự (~3 h/cấu hình).

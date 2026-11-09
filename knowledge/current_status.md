@@ -17,9 +17,9 @@ Study 1: R4 Test v1; `final_config_v2` (`8889e448…`); Test-2 (D2 = A1 200/200)
   xoay vòng 3 tài khoản Google qua provider Antigravity). File hướng dẫn và cấu hình chứa key cục bộ + email nên đã
   gitignore (`docs/omniroute_gemini_guide.md`, `configs/models/gemini_omniroute.yaml`, `scripts/run_gemini_smoke.py`,
   `scripts/setup_omniroute_pool.py`). Kiểm 09/11: server trả 200, JSON schema chạy được, phản hồi không có trường `model`.
-- Chưa chạy benchmark: cần (1) adapter như `gemini_proxy_v1.py` trỏ upstream OmniRoute để dùng đúng runner v3 + prompt v3
-  (không dùng `run_gemini_smoke.py`/prompt riêng: không so sánh được); (2) owner chấp nhận rủi ro điều khoản Google khi
-  dùng quota Antigravity cho chạy hàng loạt, và ghi hạn chế: model không ghim phiên bản, không seed, backend có thể đổi.
+- 17:45: ĐANG CHẠY Dev {A0, D2P2, R1, D2} (`build/gemini/gemini3_dev_chain.sh`, log `build/gemini/g3_*.log`, proxy cổng 8444
+  `scripts/gemini_proxy_v1.py --upstream … --header "X-OmniRoute-No-Cache: true" --drop-field response_format --min-interval 4`,
+  key OmniRoute ở `~/.omniroute_key`). Lệch chuẩn và lý do: decision log 09/11 17:45. Resume: chạy lại chain (bỏ qua fixture xong).
 
 ## Study 2 đã chốt (2026-11-05)
 
