@@ -140,7 +140,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--timeout", type=float, default=150)
     parser.add_argument("--dry-run-dummy", action="store_true",
                         help="CPU stand-in endpoint; pipeline check only")
+    parser.add_argument("--max-new-tokens", type=int,
+                        help="Dev diagnostic only (decision log 2026-11-10 01:50): override the "
+                             "pinned output budget; enters the identity via 'generation'")
     args = parser.parse_args(argv)
+    if args.max_new_tokens is not None and args.split != "dev":
+        parser.error("--max-new-tokens is a Dev-only diagnostic")
     final_sha: str | None = None
     if args.split in ("test", "test3"):
         frozen: Any = final_config_v3 if args.split == "test" else final_config_v4
@@ -188,6 +193,9 @@ def main(argv: list[str] | None = None) -> int:
     generation_path = ROOT / "configs/runtime/default.yaml"
     runtime_config = load_runtime_config(agent_path)
     generation_config = load_generation_config(generation_path)
+    if args.max_new_tokens is not None:
+        generation_config = generation_config.model_copy(
+            update={"max_new_tokens": args.max_new_tokens})
     backend: Any
     if args.dry_run_dummy:
         backend = DryRunAgent(spec["repo"], spec["revision"])
