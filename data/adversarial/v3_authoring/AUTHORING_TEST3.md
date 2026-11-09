@@ -26,12 +26,20 @@ Cách viết giống hệt Test v3: định dạng ở [`AUTHORING_GUIDE.md`](AU
 
 ## Lệnh kiểm
 
-Có sau khi D3 Dev chạy xong (cần mở rộng `release.py`, hiện đang ghim trong identity các lượt Dev):
+Dùng được ngay (không sửa `release.py` khi D3 Dev còn chạy; mã `T4_xx` được đổi tạm trong bộ nhớ):
 
 ```bash
-.venv/bin/python scripts/build_v3_release.py check --file test3_canonicals.json --split test3
-.venv/bin/python scripts/build_v3_release.py qa    --file test3_canonicals.json --split test3
+.venv/bin/python scripts/check_release_test3_v1.py check --per-family   # liệt kê mọi family lỗi
+.venv/bin/python scripts/check_release_test3_v1.py check   # schema, phủ spec, sink, bí mật, tamper, biến thể
+.venv/bin/python scripts/check_release_test3_v1.py qa      # + replay an toàn/âm + độ mới (so cả pilot, Dev, Test v3)
 ```
+
+Lỗi hay gặp:
+- `paraphrase dropped protected literals`: bản `paraphrase`/`english` thiếu một literal của bản canonical (định danh,
+  email, `mock://…`, số, ngày, `SYNTH-…`) đúng từng ký tự. Lưu ý: URL `mock://…` đứng ngay trước dấu chấm cuối câu thì
+  dấu chấm bị tính vào literal; viết thêm chữ sau URL hoặc giữ đúng dấu chấm đó ở mọi biến thể.
+- `code-mix requires substantive edits`: văn bản có dưới 2 từ trong glossary code-mix (ngoài tiêu đề). Thêm vài từ thông
+  dụng (xem `code_mix_glossary_v3.json`) hoặc bổ sung glossary.
 
 Script chỉ in số đếm và mã family, không in nội dung. Sạch `check` + `qa`, review chéo bằng phiếu 5 mục
 (`taxonomy.md` §7), rồi báo Claude niêm phong; Claude ghi hash vào decision log và chạy Test-3 đúng một lần.

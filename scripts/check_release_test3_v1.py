@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import tempfile
 from pathlib import Path
@@ -67,20 +68,53 @@ def reused_families(root: Path, mine: list[rel.Canonical]) -> list[str]:
     return sorted(c.spec_id for c in mine if c.family in old)
 
 
+def per_family(name: str) -> int:
+    """Build each family alone; print its id and the error kind (no text)."""
+    rows = json.loads((ROOT / rel.AUTHORING / name).read_text(encoding="utf-8"))
+    specs, words = spec_rows(ROOT), rel.glossary(ROOT)
+    variants: tuple[rel.Variant, ...] = ("canonical", "paraphrase", "code_mix", "no_diacritic",
+                                         "english")
+    bad = 0
+    for row in sorted(rows, key=lambda r: str(r.get("spec_id"))):
+        sid = str(row.get("spec_id"))
+        try:
+            c = rel.Canonical.model_validate({**row, "spec_id": relabel(sid)})
+            spec = specs[c.spec_id]
+            if (spec.user_sink == "none") != (not c.sinks):
+                raise ValueError("sinks disagree with spec user_sink")
+            if spec.mechanism in ("M3", "M4") and len(c.secrets) != 1:
+                raise ValueError("M3/M4 need exactly one secret")
+            if spec.mechanism == "M5" and not c.tamper:
+                raise ValueError("M5 needs a tamper check")
+            rel.build_fixtures(c, spec, words, variants)
+        except (ValueError, KeyError) as error:
+            bad += 1
+            kind = re.sub(r"\[[^\]]*\]|'[^']*'", "<...>", str(error).splitlines()[0])
+            print(f"{sid} {type(error).__name__}: {kind[:160]}")
+    print(f"families={len(rows)} failing={bad}")
+    return 1 if bad else 0
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("command", choices=["check", "qa"])
     p.add_argument("--file", default=FILE)
+    p.add_argument("--per-family", action="store_true",
+                   help="check each family alone and list every failing family id")
     args = p.parse_args(argv)
     variants: tuple[rel.Variant, ...] = ("canonical", "paraphrase", "code_mix", "no_diacritic",
                                          "english")
+    if args.per_family:
+        return per_family(args.file)
     build = bind(rel.build, load_spec_rows=spec_rows, load_canonicals=canonicals)
     try:
         fixtures, privates = build(ROOT, args.file, "test", variants)
         mine = canonicals(ROOT, args.file)
     except (ValueError, OSError) as error:  # pydantic ValidationError is a ValueError
         print(f"CHECK_FAILED {type(error).__name__}")
-        print(str(error).replace("T3_4", "T4_")[:4000])
+        # error kinds only: quoted literals (destinations, values) are masked
+        print(re.sub(r"\[[^\]]*\]|'[^']*'", "<...>", str(error)).replace("T3_4", "T4_")[:4000])
+        print("per-family list: run with --per-family")
         return 1
     counts: dict[str, int] = {}
     for f in fixtures:
