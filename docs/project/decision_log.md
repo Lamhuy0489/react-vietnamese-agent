@@ -3627,3 +3627,13 @@ Test không được dùng.
     `X-OmniRoute-No-Cache: true` (đã kiểm: gọi lặp vẫn ~1 s, không 0,02 s); `semanticCacheEnabled` cũng đặt false trong cấu hình.
   - nhịp gọi tối thiểu 4 s (`--min-interval`), retry 429/5xx.
 - Smoke 10 fixture Dev A0 sau sửa: 10/10 completed, benign 5/5 utility. Chạy Dev A0, D2P2, R1, D2 tuần tự (~3 h/cấu hình).
+
+## 2026-11-09 21:30 — Gemini 3 Flash: sửa hình thức JSON, chạy lại Dev từ đầu
+
+- Không có `response_format` (bỏ để tránh lặp hành động, mục 17:45), Gemini trả về JSON có chữ bao quanh ở ~3% lượt
+  gọi (đếm cấu trúc ở proxy, không ghi nội dung), làm ~12% lượt chạy A0 thành `model_error` (Gemma 3, Qwen 5 / 560),
+  trong khi backbone vLLM được ép schema phía server. Không công bằng cho so sánh model mạnh.
+- Proxy thêm `--extract-json`: khi văn bản không phải object JSON nhưng đoạn từ `{` đầu tới `}` cuối parse được thành
+  một object, thay văn bản bằng object đó (sửa hình thức, không đổi nội dung; runner vẫn kiểm schema từng lượt).
+- Chạy lại cả 4 cấu hình Dev từ đầu (không chọn lọc lượt lỗi), revision `antigravity-omniroute-2026-11-09-jsonfix`,
+  nhịp 2 s (owner). Kết quả cũ giữ ở `v3_dev_{A0,D2P2}_gemini3_flash_nojsonfix` để báo cáo độ nhạy.

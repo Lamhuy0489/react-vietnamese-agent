@@ -66,6 +66,38 @@ def output_shape(result: dict[str, Any]) -> str:
         return "text_around_json" if "{" in stripped else "plain_text"
 
 
+def extract_object(result: dict[str, Any]) -> bool:
+    """Replace reply text by the one JSON object it wraps (format repair, no content change).
+
+    Stands in for the server-side schema decoding the vLLM backbones get: applies only when the
+    text is not a JSON object itself and the span from the first ``{`` to the last ``}`` parses
+    as one. Returns whether the reply was changed.
+    """
+    try:
+        message = result["choices"][0]["message"]
+        text = message["content"]
+    except (KeyError, IndexError, TypeError):
+        return False
+    if not isinstance(text, str):
+        return False
+    try:
+        if isinstance(json.loads(text.strip()), dict):
+            return False
+    except json.JSONDecodeError:
+        pass
+    start, end = text.find("{"), text.rfind("}")
+    if start < 0 or end <= start:
+        return False
+    try:
+        value = json.loads(text[start:end + 1])
+    except json.JSONDecodeError:
+        return False
+    if not isinstance(value, dict):
+        return False
+    message["content"] = text[start:end + 1]
+    return True
+
+
 class Proxy:
     def __init__(self, args: argparse.Namespace) -> None:
         self.keys = [k.strip() for k in Path(args.keys_file).expanduser().read_text().split()
@@ -124,6 +156,8 @@ class Proxy:
                     result: dict[str, Any] = json.loads(response.read())
                 result["model"] = self.served
                 self.count("shape_" + output_shape(result))
+                if self.args.extract_json and extract_object(result):
+                    self.count("json_extracted")
                 return 200, result
             except urllib.error.HTTPError as exc:
                 self.count(f"http_{exc.code}")
@@ -206,6 +240,8 @@ def main() -> int:
                         "validates every turn against the action schema)")
     p.add_argument("--header", action="append", default=[],
                    help="extra upstream header 'Name: value' (repeatable)")
+    p.add_argument("--extract-json", action="store_true",
+                   help="unwrap a reply whose text surrounds one JSON object (format repair)")
     p.add_argument("--stats-every", type=float, default=300)
     args = p.parse_args()
     if not args.upstream.startswith(("https://", "http://127.0.0.1:", "http://localhost:")):
