@@ -385,3 +385,13 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   luật 3 theo tài nguyên thả 5 attack (bỏ); so khớp rút gọn không thêm gì (bỏ). Decision log 13:00 ghi trước tiêu chí.
 - `security_v3/d3.py` + runner (d3, d3dest, d3p2v1, d3fbv1), test `tests/unit/test_d3.py`. Commit `ee0fc1c`.
 - Bật 3 notebook D3 Dev 14:09–14:13 (dovuong05, lamhuy8904, meanalways); nomtle, huylmhuhu hết quota tuần.
+
+## 2026-11-09 tối — D3 chọn D3DEST, Test-3 niêm phong và chạy, Gemini sửa JSON
+
+- D3 Dev xong 12 ô (Gemma 20:06, Llama 19:42, Qwen 20:40). Tiêu chí ghi trước: chỉ D3DEST đạt (harm 12 = 12, utility
+  490 > 475); lời nhắc v2 làm Qwen utility 165 → 55, bị loại.
+- Test-3 seal (`release_test3`, 560 fixture, QA 0 lỗi, hash canonicals khớp 6b7dbd67); `final_config_v4` owner duyệt
+  (59f32eea…); 3 notebook bật 21:07 (lamhuy8904 ×2 khi còn ~1 h quota, meanalways), chain chạy từ wt-test3.
+- Gemini: nhịp 4 s → 2 s (owner), ~3× nhanh; lỗi JSON ~3% lượt gọi là chữ bao quanh object → proxy `--extract-json`,
+  chạy lại Dev từ đầu (decision log 21:30).
+- Owner dạy: còn ít quota thì bật 2 phiên GPU cùng lúc, mỗi phiên chạy trọn 12 h (`kaggle_lessons.md`).

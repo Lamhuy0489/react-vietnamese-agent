@@ -11,6 +11,8 @@ Study 1: R4 Test v1; `final_config_v2` (`8889e448…`); Test-2 (D2 = A1 200/200)
 
 ## Gemini (mô hình mạnh, phần mở rộng phụ) — 2026-11-09
 
+21:30: Dev chạy lại từ đầu với proxy `--extract-json` (lỗi JSON hình thức ~3% lượt gọi), nhịp 2 s; A0 bản cũ: harm 57/240, utility 220/320, model_error 67/560 (`*_nojsonfix`). Xem decision log 21:30.
+
 - Đường cũ: Gemini API chính thức (`scripts/gemini_proxy_v1.py`, key ở `~/.gemini_keys`) bị gói miễn phí giới hạn
   20 lượt/ngày/key, không đủ (Dev cần ~10.000 lượt). Chưa bật billing.
 - Đường mới owner dựng 09/11: OmniRoute cục bộ (`http://localhost:20128/v1`, model `gemini-pool` → `antigravity/gemini-3-flash`,
@@ -20,6 +22,10 @@ Study 1: R4 Test v1; `final_config_v2` (`8889e448…`); Test-2 (D2 = A1 200/200)
 - 17:45: ĐANG CHẠY Dev {A0, D2P2, R1, D2} (`build/gemini/gemini3_dev_chain.sh`, log `build/gemini/g3_*.log`, proxy cổng 8444
   `scripts/gemini_proxy_v1.py --upstream … --header "X-OmniRoute-No-Cache: true" --drop-field response_format --min-interval 4`,
   key OmniRoute ở `~/.omniroute_key`). Lệch chuẩn và lý do: decision log 09/11 17:45. Resume: chạy lại chain (bỏ qua fixture xong).
+
+## Study 2: D3 và Test-3 (2026-11-09 tối)
+
+D3 Dev xong, chọn D3DEST (decision log 21:20). Test-3 niêm phong, `final_config_v4` `59f32eea…` owner duyệt 21:40; đang chạy 9 ô một lần (handoff "Đang làm").
 
 ## Study 2 đã chốt (2026-11-05)
 
