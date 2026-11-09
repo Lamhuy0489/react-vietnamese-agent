@@ -19,8 +19,8 @@ Việc của phiên này:
    OWNER CRED SERVE_KEY K trên tài khoản còn quota (meanalways kaggle2.json; ít quota thì bật 2 phiên cùng lúc), rồi t3_chain.sh K.
 2. Khi đủ 9 ô: evaluate_v3_v1.py, tính T1–T3 đúng như freeze_final_config_v4.py (Holm); bảng + decision log; không chỉnh gì theo Test.
 3. Merge study2/test3-seal về branch chính; cập nhật knowledge.
-4. Gemini Dev: khi xong 4 cấu hình thì evaluate và so với kết quả _nojsonfix (Bảng 2.11).
-5. Gemini trên AgentDojo EN/VI (build/gemini/gemini3_agentdojo_chain.sh, tự chạy sau Gemini Dev; log build/gemini/ad_*.log,
+4. Gemini Dev: khi xong 5 cấu hình (A0, D2P2, R1, D2, D3DEST; decision log 10/11 01:30) thì evaluate và so với kết quả _nojsonfix (Bảng 2.11).
+5. Gemini trên AgentDojo EN/VI, 16 lượt gồm 2 phòng thủ như Llama (build/gemini/gemini3_agentdojo_chain.sh, tự chạy sau Gemini Dev; log build/gemini/ad_*.log,
    kết quả results/rebuild_b/agentdojo_*_gemini3_flash_raw): đọc summary, Bảng 2.3b, so với Llama (decision log 07/11 08:40).
 6. Bắt đầu viết chương kết quả Study 2 theo dàn ý cuối docs/research/study2_thesis_tables.md (Bảng 2.1–2.11).
 

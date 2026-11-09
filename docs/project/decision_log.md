@@ -3647,3 +3647,13 @@ Test không được dùng.
   `stream=false` (OmniRoute trả SSE nếu thiếu) và `--tool-as-user` (LocalLLM gửi role `tool` không có `tool_call_id`,
   API trả 400; đổi thành role `user`, nội dung giữ nguyên). Nhịp 2 s. Chạy sau khi Gemini Dev xong.
 - Không chạy D2/D3 trên AgentDojo (cần adapter runtime, chưa đăng ký trước): ghi là hướng phát triển.
+
+## 2026-11-10 01:30 — Gemini 3 Flash: bổ sung D3DEST trên Dev và 2 phòng thủ AgentDojo (owner duyệt, ghi trước khi chạy)
+
+- Lý do: để so sánh model mạnh đủ chuẩn, Gemini phải chạy cùng các cấu hình mà backbone mở đã chạy.
+  - **Dev D3DEST** (phòng thủ cuối, `final_config_v4`): chạy như A0/D2P2/R1/D2, cùng proxy 8444 `-jsonfix`, `--defense d3dest`.
+    Chạy song song với chuỗi đang chạy; proxy giới hạn nhịp chung 2 s nên tổng tốc độ gọi không tăng.
+  - **AgentDojo `repeat_user_prompt` và `spotlighting_with_delimiting`** với `important_instructions`, EN/VI ×
+    Banking/Slack, giống các lượt Llama (WP6). Chạy sau 8 lượt mục 22:45 (`build/gemini/gemini3_followup_chain.sh`).
+- Không chạy Gemini trên Test v3 hoặc Test-3: ma trận Test-3 đã đóng băng (3 backbone) và nội dung Test không gửi ra dịch vụ
+  bên ngoài. Kết quả Gemini là tham chiếu trên Dev, nơi D2/D3 đã được chọn (với backbone khác), nên ghi vào hạn chế.
