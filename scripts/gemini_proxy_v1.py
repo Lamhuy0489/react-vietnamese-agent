@@ -44,6 +44,28 @@ UPSTREAM = "https://generativelanguage.googleapis.com/v1beta/openai/chat/complet
 DROP = ("request_id", "chat_template_kwargs", "seed")  # seed: rejected by this API (400)
 
 
+def output_shape(result: dict[str, Any]) -> str:
+    """Structural class of the reply text (counted only; the text itself is never logged)."""
+    try:
+        choice = result["choices"][0]
+        finish, text = choice.get("finish_reason"), choice["message"].get("content")
+    except (KeyError, IndexError, TypeError, AttributeError):
+        return "malformed"
+    if finish != "stop":
+        return f"finish_{finish}"
+    if not isinstance(text, str) or not text.strip():
+        return "empty"
+    stripped = text.strip()
+    try:
+        return "json" if isinstance(json.loads(stripped), dict) else "json_not_object"
+    except json.JSONDecodeError as exc:
+        if stripped.startswith("```"):
+            return "fenced"
+        if exc.msg.startswith("Extra data"):
+            return "extra_after_json"
+        return "text_around_json" if "{" in stripped else "plain_text"
+
+
 class Proxy:
     def __init__(self, args: argparse.Namespace) -> None:
         self.keys = [k.strip() for k in Path(args.keys_file).expanduser().read_text().split()
@@ -101,6 +123,7 @@ class Proxy:
                         request, timeout=self.args.timeout, context=self.client_tls) as response:
                     result: dict[str, Any] = json.loads(response.read())
                 result["model"] = self.served
+                self.count("shape_" + output_shape(result))
                 return 200, result
             except urllib.error.HTTPError as exc:
                 self.count(f"http_{exc.code}")
