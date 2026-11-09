@@ -18,6 +18,8 @@ Cập nhật: 2026-11-09. Lúc 22:20. Lộ trình [v2](../docs/project/roadmap_v
   (giới hạn phiên 12 h của Kaggle); lamhuy8904 hết quota sau phiên này, không bật lại được trên tài khoản đó.
   Tiến độ 22:16: Gemma 147/194/161, Llama 107/105/122, Qwen 158/96/103 (A0/D2P2/D3DEST). Gemma có nhiều
   "infrastructure error, will rerun" (tunnel chập chờn), endpoint vẫn 200; resume tự xử lý.
+- Gemini AgentDojo EN/VI (decision log 22:45): `build/gemini/gemini3_agentdojo_chain.sh` chờ Gemini Dev xong rồi chạy
+  8 lượt (2 ngôn ngữ × Banking/Slack × utility/`important_instructions`), proxy 8445 `--tool-as-user`, key `gemini3_flash_raw`.
 - Xong: chấm T1–T3 (Holm, McNemar/clustered z, bootstrap family seed 20261110) theo `freeze_final_config_v4.py`; bảng + decision log.
 - Gemini 3 Flash Dev chạy lại từ đầu với `--extract-json` (decision log 21:30), nhịp 2 s, revision `…-jsonfix`:
   `CONFIGS="A0 D2P2 R1 D2" build/gemini/gemini3_dev_chain.sh` (resume được); kết quả cũ ở `*_gemini3_flash_nojsonfix`.
