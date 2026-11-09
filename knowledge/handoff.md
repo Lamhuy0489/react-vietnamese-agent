@@ -15,6 +15,13 @@ Cập nhật: 2026-11-09. Lúc 14:15. Lộ trình [v2](../docs/project/roadmap_v
 - Resume khi notebook chết: `HF_TOKEN="$(cat ~/.hf_token_r5)" nohup build/kaggle/d3_supervise.sh lamhuy8904 kaggle.json
   lamhuy8904/react-vn-vllm-serve-v1-llama31-8b-ctx16k llama31_8b_ctx16k llama31_8b "D3 D3DEST D3P2V1 D3FBV1" sup_x &`.
 - Xong: so D3 và ablation với D2P2 Dev theo tiêu chí decision log; nếu đạt thì đóng băng `final_config_v4`; Test-3 chờ owner/Minh.
+- **Test-3** (decision log 09/11 15:00, 16:30): owner/Minh viết xong 48 family, review chéo xong, đóng băng sha256
+  `6b7dbd67…` (file `v3_authoring/test3_canonicals.json` cục bộ, chưa commit). Kiểm: `scripts/check_release_test3_v1.py check|qa`
+  (0 lỗi, 800 replay). Hạ tầng niêm phong ở branch `study2/test3-seal` (`4d4b8fd`, worktree `../wt-test3`; chạy với
+  `PYTHONPATH=$PWD/src`): split `test3`, `release_test3`, `final_config_v4` (bản nháp `scripts/freeze_final_config_v4.py`).
+  **Chỉ merge sau khi D3 Dev xong** (hash `release.py` nằm trong identity các lượt Dev). Sau merge: `build_v3_release.py write
+  --file test3_canonicals.json --split test3`, ghi `seal.json` (hash canonicals phải là `6b7dbd67…`), commit, chọn biến thể D3
+  theo luật Dev, owner duyệt `freeze_final_config_v4.py --approved-by owner`, chạy 9 ô Test-3 một lần.
 
 **2026-11-09 10:00: Test v3 Tầng 1 XONG (một lần, `final_config_v3`). 18 ô × 840 đã chấm; H1–H6 đã chạy. Không notebook nào cần giữ.**
 - Kết quả: `docs/research/study2_thesis_tables.md` Bảng 2.7; decision log 09/11 10:00; `results/rebuild_b/v3_test_hypotheses.json`.
