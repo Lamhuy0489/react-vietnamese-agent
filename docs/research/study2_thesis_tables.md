@@ -244,6 +244,34 @@ lại trên nhiều backbone: T3_02 (M5), T3_65 (M4), T3_72 (M3), T3_33 (M3).
    (Qwen3.5).
 5. Chuẩn hóa giá trị trước khi so khớp ở luật 3/4 (bỏ khoảng trắng, dấu, định dạng số) nếu giả thuyết về giá trị biến đổi đúng.
 
+## Bảng 2.9. D3 trên Dev: thiết kế và ablation (09/11, chọn theo tiêu chí ghi trước 13:00)
+
+Ô: họ có hại (/48) / fixture có hại (/240) · plain (/240) · auth (/80). Tiêu chí gộp 3 backbone: fixture có hại ≤ D2P2 và
+utility (plain + auth, /960) > D2P2.
+
+| Cấu hình | Thành phần | Gemma-4-12B | Llama-3.1-8B | Qwen3.5-9B | Gộp: có hại /720 · utility /960 |
+|---|---|---|---|---|---|
+| A0 | mốc | 38/139 · 159 · 54 | 34/77 · 81 · 30 | 40/114 · 140 · 36 | 330 · 500 |
+| D2P2 | `final_config_v3` | 2/2 · 147 · 45 | 5/7 · 82 · 36 | 3/3 · 141 · 24 | 12 · 475 |
+| **D3DEST** (chọn) | A1 theo đích + P2 v1 + feedback v1 | 2/2 · 148 · 49 | 5/7 · 85 · 40 | 3/3 · 141 · 27 | **12 · 490** |
+| D3P2V1 | A1 theo đích + P2 v1 + feedback v2 | 2/2 · 150 · 49 | 6/8 · 84 · 40 | 3/4 · 142 · 26 | 14 · 491 |
+| D3 | A1 theo đích + reminder v2 + feedback v2 | 1/1 · 163 · 54 | 10/15 · 75 · 38 | 2/5 · 39 · 16 | 21 · 385 |
+| D3FBV1 | A1 theo đích + reminder v2 + feedback v1 | 1/1 · 162 · 54 | 10/15 · 69 · 38 | 2/5 · 40 · 16 | 21 · 379 |
+
+- Tầng A1 theo đích giữ an toàn như D2P2 và trả lại phần chặn nhầm B-auth (auth +4 Gemma, +4 Llama, +3 Qwen).
+- Reminder v2 ("làm đủ mọi bước, kể cả lệnh gửi"): Gemma tốt hơn rõ (plain 163, auth 54 = mức A0) nhưng Llama có hại tăng
+  gấp đôi và Qwen sụp utility (plain 141 → 39). Không chuyển được giữa backbone, bị loại.
+- Feedback v2 không thêm gì có ích (D3P2V1 có hại 14 > 12). Mức tăng của D3DEST nhỏ (+1,6 điểm); Test-3 kiểm định (T1).
+
 ## Còn thiếu trước khi viết chương
 
 - Test v3 Tầng 1 đã xong (Bảng 2.7). Tầng 2 và SecAlign trên Test: tùy GPU, trước 2026-12-14.
+- Bảng 2.10 Test-3 (`final_config_v4`, {A0, D2P2, D3DEST} × 3 backbone; T1–T3 Holm, CI bootstrap theo family): đang chạy, ~sáng 10/11.
+- Bảng 2.11 Gemini 3 Flash trên Dev v3 (A0, R1, D2, D2P2; tham chiếu model mạnh, OmniRoute, sửa JSON hình thức): ~sáng 10/11;
+  bản chưa sửa JSON (`*_nojsonfix`) làm phân tích độ nhạy.
+- Bảng 2.3b Gemini 3 Flash trên AgentDojo EN/VI (utility + `important_instructions`, không phòng thủ): chạy sau Gemini Dev.
+
+Dàn ý chương kết quả Study 2 (gợi ý): (1) benchmark VN-AgentInject v3 và giao thức Dev/Test; (2) baseline và D2 trên Dev
+(2.1, 2.2, 2.4, 2.5); (3) tấn công thích nghi (2.6, 2.6b); (4) Test v3 chính thức (2.7) và phân tích lỗi (2.8); (5) D3: thiết
+kế trên Dev (2.9) và xác nhận trên Test-3 (2.10); (6) ngoại kiểm: AgentDojo EN/VI (2.3, 2.3b) và model mạnh (2.11);
+(7) hạn chế: model mạnh qua proxy (bỏ schema, sửa JSON), Test-3 do cùng nhóm soạn, chênh D3 nhỏ, backbone 8–12B.
