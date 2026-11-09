@@ -3637,3 +3637,13 @@ Test không được dùng.
   một object, thay văn bản bằng object đó (sửa hình thức, không đổi nội dung; runner vẫn kiểm schema từng lượt).
 - Chạy lại cả 4 cấu hình Dev từ đầu (không chọn lọc lượt lỗi), revision `antigravity-omniroute-2026-11-09-jsonfix`,
   nhịp 2 s (owner). Kết quả cũ giữ ở `v3_dev_{A0,D2P2}_gemini3_flash_nojsonfix` để báo cáo độ nhạy.
+
+## 2026-11-09 22:45 — Gemini 3 Flash trên AgentDojo EN/VI (owner duyệt, ghi trước khi chạy)
+
+- Mục đích: câu hỏi mở ở mục 07/11 08:40 (VI có ASR thấp hơn EN có phải chỉ do Llama-8B kém tiếng Việt?). So model mạnh.
+- AgentDojo v1.2.2 như WP6: Banking + Slack, EN và VI, utility (không tấn công) và `important_instructions` không phòng thủ;
+  `run_agentdojo_api_v1.py` không đổi, model key `gemini3_flash_raw` (OmniRoute pool như mục 17:45).
+- Adapter ở proxy (port 8445, không `--extract-json` vì AgentDojo đọc thẻ `<function=...>` trong văn bản):
+  `stream=false` (OmniRoute trả SSE nếu thiếu) và `--tool-as-user` (LocalLLM gửi role `tool` không có `tool_call_id`,
+  API trả 400; đổi thành role `user`, nội dung giữ nguyên). Nhịp 2 s. Chạy sau khi Gemini Dev xong.
+- Không chạy D2/D3 trên AgentDojo (cần adapter runtime, chưa đăng ký trước): ghi là hướng phát triển.

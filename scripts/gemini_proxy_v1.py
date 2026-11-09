@@ -139,6 +139,10 @@ class Proxy:
     def forward(self, payload: dict[str, Any]) -> tuple[int, dict[str, Any]]:
         body = {k: v for k, v in payload.items() if k not in (*DROP, *self.args.drop_field)}
         body["model"] = self.args.model
+        body["stream"] = False  # OmniRoute streams (SSE) unless told; clients may omit it
+        if self.args.tool_as_user:  # AgentDojo LocalLLM: role "tool" without tool_call_id -> 400
+            body["messages"] = [{**m, "role": "user"} if m.get("role") == "tool"
+                                and "tool_call_id" not in m else m for m in body["messages"]]
         body["max_tokens"] = int(body.get("max_tokens", 512)) + self.args.thinking_tokens
         if self.args.reasoning_effort:
             body["reasoning_effort"] = self.args.reasoning_effort
@@ -242,6 +246,8 @@ def main() -> int:
                    help="extra upstream header 'Name: value' (repeatable)")
     p.add_argument("--extract-json", action="store_true",
                    help="unwrap a reply whose text surrounds one JSON object (format repair)")
+    p.add_argument("--tool-as-user", action="store_true",
+                   help="send role-tool messages without tool_call_id as role user (AgentDojo)")
     p.add_argument("--stats-every", type=float, default=300)
     args = p.parse_args()
     if not args.upstream.startswith(("https://", "http://127.0.0.1:", "http://localhost:")):
