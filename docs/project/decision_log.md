@@ -3657,3 +3657,13 @@ Test không được dùng.
     Banking/Slack, giống các lượt Llama (WP6). Chạy sau 8 lượt mục 22:45 (`build/gemini/gemini3_followup_chain.sh`).
 - Không chạy Gemini trên Test v3 hoặc Test-3: ma trận Test-3 đã đóng băng (3 backbone) và nội dung Test không gửi ra dịch vụ
   bên ngoài. Kết quả Gemini là tham chiếu trên Dev, nơi D2/D3 đã được chọn (với backbone khác), nên ghi vào hạn chế.
+
+## 2026-11-10 01:50 — Llama-3.1-8B: OUTPUT_TRUNCATED, phân tích độ nhạy (owner duyệt, ghi trước khi tính)
+
+- Test-3 A0 Llama (523/560 lúc 01:30): 74 `model_error`, tất cả `OUTPUT_TRUNCATED` (finish_reason `length` ở 512 token đã
+  ghim), cả lượt benign, có lượt ngay bước đầu; Gemma 0, Qwen 8. Thêm 85 `max_steps` (hành vi lặp, không phải lỗi).
+  Giả thuyết chưa kiểm: tật giải mã khi ép JSON schema (khoảng trắng/lặp). Trace không lưu văn bản đầu ra.
+- Kết quả chính Test-3 GIỮ NGUYÊN theo `final_config_v4` (model_error = thất bại); không đổi gì theo Test.
+- Độ nhạy 1 (chỉ tính lại): báo thêm số Llama khi bỏ lượt `model_error`, ghi rõ là phụ.
+- Độ nhạy 2 (Dev, chẩn đoán): sau khi Test-3 Llama xong, chạy lại Llama Dev A0 với ngân sách token lớn hơn và lưu số liệu
+  hình dạng đầu ra bị cắt (độ dài, tỉ lệ khoảng trắng, lặp), để xác định nguyên nhân và utility bị tính thấp bao nhiêu.

@@ -1,16 +1,16 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-09 22:20. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-10 01:50. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái (09/11 22:20): Study 2. D3 Dev xong, chọn D3DEST (decision log 21:20). Test-3 niêm phong, final_config_v4
+Trạng thái (10/11 01:50): Study 2. D3 Dev xong, chọn D3DEST (decision log 21:20). Test-3 niêm phong, final_config_v4
 (sha256 59f32eea…) owner duyệt 21:40; Test-3 ĐANG CHẠY một lần từ worktree ../wt-test3 (branch study2/test3-seal):
 9 ô {A0, D2P2, D3DEST} × {gemma4_12b, llama31_8b, qwen35_9b}, notebook lamhuy8904 (Gemma, Llama) + meanalways (Qwen).
 Keep-alive giữ 3 notebook tới ~09:07 10/11 (giới hạn 12 h); lamhuy8904 hết quota sau phiên này (meanalways còn nhiều).
-Dự kiến 9 ô xong ~04–06h 10/11. Gemini 3 Flash Dev chạy lại với --extract-json trên máy owner (OmniRoute, nhịp 2 s).
+Dự kiến 9 ô xong ~04–06h 10/11. Gemini 3 Flash Dev (--extract-json, OmniRoute, nhịp 2 s): A0, D2P2 xong; R1, D2, D3DEST chạy.
 Lệnh resume ở handoff "Đang làm".
 
 Việc của phiên này:
@@ -22,7 +22,10 @@ Việc của phiên này:
 4. Gemini Dev: khi xong 5 cấu hình (A0, D2P2, R1, D2, D3DEST; decision log 10/11 01:30) thì evaluate và so với kết quả _nojsonfix (Bảng 2.11).
 5. Gemini trên AgentDojo EN/VI, 16 lượt gồm 2 phòng thủ như Llama (build/gemini/gemini3_agentdojo_chain.sh, tự chạy sau Gemini Dev; log build/gemini/ad_*.log,
    kết quả results/rebuild_b/agentdojo_*_gemini3_flash_raw): đọc summary, Bảng 2.3b, so với Llama (decision log 07/11 08:40).
-6. Bắt đầu viết chương kết quả Study 2 theo dàn ý cuối docs/research/study2_thesis_tables.md (Bảng 2.1–2.11).
+6. Llama OUTPUT_TRUNCATED (decision log 10/11 01:50, owner duyệt): (a) khi viết, báo thêm số Llama bỏ model_error (phụ);
+   (b) khi Test-3 Llama xong và notebook còn sống: thêm cờ ghi đè max_tokens + đếm hình dạng đầu ra bị cắt (không ghi nội dung)
+   vào runner, chạy Llama Dev A0 làm chẩn đoán. Kết quả chính Test-3 không đổi.
+7. Bắt đầu viết chương kết quả Study 2 theo dàn ý cuối docs/research/study2_thesis_tables.md (Bảng 2.1–2.11).
 
 Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng và số đếm.
 ```

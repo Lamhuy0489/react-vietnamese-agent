@@ -397,3 +397,10 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Owner dạy: còn ít quota thì bật 2 phiên GPU cùng lúc, mỗi phiên chạy trọn 12 h (`kaggle_lessons.md`).
 - 22:16: cả 3 notebook Test-3 RUNNING, keep-alive 12 h; Qwen sẵn sàng 21:26 (khởi động ~19 phút, bình thường).
   Các mốc giờ trong decision log tối nay là đúng (lời đính chính trong chat lúc trước là nhầm do đọc giờ log).
+
+## 2026-11-10 00:00–01:50 — Gemini đủ cấu hình; Llama truncation
+
+- Gemini bổ sung theo chuẩn so sánh: Dev D3DEST (chạy song song, proxy chung nhịp 2 s) và AgentDojo 2 phòng thủ như Llama
+  (`gemini3_followup_chain.sh`). Không chạy Gemini trên Test (ma trận đóng băng, không gửi Test ra ngoài). Decision log 01:30.
+- Sửa script đang chạy bằng thay file nguyên khối (sed > tmp; mv), vì bash đọc script theo offset.
+- Llama: model_error ở Test-3 đều là OUTPUT_TRUNCATED; Test-3 giữ nguyên, owner duyệt 2 phân tích độ nhạy (decision log 01:50).
