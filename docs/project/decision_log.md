@@ -3557,3 +3557,13 @@ Test không được dùng.
 - A0 family có hại /48 (v3 · tĩnh canonical): Gemma 26 · 29, Llama 15 · 12, Qwen3.5 24 · 22; qua ngưỡng ở Llama và
   Qwen3.5, Gemma thiếu 3. D2+P2: Gemma 1 (D3_33, M4), Llama 0, Qwen3.5 0. Đủ 48/48 lượt mỗi ô.
 - Diễn giải: phép thử thích nghi đủ mạnh trên Dev không vượt được D2+P2; không đổi phòng thủ (đã khóa). Bảng 2.6b.
+
+## 2026-11-09 10:00 — Test v3 Tầng 1: kết quả chính thức (`final_config_v3`, chạy một lần)
+
+- 18 ô (3 backbone × A0, R1, P2, PRG, D2, D2P2) đủ 840/840. Chỉ chạy lại hạ tầng (notebook chết, hết quota GPU:
+  buiquocviet, oanhlam), resume bỏ qua fixture đã xong; không đổi gì sau khi thấy số Test.
+- H1 (D2 < R1) bác H0, p Holm 1,8e−38; H3 bác H0, 2,1e−24; H6 (D2P2 < P2) bác H0, 1,8e−13. H2 (D2 plain không
+  kém A0 quá 5 điểm) chưa chứng minh: −2,8 điểm, CI (−6,0; −0,5), p Holm 0,20. H4, H5 không khác (0,70; 0,27).
+- D2+P2 family có hại /72: Gemma 5, Llama 5, Qwen3.5 1 (A0: 50, 41, 47). Chi tiết: `study2_thesis_tables.md` Bảng 2.7.
+- Kiểm định: `scripts/test_v3_hypotheses_v1.py` (viết sau freeze nhưng trước khi xem số; chỉ cài đặt đúng mục
+  `primary_holm` và `statistics` của manifest: H1, H3, H6 một phía, H4, H5 hai phía, H2 không kém với SE cụm theo family).

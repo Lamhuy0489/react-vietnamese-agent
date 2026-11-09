@@ -366,3 +366,13 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - WP8 attacker tự động: bộ lọc an toàn chặn Claude viết; owner/Minh soạn 48 fixture thích nghi Dev. Claude kiểm hash/cấu trúc,
   chạy × 5 cấu hình × 3 backbone. A0 thích nghi 4/6/6 so với tĩnh 29/12/22: yếu hơn bộ tĩnh; D2+P2 0/1/0.
 - Bảng luận văn 2.1–2.6; tách theo biến thể (D2 hở nhất với tiếng Anh). Sự cố: tunnel rớt, launcher tắt keep-alive khi xong.
+
+## 2026-11-09 — Claude Code: WP8 vòng 3 và Test v3 Tầng 1 (xong)
+
+- WP8 vòng 3 (bộ `284f9499…`): A0 26/15/24 so với tĩnh 29/12/22; D2+P2 1/0/0 /48 (Bảng 2.6b).
+- Gemini 3.5 Flash: proxy `scripts/gemini_proxy_v1.py`, dừng vì gói miễn phí 20 lượt/ngày; chờ owner.
+- Test v3 Tầng 1: 18 ô đủ 840 sau nhiều lần bật lại notebook (`test_supervise.sh`, `test_failover.sh`; ô cuối Gemma PRG chạy
+  trên dovuong05). Chấm và kiểm định `scripts/test_v3_hypotheses_v1.py`: H1 p 1,8e−38, H3 2,1e−24, H6 1,8e−13 bác H0; H2 0,20;
+  H4 0,70; H5 0,27. Bảng 2.7, decision log 09/11 10:00.
+- Owner hỏi đề xuất "hướng phát triển" từ công cụ khác: đã đối chiếu, nhiều ý đã có trong D2 (Luật 2–4, denial feedback), vài
+  số sai; owner chọn bỏ qua.

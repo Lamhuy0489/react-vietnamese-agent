@@ -5,7 +5,19 @@ Cập nhật: 2026-11-08. Lúc 15:50. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
-**2026-11-08 15:50: Test v3 Tầng 1 đang chạy (một lần) dưới `final_config_v3` = D2+P2 (manifest `456de8d3…`, 408 file).**
+**2026-11-09 10:00: Test v3 Tầng 1 XONG (một lần, `final_config_v3`). 18 ô × 840 đã chấm; H1–H6 đã chạy. Không notebook nào cần giữ.**
+- Kết quả: `docs/research/study2_thesis_tables.md` Bảng 2.7; decision log 09/11 10:00; `results/rebuild_b/v3_test_hypotheses.json`.
+  H1, H3, H6 bác H0 (D2 < R1, D2P2 < P2); H2 chưa chứng minh (D2 plain −2,8 điểm, CI −6,0); H4, H5 không khác.
+  D2+P2 family có hại /72: Gemma 5, Llama 5, Qwen3.5 1.
+- Lệnh: `evaluate_v3_v1.py results/rebuild_b/v3_test_<CFG>_<K>` từng ô; `scripts/test_v3_hypotheses_v1.py`.
+- Hạ tầng đêm 08–09/11: notebook chết nhiều lần (tunnel/endpoint), buiquocviet và oanhlam hết quota tuần. Script tự bật lại:
+  `build/kaggle/test_supervise.sh` (mỗi slot) và `build/kaggle/test_failover.sh` (chuyển tài khoản khi hết quota; owner đồng ý 09/11).
+  Lưu ý: mỗi tài khoản tối đa 2 phiên GPU, phiên chết giữ chỗ tới khi tự tắt (~30 phút). zsh không tách `set -- $a`: dùng `bash -c`.
+- Bước tiếp: (1) viết chương kết quả Study 2 từ Bảng 2.1–2.7; (2) tùy GPU trước 2026-12-14: Test Tầng 2 + SecAlign theo ma trận
+  manifest; (3) Gemini 3.5 Flash: chờ owner (billing có trần hay bỏ); (4) owner chọn commit hay gitignore
+  `data/adversarial/adaptive_v3/`, `v3_authoring/adaptive_attacks.json`.
+
+**2026-11-08 15:50 (đã xong 09/11): Test v3 Tầng 1 chạy dưới `final_config_v3` = D2+P2 (manifest `456de8d3…`, 408 file).**
 - Owner duyệt 08/11; decision log 15:30 (ma trận, H1–H6). Runner/evaluator từ chối khi lệch manifest hay cặp ngoài ma trận.
 - 6 notebook: nomtle Gemma {A0,R1,P2} + Qwen3.5 {A0,R1,P2}; dovuong05 Gemma {PRG,D2,D2P2} + Llama 16k {A0,R1,P2};
   huylmhuhu Qwen3.5 {PRG,D2,D2P2} + Llama 16k {PRG,D2,D2P2}. Log `build/kaggle/test_logs/`, folder `build/kaggle/test_folder_<owner>_<K>`,

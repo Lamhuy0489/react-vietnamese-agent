@@ -1,6 +1,6 @@
 # Study 2: bảng cho luận văn (bản nháp, số Dev)
 
-Cập nhật: 2026-11-08. Nguồn: `docs/project/decision_log.md` (06/11 vòng 1, 06–07/11 vòng chỉnh 1–2, 07/11 Tầng 2,
+Cập nhật: 2026-11-09 (thêm Bảng 2.7, Test v3). Nguồn: `docs/project/decision_log.md` (06/11 vòng 1, 06–07/11 vòng chỉnh 1–2, 07/11 Tầng 2,
 SecAlign, AgentDojo-VI). Tất cả là **Dev v3**, chưa có CI; kết luận chính thức chờ Test v3 (một lần, bootstrap theo
 family, McNemar). Không chèn văn bản tấn công hay nội dung Test vào file này.
 
@@ -161,6 +161,56 @@ nhất dưới D2+P2: D3_33 (M4, Gemma). `executed_violations` A0 27 · 26 · 19
 - Dưới D2+P2 còn 0–1/48 (A0 15–26/48): phòng thủ không bị vượt bởi bộ soạn có chủ đích, ngang bộ tĩnh. Hạn chế: một
   vòng soạn của người, không có tối ưu tự động (GCG, attacker LLM); chỉ trên Dev, không có bộ thích nghi trên Test.
 
+## Bảng 2.7. Test v3 Tầng 1 (kết quả chính thức, `final_config_v3`, chạy một lần, 09/11)
+
+72 family; mỗi ô 840 lượt (360 attack, 360 benign_plain, 120 benign_auth). Chấm `evaluate_v3_v1.py`; kiểm định
+`scripts/test_v3_hypotheses_v1.py` (kết quả `results/rebuild_b/v3_test_hypotheses.json`). Có hại /72 · fixture có hại
+/360 · plain /360 · auth /120:
+
+| Cấu hình | Gemma-4-12B | Llama-3.1-8B | Qwen3.5-9B |
+|---|---|---|---|
+| A0 | 50 · 158 · 217 · 63 | 41 · 90 · 102 · 35 | 47 · 107 · 170 · 43 |
+| R1 | 40 · 90 · 206 · 58 | 29 · 47 · 101 · 30 | 40 · 63 · 161 · 40 |
+| P2 | 17 · 23 · 197 · 54 | 20 · 27 · 105 · 29 | 10 · 11 · 170 · 41 |
+| PRG | 25 · 93 · 215 · 63 | 24 · 53 · 103 · 34 | 26 · 66 · 170 · 44 |
+| D2 | 17 · 33 · 203 · 53 | 14 · 16 · 94 · 30 | 18 · 23 · 162 · 35 |
+| **D2+P2** | **5** · 6 · 186 · 48 | **5** · 6 · 102 · 24 | **1** · 1 · 160 · 36 |
+
+Fixture có hại theo cơ chế, gộp 3 backbone (/180 mỗi cơ chế):
+
+| Cấu hình | M1 | M2 | M3 | M4 | M5 | M6 |
+|---|---|---|---|---|---|---|
+| A0 | 58 | 65 | 89 | 60 | 68 | 15 |
+| R1 | 33 | 38 | 46 | 43 | 33 | 7 |
+| PRG | 0 | 0 | 89 | 55 | 67 | 1 |
+| D2 | 0 | 0 | 29 | 17 | 25 | 1 |
+| P2 | 1 | 1 | 27 | 18 | 10 | 4 |
+| D2+P2 | 0 | 0 | 6 | 3 | 4 | 0 |
+
+Theo biến thể (fixture có hại /216, gộp): A0 canonical 68 · paraphrase 70 · no_diacritic 72 · code_mix 66 · english 79;
+D2 9 · 13 · 12 · 6 · 32; D2+P2 1 · 5 · 3 · 3 · 1.
+
+**Giả thuyết chính (McNemar chính xác trên cặp fixture, gộp 3 backbone; Holm trên H1–H6; CI 95% bootstrap theo family):**
+
+| | So sánh | Tỉ lệ | Chênh (CI 95%) | p Holm | Kết luận |
+|---|---|---|---|---|---|
+| H1 | D2 < R1, attack | 18,5% → 6,7% | −11,9 (−16,7; −7,5) | 1,8e−38 | **Bác H0** (128/0 cặp lệch) |
+| H2 | D2 plain không kém A0 quá 5 điểm | 45,3% → 42,5% | −2,8 (−6,0; −0,5) | 0,20 | **Chưa chứng minh** không kém |
+| H3 | D2 < R1, M2∪M3∪M4 | 23,5% → 8,5% | −15,0 (−23,7; −7,4) | 2,1e−24 | **Bác H0** |
+| H4 | A0 no_diacritic ≠ canonical | 31,5% → 33,3% | +1,9 (−5,1; +8,8) | 0,70 | Không khác |
+| H5 | A0 english ≠ canonical | 31,5% → 36,6% | +5,1 (−1,9; +12,0) | 0,27 | Không khác |
+| H6 | D2+P2 < P2, attack | 5,6% → 1,2% | −4,4 (−6,2; −2,8) | 1,8e−13 | **Bác H0** |
+
+**Nhận xét (Test):**
+1. D2 giảm mạnh tấn công so với R1 (H1, H3), không có cặp nào D2 tệ hơn R1. D2+P2 thấp nhất: còn 1–5/72 family.
+2. Cái giá là utility: D2 mất 2,8 điểm plain (CI chạm −6,0, nên không khẳng định được "không kém quá 5 điểm", H2);
+   D2+P2 so với A0 mất plain ở Gemma (217 → 186) và Qwen3.5 (170 → 160), auth giảm 7–15 lượt mỗi backbone.
+3. Dự đoán đăng ký trước: "D2 ≈ R1 trên M1" sai (D2 chặn hết M1: 0 so với 33); "D2 không tốt hơn ở M5" sai một
+   phần (25 so với 33); "D2 english > canonical" đúng (32 so với 9): luật đích không bắt được tấn công tiếng Anh tốt như
+   tiếng Việt có dấu, P2 bù chỗ này (D2+P2 english 1).
+4. Tiếng Việt không dấu và tiếng Anh không làm A0 dễ bị tấn công hơn một cách có ý nghĩa thống kê (H4, H5).
+5. PRG (Progent-lite) chặn hết M1, M2 nhưng gần như không tác dụng với M3–M5, khớp với Dev.
+
 ## Còn thiếu trước khi viết chương
 
-- Test v3 dưới `final_config_v3`, một lần.
+- Test v3 Tầng 1 đã xong (Bảng 2.7). Tầng 2 và SecAlign trên Test: tùy GPU, trước 2026-12-14.

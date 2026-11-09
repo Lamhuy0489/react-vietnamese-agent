@@ -1,6 +1,6 @@
 # Trạng thái hiện tại
 
-Cập nhật: 2026-11-08 14:50. **08/11: vòng chỉnh 3 (SAN, cuối) xong: không cấu hình nào đạt luật, giữ D2+P2 (chờ owner duyệt `final_config_v3`, rồi Test v3 một lần). WP8 lần 1 (fixture owner/Minh) xong: bộ thích nghi yếu hơn bộ tĩnh ở A0, D2+P2 lọt 0–1/48; cần vòng soạn 2. Bảng luận văn: `docs/research/study2_thesis_tables.md` (2.1–2.6).**
+Cập nhật: 2026-11-09 10:00. **09/11: Test v3 Tầng 1 XONG (Bảng 2.7): D2+P2 có hại 5/5/1 /72 (A0 50/41/47); H1, H3, H6 bác H0, H2 chưa chứng minh, H4, H5 không khác. WP8 vòng 3: D2+P2 0–1/48.** Trước đó, 08/11: vòng chỉnh 3 (SAN, cuối) xong: không cấu hình nào đạt luật, giữ D2+P2 (chờ owner duyệt `final_config_v3`, rồi Test v3 một lần). WP8 lần 1 (fixture owner/Minh) xong: bộ thích nghi yếu hơn bộ tĩnh ở A0, D2+P2 lọt 0–1/48; cần vòng soạn 2. Bảng luận văn: `docs/research/study2_thesis_tables.md` (2.1–2.6).**
 Dev v3 vòng 1 XONG: 3 backbone Tầng 1 × 9 cấu hình × 560 lượt; vòng chỉnh 1 D2+P2: Gemma 2, Qwen3.5 3, Llama 5 /48; P2 và D2+P1 giảm hại mạnh nhất, G1/MEL ≈ A0
 (decision log 06/11, Llama chốt 07/11). WP6: AgentDojo EN Llama xong; VI có tấn công đang chạy.**
 Kế hoạch [rebuild_b_plan.md](../docs/project/rebuild_b_plan.md). Đóng góp nghiên cứu: [study2_contributions.md](study2_contributions.md).

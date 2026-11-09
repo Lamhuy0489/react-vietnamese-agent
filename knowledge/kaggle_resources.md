@@ -22,6 +22,12 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-09 — Test v3 Tầng 1 bật lại (hạ tầng, private, T4×2), xong 09:43:** dovuong05 `llama31-8b-ctx16k` (bật lại 02:50,
+A0/R1/P2 xong 06:42) và `gemma4-12b` (PRG 27 fixture cuối, 09:33–09:43); huylmhuhu `llama31-8b-ctx16k` v6 (02:18) và `qwen35-9b`
+(02:58, xong 07:18); dovuong05 `gemma4-12b` v4 và nomtle `qwen35-9b` v2 trước đó; buiquocviet `gemma4-12b` v6 chạy PRG tới 06:28 rồi
+hết quota tuần (30 h), oanhlam123456 hết quota từ 08/11. URL dạng `https://www.kaggle.com/code/<owner>/react-vn-vllm-serve-v1-<model>`.
+Không notebook nào còn chạy sau 09:43.
+
 **2026-11-08 15:47 — Test v3 Tầng 1 (`final_config_v3` `456de8d3…`), 6 notebook serve, private, T4×2:** nomtle `gemma4-12b` v2, `qwen35-9b` v1; dovuong05 `gemma4-12b` v1, `llama31-8b-ctx16k` v2; huylmhuhu `qwen35-9b` v1, `llama31-8b-ctx16k` v5. Chọn 3 tài khoản này vì quota tuần còn nhiều (lamhuy8904, oanhlam123456, buiquocviet đã chạy 18–25 giờ). Script `build/kaggle/test_launch.sh`.
 
 **2026-11-08 02:50 — Dev vòng chỉnh 3 (SAN), 6 notebook serve, private, T4×2, HF token chèn** (source: commit `a5d1332` trở đi):

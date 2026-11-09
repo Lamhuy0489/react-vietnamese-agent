@@ -1,24 +1,25 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-07 22:30. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-09 10:00. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái (08/11 14:50): Study 2. Vòng chỉnh 3 (SAN, cuối) xong: không cấu hình nào đạt luật khai báo, giữ D2+P2
-(Bảng 2.5, decision log 08/11 14:00). WP8 lần 1 (fixture owner/Minh `data/adversarial/adaptive_v3/adaptive_dev_attack.jsonl`)
-xong: bộ thích nghi yếu hơn bộ tĩnh ở A0 (4/6/6 so với 29/12/22), D2+P2 lọt 0/1/0 (Bảng 2.6). Không notebook nào cần giữ.
+Trạng thái (09/11 10:00): Study 2. Test v3 Tầng 1 XONG một lần dưới final_config_v3 (D2+P2): Bảng 2.7 trong
+docs/research/study2_thesis_tables.md, decision log 09/11 10:00, results/rebuild_b/v3_test_hypotheses.json.
+H1, H3, H6 bác H0; H2 (D2 plain không kém quá 5 điểm) chưa chứng minh; H4, H5 không khác. WP8 vòng 3 xong (Bảng 2.6b).
+Không notebook nào cần giữ.
 
 Việc của phiên này:
-1. Hỏi owner duyệt final_config_v3. (a) D2+P2: ghi decision log, ghim manifest, chạy Test v3 một lần (3 backbone Tầng 1;
-   hỏi có thêm Tầng 2), bootstrap theo family + McNemar; sau khi thấy số Test không đổi gì. (b) Mở vòng Dev mới với model
-   lọc cố định: phải khai báo trước trong decision log.
-2. Nếu owner/Minh đưa fixture WP8 vòng 2: kiểm hash, dry run, `build/kaggle/wp8_chain.sh` (hoặc `wp8_launch.sh` nếu cần notebook),
-   `scripts/wp8_summary_v1.py`, cập nhật Bảng 2.6.
-3. Treo: A6 (giải thích hay chạy mốc Dev); dọn ổ đĩa (cần owner duyệt, chưa xoá gì).
+1. Viết chương kết quả Study 2 (thesis/) từ Bảng 2.1–2.7, nêu rõ Dev và Test, hạn chế (WP8 do người soạn, chỉ Dev).
+2. Nếu còn GPU trước 2026-12-14: Test Tầng 2 + SecAlign theo test_matrix của manifest (test_launch.sh, test_supervise.sh).
+3. Hỏi owner: Gemini (billing có trần hay bỏ); commit hay gitignore data/adversarial/adaptive_v3/ và
+   v3_authoring/adaptive_attacks.json.
+Không đổi gì trong src/react_agent hay configs nếu còn chạy Test (manifest verify).
 
-GPU: lamhuy8904 (kaggle.json), oanhlam123456 (kaggle6.json), buiquocviet (kaggle3.json), nomtle, dovuong05; mỗi tài khoản 2 GPU.
+GPU: nomtle (kaggle5), dovuong05 (kaggle4), huylmhuhu (kaggle1), lamhuy8904 (kaggle.json), meanalways (kaggle2); buiquocviet
+và oanhlam hết quota tuần 09/11. Mỗi tài khoản 2 phiên GPU. Owner cho đổi tài khoản khi hết quota.
 Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng và số đếm.
 ```
 
