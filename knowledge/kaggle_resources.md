@@ -22,6 +22,11 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-09 21:07 — Test-3 serve (private, T4×2), chờ niêm phong:** lamhuy8904 `llama31-8b-ctx16k` v3 và `gemma4-12b` v3
+(bật cùng lúc khi còn ~1 h quota, [bài học](kaggle_lessons.md)), meanalways `qwen35-9b` v2 (owner: quota thoải mái).
+Script `build/kaggle/t3_serve.sh` (bật + keep-alive 12 h, chưa chạy runner); log `build/kaggle/t3_logs/`.
+D3 Dev xong: dovuong05 Gemma 20:06, lamhuy8904 Llama 19:42, meanalways Qwen 20:40 (tự tắt).
+
 **2026-11-09 14:09–14:13 — D3 Dev (private, T4×2), source `ee0fc1c` branch `study2/d3-dev`:** dovuong05 `gemma4-12b` v7,
 lamhuy8904 `llama31-8b-ctx16k` v2, meanalways `qwen35-9b` v1; mỗi notebook chạy {D3, D3DEST, D3P2V1, D3FBV1} × 560 Dev.
 nomtle và huylmhuhu bị từ chối push 14:09 (hết quota tuần 30 h). Trạng thái thật: `kaggle kernels status`.

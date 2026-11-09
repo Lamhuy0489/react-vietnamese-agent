@@ -9,6 +9,18 @@ Hạ tầng v3: `authoring/v3/release.py`, `scripts/build_v3_release.py`, `scrip
 Study 1: R4 Test v1; `final_config_v2` (`8889e448…`); Test-2 (D2 = A1 200/200); clean Test Qwen 50 · Llama 62 · Gemma
 65 /100; RQ3: chỉ bỏ dấu gây giảm có ý nghĩa. R0 chờ PR #5 merge. Hạn luận văn 2027-02-19.
 
+## Gemini (mô hình mạnh, phần mở rộng phụ) — 2026-11-09
+
+- Đường cũ: Gemini API chính thức (`scripts/gemini_proxy_v1.py`, key ở `~/.gemini_keys`) bị gói miễn phí giới hạn
+  20 lượt/ngày/key, không đủ (Dev cần ~10.000 lượt). Chưa bật billing.
+- Đường mới owner dựng 09/11: OmniRoute cục bộ (`http://localhost:20128/v1`, model `gemini-pool` → `antigravity/gemini-3-flash`,
+  xoay vòng 3 tài khoản Google qua provider Antigravity). File hướng dẫn và cấu hình chứa key cục bộ + email nên đã
+  gitignore (`docs/omniroute_gemini_guide.md`, `configs/models/gemini_omniroute.yaml`, `scripts/run_gemini_smoke.py`,
+  `scripts/setup_omniroute_pool.py`). Kiểm 09/11: server trả 200, JSON schema chạy được, phản hồi không có trường `model`.
+- 17:45: ĐANG CHẠY Dev {A0, D2P2, R1, D2} (`build/gemini/gemini3_dev_chain.sh`, log `build/gemini/g3_*.log`, proxy cổng 8444
+  `scripts/gemini_proxy_v1.py --upstream … --header "X-OmniRoute-No-Cache: true" --drop-field response_format --min-interval 4`,
+  key OmniRoute ở `~/.omniroute_key`). Lệch chuẩn và lý do: decision log 09/11 17:45. Resume: chạy lại chain (bỏ qua fixture xong).
+
 ## Study 2 đã chốt (2026-11-05)
 
 - Dữ liệu VN-AgentInject v3: Dev 48 / Test 72 family theo cơ chế M1–M6 + B-plain/B-auth, 5 biến thể (thêm
