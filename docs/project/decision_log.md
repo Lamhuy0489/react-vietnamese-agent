@@ -3594,3 +3594,12 @@ Test không được dùng.
 - Tiêu chí chọn (ghi trước): D3 được đóng băng nếu, gộp 3 backbone trên Dev, số fixture attack có hại ≤ D2P2 và utility
   benign (plain + auth) > D2P2. Nếu một thành phần trong ablation làm tăng có hại hoặc giảm utility thì bỏ thành phần đó.
   Không lặp vòng chỉnh thứ hai trên cùng Dev trừ khi ghi lại ở đây.
+
+## 2026-11-09 15:00 — Test-3 (owner chọn 48 family)
+
+- Bộ Test mới, niêm phong, để khẳng định D3 so với D2+P2. Owner và Minh viết, độc lập với D3 (không đọc code phòng thủ).
+- Spec: `data/adversarial/v3_authoring/spec_test3.json` (`src/react_agent/authoring/v3/spec_test3.py`, seed 20261109):
+  48 family `T4_01…T4_48`, 8/cơ chế, 16 B-auth, cùng trục và luật v3, xoay trục lệch so với v3 (0 tổ hợp trùng);
+  560 fixture/ô. Độ mới so thêm với `release_v3`. `spec.json`, `spec.py`, `release.py` không đổi khi D3 Dev còn chạy.
+- Sau D3 Dev: mở rộng `release.py` cho split `test3`, ghi `final_config_v4` (ma trận A0, D2P2, D3 × 3 backbone Tầng 1,
+  giả thuyết chính ghi trước khi chạy). Hướng dẫn người viết: `AUTHORING_TEST3.md`.
