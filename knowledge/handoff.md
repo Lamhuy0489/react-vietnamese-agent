@@ -1,6 +1,6 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-09. Lúc 21:50. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-09. Lúc 22:20. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
@@ -14,6 +14,10 @@ Cập nhật: 2026-11-09. Lúc 21:50. Lộ trình [v2](../docs/project/roadmap_v
   `build/kaggle/t3_chain.sh K` chạy {A0, D2P2, D3DEST} × 560, 2 shard, kết quả `results/rebuild_b/v3_test3_<CFG>_<K>`
   (+ `_eval.json` khi đủ 560). Log `build/kaggle/t3_logs/`. Resume: chạy lại `t3_chain.sh K` (bỏ qua fixture xong);
   notebook chết thì `HF_TOKEN="$(cat ~/.hf_token_r5)" t3_serve.sh ...` (cần tài khoản còn quota) rồi `t3_chain.sh K`.
+- 22:16: keep-alive (`scripts/keepalive_vllm_v1.py --hours 12`, ping ~20 phút) đang giữ cả 3 notebook tới ~09:07 10/11
+  (giới hạn phiên 12 h của Kaggle); lamhuy8904 hết quota sau phiên này, không bật lại được trên tài khoản đó.
+  Tiến độ 22:16: Gemma 147/194/161, Llama 107/105/122, Qwen 158/96/103 (A0/D2P2/D3DEST). Gemma có nhiều
+  "infrastructure error, will rerun" (tunnel chập chờn), endpoint vẫn 200; resume tự xử lý.
 - Xong: chấm T1–T3 (Holm, McNemar/clustered z, bootstrap family seed 20261110) theo `freeze_final_config_v4.py`; bảng + decision log.
 - Gemini 3 Flash Dev chạy lại từ đầu với `--extract-json` (decision log 21:30), nhịp 2 s, revision `…-jsonfix`:
   `CONFIGS="A0 D2P2 R1 D2" build/gemini/gemini3_dev_chain.sh` (resume được); kết quả cũ ở `*_gemini3_flash_nojsonfix`.

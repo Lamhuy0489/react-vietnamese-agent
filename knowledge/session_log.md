@@ -395,3 +395,5 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Gemini: nhịp 4 s → 2 s (owner), ~3× nhanh; lỗi JSON ~3% lượt gọi là chữ bao quanh object → proxy `--extract-json`,
   chạy lại Dev từ đầu (decision log 21:30).
 - Owner dạy: còn ít quota thì bật 2 phiên GPU cùng lúc, mỗi phiên chạy trọn 12 h (`kaggle_lessons.md`).
+- 22:16: cả 3 notebook Test-3 RUNNING, keep-alive 12 h; Qwen sẵn sàng 21:26 (khởi động ~19 phút, bình thường).
+  Các mốc giờ trong decision log tối nay là đúng (lời đính chính trong chat lúc trước là nhầm do đọc giờ log).
