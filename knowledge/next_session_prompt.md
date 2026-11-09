@@ -1,25 +1,25 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-09 10:00. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-09 14:15. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái (09/11 10:00): Study 2. Test v3 Tầng 1 XONG một lần dưới final_config_v3 (D2+P2): Bảng 2.7 trong
-docs/research/study2_thesis_tables.md, decision log 09/11 10:00, results/rebuild_b/v3_test_hypotheses.json.
-H1, H3, H6 bác H0; H2 (D2 plain không kém quá 5 điểm) chưa chứng minh; H4, H5 không khác. WP8 vòng 3 xong (Bảng 2.6b).
-Không notebook nào cần giữ.
+Trạng thái (09/11 14:15): Study 2. Test v3 Tầng 1 XONG (Bảng 2.7, 2.8). Owner duyệt làm D3 trên Dev:
+branch study2/d3-dev (commit ee0fc1c), thiết kế + tiêu chí ghi trước ở decision log 09/11 13:00. final_config_v3
+giữ ở tag final-config-v3 (trên branch D3, final_config_v3.verify báo khác là đúng; Test v3/Tầng 2 chạy từ tag).
+3 notebook D3 Dev đang/đã chạy {D3, D3DEST, D3P2V1, D3FBV1} × 560: Gemma dovuong05, Llama 16k lamhuy8904,
+Qwen3.5 meanalways (handoff "Đang làm" có lệnh resume; log build/kaggle/d3_logs/).
 
 Việc của phiên này:
-1. Viết chương kết quả Study 2 (thesis/) từ Bảng 2.1–2.7, nêu rõ Dev và Test, hạn chế (WP8 do người soạn, chỉ Dev).
-2. Nếu còn GPU trước 2026-12-14: Test Tầng 2 + SecAlign theo test_matrix của manifest (test_launch.sh, test_supervise.sh).
-3. Hỏi owner: Gemini (billing có trần hay bỏ); commit hay gitignore data/adversarial/adaptive_v3/ và
-   v3_authoring/adaptive_attacks.json.
-Không đổi gì trong src/react_agent hay configs nếu còn chạy Test (manifest verify).
+1. Kiểm kaggle kernels status; ô nào chưa đủ 560 thì bật lại bằng build/kaggle/d3_supervise.sh (đổi tài khoản nếu hết quota).
+2. Khi đủ: evaluate_v3_v1.py từng ô, so với D2P2 Dev theo tiêu chí decision log (có hại ≤ D2P2, utility > D2P2),
+   ablation từng thành phần; ghi Bảng 2.9 và decision log; nếu đạt thì đóng băng final_config_v4.
+3. Hỏi owner/Minh có soạn Test-3 (niêm phong) không; không có thì D3 chỉ báo cáo là thử nghiệm Dev.
+4. Viết chương kết quả Study 2 từ Bảng 2.1–2.8.
 
-GPU: nomtle (kaggle5), dovuong05 (kaggle4), huylmhuhu (kaggle1), lamhuy8904 (kaggle.json), meanalways (kaggle2); buiquocviet
-và oanhlam hết quota tuần 09/11. Mỗi tài khoản 2 phiên GPU. Owner cho đổi tài khoản khi hết quota.
+GPU: nomtle, huylmhuhu, buiquocviet, oanhlam hết quota tuần 09/11. Mỗi tài khoản 2 phiên GPU. Owner cho đổi tài khoản.
 Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng và số đếm.
 ```
 

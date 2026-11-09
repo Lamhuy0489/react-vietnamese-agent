@@ -1,9 +1,20 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-08. Lúc 15:50. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-09. Lúc 14:15. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
+
+**2026-11-09 14:15: D3 trên Dev ĐANG CHẠY (branch `study2/d3-dev`, commit `ee0fc1c`; owner duyệt 09/11).**
+- Thiết kế + tiêu chí ghi trước: decision log 09/11 13:00. Code `src/react_agent/security_v3/d3.py`; chọn thành phần bằng
+  `scripts/d3_offline_replay_v1.py` (Dev). `final_config_v3` giữ ở tag `final-config-v3` (trên branch này verify sẽ báo khác: đúng).
+- 3 notebook × 4 cấu hình {D3, D3DEST, D3P2V1, D3FBV1} × 560: Gemma dovuong05 (kaggle4), Llama 16k lamhuy8904 (kaggle.json),
+  Qwen3.5 meanalways (kaggle2). nomtle, huylmhuhu, buiquocviet, oanhlam hết quota tuần 09/11.
+  Script: `build/kaggle/d3_supervise.sh OWNER CRED SLUG SERVE_KEY K "CFGS" LOGNAME` (tự bật lại), `d3_launch.sh`, `d3_dev_chain.sh`;
+  log `build/kaggle/d3_logs/`; kết quả `results/rebuild_b/v3_dev_<CFG>_<K>` (+ `_eval.json` khi đủ 560).
+- Resume khi notebook chết: `HF_TOKEN="$(cat ~/.hf_token_r5)" nohup build/kaggle/d3_supervise.sh lamhuy8904 kaggle.json
+  lamhuy8904/react-vn-vllm-serve-v1-llama31-8b-ctx16k llama31_8b_ctx16k llama31_8b "D3 D3DEST D3P2V1 D3FBV1" sup_x &`.
+- Xong: so D3 và ablation với D2P2 Dev theo tiêu chí decision log; nếu đạt thì đóng băng `final_config_v4`; Test-3 chờ owner/Minh.
 
 **2026-11-09 10:00: Test v3 Tầng 1 XONG (một lần, `final_config_v3`). 18 ô × 840 đã chấm; H1–H6 đã chạy. Không notebook nào cần giữ.**
 - Kết quả: `docs/research/study2_thesis_tables.md` Bảng 2.7; decision log 09/11 10:00; `results/rebuild_b/v3_test_hypotheses.json`.

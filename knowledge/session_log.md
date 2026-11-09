@@ -376,3 +376,12 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   H4 0,70; H5 0,27. Bảng 2.7, decision log 09/11 10:00.
 - Owner hỏi đề xuất "hướng phát triển" từ công cụ khác: đã đối chiếu, nhiều ý đã có trong D2 (Luật 2–4, denial feedback), vài
   số sai; owner chọn bỏ qua.
+
+## 2026-11-09 14:15 — D3 trên Dev: thiết kế, cài đặt, bật chạy
+
+- Owner duyệt làm D3. Tag `final-config-v3` (verify OK), branch `study2/d3-dev`. Phân tích lỗi lặp lại trên Dev: các
+  kiểu lỗi của Test v3 đều có trên Dev (P2 bỏ sink, A1 chặn nhầm, luật 3 trên benign_auth, Qwen hết bước).
+- Phát lại offline (`scripts/d3_offline_replay_v1.py`): A1 thu hẹp theo đích chặn đủ 11/11 fixture có hại, 0/14 chặn nhầm;
+  luật 3 theo tài nguyên thả 5 attack (bỏ); so khớp rút gọn không thêm gì (bỏ). Decision log 13:00 ghi trước tiêu chí.
+- `security_v3/d3.py` + runner (d3, d3dest, d3p2v1, d3fbv1), test `tests/unit/test_d3.py`. Commit `ee0fc1c`.
+- Bật 3 notebook D3 Dev 14:09–14:13 (dovuong05, lamhuy8904, meanalways); nomtle, huylmhuhu hết quota tuần.

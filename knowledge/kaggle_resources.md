@@ -22,6 +22,10 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-09 14:09–14:13 — D3 Dev (private, T4×2), source `ee0fc1c` branch `study2/d3-dev`:** dovuong05 `gemma4-12b` v7,
+lamhuy8904 `llama31-8b-ctx16k` v2, meanalways `qwen35-9b` v1; mỗi notebook chạy {D3, D3DEST, D3P2V1, D3FBV1} × 560 Dev.
+nomtle và huylmhuhu bị từ chối push 14:09 (hết quota tuần 30 h). Trạng thái thật: `kaggle kernels status`.
+
 **2026-11-09 — Test v3 Tầng 1 bật lại (hạ tầng, private, T4×2), xong 09:43:** dovuong05 `llama31-8b-ctx16k` (bật lại 02:50,
 A0/R1/P2 xong 06:42) và `gemma4-12b` (PRG 27 fixture cuối, 09:33–09:43); huylmhuhu `llama31-8b-ctx16k` v6 (02:18) và `qwen35-9b`
 (02:58, xong 07:18); dovuong05 `gemma4-12b` v4 và nomtle `qwen35-9b` v2 trước đó; buiquocviet `gemma4-12b` v6 chạy PRG tới 06:28 rồi
