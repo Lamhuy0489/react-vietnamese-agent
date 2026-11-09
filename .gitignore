@@ -41,3 +41,10 @@ results/*
 # Local compressed evidence archives
 archive_local/
 .venv-agentdojo/
+
+# OmniRoute/Antigravity Gemini setup (owner, 2026-11-09): contains a local API key and personal
+# account emails; keep local only.
+docs/omniroute_gemini_guide.md
+configs/models/gemini_omniroute.yaml
+scripts/run_gemini_smoke.py
+scripts/setup_omniroute_pool.py

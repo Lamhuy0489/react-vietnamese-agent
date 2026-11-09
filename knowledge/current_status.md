@@ -9,6 +9,18 @@ Hạ tầng v3: `authoring/v3/release.py`, `scripts/build_v3_release.py`, `scrip
 Study 1: R4 Test v1; `final_config_v2` (`8889e448…`); Test-2 (D2 = A1 200/200); clean Test Qwen 50 · Llama 62 · Gemma
 65 /100; RQ3: chỉ bỏ dấu gây giảm có ý nghĩa. R0 chờ PR #5 merge. Hạn luận văn 2027-02-19.
 
+## Gemini (mô hình mạnh, phần mở rộng phụ) — 2026-11-09
+
+- Đường cũ: Gemini API chính thức (`scripts/gemini_proxy_v1.py`, key ở `~/.gemini_keys`) bị gói miễn phí giới hạn
+  20 lượt/ngày/key, không đủ (Dev cần ~10.000 lượt). Chưa bật billing.
+- Đường mới owner dựng 09/11: OmniRoute cục bộ (`http://localhost:20128/v1`, model `gemini-pool` → `antigravity/gemini-3-flash`,
+  xoay vòng 3 tài khoản Google qua provider Antigravity). File hướng dẫn và cấu hình chứa key cục bộ + email nên đã
+  gitignore (`docs/omniroute_gemini_guide.md`, `configs/models/gemini_omniroute.yaml`, `scripts/run_gemini_smoke.py`,
+  `scripts/setup_omniroute_pool.py`). Kiểm 09/11: server trả 200, JSON schema chạy được, phản hồi không có trường `model`.
+- Chưa chạy benchmark: cần (1) adapter như `gemini_proxy_v1.py` trỏ upstream OmniRoute để dùng đúng runner v3 + prompt v3
+  (không dùng `run_gemini_smoke.py`/prompt riêng: không so sánh được); (2) owner chấp nhận rủi ro điều khoản Google khi
+  dùng quota Antigravity cho chạy hàng loạt, và ghi hạn chế: model không ghim phiên bản, không seed, backend có thể đổi.
+
 ## Study 2 đã chốt (2026-11-05)
 
 - Dữ liệu VN-AgentInject v3: Dev 48 / Test 72 family theo cơ chế M1–M6 + B-plain/B-auth, 5 biến thể (thêm
