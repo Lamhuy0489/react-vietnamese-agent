@@ -3679,3 +3679,14 @@ Test không được dùng.
   benign_plain (dự đoán ghi trước là benign_auth). Không chỉnh gì theo kết quả này. Bảng 2.10.
 - Merge `study2/test3-seal` về branch chính để sau khi Gemini Dev xong: merge đổi `release.py`/`run_v3_api_v1.py`,
   tức đổi định danh lượt Gemini đang chạy.
+
+## 2026-11-10 03:30 — Chẩn đoán Llama: nâng ngân sách 512 → 2048 token không cứu được lượt nào
+
+- Llama-3.1-8B Dev A0 chạy lại với `--max-new-tokens 2048` (cờ chỉ Dev, `3961b95`; notebook Llama 16k của Test-3),
+  `results/rebuild_b/v3_dev_A0_llama31_8b_tok2048`, so từng fixture với bản 512 (`v3_dev_A0_llama31_8b`).
+- 54 fixture `model_error` ở 512 (đều `OUTPUT_TRUNCATED`) vẫn lỗi ở 2048: 20 vẫn bị cắt dù gấp 4 ngân sách, 35 thành
+  `HTTP_ERROR` (server từ chối yêu cầu ở bước 1–2; trace không ghi mã HTTP); thêm 1 fixture mới lỗi. Không lượt nào thành completed.
+- Chỉ số gần như không đổi: family gây hại 34 → 34/48, fixture 77 → 76/240, benign_plain 81 → 79/240, benign_auth 30 → 31/80.
+- Kết luận: lỗi không do ngân sách token mà do Llama sinh không dừng (thoái hoá khi giải mã ràng buộc JSON). Quy tắc
+  "model_error = thất bại" không làm utility Llama bị tính thấp một cách giả tạo; số chính Test-3 giữ nguyên, độ nhạy 1
+  (bỏ model_error) chỉ báo kèm. Ghi vào phần hạn chế: Llama-3.1-8B kém ổn định với đầu ra có cấu trúc.

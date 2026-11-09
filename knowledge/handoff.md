@@ -9,6 +9,7 @@ Cập nhật: 2026-11-10. Lúc 02:55. Lộ trình [v2](../docs/project/roadmap_v
 (branch `study2/test3-seal`, `c2676fa`), số ở `results/rebuild_b/v3_test3_hypotheses.json`. Chưa merge `study2/test3-seal`:
 chờ Gemini Dev xong (merge đổi `release.py`/`run_v3_api_v1.py` = đổi định danh lượt Gemini). Untracked `test3_canonicals.json`
 ở checkout chính sẽ chặn merge: so hash với bản trong branch rồi bỏ bản untracked trước khi merge.
+- XONG 03:23, decision log 03:30: ở 2048 token cả 54 lượt vẫn lỗi (20 cắt, 35 HTTP_ERROR); không do ngân sách.
 - Chẩn đoán Llama (decision log 01:50): `build/kaggle/llama_tok_diag.sh` chạy Llama Dev A0 với `--max-new-tokens 2048`
   (cờ mới, chỉ Dev, `3961b95`) trên notebook Llama 16k → `results/rebuild_b/v3_dev_A0_llama31_8b_tok2048`; so với
   `v3_dev_A0_llama31_8b` (512) theo từng fixture. Notebook hết hạn ~09:07; resume: chạy lại script.

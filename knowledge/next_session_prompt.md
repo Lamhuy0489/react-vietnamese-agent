@@ -24,7 +24,7 @@ Việc của phiên này:
 5. Gemini trên AgentDojo EN/VI, 16 lượt gồm 2 phòng thủ như Llama (build/gemini/gemini3_agentdojo_chain.sh, tự chạy sau Gemini Dev; log build/gemini/ad_*.log,
    kết quả results/rebuild_b/agentdojo_*_gemini3_flash_raw): đọc summary, Bảng 2.3b, so với Llama (decision log 07/11 08:40).
 6. Llama OUTPUT_TRUNCATED (decision log 10/11 01:50, owner duyệt): (a) khi viết, báo thêm số Llama bỏ model_error (phụ);
-   (b) đã chạy từ 02:50: results/rebuild_b/v3_dev_A0_llama31_8b_tok2048 (cờ --max-new-tokens 2048); evaluate rồi so từng
+   (b) XONG 03:23 (decision log 03:30): 2048 token không cứu lượt nào, lỗi do sinh không dừng. Chi tiết cũ: results/rebuild_b/v3_dev_A0_llama31_8b_tok2048 (cờ --max-new-tokens 2048); evaluate rồi so từng
    fixture với v3_dev_A0_llama31_8b (512): bao nhiêu model_error thành completed, bao nhiêu vẫn cắt ở 2048 (lặp vô hạn). Kết quả chính Test-3 không đổi.
 7. Bắt đầu viết chương kết quả Study 2 theo dàn ý cuối docs/research/study2_thesis_tables.md (Bảng 2.1–2.11).
 
