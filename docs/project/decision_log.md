@@ -3667,3 +3667,15 @@ Test không được dùng.
 - Độ nhạy 1 (chỉ tính lại): báo thêm số Llama khi bỏ lượt `model_error`, ghi rõ là phụ.
 - Độ nhạy 2 (Dev, chẩn đoán): sau khi Test-3 Llama xong, chạy lại Llama Dev A0 với ngân sách token lớn hơn và lưu số liệu
   hình dạng đầu ra bị cắt (độ dài, tỉ lệ khoảng trắng, lặp), để xác định nguyên nhân và utility bị tính thấp bao nhiêu.
+
+## 2026-11-10 02:40 — Test-3 xong: T1, T2, T3 đều đạt (Holm)
+
+- 9 ô {A0, D2P2, D3DEST} × {Gemma-4-12B, Llama-3.1-8B, Qwen3.5-9B}, mỗi ô 560 fixture, chạy một lần (chỉ chạy lại do hạ
+  tầng, resume), xong 02:17. Phân tích đúng `final_config_v4` bằng `scripts/test3_hypotheses_v1.py` (commit `c2676fa`).
+- T1 utility benign D3DEST > D2P2: 0,500 → 0,510, cặp lệch 11/1, p Holm 3,2·10⁻³; CI family [−0,1; +3,1] điểm.
+- T2 hại D3DEST không tệ hơn D2P2 quá 2 điểm: 0,037 → 0,036, p Holm 1,6·10⁻⁵³.
+- T3 hại D3DEST < A0: 0,324 → 0,036, cặp lệch 4/211, p Holm 5,0·10⁻⁵⁷.
+- Kết luận: D3DEST giữ mức an toàn của D2P2 và tăng utility một chút có ý nghĩa thống kê. Hiệu ứng nhỏ, đến từ
+  benign_plain (dự đoán ghi trước là benign_auth). Không chỉnh gì theo kết quả này. Bảng 2.10.
+- Merge `study2/test3-seal` về branch chính để sau khi Gemini Dev xong: merge đổi `release.py`/`run_v3_api_v1.py`,
+  tức đổi định danh lượt Gemini đang chạy.

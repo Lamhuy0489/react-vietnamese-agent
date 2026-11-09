@@ -266,7 +266,38 @@ utility (plain + auth, /960) > D2P2.
 ## Còn thiếu trước khi viết chương
 
 - Test v3 Tầng 1 đã xong (Bảng 2.7). Tầng 2 và SecAlign trên Test: tùy GPU, trước 2026-12-14.
-- Bảng 2.10 Test-3 (`final_config_v4`, {A0, D2P2, D3DEST} × 3 backbone; T1–T3 Holm, CI bootstrap theo family): đang chạy, ~sáng 10/11.
+- Bảng 2.10: xong, xem bảng dưới.
+
+### Bảng 2.10 — Test-3 xác nhận D3DEST (`final_config_v4`, chạy một lần 09–10/11/2026)
+
+48 family mới (T4_01–T4_48), 560 fixture mỗi ô: 240 attack, 240 benign_plain, 80 benign_auth. `model_error` tính là thất bại.
+Mỗi ô ghi: family gây hại /48 · fixture gây hại /240 · utility benign_plain /240 · utility benign_auth /80.
+
+| Backbone | A0 | D2P2 | D3DEST |
+|---|---|---|---|
+| Gemma-4-12B | 33 · 101 · 191 · 55 | 3 · 7 · 167 · 48 | 3 · 7 · 170 · 48 |
+| Llama-3.1-8B | 29 · 50 · 95 · 23 | 8 · 10 · 87 · 30 | 8 · 10 · 89 · 31 |
+| Qwen3.5-9B | 33 · 82 · 134 · 25 | 7 · 10 · 129 · 19 | 7 · 9 · 133 · 19 |
+| **Gộp** | **95/144 · 233/720 · 420/720 · 103/240** | **18 · 27 · 383 · 97** | **18 · 26 · 392 · 98** |
+
+Kiểm định chính (Holm trên T1–T3; gộp 3 backbone; CI 95% bootstrap theo family, 10.000 lần, seed 20261110):
+
+| Giả thuyết | Tỉ lệ | Chênh (CI 95%) | Cặp lệch | p (Holm) | Kết luận |
+|---|---|---|---|---|---|
+| T1 utility benign: D3DEST > D2P2 | 0,500 → 0,510 | +1,0 điểm [−0,1; +3,1] | 11 / 1 | 3,2·10⁻³ | bác H0 |
+| T2 hại: D3DEST không tệ hơn D2P2 quá 2 điểm | 0,037 → 0,036 | −0,1 điểm [−0,4; 0,0] | 0 / 1 | 1,6·10⁻⁵³ | bác H0 |
+| T3 hại: D3DEST < A0 | 0,324 → 0,036 | −28,7 điểm [−35,4; −22,4] | 4 / 211 | 5,0·10⁻⁵⁷ | bác H0 |
+
+Phụ (không vào Holm): benign_plain +1,3 điểm (10/1, p 5,9·10⁻³); benign_auth +0,4 điểm (1/0, p 0,5); D2P2 so A0 lặp lại
+kết quả Test v3 (0,324 → 0,037, 4/210).
+
+Đọc kết quả:
+- Cả 3 giả thuyết đạt, đúng dự đoán ghi trước. Riêng T1: McNemar có ý nghĩa nhưng hiệu ứng nhỏ (+1 điểm), và CI bootstrap
+  theo family chạm 0. Lợi ích đến từ benign_plain, không từ benign_auth như dự đoán.
+- Lỗi model mỗi ô: Llama 74 / 69 / 66 `model_error` (đều `OUTPUT_TRUNCATED`), Qwen 6–8, Gemma 0–1. Lượt hết bước
+  (`max_steps`): Qwen 95 / 188 / 153, Llama 99 / 111 / 94. Độ nhạy Llama: decision log 10/11 01:50.
+- Nguồn số: `results/rebuild_b/v3_test3_hypotheses.json`, script `scripts/test3_hypotheses_v1.py` (branch `study2/test3-seal`).
+
 - Bảng 2.11 Gemini 3 Flash trên Dev v3 (A0, R1, D2, D2P2; tham chiếu model mạnh, OmniRoute, sửa JSON hình thức): ~sáng 10/11;
   bản chưa sửa JSON (`*_nojsonfix`) làm phân tích độ nhạy.
 - Bảng 2.3b Gemini 3 Flash trên AgentDojo EN/VI (utility + `important_instructions`, không phòng thủ): chạy sau Gemini Dev.
