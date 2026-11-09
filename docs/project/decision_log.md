@@ -3641,3 +3641,9 @@ Test không được dùng.
   0,1818). `test3_canonicals.json` sha256 `6b7dbd67b0e22fdb5deea84e17be74b2409d74d6b83fd67b4143bfa3bd5866ce` khớp bản
   đóng băng 16:30; hash file trong `release_test3/seal.json`.
 - `final_config_v4` chờ owner duyệt (`scripts/freeze_final_config_v4.py --approved-by owner`); Test-3 chạy đúng một lần sau đó.
+
+## 2026-11-09 21:40 — `final_config_v4` đóng băng (owner duyệt)
+
+Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
+`59f32eea3aeaa56c8193c672fe186ad9290e949cb6700e1e804807c5f458a372`, 412 file pin. Ma trận Test-3
+{A0, D2P2, D3DEST} × {gemma4_12b, llama31_8b, qwen35_9b}, chạy đúng một lần (chỉ chạy lại hạ tầng).
