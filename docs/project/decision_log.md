@@ -3567,3 +3567,10 @@ Test không được dùng.
 - D2+P2 family có hại /72: Gemma 5, Llama 5, Qwen3.5 1 (A0: 50, 41, 47). Chi tiết: `study2_thesis_tables.md` Bảng 2.7.
 - Kiểm định: `scripts/test_v3_hypotheses_v1.py` (viết sau freeze nhưng trước khi xem số; chỉ cài đặt đúng mục
   `primary_holm` và `statistics` của manifest: H1, H3, H6 một phía, H4, H5 hai phía, H2 không kém với SE cụm theo family).
+
+## 2026-11-09 11:00 — Phân tích lỗi sau Test v3 (thăm dò, không chỉnh)
+
+- `scripts/test_v3_error_analysis_v1.py`, chỉ đọc mã luật/tên công cụ/ID. Utility mất của D2+P2 đến từ: P2 làm Gemma bỏ sink
+  hợp lệ (32/35 lượt plain mất); lớp A1 chặn nhầm trên plain (22 lượt, 3 backbone); luật 3 trên benign_auth (13 lượt); Qwen3.5
+  lặp tới hết bước sau khi bị chặn. Llama mất do lỗi backbone ở mọi cấu hình. 13 fixture còn lọt (M3 6, M4 3, M5 4).
+- Không đổi `final_config_v3`. Năm hướng tối ưu ghi ở Bảng 2.8; chỉ được khẳng định qua Dev + bộ Test mới.

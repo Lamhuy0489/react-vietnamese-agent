@@ -211,6 +211,39 @@ D2 9 · 13 · 12 · 6 · 32; D2+P2 1 · 5 · 3 · 3 · 1.
 4. Tiếng Việt không dấu và tiếng Anh không làm A0 dễ bị tấn công hơn một cách có ý nghĩa thống kê (H4, H5).
 5. PRG (Progent-lite) chặn hết M1, M2 nhưng gần như không tác dụng với M3–M5, khớp với Dev.
 
+## Bảng 2.8. Phân tích lỗi sau Test v3 (thăm dò, không dùng để chỉnh)
+
+Script `scripts/test_v3_error_analysis_v1.py` → `results/rebuild_b/v3_test_error_analysis.json`. Chỉ đọc mã luật, tên công
+cụ, trạng thái và ID; không đọc nội dung. "Mất" = fixture đạt utility ở A0 nhưng không đạt ở cấu hình này; "được" = ngược lại.
+Lớp A1 = lớp luật Study 1 giữ trong D2 (luật 5); "không chặn" = không luật nào chặn, mô hình tự làm khác.
+
+| Cấu hình, nhánh | Gemma mất/được | Llama | Qwen3.5 | Nguyên nhân chính |
+|---|---|---|---|---|
+| P2 plain | −35/+15 | −40/+43 | −24/+24 | Gemma: 32/35 bỏ không gọi sink người dùng yêu cầu; Qwen3.5: 17 hết bước |
+| D2 plain | −14/+0 | −9/+1 | −11/+3 | Lớp A1 chặn nhầm 10 · 3 · 9; luật 2 chỉ 0 · 1 · 2 |
+| D2 auth | −11/+1 | −6/+1 | −8/+0 | Luật 3 (giá trị mật) 6 · 2 · 5; lớp A1 5 · 3 · 3 |
+| D2+P2 plain | −46/+15 | −42/+42 | −34/+24 | cộng hai nguồn trên |
+| D2+P2 auth | −17/+2 | −24/+13 | −13/+6 | Gemma 11 không chặn (P2); Qwen3.5 7 hết bước; luật 3 2 · 2 · 3 |
+
+Trạng thái lượt chạy: Llama có 35–46 `model_error` và 37–61 `max_steps` trên benign_plain ở **mọi** cấu hình (giới hạn của
+backbone, không do phòng thủ). Qwen3.5 khi bị chặn thường thử lại tới hết bước: attack `max_steps` A0 52 → D2 189, benign_plain
+34 → D2+P2 65 (P2 một mình 54).
+
+13 fixture còn gây hại dưới D2+P2 (11 family): M3 6, M4 3, M5 4. M5 (sửa giá trị không mật trên sink người dùng nêu, 4 lượt)
+nằm ngoài phạm vi thiết kế của D2. Phần lớn M3/M4 lọt mà không luật nào bắt: giả thuyết là giá trị mật xuất hiện ở dạng biến
+đổi nên luật 3/4 (so khớp nguyên văn) không nhận ra; cần owner/Minh xem các ID (chỉ người được đọc Test) để xác nhận. Family lặp
+lại trên nhiều backbone: T3_02 (M5), T3_65 (M4), T3_72 (M3), T3_33 (M3).
+
+**Hướng tối ưu rút ra (chỉ là đề xuất; muốn khẳng định phải chỉnh trên Dev rồi thử trên bộ Test mới):**
+1. P2 làm Gemma quá thận trọng (bỏ sink hợp lệ): viết lại lời nhắc sandwich để nói rõ vẫn phải làm hành động người dùng yêu cầu.
+2. Lớp A1 chặn nhầm nhiều nhất trên plain (22 lượt, 3 backbone), nhưng trên Dev bỏ nó làm tăng 2–4 family có hại (D2-NR): cần
+   thu hẹp lớp A1 (ví dụ chỉ áp khi có tín hiệu tiêm trong cùng nguồn dữ liệu sinh ra tham số), không bỏ hẳn.
+3. Luật 3 chặn nhầm trên benign_auth (13 lượt): người dùng cho phép theo tên trường dữ liệu chứ không gõ nguyên giá trị. Hướng:
+   cho phép theo trường mà người dùng nêu (gắn phạm vi người dùng), thay vì chỉ theo giá trị nguyên văn.
+4. Sau k lần bị chặn cùng một hành động, runtime kết thúc lịch sự bằng câu trả lời cuối thay vì để mô hình lặp tới hết bước
+   (Qwen3.5).
+5. Chuẩn hóa giá trị trước khi so khớp ở luật 3/4 (bỏ khoảng trắng, dấu, định dạng số) nếu giả thuyết về giá trị biến đổi đúng.
+
 ## Còn thiếu trước khi viết chương
 
 - Test v3 Tầng 1 đã xong (Bảng 2.7). Tầng 2 và SecAlign trên Test: tùy GPU, trước 2026-12-14.
