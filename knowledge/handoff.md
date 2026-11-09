@@ -18,6 +18,9 @@ Cập nhật: 2026-11-10. Lúc 01:50. Lộ trình [v2](../docs/project/roadmap_v
   (giới hạn phiên 12 h của Kaggle); lamhuy8904 hết quota sau phiên này, không bật lại được trên tài khoản đó.
   Tiến độ 22:16: Gemma 147/194/161, Llama 107/105/122, Qwen 158/96/103 (A0/D2P2/D3DEST). Gemma có nhiều
   "infrastructure error, will rerun" (tunnel chập chờn), endpoint vẫn 200; resume tự xử lý.
+- 10/11 02:00: supervisor qua đêm `build/overnight_supervisor.sh` (log `build/overnight_supervisor.log`, 10 phút/lần):
+  chain chết → chạy lại (resume); endpoint Test-3 chết ≥ 30 phút → bật lại serve trên meanalways (một lần/model) rồi chain;
+  Gemini Dev/AgentDojo dừng giữa chừng → chạy lại; dừng và báo khi ALERT/TEST3_DONE/ALL_DONE/12:00.
 - Llama OUTPUT_TRUNCATED (decision log 10/11 01:50, owner duyệt): Test-3 giữ nguyên; độ nhạy 1 = bỏ model_error (tính lại),
   độ nhạy 2 = Llama Dev A0 với ngân sách token lớn hơn + đếm hình dạng đầu ra bị cắt, chạy khi Test-3 Llama xong
   (notebook lamhuy8904 sống tới ~09:07; chết thì bật Llama 16k trên meanalways). Runner cần cờ ghi đè max_tokens (chưa có).
