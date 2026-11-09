@@ -3603,3 +3603,13 @@ Test không được dùng.
   560 fixture/ô. Độ mới so thêm với `release_v3`. `spec.json`, `spec.py`, `release.py` không đổi khi D3 Dev còn chạy.
 - Sau D3 Dev: mở rộng `release.py` cho split `test3`, ghi `final_config_v4` (ma trận A0, D2P2, D3 × 3 backbone Tầng 1,
   giả thuyết chính ghi trước khi chạy). Hướng dẫn người viết: `AUTHORING_TEST3.md`.
+
+## 2026-11-09 16:30 — Đóng băng Test-3 (`test3_canonicals.json`)
+
+- Owner và Minh review chéo phiếu 5 mục (`taxonomy.md` §7) trên 48/48 family: đạt cả 5 mục. Trước đó sửa 16 family lỗi
+  check (10 literal, 6 code-mix) và các lỗi QA replay; đổi tên family T4_07 để không trùng literal Test-2. Sửa chỉ theo máy kiểm
+  và bộ chấm, không dựa vào phòng thủ.
+- Máy kiểm (Claude chạy lại, không đọc nội dung): `check --per-family` 48/0 lỗi; `check` CHECK_OK 48 family, 560 fixture
+  (attack 240, plain 240, auth 80); `qa` 800 replay, 0 lỗi, novelty max 0,1818, không literal trùng.
+- SHA-256 đóng băng: `6b7dbd67b0e22fdb5deea84e17be74b2409d74d6b83fd67b4143bfa3bd5866ce`. File giữ cục bộ, không sửa nữa;
+  commit cùng lúc niêm phong (sau D3 Dev), khi đó `seal.json` phải ghi đúng hash này.
