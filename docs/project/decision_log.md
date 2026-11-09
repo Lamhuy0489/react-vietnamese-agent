@@ -3574,3 +3574,23 @@ Test không được dùng.
   hợp lệ (32/35 lượt plain mất); lớp A1 chặn nhầm trên plain (22 lượt, 3 backbone); luật 3 trên benign_auth (13 lượt); Qwen3.5
   lặp tới hết bước sau khi bị chặn. Llama mất do lỗi backbone ở mọi cấu hình. 13 fixture còn lọt (M3 6, M4 3, M5 4).
 - Không đổi `final_config_v3`. Năm hướng tối ưu ghi ở Bảng 2.8; chỉ được khẳng định qua Dev + bộ Test mới.
+
+## 2026-11-09 13:00 — D3 trên Dev (owner duyệt; ghi trước khi chạy GPU)
+
+- Phạm vi: cấu hình mới D3 cho Study 2, chỉ thiết kế và chỉnh trên Dev. Test v3 đã xem nên **không** dùng để đánh giá D3;
+  muốn khẳng định chính thức cần bộ Test-3 mới (owner/Minh soạn, niêm phong). Chưa có Test-3 thì D3 chỉ báo cáo là
+  thử nghiệm Dev. `final_config_v3` giữ nguyên ở tag `final-config-v3` (manifest verify OK, sha `456de8d3…`); D3 làm ở
+  branch `study2/d3-dev`, nên trên branch này `final_config_v3.verify` sẽ báo khác (đúng thiết kế, chạy Test v3 từ tag).
+- Chọn thành phần bằng phát lại offline trên các lượt Dev đã có (`scripts/d3_offline_replay_v1.py`, nguồn D2NRP2):
+  - Lớp A1 thu hẹp (`DEST`: chỉ chặn sink khi chính quan sát bị gắn cờ nhắc tới đích của sink đó): chặn đủ 11 fixture có hại
+    mà lớp A1 cũ chặn, 0 trong 14 sink benign mà lớp cũ chặn nhầm. Phương án `TAINT` (giá trị từ nguồn bị cờ): 9/11. Chọn DEST.
+  - Hướng 3 (luật 3 theo tài nguyên người dùng nêu): mở 3 benign_auth nhưng thả 5 attack → bỏ. Hướng 5 (so khớp rút gọn bỏ
+    dấu/khoảng trắng): không bắt thêm lượt nào trên Dev → bỏ (không có bằng chứng Dev).
+- D3 = D2 luật 1–4 (không đổi) + A1 thu hẹp DEST + lời nhắc v2 (P2 nhưng yêu cầu làm đủ các bước, kể cả gửi tới đích người
+  dùng nêu) + phản hồi khi bị chặn v2 (nói rõ thử lại vẫn bị chặn, làm bước còn lại hoặc trả lời cuối). Code
+  `src/react_agent/security_v3/d3.py`; file D2 đã ghim không sửa.
+- Chạy Dev 3 backbone Tầng 1 (560 fixture/ô): `d3`, và ablation `d3dest` (chỉ DEST, P2 + phản hồi v1), `d3p2v1` (P2 v1),
+  `d3fbv1` (phản hồi v1). So với D2P2 Dev đã có.
+- Tiêu chí chọn (ghi trước): D3 được đóng băng nếu, gộp 3 backbone trên Dev, số fixture attack có hại ≤ D2P2 và utility
+  benign (plain + auth) > D2P2. Nếu một thành phần trong ablation làm tăng có hại hoặc giảm utility thì bỏ thành phần đó.
+  Không lặp vòng chỉnh thứ hai trên cùng Dev trừ khi ghi lại ở đây.

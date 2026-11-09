@@ -48,6 +48,7 @@ from react_agent.security_v1.phase5_closure_runtime_v1 import (
 )
 from react_agent.security_v1.runtime_d2_v1 import RUNTIME_VERSION as D2_RUNTIME_VERSION
 from react_agent.security_v1.runtime_d2_v1 import D2Runtime
+from react_agent.security_v3 import d3 as d3mod
 from react_agent.security_v3 import sanitizer as san
 from react_agent.security_v3.d2_no_rule import D2NoRuleRuntime
 from react_agent.security_v3.melon import MelonBackend
@@ -69,10 +70,15 @@ PROMPT_BASELINES: dict[str, dict[str, Any]] = {
     "p1": {"spotlight_mode": "datamark"}, "p2": {"sandwich": True},
     "p1p2": {"spotlight_mode": "datamark", "sandwich": True},
     "d2p1": {"spotlight_mode": "datamark"}, "d2p2": {"sandwich": True},
-    "d2nrp2": {"sandwich": True}, "d2p2san": {"sandwich": True}}
+    "d2nrp2": {"sandwich": True}, "d2p2san": {"sandwich": True},
+    "d3p2v1": {"sandwich": True}, "d3dest": {"sandwich": True}}
+# D3 (Dev): narrowed A1 layer + reminder v2 + denial feedback v2, and its ablations.
+D3 = {"d3", "d3p2v1", "d3fbv1", "d3dest"}
+D3_REMINDER_V2 = {"d3", "d3fbv1"}
+D3_FEEDBACK_V1 = {"d3fbv1", "d3dest"}
 # Dev round 3: sanitizer (SAN) alone on A0, with D2, and with D2+P2.
 SANITIZED = {"san", "d2san", "d2p2san"}
-DEFENSES = {"d2", "g1", "mel", "prg", *PROMPT_BASELINES, *SANITIZED}
+DEFENSES = {"d2", "g1", "mel", "prg", *PROMPT_BASELINES, *SANITIZED, *D3}
 NO_GUARD_LEVELS = [level for level in LEVELS if not configuration(cast(Level, level)).llm_guard]
 
 
@@ -120,7 +126,9 @@ def main(argv: list[str] | None = None) -> int:
                              "d2p1 = D2 + spotlighting; d2p2 = D2 + sandwich (Dev round 1); "
                              "d2nrp2 = D2 without the A1 rule layer + sandwich (Dev round 2); "
                              "san/d2san/d2p2san = task-aware sanitizer alone (A0), with D2, "
-                             "with D2+P2 (Dev round 3)")
+                             "with D2+P2 (Dev round 3); d3 = D2 with the destination-scoped A1 "
+                             "layer, reminder v2 and denial feedback v2; ablations d3p2v1 "
+                             "(P2 reminder), d3fbv1 (feedback v1), d3dest (both v1)")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--shard", default="0/1",
                         help="I/N: run fixtures I, I+N, ... (same output and identity; "
@@ -147,7 +155,7 @@ def main(argv: list[str] | None = None) -> int:
         final_sha = final_config_v3.manifest_sha256(ROOT)
     if args.dry_run_dummy and not args.output:
         raise SystemExit("--dry-run-dummy needs an explicit --output outside results/")
-    d2 = args.defense in ("d2", "d2p1", "d2p2", "d2nrp2", "d2san", "d2p2san")
+    d2 = args.defense in ("d2", "d2p1", "d2p2", "d2nrp2", "d2san", "d2p2san", *D3)
     if d2 and args.levels != ["A1"]:
         raise SystemExit("--defense d2/d2p1/d2p2 runs as --levels A1")
     if args.defense in ("p1", "p2", "p1p2", "g1", "mel", "prg", "san") and (
@@ -194,6 +202,8 @@ def main(argv: list[str] | None = None) -> int:
     prompt_baseline = PROMPT_BASELINES.get(args.defense or "")
     if prompt_baseline:
         backend = PromptBaselineBackend(backend, **prompt_baseline)
+    if args.defense in D3_REMINDER_V2:
+        backend = d3mod.ReminderV2Backend(backend)
     if args.defense == "mel":
         backend = MelonBackend(backend)
     if args.defense in SANITIZED:  # outermost: P2's reminder is added after cleaning
@@ -260,15 +270,24 @@ def main(argv: list[str] | None = None) -> int:
             files_d.append(ROOT / "src/react_agent/security_v3/d2_no_rule.py")
         if args.defense in SANITIZED:
             files_d.append(ROOT / "src/react_agent/security_v3/sanitizer.py")
+        if args.defense in D3:
+            files_d.append(ROOT / "src/react_agent/security_v3/d3.py")
         identity["defense"] = {"name": args.defense, "prompt_baseline": prompt_baseline,
                                "prompt_guard": guard_identity and {
                                    **guard_identity, "threshold": PG_THRESHOLD},
                                "file_sha256": {f.name: sha256(f) for f in files_d}}
         if args.defense in SANITIZED:  # key absent for earlier defenses (identity unchanged)
             identity["defense"]["sanitizer"] = san.identity()
+        if args.defense in D3:
+            identity["defense"]["d3"] = {
+                "profile": d3mod.PROFILE,
+                "reminder": "v2" if args.defense in D3_REMINDER_V2 else "p2_v1",
+                "denial_feedback": "v1" if args.defense in D3_FEEDBACK_V1 else "v2"}
     if args.dry_run_dummy:
         identity["dry_run_dummy"] = True
     runtime_class = (D2NoRuleRuntime if args.defense == "d2nrp2"
+                     else d3mod.D3FeedbackV1Runtime if args.defense in D3_FEEDBACK_V1
+                     else d3mod.D3Runtime if args.defense in D3
                      else D2Runtime if d2 else Phase5ClosureRuntime)
     output.mkdir(parents=True, exist_ok=True)
     # one runner per output folder and shard (held until exit)
