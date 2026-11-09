@@ -3627,3 +3627,17 @@ Test không được dùng.
     `X-OmniRoute-No-Cache: true` (đã kiểm: gọi lặp vẫn ~1 s, không 0,02 s); `semanticCacheEnabled` cũng đặt false trong cấu hình.
   - nhịp gọi tối thiểu 4 s (`--min-interval`), retry 429/5xx.
 - Smoke 10 fixture Dev A0 sau sửa: 10/10 completed, benign 5/5 utility. Chạy Dev A0, D2P2, R1, D2 tuần tự (~3 h/cấu hình).
+
+## 2026-11-09 21:20 — D3 Dev: chọn D3DEST; niêm phong Test-3
+
+- **Kết quả Dev** (560 × 3 backbone, gộp; gây hại / 720 attack, utility / 960 benign plain+auth):
+  A0 330 / 500; D2P2 12 / 475; D3 (đủ 3 thay đổi) 21 / 385; D3DEST 12 / 490; D3P2V1 14 / 491; D3FBV1 21 / 379.
+- **Quy tắc đăng ký trước (13:00)**: gây hại ≤ D2P2 và utility > D2P2. Chỉ D3DEST đạt (12 = 12; 490 > 475,
+  +1,6 điểm: Gemma +5, Llama +7, Qwen +3). Lời nhắc v2 bị loại (tăng gây hại; Qwen utility 165 → 55), denial
+  feedback v2 bị loại theo cùng tiêu chí (D3P2V1 gây hại 14).
+- **D3 chốt** = D3DEST: luật D2 1–4 + tầng A1 theo đích (`security_v3/d3.py`) + lời nhắc P2 v1 + denial feedback v1;
+  runner `--defense d3dest`, tên cấu hình `D3DEST`. Ma trận Test-3: {A0, D2P2, D3DEST} × {gemma4_12b, llama31_8b, qwen35_9b}.
+- **Niêm phong Test-3**: `data/adversarial/release_test3` (48 family, 560 fixture; QA 800 replay, 0 lỗi; novelty max
+  0,1818). `test3_canonicals.json` sha256 `6b7dbd67b0e22fdb5deea84e17be74b2409d74d6b83fd67b4143bfa3bd5866ce` khớp bản
+  đóng băng 16:30; hash file trong `release_test3/seal.json`.
+- `final_config_v4` chờ owner duyệt (`scripts/freeze_final_config_v4.py --approved-by owner`); Test-3 chạy đúng một lần sau đó.
