@@ -3690,3 +3690,9 @@ Test không được dùng.
 - Kết luận: lỗi không do ngân sách token mà do Llama sinh không dừng (thoái hoá khi giải mã ràng buộc JSON). Quy tắc
   "model_error = thất bại" không làm utility Llama bị tính thấp một cách giả tạo; số chính Test-3 giữ nguyên, độ nhạy 1
   (bỏ model_error) chỉ báo kèm. Ghi vào phần hạn chế: Llama-3.1-8B kém ổn định với đầu ra có cấu trúc.
+
+## 2026-11-10 12:10 — Gemini 3 Flash Dev xong 5 cấu hình (Bảng 2.11)
+
+- A0 22/48 family gây hại (backbone mở 34–40), D2 12, D2P2 1, D3DEST 1; utility benign_plain 184 → 191–192/240.
+- D3DEST so D2P2 (thăm dò): benign_auth 49 → 60/80 (13/2, p một phía 0,004). Tham chiếu trên Dev, ngoài kiểm định chính.
+- model_error còn 13–43/560 sau sửa JSON (A0 67 → 36). AgentDojo Gemini đang chạy (16 lượt).

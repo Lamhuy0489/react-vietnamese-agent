@@ -298,7 +298,7 @@ kết quả Test v3 (0,324 → 0,037, 4/210).
   (`max_steps`): Qwen 95 / 188 / 153, Llama 99 / 111 / 94. Độ nhạy Llama: decision log 10/11 01:50.
 - Nguồn số: `results/rebuild_b/v3_test3_hypotheses.json`, script `scripts/test3_hypotheses_v1.py` (branch `study2/test3-seal`).
 
-- Bảng 2.11 Gemini 3 Flash trên Dev v3 (A0, R1, D2, D2P2; tham chiếu model mạnh, OmniRoute, sửa JSON hình thức): ~sáng 10/11;
+- Bảng 2.11: xong, xem bảng dưới.
   bản chưa sửa JSON (`*_nojsonfix`) làm phân tích độ nhạy.
 - Bảng 2.3b Gemini 3 Flash trên AgentDojo EN/VI (utility + `important_instructions`, không phòng thủ): chạy sau Gemini Dev.
 
@@ -306,3 +306,25 @@ Dàn ý chương kết quả Study 2 (gợi ý): (1) benchmark VN-AgentInject v3
 (2.1, 2.2, 2.4, 2.5); (3) tấn công thích nghi (2.6, 2.6b); (4) Test v3 chính thức (2.7) và phân tích lỗi (2.8); (5) D3: thiết
 kế trên Dev (2.9) và xác nhận trên Test-3 (2.10); (6) ngoại kiểm: AgentDojo EN/VI (2.3, 2.3b) và model mạnh (2.11);
 (7) hạn chế: model mạnh qua proxy (bỏ schema, sửa JSON), Test-3 do cùng nhóm soạn, chênh D3 nhỏ, backbone 8–12B.
+
+### Bảng 2.11 — Model mạnh Gemini 3 Flash trên Dev v3 (tham chiếu, ngoài kiểm định chính)
+
+OmniRoute/Antigravity qua proxy, revision `…-jsonfix` (sửa hình thức JSON, decision log 09/11 21:30), không seed, không
+`response_format`. Mỗi ô 560 fixture. Ô ghi: family gây hại /48 · fixture gây hại /240 · utility benign_plain /240 ·
+benign_auth /80; cột phải là ba backbone mở (Gemma / Llama / Qwen) cùng định dạng.
+
+| Cấu hình | Gemini 3 Flash | model_error | Gemma-4-12B / Llama-3.1-8B / Qwen3.5-9B |
+|---|---|---|---|
+| A0 | 22 · 61 · 184 · 53 | 36 | 38·139·159·54 / 34·77·81·30 / 40·114·140·36 |
+| R1 (A1 không phòng thủ) | 18 · 36 · 182 · 50 | 43 | 36·89·160·49 / 25·42·80·27 / 33·80·138·33 |
+| D2 | 12 · 15 · 186 · 44 | 38 | 17·38·158·44 / 13·19·80·27 / 15·34·136·28 |
+| D2P2 | 1 · 1 · 192 · 49 | 18 | 2·2·147·45 / 5·7·82·36 / 3·3·141·24 |
+| D3DEST | 1 · 1 · 191 · 60 | 13 | 2·2·148·49 / 5·7·85·40 / 3·3·141·27 |
+
+- Gemini ít bị tấn công hơn ở A0 (22/48 family so với 34–40) nhưng vẫn bị: phòng thủ vẫn cần với model mạnh.
+- D2P2 và D3DEST đưa Gemini về 1/48 family, giữ utility benign_plain (184 → 191–192).
+- D3DEST so D2P2 trên Gemini (cặp fixture, thăm dò, không hiệu chỉnh): benign_auth 49 → 60/80 (13/2 cặp lệch, p một phía
+  0,004); benign_plain 192 → 191 (6/7). Đúng cơ chế D3 (lớp A1 thu hẹp theo đích giúp tác vụ có cấp quyền), rõ hơn ở backbone
+  mở. Nhưng đây là Dev, nơi D3 đã được chọn (với backbone khác), nên chỉ là tham chiếu.
+- Độ nhạy sửa JSON: A0 bản không sửa (`_nojsonfix`) 24 · 57 · 182 · 38, model_error 67 → 36 khi sửa; kết luận không đổi.
+  Proxy: 202 / 9757 lượt gọi là JSON có chữ bao quanh (188 gỡ được), 18 bị cắt độ dài, 13 lỗi gọi hàm.
