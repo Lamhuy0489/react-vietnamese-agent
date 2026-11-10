@@ -1,35 +1,37 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-10 12:20. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-10 20:00. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái (10/11 12:20): Gemini Dev xong (Bảng 2.11), test3-seal đã merge; bước 1–4, 6 đã làm; còn AgentDojo Gemini (bước 5) và viết (bước 7).
-(10/11 02:55): TEST-3 XONG, T1–T3 đều đạt (Bảng 2.10, decision log 02:40); bước 1–2 dưới đây đã làm.
-Trước đó (10/11 01:50): Study 2. D3 Dev xong, chọn D3DEST (decision log 21:20). Test-3 niêm phong, final_config_v4
-(sha256 59f32eea…) owner duyệt 21:40; Test-3 ĐANG CHẠY một lần từ worktree ../wt-test3 (branch study2/test3-seal):
-9 ô {A0, D2P2, D3DEST} × {gemma4_12b, llama31_8b, qwen35_9b}, notebook lamhuy8904 (Gemma, Llama) + meanalways (Qwen).
-Keep-alive giữ 3 notebook tới ~09:07 10/11 (giới hạn 12 h); lamhuy8904 hết quota sau phiên này (meanalways còn nhiều).
-Dự kiến 9 ô xong ~04–06h 10/11. Gemini 3 Flash Dev (--extract-json, OmniRoute, nhịp 2 s): A0, D2P2 xong; R1, D2, D3DEST chạy.
-Lệnh resume ở handoff "Đang làm".
+PHẦN CỨNG (bắt buộc): máy hỏng pin hẳn, chạy thẳng từ sạc 85 W. Mỗi lúc chỉ MỘT tiến trình nặng, nice -n 10, không dùng &
+để chạy nhiều lượt, không chạy lại gemini3_agentdojo_chain.sh (8 lượt song song). Không kill hay khởi động lại OmniRoute.
+Lệnh dài: chạy blocking hoặc run_in_background, không poll. Decision log 10/11 20:00.
+
+Trạng thái (10/11 20:00): Test-3 xong (T1–T3 đạt, Bảng 2.10); Gemini Dev xong (Bảng 2.11); Llama 2048 token xong.
+AgentDojo Gemini không phòng thủ: 4 utility + VI Slack + VI Banking + EN Slack xong (EN Slack 62/105, 1/105);
+EN Banking đang chạy tuần tự (120/144 lúc 19:45) bằng build/gemini/ad_seq_finish.sh, proxy 8445 nhịp 4 s, chậm do pool
+hạ nhiệt 15 phút. Bảng 2.3b còn thiếu ô Banking EN.
 
 Việc của phiên này:
-1. Đếm result.json ở results/rebuild_b/v3_test3_<CFG>_<K> và kaggle kernels status; ô nào chưa đủ 560 thì chạy lại
-   build/kaggle/t3_chain.sh K (resume). Notebook chết: HF_TOKEN="$(cat ~/.hf_token_r5)" build/kaggle/t3_serve.sh
-   OWNER CRED SERVE_KEY K trên tài khoản còn quota (meanalways kaggle2.json; ít quota thì bật 2 phiên cùng lúc), rồi t3_chain.sh K.
-2. Khi đủ 9 ô: evaluate_v3_v1.py, tính T1–T3 đúng như freeze_final_config_v4.py (Holm); bảng + decision log; không chỉnh gì theo Test.
-3. Merge study2/test3-seal về branch chính; cập nhật knowledge.
-4. Gemini Dev: khi xong 5 cấu hình (A0, D2P2, R1, D2, D3DEST; decision log 10/11 01:30) thì evaluate và so với kết quả _nojsonfix (Bảng 2.11).
-5. Gemini trên AgentDojo EN/VI, 16 lượt gồm 2 phòng thủ như Llama (build/gemini/gemini3_agentdojo_chain.sh, tự chạy sau Gemini Dev; log build/gemini/ad_*.log,
-   kết quả results/rebuild_b/agentdojo_*_gemini3_flash_raw): đọc summary, Bảng 2.3b, so với Llama (decision log 07/11 08:40).
-6. Llama OUTPUT_TRUNCATED (decision log 10/11 01:50, owner duyệt): (a) khi viết, báo thêm số Llama bỏ model_error (phụ);
-   (b) XONG 03:23 (decision log 03:30): 2048 token không cứu lượt nào, lỗi do sinh không dừng. Chi tiết cũ: results/rebuild_b/v3_dev_A0_llama31_8b_tok2048 (cờ --max-new-tokens 2048); evaluate rồi so từng
-   fixture với v3_dev_A0_llama31_8b (512): bao nhiêu model_error thành completed, bao nhiêu vẫn cắt ở 2048 (lặp vô hạn). Kết quả chính Test-3 không đổi.
-7. Bắt đầu viết chương kết quả Study 2 theo dàn ý cuối docs/research/study2_thesis_tables.md (Bảng 2.1–2.11).
+1. Kiểm EN Banking: pgrep -fl run_agentdojo_api_v1.py; summary.json ở
+   results/rebuild_b/agentdojo_en_banking_important_instructions_none_gemini3_flash_raw. Runner chết mà chưa có summary và
+   proxy 8445 còn nghe: nice -n 10 bash build/gemini/ad_seq_finish.sh (resume). Lệnh chi tiết ở handoff "Đang làm".
+2. Khi xong: soát transcript (kết thúc bằng assistant, không dấu lỗi API), điền Bảng 2.3b và Bảng 11 của bản nháp bài báo,
+   ghi decision log.
+3. Hỏi owner: có chạy 8 lượt AgentDojo có phòng thủ dựng sẵn không (996 cặp, 16–33 giờ máy). Gemini là phần phụ; đề xuất bỏ
+   và ghi hạn chế. Không tự chạy.
+4. Bài báo ICCIES 2027 (Springer CCIS, 12–15 trang, tiếng Anh, hạn nộp 15/11/2026, CMT): viết tiếp
+   docs/paper/iccies2027_draft.md. Đã có: Phần 1 (đã sửa số sai, bảng đối chiếu ở đầu file), Mục 2 threat model + M1–M6,
+   Mục 3 D3, Bảng 1–11. Còn: Mục 4 benchmark và giao thức (đang là dàn ý), prose Mục 5 kết quả, Mục 6 thảo luận và hạn chế,
+   Mục 7 kết luận, Hình 1 kiến trúc, tài liệu tham khảo (phải đối chiếu từng mục, chưa kiểm), chuyển sang template Springer.
+   Mọi số lấy từ docs/research/study2_thesis_tables.md; không ghi "utility trên 90%" (thực tế 51,0% so với A0 54,5%).
+   Owner cần quyết: tiêu đề, có công bố dữ liệu không, tác giả và đơn vị.
+5. Sau bài báo: chương kết quả Study 2 của luận văn theo dàn ý cuối study2_thesis_tables.md.
 
-Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng và số đếm.
+Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng, số đếm và biên soạn.
 ```
 
 ## Ghi chú dùng

@@ -5,6 +5,21 @@ Cập nhật: 2026-11-10. Lúc 12:20. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
+**2026-11-10 20:00: MÁY HỎNG PIN — chỉ chạy tuần tự, một tiến trình nặng mỗi lúc, `nice -n 10`; không kill/khởi động lại
+OmniRoute (decision log 20:00).** AgentDojo Gemini: Slack EN xong (62/105, 1/105); Banking EN đang chạy (120/144 lúc 19:45).
+- Runner: `build/gemini/ad_seq_finish.sh` (log `build/gemini/ad_seq.log`); proxy 8445 nhịp 4 s (`--min-interval 4`).
+  Chạy chậm kiểu chạy–nghỉ vì pool bị hạ nhiệt 15 phút; không phải lỗi. Kiểm: `pgrep -fl run_agentdojo_api_v1.py`,
+  `ls results/rebuild_b/agentdojo_en_banking_important_instructions_none_gemini3_flash_raw/summary.json`.
+- Resume (runner chết, chưa có summary; proxy 8445 phải đang nghe): `nice -n 10 bash build/gemini/ad_seq_finish.sh`
+  (bỏ qua cặp đã xong, tự chờ nếu còn runner sống). Proxy chết: lệnh bật ở `gemini3_agentdojo_chain.sh`, đổi `INTERVAL=4`,
+  chỉ bật proxy, KHÔNG chạy cả chain (chain chạy 8 lượt song song).
+- Khi Banking EN xong: soát transcript (không dấu lỗi API, kết thúc bằng assistant), điền ô còn thiếu của Bảng 2.3b
+  (`docs/research/study2_thesis_tables.md`) và Bảng 11 trong bản nháp bài báo; ghi decision log.
+- Chờ owner: 8 lượt AgentDojo có phòng thủ dựng sẵn (996 cặp, 16–33 giờ máy). Đề xuất bỏ, ghi hạn chế.
+- Bài báo ICCIES 2027 (hạn 15/11/2026, Springer CCIS 12–15 trang): nháp `docs/paper/iccies2027_draft.md`. Đã có Phần 1 (sửa
+  số sai), Mục 2, Mục 3, bảng 1–11; còn Mục 4 (dàn ý), prose Mục 5–7, Hình 1, tài liệu tham khảo (chưa đối chiếu), chuyển sang
+  template LaTeX/Word của Springer. Owner cần quyết: tiêu đề, có công bố dữ liệu không, tác giả/đơn vị.
+
 **2026-11-10 12:20: Gemini Dev xong 5 cấu hình (Bảng 2.11, decision log 12:10). `study2/test3-seal` ĐÃ MERGE vào
 `study2/d3-dev`.** Bản untracked `test3_canonicals.json` (cùng hash 6b7dbd67) đã chuyển ra scratchpad; giờ file được track.
 AgentDojo Gemini đang chạy (8 lượt gốc rồi 8 lượt phòng thủ), supervisor `SKIP_T3_DONE=1 DEADLINE=2359` theo dõi.

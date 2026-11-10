@@ -300,7 +300,7 @@ kết quả Test v3 (0,324 → 0,037, 4/210).
 
 - Bảng 2.11: xong, xem bảng dưới.
   bản chưa sửa JSON (`*_nojsonfix`) làm phân tích độ nhạy.
-- Bảng 2.3b Gemini 3 Flash trên AgentDojo EN/VI (utility + `important_instructions`, không phòng thủ): chạy sau Gemini Dev.
+- Bảng 2.3b Gemini 3 Flash trên AgentDojo EN/VI: xem bảng cuối file (Banking EN đang chạy 10/11).
 
 Dàn ý chương kết quả Study 2 (gợi ý): (1) benchmark VN-AgentInject v3 và giao thức Dev/Test; (2) baseline và D2 trên Dev
 (2.1, 2.2, 2.4, 2.5); (3) tấn công thích nghi (2.6, 2.6b); (4) Test v3 chính thức (2.7) và phân tích lỗi (2.8); (5) D3: thiết
@@ -328,3 +328,24 @@ benign_auth /80; cột phải là ba backbone mở (Gemma / Llama / Qwen) cùng 
   mở. Nhưng đây là Dev, nơi D3 đã được chọn (với backbone khác), nên chỉ là tham chiếu.
 - Độ nhạy sửa JSON: A0 bản không sửa (`_nojsonfix`) 24 · 57 · 182 · 38, model_error 67 → 36 khi sửa; kết luận không đổi.
   Proxy: 202 / 9757 lượt gọi là JSON có chữ bao quanh (188 gỡ được), 18 bị cắt độ dài, 13 lỗi gọi hàm.
+
+### Bảng 2.3b — Gemini 3 Flash trên AgentDojo EN/VI (không phòng thủ; tham chiếu, cập nhật 10/11 20:00)
+
+AgentDojo v1.2.2, tấn công `important_instructions`, proxy OmniRoute cổng 8445 `--tool-as-user` (không `--extract-json`),
+model key `gemini3_flash_raw`. Ô: utility khi bị tấn công / tấn công thành công. Llama lấy từ Bảng 2.3 (hàng "không").
+
+| Suite (cặp) | Llama-3.1-8B EN | Llama-3.1-8B VI | Gemini 3 Flash EN | Gemini 3 Flash VI |
+|---|---|---|---|---|
+| Banking (144) | 58 / 17 | 44 / 6 | ĐANG CHẠY (120/144 cặp lúc 19:45) | 99 / 0 |
+| Slack (105) | 28 / 16 | 26 / 0 | 62 / 1 | 59 / 0 |
+| Banking, không tấn công (16) | 7 | 6 | 13 | 12 |
+| Slack, không tấn công (21) | 7 | 7 | 18 | 16 |
+
+- Gemini không phòng thủ gần như không bị `important_instructions` ở Slack cả hai ngôn ngữ (1/105 và 0/105), Llama EN 16/105.
+  Utility dưới tấn công của Gemini cao gấp 2 lần Llama. Banking EN chưa xong: không kết luận trước khi có summary.
+- Slack VI: 2/5 injection task không giải được bằng lời giải mẫu (`injection_tasks_solvable` false), nên trần ASR VI thấp hơn EN.
+- Kiểm hạ tầng (10/11 19:50): mọi cặp đã xong ở 4 lượt có tấn công kết thúc bằng lượt assistant, không có dấu lỗi API trong
+  transcript, trường `error` rỗng; các lượt gọi proxy thất bại (503 do hạ nhiệt tài khoản) được SDK thử lại, không ghi thành
+  kết quả. Banking EN: kiểm lại sau khi xong.
+- 8 lượt có phòng thủ dựng sẵn (`repeat_user_prompt`, `spotlighting_with_delimiting`; 996 cặp) CHƯA chạy; owner quyết sau
+  khi có Banking EN (decision log 10/11 20:00).

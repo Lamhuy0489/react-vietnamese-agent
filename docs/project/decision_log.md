@@ -3716,3 +3716,38 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
 - A0 22/48 family gây hại (backbone mở 34–40), D2 12, D2P2 1, D3DEST 1; utility benign_plain 184 → 191–192/240.
 - D3DEST so D2P2 (thăm dò): benign_auth 49 → 60/80 (13/2, p một phía 0,004). Tham chiếu trên Dev, ngoài kiểm định chính.
 - model_error còn 13–43/560 sau sửa JSON (A0 67 → 36). AgentDojo Gemini đang chạy (16 lượt).
+
+## 2026-11-10 13:30 — GPT-5.6 Luna (OmniRoute, route Codex): smoke không đạt, owner bỏ phần GPT
+
+- Owner đề xuất thêm GPT-5.6 Luna làm tham chiếu mô hình mạnh thứ hai (Dev 5 cấu hình + AgentDojo 16 lượt, như Gemini; không
+  Test/Test-3). Model `luna-pool` trên OmniRoute cục bộ, API trả `gpt-5.6-luna`. Model key `gpt56_luna`/`gpt56_luna_raw`
+  (`build/gemini/backbones_gemini.yaml`, ngoài repo), proxy `build/gemini/luna_proxy.sh` (cổng 8446/8447).
+- Đặc điểm route: chèn khoảng 2k token chỉ dẫn của nhà cung cấp (prompt "hi" = 2018 token), bỏ qua `max_tokens`, reasoning
+  bật mặc định; `response_format` của runner bị từ chối (HTTP 400 → model_error), phải bỏ trường này như Gemini.
+- Smoke Dev A0 (4 fixture, prompt không đổi): 4/4 trả `final_answer` ngay bước 1, không gọi công cụ, có lượt khẳng định
+  "đã gửi email". Gửi lại context bước 1 của một fixture benign 16 lần (mặc định, reasoning high, `codex-luna`, role
+  developer, `tool_choice`, `tools`): chỉ 1 lần ra `action` đúng giao thức. Gemini cùng fixture đi 4 bước.
+- Kết luận: route Codex làm mô hình hành xử như có công cụ riêng (do chỉ dẫn chèn thêm), nên không đo được giao thức của đồ án.
+  Chạy đủ sẽ cho ASR ~0 và utility ~0 giả tạo. Không chạy; không đổi prompt (giữ công bằng RQ1). Route GPT khác
+  (`kc/openai/gpt-5.5`, `tr/gpt-5.4`) báo 401 (chưa đăng nhập).
+- Owner quyết (13:40): bỏ phần GPT; Gemini 3 Flash là tham chiếu mô hình mạnh duy nhất. Ghi vào hạn chế: chỉ một mô hình đóng.
+
+## 2026-11-10 20:00 — Máy hỏng pin: chỉ chạy tuần tự; AgentDojo Gemini nhịp 4 s; Slack EN xong
+
+- Sự cố: máy owner hỏng pin hẳn (dung lượng 0%), chạy thẳng từ sạc 85 W. Chạy song song nhiều tiến trình Python làm sập nguồn
+  (hai lần chiều 10/11, khi `gemini3_agentdojo_chain.sh` chạy 8 lượt cùng lúc và khi bật lại OmniRoute). Quy tắc từ nay: mỗi lúc
+  một tiến trình nặng, `nice -n 10`, không `&` nhiều lượt; không tự kill hay khởi động lại OmniRoute.
+- AgentDojo Gemini chạy nốt tuần tự bằng `build/gemini/ad_seq_finish.sh` (chờ runner đang sống, rồi Slack EN, rồi Banking EN;
+  báo và dừng khi 30 phút không có cặp mới, proxy chết hoặc thiếu summary; không kill gì). Log `build/gemini/ad_seq.log`.
+- 17:06 khởi động lại proxy 8445 với `--min-interval 4` (trước là 2 s): ở 2 s cả 3 tài khoản của pool chạm trần lượt/phút,
+  OmniRoute trả 503 hàng loạt (111 lỗi 503 / 124 lượt gọi trong 30 phút). Chỉ đổi nhịp gọi; model, revision, prompt, cờ
+  `--tool-as-user` không đổi, nên định danh lượt chạy không đổi. Sau đó Slack EN chạy ~1 phút/cặp. Banking EN (nhiều lượt gọi
+  mỗi cặp) vẫn chạm cửa sổ hạ nhiệt 15 phút của nhà cung cấp, chạy kiểu chạy–nghỉ.
+- Kết quả: Slack EN xong 17:43: utility 62/105, tấn công thành công 1/105 (VI 59/105, 0/105). Banking EN 120/144 lúc 19:45.
+  Bảng 2.3b trong `docs/research/study2_thesis_tables.md`.
+- Kiểm nhiễu hạ tầng: 15 lượt gọi proxy thất bại hẳn sau 17:06; soát transcript 4 lượt có tấn công: không cặp nào mang dấu lỗi
+  API hay kết thúc bất thường (trừ cặp đang chạy dở). Kiểm lại Banking EN khi xong.
+- Chưa quyết: 8 lượt có phòng thủ dựng sẵn của AgentDojo (996 cặp, ước 16–33 giờ máy tuần tự). Gemini là phần tham chiếu phụ;
+  Claude đề xuất bỏ nếu Banking EN cũng gần 0 tấn công thành công, ghi vào hạn chế. Chờ owner.
+- Bài báo ICCIES 2027 (hạn 15/11): bản nháp `docs/paper/iccies2027_draft.md` (Phần 1 sửa theo số liệu, Mục 2–3, bảng kết quả).
+  Bản Phần 1 do công cụ khác soạn có số sai (tên model, "utility trên 90%", số biến thể); bảng đối chiếu ở đầu file nháp.

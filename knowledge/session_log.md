@@ -416,3 +416,14 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Supervisor dừng ở DEADLINE 12:00; Gemini Dev đủ 5 cấu hình. AgentDojo Gemini bắt đầu sau đó (1/8 lượt gốc xong 12:01).
 - Bảng 2.11: Gemini A0 22/48 family, D2P2/D3DEST 1/48; D3DEST tăng benign_auth 49 → 60/80 (thăm dò).
 - Merge `study2/test3-seal` (xung đột decision log, giữ cả hai). Supervisor bật lại cho AgentDojo.
+
+## 2026-11-10 16:40–20:00 — Máy hỏng pin; AgentDojo Gemini tuần tự; nháp bài báo ICCIES
+
+- Máy sập nguồn hai lần chiều 10/11 (pin 0%, sạc 85 W, chạy song song). Từ nay một tiến trình nặng mỗi lúc, `nice -n 10`,
+  không đụng OmniRoute (decision log 20:00). Script `build/gemini/ad_seq_finish.sh` chạy nốt Slack EN rồi Banking EN.
+- 503 hàng loạt do nhịp 2 s chạm trần lượt/phút của pool: khởi động lại riêng proxy 8445 với `--min-interval 4`.
+  Slack EN xong 17:43 (62/105, 1/105). Banking EN 120/144 lúc 19:45, chạy–nghỉ theo cửa sổ hạ nhiệt 15 phút.
+- Soát transcript: không cặp nào bị lỗi hạ tầng ghi thành kết quả. Bảng 2.3b (thiếu ô Banking EN).
+- Bài báo ICCIES 2027: lấy khung Phần 1 từ phiên Antigravity, sửa các số sai, viết Mục 2 (threat model, M1–M6) và Mục 3 (D3),
+  dựng bảng kết quả: `docs/paper/iccies2027_draft.md`. Owner bảo tạm dừng viết tới khi chạy xong.
+- Owner xác nhận: Gemini là phần phụ; 996 cặp AgentDojo có phòng thủ chưa chạy, chờ quyết.
