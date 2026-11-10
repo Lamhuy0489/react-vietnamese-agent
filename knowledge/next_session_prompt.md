@@ -17,7 +17,7 @@ Việc của phiên này:
    Gemini trả phí, nhưng khi đó cần revision mới và khác đường phục vụ với lượt không phòng thủ). Đề xuất bỏ, ghi hạn chế. Không tự chạy.
 2. Bài báo ICCIES 2027 (Springer CCIS, 12–15 trang, tiếng Anh, hạn nộp 15/11/2026, CMT): viết tiếp
    trong docs/paper/iccies2027/ (đọc README.md trước; số liệu chỉ lấy từ facts.md; bản thảo từng mục ở sections/). Đã có: Phần 1, Mục 2 threat model + M1–M6,
-   Mục 3 D3, Bảng 1–11. Còn: Mục 4 benchmark và giao thức (đang là dàn ý), prose Mục 5 kết quả, Mục 6 thảo luận và hạn chế,
+   Mục 3 D3, Bảng 1–11. Mục 4 (bản đầy đủ 10/11). Còn: prose Mục 5 kết quả (sửa chú thích Bảng 9: T2 là kiểm định z), Mục 6 thảo luận và hạn chế,
    Mục 7 kết luận, Hình 1 kiến trúc, tài liệu tham khảo (phải đối chiếu từng mục, chưa kiểm), chuyển sang template Springer.
    Số nào thiếu trong facts.md thì lấy từ docs/research/study2_thesis_tables.md rồi bổ sung vào facts.md; không ghi "utility trên 90%" (thực tế 51,0% so với A0 54,5%).
    Owner cần quyết: tiêu đề, có công bố dữ liệu không, tác giả và đơn vị.

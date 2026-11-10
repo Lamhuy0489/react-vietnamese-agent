@@ -7,7 +7,7 @@ Cập nhật: 2026-11-10. Lúc 12:20. Lộ trình [v2](../docs/project/roadmap_v
 
 **2026-11-10 22:05: AgentDojo Gemini Banking EN XONG (93/144, 4/144); 8 lượt không phòng thủ đủ, transcript đã soát, Bảng 2.3b,
 Bảng 11 và `facts.md` đã điền (decision log 22:00). Không còn runner nào chạy; proxy 8445 và OmniRoute vẫn bật (không đụng).**
-- Bước tiếp: bài báo ICCIES 2027 (Mục 4, prose Mục 5–7, Hình 1, tài liệu tham khảo, template Springer); xem `docs/paper/iccies2027/README.md`.
+- Bước tiếp: bài báo ICCIES 2027 (Mục 4 đã viết 10/11 22:30; còn prose Mục 5–7, Hình 1, tài liệu tham khảo, template Springer); xem `docs/paper/iccies2027/README.md`.
 - Chờ owner: 8 lượt có phòng thủ (996 cặp). Có thể dùng API key Gemini trả phí cho nhanh (proxy: `--keys-file`, bỏ `--upstream`),
   nhưng cần revision mới và khác đường phục vụ với lượt không phòng thủ. Đề xuất bỏ. Các dòng "đang chạy" bên dưới là lịch sử.
 

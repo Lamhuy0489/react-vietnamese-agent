@@ -434,3 +434,5 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Banking EN xong 21:53: utility 93/144, tấn công thành công 4/144. Soát 144 transcript: kết thúc bằng assistant, `error` rỗng.
 - Điền Bảng 2.3b, Bảng 11 (`sections/05_results.md`), `facts.md`; decision log 22:00.
 - Owner hỏi dùng API key Gemini trực tiếp: không đổi giữa lượt; chỉ đáng cân nhắc cho 8 lượt có phòng thủ (chưa quyết, đề xuất bỏ).
+- 22:30: owner hỏi có chạy 996 cặp không; Claude khuyên bỏ (chưa có quyết định cuối). Viết bản đầy đủ Mục 4 của bài báo
+  (`sections/04_benchmark_protocol.md`).
