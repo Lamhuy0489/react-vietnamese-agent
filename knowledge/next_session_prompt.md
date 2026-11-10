@@ -24,10 +24,10 @@ Việc của phiên này:
 3. Hỏi owner: có chạy 8 lượt AgentDojo có phòng thủ dựng sẵn không (996 cặp, 16–33 giờ máy). Gemini là phần phụ; đề xuất bỏ
    và ghi hạn chế. Không tự chạy.
 4. Bài báo ICCIES 2027 (Springer CCIS, 12–15 trang, tiếng Anh, hạn nộp 15/11/2026, CMT): viết tiếp
-   docs/paper/iccies2027_draft.md. Đã có: Phần 1 (đã sửa số sai, bảng đối chiếu ở đầu file), Mục 2 threat model + M1–M6,
+   trong docs/paper/iccies2027/ (đọc README.md trước; số liệu chỉ lấy từ facts.md; bản thảo từng mục ở sections/). Đã có: Phần 1, Mục 2 threat model + M1–M6,
    Mục 3 D3, Bảng 1–11. Còn: Mục 4 benchmark và giao thức (đang là dàn ý), prose Mục 5 kết quả, Mục 6 thảo luận và hạn chế,
    Mục 7 kết luận, Hình 1 kiến trúc, tài liệu tham khảo (phải đối chiếu từng mục, chưa kiểm), chuyển sang template Springer.
-   Mọi số lấy từ docs/research/study2_thesis_tables.md; không ghi "utility trên 90%" (thực tế 51,0% so với A0 54,5%).
+   Số nào thiếu trong facts.md thì lấy từ docs/research/study2_thesis_tables.md rồi bổ sung vào facts.md; không ghi "utility trên 90%" (thực tế 51,0% so với A0 54,5%).
    Owner cần quyết: tiêu đề, có công bố dữ liệu không, tác giả và đơn vị.
 5. Sau bài báo: chương kết quả Study 2 của luận văn theo dàn ý cuối study2_thesis_tables.md.
 

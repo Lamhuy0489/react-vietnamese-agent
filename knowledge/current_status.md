@@ -1,7 +1,7 @@
 # Trạng thái hiện tại
 
 **10/11 20:00: máy hỏng pin, chỉ chạy tuần tự (decision log 20:00). AgentDojo Gemini: Slack EN xong (62/105, 1/105), Banking EN
-đang chạy (120/144); Bảng 2.3b. Bản nháp bài báo ICCIES 2027 (hạn 15/11): `docs/paper/iccies2027_draft.md`.**
+đang chạy (120/144); Bảng 2.3b. Bản nháp bài báo ICCIES 2027 (hạn 15/11): `docs/paper/iccies2027/README.md`.**
 
 **10/11 12:20: Gemini Dev xong (Bảng 2.11); test3-seal đã merge; AgentDojo Gemini đang chạy.** **10/11 02:40: Test-3 XONG, T1–T3 đều đạt (Holm; Bảng 2.10). Trước đó 01:50: Gemini Dev: A0, D2P2 xong; R1, D2 và D3DEST đang chạy; sau đó
 AgentDojo Gemini 16 lượt. Llama: 74 OUTPUT_TRUNCATED ở Test-3 A0, kế hoạch độ nhạy ở decision log 10/11 01:50.**

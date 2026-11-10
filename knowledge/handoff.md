@@ -16,8 +16,8 @@ OmniRoute (decision log 20:00).** AgentDojo Gemini: Slack EN xong (62/105, 1/105
 - Khi Banking EN xong: soát transcript (không dấu lỗi API, kết thúc bằng assistant), điền ô còn thiếu của Bảng 2.3b
   (`docs/research/study2_thesis_tables.md`) và Bảng 11 trong bản nháp bài báo; ghi decision log.
 - Chờ owner: 8 lượt AgentDojo có phòng thủ dựng sẵn (996 cặp, 16–33 giờ máy). Đề xuất bỏ, ghi hạn chế.
-- Bài báo ICCIES 2027 (hạn 15/11/2026, Springer CCIS 12–15 trang): nháp `docs/paper/iccies2027_draft.md`. Đã có Phần 1 (sửa
-  số sai), Mục 2, Mục 3, bảng 1–11; còn Mục 4 (dàn ý), prose Mục 5–7, Hình 1, tài liệu tham khảo (chưa đối chiếu), chuyển sang
+- Bài báo ICCIES 2027 (hạn 15/11/2026, Springer CCIS 12–15 trang): thư mục `docs/paper/iccies2027/` (đọc `README.md` trước: trạng thái từng mục, quy tắc; số liệu ở `facts.md`; bản thảo ở
+  `sections/`). Đã có Phần 1, Mục 2, Mục 3, bảng 1–11; còn Mục 4 (dàn ý), prose Mục 5–7, Hình 1, tài liệu tham khảo (chưa đối chiếu), chuyển sang
   template LaTeX/Word của Springer. Owner cần quyết: tiêu đề, có công bố dữ liệu không, tác giả/đơn vị.
 
 **2026-11-10 12:20: Gemini Dev xong 5 cấu hình (Bảng 2.11, decision log 12:10). `study2/test3-seal` ĐÃ MERGE vào
