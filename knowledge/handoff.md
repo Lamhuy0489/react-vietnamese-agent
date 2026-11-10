@@ -5,8 +5,14 @@ Cập nhật: 2026-11-10. Lúc 12:20. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
-**2026-11-10 20:00: MÁY HỎNG PIN — chỉ chạy tuần tự, một tiến trình nặng mỗi lúc, `nice -n 10`; không kill/khởi động lại
-OmniRoute (decision log 20:00).** AgentDojo Gemini: Slack EN xong (62/105, 1/105); Banking EN đang chạy (120/144 lúc 19:45).
+**2026-11-10 22:05: AgentDojo Gemini Banking EN XONG (93/144, 4/144); 8 lượt không phòng thủ đủ, transcript đã soát, Bảng 2.3b,
+Bảng 11 và `facts.md` đã điền (decision log 22:00). Không còn runner nào chạy; proxy 8445 và OmniRoute vẫn bật (không đụng).**
+- Bước tiếp: bài báo ICCIES 2027 (Mục 4, prose Mục 5–7, Hình 1, tài liệu tham khảo, template Springer); xem `docs/paper/iccies2027/README.md`.
+- Chờ owner: 8 lượt có phòng thủ (996 cặp). Có thể dùng API key Gemini trả phí cho nhanh (proxy: `--keys-file`, bỏ `--upstream`),
+  nhưng cần revision mới và khác đường phục vụ với lượt không phòng thủ. Đề xuất bỏ. Các dòng "đang chạy" bên dưới là lịch sử.
+
+**2026-11-10 21:05: MÁY HỎNG PIN — chỉ chạy tuần tự, một tiến trình nặng mỗi lúc, `nice -n 10`; tuyệt đối không mở Zalo hay app Electron trên Mac (kích Turbo Boost gây ngắt nguồn AppleSMC -128). Không kill/khởi động lại
+OmniRoute (decision log 20:00).** AgentDojo Gemini: Slack EN xong (62/105, 1/105); Banking EN đang chạy (125/144 trên đĩa, còn đúng 19 cặp). Đã khôi phục an toàn sau cú sập nguồn do mở Zalo lúc 20:55.
 - Runner: `build/gemini/ad_seq_finish.sh` (log `build/gemini/ad_seq.log`); proxy 8445 nhịp 4 s (`--min-interval 4`).
   Chạy chậm kiểu chạy–nghỉ vì pool bị hạ nhiệt 15 phút; không phải lỗi. Kiểm: `pgrep -fl run_agentdojo_api_v1.py`,
   `ls results/rebuild_b/agentdojo_en_banking_important_instructions_none_gemini3_flash_raw/summary.json`.

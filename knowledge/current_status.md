@@ -1,5 +1,9 @@
 # Trạng thái hiện tại
 
+**10/11 22:00: AgentDojo Gemini không phòng thủ xong cả 8 lượt: Banking EN 93/144, 4/144 (VI 99, 0); Slack EN 62/105, 1/105
+(VI 59, 0). Bảng 2.3b và Bảng 11 bài báo đã đủ (decision log 22:00). Không còn lượt nào đang chạy. Chờ owner: 8 lượt có phòng thủ.
+Việc chính: bài báo ICCIES 2027 (hạn 15/11).**
+
 **10/11 20:00: máy hỏng pin, chỉ chạy tuần tự (decision log 20:00). AgentDojo Gemini: Slack EN xong (62/105, 1/105), Banking EN
 đang chạy (120/144); Bảng 2.3b. Bản nháp bài báo ICCIES 2027 (hạn 15/11): `docs/paper/iccies2027/README.md`.**
 

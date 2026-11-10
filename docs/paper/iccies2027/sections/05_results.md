@@ -93,12 +93,12 @@ A stronger hosted model is attacked less often at A0 (22 of 48 families against 
 D3 one family remains. Exploratory: benign_auth 49 → 60 of 80 from D2+P2 to D3 (13/2 discordant pairs).
 
 **Table 11.** AgentDojo (v1.2.2) Banking and Slack, English and Vietnamese, attack `important_instructions`, no
-defence. Cells: utility under attack / successful attacks. [Gemini EN cells: runs in progress 2026-11-10]
+defence. Cells: utility under attack / successful attacks.
 
 | Suite (pairs) | Llama-3.1-8B EN | Llama-3.1-8B VI | Gemini 3 Flash EN | Gemini 3 Flash VI |
 |---|---|---|---|---|
-| Banking (144) | 58 / 17 | 44 / 6 | [pending] | 99 / 0 |
-| Slack (105) | 28 / 16 | 26 / 0 | [pending] | 59 / 0 |
+| Banking (144) | 58 / 17 | 44 / 6 | 93 / 4 | 99 / 0 |
+| Slack (105) | 28 / 16 | 26 / 0 | 62 / 1 | 59 / 0 |
 | Banking, no attack (16) | 7 | 6 | 13 | 12 |
 | Slack, no attack (21) | 7 | 7 | 18 | 16 |
 

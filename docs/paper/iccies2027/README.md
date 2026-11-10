@@ -29,7 +29,7 @@ là ngoại kiểm phụ. Mức tăng utility của D3 so với D2+P2 nhỏ (+1,
 | [02_threat_model_taxonomy.md](sections/02_threat_model_taxonomy.md) | Mô hình đe dọa, vị từ gây hại, M1–M6, nhánh benign, biến thể | 2 | bản đầy đủ | `data/adversarial/v3_authoring/taxonomy.md`, `docs/tool_contracts.md` |
 | [03_d3_defence.md](sections/03_d3_defence.md) | Kiến trúc D3, luật R2–R4, luật D, ablation | 2,5 | bản đầy đủ; **thiếu Hình 1** | `src/react_agent/security_v1/control_data_policy_v1.py`, `src/react_agent/security_v3/d3.py`, decision log 09/11 13:00 |
 | [04_benchmark_protocol.md](sections/04_benchmark_protocol.md) | Benchmark, niêm phong, backbone, baseline, thống kê | 2,5 | **dàn ý** | decision log 09/11 15:00–21:40, taxonomy.md |
-| [05_results.md](sections/05_results.md) | Bảng 5–11 và các ý cần viết | 3,5 | bảng xong; **thiếu lời văn**; Bảng 11 thiếu ô Gemini Banking EN | `docs/research/study2_thesis_tables.md` |
+| [05_results.md](sections/05_results.md) | Bảng 5–11 và các ý cần viết | 3,5 | bảng xong (Bảng 11 đủ ô từ 10/11); **thiếu lời văn** | `docs/research/study2_thesis_tables.md` |
 | [06_discussion_limitations.md](sections/06_discussion_limitations.md) | Lỗi còn lại, ngôn ngữ, hạn chế | 1 | **dàn ý** | Bảng 2.4, 2.8 |
 | [07_conclusion.md](sections/07_conclusion.md) | Kết luận | 0,5 | **chưa viết** | — |
 | [08_references.md](sections/08_references.md) | Tài liệu tham khảo | 1,5 | **danh sách thô, chưa đối chiếu** nơi đăng, năm, trang | — |
@@ -37,7 +37,7 @@ là ngoại kiểm phụ. Mức tăng utility của D3 so với D2+P2 nhỏ (+1,
 ## Việc còn lại, theo thứ tự
 
 1. Viết Mục 4 từ dàn ý.
-2. Viết lời cho Mục 5 quanh các bảng đã có; điền ô Banking EN của Bảng 11 khi lượt chạy xong.
+2. Viết lời cho Mục 5 quanh các bảng đã có.
 3. Viết Mục 6 và Mục 7.
 4. Vẽ Hình 1 (kiến trúc D3; mô tả trong Mục 3.1).
 5. Đối chiếu từng tài liệu tham khảo với bản gốc; không thêm trích dẫn chưa kiểm.

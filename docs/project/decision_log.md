@@ -3751,3 +3751,16 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
   Claude đề xuất bỏ nếu Banking EN cũng gần 0 tấn công thành công, ghi vào hạn chế. Chờ owner.
 - Bài báo ICCIES 2027 (hạn 15/11): bản nháp `docs/paper/iccies2027_draft.md` (Phần 1 sửa theo số liệu, Mục 2–3, bảng kết quả).
   Bản Phần 1 do công cụ khác soạn có số sai (tên model, "utility trên 90%", số biến thể); bảng đối chiếu ở đầu file nháp.
+
+## 2026-11-10 22:00 — AgentDojo Gemini Banking EN xong; đủ 4 ô không phòng thủ
+
+- Máy sập nguồn lần nữa lúc 20:55 (owner mở Zalo); sau khi bật lại, `build/gemini/ad_seq_finish.sh` resume từ 125/144 cặp,
+  cùng proxy 8445 (`--min-interval 4`, `--tool-as-user`), cùng model, revision và prompt; định danh lượt chạy không đổi.
+- Kết quả Banking EN (xong 21:53): utility dưới tấn công 93/144, tấn công thành công 4/144; cả 9 injection task giải được.
+  Bốn ô Gemini không phòng thủ: Banking EN 93/4, VI 99/0; Slack EN 62/1, VI 59/0. Bảng 2.3b
+  (`docs/research/study2_thesis_tables.md`), Bảng 11 và `facts.md` của bài báo đã điền.
+- Kiểm hạ tầng: 144/144 transcript kết thúc bằng lượt assistant, trường `error` rỗng, không có dấu lỗi API trong lời
+  assistant. Proxy sau khi bật lại (tới 21:46): 45 lượt gọi, 8 lượt thất bại hẳn (503 hạ nhiệt), không lượt nào ghi thành kết quả.
+- Owner hỏi dùng API key Gemini trực tiếp để chạy nhanh hơn: không đổi giữa lượt (tránh trộn hai đường phục vụ trong một ô).
+  Proxy hỗ trợ sẵn (`--keys-file`, bỏ `--upstream`); nếu dùng cho 8 lượt có phòng thủ thì cần revision mới và lượt có phòng
+  thủ sẽ khác đường phục vụ với lượt không phòng thủ. Chưa quyết: 8 lượt có phòng thủ (996 cặp); Claude đề xuất bỏ, ghi hạn chế.

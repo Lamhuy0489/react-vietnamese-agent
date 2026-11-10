@@ -427,3 +427,10 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Bài báo ICCIES 2027: lấy khung Phần 1 từ phiên Antigravity, sửa các số sai, viết Mục 2 (threat model, M1–M6) và Mục 3 (D3),
   dựng bảng kết quả: `docs/paper/iccies2027_draft.md`. Owner bảo tạm dừng viết tới khi chạy xong.
 - Owner xác nhận: Gemini là phần phụ; 996 cặp AgentDojo có phòng thủ chưa chạy, chờ quyết.
+
+## 2026-11-10 21:10–22:05 — Banking EN xong; đủ Bảng 2.3b và Bảng 11
+
+- Máy sập nguồn lúc 20:55 (mở Zalo); runner đã resume từ 125/144. Phiên này chỉ theo dõi bằng một lệnh chờ nền, không đổi cấu hình.
+- Banking EN xong 21:53: utility 93/144, tấn công thành công 4/144. Soát 144 transcript: kết thúc bằng assistant, `error` rỗng.
+- Điền Bảng 2.3b, Bảng 11 (`sections/05_results.md`), `facts.md`; decision log 22:00.
+- Owner hỏi dùng API key Gemini trực tiếp: không đổi giữa lượt; chỉ đáng cân nhắc cho 8 lượt có phòng thủ (chưa quyết, đề xuất bỏ).

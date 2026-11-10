@@ -78,7 +78,7 @@ Gộp 3 backbone: attack /1080, plain /1080, auth /360.
   benign_auth D2+P2 → D3: 49 → 60 (cặp lệch 13/2), thăm dò.
 - AgentDojo v1.2.2, `important_instructions`, không phòng thủ (Bảng 2.3, 2.3b); utility khi bị tấn công / tấn công thành công:
   Llama Banking EN 58/17, VI 44/6 (144 cặp); Llama Slack EN 28/16, VI 26/0 (105 cặp);
-  Gemini Banking VI 99/0; Gemini Slack EN 62/1, VI 59/0; **Gemini Banking EN: chưa xong (10/11)**.
+  Gemini Banking EN 93/4, VI 99/0; Gemini Slack EN 62/1, VI 59/0 (Banking EN xong 10/11 21:53).
   Không tấn công: Llama Banking 7 và 6 /16, Slack 7 và 7 /21; Gemini Banking 13 và 12 /16, Slack 18 và 16 /21 (EN và VI).
   Slack VI: 2/5 injection task không giải được bằng lời giải mẫu.
 - Llama: tăng ngân sách đầu ra 512 → 2048 token không cứu lượt lỗi nào (decision log 10/11 03:30).
