@@ -410,3 +410,9 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Supervisor qua đêm báo TEST3_DONE 02:18 (9/9 ô 560, đã evaluate); bật lại với SKIP_T3_DONE=1 cho Gemini.
 - T1 +1,0 điểm utility (11/1, Holm 3,2e-3; CI family chạm 0), T2 đạt, T3 0,324 → 0,036. Bảng 2.10, decision log 02:40.
 - Merge test3-seal hoãn tới khi Gemini Dev xong. Llama Dev A0 2048 token đang chạy trên notebook Llama còn sống.
+
+## 2026-11-10 03:30–12:20 — Gemini Dev xong; merge Test-3
+
+- Supervisor dừng ở DEADLINE 12:00; Gemini Dev đủ 5 cấu hình. AgentDojo Gemini bắt đầu sau đó (1/8 lượt gốc xong 12:01).
+- Bảng 2.11: Gemini A0 22/48 family, D2P2/D3DEST 1/48; D3DEST tăng benign_auth 49 → 60/80 (thăm dò).
+- Merge `study2/test3-seal` (xung đột decision log, giữ cả hai). Supervisor bật lại cho AgentDojo.

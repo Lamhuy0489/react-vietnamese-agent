@@ -1,9 +1,13 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-10. Lúc 02:55. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-10. Lúc 12:20. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
+
+**2026-11-10 12:20: Gemini Dev xong 5 cấu hình (Bảng 2.11, decision log 12:10). `study2/test3-seal` ĐÃ MERGE vào
+`study2/d3-dev`.** Bản untracked `test3_canonicals.json` (cùng hash 6b7dbd67) đã chuyển ra scratchpad; giờ file được track.
+AgentDojo Gemini đang chạy (8 lượt gốc rồi 8 lượt phòng thủ), supervisor `SKIP_T3_DONE=1 DEADLINE=2359` theo dõi.
 
 **2026-11-10 02:40: Test-3 XONG, T1–T3 đều đạt (Holm). Bảng 2.10, decision log 02:40.** Script `scripts/test3_hypotheses_v1.py`
 (branch `study2/test3-seal`, `c2676fa`), số ở `results/rebuild_b/v3_test3_hypotheses.json`. Chưa merge `study2/test3-seal`:

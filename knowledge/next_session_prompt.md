@@ -1,12 +1,13 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-10 02:55. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-10 12:20. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-Trạng thái (10/11 02:55): TEST-3 XONG, T1–T3 đều đạt (Bảng 2.10, decision log 02:40); bước 1–2 dưới đây đã làm.
+Trạng thái (10/11 12:20): Gemini Dev xong (Bảng 2.11), test3-seal đã merge; bước 1–4, 6 đã làm; còn AgentDojo Gemini (bước 5) và viết (bước 7).
+(10/11 02:55): TEST-3 XONG, T1–T3 đều đạt (Bảng 2.10, decision log 02:40); bước 1–2 dưới đây đã làm.
 Trước đó (10/11 01:50): Study 2. D3 Dev xong, chọn D3DEST (decision log 21:20). Test-3 niêm phong, final_config_v4
 (sha256 59f32eea…) owner duyệt 21:40; Test-3 ĐANG CHẠY một lần từ worktree ../wt-test3 (branch study2/test3-seal):
 9 ô {A0, D2P2, D3DEST} × {gemma4_12b, llama31_8b, qwen35_9b}, notebook lamhuy8904 (Gemma, Llama) + meanalways (Qwen).
