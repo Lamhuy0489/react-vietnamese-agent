@@ -12,6 +12,9 @@ Lệnh dài: chạy blocking hoặc run_in_background, không poll. Decision log
 Trạng thái (10/11 22:05): Test-3 xong (T1–T3 đạt, Bảng 2.10); Gemini Dev xong (Bảng 2.11); Llama 2048 token xong.
 AgentDojo Gemini không phòng thủ XONG cả 8 lượt (10/11 21:53): Banking EN 93/144, 4/144; VI 99/144, 0/144; Slack EN 62/105, 1/105;
 VI 59/105, 0/105. Transcript đã soát, Bảng 2.3b, Bảng 11 và facts.md đã điền (decision log 10/11 22:00). Không còn lượt nào đang chạy.
+QUY ĐỊNH ICCIES (đọc 10/11 23:30): cấm bài chứa văn bản do AI sinh. Các file sections/ do Claude soạn chỉ là dàn ý/ghi chú kỹ
+thuật; lời văn nộp đi do owner tự viết. Claude không viết tiếp prose để nộp nếu owner chưa quyết cách làm; làm số liệu, bảng,
+hình, kiểm trích dẫn (refs/README.md: 20 bài có link), định dạng, nhận xét bản owner viết. Chi tiết: docs/paper/iccies2027/README.md.
 Việc của phiên này:
 1. Thí nghiệm đã đóng: owner quyết 10/11 23:00 không chạy 8 lượt AgentDojo có phòng thủ trên Gemini (996 cặp); chỉ ghi hạn chế.
    Không chạy thêm lượt nào nếu owner không yêu cầu. PDF tài liệu tham khảo: docs/paper/iccies2027/refs/ (bảng ở refs/README.md).

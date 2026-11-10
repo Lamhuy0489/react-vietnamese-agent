@@ -5,6 +5,9 @@ Cập nhật: 2026-11-10. Lúc 12:20. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
+**2026-11-10 23:30: ICCIES cấm bài chứa văn bản do AI sinh (trang how-to-submit). Bản thảo `sections/` do Claude soạn chỉ dùng làm
+dàn ý; owner tự viết lời văn nộp. Chờ owner quyết cách làm. 20 PDF tham khảo + link: `docs/paper/iccies2027/refs/README.md`.**
+
 **2026-11-10 22:05: AgentDojo Gemini Banking EN XONG (93/144, 4/144); 8 lượt không phòng thủ đủ, transcript đã soát, Bảng 2.3b,
 Bảng 11 và `facts.md` đã điền (decision log 22:00). Không còn runner nào chạy; proxy 8445 và OmniRoute vẫn bật (không đụng).**
 - Bước tiếp: bài báo ICCIES 2027 (Mục 4 đã viết 10/11 22:30; còn prose Mục 5–7, Hình 1, tài liệu tham khảo, template Springer); xem `docs/paper/iccies2027/README.md`.

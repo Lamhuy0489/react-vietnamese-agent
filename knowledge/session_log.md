@@ -438,3 +438,5 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   (`sections/04_benchmark_protocol.md`).
 - 23:00: owner quyết bỏ 996 cặp AgentDojo có phòng thủ trên Gemini (decision log 23:00); thí nghiệm đóng. Tải 10 PDF tài
   liệu tham khảo từ arXiv vào `docs/paper/iccies2027/refs/` (không commit), lập `refs/README.md`.
+- 23:30: tải thêm 10 PDF (tổng 20), kiểm trang đầu từng file, `refs/README.md` có link arXiv. Đọc quy định ICCIES: cấm văn bản
+  do AI sinh; ghi vào README bài báo, handoff và prompt phiên sau. Chờ owner quyết cách viết.

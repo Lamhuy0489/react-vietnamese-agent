@@ -15,6 +15,24 @@
 
 Thông tin hội nghị lấy từ trang `iccies.tdtu.edu.vn/2027` ngày 10/11/2026; kiểm lại hạn và template trước khi nộp.
 
+### Quy định của hội nghị (đọc lại 10/11/2026 23:30 từ `/how-to-submit/`, `/dates/`, `/registration/`)
+
+- Tiếng Anh; định dạng Springer LNCS/LNAI; 12–15 trang; nộp **một file PDF** qua CMT.
+- Bài phải là bài gốc, chưa đăng và không gửi nơi khác trong thời gian phản biện.
+- Phản biện hai vòng (reviewer, rồi Meta-reviewing Committee). Springer quét trùng lặp bằng iThenticate; hội nghị nhắc riêng
+  về đạo văn và tự đạo văn (lưu ý phần trùng với luận văn và các bài trước của nhóm).
+- **Văn bản do AI sinh: hội nghị cấm đăng bài có chứa văn bản do AI sinh ra; reviewer được yêu cầu kiểm điều này.**
+- Bài được nhận phải có một tác giả đăng ký, đóng phí và trình bày trực tiếp thì mới vào kỷ yếu Springer CCIS.
+  Phí tác giả Việt Nam: 200 USD (sớm) / 250 USD; tác giả khác 250 / 300 USD. Hạn đăng ký và đóng phí: 30/01/2027.
+- Trang không nêu: bình duyệt ẩn danh hay không, giới hạn số tài liệu tham khảo, trang phụ lục. Hỏi `iccies@tdtu.edu.vn` hoặc
+  xem cấu hình trên CMT trước khi nộp.
+
+### Hệ quả của quy định về AI (owner phải xử lý)
+
+Các file trong `sections/` (Mục 1–4 và phần ghi chú Mục 5–6) do Claude soạn. Theo quy định trên, **không nộp nguyên văn**:
+coi chúng là dàn ý và ghi chú kỹ thuật; lời văn nộp đi phải do tác giả tự viết. Claude tiếp tục làm phần không phải lời văn:
+số liệu và bảng (`facts.md`), kiểm tra tính đúng của nội dung, hình, tài liệu tham khảo, định dạng, và nhận xét bản owner viết.
+
 ## Luận điểm
 
 Phần chính là cơ chế phòng thủ D3 và xác nhận trên bộ Test-3 niêm phong với 3 backbone mở. Gemini 3 Flash và AgentDojo
