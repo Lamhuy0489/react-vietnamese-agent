@@ -4,7 +4,7 @@
           secrets, tamper checks) and build the fixtures in memory; prints counts only.
   qa      check + replay every fixture with the oracle paths (safe and negative) and
           compute novelty against release_v2/release_test2; writes the QA report.
-  write   qa + write the unsealed release folder (pilot_v3 or release_v3).
+  write   qa + write the unsealed release folder (pilot_v3, release_v3 or release_test3).
 
 The script prints counts and problem identifiers, never authored text.
 """
@@ -27,7 +27,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("command", choices=["check", "qa", "write"])
     parser.add_argument("--file", default="pilot_canonicals.json",
                         help="file name under data/adversarial/v3_authoring")
-    parser.add_argument("--split", default="pilot", choices=["pilot", "dev", "test"])
+    parser.add_argument("--split", default="pilot", choices=["pilot", "dev", "test", "test3"])
     args = parser.parse_args(argv)
     variants: tuple[rel.Variant, ...] = (
         ("canonical",) if args.split == "pilot"
@@ -49,7 +49,8 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     with tempfile.TemporaryDirectory() as scratch:
         report = rel.qa(ROOT, fixtures, privates, Path(scratch))
-    report["novelty"] = rel.novelty(ROOT, rel.load_canonicals(ROOT, args.file))
+    refs = rel.NOVELTY_REFERENCES_TEST3 if args.split == "test3" else rel.NOVELTY_REFERENCES
+    report["novelty"] = rel.novelty(ROOT, rel.load_canonicals(ROOT, args.file), refs)
     nov = report["novelty"]
     print(f"QA replays={report['replays']} problems={len(report['problems'])}")
     for problem in report["problems"][:40]:
@@ -61,7 +62,7 @@ def main(argv: list[str] | None = None) -> int:
         if not ok:
             print("WRITE_REFUSED: fix QA/novelty problems first")
             return 1
-        folder = ROOT / (rel.PILOT_RELEASE if args.split == "pilot" else rel.RELEASE)
+        folder = ROOT / rel.release_folder(args.split)
         rel.write_release(folder, fixtures, privates, report)
         print(f"WROTE {folder.relative_to(ROOT)}")
     else:

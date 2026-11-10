@@ -36,6 +36,7 @@ from react_agent.authoring.overlays import OutputOverlayTool
 from react_agent.authoring.surfaces import draft_surface, strip_vietnamese_diacritics
 from react_agent.authoring.typed_utility import UtilityFact, content_has_fact, fact_present
 from react_agent.authoring.v3 import spec as v3spec
+from react_agent.authoring.v3 import spec_test3
 from react_agent.authoring.workbench_qa import RecordingReplay
 from react_agent.evaluation.side_effect_harm_v1 import side_effect_score
 from react_agent.foundation.artifacts import Sensitivity, SourceType, Trust, canonical_json
@@ -56,11 +57,15 @@ from react_agent.tools.registry import ToolRegistry
 AUTHORING = Path("data/adversarial/v3_authoring")
 PILOT_RELEASE = Path("data/adversarial/pilot_v3")
 RELEASE = Path("data/adversarial/release_v3")
+# Test-3 (decision log 2026-11-09): sealed apart from release_v3, families T4_xx.
+RELEASE_TEST3 = Path("data/adversarial/release_test3")
 CLEAN = Path("data/clean/v1_1/environment")
 GLOSSARY = Path("data/adversarial/linguistic_authoring_v1/code_mix_glossary.json")
 GLOSSARY_EXTRA = (Path("data/adversarial/test2_authoring_v1/code_mix_glossary_extra.json"),
                   AUTHORING / "code_mix_glossary_v3.json")
 NOVELTY_REFERENCES = (Path("data/adversarial/release_v2"), Path("data/adversarial/release_test2"))
+# Test-3 is also new against every v3 text (pilot, Dev, Test v3).
+NOVELTY_REFERENCES_TEST3 = (*NOVELTY_REFERENCES, Path("data/adversarial/pilot_v3"), RELEASE)
 NOVELTY_MAX = 0.2
 MARKER = "{{INJECT}}"
 READ_TOOLS = ["doc_search", "doc_read", "cached_search", "cached_fetch", "db_query", "calculator"]
@@ -157,7 +162,7 @@ class AuthSpec(StrictRecord):
 
 
 class Canonical(StrictRecord):
-    spec_id: str = Field(pattern=r"^(P3|D3|T3)_\d{2,3}$")
+    spec_id: str = Field(pattern=r"^(P3|D3|T3|T4)_\d{2,3}$")
     family: str = Field(pattern=r"^[A-Z]{3,16}$")
     trust: TrustLevel
     sensitivity: Label = "S0"
@@ -202,7 +207,7 @@ class SpecRow(StrictRecord):
     """The approved spec row for a family (subset used here)."""
 
     family_id: str
-    split: Literal["pilot", "dev", "test"]
+    split: Literal["pilot", "dev", "test", "test3"]
     mechanism: Literal["M1", "M2", "M3", "M4", "M5", "M6"]
     detail: str
     vector: Literal["document", "cached_page", "database_text_field", "tool_output"]
@@ -213,9 +218,9 @@ class SpecRow(StrictRecord):
 
 class FixtureV3(StrictRecord):
     schema_version: Literal["vn_agentinject_fixture_v3"] = "vn_agentinject_fixture_v3"
-    variant_id: str = Field(pattern=r"^(ATK|BPL|BAU)_(P3|D3|T3)_\d{2,3}_[A-Z_]+$")
+    variant_id: str = Field(pattern=r"^(ATK|BPL|BAU)_(P3|D3|T3|T4)_\d{2,3}_[A-Z_]+$")
     family_id: str
-    split: Literal["pilot", "dev", "test"]
+    split: Literal["pilot", "dev", "test", "test3"]
     branch: Branch
     variant_type: Variant
     task: PublicWorkbenchTask
@@ -471,8 +476,15 @@ def load_spec_rows(root: Path) -> dict[str, SpecRow]:
     spec = json.loads((root / v3spec.SPEC_PATH).read_text(encoding="utf-8"))
     if v3spec.validate_spec(spec):
         raise ValueError("spec invalid")
+    families = list(spec["families"])
+    test3 = root / spec_test3.SPEC_PATH
+    if test3.exists():
+        spec3 = json.loads(test3.read_text(encoding="utf-8"))
+        if spec_test3.validate_spec(spec3):
+            raise ValueError("spec_test3 invalid")
+        families += spec3["families"]
     return {f["family_id"]: SpecRow.model_validate({k: f[k] for k in SpecRow.model_fields})
-            for f in spec["families"]}
+            for f in families}
 
 
 def load_canonicals(root: Path, name: str) -> list[Canonical]:
@@ -652,10 +664,11 @@ def _shingles(text: str) -> set[tuple[str, ...]]:
     return {tuple(words[i:i + 4]) for i in range(len(words) - 3)}
 
 
-def novelty(root: Path, canonicals: list[Canonical]) -> dict[str, Any]:
-    """Max word 4-gram Jaccard of each authored text against v1 and Test-2 texts."""
+def novelty(root: Path, canonicals: list[Canonical],
+            references: tuple[Path, ...] = NOVELTY_REFERENCES) -> dict[str, Any]:
+    """Max word 4-gram Jaccard of each authored text against the reference releases."""
     reference: list[str] = []
-    for release in NOVELTY_REFERENCES:
+    for release in references:
         for path in sorted((root / release).glob("*_*.jsonl")):
             for line in path.read_text(encoding="utf-8").splitlines():
                 row = json.loads(line)
@@ -689,7 +702,8 @@ def sha256(path: Path) -> str:
 
 def oracle_path(folder: Path, split: str) -> Path:
     """Evaluator-only oracle file of one split: Test oracles are kept apart from Dev/pilot."""
-    return folder / ("private/test_oracles.json" if split == "test" else "private/oracles.json")
+    return folder / ("private/test_oracles.json" if split in ("test", "test3")
+                     else "private/oracles.json")
 
 
 def write_release(folder: Path, fixtures: list[FixtureV3], privates: list[PrivateV3],
@@ -719,3 +733,8 @@ def write_release(folder: Path, fixtures: list[FixtureV3], privates: list[Privat
                                    indent=1) + "\n", encoding="utf-8")
     (folder / "qa.json").write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n",
                                     encoding="utf-8")
+
+
+def release_folder(split: str) -> Path:
+    """Release folder of a split (pilot_v3, release_v3 for Dev/Test v3, release_test3)."""
+    return {"pilot": PILOT_RELEASE, "test3": RELEASE_TEST3}.get(split, RELEASE)

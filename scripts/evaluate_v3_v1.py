@@ -21,7 +21,7 @@ from pathlib import Path
 from typing import Any
 
 from react_agent.authoring.v3 import release as rel
-from react_agent.evaluation import final_config_v3
+from react_agent.evaluation import final_config_v3, final_config_v4
 from react_agent.schemas.trace import TraceEvent
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,7 +29,7 @@ PILOT_FAMILY_SHARE = 0.4
 
 
 def load_privates(split: str) -> dict[str, rel.PrivateV3]:
-    folder = ROOT / (rel.PILOT_RELEASE if split == "pilot" else rel.RELEASE)
+    folder = ROOT / rel.release_folder(split)
     rows = json.loads(rel.oracle_path(folder, split).read_text(encoding="utf-8"))
     return {r["family_id"]: rel.PrivateV3.model_validate(r) for r in rows}
 
@@ -40,6 +40,10 @@ def score_run(run: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
         final_config_v3.verify(ROOT)
         if identity.get("final_config_v3_sha256") != final_config_v3.manifest_sha256(ROOT):
             raise final_config_v3.FrozenConfigError("run was not made under this final_config_v3")
+    if identity["split"] == "test3":  # Test-3: final_config_v4 must match, before any oracle
+        final_config_v4.verify(ROOT)
+        if identity.get("final_config_v4_sha256") != final_config_v4.manifest_sha256(ROOT):
+            raise final_config_v4.FrozenConfigError("run was not made under this final_config_v4")
     privates = load_privates(identity["split"])
     records = []
     for path in sorted(run.glob("runs/*/*/result.json")):

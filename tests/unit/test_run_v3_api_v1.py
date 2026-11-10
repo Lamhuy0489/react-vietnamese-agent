@@ -46,3 +46,20 @@ def test_dry_run_prompt_baseline_identity(  # type: ignore[no-untyped-def]
     assert identity["defense"]["prompt_baseline"] == {"spotlight_mode": "datamark",
                                                       "sandwich": True}
     assert "prompt_baselines.py" in identity["defense"]["file_sha256"]
+
+
+def test_max_new_tokens_is_dev_only() -> None:
+    import pytest
+
+    with pytest.raises(SystemExit):
+        _load("run_v3_api_v1").main(["--split", "test3", "--max-new-tokens", "2048"])
+
+
+def test_max_new_tokens_enters_identity(tmp_path: Path, monkeypatch) -> None:  # type: ignore[no-untyped-def]
+    monkeypatch.delenv("VLLM_BASE_URL", raising=False)
+    out = tmp_path / "run"
+    assert _load("run_v3_api_v1").main(["--dry-run-dummy", "--output", str(out),
+                                        "--split", "dev", "--max-new-tokens", "2048",
+                                        "--shard", "0/40"]) == 0
+    identity = json.loads((out / "identity.json").read_text())
+    assert identity["generation"]["max_new_tokens"] == 2048

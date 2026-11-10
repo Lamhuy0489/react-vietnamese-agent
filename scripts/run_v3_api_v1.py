@@ -12,6 +12,7 @@ resume, infrastructure reruns). Differences:
 
 The Test split runs only when ``configs/final/final_config_v3.json`` matches every pinned
 file and lists the (model, configuration) pair (plan WP9); its hash enters the identity.
+Test-3 (``--split test3``, ``release_test3``) does the same under ``final_config_v4.json``.
 """
 
 from __future__ import annotations
@@ -32,7 +33,7 @@ import yaml
 from react_agent.agent.checkpoint import atomic_json
 from react_agent.authoring.v3 import release as rel
 from react_agent.config import load_generation_config, load_runtime_config
-from react_agent.evaluation import final_config_v3
+from react_agent.evaluation import final_config_v3, final_config_v4
 from react_agent.evaluation.adversarial_v1 import LEVELS, DryRunAgent
 from react_agent.llm.openai_compat_v1 import (
     InfrastructureError,
@@ -117,7 +118,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model-key", default="qwen3_8b")
     parser.add_argument("--models-config", default="configs/models/backbones_v3.yaml")
-    parser.add_argument("--split", choices=["pilot", "dev", "test"], default="pilot")
+    parser.add_argument("--split", choices=["pilot", "dev", "test", "test3"], default="pilot")
     parser.add_argument("--branches", nargs="+", default=list(rel.BRANCH_CODE),
                         choices=list(rel.BRANCH_CODE))
     parser.add_argument("--levels", nargs="+", default=["A0"], choices=NO_GUARD_LEVELS)
@@ -139,20 +140,26 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--timeout", type=float, default=150)
     parser.add_argument("--dry-run-dummy", action="store_true",
                         help="CPU stand-in endpoint; pipeline check only")
+    parser.add_argument("--max-new-tokens", type=int,
+                        help="Dev diagnostic only (decision log 2026-11-10 01:50): override the "
+                             "pinned output budget; enters the identity via 'generation'")
     args = parser.parse_args(argv)
+    if args.max_new_tokens is not None and args.split != "dev":
+        parser.error("--max-new-tokens is a Dev-only diagnostic")
     final_sha: str | None = None
-    if args.split == "test":
+    if args.split in ("test", "test3"):
+        frozen: Any = final_config_v3 if args.split == "test" else final_config_v4
+        label = "Test v3" if args.split == "test" else "Test-3"
         try:
-            manifest = final_config_v3.verify(ROOT)
-        except final_config_v3.FrozenConfigError as exc:
-            raise SystemExit(f"Test v3 refused: {exc}") from exc
+            manifest = frozen.verify(ROOT)
+        except frozen.FrozenConfigError as exc:
+            raise SystemExit(f"{label} refused: {exc}") from exc
         test_config = config_name(args.levels, args.defense)
-        if test_config is None or not final_config_v3.allowed(manifest, args.model_key,
-                                                               test_config):
-            raise SystemExit(f"Test v3 refused: {args.model_key} {test_config} not in the matrix")
+        if test_config is None or not frozen.allowed(manifest, args.model_key, test_config):
+            raise SystemExit(f"{label} refused: {args.model_key} {test_config} not in the matrix")
         if args.fixtures or sorted(args.branches) != sorted(rel.BRANCH_CODE):
-            raise SystemExit("Test v3 runs the sealed release, all branches, no --fixtures")
-        final_sha = final_config_v3.manifest_sha256(ROOT)
+            raise SystemExit(f"{label} runs the sealed release, all branches, no --fixtures")
+        final_sha = frozen.manifest_sha256(ROOT)
     if args.dry_run_dummy and not args.output:
         raise SystemExit("--dry-run-dummy needs an explicit --output outside results/")
     d2 = args.defense in ("d2", "d2p1", "d2p2", "d2nrp2", "d2san", "d2p2san", *D3)
@@ -161,7 +168,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.defense in ("p1", "p2", "p1p2", "g1", "mel", "prg", "san") and (
             args.levels != ["A0"]):
         raise SystemExit("prompt baselines run on --levels A0 (no other defense)")
-    release = ROOT / (rel.PILOT_RELEASE if args.split == "pilot" else rel.RELEASE)
+    release = ROOT / rel.release_folder(args.split)
     prompt_profile = a0_rebuild.activate("v3")
     a6_profile = a6_provenance_v3.activate()
     spec = model_spec(ROOT / args.models_config, args.model_key)
@@ -186,6 +193,9 @@ def main(argv: list[str] | None = None) -> int:
     generation_path = ROOT / "configs/runtime/default.yaml"
     runtime_config = load_runtime_config(agent_path)
     generation_config = load_generation_config(generation_path)
+    if args.max_new_tokens is not None:
+        generation_config = generation_config.model_copy(
+            update={"max_new_tokens": args.max_new_tokens})
     backend: Any
     if args.dry_run_dummy:
         backend = DryRunAgent(spec["repo"], spec["revision"])
@@ -252,7 +262,8 @@ def main(argv: list[str] | None = None) -> int:
         "prompt": prompt_profile, "decoding_schema": "per_tool_v2_name_first",
         "a6_policy": a6_profile, "levels": args.levels,
         "variant_ids": [row.variant_id for row in all_rows],
-        **({"final_config_v3_sha256": final_sha} if final_sha else {}),
+        **({"final_config_v3_sha256": final_sha} if final_sha and args.split == "test" else {}),
+        **({"final_config_v4_sha256": final_sha} if final_sha and args.split == "test3" else {}),
     }
     if args.defense:
         files_d = [ROOT / "src/react_agent/security_v3/prompt_baselines.py"] if (
