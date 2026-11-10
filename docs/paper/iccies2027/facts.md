@@ -88,3 +88,5 @@ Gộp 3 backbone: attack /1080, plain /1080, auth /360.
 Test do cùng nhóm soạn (người soạn không đọc code phòng thủ); dữ liệu tổng hợp, công cụ mô phỏng; backbone 8–12B; một mô
 hình đóng, chạy qua proxy, chỉ trên Dev; mức tăng D3 so với D2+P2 nhỏ; tấn công tĩnh trên bộ niêm phong; tấn công thích
 nghi chỉ một vòng do người soạn, chỉ trên Dev.
+Thêm 10/11 23:00: phòng thủ dựng sẵn của AgentDojo chưa đánh giá trên Gemini 3 Flash (owner quyết không chạy);
+Gemma và Qwen3.5 không chạy trên AgentDojo.

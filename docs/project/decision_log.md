@@ -3764,3 +3764,15 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
 - Owner hỏi dùng API key Gemini trực tiếp để chạy nhanh hơn: không đổi giữa lượt (tránh trộn hai đường phục vụ trong một ô).
   Proxy hỗ trợ sẵn (`--keys-file`, bỏ `--upstream`); nếu dùng cho 8 lượt có phòng thủ thì cần revision mới và lượt có phòng
   thủ sẽ khác đường phục vụ với lượt không phòng thủ. Chưa quyết: 8 lượt có phòng thủ (996 cặp); Claude đề xuất bỏ, ghi hạn chế.
+
+## 2026-11-10 23:00 — Bỏ 8 lượt AgentDojo có phòng thủ trên Gemini; đóng giai đoạn thí nghiệm
+
+- Owner quyết: không chạy 8 lượt AgentDojo có phòng thủ dựng sẵn (`repeat_user_prompt`, `spotlighting_with_delimiting`;
+  2 suite × 2 ngôn ngữ; 996 cặp) trên Gemini 3 Flash.
+- Lý do: Gemini không phòng thủ chỉ bị 5/498 cặp (4/144, 1/105, 0/144, 0/105), không còn khoảng để đo hiệu quả phòng thủ;
+  lượt này không đo D3; phòng thủ dựng sẵn đã đo với Llama (Bảng 2.3) và spotlighting/sandwich đã so trên VN-AgentInject
+  (Bảng 2.1); 16–33 giờ máy trên máy hỏng pin, hạn bài báo 15/11.
+- Tác động: Bảng 2.3b và Bảng 11 giữ hàng không phòng thủ cho Gemini. Hạn chế phải nêu trong bài báo và luận văn: phòng thủ
+  dựng sẵn của AgentDojo chưa đánh giá trên Gemini 3 Flash; Gemma và Qwen không chạy trên AgentDojo.
+- Từ đây chỉ còn viết: bài báo ICCIES 2027, rồi chương kết quả Study 2. PDF 10 tài liệu tham khảo tải về
+  `docs/paper/iccies2027/refs/` (không commit), bảng đối chiếu ở `refs/README.md`.

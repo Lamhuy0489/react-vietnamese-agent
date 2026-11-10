@@ -32,7 +32,7 @@ là ngoại kiểm phụ. Mức tăng utility của D3 so với D2+P2 nhỏ (+1,
 | [05_results.md](sections/05_results.md) | Bảng 5–11 và các ý cần viết | 3,5 | bảng xong (Bảng 11 đủ ô từ 10/11); **thiếu lời văn** | `docs/research/study2_thesis_tables.md` |
 | [06_discussion_limitations.md](sections/06_discussion_limitations.md) | Lỗi còn lại, ngôn ngữ, hạn chế | 1 | **dàn ý** | Bảng 2.4, 2.8 |
 | [07_conclusion.md](sections/07_conclusion.md) | Kết luận | 0,5 | **chưa viết** | — |
-| [08_references.md](sections/08_references.md) | Tài liệu tham khảo | 1,5 | **danh sách thô, chưa đối chiếu** nơi đăng, năm, trang | — |
+| [08_references.md](sections/08_references.md) | Tài liệu tham khảo | 1,5 | danh sách thô; tên bài và tác giả 10 bài đã đối chiếu arXiv (10/11), **còn nơi đăng, trang, DOI** | [refs/README.md](refs/README.md) (PDF tải về, không commit) |
 
 ## Việc còn lại, theo thứ tự
 
@@ -41,7 +41,7 @@ là ngoại kiểm phụ. Mức tăng utility của D3 so với D2+P2 nhỏ (+1,
 2. Viết lời cho Mục 5 quanh các bảng đã có.
 3. Viết Mục 6 và Mục 7.
 4. Vẽ Hình 1 (kiến trúc D3; mô tả trong Mục 3.1).
-5. Đối chiếu từng tài liệu tham khảo với bản gốc; không thêm trích dẫn chưa kiểm.
+5. Đối chiếu từng tài liệu tham khảo với bản gốc (PDF ở `refs/`, bảng ở `refs/README.md`); không thêm trích dẫn chưa kiểm.
 6. Chuyển sang template Springer, đếm trang (mục tiêu 12–15), cắt bảng nếu vượt (ứng viên cắt: Bảng 5 hoặc Bảng 7).
 
 ## Owner cần quyết

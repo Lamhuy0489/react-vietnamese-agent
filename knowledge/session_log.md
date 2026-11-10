@@ -436,3 +436,5 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Owner hỏi dùng API key Gemini trực tiếp: không đổi giữa lượt; chỉ đáng cân nhắc cho 8 lượt có phòng thủ (chưa quyết, đề xuất bỏ).
 - 22:30: owner hỏi có chạy 996 cặp không; Claude khuyên bỏ (chưa có quyết định cuối). Viết bản đầy đủ Mục 4 của bài báo
   (`sections/04_benchmark_protocol.md`).
+- 23:00: owner quyết bỏ 996 cặp AgentDojo có phòng thủ trên Gemini (decision log 23:00); thí nghiệm đóng. Tải 10 PDF tài
+  liệu tham khảo từ arXiv vào `docs/paper/iccies2027/refs/` (không commit), lập `refs/README.md`.

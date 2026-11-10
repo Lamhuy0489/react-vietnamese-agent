@@ -8,8 +8,8 @@ Cập nhật: 2026-11-10. Lúc 12:20. Lộ trình [v2](../docs/project/roadmap_v
 **2026-11-10 22:05: AgentDojo Gemini Banking EN XONG (93/144, 4/144); 8 lượt không phòng thủ đủ, transcript đã soát, Bảng 2.3b,
 Bảng 11 và `facts.md` đã điền (decision log 22:00). Không còn runner nào chạy; proxy 8445 và OmniRoute vẫn bật (không đụng).**
 - Bước tiếp: bài báo ICCIES 2027 (Mục 4 đã viết 10/11 22:30; còn prose Mục 5–7, Hình 1, tài liệu tham khảo, template Springer); xem `docs/paper/iccies2027/README.md`.
-- Chờ owner: 8 lượt có phòng thủ (996 cặp). Có thể dùng API key Gemini trả phí cho nhanh (proxy: `--keys-file`, bỏ `--upstream`),
-  nhưng cần revision mới và khác đường phục vụ với lượt không phòng thủ. Đề xuất bỏ. Các dòng "đang chạy" bên dưới là lịch sử.
+- Owner quyết 10/11 23:00: KHÔNG chạy 8 lượt AgentDojo có phòng thủ trên Gemini (996 cặp); ghi vào hạn chế (decision log 23:00).
+  Giai đoạn thí nghiệm đóng; chỉ còn viết. PDF tài liệu tham khảo ở `docs/paper/iccies2027/refs/` (không commit; bảng ở `refs/README.md`). Các dòng "đang chạy" bên dưới là lịch sử.
 
 **2026-11-10 21:05: MÁY HỎNG PIN — chỉ chạy tuần tự, một tiến trình nặng mỗi lúc, `nice -n 10`; tuyệt đối không mở Zalo hay app Electron trên Mac (kích Turbo Boost gây ngắt nguồn AppleSMC -128). Không kill/khởi động lại
 OmniRoute (decision log 20:00).** AgentDojo Gemini: Slack EN xong (62/105, 1/105); Banking EN đang chạy (125/144 trên đĩa, còn đúng 19 cặp). Đã khôi phục an toàn sau cú sập nguồn do mở Zalo lúc 20:55.
