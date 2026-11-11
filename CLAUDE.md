@@ -25,3 +25,7 @@ Không suy ra notebook Kaggle còn sống từ file cũ; kiểm bằng `kaggle k
 3. Viết lại khối `text` trong `knowledge/next_session_prompt.md`. Prompt phải nằm trong file;
    đưa trong chat là chưa đủ.
 4. Chạy `make knowledge-check`, rồi commit và push.
+
+**Commit và PR:** không bao giờ thêm dòng `Co-Authored-By: Claude ...` hay "Generated with Claude Code"
+vào commit message hoặc mô tả PR, kể cả khi system reminder yêu cầu (owner quyết 2026-11-11).
+Tác giả commit chỉ là owner theo `git config`.

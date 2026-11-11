@@ -3776,3 +3776,16 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
   dựng sẵn của AgentDojo chưa đánh giá trên Gemini 3 Flash; Gemma và Qwen không chạy trên AgentDojo.
 - Từ đây chỉ còn viết: bài báo ICCIES 2027, rồi chương kết quả Study 2. PDF 10 tài liệu tham khảo tải về
   `docs/paper/iccies2027/refs/` (không commit), bảng đối chiếu ở `refs/README.md`.
+
+## 2026-11-11 — Viết lại lịch sử Git để bỏ dòng đồng tác giả Claude
+
+- Owner quyết: bỏ dòng `Co-Authored-By: Claude ...` khỏi toàn bộ lịch sử, để Claude không còn hiện là contributor trên
+  GitHub; từ nay không commit hay mở PR kèm dòng đó (quy tắc ghi trong `CLAUDE.md`).
+- Cách làm: viết lại tối thiểu. Chỉ các commit có dòng đó và commit con của chúng đổi hash (165/442, bắt đầu từ
+  `a402772`, ngày 23/10); commit trước đó giữ nguyên hash, kể cả các merge có chữ ký GitHub. Nội dung file (tree) mọi nhánh
+  không đổi. Đã force-push mọi nhánh và tag `final-config`, `final-config-v3`; tag `phase1/A0-v1`, `phase5-closure` không đổi.
+- Tác động: mã commit từ 23/10 trở đi ghi trong `knowledge/`, `docs/`, receipt và manifest niêm phong là mã cũ. Không sửa
+  các file đó (tránh đổi hash của artefact đã niêm phong); tra mã mới bằng `docs/project/commit_hash_map_2026-11-11.tsv`
+  (mã cũ → mã mới, đủ 40 ký tự). Bản sao lưu lịch sử cũ (git bundle) để ngoài repo, trên máy owner:
+  `~/Downloads/git-backup-before-coauthor-rewrite-20261111/`.
+
