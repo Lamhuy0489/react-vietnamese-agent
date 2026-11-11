@@ -22,6 +22,149 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-09 21:07 — Test-3 serve (private, T4×2), chờ niêm phong:** lamhuy8904 `llama31-8b-ctx16k` v3 và `gemma4-12b` v3
+(bật cùng lúc khi còn ~1 h quota, [bài học](kaggle_lessons.md)), meanalways `qwen35-9b` v2 (owner: quota thoải mái).
+Script `build/kaggle/t3_serve.sh` (bật + keep-alive 12 h, chưa chạy runner); log `build/kaggle/t3_logs/`.
+D3 Dev xong: dovuong05 Gemma 20:06, lamhuy8904 Llama 19:42, meanalways Qwen 20:40 (tự tắt).
+
+**2026-11-09 14:09–14:13 — D3 Dev (private, T4×2), source `ee0fc1c` branch `study2/d3-dev`:** dovuong05 `gemma4-12b` v7,
+lamhuy8904 `llama31-8b-ctx16k` v2, meanalways `qwen35-9b` v1; mỗi notebook chạy {D3, D3DEST, D3P2V1, D3FBV1} × 560 Dev.
+nomtle và huylmhuhu bị từ chối push 14:09 (hết quota tuần 30 h). Trạng thái thật: `kaggle kernels status`.
+
+**2026-11-09 — Test v3 Tầng 1 bật lại (hạ tầng, private, T4×2), xong 09:43:** dovuong05 `llama31-8b-ctx16k` (bật lại 02:50,
+A0/R1/P2 xong 06:42) và `gemma4-12b` (PRG 27 fixture cuối, 09:33–09:43); huylmhuhu `llama31-8b-ctx16k` v6 (02:18) và `qwen35-9b`
+(02:58, xong 07:18); dovuong05 `gemma4-12b` v4 và nomtle `qwen35-9b` v2 trước đó; buiquocviet `gemma4-12b` v6 chạy PRG tới 06:28 rồi
+hết quota tuần (30 h), oanhlam123456 hết quota từ 08/11. URL dạng `https://www.kaggle.com/code/<owner>/react-vn-vllm-serve-v1-<model>`.
+Không notebook nào còn chạy sau 09:43.
+
+**2026-11-08 15:47 — Test v3 Tầng 1 (`final_config_v3` `456de8d3…`), 6 notebook serve, private, T4×2:** nomtle `gemma4-12b` v2, `qwen35-9b` v1; dovuong05 `gemma4-12b` v1, `llama31-8b-ctx16k` v2; huylmhuhu `qwen35-9b` v1, `llama31-8b-ctx16k` v5. Chọn 3 tài khoản này vì quota tuần còn nhiều (lamhuy8904, oanhlam123456, buiquocviet đã chạy 18–25 giờ). Script `build/kaggle/test_launch.sh`.
+
+**2026-11-08 02:50 — Dev vòng chỉnh 3 (SAN), 6 notebook serve, private, T4×2, HF token chèn** (source: commit `a5d1332` trở đi):
+- [lamhuy8904/react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-llama31-8b-ctx16k) v1 {D2P2SAN, SAN};
+  [lamhuy8904/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-gemma4-12b) v1 {D2SAN}. Lần đầu dùng tài khoản này cho Study 2.
+- [oanhlam123456/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-qwen35-9b) v3 {D2P2SAN, SAN};
+  [oanhlam123456/react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-llama31-8b-ctx16k) v1 {D2SAN}.
+- [buiquocviet/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-gemma4-12b) v5 {D2P2SAN, SAN};
+  [buiquocviet/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-qwen35-9b) v4 {D2SAN}.
+- Cả 6 READY 03:01–03:27; script `build/kaggle/round3_launch.sh`, keep-alive 11 giờ.
+- 03:14 bật 4 notebook cho WP8 rồi bỏ (attacker tự động không làm được): nomtle `qwen36-35b-a3b-awq` v1, `gemma4-12b` v1;
+  dovuong05 `qwen35-9b` v1, `llama31-8b-ctx16k` v1. Không có request nên tự tắt sau 30 phút idle.
+- 08/11 10:33 tunnel rớt hết 20 lần thử; resume bằng `round3_resume.sh` trên 5 endpoint còn sống. oanhlam123456 `llama31-8b-ctx16k` v1 đã COMPLETE, bật lại **v2** 10:34 {D2SAN}. Vòng 3 đủ 560 × 9 lúc ~13:14.
+- WP8 lần 1: Qwen3.5 trên oanhlam123456 `qwen35-9b` v3, Llama trên lamhuy8904 `llama31-8b-ctx16k` v1; Gemma: hai notebook Gemma đã tắt, bật lại [lamhuy8904/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-gemma4-12b) **v2** 13:47 (`build/kaggle/wp8_launch.sh`), xong 14:43. 14:50: mọi keep-alive đã dừng, notebook tự tắt khi idle.
+
+**2026-11-07 01:00 — Tầng 2, SecAlign trên Dev v3 và AgentDojo-VI có tấn công** (tài khoản do owner chọn; source: commit kèm mục này):
+- [dovuong05/react-vn-vllm-serve-v1](https://www.kaggle.com/code/dovuong05/react-vn-vllm-serve-v1) **v1**, private, T4, Qwen3-8B,
+  folder `build/kaggle/vllm_serve_v1_qwen3_8b_20261107_010010`; {A0, R1, PRG, D2}, log `build/kaggle/tier2_qwen3_8b.log`.
+- [oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq)
+  **v2**, private, T4, folder `build/kaggle/vllm_serve_v1_qwen36_35b_a3b_awq_20261107_010030`; {A0, R1, PRG, D2}, log `tier2_qwen36_35b_a3b_awq.log`.
+- [nomtle/react-vn-vllm-serve-v1-secalign-8b](https://www.kaggle.com/code/nomtle/react-vn-vllm-serve-v1-secalign-8b) **v1**, private,
+  T4, HF token chèn, folder `build/kaggle/vllm_serve_v1_secalign_8b_20261107_010050`; {A0, D2}, log `tier2_secalign_8b.log`.
+- [huylmhuhu/react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/huylmhuhu/react-vn-vllm-serve-v1-llama31-8b-ctx16k)
+  **v4**, HF token chèn; 6 lượt AgentDojo-VI `important_instructions`, log `build/kaggle/relaunch_llama31_8b_3.log`.
+- 01:10 vòng chỉnh Dev 2 (D2-NR+P2): [buiquocviet/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-gemma4-12b)
+  **v4**, private, T4, HF token chèn (buiquocviet không có notebook nào chạy lúc bật); script `build/kaggle/round2_launch.sh`,
+  log `build/kaggle/round2_gemma4_12b.log`. Llama vòng 2 dùng lại endpoint huylmhuhu v4 sau AgentDojo-VI; Qwen3.5 chờ tài khoản Tầng 2 rảnh.
+- 06:57 [buiquocviet/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-qwen35-9b) **v3**,
+  vòng 2 Qwen3.5, xong 10:56. Gemma v4 xong 06:26; Llama huylmhuhu v4 vòng 2 xong 11:32; Qwen3-8B (dovuong05) và SecAlign (nomtle) xong.
+- 08:03 Qwen3.6 v2 mất tunnel (kernel còn RUNNING, endpoint chết). 09:09 [oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq)
+  **v3**, folder `build/kaggle/vllm_serve_v1_qwen36_35b_a3b_awq_20261107_090958`, READY 09:32, log `tier2_qwen36_35b_a3b_awq_r2.log`.
+- 21:38 Qwen3.6 v3 hết MAX_HOURS (A0, R1, PRG đủ 560; D2 555). 21:39 **v4**, folder
+  `build/kaggle/vllm_serve_v1_qwen36_35b_a3b_awq_20261107_213902`, READY 22:07, chạy nốt 5 lượt D2, xong 22:19, keep-alive tắt
+  (kernel tự dừng khi idle). Log `tier2_qwen36_35b_a3b_awq_r3.log`.
+- Script `build/kaggle/tier2_launch.sh OWNER CRED KEY "CONFIGS"` (prepare, push, `v3_dev_chain.sh` với `CONFIGS`, keep-alive 11 giờ,
+  tắt keep-alive khi xong). Trạng thái thật: `kaggle kernels status`, không suy ra từ mục này.
+
+**2026-11-06 15:25 — trạng thái:** notebook mới 14:26–14:55 (buiquocviet Gemma v3, oanhlam123456 Qwen3.5 v2, huylmhuhu Llama 16k v3 có HF token) để chạy D2+P2 và AgentDojo-VI; máy owner tắt 15:25, không còn keep-alive nên tự tắt khi idle.
+
+**2026-11-06 12:13 — trạng thái:** 3 notebook serve (huylmhuhu Llama 16k, buiquocviet Gemma, oanhlam123456 Qwen3.5) vẫn
+`RUNNING` sau khi Dev và AgentDojo xong; đã dừng keep-alive ở máy để chúng tự tắt sau 30 phút idle (khoảng 12:45).
+Phiên sau kiểm lại bằng `kaggle kernels status`.
+
+**2026-11-06 02:44 — Study 2 WP7 Dev v3 × 9 cấu hình** (source: commit kèm mục này):
+- [buiquocviet/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-gemma4-12b)
+  **v2**, Gemma-4-12B (max_len 4096), folder `build/kaggle/vllm_serve_v1_gemma4_12b_20261106_024408`.
+- [oanhlam123456/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-qwen35-9b)
+  **v1**, Qwen3.5-9B, folder `build/kaggle/vllm_serve_v1_qwen35_9b_20261106_024408`.
+- Llama-3.1-8B dùng chung notebook 16k của AgentDojo (huylmhuhu).
+- Chuỗi `build/kaggle/v3_dev_chain.sh F K 10`, keep-alive 10 giờ. Log `build/kaggle/v3_dev_chain_<K>.log`.
+
+**2026-11-06 02:03 — Study 2 WP6 AgentDojo EN + VI-utility, Llama-3.1-8B 16k:**
+- [huylmhuhu/react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/huylmhuhu/react-vn-vllm-serve-v1-llama31-8b-ctx16k)
+  **v1**, private, T4, key `llama31_8b_ctx16k` (max_len 16384), có chèn HF token, folder
+  `build/kaggle/vllm_serve_v1_llama31_8b_ctx16k_20261106_020255`.
+- Chuỗi `build/kaggle/agentdojo_chain.sh F K` chạy song song, keep-alive bằng `scripts/keepalive_vllm_v1.py`
+  (ping 1 token mỗi 20 phút, tối đa 10 giờ):
+  - đợt 1: utility EN/VI và `important_instructions` không phòng thủ;
+  - đợt 2: spotlighting, repeat_user_prompt.
+- Log ở `build/kaggle/agentdojo_chain_<K>.log` và `agentdojo_<K>_<tag>.log`; kết quả ở `results/rebuild_b/agentdojo_*_<K>/`.
+- Pilot 05/11–06/11: các notebook 8k (oanhlam123456 Qwen, huylmhuhu Llama, buiquocviet Gemma) tự tắt khi idle.
+
+**2026-11-06 00:07 — Study 2 WP3 pilot A0** (source: commit kèm mục này; notebook serve không đổi từ WP2):
+- [oanhlam123456/react-vn-vllm-serve-v1](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1) **v1**,
+  private, T4, Qwen3-8B, folder `build/kaggle/vllm_serve_v1_qwen3_8b_20261106_000642`.
+- [huylmhuhu/react-vn-vllm-serve-v1-llama31-8b](https://www.kaggle.com/code/huylmhuhu/react-vn-vllm-serve-v1-llama31-8b)
+  **v1**, private, T4, Llama-3.1-8B, có chèn HF token (model gated), folder `build/kaggle/vllm_serve_v1_llama31_8b_20261106_000643`.
+- Chạy bằng chuỗi `build/kaggle/v3_pilot_chain.sh F K`; log `build/kaggle/v3_pilot_<K>.log`; kết quả lưu ở
+  `results/rebuild_b/v3_pilot_A0_<K>{,_eval.json}`. Trạng thái: xem log; không suy ra từ file cũ.
+- Kết quả: Qwen READY 00:18, xong 00:22; Llama READY 00:28, xong 00:32. Cả hai tự tắt khi idle.
+
+**2026-11-05 21:19 — Study 2 WP2 smoke, hai model mới** (source `66defd9`, notebook serve có key Study 2):
+- [lamhuy8904/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-qwen35-9b)
+  **v1**, private, T4, folder `build/kaggle/vllm_serve_v1_qwen35_9b_20261105_211915`, không chèn HF token (Qwen không
+  gated). lamhuy8904 gần hết quota tuần, nhưng session đã bật thì chạy trọn ([bài học](kaggle_lessons.md)).
+- [oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-qwen36-35b-a3b-awq)
+  **v1**, private, T4, folder `build/kaggle/vllm_serve_v1_qwen36_35b_a3b_awq_20261105_211931`.
+- 21:45 Qwen3.6 AWQ v1 smoke đạt (revision `119886a1…`, 20/20, 12 đúng). 21:37 **Qwen3.5-9B v1 (lamhuy8904) ERROR**: vLLM
+  lên được, nhưng warmup trả JSON hỏng (`JSONDecodeError` ở ký tự 260), sinh khoảng 9 tok/s; revision `c2022362…`.
+- 21:57 [huylmhuhu/react-vn-vllm-serve-v1-secalign-8b](https://www.kaggle.com/code/huylmhuhu/react-vn-vllm-serve-v1-secalign-8b)
+  **v1**, private, T4, HF token chèn (gated), source `a301e0d`, folder `build/kaggle/vllm_serve_v1_secalign_8b_20261105_215726`.
+- 21:58 thử lại Qwen3.5-9B, warmup in output thô:
+  [buiquocviet/react-vn-vllm-serve-v1-qwen35-9b](https://www.kaggle.com/code/buiquocviet/react-vn-vllm-serve-v1-qwen35-9b)
+  **v1**, folder `build/kaggle/vllm_serve_v1_qwen35_9b_20261105_215844`, log `build/kaggle/wp2_smoke_qwen35_9b_r2.log`.
+- 22:35 cả hai đều ERROR. SecAlign v1: vLLM từ chối vì adapter trùng tên với base (`conflicts with a served base model`).
+  Qwen3.5-9B lần 2: warmup in `{"action":` rồi chỉ là khoảng trắng tới 256 token (lặp khoảng trắng trong grammar JSON).
+  Sửa ở `56f6410`. 22:37 bật **SecAlign v2** (huylmhuhu, folder `..._secalign_8b_20261105_223717`, log `wp2_smoke_secalign_8b_r2.log`)
+  và **Qwen3.5-9B v2** (buiquocviet, folder `..._qwen35_9b_20261105_223717`, `disable_any_whitespace`, log `wp2_smoke_qwen35_9b_r3.log`).
+- 23:02 Qwen3.5-9B v2 (buiquocviet) smoke đạt (8/20). 22:55 SecAlign **v3** (huylmhuhu, sửa ô kiểm `/models`, folder
+  `..._secalign_8b_20261105_225512`) READY 23:07, smoke đạt 23:11 (9/20). WP2 xong; cả 3 notebook tự tắt khi idle.
+- Chuỗi `build/kaggle/wp2_smoke_chain.sh F K OWNER CRED`, log `build/kaggle/wp2_smoke_<K>.log`, kết quả
+  `results/rebuild_b/smoke_<K>/`. Trạng thái READY hay lỗi: xem log; không suy ra từ file cũ.
+
+**2026-11-05 13:30 — clean Test (RQ1 + RQ3) Gemma-4-12B, tài khoản mới oanhlam123456** (`credential kaggle/kaggle6.json`,
+owner thêm 05/11; push có GPU T4 được ngay):
+[oanhlam123456/react-vn-vllm-serve-v1-gemma4-12b](https://www.kaggle.com/code/oanhlam123456/react-vn-vllm-serve-v1-gemma4-12b)
+**v1**, private, folder `build/kaggle/vllm_serve_v1_gemma4_12b_20261105_133018`, source `4191a24`. HF token `~/.hf_token_r5`
+kiểm 05/11 còn đọc được Gemma và Llama-3.1-8B. Llama-3.1-8B: bật trên lamhuy8904 khi guard v5 tự tắt
+(`build/kaggle/llama_after_guard.sh`), có thể hụt quota tuần (lamhuy8904 đã dùng nhiều từ 31/10). Chuỗi chung
+`build/kaggle/clean_test_chain.sh K FOLDER`, log `build/kaggle/clean_test_<K>_1105.log`.
+
+**2026-11-05 11:22 — Test-2 (lượt thật duy nhất, final_config_v2), lamhuy8904:**
+[react-vn-vllm-serve-v1](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1) **v6** (Qwen3-8B, folder
+`build/kaggle/vllm_serve_v1_qwen3_8b_20261105_112146`) và
+[react-vn-vllm-serve-v1-llama32-3b-guard](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-llama32-3b-guard)
+**v5** (folder `..._llama32_3b_guard_20261105_112147`), private, T4, source commit `c3f3d66` (manifest v2 `8889e448…`).
+Chuỗi `build/kaggle/test2_chain.sh`, log `build/kaggle/test2_1105.log`.
+
+**2026-11-05 03:13 — D2 / D2+G Dev, lamhuy8904:** Qwen **v5** (folder `..._qwen3_8b_20261105_003223`)
+vẫn RUNNING từ 00:33, dùng tiếp cho D2 vòng 1 (03:00). Guard v3 tự tắt (COMPLETE) lúc ~03:10 vì idle;
+bật lại guard **v4** lúc 03:13 (folder `build/kaggle/vllm_serve_v1_llama32_3b_guard_20261105_031317`, private,
+T4, token HF chèn như trước) cho D2+G vòng 1. Source: commit `caf2d95`. Hai notebook tự tắt sau 30 phút idle;
+Qwen chạm giới hạn phiên 12 giờ khoảng 12:30.
+**10:16 kiểm `kaggle kernels status`:** cả Qwen v5 và guard v4 đều COMPLETE (đã tắt). D2 r1 và D2+G r1
+chạy đủ 400/400 trước khi tắt. Lần sau cần bật lại.
+
+**2026-11-05 00:33 — E2 Dev mốc, Qwen + guard trên lamhuy8904** (quota reset 31/10, trước đó cả 3 notebook COMPLETE):
+[lamhuy8904/react-vn-vllm-serve-v1](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1) **v5** (Qwen3-8B) và
+[lamhuy8904/react-vn-vllm-serve-v1-llama32-3b-guard](https://www.kaggle.com/code/lamhuy8904/react-vn-vllm-serve-v1-llama32-3b-guard)
+**v3**, private, T4, token HF chèn như trước. READY khoảng 00:45. Folder
+`build/kaggle/vllm_serve_v1_{qwen3_8b,llama32_3b_guard}_20261105_003223`. Source: commit `3d3de35`.
+Notebook tự tắt sau 30 phút idle khi runner xong.
+
+**2026-10-28 08:45 — kiểm `kaggle kernels status`:** cả 6 notebook serve v1 (meanalways: Qwen, guard,
+gemma4-12b; lamhuy8904: Qwen, guard, llama31-8b) đều `COMPLETE`, không notebook nào đang chạy. Muốn chạy
+lại Dev mốc (E2) hay D2 phải bật lại bằng `launch_vllm_serve_v1.py prepare` + `kernels push`. Quota GPU
+reset 31/10; lamhuy8904 hết quota từ đêm 27/10, nên ưu tiên huylmhuhu/buiquocviet (chưa dùng tuần này).
+
 **2026-10-28 01:41 — R4 security Test, Qwen + guard trên meanalways** (lamhuy8904 hết quota GPU):
 [meanalways/react-vn-vllm-serve-v1](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1) **v1**
 (Qwen3-8B) và [meanalways/react-vn-vllm-serve-v1-llama32-3b-guard](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1-llama32-3b-guard)
@@ -30,6 +173,7 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 Kaggle CLI chạy bằng `KAGGLE_CONFIG_DIR` tạm trỏ tới credential meanalways (không vào Git).
 Keepalive `scripts/keepalive_vllm_v1.py --every 10` chạy suốt đợt, log `build/kaggle/keepalive_r4.log`.
 Source: tag `final-config`.
+- R4 xong 05:50 (2.100/2.100); keepalive tắt 05:50, hai notebook tự tắt sau 30 phút idle.
 
 **2026-10-26 tối — trạng thái:** Qwen v4 và guard v2 đã chạy xong A0–A6 Dev (2.800 lượt) và
 A6 v3 (400 lượt, 18:00–18:47). Keepalive tắt lúc khoảng 19:00, nên cả hai **đã tự tắt** (idle 30 phút).

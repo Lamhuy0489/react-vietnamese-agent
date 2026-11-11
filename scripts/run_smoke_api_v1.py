@@ -36,7 +36,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output", type=Path)
     parser.add_argument("--timeout", type=float, default=150)
     parser.add_argument("--prompt", choices=["v1", "v2", "v3"], default="v3")
+    parser.add_argument("--models-config", default="configs/models/backbones_v2.yaml",
+                        help="backbones_v3.yaml for Study 2 keys (WP2)")
     return parser.parse_args()
+
+
+def model_spec(config: Path, key: str) -> dict[str, Any]:
+    """A backbone entry; v3 entries may point back to backbones_v2 (`from`)."""
+    spec: dict[str, Any] = yaml.safe_load(config.read_text(encoding="utf-8"))[key]
+    if spec.get("from") == "backbones_v2":
+        spec = model_spec(config.with_name("backbones_v2.yaml"), key)
+    return spec
 
 
 def task_succeeded(task: SmokeTask, status: str, sequence: list[str], answer: str) -> bool:
@@ -53,17 +63,21 @@ def load_done(path: Path) -> dict[str, dict[str, Any]]:
 
 def main() -> int:
     args = parse_args()
-    spec = yaml.safe_load((ROOT / "configs/models/backbones_v2.yaml").read_text())[args.model_key]
+    spec = model_spec(ROOT / args.models_config, args.model_key)
     revision = args.revision or spec["revision"]
     if not revision:
-        raise SystemExit("Pin the revision in configs/models/backbones_v2.yaml or pass --revision")
+        raise SystemExit(f"Pin the revision in {args.models_config} or pass --revision")
     base_url, api_key = os.environ.get("VLLM_BASE_URL"), os.environ.get("VLLM_API_KEY")
     if not base_url or not api_key:
         raise SystemExit("Set VLLM_BASE_URL (https://.../v1) and VLLM_API_KEY")
     if not (DATA_ROOT / "database" / "university.db").is_file():
         raise SystemExit("Run scripts/build_smoke_environment.py first.")
 
-    backend = OpenAICompatBackend(OrderedHTTPSJSON(base_url, api_key, timeout=args.timeout),
+    backend_cls = OpenAICompatBackend
+    if spec.get("untrusted_role") == "input":  # Meta-SecAlign interface (WP2)
+        from react_agent.llm.secalign_role_v1 import SecAlignInputRoleBackend
+        backend_cls = SecAlignInputRoleBackend
+    backend = backend_cls(OrderedHTTPSJSON(base_url, api_key, timeout=args.timeout),
                                   repo=spec["repo"], revision=revision,
                                   chat_template_kwargs=spec.get("chat_template_kwargs"),
                                   tool_definitions=build_smoke_registry(DATA_ROOT).definitions())
@@ -74,6 +88,8 @@ def main() -> int:
               else {"prompt_profile": "a0_v1"})
     identity = {"model_key": args.model_key, "repo": spec["repo"], "revision": revision,
                 "prompt": prompt, "decoding_schema": "per_tool_v2_name_first"}
+    if spec.get("untrusted_role"):
+        identity["untrusted_role"] = spec["untrusted_role"]
     identity_path = output / "identity.json"
     if identity_path.exists() and json.loads(identity_path.read_text()) != identity:
         raise SystemExit("Output directory belongs to another model identity")

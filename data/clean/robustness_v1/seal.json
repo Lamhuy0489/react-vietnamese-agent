@@ -1,0 +1,16 @@
+{
+ "schema_version": "clean_robustness_seal_v1",
+ "approved_by": "owner",
+ "variants": 250,
+ "per_type": {
+  "no_diacritic": 50,
+  "word_boundary": 50,
+  "zero_width": 50,
+  "code_mix": 50,
+  "paraphrase": 50
+ },
+ "files_sha256": {
+  "variants.jsonl": "d64b5e77bda80c100b44aba308258aa152cab852a132c5491676c8fee8feced4",
+  "authored_candidates.jsonl": "8143da92f2d75eb95432bcc79d14a6b0e02fd8221d9756024c8b5d85dc38537b"
+ }
+}

@@ -1,0 +1,52 @@
+# Study 2 backbones (docs/project/rebuild_b_plan.md WP2; decision log 2026-11-05).
+# backbones_v2.yaml is pinned by final_config_v1/v2 and stays unchanged; entries reused
+# from it keep the same repo and revision. Serving keys match MODELS in
+# notebooks/kaggle/vllm_serve_v1/vllm_serve_v1.ipynb. A model counts only after its WP2
+# smoke (20/20 terminal, >= 95% parseable tool calls) is recorded in the decision log.
+qwen3_8b: {from: backbones_v2, tier: 2, status: served}
+llama31_8b: {from: backbones_v2, tier: 1, status: served}
+gemma4_12b: {from: backbones_v2, tier: 1, status: served}
+qwen35_9b:
+  repo: Qwen/Qwen3.5-9B
+  revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a  # resolved at first boot 2026-11-05
+  tier: 1
+  gated: false
+  license: apache-2.0
+  architecture: Qwen3_5ForConditionalGeneration (hybrid Gated DeltaNet + full attention every 4th layer, head_dim 256, bf16 weights 19.3 GB)
+  dtype: half  # T4 has no fast bf16; fp16 numerics unverified for linear attention
+  tensor_parallel: 2
+  max_model_len: 8192
+  text_only: true
+  structured_outputs: {backend: xgrammar, disable_any_whitespace: true}  # harness fix: warmup looped on whitespace inside the JSON grammar (2026-11-05, two boots)
+  status: smoke_passed  # 2026-11-05 23:02 (buiquocviet v2): 20/20 terminal (1 max_steps), 0 model_error, 48/48 calls parsed, 8/20 success, 3.0 s/call
+qwen36_35b_a3b_awq:
+  repo: QuantTrio/Qwen3.6-35B-A3B-AWQ  # community AWQ of Qwen/Qwen3.6-35B-A3B (apache-2.0), 25.5 GB
+  base_repo: Qwen/Qwen3.6-35B-A3B
+  revision: 119886a1072372348f73ef0df2d801cdcc0f455b  # resolved at first boot 2026-11-05 (oanhlam123456)
+  tier: 2
+  gated: false
+  license: apache-2.0
+  architecture: Qwen3_5MoeForConditionalGeneration (256 experts, 8 active, ~3B active params; hybrid attention)
+  dtype: half
+  tensor_parallel: 2
+  max_model_len: 4096
+  enforce_eager: true
+  text_only: true
+  status: smoke_passed  # 2026-11-05: 20/20 terminal, 0 model_error, 12/20 success (prompt v3), READY 17 min, 8 min/20 tasks
+  also_role: adaptive_attacker_candidate
+secalign_8b:
+  # Requests name the adapter (served model name); the base is the llama31_8b repo/revision.
+  repo: facebook/Meta-SecAlign-8B
+  revision: fb9b039b45ab4fe5e94517efaaf19f80f4fedda1
+  base: {repo: meta-llama/Llama-3.1-8B-Instruct, revision: 0e9e39f249a16976918f6564b8830bc894c89659}
+  lora_rank_max: 64  # adapter_config.json r=64 (read 2026-11-05 after access was granted)
+  tokenizer: adapter  # card: use the SecAlign tokenizer (modified chat template)
+  untrusted_role: input  # card: untrusted data in the "input" role; tool observations go there
+  tier: secalign
+  gated: true  # manual approval by Meta; granted to the notebook HF account 2026-11-05
+  license: llama3.1
+  dtype: half
+  tensor_parallel: 2
+  max_model_len: 8192
+  status: smoke_passed  # 2026-11-05 23:11 (huylmhuhu v3): 20/20 completed, 59/59 calls parsed, 9/20 success (base llama31_8b: 8), 4.1 s/call
+frontier_api: {status: deferred, note: owner provides an API when needed}

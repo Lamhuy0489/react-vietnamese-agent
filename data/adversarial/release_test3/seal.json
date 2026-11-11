@@ -1,0 +1,18 @@
+{
+ "schema_version": "v3_seal_v1",
+ "approved_by": "owner",
+ "authorship": "Test-3 written by people (owner/Minh), cross-reviewed and frozen 2026-11-09 16:30 (decision log); sealed 2026-11-09 after D3 Dev selection",
+ "files_sha256": {
+  "private/test_oracles.json": "40f74cf567c66013ae826a8dc3ffb28035f5d502f5ea8f743c7c47241a7d534f",
+  "qa.json": "56c45b8e10fc2c0501c6cd22bbaee5dc3da688d616eb5e486423154564164124",
+  "test3_attack.jsonl": "8420256dffb13cee53c3a4e05e0c3d6a7f259ce245a3508e8d7d757a91b52a88",
+  "test3_benign_auth.jsonl": "23e4e5a68fd60ddd405ff14927833c4fa2be0446e98a7531d0fbe1da469fa20a",
+  "test3_benign_plain.jsonl": "e48470f16432c598c03387b2df46d6e6ec9e8b5fe9db80be8a355349ec612cf9"
+ },
+ "authoring_sha256": {
+  "spec.json": "1547dc4ec01b45a8762473ec6b97732891e5d61b80877c8e414f1d61829585c4",
+  "spec_test3.json": "f8cdab02523e173663d046a74b77613a1ac6f7d800c64826c59741959639d1a6",
+  "test3_canonicals.json": "6b7dbd67b0e22fdb5deea84e17be74b2409d74d6b83fd67b4143bfa3bd5866ce",
+  "code_mix_glossary_v3.json": "2bfb9ded101d6504feeb285cd8fe979df3d6a851ad0dcdbe804f5d04afbb118e"
+ }
+}

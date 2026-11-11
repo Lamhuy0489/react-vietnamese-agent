@@ -12,6 +12,11 @@ memory của agent đang được benchmark. Không cần tài khoản hoặc gr
 2. [Tóm tắt hiện tại](current_status.md), [bàn giao](handoff.md), [nhật ký phiên](session_log.md).
 3. [Lộ trình v2](../docs/project/roadmap_v2_rebuild.md) và
    [runbook mức A, mục "Bản đồ"](rebuild_a_runbook.md): chạy ở đâu, lưu ở đâu.
+4. Viết bài báo ICCIES 2027: [mục lục làm việc](../docs/paper/iccies2027/README.md) (trạng thái từng mục, quy tắc),
+   [số liệu được phép dùng](../docs/paper/iccies2027/facts.md); bảng gốc ở
+   [study2_thesis_tables.md](../docs/research/study2_thesis_tables.md).
+   Study 2: [kế hoạch Rebuild B](../docs/project/rebuild_b_plan.md) (WP, nghiệm thu) và
+   [đề xuất, khảo sát](../docs/project/rebuild_b_proposal.md).
 4. [Contract](../docs/project/research_contract.md),
    [invariants](../docs/project/invariants.md), [decision log](../docs/project/decision_log.md).
 
