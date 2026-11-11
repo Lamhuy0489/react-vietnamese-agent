@@ -11,7 +11,7 @@ chỉ chạy C4–C12, nhưng lặp lại đúng blocker C4/A0 và dừng fail-c
 evaluator giữ nguyên cả hai journal, loại mọi uncertain record khỏi denominator,
 và ghi 21/84 completed, 63 missing, `phase5_accepted=false`. Xem
 [closure recovery report](../docs/evaluation/phase5_native_closure_recovery_report_20260929.md),
-[combined evaluation](../build/evaluation/phase5_native_closure_combined01_20260929.json)
+combined evaluation (`build/evaluation/phase5_native_closure_combined01_20260929.json`)
 và [protocol](../docs/evaluation/phase5_native_closure_protocol_v1.md).
 [Acceptance chính thức](../docs/project/phase_status.md),
 [tiến độ và đường hoàn thiện](../docs/evaluation/project_status_api_20260927.md).
@@ -194,7 +194,7 @@ Hai hạng mục còn lại của closure đã được hoàn thiện ngày 2026
 CPU `terminal_line_ending_v1` chạy 9 ca (4 canonical equivalents ALLOW, 5
 mismatch DENY), giữ raw/released SHA-256 và không gọi model/API/network; xem
 [protocol](../docs/evaluation/phase5_terminal_normalization_ablation_v1_protocol.md),
-[report](../build/evaluation/phase5_terminal_normalization_ablation_v1/report.md)
+report (`build/evaluation/phase5_terminal_normalization_ablation_v1/report.md`)
 và [receipt](../experiments/manifests/phase5_terminal_normalization_ablation_v1.json).
 Bộ validator formal đã map đủ 20/20 DoD và xác nhận hash các receipt mainline,
 epoch2 và ablation; quyết định được đóng băng là **NO_GO**, `phase5_accepted=false`,

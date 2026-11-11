@@ -10,6 +10,7 @@ from test_remote_api_runtime_v1 import RunnerFactory
 ROOT = Path(__file__).resolve().parents[2]
 
 
+@pytest.mark.skipif(not (ROOT / "build").is_dir(), reason="build/ directory not present")
 def test_public_pair_selection_and_checkpoint_resume(monkeypatch):
     monkeypatch.syspath_prepend(str(ROOT / "scripts"))
     runner = importlib.import_module("run_remote_api_paired_dev_v1")
@@ -51,6 +52,7 @@ def test_public_pair_selection_and_checkpoint_resume(monkeypatch):
             runner.run(root, output, resume=True)
 
 
+@pytest.mark.skipif(not (ROOT / "build").is_dir(), reason="build/ directory not present")
 def test_uncertain_started_condition_never_retried(monkeypatch):
     monkeypatch.syspath_prepend(str(ROOT / "scripts"))
     runner = importlib.import_module("run_remote_api_paired_dev_v1")

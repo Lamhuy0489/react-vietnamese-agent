@@ -35,6 +35,7 @@ class Factory(RunnerFactory):
         return Agent() if self.role == "agent" else super().__call__()
 
 
+@pytest.mark.skipif(not (ROOT / "build").is_dir(), reason="build/ directory not present")
 def test_twelve_cases_public_runtime_and_source_labels(monkeypatch):
     monkeypatch.syspath_prepend(str(ROOT / "scripts"))
     runner = importlib.import_module("run_remote_api_provenance_v1")
