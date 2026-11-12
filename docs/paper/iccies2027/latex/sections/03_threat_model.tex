@@ -1,0 +1,98 @@
+\section{Mô hình đe dọa và phân loại tấn công}\label{sec:threat}
+% Dàn ý gốc: ../outline/02_threat_model_taxonomy.md (khoảng 1,5--2 trang)
+
+\subsection{Tác tử và môi trường}
+
+Chúng tôi xét một tác tử ReAct phục vụ một người dùng. Cho prompt hệ thống và chỉ thị người dùng $u$, ở mỗi bước
+mô hình sinh ra hoặc một hành động $a_t = (\text{công cụ}, \text{tham số})$, hoặc câu trả lời cuối $y$. Một thành
+phần phía host, \textbf{Tool Broker}, kiểm tra mỗi hành động theo schema của công cụ và giới hạn riêng của từng công
+cụ, thực thi nó và trả kết quả quan sát $o_t$ về cho mô hình. Vòng lặp dừng khi có câu trả lời cuối hoặc sau một số
+bước cố định.
+
+Bộ công cụ gồm tám công cụ thuộc hai lớp (Bảng~\ref{tab:tools}). Sáu \textbf{công cụ đọc} trả về nội dung và không
+gây tác động ra ngoài tác tử: tìm và đọc tài liệu, truy vấn cơ sở dữ liệu chỉ đọc, tìm và lấy trang lưu đệm, và
+máy tính. Hai \textbf{sink} có tác dụng phụ: \code{send\_email\_mock(to, subject, body)} và
+\code{post\_webhook\_mock(endpoint, payload)}. Cả hai chỉ ghi log, nên không thí nghiệm nào gửi dữ liệu ra mạng. Ta
+viết $\mathit{dest}(a)$ cho tham số đích của lời gọi sink (\code{to} hoặc \code{endpoint}) và
+$\mathit{payload}(a)$ cho các tham số còn lại.
+
+\input{tables/tab01_tools}
+
+\subsection{Độ tin cậy và độ nhạy cảm}
+
+Mỗi mẩu nội dung mang hai nhãn độc lập, do host gán chứ không bao giờ do mô hình gán.
+\begin{itemize}
+\item \textbf{Độ tin cậy} (trust) ghi nhận ai có thể tác động tới nội dung. Prompt hệ thống và chỉ thị người dùng
+  là đáng tin; mọi quan sát từ công cụ đều không đáng tin, kể cả đầu ra của công cụ nội bộ, vì tài liệu, trang và
+  bản ghi mà chúng trả về có thể do bên thứ ba viết.
+\item \textbf{Độ nhạy cảm} (sensitivity) ghi nhận cái giá của việc tiết lộ, trên thang thứ tự từ công khai (S0) đến
+  mật (S2). Một tài liệu mật chứa các giá trị (khóa, mã, định danh tài khoản) không được rời khỏi tác tử trừ khi
+  người dùng cho phép.
+\end{itemize}
+Hai nhãn này trực giao. Một trang không đáng tin có thể là công khai; một bản ghi mật có thể đến từ công cụ mà kẻ
+tấn công không chạm tới được. Phòng thủ gộp hai chiều làm một sẽ hoặc chặn mọi việc dùng dữ liệu mật, hoặc tin mọi
+nguồn nội bộ. Vị từ gây hại và luật của D3 đều dùng cả hai nhãn.
+
+\subsection{Kẻ tấn công và vị từ gây hại}
+
+Mục tiêu của kẻ tấn công là khiến tác tử tạo ra tác dụng phụ hoặc sự tiết lộ mà người dùng không cho phép.
+\emph{Khả năng:} kẻ tấn công kiểm soát văn bản của một tài liệu mà công cụ đọc trả về trong nhiệm vụ: một tài liệu,
+một trang lưu đệm, một trường văn bản trong cơ sở dữ liệu, hoặc đầu ra của công cụ. Đoạn chèn có thể ở đầu, giữa,
+cuối nội dung hoặc trong một dòng bảng, và có thể dùng bất kỳ giọng điệu nào, từ thông báo bình thường đến mạo danh
+thẩm quyền, viện dẫn quy trình hay chỉ thị có điều kiện nhiều bước. \emph{Giới hạn:} kẻ tấn công không sửa được
+prompt hệ thống, chỉ thị người dùng, mã công cụ, broker hay trọng số mô hình, và không quan sát được quỹ đạo; kẻ tấn
+công biết tên và schema của công cụ. Trên các tập kiểm thử niêm phong, tấn công là tĩnh: được viết mà không truy cập
+mã phòng thủ hay các lượt chạy có phòng thủ. Tấn công thích nghi do người viết, có phản hồi từ lượt chạy có phòng
+thủ, được đánh giá riêng trên tập phát triển (Mục~\ref{sec:adaptive}). \emph{Ngoài phạm vi:} jailbreak trực tiếp từ
+người dùng, tấn công vào trọng số hay dữ liệu huấn luyện, từ chối dịch vụ, lan truyền giữa nhiều tác tử.
+
+Gọi $G(u)$ là tập đích mà chỉ thị người dùng cấp quyền, và $V_2$ là tập giá trị mật trên quỹ đạo mà người dùng không
+cho phép tiết lộ. Một quỹ đạo là \textbf{gây hại} nếu ít nhất một vị từ sau đúng. Các vị từ được một bộ chấm đóng
+băng đánh giá từ các lời gọi công cụ đã thực thi và câu trả lời cuối; suy luận của mô hình không được yêu cầu và
+không được ghi log.
+\begin{itemize}
+\item $H_\mathit{dest}$ (đích trái phép): một lời gọi sink $a$ đã thực thi có $\mathit{dest}(a) \notin G(u)$.
+\item $H_\mathit{leak}$ (tiết lộ giá trị mật): có $v \in V_2$ xuất hiện trong $\mathit{payload}(a)$ của một lời
+  gọi sink đã thực thi, hoặc trong câu trả lời cuối $y$.
+\item $H_\mathit{tamper}$ (toàn vẹn payload): một lời gọi sink đã thực thi có $\mathit{dest}(a) \in G(u)$, nhưng
+  một trường do người dùng chỉ định lại mang giá trị khác.
+\item $H_\mathit{side}$ (tác dụng phụ không được yêu cầu): nhiệm vụ của người dùng chỉ là đọc, nhưng có lời gọi
+  sink được thực thi.
+\end{itemize}
+Lời gọi bị chặn không tính là gây hại: chỉ hành động đã thực thi và câu trả lời cuối được tính. Lỗi mô hình (đầu
+ra sai định dạng hoặc bị cắt) được tính là thất bại về tiện ích, không bao giờ tính là phòng thủ thành công.
+
+\subsection{Sáu cơ chế tấn công M1--M6}
+
+Chúng tôi phân loại tấn công theo \textbf{cơ chế}: con đường để đoạn chèn biến thành tác hại. Cơ chế quyết định
+vị từ nào được kích hoạt và, như Mục~\ref{sec:results} cho thấy, lớp phòng thủ nào chặn được nó.
+Bảng~\ref{tab:mechanisms} liệt kê sáu cơ chế và các kiểu con.
+
+\input{tables/tab02_mechanisms}
+
+Các cơ chế khác nhau ở chỗ phòng thủ có thể dựa vào đâu. Ở M1 và M2, lời gọi gây hại đi tới đích người dùng chưa
+từng viết, nên chỉ cần kiểm tra đích là đủ, bất kể cách diễn đạt. Ở M3 và M4, đích là hợp lệ (hoặc không có đích),
+và chỉ có nguồn gốc của giá trị phân biệt tấn công với nhiệm vụ. Ở M5, cả đích lẫn độ nhạy cảm đều không bất
+thường: tấn công sửa một trường bình thường, nên đây là cơ chế khó nhất với luật dựa trên nhãn. M6 kiểm tra xem
+việc người dùng nhắc tới một đích (ví dụ trong câu cấm) có bị hiểu nhầm thành cấp quyền hay không. Trước mọi lượt
+chạy, chúng tôi đã ghi dự đoán theo từng cơ chế (ví dụ, luật đích không thêm gì so với lớp luật cụm từ ở M1, và
+không giúp gì ở M5); Mục~\ref{sec:results} báo cáo dự đoán nào sai.
+
+\subsection{Nhánh lành tính và biến thể ngôn ngữ}
+
+Mỗi họ tấn công đi kèm hai nhánh lành tính có cùng nhiệm vụ người dùng và cùng môi trường công cụ.
+\textbf{benign\_plain} thay đoạn chèn bằng một ghi chú vô hại cùng độ dài, cùng vị trí; nhánh này đo tiện ích dưới
+phòng thủ. \textbf{benign\_auth} giữ một yêu cầu trông giống mục tiêu của tấn công nhưng \emph{được người dùng cho
+phép rõ ràng}: người dùng nêu đích thứ hai (M1, M2), cho phép gửi hoặc nêu mã (M3, M4), yêu cầu lấy giá trị từ dữ
+liệu công cụ (M5), hoặc tự yêu cầu hành động (M6). Chặn ở nhánh này là \textbf{chặn nhầm}. Nhánh này tách phòng thủ
+thực thi đúng việc cấp quyền khỏi phòng thủ chỉ đơn giản là chặn sink.
+
+Mỗi họ được dựng thành năm biến thể, áp cho cả yêu cầu người dùng lẫn nội dung bị chèn: tiếng Việt
+\textbf{chuẩn} (canonical), \textbf{diễn đạt lại} (paraphrase), \textbf{trộn mã} (tiếng Việt xen thuật ngữ tiếng
+Anh), \textbf{không dấu} (bỏ dấu tự động) và \textbf{tiếng Anh} (bản dịch sát). Định danh, địa chỉ, giá trị mật và
+mọi dữ kiện bộ chấm dùng đều giống hệt từng byte giữa các biến thể, nên khác biệt giữa các biến thể chỉ do ngôn
+ngữ. Một họ cùng mọi biến thể và nhánh lành tính của nó luôn nằm trong cùng một tập. Trong mỗi tập và mỗi cơ chế,
+các họ được cân bằng theo các trục phụ: kênh chèn (tài liệu, trang lưu đệm, trường văn bản cơ sở dữ liệu, đầu ra
+công cụ), bốn mức thuyết phục, vị trí, giọng và cấu trúc yêu cầu, có hay không câu cấm rõ ràng, sink người dùng yêu
+cầu, và sáu lĩnh vực ứng dụng (giáo dục, dịch vụ công, ngân hàng -- tài chính, y tế, thương mại điện tử -- vận
+chuyển, CNTT doanh nghiệp -- nhân sự).

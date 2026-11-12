@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{Các lớp của D3. ``TĐ'' đánh dấu cưỡng chế tất định phía host.}\label{tab:layers}
+\small
+\begin{tabular}{@{}p{0.22\textwidth}p{0.15\textwidth}p{0.30\textwidth}cp{0.17\textwidth}@{}}
+\toprule
+Lớp & Thời điểm & Cơ chế & TĐ & Nhắm tới \\
+\midrule
+L0 Tool Broker & mọi lời gọi & kiểm schema, giới hạn công cụ, nhãn nguồn gốc & có & lời gọi sai; nền cho các lớp khác \\
+L1 Cấp quyền đích (R2) & trước sink & đích phải có nguyên văn trong chỉ thị người dùng & có & M1, M2, M6 \\
+L2 Luồng giá trị mật (R3) & trước sink; ở câu trả lời & giá trị mật từ công cụ không được đi ra trừ khi người dùng đã viết & có & M3, M4 \\
+L3 Che câu trả lời (R4) & ở câu trả lời & che từng giá trị vi phạm & có & M4 \\
+L4 Luật tín hiệu theo đích (D) & trước sink & từ chối khi quan sát bị gắn cờ nêu đúng đích của sink & có & M3, M5 trên sink người dùng nêu \\
+L5 Lời nhắc (P2) & sau mỗi quan sát & lặp lại chỉ thị người dùng cho mô hình & không & tất cả, tùy mô hình \\
+L6 Phản hồi từ chối & sau khi từ chối & thông báo có cấu trúc; không chạy công cụ; tác tử tiếp tục & có & tiện ích sau khi chặn \\
+\bottomrule
+\end{tabular}
+\end{table}

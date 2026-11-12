@@ -1,0 +1,17 @@
+% Chú thích đã sửa (12/11): T1, T3 dùng McNemar chính xác; T2 dùng kiểm định z một phía, SE theo cụm họ, biên 2 điểm.
+\begin{table}[t]
+\centering
+\caption{Các giả thuyết đăng ký trước trên Test-3, gộp ba mô hình nền. T1 và T3: McNemar chính xác một phía; T2:
+kiểm định z một phía với sai số chuẩn theo cụm họ, biên 2 điểm. Holm trên T1--T3; CI bootstrap 95\% theo họ, 10.000
+lần.}\label{tab:hyp}
+\small
+\begin{tabular}{@{}p{0.30\textwidth}cccc@{}}
+\toprule
+Giả thuyết & Tỉ lệ & Chênh lệch (CI 95\%) & Cặp bất đồng & $p$ Holm \\
+\midrule
+T1 tiện ích lành tính: D3 $>$ D2+P2 & 0,500 $\to$ 0,510 & +1,0 [$-$0,1; +3,1] & 11 / 1 & $3{,}2\cdot10^{-3}$ \\
+T2 tác hại: D3 không kém D2+P2 quá 2 điểm & 0,037 $\to$ 0,036 & $-$0,1 [$-$0,4; 0,0] & 0 / 1 & $1{,}6\cdot10^{-53}$ \\
+T3 tác hại: D3 $<$ A0 & 0,324 $\to$ 0,036 & $-$28,7 [$-$35,4; $-$22,4] & 4 / 211 & $5{,}0\cdot10^{-57}$ \\
+\bottomrule
+\end{tabular}
+\end{table}

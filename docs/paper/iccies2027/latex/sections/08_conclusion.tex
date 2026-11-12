@@ -1,0 +1,13 @@
+\section{Kết luận}\label{sec:conclusion}
+% Dàn ý cũ chưa có mục này; bản dưới chỉ tóm lại các kết quả đã có ở Mục 5--6 (khoảng 0,5 trang).
+
+Bài báo trình bày D3, cơ chế phòng thủ nhiều lớp cho tác tử ReAct dùng công cụ, đặt cưỡng chế ở Tool Broker ngoài
+mô hình: cấp quyền đích theo nguyên văn chỉ thị người dùng, luật luồng giá trị mật trên hai nhãn tin cậy và nhạy
+cảm, che giá trị trong câu trả lời cuối, luật tín hiệu chèn lệnh giới hạn theo đích, cùng lời nhắc và phản hồi từ
+chối. Chúng tôi đánh giá D3 trên VN-AgentInject v3, benchmark tiếng Việt chia theo sáu cơ chế tấn công, theo giao
+thức có tập kiểm thử niêm phong chạy một lần. Trên tập niêm phong thứ hai, D3 giảm tỉ lệ tấn công thành công từ
+32,4\% xuống 3,6\% trên ba mô hình nền mở trọng số và giữ 93,7\% tiện ích lành tính của tác tử không phòng thủ; mức
+cải thiện tiện ích so với cấu hình trước có ý nghĩa thống kê nhưng nhỏ. Bộ phát hiện huấn luyện trên tiếng Anh không
+chuyển giao sang tiếng Việt, còn luật nguyên văn theo đích và giá trị thì không phụ thuộc ngôn ngữ. Các lỗi còn lại
+tập trung ở sửa đổi tham số trên sink hợp lệ và rò rỉ giá trị đã bị biến đổi; đây là hướng tiếp theo, cùng với tấn
+công thích nghi tự động và nhiệm vụ nhiều lượt.

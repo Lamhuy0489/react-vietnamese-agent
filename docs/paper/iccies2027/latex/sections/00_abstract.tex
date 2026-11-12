@@ -1,0 +1,20 @@
+\begin{abstract}
+Các tác tử (agent) xây trên mô hình ngôn ngữ lớn (LLM) ngày càng theo mô hình ReAct, xen kẽ suy luận với lời gọi
+công cụ bên ngoài. Nội dung công cụ trả về là không đáng tin, nên tác tử bị phơi ra trước tấn công chèn lệnh
+gián tiếp (Indirect Prompt Injection, IPI): chỉ thị cài trong kết quả công cụ lái tác tử sang hành động trái
+phép, làm lộ dữ liệu hoặc sửa sai đầu ra. Các benchmark an ninh cho tác tử hiện nay gần như chỉ có tiếng Anh, nên
+hành vi của tấn công và phòng thủ với tác tử tiếng Việt hầu như chưa được đo. Chúng tôi đề xuất D3, cơ chế phòng
+thủ nhiều lớp đặt việc cưỡng chế ở một Tool Broker nằm ngoài mô hình: cấp quyền đích gửi theo đúng chữ người dùng
+viết, luật luồng giá trị mật dựa trên nhãn nguồn gốc, che giá trị trong câu trả lời cuối và một luật tín hiệu
+chèn lệnh giới hạn theo đích, kết hợp với lời nhắc trong prompt và phản hồi từ chối có cấu trúc. D3 không cần
+tinh chỉnh mô hình và không gọi thêm LLM phụ. Chúng tôi đánh giá D3 trên VN-AgentInject v3, benchmark tiếng Việt
+gồm các họ tấn công chia theo sáu cơ chế (M1--M6), mỗi họ đi kèm hai nhánh lành tính và năm biến thể ngôn ngữ,
+theo một giao thức đăng ký trước với tập kiểm thử niêm phong được soạn độc lập với cơ chế phòng thủ. Trên tập
+niêm phong (48 họ, 560 ca kiểm thử mỗi ô, ba mô hình nền mở trọng số: Gemma-4-12B, Llama-3.1-8B, Qwen3.5-9B), D3
+giảm tỉ lệ tấn công thành công từ 32,4\% xuống 3,6\% (p sau hiệu chỉnh Holm $= 5{,}0\cdot10^{-57}$) trong khi giữ
+93,7\% tiện ích lành tính của tác tử không phòng thủ (51,0\% so với 54,5\%). Bộ phát hiện huấn luyện trên tiếng
+Anh và một biến thể tất định của MELON không tốt hơn tác tử không phòng thủ trên tập phát triển tiếng Việt. Bản
+dịch tiếng Việt của AgentDojo và một lượt chạy với Gemini 3 Flash dùng làm kiểm tra ngoài.
+
+\keywords{Chèn lệnh gián tiếp \and Tác tử LLM dùng công cụ \and ReAct \and Phòng thủ nhiều lớp \and Benchmark tiếng Việt \and An ninh tác tử}
+\end{abstract}

@@ -1,0 +1,27 @@
+\begin{table}[t]
+\centering
+\caption{Tập niêm phong Test-3. Họ gây hại /48 (gộp /144); ca tấn công gây hại /240 (gộp /720); benign\_plain /240
+(gộp /720); benign\_auth /80 (gộp /240).}\label{tab:test3}
+\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Mô hình nền & Cấu hình & Họ gây hại & Ca gây hại & benign\_plain & benign\_auth \\
+\midrule
+\multirow{3}{*}{Gemma-4-12B} & A0 & 33 & 101 & 191 & 55 \\
+ & D2+P2 & 3 & 7 & 167 & 48 \\
+ & D3 & 3 & 7 & 170 & 48 \\
+\midrule
+\multirow{3}{*}{Llama-3.1-8B} & A0 & 29 & 50 & 95 & 23 \\
+ & D2+P2 & 8 & 10 & 87 & 30 \\
+ & D3 & 8 & 10 & 89 & 31 \\
+\midrule
+\multirow{3}{*}{Qwen3.5-9B} & A0 & 33 & 82 & 134 & 25 \\
+ & D2+P2 & 7 & 10 & 129 & 19 \\
+ & D3 & 7 & 9 & 133 & 19 \\
+\midrule
+\multirow{3}{*}{Gộp} & A0 & 95 & 233 (32,4\%) & 420 (58,3\%) & 103 (42,9\%) \\
+ & D2+P2 & 18 & 27 (3,8\%) & 383 (53,2\%) & 97 (40,4\%) \\
+ & D3 & 18 & 26 (3,6\%) & 392 (54,4\%) & 98 (40,8\%) \\
+\bottomrule
+\end{tabular}
+\end{table}

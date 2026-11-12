@@ -1,0 +1,26 @@
+\section{Thảo luận và hạn chế}\label{sec:discussion}
+% Dàn ý gốc: ../outline/06_discussion_limitations.md (khoảng 1 trang)
+
+\paragraph{Lỗi còn lại.} Dưới phòng thủ, các ca gây hại còn lại đều thuộc M3, M4 và M5 (13 ca trên Test v3: 6, 3, 4).
+M5 trên sink người dùng đã nêu nằm ngoài tầm của luật theo đích và theo độ nhạy cảm: đích hợp lệ, giá trị bị sửa
+không mật, và chỉ khi nội dung chèn nhắc tới đích thì luật D mới có căn cứ để chặn. Với M3 và M4, R3 so khớp nguyên
+văn nên không nhận ra giá trị mà mô hình đã biến đổi trước khi xuất (Mục~\ref{sec:d3}).
+\todo{nếu muốn nêu tỉ lệ ca rò rỉ do biến đổi giá trị: cần đếm từ transcript, chưa có trong facts.md}
+
+\paragraph{Ngôn ngữ.} Ở A0, bỏ dấu hay chuyển sang tiếng Anh không làm thay đổi có ý nghĩa tỉ lệ tấn công thành công
+(H4, H5); vì vậy chúng tôi không khẳng định tiếng Việt dễ bị tấn công hơn. Điều thay đổi theo ngôn ngữ là phòng thủ
+dựa trên cụm từ: trên Dev, bộ phát hiện cụm từ kích hoạt ở 14--19 trên 48 tấn công tiếng Việt chuẩn nhưng chỉ 3 trên
+48 tấn công tiếng Anh, và dưới D2 biến thể tiếng Anh là biến thể có nhiều ca gây hại nhất (32/216). Ngược lại, luật
+đích và luật giá trị nguyên văn không phụ thuộc ngôn ngữ, và bộ phát hiện huấn luyện trên tiếng Anh (G1) không bảo vệ
+được gì trên tiếng Việt.
+
+\paragraph{Llama bị cắt đầu ra.} Llama-3.1-8B có nhiều đầu ra bị cắt, được tính là thất bại tiện ích. Tăng ngân sách
+đầu ra từ 512 lên 2.048 token không cứu được lượt chạy nào; nguyên nhân là sinh không dừng, không phải do ngân sách.
+
+\paragraph{Hạn chế.} (i) Tập niêm phong do cùng nhóm với người làm phòng thủ soạn, dù người soạn không đọc mã phòng
+thủ. (ii) Dữ liệu tổng hợp và công cụ giả. (iii) Các mô hình nền chỉ 8--12 tỉ tham số, cộng một mô hình dịch vụ chạy
+qua proxy (không có ràng buộc schema, có sửa JSON) và chỉ trên Dev. (iv) Mức tăng tiện ích của D3 so với D2+P2 nhỏ;
+tiện ích lành tính của D3 vẫn thấp hơn A0 (51,0\% so với 54,5\%). (v) Nhiệm vụ người dùng chỉ một lượt. (vi) Tấn
+công trên tập niêm phong là tĩnh; tấn công thích nghi chỉ một vòng, do người viết, trên Dev. (vii) Trên AgentDojo,
+chúng tôi không chạy các cấu hình có phòng thủ với Gemini 3 Flash, nên AgentDojo chỉ đo độ dễ bị tấn công khi không
+phòng thủ.

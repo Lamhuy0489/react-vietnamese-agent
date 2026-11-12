@@ -1,0 +1,56 @@
+% ICCIES 2027 -- Springer LNCS/CCIS, 12--15 trang.
+% BẢN TIẾNG VIỆT ĐỂ ĐỌC (12/11/2026). Bản nộp phải bằng tiếng Anh, do tác giả tự viết
+% (ICCIES cấm văn bản do AI sinh). Dàn ý tiếng Anh cũ: ../outline/.
+% Overleaf: tải cả thư mục (zip), main = main.tex, trình biên dịch pdfLaTeX.
+% Nếu pdfLaTeX báo lỗi font tiếng Việt (T5), đổi sang XeLaTeX và thay 3 dòng fontenc/inputenc/babel
+% bằng: \usepackage{fontspec} \usepackage[vietnamese]{babel}
+\documentclass[runningheads]{llncs}
+
+\usepackage[T5]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+% Ghi chú cho tác giả; xóa trước khi nộp.
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\newcommand{\code}[1]{\texttt{#1}}
+\renewcommand{\keywordname}{{\bfseries Từ khóa:}}
+
+\begin{document}
+
+\title{Bảo vệ tác tử LLM dùng công cụ trước tấn công chèn lệnh gián tiếp: cơ chế phòng thủ nhiều lớp và đánh giá niêm phong trên benchmark tiếng Việt}
+\titlerunning{Phòng thủ nhiều lớp trước chèn lệnh gián tiếp cho tác tử tiếng Việt}
+
+\author{\todo{Tác giả 1}\inst{1} \and \todo{Tác giả 2}\inst{1}}
+\authorrunning{\todo{Tác giả} et al.}
+\institute{\todo{Đơn vị, thành phố, quốc gia} \\ \email{\todo{email}}}
+
+\maketitle
+
+\input{sections/00_abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_threat_model}
+\input{sections/04_d3_defence}
+\input{sections/05_benchmark_protocol}
+\input{sections/06_results}
+\input{sections/07_discussion}
+\input{sections/08_conclusion}
+
+% \begin{credits}
+% \subsubsection{\ackname} ...
+% \subsubsection{\discintname} Các tác giả không có xung đột lợi ích.
+% \end{credits}
+
+\bibliographystyle{splncs04}
+\bibliography{refs}
+
+\end{document}

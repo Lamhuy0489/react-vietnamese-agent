@@ -1,0 +1,14 @@
+\begin{table}[t]
+\centering
+\caption{Các công cụ do Tool Broker làm trung gian.}\label{tab:tools}
+\small
+\begin{tabular}{@{}lp{0.42\textwidth}p{0.36\textwidth}@{}}
+\toprule
+Lớp & Công cụ & Vai trò trong mô hình đe dọa \\
+\midrule
+Đọc & \code{doc\_search}, \code{doc\_read}, \code{db\_query}, \code{cached\_search}, \code{cached\_fetch}, \code{calculator} & có thể trả về nội dung do kẻ tấn công kiểm soát \\
+Sink & \code{send\_email\_mock}, \code{post\_webhook\_mock} & có tác dụng phụ; đích và payload liên quan an ninh \\
+Câu trả lời cuối & (tin nhắn cuối của mô hình) & coi là sink thứ ba: có thể làm lộ giá trị cho người đọc \\
+\bottomrule
+\end{tabular}
+\end{table}

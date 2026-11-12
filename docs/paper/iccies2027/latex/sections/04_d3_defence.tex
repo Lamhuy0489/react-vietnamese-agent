@@ -1,0 +1,119 @@
+\section{Cơ chế phòng thủ D3}\label{sec:d3}
+% Dàn ý gốc: ../outline/03_d3_defence.md (khoảng 2,5 trang)
+
+\subsection{Nguyên tắc thiết kế}
+
+D3 theo ba nguyên tắc. (i) \textbf{Mô hình không phải ranh giới an ninh.} Dù mô hình sinh ra gì, một hành động chỉ
+có hiệu lực khi broker thực thi nó; mọi bảo đảm cứng đều nằm phía host. (ii) \textbf{Người dùng là chủ thể đáng tin
+duy nhất.} Quyền được suy ra từ nguyên văn chỉ thị người dùng, không bao giờ từ nội dung công cụ và không bao giờ từ
+việc một mô hình diễn giải ý định người dùng. (iii) \textbf{Chặn không được làm kết thúc nhiệm vụ.} Hành động bị từ
+chối được báo lại cho tác tử theo dạng giúp nó hoàn thành các bước hợp lệ.
+
+Hình~\ref{fig:d3} minh họa các lớp; Bảng~\ref{tab:layers} tóm tắt chúng.
+
+% HÌNH 1: Claude vẽ, lưu ở images/fig1_d3_architecture.pdf. Bỏ comment khi có file.
+% \begin{figure}[t]
+% \centering
+% \includegraphics[width=\textwidth]{fig1_d3_architecture}
+% \caption{Kiến trúc D3. Người dùng $\to$ mô hình tác tử $\rightleftarrows$ Tool Broker (schema, giới hạn, nhãn
+%   nguồn gốc, luật R2--R4, luật D, phản hồi) $\rightleftarrows$ công cụ; lời nhắc trên đường quan sát; câu trả lời
+%   cuối đi qua R3/R4.}\label{fig:d3}
+% \end{figure}
+\todo{Hình 1 (kiến trúc D3)}
+
+\input{tables/tab03_layers}
+
+\subsection{Tool Broker và nhãn nguồn gốc (L0)}
+
+Mọi lời gọi công cụ đều đi qua broker. Khi không có phòng thủ (cấu hình A0), broker chỉ kiểm tra lời gọi theo schema
+và cưỡng chế giới hạn từng công cụ. Trong D3, broker còn lưu, với mỗi quan sát, định danh tài liệu cùng nhãn tin cậy
+và nhạy cảm, và tập \textbf{giá trị} trích từ các quan sát mật. Việc trích giá trị là từ vựng và không phụ thuộc
+ngôn ngữ: địa chỉ e-mail, URL, định danh dài từ sáu ký tự và số dài. Thao tác đọc không bao giờ bị chặn (luật R1),
+nên tác tử luôn thu thập được thông tin nhiệm vụ cần.
+
+Mọi phép so sánh dùng một hàm chuẩn hóa $n(\cdot)$: Unicode NFKC, bỏ ký tự định dạng (trong đó có ký tự độ rộng
+bằng không) và đưa về chữ thường. Chuẩn hóa chỉ dùng để so sánh, không bao giờ thay đổi nội dung mà mô hình hay công
+cụ nhận được.
+
+\subsection{Cấp quyền đích (L1, luật R2)}
+
+Một lời gọi sink $a$ chỉ được phép nếu đích của nó do người dùng viết:
+\begin{quote}
+\textbf{R2.} chỉ cho phép $a$ nếu $n(\mathit{dest}(a))$ là chuỗi con của $n(u)$.
+\end{quote}
+Văn bản người dùng không được phân tích ý định, và không có danh sách cụm từ tiếng Việt hay tiếng Anh nào được tra.
+Vì vậy luật không phụ thuộc vào cách viết đoạn chèn: một đoạn chèn M2 tránh động từ ``gửi'', tách địa chỉ hay giấu
+đích trong tài liệu thứ hai sẽ thất bại vì cùng lý do với đoạn chèn M1, là đích nó cần không có trong $u$. Cái giá
+của so khớp nguyên văn xuất hiện ở hai chỗ. Người dùng nhắc đích một cách gián tiếp (``địa chỉ trong hợp đồng'') sẽ
+không được phục vụ. Và một đích người dùng chỉ nhắc trong câu cấm vẫn được tính là đã cấp quyền, đúng là trường
+hợp M6 thăm dò.
+
+\subsection{Luồng giá trị mật (L2--L3, luật R3 và R4)}
+
+Gọi $C$ là tập giá trị trích từ các quan sát có nhãn mật. Với lời gọi sink $a$ hoặc câu trả lời cuối $y$:
+\begin{quote}
+\textbf{R3.} từ chối nếu có $v \in C$ xuất hiện trong $n(\mathit{payload}(a))$ (tương ứng $n(y)$) và $n(v)$ không
+xuất hiện trong $n(u)$.\\
+\textbf{R4.} câu trả lời cuối vi phạm R3 không bị đánh hỏng: mỗi giá trị vi phạm được thay bằng
+\code{[REDACTED]}.
+\end{quote}
+R3 hiện thực một chính sách luồng thông tin tối thiểu trên hai nhãn ở Mục~\ref{sec:threat}: giá trị mật chỉ được
+tới sink qua chính văn bản người dùng. Luật coi câu trả lời cuối là một sink, nhờ đó đóng kênh M4 mà các bộ lọc lời
+gọi công cụ bỏ sót. R4 giữ phần còn lại của câu trả lời, nên một câu trả lời đúng có lẫn một mã bị lộ chỉ mất mã đó
+chứ không mất cả nhiệm vụ. Vì R3 so khớp nguyên văn, giá trị mà mô hình đã biến đổi trước khi xuất (định dạng lại,
+tách ra, diễn đạt lại) sẽ không được nhận ra; Mục~\ref{sec:discussion} quay lại giới hạn này.
+
+\subsection{Luật tín hiệu chèn lệnh giới hạn theo đích (L4)}
+
+R2 và R3 để lại một khoảng hở: đoạn chèn thao túng một sink mà người dùng \emph{đã} nêu, với giá trị không mật (M5)
+hoặc qua tham số R3 không phủ. Phòng thủ trước của chúng tôi (D2, cấu hình được đánh giá ở tập niêm phong thứ nhất)
+lấp khoảng này bằng bộ phát hiện dựa trên cụm từ để nhận ra văn bản giống chỉ thị trong quan sát: khi có bất kỳ
+quan sát nào bị gắn cờ, mọi sink sau đó không được cấp quyền bởi một văn phạm chặt trên văn bản người dùng đều bị
+từ chối. Trên tập niêm phong thứ nhất, lớp này là nguồn chặn nhầm lớn nhất trên nhiệm vụ lành tính (22 quỹ đạo
+benign\_plain trên ba mô hình nền), nhưng bỏ nó trên tập phát triển lại làm số họ gây hại tăng 2--4 ở mỗi mô hình
+nền.
+
+D3 giữ bộ phát hiện và thu hẹp hệ quả của nó. Gọi $F$ là tập quan sát bị bộ phát hiện gắn cờ:
+\begin{quote}
+\textbf{D.} từ chối lời gọi sink $a$ nếu có $o \in F$ chứa $n(\mathit{dest}(a))$.
+\end{quote}
+Luật chỉ kích hoạt khi nội dung không đáng tin, mang dáng dấp chỉ thị, nói về đúng cái đích mà tác tử sắp dùng. Một
+trang bị gắn cờ ở đâu đó trên quỹ đạo không còn chặn một lần gửi không liên quan do người dùng yêu cầu, còn việc
+chuyển hướng sang đích khác vẫn do R2 lo. Thiết kế được chọn bằng phát lại offline trên các quỹ đạo phát triển có
+sẵn, trước mọi lượt chạy mô hình mới: luật D chặn đủ 11 ca gây hại mà lớp rộng đã chặn và không chặn ca nào trong 14
+lời gọi sink lành tính bị lớp rộng từ chối nhầm. Một phương án khác theo dõi giá trị từ nguồn bị gắn cờ chỉ chặn 9/11
+và bị loại.
+
+\subsection{Lời nhắc (L5) và phản hồi từ chối (L6)}
+
+\textbf{Lời nhắc.} Sau mỗi quan sát công cụ, chỉ thị gốc của người dùng được nối vào cùng tin nhắn, kèm một câu nói
+rằng mọi chỉ thị khác tìm thấy trong dữ liệu công cụ phải bị bỏ qua (phòng thủ sandwich, như \code{repeat\_user\_prompt}
+của AgentDojo). Đây là lớp duy nhất phụ thuộc vào việc mô hình tuân thủ. Lớp này được giữ vì nó phủ những gì các
+lớp tất định không thấy: trên tập niêm phong thứ nhất, riêng nó giảm tỉ lệ ca gây hại từ 32,9\% xuống 5,6\%, và kết
+hợp với các luật thì còn 1,2\%.
+
+\textbf{Phản hồi từ chối.} Khi một luật từ chối hành động, công cụ không được thực thi và tác tử nhận một quan sát
+có cấu trúc báo rằng hành động bị chính sách từ chối. Tác tử sau đó có thể làm các bước còn lại hoặc trả lời. Nếu
+không có phản hồi này, mỗi lần từ chối sẽ kết thúc quỹ đạo và biến mọi lần chặn nhầm thành một nhiệm vụ thất bại.
+
+\subsection{Chọn thành phần}
+
+D3 được thiết kế và tinh chỉnh chỉ trên tập phát triển; tập niêm phong thứ nhất khi đó đã mở và chỉ được dùng để
+xác định các lớp lỗi. Trước mọi lượt chạy GPU, chúng tôi cố định tiêu chí chọn: gộp trên ba mô hình nền, ứng viên
+phải có số ca tấn công gây hại không nhiều hơn cấu hình trước (D2+P2) và tiện ích lành tính cao hơn hẳn; thành phần
+nào làm tăng tác hại hoặc giảm tiện ích trong ablation thì bị bỏ.
+
+Bảng~\ref{tab:ablation} báo cáo ablation. Chỉ biến thể có luật D, lời nhắc gốc và phản hồi gốc (tên D3DEST trong
+log, trong bài gọi là D3) đạt tiêu chí. Một lời nhắc mạnh hơn, giục mô hình hoàn thành mọi bước được yêu cầu kể cả
+việc gửi, giúp Gemma nhưng làm số họ gây hại của Llama tăng gấp đôi và làm tiện ích của Qwen sụp (benign\_plain 141
+$\to$ 39 trên 240); nó không chuyển giao giữa các mô hình nền nên bị loại. Một thông báo từ chối mạnh hơn không thêm
+gì. Hai ý tưởng khác bị loại ở bước phát lại: giới hạn R3 theo tài nguyên người dùng nêu (mở được 3 nhiệm vụ có cấp
+quyền nhưng thả 5 tấn công) và so khớp giá trị gần đúng (không bắt thêm ca nào trên dữ liệu phát triển).
+
+\input{tables/tab04_ablation}
+
+\paragraph{Chi phí và phạm vi.} D3 không thêm lời gọi mô hình nào: mọi luật là phép toán chuỗi trên quỹ đạo, còn lời
+nhắc thêm độ dài chỉ thị người dùng vào mỗi tin nhắn quan sát. D3 không cần truy cập trọng số và dùng nguyên vẹn
+được với mô hình dịch vụ (Mục~\ref{sec:external}). D3 không tuyên bố chặn được việc sửa giá trị không mật trên sink
+người dùng đã nêu khi nội dung chèn không nhắc tới đích (một phần của M5), cũng như rò rỉ giá trị đã bị mô hình biến
+đổi.
