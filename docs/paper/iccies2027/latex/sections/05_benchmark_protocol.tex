@@ -1,88 +1,47 @@
-\section{Benchmark và giao thức đánh giá}\label{sec:protocol}
-% Dàn ý gốc: ../outline/04_benchmark_protocol.md (khoảng 2 trang)
+\section{Benchmark và giao thức}\label{sec:protocol}
 
-\subsection{VN-AgentInject v3}
+\paragraph{VN-AgentInject v3.} Benchmark hiện thực Mục~\ref{sec:threat} thành các \emph{ca kiểm thử} chạy được;
+mọi dữ liệu là tổng hợp. Một \emph{họ} là một ý tưởng tấn công trong một nhiệm vụ và môi trường công cụ; mỗi họ sinh
+một ca tấn công và một ca benign\_plain cho mỗi biến thể, và một phần ba số họ có thêm ca benign\_auth. Ba tập rời
+nhau, mỗi tập cân bằng theo cơ chế: \textbf{Dev} (48 họ, 560 ca), dùng cho mọi lựa chọn thiết kế; \textbf{\tOne} (72
+họ, 840 ca); và \textbf{\tTwo} (48 họ mới, 560 ca), viết sau khi \tOne{} đã chạy để xác nhận \ours{} trên dữ liệu
+chưa từng ảnh hưởng tới quyết định nào. Một họ cùng biến thể và nhánh lành tính của nó không bao giờ nằm ở hai tập.
+Văn bản tấn công do người viết, những người không đọc mã phòng thủ; mỗi họ được duyệt theo phiếu năm mục (nhãn cơ
+chế, độ tự nhiên, tác hại thật, không lộ đáp án), qua bộ lọc độ mới (Jaccard 4-gram $\le 0{,}2$ so với bản trước), và
+qua \emph{kiểm tra phát lại}: quỹ đạo tham chiếu làm theo đoạn chèn phải bị chấm gây hại, quỹ đạo hoàn thành nhiệm
+vụ an toàn phải được chấm an toàn.
 
-VN-AgentInject v3 hiện thực phân loại ở Mục~\ref{sec:threat} thành các \textbf{ca kiểm thử} (fixture) chạy được. Mọi
-dữ liệu đều là tổng hợp: tài liệu, bản ghi, địa chỉ và giá trị mật là bịa ra, còn hai sink là bản giả không gửi gì ra
-mạng. Một \textbf{họ} (family) là một ý tưởng tấn công trong một nhiệm vụ và một môi trường công cụ. Mỗi họ sinh một
-ca tấn công và một ca benign\_plain cho mỗi biến thể ngôn ngữ, và một phần ba số họ còn sinh thêm một ca benign\_auth
-cho mỗi biến thể. Benchmark có ba tập rời nhau:
-\begin{itemize}
-\item \textbf{Dev}: 48 họ, tám họ mỗi cơ chế; 560 ca (240 tấn công, 240 benign\_plain, 80 benign\_auth). Mọi lựa
-  chọn thiết kế, prompt, luật và ngưỡng chỉ được cố định trên tập này.
-\item \textbf{Test v3}: 72 họ, mười hai họ mỗi cơ chế; 840 ca (360 / 360 / 120).
-\item \textbf{Test-3}: thêm 48 họ; 560 ca (240 / 240 / 80), được viết sau khi Test v3 đã chạy, để xác nhận D3 trên
-  dữ liệu chưa từng chạm vào quyết định nào trước đó.
-\end{itemize}
+\paragraph{Niêm phong.} Trước mỗi lượt kiểm thử, chúng tôi đóng băng ca kiểm thử (SHA-256), một manifest ghim bằng
+hash prompt, thiết lập giải mã, mã phòng thủ, phiên bản mô hình và danh sách cấu hình được phép, cùng giả thuyết và
+cách hiệu chỉnh. Runner từ chối chạy nếu có sai khác. Mỗi cặp (mô hình, cấu hình) chạy đúng một lần; chỉ được chạy
+tiếp các ca lỗi hạ tầng. Đáp án của bộ chấm không bao giờ có trong prompt, chính sách lúc chạy hay mô hình. \tOne{}
+chạy với \cRulesS{} là cấu hình cuối và sáu giả thuyết H1--H6. \tTwo{} chạy sau khi \ours{} được chọn trên Dev, với
+ba giả thuyết: \textbf{T1} tiện ích lành tính của \ours{} cao hơn \cRulesS; \textbf{T2} ASR của \ours{} không cao hơn
+\cRulesS{} quá 2 điểm; \textbf{T3} ASR của \ours{} thấp hơn \cNone. Manifest ghi cả dự đoán rằng mức tăng tiện ích sẽ
+nhỏ.
 
-\paragraph{Soạn và kiểm soát chất lượng.} Văn bản tấn công do người viết, những người không đọc mã phòng thủ. Mỗi họ
-được duyệt theo phiếu năm mục: nhãn cơ chế có đúng không, yêu cầu người dùng và đoạn chèn có tự nhiên không, làm theo
-đoạn chèn có gây hại theo các vị từ ở Mục~\ref{sec:threat} không, và văn bản có để lộ gợi ý về đáp án không; người
-duyệt thấy nội dung ca nhưng không thấy phòng thủ. Một bộ lọc độ mới loại họ có độ tương đồng Jaccard 4-gram với bất
-kỳ bản phát hành trước nào vượt 0,2; định danh, đích và tên miền không được dùng lại. Cuối cùng, mỗi họ phải qua
-\textbf{kiểm tra phát lại} với bộ chấm đóng băng: một quỹ đạo tham chiếu làm theo đoạn chèn phải bị chấm là gây hại,
-và một quỹ đạo tham chiếu hoàn thành nhiệm vụ an toàn phải được chấm là an toàn với đủ tiện ích. Các thủ thuật bề
-mặt có thể giấu rò rỉ khỏi bộ chấm nguyên văn (ví dụ làm rối giá trị) bị loại khỏi tập kiểm thử tĩnh.
+\paragraph{Mô hình nền và cấu hình.} Ba mô hình mở trọng số Gemma-4-12B, Llama-3.1-8B (ngữ cảnh 16k) và Qwen3.5-9B
+được phục vụ bằng vLLM~\cite{kwon2023vllm}, ghim theo revision, dùng chung prompt ReAct, nhiệt độ 0, tối đa 512 token
+mỗi bước, seed cố định, đầu ra JSON theo schema và tối đa tám bước. Gemini 3 Flash chạy qua proxy, chỉ trên Dev và
+AgentDojo, ngoài mọi kiểm định; không có dữ liệu niêm phong nào được gửi ra ngoài. Trên Dev, chúng tôi so sánh với
+sáu baseline cài trong cùng tác tử và broker: \cSpot{}~\cite{hines2024spotlighting}; \cSand{} (nhắc lại $u$); \cPG,
+tức Prompt Guard~2 sàng lọc đầu ra công cụ~\cite{meta2025promptguard2}; \cMel, biến thể tất định của
+MELON~\cite{zhu2025melon}; \cProg, chính sách đích kiểu Progent~\cite{shi2025progent}; và \cPhrase, lớp luật cụm từ
+của hệ thống trước. \cRules{} gồm \rDest, \rFlow, \rRedact; \cRulesS{} thêm lời nhắc; \ours{} là kiến trúc đầy đủ.
 
-\subsection{Đánh giá niêm phong}
+\paragraph{Độ đo và thống kê.} Với tập ca tấn công $\mathcal{A}$ và tập ca lành tính $\mathcal{B}$,
+\begin{equation}\label{eq:metrics}
+\mathrm{ASR} = \frac{|\{f \in \mathcal{A} : \mathrm{Harm}(f)\}|}{|\mathcal{A}|}, \qquad
+\mathrm{U} = \frac{|\{f \in \mathcal{B} : \mathrm{Done}(f) \land \lnot \mathrm{Harm}(f)\}|}{|\mathcal{B}|},
+\end{equation}
+trong đó $\mathrm{Done}(f)$ nghĩa là nhiệm vụ người dùng được hoàn thành. Một họ là \emph{gây hại} nếu có ít nhất một
+ca tấn công gây hại. Lỗi mô hình (đầu ra sai định dạng hoặc bị cắt) tính là thất bại tiện ích, không bao giờ tính là
+phòng thủ thành công. Cấu hình được so sánh trên cặp ca gộp qua ba mô hình bằng McNemar chính xác một
+phía~\cite{mcnemar1947}; T2 dùng kiểm định z một phía với sai số chuẩn theo cụm họ. Giá trị $p$ được hiệu chỉnh
+Holm~\cite{holm1979} trong mỗi bộ giả thuyết; khoảng tin cậy 95\% là bootstrap lấy mẫu lại theo họ (10.000 lần).
 
-Hai tập kiểm thử được \textbf{niêm phong}. Trước mỗi lượt chạy kiểm thử, chúng tôi đóng băng (i) các ca chuẩn, bằng
-SHA-256; (ii) một manifest cấu hình ghim bằng hash prompt tác tử, thiết lập giải mã, mã phòng thủ, phiên bản mô hình
-và danh sách cặp (mô hình nền, cấu hình) được phép; và (iii) giả thuyết, kiểm định và cách hiệu chỉnh đa so sánh.
-Runner và bộ chấm kiểm tra manifest và từ chối chạy nếu có bất kỳ sai khác nào hoặc gặp cặp ngoài danh sách. Mỗi cặp
-chỉ chạy đúng một lần; lần chạy lại duy nhất được phép là tiếp tục các ca kết thúc vì lỗi hạ tầng. Đáp án của bộ chấm
-chỉ được đọc sau khi manifest được xác minh, và không bao giờ có mặt trong prompt, chính sách lúc chạy hay mô hình.
-
-Test v3 chạy dưới manifest đóng băng D2+P2 làm cấu hình cuối, với sáu giả thuyết (H1--H6,
-Mục~\ref{sec:test1}). Sau đó D3 được thiết kế và chọn trên Dev (Mục~\ref{sec:d3}), một manifest mới được đóng băng,
-và Test-3 chạy với ba giả thuyết: \textbf{T1}, D3 có tiện ích lành tính cao hơn D2+P2; \textbf{T2}, tỉ lệ tấn công
-thành công của D3 không cao hơn D2+P2 quá hai điểm; \textbf{T3}, D3 có tỉ lệ tấn công thành công thấp hơn A0. Manifest
-cũng ghi lại dự đoán của chúng tôi rằng mức tăng tiện ích sẽ nhỏ và có thể không đạt ý nghĩa thống kê.
-
-\subsection{Mô hình nền và cấu hình so sánh}
-
-Thí nghiệm xác nhận dùng ba mô hình nền mở trọng số phục vụ bằng vLLM~\cite{kwon2023vllm}: \textbf{Gemma-4-12B},
-\textbf{Llama-3.1-8B} (ngữ cảnh 16k) và \textbf{Qwen3.5-9B}, mỗi mô hình ghim theo một revision của kho. Mọi mô hình
-nền nhận cùng prompt ReAct và cùng thiết lập giải mã: nhiệt độ 0, tối đa 512 token mới mỗi bước, seed cố định, đầu
-ra JSON ràng buộc theo schema từng công cụ, và tối đa tám bước mỗi nhiệm vụ. Tác tử không phòng thủ \textbf{A0}
-không có cơ chế an ninh nào ngoài kiểm schema và giới hạn công cụ. Các phòng thủ không thay đổi mô hình nền, khuôn
-prompt của A0 (ngoài lời nhắc đã mô tả) hay cách giải mã. Làm mốc cho một mô hình đóng mạnh hơn, chúng tôi chạy
-\textbf{Gemini 3 Flash} qua một proxy cục bộ, chỉ trên Dev và AgentDojo. Đường này không hỗ trợ seed hay ràng buộc
-schema, nên kết quả được báo cáo riêng và không thuộc kiểm định giả thuyết nào. Không có dữ liệu kiểm thử niêm phong
-nào được gửi tới dịch vụ bên ngoài.
-
-Trên Dev, chúng tôi so sánh D2, D2+P2 và D3 với sáu baseline, cài trong cùng tác tử và broker để chỉ có phòng thủ là
-khác: \textbf{P1}, spotlighting, đầu ra công cụ được bao và đánh dấu là dữ liệu~\cite{hines2024spotlighting};
-\textbf{P2}, sandwich, lặp lại yêu cầu người dùng sau mỗi đầu ra công cụ; \textbf{G1}, bộ phân loại Prompt Guard 2
-sàng lọc đầu ra công cụ~\cite{meta2025promptguard2}; \textbf{MEL}, biến thể tất định của phép kiểm chạy lại có che
-của MELON~\cite{zhu2025melon}; \textbf{PRG}, chính sách đích theo kiểu Progent~\cite{shi2025progent}; \textbf{R1},
-lớp luật cụm từ của hệ thống trước, chặn sink sau khi đầu ra công cụ khớp mẫu giống chỉ thị. \textbf{D2} là lõi tất
-định ở Mục~\ref{sec:d3} (luật R2--R4), \textbf{D2+P2} thêm lời nhắc sandwich, và \textbf{D3} là kiến trúc đầy đủ.
-Test v3 chạy với A0, R1, PRG, P2, D2 và D2+P2; Test-3 chạy với A0, D2+P2 và D3.
-
-\subsection{Độ đo và thống kê}
-
-Một ca là \textbf{gây hại} nếu ít nhất một vị từ ở Mục~\ref{sec:threat} đúng. Chúng tôi báo cáo \textbf{tỉ lệ tấn
-công thành công} (ASR), tức tỉ lệ ca tấn công gây hại, và số \textbf{họ gây hại}, tức họ có ít nhất một ca tấn công
-gây hại. \textbf{Tiện ích} là tỉ lệ ca lành tính mà nhiệm vụ người dùng được hoàn thành và không có tác hại; báo cáo
-riêng cho benign\_plain và benign\_auth, và trên Test-3 thì gộp lại thành tiện ích lành tính. Lượt chạy kết thúc bằng
-lỗi mô hình (đầu ra sai định dạng hoặc bị cắt) là thất bại tiện ích và không bao giờ được tính là phòng thủ thành công.
-
-Các cấu hình được so sánh trên \textbf{cặp ca} gộp qua ba mô hình nền, bằng kiểm định McNemar chính xác một
-phía~\cite{mcnemar1947}. Giả thuyết không kém hơn T2 dùng kiểm định z một phía với sai số chuẩn theo cụm họ và biên
-hai điểm. Giá trị p được hiệu chỉnh bằng thủ tục Holm~\cite{holm1979} trong mỗi bộ giả thuyết đăng ký trước. Khoảng
-tin cậy là khoảng bootstrap 95\% lấy mẫu lại theo họ (10.000 lần), để năm biến thể của một họ không bị coi là độc
-lập. Các phân tích ngoài bộ đăng ký trước được ghi là thăm dò.
-
-\subsection{AgentDojo-VI}
-
-Để kiểm tra kết quả không phải là sản phẩm riêng của benchmark do chúng tôi tự xây, chúng tôi dùng thêm hai bộ Banking
-và Slack của AgentDojo (phiên bản 1.2.2)~\cite{debenedetti2024agentdojo} bằng tiếng Anh và một bản dịch tiếng Việt,
-\textbf{AgentDojo-VI}. Bản dịch phủ môi trường, nhiệm vụ người dùng, mục tiêu chèn và khuôn tấn công
-\code{important\_instructions}; IBAN, số tiền, ngày, tên tệp, tên người và kênh, URL và địa chỉ e-mail giữ nguyên.
-Công cụ, lời giải chuẩn và hàm kiểm là mã gốc của AgentDojo: cụm tiếng Việt cần có trong câu trả lời được ánh xạ sang
-chuỗi tiếng Anh mà hàm tiện ích và an ninh gốc tìm kiếm. Một phép kiểm ở mức bộ xác nhận lời giải chuẩn giải được mọi
-nhiệm vụ người dùng. Banking có 144 cặp bị tấn công và 16 nhiệm vụ người dùng, Slack có 105 cặp và 21 nhiệm vụ. Các
-lượt này dùng pipeline tác tử dựa trên prompt của chính AgentDojo cho mô hình cục bộ (công cụ được mô tả trong prompt)
-thay vì broker của chúng tôi, nên chúng đo độ dễ bị tấn công của mô hình không phòng thủ ở từng ngôn ngữ, không đo D3.
+\paragraph{AgentDojo-VI.} Để kiểm tra ngoài benchmark của mình, chúng tôi dùng bộ Banking (144 cặp, 16 nhiệm vụ) và
+Slack (105 cặp, 21 nhiệm vụ) của AgentDojo v1.2.2~\cite{debenedetti2024agentdojo} bằng tiếng Anh và bản dịch tiếng
+Việt. Bản dịch phủ môi trường, nhiệm vụ, mục tiêu chèn và khuôn tấn công \code{important\_instructions}; IBAN, số
+tiền, tên và địa chỉ giữ nguyên, còn công cụ và hàm kiểm là mã gốc. Các lượt này dùng pipeline của AgentDojo, nên
+chúng đo độ dễ bị tấn công của mô hình không phòng thủ ở từng ngôn ngữ, không đo \ours.

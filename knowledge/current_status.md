@@ -1,5 +1,9 @@
 # Trạng thái hiện tại
 
+**12/11: Bài báo ICCIES: project LaTeX `docs/paper/iccies2027/latex/` (bản tiếng Việt để owner đọc, 6 bảng, 2 hình, refs.bib 23 mục
+kiểm Crossref). Tiêu đề owner chọn: "Beyond Model Compliance: ...". Tên trong bài đổi bằng macro (D3 → BrokerGuard, M1–M6 → ER…US,
+Test v3/Test-3 → Test-I/II); bảng đổi tên ở README bài báo. Owner tự viết bản tiếng Anh; đếm trang trên Overleaf.**
+
 **10/11 22:00: AgentDojo Gemini không phòng thủ xong cả 8 lượt: Banking EN 93/144, 4/144 (VI 99, 0); Slack EN 62/105, 1/105
 (VI 59, 0). Bảng 2.3b và Bảng 11 bài báo đã đủ (decision log 22:00). Không còn lượt nào đang chạy. Owner quyết 23:00: bỏ 8 lượt có phòng thủ trên Gemini (996 cặp); thí nghiệm đóng.
 Việc chính: bài báo ICCIES 2027 (hạn 15/11).**

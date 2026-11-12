@@ -1,66 +1,29 @@
 \section{Giới thiệu}\label{sec:intro}
-% Dàn ý gốc: ../outline/01_introduction.md (khoảng 1,5 trang)
 
-Mô hình ngôn ngữ lớn (LLM) đã chuyển từ sinh văn bản thụ động sang tác tử biết lập kế hoạch và hành động. Trong
-mô hình ReAct~\cite{yao2023react}, tác tử xen kẽ bước suy luận với lời gọi công cụ: tìm tài liệu, truy vấn cơ sở
-dữ liệu, đọc tin nhắn và kích hoạt tác dụng phụ như gửi e-mail hay gọi webhook. Các tác tử như vậy đang được đưa
-vào chăm sóc khách hàng, trợ lý cá nhân, tài chính và phát triển phần mềm.
+Trong mô hình ReAct~\cite{yao2023react}, tác tử LLM xen kẽ suy luận với lời gọi công cụ: tìm tài liệu, truy vấn
+cơ sở dữ liệu, gửi e-mail hay gọi webhook. Khi đó nội dung công cụ trả về đi thẳng vào ngữ cảnh của mô hình. Trong
+tấn công chèn lệnh gián tiếp (IPI)~\cite{greshake2023indirect}, kẻ tấn công không nói chuyện với mô hình mà cài chỉ
+thị vào nội dung bên thứ ba mà tác tử sẽ đọc. Nếu mô hình làm theo, nó có thể gửi dữ liệu tới đích lạ, làm lộ giá
+trị mật hoặc lặng lẽ sửa dữ liệu người dùng yêu cầu gửi.
 
-Việc gắn suy luận với thực thi công cụ tạo ra một vấn đề an ninh. Trong tấn công chèn lệnh gián tiếp
-(IPI)~\cite{greshake2023indirect}, kẻ tấn công không nói chuyện trực tiếp với mô hình. Thay vào đó, họ cài chỉ thị
-vào nội dung của bên thứ ba mà tác tử sẽ đọc qua công cụ: một tài liệu, một trang web lưu đệm, một trường trong
-cơ sở dữ liệu hay đầu ra của công cụ khác. Nếu mô hình coi nội dung đó là chỉ thị, nó có thể bỏ nhiệm vụ của
-người dùng để làm theo kẻ tấn công, với hậu quả từ gửi tin nhắn trái phép đến làm lộ giá trị mật và lặng lẽ sửa
-dữ liệu mà người dùng yêu cầu gửi đi.
+Các benchmark tác tử đã công bố như BIPIA~\cite{yi2025bipia}, InjecAgent~\cite{zhan2024injecagent} và
+AgentDojo~\cite{debenedetti2024agentdojo} gần như chỉ bằng tiếng Anh. Tiếng Việt có những đặc điểm có thể ảnh hưởng
+tới cả tấn công lẫn phòng thủ: văn bản thường bị bỏ dấu, thuật ngữ tiếng Anh hay trộn vào câu, và bộ phân loại chèn
+lệnh chủ yếu được huấn luyện trên tiếng Anh. Mặt khác, phòng thủ ở mức prompt như
+spotlighting~\cite{hines2024spotlighting} phụ thuộc vào việc mô hình có tuân theo hay không, còn bộ phân loại tốn
+thêm chi phí suy luận và chuyển giao kém giữa các ngôn ngữ. Điều đó dẫn tới hướng cưỡng chế \emph{không trông vào
+sự tuân thủ của mô hình}: luật do host áp dụng giữa mô hình và công cụ.
 
-Các benchmark an ninh tác tử đã công bố (BIPIA~\cite{yi2025bipia}, InjecAgent~\cite{zhan2024injecagent},
-AgentDojo~\cite{debenedetti2024agentdojo}) gần như hoàn toàn bằng tiếng Anh. Tiếng Việt khác ở những điểm có thể
-ảnh hưởng tới cả tấn công lẫn phòng thủ: dấu thanh thường bị bỏ trong văn bản thân mật, thuật ngữ tiếng Anh hay
-được trộn vào câu tiếng Việt, và các cơ chế phòng thủ như bộ phân loại chèn lệnh chủ yếu được huấn luyện trên dữ
-liệu tiếng Anh. Những đặc điểm này có làm thay đổi tỉ lệ tấn công thành công hay hiệu quả phòng thủ hay không là
-câu hỏi thực nghiệm chưa được đo cho tác tử dùng công cụ. Kết quả của chúng tôi trả lời một phần: bỏ dấu hay
-chuyển sang tiếng Anh không làm tác tử không phòng thủ dễ bị tấn công hơn một cách có ý nghĩa thống kê, nhưng
-phòng thủ dựa trên cụm từ thì dễ gãy khi đổi ngôn ngữ, và một bộ phát hiện huấn luyện trên tiếng Anh không bảo vệ
-được trước chèn lệnh tiếng Việt.
-
-Các phòng thủ hiện có đều có giới hạn đã biết. Kỹ thuật ở mức prompt như spotlighting~\cite{hines2024spotlighting}
-và lời nhắc kiểu ``sandwich'' phụ thuộc vào việc mô hình có tuân theo hay không. Bộ phân loại canh gác (như Prompt
-Guard~\cite{meta2025promptguard2}) tốn thêm chi phí suy luận và chuyển giao kém giữa các ngôn ngữ. Bộ lọc thô chặn
-cả nội dung lành tính và làm mất tiện ích. Những giới hạn này dẫn tới hướng cưỡng chế không phụ thuộc mô hình:
-luật do phía host áp dụng, nằm giữa mô hình và công cụ.
-
-Bài báo này đề xuất \textbf{D3}, cơ chế phòng thủ nhiều lớp cho tác tử ReAct dùng công cụ. Lõi của D3 là tập luật
-tất định do một Tool Broker cưỡng chế, Tool Broker làm trung gian cho mọi lời gọi công cụ: công cụ có tác dụng phụ
-chỉ được chạy tới đích mà người dùng đã viết, và một giá trị mật thấy trong đầu ra công cụ không được đi ra qua
-sink hay câu trả lời cuối trừ khi chính người dùng đã viết giá trị đó. Bao quanh lõi này, D3 thêm một luật tín hiệu
-chèn lệnh giới hạn theo đích, một lời nhắc trong prompt và một thông báo từ chối giúp tác tử tiếp tục nhiệm vụ
-hợp lệ.
-
-Chúng tôi đánh giá D3 trên \textbf{VN-AgentInject v3}, một benchmark tiếng Việt tổng hợp, có các họ tấn công chia
-theo sáu cơ chế, mỗi họ đi kèm nhánh lành tính để đo tiện ích và chặn nhầm; và trên \textbf{AgentDojo-VI}, bản dịch
-tiếng Việt của hai bộ Banking và Slack trong AgentDojo. Giao thức tách tập phát triển khỏi các tập kiểm thử niêm
-phong; mỗi tập niêm phong chỉ chạy một lần với cấu hình đã đóng băng, ghim bằng hash, và giả thuyết viết trước khi
-chạy.
-
-Đóng góp của bài báo:
+Bài báo có bốn đóng góp:
 \begin{enumerate}
-\item \textbf{Mô hình đe dọa và phân loại theo cơ chế.} Chúng tôi hình thức hóa IPI với tác tử dùng công cụ bằng
-  hai nhãn độc lập là độ tin cậy và độ nhạy cảm, định nghĩa sáu cơ chế tấn công (M1--M6) theo vị từ gây hại mà mỗi
-  cơ chế kích hoạt, cùng các nhánh lành tính làm lộ chặn nhầm (Mục~\ref{sec:threat}).
-\item \textbf{Cơ chế phòng thủ nhiều lớp D3.} Kiến trúc phía broker kết hợp cấp quyền đích theo nguyên văn, luật
-  luồng giá trị mật, che giá trị trong câu trả lời cuối và luật tín hiệu chèn lệnh giới hạn theo đích, cùng lời nhắc
-  và phản hồi từ chối; không cần tinh chỉnh và không cần mô hình phụ (Mục~\ref{sec:d3}).
-\item \textbf{Đánh giá niêm phong trên tiếng Việt.} VN-AgentInject v3 (48 họ phát triển, 72 và 48 họ kiểm thử niêm
-  phong; năm biến thể ngôn ngữ) và AgentDojo-VI, với giả thuyết đăng ký trước, kiểm định McNemar chính xác, hiệu
-  chỉnh Holm và khoảng tin cậy bootstrap theo họ (Mục~\ref{sec:protocol}). \todo{owner quyết: công bố dữ liệu /
-  cung cấp khi có yêu cầu}
-\item \textbf{Kết quả thực nghiệm.} Trên các tập niêm phong, D3 giảm tỉ lệ tấn công thành công từ 32,4\% xuống
-  3,6\% trên ba mô hình nền mở trọng số, đổi lại 3,4 điểm tiện ích lành tính; phát hiện huấn luyện trên tiếng Anh
-  không chuyển giao được; các lỗi còn lại tập trung ở rò rỉ giá trị mật và sửa đổi tham số
-  (Mục~\ref{sec:results}--\ref{sec:discussion}).
+\item \textbf{Mô hình đe dọa và phân loại theo cơ chế:} hai nhãn độc lập là độ tin cậy và độ nhạy cảm, bốn vị từ
+  gây hại, sáu cơ chế tấn công và hai nhánh lành tính làm lộ chặn nhầm (Mục~\ref{sec:threat}).
+\item \textbf{\ours}, phòng thủ nhiều lớp phía broker gồm bốn luật tất định cùng lời nhắc và phản hồi từ chối;
+  không cần tinh chỉnh và không cần mô hình phụ (Mục~\ref{sec:defence}).
+\item \textbf{VN-AgentInject v3 và AgentDojo-VI} với giao thức niêm phong: giả thuyết đăng ký trước, cấu hình ghim
+  bằng hash, mỗi tập kiểm thử chạy một lần (Mục~\ref{sec:protocol}). \todo{owner quyết: công bố dữ liệu / cung
+  cấp khi có yêu cầu}
+\item \textbf{Kết quả:} trên hai tập niêm phong và ba mô hình nền mở trọng số, \ours{} giảm tỉ lệ tấn công thành công
+  từ 32,4\% xuống 3,6\% với cái giá 3,4 điểm tiện ích; phát hiện học trên tiếng Anh không chuyển giao sang tiếng
+  Việt; lỗi còn lại tập trung ở rò rỉ giá trị mật và sửa tham số (Mục~\ref{sec:results}--\ref{sec:discussion}).
 \end{enumerate}
-
-Phần còn lại của bài: Mục~\ref{sec:related} điểm qua các nghiên cứu liên quan; Mục~\ref{sec:threat} trình bày mô
-hình đe dọa và phân loại; Mục~\ref{sec:d3} mô tả D3; Mục~\ref{sec:protocol} mô tả benchmark và giao thức;
-Mục~\ref{sec:results} báo cáo kết quả; Mục~\ref{sec:discussion} bàn về lỗi còn lại và hạn chế;
-Mục~\ref{sec:conclusion} kết luận.

@@ -440,3 +440,13 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   liệu tham khảo từ arXiv vào `docs/paper/iccies2027/refs/` (không commit), lập `refs/README.md`.
 - 23:30: tải thêm 10 PDF (tổng 20), kiểm trang đầu từng file, `refs/README.md` có link arXiv. Đọc quy định ICCIES: cấm văn bản
   do AI sinh; ghi vào README bài báo, handoff và prompt phiên sau. Chờ owner quyết cách viết.
+
+## 2026-11-12 — Bài báo ICCIES: project LaTeX, bản tiếng Việt, rút gọn
+
+- Dựng `docs/paper/iccies2027/latex/` (LLNCS v2.26 từ CTAN) cho Overleaf; `sections/` cũ đổi thành `outline/`.
+- `refs.bib` 23 mục: nơi đăng, trang, DOI tra Crossref (CaMeL đã đăng SaTML 2026); câu trích đối chiếu tóm tắt PDF.
+- Owner yêu cầu viết bản tiếng Việt để đọc (bản nộp tiếng Anh owner tự viết). Owner thấy 19 trang trên Overleaf → rút gọn:
+  6 bảng, Hình 1 pipeline, Hình 2 (matplotlib, bảng màu đã kiểm CVD), 5 công thức; tên đổi bằng macro.
+- Owner chọn tiêu đề "Beyond Model Compliance: ...". Sửa hai lỗi số so với dàn ý cũ (thứ tự H4/H5; lời nhắc không mạnh hơn
+  luật ở SL/AL). Không biên dịch được trên máy (tải tectonic bị chặn).
+

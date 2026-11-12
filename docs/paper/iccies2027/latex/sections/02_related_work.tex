@@ -1,30 +1,20 @@
 \section{Nghiên cứu liên quan}\label{sec:related}
-% MỤC MỚI (dàn ý cũ chưa có). Khoảng 0,75 trang. Mỗi câu trích dẫn: tác giả mở PDF trong ../refs/ đọc đúng đoạn
-% liên quan trước khi viết bản tiếng Anh. Câu dưới đây chỉ nêu nội dung ở mức tóm tắt của từng bài.
+% Trước khi viết bản tiếng Anh: mở PDF trong ../refs/ để đối chiếu từng câu trích.
 
-\paragraph{Tấn công chèn lệnh và benchmark.}
-Greshake và cộng sự~\cite{greshake2023indirect} đưa ra khái niệm chèn lệnh gián tiếp và minh họa trên các ứng dụng
-tích hợp LLM thực tế. Liu và cộng sự~\cite{liu2024formalizing} hình thức hóa tấn công và phòng thủ chèn lệnh và so
-sánh chúng một cách có hệ thống. BIPIA~\cite{yi2025bipia} là benchmark đầu tiên cho chèn lệnh gián tiếp vào LLM;
-InjecAgent~\cite{zhan2024injecagent}, AgentDojo~\cite{debenedetti2024agentdojo} và ASB~\cite{zhang2025asb} chuyển
-trọng tâm sang tác tử dùng công cụ, nơi tấn công gây ra hành động chứ không chỉ sai văn bản. Các benchmark này đều
-bằng tiếng Anh. Chúng tôi dùng AgentDojo làm kiểm tra ngoài và dịch nó sang tiếng Việt.
+\paragraph{Tấn công và benchmark.} Greshake và cộng sự~\cite{greshake2023indirect} đưa ra khái niệm chèn lệnh gián
+tiếp; Liu và cộng sự~\cite{liu2024formalizing} hình thức hóa tấn công và phòng thủ chèn lệnh. BIPIA~\cite{yi2025bipia}
+đo chèn lệnh gián tiếp vào LLM; InjecAgent~\cite{zhan2024injecagent}, AgentDojo~\cite{debenedetti2024agentdojo} và
+ASB~\cite{zhang2025asb} chuyển sang tác tử dùng công cụ, nơi tấn công gây ra hành động. Các bộ này đều bằng tiếng
+Anh; Deng và cộng sự~\cite{deng2024multijail} cho thấy cơ chế an toàn của LLM yếu hơn ở ngôn ngữ ít tài nguyên,
+nhưng trong bối cảnh jailbreak chứ không phải tác tử.
 
-\paragraph{Phòng thủ.}
-Ở mức prompt, spotlighting~\cite{hines2024spotlighting} đánh dấu ranh giới dữ liệu không đáng tin, còn lời nhắc
-kiểu sandwich lặp lại yêu cầu của người dùng sau mỗi kết quả công cụ. StruQ~\cite{chen2025struq} và
-SecAlign~\cite{chen2025secalign} huấn luyện lại mô hình để tách chỉ thị khỏi dữ liệu, nên cần truy cập trọng số.
-Bộ phân loại như Prompt Guard 2~\cite{meta2025promptguard2} trong LlamaFirewall~\cite{chennabasappa2025llamafirewall}
-chặn đầu vào bị nghi là chèn lệnh. MELON~\cite{zhu2025melon} phát hiện tấn công bằng cách chạy lại tác tử với yêu
-cầu đã bị che và so sánh hành động; Progent~\cite{shi2025progent} áp chính sách đặc quyền lên lời gọi công cụ.
-Hướng ``an toàn theo thiết kế'' gồm CaMeL~\cite{debenedetti2026camel}, kiểm soát luồng thông tin
-FIDES~\cite{costa2025fides} và các mẫu thiết kế của Beurer-Kellner và cộng sự~\cite{beurerkellner2025patterns}
-tách luồng điều khiển khỏi dữ liệu không đáng tin. D3 gần với hướng này nhất nhưng nhẹ hơn: không cần mô hình lập
-kế hoạch riêng hay trình thông dịch, chỉ dùng luật chuỗi trên quỹ đạo, nên gắn được vào tác tử ReAct sẵn có.
-
-\paragraph{An toàn đa ngôn ngữ và tấn công thích nghi.}
-Deng và cộng sự~\cite{deng2024multijail} cho thấy cơ chế an toàn của LLM yếu hơn ở ngôn ngữ ít tài nguyên trong bối
-cảnh jailbreak; câu hỏi tương tự cho chèn lệnh gián tiếp vào tác tử chưa được đo. Zhan và
-cộng sự~\cite{zhan2025adaptive} và Nasr và cộng sự~\cite{nasr2025attacker} cho thấy tấn công thích nghi vượt qua
-nhiều phòng thủ đã công bố; vì vậy chúng tôi báo cáo riêng một tập tấn công thích nghi do người viết
-(Mục~\ref{sec:adaptive}) và nêu rõ giới hạn này.
+\paragraph{Phòng thủ.} Ở mức prompt có spotlighting~\cite{hines2024spotlighting} và lời nhắc kiểu sandwich.
+StruQ~\cite{chen2025struq} và SecAlign~\cite{chen2025secalign} huấn luyện lại mô hình để tách chỉ thị khỏi dữ liệu.
+Bộ phân loại như Prompt Guard~2~\cite{meta2025promptguard2,chennabasappa2025llamafirewall} sàng lọc đầu vào.
+MELON~\cite{zhu2025melon} so hành động của lượt chạy gốc với lượt chạy lại có che yêu cầu; Progent~\cite{shi2025progent}
+áp chính sách đặc quyền lên lời gọi công cụ. Hướng an toàn theo thiết kế gồm CaMeL~\cite{debenedetti2026camel},
+kiểm soát luồng thông tin FIDES~\cite{costa2025fides} và các mẫu thiết kế trong~\cite{beurerkellner2025patterns}.
+\ours{} gần hướng này nhất: giống CaMeL, nó không sửa mô hình, nhưng thay vì tách luồng điều khiển và chạy chương
+trình trong một trình thông dịch riêng, \ours{} chỉ áp luật chuỗi lên quỹ đạo nên gắn được vào tác tử ReAct sẵn có. Tấn công thích nghi vượt qua nhiều phòng thủ đã
+công bố~\cite{zhan2025adaptive,nasr2025attacker}; chúng tôi báo cáo riêng một tập tấn công thích nghi
+(Mục~\ref{sec:external}).

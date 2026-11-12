@@ -37,13 +37,46 @@ số liệu và bảng (`facts.md`), kiểm tra tính đúng của nội dung, h
 
 | Thư mục | Nội dung |
 |---|---|
-| `latex/` | Project LaTeX để tải lên Overleaf (nén zip cả thư mục, main = `main.tex`, pdfLaTeX). Có `llncs.cls` v2.26 và `splncs04.bst` (CTAN). |
-| `latex/sections/` | Tóm tắt + 8 mục `.tex`. **Bản tiếng Việt để owner đọc (12/11)**, viết từ `outline/` và `facts.md`; bản nộp tiếng Anh do owner tự viết. |
-| `latex/images/` | Hình (Hình 1: `fig1_d3_architecture.pdf`). |
-| `latex/tables/` | 11 bảng LaTeX (`tab01`–`tab11`), tiêu đề tiếng Việt; chú thích Bảng 9 đã sửa (T2 là kiểm định z theo cụm). |
-| `latex/refs.bib` | 23 mục BibTeX; nơi đăng, trang, DOI kiểm qua Crossref 12/11; còn 2 mục ghi UNVERIFIED (Holm 1979, model card Prompt Guard 2). |
-| `outline/` | Dàn ý tiếng Anh do Claude soạn (trước là `sections/`); chỉ để tham khảo, không nộp nguyên văn. |
-| `refs/` | PDF tài liệu tham khảo (không commit) và bảng link `refs/README.md`. |
+| `latex/` | Project để tải lên Overleaf (zip cả thư mục, main = `main.tex`, pdfLaTeX; lỗi font T5 thì XeLaTeX, xem đầu `main.tex`). `llncs.cls` v2.26, `splncs04.bst` (CTAN). |
+| `latex/sections/` | Tóm tắt + 8 mục. **Bản tiếng Việt để owner đọc**; bản nộp tiếng Anh do owner tự viết. |
+| `latex/tables/` | 6 bảng `tab1`–`tab6`. |
+| `latex/images/` | `fig1_pipeline.pdf`, `fig2_results.pdf` (tiếng Việt); `en/` bản tiếng Anh; `src/` script vẽ (`python3 src/fig1_pipeline.py --lang en --out en/fig1_pipeline.pdf`). |
+| `latex/refs.bib` | 23 mục, đều được trích. |
+| `outline/` | Dàn ý tiếng Anh cũ (trước là `sections/`), chỉ tham khảo; dùng tên cũ. |
+| `refs/` | PDF tài liệu tham khảo (không commit) và `refs/README.md`. |
+
+## Bảng đổi tên (log/luận văn → bài báo)
+
+Tên trong bài đặt bằng macro ở `latex/main.tex`; đổi một dòng là đổi cả bài.
+
+| Log, luận văn | Bài báo | | Log, luận văn | Bài báo |
+|---|---|---|---|---|
+| D3 (`D3DEST`) | BrokerGuard (owner có thể đổi) | | M1 | ER, chuyển hướng tường minh |
+| D2 | Rules | | M2 | CR, chuyển hướng che giấu |
+| D2+P2 | Rules+Sandwich | | M3 | SL, rò rỉ qua sink |
+| A0 | NoDef | | M4 | AL, rò rỉ qua câu trả lời |
+| P1 / P2 | Spotlight / Sandwich | | M5 | PT, sửa tham số |
+| G1 / MEL / PRG / R1 | PromptGuard / MELON-det / Progent-pol / PhraseRules | | M6 | US, tác dụng phụ ngoài yêu cầu |
+| R2 / R3 / R4 / luật D | R-Dest / R-Flow / R-Redact / R-Signal | | Test v3 / Test-3 | Test-I / Test-II |
+
+## Bản rút gọn 12/11 (từ 19 trang)
+
+- Lời văn 7.700 → khoảng 4.300 từ; bảng 11 → 6; thêm Hình 1 (pipeline) và Hình 2 (a: đánh đổi trên Dev, b: theo cơ chế trên Test-I).
+- Bảng bỏ: công cụ (thành một câu), các lớp (thay bằng Hình 1), baseline Dev (Hình 2a), theo cơ chế (Hình 2b), Gemini (thành câu).
+- 5 công thức đánh số: vị từ gây hại (1), R-Dest (2), R-Flow (3), R-Signal (4), ASR và tiện ích (5).
+- Chưa biên dịch được trên máy (không có TeX); **đếm trang trên Overleaf**. Nếu vẫn vượt 15: bỏ Bảng 2 (ablation) và nói bằng lời, hoặc gộp Bảng 4 vào Bảng 5.
+
+## Kiểm theo quy định LNCS và ICCIES (trước khi nộp)
+
+- [ ] Bản tiếng Anh do tác giả tự viết (ICCIES cấm văn bản do AI sinh); không dán lại lời văn tiếng Việt đã dịch máy.
+- [ ] Tóm tắt 150–250 từ; 3–5 từ khóa.
+- [ ] Tác giả, đơn vị, email; ORCID nếu có. Bình duyệt ẩn danh hay không: hỏi BTC hoặc xem CMT.
+- [ ] Chú thích bảng ở trên bảng, chú thích hình ở dưới hình (đã đúng trong các file).
+- [ ] Hình dùng bản `images/en/`; đọc được khi in đen trắng (nét đứt và vân sọc đã có).
+- [ ] Xóa mọi `\todo{}` và ô đỏ; xóa định nghĩa `\todo` trong `main.tex`.
+- [ ] Đổi babel sang `english`, bỏ `fontenc T5`; `\keywordname` về mặc định.
+- [ ] 12–15 trang kể cả tài liệu tham khảo; một file PDF; nộp qua CMT trước 15/11/2026.
+- [ ] Đối chiếu 2 mục UNVERIFIED trong `refs.bib` (Holm 1979, model card Prompt Guard 2).
 
 ## Luận điểm
 

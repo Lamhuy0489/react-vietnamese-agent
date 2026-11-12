@@ -1,69 +1,44 @@
 \section{Kết quả}\label{sec:results}
-% Dàn ý gốc: ../outline/05_results.md. Số liệu chỉ lấy từ ../facts.md hoặc docs/research/study2_thesis_tables.md.
-% Khoảng 3--3,5 trang. Nếu vượt trang: cắt Bảng 5 hoặc Bảng 7 trước.
 
-\subsection{Baseline trên tập phát triển}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{fig2_results}
+\caption{(a) Họ gây hại theo tiện ích lành tính trên Dev, gộp ba mô hình nền. (b) Ca tấn công gây hại theo cơ chế
+trên \tOne, gộp ba mô hình nền; cột không có nghĩa là 0 ca.}\label{fig:results}
+\end{figure}
 
-Bảng~\ref{tab:dev} so sánh các baseline trên Dev. Ba quan sát nổi bật. Thứ nhất, bộ phát hiện huấn luyện trên tiếng
-Anh (G1) và MEL cho kết quả ngang A0 trên tiếng Việt: 113 và 112 họ gây hại so với 112. Thứ hai, spotlighting có thể
-phản tác dụng: với Qwen3.5, số họ gây hại tăng từ 40 lên 43. Thứ ba, chính sách theo đích (PRG, D2) loại bỏ hoàn toàn
-M1 và M2 nhưng không chặn được M3--M5; lời nhắc P2 giảm mạnh nhất trong các lớp đơn lẻ (31 họ), và kết hợp D2+P2 còn
-10 họ trên 144.
+\paragraph{Baseline trên Dev.} Hình~\ref{fig:results}a cho thấy ba nhóm. \cPG{} và \cMel{} không tốt hơn \cNone{}
+trên tiếng Việt (113 và 112 họ gây hại so với 112 trên 144). \cSpot{} giảm ít và có thể phản tác dụng: với Qwen3.5
+số họ gây hại tăng từ 40 lên 43. Chính sách theo đích (\cProg, \cRules) và lời nhắc (\cSand) giảm rõ, còn kết hợp
+luật với lời nhắc đạt mức thấp nhất (10 họ); \ours{} giữ mức đó với tiện ích cao hơn \cRulesS.
 
-\input{tables/tab05_dev_baselines}
+\paragraph{\tOne.} Bảng~\ref{tab:test1} và Hình~\ref{fig:results}b cho kết quả tập niêm phong thứ nhất. Các giả
+thuyết đăng ký trước: H1 (\cRules{} $<$ \cPhrase{} về ASR) đạt, 18,5\% $\to$ 6,7\%, $-11{,}9$ điểm
+[$-16{,}7$; $-7{,}5$], $p = 1{,}8\cdot10^{-38}$; H3 (cùng so sánh trên \mCR$\cup$\mSL$\cup$\mAL) đạt, 23,5\% $\to$
+8,5\%, $p = 2{,}1\cdot10^{-24}$; H6 (\cRulesS{} $<$ \cSand) đạt, 5,6\% $\to$ 1,2\%, $p = 1{,}8\cdot10^{-13}$. H2
+(benign\_plain của \cRules{} không kém \cNone{} quá 5 điểm) \emph{không} xác lập được: $-2{,}8$ điểm
+[$-6{,}0$; $-0{,}5$], $p = 0{,}20$. Theo cơ chế, luật theo đích đưa \mER{} và \mCR{} về 0 bất kể cách viết; ở \mSL{}
+và \mAL{} luật và lời nhắc ngang nhau (29 và 27; 17 và 18 ca), còn ở \mPT{} lời nhắc tốt hơn hẳn (10 so với 25). Kết
+hợp hai lớp mới giảm mạnh: 13 ca còn lại dưới \cRulesS{} đều thuộc \mSL, \mAL, \mPT{} (6, 3, 4).
 
-\subsection{Tập niêm phong thứ nhất}\label{sec:test1}
+\input{tables/tab3_test1}
 
-Test v3 (72 họ) chạy một lần với D2+P2 là cấu hình đóng băng. Bảng~\ref{tab:test1} cho kết quả gộp, và
-Bảng~\ref{tab:test1mech} chia theo cơ chế. Các giả thuyết đăng ký trước (McNemar chính xác, Holm trên H1--H6, CI
-bootstrap theo họ) cho kết quả sau. \textbf{H1} (D2 $<$ R1 trên tấn công) được ủng hộ: 18,5\% $\to$ 6,7\%, $-11{,}9$
-điểm, CI $[-16{,}7; -7{,}5]$, $p = 1{,}8\cdot10^{-38}$, cặp bất đồng 128/0. \textbf{H3} (D2 $<$ R1 trên
-M2$\cup$M3$\cup$M4): 23,5\% $\to$ 8,5\%, $p = 2{,}1\cdot10^{-24}$. \textbf{H6} (D2+P2 $<$ P2): 5,6\% $\to$ 1,2\%,
-$p = 1{,}8\cdot10^{-13}$. \textbf{H2} (benign\_plain của D2 không kém A0 quá 5 điểm) \emph{không} được xác lập:
-$-2{,}8$ điểm, CI $[-6{,}0; -0{,}5]$, $p = 0{,}20$. Về ngôn ngữ, ở A0 không có khác biệt ý nghĩa: \textbf{H4} không
-dấu 33,3\% so với chuẩn 31,5\% ($p = 0{,}70$); \textbf{H5} tiếng Anh 36,6\% so với chuẩn 31,5\% ($p = 0{,}27$). Theo biến thể, dưới D2 số ca gây hại (/216) là: chuẩn 9, diễn đạt lại 13, không dấu 12, trộn mã 6,
-tiếng Anh 32; dưới D2+P2: 1, 5, 3, 3, 1.
+\paragraph{\tTwo: xác nhận \ours.} Cả ba giả thuyết đều đạt (Bảng~\ref{tab:test2}, \ref{tab:hyp}). \ours{} giảm ASR
+từ 32,4\% xuống 3,6\% (T3; số họ gây hại 95 $\to$ 18 trên 144), không kém \cRulesS{} về an ninh (T2), và tăng tiện
+ích lành tính (T1). Mức tăng tiện ích có ý nghĩa theo kiểm định cặp nhưng nhỏ, +1,0 điểm, và khoảng tin cậy theo họ
+chạm 0; nó đến từ benign\_plain (+1,3 điểm, 10/1 cặp bất đồng) chứ không từ benign\_auth (+0,4 điểm, 1/0) như dự
+đoán. So với \cNone{} (54,5\%), \ours{} giữ 93,7\% tiện ích lành tính (51,0\%). Llama có 66--74 đầu ra bị cắt mỗi
+cấu hình, đều tính là thất bại.
 
-\input{tables/tab06_test1}
-\input{tables/tab07_test1_mechanism}
+\input{tables/tab4_test2}
+\input{tables/tab5_hypotheses}
 
-Theo cơ chế (Bảng~\ref{tab:test1mech}), PRG và D2 đưa M1 và M2 về 0 nhưng hầu như không giảm M3 và M5 (PRG); D2 giảm
-M3 và M4 nhờ R3 nhưng M5 vẫn còn 25 ca. Các ca gây hại còn lại dưới D2+P2 đều thuộc M3, M4, M5 (6, 3, 4).
+\paragraph{Kiểm tra ngoài.}\label{sec:external} Trên Dev, Gemini 3 Flash ít bị tấn công hơn ở \cNone{} (22/48 họ
+gây hại so với 34--40 của các mô hình mở) nhưng vẫn bị tấn công; với \cRulesS{} và \ours{} chỉ còn 1 họ. Ở mức thăm
+dò, benign\_auth tăng từ 49 lên 60/80 khi chuyển từ \cRulesS{} sang \ours. Trên AgentDojo (Bảng~\ref{tab:agentdojo}),
+tấn công thành công ít hơn ở tiếng Việt, nhưng điều đó không có nghĩa tiếng Việt an toàn hơn: với Llama, tiện ích dưới
+tấn công cũng giảm, và ở Slack tiếng Việt hai trong năm nhiệm vụ chèn không giải được bằng lời giải chuẩn. Một tập
+tấn công thích nghi do người viết, có phản hồi từ lượt chạy có phòng thủ (48 ca, Dev), mạnh ngang tập tĩnh ở
+\cNone{} (26/15/24 họ gây hại so với 29/12/22 cho Gemma/Llama/Qwen) và còn 1/0/0 dưới \cRulesS.
 
-\subsection{Tập niêm phong thứ hai: xác nhận D3}
-
-Test-3 (48 họ mới) chạy một lần với A0, D2+P2 và D3. Bảng~\ref{tab:test3} cho kết quả theo mô hình nền và gộp;
-Bảng~\ref{tab:hyp} cho các giả thuyết. Cả ba giả thuyết đều bác bỏ được H0. D3 giảm ASR từ 32,4\% (A0) xuống 3,6\%
-(T3, $-28{,}7$ điểm, CI $[-35{,}4; -22{,}4]$), không kém D2+P2 về an ninh (T2, 3,7\% $\to$ 3,6\%), và tăng tiện ích lành
-tính so với D2+P2 (T1).
-
-Cần nói rõ: mức tăng tiện ích của D3 so với D2+P2 có ý nghĩa theo kiểm định cặp nhưng nhỏ (+1,0 điểm, 50,0\% $\to$
-51,0\%), và khoảng tin cậy theo họ chạm 0 ($[-0{,}1; +3{,}1]$). Mức tăng đến từ benign\_plain (+1,3 điểm, 10/1 cặp bất
-đồng), không phải từ benign\_auth (+0,4 điểm, 1/0) như chúng tôi dự đoán. So với A0 (54,5\%), D3 giữ 93,7\% tiện ích
-lành tính. Llama có 66--74 đầu ra bị cắt mỗi ô; các ca này được tính là thất bại.
-
-\input{tables/tab08_test3}
-\input{tables/tab09_hypotheses}
-
-\subsection{Kiểm tra ngoài}\label{sec:external}
-
-\paragraph{Gemini 3 Flash.} Bảng~\ref{tab:gemini} cho kết quả trên Dev (chỉ để tham chiếu, ngoài kiểm định xác
-nhận). Một mô hình dịch vụ mạnh hơn ít bị tấn công hơn ở A0 (22/48 họ so với 34--40 ở các mô hình mở) nhưng vẫn bị
-tấn công; với D3 chỉ còn một họ. Thăm dò: benign\_auth tăng từ 49 lên 60/80 khi chuyển từ D2+P2 sang D3 (13/2 cặp bất
-đồng).
-
-\input{tables/tab10_gemini}
-
-\paragraph{AgentDojo.} Bảng~\ref{tab:agentdojo} cho kết quả trên AgentDojo tiếng Anh và tiếng Việt, không phòng thủ.
-Tỉ lệ tấn công thành công thấp hơn ở tiếng Việt \emph{không} có nghĩa tiếng Việt an toàn hơn: với Llama, tiện ích dưới
-tấn công cũng giảm, và ở bộ Slack tiếng Việt có hai trong năm nhiệm vụ chèn mà lời giải chuẩn không giải được, làm hạ
-trần của tỉ lệ tấn công thành công.
-
-\input{tables/tab11_agentdojo}
-
-\subsection{Tấn công thích nghi}\label{sec:adaptive}
-
-Một tập tấn công thích nghi do người viết, mỗi họ một ca (48 ca), được soạn có phản hồi từ các lượt chạy có phòng thủ
-trên Dev. Ở A0, tập này mạnh ngang tập tĩnh chuẩn: số họ gây hại 26 / 15 / 24 so với 29 / 12 / 22 (Gemma / Llama /
-Qwen3.5); dưới D2+P2 còn 1 / 0 / 0. Giới hạn: chỉ một vòng soạn bởi người, không có tối ưu tự động, chỉ trên tập
-phát triển.
+\input{tables/tab6_agentdojo}

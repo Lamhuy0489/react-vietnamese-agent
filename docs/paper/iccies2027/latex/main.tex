@@ -23,10 +23,46 @@
 \newcommand{\code}[1]{\texttt{#1}}
 \renewcommand{\keywordname}{{\bfseries Từ khóa:}}
 
+% ---- TÊN GỌI (đổi một chỗ ở đây là đổi cả bài) -------------------------------------------------
+% Ánh xạ sang tên trong log/luận văn ghi ở cột phải; xem ../README.md mục "Bảng đổi tên".
+\newcommand{\ours}{\textsc{BrokerGuard}}       % D3 (D3DEST trong log)  -- tên phương pháp, owner có thể đổi
+\newcommand{\cNone}{NoDef}                    % A0
+\newcommand{\cRules}{Rules}                   % D2   = luật R-Dest, R-Flow, R-Redact
+\newcommand{\cRulesS}{Rules+Sandwich}         % D2+P2
+\newcommand{\cSpot}{Spotlight}                % P1
+\newcommand{\cSand}{Sandwich}                 % P2
+\newcommand{\cPG}{PromptGuard}                % G1
+\newcommand{\cMel}{MELON-det}                 % MEL
+\newcommand{\cProg}{Progent-pol}              % PRG
+\newcommand{\cPhrase}{PhraseRules}            % R1
+% Luật
+\newcommand{\rDest}{\textsf{R-Dest}}          % R2
+\newcommand{\rFlow}{\textsf{R-Flow}}          % R3
+\newcommand{\rRedact}{\textsf{R-Redact}}      % R4
+\newcommand{\rSig}{\textsf{R-Signal}}         % luật D
+% Cơ chế tấn công
+\newcommand{\mER}{\textsf{ER}}                % M1 explicit redirection
+\newcommand{\mCR}{\textsf{CR}}                % M2 covert redirection
+\newcommand{\mSL}{\textsf{SL}}                % M3 sink leak
+\newcommand{\mAL}{\textsf{AL}}                % M4 answer leak
+\newcommand{\mPT}{\textsf{PT}}                % M5 parameter tampering
+\newcommand{\mUS}{\textsf{US}}                % M6 unrequested side effect
+% Tập kiểm thử niêm phong
+\newcommand{\tOne}{Test-I}                   % "Test v3" (72 họ)
+\newcommand{\tTwo}{Test-II}                  % "Test-3" (48 họ)
+% Ký hiệu
+\newcommand{\sub}{\sqsubseteq}               % "là chuỗi con của"
+\newcommand{\dest}{\mathit{dest}}
+\newcommand{\pay}{\mathit{payload}}
+\newcommand{\norm}{\nu}
+
 \begin{document}
 
-\title{Bảo vệ tác tử LLM dùng công cụ trước tấn công chèn lệnh gián tiếp: cơ chế phòng thủ nhiều lớp và đánh giá niêm phong trên benchmark tiếng Việt}
-\titlerunning{Phòng thủ nhiều lớp trước chèn lệnh gián tiếp cho tác tử tiếng Việt}
+% Tiêu đề owner chọn 12/11/2026 (giữ nguyên tiếng Anh vì là bản nộp):
+\title{Beyond Model Compliance: A Layered Defence Against Indirect Prompt Injection in Vietnamese Tool-Using Agents}
+% Nghĩa: Vượt ra ngoài sự tuân thủ của mô hình: phòng thủ nhiều lớp trước tấn công chèn lệnh gián tiếp
+% cho tác tử dùng công cụ tiếng Việt
+\titlerunning{Beyond Model Compliance}
 
 \author{\todo{Tác giả 1}\inst{1} \and \todo{Tác giả 2}\inst{1}}
 \authorrunning{\todo{Tác giả} et al.}
@@ -39,7 +75,7 @@
 \input{sections/01_introduction}
 \input{sections/02_related_work}
 \input{sections/03_threat_model}
-\input{sections/04_d3_defence}
+\input{sections/04_defence}
 \input{sections/05_benchmark_protocol}
 \input{sections/06_results}
 \input{sections/07_discussion}

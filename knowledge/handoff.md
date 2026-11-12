@@ -5,6 +5,13 @@ Cập nhật: 2026-11-10. Lúc 12:20. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
+**2026-11-12: Bài báo ICCIES: `docs/paper/iccies2027/latex/` (Overleaf, LLNCS) có bản tiếng Việt đủ 8 mục để owner đọc; owner tự
+viết bản tiếng Anh nộp. Rút gọn từ 19 trang: 6 bảng, Hình 1 pipeline, Hình 2 (đánh đổi Dev + theo cơ chế Test-I), 5 công thức.
+Tiêu đề: "Beyond Model Compliance: A Layered Defence Against Indirect Prompt Injection in Vietnamese Tool-Using Agents".
+Đổi tên bằng macro ở `main.tex` (bảng ánh xạ trong README bài báo). Chưa biên dịch trên máy (tải tectonic bị chặn).**
+- Bước tiếp: owner đếm trang trên Overleaf; nếu > 15 thì bỏ Bảng 2 hoặc gộp Bảng 4–5. Owner quyết: tên phương pháp (đang
+  BrokerGuard), công bố dữ liệu, tác giả/đơn vị. Đối chiếu Holm 1979 và model card Prompt Guard 2. Hình tiếng Anh ở `images/en/`.
+
 **2026-11-10 23:30: ICCIES cấm bài chứa văn bản do AI sinh (trang how-to-submit). Bản thảo `sections/` do Claude soạn chỉ dùng làm
 dàn ý; owner tự viết lời văn nộp. Chờ owner quyết cách làm. 20 PDF tham khảo + link: `docs/paper/iccies2027/refs/README.md`.**
 
