@@ -6,7 +6,7 @@ dung công cụ và không từ việc một mô hình diễn giải ý định.
 từ chối được báo lại để tác tử làm tiếp phần hợp lệ. \ours{} có hai phiên bản, mỗi phiên bản được xác nhận trên một
 tập niêm phong riêng (Bảng~\ref{tab:versions}); Hình~\ref{fig:pipeline} vẽ phiên bản \bgTwo.
 
-\begin{figure}[t]
+\begin{figure}[!htb]
 \centering
 \includegraphics[width=\textwidth]{fig1_pipeline}
 \caption{Pipeline của \bgTwo. Mọi hành động $a_t$ và câu trả lời $y$ đi qua Tool Broker; ô liền nét là kiểm tra tất
@@ -20,11 +20,12 @@ tập niêm phong riêng (Bảng~\ref{tab:versions}); Hình~\ref{fig:pipeline} v
 \ours, broker còn lưu nhãn của từng quan sát và tập giá trị $C$ trích từ các quan sát mật bằng quy tắc từ vựng không
 phụ thuộc ngôn ngữ (e-mail, URL, định danh từ sáu ký tự, số dài). Thao tác đọc không bao giờ bị chặn. Mọi phép so
 sánh dùng hàm chuẩn hóa $\norm(\cdot)$ (Unicode NFKC, bỏ ký tự định dạng như ký tự độ rộng bằng không, đưa về chữ
-thường); ta viết $x \sub z$ khi $\norm(x)$ là chuỗi con của $\norm(z)$.
+thường). Gọi $\Sub(z)$ là tập mọi chuỗi con của $\norm(z)$; ta viết $x \in \Sub(z)$ khi $\norm(x)$ là một chuỗi con
+của $\norm(z)$.
 
 \paragraph{\rDest: cấp quyền đích.} Một lời gọi sink $a$ chỉ được thực thi nếu
 \begin{equation}\label{eq:dest}
-\dest(a) \sub u .
+\dest(a) \in \Sub(u) .
 \end{equation}
 Luật không phân tích ý định và không dùng danh sách cụm từ, nên một đoạn chèn \mCR{} tránh động từ ``gửi'' hay tách
 địa chỉ vẫn thất bại vì cùng lý do với \mER{}: đích nó cần không có trong $u$. Cái giá là người dùng nhắc đích gián
@@ -34,7 +35,7 @@ quyền, đúng trường hợp \mUS{} thăm dò.
 \paragraph{\rFlow{} và \rRedact: luồng giá trị mật.} Với lời gọi sink $a$ (hoặc câu trả lời $y$, thay $\pay(a)$
 bằng $y$), broker từ chối nếu
 \begin{equation}\label{eq:flow}
-\exists\, v \in C:\; v \sub \pay(a) \;\land\; v \not\sub u .
+\exists\, v \in C:\; v \in \Sub(\pay(a)) \;\land\; v \notin \Sub(u) .
 \end{equation}
 Ở câu trả lời cuối, \rRedact{} không đánh hỏng câu trả lời mà thay từng giá trị vi phạm bằng \code{[REDACTED]}. Đây
 là chính sách luồng thông tin tối thiểu trên hai nhãn: giá trị mật chỉ tới sink qua chính văn bản người dùng. Coi
@@ -48,7 +49,7 @@ khi một văn phạm chặt trên $u$ cho phép nó. Trên \tOne{} đây là ng
 nhưng bỏ hẳn nó trên Dev làm số họ gây hại tăng 2--4 ở mỗi mô hình nền. \bgTwo{} giữ bộ phát hiện nhưng thu hẹp hệ
 quả: broker chỉ từ chối $a$ nếu
 \begin{equation}\label{eq:signal}
-\exists\, o \in F:\; \dest(a) \sub o ,
+\exists\, o \in F:\; \dest(a) \in \Sub(o) ,
 \end{equation}
 tức khi nội dung giống chỉ thị nói về đúng cái đích tác tử sắp dùng. Khi phát lại offline trên quỹ đạo Dev có sẵn,
 \rSig{} chặn đủ 11/11 ca gây hại mà \rSigAll{} đã chặn và không chặn ca nào trong 14 lời gọi lành tính bị \rSigAll{}

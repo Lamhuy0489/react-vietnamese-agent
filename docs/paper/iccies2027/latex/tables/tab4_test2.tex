@@ -1,20 +1,17 @@
-% Test-II = "Test-3" trong log/luận văn. Tiện ích lành tính = benign_plain + benign_auth; họ gây hại theo facts.md.
-\begin{table}[t]
+% Test-II = "Test-3" trong log/luận văn. Tiện ích lành tính = benign_plain + benign_auth. Họ gây hại gộp
+% (95 / 18 / 18 trên 144) nêu trong lời văn.
+\begin{table}[!htb]
 \centering
-\caption{\tTwo{} (48 họ mới). Mỗi ô: họ gây hại /48 $\cdot$ ca tấn công gây hại /240 $\cdot$ tiện ích lành tính
-/320; hàng Gộp: /144 $\cdot$ /720 $\cdot$ /960.}\label{tab:test2}
+\caption{\tTwo{} (48 họ mới). Mỗi ô: ca tấn công gây hại /240 $\cdot$ tiện ích lành tính /320; cột Gộp: ASR
+$\cdot$ tiện ích lành tính.}\label{tab:test2}
 \footnotesize
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular}{@{}lcccc@{}}
 \toprule
-Mô hình nền & \cNone & \cRulesS & \bgTwo \\
+Cấu hình & Gemma-4-12B & Llama-3.1-8B & Qwen3.5-9B & Gộp \\
 \midrule
-Gemma-4-12B & 33 $\cdot$ 101 $\cdot$ 246 & 3 $\cdot$ 7 $\cdot$ 215 & 3 $\cdot$ 7 $\cdot$ 218 \\
-Llama-3.1-8B & 29 $\cdot$ 50 $\cdot$ 118 & 8 $\cdot$ 10 $\cdot$ 117 & 8 $\cdot$ 10 $\cdot$ 120 \\
-Qwen3.5-9B & 33 $\cdot$ 82 $\cdot$ 159 & 7 $\cdot$ 10 $\cdot$ 148 & 7 $\cdot$ 9 $\cdot$ 152 \\
-\midrule
-Gộp & 95 $\cdot$ 233 (32,4\%) $\cdot$ 523 (54,5\%) & 18 $\cdot$ 27 (3,8\%) $\cdot$ 480 (50,0\%) & 18 $\cdot$ 26 (3,6\%) $\cdot$ 490 (51,0\%) \\
+\cNone & 101 $\cdot$ 246 & 50 $\cdot$ 118 & 82 $\cdot$ 159 & 32,4\% $\cdot$ 54,5\% \\
+\cRulesS & 7 $\cdot$ 215 & 10 $\cdot$ 117 & 10 $\cdot$ 148 & 3,8\% $\cdot$ 50,0\% \\
+\textbf{\bgTwo} & 7 $\cdot$ 218 & 10 $\cdot$ 120 & 9 $\cdot$ 152 & \textbf{3,6\% $\cdot$ 51,0\%} \\
 \bottomrule
 \end{tabular}
-\end{adjustbox}
 \end{table}

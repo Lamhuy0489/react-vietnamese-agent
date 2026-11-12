@@ -19,6 +19,18 @@
 \usepackage{url}
 \usepackage{adjustbox}   % max width=\textwidth: chống bảng tràn lề
 \usepackage[section]{placeins}  % bảng/hình không trôi sang mục sau
+\usepackage{pgfplots}    % Hình 2 vẽ bằng pgfplots (Overleaf tự vẽ)
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{patterns}
+\definecolor{bgblue}{HTML}{2A78D6}
+\definecolor{bgorange}{HTML}{EB6834}
+\definecolor{bgaqua}{HTML}{1BAF7A}
+% Đặt bảng/hình gần chỗ nhắc tới, tránh dồn cục
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{4}
 
 % Ghi chú cho tác giả; xóa trước khi nộp.
 \newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
@@ -55,7 +67,7 @@
 \newcommand{\tOne}{Test-I}                   % "Test v3" (72 họ)
 \newcommand{\tTwo}{Test-II}                  % "Test-3" (48 họ)
 % Ký hiệu
-\newcommand{\sub}{\sqsubseteq}               % "là chuỗi con của"
+\newcommand{\Sub}{\mathrm{Sub}}             % Sub(z): tập chuỗi con của nu(z)
 \newcommand{\dest}{\mathit{dest}}
 \newcommand{\pay}{\mathit{payload}}
 \newcommand{\norm}{\nu}

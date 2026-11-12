@@ -39,8 +39,8 @@ số liệu và bảng (`facts.md`), kiểm tra tính đúng của nội dung, h
 |---|---|
 | `latex/` | Project để tải lên Overleaf (zip cả thư mục, main = `main.tex`, pdfLaTeX; lỗi font T5 thì XeLaTeX, xem đầu `main.tex`). `llncs.cls` v2.26, `splncs04.bst` (CTAN). |
 | `latex/sections/` | Tóm tắt + 8 mục. **Bản tiếng Việt để owner đọc**; bản nộp tiếng Anh do owner tự viết. |
-| `latex/tables/` | 6 bảng `tab1`–`tab6`. |
-| `latex/images/` | `fig1_pipeline.pdf`, `fig2_results.pdf` (tiếng Việt); `en/` bản tiếng Anh; `src/` script vẽ (`python3 src/fig1_pipeline.py --lang en --out en/fig1_pipeline.pdf`). |
+| `latex/tables/` | 10 bảng `tab0`–`tab9` (Gemini nằm trong cột cuối Bảng baseline Dev). |
+| `latex/images/` | `fig1_pipeline.pdf` (tiếng Việt; `en/` bản tiếng Anh; script `src/`). Hình 2 là `fig2_results.tex` (pgfplots, Overleaf tự vẽ; sửa số/nhãn trực tiếp trong file). |
 | `latex/refs.bib` | 23 mục, đều được trích. |
 | `outline/` | Dàn ý tiếng Anh cũ (trước là `sections/`), chỉ tham khảo; dùng tên cũ. |
 | `refs/` | PDF tài liệu tham khảo (không commit) và `refs/README.md`. |
