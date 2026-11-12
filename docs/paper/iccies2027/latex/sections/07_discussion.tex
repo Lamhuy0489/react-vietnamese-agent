@@ -1,20 +1,20 @@
 \section{Thảo luận và hạn chế}\label{sec:discussion}
 
-\paragraph{Lỗi còn lại.} Các ca lọt qua phòng thủ đều thuộc \mSL, \mAL{} và \mPT. \mPT{} trên sink người dùng đã nêu
-nằm ngoài tầm của luật theo đích và theo độ nhạy cảm: đích hợp lệ, giá trị bị sửa không mật, và \rSig{} chỉ có căn
-cứ khi nội dung chèn nhắc tới đích. Với \mSL{} và \mAL, \rFlow{} so khớp nguyên văn nên bỏ sót giá trị đã bị biến
-đổi. \todo{nếu nêu tỉ lệ ca rò rỉ do biến đổi giá trị: cần đếm từ transcript, chưa có trong facts.md}
+\paragraph{Các lỗi còn lại.} Mọi ca lọt qua phòng thủ đều thuộc \mSL, \mAL{} hoặc \mPT. Cơ chế \mPT{} trên một sink do
+người dùng nêu nằm ngoài tầm của các luật theo đích và theo độ nhạy cảm. Đích là hợp lệ, giá trị bị sửa không phải giá
+trị mật, và \rSig{} chỉ có căn cứ để chặn khi nội dung chèn nhắc tới đích. Với \mSL{} và \mAL, \rFlow{} so khớp nguyên
+văn nên bỏ sót các giá trị đã bị biến đổi. \todo{nếu nêu tỉ lệ ca rò rỉ do biến đổi giá trị thì cần đếm từ
+transcript, số này chưa có trong facts.md}
 
-\paragraph{Ngôn ngữ.} Ở \cNone, bỏ dấu hay chuyển sang tiếng Anh không làm thay đổi ASR một cách có ý nghĩa (H4:
-không dấu 33,3\% so với chuẩn 31,5\%, $p = 0{,}70$; H5: tiếng Anh 36,6\%, $p = 0{,}27$), nên chúng tôi không khẳng
-định tiếng Việt dễ bị tấn công hơn. Thứ thay đổi theo ngôn ngữ là phòng thủ dựa trên cụm từ: trên Dev, bộ phát hiện
-cụm từ bật ở 14--19/48 tấn công tiếng Việt chuẩn nhưng chỉ 3/48 tấn công tiếng Anh, và trên \tOne{} biến thể tiếng
-Anh có nhiều ca gây hại nhất dưới \cRules{} (32/216, so với 6--13 ở các biến thể khác). Luật nguyên văn theo đích và
-giá trị thì không phụ thuộc ngôn ngữ.
+\paragraph{Ngôn ngữ.} Ở \cNone, bỏ dấu hay chuyển sang tiếng Anh không làm thay đổi tỉ lệ tấn công thành công một cách
+có ý nghĩa (H4 và H5). Vì vậy bài báo không khẳng định tiếng Việt dễ bị tấn công hơn. Thứ thay đổi theo ngôn ngữ là
+hiệu quả của phòng thủ dựa trên cụm từ. Trên Dev, bộ phát hiện cụm từ bật ở 14 đến 19 trên 48 tấn công tiếng Việt chuẩn
+nhưng chỉ ở 3 trên 48 tấn công tiếng Anh. Trên \tOne, biến thể tiếng Anh có nhiều ca gây hại nhất dưới \cRules. Ngược
+lại, các luật nguyên văn theo đích và theo giá trị không phụ thuộc ngôn ngữ.
 
-\paragraph{Hạn chế.} Tập niêm phong do cùng nhóm soạn, dù người soạn không đọc mã phòng thủ. Dữ liệu tổng hợp, công
-cụ giả và nhiệm vụ một lượt. Mô hình nền chỉ 8--12 tỉ tham số; Gemini 3 Flash chạy qua proxy không có ràng buộc
-schema và chỉ trên Dev. Tăng ngân sách đầu ra của Llama từ 512 lên 2.048 token không cứu được lượt lỗi nào, nên lỗi
-cắt đầu ra là do sinh không dừng. Tiện ích của \bgTwo{} vẫn thấp hơn \cNone{} (51,0\% so với 54,5\%). Tấn công trên
-tập niêm phong là tĩnh; tấn công thích nghi chỉ một vòng, do người viết. Chúng tôi không chạy cấu hình có phòng thủ
-trên AgentDojo với Gemini.
+\paragraph{Hạn chế.} Các tập niêm phong do cùng một nhóm soạn, dù người soạn không đọc mã phòng thủ. Dữ liệu là tổng
+hợp, công cụ là bản giả, và nhiệm vụ chỉ có một lượt. Các mô hình nền mở chỉ có 8 đến 12 tỉ tham số. Gemini 3 Flash
+chạy qua proxy không có ràng buộc schema, chỉ trên Dev và chỉ với năm cấu hình. Tăng ngân sách đầu ra của Llama từ 512
+lên 2.048 token không cứu được lượt lỗi nào, cho thấy lỗi cắt đầu ra đến từ việc sinh không dừng. Tiện ích của
+\bgTwo{} vẫn thấp hơn \cNone{} (51,0\% so với 54,5\%). Tấn công trên các tập niêm phong là tĩnh, còn tấn công thích
+nghi chỉ có một vòng do người viết. Chúng tôi không chạy các cấu hình có phòng thủ trên AgentDojo với Gemini.

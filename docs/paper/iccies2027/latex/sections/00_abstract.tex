@@ -1,18 +1,17 @@
-% LNCS: tóm tắt 150--250 từ (tính trên bản tiếng Anh). Bản dưới khoảng 210 từ khi dịch.
+% LNCS: tóm tắt 150--250 từ (tính trên bản tiếng Anh).
 \begin{abstract}
-Tác tử LLM theo mô hình ReAct đọc nội dung từ công cụ bên ngoài, nên chỉ thị cài trong nội dung đó có thể lái tác
-tử sang hành động trái phép hoặc làm lộ dữ liệu (chèn lệnh gián tiếp, IPI). Các benchmark an ninh tác tử hiện có
-gần như chỉ bằng tiếng Anh. Chúng tôi đề xuất \ours, cơ chế phòng thủ nhiều lớp đặt việc cưỡng chế ở Tool Broker
-ngoài mô hình: đích của mọi lời gọi có tác dụng phụ phải do người dùng viết, giá trị mật từ công cụ chỉ được đi ra
-nếu người dùng đã viết nó, câu trả lời cuối được che, và một luật tín hiệu chèn lệnh giới hạn theo đích; một lời
-nhắc trong prompt và phản hồi từ chối bổ trợ cho các luật. \ours{} không cần tinh chỉnh mô hình và không gọi thêm
-LLM; phiên bản đầu (\cRulesS) và phiên bản cải tiến (\bgTwo) mỗi bản được xác nhận trên một tập niêm phong. Chúng tôi xây VN-AgentInject v3, benchmark tiếng Việt chia theo sáu cơ chế tấn công, có nhánh lành tính và năm
-biến thể ngôn ngữ, và đánh giá theo giao thức đăng ký trước với hai tập kiểm thử niêm phong chạy một lần. Trên tập niêm
-phong thứ nhất (72 họ), \cRulesS{} giảm tỉ lệ tấn công thành công từ 32,9\% xuống 1,2\%. Trên tập
-niêm phong thứ hai (48 họ mới, ba mô hình nền mở trọng số), \bgTwo{} giảm tỉ lệ tấn công thành công từ 32,4\% xuống 3,6\%
-(Holm $p = 5{,}0\cdot10^{-57}$), giữ 93,7\% tiện ích lành tính của tác tử không phòng thủ. Bộ phát hiện huấn luyện
-trên tiếng Anh không bảo vệ được trên tiếng Việt. Bản dịch tiếng Việt của AgentDojo và Gemini 3 Flash dùng làm kiểm
-tra ngoài.
+Tác tử LLM theo mô hình ReAct đọc nội dung từ các công cụ bên ngoài. Chỉ thị được cài vào nội dung đó có thể khiến tác
+tử thực hiện hành động trái phép hoặc làm lộ dữ liệu. Đây là tấn công chèn lệnh gián tiếp (IPI). Các benchmark an
+ninh cho tác tử hiện nay hầu như chỉ có tiếng Anh. Bài báo đề xuất \ours, một cơ chế phòng thủ nhiều lớp đặt việc
+cưỡng chế tại Tool Broker, bên ngoài mô hình. Các luật của \ours{} chỉ cho phép gửi tới đích do người dùng viết, chỉ
+cho phép giá trị mật rời tác tử khi người dùng đã viết giá trị đó, che giá trị mật trong câu trả lời cuối và chặn
+lời gọi tới đích được nêu trong nội dung có dấu hiệu chèn lệnh. Lời nhắc trong prompt và phản hồi từ chối bổ trợ cho
+các luật. \ours{} không cần tinh chỉnh mô hình và không gọi thêm LLM. Chúng tôi xây dựng VN-AgentInject v3, một
+benchmark tiếng Việt gồm sáu cơ chế tấn công, có nhánh lành tính và năm biến thể ngôn ngữ, và đánh giá theo giao thức
+đăng ký trước với hai tập kiểm thử niêm phong. Trên ba mô hình nền mở trọng số, phiên bản thứ nhất (\cRulesS) giảm tỉ
+lệ tấn công thành công từ 32,9\% xuống 1,2\% trên tập niêm phong thứ nhất. Phiên bản thứ hai (\bgTwo) giảm tỉ lệ này
+từ 32,4\% xuống 3,6\% trên tập niêm phong thứ hai (Holm $p = 5{,}0\cdot10^{-57}$) và giữ 93,7\% tiện ích lành tính.
+Bộ phát hiện huấn luyện trên tiếng Anh không có tác dụng trên tiếng Việt.
 
 \keywords{Chèn lệnh gián tiếp \and Tác tử LLM \and An ninh tác tử \and Kiểm soát luồng thông tin \and Tiếng Việt}
 \end{abstract}

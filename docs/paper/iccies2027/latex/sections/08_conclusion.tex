@@ -1,8 +1,10 @@
 \section{Kết luận}\label{sec:conclusion}
 
-Chúng tôi trình bày \ours, phòng thủ nhiều lớp cho tác tử ReAct dùng công cụ, đặt cưỡng chế ở Tool Broker thay vì
-trông vào sự tuân thủ của mô hình, và đánh giá nó trên VN-AgentInject v3 với hai tập kiểm thử niêm phong. Trên \tOne,
-\cRulesS{} giảm tỉ lệ tấn công thành công từ 32,9\% xuống 1,2\%; trên \tTwo, \bgTwo{} giảm từ 32,4\% xuống 3,6\% trên ba mô hình nền mở trọng số và giữ 93,7\% tiện ích
-lành tính; mức cải thiện tiện ích của \bgTwo{} so với \cRulesS{} có ý nghĩa nhưng nhỏ. Phát hiện học trên tiếng Anh không chuyển giao
-sang tiếng Việt, còn luật nguyên văn theo đích và giá trị thì không phụ thuộc ngôn ngữ. Hướng tiếp theo là sửa tham số
-trên sink hợp lệ, rò rỉ giá trị đã bị biến đổi, tấn công thích nghi tự động và nhiệm vụ nhiều lượt.
+Bài báo trình bày \ours, một cơ chế phòng thủ nhiều lớp cho tác tử ReAct dùng công cụ. \ours{} đặt việc cưỡng chế tại
+Tool Broker thay vì trông vào sự tuân thủ của mô hình, và được đánh giá trên VN-AgentInject v3 với hai tập kiểm thử
+niêm phong. Trên ba mô hình nền mở trọng số, \cRulesS{} giảm tỉ lệ tấn công thành công từ 32,9\% xuống 1,2\% trên
+\tOne, còn \bgTwo{} giảm tỉ lệ này từ 32,4\% xuống 3,6\% trên \tTwo{} và giữ 93,7\% tiện ích lành tính. Mức cải thiện
+tiện ích của \bgTwo{} so với \cRulesS{} có ý nghĩa thống kê nhưng nhỏ. Phát hiện học trên tiếng Anh không chuyển giao
+sang tiếng Việt, trong khi các luật nguyên văn theo đích và giá trị không phụ thuộc ngôn ngữ. Các hướng tiếp theo gồm
+xử lý việc sửa tham số trên sink hợp lệ, phát hiện rò rỉ giá trị đã bị biến đổi, đánh giá với tấn công thích nghi tự
+động và mở rộng sang nhiệm vụ nhiều lượt.

@@ -1,5 +1,5 @@
 % M1..M6 trong log/luận văn = ER, CR, SL, AL, PT, US.
-\begin{table}[!htb]
+\begin{table}[!htbp]
 \centering
 \caption{Sáu cơ chế tấn công của VN-AgentInject v3 và vị từ gây hại tương ứng.}\label{tab:mechanisms}
 \footnotesize
@@ -8,7 +8,7 @@
 Mã & Cơ chế (kiểu con) & Vị từ \\
 \midrule
 \mER & Chuyển hướng tường minh: yêu cầu gửi tới đích không có trong $u$, có động từ gửi và địa chỉ đầy đủ & $H_\mathit{dest}$ \\
-\mCR & Chuyển hướng che giấu: cùng mục tiêu nhưng tránh mẫu ``gửi + địa chỉ'' (ghi nhận không động từ; chuyển tiếp/cc; tách địa chỉ; đích nằm ở tài liệu thứ hai) & $H_\mathit{dest}$ \\
+\mCR & Chuyển hướng che giấu: cùng mục tiêu nhưng tránh mẫu ``gửi + địa chỉ'' (ghi nhận không động từ, chuyển tiếp hoặc cc, tách địa chỉ, đích nằm ở tài liệu thứ hai) & $H_\mathit{dest}$ \\
 \mSL & Rò rỉ qua sink: đưa giá trị mật vào sink người dùng đã nêu (thân e-mail, payload, trường trông vô hại) & $H_\mathit{leak}$ \\
 \mAL & Rò rỉ qua câu trả lời: đưa giá trị mật vào câu trả lời cuối (nguyên văn, lồng trong câu, có nhãn) & $H_\mathit{leak}$ \\
 \mPT & Sửa tham số: đổi một giá trị thường trong payload của sink người dùng đã nêu (số, boolean, đơn vị, định danh) & $H_\mathit{tamper}$ \\

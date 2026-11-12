@@ -1,23 +1,23 @@
 % Nguồn: outline/05_results.md Bảng 5 và Bảng 10 (Gemini; = study2_thesis_tables.md Bảng 2.11). Tên: P1 Spotlight,
 % P2 Sandwich, G1 PromptGuard, MEL MELON-det, PRG Progent-pol, R1 PhraseRules, D2 BG-Rules, D2+P2 BG-v1, D3DEST BG-v2.
 % Gemini chỉ chạy 5 cấu hình trên Dev; không cộng vào cột Gộp.
-\begin{table}[!htb]
+\begin{table}[!htbp]
 \centering
 \caption{Baseline và \ours{} trên Dev. Mỗi ô: họ gây hại /48 $\cdot$ benign\_plain /240 $\cdot$ benign\_auth /80.
 Cột Gộp: họ gây hại /144 của ba mô hình mở. $^\dagger$Gemini 3 Flash chạy qua proxy (không seed, không ràng buộc
-schema), chỉ năm cấu hình, không thuộc kiểm định; ---: không chạy.}\label{tab:dev}
+schema), chỉ năm cấu hình, không thuộc kiểm định. Dấu - nghĩa là không chạy.}\label{tab:dev}
 \footnotesize
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{@{}llccccc@{}}
 \toprule
 Nhóm & Cấu hình & Gemma-4-12B & Llama-3.1-8B & Qwen3.5-9B & Gộp & Gemini 3 Flash$^\dagger$ \\
 \midrule
---- & \cNone & 38 $\cdot$ 159 $\cdot$ 54 & 34 $\cdot$ 81 $\cdot$ 30 & 40 $\cdot$ 140 $\cdot$ 36 & 112 & 22 $\cdot$ 184 $\cdot$ 53 \\
-\multirow{2}{*}{Prompt} & \cSpot & 24 $\cdot$ 146 $\cdot$ 54 & 24 $\cdot$ 74 $\cdot$ 36 & 43 $\cdot$ 137 $\cdot$ 38 & 91 & --- \\
- & \cSand & 7 $\cdot$ 150 $\cdot$ 54 & 13 $\cdot$ 84 $\cdot$ 40 & 11 $\cdot$ 144 $\cdot$ 32 & 31 & --- \\
-\multirow{2}{*}{Phát hiện} & \cPG & 39 $\cdot$ 160 $\cdot$ 54 & 34 $\cdot$ 81 $\cdot$ 30 & 40 $\cdot$ 139 $\cdot$ 36 & 113 & --- \\
- & \cMel & 38 $\cdot$ 160 $\cdot$ 54 & 34 $\cdot$ 79 $\cdot$ 30 & 40 $\cdot$ 142 $\cdot$ 36 & 112 & --- \\
-\multirow{2}{*}{Luật} & \cProg & 21 $\cdot$ 160 $\cdot$ 54 & 18 $\cdot$ 80 $\cdot$ 32 & 22 $\cdot$ 138 $\cdot$ 36 & 61 & --- \\
+ & \cNone & 38 $\cdot$ 159 $\cdot$ 54 & 34 $\cdot$ 81 $\cdot$ 30 & 40 $\cdot$ 140 $\cdot$ 36 & 112 & 22 $\cdot$ 184 $\cdot$ 53 \\
+\multirow{2}{*}{Prompt} & \cSpot & 24 $\cdot$ 146 $\cdot$ 54 & 24 $\cdot$ 74 $\cdot$ 36 & 43 $\cdot$ 137 $\cdot$ 38 & 91 & - \\
+ & \cSand & 7 $\cdot$ 150 $\cdot$ 54 & 13 $\cdot$ 84 $\cdot$ 40 & 11 $\cdot$ 144 $\cdot$ 32 & 31 & - \\
+\multirow{2}{*}{Phát hiện} & \cPG & 39 $\cdot$ 160 $\cdot$ 54 & 34 $\cdot$ 81 $\cdot$ 30 & 40 $\cdot$ 139 $\cdot$ 36 & 113 & - \\
+ & \cMel & 38 $\cdot$ 160 $\cdot$ 54 & 34 $\cdot$ 79 $\cdot$ 30 & 40 $\cdot$ 142 $\cdot$ 36 & 112 & - \\
+\multirow{2}{*}{Luật} & \cProg & 21 $\cdot$ 160 $\cdot$ 54 & 18 $\cdot$ 80 $\cdot$ 32 & 22 $\cdot$ 138 $\cdot$ 36 & 61 & - \\
  & \cPhrase & 36 $\cdot$ 160 $\cdot$ 49 & 25 $\cdot$ 80 $\cdot$ 27 & 33 $\cdot$ 138 $\cdot$ 33 & 94 & 18 $\cdot$ 182 $\cdot$ 50 \\
 \midrule
 \multirow{3}{*}{\ours} & \cRules & 17 $\cdot$ 158 $\cdot$ 44 & 13 $\cdot$ 80 $\cdot$ 27 & 15 $\cdot$ 136 $\cdot$ 28 & 45 & 12 $\cdot$ 186 $\cdot$ 44 \\
