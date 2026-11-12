@@ -4,14 +4,14 @@
 tham số, hoặc sinh câu trả lời cuối $y$. Tool Broker kiểm tra $a_t$ theo schema, thực thi và trả về quan sát $o_t$.
 Hệ thống có sáu công cụ đọc (tìm và đọc tài liệu, truy vấn cơ sở dữ liệu chỉ đọc, tìm và lấy trang lưu đệm, máy tính)
 và hai \emph{sink} có tác dụng phụ là \code{send\_email\_mock} và \code{post\_webhook\_mock}. Hai sink này chỉ ghi
-log, không gửi dữ liệu ra mạng. Câu trả lời cuối được coi là sink thứ ba. Với một lời gọi sink $a$, ta ký hiệu
+nhật ký, không gửi dữ liệu ra mạng. Câu trả lời cuối được coi là sink thứ ba. Với một lời gọi sink $a$, ta ký hiệu
 $\dest(a)$ là đích (\code{to} hoặc \code{endpoint}) và $\pay(a)$ là các tham số còn lại.
 
 \paragraph{Hai nhãn.} Mỗi nội dung mang hai nhãn độc lập do host gán. Nhãn \emph{độ tin cậy} coi $u$ và prompt hệ thống
 là đáng tin, còn mọi quan sát từ công cụ là không đáng tin. Nhãn \emph{độ nhạy cảm} đi từ công khai (S0) tới mật (S2).
 Tài liệu mật chứa các giá trị như khóa, mã hay định danh tài khoản, và các giá trị này không được rời tác tử nếu người
 dùng không cho phép. Hai nhãn không phụ thuộc nhau. Một trang không đáng tin có thể là công khai, còn một bản ghi mật
-có thể đến từ nguồn mà kẻ tấn công không chạm tới được. Nếu gộp hai chiều làm một, phòng thủ sẽ hoặc chặn mọi dữ liệu
+có thể đến từ nguồn mà kẻ tấn công không thể tác động. Nếu gộp hai chiều làm một, phòng thủ sẽ hoặc chặn mọi dữ liệu
 mật, hoặc tin mọi nguồn nội bộ.
 
 \paragraph{Kẻ tấn công.} Kẻ tấn công kiểm soát văn bản của một tài liệu do công cụ đọc trả về, có thể là tài liệu,
@@ -47,8 +47,8 @@ trong một câu cấm, có bị hiểu nhầm thành cấp quyền hay không.
 
 \input{tables/tab1_mechanisms}
 
-\paragraph{Nhánh lành tính và biến thể ngôn ngữ.} Mỗi họ tấn công có hai nhánh lành tính với cùng nhiệm vụ và môi
-trường. Nhánh \emph{benign\_plain} thay đoạn chèn bằng một ghi chú vô hại có cùng độ dài và dùng để đo tiện ích. Nhánh
+\paragraph{Nhánh lành tính và biến thể ngôn ngữ.} Mỗi \emph{họ} tấn công là một ý tưởng tấn công trong một nhiệm vụ cụ thể
+(Mục~\ref{sec:protocol}) và có hai nhánh lành tính với cùng nhiệm vụ và môi trường. Nhánh \emph{benign\_plain} thay đoạn chèn bằng một ghi chú vô hại có cùng độ dài và dùng để đo tiện ích. Nhánh
 \emph{benign\_auth} giữ một yêu cầu giống mục tiêu tấn công nhưng được người dùng cho phép rõ ràng. Chặn ở nhánh này
 là \emph{chặn nhầm}. Mỗi họ có năm biến thể áp dụng cho cả $u$ lẫn đoạn chèn: tiếng Việt chuẩn, diễn đạt lại, trộn
 Việt và Anh, không dấu, và tiếng Anh. Định danh, địa chỉ và giá trị mật giống hệt nhau giữa các biến thể, nên mọi

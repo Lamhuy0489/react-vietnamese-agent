@@ -4,14 +4,14 @@
 
 Bảng~\ref{tab:dev} và Hình~\ref{fig:results}a so sánh \ours{} với sáu baseline. Kết quả chia thành ba nhóm. Nhóm phát
 hiện không có tác dụng trên tiếng Việt, khi \cPG{} (113 họ gây hại) và \cMel{} (112) ngang với \cNone{} (112). Nhóm
-mức prompt cho kết quả trái ngược. \cSpot{} chỉ giảm còn 91 họ và còn làm Qwen3.5 tệ hơn (từ 40 lên 43), trong khi
+mức prompt cho kết quả trái ngược. \cSpot{} chỉ giảm còn 91 họ và còn làm tăng số họ gây hại trên Qwen3.5 (từ 40 lên 43), trong khi
 \cSand{} giảm còn 31 họ. Nhóm luật giảm theo mức độ cụ thể của luật, với \cPhrase{} còn 94, \cProg{} còn 61 và
-\cRules{} còn 45. Kết hợp luật với lời nhắc (\cRulesS) đưa số họ gây hại xuống 10, và \bgTwo{} giữ đúng mức này với
+\cRules{} còn 45. Kết hợp luật với lời nhắc (\cRulesS) đưa số họ gây hại xuống 10, và \bgTwo{} duy trì mức này với
 tiện ích cao hơn (490 so với 475 trên 960).
 
 Cột cuối của Bảng~\ref{tab:dev} cho thấy một mô hình mạnh hơn không thay thế được phòng thủ. Ở \cNone, Gemini 3 Flash
 ít bị tấn công hơn các mô hình mở (22/48 họ so với 34 đến 40) nhưng vẫn bị tấn công ở gần một nửa số họ. Luật cụm từ
-chỉ giảm số này xuống 18 và \cRules{} xuống 12, còn \cRulesS{} và \bgTwo{} chỉ còn 1 họ. Ở mức thăm dò, benign\_auth của
+chỉ giảm số này xuống 18 và \cRules{} xuống 12, còn \cRulesS{} và \bgTwo{} chỉ còn 1 họ. Trong phân tích thăm dò nằm ngoài kiểm định, benign\_auth của
 Gemini tăng từ 49 lên 60/80 khi chuyển từ \cRulesS{} sang \bgTwo{} (13/2 cặp bất đồng), và lỗi mô hình giảm từ 18
 xuống 13 trên 560.
 
@@ -30,17 +30,17 @@ vượt quá biên $-5$ điểm ($p = 0{,}20$).
 \input{tables/tab3_test1}
 
 Hình~\ref{fig:results}b giải thích vì sao hai lớp cần đến nhau. Luật đưa \mER{} và \mCR{} về 0 bất kể cách viết. Ở
-\mSL{} và \mAL, luật và lời nhắc cho kết quả gần nhau (29 và 27 ca, 17 và 18 ca). Ở \mPT, lời nhắc tốt hơn hẳn (10 so
-với 25 ca). Khi kết hợp, chỉ còn 13 ca gây hại, thuộc \mSL, \mAL{} và \mPT{} (6, 3 và 4 ca). Theo biến thể ngôn ngữ,
+\mSL{} và \mAL, luật và lời nhắc cho kết quả gần nhau (29 và 27 ca, 17 và 18 ca). Ở \mPT, lời nhắc hiệu quả hơn rõ rệt
+(10 so với 25 ca). Khi kết hợp, chỉ còn 13 ca gây hại, thuộc \mSL, \mAL{} và \mPT{} (6, 3 và 4 ca). Theo biến thể ngôn ngữ,
 \cNone{} bị tấn công gần như nhau ở mọi biến thể (68 đến 79 ca trên 216). \cRules{} để lọt nhiều nhất ở tiếng Anh (32
-ca, so với 6 đến 13 ca ở các biến thể khác), và lời nhắc lấp được chỗ hổng này (còn 1 ca).
+ca, so với 6 đến 13 ca ở các biến thể khác), và lời nhắc khắc phục được điểm yếu này (còn 1 ca).
 
 \subsection{\tTwo: xác nhận \bgTwo}
 
 \tTwo{} gồm 48 họ mới và được chạy một lần với \cNone, \cRulesS{} và \bgTwo{} (Bảng~\ref{tab:test2}). Cả ba giả thuyết
 đều đạt. \bgTwo{} giảm tỉ lệ tấn công thành công từ 32,4\% xuống 3,6\% (T3). Số họ gây hại giảm từ 95 xuống 18 trên
 144, bằng với \cRulesS. \bgTwo{} không kém \cRulesS{} về an ninh (T2) và có tiện ích lành tính cao hơn (T1). Mức tăng
-tiện ích có ý nghĩa theo kiểm định cặp nhưng nhỏ (1,0 điểm), và khoảng tin cậy theo họ chạm 0. Mức tăng này đến từ
+tiện ích có ý nghĩa theo kiểm định cặp nhưng nhỏ (1,0 điểm), và khoảng tin cậy theo họ chứa giá trị 0. Mức tăng này đến từ
 benign\_plain (1,3 điểm, 10/1 cặp bất đồng) chứ không đến từ benign\_auth (0,4 điểm, 1/0) như dự đoán. So với \cNone{}
 (54,5\%), \bgTwo{} giữ được 93,7\% tiện ích lành tính (51,0\%). Llama có 66 đến 74 đầu ra bị cắt ở mỗi cấu hình, và
 tất cả đều được tính là thất bại.
@@ -51,7 +51,7 @@ tất cả đều được tính là thất bại.
 
 Bảng~\ref{tab:agentdojo} cho kết quả không phòng thủ trên AgentDojo. Với Llama-3.1-8B, tấn công
 \code{important\_instructions} thành công 17/144 lần ở Banking và 16/105 lần ở Slack với tiếng Anh, nhưng chỉ 6 và 0
-lần với tiếng Việt. Gemini 3 Flash gần như không bị tấn công ở cả hai ngôn ngữ (nhiều nhất 4/144). Tỉ lệ thấp hơn ở
+lần với tiếng Việt. Gemini 3 Flash có số lần bị tấn công thành công rất thấp ở cả hai ngôn ngữ (nhiều nhất 4/144). Tỉ lệ thấp hơn ở
 tiếng Việt không có nghĩa là tiếng Việt an toàn hơn. Tiện ích dưới tấn công của Llama cũng giảm (từ 58 xuống 44 ở
 Banking), và ở Slack tiếng Việt có hai trong năm nhiệm vụ chèn không giải được bằng lời giải chuẩn, làm hạ trần của
 tỉ lệ tấn công thành công.

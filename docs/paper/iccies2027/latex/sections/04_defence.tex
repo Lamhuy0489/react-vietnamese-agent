@@ -4,7 +4,8 @@
 broker thực thi nó. Thứ hai, người dùng là chủ thể đáng tin duy nhất. Quyền được suy ra từ nguyên văn $u$, không từ
 nội dung công cụ và không từ việc một mô hình diễn giải ý định. Thứ ba, việc chặn không được làm dừng nhiệm vụ. Hành
 động bị từ chối được báo lại để tác tử hoàn thành phần việc hợp lệ. \ours{} có hai phiên bản, mỗi phiên bản được xác
-nhận trên một tập niêm phong riêng (Bảng~\ref{tab:versions}). Hình~\ref{fig:pipeline} mô tả phiên bản \bgTwo.
+nhận trên một tập niêm phong riêng (Bảng~\ref{tab:versions}). Hình~\ref{fig:pipeline} mô tả phiên bản \bgTwo. Tập phát triển Dev và hai tập
+kiểm thử niêm phong \tOne, \tTwo{} được mô tả ở Mục~\ref{sec:protocol}.
 
 \begin{figure}[!htbp]
 \centering
@@ -28,9 +29,9 @@ viết $x \in \Sub(z)$ khi $\norm(x)$ là một chuỗi con của $\norm(z)$.
 \dest(a) \in \Sub(u) .
 \end{equation}
 Luật này không phân tích ý định và không dùng danh sách cụm từ. Vì vậy, một đoạn chèn \mCR{} tránh động từ ``gửi'' hay
-tách nhỏ địa chỉ vẫn thất bại vì cùng lý do với \mER{}: đích mà nó cần không có trong $u$. Cái giá phải trả là người
-dùng nhắc tới đích một cách gián tiếp (``địa chỉ trong hợp đồng'') sẽ không được phục vụ. Ngoài ra, một đích chỉ xuất
-hiện trong câu cấm vẫn được tính là đã cấp quyền. Đây đúng là trường hợp mà \mUS{} thăm dò.
+tách nhỏ địa chỉ vẫn thất bại vì cùng lý do với \mER{}: đích mà nó cần không có trong $u$. Hạn chế của cách so khớp
+này là yêu cầu nhắc tới đích một cách gián tiếp (``địa chỉ trong hợp đồng'') sẽ không được đáp ứng. Ngoài ra, một đích chỉ xuất
+hiện trong câu cấm vẫn được tính là đã cấp quyền. Cơ chế \mUS{} được thiết kế để đánh giá đúng trường hợp này.
 
 \paragraph{Luật \rFlow{} và \rRedact{} (luồng giá trị mật).} Với một lời gọi sink $a$, broker từ chối nếu
 \begin{equation}\label{eq:flow}
@@ -46,12 +47,12 @@ biến đổi, chẳng hạn được định dạng lại hoặc tách ra.
 dùng \emph{đã} nêu bằng giá trị không mật, tức cơ chế \mPT. Một bộ phát hiện cụm từ gắn cờ các quan sát chứa văn bản
 giống chỉ thị. Gọi $F$ là tập quan sát bị gắn cờ. Trong \cRulesS, luật \rSigAll{} chặn mọi lời gọi sink sau khi
 $F \neq \emptyset$, trừ khi một văn phạm chặt trên $u$ cho phép lời gọi đó. Trên \tOne, đây là nguồn chặn nhầm lớn
-nhất (22 quỹ đạo benign\_plain). Tuy vậy, bỏ hẳn luật này trên Dev làm số họ gây hại tăng thêm 2 đến 4 ở mỗi mô hình
+nhất (22 quỹ đạo benign\_plain). Tuy vậy, loại bỏ luật này trên Dev làm số họ gây hại tăng thêm 2 đến 4 ở mỗi mô hình
 nền. \bgTwo{} giữ bộ phát hiện nhưng thu hẹp hệ quả của nó. Broker chỉ từ chối $a$ nếu
 \begin{equation}\label{eq:signal}
 \exists\, o \in F:\; \dest(a) \in \Sub(o) ,
 \end{equation}
-tức là khi nội dung giống chỉ thị nhắc tới đúng đích mà tác tử sắp dùng. Phát lại offline trên các quỹ đạo Dev có sẵn
+tức là khi nội dung giống chỉ thị nhắc tới đúng đích mà tác tử sắp dùng. Phát lại ngoại tuyến trên các quỹ đạo Dev có sẵn
 cho thấy \rSig{} chặn đủ 11/11 ca gây hại mà \rSigAll{} đã chặn, và không chặn ca nào trong 14 lời gọi lành tính bị
 \rSigAll{} chặn nhầm.
 

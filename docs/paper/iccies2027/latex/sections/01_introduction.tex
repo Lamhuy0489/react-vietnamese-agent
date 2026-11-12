@@ -1,7 +1,7 @@
 \section{Giới thiệu}\label{sec:intro}
 
 Trong mô hình ReAct~\cite{yao2023react}, tác tử LLM xen kẽ bước suy luận với lời gọi công cụ như tìm tài liệu, truy
-vấn cơ sở dữ liệu, gửi e-mail hay gọi webhook. Nội dung do công cụ trả về đi thẳng vào ngữ cảnh của mô hình. Trong
+vấn cơ sở dữ liệu, gửi e-mail hay gọi webhook. Nội dung do công cụ trả về được đưa trực tiếp vào ngữ cảnh của mô hình. Trong
 tấn công chèn lệnh gián tiếp (IPI)~\cite{greshake2023indirect}, kẻ tấn công không tương tác trực tiếp với mô hình. Họ
 cài chỉ thị vào nội dung của bên thứ ba mà tác tử sẽ đọc. Nếu mô hình làm theo chỉ thị đó, tác tử có thể gửi dữ liệu
 tới một đích lạ, làm lộ giá trị mật hoặc sửa dữ liệu mà người dùng yêu cầu gửi đi.
@@ -10,9 +10,10 @@ Các benchmark cho tác tử đã công bố như BIPIA~\cite{yi2025bipia}, Inje
 AgentDojo~\cite{debenedetti2024agentdojo} gần như chỉ dùng tiếng Anh. Tiếng Việt có những đặc điểm có thể ảnh hưởng
 tới cả tấn công lẫn phòng thủ. Văn bản thường bị bỏ dấu, thuật ngữ tiếng Anh hay được trộn vào câu, và các bộ phân
 loại chèn lệnh chủ yếu được huấn luyện trên tiếng Anh. Bên cạnh đó, phòng thủ ở mức prompt như
-spotlighting~\cite{hines2024spotlighting} phụ thuộc vào việc mô hình có tuân theo hay không. Bộ phân loại thì tốn thêm
-chi phí suy luận và chuyển giao kém giữa các ngôn ngữ. Những hạn chế này dẫn tới hướng cưỡng chế không trông vào sự
-tuân thủ của mô hình, tức là đặt luật tại phía host, giữa mô hình và công cụ.
+spotlighting~\cite{hines2024spotlighting} phụ thuộc vào việc mô hình có tuân theo hay không. Bộ phân loại làm tăng chi
+phí suy luận, và khả năng chuyển giao của chúng sang tiếng Việt chưa được kiểm chứng trong bối cảnh tác tử. Những hạn
+chế này dẫn tới hướng cưỡng chế không phụ thuộc vào sự tuân thủ của mô hình, tức là đặt luật tại phía host, giữa mô
+hình và công cụ.
 
 Bài báo có bốn đóng góp.
 \begin{enumerate}
@@ -21,13 +22,13 @@ Bài báo có bốn đóng góp.
   (Mục~\ref{sec:threat}).
 \item \textbf{Cơ chế phòng thủ \ours.} \ours{} đặt các luật về đích gửi và luồng giá trị mật tại Tool Broker, kết hợp
   với lời nhắc và phản hồi từ chối, không cần tinh chỉnh mô hình. Chúng tôi chỉ ra rằng luật tất định và lời nhắc bù
-  cho nhau theo từng cơ chế tấn công, nên phiên bản kết hợp \cRulesS{} tốt hơn hẳn từng lớp riêng lẻ. Phiên bản
+  cho nhau theo từng cơ chế tấn công, nên phiên bản kết hợp \cRulesS{} vượt trội so với từng lớp riêng lẻ. Phiên bản
   \bgTwo{} thu hẹp luật tín hiệu chèn lệnh theo đích để giảm chặn nhầm mà vẫn giữ mức an ninh (Mục~\ref{sec:defence}).
 \item \textbf{VN-AgentInject v3 và AgentDojo-VI.} Hai bộ dữ liệu được đánh giá theo giao thức niêm phong. Giả thuyết
   được đăng ký trước, cấu hình được ghim bằng hash và mỗi tập kiểm thử chỉ chạy một lần (Mục~\ref{sec:protocol}).
   \todo{owner quyết: công bố dữ liệu hay cung cấp khi có yêu cầu}
 \item \textbf{Kết quả thực nghiệm.} Trên ba mô hình nền mở trọng số, \cRulesS{} giảm tỉ lệ tấn công thành công từ
-  32,9\% xuống 1,2\% trên \tOne. \bgTwo{} giảm tỉ lệ này từ 32,4\% xuống 3,6\% trên \tTwo, đổi lại 3,4 điểm tiện ích.
+  32,9\% xuống 1,2\% trên \tOne. \bgTwo{} giảm tỉ lệ này từ 32,4\% xuống 3,6\% trên \tTwo, với mức giảm tiện ích 3,4 điểm phần trăm.
   Kết quả được đối chiếu với sáu baseline, với Gemini 3 Flash và với AgentDojo bằng tiếng Anh và tiếng Việt
   (Mục~\ref{sec:results} và~\ref{sec:discussion}).
 \end{enumerate}

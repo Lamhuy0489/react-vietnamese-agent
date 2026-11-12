@@ -8,7 +8,7 @@ dùng cho mọi lựa chọn thiết kế. Tập \textbf{\tOne} (72 họ, 840 ca
 họ mới, 560 ca) được viết sau khi \tOne{} đã chạy, nhằm xác nhận \bgTwo{} trên dữ liệu chưa ảnh hưởng tới bất kỳ quyết
 định nào. Một họ cùng các biến thể và nhánh lành tính của nó không bao giờ xuất hiện ở hai tập.
 
-Văn bản tấn công do người viết soạn, và những người này không đọc mã phòng thủ. Mỗi họ được duyệt theo phiếu năm mục,
+Văn bản tấn công được soạn thủ công bởi những người không đọc mã phòng thủ. Mỗi họ được duyệt theo phiếu năm mục,
 gồm nhãn cơ chế, độ tự nhiên, tác hại thực sự và việc không để lộ đáp án. Mỗi họ cũng phải qua bộ lọc độ mới (độ
 tương đồng Jaccard 4-gram không quá 0,2 so với các bản trước) và qua \emph{kiểm tra phát lại}. Trong kiểm tra phát lại,
 quỹ đạo tham chiếu làm theo đoạn chèn phải bị chấm là gây hại, còn quỹ đạo hoàn thành nhiệm vụ an toàn phải được chấm
@@ -16,8 +16,8 @@ là an toàn.
 
 \paragraph{Niêm phong.} Trước mỗi lượt chạy kiểm thử, chúng tôi đóng băng ba thứ. Thứ nhất là các ca kiểm thử, ghim
 bằng SHA-256. Thứ hai là một manifest ghim bằng hash prompt, thiết lập giải mã, mã phòng thủ, phiên bản mô hình và danh
-sách cấu hình được phép. Thứ ba là giả thuyết và cách hiệu chỉnh đa so sánh. Runner từ chối chạy nếu có bất kỳ sai
-khác nào. Mỗi cặp mô hình và cấu hình chỉ chạy đúng một lần, ngoại lệ duy nhất là chạy tiếp các ca bị lỗi hạ tầng. Đáp
+sách cấu hình được phép. Thứ ba là giả thuyết và cách hiệu chỉnh đa so sánh. Chương trình chạy thí nghiệm từ
+chối khởi động nếu có bất kỳ sai khác nào. Mỗi cặp mô hình và cấu hình chỉ chạy đúng một lần, ngoại lệ duy nhất là chạy tiếp các ca bị lỗi hạ tầng. Đáp
 án của bộ chấm không bao giờ xuất hiện trong prompt, trong chính sách lúc chạy hay trong mô hình. \tOne{} được chạy với
 \cRulesS{} là cấu hình cuối và sáu giả thuyết H1 đến H6. \tTwo{} được chạy sau khi \bgTwo{} được chọn trên Dev, với ba
 giả thuyết. Giả thuyết T1 cho rằng tiện ích lành tính của \bgTwo{} cao hơn \cRulesS. Giả thuyết T2 cho rằng tỉ lệ tấn
