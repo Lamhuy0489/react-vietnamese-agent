@@ -450,3 +450,12 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Owner chọn tiêu đề "Beyond Model Compliance: ...". Sửa hai lỗi số so với dàn ý cũ (thứ tự H4/H5; lời nhắc không mạnh hơn
   luật ở SL/AL). Không biên dịch được trên máy (tải tectonic bị chặn).
 
+## 2026-11-12 tối — Bài báo: BrokerGuard v1/v2, bố cục, văn phong
+
+- Owner biên dịch trên Overleaf (12 rồi 14 trang); Claude xem PDF bằng PyMuPDF. Sửa bảng tràn lề (adjustbox, rút gọn
+  cột giả thuyết), khoảng trắng (bỏ placeins, gộp bảng Test-I/Test-II, 7 bảng), Hình 2 chuyển sang pgfplots.
+- Owner: D2+P2 và D3DEST đều là đóng góp → BrokerGuard BG-v1/BG-v2; D2 có cả lớp tín hiệu rộng A1 (R-Signal∀), đã sửa mô tả.
+- Gemini thành cột cuối bảng baseline Dev; đề xuất (chưa quyết) chạy thêm Sandwich trên Gemini, không chạy PromptGuard/MELON.
+- Viết lại bản tiếng Việt: câu ngắn, bỏ chấm phẩy và gạch dài; ký hiệu Sub(); link xanh bấm được; model card Prompt Guard 2
+  truy cập 12/11. Owner dặn: không render hình/PDF trên máy.
+

@@ -1,25 +1,30 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-12. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-12 20:30. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-PHẦN CỨNG (bắt buộc): máy hỏng pin, chạy thẳng từ sạc 85 W. Không mở Zalo/app Electron/app nặng. Mỗi lúc một tiến trình nặng,
-nice -n 10. Không kill hay khởi động lại OmniRoute. Lệnh dài: blocking hoặc run_in_background, không poll.
+PHẦN CỨNG (bắt buộc): máy hỏng pin, chạy thẳng từ sạc 85 W. Không mở Zalo/app Electron/app nặng. Mỗi lúc một tiến trình
+nặng, nice -n 10. Không kill hay khởi động lại OmniRoute. KHÔNG render hình hay biên dịch PDF trên máy: owner biên dịch
+trên Overleaf; hình mới vẽ bằng TikZ/pgfplots trong file .tex.
 
-Trạng thái (12/11): thí nghiệm đã đóng. Bài báo ICCIES 2027 (hạn nộp 15/11/2026, Springer LNCS 12–15 trang, CMT).
-Project LaTeX: docs/paper/iccies2027/latex/ (đọc docs/paper/iccies2027/README.md trước: cấu trúc, bảng đổi tên, checklist LNCS).
-- sections/ là bản TIẾNG VIỆT để owner đọc; ICCIES cấm văn bản do AI sinh nên bản nộp tiếng Anh do owner tự viết.
-  Claude làm: số liệu (chỉ từ facts.md), bảng, hình (images/src/*.py, --lang en ra images/en/), trích dẫn, định dạng, nhận xét.
-- Tiêu đề owner chọn: "Beyond Model Compliance: A Layered Defence Against Indirect Prompt Injection in Vietnamese Tool-Using Agents".
-- Tên trong bài là macro ở main.tex: BrokerGuard (=D3DEST), Rules (=D2), Rules+Sandwich (=D2+P2), NoDef (=A0), ER/CR/SL/AL/PT/US
-  (=M1–M6), Test-I/Test-II (=Test v3/Test-3).
+Trạng thái (12/11 20:30): thí nghiệm đã đóng. Bài báo ICCIES 2027 (hạn 15/11/2026, Springer LNCS 12–15 trang, CMT).
+Đọc docs/paper/iccies2027/README.md trước (cấu trúc, bảng đổi tên, checklist LNCS). Project: docs/paper/iccies2027/latex/.
+- sections/ là bản TIẾNG VIỆT để owner đọc; bản nộp tiếng Anh owner tự viết (ICCIES cấm văn bản AI). Claude làm số liệu
+  (chỉ từ facts.md), bảng, hình, trích dẫn, định dạng, nhận xét bản owner viết.
+- Tiêu đề: "Beyond Model Compliance: A Layered Defence Against Indirect Prompt Injection in Vietnamese Tool-Using Agents".
+- Tên (macro trong main.tex): BrokerGuard; BG-Rules=D2, BG-v1=D2+P2 (Test-I), BG-v2=D3DEST (Test-II); NoDef=A0;
+  ER/CR/SL/AL/PT/US = M1–M6; Test-I/Test-II = Test v3/Test-3. Cả BG-v1 và BG-v2 là đóng góp; không viết "đầu tiên".
+- Văn phong owner muốn: câu ngắn, không chấm phẩy trong lời văn, không gạch dài; link trích dẫn xanh bấm được.
+- Xem PDF owner tải: đặt ở root repo, xuất ảnh trang bằng PyMuPDF (fitz) dpi thấp; Read PDF không chạy (thiếu poppler).
 Việc của phiên này:
-1. Hỏi owner số trang trên Overleaf; nếu > 15: bỏ Bảng 2 (ablation) hoặc gộp Bảng 4 với 5.
-2. Owner quyết: tên phương pháp, công bố dữ liệu, tác giả/đơn vị. Đối chiếu Holm 1979 và model card Prompt Guard 2 (refs.bib UNVERIFIED).
-3. Khi owner viết bản tiếng Anh: chuyển babel sang english, dùng hình images/en/, soát số với facts.md, nhận xét văn phong.
+1. Hỏi owner kết quả biên dịch mới (số trang, bảng tràn, chỗ trắng); xem PDF nếu owner đặt vào repo.
+2. Owner quyết: chạy Gemini cho 5 baseline Dev còn thiếu không (đề xuất chỉ Sandwich, cần owner bật OmniRoute + proxy 8445);
+   công bố dữ liệu; tác giả/đơn vị. Đối chiếu Holm 1979 (refs.bib).
+3. Khi owner viết bản tiếng Anh: đổi babel sang english, bỏ T5, dùng images/en/fig1_pipeline.pdf, dịch nhãn Hình 2 trong
+   fig2_results.tex, soát số với facts.md, tóm tắt ≤ 250 từ, nhận xét văn phong.
 4. Sau bài báo: chương kết quả Study 2 của luận văn (dàn ý cuối docs/research/study2_thesis_tables.md).
 
 Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng, số đếm và biên soạn.

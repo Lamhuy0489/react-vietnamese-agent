@@ -5,12 +5,18 @@ Cập nhật: 2026-11-10. Lúc 12:20. Lộ trình [v2](../docs/project/roadmap_v
 
 ## Đang làm
 
-**2026-11-12: Bài báo ICCIES: `docs/paper/iccies2027/latex/` (Overleaf, LLNCS) có bản tiếng Việt đủ 8 mục để owner đọc; owner tự
-viết bản tiếng Anh nộp. Rút gọn từ 19 trang: 6 bảng, Hình 1 pipeline, Hình 2 (đánh đổi Dev + theo cơ chế Test-I), 5 công thức.
-Tiêu đề: "Beyond Model Compliance: A Layered Defence Against Indirect Prompt Injection in Vietnamese Tool-Using Agents".
-Đổi tên bằng macro ở `main.tex` (bảng ánh xạ trong README bài báo). Chưa biên dịch trên máy (tải tectonic bị chặn).**
-- Bước tiếp: owner đếm trang trên Overleaf; nếu > 15 thì bỏ Bảng 2 hoặc gộp Bảng 4–5. Owner quyết: tên phương pháp (đang
-  BrokerGuard), công bố dữ liệu, tác giả/đơn vị. Đối chiếu Holm 1979 và model card Prompt Guard 2. Hình tiếng Anh ở `images/en/`.
+**2026-11-12 20:30: Bài báo ICCIES: `docs/paper/iccies2027/latex/` (Overleaf, LLNCS). `sections/` là bản TIẾNG VIỆT để owner
+đọc; owner tự viết bản tiếng Anh nộp (ICCIES cấm văn bản AI). Bản owner biên dịch lúc 19:53: 14 trang (giới hạn 15).**
+- Đã làm 12/11: tiêu đề "Beyond Model Compliance: ..."; khung BrokerGuard hai phiên bản (BG-v1 = D2+P2 xác nhận Test-I,
+  BG-v2 = D3DEST xác nhận Test-II, BG-Rules = D2); M1–M6 → ER/CR/SL/AL/PT/US; tên là macro trong `main.tex`.
+- 7 bảng + Hình 1 (PDF, `images/src/fig1_pipeline.py`) + Hình 2 (pgfplots `images/fig2_results.tex`); Gemini là cột
+  cuối bảng baseline Dev (không gộp, không kiểm định). Ký hiệu chuỗi con: `dest(a) ∈ Sub(u)`.
+- Văn phong: câu ngắn, không chấm phẩy trong lời văn, không gạch dài; link xanh bấm được (hyperref cuối preamble).
+- refs.bib 23 mục, Crossref đã kiểm; Prompt Guard 2 model card truy cập 12/11 (HTTP 200); còn Holm 1979 chưa đối chiếu.
+- Bước tiếp: owner biên dịch lại, kiểm trang/bảng (đặt PDF vào root repo để Claude xem bằng PyMuPDF, không dùng Read
+  PDF vì thiếu poppler). Owner quyết: chạy Gemini cho baseline Dev thiếu (đề xuất chỉ Sandwich, OmniRoute đang tắt) hay
+  không; công bố dữ liệu; tác giả/đơn vị. Sau đó owner viết bản tiếng Anh.
+- KHÔNG render hình/PDF trên máy (owner sợ sập nguồn); hình mới vẽ bằng TikZ/pgfplots.
 
 **2026-11-10 23:30: ICCIES cấm bài chứa văn bản do AI sinh (trang how-to-submit). Bản thảo `sections/` do Claude soạn chỉ dùng làm
 dàn ý; owner tự viết lời văn nộp. Chờ owner quyết cách làm. 20 PDF tham khảo + link: `docs/paper/iccies2027/refs/README.md`.**

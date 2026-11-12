@@ -15,7 +15,6 @@
 \usepackage{multirow}
 \usepackage{amsmath,amssymb}
 \usepackage{xcolor}
-\usepackage[hidelinks]{hyperref}
 \usepackage{url}
 \usepackage{adjustbox}   % max width=\textwidth: chống bảng tràn lề
 \usepackage{pgfplots}    % Hình 2 vẽ bằng pgfplots (Overleaf tự vẽ)
@@ -70,6 +69,11 @@
 \newcommand{\dest}{\mathit{dest}}
 \newcommand{\pay}{\mathit{payload}}
 \newcommand{\norm}{\nu}
+
+% hyperref nạp cuối cùng: mọi trích dẫn [n], tham chiếu Bảng/Hình/Mục và DOI/URL đều xanh, bấm được
+\usepackage{hyperref}
+\definecolor{linkblue}{HTML}{1F4E9A}
+\hypersetup{colorlinks=true, linkcolor=linkblue, citecolor=linkblue, urlcolor=linkblue}
 
 \begin{document}
 
