@@ -47,17 +47,18 @@ số liệu và bảng (`facts.md`), kiểm tra tính đúng của nội dung, h
 
 ## Bảng đổi tên (log/luận văn → bài báo)
 
-Tên trong bài đặt bằng macro ở `latex/main.tex`; đổi một dòng là đổi cả bài.
+Tên trong bài đặt bằng macro ở `latex/main.tex`; đổi một dòng là đổi cả bài. Tên phương pháp chung: BrokerGuard.
+12/11 tối: không render hình hay PDF trên máy (owner biên dịch trên Overleaf); hình mới vẽ bằng TikZ.
 
 | Log, luận văn | Bài báo | | Log, luận văn | Bài báo |
 |---|---|---|---|---|
-| D3 (`D3DEST`) | BrokerGuard (owner có thể đổi) | | M1 | ER, chuyển hướng tường minh |
-| D2 | Rules | | M2 | CR, chuyển hướng che giấu |
-| D2+P2 | Rules+Sandwich | | M3 | SL, rò rỉ qua sink |
+| D3 (`D3DEST`) | **BG-v2** (BrokerGuard phiên bản 2, xác nhận Test-II) | | M1 | ER, chuyển hướng tường minh |
+| D2 | **BG-Rules** (R-Dest, R-Flow, R-Redact + R-Signal∀ + phản hồi) | | M2 | CR, chuyển hướng che giấu |
+| D2+P2 | **BG-v1** (BrokerGuard phiên bản 1, xác nhận Test-I) | | M3 | SL, rò rỉ qua sink |
 | A0 | NoDef | | M4 | AL, rò rỉ qua câu trả lời |
 | P1 / P2 | Spotlight / Sandwich | | M5 | PT, sửa tham số |
 | G1 / MEL / PRG / R1 | PromptGuard / MELON-det / Progent-pol / PhraseRules | | M6 | US, tác dụng phụ ngoài yêu cầu |
-| R2 / R3 / R4 / luật D | R-Dest / R-Flow / R-Redact / R-Signal | | Test v3 / Test-3 | Test-I / Test-II |
+| R2 / R3 / R4 / lớp A1 rộng / luật D | R-Dest / R-Flow / R-Redact / R-Signal∀ / R-Signal | | Test v3 / Test-3 | Test-I / Test-II |
 
 ## Bản rút gọn 12/11 (từ 19 trang)
 

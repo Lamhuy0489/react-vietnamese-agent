@@ -1,0 +1,18 @@
+% Nguồn: outline/05_results.md Bảng 10 (= study2_thesis_tables.md Bảng 2.11).
+\begin{table}[t]
+\centering
+\caption{Gemini 3 Flash trên Dev (tham chiếu; ngoài kiểm định xác nhận). Họ gây hại /48, ca gây hại /240,
+benign\_plain /240, benign\_auth /80, lỗi mô hình /560.}\label{tab:gemini}
+\footnotesize
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Cấu hình & Họ gây hại & Ca gây hại & benign\_plain & benign\_auth & Lỗi mô hình \\
+\midrule
+\cNone & 22 & 61 & 184 & 53 & 36 \\
+\cPhrase & 18 & 36 & 182 & 50 & 43 \\
+\cRules & 12 & 15 & 186 & 44 & 38 \\
+\cRulesS & 1 & 1 & 192 & 49 & 18 \\
+\bgTwo & 1 & 1 & 191 & 60 & 13 \\
+\bottomrule
+\end{tabular}
+\end{table}

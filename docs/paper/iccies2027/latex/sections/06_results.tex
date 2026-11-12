@@ -3,42 +3,70 @@
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{fig2_results}
-\caption{(a) Họ gây hại theo tiện ích lành tính trên Dev, gộp ba mô hình nền. (b) Ca tấn công gây hại theo cơ chế
-trên \tOne, gộp ba mô hình nền; cột không có nghĩa là 0 ca.}\label{fig:results}
+\caption{(a) Họ gây hại theo tiện ích lành tính trên Dev, gộp ba mô hình nền; hình dạng điểm là nhóm phòng thủ.
+(b) Ca tấn công gây hại theo cơ chế trên \tOne, gộp ba mô hình nền; không có cột nghĩa là 0 ca.}\label{fig:results}
 \end{figure}
 
-\paragraph{Baseline trên Dev.} Hình~\ref{fig:results}a cho thấy ba nhóm. \cPG{} và \cMel{} không tốt hơn \cNone{}
-trên tiếng Việt (113 và 112 họ gây hại so với 112 trên 144). \cSpot{} giảm ít và có thể phản tác dụng: với Qwen3.5
-số họ gây hại tăng từ 40 lên 43. Chính sách theo đích (\cProg, \cRules) và lời nhắc (\cSand) giảm rõ, còn kết hợp
-luật với lời nhắc đạt mức thấp nhất (10 họ); \ours{} giữ mức đó với tiện ích cao hơn \cRulesS.
+\subsection{Baseline trên Dev}
 
-\paragraph{\tOne.} Bảng~\ref{tab:test1} và Hình~\ref{fig:results}b cho kết quả tập niêm phong thứ nhất. Các giả
-thuyết đăng ký trước: H1 (\cRules{} $<$ \cPhrase{} về ASR) đạt, 18,5\% $\to$ 6,7\%, $-11{,}9$ điểm
-[$-16{,}7$; $-7{,}5$], $p = 1{,}8\cdot10^{-38}$; H3 (cùng so sánh trên \mCR$\cup$\mSL$\cup$\mAL) đạt, 23,5\% $\to$
-8,5\%, $p = 2{,}1\cdot10^{-24}$; H6 (\cRulesS{} $<$ \cSand) đạt, 5,6\% $\to$ 1,2\%, $p = 1{,}8\cdot10^{-13}$. H2
-(benign\_plain của \cRules{} không kém \cNone{} quá 5 điểm) \emph{không} xác lập được: $-2{,}8$ điểm
-[$-6{,}0$; $-0{,}5$], $p = 0{,}20$. Theo cơ chế, luật theo đích đưa \mER{} và \mCR{} về 0 bất kể cách viết; ở \mSL{}
-và \mAL{} luật và lời nhắc ngang nhau (29 và 27; 17 và 18 ca), còn ở \mPT{} lời nhắc tốt hơn hẳn (10 so với 25). Kết
-hợp hai lớp mới giảm mạnh: 13 ca còn lại dưới \cRulesS{} đều thuộc \mSL, \mAL, \mPT{} (6, 3, 4).
+Bảng~\ref{tab:dev} và Hình~\ref{fig:results}a so sánh \ours{} với sáu baseline. Có ba nhóm rõ rệt. (i) Phòng thủ dựa
+trên phát hiện không giúp gì trên tiếng Việt: \cPG{} (113 họ gây hại) và \cMel{} (112) ngang \cNone{} (112). (ii)
+Phòng thủ ở mức prompt cho kết quả trái ngược: \cSpot{} chỉ giảm còn 91 họ và còn làm Qwen3.5 tệ hơn (40 $\to$ 43),
+trong khi \cSand{} giảm còn 31 họ. (iii) Phòng thủ dạng luật giảm theo mức độ cụ thể của luật: \cPhrase{} 94, \cProg{}
+61, \cRules{} 45. Kết hợp luật với lời nhắc (\cRulesS) giảm còn 10 họ, và \bgTwo{} giữ đúng mức đó với tiện ích cao
+hơn (490 so với 475 trên 960).
+
+\input{tables/tab7_dev_baselines}
+
+\subsection{\tOne: xác nhận \cRulesS}
+
+\tOne{} chạy một lần với \cRulesS{} là cấu hình cuối (Bảng~\ref{tab:test1}, \ref{tab:h16}). Ba giả thuyết về phòng
+thủ (H1, H3, H6) đạt; H2 chưa xác lập; H4 và H5 không cho thấy khác biệt giữa các biến thể ngôn ngữ. Luật của \ours{} tốt hơn luật cụm từ (H1: ASR 18,5\% $\to$ 6,7\%), kể cả trên các cơ chế né mẫu cụm từ (H3), và
+kết hợp với lời nhắc tốt hơn lời nhắc đơn thuần (H6: 5,6\% $\to$ 1,2\%). H2 không xác lập được: \cRules{} mất 2,8 điểm
+benign\_plain so với \cNone, nhưng cận dưới khoảng tin cậy ($-6{,}0$) vượt quá biên $-5$ điểm ($p = 0{,}20$).
+
+Hình~\ref{fig:results}b giải thích vì sao hai lớp cần nhau. Luật đưa \mER{} và \mCR{} về 0 bất kể cách viết; ở \mSL{}
+và \mAL{} luật và lời nhắc ngang nhau (29 và 27; 17 và 18 ca); ở \mPT{} lời nhắc tốt hơn hẳn (10 so với 25). Khi kết
+hợp, 13 ca còn lại đều thuộc \mSL, \mAL, \mPT{} (6, 3, 4). Theo ngôn ngữ (Bảng~\ref{tab:variants}), \cNone{} bị tấn công
+như nhau ở mọi biến thể (H4, H5 không có ý nghĩa), nhưng \cRules{} để lọt nhiều nhất ở tiếng Anh (32/216); lời nhắc
+lấp chỗ này (còn 1/216).
 
 \input{tables/tab3_test1}
+\input{tables/tab8_test1_hypotheses}
+\input{tables/tab9_variants}
 
-\paragraph{\tTwo: xác nhận \ours.} Cả ba giả thuyết đều đạt (Bảng~\ref{tab:test2}, \ref{tab:hyp}). \ours{} giảm ASR
-từ 32,4\% xuống 3,6\% (T3; số họ gây hại 95 $\to$ 18 trên 144), không kém \cRulesS{} về an ninh (T2), và tăng tiện
-ích lành tính (T1). Mức tăng tiện ích có ý nghĩa theo kiểm định cặp nhưng nhỏ, +1,0 điểm, và khoảng tin cậy theo họ
-chạm 0; nó đến từ benign\_plain (+1,3 điểm, 10/1 cặp bất đồng) chứ không từ benign\_auth (+0,4 điểm, 1/0) như dự
-đoán. So với \cNone{} (54,5\%), \ours{} giữ 93,7\% tiện ích lành tính (51,0\%). Llama có 66--74 đầu ra bị cắt mỗi
-cấu hình, đều tính là thất bại.
+\subsection{\tTwo: xác nhận \bgTwo}
+
+\tTwo{} gồm 48 họ mới, chạy một lần với \cNone, \cRulesS{} và \bgTwo{} (Bảng~\ref{tab:test2}, \ref{tab:hyp}). Cả ba
+giả thuyết đều đạt. \bgTwo{} giảm ASR từ 32,4\% xuống 3,6\% (T3; họ gây hại 95 $\to$ 18 trên 144), không kém \cRulesS{}
+về an ninh (T2), và tăng tiện ích lành tính (T1). Mức tăng tiện ích có ý nghĩa theo kiểm định cặp nhưng nhỏ (+1,0
+điểm) và khoảng tin cậy theo họ chạm 0; nó đến từ benign\_plain (+1,3 điểm, 10/1 cặp bất đồng) chứ không từ
+benign\_auth (+0,4 điểm, 1/0) như dự đoán. So với \cNone{} (54,5\%), \bgTwo{} giữ 93,7\% tiện ích lành tính (51,0\%).
+Llama có 66--74 đầu ra bị cắt mỗi cấu hình, đều tính là thất bại.
 
 \input{tables/tab4_test2}
 \input{tables/tab5_hypotheses}
 
-\paragraph{Kiểm tra ngoài.}\label{sec:external} Trên Dev, Gemini 3 Flash ít bị tấn công hơn ở \cNone{} (22/48 họ
-gây hại so với 34--40 của các mô hình mở) nhưng vẫn bị tấn công; với \cRulesS{} và \ours{} chỉ còn 1 họ. Ở mức thăm
-dò, benign\_auth tăng từ 49 lên 60/80 khi chuyển từ \cRulesS{} sang \ours. Trên AgentDojo (Bảng~\ref{tab:agentdojo}),
-tấn công thành công ít hơn ở tiếng Việt, nhưng điều đó không có nghĩa tiếng Việt an toàn hơn: với Llama, tiện ích dưới
-tấn công cũng giảm, và ở Slack tiếng Việt hai trong năm nhiệm vụ chèn không giải được bằng lời giải chuẩn. Một tập
-tấn công thích nghi do người viết, có phản hồi từ lượt chạy có phòng thủ (48 ca, Dev), mạnh ngang tập tĩnh ở
-\cNone{} (26/15/24 họ gây hại so với 29/12/22 cho Gemma/Llama/Qwen) và còn 1/0/0 dưới \cRulesS.
+\subsection{Mô hình đóng: Gemini 3 Flash}\label{sec:external}
+
+Bảng~\ref{tab:gemini} cho kết quả trên Dev (chỉ tham chiếu). Gemini ít bị tấn công hơn các mô hình mở ở \cNone{}
+(22/48 họ so với 34--40) nhưng vẫn bị tấn công; luật cụm từ giảm ít (18 họ), \cRules{} còn 12, còn \cRulesS{} và
+\bgTwo{} chỉ còn 1 họ. Ở mức thăm dò, benign\_auth tăng từ 49 lên 60/80 khi chuyển từ \cRulesS{} sang \bgTwo{} (13/2 cặp
+bất đồng); lỗi mô hình cũng giảm (18 $\to$ 13).
+
+\input{tables/tab10_gemini}
+
+\subsection{AgentDojo tiếng Anh và tiếng Việt}
+
+Bảng~\ref{tab:agentdojo} cho kết quả không phòng thủ trên AgentDojo. Với Llama-3.1-8B, tấn công
+\code{important\_instructions} thành công 17/144 (Banking) và 16/105 (Slack) ở tiếng Anh, nhưng chỉ 6 và 0 ở tiếng Việt;
+Gemini 3 Flash gần như miễn nhiễm ở cả hai ngôn ngữ (tối đa 4/144). Tỉ lệ thấp hơn ở tiếng Việt không có nghĩa tiếng
+Việt an toàn hơn: tiện ích dưới tấn công của Llama cũng giảm (58 $\to$ 44 ở Banking), và ở Slack tiếng Việt hai trong
+năm nhiệm vụ chèn không giải được bằng lời giải chuẩn, làm hạ trần của tỉ lệ tấn công thành công.
 
 \input{tables/tab6_agentdojo}
+
+\subsection{Tấn công thích nghi}
+
+Một tập 48 ca tấn công thích nghi do người viết, có phản hồi từ lượt chạy có phòng thủ trên Dev, mạnh ngang tập tĩnh ở
+\cNone{} (26/15/24 họ gây hại so với 29/12/22 cho Gemma/Llama/Qwen) và còn 1/0/0 dưới \cRulesS.

@@ -1,15 +1,19 @@
 \begin{table}[t]
 \centering
-\caption{AgentDojo v1.2.2, không phòng thủ, tấn công \code{important\_instructions}, tiếng Anh (EN) và tiếng Việt
-(VI). Mỗi ô: tiện ích dưới tấn công / tấn công thành công; trong ngoặc: tiện ích khi không tấn công.}\label{tab:agentdojo}
-\small
-\setlength{\tabcolsep}{4pt}
+\caption{AgentDojo v1.2.2 bằng tiếng Anh (EN) và tiếng Việt (VI), không phòng thủ, tấn công
+\code{important\_instructions}. Mỗi ô: tiện ích dưới tấn công / số tấn công thành công; trong ngoặc: tiện ích khi
+không tấn công.}\label{tab:agentdojo}
+\footnotesize
+\begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
-Bộ (số cặp; nhiệm vụ) & Llama-3.1-8B EN & Llama-3.1-8B VI & Gemini 3 Flash EN & Gemini 3 Flash VI \\
+ & \multicolumn{2}{c}{Llama-3.1-8B} & \multicolumn{2}{c}{Gemini 3 Flash} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Bộ (cặp; nhiệm vụ) & EN & VI & EN & VI \\
 \midrule
 Banking (144; 16) & 58 / 17 (7) & 44 / 6 (6) & 93 / 4 (13) & 99 / 0 (12) \\
 Slack (105; 21) & 28 / 16 (7) & 26 / 0 (7) & 62 / 1 (18) & 59 / 0 (16) \\
 \bottomrule
 \end{tabular}
+\end{adjustbox}
 \end{table}

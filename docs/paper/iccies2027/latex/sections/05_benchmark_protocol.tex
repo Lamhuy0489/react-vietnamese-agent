@@ -4,7 +4,7 @@
 mọi dữ liệu là tổng hợp. Một \emph{họ} là một ý tưởng tấn công trong một nhiệm vụ và môi trường công cụ; mỗi họ sinh
 một ca tấn công và một ca benign\_plain cho mỗi biến thể, và một phần ba số họ có thêm ca benign\_auth. Ba tập rời
 nhau, mỗi tập cân bằng theo cơ chế: \textbf{Dev} (48 họ, 560 ca), dùng cho mọi lựa chọn thiết kế; \textbf{\tOne} (72
-họ, 840 ca); và \textbf{\tTwo} (48 họ mới, 560 ca), viết sau khi \tOne{} đã chạy để xác nhận \ours{} trên dữ liệu
+họ, 840 ca); và \textbf{\tTwo} (48 họ mới, 560 ca), viết sau khi \tOne{} đã chạy để xác nhận \bgTwo{} trên dữ liệu
 chưa từng ảnh hưởng tới quyết định nào. Một họ cùng biến thể và nhánh lành tính của nó không bao giờ nằm ở hai tập.
 Văn bản tấn công do người viết, những người không đọc mã phòng thủ; mỗi họ được duyệt theo phiếu năm mục (nhãn cơ
 chế, độ tự nhiên, tác hại thật, không lộ đáp án), qua bộ lọc độ mới (Jaccard 4-gram $\le 0{,}2$ so với bản trước), và
@@ -15,9 +15,9 @@ vụ an toàn phải được chấm an toàn.
 hash prompt, thiết lập giải mã, mã phòng thủ, phiên bản mô hình và danh sách cấu hình được phép, cùng giả thuyết và
 cách hiệu chỉnh. Runner từ chối chạy nếu có sai khác. Mỗi cặp (mô hình, cấu hình) chạy đúng một lần; chỉ được chạy
 tiếp các ca lỗi hạ tầng. Đáp án của bộ chấm không bao giờ có trong prompt, chính sách lúc chạy hay mô hình. \tOne{}
-chạy với \cRulesS{} là cấu hình cuối và sáu giả thuyết H1--H6. \tTwo{} chạy sau khi \ours{} được chọn trên Dev, với
-ba giả thuyết: \textbf{T1} tiện ích lành tính của \ours{} cao hơn \cRulesS; \textbf{T2} ASR của \ours{} không cao hơn
-\cRulesS{} quá 2 điểm; \textbf{T3} ASR của \ours{} thấp hơn \cNone. Manifest ghi cả dự đoán rằng mức tăng tiện ích sẽ
+chạy với \cRulesS{} là cấu hình cuối và sáu giả thuyết H1--H6. \tTwo{} chạy sau khi \bgTwo{} được chọn trên Dev, với
+ba giả thuyết: \textbf{T1} tiện ích lành tính của \bgTwo{} cao hơn \cRulesS; \textbf{T2} ASR của \bgTwo{} không cao hơn
+\cRulesS{} quá 2 điểm; \textbf{T3} ASR của \bgTwo{} thấp hơn \cNone. Manifest ghi cả dự đoán rằng mức tăng tiện ích sẽ
 nhỏ.
 
 \paragraph{Mô hình nền và cấu hình.} Ba mô hình mở trọng số Gemma-4-12B, Llama-3.1-8B (ngữ cảnh 16k) và Qwen3.5-9B
@@ -27,7 +27,7 @@ AgentDojo, ngoài mọi kiểm định; không có dữ liệu niêm phong nào 
 sáu baseline cài trong cùng tác tử và broker: \cSpot{}~\cite{hines2024spotlighting}; \cSand{} (nhắc lại $u$); \cPG,
 tức Prompt Guard~2 sàng lọc đầu ra công cụ~\cite{meta2025promptguard2}; \cMel, biến thể tất định của
 MELON~\cite{zhu2025melon}; \cProg, chính sách đích kiểu Progent~\cite{shi2025progent}; và \cPhrase, lớp luật cụm từ
-của hệ thống trước. \cRules{} gồm \rDest, \rFlow, \rRedact; \cRulesS{} thêm lời nhắc; \ours{} là kiến trúc đầy đủ.
+của hệ thống trước. Ba cấu hình \ours{} (\cRules, \cRulesS, \bgTwo) có thành phần như Bảng~\ref{tab:versions}.
 
 \paragraph{Độ đo và thống kê.} Với tập ca tấn công $\mathcal{A}$ và tập ca lành tính $\mathcal{B}$,
 \begin{equation}\label{eq:metrics}

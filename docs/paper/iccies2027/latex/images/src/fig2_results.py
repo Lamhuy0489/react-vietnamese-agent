@@ -1,8 +1,9 @@
 """Figure 2: (a) security/utility trade-off on Dev; (b) harmful fixtures by mechanism on Test-I.
 
 Usage: python fig2_results.py --lang vi|en --out ../fig2_results.pdf
-Numbers: docs/paper/iccies2027/facts.md and docs/research/study2_thesis_tables.md (Tables 5 and 7 of the outline).
+Numbers: docs/paper/iccies2027/facts.md and docs/research/study2_thesis_tables.md.
 Pooled values are sums over the three backbones (Gemma-4-12B, Llama-3.1-8B, Qwen3.5-9B).
+Names: BG-Rules = D2, BG-v1 = D2+P2, BG-v2 = D3DEST (see README "Bảng đổi tên").
 """
 from __future__ import annotations
 
@@ -12,6 +13,7 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 
 INK = "#0b0b0b"
 MUTED = "#52514e"
@@ -27,32 +29,46 @@ DEV = {
     "MELON-det": [(38, 160, 54), (34, 79, 30), (40, 142, 36)],
     "Progent-pol": [(21, 160, 54), (18, 80, 32), (22, 138, 36)],
     "PhraseRules": [(36, 160, 49), (25, 80, 27), (33, 138, 33)],
-    "Rules": [(17, 158, 44), (13, 80, 27), (15, 136, 28)],
-    "Rules+Sandwich": [(2, 147, 45), (5, 82, 36), (3, 141, 24)],
-    "BrokerGuard": [(2, 148, 49), (5, 85, 40), (3, 141, 27)],
+    "BG-Rules": [(17, 158, 44), (13, 80, 27), (15, 136, 28)],
+    "BG-v1": [(2, 147, 45), (5, 82, 36), (3, 141, 24)],
+    "BG-v2": [(2, 148, 49), (5, 85, 40), (3, 141, 27)],
 }
-# Test v3 pooled harmful attack fixtures by mechanism (/180 each): ER, CR, SL, AL, PT, US
+# category -> (marker, face, edge, size); ours in blue
+CAT = {
+    "NoDef": "none", "Spotlight": "prompt", "Sandwich": "prompt", "PromptGuard": "detect", "MELON-det": "detect",
+    "Progent-pol": "policy", "PhraseRules": "policy", "BG-Rules": "ours", "BG-v1": "ours", "BG-v2": "ours",
+}
+STYLE = {
+    "none": ("o", "none", INK, 16), "prompt": ("^", INK, INK, 9), "detect": ("s", INK, INK, 7),
+    "policy": ("D", INK, INK, 6), "ours": ("o", BLUE, BLUE, 11),
+}
+# label anchor in data coords (x, y), or None = small offset to the right; leader line drawn when far
+LABEL = {
+    "NoDef": (53.0, 124), "PromptGuard": (51.35, 123), "MELON-det": (53.0, 101),
+    "Spotlight": (50.05, 80), "PhraseRules": (51.05, 104), "Progent-pol": None, "Sandwich": None,
+    "BG-Rules": None, "BG-v1": (49.0, 23), "BG-v2": (51.55, 23),
+}
+# Test-I pooled harmful attack fixtures by mechanism (/180 each): ER, CR, SL, AL, PT, US
 MECH = ["ER", "CR", "SL", "AL", "PT", "US"]
 TEST1 = {
     "NoDef": [58, 65, 89, 60, 68, 15],
     "Sandwich": [1, 1, 27, 18, 10, 4],
-    "Rules": [0, 0, 29, 17, 25, 1],
-    "Rules+Sandwich": [0, 0, 6, 3, 4, 0],
+    "BG-Rules": [0, 0, 29, 17, 25, 1],
+    "BG-v1": [0, 0, 6, 3, 4, 0],
 }
 
 TXT = {
     "vi": {"xa": "Tiện ích lành tính trên Dev (%, /960)", "ya": "Họ gây hại trên Dev (/144)",
            "yb": "Ca tấn công gây hại (/180)", "ta": "(a) Đánh đổi an ninh – tiện ích (Dev)",
-           "tb": "(b) Theo cơ chế tấn công (Test-I)", "cluster": "NoDef, PromptGuard,\nMELON-det"},
+           "tb": "(b) Theo cơ chế tấn công (Test-I)",
+           "cats": {"none": "không phòng thủ", "prompt": "mức prompt", "detect": "phát hiện",
+                    "policy": "chính sách/luật", "ours": "BrokerGuard"}},
     "en": {"xa": "Benign utility on Dev (%, /960)", "ya": "Harmful families on Dev (/144)",
            "yb": "Harmful attack fixtures (/180)", "ta": "(a) Security–utility trade-off (Dev)",
-           "tb": "(b) By attack mechanism (Test-I)", "cluster": "NoDef, PromptGuard,\nMELON-det"},
+           "tb": "(b) By attack mechanism (Test-I)",
+           "cats": {"none": "no defence", "prompt": "prompt-level", "detect": "detection",
+                    "policy": "policy/rules", "ours": "BrokerGuard"}},
 }
-
-# label offsets (points) to avoid collisions; cluster members get one shared label
-OFFS = {"Spotlight": (-5, -2), "Sandwich": (4, 2), "Progent-pol": (4, -2), "PhraseRules": (4, 5),
-        "Rules": (4, 0), "Rules+Sandwich": (-4, 6), "BrokerGuard": (4, 5)}
-HA = {"Spotlight": "right", "Rules+Sandwich": "right"}
 
 
 def style(ax):
@@ -75,31 +91,43 @@ def main() -> None:
     plt.rcParams.update({"font.family": "serif", "font.serif": ["Times New Roman", "DejaVu Serif"],
                          "mathtext.fontset": "stix", "hatch.linewidth": 0.5})
 
-    fig, (a, b) = plt.subplots(1, 2, figsize=(4.8, 2.05), gridspec_kw={"width_ratios": [1, 1.15], "wspace": 0.38})
+    fig, (a, b) = plt.subplots(1, 2, figsize=(4.8, 2.25), gridspec_kw={"width_ratios": [1.1, 1], "wspace": 0.32})
 
-    # (a) trade-off scatter
+    # (a) trade-off scatter: exact pooled values, shape = defence family
     style(a)
     for name, cells in DEV.items():
         harm = sum(c[0] for c in cells)
         util = 100 * sum(c[1] + c[2] for c in cells) / 960
-        ours = name == "BrokerGuard"
-        a.scatter(util, harm, s=22 if ours else 12, color=BLUE if ours else INK, zorder=3,
-                  edgecolors="white", linewidths=0.6)
-        if name in OFFS:
-            a.annotate(name, (util, harm), xytext=OFFS[name], textcoords="offset points", fontsize=5.6,
-                       color=INK, ha=HA.get(name, "left"), va="center", weight="bold" if ours else "normal")
-    a.annotate(t["cluster"], (52.08, 112.5), xytext=(-6, 0), textcoords="offset points", fontsize=5.6,
-               ha="right", va="center", color=INK)
-    a.set_xlim(48.6, 53.0)
-    a.set_ylim(0, 125)
+        mk, fc, ec, sz = STYLE[CAT[name]]
+        a.scatter(util, harm, s=sz, marker=mk, facecolors=fc, edgecolors=ec, linewidths=0.7,
+                  zorder=4 if name == "NoDef" else 3)
+        bold = "bold" if name == "BG-v2" else "normal"
+        if LABEL[name] is None:
+            a.annotate(name, (util, harm), xytext=(4, 0), textcoords="offset points", fontsize=5.6, va="center",
+                       color=INK, weight=bold)
+        else:
+            lx, ly = LABEL[name]
+            a.annotate(name, (util, harm), xytext=(lx, ly), textcoords="data", fontsize=5.6, va="center",
+                       ha="center", color=INK, weight=bold,
+                       arrowprops={"arrowstyle": "-", "lw": 0.4, "color": MUTED, "shrinkA": 1, "shrinkB": 2.5})
+    a.set_xlim(48.5, 53.5)
+    a.set_ylim(0, 128)
+    a.set_xticks([49, 50, 51, 52, 53])
     a.set_xlabel(t["xa"], fontsize=6.4, color=INK)
     a.set_ylabel(t["ya"], fontsize=6.4, color=INK)
     a.set_title(t["ta"], fontsize=6.8, color=INK, loc="left", pad=4)
+    handles = []
+    for cat in ("none", "prompt", "detect", "policy", "ours"):
+        mk, fc, ec, _ = STYLE[cat]
+        handles.append(Line2D([], [], ls="", marker=mk, markerfacecolor=fc, markeredgecolor=ec, markersize=3.0,
+                              markeredgewidth=0.7, label=t["cats"][cat]))
+    a.legend(handles=handles, fontsize=5.3, frameon=False, loc="upper left", bbox_to_anchor=(0.0, 1.0),
+             handletextpad=0.3, labelspacing=0.3, borderaxespad=0.1)
 
     # (b) grouped bars by mechanism
     style(b)
     series = [("NoDef", "white", INK, None), ("Sandwich", AQUA, AQUA, "////"),
-              ("Rules", BLUE, BLUE, None), ("Rules+Sandwich", ORANGE, ORANGE, None)]
+              ("BG-Rules", BLUE, BLUE, None), ("BG-v1", ORANGE, ORANGE, None)]
     n, w = len(series), 0.19
     for i, (name, fc, ec, hatch) in enumerate(series):
         xs = [k + (i - (n - 1) / 2) * (w + 0.02) for k in range(len(MECH))]

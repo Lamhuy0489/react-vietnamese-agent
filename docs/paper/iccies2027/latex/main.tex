@@ -17,6 +17,8 @@
 \usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
 \usepackage{url}
+\usepackage{adjustbox}   % max width=\textwidth: chống bảng tràn lề
+\usepackage[section]{placeins}  % bảng/hình không trôi sang mục sau
 
 % Ghi chú cho tác giả; xóa trước khi nộp.
 \newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
@@ -25,10 +27,11 @@
 
 % ---- TÊN GỌI (đổi một chỗ ở đây là đổi cả bài) -------------------------------------------------
 % Ánh xạ sang tên trong log/luận văn ghi ở cột phải; xem ../README.md mục "Bảng đổi tên".
-\newcommand{\ours}{\textsc{BrokerGuard}}       % D3 (D3DEST trong log)  -- tên phương pháp, owner có thể đổi
+\newcommand{\ours}{\textsc{BrokerGuard}}       % tên phương pháp (họ cấu hình), owner có thể đổi
+\newcommand{\bgTwo}{BG-v2}                    % D3DEST: BrokerGuard phiên bản 2 (xác nhận trên Test-II)
 \newcommand{\cNone}{NoDef}                    % A0
-\newcommand{\cRules}{Rules}                   % D2   = luật R-Dest, R-Flow, R-Redact
-\newcommand{\cRulesS}{Rules+Sandwich}         % D2+P2
+\newcommand{\cRules}{BG-Rules}                % D2   = R-Dest, R-Flow, R-Redact + lớp tín hiệu rộng (A1) + phản hồi
+\newcommand{\cRulesS}{BG-v1}                 % D2+P2: BrokerGuard phiên bản 1 (xác nhận trên Test-I)
 \newcommand{\cSpot}{Spotlight}                % P1
 \newcommand{\cSand}{Sandwich}                 % P2
 \newcommand{\cPG}{PromptGuard}                % G1
@@ -39,7 +42,8 @@
 \newcommand{\rDest}{\textsf{R-Dest}}          % R2
 \newcommand{\rFlow}{\textsf{R-Flow}}          % R3
 \newcommand{\rRedact}{\textsf{R-Redact}}      % R4
-\newcommand{\rSig}{\textsf{R-Signal}}         % luật D
+\newcommand{\rSig}{\textsf{R-Signal}}         % luật D (lớp A1 thu hẹp theo đích, chỉ có ở BG-v2)
+\newcommand{\rSigAll}{\textsf{R-Signal$^\forall$}} % lớp A1 rộng của D2 (chặn mọi sink sau quan sát bị gắn cờ)
 % Cơ chế tấn công
 \newcommand{\mER}{\textsf{ER}}                % M1 explicit redirection
 \newcommand{\mCR}{\textsf{CR}}                % M2 covert redirection

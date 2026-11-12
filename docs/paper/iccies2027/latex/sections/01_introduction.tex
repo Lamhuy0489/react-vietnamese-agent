@@ -18,12 +18,15 @@ Bài báo có bốn đóng góp:
 \begin{enumerate}
 \item \textbf{Mô hình đe dọa và phân loại theo cơ chế:} hai nhãn độc lập là độ tin cậy và độ nhạy cảm, bốn vị từ
   gây hại, sáu cơ chế tấn công và hai nhánh lành tính làm lộ chặn nhầm (Mục~\ref{sec:threat}).
-\item \textbf{\ours}, phòng thủ nhiều lớp phía broker gồm bốn luật tất định cùng lời nhắc và phản hồi từ chối;
-  không cần tinh chỉnh và không cần mô hình phụ (Mục~\ref{sec:defence}).
+\item \textbf{\ours}, phòng thủ nhiều lớp phía broker: luật cấp quyền đích và luồng giá trị mật, che câu trả lời,
+  luật tín hiệu chèn lệnh, lời nhắc và phản hồi từ chối; không cần tinh chỉnh và không cần mô hình phụ. Chúng tôi chỉ ra
+  rằng luật tất định và lời nhắc bù nhau theo cơ chế tấn công, nên kết hợp (\cRulesS) tốt hơn hẳn từng lớp riêng, và
+  thu hẹp luật tín hiệu theo đích (\bgTwo) giữ an ninh trong khi giảm chặn nhầm (Mục~\ref{sec:defence}).
 \item \textbf{VN-AgentInject v3 và AgentDojo-VI} với giao thức niêm phong: giả thuyết đăng ký trước, cấu hình ghim
   bằng hash, mỗi tập kiểm thử chạy một lần (Mục~\ref{sec:protocol}). \todo{owner quyết: công bố dữ liệu / cung
   cấp khi có yêu cầu}
-\item \textbf{Kết quả:} trên hai tập niêm phong và ba mô hình nền mở trọng số, \ours{} giảm tỉ lệ tấn công thành công
-  từ 32,4\% xuống 3,6\% với cái giá 3,4 điểm tiện ích; phát hiện học trên tiếng Anh không chuyển giao sang tiếng
+\item \textbf{Kết quả:} trên ba mô hình nền mở trọng số, \cRulesS{} giảm tỉ lệ tấn công thành công từ 32,9\% xuống 1,2\%
+  trên \tOne, và \bgTwo{} giảm từ 32,4\% xuống 3,6\% trên \tTwo{} với cái giá 3,4 điểm tiện ích; sáu baseline, Gemini
+  3 Flash và AgentDojo tiếng Anh/tiếng Việt cho bức tranh đối chiếu; phát hiện học trên tiếng Anh không chuyển giao sang tiếng
   Việt; lỗi còn lại tập trung ở rò rỉ giá trị mật và sửa tham số (Mục~\ref{sec:results}--\ref{sec:discussion}).
 \end{enumerate}

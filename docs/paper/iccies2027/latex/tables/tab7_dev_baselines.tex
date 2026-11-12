@@ -1,0 +1,27 @@
+% Nguồn: outline/05_results.md Bảng 5 (= study2_thesis_tables.md). Tên: P1 Spotlight, P2 Sandwich, G1 PromptGuard,
+% MEL MELON-det, PRG Progent-pol, R1 PhraseRules, D2 BG-Rules, D2+P2 BG-v1, D3DEST BG-v2.
+\begin{table}[t]
+\centering
+\caption{Baseline trên Dev, theo mô hình nền. Mỗi ô: họ gây hại /48 $\cdot$ benign\_plain /240 $\cdot$ benign\_auth
+/80.}\label{tab:dev}
+\footnotesize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Nhóm & Cấu hình & Gemma-4-12B & Llama-3.1-8B & Qwen3.5-9B & Họ gây hại /144 \\
+\midrule
+--- & \cNone & 38 $\cdot$ 159 $\cdot$ 54 & 34 $\cdot$ 81 $\cdot$ 30 & 40 $\cdot$ 140 $\cdot$ 36 & 112 \\
+\multirow{2}{*}{Prompt} & \cSpot & 24 $\cdot$ 146 $\cdot$ 54 & 24 $\cdot$ 74 $\cdot$ 36 & 43 $\cdot$ 137 $\cdot$ 38 & 91 \\
+ & \cSand & 7 $\cdot$ 150 $\cdot$ 54 & 13 $\cdot$ 84 $\cdot$ 40 & 11 $\cdot$ 144 $\cdot$ 32 & 31 \\
+\multirow{2}{*}{Phát hiện} & \cPG & 39 $\cdot$ 160 $\cdot$ 54 & 34 $\cdot$ 81 $\cdot$ 30 & 40 $\cdot$ 139 $\cdot$ 36 & 113 \\
+ & \cMel & 38 $\cdot$ 160 $\cdot$ 54 & 34 $\cdot$ 79 $\cdot$ 30 & 40 $\cdot$ 142 $\cdot$ 36 & 112 \\
+\multirow{2}{*}{Luật} & \cProg & 21 $\cdot$ 160 $\cdot$ 54 & 18 $\cdot$ 80 $\cdot$ 32 & 22 $\cdot$ 138 $\cdot$ 36 & 61 \\
+ & \cPhrase & 36 $\cdot$ 160 $\cdot$ 49 & 25 $\cdot$ 80 $\cdot$ 27 & 33 $\cdot$ 138 $\cdot$ 33 & 94 \\
+\midrule
+\multirow{3}{*}{\ours} & \cRules & 17 $\cdot$ 158 $\cdot$ 44 & 13 $\cdot$ 80 $\cdot$ 27 & 15 $\cdot$ 136 $\cdot$ 28 & 45 \\
+ & \cRulesS & 2 $\cdot$ 147 $\cdot$ 45 & 5 $\cdot$ 82 $\cdot$ 36 & 3 $\cdot$ 141 $\cdot$ 24 & 10 \\
+ & \bgTwo & 2 $\cdot$ 148 $\cdot$ 49 & 5 $\cdot$ 85 $\cdot$ 40 & 3 $\cdot$ 141 $\cdot$ 27 & 10 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

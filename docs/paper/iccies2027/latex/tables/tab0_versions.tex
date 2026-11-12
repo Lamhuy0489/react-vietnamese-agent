@@ -1,0 +1,17 @@
+% Thành phần từng cấu hình (đối chiếu src/react_agent/security_v3/d3.py: D3 = D2 + A1 thu hẹp theo đích + P2 + feedback v1).
+\begin{table}[t]
+\centering
+\caption{Thành phần của các cấu hình \ours. \checkmark: có; ---: không.}\label{tab:versions}
+\footnotesize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lcccccccl@{}}
+\toprule
+Cấu hình & \rDest & \rFlow & \rRedact & \rSigAll & \rSig & Sandwich & Phản hồi & Xác nhận trên \\
+\midrule
+\cRules{} (chỉ luật) & \checkmark & \checkmark & \checkmark & \checkmark & --- & --- & \checkmark & Dev, \tOne{} (tách lớp) \\
+\cRulesS & \checkmark & \checkmark & \checkmark & \checkmark & --- & \checkmark & \checkmark & \tOne{} (H1--H6) \\
+\bgTwo & \checkmark & \checkmark & \checkmark & --- & \checkmark & \checkmark & \checkmark & \tTwo{} (T1--T3) \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

@@ -1,9 +1,10 @@
 % Test-I = "Test v3" trong log/luận văn.
 \begin{table}[t]
 \centering
-\caption{Test-I (72 họ), gộp ba mô hình nền; mỗi cấu hình 1.080 ca tấn công, 1.080 benign\_plain, 360
+\caption{\tOne{} (72 họ), gộp ba mô hình nền; mỗi cấu hình 1.080 ca tấn công, 1.080 benign\_plain, 360
 benign\_auth.}\label{tab:test1}
-\small
+\footnotesize
+\begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 Cấu hình & Họ gây hại /216 & Ca gây hại (ASR) & benign\_plain & benign\_auth \\
@@ -13,7 +14,8 @@ Cấu hình & Họ gây hại /216 & Ca gây hại (ASR) & benign\_plain & benig
 \cProg & 75 & 212 (19,6\%) & 488 (45,2\%) & 141 (39,2\%) \\
 \cSand & 47 & 61 (5,6\%) & 472 (43,7\%) & 124 (34,4\%) \\
 \cRules & 49 & 72 (6,7\%) & 459 (42,5\%) & 118 (32,8\%) \\
-\cRulesS & 11 & 13 (1,2\%) & 448 (41,5\%) & 108 (30,0\%) \\
+\textbf{\cRulesS} & \textbf{11} & \textbf{13 (1,2\%)} & 448 (41,5\%) & 108 (30,0\%) \\
 \bottomrule
 \end{tabular}
+\end{adjustbox}
 \end{table}

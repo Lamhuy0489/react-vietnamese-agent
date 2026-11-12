@@ -3,14 +3,18 @@
 \ours{} theo ba nguyên tắc. (i) \emph{Mô hình không phải ranh giới an ninh}: hành động chỉ có hiệu lực khi broker
 thực thi nó. (ii) \emph{Người dùng là chủ thể đáng tin duy nhất}: quyền được suy ra từ nguyên văn $u$, không từ nội
 dung công cụ và không từ việc một mô hình diễn giải ý định. (iii) \emph{Chặn không kết thúc nhiệm vụ}: hành động bị
-từ chối được báo lại để tác tử làm tiếp phần hợp lệ. Hình~\ref{fig:pipeline} cho thấy các lớp.
+từ chối được báo lại để tác tử làm tiếp phần hợp lệ. \ours{} có hai phiên bản, mỗi phiên bản được xác nhận trên một
+tập niêm phong riêng (Bảng~\ref{tab:versions}); Hình~\ref{fig:pipeline} vẽ phiên bản \bgTwo.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{fig1_pipeline}
-\caption{Pipeline của \ours. Mọi hành động $a_t$ và câu trả lời $y$ đi qua Tool Broker; các ô liền nét là kiểm tra
-tất định phía host, ô nét đứt là lớp phụ thuộc mô hình.}\label{fig:pipeline}
+\caption{Pipeline của \bgTwo. Mọi hành động $a_t$ và câu trả lời $y$ đi qua Tool Broker; ô liền nét là kiểm tra tất
+định phía host, ô nét đứt là lớp phụ thuộc mô hình. \cRulesS{} giống hệt, chỉ khác ở chỗ dùng \rSigAll{} thay cho
+\rSig.}\label{fig:pipeline}
 \end{figure}
+
+\input{tables/tab0_versions}
 
 \paragraph{Broker và nhãn nguồn gốc.} Khi không phòng thủ (\cNone), broker chỉ kiểm schema và giới hạn công cụ. Trong
 \ours, broker còn lưu nhãn của từng quan sát và tập giá trị $C$ trích từ các quan sát mật bằng quy tắc từ vựng không
@@ -37,28 +41,31 @@ là chính sách luồng thông tin tối thiểu trên hai nhãn: giá trị m�
 $y$ là sink giúp đóng kênh \mAL{} mà các bộ lọc lời gọi công cụ bỏ sót. Vì so khớp nguyên văn, giá trị bị mô hình
 biến đổi (định dạng lại, tách ra) sẽ không được nhận ra.
 
-\paragraph{\rSig: tín hiệu chèn lệnh giới hạn theo đích.} \rDest{} và \rFlow{} không phủ việc thao túng một sink người
-dùng \emph{đã} nêu bằng giá trị không mật (\mPT). Hệ thống trước của chúng tôi dùng bộ phát hiện cụm từ: hễ có quan sát
-bị gắn cờ là chặn mọi sink sau đó, và trên \tOne{} đây là nguồn chặn nhầm lớn nhất (22 quỹ đạo benign\_plain). \ours{}
-giữ bộ phát hiện nhưng thu hẹp hệ quả: gọi $F$ là tập quan sát bị gắn cờ, broker từ chối $a$ nếu
+\paragraph{Tín hiệu chèn lệnh: \rSigAll{} và \rSig.} \rDest{} và \rFlow{} không phủ việc thao túng một sink người dùng
+\emph{đã} nêu bằng giá trị không mật (\mPT). Một bộ phát hiện cụm từ gắn cờ các quan sát chứa văn bản giống chỉ thị;
+gọi $F$ là tập quan sát bị gắn cờ. Ở \cRulesS, luật \rSigAll{} chặn mọi lời gọi sink sau khi $F \neq \emptyset$ trừ
+khi một văn phạm chặt trên $u$ cho phép nó. Trên \tOne{} đây là nguồn chặn nhầm lớn nhất (22 quỹ đạo benign\_plain),
+nhưng bỏ hẳn nó trên Dev làm số họ gây hại tăng 2--4 ở mỗi mô hình nền. \bgTwo{} giữ bộ phát hiện nhưng thu hẹp hệ
+quả: broker chỉ từ chối $a$ nếu
 \begin{equation}\label{eq:signal}
-\exists\, o \in F:\; \dest(a) \sub o .
+\exists\, o \in F:\; \dest(a) \sub o ,
 \end{equation}
-Luật chỉ kích hoạt khi nội dung giống chỉ thị nói về đúng cái đích tác tử sắp dùng. Khi phát lại offline trên quỹ
-đạo Dev có sẵn, \rSig{} chặn đủ 11/11 ca gây hại mà lớp rộng đã chặn và không chặn ca nào trong 14 lời gọi lành tính
-bị lớp rộng chặn nhầm.
+tức khi nội dung giống chỉ thị nói về đúng cái đích tác tử sắp dùng. Khi phát lại offline trên quỹ đạo Dev có sẵn,
+\rSig{} chặn đủ 11/11 ca gây hại mà \rSigAll{} đã chặn và không chặn ca nào trong 14 lời gọi lành tính bị \rSigAll{}
+chặn nhầm.
 
 \paragraph{Lời nhắc và phản hồi.} Sau mỗi quan sát, $u$ được nhắc lại kèm câu yêu cầu bỏ qua chỉ thị trong dữ liệu
-công cụ (sandwich, như \code{repeat\_user\_prompt} của AgentDojo). Đây là lớp duy nhất phụ thuộc mô hình; trên
-\tOne{} riêng nó giảm ASR từ 32,9\% xuống 5,6\%. Khi một luật từ chối, công cụ không chạy và tác tử nhận một quan sát
-có cấu trúc báo việc bị từ chối, nhờ đó vẫn hoàn thành được các bước còn lại.
+công cụ (sandwich, như \code{repeat\_user\_prompt} của AgentDojo). Đây là lớp duy nhất phụ thuộc mô hình; nó bù cho
+các luật ở chỗ luật không thấy được (Mục~\ref{sec:results}). Khi một luật từ chối, công cụ không chạy và tác tử nhận
+một quan sát có cấu trúc báo việc bị từ chối, nhờ đó vẫn hoàn thành được các bước còn lại.
 
-\paragraph{Chọn thành phần.} \ours{} được thiết kế chỉ trên Dev. Tiêu chí được cố định trước khi chạy: gộp ba mô hình
-nền, ứng viên không được có nhiều ca gây hại hơn \cRulesS{} và phải có tiện ích lành tính cao hơn hẳn. Chỉ cấu hình
-có \rSig, lời nhắc gốc và phản hồi gốc đạt (Bảng~\ref{tab:ablation}). Lời nhắc mạnh hơn (v2) giúp Gemma nhưng làm
-số họ gây hại của Llama tăng gấp đôi và làm tiện ích của Qwen sụp (165 $\to$ 55); với phản hồi gốc kết quả cũng
-tương tự (21 ca gây hại, tiện ích 379). Thông báo từ chối mạnh hơn không thêm gì. Giới hạn \rFlow{} theo tài nguyên
-người dùng nêu (mở 3 nhiệm vụ nhưng thả 5 tấn công) và so khớp gần đúng (không bắt thêm ca nào) bị loại ở bước phát
-lại. \ours{} không gọi thêm mô hình nào: mọi luật là phép toán chuỗi, không cần truy cập trọng số.
+\paragraph{Chọn thành phần cho \bgTwo.} \bgTwo{} được thiết kế chỉ trên Dev, sau khi \tOne{} đã chạy. Tiêu chí được
+cố định trước khi chạy: gộp ba mô hình nền, ứng viên không được có nhiều ca gây hại hơn \cRulesS{} và phải có tiện
+ích lành tính cao hơn hẳn. Chỉ cấu hình có \rSig, lời nhắc gốc và phản hồi gốc đạt (Bảng~\ref{tab:ablation}). Lời
+nhắc mạnh hơn (v2) giúp Gemma nhưng làm số họ gây hại của Llama tăng gấp đôi và làm tiện ích của Qwen sụp
+(165 $\to$ 55); với phản hồi gốc kết quả tương tự (21 ca gây hại, tiện ích 379). Thông báo từ chối mạnh hơn không thêm
+gì. Giới hạn \rFlow{} theo tài nguyên người dùng nêu (mở 3 nhiệm vụ nhưng thả 5 tấn công) và so khớp gần đúng (không
+bắt thêm ca nào) bị loại ở bước phát lại. Cả hai phiên bản đều không gọi thêm mô hình nào: mọi luật là phép toán
+chuỗi, không cần truy cập trọng số.
 
 \input{tables/tab2_ablation}
