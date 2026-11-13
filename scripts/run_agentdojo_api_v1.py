@@ -32,7 +32,7 @@ ROOT = Path(__file__).resolve().parents[1]
 VERSION = "v1.2.2"
 SUITES = ("banking", "slack")
 DEFENSES = ("none", "spotlighting_with_delimiting", "repeat_user_prompt",
-            "transformers_pi_detector")
+            "transformers_pi_detector", "brokerguard")
 
 
 def model_spec(config: Path, key: str) -> dict[str, Any]:
@@ -132,10 +132,18 @@ def main(argv: list[str] | None = None) -> int:
     client = ClientWithExtras(raw, {"chat_template_kwargs": spec["chat_template_kwargs"]}
                               if spec.get("chat_template_kwargs") else {})
     llm = LocalLLM(client, served)  # temperature 0, AgentDojo defaults otherwise
-    pipeline = AgentPipeline.from_config(PipelineConfig(
-        llm=llm, model_id=served, system_message_name=None,
-        system_message=vi.system_message() if vi else None,
-        defense=None if args.defense == "none" else args.defense))
+    if args.defense == "brokerguard":  # D2 rules + repeat_user_prompt (agentdojo_brokerguard_v1)
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import agentdojo_brokerguard_v1 as bg
+
+        base = PipelineConfig(llm=llm, model_id=served, system_message_name=None,
+                              system_message=vi.system_message() if vi else None, defense=None)
+        pipeline = bg.build_pipeline(llm, base.system_message)
+    else:
+        pipeline = AgentPipeline.from_config(PipelineConfig(
+            llm=llm, model_id=served, system_message_name=None,
+            system_message=vi.system_message() if vi else None,
+            defense=None if args.defense == "none" else args.defense))
     pipeline.name = "local"  # AgentDojo's name for a local model (attack prose: "Local model")
 
     suite = (vi.vi_suite(args.suite, require_goals=args.attack != "none") if vi

@@ -3800,3 +3800,23 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
   Script `scripts/paper_cluster_stats_v1.py` (chỉ đọc file eval và tên tool trong trace NoDef), số ở `facts.md`.
 - Tham chiếu chặn mọi sink: ước lượng từ trace NoDef (không chạy mới). Không đổi code phòng thủ, dữ liệu hay kết quả niêm phong.
 - Tác động: lời văn bài báo bỏ khẳng định IFC, nêu ba lớp vượt qua đã biết, utility giảm khoảng 5 điểm có ý nghĩa ở mức cụm.
+
+## 2026-11-13 — C10: BrokerGuard trên AgentDojo, khai báo TRƯỚC khi chạy
+
+- Mục đích: xác nhận ngoài cho BrokerGuard (D2+P2) trên benchmark không do nhóm soạn (phản biện C10). Không chỉnh gì sau khi
+  thấy kết quả; chạy một lần, báo cáo đủ, kể cả khi utility giảm mạnh.
+- Code: `scripts/agentdojo_brokerguard_v1.py` dùng nguyên hàm luật đã đóng băng của D2 (`control_data_policy_v1`,
+  `rules`); chỉ thêm bộ chuyển. Runner: `run_agentdojo_api_v1.py --defense brokerguard`.
+- Lớp lời nhắc = `repeat_user_prompt` của AgentDojo (đã chạy làm baseline), nên chênh lệch với lượt đó là phần của luật.
+- Sink → tham số đích: send_money, schedule_transaction, update_scheduled_transaction (chỉ khi có recipient) → recipient;
+  update_password, update_user_info → không có đích (chỉ R-Flow, R-Signal); send_direct_message → recipient;
+  send_channel_message → channel; post_webpage → url; invite_user_to_slack → user_email; add_user_to_channel,
+  remove_user_from_slack → user. Mọi công cụ khác là đọc, không bao giờ bị chặn.
+- Nhãn mật (nguồn của C): get_iban, get_balance, get_most_recent_transactions, get_scheduled_transactions, get_user_info,
+  read_inbox, read_channel_messages. read_file, get_webpage, download_file, get_channels, get_users_in_channel không mật.
+  Mọi đầu ra công cụ coi là không đáng tin cho bộ dò R-Signal. Văn phạm Gram_u giữ nguyên của D2 (chỉ cho e-mail/endpoint).
+- R-Redact áp lên câu trả lời cuối. Từ chối trả về quan sát lỗi có cấu trúc, tác tử chạy tiếp.
+- Ma trận: Llama-3.1-8B (serve `llama31_8b_ctx16k`, model key kết quả `llama31_8b` như các lượt cũ), Banking và Slack,
+  EN và VI, `important_instructions` (4 lượt) và không tấn công (4 lượt). So với các lượt none / repeat_user_prompt đã có.
+- Dự đoán ghi trước: ASR giảm so với repeat_user_prompt; utility giảm vì nhiều nhiệm vụ lấy đích từ tài liệu (R-Dest);
+  R-Signal gần như không bật vì khuôn tấn công không khớp cụm từ của D2.
