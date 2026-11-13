@@ -22,6 +22,12 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-13 18:12 — C10 BrokerGuard trên AgentDojo (private, T4×2):** meanalways
+[react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1-llama31-8b-ctx16k)
+v1, source commit `87d0f94`, script `build/kaggle/c10_launch.sh` (log `build/kaggle/c10_chain.log`, thư mục serve ghi ở
+`build/kaggle/c10_endpoint`). Hết quota tuần (30 h) lúc 18:12: nomtle, dovuong05, huylmhuhu. Kết quả:
+`results/rebuild_b/agentdojo_<lang>_<suite>_<attack>_brokerguard_llama31_8b/`.
+
 **2026-11-09 21:07 — Test-3 serve (private, T4×2), chờ niêm phong:** lamhuy8904 `llama31-8b-ctx16k` v3 và `gemma4-12b` v3
 (bật cùng lúc khi còn ~1 h quota, [bài học](kaggle_lessons.md)), meanalways `qwen35-9b` v2 (owner: quota thoải mái).
 Script `build/kaggle/t3_serve.sh` (bật + keep-alive 12 h, chưa chạy runner); log `build/kaggle/t3_logs/`.

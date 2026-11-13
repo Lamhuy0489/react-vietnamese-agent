@@ -5,6 +5,14 @@ Cập nhật: 2026-11-13. (Trước đó 2026-11-10 12:20.) Lộ trình [v2](../
 
 ## Đang làm
 
+**2026-11-13 18:12: ĐANG CHẠY C10 (BrokerGuard trên AgentDojo, Llama-3.1-8B, 8 lượt: EN/VI × Banking/Slack × tấn công/không).**
+- Khai báo trước: decision log 13/11 "C10". Notebook meanalways v1 (kaggle_resources). Chuỗi chạy nền dưới `caffeinate`.
+- Kiểm: `cat build/kaggle/c10_chain.log`; `ls results/rebuild_b/agentdojo_*_brokerguard_llama31_8b/summary.json`.
+- Resume (máy sập/chuỗi chết, runner tự bỏ cặp đã xong): nếu notebook còn sống, `F=$(cut -d' ' -f2 build/kaggle/c10_endpoint)`
+  rồi chạy phần sau READY của `c10_launch.sh` với F đó; nếu notebook chết, `ACCOUNTS="lamhuy8904:kaggle.json oanhlam123456:kaggle6.json
+  buiquocviet:kaggle3.json" caffeinate -i nice -n 10 bash build/kaggle/c10_launch.sh > build/kaggle/c10_chain.log 2>&1`.
+- Khi xong: soát transcript (đếm từ chối theo luật, lỗi API), điền facts.md + Bảng AgentDojo của bài, decision log.
+
 **2026-11-13: Bài báo ICCIES sau phản biện (`phan bien.md` ở root, không commit). Một cấu hình duy nhất: BrokerGuard = D2+P2
 (macro `\cRulesS` = `\ours`); BG-v2/D3DEST đã bỏ khỏi bài (decision log 13/11). Suy luận mức family; số mới ở `facts.md`
 mục "Bổ sung sau phản biện" (`scripts/paper_cluster_stats_v1.py`, chạy lại: `nice -n 10 python3 scripts/paper_cluster_stats_v1.py`).**
