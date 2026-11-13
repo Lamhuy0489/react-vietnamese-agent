@@ -1,5 +1,5 @@
 % ICCIES 2027 -- Springer LNCS/CCIS, 12--15 trang.
-% BẢN TIẾNG VIỆT ĐỂ ĐỌC (12/11/2026). Bản nộp phải bằng tiếng Anh, do tác giả tự viết
+% BẢN TIẾNG VIỆT ĐỂ ĐỌC (13/11/2026: bỏ BG-v2, chỉ còn một cấu hình BrokerGuard = D2+P2). Bản nộp phải bằng tiếng Anh, do tác giả tự viết
 % (ICCIES cấm văn bản do AI sinh). Dàn ý tiếng Anh cũ: ../outline/.
 % Overleaf: tải cả thư mục (zip), main = main.tex, trình biên dịch pdfLaTeX.
 % Nếu pdfLaTeX báo lỗi font tiếng Việt (T5), đổi sang XeLaTeX và thay 3 dòng fontenc/inputenc/babel
@@ -19,7 +19,7 @@
 \usepackage{adjustbox}   % max width=\textwidth: chống bảng tràn lề
 \usepackage{pgfplots}    % Hình 2 vẽ bằng pgfplots (Overleaf tự vẽ)
 \pgfplotsset{compat=1.18}
-\usetikzlibrary{patterns}
+\usetikzlibrary{patterns,arrows.meta}
 \definecolor{bgblue}{HTML}{2A78D6}
 \definecolor{bgorange}{HTML}{EB6834}
 \definecolor{bgaqua}{HTML}{1BAF7A}
@@ -38,22 +38,21 @@
 % ---- TÊN GỌI (đổi một chỗ ở đây là đổi cả bài) -------------------------------------------------
 % Ánh xạ sang tên trong log/luận văn ghi ở cột phải; xem ../README.md mục "Bảng đổi tên".
 \newcommand{\ours}{\textsc{BrokerGuard}}       % tên phương pháp (họ cấu hình), owner có thể đổi
-\newcommand{\bgTwo}{BG-v2}                    % D3DEST: BrokerGuard phiên bản 2 (xác nhận trên Test-II)
 \newcommand{\cNone}{NoDef}                    % A0
 \newcommand{\cRules}{BG-Rules}                % D2   = R-Dest, R-Flow, R-Redact + lớp tín hiệu rộng (A1) + phản hồi
-\newcommand{\cRulesS}{BG-v1}                 % D2+P2: BrokerGuard phiên bản 1 (xác nhận trên Test-I)
+\newcommand{\cRulesS}{\ours}                 % D2+P2 = cấu hình BrokerGuard đầy đủ (Test-I và Test-II).
+                                              % D3DEST (BG-v2) không đưa vào bài, chỉ nêu một câu ở hạn chế (13/11).
 \newcommand{\cSpot}{Spotlight}                % P1
 \newcommand{\cSand}{Sandwich}                 % P2
 \newcommand{\cPG}{PromptGuard}                % G1
 \newcommand{\cMel}{MELON-det}                 % MEL
-\newcommand{\cProg}{Progent-pol}              % PRG
+\newcommand{\cProg}{Progent-pol}              % PRG (cài đặt lại theo kiểu Progent)
 \newcommand{\cPhrase}{PhraseRules}            % R1
 % Luật
 \newcommand{\rDest}{\textsf{R-Dest}}          % R2
 \newcommand{\rFlow}{\textsf{R-Flow}}          % R3
 \newcommand{\rRedact}{\textsf{R-Redact}}      % R4
-\newcommand{\rSig}{\textsf{R-Signal}}         % luật D (lớp A1 thu hẹp theo đích, chỉ có ở BG-v2)
-\newcommand{\rSigAll}{\textsf{R-Signal$^\forall$}} % lớp A1 rộng của D2 (chặn mọi sink sau quan sát bị gắn cờ)
+\newcommand{\rSig}{\textsf{R-Signal}}         % lớp A1 của D2 (chặn mọi sink sau quan sát bị gắn cờ, trừ văn phạm chặt trên u)
 % Cơ chế tấn công
 \newcommand{\mER}{\textsf{ER}}                % M1 explicit redirection
 \newcommand{\mCR}{\textsf{CR}}                % M2 covert redirection
@@ -65,7 +64,7 @@
 \newcommand{\tOne}{Test-I}                   % "Test v3" (72 họ)
 \newcommand{\tTwo}{Test-II}                  % "Test-3" (48 họ)
 % Ký hiệu
-\newcommand{\Sub}{\mathrm{Sub}}             % Sub(z): tập chuỗi con của nu(z)
+\newcommand{\sub}{\sqsubseteq}               % x ⊑ z: nu(x) là chuỗi con của nu(z) (quan hệ, không dựng tập)
 \newcommand{\dest}{\mathit{dest}}
 \newcommand{\pay}{\mathit{payload}}
 \newcommand{\norm}{\nu}

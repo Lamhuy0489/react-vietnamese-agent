@@ -1,17 +1,18 @@
-% LNCS: tóm tắt 150--250 từ (tính trên bản tiếng Anh).
+% LNCS: tóm tắt 150--250 từ (tính trên bản tiếng Anh). Không đưa giá trị p vào tóm tắt (phản biện B1).
 \begin{abstract}
 Tác tử LLM theo mô hình ReAct đọc nội dung từ các công cụ bên ngoài. Chỉ thị được cài vào nội dung đó có thể khiến tác
 tử thực hiện hành động trái phép hoặc làm lộ dữ liệu. Đây là tấn công chèn lệnh gián tiếp (IPI). Các benchmark an
 ninh cho tác tử hiện nay hầu như chỉ có tiếng Anh. Bài báo đề xuất \ours, một cơ chế phòng thủ nhiều lớp đặt việc
 cưỡng chế tại Tool Broker, bên ngoài mô hình. Các luật của \ours{} chỉ cho phép gửi tới đích do người dùng viết, chỉ
-cho phép giá trị mật rời tác tử khi người dùng đã viết giá trị đó, che giá trị mật trong câu trả lời cuối và chặn
-lời gọi tới đích được nêu trong nội dung có dấu hiệu chèn lệnh. Lời nhắc trong prompt và phản hồi từ chối bổ trợ cho
-các luật. \ours{} không cần tinh chỉnh mô hình và không gọi thêm LLM. Chúng tôi xây dựng VN-AgentInject v3, một
-benchmark tiếng Việt gồm sáu cơ chế tấn công, có nhánh lành tính và năm biến thể ngôn ngữ, và đánh giá theo giao thức
-đăng ký trước với hai tập kiểm thử niêm phong. Trên ba mô hình nền mở trọng số, phiên bản thứ nhất (\cRulesS) giảm tỉ
-lệ tấn công thành công từ 32,9\% xuống 1,2\% trên tập niêm phong thứ nhất. Phiên bản thứ hai (\bgTwo) giảm tỉ lệ này
-từ 32,4\% xuống 3,6\% trên tập niêm phong thứ hai (Holm $p = 5{,}0\cdot10^{-57}$) và giữ 93,7\% tiện ích lành tính.
-Bộ phát hiện huấn luyện trên tiếng Anh không có tác dụng trên tiếng Việt.
+cho phép giá trị mật rời tác tử khi người dùng đã viết nguyên văn giá trị đó và che giá trị mật trong câu trả lời cuối.
+Lời nhắc trong prompt và phản hồi từ chối bổ trợ cho các luật. \ours{} không cần tinh chỉnh mô hình và không gọi thêm
+LLM. Chúng tôi xây dựng VN-AgentInject v3, một benchmark tiếng Việt gồm sáu cơ chế tấn công, có nhánh lành tính và năm
+biến thể ngôn ngữ. \ours{} được đóng băng trước khi chạy và được đánh giá một lần trên hai tập kiểm thử niêm phong độc
+lập. Trên ba mô hình nền mở trọng số, \ours{} giảm tỉ lệ tấn công thành công từ 32,9\% xuống 1,2\% trên tập thứ nhất
+và từ 32,4\% xuống 3,8\% trên tập thứ hai. Cái giá là tiện ích lành tính giảm khoảng 5 điểm phần trăm. Trên tập thứ
+nhất, với cùng tỉ lệ tấn công thành công, \ours{} giữ tiện ích gấp khoảng năm lần so với ước lượng của việc chặn mọi
+lời gọi gửi ra ngoài. Bộ phát hiện huấn luyện trên tiếng
+Anh không có tác dụng trên tiếng Việt.
 
-\keywords{Chèn lệnh gián tiếp \and Tác tử LLM \and An ninh tác tử \and Kiểm soát luồng thông tin \and Tiếng Việt}
+\keywords{Chèn lệnh gián tiếp \and Tác tử LLM \and An ninh tác tử \and Reference monitor \and Tiếng Việt}
 \end{abstract}

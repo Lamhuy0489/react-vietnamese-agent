@@ -22,13 +22,13 @@ Bài báo có bốn đóng góp.
   (Mục~\ref{sec:threat}).
 \item \textbf{Cơ chế phòng thủ \ours.} \ours{} đặt các luật về đích gửi và luồng giá trị mật tại Tool Broker, kết hợp
   với lời nhắc và phản hồi từ chối, không cần tinh chỉnh mô hình. Chúng tôi chỉ ra rằng luật tất định và lời nhắc bù
-  cho nhau theo từng cơ chế tấn công, nên phiên bản kết hợp \cRulesS{} vượt trội so với từng lớp riêng lẻ. Phiên bản
-  \bgTwo{} thu hẹp luật tín hiệu chèn lệnh theo đích để giảm chặn nhầm mà vẫn giữ mức an ninh (Mục~\ref{sec:defence}).
+  cho nhau theo từng cơ chế tấn công, nên cấu hình kết hợp tốt hơn từng lớp riêng lẻ. Chúng tôi cũng nêu rõ phạm vi
+  bảo đảm của các luật và những lớp tấn công còn vượt qua được (Mục~\ref{sec:defence} và~\ref{sec:discussion}).
 \item \textbf{VN-AgentInject v3 và AgentDojo-VI.} Hai bộ dữ liệu được đánh giá theo giao thức niêm phong. Giả thuyết
   được đăng ký trước, cấu hình được ghim bằng hash và mỗi tập kiểm thử chỉ chạy một lần (Mục~\ref{sec:protocol}).
   \todo{owner quyết: công bố dữ liệu hay cung cấp khi có yêu cầu}
-\item \textbf{Kết quả thực nghiệm.} Trên ba mô hình nền mở trọng số, \cRulesS{} giảm tỉ lệ tấn công thành công từ
-  32,9\% xuống 1,2\% trên \tOne. \bgTwo{} giảm tỉ lệ này từ 32,4\% xuống 3,6\% trên \tTwo, với mức giảm tiện ích 3,4 điểm phần trăm.
-  Kết quả được đối chiếu với sáu baseline, với Gemini 3 Flash và với AgentDojo bằng tiếng Anh và tiếng Việt
-  (Mục~\ref{sec:results} và~\ref{sec:discussion}).
+\item \textbf{Kết quả thực nghiệm.} Trên ba mô hình nền mở trọng số, \ours{} giảm tỉ lệ tấn công thành công từ
+  32,9\% xuống 1,2\% trên \tOne{} và từ 32,4\% xuống 3,8\% trên \tTwo, một tập được viết sau khi \ours{} đã đóng
+  băng. Tiện ích lành tính giảm khoảng 5 điểm phần trăm. Kết quả được đối chiếu với sáu baseline, với tham chiếu chặn
+  mọi sink, với Gemini 3 Flash và với AgentDojo bằng tiếng Anh và tiếng Việt (Mục~\ref{sec:results}).
 \end{enumerate}

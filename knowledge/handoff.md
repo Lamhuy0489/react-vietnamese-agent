@@ -1,9 +1,19 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-10. Lúc 12:20. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-13. (Trước đó 2026-11-10 12:20.) Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
+
+**2026-11-13: Bài báo ICCIES sau phản biện (`phan bien.md` ở root, không commit). Một cấu hình duy nhất: BrokerGuard = D2+P2
+(macro `\cRulesS` = `\ours`); BG-v2/D3DEST đã bỏ khỏi bài (decision log 13/11). Suy luận mức family; số mới ở `facts.md`
+mục "Bổ sung sau phản biện" (`scripts/paper_cluster_stats_v1.py`, chạy lại: `nice -n 10 python3 scripts/paper_cluster_stats_v1.py`).**
+- Đã sửa bản tiếng Việt: tóm tắt (không p), Mục 1, 4 (phạm vi bảo đảm, không IFC), 5 (thống kê theo family, commit niêm phong
+  08d57bf/07f10c6 kèm câu "chưa có dấu thời gian bên ngoài" vì lịch sử viết lại 11/11), 6 (Test-II là phân tích lặp lại,
+  hàng chặn mọi sink, Sandwich trên AgentDojo), 7 (ba lớp vượt qua, hạn chế), 8. Hình 1 nay là TikZ `images/fig1_pipeline.tex`.
+- Chưa biên dịch: owner biên dịch trên Overleaf, báo số trang/lỗi TikZ (Hình 1 mới, dùng `arrows.meta`).
+- Còn mở: C10 BrokerGuard trên AgentDojo (cần pipeline element mới + ánh xạ sink khai báo trước + Kaggle Llama; chỉ làm nếu
+  owner muốn và kịp hạn 15/11); công bố dữ liệu; tác giả/đơn vị; Holm 1979 trong refs.bib.
 
 **2026-11-12 20:30: Bài báo ICCIES: `docs/paper/iccies2027/latex/` (Overleaf, LLNCS). `sections/` là bản TIẾNG VIỆT để owner
 đọc; owner tự viết bản tiếng Anh nộp (ICCIES cấm văn bản AI). Bản owner biên dịch lúc 19:53: 14 trang (giới hạn 15).**

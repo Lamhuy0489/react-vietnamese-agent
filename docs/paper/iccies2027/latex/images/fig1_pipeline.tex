@@ -1,0 +1,80 @@
+% Hình 1, vẽ bằng TikZ (Overleaf tự vẽ, không render trên máy). Thay fig1_pipeline.pdf (bản đó vẽ BG-v2).
+% Bố cục chép từ images/src/fig1_pipeline.py, đơn vị cũ nhân 1,2 cm. Tổng rộng 12,0 cm < \textwidth 12,2 cm.
+% Nhãn tiếng Anh cho bản nộp (thay từng nhãn tương ứng):
+%   User / instruction $u$ / (trusted) | LLM agent / (ReAct) | Tool Broker (host side)
+%   Schema and limits · trust and sensitivity labels · confidential values $C$
+%   before every sink call | R-Dest: destination must appear in $u$
+%   R-Flow: confidential value leaves only if written in $u$
+%   R-Signal: after a flagged observation, deny sinks unless $u$ allows the call
+%   at the answer · on observations · on denial | R-Flow + R-Redact: redact each confidential value in the answer
+%   Sandwich: repeat $u$ after each observation | Denial feedback: tool not executed, agent continues
+%   Read tools: untrusted output, may carry injections | Sinks: e-mail, webhook, mocks, no network
+%   redacted answer | deterministic check | model-dependent
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}[
+  font=\fontsize{5.6}{6.6}\selectfont,
+  box/.style={rounded corners=1pt, line width=0.5pt, align=center, inner sep=1pt},
+  rule/.style={box, draw=bgblue, fill=bgblue!12},
+  soft/.style={box, draw=bgorange, fill=bgorange!10, dash pattern=on 2pt off 1.3pt},
+  neutral/.style={box, draw=black!60, fill=black!5},
+  arr/.style={-{Stealth[length=3pt]}, line width=0.5pt, draw=black!65},
+  lab/.style={font=\fontsize{6.4}{7}\selectfont},
+  note/.style={font=\fontsize{5.4}{6.4}\selectfont\itshape, text=black!65, anchor=west},
+]
+% cột trái: người dùng và tác tử
+\node[neutral, minimum width=1.5cm, minimum height=1.14cm, text width=1.4cm] at (0.75,4.23)
+  {Người dùng\\ chỉ thị $u$\\ (đáng tin)};
+\node[neutral, minimum width=1.5cm, minimum height=1.56cm, text width=1.4cm,
+  font=\fontsize{6.6}{7.6}\selectfont\bfseries] at (0.75,1.98) {Tác tử LLM\\ (ReAct)};
+\draw[arr] (0.744,3.66) -- (0.744,2.76);
+
+% khung broker
+\draw[rounded corners=2pt, line width=0.6pt] (2.22,0.66) rectangle (9.12,5.46);
+\node[font=\fontsize{7}{8}\selectfont\bfseries] at (5.67,5.22) {Tool Broker (phía host)};
+\node[rule, minimum width=6.612cm, minimum height=0.42cm, text width=6.5cm] at (5.67,4.674)
+  {Kiểm schema và giới hạn $\cdot$ gán nhãn tin cậy, nhạy cảm $\cdot$ trích giá trị mật $C$};
+
+\node[note] at (2.33,4.236) {trước mỗi lời gọi sink};
+\node[rule, minimum width=2.124cm, minimum height=0.96cm, text width=2.0cm] at (3.426,3.6)
+  {\textsf{R-Dest}\\ đích phải có trong $u$};
+\node[rule, minimum width=2.124cm, minimum height=0.96cm, text width=2.0cm] at (5.670,3.6)
+  {\textsf{R-Flow}\\ giá trị mật chỉ được ra\\ nếu có trong $u$};
+\node[rule, minimum width=2.124cm, minimum height=0.96cm, text width=2.0cm] at (7.914,3.6)
+  {\textsf{R-Signal}\\ có quan sát bị gắn cờ:\\ chặn sink trừ khi $u$ cho phép};
+
+\node[note] at (2.33,2.88) {ở câu trả lời $\cdot$ trên đường quan sát $\cdot$ khi từ chối};
+\node[rule, minimum width=2.124cm, minimum height=0.96cm, text width=2.0cm] at (3.426,2.22)
+  {\textsf{R-Flow} + \textsf{R-Redact}\\ che từng giá trị mật\\ trong câu trả lời};
+\node[soft, minimum width=2.124cm, minimum height=0.96cm, text width=2.0cm] at (5.670,2.22)
+  {Sandwich\\ nhắc lại $u$ sau\\ mỗi quan sát};
+\node[rule, minimum width=2.124cm, minimum height=0.96cm, text width=2.0cm] at (7.914,2.22)
+  {Phản hồi từ chối\\ không chạy công cụ,\\ tác tử làm tiếp};
+
+% chú giải
+\node[rule, minimum width=0.336cm, minimum height=0.24cm] at (2.568,1.056) {};
+\node[note, font=\fontsize{5.4}{6.4}\selectfont] at (2.80,1.056) {kiểm tất định};
+\node[soft, minimum width=0.336cm, minimum height=0.24cm] at (4.968,1.056) {};
+\node[note, font=\fontsize{5.4}{6.4}\selectfont] at (5.20,1.056) {phụ thuộc mô hình};
+
+% tác tử <-> broker
+\draw[arr] (1.5,2.46) -- node[lab, above=-1pt] {$a_t$} (2.22,2.46);
+\draw[arr] (2.22,1.98) -- node[lab, above=-1pt] {$o_t$} (1.5,1.98);
+\draw[arr] (1.5,1.44) -- node[lab, above=-1pt] {$y$} (2.22,1.44);
+
+% cột công cụ
+\node[neutral, minimum width=2.16cm, minimum height=1.14cm, text width=2.06cm] at (10.92,3.69)
+  {Công cụ đọc\\ đầu ra không đáng tin,\\ có thể chứa lệnh chèn};
+\node[neutral, minimum width=2.16cm, minimum height=0.96cm, text width=2.06cm] at (10.92,2.22)
+  {Sink: e-mail, webhook\\ bản giả, không ra mạng};
+\draw[arr] (9.12,3.90) -- node[lab, above=-1pt] {$a_t$} (9.84,3.90);
+\draw[arr] (9.84,3.42) -- node[lab, above=-1pt] {$o_t$} (9.12,3.42);
+\draw[arr] (9.12,2.22) -- node[lab, above=-1pt] {$a_t$} (9.84,2.22);
+
+% câu trả lời đã che rời broker
+\draw[arr] (9.12,1.02) -- (10.26,1.02);
+\node[anchor=west, text=black!65] at (10.30,1.02) {câu trả lời đã che};
+\end{tikzpicture}
+\caption{Pipeline của \ours. Mọi hành động $a_t$ và câu trả lời $y$ đều đi qua Tool Broker. Ô liền nét là kiểm tra
+tất định phía host, ô nét đứt là lớp phụ thuộc mô hình.}\label{fig:pipeline}
+\end{figure}

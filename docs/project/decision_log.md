@@ -3789,3 +3789,14 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
   (mã cũ → mã mới, đủ 40 ký tự). Bản sao lưu lịch sử cũ (git bundle) để ngoài repo, trên máy owner:
   `~/Downloads/git-backup-before-coauthor-rewrite-20261111/`.
 
+## 2026-11-13 — Bài báo ICCIES: bỏ BG-v2, suy luận mức family (sau phản biện `phan bien.md`)
+
+- Owner quyết: bài báo chỉ còn một cấu hình BrokerGuard = D2+P2 (đóng băng trước Test-I). D3DEST (BG-v2) không đưa vào bài,
+  chỉ một câu ở Hạn chế (+1,0 điểm utility, CI theo family chứa 0). Luận văn vẫn giữ D3.
+- Test-II: so sánh BrokerGuard với NoDef ghi là phân tích lặp lại **không đăng ký trước** (script T1–T3 commit 10/11 02:20,
+  sau khi chạy; giả thuyết chính của Test-II nhắm D3DEST).
+- Thống kê bài báo: DEFF 1,5–7,7 nên đơn vị suy luận là family. Hại: McNemar chính xác một phía trên family; utility: hoán vị
+  đảo dấu theo family, hai phía; CI bootstrap theo family. H2/H4/H5 giữ p mức ca của bản đăng ký trước (không bác bỏ).
+  Script `scripts/paper_cluster_stats_v1.py` (chỉ đọc file eval và tên tool trong trace NoDef), số ở `facts.md`.
+- Tham chiếu chặn mọi sink: ước lượng từ trace NoDef (không chạy mới). Không đổi code phòng thủ, dữ liệu hay kết quả niêm phong.
+- Tác động: lời văn bài báo bỏ khẳng định IFC, nêu ba lớp vượt qua đã biết, utility giảm khoảng 5 điểm có ý nghĩa ở mức cụm.

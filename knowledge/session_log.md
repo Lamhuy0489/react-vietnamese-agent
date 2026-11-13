@@ -459,3 +459,14 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Viết lại bản tiếng Việt: câu ngắn, bỏ chấm phẩy và gạch dài; ký hiệu Sub(); link xanh bấm được; model card Prompt Guard 2
   truy cập 12/11. Owner dặn: không render hình/PDF trên máy.
 
+## 2026-11-13 — Bài báo: phản biện, bỏ BG-v2, thống kê mức family
+
+- Owner hỏi bỏ BG-v2 chỉ giữ v1; đọc phản biện `phan bien.md` (root, không commit; có dấu hiệu do AI viết). Kiểm từng ý với
+  code và bài: A1 (29/12/22 là ca canonical), A4 (số 22 là của D2, không phải D2+P2), C5 (R-Dest so chuỗi con) đúng.
+- `scripts/paper_cluster_stats_v1.py` (6 giây, nice 10): family-level McNemar, hoán vị, DEFF, deny-all từ trace NoDef.
+  Test-II NoDef→BrokerGuard 42→14/48 family, p 3,7·10⁻⁹; utility −4,5 điểm, p 0,044. Deny-all Test-I 1,2% hại, 7,4% utility.
+- Sửa bài (bản tiếng Việt): bỏ BG-v2, BrokerGuard = D2+P2; Hình 1 vẽ lại bằng TikZ (`images/fig1_pipeline.tex`), xóa PDF cũ
+  và `tab2_ablation`; Bảng Test-I p mức family; Bảng Test-II có hàng chặn mọi sink; Mục 4 phạm vi bảo đảm (không IFC);
+  Mục 7 ba lớp vượt qua và hạn chế mới; tóm tắt không có p. Chưa biên dịch (owner biên dịch trên Overleaf).
+- Owner hỏi C10 (AgentDojo có phòng thủ): khả thi qua Kaggle + runner local, cần code pipeline element, ánh xạ sink khai báo
+  trước, khoảng nửa ngày + vài giờ chạy; chưa làm.

@@ -9,19 +9,19 @@
   scale only axis, width=3.1cm, height=4.4cm,
   xbar, bar shift=0pt, bar width=4.5pt,
   xmin=0, xmax=140, xtick={0,50,100},
-  ytick={NoDef,Spotlight,Sandwich,PromptGuard,MELON-det,Progent-pol,PhraseRules,BG-Rules,BG-v1,BG-v2},
-  symbolic y coords={NoDef,Spotlight,Sandwich,PromptGuard,MELON-det,Progent-pol,PhraseRules,BG-Rules,BG-v1,BG-v2},
+  ytick={NoDef,Spotlight,Sandwich,PromptGuard,MELON-det,Progent-pol,PhraseRules,BG-Rules,BrokerGuard},
+  symbolic y coords={NoDef,Spotlight,Sandwich,PromptGuard,MELON-det,Progent-pol,PhraseRules,BG-Rules,BrokerGuard},
   y dir=reverse, enlarge y limits=0.06,
   axis x line*=bottom, axis y line*=left,
   tick label style={font=\scriptsize}, label style={font=\scriptsize},
-  xlabel={Họ gây hại trên Dev (/144)},
+  xlabel={Họ $\times$ mô hình gây hại (/144)},
   xmajorgrids, grid style={line width=0.2pt, draw=black!12},
   nodes near coords, nodes near coords style={font=\tiny, anchor=west},
   title={(a) Dev}, title style={font=\scriptsize},
 ]
 \addplot[fill=black!35, draw=none] coordinates {
   (112,NoDef) (91,Spotlight) (31,Sandwich) (113,PromptGuard) (112,MELON-det) (61,Progent-pol) (94,PhraseRules)};
-\addplot[fill=bgblue, draw=none] coordinates {(45,BG-Rules) (10,BG-v1) (10,BG-v2)};
+\addplot[fill=bgblue, draw=none] coordinates {(45,BG-Rules) (10,BrokerGuard)};
 \end{axis}
 \end{tikzpicture}\hspace{0.6cm}%
 \begin{tikzpicture}
@@ -44,10 +44,10 @@
   coordinates {(ER,1) (CR,1) (SL,27) (AL,18) (PT,10) (US,4)};
 \addplot[fill=bgblue, draw=none] coordinates {(ER,0) (CR,0) (SL,29) (AL,17) (PT,25) (US,1)};
 \addplot[fill=bgorange, draw=none] coordinates {(ER,0) (CR,0) (SL,6) (AL,3) (PT,4) (US,0)};
-\legend{\cNone, \cSand, \cRules, \cRulesS}
+\legend{\cNone, \cSand, \cRules, \ours}
 \end{axis}
 \end{tikzpicture}
-\caption{(a) Số họ gây hại trên Dev của sáu baseline (xám) và ba cấu hình \ours{} (xanh), gộp ba mô hình nền. Tiện
+\caption{(a) Số họ gây hại trên Dev của sáu baseline (xám) và hai cấu hình có luật (xanh: \cRules{} và \ours), gộp ba mô hình nền. Tiện
 ích tương ứng ở Bảng~\ref{tab:dev}. (b) Số ca tấn công gây hại theo cơ chế trên \tOne, gộp ba mô hình nền. Ô không có
 cột nghĩa là 0 ca.}\label{fig:results}
 \end{figure}

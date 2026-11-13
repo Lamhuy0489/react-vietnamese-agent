@@ -1,5 +1,9 @@
 # Trạng thái hiện tại
 
+**13/11: Bài báo ICCIES sau phản biện: bỏ BG-v2, chỉ còn BrokerGuard = D2+P2 (Test-I đăng ký trước, Test-II phân tích lặp lại).
+Thống kê mức family (DEFF 1,5–7,7): Test-II 42→14/48 family, p 3,7·10⁻⁹; utility −4,5 điểm (p 0,044). Tham chiếu chặn mọi sink
+và Sandwich trên AgentDojo đã vào facts.md. Hình 1 vẽ lại bằng TikZ. Chờ owner biên dịch Overleaf; hạn 15/11.**
+
 **12/11 20:30: Bài báo ICCIES: `docs/paper/iccies2027/latex/` (Overleaf), bản tiếng Việt 8 mục, 14 trang khi owner biên dịch.
 BrokerGuard BG-v1 (D2+P2, Test-I) và BG-v2 (D3DEST, Test-II) đều là đóng góp; tên là macro; bảng đổi tên ở README bài báo.
 Owner tự viết bản tiếng Anh. Không render hình/PDF trên máy.**

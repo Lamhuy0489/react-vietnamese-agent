@@ -1,16 +1,16 @@
-% Thành phần từng cấu hình (đối chiếu src/react_agent/security_v3/d3.py: D3 = D2 + A1 thu hẹp theo đích + P2 + feedback v1).
+% Thành phần từng cấu hình (đối chiếu configs/final/final_config_v3.json: D2+P2 = D2 runtime --levels A1 + P2).
+% 13/11: bỏ BG-v2 (D3DEST) khỏi bài; BrokerGuard = D2+P2.
 \begin{table}[!htbp]
 \centering
-\caption{Thành phần của các cấu hình \ours. \checkmark: có, -: không.}\label{tab:versions}
+\caption{Thành phần của \ours{} và cấu hình chỉ có luật. \checkmark: có, -: không.}\label{tab:versions}
 \footnotesize
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}lcccccccl@{}}
+\begin{tabular}{@{}lccccccl@{}}
 \toprule
-Cấu hình & \rDest & \rFlow & \rRedact & \rSigAll & \rSig & Sandwich & Phản hồi & Xác nhận trên \\
+Cấu hình & \rDest & \rFlow & \rRedact & \rSig & Sandwich & Phản hồi & Đánh giá trên \\
 \midrule
-\cRules{} (chỉ luật) & \checkmark & \checkmark & \checkmark & \checkmark & - & - & \checkmark & Dev, \tOne{} (tách lớp) \\
-\cRulesS & \checkmark & \checkmark & \checkmark & \checkmark & - & \checkmark & \checkmark & \tOne{} (H1--H6) \\
-\bgTwo & \checkmark & \checkmark & \checkmark & - & \checkmark & \checkmark & \checkmark & \tTwo{} (T1--T3) \\
+\cRules{} (chỉ luật) & \checkmark & \checkmark & \checkmark & \checkmark & - & \checkmark & Dev, \tOne{} (tách lớp) \\
+\textbf{\ours} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & Dev, \tOne, \tTwo \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}

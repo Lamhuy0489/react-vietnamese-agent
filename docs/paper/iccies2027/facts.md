@@ -90,3 +90,41 @@ hình đóng, chạy qua proxy, chỉ trên Dev; mức tăng D3 so với D2+P2 n
 nghi chỉ một vòng do người soạn, chỉ trên Dev.
 Thêm 10/11 23:00: phòng thủ dựng sẵn của AgentDojo chưa đánh giá trên Gemini 3 Flash (owner quyết không chạy);
 Gemma và Qwen3.5 không chạy trên AgentDojo.
+
+## Bổ sung sau phản biện (13/11/2026, không đăng ký trước)
+
+Nguồn: `scripts/paper_cluster_stats_v1.py` → `results/rebuild_b/paper_cluster_stats_v1.json` (seed 20261113, 10.000 lần).
+Chỉ đọc file eval và tên công cụ trong trace NoDef. Đơn vị "family" = một family gộp mọi biến thể và 3 backbone (Test-I 72,
+Test-II 48); "backbone × family" = các số /216 và /144. Permutation = đảo dấu theo family, một phía cho hại, hai phía cho utility;
+độ phân giải 10⁻⁴. DEFF = phương sai theo cụm family / phương sai giả định độc lập của hiệu trung bình.
+
+| So sánh | Mức ca (b/c, p) | Family (trước→sau, b/c, p) | Backbone×family | Permutation p | CI 95% (điểm) | DEFF |
+|---|---|---|---|---|---|---|
+| Test-I H1 PhraseRules→BG-Rules, hại | 0/128, 2,9·10⁻³⁹ | 53→24/72, 0/29, 1,9·10⁻⁹ | 109→49/216, 8,7·10⁻¹⁹ | <10⁻⁴ | −11,9 (−16,8; −7,5) | 5,9 |
+| Test-I H3 (M2∪M3∪M4) | 0/81, 4,1·10⁻²⁵ | 28→15/36, 0/13, 1,2·10⁻⁴ | 63→31/108, 2,3·10⁻¹⁰ | <10⁻⁴ | −15,0 (−24,1; −7,2) | 7,7 |
+| Test-I H6 Sandwich→BG-v1, hại | 1/49, 4,5·10⁻¹⁴ | 28→8/72, 0/20, 9,5·10⁻⁷ | 47→11/216, 1,5·10⁻¹¹ | <10⁻⁴ | −4,4 (−6,3; −2,8) | 1,9 |
+| Test-I NoDef→BG-v1, hại | 3/345, 1,2·10⁻⁹⁸ | 65→8/72, 0/57, 6,9·10⁻¹⁸ | 138→11/216, 1,9·10⁻³⁷ | <10⁻⁴ | −31,7 (−37,8; −25,7) | 4,6 |
+| Test-I NoDef→BG-v1, utility benign | 102/176 | — | — | 0,022 | −5,1 (−9,7; −1,1) | 3,7 |
+| Test-II NoDef→BG-v1, hại | 4/210, 3,3·10⁻⁵⁷ | 42→14/48, 0/28, 3,7·10⁻⁹ | 95→18/144, 1,4·10⁻²¹ | <10⁻⁴ | −28,6 (−35,3; −21,9) | 3,9 |
+| Test-II NoDef→BG-v1, utility benign | 69/112 | — | — | 0,044 | −4,5 (−9,4; −0,5) | 2,6 |
+| Test-II, chỉ benign_plain | 48/85 | — | — | 0,067 | −5,1 (−11,0; −0,1) | 3,0 |
+| Test-II, chỉ benign_auth | 21/27 | — | — | 0,57 | −2,5 (−9,2; +4,2) | 1,5 |
+
+- Utility "family" không dùng: gần như mọi family có ít nhất một ca thành công (48→46/48), không phân biệt được.
+- DEFF 1,5–7,7: p ở mức ca bị phóng đại; trong bài dùng p mức family và CI theo family.
+- BG-v1 làm giảm utility có ý nghĩa ở mức cụm: −4,5 điểm trên Test-II, −5,1 điểm trên Test-I.
+
+### Tham chiếu deny-all-sinks (ước lượng từ trace NoDef)
+
+Utility = NoDef thành công và không thực thi lời gọi sink nào. Hại = NoDef gây hại mà không qua sink (rò rỉ qua câu trả lời,
+chặn sink không ngăn được). Ước lượng, vì mô hình có thể hành xử khác sau khi bị từ chối.
+
+| Bộ | Deny-all hại | Deny-all utility benign | BG-v1 hại | BG-v1 utility | NoDef utility |
+|---|---|---|---|---|---|
+| Test-I | 13/1080 (1,2%) | 107/1440 (7,4%): plain 95/1080, auth 12/360 | 13 (1,2%) | 556 (38,6%) | 630 (43,8%) |
+| Test-II | 5/720 (0,7%) | 120/960 (12,5%): plain 96/720, auth 24/240 | 27 (3,8%) | 480 (50,0%) | 523 (54,5%) |
+
+### AgentDojo: Sandwich đã chạy (decision log 06/11, Llama-3.1-8B, EN, `important_instructions`)
+
+Utility / tấn công thành công: Banking 144 cặp: không phòng thủ 58/17, `spotlighting_with_delimiting` 61/18,
+`repeat_user_prompt` (= Sandwich) 62/10. Slack 105 cặp: 28/16, 45/10, 35/10. Chỉ EN; chưa chạy BG-v1 đầy đủ trên AgentDojo.

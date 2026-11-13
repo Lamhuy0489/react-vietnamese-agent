@@ -39,8 +39,8 @@ số liệu và bảng (`facts.md`), kiểm tra tính đúng của nội dung, h
 |---|---|
 | `latex/` | Project để tải lên Overleaf (zip cả thư mục, main = `main.tex`, pdfLaTeX; lỗi font T5 thì XeLaTeX, xem đầu `main.tex`). `llncs.cls` v2.26, `splncs04.bst` (CTAN). |
 | `latex/sections/` | Tóm tắt + 8 mục. **Bản tiếng Việt để owner đọc**; bản nộp tiếng Anh do owner tự viết. |
-| `latex/tables/` | 10 bảng `tab0`–`tab9` (Gemini nằm trong cột cuối Bảng baseline Dev). |
-| `latex/images/` | `fig1_pipeline.pdf` (tiếng Việt; `en/` bản tiếng Anh; script `src/`). Hình 2 là `fig2_results.tex` (pgfplots, Overleaf tự vẽ; sửa số/nhãn trực tiếp trong file). |
+| `latex/tables/` | `tab0` thành phần, `tab1` cơ chế, `tab3` Test-I, `tab4` Test-II (kèm tham chiếu chặn mọi sink), `tab6` AgentDojo, `tab7` baseline Dev (cột cuối Gemini). `tab2` ablation BG-v2 đã xóa 13/11. |
+| `latex/images/` | Hình 1 `fig1_pipeline.tex` (TikZ, từ 13/11; nhãn tiếng Anh ghi trong comment đầu file; `src/fig1_pipeline.py` là bản matplotlib cũ vẽ BG-v2, không dùng). Hình 2 `fig2_results.tex` (pgfplots). Overleaf tự vẽ cả hai. |
 | `latex/refs.bib` | 23 mục, đều được trích. |
 | `outline/` | Dàn ý tiếng Anh cũ (trước là `sections/`), chỉ tham khảo; dùng tên cũ. |
 | `refs/` | PDF tài liệu tham khảo (không commit) và `refs/README.md`. |
@@ -52,13 +52,13 @@ Tên trong bài đặt bằng macro ở `latex/main.tex`; đổi một dòng là
 
 | Log, luận văn | Bài báo | | Log, luận văn | Bài báo |
 |---|---|---|---|---|
-| D3 (`D3DEST`) | **BG-v2** (BrokerGuard phiên bản 2, xác nhận Test-II) | | M1 | ER, chuyển hướng tường minh |
+| D3 (`D3DEST`) | không đưa vào bài (13/11); một câu ở Hạn chế | | M1 | ER, chuyển hướng tường minh |
 | D2 | **BG-Rules** (R-Dest, R-Flow, R-Redact + R-Signal∀ + phản hồi) | | M2 | CR, chuyển hướng che giấu |
-| D2+P2 | **BG-v1** (BrokerGuard phiên bản 1, xác nhận Test-I) | | M3 | SL, rò rỉ qua sink |
+| D2+P2 | **BrokerGuard** (macro `\cRulesS` = `\ours`; Test-I và Test-II) | | M3 | SL, rò rỉ qua sink |
 | A0 | NoDef | | M4 | AL, rò rỉ qua câu trả lời |
 | P1 / P2 | Spotlight / Sandwich | | M5 | PT, sửa tham số |
 | G1 / MEL / PRG / R1 | PromptGuard / MELON-det / Progent-pol / PhraseRules | | M6 | US, tác dụng phụ ngoài yêu cầu |
-| R2 / R3 / R4 / lớp A1 rộng / luật D | R-Dest / R-Flow / R-Redact / R-Signal∀ / R-Signal | | Test v3 / Test-3 | Test-I / Test-II |
+| R2 / R3 / R4 / lớp A1 (D2) / luật D | R-Dest / R-Flow / R-Redact / R-Signal / (không dùng) | | Test v3 / Test-3 | Test-I / Test-II |
 
 ## Bản rút gọn 12/11 (từ 19 trang)
 
@@ -79,10 +79,14 @@ Tên trong bài đặt bằng macro ở `latex/main.tex`; đổi một dòng là
 - [ ] 12–15 trang kể cả tài liệu tham khảo; một file PDF; nộp qua CMT trước 15/11/2026.
 - [ ] Đối chiếu 2 mục UNVERIFIED trong `refs.bib` (Holm 1979, model card Prompt Guard 2).
 
-## Luận điểm
+## Luận điểm (đổi 13/11/2026 sau phản biện `phan bien.md`)
 
-Phần chính là cơ chế phòng thủ D3 và xác nhận trên bộ Test-3 niêm phong với 3 backbone mở. Gemini 3 Flash và AgentDojo
-là ngoại kiểm phụ. Mức tăng utility của D3 so với D2+P2 nhỏ (+1,0 điểm) và phải viết đúng như vậy.
+Một cấu hình duy nhất: BrokerGuard = D2+P2, đóng băng trước Test-I, chạy một lần trên Test-I (H1–H6 đăng ký trước) và
+Test-II (so với NoDef, phân tích lặp lại không đăng ký trước). BG-v2 (D3DEST) bị bỏ: mức tăng utility +1,0 điểm có CI theo
+family chứa 0. Suy luận ở mức family (DEFF 1,5–7,7): McNemar trên family cho hại, hoán vị đảo dấu theo family cho utility;
+không đưa p vào tóm tắt. Phải nêu thẳng: utility giảm khoảng 5 điểm (có ý nghĩa ở mức cụm); luật chỉ bảo đảm luồng
+nguyên văn (không phải IFC); ba lớp vượt qua đã biết (PT trên sink hợp lệ, giá trị bị biến đổi, né bộ dò cụm từ).
+Tham chiếu chặn mọi sink và Sandwich trên AgentDojo là số mới trong facts.md, mục "Bổ sung sau phản biện".
 
 ## Các mục và trạng thái (cập nhật 2026-11-10)
 
@@ -117,11 +121,11 @@ là ngoại kiểm phụ. Mức tăng utility của D3 so với D2+P2 nhỏ (+1,
 ## Quy tắc khi viết
 
 - Mọi con số lấy từ [facts.md](facts.md) hoặc `docs/research/study2_thesis_tables.md`; số nào không có ở đó thì không viết.
-- Utility benign trên Test-3 là 51,0% (D3) so với 54,5% (A0). Không viết "trên 90%".
+- Utility benign trên Test-II là 50,0% (BrokerGuard) so với 54,5% (NoDef). Không viết "giữ 9x% utility".
 - Backbone: Gemma-4-12B, Llama-3.1-8B, Qwen3.5-9B. Gemini 3 Flash chỉ chạy trên Dev và AgentDojo, ngoài kiểm định chính.
 - Quy mô: Dev 48 family, Test v3 72, Test-3 48; 5 biến thể ngôn ngữ; 6 cơ chế M1–M6.
 - Thống kê: McNemar chính xác trên cặp fixture, hiệu chỉnh Holm, CI bootstrap theo family (10.000 lần).
 - Không khẳng định tiếng Việt dễ bị tấn công hơn: H4 và H5 không có ý nghĩa thống kê.
-- Trong bài, "D3" là cấu hình có tên `D3DEST` trong log và trong bảng luận văn.
+- Bài không còn D3/BG-v2. Luận văn vẫn giữ D3 (đủ chỗ trình bày).
 - Không viết "state-of-the-art"; không viết "release" khi owner chưa quyết.
 - Cơ chế và kết quả mô tả ở mức tổng hợp; không trích câu tấn công, không nêu ID family của Test.

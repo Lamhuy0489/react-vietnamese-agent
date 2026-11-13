@@ -1,75 +1,69 @@
 \section{Cơ chế phòng thủ \ours}\label{sec:defence}
 
 \ours{} dựa trên ba nguyên tắc. Thứ nhất, mô hình không phải ranh giới an ninh, vì một hành động chỉ có hiệu lực khi
-broker thực thi nó. Thứ hai, người dùng là chủ thể đáng tin duy nhất. Quyền được suy ra từ nguyên văn $u$, không từ
-nội dung công cụ và không từ việc một mô hình diễn giải ý định. Thứ ba, việc chặn không được làm dừng nhiệm vụ. Hành
-động bị từ chối được báo lại để tác tử hoàn thành phần việc hợp lệ. \ours{} có hai phiên bản, mỗi phiên bản được xác
-nhận trên một tập niêm phong riêng (Bảng~\ref{tab:versions}). Hình~\ref{fig:pipeline} mô tả phiên bản \bgTwo. Tập phát triển Dev và hai tập
-kiểm thử niêm phong \tOne, \tTwo{} được mô tả ở Mục~\ref{sec:protocol}.
+broker thực thi nó. Theo cách gọi kinh điển, broker đóng vai trò một reference monitor tại các sink. Thứ hai, người
+dùng là chủ thể đáng tin duy nhất. Quyền được suy ra từ nguyên văn $u$, không từ nội dung công cụ và không từ việc một
+mô hình diễn giải ý định. Thứ ba, việc chặn không được làm dừng nhiệm vụ. Hành động bị từ chối được báo lại để tác tử
+hoàn thành phần việc hợp lệ. Hình~\ref{fig:pipeline} mô tả pipeline. Bảng~\ref{tab:versions} so sánh \ours{} với cấu
+hình chỉ có luật \cRules, dùng để tách đóng góp của từng lớp. Tập phát triển Dev và hai tập kiểm thử niêm phong \tOne,
+\tTwo{} được mô tả ở Mục~\ref{sec:protocol}.
 
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=\textwidth]{fig1_pipeline}
-\caption{Pipeline của \bgTwo. Mọi hành động $a_t$ và câu trả lời $y$ đều đi qua Tool Broker. Ô liền nét là kiểm tra
-tất định phía host, ô nét đứt là lớp phụ thuộc mô hình. \cRulesS{} giống hệt, chỉ khác ở chỗ dùng \rSigAll{} thay cho
-\rSig.}\label{fig:pipeline}
-\end{figure}
-
+\input{images/fig1_pipeline}
 \input{tables/tab0_versions}
 
 \paragraph{Broker và nhãn nguồn gốc.} Khi không có phòng thủ (\cNone), broker chỉ kiểm tra schema và giới hạn của công
 cụ. Với \ours, broker lưu thêm nhãn của từng quan sát và tập giá trị $C$ trích từ các quan sát mật. Việc trích giá trị
 dựa trên quy tắc từ vựng, không phụ thuộc ngôn ngữ, gồm e-mail, URL, định danh từ sáu ký tự trở lên và số dài. Thao
 tác đọc không bao giờ bị chặn. Mọi phép so sánh dùng hàm chuẩn hóa $\norm(\cdot)$, gồm chuẩn hóa Unicode NFKC, bỏ ký tự
-định dạng như ký tự độ rộng bằng không, và đưa về chữ thường. Gọi $\Sub(z)$ là tập mọi chuỗi con của $\norm(z)$. Ta
-viết $x \in \Sub(z)$ khi $\norm(x)$ là một chuỗi con của $\norm(z)$.
+định dạng như ký tự độ rộng bằng không, và casefold. Ta viết $x \sub z$ khi $\norm(x)$ là một chuỗi con của
+$\norm(z)$. Đây là một quan hệ được kiểm tra trực tiếp, không dựng tập mọi chuỗi con.
 
 \paragraph{Luật \rDest{} (cấp quyền đích).} Một lời gọi sink $a$ chỉ được thực thi nếu
 \begin{equation}\label{eq:dest}
-\dest(a) \in \Sub(u) .
+\dest(a) \sub u .
 \end{equation}
 Luật này không phân tích ý định và không dùng danh sách cụm từ. Vì vậy, một đoạn chèn \mCR{} tránh động từ ``gửi'' hay
-tách nhỏ địa chỉ vẫn thất bại vì cùng lý do với \mER{}: đích mà nó cần không có trong $u$. Hạn chế của cách so khớp
-này là yêu cầu nhắc tới đích một cách gián tiếp (``địa chỉ trong hợp đồng'') sẽ không được đáp ứng. Ngoài ra, một đích chỉ xuất
-hiện trong câu cấm vẫn được tính là đã cấp quyền. Cơ chế \mUS{} được thiết kế để đánh giá đúng trường hợp này.
+tách nhỏ địa chỉ vẫn thất bại vì cùng lý do với \mER{}: đích mà nó cần không có trong $u$. Luật dựa trên một giả định.
+Mọi đích xuất hiện trong $u$ được coi là đã được cấp quyền. Giả định này sai theo hai hướng. Một đích chỉ xuất hiện
+trong câu cấm vẫn được tính là đã cấp quyền, và cơ chế \mUS{} được thiết kế để đo đúng trường hợp này. Ngược lại, yêu
+cầu nhắc tới đích một cách gián tiếp (``địa chỉ trong hợp đồng'') không được đáp ứng. Ngoài ra, so khớp chuỗi con chấp
+nhận cả một phần của đích người dùng viết, chẳng hạn phần trước tên miền của một địa chỉ e-mail. Broker kiểm tra dạng
+chuẩn hóa nhưng công cụ nhận đích nguyên dạng. Trong benchmark các sink là bản giả nên hai điểm này không gây hại thật.
+Với công cụ thật, nên so khớp trên đích đã phân tích cấu trúc và thực thi đúng dạng đã kiểm.
 
 \paragraph{Luật \rFlow{} và \rRedact{} (luồng giá trị mật).} Với một lời gọi sink $a$, broker từ chối nếu
 \begin{equation}\label{eq:flow}
-\exists\, v \in C:\; v \in \Sub(\pay(a)) \;\land\; v \notin \Sub(u) .
+\exists\, v \in C:\; v \sub \pay(a) \;\land\; \lnot\,(v \sub u) .
 \end{equation}
 Với câu trả lời cuối, điều kiện tương tự được áp dụng cho $y$ thay cho $\pay(a)$. Khi đó \rRedact{} không loại bỏ cả
-câu trả lời mà thay từng giá trị vi phạm bằng \code{[REDACTED]}. Đây là một chính sách luồng thông tin tối thiểu trên
-hai nhãn, theo đó giá trị mật chỉ được tới sink thông qua chính văn bản của người dùng. Việc coi $y$ là một sink đóng
-kênh \mAL{}, vốn bị các bộ lọc lời gọi công cụ bỏ sót. Do so khớp nguyên văn, luật không nhận ra giá trị đã bị mô hình
-biến đổi, chẳng hạn được định dạng lại hoặc tách ra.
+câu trả lời mà thay từng giá trị vi phạm bằng \code{[REDACTED]}. Việc coi $y$ là một sink đóng kênh \mAL{}, vốn bị các
+bộ lọc lời gọi công cụ bỏ sót. Phạm vi bảo đảm của luật này hẹp hơn một chính sách kiểm soát luồng thông tin. Luật chỉ
+cưỡng chế tất định các luồng \emph{nguyên văn}. Một giá trị bị mô hình biến đổi, chẳng hạn được định dạng lại, tách ra
+hay mã hóa, không còn thỏa $v \sub \pay(a)$ và sẽ đi qua. Luật cũng không đóng các kênh ngầm, ví dụ việc chọn gửi hay
+không gửi. Giá trị mật không có dạng mà bộ trích nhận ra cũng không được bảo vệ. Chúng tôi chưa đo độ phủ của bộ trích
+so với tập giá trị mật mà bộ chấm dùng.
 
-\paragraph{Luật tín hiệu chèn lệnh \rSigAll{} và \rSig.} Hai luật trên không bao quát việc thao túng một sink mà người
-dùng \emph{đã} nêu bằng giá trị không mật, tức cơ chế \mPT. Một bộ phát hiện cụm từ gắn cờ các quan sát chứa văn bản
-giống chỉ thị. Gọi $F$ là tập quan sát bị gắn cờ. Trong \cRulesS, luật \rSigAll{} chặn mọi lời gọi sink sau khi
-$F \neq \emptyset$, trừ khi một văn phạm chặt trên $u$ cho phép lời gọi đó. Trên \tOne, đây là nguồn chặn nhầm lớn
-nhất (22 quỹ đạo benign\_plain). Tuy vậy, loại bỏ luật này trên Dev làm số họ gây hại tăng thêm 2 đến 4 ở mỗi mô hình
-nền. \bgTwo{} giữ bộ phát hiện nhưng thu hẹp hệ quả của nó. Broker chỉ từ chối $a$ nếu
+\paragraph{Luật tín hiệu chèn lệnh \rSig.} Hai luật trên không bao quát việc thao túng một sink mà người dùng
+\emph{đã} nêu bằng giá trị không mật, tức cơ chế \mPT. Một bộ phát hiện cụm từ gắn cờ các quan sát chứa văn bản giống
+chỉ thị. Gọi $F$ là tập quan sát bị gắn cờ và $\mathrm{Gram}_u(a)$ là điều kiện một văn phạm chặt trên $u$ cho phép
+lời gọi $a$. Broker từ chối $a$ nếu
 \begin{equation}\label{eq:signal}
-\exists\, o \in F:\; \dest(a) \in \Sub(o) ,
+F \neq \emptyset \;\land\; \lnot\,\mathrm{Gram}_u(a) .
 \end{equation}
-tức là khi nội dung giống chỉ thị nhắc tới đúng đích mà tác tử sắp dùng. Phát lại ngoại tuyến trên các quỹ đạo Dev có sẵn
-cho thấy \rSig{} chặn đủ 11/11 ca gây hại mà \rSigAll{} đã chặn, và không chặn ca nào trong 14 lời gọi lành tính bị
-\rSigAll{} chặn nhầm.
+Trên Dev, bỏ luật này làm số họ gây hại tăng thêm 2 đến 4 ở mỗi mô hình nền. Đổi lại, đây là nguồn chặn nhầm lớn nhất.
+Trên \tOne, dưới \cRules, luật này chặn nhầm 22 ca benign\_plain, trong khi \rDest{} chỉ chặn nhầm 3 ca. Bộ phát hiện
+dùng danh sách cụm từ nên phụ thuộc ngôn ngữ (Mục~\ref{sec:discussion}).
 
 \paragraph{Lời nhắc và phản hồi từ chối.} Sau mỗi quan sát, $u$ được nhắc lại cùng một câu yêu cầu bỏ qua mọi chỉ thị
 nằm trong dữ liệu công cụ. Cách làm này giống phòng thủ sandwich và \code{repeat\_user\_prompt} của AgentDojo. Đây là
 lớp duy nhất phụ thuộc vào mô hình, và nó bù cho các luật ở những chỗ luật không thấy được (Mục~\ref{sec:results}).
 Khi một luật từ chối, công cụ không được chạy và tác tử nhận một quan sát có cấu trúc báo rằng hành động đã bị từ
-chối. Nhờ đó tác tử vẫn hoàn thành được các bước còn lại.
+chối. Nhờ đó tác tử vẫn hoàn thành được các bước còn lại. Phản hồi từ chối có mặt ở mọi cấu hình có luật nên chưa được
+tách riêng.
 
-\paragraph{Chọn thành phần cho \bgTwo.} \bgTwo{} được thiết kế hoàn toàn trên Dev, sau khi \tOne{} đã chạy. Tiêu chí
-được cố định trước khi chạy. Gộp trên ba mô hình nền, ứng viên không được có nhiều ca gây hại hơn \cRulesS{} và phải
-có tiện ích lành tính cao hơn. Chỉ cấu hình gồm \rSig, lời nhắc gốc và phản hồi gốc đạt tiêu chí
-(Bảng~\ref{tab:ablation}). Lời nhắc mạnh hơn (v2) có lợi cho Gemma nhưng làm số họ gây hại của Llama tăng gấp đôi và
-làm tiện ích của Qwen giảm từ 165 xuống 55. Kết hợp lời nhắc v2 với phản hồi gốc cũng cho kết quả tương tự (21 ca gây
-hại, tiện ích 379). Thông báo từ chối mạnh hơn không mang lại cải thiện. Hai ý tưởng khác bị loại ở bước phát lại.
-Giới hạn \rFlow{} theo tài nguyên người dùng nêu mở thêm 3 nhiệm vụ nhưng để lọt 5 tấn công, còn so khớp gần đúng
-không bắt thêm ca nào. Cả hai phiên bản đều không gọi thêm mô hình nào, vì mọi luật là phép toán chuỗi và không cần
-truy cập trọng số.
-
-\input{tables/tab2_ablation}
+\paragraph{Chọn cấu hình và chi phí.} Mọi lựa chọn được thực hiện trên Dev trong các vòng chỉnh khai báo trước. \ours{}
+được tạo ở vòng chỉnh thứ hai bằng cách ghép lớp luật \cRules{} với \cSand, hai thành phần đã có, không đổi tham số
+nào. Cấu hình này được đóng băng
+trước khi chạy \tOne{} và không thay đổi về sau. \ours{} không gọi thêm mô hình nào. Mỗi kiểm tra là một phép tìm chuỗi
+con trên $u$, $\pay(a)$ hoặc $y$, rẻ hơn nhiều so với một bước sinh của LLM. Chúng tôi chưa đo độ trễ. Lời nhắc làm
+ngữ cảnh dài thêm một bản $u$ sau mỗi quan sát.
