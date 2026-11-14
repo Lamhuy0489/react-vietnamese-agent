@@ -1,7 +1,8 @@
 \section{Nghiên cứu liên quan}\label{sec:related}
 % Trước khi viết bản tiếng Anh: mở PDF trong ../refs/ để đối chiếu từng câu trích.
-% 14/11: bỏ 7 mục để rút gọn (liu2024formalizing, zhang2025asb, chen2025struq, chennabasappa2025llamafirewall,
-% costa2025fides, beurerkellner2025patterns, kwon2023vllm); các mục vẫn còn trong refs.bib nhưng không được trích.
+% 14/11: bỏ 6 mục để rút gọn (liu2024formalizing, zhang2025asb, chen2025struq, chennabasappa2025llamafirewall,
+% beurerkellner2025patterns, kwon2023vllm); vẫn còn trong refs.bib nhưng không được trích. Thêm lại costa2025fides và
+% zhao2026clawguard (owner duyệt 14/11, sau khi rà tính mới: hai công trình gần nhất về cưỡng chế ở lời gọi công cụ).
 
 \paragraph{Tấn công và benchmark.} Greshake và cộng sự~\cite{greshake2023indirect} đưa ra khái niệm chèn lệnh gián
 tiếp. BIPIA~\cite{yi2025bipia} là benchmark đầu tiên cho chèn lệnh gián tiếp vào LLM. InjecAgent~\cite{zhan2024injecagent}
@@ -13,8 +14,12 @@ hơn ở ngôn ngữ ít tài nguyên, nhưng trong bối cảnh jailbreak chứ
 SecAlign~\cite{chen2025secalign} huấn luyện lại mô hình để tách chỉ thị khỏi dữ liệu. Prompt
 Guard~2~\cite{meta2025promptguard2} là bộ phân loại sàng lọc đầu vào. MELON~\cite{zhu2025melon} so sánh hành động của
 lượt chạy gốc với lượt chạy lại có che yêu cầu. Progent~\cite{shi2025progent} áp chính sách đặc quyền lên lời gọi công
-cụ. CaMeL~\cite{debenedetti2026camel} an toàn theo thiết kế: nó tách luồng điều khiển khỏi dữ liệu không đáng tin bằng
-một trình thông dịch riêng. \ours{} gần với hướng này nhất và cũng không sửa mô hình. Khác với CaMeL, \ours{} chỉ áp
-luật chuỗi lên quỹ đạo, nên gắn được vào tác tử ReAct sẵn có. Các tấn công thích nghi đã vượt qua nhiều phòng thủ đã
+cụ. FIDES~\cite{costa2025fides} gắn nhãn tin cậy và bảo mật cho dữ liệu, lan truyền nhãn qua các lời gọi công cụ và
+chỉ cho phép hành động có hệ quả khi thỏa chính sách. ClawGuard~\cite{zhao2026clawguard} nhờ mô hình suy ra luật truy
+cập từ yêu cầu của người dùng rồi kiểm từng lời gọi công cụ theo các luật đó. CaMeL~\cite{debenedetti2026camel} an toàn theo thiết kế: nó tách luồng điều khiển khỏi dữ liệu không đáng tin bằng
+một trình thông dịch riêng. \ours{} cùng hướng với các hệ này, tức cưỡng chế bên ngoài mô hình và không sửa trọng số. Khác với CaMeL, \ours{} chỉ áp
+luật chuỗi lên quỹ đạo, nên gắn được vào tác tử ReAct sẵn có. Khác với FIDES và ClawGuard, \ours{} không lan truyền nhãn
+cho từng giá trị và không nhờ mô hình sinh luật. Quyền chỉ được suy ra bằng so khớp nguyên văn với $u$, nên các luật
+không phụ thuộc ngôn ngữ. Các tấn công thích nghi đã vượt qua nhiều phòng thủ đã
 công bố~\cite{zhan2025adaptive,nasr2025attacker}, vì vậy một tập tấn công thích nghi được báo cáo riêng
 (Mục~\ref{sec:adaptive}).

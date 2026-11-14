@@ -3863,3 +3863,11 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
   `private/`, AgentDojo-VI và mã. Quét token/khóa trong file đã commit: không thấy. Chưa có file LICENSE.
 - Owner muốn công bố: bài báo chỉ ghi "được công bố công khai", không ghi link (owner 14/11).
 - Hệ quả: các tập Test giờ là công khai, nên lần kiểm thử niêm phong tiếp theo cần tập mới.
+
+## 2026-11-14 17:40 — Rà tính mới, thêm lại 2 tài liệu (owner duyệt)
+
+- Tìm web: chưa thấy benchmark IPI tiếng Việt cho tác tử; đa ngôn ngữ mới có AgentShield (Kurd, Ả Rập), bhasha-shield
+  (Hindi, Bengali, chỉ GitHub). Cưỡng chế ở lời gọi công cụ đã có nhiều: FIDES (IFC), ClawGuard (luật do LLM suy từ
+  yêu cầu), Progent, CaMeL, RTBAS, Conseca. Bài không nhận ý tưởng broker là mới; cái mới là benchmark VI theo cơ chế,
+  giao thức niêm phong, luật nguyên văn không gọi LLM, phân tích ca lọt.
+- Thêm costa2025fides (đã có trong refs.bib) và zhao2026clawguard (mới) vào Mục 2, FIDES ở câu IFC của Mục 4. 19 tài liệu.
