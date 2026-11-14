@@ -9,7 +9,8 @@ Các benchmark cho tác tử như BIPIA~\cite{yi2025bipia}, InjecAgent~\cite{zha
 AgentDojo~\cite{debenedetti2024agentdojo} gần như chỉ dùng tiếng Anh. Văn bản tiếng Việt hay bị bỏ dấu và trộn thuật
 ngữ tiếng Anh, còn các bộ phân loại chèn lệnh chủ yếu được huấn luyện trên tiếng Anh. Phòng thủ mức prompt như
 spotlighting~\cite{hines2024spotlighting} lại phụ thuộc vào việc mô hình có tuân theo hay không. Vì vậy chúng tôi đặt
-việc cưỡng chế ở phía host, giữa mô hình và công cụ, nơi nó không phụ thuộc vào sự tuân thủ của mô hình.
+các luật cưỡng chế ở phía host, giữa mô hình và công cụ, nơi chúng không phụ thuộc vào sự tuân thủ của mô hình. Lời
+nhắc trong prompt chỉ là lớp bổ trợ cho các luật.
 
 Bài báo có bốn đóng góp.
 \begin{enumerate}
@@ -21,7 +22,9 @@ Bài báo có bốn đóng góp.
 \item \textbf{VN-AgentInject v3 và AgentDojo-VI.} VN-AgentInject v3 được đánh giá theo giao thức niêm phong. Giả thuyết
   được đăng ký trước, cấu hình được ghim bằng hash và mỗi tập kiểm thử chỉ chạy một lần. AgentDojo-VI là bản dịch tiếng
   Việt của AgentDojo, dùng để kiểm tra bên ngoài (Mục~\ref{sec:protocol}).
-  \todo{owner quyết: công bố dữ liệu hay cung cấp khi có yêu cầu}
+  Dữ liệu, mã và các manifest niêm phong được công bố tại
+  \url{https://github.com/Lamhuy0489/react-vietnamese-agent}.
+  % Nếu CMT yêu cầu bình duyệt ẩn danh: thay link bằng "được công bố sau phản biện".
 \item \textbf{Kết quả thực nghiệm.} Trên ba mô hình nền mở trọng số, \ours{} giảm tỉ lệ tấn công thành công từ
   32,9\% xuống 1,2\% trên \tOne{} và từ 32,4\% xuống 3,8\% trên \tTwo, một tập được viết sau khi \ours{} đã đóng
   băng. Tiện ích lành tính giảm khoảng 5 điểm phần trăm. Kết quả được đối chiếu với sáu baseline và Gemini 3 Flash
