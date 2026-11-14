@@ -39,6 +39,10 @@
 \usepackage{enumitem}
 \setlist{noitemsep, topsep=2pt}
 \makeatletter
+% trang chỉ có bảng/hình: xếp từ đầu trang, không dàn đều ra giữa
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{10pt plus 2pt}
+\setlength{\@fpbot}{0pt plus 1fil}
 \g@addto@macro\normalsize{%
   \setlength{\abovedisplayskip}{4pt plus 2pt minus 1pt}%
   \setlength{\belowdisplayskip}{4pt plus 2pt minus 1pt}%
