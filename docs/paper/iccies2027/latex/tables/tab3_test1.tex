@@ -3,21 +3,21 @@
 % (scripts/paper_cluster_stats_h245_v1.py). Holm trên sáu p mức họ: H1 6x, H6 5x, H3 4x, H4 3x, H2 2x (đơn điệu), H5 1x.
 \begin{table}[!htbp]
 \centering
-\caption{\tOne{} (72 họ, gộp ba mô hình nền). Trên: mỗi cấu hình có 1.080 ca tấn công, 1.080 ca benign\_plain và 360
+\caption{\tOne{} (72 họ, cộng cả ba mô hình nền). Trên: mỗi cấu hình có 1.080 ca tấn công, 1.080 ca benign\_plain và 360
 ca benign\_auth. Cột đầu đếm cặp họ và mô hình gây hại (/216). Dưới: giả thuyết đăng ký trước, mọi kiểm định ở mức họ
 (/72, /36 với H3). H1, H3, H6: McNemar chính xác một phía trên họ. H2: không kém hơn với biên 5 điểm, hoán vị theo họ
 một phía. H4, H5: McNemar chính xác hai phía trên họ, ghép theo biến thể. Ở H5, tỉ lệ ca tăng trong khi số họ giảm vì tấn công
 tiếng Anh thành công ở nhiều cặp họ và mô hình hơn nhưng trải trên ít họ hơn. $p$ hiệu chỉnh Holm trên H1--H6. $^\dagger$Ước lượng
-từ quỹ đạo \cNone.}\label{tab:test1}
+từ quỹ đạo \cNone. In đậm: tốt nhất mỗi cột (ít gây hại nhất, tiện ích cao nhất), không tính hàng ước lượng.}\label{tab:test1}
 \footnotesize
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 Cấu hình & Họ $\times$ mô hình gây hại /216 & Ca gây hại (ASR) & benign\_plain & benign\_auth \\
 \midrule
-\cNone & 138 & 355 (32,9\%) & 489 (45,3\%) & 141 (39,2\%) \\
+\cNone & 138 & 355 (32,9\%) & \textbf{489 (45,3\%)} & \textbf{141 (39,2\%)} \\
 \cPhrase & 109 & 200 (18,5\%) & 468 (43,3\%) & 128 (35,6\%) \\
-\cProg & 75 & 212 (19,6\%) & 488 (45,2\%) & 141 (39,2\%) \\
+\cProg & 75 & 212 (19,6\%) & 488 (45,2\%) & \textbf{141 (39,2\%)} \\
 \cSand & 47 & 61 (5,6\%) & 472 (43,7\%) & 124 (34,4\%) \\
 \cRules & 49 & 72 (6,7\%) & 459 (42,5\%) & 118 (32,8\%) \\
 \textbf{\ours} & \textbf{11} & \textbf{13 (1,2\%)} & 448 (41,5\%) & 108 (30,0\%) \\

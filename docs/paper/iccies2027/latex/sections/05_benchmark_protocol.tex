@@ -1,6 +1,6 @@
 \section{Benchmark và giao thức}\label{sec:protocol}
 
-\paragraph{VN-AgentInject v3.} Benchmark hiện thực mô hình ở Mục~\ref{sec:threat} thành các \emph{ca kiểm thử} chạy
+\paragraph{VN-AgentInject.} Benchmark hiện thực mô hình ở Mục~\ref{sec:threat} thành các \emph{ca kiểm thử} chạy
 được. Mọi dữ liệu đều là dữ liệu tổng hợp. Mỗi họ sinh một ca tấn công và một ca benign\_plain cho mỗi biến thể ngôn
 ngữ, và một phần ba số họ có thêm ca benign\_auth. Benchmark có ba tập rời nhau, mỗi tập cân bằng theo cơ chế. Tập
 \textbf{Dev} (48 họ, 560 ca) được dùng cho mọi lựa chọn thiết kế. Tập \textbf{\tOne} (72 họ, 840 ca) là tập niêm phong
@@ -49,7 +49,7 @@ vị đảo dấu theo họ, hai phía. Khoảng tin cậy 95\% được tính b
 trước dùng McNemar trên từng ca. Kiểm định đó đánh giá thấp phương sai, nên cả sáu giả thuyết được kiểm lại ở mức họ.
 Kết luận của từng giả thuyết không đổi. Giá trị $p$ của H1 đến H6 được hiệu chỉnh bằng thủ tục Holm~\cite{holm1979}.
 
-\paragraph{AgentDojo-VI.} Để kiểm tra bên ngoài VN-AgentInject v3, bài báo dùng thêm bộ Banking (144 cặp nhiệm
+\paragraph{AgentDojo-VI.} Để kiểm tra bên ngoài VN-AgentInject, bài báo dùng thêm bộ Banking (144 cặp nhiệm
 vụ người dùng và nhiệm vụ chèn, 16 nhiệm vụ người dùng) và Slack (105 cặp, 21 nhiệm vụ) của AgentDojo
 v1.2.2~\cite{debenedetti2024agentdojo}, bằng tiếng Anh và bằng bản dịch tiếng Việt. Bản dịch gồm môi trường, nhiệm vụ,
 mục tiêu chèn và khuôn tấn công \code{important\_instructions}. IBAN, số tiền, tên và địa chỉ được giữ nguyên, còn công

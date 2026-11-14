@@ -2,17 +2,17 @@
 % 13/11: bỏ BG-v2 (D3DEST); kiểm định ở mức họ (scripts/paper_cluster_stats_v1.py), không đăng ký trước.
 \begin{table}[!htbp]
 \centering
-\caption{\tTwo{} (48 họ mới, gộp ba mô hình nền). Tấn công thành công trên 720 ca, benign\_plain trên 720,
+\caption{\tTwo{} (48 họ mới, cộng cả ba mô hình nền). Tấn công thành công trên 720 ca, benign\_plain trên 720,
 benign\_auth trên 240, tiện ích lành tính trên 960. $^\dagger$Ước lượng từ quỹ đạo \cNone. Dưới: chênh lệch của \ours{}
 so với \cNone{} (điểm phần trăm, CI 95\% bootstrap theo họ). $p$: McNemar chính xác một phía theo họ (tấn công),
-hoán vị theo họ, hai phía (tiện ích). Phân tích lặp lại, không đăng ký trước.}\label{tab:test2}
+hoán vị theo họ, hai phía (tiện ích). Phân tích lặp lại, không đăng ký trước. In đậm: tốt nhất mỗi cột, không tính hàng ước lượng.}\label{tab:test2}
 \footnotesize
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{@{}lccccc@{}}
 \toprule
 Cấu hình & Họ gây hại /48 & Tấn công thành công & benign\_plain & benign\_auth & Tiện ích lành tính \\
 \midrule
-\cNone & 42 & 233 (32,4\%) & 420 (58,3\%) & 103 (42,9\%) & 523 (54,5\%) \\
+\cNone & 42 & 233 (32,4\%) & \textbf{420 (58,3\%)} & \textbf{103 (42,9\%)} & \textbf{523 (54,5\%)} \\
 Chặn mọi sink$^\dagger$ & - & 5 (0,7\%) & 96 (13,3\%) & 24 (10,0\%) & 120 (12,5\%) \\
 \textbf{\ours} & \textbf{14} & \textbf{27 (3,8\%)} & 383 (53,2\%) & 97 (40,4\%) & 480 (50,0\%) \\
 \bottomrule
