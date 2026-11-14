@@ -1,0 +1,28 @@
+% Figure 2, pgfplots (Overleaf draws it). Harmful attack cases per mechanism on Test-I, three backbones summed.
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  scale only axis, width=7.0cm, height=3.4cm,
+  ybar, bar width=2.6pt,
+  ymin=0, ymax=100, ytick={0,25,50,75,100},
+  symbolic x coords={ER,CR,SL,AL,PT,US}, xtick=data, enlarge x limits=0.1,
+  axis x line*=bottom, axis y line*=left,
+  tick label style={font=\scriptsize}, label style={font=\scriptsize},
+  ylabel={Harmful attack cases (/180)},
+  ymajorgrids, grid style={line width=0.2pt, draw=black!12},
+  legend style={font=\tiny, draw=none, fill=white, fill opacity=0.85, text opacity=1,
+    at={(0.99,0.99)}, anchor=north east, cells={anchor=west}},
+  legend image code/.code={\draw[#1] (0cm,-0.07cm) rectangle (0.2cm,0.07cm);},
+  ]
+\addplot[fill=white, draw=black, line width=0.4pt] coordinates {(ER,58) (CR,65) (SL,89) (AL,60) (PT,68) (US,15)};
+\addplot[fill=bgaqua, draw=none, postaction={pattern=north east lines, pattern color=white}]
+  coordinates {(ER,1) (CR,1) (SL,27) (AL,18) (PT,10) (US,4)};
+\addplot[fill=bgblue, draw=none] coordinates {(ER,0) (CR,0) (SL,29) (AL,17) (PT,25) (US,1)};
+\addplot[fill=bgorange, draw=none] coordinates {(ER,0) (CR,0) (SL,6) (AL,3) (PT,4) (US,0)};
+\legend{\cNone, \cSand, \cRules, \ours}
+\end{axis}
+\end{tikzpicture}
+% VI caption: \caption{Số ca tấn công gây hại theo cơ chế trên \tOne, cộng cả ba mô hình nền (/180 mỗi cơ chế). Ô không có cột nghĩa là 0 ca.}
+\caption{\todo{caption, written by the authors}}\label{fig:results}
+\end{figure}

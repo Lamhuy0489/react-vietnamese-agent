@@ -38,6 +38,7 @@ số liệu và bảng (`facts.md`), kiểm tra tính đúng của nội dung, h
 | Thư mục | Nội dung |
 |---|---|
 | `latex/` | Project để tải lên Overleaf (zip cả thư mục, main = `main.tex`, pdfLaTeX; lỗi font T5 thì XeLaTeX, xem đầu `main.tex`). `llncs.cls` v2.26, `splncs04.bst` (CTAN). |
+| `latex_en/` | **Bản nộp tiếng Anh (14/11).** Tải cả thư mục lên Overleaf như một project riêng, main = `main.tex`, pdfLaTeX. Đã sẵn: preamble tiếng Anh, bảng và hình nhãn tiếng Anh (số kiểu Anh: 32.9, 1,080), công thức, nhãn tham chiếu, khung mục. Owner viết: tóm tắt, lời văn, chú thích bảng/hình (ô `\todo`; chú thích tiếng Việt và danh sách ý cần có nằm trong comment). Không dùng "we". |
 | `latex/sections/` | Tóm tắt + 8 mục. **Bản tiếng Việt để owner đọc**; bản nộp tiếng Anh do owner tự viết. |
 | `latex/tables/` | `tab0` thành phần, `tab1` cơ chế, `tab3` Test-I, `tab4` Test-II (kèm tham chiếu chặn mọi sink), `tab6` AgentDojo, `tab7` baseline Dev (cột cuối Gemini). `tab2` ablation BG-v2 đã xóa 13/11. |
 | `latex/images/` | Hình 1 `fig1_pipeline.tex` (TikZ, từ 13/11; nhãn tiếng Anh ghi trong comment đầu file; `src/fig1_pipeline.py` là bản matplotlib cũ vẽ BG-v2, không dùng). Hình 2 `fig2_results.tex` (pgfplots). Overleaf tự vẽ cả hai. |

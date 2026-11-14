@@ -1,0 +1,27 @@
+% VI caption: AgentDojo v1.2.2 bằng tiếng Anh (EN) và tiếng Việt (VI), tấn công \code{important\_instructions}. Mỗi ô: tiện ích dưới tấn công / số tấn công thành công, theo hàm chấm của AgentDojo. Số trong ngoặc là tiện ích khi không tấn công. \cSand{} là \code{repeat\_user\_prompt}. \ours{} chỉ chạy với Llama. ``--'': không chạy. In đậm: tiện ích cao nhất và số tấn công thành công thấp nhất trong mỗi bộ và mỗi cột (bỏ qua khi các ô bằng nhau). $^\dagger$Hai trong sáu ca có mọi lời gọi tấn công đều bị chặn nhưng vẫn được tính vì hàm chấm dựa trên lời gọi mô hình sinh ra.
+% Caption must state: AgentDojo v1.2.2 in English and Vietnamese, attack important_instructions; cell = utility under
+% attack / successful attacks (AgentDojo scorer); parentheses = utility without attack; Sandwich = repeat_user_prompt;
+% BrokerGuard only with Llama; "--" = not run; dagger = two of six cases had every attack call blocked but still count
+% because the scorer uses generated calls; bold = best utility and fewest successful attacks per suite and column.
+\begin{table}[!htbp]
+\centering
+\caption{\todo{caption, written by the authors}}\label{tab:agentdojo}
+\footnotesize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+ & & \multicolumn{2}{c}{Llama-3.1-8B} & \multicolumn{2}{c}{Gemini 3 Flash} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Suite (pairs, tasks) & Configuration & EN & VI & EN & VI \\
+\midrule
+Banking (144, 16) & \cNone & 58 / 17 (7) & 44 / 6 (6) & 93 / 4 (13) & 99 / 0 (12) \\
+ & \cSand & 62 / 10 (7) & 45 / 6 (5) & -- & -- \\
+ & \ours & \textbf{72} / \textbf{3} (8) & \textbf{54} / \textbf{1} (5) & -- & -- \\
+\midrule
+Slack (105, 21) & \cNone & 28 / 16 (7) & \textbf{26} / 0 (7) & 62 / 1 (18) & 59 / 0 (16) \\
+ & \cSand & \textbf{35} / 10 (8) & 19 / 0 (6) & -- & -- \\
+ & \ours & 15 / \textbf{6}$^\dagger$ (5) & 13 / 0 (5) & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

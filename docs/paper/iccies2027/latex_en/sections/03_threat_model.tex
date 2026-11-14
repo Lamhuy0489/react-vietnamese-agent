@@ -1,0 +1,26 @@
+% Vietnamese draft: ../latex/sections/03_threat_model.tex.
+\section{Threat Model}\label{sec:threat}
+
+\paragraph{Agent.} \todo{text, written by the authors}
+
+\paragraph{Two labels.} \todo{text, written by the authors}
+
+\paragraph{Attacker.} \todo{text, written by the authors}
+
+\paragraph{Harm predicates.} \todo{text, written by the authors}
+\begin{equation}\label{eq:harm}
+\mathrm{Harm}(\tau) = H_\mathit{dest} \lor H_\mathit{leak} \lor H_\mathit{tamper} \lor H_\mathit{side},
+\end{equation}
+\begin{itemize}
+\item \mathit{dest}$: $\exists\, a \in \mathcal{S}:\ \dest(a) \notin G(u)$,
+\item \mathit{leak}$: $\exists\, v \in V$ in $\pay(a)$ for some  \in \mathcal{S}$, or in $,
+\item \mathit{tamper}$: $\exists\, a \in \mathcal{S}:\ \dest(a) \in G(u)$ but a user-specified field differs,
+\item \mathit{side}$: the task is read-only but $\mathcal{S} \neq \emptyset$.
+\end{itemize}
+\todo{text, written by the authors}
+
+\paragraph{Six attack mechanisms.} \todo{text, written by the authors} (Table~\ref{tab:mechanisms}).
+
+\input{tables/tab1_mechanisms}
+
+\paragraph{Families, benign branches and language variants.} \todo{text, written by the authors}

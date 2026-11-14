@@ -1,0 +1,42 @@
+% VI caption: \tOne{} (72 họ, cộng cả ba mô hình nền). Trên: mỗi cấu hình có 1.080 ca tấn công, 1.080 ca benign\_plain và 360 ca benign\_auth. Cột đầu đếm cặp họ và mô hình gây hại (/216). Dưới: giả thuyết đăng ký trước, mọi kiểm định ở mức họ (/72, /36 với H3). H1, H3, H6: McNemar chính xác một phía trên họ. H2: không kém hơn với biên 5 điểm, hoán vị theo họ một phía. H4, H5: McNemar chính xác hai phía trên họ, ghép theo biến thể. Ở H5, tỉ lệ ca tăng trong khi số họ giảm vì tấn công tiếng Anh thành công ở nhiều cặp họ và mô hình hơn nhưng trải trên ít họ hơn. $p$ hiệu chỉnh Holm trên H1--H6. $^\dagger$Ước lượng từ quỹ đạo \cNone. In đậm: tốt nhất mỗi cột (ít gây hại nhất, tiện ích cao nhất), không tính hàng ước lượng.
+% Caption must state: 72 families, three backbones summed; per configuration 1,080 attack, 1,080 benign_plain and
+% 360 benign_auth cases; first column = harmful family-model pairs /216; all tests at family level (/72, /36 for H3);
+% H1, H3, H6 one-sided exact McNemar; H2 non-inferiority, margin 5 points, one-sided family permutation; H4, H5
+% two-sided exact McNemar paired by variant; why H5 cases rise while families fall; Holm over H1--H6;
+% dagger = estimated from NoDef trajectories; bold = best per column, estimate row excluded.
+\begin{table}[!htbp]
+\centering
+\caption{\todo{caption, written by the authors}}\label{tab:test1}
+\footnotesize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Configuration & Harmful family--model pairs /216 & Harmful cases (ASR) & benign\_plain & benign\_auth \\
+\midrule
+\cNone & 138 & 355 (32.9\%) & \textbf{489 (45.3\%)} & \textbf{141 (39.2\%)} \\
+\cPhrase & 109 & 200 (18.5\%) & 468 (43.3\%) & 128 (35.6\%) \\
+\cProg & 75 & 212 (19.6\%) & 488 (45.2\%) & \textbf{141 (39.2\%)} \\
+\cSand & 47 & 61 (5.6\%) & 472 (43.7\%) & 124 (34.4\%) \\
+\cRules & 49 & 72 (6.7\%) & 459 (42.5\%) & 118 (32.8\%) \\
+\textbf{\ours} & \textbf{11} & \textbf{13 (1.2\%)} & 448 (41.5\%) & 108 (30.0\%) \\
+Deny all sinks$^\dagger$ & - & 13 (1.2\%) & 95 (8.8\%) & 12 (3.3\%) \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+
+\medskip
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lllccl@{}}
+\toprule
+ & Metric & Comparison & Cases (harmful families) & Holm $p$ & Outcome \\
+\midrule
+H1 & ASR & \cRules{} $<$ \cPhrase & 18.5\% $\to$ 6.7\% (53 $\to$ 24) & $1.1\cdot10^{-8}$ & supported \\
+H2 & benign\_plain & \cRules{} $\ge$ \cNone{} $- 5$ & 45.3\% $\to$ 42.5\% & 0.16 & not established \\
+H3 & ASR (\mCR, \mSL, \mAL) & \cRules{} $<$ \cPhrase & 23.5\% $\to$ 8.5\% (28 $\to$ 15) & $4.8\cdot10^{-4}$ & supported \\
+H4 & ASR of \cNone & no diacritics $\ne$ canonical & 31.5\% $\to$ 33.3\% (40 $\to$ 50) & 0.16 & not rejected \\
+H5 & ASR of \cNone & English $\ne$ canonical & 31.5\% $\to$ 36.6\% (40 $\to$ 39) & 1.00 & not rejected \\
+H6 & ASR & \ours{} $<$ \cSand & 5.6\% $\to$ 1.2\% (28 $\to$ 8) & $4.8\cdot10^{-6}$ & supported \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

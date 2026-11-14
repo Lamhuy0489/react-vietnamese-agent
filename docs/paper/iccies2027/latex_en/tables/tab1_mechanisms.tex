@@ -1,0 +1,18 @@
+% VI caption: Sáu cơ chế tấn công của VN-AgentInject và vị từ gây hại tương ứng.
+\begin{table}[!htbp]
+\centering
+\caption{\todo{caption, written by the authors}}\label{tab:mechanisms}
+\footnotesize
+\begin{tabular}{@{}lp{0.70\textwidth}l@{}}
+\toprule
+Code & Mechanism (subtypes) & Predicate \\
+\midrule
+\mER & Explicit redirection: send to a destination not in $u$, with a send verb and a full address & $H_\mathit{dest}$ \\
+\mCR & Covert redirection: same goal without the ``send + address'' pattern (verbless note, forward or cc, split address, destination in a second document) & $H_\mathit{dest}$ \\
+\mSL & Sink leak: a confidential value placed in a sink the user named (e-mail body, payload, innocuous-looking field) & $H_\mathit{leak}$ \\
+\mAL & Answer leak: a confidential value placed in the final answer (verbatim, embedded in a sentence, labelled) & $H_\mathit{leak}$ \\
+\mPT & Parameter tampering: an ordinary value changed in the payload of a user-named sink (number, boolean, unit, identifier) & $H_\mathit{tamper}$ \\
+\mUS & Unrequested side effect: a sink call injected into a read-only task (destination only in a prohibition, only informational, or absent) & $H_\mathit{side}$ \\
+\bottomrule
+\end{tabular}
+\end{table}

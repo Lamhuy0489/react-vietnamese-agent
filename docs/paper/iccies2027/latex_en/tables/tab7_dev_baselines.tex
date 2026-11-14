@@ -1,0 +1,27 @@
+% VI caption: Baseline và \ours{} trên Dev. Mỗi ô: họ gây hại /48 $\cdot$ benign\_plain /240 $\cdot$ benign\_auth /80. Cột Tổng: số cặp họ và mô hình gây hại của ba mô hình mở cộng lại (/144), tức tổng số đầu tiên của ba ô bên trái. In đậm: ít họ gây hại nhất mỗi cột. $^\dagger$Gemini 3 Flash chạy qua proxy (không seed, không ràng buộc schema), chỉ năm cấu hình, không thuộc kiểm định. Dấu - nghĩa là không chạy.
+% Caption must state: cell = harmful families /48 . benign_plain /240 . benign_auth /80; Total = harmful family-model
+% pairs of the three open models summed (/144); dagger = Gemini via proxy (no seed, no schema constraint), five
+% configurations, not in any test; "-" = not run; bold = fewest harmful families per column.
+\begin{table}[!htbp]
+\centering
+\caption{\todo{caption, written by the authors}}\label{tab:dev}
+\footnotesize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+Group & Configuration & Gemma-4-12B & Llama-3.1-8B & Qwen3.5-9B & Total & Gemini 3 Flash$^\dagger$ \\
+\midrule
+ & \cNone & 38 $\cdot$ 159 $\cdot$ 54 & 34 $\cdot$ 81 $\cdot$ 30 & 40 $\cdot$ 140 $\cdot$ 36 & 112 & 22 $\cdot$ 184 $\cdot$ 53 \\
+\multirow{2}{*}{Prompt} & \cSpot & 24 $\cdot$ 146 $\cdot$ 54 & 24 $\cdot$ 74 $\cdot$ 36 & 43 $\cdot$ 137 $\cdot$ 38 & 91 & - \\
+ & \cSand & 7 $\cdot$ 150 $\cdot$ 54 & 13 $\cdot$ 84 $\cdot$ 40 & 11 $\cdot$ 144 $\cdot$ 32 & 31 & - \\
+\multirow{2}{*}{Detection} & \cPG & 39 $\cdot$ 160 $\cdot$ 54 & 34 $\cdot$ 81 $\cdot$ 30 & 40 $\cdot$ 139 $\cdot$ 36 & 113 & - \\
+ & \cMel & 38 $\cdot$ 160 $\cdot$ 54 & 34 $\cdot$ 79 $\cdot$ 30 & 40 $\cdot$ 142 $\cdot$ 36 & 112 & - \\
+\multirow{2}{*}{Rules} & \cProg & 21 $\cdot$ 160 $\cdot$ 54 & 18 $\cdot$ 80 $\cdot$ 32 & 22 $\cdot$ 138 $\cdot$ 36 & 61 & - \\
+ & \cPhrase & 36 $\cdot$ 160 $\cdot$ 49 & 25 $\cdot$ 80 $\cdot$ 27 & 33 $\cdot$ 138 $\cdot$ 33 & 94 & 18 $\cdot$ 182 $\cdot$ 50 \\
+\midrule
+\multirow{2}{*}{\ours} & \cRules & 17 $\cdot$ 158 $\cdot$ 44 & 13 $\cdot$ 80 $\cdot$ 27 & 15 $\cdot$ 136 $\cdot$ 28 & 45 & 12 $\cdot$ 186 $\cdot$ 44 \\
+ & \textbf{\ours} & \textbf{2} $\cdot$ 147 $\cdot$ 45 & \textbf{5} $\cdot$ 82 $\cdot$ 36 & \textbf{3} $\cdot$ 141 $\cdot$ 24 & \textbf{10} & \textbf{1} $\cdot$ 192 $\cdot$ 49 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

@@ -1,0 +1,33 @@
+% VI caption: \tTwo{} (48 họ mới, cộng cả ba mô hình nền). Tấn công thành công trên 720 ca, benign\_plain trên 720, benign\_auth trên 240, tiện ích lành tính trên 960. $^\dagger$Ước lượng từ quỹ đạo \cNone. Dưới: chênh lệch của \ours{} so với \cNone{} (điểm phần trăm, CI 95\% bootstrap theo họ). $p$: McNemar chính xác một phía theo họ (tấn công), hoán vị theo họ, hai phía (tiện ích). Phân tích lặp lại, không đăng ký trước. In đậm: tốt nhất mỗi cột, không tính hàng ước lượng.
+% Caption must state: 48 new families, three backbones summed; attacks /720, benign_plain /720, benign_auth /240,
+% benign utility /960; dagger = estimated from NoDef trajectories; lower part = BrokerGuard minus NoDef in percentage
+% points with 95% family bootstrap CI; p = one-sided exact family McNemar (attacks), two-sided family permutation
+% (utility); replication, not pre-registered; bold = best per column, estimate row excluded.
+\begin{table}[!htbp]
+\centering
+\caption{\todo{caption, written by the authors}}\label{tab:test2}
+\footnotesize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Configuration & Harmful families /48 & Successful attacks & benign\_plain & benign\_auth & Benign utility \\
+\midrule
+\cNone & 42 & 233 (32.4\%) & \textbf{420 (58.3\%)} & \textbf{103 (42.9\%)} & \textbf{523 (54.5\%)} \\
+Deny all sinks$^\dagger$ & - & 5 (0.7\%) & 96 (13.3\%) & 24 (10.0\%) & 120 (12.5\%) \\
+\textbf{\ours} & \textbf{14} & \textbf{27 (3.8\%)} & 383 (53.2\%) & 97 (40.4\%) & 480 (50.0\%) \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+
+\medskip
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llcc@{}}
+\toprule
+Metric & Test unit & Difference [95\% CI] & $p$ \\
+\midrule
+Successful attacks & 42 $\to$ 14 families, 0/28 discordant & $-28.6$ [$-35.3$, $-21.9$] & $3.7\cdot10^{-9}$ \\
+Benign utility & permutation over 48 families & $-4.5$ [$-9.4$, $-0.5$] & 0.044 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

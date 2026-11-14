@@ -1,0 +1,104 @@
+% ICCIES 2027 -- Springer LNCS/CCIS, 12--15 pages. ENGLISH SUBMISSION (written by the authors).
+% Overleaf: upload this folder, main = main.tex, compiler pdfLaTeX.
+% Structure, tables, figures, equations and labels are ready. Prose, abstract and captions marked \todo{} are
+% written by the authors (ICCIES forbids AI-generated text). The Vietnamese reading draft is ../latex/.
+% Numbers come only from ../facts.md.
+\documentclass[runningheads]{llncs}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{adjustbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{patterns,arrows.meta}
+\definecolor{bgblue}{HTML}{2A78D6}
+\definecolor{bgorange}{HTML}{EB6834}
+\definecolor{bgaqua}{HTML}{1BAF7A}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{4}
+
+% Placeholders for the authors; remove every \todo and this definition before submission.
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+% ---- TÊN GỌI (đổi một chỗ ở đây là đổi cả bài) -------------------------------------------------
+% Ánh xạ sang tên trong log/luận văn ghi ở cột phải; xem ../README.md mục "Bảng đổi tên".
+\newcommand{\ours}{\textsc{BrokerGuard}}       % tên phương pháp (họ cấu hình), owner có thể đổi
+\newcommand{\cNone}{NoDef}                    % A0
+\newcommand{\cRules}{BG-Rules}                % D2   = R-Dest, R-Flow, R-Redact + lớp tín hiệu rộng (A1) + phản hồi
+\newcommand{\cRulesS}{\ours}                 % D2+P2 = cấu hình BrokerGuard đầy đủ (Test-I và Test-II).
+                                              % D3DEST (BG-v2) không đưa vào bài, chỉ nêu một câu ở hạn chế (13/11).
+\newcommand{\cSpot}{Spotlight}                % P1
+\newcommand{\cSand}{Sandwich}                 % P2
+\newcommand{\cPG}{PromptGuard}                % G1
+\newcommand{\cMel}{MELON-det}                 % MEL
+\newcommand{\cProg}{Progent-pol}              % PRG (cài đặt lại theo kiểu Progent)
+\newcommand{\cPhrase}{PhraseRules}            % R1
+% Luật
+\newcommand{\rDest}{\textsf{R-Dest}}          % R2
+\newcommand{\rFlow}{\textsf{R-Flow}}          % R3
+\newcommand{\rRedact}{\textsf{R-Redact}}      % R4
+\newcommand{\rSig}{\textsf{R-Signal}}         % lớp A1 của D2 (chặn mọi sink sau quan sát bị gắn cờ, trừ văn phạm chặt trên u)
+% Cơ chế tấn công
+\newcommand{\mER}{\textsf{ER}}                % M1 explicit redirection
+\newcommand{\mCR}{\textsf{CR}}                % M2 covert redirection
+\newcommand{\mSL}{\textsf{SL}}                % M3 sink leak
+\newcommand{\mAL}{\textsf{AL}}                % M4 answer leak
+\newcommand{\mPT}{\textsf{PT}}                % M5 parameter tampering
+\newcommand{\mUS}{\textsf{US}}                % M6 unrequested side effect
+% Tập kiểm thử niêm phong
+\newcommand{\tOne}{Test-I}                   % "Test v3" (72 họ)
+\newcommand{\tTwo}{Test-II}                  % "Test-3" (48 họ)
+% Ký hiệu
+\newcommand{\sub}{\sqsubseteq}               % x ⊑ z: nu(x) là chuỗi con của nu(z) (quan hệ, không dựng tập)
+\newcommand{\dest}{\mathit{dest}}
+\newcommand{\pay}{\mathit{payload}}
+\newcommand{\norm}{\nu}
+
+% hyperref nạp cuối cùng: mọi trích dẫn [n], tham chiếu Bảng/Hình/Mục và DOI/URL đều xanh, bấm được
+\usepackage{hyperref}
+\definecolor{linkblue}{HTML}{1F4E9A}
+\hypersetup{colorlinks=true, linkcolor=linkblue, citecolor=linkblue, urlcolor=linkblue}
+
+\begin{document}
+
+\title{Beyond Model Compliance: A Layered Defence Against Indirect Prompt Injection in Vietnamese Tool-Using Agents}
+\titlerunning{Beyond Model Compliance}
+
+\author{\todo{Author 1}\inst{1} \and \todo{Author 2}\inst{1}}
+\authorrunning{\todo{Author} et al.}
+\institute{\todo{Affiliation, city, country} \\ \email{\todo{email}}}
+
+\maketitle
+
+\input{sections/00_abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_threat_model}
+\input{sections/04_defence}
+\input{sections/05_benchmark_protocol}
+\input{sections/06_results}
+\input{sections/07_discussion}
+\input{sections/08_conclusion}
+
+% \begin{credits}
+% \subsubsection{\ackname} ...
+% \subsubsection{\discintname} The authors have no competing interests to declare.
+% \end{credits}
+
+\bibliographystyle{splncs04}
+\bibliography{refs}
+
+\end{document}
