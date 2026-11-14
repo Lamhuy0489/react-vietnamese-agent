@@ -1,18 +1,25 @@
+% Nguồn: facts.md, mục "AgentDojo" (không phòng thủ, Sandwich 06/11, BrokerGuard C10 13--14/11).
 \begin{table}[!htbp]
 \centering
-\caption{AgentDojo v1.2.2 bằng tiếng Anh (EN) và tiếng Việt (VI), không phòng thủ, tấn công
-\code{important\_instructions}. Mỗi ô: tiện ích dưới tấn công / số tấn công thành công. Số trong ngoặc là tiện ích
-khi không tấn công.}\label{tab:agentdojo}
+\caption{AgentDojo v1.2.2 bằng tiếng Anh (EN) và tiếng Việt (VI), tấn công \code{important\_instructions}. Mỗi ô:
+tiện ích dưới tấn công / số tấn công thành công, theo hàm chấm của AgentDojo. Số trong ngoặc là tiện ích khi không tấn
+công. \cSand{} là \code{repeat\_user\_prompt}. \ours{} chỉ chạy với Llama. ``--'': không chạy. $^\dagger$Hai trong sáu
+ca có mọi lời gọi tấn công đều bị chặn nhưng vẫn được tính vì hàm chấm dựa trên lời gọi mô hình sinh ra.}\label{tab:agentdojo}
 \footnotesize
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}lcccc@{}}
+\begin{tabular}{@{}llcccc@{}}
 \toprule
- & \multicolumn{2}{c}{Llama-3.1-8B} & \multicolumn{2}{c}{Gemini 3 Flash} \\
-\cmidrule(lr){2-3}\cmidrule(lr){4-5}
-Bộ (cặp, nhiệm vụ) & EN & VI & EN & VI \\
+ & & \multicolumn{2}{c}{Llama-3.1-8B} & \multicolumn{2}{c}{Gemini 3 Flash} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Bộ (cặp, nhiệm vụ) & Cấu hình & EN & VI & EN & VI \\
 \midrule
-Banking (144, 16) & 58 / 17 (7) & 44 / 6 (6) & 93 / 4 (13) & 99 / 0 (12) \\
-Slack (105, 21) & 28 / 16 (7) & 26 / 0 (7) & 62 / 1 (18) & 59 / 0 (16) \\
+Banking (144, 16) & \cNone & 58 / 17 (7) & 44 / 6 (6) & 93 / 4 (13) & 99 / 0 (12) \\
+ & \cSand & 62 / 10 & -- & -- & -- \\
+ & \ours & \textbf{72 / 3} (8) & 54 / 1 (5) & -- & -- \\
+\midrule
+Slack (105, 21) & \cNone & 28 / 16 (7) & 26 / 0 (7) & 62 / 1 (18) & 59 / 0 (16) \\
+ & \cSand & 35 / 10 & -- & -- & -- \\
+ & \ours & 15 / 6$^\dagger$ (5) & 13 / 0 (5) & -- & -- \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}

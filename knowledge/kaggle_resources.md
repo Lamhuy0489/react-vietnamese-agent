@@ -27,6 +27,8 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 v1, source commit `87d0f94`, script `build/kaggle/c10_launch.sh` (log `build/kaggle/c10_chain.log`, thư mục serve ghi ở
 `build/kaggle/c10_endpoint`). Hết quota tuần (30 h) lúc 18:12: nomtle, dovuong05, huylmhuhu. Kết quả:
 `results/rebuild_b/agentdojo_<lang>_<suite>_<attack>_brokerguard_llama31_8b/`.
+Session 1 mất tunnel 13/11 ~23:33; session thứ hai của meanalways (bật 18:45, `build/kaggle/c10_launch3.sh`,
+`c10_endpoint2`) chạy nốt 4 lượt VI. **Xong 14/11 03:05, 8/8 lượt, 0 lỗi; keep-alive đã dừng, hai session tự tắt.**
 
 **2026-11-09 21:07 — Test-3 serve (private, T4×2), chờ niêm phong:** lamhuy8904 `llama31-8b-ctx16k` v3 và `gemma4-12b` v3
 (bật cùng lúc khi còn ~1 h quota, [bài học](kaggle_lessons.md)), meanalways `qwen35-9b` v2 (owner: quota thoải mái).

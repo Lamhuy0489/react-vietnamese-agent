@@ -1,6 +1,6 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-13. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-14. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
@@ -10,20 +10,21 @@ PHẦN CỨNG (bắt buộc): máy hỏng pin, chạy thẳng từ sạc 85 W. K
 nặng, nice -n 10. Không kill hay khởi động lại OmniRoute. KHÔNG render hình hay biên dịch PDF trên máy: owner biên dịch
 trên Overleaf; hình mới vẽ bằng TikZ/pgfplots trong file .tex.
 
-Trạng thái (13/11): thí nghiệm đã đóng. Bài báo ICCIES 2027 (hạn 15/11/2026, Springer LNCS 12–15 trang, CMT).
+Trạng thái (14/11): thí nghiệm đã đóng, kể cả C10 (BrokerGuard trên AgentDojo, xong 14/11 03:05). Bài báo ICCIES 2027 (hạn 15/11/2026, Springer LNCS 12–15 trang, CMT).
 Đọc docs/paper/iccies2027/README.md (mục "Luận điểm" đổi 13/11) và facts.md (mục "Bổ sung sau phản biện").
 - 13/11 owner quyết bỏ BG-v2 (D3DEST): bài chỉ còn BrokerGuard = D2+P2 (macro \cRulesS = \ours), BG-Rules = D2 để tách lớp.
   Test-I: H1–H6 đăng ký trước; Test-II: BrokerGuard vs NoDef là phân tích lặp lại không đăng ký trước. Suy luận mức family.
 - Phản biện ở root `phan bien.md` (không commit). Đã xử lý bằng chữ và tính offline: A1–A5, B1–B3, C1–C5, C9, C11, D5.
-  Chưa làm (ghi ở Hạn chế): C8 tấn công hộp trắng, C10 BrokerGuard trên AgentDojo, oracle-C, ablation phản hồi, độ trễ.
+  Chưa làm (ghi ở Hạn chế): C8 tấn công hộp trắng, oracle-C, ablation phản hồi, độ trễ.
+- C10 xong: facts.md mục C10; Bảng 6 thêm Sandwich/BrokerGuard; tóm tắt, Mục 5–8 đã cập nhật 14/11 (chưa biên dịch).
+  Lưu ý: 2/6 ca EN Slack là lời gọi đã bị chặn nhưng hàm chấm AgentDojo vẫn tính; utility Slack giảm do R-Dest.
 - sections/ là bản TIẾNG VIỆT để owner đọc; bản nộp tiếng Anh owner tự viết (ICCIES cấm văn bản AI). Claude làm số liệu
   (chỉ từ facts.md), bảng, hình, trích dẫn, định dạng, nhận xét bản owner viết.
 - Văn phong owner muốn: câu ngắn, không chấm phẩy trong lời văn, không gạch dài; link trích dẫn xanh bấm được.
 - Xem PDF owner tải: đặt ở root repo, xuất ảnh trang bằng PyMuPDF (fitz) dpi thấp; Read PDF không chạy (thiếu poppler).
 Việc của phiên này:
-1. Hỏi owner kết quả biên dịch (số trang, lỗi TikZ ở Hình 1 mới `images/fig1_pipeline.tex`, bảng tràn).
-2. Nếu owner muốn và còn kịp: C10 (BrokerGuard thành pipeline element của AgentDojo, ánh xạ sink ghi decision log TRƯỚC khi
-   chạy, Llama Banking EN+VI qua Kaggle, runner local nice 10). Không thì giữ ở Hạn chế.
+1. Hỏi owner kết quả biên dịch (số trang sau khi thêm C10, lỗi TikZ ở Hình 1 `images/fig1_pipeline.tex`, Bảng 6 tràn).
+2. Owner duyệt phần C10 trong bài (Bảng 6, Mục 6 đoạn cuối, Mục 7, tóm tắt thêm một câu: kiểm độ dài ≤ 250 từ bản EN).
 3. Owner quyết: công bố dữ liệu; tác giả/đơn vị. Đối chiếu Holm 1979 (refs.bib).
 4. Khi owner viết bản tiếng Anh: đổi babel sang english, bỏ T5, đổi nhãn Hình 1 theo comment đầu fig1_pipeline.tex, dịch
    nhãn Hình 2, soát số với facts.md, tóm tắt ≤ 250 từ, nhận xét văn phong.

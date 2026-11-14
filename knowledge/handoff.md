@@ -1,17 +1,16 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-13. (Trước đó 2026-11-10 12:20.) Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-14. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
 
-**2026-11-13 18:12: ĐANG CHẠY C10 (BrokerGuard trên AgentDojo, Llama-3.1-8B, 8 lượt: EN/VI × Banking/Slack × tấn công/không).**
-- Khai báo trước: decision log 13/11 "C10". Notebook meanalways v1 (kaggle_resources). Chuỗi chạy nền dưới `caffeinate`.
-- Kiểm: `cat build/kaggle/c10_chain.log`; `ls results/rebuild_b/agentdojo_*_brokerguard_llama31_8b/summary.json`.
-- Resume (máy sập/chuỗi chết, runner tự bỏ cặp đã xong): nếu notebook còn sống, `F=$(cut -d' ' -f2 build/kaggle/c10_endpoint)`
-  rồi chạy phần sau READY của `c10_launch.sh` với F đó; nếu notebook chết, `ACCOUNTS="lamhuy8904:kaggle.json oanhlam123456:kaggle6.json
-  buiquocviet:kaggle3.json" caffeinate -i nice -n 10 bash build/kaggle/c10_launch.sh > build/kaggle/c10_chain.log 2>&1`.
-- Khi xong: soát transcript (đếm từ chối theo luật, lỗi API), điền facts.md + Bảng AgentDojo của bài, decision log.
+**2026-11-14 10:30: C10 XONG (BrokerGuard trên AgentDojo, Llama-3.1-8B, 8/8 lượt, 0 lỗi; decision log 14/11).**
+- Tấn công thành công / utility dưới tấn công: EN Banking 3/72 (none 17/58, repeat 10/62); EN Slack 6/15 (16/28, 10/35);
+  VI Banking 1/54 (6/44); VI Slack 0/13 (0/26). Số và phân tích ca lọt ở `docs/paper/iccies2027/facts.md` mục C10.
+- 2/6 ca EN Slack là lời gọi đã bị chặn nhưng hàm chấm AgentDojo vẫn tính (`security_from_traces`); bài báo chú thích.
+- Đã cập nhật bài (bản tiếng Việt): tóm tắt, Mục 5, 6, 7, 8, Bảng 6 (thêm hàng Sandwich và BrokerGuard). Chưa biên dịch.
+- Soát lại: `nice -n 10 python3 scripts/agentdojo_bg_audit_v1.py` → `results/rebuild_b/agentdojo_brokerguard_audit_llama31_8b.json`.
 
 **2026-11-13: Bài báo ICCIES sau phản biện (`phan bien.md` ở root, không commit). Một cấu hình duy nhất: BrokerGuard = D2+P2
 (macro `\cRulesS` = `\ours`); BG-v2/D3DEST đã bỏ khỏi bài (decision log 13/11). Suy luận mức family; số mới ở `facts.md`
@@ -20,8 +19,7 @@ mục "Bổ sung sau phản biện" (`scripts/paper_cluster_stats_v1.py`, chạy
   08d57bf/07f10c6 kèm câu "chưa có dấu thời gian bên ngoài" vì lịch sử viết lại 11/11), 6 (Test-II là phân tích lặp lại,
   hàng chặn mọi sink, Sandwich trên AgentDojo), 7 (ba lớp vượt qua, hạn chế), 8. Hình 1 nay là TikZ `images/fig1_pipeline.tex`.
 - Chưa biên dịch: owner biên dịch trên Overleaf, báo số trang/lỗi TikZ (Hình 1 mới, dùng `arrows.meta`).
-- Còn mở: C10 BrokerGuard trên AgentDojo (cần pipeline element mới + ánh xạ sink khai báo trước + Kaggle Llama; chỉ làm nếu
-  owner muốn và kịp hạn 15/11); công bố dữ liệu; tác giả/đơn vị; Holm 1979 trong refs.bib.
+- Còn mở: công bố dữ liệu; tác giả/đơn vị; Holm 1979 trong refs.bib.
 
 **2026-11-12 20:30: Bài báo ICCIES: `docs/paper/iccies2027/latex/` (Overleaf, LLNCS). `sections/` là bản TIẾNG VIỆT để owner
 đọc; owner tự viết bản tiếng Anh nộp (ICCIES cấm văn bản AI). Bản owner biên dịch lúc 19:53: 14 trang (giới hạn 15).**

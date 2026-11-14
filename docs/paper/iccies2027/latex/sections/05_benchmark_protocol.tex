@@ -55,6 +55,8 @@ H1 đến H6 được hiệu chỉnh bằng thủ tục Holm~\cite{holm1979}.
 cặp, 16 nhiệm vụ) và Slack (105 cặp, 21 nhiệm vụ) của AgentDojo v1.2.2~\cite{debenedetti2024agentdojo}, bằng tiếng Anh
 và bằng bản dịch tiếng Việt. Bản dịch bao gồm môi trường, nhiệm vụ, mục tiêu chèn và khuôn tấn công
 \code{important\_instructions}. IBAN, số tiền, tên và địa chỉ được giữ nguyên, còn công cụ và hàm kiểm tra là mã gốc.
-Các lượt này dùng pipeline của AgentDojo. Chúng đo mức dễ bị tấn công của mô hình không phòng thủ ở từng ngôn ngữ, và
-với Llama tiếng Anh thì đo thêm lớp \cSand{} qua \code{repeat\_user\_prompt}. Các luật của \ours{} chưa được chạy trên
-AgentDojo.
+Các lượt này dùng pipeline của AgentDojo. Chúng đo mức dễ bị tấn công của mô hình không phòng thủ ở từng ngôn ngữ.
+Với Llama, chúng tôi chạy thêm \ours{} đầy đủ ở cả hai ngôn ngữ. Mã luật đóng băng được giữ nguyên. Phần mới chỉ là bộ
+chuyển đổi, gồm danh sách công cụ là sink, đối số chứa đích của từng sink và các công cụ đọc trả về dữ liệu mật. Bộ
+chuyển đổi được khai báo trước lượt chạy có phòng thủ đầu tiên. Lớp \cSand{} dùng \code{repeat\_user\_prompt} có sẵn của
+AgentDojo. Lượt chạy chỉ có \cSand{} được làm với Llama tiếng Anh.

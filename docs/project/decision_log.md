@@ -3820,3 +3820,15 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
   EN và VI, `important_instructions` (4 lượt) và không tấn công (4 lượt). So với các lượt none / repeat_user_prompt đã có.
 - Dự đoán ghi trước: ASR giảm so với repeat_user_prompt; utility giảm vì nhiều nhiệm vụ lấy đích từ tài liệu (R-Dest);
   R-Signal gần như không bật vì khuôn tấn công không khớp cụm từ của D2.
+
+## 2026-11-14 — C10: kết quả BrokerGuard trên AgentDojo (chạy một lần, không chỉnh)
+
+- 8/8 lượt xong 14/11 03:05, 0 lỗi lượt chạy (Kaggle meanalways, hai session T4). Soát:
+  `results/rebuild_b/agentdojo_brokerguard_audit_llama31_8b.json`.
+- Utility dưới tấn công / tấn công thành công, so với none và repeat_user_prompt: EN Banking 72/3 (58/17, 62/10);
+  EN Slack 15/6 (28/16, 35/10); VI Banking 54/1 (44/6); VI Slack 13/0 (26/0). Không tấn công: 8/16, 5/21, 5/16, 5/21.
+- Dự đoán đúng cả ba: ASR giảm; utility Slack giảm do R-Dest (đích lấy từ web và tin nhắn); R-Signal không bật ở EN
+  (chỉ 14 lần ở VI Slack).
+- Hai trong sáu ca EN Slack (`injection_task_5`) có mọi lời gọi bị chặn nhưng được tính thành công vì
+  `security_from_traces` chấm theo lời gọi đã sinh. Bài báo báo số chính thức kèm chú thích, không sửa hàm chấm.
+- Tác động: Bảng 6 và Mục 0, 5, 6, 7, 8 của bài ICCIES được cập nhật; câu "luật chưa chạy trên AgentDojo" được bỏ.

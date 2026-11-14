@@ -470,3 +470,14 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   Mục 7 ba lớp vượt qua và hạn chế mới; tóm tắt không có p. Chưa biên dịch (owner biên dịch trên Overleaf).
 - Owner hỏi C10 (AgentDojo có phòng thủ): khả thi qua Kaggle + runner local, cần code pipeline element, ánh xạ sink khai báo
   trước, khoảng nửa ngày + vài giờ chạy; chưa làm.
+
+## 2026-11-13 tối → 14/11 — C10: BrokerGuard trên AgentDojo, cập nhật bài
+
+- Adapter `scripts/agentdojo_brokerguard_v1.py` (luật D2 đóng băng + `repeat_user_prompt`), khai báo trước ở decision log.
+  Chạy qua đêm trên Kaggle meanalways với hai session T4 (session 1 mất tunnel ~23:33, session 2 chạy nốt VI), máy giữ thức
+  bằng `caffeinate -dims`, supervisor tự chạy lại job. Xong 03:05, 8/8 lượt, 0 lỗi.
+- Kết quả: EN Banking 72/3, EN Slack 15/6, VI Banking 54/1, VI Slack 13/0 (utility/ASR). Ca lọt: đổi mật khẩu (sink không
+  đích), mở URL bằng công cụ đọc, gửi cho Alice do người dùng nêu; 2 ca EN Slack là lời gọi đã bị chặn nhưng vẫn được chấm
+  thành công (hàm chấm theo trace). R-Signal chỉ bật ở VI. Utility Slack giảm do R-Dest.
+- Script soát `scripts/agentdojo_bg_audit_v1.py`. Cập nhật facts.md, Bảng 6, tóm tắt và Mục 5–8, decision log 14/11.
+

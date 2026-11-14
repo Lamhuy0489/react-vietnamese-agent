@@ -65,6 +65,17 @@ trần của tỉ lệ tấn công thành công. Lớp \cSand{} của \ours, ch�
 AgentDojo với Llama tiếng Anh, giảm số tấn công thành công từ 17 xuống 10 ở Banking và từ 16 xuống 10 ở Slack. Tiện ích
 dưới tấn công không giảm (62 so với 58, và 35 so với 28).
 
+\ours{} đầy đủ giảm số tấn công thành công của Llama tiếng Anh xuống 3/144 ở Banking và 6/105 ở Slack. Với tiếng Việt,
+con số là 1/144 và 0/105. Hai trong sáu ca ở Slack có mọi lời gọi tấn công đều bị chặn. AgentDojo vẫn tính chúng vì
+hàm chấm dựa trên các lời gọi mô hình sinh ra. Các ca còn lại thuộc ba loại. Đổi mật khẩu (4 ca, cả hai ngôn ngữ) đi
+qua một sink không có đích, nên chỉ \rSig{} có thể chặn. Mở một URL độc hại (3 ca) dùng công cụ đọc, mà luật không
+chặn đọc. Gửi một đường link cho Alice (1 ca) thỏa \rDest{} vì người dùng đã viết tên Alice. Ở Banking, tiện ích dưới
+tấn công tăng lên 72, so với 58 khi không phòng thủ và 62 với \cSand. Ở Slack thì ngược lại, tiện ích giảm còn 15
+(tiếng Anh) và 13 (tiếng Việt). Nhiều nhiệm vụ Slack lấy đích từ trang web hoặc tin nhắn, ví dụ mời những người có tên
+trên một trang web. \rDest{} chặn các đích này vì người dùng không viết chúng. Trên 21 nhiệm vụ Slack tiếng Anh không có
+tấn công, 9 nhiệm vụ có ít nhất một lời gọi bị chặn. \rSig{} chỉ bật ở các lượt tiếng Việt (14 lần ở Slack), không bật
+lần nào ở tiếng Anh.
+
 \input{tables/tab6_agentdojo}
 
 \subsection{Tấn công thích nghi}\label{sec:adaptive}

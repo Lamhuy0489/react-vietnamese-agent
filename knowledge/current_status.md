@@ -1,5 +1,9 @@
 # Trạng thái hiện tại
 
+**14/11: C10 xong: BrokerGuard trên AgentDojo (Llama, EN+VI), tấn công thành công EN Banking 3/144, EN Slack 6/105
+(2 ca do hàm chấm), VI 1 và 0; utility Slack giảm (15 so với 35 của Sandwich) vì R-Dest chặn đích lấy từ web/tin nhắn.
+Đã vào facts.md, Bảng 6 và Mục 0, 5–8 của bài. Không còn lượt nào chạy. Chờ owner biên dịch Overleaf; hạn 15/11.**
+
 **13/11: Bài báo ICCIES sau phản biện: bỏ BG-v2, chỉ còn BrokerGuard = D2+P2 (Test-I đăng ký trước, Test-II phân tích lặp lại).
 Thống kê mức family (DEFF 1,5–7,7): Test-II 42→14/48 family, p 3,7·10⁻⁹; utility −4,5 điểm (p 0,044). Tham chiếu chặn mọi sink
 và Sandwich trên AgentDojo đã vào facts.md. Hình 1 vẽ lại bằng TikZ. Chờ owner biên dịch Overleaf; hạn 15/11.**
