@@ -488,3 +488,12 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   liu2024formalizing, zhang2025asb, chen2025struq, chennabasappa2025llamafirewall, costa2025fides, beurerkellner2025patterns,
   kwon2023vllm; vẫn còn trong refs.bib). Viết gọn Mục 1–8 (khoảng 13% chữ), định nghĩa một lần ba đơn vị đếm (ca, cặp họ
   và mô hình, họ) ở Mục 5, gộp hai đoạn AgentDojo. Số liệu không đổi. Chưa biên dịch: owner kiểm số trang trên Overleaf.
+
+## 2026-11-14 trưa — Phản biện 2, chuẩn bị C11
+
+- Đọc `phan bien2.md`: người phản biện xác nhận đúng hướng, tái dựng khớp mọi p; còn đòi sửa lời văn (phạm vi R-Dest, đọc là
+  kênh tuồn ra, Test-II lọt nhiều hơn, lệch hai chiều của chặn mọi sink, Holm trộn đơn vị). Owner đồng ý 6 việc (handoff).
+- Đếm Test-II theo cơ chế từ file eval (chỉ đếm): 4/27 ca BrokerGuard nằm ngoài SL/AL/PT (CR 1, US 3).
+- Owner muốn chạy Sandwich VI trên AgentDojo (C11): đã khai báo decision log, viết `build/kaggle/c11_launch.sh`; hoãn vì
+  pin tụt (56%), chờ 100%.
+

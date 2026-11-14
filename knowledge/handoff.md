@@ -5,6 +5,26 @@ Cập nhật: 2026-11-14. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 ## Đang làm
 
+**2026-11-14 12:40: CHỜ PIN 100% RỒI CHẠY C11 (Sandwich `repeat_user_prompt` trên AgentDojo, Llama; khai báo decision log
+14/11 12:30). Chưa bật gì.** 6 lượt: VI Banking/Slack có tấn công; không tấn công EN+VI × Banking/Slack.
+- Lệnh (owner cho chạy mới bật): `caffeinate -dims -t 43200 &` rồi
+  `nice -n 10 bash build/kaggle/c11_launch.sh > build/kaggle/c11_chain.log 2>&1` (chạy nền, chờ thông báo, không poll).
+  Script (gitignored) thử tài khoản lần lượt, tự chạy lại job chết (tối đa 3), ghi `build/kaggle/c11_endpoint`.
+  Nếu pin tụt: chỉ chạy 2 lượt VI có tấn công, tuần tự (sửa JOBS trong script). Kết quả:
+  `results/rebuild_b/agentdojo_<lang>_<suite>_<attack>_repeat_user_prompt_llama31_8b/summary.json`.
+- Khi xong: điền ô Sandwich VI và cột không tấn công vào Bảng 6, facts.md, decision log.
+- **Song song: sửa bài theo `phan bien2.md` (root, không commit), owner đã đồng ý 6 việc:**
+  1. Test-II theo cơ chế (đã đếm, khớp 27 ca/14 họ): BrokerGuard ER 0, CR 1, SL 14, AL 2, PT 7, US 3 ca
+     (họ: CR 1, SL 6, AL 2, PT 3, US 2); NoDef 36/22/70/30/49/26. Câu Mục 7 "mọi ca lọt thuộc SL/AL/PT" chỉ đúng Test-I.
+     Nêu tỉ lệ lọt Test-II gấp ~3 lần Test-I là tín hiệu (CI Wilson họ chồng lấn), không phải kết luận.
+  2. Mục 4 phạm vi: R-Dest chỉ áp sink có đích (sink không đích chỉ R-Flow, R-Signal); "đọc không bị chặn" là giả định,
+     công cụ đọc nhận URL là kênh tuồn ra; adapter Slack so khớp tên người nhận. KHÔNG sửa code (đã đóng băng).
+  3. AgentDojo báo song song 6/105 (hàm chấm) và 4/105 (lời gọi đã thực thi).
+  4. Chặn mọi sink: lệch hai chiều (an ninh có lợi cho chặn, tiện ích bất lợi cho chặn → "gấp năm lần" có thể phóng đại).
+  5. Holm: tính p mức họ cho H2/H4/H5 nếu `scripts/paper_cluster_stats_v1.py` hỗ trợ, không thì ghi rõ ∗ là sau Holm.
+  6. Nhỏ: "độc lập" → "rời nhau" (tóm tắt); benign_auth Test-I −9,2 điểm; định nghĩa Done(f); trích Anderson 1972.
+  Không làm: chạy thật chặn mọi sink, PromptGuard∘dịch, ablation phản hồi, ρ/DEFF, OSF. Giữ bài ≤ 15 trang.
+
 **2026-11-14 10:30: C10 XONG (BrokerGuard trên AgentDojo, Llama-3.1-8B, 8/8 lượt, 0 lỗi; decision log 14/11).**
 - Tấn công thành công / utility dưới tấn công: EN Banking 3/72 (none 17/58, repeat 10/62); EN Slack 6/15 (16/28, 10/35);
   VI Banking 1/54 (6/44); VI Slack 0/13 (0/26). Số và phân tích ca lọt ở `docs/paper/iccies2027/facts.md` mục C10.

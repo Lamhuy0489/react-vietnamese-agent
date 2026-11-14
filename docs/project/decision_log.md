@@ -3832,3 +3832,10 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
 - Hai trong sáu ca EN Slack (`injection_task_5`) có mọi lời gọi bị chặn nhưng được tính thành công vì
   `security_from_traces` chấm theo lời gọi đã sinh. Bài báo báo số chính thức kèm chú thích, không sửa hàm chấm.
 - Tác động: Bảng 6 và Mục 0, 5, 6, 7, 8 của bài ICCIES được cập nhật; câu "luật chưa chạy trên AgentDojo" được bỏ.
+
+## 2026-11-14 12:30 — C11: Sandwich (`repeat_user_prompt`) tiếng Việt trên AgentDojo, khai báo TRƯỚC khi chạy
+
+- Mục đích: lấp ô trống của Bảng 6 (owner yêu cầu, phản biện 2 mục P1-14). Không đổi phòng thủ, chỉ chạy phòng thủ có sẵn
+  của AgentDojo, cùng serve `llama31_8b_ctx16k`, model key `llama31_8b`, runner `run_agentdojo_api_v1.py`.
+- Ma trận 6 lượt: VI Banking và VI Slack có `important_instructions`; không tấn công cho EN và VI × Banking và Slack.
+- Báo cáo đủ, kể cả khi kết quả bất lợi; so với none và brokerguard đã có. Chạy một lần (runner chỉ chạy tiếp cặp chưa xong).

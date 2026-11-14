@@ -22,7 +22,8 @@ Trạng thái (14/11): thí nghiệm đã đóng, kể cả C10 (BrokerGuard tr�
   (chỉ từ facts.md), bảng, hình, trích dẫn, định dạng, nhận xét bản owner viết.
 - Văn phong owner muốn: câu ngắn, không chấm phẩy trong lời văn, không gạch dài; link trích dẫn xanh bấm được.
 - Xem PDF owner tải: đặt ở root repo, xuất ảnh trang bằng PyMuPDF (fitz) dpi thấp; Read PDF không chạy (thiếu poppler).
-Việc của phiên này:
+Việc của phiên này (xem handoff mục "Đang làm" 14/11 12:40):
+0. Owner báo pin 100% thì bật C11 (lệnh trong handoff), rồi làm 6 việc sửa bài theo `phan bien2.md` trong lúc chạy.
 1. Hỏi owner kết quả biên dịch sau bản rút gọn 14/11 (mục tiêu ≤ 15 trang; lỗi TikZ ở Hình 1 `images/fig1_pipeline.tex`, Bảng 6 tràn).
 2. Owner duyệt phần C10 trong bài (Bảng 6, Mục 6 đoạn cuối, Mục 7, tóm tắt thêm một câu: kiểm độ dài ≤ 250 từ bản EN).
 3. Owner quyết: công bố dữ liệu; tác giả/đơn vị. Đối chiếu Holm 1979 (refs.bib).
