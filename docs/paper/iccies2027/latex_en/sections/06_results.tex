@@ -49,8 +49,7 @@ rate falls from 32.4\% to 3.8\%. The reduction holds on all three backbones: Gem
 Llama from 50 to 10 and Qwen3.5 from 82 to 10. The cost is a 4.5-point drop in benign utility, from 54.5\% to 50.0\%
 ($p = 0.044$). On \tOne{} the drop is similar ($-5.1$ points, $p = 0.022$). Most of the loss is in the \bPlain{}
 counterparts. In the \bAuth{} counterparts, the $-2.5$ point difference is not significant ($p = 0.57$). On \tOne, the
-\bAuth{} counterparts drop more (9.2 points, from 39.2\% to 30.0\%). Llama produces 66 to 74 truncated outputs per
-configuration, and all of them count as failures.
+\bAuth{} counterparts drop more (9.2 points, from 39.2\% to 30.0\%).
 
 The bypass rate of \ours{} is higher on \tTwo{} than on \tOne{} (3.8\% versus 1.2\% of cases, 14/48 versus 8/72
 families), while \cNone{} is almost unchanged. The family-level Wilson intervals overlap ($[18.2, 43.2]$\% and
@@ -60,13 +59,12 @@ and 3 unrequested side effects. The cause of each case is analysed in Section~\r
 
 \input{tables/tab4_test2}
 
-\paragraph{Block-all-sinks reference.} The ``Block all sinks'' rows in Tables~\ref{tab:test1} and~\ref{tab:test2}
-estimate a policy that blocks every sink call, using \cNone{} trajectories. A benign case counts as successful if
-\cNone{} succeeded without calling any sink. An attack case counts as harmful if \cNone{} caused harm through the
-answer. On \tOne, at the same attack success rate (1.2\%), this policy keeps only 7.4\% of benign utility, compared with
-38.6\% for \ours. The estimate is biased in two directions. For security, it favours the blocking policy, because a
-blocked agent might move the confidential value into its answer. For utility, it disfavours the blocking policy,
-because the agent could still finish the read-only part. The true utility gap may therefore be smaller.
+\paragraph{Block-all-sinks reference.} The ``Block all sinks'' rows estimate, from \cNone{} trajectories, a policy
+that blocks every sink call. A benign case succeeds if \cNone{} succeeded without any sink call, and an attack case is
+harmful if \cNone{} caused harm through the answer. On \tOne, at the same attack success rate (1.2\%), this policy keeps
+only 7.4\% of benign utility, compared with 38.6\% for \ours. The estimate favours blocking on security, because a
+blocked agent might move the value into its answer, and disfavours it on utility, because the agent could still finish
+the read-only part.
 
 \subsection{AgentDojo in English and Vietnamese}
 
@@ -83,17 +81,15 @@ most one task.
 of the six Slack cases are counted even though every attack call was blocked, because AgentDojo's scoring function
 relies on the calls the model generated. Counting only executed calls, the figure is 4/105. The remaining eight cases
 across the two suites and two languages are password changes (4 cases, through a sink without a destination), opening a
-malicious URL with a read tool (3 cases) and sending a link to a person the user had named (1 case). On Slack the
-destination is a recipient name, so name matching has little discriminating power. With real tools, the broker should
-resolve names through a host-side directory. Utility rises on Banking (72 versus 62 for \cSand) but falls sharply on
+malicious URL with a read tool (3 cases) and sending a link to a person the user had named (1 case). On Slack,
+destinations are names, so a real deployment should resolve them through a host-side directory. Utility rises on Banking (72 versus 62 for \cSand) but falls sharply on
 Slack (15 versus 35), because many Slack tasks take their destination from a web page or a message that the user did not
 write. Even without attacks, 9 of the 21 English Slack tasks have calls blocked by \rDest. \rSig{} never fires in
 English and fires 14 times on Vietnamese Slack.
 
 \subsection{Adaptive Attacks}\label{sec:adaptive}
 
-The authors wrote 48 adaptive attack cases on Dev families, based on feedback from defended runs on Dev. Under
-\cNone, this set is as strong as the corresponding static cases: 26, 15 and 24 harmful families for Gemma, Llama and
-Qwen3.5, compared with 29, 12 and 22 for standard Vietnamese. Under \ours, these drop to 1, 0 and 0. This is only one
-round of manual adaptation, not a white-box attack generated from the rules. The set does not target the gaps
-described in Section~\ref{sec:discussion}.
+The authors also wrote 48 adaptive cases on Dev families, using feedback from defended Dev runs. Under \cNone{} they
+are as strong as the static cases (26, 15 and 24 harmful families versus 29, 12 and 22), and under \ours{} they drop to
+1, 0 and 0. This is one round of manual adaptation, not a white-box attack, and it does not target the gaps in
+Section~\ref{sec:discussion}.

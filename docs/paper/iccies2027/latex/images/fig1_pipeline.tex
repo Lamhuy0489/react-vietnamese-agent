@@ -9,7 +9,7 @@
 %   Read tools (untrusted) | Sinks: e-mail, webhook | $y$ redacted | deterministic check | model-dependent
 \begin{figure}[!htbp]
 \centering
-\begin{tikzpicture}[
+\begin{tikzpicture}[yscale=0.8,
   font=\fontsize{6.4}{7.6}\selectfont,
   box/.style={rounded corners=1pt, line width=0.5pt, align=center, inner sep=1pt},
   rule/.style={box, draw=bgblue, fill=bgblue!12},
@@ -20,9 +20,9 @@
   note/.style={font=\fontsize{5.4}{6.4}\selectfont\itshape, text=black!65, anchor=west},
 ]
 % cột trái: người dùng và tác tử
-\node[neutral, minimum width=1.5cm, minimum height=1.14cm, text width=1.4cm] at (0.75,4.23)
+\node[neutral, minimum width=1.5cm, minimum height=0.8cm, text width=1.4cm] at (0.75,4.23)
   {Người dùng\\ $u$ (đáng tin)};
-\node[neutral, minimum width=1.5cm, minimum height=1.56cm, text width=1.4cm,
+\node[neutral, minimum width=1.5cm, minimum height=1.2cm, text width=1.4cm,
   font=\fontsize{6.6}{7.6}\selectfont\bfseries] at (0.75,1.98) {Tác tử LLM\\ (ReAct)};
 \draw[arr] (0.744,3.66) -- (0.744,2.76);
 
@@ -32,19 +32,19 @@
 \node[rule, minimum width=6.612cm, minimum height=0.42cm, text width=6.5cm] at (5.67,4.674)
   {Kiểm schema $\cdot$ gán nhãn $\cdot$ trích giá trị mật $C$};
 
-\node[note] at (2.33,4.236) {trước mỗi lời gọi sink};
-\node[rule, minimum width=2.124cm, minimum height=0.96cm, text width=2.0cm] at (3.426,3.6)
+\node[note] at (2.33,4.26) {trước mỗi lời gọi sink};
+\node[rule, minimum width=2.124cm, minimum height=0.8cm, text width=2.0cm] at (3.426,3.6)
   {\textsf{R-Dest}\\ đích có trong $u$};
-\node[rule, minimum width=2.124cm, minimum height=0.96cm, text width=2.0cm] at (5.670,3.6)
+\node[rule, minimum width=2.124cm, minimum height=0.8cm, text width=2.0cm] at (5.670,3.6)
   {\textsf{R-Flow}\\ giá trị mật có trong $u$};
-\node[rule, minimum width=2.124cm, minimum height=0.96cm, text width=2.0cm] at (7.914,3.6)
+\node[rule, minimum width=2.124cm, minimum height=0.8cm, text width=2.0cm] at (7.914,3.6)
   {\textsf{R-Signal}\\ bị gắn cờ thì chặn sink};
 
-\node[rule, minimum width=2.124cm, minimum height=0.96cm, text width=2.0cm] at (3.426,2.22)
+\node[rule, minimum width=2.124cm, minimum height=0.8cm, text width=2.0cm] at (3.426,2.22)
   {\textsf{R-Redact}\\ che giá trị mật\\ trong câu trả lời};
-\node[soft, minimum width=2.124cm, minimum height=0.96cm, text width=2.0cm] at (5.670,2.22)
+\node[soft, minimum width=2.124cm, minimum height=0.8cm, text width=2.0cm] at (5.670,2.22)
   {Sandwich\\ nhắc lại $u$};
-\node[rule, minimum width=2.124cm, minimum height=0.96cm, text width=2.0cm] at (7.914,2.22)
+\node[rule, minimum width=2.124cm, minimum height=0.8cm, text width=2.0cm] at (7.914,2.22)
   {Phản hồi từ chối\\ tác tử làm tiếp};
 
 % chú giải
@@ -59,9 +59,9 @@
 \draw[arr] (1.5,1.44) -- node[lab, above=-1pt] {$y$} (2.22,1.44);
 
 % cột công cụ
-\node[neutral, minimum width=2.16cm, minimum height=1.14cm, text width=2.06cm] at (10.92,3.69)
+\node[neutral, minimum width=2.16cm, minimum height=0.8cm, text width=2.06cm] at (10.92,3.69)
   {Công cụ đọc\\ (không đáng tin)};
-\node[neutral, minimum width=2.16cm, minimum height=0.96cm, text width=2.06cm] at (10.92,2.22)
+\node[neutral, minimum width=2.16cm, minimum height=0.8cm, text width=2.06cm] at (10.92,2.22)
   {Sink\\ e-mail, webhook};
 \draw[arr] (9.12,3.90) -- node[lab, above=-1pt] {$a_t$} (9.84,3.90);
 \draw[arr] (9.84,3.42) -- node[lab, above=-1pt] {$o_t$} (9.12,3.42);

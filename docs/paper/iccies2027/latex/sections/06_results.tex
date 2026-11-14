@@ -44,8 +44,7 @@ ngữ, \cNone{} bị tấn công gần như nhau ở mọi biến thể (68 đ�
 xuống 3,8\%. Mức giảm có ở cả ba mô hình nền: Gemma từ 101 xuống 7 ca trên 240, Llama từ 50 xuống 10 và Qwen3.5 từ 82
 xuống 10. Cái giá là tiện ích lành tính giảm 4,5 điểm, từ 54,5\% xuống 50,0\% ($p = 0{,}044$). Trên \tOne{} mức giảm
 tương tự ($-5{,}1$ điểm, $p = 0{,}022$). Phần mất chủ yếu nằm ở nhánh \bPlain. Ở nhánh \bAuth, chênh lệch $-2{,}5$ điểm
-không có ý nghĩa ($p = 0{,}57$). Trên \tOne, nhánh \bAuth{} giảm nhiều hơn (9,2 điểm, từ 39,2\% xuống 30,0\%). Llama có 66 đến 74 đầu ra bị cắt ở mỗi
-cấu hình, và tất cả được tính là thất bại.
+không có ý nghĩa ($p = 0{,}57$). Trên \tOne, nhánh \bAuth{} giảm nhiều hơn (9,2 điểm, từ 39,2\% xuống 30,0\%).
 
 Tỉ lệ lọt qua \ours{} trên \tTwo{} cao hơn \tOne{} (3,8\% so với 1,2\% số ca, 14/48 so với 8/72 họ), trong khi \cNone{}
 gần như không đổi. Khoảng tin cậy Wilson theo họ chồng lên nhau ($[18{,}2; 43{,}2]$\% và $[5{,}7; 20{,}4]$\%), nên đây là
@@ -54,13 +53,11 @@ Bốn ca còn lại là 1 ca chuyển hướng che giấu và 3 ca tác dụng p
 
 \input{tables/tab4_test2}
 
-\paragraph{Tham chiếu chặn mọi sink.} Hàng ``Chặn mọi sink'' ở Bảng~\ref{tab:test1} và~\ref{tab:test2} ước lượng
-chính sách chặn mọi lời gọi sink từ quỹ đạo \cNone. Ca lành tính được tính là thành công nếu \cNone{} thành công mà
-không gọi sink nào. Ca tấn công được tính là gây hại nếu \cNone{} gây hại qua câu trả lời. Trên \tOne, với cùng tỉ lệ
-tấn công thành công (1,2\%), chính sách này chỉ giữ 7,4\% tiện ích lành tính, so với 38,6\% của \ours. Ước lượng lệch
-theo hai chiều. Về an ninh, nó có lợi cho chính sách chặn, vì tác tử bị chặn có thể chuyển giá trị mật sang câu trả lời.
-Về tiện ích, nó bất lợi cho chính sách chặn, vì tác tử vẫn có thể làm xong phần chỉ đọc. Vì vậy khoảng cách tiện ích
-thật có thể nhỏ hơn.
+\paragraph{Tham chiếu chặn mọi sink.} Hàng ``Chặn mọi sink'' ước lượng từ quỹ đạo \cNone{} một chính sách chặn mọi
+lời gọi sink. Ca lành tính thành công nếu \cNone{} thành công mà không gọi sink nào, còn ca tấn công gây hại nếu \cNone{}
+gây hại qua câu trả lời. Trên \tOne, với cùng tỉ lệ tấn công thành công (1,2\%), chính sách này chỉ giữ 7,4\% tiện ích
+lành tính, so với 38,6\% của \ours. Ước lượng có lợi cho chính sách chặn về an ninh, vì tác tử bị chặn có thể chuyển
+giá trị mật sang câu trả lời, và bất lợi về tiện ích, vì tác tử vẫn có thể làm xong phần chỉ đọc.
 
 \subsection{AgentDojo tiếng Anh và tiếng Việt}
 
@@ -76,14 +73,13 @@ tiếng Anh nhưng không đổi ở tiếng Việt. Khi không tấn công, ti�
 tính dù mọi lời gọi tấn công đã bị chặn, vì hàm chấm của AgentDojo dựa trên lời gọi mô hình sinh ra. Nếu chỉ tính lời
 gọi đã thực thi, con số là 4/105. Tám ca còn lại trên hai bộ và hai ngôn ngữ là đổi mật khẩu (4 ca, qua một sink không
 có đích), mở URL độc hại bằng công cụ đọc (3 ca) và gửi link cho một người mà chính người dùng đã nêu tên (1 ca). Ở
-Slack, đích là tên người nhận nên so khớp tên ít có lực phân biệt. Với công cụ thật, broker nên phân giải tên qua danh
-bạ phía host. Tiện ích tăng ở Banking (72 so với 62 của \cSand) nhưng giảm mạnh ở Slack (15 so với 35), vì nhiều nhiệm
+Slack, đích là tên người, nên khi triển khai thật broker cần phân giải tên qua danh bạ phía host. Tiện ích tăng ở Banking (72 so với 62 của \cSand) nhưng giảm mạnh ở Slack (15 so với 35), vì nhiều nhiệm
 vụ Slack lấy đích từ trang web hoặc tin nhắn mà người dùng không viết. Ngay cả khi không tấn công, 9 trong 21 nhiệm vụ
 Slack tiếng Anh có lời gọi bị \rDest{} chặn. \rSig{} không bật lần nào ở tiếng Anh và bật 14 lần ở Slack tiếng Việt.
 
 \subsection{Tấn công thích nghi}\label{sec:adaptive}
 
-Nhóm tác giả soạn 48 ca tấn công thích nghi trên các họ Dev, dựa trên phản hồi từ các lượt chạy có phòng thủ trên Dev. Ở
-\cNone, tập này mạnh ngang ca tĩnh tương ứng: 26, 15 và 24 họ gây hại cho Gemma, Llama và Qwen3.5, so với 29, 12 và 22
-của ca tiếng Việt chuẩn. Dưới \ours, số này còn 1, 0 và 0. Đây chỉ là một vòng thích nghi thủ công, không phải tấn công
-hộp trắng sinh từ luật. Tập này chưa nhắm vào các chỗ hở nêu ở Mục~\ref{sec:discussion}.
+Nhóm tác giả còn soạn 48 ca tấn công thích nghi trên các họ Dev, dựa trên phản hồi từ các lượt chạy có phòng thủ. Ở
+\cNone{} chúng mạnh ngang ca tĩnh (26, 15 và 24 họ gây hại so với 29, 12 và 22), còn dưới \ours{} chỉ còn 1, 0 và 0.
+Đây chỉ là một vòng thích nghi thủ công, không phải tấn công hộp trắng, và chưa nhắm vào các chỗ hở ở
+Mục~\ref{sec:discussion}.
