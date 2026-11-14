@@ -2,7 +2,7 @@
 % 14/11: bỏ Bảng tab0_versions (lặp lại lời văn) để rút gọn; thành phần cấu hình nêu ở đoạn mở đầu.
 
 \ours{} dựa trên ba nguyên tắc. Thứ nhất, mô hình không phải ranh giới an ninh. Một hành động chỉ có hiệu lực khi
-broker thực thi nó, nên broker đóng vai trò một reference monitor tại các sink. Thứ hai, người dùng là chủ thể đáng tin
+broker thực thi nó, nên broker đóng vai trò một reference monitor~\cite{anderson1972} tại các sink. Thứ hai, người dùng là chủ thể đáng tin
 duy nhất. Quyền được suy ra từ nguyên văn $u$, không từ nội dung công cụ và không từ việc mô hình diễn giải ý định.
 Thứ ba, việc chặn không làm dừng nhiệm vụ. Hành động bị từ chối được báo lại để tác tử làm tiếp phần việc hợp lệ.
 Hình~\ref{fig:pipeline} mô tả pipeline. \ours{} gồm bốn luật (\rDest, \rFlow, \rRedact, \rSig), lời nhắc \cSand{} và
@@ -13,7 +13,8 @@ tập phát triển, \tOne{} và \tTwo{} là hai tập kiểm thử niêm phong 
 
 \paragraph{Broker và nhãn nguồn gốc.} Ở \cNone, broker chỉ kiểm tra schema và giới hạn của công cụ. Với \ours, broker
 lưu thêm nhãn của từng quan sát và tập giá trị $C$ trích từ các quan sát mật. Việc trích dùng quy tắc từ vựng không
-phụ thuộc ngôn ngữ, gồm e-mail, URL, định danh từ sáu ký tự trở lên và số dài. Thao tác đọc không bao giờ bị chặn.
+phụ thuộc ngôn ngữ, gồm e-mail, URL, định danh từ sáu ký tự trở lên và số dài. Thao tác đọc không bao giờ bị chặn. Đây là một giả định. Một công cụ đọc nhận URL do mô hình chọn cũng có thể là
+kênh tuồn dữ liệu ra (Mục~\ref{sec:results}).
 Mọi phép so sánh dùng hàm chuẩn hóa $\norm(\cdot)$, gồm Unicode NFKC, bỏ ký tự định dạng như ký tự độ rộng bằng không,
 và casefold. Ta viết $x \sub z$ khi $\norm(x)$ là một chuỗi con của $\norm(z)$.
 
@@ -21,7 +22,9 @@ và casefold. Ta viết $x \sub z$ khi $\norm(x)$ là một chuỗi con của $\
 \begin{equation}\label{eq:dest}
 \dest(a) \sub u .
 \end{equation}
-Luật này không phân tích ý định và không dùng danh sách cụm từ. Vì vậy một đoạn chèn \mCR{} tránh động từ ``gửi'' hay
+Luật chỉ áp cho sink có trường đích. Một sink không có đích, như đổi mật khẩu trên AgentDojo, chỉ được \rFlow{} và
+\rSig{} kiểm, nên với \rDest{} đây là nhánh cho qua chứ không phải mặc định từ chối. Luật không phân tích ý định và
+không dùng danh sách cụm từ. Vì vậy một đoạn chèn \mCR{} tránh động từ ``gửi'' hay
 tách nhỏ địa chỉ vẫn thất bại như \mER: đích mà nó cần không có trong $u$. Luật coi mọi đích xuất hiện trong $u$ là đã
 được cấp quyền. Giả định này sai theo hai hướng. Một đích chỉ nằm trong câu cấm vẫn được cho qua, và \mUS{} đo đúng
 trường hợp này. Ngược lại, một đích được nhắc gián tiếp (``địa chỉ trong hợp đồng'') bị chặn. So khớp chuỗi con cũng

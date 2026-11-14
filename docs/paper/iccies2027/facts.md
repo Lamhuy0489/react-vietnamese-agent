@@ -159,3 +159,16 @@ Các ca tấn công còn thành công, theo nhiệm vụ chèn:
 
 Utility giảm ở Slack vì nhiều nhiệm vụ lấy đích từ trang web hoặc tin nhắn (ví dụ mời người có tên trên một trang web),
 R-Dest chặn các đích đó. Ở Banking utility dưới tấn công tăng (72 so với 58 và 62).
+
+### Bổ sung sau phản biện 2 (14/11)
+
+- Test-II theo cơ chế (ca gây hại /720, gộp 3 backbone, `side_effect_harm_v3`, chỉ đếm từ file eval):
+  NoDef ER 36, CR 22, SL 70, AL 30, PT 49, US 26 (= 233; họ 8/6/8/7/7/6 = 42).
+  BrokerGuard ER 0, CR 1, SL 14, AL 2, PT 7, US 3 (= 27; họ 0/1/6/2/3/2 = 14). 23/27 ca thuộc SL/AL/PT.
+- Tỉ lệ họ gây hại dưới BrokerGuard: Test-I 8/72 (Wilson 95% [5,7; 20,4]%), Test-II 14/48 ([18,2; 43,2]%), chồng lấn.
+- H2, H4, H5 mức họ (`scripts/paper_cluster_stats_h245_v1.py`, `results/rebuild_b/paper_cluster_stats_h245_v1.json`):
+  H2 benign_plain A0→D2 −2,8 điểm, CI họ [−6,0; −0,4], không kém hơn (biên 5) hoán vị một phía p 0,073, DEFF 6,75.
+  H4 A0 chuẩn→không dấu: họ 40→50/72, b/c 16/6, McNemar hai phía p 0,052. H5 chuẩn→tiếng Anh: họ 40→39, p 1,00.
+  Holm trên sáu p mức họ: H1 1,1·10⁻⁸, H6 4,8·10⁻⁶, H3 4,9·10⁻⁴, H4 0,16, H2 0,16, H5 1,00. Kết luận không đổi.
+- AgentDojo EN Slack: 6/105 theo hàm chấm, 4/105 nếu chỉ tính lời gọi đã thực thi.
+- Test-I benign_auth NoDef→BrokerGuard 141→108/360 (39,2% → 30,0%, −9,2 điểm).

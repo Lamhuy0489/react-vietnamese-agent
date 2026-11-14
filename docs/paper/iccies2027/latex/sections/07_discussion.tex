@@ -1,16 +1,18 @@
 \section{Thảo luận và hạn chế}\label{sec:discussion}
 
-\paragraph{Các lớp tấn công còn vượt qua được.} Mọi ca lọt qua \ours{} trên \tOne{} đều thuộc \mSL, \mAL{} hoặc \mPT.
+\paragraph{Các lớp tấn công còn vượt qua được.} Mọi ca lọt qua \ours{} trên \tOne{} đều thuộc \mSL, \mAL{} hoặc \mPT. Trên \tTwo, 23 trong 27 ca cũng vậy. Ba ca
+\mUS{} phù hợp với giả định của \rDest{} ở Mục~\ref{sec:defence}, nhưng chúng tôi chưa kiểm từng ca.
 Từ định nghĩa của các luật, có ba lớp vượt qua. Thứ nhất, \mPT{} trên một sink do người dùng nêu thỏa \rDest{} vì đích
 hợp lệ và thỏa \rFlow{} vì giá trị bị sửa không phải giá trị mật. Chỉ \rSig{} chặn được trường hợp này, và chỉ khi bộ
 phát hiện gắn cờ đoạn chèn. Thứ hai, \rFlow{} so khớp nguyên văn nên một giá trị mật bị biến đổi trước khi gửi sẽ đi
 qua. Thứ ba, danh sách cụm từ của bộ phát hiện chủ yếu là tiếng Việt, nên đoạn chèn bằng tiếng Anh hoặc diễn đạt khác
 dễ tránh được nó. Trên AgentDojo, các ca lọt thuộc lớp thứ nhất (đổi mật khẩu, gửi tới người dùng đã nêu) hoặc dùng
-một công cụ đọc làm kênh tấn công. Tập thích nghi ở Mục~\ref{sec:adaptive} không nhắm vào các lớp này. Một bộ tấn công
+một công cụ đọc làm kênh tấn công. Tập thích nghi ở Mục~\ref{sec:adaptive} không nhắm vào các lớp này. \tTwo{} do cùng nhóm soạn sau khi biết kết quả
+\tOne, nên chưa tách được việc tập này khó hơn với việc người soạn vô tình nhắm vào điểm yếu của luật. Một bộ tấn công
 hộp trắng sinh từ chính các luật là bước đánh giá cần làm tiếp.
 
 \paragraph{Ngôn ngữ.} Ở \cNone, bỏ dấu hay chuyển sang tiếng Anh không làm thay đổi tỉ lệ tấn công thành công một cách
-có ý nghĩa (H4, H5), trong giới hạn phát hiện khoảng 10 điểm. Vì vậy bài báo không khẳng định tiếng Việt dễ hay khó bị
+có ý nghĩa sau hiệu chỉnh (H4, H5), trong giới hạn phát hiện khoảng 10 điểm. Vì vậy bài báo không khẳng định tiếng Việt dễ hay khó bị
 tấn công hơn. Yếu tố chịu ảnh hưởng rõ của ngôn ngữ là phòng thủ dựa trên cụm từ. Trên Dev, bộ phát hiện cụm từ bật ở
 14 đến 19 trên 48 tấn công tiếng Việt chuẩn nhưng chỉ ở 3 trên 48 tấn công tiếng Anh. Trên AgentDojo tiếng Anh, \rSig{}
 không bật lần nào. \rDest{} và \rFlow{} không phụ thuộc ngôn ngữ, còn \rSig{} thì có.

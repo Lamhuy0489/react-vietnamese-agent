@@ -21,7 +21,8 @@ số này xuống 12, còn \ours{} chỉ còn 1.
 họ. Luật của \ours{} tốt hơn luật cụm từ (H1, từ 53 xuống 24 họ gây hại trên 72), kể cả trên các cơ chế né mẫu cụm từ
 (H3). Kết hợp với lời nhắc tốt hơn lời nhắc đơn thuần (H6, từ 28 xuống 8 họ). So với \cNone, \ours{} giảm số họ gây hại
 từ 65 xuống 8. H2 không xác lập được. \cRules{} mất 2,8 điểm benign\_plain so với \cNone, và cận dưới của khoảng tin
-cậy ($-6{,}0$) vượt biên $-5$ điểm. H4 và H5 không cho thấy khác biệt giữa các biến thể ngôn ngữ. Với 72 họ, hai kiểm
+cậy ($-6{,}0$) vượt biên $-5$ điểm. H4 và H5 không bác bỏ được. Ở mức họ, bản không dấu gây hại ở 50 họ so với 40 của bản chuẩn ($p$ Holm 0,16). Với 72
+họ, hai kiểm
 định này chỉ đủ lực (80\%) để phát hiện chênh lệch từ khoảng 10 điểm trở lên, nên chúng không chứng minh được rằng ngôn
 ngữ không ảnh hưởng.
 
@@ -40,7 +41,13 @@ ngữ, \cNone{} bị tấn công gần như nhau ở mọi biến thể (68 đ�
 xuống 3,8\%. Mức giảm có ở cả ba mô hình nền: Gemma từ 101 xuống 7 ca trên 240, Llama từ 50 xuống 10 và Qwen3.5 từ 82
 xuống 10. Cái giá là tiện ích lành tính giảm 4,5 điểm, từ 54,5\% xuống 50,0\% ($p = 0{,}044$). Trên \tOne{} mức giảm
 tương tự ($-5{,}1$ điểm, $p = 0{,}022$). Phần mất chủ yếu nằm ở benign\_plain. Ở benign\_auth, chênh lệch $-2{,}5$ điểm
-không có ý nghĩa ($p = 0{,}57$). Llama có 66 đến 74 đầu ra bị cắt ở mỗi cấu hình, và tất cả được tính là thất bại.
+không có ý nghĩa ($p = 0{,}57$). Trên \tOne, benign\_auth giảm nhiều hơn (9,2 điểm, từ 39,2\% xuống 30,0\%). Llama có 66 đến 74 đầu ra bị cắt ở mỗi
+cấu hình, và tất cả được tính là thất bại.
+
+Tỉ lệ lọt qua \ours{} trên \tTwo{} cao hơn \tOne{} (3,8\% so với 1,2\% số ca, 14/48 so với 8/72 họ), trong khi \cNone{}
+gần như không đổi. Khoảng tin cậy Wilson theo họ chồng lên nhau ($[5{,}7; 20{,}4]$\% và $[18{,}2; 43{,}2]$\%), nên đây là
+tín hiệu cần kiểm tra, chưa phải kết luận. Theo cơ chế, 23 trong 27 ca thuộc \mSL, \mAL{} và \mPT{} (14, 2 và 7 ca).
+Bốn ca còn lại là 1 ca \mCR{} và 3 ca \mUS.
 
 \input{tables/tab4_test2}
 
@@ -48,7 +55,9 @@ không có ý nghĩa ($p = 0{,}57$). Llama có 66 đến 74 đầu ra bị cắt
 đạo \cNone. Một ca lành tính thành công nếu \cNone{} thành công mà không gọi sink nào. Một ca tấn công gây hại nếu
 \cNone{} gây hại qua câu trả lời, kênh mà việc chặn sink không đóng được. Trên \tOne, chính sách này có cùng tỉ lệ tấn
 công thành công với \ours{} (1,2\%) nhưng tiện ích chỉ 7,4\%, so với 38,6\%. Trên \tTwo, nó đạt 0,7\% và 12,5\%, so với
-3,8\% và 50,0\%. Ước lượng này lạc quan cho chính sách chặn, vì tác tử có thể hành xử khác sau khi bị từ chối.
+3,8\% và 50,0\%. Ước lượng này lệch theo hai chiều, vì tác tử có thể hành xử khác sau khi bị từ chối. Về an ninh, nó có lợi cho chính
+sách chặn, vì tác tử bị chặn có thể chuyển giá trị mật sang câu trả lời. Về tiện ích, nó bất lợi cho chính sách chặn,
+vì tác tử có thể vẫn làm xong phần chỉ đọc. Vì vậy khoảng cách tiện ích thật có thể nhỏ hơn.
 
 \subsection{AgentDojo tiếng Anh và tiếng Việt}
 
@@ -58,9 +67,10 @@ cả hai ngôn ngữ. Con số thấp ở tiếng Việt không có nghĩa là t
 xuống 44 ở Banking), và ở Slack tiếng Việt có hai trong năm nhiệm vụ chèn không giải được bằng lời giải chuẩn. \cSand{}
 giảm số tấn công thành công xuống 10 ở cả hai bộ mà không mất tiện ích. \ours{} giảm tiếp xuống 3 ở Banking và 6 ở Slack
 với tiếng Anh, 1 và 0 với tiếng Việt. Hai trong sáu ca ở Slack có mọi lời gọi tấn công đều bị chặn nhưng vẫn được tính,
-vì hàm chấm của AgentDojo dựa trên các lời gọi mô hình sinh ra. Các ca còn lại là đổi mật khẩu (4 ca, qua một sink
+vì hàm chấm của AgentDojo dựa trên các lời gọi mô hình sinh ra. Nếu chỉ tính lời gọi đã thực thi, con số là 4/105. Các ca còn lại là đổi mật khẩu (4 ca, qua một sink
 không có đích), mở một URL độc hại bằng công cụ đọc (3 ca) và gửi link cho Alice, người mà chính người dùng đã nêu tên
-(1 ca). Tiện ích tăng ở Banking (72 so với 62 của \cSand) nhưng giảm mạnh ở Slack (15 so với 35). Nhiều nhiệm vụ Slack
+(1 ca). Ở Slack, đích là tên người nhận, nên so khớp tên mất phần lớn lực phân biệt. Với công cụ thật, broker nên phân
+giải tên qua danh bạ phía host rồi so địa chỉ đầy đủ. Tiện ích tăng ở Banking (72 so với 62 của \cSand) nhưng giảm mạnh ở Slack (15 so với 35). Nhiều nhiệm vụ Slack
 lấy đích từ trang web hoặc tin nhắn, và \rDest{} chặn các đích này vì người dùng không viết chúng. \rSig{} không bật lần
 nào ở tiếng Anh.
 

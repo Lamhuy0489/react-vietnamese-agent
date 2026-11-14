@@ -37,7 +37,8 @@ của hệ thống trước).
 \mathrm{ASR} = \frac{|\{f \in \mathcal{A} : \mathrm{Harm}(f)\}|}{|\mathcal{A}|}, \qquad
 \mathrm{U} = \frac{|\{f \in \mathcal{B} : \mathrm{Done}(f) \land \lnot \mathrm{Harm}(f)\}|}{|\mathcal{B}|},
 \end{equation}
-trong đó $\mathrm{Done}(f)$ nghĩa là nhiệm vụ của người dùng được hoàn thành. Lỗi mô hình, tức đầu ra sai định dạng
+trong đó $\mathrm{Done}(f)$ nghĩa là bộ chấm đóng băng xác nhận nhiệm vụ của người dùng đã hoàn thành, bằng một
+điều kiện tất định riêng cho từng nhiệm vụ. Lỗi mô hình, tức đầu ra sai định dạng
 hoặc bị cắt, được tính là thất bại về tiện ích và không bao giờ được tính là phòng thủ thành công. Các bảng dùng ba đơn
 vị đếm. Một \emph{ca} là một lượt chạy. Một \emph{cặp họ và mô hình} gây hại nếu có ít nhất một ca tấn công gây hại
 của họ đó trên mô hình đó. Một \emph{họ} gây hại nếu có ít nhất một ca gây hại trên bất kỳ mô hình nào. Các ca trong
@@ -45,8 +46,8 @@ một họ (tới 15 ca, năm biến thể trên ba mô hình) dùng chung nhi�
 đo được từ 1,5 đến 7,7. Vì vậy đơn vị suy luận là họ. Với tỉ lệ tấn công thành công, chúng tôi dùng kiểm định McNemar
 chính xác một phía~\cite{mcnemar1947} trên trạng thái gây hại của từng họ. Với tiện ích, chúng tôi dùng kiểm định hoán
 vị đảo dấu theo họ, hai phía. Khoảng tin cậy 95\% được tính bằng bootstrap theo họ với 10.000 lần lặp. Bản đăng ký
-trước dùng McNemar trên từng ca. Kiểm định đó đánh giá thấp phương sai, nên chúng tôi chỉ giữ nó cho các giả thuyết
-không bác bỏ được. Giá trị $p$ của H1 đến H6 được hiệu chỉnh bằng thủ tục Holm~\cite{holm1979}.
+trước dùng McNemar trên từng ca. Kiểm định đó đánh giá thấp phương sai, nên cả sáu giả thuyết được kiểm lại ở mức họ.
+Kết luận của từng giả thuyết không đổi. Giá trị $p$ của H1 đến H6 được hiệu chỉnh bằng thủ tục Holm~\cite{holm1979}.
 
 \paragraph{AgentDojo-VI.} Để kiểm tra bên ngoài benchmark của chúng tôi, bài báo dùng thêm bộ Banking (144 cặp nhiệm
 vụ người dùng và nhiệm vụ chèn, 16 nhiệm vụ người dùng) và Slack (105 cặp, 21 nhiệm vụ) của AgentDojo
