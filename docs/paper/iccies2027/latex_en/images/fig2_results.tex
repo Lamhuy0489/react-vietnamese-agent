@@ -1,18 +1,21 @@
-% Figure 2, pgfplots (Overleaf draws it). Harmful attack cases per mechanism on Test-I, three backbones summed.
+% Hình 2, vẽ bằng pgfplots (Overleaf tự vẽ, không render trên máy).
+% Số liệu: facts.md và study2_thesis_tables.md. (a) họ gây hại /144 trên Dev, gộp 3 mô hình nền.
+% 14/11: bỏ panel (a) Dev (trùng Bảng tab:dev) để rút gọn. Ca tấn công gây hại /180 mỗi cơ chế trên Test-I, gộp 3 mô hình nền.
+% Kích thước trục cố định (scale only axis) để hai panel không đè nhau: tổng rộng khoảng 11.6 cm < \textwidth 12.2 cm.
 \begin{figure}[!htbp]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
-  scale only axis, width=7.0cm, height=3.4cm,
-  ybar, bar width=2.6pt,
-  ymin=0, ymax=100, ytick={0,25,50,75,100},
+  scale only axis, width=8.5cm, height=2.6cm,
+  ybar, bar width=3pt,
+  ymin=0, ymax=100, ytick={0.25.50.75.100},
   symbolic x coords={ER,CR,SL,AL,PT,US}, xtick=data, enlarge x limits=0.1,
   axis x line*=bottom, axis y line*=left,
   tick label style={font=\scriptsize}, label style={font=\scriptsize},
   ylabel={Harmful attack cases (/180)},
   ymajorgrids, grid style={line width=0.2pt, draw=black!12},
   legend style={font=\tiny, draw=none, fill=white, fill opacity=0.85, text opacity=1,
-    at={(0.99,0.99)}, anchor=north east, cells={anchor=west}},
+    at={(0.99.0.99)}, anchor=north east, cells={anchor=west}},
   legend image code/.code={\draw[#1] (0cm,-0.07cm) rectangle (0.2cm,0.07cm);},
   ]
 \addplot[fill=white, draw=black, line width=0.4pt] coordinates {(ER,58) (CR,65) (SL,89) (AL,60) (PT,68) (US,15)};
@@ -23,6 +26,6 @@
 \legend{\cNone, \cSand, \cRules, \ours}
 \end{axis}
 \end{tikzpicture}
-% VI caption: \caption{Số ca tấn công gây hại theo cơ chế trên \tOne, cộng cả ba mô hình nền (/180 mỗi cơ chế). Ô không có cột nghĩa là 0 ca.}
-\caption{\todo{caption, written by the authors}}\label{fig:results}
+\caption{Harmful attack cases per mechanism on \tOne, summed over three backbones (/180 per mechanism). A missing
+bar means 0 cases.}\label{fig:results}
 \end{figure}

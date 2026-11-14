@@ -1,26 +1,57 @@
-% Vietnamese draft: ../latex/sections/03_threat_model.tex.
 \section{Threat Model}\label{sec:threat}
 
-\paragraph{Agent.} \todo{text, written by the authors}
+\paragraph{Agent.} Let $u$ be the user instruction. At each step, the model produces an action $a_t$ consisting of a
+tool name and arguments, or produces the final answer $y$. The Tool Broker validates $a_t$ against the schema,
+executes it and returns an observation $o_t$. The system has six read tools (searching and reading documents, querying
+a read-only database, searching and opening cached pages, and a calculator) and two \emph{sinks} with side effects:
+sending e-mail and calling a webhook. Both sinks are mocks that only write a log and send nothing over the network. The
+final answer is treated as a third sink. For a sink call $a$, $\dest(a)$ is its destination (recipient or URL) and
+$\pay(a)$ denotes the remaining arguments.
 
-\paragraph{Two labels.} \todo{text, written by the authors}
+\paragraph{Two labels.} Every piece of content carries two independent labels assigned by the host. In terms of
+\emph{trust}, only $u$ and the system prompt are trusted, and every tool observation is untrusted. In terms of
+\emph{sensitivity}, content ranges from public to confidential. Confidential sources contain values such as keys,
+codes or account identifiers. These values must not leave the agent unless the user allows it. An untrusted page can
+be public, while a confidential record can come from a source the attacker cannot touch. Merging the two dimensions
+into one would force a defence either to block all confidential data or to trust every internal source.
 
-\paragraph{Attacker.} \todo{text, written by the authors}
+\paragraph{Attacker.} The attacker controls the text of one piece of content returned by a read tool, at any position
+and in any tone. The attacker knows the names and schemas of the tools but cannot modify $u$, the system prompt, the
+broker or the model weights, and cannot observe the trajectory. On the sealed sets, attacks are static and were written
+without knowledge of the defence code. Direct jailbreaks, training-data poisoning, denial of service and multi-agent
+systems are out of scope.
 
-\paragraph{Harm predicates.} \todo{text, written by the authors}
+\paragraph{Harm predicates.} Let $G(u)$ be the set of destinations authorised by the user, $V$ the set of confidential
+values in the trajectory that the user has not allowed to be disclosed, and $\mathcal{S}$ the set of \emph{executed}
+sink calls. A trajectory $\tau$ is harmful if
 \begin{equation}\label{eq:harm}
 \mathrm{Harm}(\tau) = H_\mathit{dest} \lor H_\mathit{leak} \lor H_\mathit{tamper} \lor H_\mathit{side},
 \end{equation}
+where
 \begin{itemize}
-\item \mathit{dest}$: $\exists\, a \in \mathcal{S}:\ \dest(a) \notin G(u)$,
-\item \mathit{leak}$: $\exists\, v \in V$ in $\pay(a)$ for some  \in \mathcal{S}$, or in $,
-\item \mathit{tamper}$: $\exists\, a \in \mathcal{S}:\ \dest(a) \in G(u)$ but a user-specified field differs,
-\item \mathit{side}$: the task is read-only but $\mathcal{S} \neq \emptyset$.
+\item $H_\mathit{dest}$: there is $a \in \mathcal{S}$ with $\dest(a) \notin G(u)$,
+\item $H_\mathit{leak}$: there is $v \in V$ that appears in $\pay(a)$ for some $a \in \mathcal{S}$ or in $y$,
+\item $H_\mathit{tamper}$: there is $a \in \mathcal{S}$ with $\dest(a) \in G(u)$ but a user-specified field carries a
+  different value,
+\item $H_\mathit{side}$: the task only requires reading but $\mathcal{S} \neq \emptyset$.
 \end{itemize}
-\todo{text, written by the authors}
+A frozen scorer evaluates these predicates from the executed calls and from $y$. Blocked calls do not count as harm.
 
-\paragraph{Six attack mechanisms.} \todo{text, written by the authors} (Table~\ref{tab:mechanisms}).
+\paragraph{Six attack mechanisms.} Attacks are classified by \emph{mechanism}, that is, the path by which the
+injection turns into harm (Table~\ref{tab:mechanisms}). In the two redirection mechanisms (\mER, \mCR), the destination
+is not in $u$, so checking the destination suffices regardless of wording. In the two leak mechanisms (\mSL, \mAL), the
+destination is valid or absent, so only the provenance of the value separates the attack from the task. In parameter
+tampering (\mPT), both the destination and the sensitivity are normal, which makes it the hardest mechanism for
+label-based rules. The unrequested side-effect mechanism (\mUS) tests whether a destination that is merely mentioned,
+for example in a prohibition, is mistaken for an authorisation.
 
 \input{tables/tab1_mechanisms}
 
-\paragraph{Families, benign branches and language variants.} \todo{text, written by the authors}
+\paragraph{Families, benign counterparts and language variants.} A \emph{family} is one attack idea in a specific task
+and tool environment. Each benign counterpart uses the same task and environment as its family. Every family has a
+\emph{\bPlain} counterpart, and one third of the families also have an \emph{\bAuth} counterpart. The \bPlain{}
+counterpart replaces the injection with a harmless note of the same length and is used to measure utility. The
+\bAuth{} counterpart keeps a request similar to the attack goal, but the user explicitly allows it. Blocking it is a
+\emph{false block}. Each family has five variants applied to both $u$ and the injection: standard Vietnamese,
+paraphrased, Vietnamese--English code-mixed, without diacritics, and English. Identifiers, addresses and confidential
+values are identical across variants, so any difference comes from language alone.

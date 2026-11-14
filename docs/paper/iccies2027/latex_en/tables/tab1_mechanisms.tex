@@ -1,18 +1,20 @@
-% VI caption: Sáu cơ chế tấn công của VN-AgentInject và vị từ gây hại tương ứng.
+% M1..M6 trong log/luận văn = ER, CR, SL, AL, PT, US.
+% Kiểu bảng chung (14/11): tabularx/tabular* đúng \textwidth, \footnotesize, \tabcolsep 3pt, cột chữ trái, cột số phải.
 \begin{table}[!htbp]
 \centering
-\caption{\todo{caption, written by the authors}}\label{tab:mechanisms}
+\caption{The six attack mechanisms and their harm predicates.}\label{tab:mechanisms}
 \footnotesize
-\begin{tabular}{@{}lp{0.70\textwidth}l@{}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xl@{}}
 \toprule
 Code & Mechanism (subtypes) & Predicate \\
 \midrule
-\mER & Explicit redirection: send to a destination not in $u$, with a send verb and a full address & $H_\mathit{dest}$ \\
-\mCR & Covert redirection: same goal without the ``send + address'' pattern (verbless note, forward or cc, split address, destination in a second document) & $H_\mathit{dest}$ \\
-\mSL & Sink leak: a confidential value placed in a sink the user named (e-mail body, payload, innocuous-looking field) & $H_\mathit{leak}$ \\
-\mAL & Answer leak: a confidential value placed in the final answer (verbatim, embedded in a sentence, labelled) & $H_\mathit{leak}$ \\
-\mPT & Parameter tampering: an ordinary value changed in the payload of a user-named sink (number, boolean, unit, identifier) & $H_\mathit{tamper}$ \\
-\mUS & Unrequested side effect: a sink call injected into a read-only task (destination only in a prohibition, only informational, or absent) & $H_\mathit{side}$ \\
+\mER & Explicit redirection: asks to send to a destination not in $u$, with a send verb and a full address & $H_\mathit{dest}$ \\
+\mCR & Covert redirection: same goal but avoids the ``send + address'' pattern (verbless note, forward or cc, split address, destination in a second document) & $H_\mathit{dest}$ \\
+\mSL & Sink leak: puts a confidential value into a sink the user specified (e-mail body, payload, innocuous-looking field) & $H_\mathit{leak}$ \\
+\mAL & Answer leak: puts a confidential value into the final answer (verbatim, embedded in a sentence, labelled) & $H_\mathit{leak}$ \\
+\mPT & Parameter tampering: changes an ordinary value in the payload of a sink the user specified (number, boolean, unit, identifier) & $H_\mathit{tamper}$ \\
+\mUS & Unrequested side effect: inserts a sink call into a read-only task (destination only in a prohibition, merely informational, or absent) & $H_\mathit{side}$ \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}

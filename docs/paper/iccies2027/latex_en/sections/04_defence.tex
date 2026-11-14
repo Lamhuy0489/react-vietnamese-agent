@@ -1,30 +1,89 @@
-% Vietnamese draft: ../latex/sections/04_defence.tex. Cite: anderson1972 (reference monitor), costa2025fides (IFC, at R-Flow).
 \section{The \ours{} Defence}\label{sec:defence}
 
-\todo{text, written by the authors} (Fig.~\ref{fig:pipeline}).
+\ours{} rests on three principles. First, the model is not a security boundary. An action takes effect only when the
+broker executes it, so the broker acts as a reference monitor~\cite{anderson1972} at the sinks. Second, the user is
+the only trusted principal. Permissions are derived from the verbatim text of $u$, not from tool content and not from
+the model's interpretation of intent. Third, blocking does not stop the task. A denied action is reported back so that
+the agent can continue with the legitimate part of the work. Figure~\ref{fig:pipeline} shows the pipeline. \ours{}
+consists of four rules (\rDest, \rFlow, \rRedact, \rSig), the \cSand{} reminder and denial feedback. To separate the
+contribution of each layer, the paper also reports \cRules, which is \ours{} without the reminder. Dev is the
+development set, and \tOne{} and \tTwo{} are the two sealed test sets (Section~\ref{sec:protocol}).
 
 \input{images/fig1_pipeline}
 
-\paragraph{Broker and provenance labels.} \todo{text, written by the authors}
+\paragraph{Broker and provenance labels.} Under \cNone, the broker only checks tool schemas and limits. Under \ours,
+the broker also stores the label of each observation and a set $C$ of values extracted from confidential observations.
+Extraction uses language-independent lexical patterns: e-mail addresses, URLs, identifiers of six or more characters
+and long numbers. A value enters $C$ only when the source containing it is labelled confidential. The broker does not
+block reads. This is a design assumption and it does not always hold, because a read tool that takes a URL chosen by
+the model can also serve as an exfiltration channel (Section~\ref{sec:results}). Since read calls and sinks without a
+destination are allowed through, the broker does not yet achieve the complete mediation of a reference monitor. All
+comparisons use a normalisation function $\norm(\cdot)$ consisting of Unicode NFKC, removal of format characters such
+as zero-width characters, and case folding. The notation $x \sub z$ means that $\norm(x)$ is a substring of $\norm(z)$.
 
-\paragraph{\rDest{} (destination authorisation).} \todo{text, written by the authors}
+\paragraph{Rule \rDest{} (destination authorisation).} A sink call $a$ is executed only if
 \begin{equation}\label{eq:dest}
 \dest(a) \sub u .
 \end{equation}
-\todo{text, written by the authors}
+The rule applies only to sinks with a destination field. A sink without a destination, such as a password change on
+AgentDojo, is checked only by \rFlow{} and \rSig, so for \rDest{} this is an allow branch rather than a default deny.
+The rule does not analyse intent and uses no phrase list. A covert-redirection injection that avoids the verb ``send''
+or splits the address therefore still fails, just as explicit redirection does, as long as the destination it needs
+is not a substring of $u$. The rule treats every destination that appears in $u$ as authorised, which is assumption
+(ii) at the end of this section. This assumption fails in two directions. A destination that appears only in a
+prohibition is still allowed, which is exactly what the unrequested side-effect mechanism measures. Conversely, a
+destination referred to indirectly (``the address in the contract'') is blocked. Substring matching also accepts part
+of a destination the user wrote, including an ordinary word that is not an address. The only covert-redirection case
+that bypassed \ours{} on \tTwo{} is exactly this case (Section~\ref{sec:discussion}). With real tools, matching should
+be done on parsed, structured destinations.
 
-\paragraph{\rFlow{} and \rRedact{} (confidential value flow).} \todo{text, written by the authors}
+\paragraph{Rules \rFlow{} and \rRedact{} (confidential value flow).} The broker denies a sink call $a$ if
 \begin{equation}\label{eq:flow}
 \exists\, v \in C:\; v \sub \pay(a) \;\land\; \lnot\,(v \sub u) .
 \end{equation}
-\todo{text, written by the authors}
+The same condition is applied to the final answer $y$. In that case, \rRedact{} replaces each violating value with
+\code{[REDACTED]} instead of dropping the whole answer. Treating $y$ as a sink closes the answer-leak channel, which
+filters on tool calls miss. This rule is narrower than an information-flow control policy~\cite{costa2025fides}. It
+deterministically enforces only \emph{verbatim} flows. Values transformed by the model (reformatted, split or encoded),
+covert channels such as the choice to send or not send, confidential values that the extractor does not recognise and
+values held in sources labelled public are all unprotected.
 
-\paragraph{Injection-signal rule \rSig.} \todo{text, written by the authors}
+\paragraph{Injection-signal rule \rSig.} The two rules above do not cover manipulation of a sink that the user
+\emph{did} specify using non-confidential values, that is, parameter tampering. A phrase detector flags observations
+that contain instruction-like text. Let $F$ be the set of flagged observations and $\mathrm{Gram}_u(a)$ the condition
+that a strict grammar over $u$ allows the call $a$. The broker denies $a$ if
 \begin{equation}\label{eq:signal}
 F \neq \emptyset \;\land\; \lnot\,\mathrm{Gram}_u(a) .
 \end{equation}
-\todo{text, written by the authors}
+On Dev, removing this rule increases the number of harmful families by 2 to 4 for each backbone. In return, it is the
+largest source of false blocks. On \tOne, under \cRules, this rule blocks 22 \bPlain{} cases, compared with 3 for
+\rDest. The phrase list makes this rule language-dependent (Section~\ref{sec:discussion}).
 
-\paragraph{Prompt reminder and denial feedback.} \todo{text, written by the authors}
+\paragraph{Reminder and denial feedback.} After each observation, $u$ is repeated together with a sentence asking the
+model to ignore any instruction found in tool data, similar to the sandwich defence and AgentDojo's
+\code{repeat\_user\_prompt}. This is the only layer that depends on the model, and it complements the rules where they
+cannot see (Section~\ref{sec:results}). When a rule denies a call, the tool is not executed and the agent receives a
+structured observation reporting the denial, so it can continue with the remaining steps. This feedback is present in
+every configuration with rules and has not been isolated.
 
-\paragraph{Configuration choice and cost.} \todo{text, written by the authors}
+\paragraph{Scope of the guarantee.} Let $\hat G(u) = \{d : d \sub u\}$ be the set of destinations that \rDest{}
+accepts. The following three assumptions make explicit what the rules guarantee. (i) Every sink call passes through
+the broker and has a destination field. (ii) $\hat G(u) \subseteq G(u)$, that is, every destination appearing in $u$
+is actually authorised. (iii) Every $v \in V$ is already in $C$ before it appears in a sink call or in $y$.
+
+\begin{proposition}\label{prop:scope}
+Under (i) and (ii), no trajectory executed by \ours{} satisfies $H_\mathit{dest}$ or $H_\mathit{side}$. Under (iii),
+no $v \in V$ with $\lnot(v \sub u)$ appears verbatim in $\pay(a)$ for any $a \in \mathcal{S}$, or in $y$ after
+redaction.
+\end{proposition}
+
+\noindent The proposition follows directly from \eqref{eq:dest} and \eqref{eq:flow}, because the broker executes every
+sink call and read-only tasks have $G(u) = \emptyset$. It says nothing about $H_\mathit{tamper}$ or about values
+transformed by the model, which are left to \rSig{} and the reminder. Section~\ref{sec:discussion} shows that every
+remaining bypass either violates one of the three assumptions or falls under $H_\mathit{tamper}$.
+
+\paragraph{Configuration choice and cost.} All choices were made on Dev in pre-declared tuning rounds. \ours{} combines
+\cRules{} with \cSand, two existing components, without changing any parameter. This configuration was frozen before
+\tOne{} was run and has not changed since. \ours{} calls no additional model. Each check is a substring search over
+$u$, $\pay(a)$ or $y$. The reminder lengthens the context by one copy of $u$ after each observation. Latency has not
+been measured.

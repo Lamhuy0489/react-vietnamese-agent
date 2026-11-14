@@ -1,19 +1,61 @@
-% Vietnamese draft: ../latex/sections/05_benchmark_protocol.tex. Cite: hines2024spotlighting, meta2025promptguard2,
-% zhu2025melon, shi2025progent, mcnemar1947, holm1979, debenedetti2024agentdojo.
-% Manifest commits: Test-I 08d57bf (8 Nov 2026), Test-II 07f10c6 (9 Nov 2026).
 \section{Benchmark and Protocol}\label{sec:protocol}
 
-\paragraph{VN-AgentInject.} \todo{text, written by the authors}
+\paragraph{VN-AgentInject.} The benchmark turns the model of Section~\ref{sec:threat} into runnable \emph{test cases}.
+All data are synthetic. Each family yields one attack case and one \bPlain{} case per language variant, and one third
+of the families add an \bAuth{} case. The benchmark has three disjoint sets, each balanced by mechanism. The
+\textbf{Dev} set (48 families, 560 cases) is used for every design decision. \textbf{\tOne} (72 families, 840 cases)
+is the first sealed set. \textbf{\tTwo} (48 new families, 560 cases) was written after \tOne{} had been run. It is new
+to the frozen \ours, but its authors knew the \tOne{} results (Section~\ref{sec:discussion}). A family, together with
+all its variants and benign counterparts, belongs to exactly one set.
 
-\paragraph{Sealing.} \todo{text, written by the authors}
+Attack texts were written by hand by people who did not read the defence code. Each family was reviewed against a
+five-item rubric, including the mechanism label, naturalness, real harm and not revealing the answer key. Each family
+also had to pass an overlap filter against earlier versions and a \emph{replay check}. In the replay check, a
+reference trajectory that follows the injection must be scored as harmful, and a trajectory that completes the task
+safely must be scored as safe.
 
-\paragraph{Backbones and baselines.} \todo{text, written by the authors}
+\paragraph{Sealing.} Before each test run, three things were frozen. The first is the test cases, pinned by SHA-256.
+The second is a manifest that pins the hashes of the prompts, the decoding settings, the defence code, the model
+versions and the list of configurations. The third is the hypotheses together with the multiple-comparison
+correction. The runner refuses to start if anything differs. Each pair of model and configuration was run only once,
+except for resuming cases that failed for infrastructure reasons. The scorer's answer key never appears in the prompt
+or in the runtime policy, so the model cannot see it. \tOne{} has six pre-registered hypotheses, H1 to H6. The
+pre-registered hypothesis of \tTwo{} targets a different variant of \ours{} (Section~\ref{sec:discussion}). The
+comparison of \ours{} with \cNone{} on \tTwo{} is therefore a non-pre-registered replication analysis, although the
+configurations and data are pinned in the same way.
 
-\paragraph{Metrics and statistics.} \todo{text, written by the authors}
+\paragraph{Backbones and baselines.} The three open-weight backbones are Gemma-4-12B, Llama-3.1-8B and Qwen3.5-9B,
+pinned by version. All three share the same ReAct prompt, temperature 0, at most 512 tokens per step and eight steps.
+Gemini 3 Flash is run only on Dev and AgentDojo for reference and is excluded from all tests. On Dev, \ours{} is
+compared with six baselines implemented in the same agent and the same broker: \cSpot~\cite{hines2024spotlighting},
+\cSand{} (repeating $u$), \cPG{} (Prompt Guard~2~\cite{meta2025promptguard2} screening tool outputs), \cMel{} and
+\cProg{} (the asterisk marks re-implementations after MELON~\cite{zhu2025melon} and Progent~\cite{shi2025progent},
+which do not represent the original systems), and \cPhrase{} (phrase rules, an earlier version of this system).
+
+\paragraph{Metrics and statistics.} For a set of attack cases $\mathcal{A}$ and a set of benign cases $\mathcal{B}$,
 \begin{equation}\label{eq:metrics}
 \mathrm{ASR} = \frac{|\{f \in \mathcal{A} : \mathrm{Harm}(f)\}|}{|\mathcal{A}|}, \qquad
 \mathrm{U} = \frac{|\{f \in \mathcal{B} : \mathrm{Done}(f) \land \lnot \mathrm{Harm}(f)\}|}{|\mathcal{B}|},
 \end{equation}
-\todo{text, written by the authors}
+where $\mathrm{Done}(f)$ means that the frozen scorer confirms that the user's task was completed, using a
+deterministic task-specific condition. Model errors, that is, malformed or truncated outputs, count as utility
+failures and never as successful defence. The tables use three counting units. A \emph{case} is one run. A
+\emph{family--model pair} is harmful if at least one attack case of that family on that model is harmful. A
+\emph{family} is harmful if at least one of its cases is harmful on any model. Cases within a family (up to 15, five
+variants on three models) share the task and environment, so they are not independent. The measured design effect
+ranges from 1.5 to 7.7. The unit of inference is therefore the family. For attack success, the paper uses the exact
+one-sided McNemar test~\cite{mcnemar1947} on the harmful status of each family. For utility, it uses a two-sided
+sign-flip permutation test by family. 95\% confidence intervals are computed by family bootstrap with 10,000
+resamples. The pre-registration used McNemar on individual cases. That test underestimates the variance, so all six
+hypotheses were re-tested at the family level. The conclusion of each hypothesis is unchanged. The $p$-values of H1 to
+H6 are adjusted with the Holm procedure~\cite{holm1979}.
 
-\paragraph{AgentDojo-VI.} \todo{text, written by the authors}
+\paragraph{AgentDojo-VI.} As an external check beyond VN-AgentInject, the paper also uses the Banking suite (144 pairs
+of user task and injection task, 16 user tasks) and the Slack suite (105 pairs, 21 tasks) of AgentDojo
+v1.2.2~\cite{debenedetti2024agentdojo}, in English and in a Vietnamese translation. The translation covers the
+environment, tasks, injection goals and the \code{important\_instructions} attack template. IBANs, amounts, names and
+addresses are kept unchanged, while the tools and scoring functions are the original code. With Llama, \ours{} is run
+in full in both languages with the frozen rule code. The only new part is an adapter declared before the run. It
+specifies which tools are sinks, which argument holds the destination and which read tools return confidential data.
+The \cSand{} layer is AgentDojo's built-in \code{repeat\_user\_prompt}, which is also run on its own with Llama in both
+languages.

@@ -1,8 +1,5 @@
-% ICCIES 2027 -- Springer LNCS/CCIS, 12--15 pages. ENGLISH SUBMISSION (written by the authors).
-% Overleaf: upload this folder, main = main.tex, compiler pdfLaTeX.
-% Structure, tables, figures, equations and labels are ready. Prose, abstract and captions marked \todo{} are
-% written by the authors (ICCIES forbids AI-generated text). The Vietnamese reading draft is ../latex/.
-% Numbers come only from ../facts.md.
+% ICCIES 2027 -- Springer LNCS/CCIS, 12--15 pages. ENGLISH VERSION (translated from ../latex/, the Vietnamese draft).
+% Overleaf: upload this folder, main = main.tex, compiler pdfLaTeX. Numbers come only from ../facts.md.
 \documentclass[runningheads]{llncs}
 
 \usepackage[T1]{fontenc}
@@ -15,20 +12,41 @@
 \usepackage{amsmath,amssymb}
 \usepackage{xcolor}
 \usepackage{url}
-\usepackage{adjustbox}
-\usepackage{pgfplots}
+\usepackage{adjustbox}   % max width=\textwidth: chống bảng tràn lề
+\usepackage{tabularx}    % bảng trải đúng bề ngang trang, cột chữ tự xuống dòng
+\usepackage{makecell}    % tiêu đề cột hai dòng
+\usepackage[section]{placeins} % bảng/hình không trôi sang mục sau (\FloatBarrier)
+\usepackage{pgfplots}    % Hình 2 vẽ bằng pgfplots (Overleaf tự vẽ)
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{patterns,arrows.meta}
 \definecolor{bgblue}{HTML}{2A78D6}
 \definecolor{bgorange}{HTML}{EB6834}
 \definecolor{bgaqua}{HTML}{1BAF7A}
+% Đặt bảng/hình gần chỗ nhắc tới, tránh dồn cục
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\textfraction}{0.1}
 \renewcommand{\floatpagefraction}{0.75}
 \setcounter{topnumber}{3}
 \setcounter{totalnumber}{4}
+% 14/11: bớt khoảng trắng để về 15 trang (không đổi lề, cỡ chữ hay giãn dòng của LNCS)
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\usepackage{enumitem}
+\setlist{noitemsep, topsep=2pt}
+\makeatletter
+% trang chỉ có bảng/hình: xếp từ đầu trang, không dàn đều ra giữa
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{10pt plus 2pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\g@addto@macro\normalsize{%
+  \setlength{\abovedisplayskip}{4pt plus 2pt minus 1pt}%
+  \setlength{\belowdisplayskip}{4pt plus 2pt minus 1pt}%
+  \setlength{\abovedisplayshortskip}{2pt plus 1pt}%
+  \setlength{\belowdisplayshortskip}{2pt plus 1pt}}
+\makeatother
 
-% Placeholders for the authors; remove every \todo and this definition before submission.
+% Ghi chú cho tác giả; xóa trước khi nộp.
 \newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
 \newcommand{\code}[1]{\texttt{#1}}
 
@@ -42,8 +60,8 @@
 \newcommand{\cSpot}{Spotlight}                % P1
 \newcommand{\cSand}{Sandwich}                 % P2
 \newcommand{\cPG}{PromptGuard}                % G1
-\newcommand{\cMel}{MELON-det}                 % MEL
-\newcommand{\cProg}{Progent-pol}              % PRG (cài đặt lại theo kiểu Progent)
+\newcommand{\cMel}{MELON$^*$}                 % MEL
+\newcommand{\cProg}{Progent$^*$}              % PRG (cài đặt lại theo kiểu Progent)
 \newcommand{\cPhrase}{PhraseRules}            % R1
 % Luật
 \newcommand{\rDest}{\textsf{R-Dest}}          % R2
@@ -65,6 +83,8 @@
 \newcommand{\dest}{\mathit{dest}}
 \newcommand{\pay}{\mathit{payload}}
 \newcommand{\norm}{\nu}
+\newcommand{\bPlain}{plain benign}        % benign_plain
+\newcommand{\bAuth}{authorised benign}        % benign_auth
 
 % hyperref nạp cuối cùng: mọi trích dẫn [n], tham chiếu Bảng/Hình/Mục và DOI/URL đều xanh, bấm được
 \usepackage{hyperref}
@@ -73,7 +93,10 @@
 
 \begin{document}
 
+% Tiêu đề owner chốt 14/11/2026 (giữ nguyên tiếng Anh vì là bản nộp; chính tả Anh-Anh: defence):
 \title{BrokerGuard: A Layered Defence with Tool-Broker Enforcement Against Indirect Prompt Injection in Vietnamese LLM Agents}
+% Nghĩa: BrokerGuard: phòng thủ nhiều lớp với cưỡng chế tại Tool Broker trước tấn công chèn lệnh gián tiếp
+% cho tác tử LLM tiếng Việt
 \titlerunning{BrokerGuard}
 
 \author{\todo{Author 1}\inst{1} \and \todo{Author 2}\inst{1}}
@@ -95,7 +118,7 @@
 
 % \begin{credits}
 % \subsubsection{\ackname} ...
-% \subsubsection{\discintname} The authors have no competing interests to declare.
+% \subsubsection{\discintname} The authors have no competing interests.
 % \end{credits}
 
 \bibliographystyle{splncs04}

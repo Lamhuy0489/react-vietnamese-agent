@@ -1,12 +1,33 @@
-% Vietnamese draft: ../latex/sections/01_introduction.tex. Cite: yao2023react, greshake2023indirect, yi2025bipia,
-% zhan2024injecagent, debenedetti2024agentdojo, hines2024spotlighting. Impersonal voice (no "we").
 \section{Introduction}\label{sec:intro}
 
-\todo{text, written by the authors}
+In the ReAct pattern~\cite{yao2023react}, an LLM agent interleaves reasoning with tool calls such as searching
+documents, querying a database or sending e-mail. Whatever a tool returns enters the model's context directly. In an
+indirect prompt injection (IPI) attack~\cite{greshake2023indirect}, the attacker plants instructions in third-party
+content that the agent will read. If the model follows them, the agent may send data to an unknown destination, leak a
+confidential value or alter data that the user asked it to send.
 
+Agent benchmarks such as BIPIA~\cite{yi2025bipia}, InjecAgent~\cite{zhan2024injecagent} and
+AgentDojo~\cite{debenedetti2024agentdojo} are almost entirely in English. Vietnamese text is often written without
+diacritics and mixed with English terms, while injection classifiers are mainly trained on English. Prompt-level
+defences such as spotlighting~\cite{hines2024spotlighting} depend on whether the model complies. This paper therefore
+places the enforcement rules on the host side, between the model and the tools, where they do not depend on model
+compliance. The reminder in the prompt is only a supporting layer.
+
+The paper makes four contributions.
 \begin{enumerate}
-\item \textbf{Mechanism-based threat model.} \todo{text, written by the authors} (Section~\ref{sec:threat}).
-\item \textbf{The \ours{} defence.} \todo{text, written by the authors} (Sections~\ref{sec:defence} and~\ref{sec:discussion}).
-\item \textbf{VN-AgentInject and AgentDojo-VI.} \todo{text, written by the authors} (Section~\ref{sec:protocol}).
-\item \textbf{Empirical results.} \todo{text, written by the authors} (Section~\ref{sec:results}).
+\item \textbf{A mechanism-based threat model.} Two independent labels (trust and sensitivity), four harm predicates,
+  six attack mechanisms and two benign counterparts for measuring false blocks (Section~\ref{sec:threat}).
+\item \textbf{The \ours{} defence.} Rules on destinations and on the flow of confidential values are enforced in the
+  Tool Broker and combined with a prompt reminder and denial feedback, without fine-tuning. Rules and reminder
+  complement each other across attack mechanisms. A proposition states what the rules guarantee and under which
+  assumptions, and every remaining bypass either violates one of these assumptions or is a parameter-tampering attack
+  (Sections~\ref{sec:defence} and~\ref{sec:discussion}).
+\item \textbf{VN-AgentInject and AgentDojo-VI.} VN-AgentInject is evaluated under a sealed protocol. The test sets,
+  defence configurations and hypotheses are locked by hash before the run, and each test set is run only once.
+  AgentDojo-VI is a Vietnamese translation of AgentDojo used as an external check (Section~\ref{sec:protocol}).
+  The data, code and seal manifests are publicly released.
+\item \textbf{Empirical results.} Across three open-weight backbones, \ours{} reduces the attack success rate from
+  32.9\% to 1.2\% on \tOne{} and from 32.4\% to 3.8\% on \tTwo, a set written after \ours{} was frozen. Benign
+  utility drops by about 5 percentage points. The results are compared with six baselines and Gemini 3 Flash on Dev,
+  and with AgentDojo in English and Vietnamese (Section~\ref{sec:results}).
 \end{enumerate}

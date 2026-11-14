@@ -1,8 +1,23 @@
-% Vietnamese draft: ../latex/sections/02_related_work.tex. Cite: greshake2023indirect, yi2025bipia, zhan2024injecagent,
-% debenedetti2024agentdojo, deng2024multijail, hines2024spotlighting, chen2025secalign, meta2025promptguard2,
-% zhu2025melon, shi2025progent, costa2025fides, zhao2026clawguard, debenedetti2026camel, zhan2025adaptive, nasr2025attacker.
 \section{Related Work}\label{sec:related}
 
-\paragraph{Attacks and benchmarks.} \todo{text, written by the authors}
+\paragraph{Attacks and benchmarks.} Greshake et al.~\cite{greshake2023indirect} introduced indirect prompt injection.
+BIPIA~\cite{yi2025bipia} was the first benchmark for indirect prompt injection against LLMs.
+InjecAgent~\cite{zhan2024injecagent} and AgentDojo~\cite{debenedetti2024agentdojo} shift the focus to tool-using
+agents, where an attack leads to actions. All of these datasets are in English. Deng et al.~\cite{deng2024multijail}
+show that LLM safety is weaker in low-resource languages, but in the jailbreak setting rather than for agents.
 
-\paragraph{Defences.} \todo{text, written by the authors} (Section~\ref{sec:adaptive}).
+\paragraph{Defences.} Prompt-level defences include spotlighting~\cite{hines2024spotlighting} and the sandwich
+reminder. SecAlign~\cite{chen2025secalign} retrains the model to separate instructions from data. Prompt
+Guard~2~\cite{meta2025promptguard2} is a classifier that screens inputs. MELON~\cite{zhu2025melon} compares the
+actions of the original run with those of a re-run in which the user request is masked. Progent~\cite{shi2025progent}
+applies privilege policies to tool calls. FIDES~\cite{costa2025fides} attaches trust and confidentiality labels to
+data, propagates them through tool calls and allows consequential actions only when a policy is satisfied.
+ClawGuard~\cite{zhao2026clawguard} asks the model to derive access rules from the user request and then checks each
+tool call against them. CaMeL~\cite{debenedetti2026camel} separates control flow from untrusted data with a dedicated
+interpreter and is therefore secure by design. \ours{} follows the same direction as these systems: enforcement
+outside the model, with no change to the weights. Unlike CaMeL, \ours{} only checks each call by string matching, so
+it can be attached to an existing ReAct agent. Unlike FIDES and ClawGuard, \ours{} neither propagates labels per value
+nor asks the model to generate rules. Permissions are derived only by verbatim matching against $u$, so the two rules
+on destinations and confidential values are language-independent. Adaptive attacks have broken many published
+defences~\cite{zhan2025adaptive,nasr2025attacker}, so an adaptive attack set is reported separately
+(Section~\ref{sec:adaptive}).
