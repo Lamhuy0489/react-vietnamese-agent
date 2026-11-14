@@ -1,6 +1,6 @@
 \section{Thảo luận và hạn chế}\label{sec:discussion}
 
-\paragraph{Vì sao các ca còn lọt qua.} Chúng tôi xác định nguyên nhân của mọi ca lọt qua \ours{} từ quỹ đạo, chỉ bằng
+\paragraph{Vì sao các ca còn lọt qua.} Nguyên nhân của mọi ca lọt qua \ours{} được xác định từ quỹ đạo, chỉ bằng
 nhãn và quyết định của broker (13 ca trên \tOne, 27 ca trên \tTwo). Mọi ca \mSL{} và \mAL{} (9 và 16 ca) có chung một
 nguyên nhân. Giá trị bị lộ có định dạng mà bộ trích nhận ra, nhưng mọi nguồn chứa nó đều được môi trường gắn nhãn công
 khai, nên nó không bao giờ vào $C$. Không ca nào do giá trị bị biến đổi, nhưng bộ chấm cũng chỉ so khớp nguyên văn nên
@@ -25,10 +25,10 @@ thuộc ngôn ngữ, còn \rSig{} thì có.
 \paragraph{Hạn chế.} Các tập niêm phong do cùng một nhóm soạn, dù người soạn không đọc mã phòng thủ. Dữ liệu là tổng
 hợp, công cụ là bản giả và nhiệm vụ chỉ có một lượt. Các mô hình mở chỉ có 8 đến 12 tỉ tham số. \ours{} làm giảm tiện
 ích lành tính khoảng 5 điểm. Giả thuyết chính của \tTwo{} được đăng ký cho một biến thể thu hẹp \rSig{} theo đích. Biến
-thể này tăng tiện ích 1,0 điểm với cùng tỉ lệ tấn công thành công, nhưng khoảng tin cậy theo họ chứa 0, nên chúng tôi
-không đưa nó vào bài. Gemini 3 Flash chỉ chạy trên Dev, qua proxy không có ràng buộc schema, với năm cấu hình. Đầu ra bị
+thể này tăng tiện ích 1,0 điểm với cùng tỉ lệ tấn công thành công, nhưng khoảng tin cậy theo họ chứa 0, nên nó không
+được đưa vào bài. Gemini 3 Flash chỉ chạy trên Dev, qua proxy không có ràng buộc schema, với năm cấu hình. Đầu ra bị
 cắt của Llama đến từ việc sinh không dừng, vì tăng ngân sách từ 512 lên 2.048 token không cứu được lượt nào. Trên
 AgentDojo, \ours{} chỉ chạy với một mô hình nền, và \rDest{} làm giảm mạnh tiện ích khi nhiệm vụ lấy đích từ dữ liệu
 công cụ. Muốn giữ tiện ích ở các nhiệm vụ này thì cần một cách khác để ủy quyền đích, chẳng hạn cho người dùng xác
-nhận. Tham chiếu chặn mọi sink là ước lượng từ quỹ đạo. Chúng tôi chưa tách riêng phản hồi từ chối, chưa đo độ phủ của
-bộ trích trên toàn bộ quỹ đạo và chưa đo độ trễ.
+nhận. Tham chiếu chặn mọi sink là ước lượng từ quỹ đạo. Phản hồi từ chối chưa được tách riêng. Độ phủ của
+bộ trích trên toàn bộ quỹ đạo và độ trễ chưa được đo.

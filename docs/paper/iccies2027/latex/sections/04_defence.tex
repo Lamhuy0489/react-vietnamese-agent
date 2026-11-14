@@ -6,7 +6,7 @@ broker thực thi nó, nên broker đóng vai trò một reference monitor~\cite
 duy nhất. Quyền được suy ra từ nguyên văn $u$, không từ nội dung công cụ và không từ việc mô hình diễn giải ý định.
 Thứ ba, việc chặn không làm dừng nhiệm vụ. Hành động bị từ chối được báo lại để tác tử làm tiếp phần việc hợp lệ.
 Hình~\ref{fig:pipeline} mô tả pipeline. \ours{} gồm bốn luật (\rDest, \rFlow, \rRedact, \rSig), lời nhắc \cSand{} và
-phản hồi từ chối. Để tách đóng góp của từng lớp, chúng tôi báo cáo thêm \cRules, tức \ours{} không có lời nhắc. Dev là
+phản hồi từ chối. Để tách đóng góp của từng lớp, bài báo trình bày thêm \cRules, tức \ours{} không có lời nhắc. Dev là
 tập phát triển, \tOne{} và \tTwo{} là hai tập kiểm thử niêm phong (Mục~\ref{sec:protocol}).
 
 \input{images/fig1_pipeline}
@@ -18,7 +18,7 @@ nó được gắn nhãn mật. Thao tác đọc không bao giờ bị chặn. �
 cũng có thể là kênh tuồn dữ liệu ra (Mục~\ref{sec:results}). Vì lời gọi đọc và sink không có đích được cho qua, broker
 chưa thỏa tính trung gian toàn phần (complete mediation) của một reference monitor.
 Mọi phép so sánh dùng hàm chuẩn hóa $\norm(\cdot)$, gồm Unicode NFKC, bỏ ký tự định dạng như ký tự độ rộng bằng không,
-và casefold. Ta viết $x \sub z$ khi $\norm(x)$ là một chuỗi con của $\norm(z)$.
+và casefold. Ký hiệu $x \sub z$ nghĩa là $\norm(x)$ là một chuỗi con của $\norm(z)$.
 
 \paragraph{Luật \rDest{} (cấp quyền đích).} Một lời gọi sink $a$ chỉ được thực thi nếu
 \begin{equation}\label{eq:dest}
@@ -64,4 +64,4 @@ còn lại. Phản hồi này có ở mọi cấu hình có luật nên chưa đ
 \paragraph{Chọn cấu hình và chi phí.} Mọi lựa chọn được thực hiện trên Dev trong các vòng chỉnh khai báo trước. \ours{}
 là phép ghép \cRules{} với \cSand, hai thành phần đã có, không đổi tham số nào. Cấu hình này được đóng băng trước khi
 chạy \tOne{} và không thay đổi về sau. \ours{} không gọi thêm mô hình nào. Mỗi kiểm tra là một phép tìm chuỗi con trên
-$u$, $\pay(a)$ hoặc $y$. Lời nhắc làm ngữ cảnh dài thêm một bản $u$ sau mỗi quan sát. Chúng tôi chưa đo độ trễ.
+$u$, $\pay(a)$ hoặc $y$. Lời nhắc làm ngữ cảnh dài thêm một bản $u$ sau mỗi quan sát. Độ trễ chưa được đo.
