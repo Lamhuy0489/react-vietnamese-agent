@@ -76,6 +76,7 @@ Gộp 3 backbone: attack /1080, plain /1080, auth /360.
 - Gemini 3 Flash trên Dev (Bảng 2.11; family /48 · fixture /240 · plain /240 · auth /80 · model_error /560):
   A0 22·61·184·53·36; R1 18·36·182·50·43; D2 12·15·186·44·38; D2+P2 1·1·192·49·18; D3 1·1·191·60·13.
   benign_auth D2+P2 → D3: 49 → 60 (cặp lệch 13/2), thăm dò.
+  Thêm 15/11 (baseline, cột tham khảo Bảng 2, A0 + phòng thủ): P2 Sandwich 1·1·191·64·11 (họ có hại duy nhất ở M5).
 - AgentDojo: xem mục **"AgentDojo: bảng đầy đủ mọi lượt"** bên dưới (nguồn duy nhất cho số AgentDojo).
 - Llama: tăng ngân sách đầu ra 512 → 2048 token không cứu lượt lỗi nào (decision log 10/11 03:30).
 
