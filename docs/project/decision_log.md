@@ -3871,3 +3871,9 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
   yêu cầu), Progent, CaMeL, RTBAS, Conseca. Bài không nhận ý tưởng broker là mới; cái mới là benchmark VI theo cơ chế,
   giao thức niêm phong, luật nguyên văn không gọi LLM, phân tích ca lọt.
 - Thêm costa2025fides (đã có trong refs.bib) và zhao2026clawguard (mới) vào Mục 2, FIDES ở câu IFC của Mục 4. 19 tài liệu.
+
+## 2026-11-14 18:00 — Chốt tiêu đề (owner)
+
+"BrokerGuard: A Layered Defence with Tool-Broker Enforcement Against Indirect Prompt Injection in Vietnamese LLM Agents"
+(thay "Beyond Model Compliance: ..."). "Layered" bổ nghĩa cho defence (luật + lời nhắc), "enforcement" chỉ phần luật.
+Chính tả Anh-Anh trong bản tiếng Anh (defence, authorisation). Running head: BrokerGuard.
