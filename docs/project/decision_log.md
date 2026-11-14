@@ -3861,5 +3861,5 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
 
 - Repo `Lamhuy0489/react-vietnamese-agent` đã PUBLIC từ trước (kiểm `gh repo view`), gồm Dev, Test-I, Test-II, oracle
   `private/`, AgentDojo-VI và mã. Quét token/khóa trong file đã commit: không thấy. Chưa có file LICENSE.
-- Owner muốn công bố: bài báo thay TODO bằng link repo (Mục 1). Nếu CMT yêu cầu bình duyệt ẩn danh, thay link.
+- Owner muốn công bố: bài báo chỉ ghi "được công bố công khai", không ghi link (owner 14/11).
 - Hệ quả: các tập Test giờ là công khai, nên lần kiểm thử niêm phong tiếp theo cần tập mới.
