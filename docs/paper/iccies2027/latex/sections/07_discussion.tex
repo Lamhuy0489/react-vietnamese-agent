@@ -1,30 +1,27 @@
 \section{Thảo luận và hạn chế}\label{sec:discussion}
 
-\paragraph{Các lớp tấn công còn vượt qua được.} Mọi ca lọt qua \ours{} trên \tOne{} đều thuộc \mSL, \mAL{}
-hoặc \mPT. Từ cách các luật được định nghĩa, chúng tôi chỉ ra được ba lớp vượt qua. Thứ nhất, \mPT{} trên một sink do
-người dùng nêu thỏa \rDest{} vì đích hợp lệ và thỏa \rFlow{} vì giá trị bị sửa không phải giá trị mật. Chỉ \rSig{}
-chặn được trường hợp này, và chỉ khi bộ phát hiện cụm từ gắn cờ đoạn chèn. Thứ hai, \rFlow{} so khớp nguyên văn nên một
-giá trị mật bị biến đổi trước khi gửi sẽ đi qua. Thứ ba, bộ phát hiện dùng danh sách cụm từ chủ yếu bằng tiếng Việt, nên một đoạn
-chèn bằng tiếng Anh hoặc diễn đạt khác dễ tránh được nó. Trên AgentDojo, các ca lọt qua \ours{} thuộc lớp thứ nhất
-(đổi mật khẩu, gửi tới người dùng đã nêu) hoặc dùng một công cụ đọc làm kênh tấn công. Tập thích nghi ở Mục~\ref{sec:adaptive} không nhắm vào các lớp
-này. Một bộ tấn công hộp trắng sinh từ chính các luật là bước đánh giá cần làm tiếp.
+\paragraph{Các lớp tấn công còn vượt qua được.} Mọi ca lọt qua \ours{} trên \tOne{} đều thuộc \mSL, \mAL{} hoặc \mPT.
+Từ định nghĩa của các luật, có ba lớp vượt qua. Thứ nhất, \mPT{} trên một sink do người dùng nêu thỏa \rDest{} vì đích
+hợp lệ và thỏa \rFlow{} vì giá trị bị sửa không phải giá trị mật. Chỉ \rSig{} chặn được trường hợp này, và chỉ khi bộ
+phát hiện gắn cờ đoạn chèn. Thứ hai, \rFlow{} so khớp nguyên văn nên một giá trị mật bị biến đổi trước khi gửi sẽ đi
+qua. Thứ ba, danh sách cụm từ của bộ phát hiện chủ yếu là tiếng Việt, nên đoạn chèn bằng tiếng Anh hoặc diễn đạt khác
+dễ tránh được nó. Trên AgentDojo, các ca lọt thuộc lớp thứ nhất (đổi mật khẩu, gửi tới người dùng đã nêu) hoặc dùng
+một công cụ đọc làm kênh tấn công. Tập thích nghi ở Mục~\ref{sec:adaptive} không nhắm vào các lớp này. Một bộ tấn công
+hộp trắng sinh từ chính các luật là bước đánh giá cần làm tiếp.
 
 \paragraph{Ngôn ngữ.} Ở \cNone, bỏ dấu hay chuyển sang tiếng Anh không làm thay đổi tỉ lệ tấn công thành công một cách
-có ý nghĩa (H4 và H5). Hai kiểm định này chỉ phát hiện được chênh lệch khoảng 10 điểm trở lên. Vì vậy bài báo không
-khẳng định tiếng Việt dễ hay khó bị tấn công hơn. Yếu tố chịu ảnh hưởng rõ của ngôn ngữ là phòng thủ dựa trên cụm từ.
-Trên Dev, bộ phát hiện cụm từ bật ở 14 đến 19 trên 48 tấn công tiếng Việt chuẩn nhưng chỉ ở 3 trên 48 tấn công tiếng
-Anh. Trên \tOne, biến thể tiếng Anh có nhiều ca gây hại nhất dưới \cRules. \rDest{} và \rFlow{} không phụ thuộc ngôn
-ngữ, còn \rSig{} thì có. Trên AgentDojo tiếng Anh, \rSig{} không bật lần nào.
+có ý nghĩa (H4, H5), trong giới hạn phát hiện khoảng 10 điểm. Vì vậy bài báo không khẳng định tiếng Việt dễ hay khó bị
+tấn công hơn. Yếu tố chịu ảnh hưởng rõ của ngôn ngữ là phòng thủ dựa trên cụm từ. Trên Dev, bộ phát hiện cụm từ bật ở
+14 đến 19 trên 48 tấn công tiếng Việt chuẩn nhưng chỉ ở 3 trên 48 tấn công tiếng Anh. Trên AgentDojo tiếng Anh, \rSig{}
+không bật lần nào. \rDest{} và \rFlow{} không phụ thuộc ngôn ngữ, còn \rSig{} thì có.
 
 \paragraph{Hạn chế.} Các tập niêm phong do cùng một nhóm soạn, dù người soạn không đọc mã phòng thủ. Dữ liệu là tổng
-hợp, công cụ là bản giả, và nhiệm vụ chỉ có một lượt. Các mô hình nền mở chỉ có 8 đến 12 tỉ tham số. \ours{} làm giảm
-tiện ích lành tính khoảng 5 điểm trên cả hai tập niêm phong. Giả thuyết chính của \tTwo{} được đăng ký cho một biến thể
-của \ours{} thu hẹp \rSig{} theo đích. Biến thể này tăng tiện ích 1,0 điểm với cùng tỉ lệ tấn công thành công, nhưng
-khoảng tin cậy theo họ của mức tăng chứa 0, nên chúng tôi không đưa nó vào bài. Kết quả \ours{} trên \tTwo{} vì vậy là
-phân tích lặp lại không đăng ký trước. Gemini 3 Flash chạy qua proxy không có ràng buộc schema, chỉ trên Dev và chỉ với
-năm cấu hình. Tăng ngân sách đầu ra của Llama từ 512 lên 2.048 token không cứu được lượt lỗi nào, cho thấy lỗi cắt đầu
-ra đến từ việc sinh không dừng. Trên AgentDojo, \ours{} chỉ chạy với một mô hình nền. \rDest{} làm giảm mạnh tiện ích
-ở các nhiệm vụ lấy đích từ dữ liệu công cụ, như ở Slack. Muốn giữ tiện ích ở các nhiệm vụ này thì cần một cách khác để
-người dùng ủy quyền đích, chẳng hạn xác nhận từng đích.
-Tham chiếu chặn mọi sink là ước lượng từ quỹ đạo, không phải lượt chạy thật. Chúng tôi chưa tách riêng phản hồi từ chối,
-chưa đo độ phủ của bộ trích giá trị mật và chưa đo độ trễ.
+hợp, công cụ là bản giả và nhiệm vụ chỉ có một lượt. Các mô hình mở chỉ có 8 đến 12 tỉ tham số. \ours{} làm giảm tiện
+ích lành tính khoảng 5 điểm. Giả thuyết chính của \tTwo{} được đăng ký cho một biến thể thu hẹp \rSig{} theo đích. Biến
+thể này tăng tiện ích 1,0 điểm với cùng tỉ lệ tấn công thành công, nhưng khoảng tin cậy theo họ chứa 0, nên chúng tôi
+không đưa nó vào bài. Gemini 3 Flash chỉ chạy trên Dev, qua proxy không có ràng buộc schema, với năm cấu hình. Đầu ra bị
+cắt của Llama đến từ việc sinh không dừng, vì tăng ngân sách từ 512 lên 2.048 token không cứu được lượt nào. Trên
+AgentDojo, \ours{} chỉ chạy với một mô hình nền, và \rDest{} làm giảm mạnh tiện ích khi nhiệm vụ lấy đích từ dữ liệu
+công cụ. Muốn giữ tiện ích ở các nhiệm vụ này thì cần một cách khác để ủy quyền đích, chẳng hạn cho người dùng xác
+nhận. Tham chiếu chặn mọi sink là ước lượng từ quỹ đạo. Chúng tôi chưa tách riêng phản hồi từ chối, chưa đo độ phủ của
+bộ trích giá trị mật và chưa đo độ trễ.

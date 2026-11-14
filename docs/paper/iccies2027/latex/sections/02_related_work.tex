@@ -1,21 +1,20 @@
 \section{Nghiên cứu liên quan}\label{sec:related}
 % Trước khi viết bản tiếng Anh: mở PDF trong ../refs/ để đối chiếu từng câu trích.
+% 14/11: bỏ 7 mục để rút gọn (liu2024formalizing, zhang2025asb, chen2025struq, chennabasappa2025llamafirewall,
+% costa2025fides, beurerkellner2025patterns, kwon2023vllm); các mục vẫn còn trong refs.bib nhưng không được trích.
 
 \paragraph{Tấn công và benchmark.} Greshake và cộng sự~\cite{greshake2023indirect} đưa ra khái niệm chèn lệnh gián
-tiếp. Liu và cộng sự~\cite{liu2024formalizing} hình thức hóa các tấn công và phòng thủ chèn lệnh. BIPIA~\cite{yi2025bipia}
-là benchmark đầu tiên cho chèn lệnh gián tiếp vào LLM. InjecAgent~\cite{zhan2024injecagent},
-AgentDojo~\cite{debenedetti2024agentdojo} và ASB~\cite{zhang2025asb} chuyển trọng tâm sang tác tử dùng công cụ, nơi
-tấn công dẫn tới hành động. Các bộ dữ liệu này đều bằng tiếng Anh. Deng và cộng sự~\cite{deng2024multijail} cho thấy
-cơ chế an toàn của LLM yếu hơn ở ngôn ngữ ít tài nguyên, nhưng trong bối cảnh jailbreak chứ không phải tác tử.
+tiếp. BIPIA~\cite{yi2025bipia} là benchmark đầu tiên cho chèn lệnh gián tiếp vào LLM. InjecAgent~\cite{zhan2024injecagent}
+và AgentDojo~\cite{debenedetti2024agentdojo} chuyển trọng tâm sang tác tử dùng công cụ, nơi tấn công dẫn tới hành động.
+Các bộ dữ liệu này đều bằng tiếng Anh. Deng và cộng sự~\cite{deng2024multijail} cho thấy cơ chế an toàn của LLM yếu
+hơn ở ngôn ngữ ít tài nguyên, nhưng trong bối cảnh jailbreak chứ không phải tác tử.
 
 \paragraph{Phòng thủ.} Ở mức prompt có spotlighting~\cite{hines2024spotlighting} và lời nhắc kiểu sandwich.
-StruQ~\cite{chen2025struq} và SecAlign~\cite{chen2025secalign} huấn luyện lại mô hình để tách chỉ thị khỏi dữ liệu.
-Prompt Guard~2~\cite{meta2025promptguard2,chennabasappa2025llamafirewall} là bộ phân loại sàng lọc đầu vào.
-MELON~\cite{zhu2025melon} so sánh hành động của lượt chạy gốc với lượt chạy lại có che yêu cầu. Progent~\cite{shi2025progent}
-áp chính sách đặc quyền lên lời gọi công cụ. Hướng an toàn theo thiết kế gồm CaMeL~\cite{debenedetti2026camel},
-kiểm soát luồng thông tin FIDES~\cite{costa2025fides} và các mẫu thiết kế của Beurer-Kellner và cộng
-sự~\cite{beurerkellner2025patterns}. \ours{} gần với hướng này nhất. Giống CaMeL, \ours{} không sửa mô hình. Khác với
-CaMeL, \ours{} không tách luồng điều khiển và không cần trình thông dịch riêng, mà chỉ áp luật chuỗi lên quỹ đạo, nhờ
-đó gắn được vào tác tử ReAct sẵn có. Các tấn công thích nghi đã vượt qua nhiều phòng thủ được công
-bố~\cite{zhan2025adaptive,nasr2025attacker}, vì vậy chúng tôi báo cáo riêng một tập tấn công thích nghi
+SecAlign~\cite{chen2025secalign} huấn luyện lại mô hình để tách chỉ thị khỏi dữ liệu. Prompt
+Guard~2~\cite{meta2025promptguard2} là bộ phân loại sàng lọc đầu vào. MELON~\cite{zhu2025melon} so sánh hành động của
+lượt chạy gốc với lượt chạy lại có che yêu cầu. Progent~\cite{shi2025progent} áp chính sách đặc quyền lên lời gọi công
+cụ. CaMeL~\cite{debenedetti2026camel} an toàn theo thiết kế: nó tách luồng điều khiển khỏi dữ liệu không đáng tin bằng
+một trình thông dịch riêng. \ours{} gần với hướng này nhất và cũng không sửa mô hình. Khác với CaMeL, \ours{} chỉ áp
+luật chuỗi lên quỹ đạo, nên gắn được vào tác tử ReAct sẵn có. Các tấn công thích nghi đã vượt qua nhiều phòng thủ đã
+công bố~\cite{zhan2025adaptive,nasr2025attacker}, vì vậy chúng tôi báo cáo riêng một tập tấn công thích nghi
 (Mục~\ref{sec:adaptive}).

@@ -2,86 +2,73 @@
 
 \subsection{Baseline trên Dev}
 
-Bảng~\ref{tab:dev} và Hình~\ref{fig:results}a so sánh \ours{} với sáu baseline. Kết quả chia thành ba nhóm. Nhóm phát
-hiện không có tác dụng trên tiếng Việt, khi \cPG{} (113 họ gây hại trên 144 cặp họ và mô hình) và \cMel{} (112) ngang
-với \cNone{} (112). Nhóm mức prompt cho kết quả trái ngược. \cSpot{} chỉ giảm còn 91 và còn làm tăng số họ gây hại
-trên Qwen3.5 (từ 40 lên 43), trong khi \cSand{} giảm còn 31. Nhóm luật giảm theo mức độ cụ thể của luật, với \cPhrase{}
-còn 94, \cProg{} còn 61 và \cRules{} còn 45. Kết hợp luật với lời nhắc trong \ours{} đưa số này xuống 10.
+Bảng~\ref{tab:dev} và Hình~\ref{fig:results}a so sánh \ours{} với sáu baseline theo số cặp họ và mô hình gây hại (/144).
+Nhóm phát hiện không có tác dụng trên tiếng Việt: \cPG{} (113) và \cMel{} (112) ngang với \cNone{} (112). Nhóm mức
+prompt cho kết quả trái ngược. \cSpot{} chỉ giảm còn 91 và còn làm tăng số họ gây hại trên Qwen3.5 (từ 40 lên 43),
+trong khi \cSand{} giảm còn 31. Nhóm luật giảm theo mức độ cụ thể của luật, với \cPhrase{} còn 94, \cProg{} còn 61 và
+\cRules{} còn 45. \ours, kết hợp luật với lời nhắc, đưa số này xuống 10.
 
 Cột cuối của Bảng~\ref{tab:dev} cho thấy một mô hình mạnh hơn không thay thế được phòng thủ. Ở \cNone, Gemini 3 Flash
-ít bị tấn công hơn các mô hình mở (22/48 họ so với 34 đến 40) nhưng vẫn bị tấn công ở gần một nửa số họ. Luật cụm từ
-chỉ giảm số này xuống 18 và \cRules{} xuống 12, còn \ours{} chỉ còn 1 họ.
+ít bị tấn công hơn các mô hình mở (22/48 họ so với 34 đến 40) nhưng vẫn bị tấn công ở gần một nửa số họ. \cRules{} giảm
+số này xuống 12, còn \ours{} chỉ còn 1.
 
 \input{tables/tab7_dev_baselines}
 \input{images/fig2_results}
 
 \subsection{\tOne: kiểm định đăng ký trước}
 
-\tOne{} được chạy một lần với \ours{} là cấu hình cuối (Bảng~\ref{tab:test1}). Ba giả thuyết về phòng thủ (H1, H3, H6)
-đạt ở mức họ. Luật của \ours{} tốt hơn luật cụm từ (H1). Số họ gây hại giảm từ 53 xuống 24 trên 72, và tỉ lệ tấn công
-thành công giảm từ 18,5\% xuống 6,7\%. Kết quả này đúng cả trên các cơ chế né mẫu cụm từ (H3). Kết hợp với lời nhắc tốt
-hơn lời nhắc đơn thuần (H6, từ 28 xuống 8 họ). So với \cNone, \ours{} giảm số họ gây hại từ 65 xuống 8 trên 72. H2 không
-xác lập được. \cRules{} mất 2,8 điểm benign\_plain so với \cNone, và cận dưới của khoảng tin cậy ($-6{,}0$) vượt quá biên
-$-5$ điểm. H4 và H5 không cho thấy khác biệt giữa các biến thể ngôn ngữ. Với 72 họ, hai kiểm định này chỉ đủ lực (80\%)
-để phát hiện chênh lệch từ khoảng 10 điểm trở lên. Vì vậy chúng không chứng minh được rằng ngôn ngữ không ảnh hưởng.
+\tOne{} được chạy một lần với \ours{} là cấu hình cuối (Bảng~\ref{tab:test1}). Ba giả thuyết về phòng thủ đạt ở mức
+họ. Luật của \ours{} tốt hơn luật cụm từ (H1, từ 53 xuống 24 họ gây hại trên 72), kể cả trên các cơ chế né mẫu cụm từ
+(H3). Kết hợp với lời nhắc tốt hơn lời nhắc đơn thuần (H6, từ 28 xuống 8 họ). So với \cNone, \ours{} giảm số họ gây hại
+từ 65 xuống 8. H2 không xác lập được. \cRules{} mất 2,8 điểm benign\_plain so với \cNone, và cận dưới của khoảng tin
+cậy ($-6{,}0$) vượt biên $-5$ điểm. H4 và H5 không cho thấy khác biệt giữa các biến thể ngôn ngữ. Với 72 họ, hai kiểm
+định này chỉ đủ lực (80\%) để phát hiện chênh lệch từ khoảng 10 điểm trở lên, nên chúng không chứng minh được rằng ngôn
+ngữ không ảnh hưởng.
 
 \input{tables/tab3_test1}
 
-Hình~\ref{fig:results}b giải thích vì sao hai lớp cần đến nhau. Luật đưa \mER{} và \mCR{} về 0 bất kể cách viết. Ở
+Hình~\ref{fig:results}b cho thấy vì sao hai lớp cần đến nhau. Luật đưa \mER{} và \mCR{} về 0 bất kể cách viết. Ở
 \mSL{} và \mAL, luật và lời nhắc cho kết quả gần nhau (29 và 27 ca, 17 và 18 ca). Ở \mPT, lời nhắc hiệu quả hơn rõ rệt
-(10 so với 25 ca). Khi kết hợp, chỉ còn 13 ca gây hại, thuộc \mSL, \mAL{} và \mPT{} (6, 3 và 4 ca). Theo biến thể ngôn ngữ,
-\cNone{} bị tấn công gần như nhau ở mọi biến thể (68 đến 79 ca trên 216). \cRules{} để lọt nhiều nhất ở tiếng Anh (32
-ca, so với 6 đến 13 ca ở các biến thể khác), và lời nhắc khắc phục được điểm yếu này (còn 1 ca).
+(10 so với 25 ca). Khi kết hợp, chỉ còn 13 ca gây hại, thuộc \mSL, \mAL{} và \mPT{} (6, 3 và 4 ca). Theo biến thể ngôn
+ngữ, \cNone{} bị tấn công gần như nhau ở mọi biến thể (68 đến 79 ca trên 216). \cRules{} để lọt nhiều nhất ở tiếng Anh
+(32 ca, so với 6 đến 13 ca ở các biến thể khác), và lời nhắc khắc phục được điểm yếu này (còn 1 ca).
 
 \subsection{\tTwo: lặp lại trên dữ liệu mới}
 
-\tTwo{} gồm 48 họ được viết sau khi \ours{} đã đóng băng (Bảng~\ref{tab:test2}). Số họ gây hại giảm từ 42 xuống 14 trên
-48 ($p = 3{,}7\cdot10^{-9}$, không họ nào chuyển từ an toàn sang gây hại). Tỉ lệ tấn công thành công giảm từ 32,4\%
-xuống 3,8\%, chênh lệch $-28{,}6$ điểm, khoảng tin cậy $[-35{,}3; -21{,}9]$. Mức giảm có mặt ở cả ba mô hình nền: Gemma
-từ 101 xuống 7 ca trên 240, Llama từ 50 xuống 10 và Qwen3.5 từ 82 xuống 10.
-
-Cái giá là tiện ích. Tiện ích lành tính giảm từ 54,5\% xuống 50,0\%, chênh lệch $-4{,}5$ điểm, khoảng tin cậy
-$[-9{,}4; -0{,}5]$, $p = 0{,}044$. Trên \tOne{} mức giảm tương tự ($-5{,}1$ điểm, $p = 0{,}022$). Phần mất chủ yếu nằm ở
-benign\_plain ($-5{,}1$ điểm). Ở benign\_auth, chênh lệch $-2{,}5$ điểm không có ý nghĩa ($p = 0{,}57$). Llama có 66 đến
-74 đầu ra bị cắt ở mỗi cấu hình, và tất cả đều được tính là thất bại.
+\tTwo{} gồm 48 họ được viết sau khi \ours{} đã đóng băng (Bảng~\ref{tab:test2}). Số họ gây hại giảm từ 42 xuống 14
+($p = 3{,}7\cdot10^{-9}$), và không họ nào chuyển từ an toàn sang gây hại. Tỉ lệ tấn công thành công giảm từ 32,4\%
+xuống 3,8\%. Mức giảm có ở cả ba mô hình nền: Gemma từ 101 xuống 7 ca trên 240, Llama từ 50 xuống 10 và Qwen3.5 từ 82
+xuống 10. Cái giá là tiện ích lành tính giảm 4,5 điểm, từ 54,5\% xuống 50,0\% ($p = 0{,}044$). Trên \tOne{} mức giảm
+tương tự ($-5{,}1$ điểm, $p = 0{,}022$). Phần mất chủ yếu nằm ở benign\_plain. Ở benign\_auth, chênh lệch $-2{,}5$ điểm
+không có ý nghĩa ($p = 0{,}57$). Llama có 66 đến 74 đầu ra bị cắt ở mỗi cấu hình, và tất cả được tính là thất bại.
 
 \input{tables/tab4_test2}
 
-\paragraph{Tham chiếu chặn mọi sink.} Một chính sách tầm thường là chặn mọi lời gọi sink. Chúng tôi ước lượng chính sách
-này từ quỹ đạo \cNone. Một ca lành tính được tính là thành công nếu \cNone{} thành công mà không thực thi lời gọi sink
-nào. Một ca tấn công được tính là gây hại nếu \cNone{} gây hại mà không qua sink, tức rò rỉ qua câu trả lời. Chặn mọi
-sink không chặn được kênh này. Trên \tOne, chính sách này có cùng tỉ lệ tấn công thành công với \ours{} (1,2\%) nhưng
-tiện ích chỉ 7,4\%, so với 38,6\% của \ours. Trên \tTwo, nó đạt 0,7\% và 12,5\%, so với 3,8\% và 50,0\% của \ours. Ước
-lượng này lạc quan cho chính sách chặn, vì tác tử có thể hành xử khác sau khi bị từ chối.
+\paragraph{Tham chiếu chặn mọi sink.} Một chính sách tầm thường là chặn mọi lời gọi sink. Chúng tôi ước lượng nó từ quỹ
+đạo \cNone. Một ca lành tính thành công nếu \cNone{} thành công mà không gọi sink nào. Một ca tấn công gây hại nếu
+\cNone{} gây hại qua câu trả lời, kênh mà việc chặn sink không đóng được. Trên \tOne, chính sách này có cùng tỉ lệ tấn
+công thành công với \ours{} (1,2\%) nhưng tiện ích chỉ 7,4\%, so với 38,6\%. Trên \tTwo, nó đạt 0,7\% và 12,5\%, so với
+3,8\% và 50,0\%. Ước lượng này lạc quan cho chính sách chặn, vì tác tử có thể hành xử khác sau khi bị từ chối.
 
 \subsection{AgentDojo tiếng Anh và tiếng Việt}
 
-Bảng~\ref{tab:agentdojo} cho kết quả không phòng thủ trên AgentDojo. Với Llama-3.1-8B, tấn công
-\code{important\_instructions} thành công 17/144 lần ở Banking và 16/105 lần ở Slack với tiếng Anh, nhưng chỉ 6 và 0
-lần với tiếng Việt. Gemini 3 Flash có số lần bị tấn công thành công rất thấp ở cả hai ngôn ngữ (nhiều nhất 4/144). Tỉ
-lệ thấp hơn ở tiếng Việt không có nghĩa là tiếng Việt an toàn hơn. Tiện ích dưới tấn công của Llama cũng giảm (từ 58
-xuống 44 ở Banking), và ở Slack tiếng Việt có hai trong năm nhiệm vụ chèn không giải được bằng lời giải chuẩn, làm hạ
-trần của tỉ lệ tấn công thành công. Lớp \cSand{} của \ours, chạy bằng phòng thủ \code{repeat\_user\_prompt} có sẵn của
-AgentDojo với Llama tiếng Anh, giảm số tấn công thành công từ 17 xuống 10 ở Banking và từ 16 xuống 10 ở Slack. Tiện ích
-dưới tấn công không giảm (62 so với 58, và 35 so với 28).
-
-\ours{} đầy đủ giảm số tấn công thành công của Llama tiếng Anh xuống 3/144 ở Banking và 6/105 ở Slack. Với tiếng Việt,
-con số là 1/144 và 0/105. Hai trong sáu ca ở Slack có mọi lời gọi tấn công đều bị chặn. AgentDojo vẫn tính chúng vì
-hàm chấm dựa trên các lời gọi mô hình sinh ra. Các ca còn lại thuộc ba loại. Đổi mật khẩu (4 ca, cả hai ngôn ngữ) đi
-qua một sink không có đích, nên chỉ \rSig{} có thể chặn. Mở một URL độc hại (3 ca) dùng công cụ đọc, mà luật không
-chặn đọc. Gửi một đường link cho Alice (1 ca) thỏa \rDest{} vì người dùng đã viết tên Alice. Ở Banking, tiện ích dưới
-tấn công tăng lên 72, so với 58 khi không phòng thủ và 62 với \cSand. Ở Slack thì ngược lại, tiện ích giảm còn 15
-(tiếng Anh) và 13 (tiếng Việt). Nhiều nhiệm vụ Slack lấy đích từ trang web hoặc tin nhắn, ví dụ mời những người có tên
-trên một trang web. \rDest{} chặn các đích này vì người dùng không viết chúng. Trên 21 nhiệm vụ Slack tiếng Anh không có
-tấn công, 9 nhiệm vụ có ít nhất một lời gọi bị chặn. \rSig{} chỉ bật ở các lượt tiếng Việt (14 lần ở Slack), không bật
-lần nào ở tiếng Anh.
+Bảng~\ref{tab:agentdojo} cho kết quả trên AgentDojo. Khi không phòng thủ, Llama bị tấn công thành công 17/144 lần ở
+Banking và 16/105 lần ở Slack với tiếng Anh, nhưng chỉ 6 và 0 lần với tiếng Việt. Gemini 3 Flash bị tấn công rất ít ở
+cả hai ngôn ngữ. Con số thấp ở tiếng Việt không có nghĩa là tiếng Việt an toàn hơn. Tiện ích của Llama cũng giảm (từ 58
+xuống 44 ở Banking), và ở Slack tiếng Việt có hai trong năm nhiệm vụ chèn không giải được bằng lời giải chuẩn. \cSand{}
+giảm số tấn công thành công xuống 10 ở cả hai bộ mà không mất tiện ích. \ours{} giảm tiếp xuống 3 ở Banking và 6 ở Slack
+với tiếng Anh, 1 và 0 với tiếng Việt. Hai trong sáu ca ở Slack có mọi lời gọi tấn công đều bị chặn nhưng vẫn được tính,
+vì hàm chấm của AgentDojo dựa trên các lời gọi mô hình sinh ra. Các ca còn lại là đổi mật khẩu (4 ca, qua một sink
+không có đích), mở một URL độc hại bằng công cụ đọc (3 ca) và gửi link cho Alice, người mà chính người dùng đã nêu tên
+(1 ca). Tiện ích tăng ở Banking (72 so với 62 của \cSand) nhưng giảm mạnh ở Slack (15 so với 35). Nhiều nhiệm vụ Slack
+lấy đích từ trang web hoặc tin nhắn, và \rDest{} chặn các đích này vì người dùng không viết chúng. \rSig{} không bật lần
+nào ở tiếng Anh.
 
 \input{tables/tab6_agentdojo}
 
 \subsection{Tấn công thích nghi}\label{sec:adaptive}
 
-Một tập 48 ca tấn công thích nghi trên các họ Dev được người viết soạn dựa trên phản hồi từ các lượt chạy có phòng
-thủ trên Dev. Ở \cNone, tập này mạnh ngang ca tĩnh tương ứng. Số họ gây hại là 26, 15 và 24 cho Gemma, Llama và Qwen3.5,
-so với 29, 12 và 22 của ca tiếng Việt chuẩn trong cùng 48 họ. Dưới \ours, số này còn 1, 0 và 0. Đây chỉ là một vòng
-thích nghi do người viết, không phải tấn công hộp trắng sinh từ luật. Kết quả này không mâu thuẫn với các lớp vượt qua
-đã biết ở Mục~\ref{sec:discussion}. Nó chỉ cho thấy tập thích nghi này chưa khai thác các lớp đó.
+Người viết soạn 48 ca tấn công thích nghi trên các họ Dev, dựa trên phản hồi từ các lượt chạy có phòng thủ trên Dev. Ở
+\cNone, tập này mạnh ngang ca tĩnh tương ứng: 26, 15 và 24 họ gây hại cho Gemma, Llama và Qwen3.5, so với 29, 12 và 22
+của ca tiếng Việt chuẩn. Dưới \ours, số này còn 1, 0 và 0. Đây chỉ là một vòng thích nghi do người viết, không phải tấn
+công hộp trắng sinh từ luật, nên nó chỉ cho thấy tập này chưa khai thác các lớp vượt qua ở Mục~\ref{sec:discussion}.

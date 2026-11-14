@@ -23,7 +23,7 @@ Trạng thái (14/11): thí nghiệm đã đóng, kể cả C10 (BrokerGuard tr�
 - Văn phong owner muốn: câu ngắn, không chấm phẩy trong lời văn, không gạch dài; link trích dẫn xanh bấm được.
 - Xem PDF owner tải: đặt ở root repo, xuất ảnh trang bằng PyMuPDF (fitz) dpi thấp; Read PDF không chạy (thiếu poppler).
 Việc của phiên này:
-1. Hỏi owner kết quả biên dịch (số trang sau khi thêm C10, lỗi TikZ ở Hình 1 `images/fig1_pipeline.tex`, Bảng 6 tràn).
+1. Hỏi owner kết quả biên dịch sau bản rút gọn 14/11 (mục tiêu ≤ 15 trang; lỗi TikZ ở Hình 1 `images/fig1_pipeline.tex`, Bảng 6 tràn).
 2. Owner duyệt phần C10 trong bài (Bảng 6, Mục 6 đoạn cuối, Mục 7, tóm tắt thêm một câu: kiểm độ dài ≤ 250 từ bản EN).
 3. Owner quyết: công bố dữ liệu; tác giả/đơn vị. Đối chiếu Holm 1979 (refs.bib).
 4. Khi owner viết bản tiếng Anh: đổi babel sang english, bỏ T5, đổi nhãn Hình 1 theo comment đầu fig1_pipeline.tex, dịch

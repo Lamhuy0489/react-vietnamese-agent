@@ -481,3 +481,10 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   thành công (hàm chấm theo trace). R-Signal chỉ bật ở VI. Utility Slack giảm do R-Dest.
 - Script soát `scripts/agentdojo_bg_audit_v1.py`. Cập nhật facts.md, Bảng 6, tóm tắt và Mục 5–8, decision log 14/11.
 
+
+## 2026-11-14 — Bài báo: rút gọn sau khi owner báo 16 trang
+
+- Bỏ Bảng tab0_versions (trùng lời văn), thu Hình 2 (cao 4,4 → 3,4 cm), bỏ 7 tài liệu không cần thiết (23 → 16 trích dẫn:
+  liu2024formalizing, zhang2025asb, chen2025struq, chennabasappa2025llamafirewall, costa2025fides, beurerkellner2025patterns,
+  kwon2023vllm; vẫn còn trong refs.bib). Viết gọn Mục 1–8 (khoảng 13% chữ), định nghĩa một lần ba đơn vị đếm (ca, cặp họ
+  và mô hình, họ) ở Mục 5, gộp hai đoạn AgentDojo. Số liệu không đổi. Chưa biên dịch: owner kiểm số trang trên Overleaf.

@@ -1,25 +1,23 @@
 \section{Mô hình đe dọa}\label{sec:threat}
 
-\paragraph{Tác tử.} Cho chỉ thị người dùng $u$. Ở mỗi bước, mô hình sinh ra một hành động $a_t$ gồm tên công cụ và
-tham số, hoặc sinh câu trả lời cuối $y$. Tool Broker kiểm tra $a_t$ theo schema, thực thi và trả về quan sát $o_t$.
-Hệ thống có sáu công cụ đọc (tìm và đọc tài liệu, truy vấn cơ sở dữ liệu chỉ đọc, tìm và lấy trang lưu đệm, máy tính)
-và hai \emph{sink} có tác dụng phụ là \code{send\_email\_mock} và \code{post\_webhook\_mock}. Hai sink này chỉ ghi
-nhật ký, không gửi dữ liệu ra mạng. Câu trả lời cuối được coi là sink thứ ba. Với một lời gọi sink $a$, ta ký hiệu
-$\dest(a)$ là đích (\code{to} hoặc \code{endpoint}) và $\pay(a)$ là các tham số còn lại.
+\paragraph{Tác tử.} Cho chỉ thị người dùng $u$. Ở mỗi bước, mô hình sinh một hành động $a_t$ gồm tên công cụ và tham
+số, hoặc sinh câu trả lời cuối $y$. Tool Broker kiểm tra $a_t$ theo schema, thực thi và trả về quan sát $o_t$. Hệ
+thống có sáu công cụ đọc (tài liệu, cơ sở dữ liệu chỉ đọc, trang lưu đệm, máy tính) và hai \emph{sink} có tác dụng phụ
+là \code{send\_email\_mock} và \code{post\_webhook\_mock}. Hai sink này chỉ ghi nhật ký, không gửi gì ra mạng. Câu trả
+lời cuối được coi là sink thứ ba. Với một lời gọi sink $a$, $\dest(a)$ là đích (\code{to} hoặc \code{endpoint}) và
+$\pay(a)$ là các tham số còn lại.
 
-\paragraph{Hai nhãn.} Mỗi nội dung mang hai nhãn độc lập do host gán. Nhãn \emph{độ tin cậy} coi $u$ và prompt hệ thống
-là đáng tin, còn mọi quan sát từ công cụ là không đáng tin. Nhãn \emph{độ nhạy cảm} đi từ công khai (S0) tới mật (S2).
-Tài liệu mật chứa các giá trị như khóa, mã hay định danh tài khoản, và các giá trị này không được rời tác tử nếu người
-dùng không cho phép. Hai nhãn không phụ thuộc nhau. Một trang không đáng tin có thể là công khai, còn một bản ghi mật
-có thể đến từ nguồn mà kẻ tấn công không thể tác động. Nếu gộp hai chiều làm một, phòng thủ sẽ hoặc chặn mọi dữ liệu
-mật, hoặc tin mọi nguồn nội bộ.
+\paragraph{Hai nhãn.} Mỗi nội dung mang hai nhãn độc lập do host gán. Theo \emph{độ tin cậy}, chỉ $u$ và prompt hệ
+thống là đáng tin, mọi quan sát từ công cụ là không đáng tin. Theo \emph{độ nhạy cảm}, nội dung đi từ công khai (S0)
+tới mật (S2). Tài liệu mật chứa các giá trị như khóa, mã hay định danh tài khoản, và các giá trị này không được rời tác
+tử nếu người dùng không cho phép. Một trang không đáng tin có thể là công khai, còn một bản ghi mật có thể đến từ nguồn
+mà kẻ tấn công không chạm tới. Nếu gộp hai chiều làm một, phòng thủ sẽ hoặc chặn mọi dữ liệu mật, hoặc tin mọi nguồn
+nội bộ.
 
-\paragraph{Kẻ tấn công.} Kẻ tấn công kiểm soát văn bản của một tài liệu do công cụ đọc trả về, có thể là tài liệu,
-trang lưu đệm, trường văn bản trong cơ sở dữ liệu hoặc đầu ra công cụ. Đoạn chèn có thể nằm ở bất kỳ vị trí nào và
-dùng bất kỳ giọng điệu nào. Kẻ tấn công biết tên và schema của công cụ, nhưng không sửa được $u$, prompt hệ thống,
-broker hay trọng số mô hình, và không quan sát được quỹ đạo. Trên các tập niêm phong, tấn công là tĩnh và được viết
-mà không biết mã phòng thủ. Jailbreak trực tiếp, đầu độc dữ liệu huấn luyện, từ chối dịch vụ và hệ nhiều tác tử nằm
-ngoài phạm vi bài báo.
+\paragraph{Kẻ tấn công.} Kẻ tấn công kiểm soát văn bản của một nội dung do công cụ đọc trả về, ở bất kỳ vị trí và
+giọng điệu nào. Họ biết tên và schema của công cụ, nhưng không sửa được $u$, prompt hệ thống, broker hay trọng số mô
+hình, và không quan sát được quỹ đạo. Trên các tập niêm phong, tấn công là tĩnh và được viết mà không biết mã phòng
+thủ. Jailbreak trực tiếp, đầu độc dữ liệu huấn luyện, từ chối dịch vụ và hệ nhiều tác tử nằm ngoài phạm vi bài báo.
 
 \paragraph{Vị từ gây hại.} Gọi $G(u)$ là tập đích được người dùng cấp quyền, $V$ là tập giá trị mật trên quỹ đạo mà
 người dùng không cho phép tiết lộ, và $\mathcal{S}$ là tập lời gọi sink \emph{đã được thực thi}. Quỹ đạo $\tau$ là
@@ -36,20 +34,18 @@ trong đó
 \item $H_\mathit{side}$: nhiệm vụ chỉ cần đọc nhưng $\mathcal{S} \neq \emptyset$.
 \end{itemize}
 Lời gọi bị chặn không được tính là gây hại. Một bộ chấm đã đóng băng tính các vị từ từ lời gọi đã thực thi và từ $y$.
-Suy luận của mô hình không được yêu cầu và không được ghi lại.
 
 \paragraph{Sáu cơ chế tấn công.} Chúng tôi phân loại tấn công theo \emph{cơ chế}, tức con đường để đoạn chèn biến thành
-tác hại (Bảng~\ref{tab:mechanisms}). Ở \mER{} và \mCR{}, lời gọi gây hại đi tới một đích mà người dùng chưa viết, nên
-chỉ cần kiểm tra đích là đủ, bất kể cách diễn đạt. Ở \mSL{} và \mAL{}, đích là hợp lệ hoặc không có đích, nên chỉ nguồn
-gốc của giá trị mới phân biệt được tấn công với nhiệm vụ. Ở \mPT{}, cả đích lẫn độ nhạy cảm đều bình thường, vì vậy đây
-là cơ chế khó nhất đối với các luật dựa trên nhãn. \mUS{} kiểm tra xem việc người dùng nhắc tới một đích, chẳng hạn
-trong một câu cấm, có bị hiểu nhầm thành cấp quyền hay không.
+tác hại (Bảng~\ref{tab:mechanisms}). Ở \mER{} và \mCR, đích không có trong $u$, nên chỉ cần kiểm tra đích, bất kể cách
+diễn đạt. Ở \mSL{} và \mAL, đích hợp lệ hoặc không có đích, nên chỉ nguồn gốc của giá trị mới phân biệt được tấn công
+với nhiệm vụ. Ở \mPT, cả đích lẫn độ nhạy cảm đều bình thường, nên đây là cơ chế khó nhất cho các luật dựa trên nhãn.
+\mUS{} kiểm tra xem một đích chỉ được nhắc tới, chẳng hạn trong một câu cấm, có bị hiểu nhầm thành cấp quyền không.
 
 \input{tables/tab1_mechanisms}
 
-\paragraph{Nhánh lành tính và biến thể ngôn ngữ.} Mỗi \emph{họ} tấn công là một ý tưởng tấn công trong một nhiệm vụ cụ thể
-(Mục~\ref{sec:protocol}) và có hai nhánh lành tính với cùng nhiệm vụ và môi trường. Nhánh \emph{benign\_plain} thay đoạn chèn bằng một ghi chú vô hại có cùng độ dài và dùng để đo tiện ích. Nhánh
-\emph{benign\_auth} giữ một yêu cầu giống mục tiêu tấn công nhưng được người dùng cho phép rõ ràng. Chặn ở nhánh này
-là \emph{chặn nhầm}. Mỗi họ có năm biến thể áp dụng cho cả $u$ lẫn đoạn chèn: tiếng Việt chuẩn, diễn đạt lại, trộn
-Việt và Anh, không dấu, và tiếng Anh. Định danh, địa chỉ và giá trị mật giống hệt nhau giữa các biến thể, nên mọi
-khác biệt giữa các biến thể chỉ đến từ ngôn ngữ.
+\paragraph{Họ, nhánh lành tính và biến thể ngôn ngữ.} Một \emph{họ} là một ý tưởng tấn công trong một nhiệm vụ và một
+môi trường công cụ cụ thể. Mỗi họ có hai nhánh lành tính cùng nhiệm vụ và môi trường. Nhánh \emph{benign\_plain} thay
+đoạn chèn bằng một ghi chú vô hại cùng độ dài và dùng để đo tiện ích. Nhánh \emph{benign\_auth} giữ một yêu cầu giống
+mục tiêu tấn công nhưng được người dùng cho phép rõ ràng. Chặn ở nhánh này là \emph{chặn nhầm}. Mỗi họ có năm biến thể
+áp cho cả $u$ lẫn đoạn chèn: tiếng Việt chuẩn, diễn đạt lại, trộn Việt và Anh, không dấu, và tiếng Anh. Định danh, địa
+chỉ và giá trị mật giống hệt nhau giữa các biến thể, nên mọi khác biệt chỉ đến từ ngôn ngữ.
