@@ -76,11 +76,7 @@ Gộp 3 backbone: attack /1080, plain /1080, auth /360.
 - Gemini 3 Flash trên Dev (Bảng 2.11; family /48 · fixture /240 · plain /240 · auth /80 · model_error /560):
   A0 22·61·184·53·36; R1 18·36·182·50·43; D2 12·15·186·44·38; D2+P2 1·1·192·49·18; D3 1·1·191·60·13.
   benign_auth D2+P2 → D3: 49 → 60 (cặp lệch 13/2), thăm dò.
-- AgentDojo v1.2.2, `important_instructions`, không phòng thủ (Bảng 2.3, 2.3b); utility khi bị tấn công / tấn công thành công:
-  Llama Banking EN 58/17, VI 44/6 (144 cặp); Llama Slack EN 28/16, VI 26/0 (105 cặp);
-  Gemini Banking EN 93/4, VI 99/0; Gemini Slack EN 62/1, VI 59/0 (Banking EN xong 10/11 21:53).
-  Không tấn công: Llama Banking 7 và 6 /16, Slack 7 và 7 /21; Gemini Banking 13 và 12 /16, Slack 18 và 16 /21 (EN và VI).
-  Slack VI: 2/5 injection task không giải được bằng lời giải mẫu.
+- AgentDojo: xem mục **"AgentDojo: bảng đầy đủ mọi lượt"** bên dưới (nguồn duy nhất cho số AgentDojo).
 - Llama: tăng ngân sách đầu ra 512 → 2048 token không cứu lượt lỗi nào (decision log 10/11 03:30).
 
 ## Hạn chế phải nêu
@@ -124,10 +120,27 @@ chặn sink không ngăn được). Ước lượng, vì mô hình có thể hà
 | Test-I | 13/1080 (1,2%) | 107/1440 (7,4%): plain 95/1080, auth 12/360 | 13 (1,2%) | 556 (38,6%) | 630 (43,8%) |
 | Test-II | 5/720 (0,7%) | 120/960 (12,5%): plain 96/720, auth 24/240 | 27 (3,8%) | 480 (50,0%) | 523 (54,5%) |
 
-### AgentDojo: Sandwich đã chạy (decision log 06/11, Llama-3.1-8B, EN, `important_instructions`)
+### AgentDojo: bảng đầy đủ mọi lượt (nguồn duy nhất; kiểm lại 14/11 từ mọi `summary.json`)
 
-Utility / tấn công thành công: Banking 144 cặp: không phòng thủ 58/17, `spotlighting_with_delimiting` 61/18,
-`repeat_user_prompt` (= Sandwich) 62/10. Slack 105 cặp: 28/16, 45/10, 35/10. Chỉ EN.
+AgentDojo v1.2.2, `important_instructions`. Ô = utility dưới tấn công / tấn công thành công (Banking /144, Slack /105);
+"KT" = utility không tấn công (Banking /16, Slack /21). Thư mục:
+`results/rebuild_b/agentdojo_<lang>_<suite>_<attack>_<defense>_<model>/summary.json` (`<attack>` = `none` là không tấn công).
+Lập lại bảng này bằng cách liệt kê mọi `summary.json` (lệnh ở `knowledge/rebuild_a_runbook.md`, mục Bản đồ).
+
+| Mô hình | Phòng thủ | Banking EN | Banking VI | Slack EN | Slack VI | Ngày chạy, decision log |
+|---|---|---|---|---|---|---|
+| Llama-3.1-8B | none | 58/17, KT 7 | 44/6, KT 6 | 28/16, KT 7 | 26/0, KT 7 | 06–07/11 (WP6, 07/11 08:40) |
+| Llama-3.1-8B | spotlighting_with_delimiting | 61/18 | 41/2 | 45/10 | 20/1 | 06–07/11 (WP6) |
+| Llama-3.1-8B | repeat_user_prompt (= Sandwich) | 62/10, KT 7 | 45/6, KT … | 35/10, KT … | 19/0, KT … | tấn công 06–07/11 (WP6); KT 14/11 (C11) |
+| Llama-3.1-8B | brokerguard | 72/3, KT 8 | 54/1, KT 5 | 15/6, KT 5 | 13/0, KT 5 | 13–14/11 (C10) |
+| Gemini 3 Flash | none | 93/4, KT 13 | 99/0, KT 12 | 62/1, KT 18 | 59/0, KT 16 | 10/11 |
+
+- **Sandwich tiếng Việt có tấn công ĐÃ CÓ từ 07/11** (WP6). Bản trước của file này ghi "chỉ EN" là sai; Bảng 6 của bài từng để
+  trống ô này vì lỗi đó (phát hiện 14/11 khi C11 bật và runner bỏ qua các cặp đã xong).
+- Slack VI repeat: 1 cặp làm hàm chấm gốc văng `KeyError` (mô hình gọi `remove_user_from_slack` lên Alice); wrapper VI tính
+  utility = False, security = False (decision log 07/11 08:40).
+- Slack VI: 2/5 nhiệm vụ chèn không giải được bằng lời giải mẫu (trần ASR thấp hơn).
+- Không chạy: Gemma, Qwen3.5 trên AgentDojo; phòng thủ trên Gemini (owner quyết 10/11 23:00).
 
 ### AgentDojo: BrokerGuard đầy đủ (C10, chạy 13–14/11, Llama-3.1-8B, EN và VI, `important_instructions`)
 

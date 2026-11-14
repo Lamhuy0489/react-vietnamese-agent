@@ -3839,3 +3839,6 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
   của AgentDojo, cùng serve `llama31_8b_ctx16k`, model key `llama31_8b`, runner `run_agentdojo_api_v1.py`.
 - Ma trận 6 lượt: VI Banking và VI Slack có `important_instructions`; không tấn công cho EN và VI × Banking và Slack.
 - Báo cáo đủ, kể cả khi kết quả bất lợi; so với none và brokerguard đã có. Chạy một lần (runner chỉ chạy tiếp cặp chưa xong).
+- **Đính chính 14/11 13:10:** hai lượt VI có tấn công của C11 **đã chạy từ 06–07/11** (WP6, mục 07/11 08:40: Banking 45/6,
+  Slack 19/0). facts.md và Bảng 6 ghi nhầm "Sandwich chỉ EN". Runner bỏ qua các cặp đã có, nên C11 thực chất chỉ chạy
+  4 lượt không tấn công. Không có lượt nào bị chạy hai lần. Quy tắc kiểm kê trước khi chạy ghi ở runbook (Bản đồ).

@@ -5,15 +5,13 @@ Cập nhật: 2026-11-14. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 ## Đang làm
 
-**2026-11-14 12:40: CHỜ PIN 100% RỒI CHẠY C11 (Sandwich `repeat_user_prompt` trên AgentDojo, Llama; khai báo decision log
-14/11 12:30). Chưa bật gì.** 6 lượt: VI Banking/Slack có tấn công; không tấn công EN+VI × Banking/Slack.
-- Lệnh (owner cho chạy mới bật): `caffeinate -dims -t 43200 &` rồi
-  `nice -n 10 bash build/kaggle/c11_launch.sh > build/kaggle/c11_chain.log 2>&1` (chạy nền, chờ thông báo, không poll).
-  Script (gitignored) thử tài khoản lần lượt, tự chạy lại job chết (tối đa 3), ghi `build/kaggle/c11_endpoint`.
-  Nếu pin tụt: chỉ chạy 2 lượt VI có tấn công, tuần tự (sửa JOBS trong script). Kết quả:
-  `results/rebuild_b/agentdojo_<lang>_<suite>_<attack>_repeat_user_prompt_llama31_8b/summary.json`.
-- Khi xong: điền ô Sandwich VI và cột không tấn công vào Bảng 6, facts.md, decision log.
-- **Song song: sửa bài theo `phan bien2.md` (root, không commit), owner đã đồng ý 6 việc:**
+**2026-11-14 13:15: C11 đang chạy (dovuong05, endpoint lên 12:44): chỉ còn 4 lượt Sandwich KHÔNG tấn công**
+(EN Banking xong 7/16). Hai lượt VI có tấn công đã có từ 07/11 (WP6: Banking 45/6, Slack 19/0); facts.md từng ghi nhầm
+"chỉ EN" (đính chính ở decision log C11). Log `build/kaggle/c11_chain.log`, kết quả
+`results/rebuild_b/agentdojo_<lang>_<suite>_none_repeat_user_prompt_llama31_8b/`. Resume: chạy lại `build/kaggle/c11_launch.sh`.
+- Khi xong: điền KT vào facts.md (bảng AgentDojo đầy đủ) và Bảng 6; Mục 5, 6 bỏ câu "Sandwich chỉ chạy tiếng Anh".
+- **Trước khi nói "chưa chạy": kiểm kê đĩa** (lệnh ở runbook, Bản đồ).
+- **Sửa bài theo `phan bien2.md` (root, không commit): 6 việc ĐÃ LÀM 14/11 (`647c520`), Hình 2a bỏ (`0e7e01a`):**
   1. Test-II theo cơ chế (đã đếm, khớp 27 ca/14 họ): BrokerGuard ER 0, CR 1, SL 14, AL 2, PT 7, US 3 ca
      (họ: CR 1, SL 6, AL 2, PT 3, US 2); NoDef 36/22/70/30/49/26. Câu Mục 7 "mọi ca lọt thuộc SL/AL/PT" chỉ đúng Test-I.
      Nêu tỉ lệ lọt Test-II gấp ~3 lần Test-I là tín hiệu (CI Wilson họ chồng lấn), không phải kết luận.

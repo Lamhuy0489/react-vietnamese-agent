@@ -38,6 +38,17 @@ Bật notebook: `launch_vllm_serve_v1.py prepare` → `kaggle kernels push -p $F
 
 Lệnh resume đầy đủ của lượt đang dở luôn nằm trong [handoff](handoff.md), mục "Đang làm".
 
+**Trước khi nói "chưa chạy" hay bật lượt mới: kiểm kê kết quả thật trên đĩa.** Tóm tắt (facts.md, handoff, chat cũ)
+có thể thiếu; thư mục kết quả và decision log mới là nguồn. Bài học 14/11: Sandwich VI trên AgentDojo đã chạy từ 07/11
+nhưng facts.md ghi "chỉ EN", bài để trống ô và suýt chạy lại. Lệnh kiểm kê AgentDojo (vài giây):
+
+```bash
+cd results/rebuild_b && for f in agentdojo_*/summary.json; do echo "${f%/summary.json} $(python3 -c "import json,sys;j=json.load(open(sys.argv[1]));print(j['utility'],j.get('attack_success'))" "$f")"; done
+```
+
+Với VN-AgentInject: `ls results/rebuild_b/v3_*_eval.json`. Rồi `grep` tên cấu hình trong `docs/project/decision_log.md`.
+Runner AgentDojo bỏ qua cặp đã có transcript, nên chạy lại chỉ ghi đè `summary.json` (ngày của file đó không phải ngày chạy).
+
 **Lượt dài (> vài phút):** bọc bằng `caffeinate -ims scripts/retry_on_infra_v1.sh 20 120 -- <lệnh>`.
 Runner trả rc=2 khi endpoint không với tới hoặc còn lượt thiếu, nên wrapper tự chạy lại;
 checkpoint theo lượt nên resume không mất kết quả. Chạy nền một lần và chờ thông báo, không
@@ -48,6 +59,7 @@ kiểm tra lặp lại qua nhiều lượt chat.
 | Nội dung | File |
 |---|---|
 | Số liệu, quyết định, luật chấp nhận khai báo trước | `docs/project/decision_log.md` |
+| Số liệu được phép đưa vào bài báo (AgentDojo: một bảng đầy đủ mọi lượt) | `docs/paper/iccies2027/facts.md` |
 | Trạng thái ngắn và mốc đã xác minh | `knowledge/current_status.md` |
 | Đang làm, lệnh resume, bước tiếp theo | `knowledge/handoff.md` |
 | Tóm tắt từng phiên | `knowledge/session_log.md` (thêm mục mới ở cuối) |
