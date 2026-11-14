@@ -90,6 +90,8 @@
 \usepackage{hyperref}
 \definecolor{linkblue}{HTML}{1F4E9A}
 \hypersetup{colorlinks=true, linkcolor=linkblue, citecolor=linkblue, urlcolor=linkblue}
+% DOI in tài liệu tham khảo: ngắn, chữ thường, vẫn bấm được
+\AtBeginDocument{\def\doi#1{\href{https://doi.org/#1}{doi:#1}}}
 
 \begin{document}
 

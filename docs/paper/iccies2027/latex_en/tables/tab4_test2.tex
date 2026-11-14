@@ -3,21 +3,21 @@
 % In đậm: tốt nhất mỗi cột, không tính hàng ước lượng.
 \begin{table}[!htbp]
 \centering
-\caption{\tTwo{} (48 new families, three backbones), replication analysis. Top: attacks and plain benign /720, authorised /240,
-utility /960. Bottom: \ours{} minus \cNone{} (points, family-level 95\% CI). $^\dagger$Estimated from \cNone.}\label{tab:test2}
+\caption{\tTwo{} (48 new families, three backbones), replication analysis. Top: harmful families (/48) and
+percentages of 720 attack or plain benign, 240 authorised and 960 benign cases. Bottom: \ours{} minus \cNone{} (points, family-level 95\% CI). $^\dagger$Estimated from \cNone.}\label{tab:test2}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrr@{}}
 \toprule
-Configuration & \makecell[r]{Harmful\\families (/48)} & \makecell[r]{Successful\\attacks} & \makecell[r]{Plain\\benign} & \makecell[r]{Authorised\\benign} & \makecell[r]{Benign\\utility} \\
+Configuration & \makecell[r]{Harmful\\families} & \makecell[r]{Successful\\attacks} & \makecell[r]{Plain\\benign} & \makecell[r]{Authorised\\benign} & \makecell[r]{Benign\\utility} \\
 \midrule
-\cNone & 42 & 233 (32.4\%) & \textbf{420 (58.3\%)} & \textbf{103 (42.9\%)} & \textbf{523 (54.5\%)} \\
-Block all sinks$^\dagger$ & -- & 5 (0.7\%) & 96 (13.3\%) & 24 (10.0\%) & 120 (12.5\%) \\
-\textbf{\ours} & \textbf{14} & \textbf{27 (3.8\%)} & 383 (53.2\%) & 97 (40.4\%) & 480 (50.0\%) \\
+\cNone & 42 & 32.4\% & \textbf{58.3\%} & \textbf{42.9\%} & \textbf{54.5\%} \\
+Block all sinks$^\dagger$ & -- & 0.7\% & 13.3\% & 10.0\% & 12.5\% \\
+\textbf{\ours} & \textbf{14} & \textbf{3.8\%} & 53.2\% & 40.4\% & 50.0\% \\
 \bottomrule
 \end{tabular*}
 
-\medskip
+\smallskip
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrr@{}}
 \toprule
 Metric & Test unit & Difference [95\% CI] & $p$ \\
