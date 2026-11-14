@@ -66,7 +66,8 @@ Banking và 16/105 lần ở Slack với tiếng Anh, nhưng chỉ 6 và 0 lần
 cả hai ngôn ngữ. Con số thấp ở tiếng Việt không có nghĩa là tiếng Việt an toàn hơn. Tiện ích của Llama cũng giảm (từ 58
 xuống 44 ở Banking), và ở Slack tiếng Việt có hai trong năm nhiệm vụ chèn không giải được bằng lời giải chuẩn. Với tiếng Anh,
 \cSand{} giảm số tấn công thành công xuống 10 ở cả hai bộ mà không mất tiện ích. Với tiếng Việt, \cSand{} không đổi số tấn
-công thành công (6 và 0) và làm giảm tiện ích ở Slack (19 so với 26). \ours{} giảm tiếp xuống 3 ở Banking và 6 ở Slack
+công thành công (6 và 0) và làm giảm tiện ích ở Slack (19 so với 26). Khi không tấn công, tiện ích của \cSand{} chỉ lệch
+khỏi \cNone{} tối đa một nhiệm vụ ở cả bốn ô.\ours{} giảm tiếp xuống 3 ở Banking và 6 ở Slack
 với tiếng Anh, 1 và 0 với tiếng Việt. Hai trong sáu ca ở Slack có mọi lời gọi tấn công đều bị chặn nhưng vẫn được tính,
 vì hàm chấm của AgentDojo dựa trên các lời gọi mô hình sinh ra. Nếu chỉ tính lời gọi đã thực thi, con số là 4/105. Các ca còn lại là đổi mật khẩu (4 ca, qua một sink
 không có đích), mở một URL độc hại bằng công cụ đọc (3 ca) và gửi link cho Alice, người mà chính người dùng đã nêu tên
