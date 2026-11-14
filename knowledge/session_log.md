@@ -505,3 +505,12 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   VI Slack 6/21, gần bằng none (7, 7, 6, 7).
 - Đã điền Bảng 6 (mọi ô Llama đủ) và facts.md. Lời văn Mục 6 không cần đổi. Keepalive đã tắt.
 - Ghi tri thức: quy tắc kiểm kê đĩa trước khi nói "chưa chạy" (runbook, Bản đồ; memory).
+
+## 2026-11-14 chiều muộn — Phản biện 3 (vòng cuối)
+
+- Đọc `phan bien3.md`: số liệu tái dựng đúng hết; còn ca CR mâu thuẫn Mục 4, MDE 10 điểm sai, đề nghị phân rã nguyên nhân.
+- `scripts/paper_bypass_causes_v1.py` (chỉ đếm từ nhãn và quyết định broker): CR = va chạm chuỗi con (từ thường có trong u);
+  mọi SL/AL lọt (Test-I 9, Test-II 16) do nguồn chứa giá trị gắn S0 nên không vào C; PT 10 tamper; US 3 + PT 1 đích có trong u.
+- Sửa Mục 4 (điều kiện CR, nhãn nguồn, complete mediation), 5 (Test-II mới với mã nhưng người soạn biết Test-I), 6 (CI thay
+  MDE, hai số AgentDojo), 7 (viết lại đoạn đầu theo số đo), 8 (nhãn theo giá trị), Bảng 3 (chặn mọi sink, chú thích H5).
+- Owner giữ 17 tài liệu. Bài dài thêm khoảng 260 chữ, owner kiểm số trang trên Overleaf.

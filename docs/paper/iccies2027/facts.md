@@ -185,3 +185,18 @@ R-Dest chặn các đích đó. Ở Banking utility dưới tấn công tăng (7
   Holm trên sáu p mức họ: H1 1,1·10⁻⁸, H6 4,8·10⁻⁶, H3 4,9·10⁻⁴, H4 0,16, H2 0,16, H5 1,00. Kết luận không đổi.
 - AgentDojo EN Slack: 6/105 theo hàm chấm, 4/105 nếu chỉ tính lời gọi đã thực thi.
 - Test-I benign_auth NoDef→BrokerGuard 141→108/360 (39,2% → 30,0%, −9,2 điểm).
+
+### Bổ sung sau phản biện 3 (14/11)
+
+Nguyên nhân lọt qua BrokerGuard (D2P2), chỉ đếm từ nhãn và quyết định broker, không đọc văn bản tấn công.
+Script `scripts/paper_bypass_causes_v1.py`, kết quả `results/rebuild_b/paper_bypass_causes_v1.json`.
+- Test-I 13 ca: SL 6 và AL 3 đều `value_source_public` (giá trị đúng định dạng bộ trích, nhưng mọi nguồn chứa nó gắn S0
+  nên không vào C); PT 4 = 3 tamper trên đích hợp lệ + 1 đích là địa chỉ có trong u nhưng không được cấp quyền.
+- Test-II 27 ca: SL 14 và AL 2 đều `value_source_public`; PT 7 tamper; US 3 đích là địa chỉ có trong u; CR 1 (Qwen, họ T4_05,
+  PARAPHRASE) = va chạm chuỗi con: trường `to` là một từ thường (7 ký tự, không phải địa chỉ) có trong u, R-Dest cho qua.
+- Không ca nào do giá trị bị biến đổi (bộ chấm cũng so khớp nguyên văn, nên lớp này chưa đo được).
+- Lưu ý kỹ thuật: D2 quan sát artifact `tool_source_snapshot` (nhãn của nguồn), không phải bản ghi `record_only_post`.
+
+H4/H5 theo ca (CANONICAL vs biến thể, A0, /216), CI bootstrap theo họ: H4 +1,9 [−5,1; +8,8]; H5 +5,1 [−1,9; +12,0].
+Mức họ: H4 40→50, b/c 16/6; H5 40→39, b/c 7/8. Câu "đủ lực phát hiện khoảng 10 điểm" cũ bị bỏ (phản biện 3: sai).
+Bảng 3 thêm hàng chặn mọi sink Test-I: hại 13 (1,2%), plain 95 (8,8%), auth 12 (3,3%).

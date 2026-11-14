@@ -3845,3 +3845,14 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
 - **Kết quả 14/11 14:40:** bốn lượt không tấn công xong (dovuong05, serve v4). Tiện ích Sandwich khi không tấn công:
   EN Banking 7/16, EN Slack 8/21, VI Banking 5/16, VI Slack 6/21 (none: 7, 7, 6, 7). Sandwich gần như không đổi tiện ích
   khi không tấn công. Đã điền Bảng 6 và facts.md. Keepalive đã tắt, notebook tự dừng.
+
+## 2026-11-14 16:30 — Phản biện 3: phân tích nguyên nhân lọt qua, sửa lời văn (không đổi luật, không chạy mô hình)
+
+- Ca CR trên Test-II là va chạm chuỗi con (đích là một từ thường có trong u); Mục 4 thêm điều kiện cho câu "CR thất bại
+  như ER". Mọi ca SL/AL lọt qua (Test-I 9, Test-II 16) do nguồn chứa giá trị gắn nhãn công khai, không phải do bộ trích
+  hay giá trị bị biến đổi. Mục 7 viết lại theo số đo được (`scripts/paper_bypass_causes_v1.py`, chỉ đếm).
+- Bỏ câu "đủ lực phát hiện ~10 điểm" cho H4/H5 (sai), thay bằng CI theo ca. Thêm hàng chặn mọi sink vào Bảng 3, chú thích H5,
+  câu complete mediation ở Mục 4, hai số AgentDojo (9/21 nhiệm vụ bị chặn khi không tấn công, R-Signal 14 lần ở VI Slack).
+- Owner quyết giữ 17 tài liệu tham khảo (không khôi phục FIDES, vLLM, design patterns như phản biện đề nghị).
+- Không làm (ghi ở Hạn chế hoặc ngoài phạm vi): MDE của H2, ρ của DEFF, PromptGuard∘dịch, ablation phản hồi, độ trễ,
+  sửa thiết kế (sink không đích mặc định từ chối, Egress(t)).

@@ -13,8 +13,10 @@ tập phát triển, \tOne{} và \tTwo{} là hai tập kiểm thử niêm phong 
 
 \paragraph{Broker và nhãn nguồn gốc.} Ở \cNone, broker chỉ kiểm tra schema và giới hạn của công cụ. Với \ours, broker
 lưu thêm nhãn của từng quan sát và tập giá trị $C$ trích từ các quan sát mật. Việc trích dùng quy tắc từ vựng không
-phụ thuộc ngôn ngữ, gồm e-mail, URL, định danh từ sáu ký tự trở lên và số dài. Thao tác đọc không bao giờ bị chặn. Đây là một giả định. Một công cụ đọc nhận URL do mô hình chọn cũng có thể là
-kênh tuồn dữ liệu ra (Mục~\ref{sec:results}).
+phụ thuộc ngôn ngữ, gồm e-mail, URL, định danh từ sáu ký tự trở lên và số dài. Một giá trị chỉ vào $C$ khi nguồn chứa
+nó được gắn nhãn mật. Thao tác đọc không bao giờ bị chặn. Đây là một giả định. Một công cụ đọc nhận URL do mô hình chọn
+cũng có thể là kênh tuồn dữ liệu ra (Mục~\ref{sec:results}). Vì lời gọi đọc và sink không có đích được cho qua, broker
+chưa thỏa tính trung gian toàn phần (complete mediation) của một reference monitor.
 Mọi phép so sánh dùng hàm chuẩn hóa $\norm(\cdot)$, gồm Unicode NFKC, bỏ ký tự định dạng như ký tự độ rộng bằng không,
 và casefold. Ta viết $x \sub z$ khi $\norm(x)$ là một chuỗi con của $\norm(z)$.
 
@@ -25,12 +27,12 @@ và casefold. Ta viết $x \sub z$ khi $\norm(x)$ là một chuỗi con của $\
 Luật chỉ áp cho sink có trường đích. Một sink không có đích, như đổi mật khẩu trên AgentDojo, chỉ được \rFlow{} và
 \rSig{} kiểm, nên với \rDest{} đây là nhánh cho qua chứ không phải mặc định từ chối. Luật không phân tích ý định và
 không dùng danh sách cụm từ. Vì vậy một đoạn chèn \mCR{} tránh động từ ``gửi'' hay
-tách nhỏ địa chỉ vẫn thất bại như \mER: đích mà nó cần không có trong $u$. Luật coi mọi đích xuất hiện trong $u$ là đã
+tách nhỏ địa chỉ vẫn thất bại như \mER, miễn là đích mà nó cần không trùng với một chuỗi con của $u$. Luật coi mọi đích xuất hiện trong $u$ là đã
 được cấp quyền. Giả định này sai theo hai hướng. Một đích chỉ nằm trong câu cấm vẫn được cho qua, và \mUS{} đo đúng
 trường hợp này. Ngược lại, một đích được nhắc gián tiếp (``địa chỉ trong hợp đồng'') bị chặn. So khớp chuỗi con cũng
-chấp nhận một phần của đích người dùng viết, và broker kiểm dạng chuẩn hóa trong khi công cụ nhận dạng gốc. Với sink
-bản giả, hai điểm này không gây hại thật. Với công cụ thật, nên so khớp trên đích đã phân tích cấu trúc và thực thi
-đúng dạng đã kiểm.
+chấp nhận một phần của đích người dùng viết, kể cả một từ thường không phải địa chỉ. Ca \mCR{} duy nhất lọt qua trên
+\tTwo{} là đúng trường hợp này (Mục~\ref{sec:discussion}). Broker cũng kiểm dạng chuẩn hóa trong khi công cụ nhận dạng
+gốc. Với công cụ thật, nên so khớp trên đích đã phân tích cấu trúc và thực thi đúng dạng đã kiểm.
 
 \paragraph{Luật \rFlow{} và \rRedact{} (luồng giá trị mật).} Broker từ chối lời gọi sink $a$ nếu
 \begin{equation}\label{eq:flow}
@@ -40,7 +42,7 @@ Với câu trả lời cuối, điều kiện tương tự được áp cho $y$.
 \code{[REDACTED]} thay vì bỏ cả câu trả lời. Coi $y$ là một sink giúp đóng kênh \mAL, kênh mà các bộ lọc lời gọi công
 cụ bỏ sót. Luật này hẹp hơn một chính sách kiểm soát luồng thông tin. Nó chỉ cưỡng chế tất định các luồng
 \emph{nguyên văn}. Giá trị bị mô hình biến đổi (định dạng lại, tách ra, mã hóa), kênh ngầm như việc chọn gửi hay
-không gửi, và giá trị mật mà bộ trích không nhận ra đều không được bảo vệ.
+không gửi, giá trị mật mà bộ trích không nhận ra và giá trị nằm trong nguồn gắn nhãn công khai đều không được bảo vệ.
 
 \paragraph{Luật tín hiệu chèn lệnh \rSig.} Hai luật trên không bao quát việc thao túng một sink mà người dùng
 \emph{đã} nêu bằng giá trị không mật, tức cơ chế \mPT. Một bộ phát hiện cụm từ gắn cờ các quan sát chứa văn bản giống

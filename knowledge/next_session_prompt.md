@@ -22,8 +22,8 @@ Trạng thái (14/11): thí nghiệm đã đóng, kể cả C10 (BrokerGuard tr�
   (chỉ từ facts.md), bảng, hình, trích dẫn, định dạng, nhận xét bản owner viết.
 - Văn phong owner muốn: câu ngắn, không chấm phẩy trong lời văn, không gạch dài; link trích dẫn xanh bấm được.
 - Xem PDF owner tải: đặt ở root repo, xuất ảnh trang bằng PyMuPDF (fitz) dpi thấp; Read PDF không chạy (thiếu poppler).
-Việc của phiên này (xem handoff mục "Đang làm" 14/11 14:40):
-0. C11 xong 14/11 14:40, Bảng 6 đã đủ. Phản biện 2 đã xử lý. Số AgentDojo chỉ lấy từ facts.md mục
+Việc của phiên này (xem handoff mục "Đang làm" 14/11 16:30):
+0. C11 xong 14/11 14:40, Bảng 6 đã đủ. Phản biện 2 và 3 đã xử lý (phản biện 3 là vòng cuối; giữ 17 tài liệu). Số AgentDojo chỉ lấy từ facts.md mục
    "AgentDojo: bảng đầy đủ mọi lượt". Trước khi nói "chưa chạy" phải kiểm kê đĩa (runbook, Bản đồ).
 1. Hỏi owner kết quả biên dịch sau bản rút gọn 14/11 (mục tiêu ≤ 15 trang; lỗi TikZ ở Hình 1 `images/fig1_pipeline.tex`, Bảng 6 tràn).
 2. Owner duyệt phần C10 trong bài (Bảng 6, Mục 6 đoạn cuối, Mục 7, tóm tắt thêm một câu: kiểm độ dài ≤ 250 từ bản EN).

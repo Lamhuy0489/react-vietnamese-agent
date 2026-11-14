@@ -5,6 +5,10 @@ Cập nhật: 2026-11-14. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 ## Đang làm
 
+**2026-11-14 16:30: Phản biện 3 (`phan bien3.md`, root, không commit, owner nói là vòng cuối) đã xử lý bằng chữ và đếm**
+(decision log 16:30, facts.md mục "Bổ sung sau phản biện 3"): ca CR = va chạm chuỗi con; mọi SL/AL lọt do nguồn gắn S0;
+bỏ câu MDE 10 điểm; Bảng 3 thêm chặn mọi sink. Giữ 17 tài liệu (owner quyết). Bài dài thêm ~260 chữ: owner kiểm ≤ 15 trang.
+
 **2026-11-14 14:40: C11 XONG, không còn lượt nào chạy.** Tiện ích Sandwich khi không tấn công: EN Banking 7/16,
 EN Slack 8/21, VI Banking 5/16, VI Slack 6/21. Đã điền facts.md (bảng AgentDojo đầy đủ) và Bảng 6. Keepalive đã tắt,
 notebook dovuong05 tự dừng. Việc kế: owner biên dịch Overleaf, kiểm ≤ 15 trang, Bảng 6, Hình 1.

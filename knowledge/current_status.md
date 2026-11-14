@@ -1,5 +1,8 @@
 # Trạng thái hiện tại
 
+**14/11 16:30: Phản biện 3 (vòng cuối) đã xử lý: Mục 4, 6, 7, 8 và Bảng 3 sửa theo phân tích nguyên nhân lọt qua
+(chỉ đếm). Chờ owner biên dịch Overleaf, kiểm ≤ 15 trang; hạn 15/11.**
+
 **14/11 14:40: C11 xong: Sandwich trên AgentDojo khi không tấn công giữ tiện ích (EN 7/16, 8/21; VI 5/16, 6/21).
 Bảng 6 đủ mọi ô Llama. Phản biện 2 đã xử lý. Không còn lượt nào chạy. Chờ owner biên dịch Overleaf; hạn 15/11.**
 

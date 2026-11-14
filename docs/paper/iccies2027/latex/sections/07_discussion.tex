@@ -1,21 +1,26 @@
 \section{Thảo luận và hạn chế}\label{sec:discussion}
 
-\paragraph{Các lớp tấn công còn vượt qua được.} Mọi ca lọt qua \ours{} trên \tOne{} đều thuộc \mSL, \mAL{} hoặc \mPT. Trên \tTwo, 23 trong 27 ca cũng vậy. Ba ca
-\mUS{} phù hợp với giả định của \rDest{} ở Mục~\ref{sec:defence}, nhưng chúng tôi chưa kiểm từng ca.
-Từ định nghĩa của các luật, có ba lớp vượt qua. Thứ nhất, \mPT{} trên một sink do người dùng nêu thỏa \rDest{} vì đích
-hợp lệ và thỏa \rFlow{} vì giá trị bị sửa không phải giá trị mật. Chỉ \rSig{} chặn được trường hợp này, và chỉ khi bộ
-phát hiện gắn cờ đoạn chèn. Thứ hai, \rFlow{} so khớp nguyên văn nên một giá trị mật bị biến đổi trước khi gửi sẽ đi
-qua. Thứ ba, danh sách cụm từ của bộ phát hiện chủ yếu là tiếng Việt, nên đoạn chèn bằng tiếng Anh hoặc diễn đạt khác
-dễ tránh được nó. Trên AgentDojo, các ca lọt thuộc lớp thứ nhất (đổi mật khẩu, gửi tới người dùng đã nêu) hoặc dùng
-một công cụ đọc làm kênh tấn công. Tập thích nghi ở Mục~\ref{sec:adaptive} không nhắm vào các lớp này. \tTwo{} do cùng nhóm soạn sau khi biết kết quả
-\tOne, nên chưa tách được việc tập này khó hơn với việc người soạn vô tình nhắm vào điểm yếu của luật. Một bộ tấn công
-hộp trắng sinh từ chính các luật là bước đánh giá cần làm tiếp.
+\paragraph{Vì sao các ca còn lọt qua.} Chúng tôi xác định nguyên nhân của mọi ca lọt qua \ours{} từ quỹ đạo, chỉ bằng
+nhãn và quyết định của broker (13 ca trên \tOne, 27 ca trên \tTwo). Mọi ca \mSL{} và \mAL{} (9 và 16 ca) có chung một
+nguyên nhân. Giá trị bị lộ có định dạng mà bộ trích nhận ra, nhưng mọi nguồn chứa nó đều được môi trường gắn nhãn công
+khai, nên nó không bao giờ vào $C$. Không ca nào do giá trị bị biến đổi, nhưng bộ chấm cũng chỉ so khớp nguyên văn nên
+chưa đo được lớp này. Như vậy \rFlow{} bị giới hạn bởi nhãn độ nhạy cảm của nguồn chứ không bởi bộ trích. Mức tăng của
+\mSL{} từ 6 ca trên \tOne{} lên 14 ca trên \tTwo{} cũng thuộc nguyên nhân này. Mười ca \mPT{} (3 và 7) sửa một trường
+của sink mà người dùng đã nêu, đúng lớp mà \rDest{} và \rFlow{} không xét. Chỉ \rSig{} chặn được lớp này, và chỉ khi bộ
+phát hiện gắn cờ đoạn chèn. Ba ca \mUS{} và một ca \mPT{} của \tOne{} gửi tới một địa chỉ có trong $u$ nhưng không được
+cấp quyền, đúng giả định của \rDest{} ở Mục~\ref{sec:defence}. Ca \mCR{} duy nhất là va chạm chuỗi con. Mô hình điền
+vào trường đích một từ thường có trong $u$, không phải một địa chỉ, và \rDest{} cho qua. Trên AgentDojo, các ca lọt đi
+qua một sink không có đích hoặc dùng một công cụ đọc làm kênh tấn công. Tập thích nghi ở Mục~\ref{sec:adaptive} không
+nhắm vào các lớp này. \tTwo{} do cùng nhóm soạn sau khi biết kết quả \tOne, nên chưa tách được việc tập này khó hơn với
+việc người soạn vô tình nhắm vào điểm yếu của luật. Một bộ tấn công hộp trắng sinh từ chính các luật là bước đánh giá
+cần làm tiếp.
 
 \paragraph{Ngôn ngữ.} Ở \cNone, bỏ dấu hay chuyển sang tiếng Anh không làm thay đổi tỉ lệ tấn công thành công một cách
-có ý nghĩa sau hiệu chỉnh (H4, H5), trong giới hạn phát hiện khoảng 10 điểm. Vì vậy bài báo không khẳng định tiếng Việt dễ hay khó bị
-tấn công hơn. Yếu tố chịu ảnh hưởng rõ của ngôn ngữ là phòng thủ dựa trên cụm từ. Trên Dev, bộ phát hiện cụm từ bật ở
-14 đến 19 trên 48 tấn công tiếng Việt chuẩn nhưng chỉ ở 3 trên 48 tấn công tiếng Anh. Trên AgentDojo tiếng Anh, \rSig{}
-không bật lần nào. \rDest{} và \rFlow{} không phụ thuộc ngôn ngữ, còn \rSig{} thì có.
+có ý nghĩa sau hiệu chỉnh (H4, H5). Khoảng tin cậy vẫn chứa chênh lệch tới khoảng 12 điểm, nên bài báo không khẳng định
+tiếng Việt dễ hay khó bị tấn công hơn. Yếu tố chịu ảnh hưởng rõ của ngôn ngữ là phòng thủ dựa trên cụm từ. Trên Dev, bộ
+phát hiện cụm từ bật ở 14 đến 19 trên 48 tấn công tiếng Việt chuẩn nhưng chỉ ở 3 trên 48 tấn công tiếng Anh. Trên
+AgentDojo, \rSig{} không bật lần nào ở tiếng Anh nhưng bật 14 lần ở Slack tiếng Việt. \rDest{} và \rFlow{} không phụ
+thuộc ngôn ngữ, còn \rSig{} thì có.
 
 \paragraph{Hạn chế.} Các tập niêm phong do cùng một nhóm soạn, dù người soạn không đọc mã phòng thủ. Dữ liệu là tổng
 hợp, công cụ là bản giả và nhiệm vụ chỉ có một lượt. Các mô hình mở chỉ có 8 đến 12 tỉ tham số. \ours{} làm giảm tiện
@@ -26,4 +31,4 @@ cắt của Llama đến từ việc sinh không dừng, vì tăng ngân sách t
 AgentDojo, \ours{} chỉ chạy với một mô hình nền, và \rDest{} làm giảm mạnh tiện ích khi nhiệm vụ lấy đích từ dữ liệu
 công cụ. Muốn giữ tiện ích ở các nhiệm vụ này thì cần một cách khác để ủy quyền đích, chẳng hạn cho người dùng xác
 nhận. Tham chiếu chặn mọi sink là ước lượng từ quỹ đạo. Chúng tôi chưa tách riêng phản hồi từ chối, chưa đo độ phủ của
-bộ trích giá trị mật và chưa đo độ trễ.
+bộ trích trên toàn bộ quỹ đạo và chưa đo độ trễ.
