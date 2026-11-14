@@ -1,17 +1,17 @@
 % LNCS: abstract 150--250 words. No p-values in the abstract.
 \begin{abstract}
-LLM agents built on the ReAct pattern read content returned by external tools. Instructions planted in that content,
-known as indirect prompt injection (IPI), can make the agent take unauthorised actions or leak data. Existing security
-benchmarks for agents are almost entirely in English. This paper proposes \ours, a layered defence that places
+ReAct-style LLM agents read content returned by external tools. Instructions planted in that content,
+known as indirect prompt injection (IPI), can make the agent take unauthorised actions or leak data. Agent security
+benchmarks are almost entirely in English. This paper proposes \ours, a layered defence that places
 enforcement in the Tool Broker, outside the model. Its rules allow sends only to destinations written by the user,
 let a confidential value leave the agent only when the user wrote that value verbatim, and redact confidential values
-in the final answer. A reminder in the prompt and denial feedback support the rules. The paper states the conditions
-under which the rules guarantee safety and shows that every remaining bypass either violates one of them or is a
-parameter-tampering attack that the rules do not cover. \ours{} needs no fine-tuning and no extra LLM calls. The
-paper also builds VN-AgentInject, a Vietnamese benchmark with six attack mechanisms, benign counterparts and five
+in the final answer. A reminder in the prompt and denial feedback support the rules. The paper states when the rules
+guarantee safety and shows that every remaining bypass violates one of these conditions or is parameter tampering,
+which the rules do not cover. \ours{} needs no fine-tuning and no extra LLM calls. The
+paper also introduces VN-AgentInject, a Vietnamese benchmark with six attack mechanisms, benign counterparts and five
 language variants. \ours{} was frozen before evaluation and run once on two disjoint sealed test sets. Across three
-open-weight backbones, it reduces the attack success rate from 32.9\% to 1.2\% on the first set and from 32.4\% to
-3.8\% on the second, at a cost of about 5 percentage points of benign utility. On the first set, at the same attack
+open-weight backbones, \ours{} reduces the attack success rate from 32.9\% to 1.2\% on the first set and from 32.4\% to
+3.8\% on the second, at a cost of about 5 points of benign utility. On the first set, at the same attack
 success rate, it retains about five times the utility of an estimated block-all-sinks policy. On AgentDojo, \ours{}
 keeps attack success low in both English and Vietnamese but lowers utility when destinations come from tool data.
 
