@@ -3885,3 +3885,12 @@ Chính tả Anh-Anh trong bản tiếng Anh (defence, authorisation). Running he
 - Mục 7: 25 ca SL/AL vi phạm (iii); 5 ca (3 US, 1 PT Test-I, 1 CR) vi phạm (ii); 10 PT thuộc H_tamper; AgentDojo đổi mật
   khẩu và đọc URL vi phạm (i). Tổng 40 = 13 + 27, khớp paper_bypass_causes_v1.json.
 - Rà văn phong: bỏ "Chúng tôi" còn sót ở đóng góp 2, "phiếu năm mục" liệt kê thiếu, bỏ chi tiết Jaccard.
+
+## 2026-11-15 00:25 — Chạy thêm baseline Gemini 3 Flash trên Dev (cột tham khảo Bảng 2)
+
+- Owner quyết chạy thêm để Bảng 2 bớt ô "--": `CONFIGS="P2 P1 PRG MEL" build/gemini/gemini3_dev_chain.sh`, tuần tự,
+  nice 10, qua OmniRoute owner tự bật (proxy 8444, revision jsonfix, interval 4 như các lượt Gemini Dev trước). Bỏ G1
+  (Prompt Guard chạy trên CPU, nặng nhất). Nhịp đo được ~30 s/ca, ~4,7 giờ mỗi cấu hình.
+- Kết quả: `results/rebuild_b/v3_dev_<P2|P1|PRG|MEL>_gemini3_flash/`; log `build/gemini/g3_baselines_chain.log`.
+- Tác động: chỉ thay "--" bằng số ở cột Gemini (tham khảo, không thuộc kiểm định); cấu hình nào chưa xong lúc nộp thì giữ "--"
+  và câu Hạn chế đổi số cấu hình cho khớp.

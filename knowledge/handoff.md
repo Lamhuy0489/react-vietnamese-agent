@@ -5,6 +5,11 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 ## Đang làm
 
+**2026-11-15 00:25: ĐANG CHẠY Gemini Dev baseline P2 → P1 → PRG → MEL (decision log 00:25), ~4,7 giờ/cấu hình.**
+Kiểm: `tail build/gemini/g3_baselines_chain.log`; số ca `find results/rebuild_b/v3_dev_P2_gemini3_flash -name result.json | wc -l` (/560).
+Khi xong: đếm họ gây hại /48, lành tính thường /240, ủy quyền /80 như các ô Gemini cũ (evaluate_v3_v1.py, file *_eval.json),
+điền cột Gemini Bảng 2 ở `latex/` và `latex_en/`, sửa câu Hạn chế "năm cấu hình". Không kill OmniRoute.
+
 **2026-11-15 00:30: Bản nộp tiếng Anh ở `docs/paper/iccies2027/latex_en/` (dịch đầy đủ, đồng bộ với `latex/`). Hạn nộp
 15/11.** Commit cuối 956d93f. Việc kế:
 1. Owner biên dịch `latex_en/` trên Overleaf, gửi trang cuối: phải ≤ 15 trang (lần trước thừa 4 tài liệu sang trang 16,
