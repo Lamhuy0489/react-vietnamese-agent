@@ -5,11 +5,9 @@ Cập nhật: 2026-11-14. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 ## Đang làm
 
-**2026-11-14 13:15: C11 đang chạy (dovuong05, endpoint lên 12:44): chỉ còn 4 lượt Sandwich KHÔNG tấn công**
-(EN Banking xong 7/16). Hai lượt VI có tấn công đã có từ 07/11 (WP6: Banking 45/6, Slack 19/0); facts.md từng ghi nhầm
-"chỉ EN" (đính chính ở decision log C11). Log `build/kaggle/c11_chain.log`, kết quả
-`results/rebuild_b/agentdojo_<lang>_<suite>_none_repeat_user_prompt_llama31_8b/`. Resume: chạy lại `build/kaggle/c11_launch.sh`.
-- Khi xong: điền KT vào facts.md (bảng AgentDojo đầy đủ) và Bảng 6; Mục 5, 6 bỏ câu "Sandwich chỉ chạy tiếng Anh".
+**2026-11-14 14:40: C11 XONG, không còn lượt nào chạy.** Tiện ích Sandwich khi không tấn công: EN Banking 7/16,
+EN Slack 8/21, VI Banking 5/16, VI Slack 6/21. Đã điền facts.md (bảng AgentDojo đầy đủ) và Bảng 6. Keepalive đã tắt,
+notebook dovuong05 tự dừng. Việc kế: owner biên dịch Overleaf, kiểm ≤ 15 trang, Bảng 6, Hình 1.
 - **Trước khi nói "chưa chạy": kiểm kê đĩa** (lệnh ở runbook, Bản đồ).
 - **Sửa bài theo `phan bien2.md` (root, không commit): 6 việc ĐÃ LÀM 14/11 (`647c520`), Hình 2a bỏ (`0e7e01a`):**
   1. Test-II theo cơ chế (đã đếm, khớp 27 ca/14 họ): BrokerGuard ER 0, CR 1, SL 14, AL 2, PT 7, US 3 ca

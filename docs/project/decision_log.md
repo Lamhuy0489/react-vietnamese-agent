@@ -3842,3 +3842,6 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
 - **Đính chính 14/11 13:10:** hai lượt VI có tấn công của C11 **đã chạy từ 06–07/11** (WP6, mục 07/11 08:40: Banking 45/6,
   Slack 19/0). facts.md và Bảng 6 ghi nhầm "Sandwich chỉ EN". Runner bỏ qua các cặp đã có, nên C11 thực chất chỉ chạy
   4 lượt không tấn công. Không có lượt nào bị chạy hai lần. Quy tắc kiểm kê trước khi chạy ghi ở runbook (Bản đồ).
+- **Kết quả 14/11 14:40:** bốn lượt không tấn công xong (dovuong05, serve v4). Tiện ích Sandwich khi không tấn công:
+  EN Banking 7/16, EN Slack 8/21, VI Banking 5/16, VI Slack 6/21 (none: 7, 7, 6, 7). Sandwich gần như không đổi tiện ích
+  khi không tấn công. Đã điền Bảng 6 và facts.md. Keepalive đã tắt, notebook tự dừng.

@@ -22,6 +22,12 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-14 12:33 — C11 Sandwich trên AgentDojo (private, T4×2):** dovuong05
+[react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/dovuong05/react-vn-vllm-serve-v1-llama31-8b-ctx16k)
+**v4**, source commit `b291911`, script `build/kaggle/c11_launch.sh` (log `build/kaggle/c11_chain.log`). READY 12:44,
+xong 14:40, keepalive đã tắt nên notebook tự dừng sau 30 phút idle. Kết quả:
+`results/rebuild_b/agentdojo_<lang>_<suite>_none_repeat_user_prompt_llama31_8b/`.
+
 **2026-11-13 18:12 — C10 BrokerGuard trên AgentDojo (private, T4×2):** meanalways
 [react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1-llama31-8b-ctx16k)
 v1, source commit `87d0f94`, script `build/kaggle/c10_launch.sh` (log `build/kaggle/c10_chain.log`, thư mục serve ghi ở

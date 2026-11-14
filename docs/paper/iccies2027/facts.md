@@ -131,7 +131,7 @@ Lập lại bảng này bằng cách liệt kê mọi `summary.json` (lệnh ở
 |---|---|---|---|---|---|---|
 | Llama-3.1-8B | none | 58/17, KT 7 | 44/6, KT 6 | 28/16, KT 7 | 26/0, KT 7 | 06–07/11 (WP6, 07/11 08:40) |
 | Llama-3.1-8B | spotlighting_with_delimiting | 61/18 | 41/2 | 45/10 | 20/1 | 06–07/11 (WP6) |
-| Llama-3.1-8B | repeat_user_prompt (= Sandwich) | 62/10, KT 7 | 45/6, KT … | 35/10, KT … | 19/0, KT … | tấn công 06–07/11 (WP6); KT 14/11 (C11) |
+| Llama-3.1-8B | repeat_user_prompt (= Sandwich) | 62/10, KT 7 | 45/6, KT 5 | 35/10, KT 8 | 19/0, KT 6 | tấn công 06–07/11 (WP6); KT 14/11 (C11) |
 | Llama-3.1-8B | brokerguard | 72/3, KT 8 | 54/1, KT 5 | 15/6, KT 5 | 13/0, KT 5 | 13–14/11 (C10) |
 | Gemini 3 Flash | none | 93/4, KT 13 | 99/0, KT 12 | 62/1, KT 18 | 59/0, KT 16 | 10/11 |
 

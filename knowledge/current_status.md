@@ -1,5 +1,8 @@
 # Trạng thái hiện tại
 
+**14/11 14:40: C11 xong: Sandwich trên AgentDojo khi không tấn công giữ tiện ích (EN 7/16, 8/21; VI 5/16, 6/21).
+Bảng 6 đủ mọi ô Llama. Phản biện 2 đã xử lý. Không còn lượt nào chạy. Chờ owner biên dịch Overleaf; hạn 15/11.**
+
 **14/11: C10 xong: BrokerGuard trên AgentDojo (Llama, EN+VI), tấn công thành công EN Banking 3/144, EN Slack 6/105
 (2 ca do hàm chấm), VI 1 và 0; utility Slack giảm (15 so với 35 của Sandwich) vì R-Dest chặn đích lấy từ web/tin nhắn.
 Đã vào facts.md, Bảng 6 và Mục 0, 5–8 của bài. Không còn lượt nào chạy. Chờ owner biên dịch Overleaf; hạn 15/11.**

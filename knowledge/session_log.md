@@ -497,3 +497,11 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Owner muốn chạy Sandwich VI trên AgentDojo (C11): đã khai báo decision log, viết `build/kaggle/c11_launch.sh`; hoãn vì
   pin tụt (56%), chờ 100%.
 
+
+## 2026-11-14 chiều — C11 xong
+
+- C11 chạy trên dovuong05 v4 (READY 12:44, xong 14:40). Chỉ 4 lượt không tấn công là mới; hai lượt VI có tấn công đã có từ
+  07/11 (đính chính ở decision log). Tiện ích Sandwich khi không tấn công: EN Banking 7/16, EN Slack 8/21, VI Banking 5/16,
+  VI Slack 6/21, gần bằng none (7, 7, 6, 7).
+- Đã điền Bảng 6 (mọi ô Llama đủ) và facts.md. Lời văn Mục 6 không cần đổi. Keepalive đã tắt.
+- Ghi tri thức: quy tắc kiểm kê đĩa trước khi nói "chưa chạy" (runbook, Bản đồ; memory).
