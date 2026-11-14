@@ -1,32 +1,12 @@
 % Hình 2, vẽ bằng pgfplots (Overleaf tự vẽ, không render trên máy).
 % Số liệu: facts.md và study2_thesis_tables.md. (a) họ gây hại /144 trên Dev, gộp 3 mô hình nền.
-% (b) ca tấn công gây hại /180 mỗi cơ chế trên Test-I, gộp 3 mô hình nền.
+% 14/11: bỏ panel (a) Dev (trùng Bảng tab:dev) để rút gọn. Ca tấn công gây hại /180 mỗi cơ chế trên Test-I, gộp 3 mô hình nền.
 % Kích thước trục cố định (scale only axis) để hai panel không đè nhau: tổng rộng khoảng 11,6 cm < \textwidth 12,2 cm.
 \begin{figure}[!htbp]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
-  scale only axis, width=3.1cm, height=3.4cm,
-  xbar, bar shift=0pt, bar width=4.5pt,
-  xmin=0, xmax=140, xtick={0,50,100},
-  ytick={NoDef,Spotlight,Sandwich,PromptGuard,MELON-det,Progent-pol,PhraseRules,BG-Rules,BrokerGuard},
-  symbolic y coords={NoDef,Spotlight,Sandwich,PromptGuard,MELON-det,Progent-pol,PhraseRules,BG-Rules,BrokerGuard},
-  y dir=reverse, enlarge y limits=0.06,
-  axis x line*=bottom, axis y line*=left,
-  tick label style={font=\scriptsize}, label style={font=\scriptsize},
-  xlabel={Họ $\times$ mô hình gây hại (/144)},
-  xmajorgrids, grid style={line width=0.2pt, draw=black!12},
-  nodes near coords, nodes near coords style={font=\tiny, anchor=west},
-  title={(a) Dev}, title style={font=\scriptsize},
-]
-\addplot[fill=black!35, draw=none] coordinates {
-  (112,NoDef) (91,Spotlight) (31,Sandwich) (113,PromptGuard) (112,MELON-det) (61,Progent-pol) (94,PhraseRules)};
-\addplot[fill=bgblue, draw=none] coordinates {(45,BG-Rules) (10,BrokerGuard)};
-\end{axis}
-\end{tikzpicture}\hspace{0.6cm}%
-\begin{tikzpicture}
-\begin{axis}[
-  scale only axis, width=4.6cm, height=3.4cm,
+  scale only axis, width=7.0cm, height=3.4cm,
   ybar, bar width=2.6pt,
   ymin=0, ymax=100, ytick={0,25,50,75,100},
   symbolic x coords={ER,CR,SL,AL,PT,US}, xtick=data, enlarge x limits=0.1,
@@ -37,8 +17,7 @@
   legend style={font=\tiny, draw=none, fill=white, fill opacity=0.85, text opacity=1,
     at={(0.99,0.99)}, anchor=north east, cells={anchor=west}},
   legend image code/.code={\draw[#1] (0cm,-0.07cm) rectangle (0.2cm,0.07cm);},
-  title={(b) \tOne, theo cơ chế}, title style={font=\scriptsize},
-]
+  ]
 \addplot[fill=white, draw=black, line width=0.4pt] coordinates {(ER,58) (CR,65) (SL,89) (AL,60) (PT,68) (US,15)};
 \addplot[fill=bgaqua, draw=none, postaction={pattern=north east lines, pattern color=white}]
   coordinates {(ER,1) (CR,1) (SL,27) (AL,18) (PT,10) (US,4)};
@@ -47,7 +26,6 @@
 \legend{\cNone, \cSand, \cRules, \ours}
 \end{axis}
 \end{tikzpicture}
-\caption{(a) Số họ gây hại trên Dev của sáu baseline (xám) và hai cấu hình có luật (xanh: \cRules{} và \ours), gộp ba mô hình nền. Tiện
-ích tương ứng ở Bảng~\ref{tab:dev}. (b) Số ca tấn công gây hại theo cơ chế trên \tOne, gộp ba mô hình nền. Ô không có
-cột nghĩa là 0 ca.}\label{fig:results}
+\caption{Số ca tấn công gây hại theo cơ chế trên \tOne, gộp ba mô hình nền (/180 mỗi cơ chế). Ô không có cột
+nghĩa là 0 ca.}\label{fig:results}
 \end{figure}

@@ -2,7 +2,7 @@
 
 \subsection{Baseline trên Dev}
 
-Bảng~\ref{tab:dev} và Hình~\ref{fig:results}a so sánh \ours{} với sáu baseline theo số cặp họ và mô hình gây hại (/144).
+Bảng~\ref{tab:dev} so sánh \ours{} với sáu baseline theo số cặp họ và mô hình gây hại (/144).
 Nhóm phát hiện không có tác dụng trên tiếng Việt: \cPG{} (113) và \cMel{} (112) ngang với \cNone{} (112). Nhóm mức
 prompt cho kết quả trái ngược. \cSpot{} chỉ giảm còn 91 và còn làm tăng số họ gây hại trên Qwen3.5 (từ 40 lên 43),
 trong khi \cSand{} giảm còn 31. Nhóm luật giảm theo mức độ cụ thể của luật, với \cPhrase{} còn 94, \cProg{} còn 61 và
@@ -28,7 +28,7 @@ ngữ không ảnh hưởng.
 
 \input{tables/tab3_test1}
 
-Hình~\ref{fig:results}b cho thấy vì sao hai lớp cần đến nhau. Luật đưa \mER{} và \mCR{} về 0 bất kể cách viết. Ở
+Hình~\ref{fig:results} cho thấy vì sao hai lớp cần đến nhau. Luật đưa \mER{} và \mCR{} về 0 bất kể cách viết. Ở
 \mSL{} và \mAL, luật và lời nhắc cho kết quả gần nhau (29 và 27 ca, 17 và 18 ca). Ở \mPT, lời nhắc hiệu quả hơn rõ rệt
 (10 so với 25 ca). Khi kết hợp, chỉ còn 13 ca gây hại, thuộc \mSL, \mAL{} và \mPT{} (6, 3 và 4 ca). Theo biến thể ngôn
 ngữ, \cNone{} bị tấn công gần như nhau ở mọi biến thể (68 đến 79 ca trên 216). \cRules{} để lọt nhiều nhất ở tiếng Anh
