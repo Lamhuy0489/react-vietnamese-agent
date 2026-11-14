@@ -1,9 +1,18 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-14. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-14. Tối 14/11. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
+
+**2026-11-14 23:00: Bản tiếng Việt đã rà soát toàn bài, chờ owner biên dịch Overleaf (hạn 15/11).** Tiêu đề đã chốt
+(decision log 18:00), Mệnh đề 1 ở Mục 4 (20:30), Mục 7 lời thường, bảng/hình bố cục mới, bớt mã trong lời văn
+(commit cuối c77c4f7). Việc kế:
+1. Owner tải lên `main.tex`, `sections/`, `tables/`, `images/` rồi gửi PDF: kiểm ≤ 15 trang (quá thì rút Mục 6.5 còn hai câu),
+   Bảng 2/5 không tràn, khoảng trắng do FloatBarrier, Hình 1 mới (nhãn ngắn) không chồng chữ.
+2. Owner điền tác giả/đơn vị/e-mail; đối chiếu tác giả ClawGuard (arXiv 2604.11790) với PDF.
+3. `latex_en/` chưa đồng bộ: thiếu Mệnh đề 1, bố cục bảng mới, macro `\bPlain`/`\bAuth`, MELON*/Progent*, Hình 1 nhãn ngắn.
+   Chỉ làm khi owner yêu cầu.
 
 **2026-11-14 16:30: Phản biện 3 (`phan bien3.md`, root, không commit, owner nói là vòng cuối) đã xử lý bằng chữ và đếm**
 (decision log 16:30, facts.md mục "Bổ sung sau phản biện 3"): ca CR = va chạm chuỗi con; mọi SL/AL lọt do nguồn gắn S0;

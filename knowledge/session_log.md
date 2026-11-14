@@ -514,3 +514,16 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Sửa Mục 4 (điều kiện CR, nhãn nguồn, complete mediation), 5 (Test-II mới với mã nhưng người soạn biết Test-I), 6 (CI thay
   MDE, hai số AgentDojo), 7 (viết lại đoạn đầu theo số đo), 8 (nhãn theo giá trị), Bảng 3 (chặn mọi sink, chú thích H5).
 - Owner giữ 17 tài liệu. Bài dài thêm khoảng 260 chữ, owner kiểm số trang trên Overleaf.
+
+## 2026-11-14 tối — Tiêu đề, mệnh đề phạm vi, bố cục và rà soát toàn bài
+
+- Chốt tiêu đề "BrokerGuard: A Layered Defence with Tool-Broker Enforcement Against Indirect Prompt Injection in
+  Vietnamese LLM Agents". Rà tính mới: thêm FIDES và ClawGuard (19 tài liệu). Dữ liệu đã công khai, bài không ghi link.
+- Mục 4 thêm Mệnh đề 1 (phạm vi bảo đảm, giả định i–iii); Mục 7 quy 40 ca lọt về giả định bị vi phạm hoặc sửa tham số,
+  viết bằng lời thường. Tóm tắt và đóng góp 2 nói đúng phạm vi (sửa tham số nằm ngoài mệnh đề).
+- Bảng kiểu tràn ngang (tabular*), chữ trái số phải, in đậm tốt nhất, chú thích ngắn, `\FloatBarrier` mỗi tiểu mục;
+  Hình 2 nhỏ lại; Hình 1 nhãn ngắn, chữ 6,4 pt.
+- Bớt mã trong lời văn: tên cơ chế bằng chữ (mã chỉ còn ở Bảng 1, Hình 2, dòng H3), "lành tính thường/ủy quyền" (macro
+  `\bPlain`, `\bAuth`), bỏ S0/S2, tên công cụ mock, MELON*/Progent*. Không ngôi thứ nhất; không commit/Git/proxy/JSON.
+- Rà soát toàn bài (b57e71c): sửa mâu thuẫn nhánh lành tính Mục 3 và 5, thứ tự CI Wilson Mục 6.3, H4/H5 "không đạt",
+  "luật không phụ thuộc ngôn ngữ" chỉ đúng với R-Dest/R-Flow. Chưa biên dịch: owner kiểm số trang trên Overleaf.

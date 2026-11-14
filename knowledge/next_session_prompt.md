@@ -22,10 +22,14 @@ Trạng thái (14/11): thí nghiệm đã đóng, kể cả C10 (BrokerGuard tr�
   (chỉ từ facts.md), bảng, hình, trích dẫn, định dạng, nhận xét bản owner viết.
 - Văn phong owner muốn: câu ngắn, không chấm phẩy trong lời văn, không gạch dài; link trích dẫn xanh bấm được.
 - Xem PDF owner tải: đặt ở root repo, xuất ảnh trang bằng PyMuPDF (fitz) dpi thấp; Read PDF không chạy (thiếu poppler).
-Việc của phiên này (xem handoff mục "Đang làm" 14/11 16:30):
+- 14/11 tối: tiêu đề "BrokerGuard: A Layered Defence with Tool-Broker Enforcement Against Indirect Prompt Injection in
+  Vietnamese LLM Agents"; 19 tài liệu (thêm FIDES, ClawGuard); Mệnh đề 1 ở Mục 4; không ngôi thứ nhất; không commit/Git/
+  proxy/JSON; không link repo; mã cơ chế chỉ trong Bảng 1/Hình 2/dòng H3; "lành tính thường/ủy quyền" (\bPlain, \bAuth).
+Việc của phiên này (xem handoff mục "Đang làm" 14/11 23:00):
 0. C11 xong 14/11 14:40, Bảng 6 đã đủ. Phản biện 2 và 3 đã xử lý (phản biện 3 là vòng cuối; giữ 17 tài liệu). Số AgentDojo chỉ lấy từ facts.md mục
    "AgentDojo: bảng đầy đủ mọi lượt". Trước khi nói "chưa chạy" phải kiểm kê đĩa (runbook, Bản đồ).
-1. Hỏi owner kết quả biên dịch sau bản rút gọn 14/11 (mục tiêu ≤ 15 trang; lỗi TikZ ở Hình 1 `images/fig1_pipeline.tex`, Bảng 6 tràn).
+1. Hỏi owner PDF sau bản rà soát 14/11 tối (≤ 15 trang, quá thì rút Mục 6.5; Bảng 2/5 tràn; Hình 1 nhãn ngắn). Đồng bộ
+   latex_en/ (Mệnh đề 1, bảng mới, macro) chỉ khi owner yêu cầu.
 2. Owner duyệt phần C10 trong bài (Bảng 6, Mục 6 đoạn cuối, Mục 7, tóm tắt thêm một câu: kiểm độ dài ≤ 250 từ bản EN).
 3. Dữ liệu: đã công khai trên GitHub (quyết 14/11; bài chỉ ghi "công bố công khai", không link). Owner quyết: tác giả/đơn vị. Đối chiếu Holm 1979 (refs.bib).
 4. Khi owner viết bản tiếng Anh: đổi babel sang english, bỏ T5, đổi nhãn Hình 1 theo comment đầu fig1_pipeline.tex, dịch

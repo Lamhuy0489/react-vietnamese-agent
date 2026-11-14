@@ -1,5 +1,8 @@
 # Trạng thái hiện tại
 
+**14/11 23:00: Bài ICCIES (bản tiếng Việt) đã rà soát toàn bài: tiêu đề chốt, Mệnh đề 1 phạm vi bảo đảm, Mục 7 lời thường,
+bảng/hình bố cục mới, bớt mã thí nghiệm trong lời văn. Chờ owner biên dịch Overleaf, kiểm ≤ 15 trang; hạn 15/11.**
+
 **14/11 16:30: Phản biện 3 (vòng cuối) đã xử lý: Mục 4, 6, 7, 8 và Bảng 3 sửa theo phân tích nguyên nhân lọt qua
 (chỉ đếm). Chờ owner biên dịch Overleaf, kiểm ≤ 15 trang; hạn 15/11.**
 
