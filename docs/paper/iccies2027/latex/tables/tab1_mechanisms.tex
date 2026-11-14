@@ -1,9 +1,11 @@
 % M1..M6 trong log/luận văn = ER, CR, SL, AL, PT, US.
+% Kiểu bảng chung (14/11): tabularx/tabular* đúng \textwidth, \footnotesize, \tabcolsep 3pt, cột chữ trái, cột số phải.
 \begin{table}[!htbp]
 \centering
 \caption{Sáu cơ chế tấn công và vị từ gây hại tương ứng.}\label{tab:mechanisms}
 \footnotesize
-\begin{tabular}{@{}lp{0.70\textwidth}l@{}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xl@{}}
 \toprule
 Mã & Cơ chế (kiểu con) & Vị từ \\
 \midrule
@@ -14,5 +16,5 @@ Mã & Cơ chế (kiểu con) & Vị từ \\
 \mPT & Sửa tham số: đổi một giá trị thường trong payload của sink người dùng đã nêu (số, boolean, đơn vị, định danh) & $H_\mathit{tamper}$ \\
 \mUS & Tác dụng phụ ngoài yêu cầu: chèn lời gọi sink vào nhiệm vụ chỉ đọc (đích chỉ xuất hiện trong câu cấm, chỉ là thông tin, hoặc không có) & $H_\mathit{side}$ \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}

@@ -1,16 +1,17 @@
 % Test-I = "Test v3" trong log/luận văn. Nguồn: facts.md (bảng Test v3, H1--H6 và mục "Bổ sung sau phản biện").
 % 13/11: H1, H3, H6 ở mức họ (scripts/paper_cluster_stats_v1.py). 14/11 (phản biện 2, mục 4.6): H2, H4, H5 cũng ở mức họ
 % (scripts/paper_cluster_stats_h245_v1.py). Holm trên sáu p mức họ: H1 6x, H6 5x, H3 4x, H4 3x, H2 2x (đơn điệu), H5 1x.
+% In đậm: tốt nhất mỗi cột, không tính hàng ước lượng (owner bỏ câu này khỏi chú thích 14/11).
 \begin{table}[!htbp]
 \centering
 \caption{\tOne{} (72 họ, cộng ba mô hình nền). Trên: cặp họ và mô hình gây hại (/216), ca tấn công gây hại
-(/1.080), ca lành tính thành công (/1.080 và /360). Dưới: sáu giả thuyết đăng ký trước, kiểm định ở mức họ (Mục~\ref{sec:protocol}),
-$p$ hiệu chỉnh Holm. $^\dagger$Ước lượng từ quỹ đạo \cNone. In đậm: tốt nhất mỗi cột.}\label{tab:test1}
+(/1.080), ca lành tính thành công (/1.080 và /360). Dưới: sáu giả thuyết đăng ký trước, kiểm định ở mức họ, $p$ hiệu
+chỉnh Holm. $^\dagger$Ước lượng từ quỹ đạo \cNone.}\label{tab:test1}
 \footnotesize
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}lcccc@{}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrr@{}}
 \toprule
-Cấu hình & Họ $\times$ mô hình gây hại /216 & Ca gây hại (ASR) & benign\_plain & benign\_auth \\
+Cấu hình & \makecell[r]{Họ $\times$ mô hình\\gây hại} & \makecell[r]{Ca gây hại\\(ASR)} & \makecell[r]{Lành tính\\benign\_plain} & \makecell[r]{Lành tính\\benign\_auth} \\
 \midrule
 \cNone & 138 & 355 (32,9\%) & \textbf{489 (45,3\%)} & \textbf{141 (39,2\%)} \\
 \cPhrase & 109 & 200 (18,5\%) & 468 (43,3\%) & 128 (35,6\%) \\
@@ -18,14 +19,12 @@ Cấu hình & Họ $\times$ mô hình gây hại /216 & Ca gây hại (ASR) & be
 \cSand & 47 & 61 (5,6\%) & 472 (43,7\%) & 124 (34,4\%) \\
 \cRules & 49 & 72 (6,7\%) & 459 (42,5\%) & 118 (32,8\%) \\
 \textbf{\ours} & \textbf{11} & \textbf{13 (1,2\%)} & 448 (41,5\%) & 108 (30,0\%) \\
-Chặn mọi sink$^\dagger$ & - & 13 (1,2\%) & 95 (8,8\%) & 12 (3,3\%) \\
+Chặn mọi sink$^\dagger$ & -- & 13 (1,2\%) & 95 (8,8\%) & 12 (3,3\%) \\
 \bottomrule
-\end{tabular}
-\end{adjustbox}
+\end{tabular*}
 
 \medskip
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}lllccl@{}}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}Xrrl@{}}
 \toprule
  & Chỉ số & So sánh & Ca (họ gây hại) & $p$ Holm & Kết luận \\
 \midrule
@@ -36,6 +35,5 @@ H4 & ASR của \cNone & không dấu $\ne$ chuẩn & 31,5\% $\to$ 33,3\% (40 $\t
 H5 & ASR của \cNone & tiếng Anh $\ne$ chuẩn & 31,5\% $\to$ 36,6\% (40 $\to$ 39) & 1,00 & không bác bỏ \\
 H6 & ASR & \ours{} $<$ \cSand & 5,6\% $\to$ 1,2\% (28 $\to$ 8) & $4{,}8\cdot10^{-6}$ & đạt \\
 \bottomrule
-\end{tabular}
-\end{adjustbox}
+\end{tabularx}
 \end{table}

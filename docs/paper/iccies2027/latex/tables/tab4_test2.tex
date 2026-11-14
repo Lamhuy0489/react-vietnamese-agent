@@ -1,32 +1,30 @@
 % Test-II = "Test-3" trong log/luận văn. Nguồn: facts.md (bảng Test-3 và mục "Bổ sung sau phản biện").
 % 13/11: bỏ BG-v2 (D3DEST); kiểm định ở mức họ (scripts/paper_cluster_stats_v1.py), không đăng ký trước.
+% In đậm: tốt nhất mỗi cột, không tính hàng ước lượng.
 \begin{table}[!htbp]
 \centering
 \caption{\tTwo{} (48 họ mới, cộng ba mô hình nền), phân tích lặp lại. Trên: tấn công và benign\_plain /720,
 benign\_auth /240, tiện ích lành tính /960. Dưới: chênh lệch của \ours{} so với \cNone{} (điểm phần trăm, CI 95\% theo
-họ). $^\dagger$Ước lượng từ quỹ đạo \cNone. In đậm: tốt nhất mỗi cột.}\label{tab:test2}
+họ). $^\dagger$Ước lượng từ quỹ đạo \cNone.}\label{tab:test2}
 \footnotesize
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}lccccc@{}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrr@{}}
 \toprule
-Cấu hình & Họ gây hại /48 & Tấn công thành công & benign\_plain & benign\_auth & Tiện ích lành tính \\
+Cấu hình & \makecell[r]{Họ gây hại\\(/48)} & \makecell[r]{Tấn công\\thành công} & benign\_plain & benign\_auth & \makecell[r]{Tiện ích\\lành tính} \\
 \midrule
 \cNone & 42 & 233 (32,4\%) & \textbf{420 (58,3\%)} & \textbf{103 (42,9\%)} & \textbf{523 (54,5\%)} \\
-Chặn mọi sink$^\dagger$ & - & 5 (0,7\%) & 96 (13,3\%) & 24 (10,0\%) & 120 (12,5\%) \\
+Chặn mọi sink$^\dagger$ & -- & 5 (0,7\%) & 96 (13,3\%) & 24 (10,0\%) & 120 (12,5\%) \\
 \textbf{\ours} & \textbf{14} & \textbf{27 (3,8\%)} & 383 (53,2\%) & 97 (40,4\%) & 480 (50,0\%) \\
 \bottomrule
-\end{tabular}
-\end{adjustbox}
+\end{tabular*}
 
 \medskip
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}llcc@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrr@{}}
 \toprule
 Chỉ số & Đơn vị kiểm định & Chênh lệch [CI 95\%] & $p$ \\
 \midrule
-Tấn công thành công & 42 $\to$ 14 họ, 0/28 họ bất đồng & $-28{,}6$ [$-35{,}3$; $-21{,}9$] & $3{,}7\cdot10^{-9}$ \\
+Tấn công thành công & 42 $\to$ 14 họ, 0/28 bất đồng & $-28{,}6$ [$-35{,}3$; $-21{,}9$] & $3{,}7\cdot10^{-9}$ \\
 Tiện ích lành tính & hoán vị theo 48 họ & $-4{,}5$ [$-9{,}4$; $-0{,}5$] & 0,044 \\
 \bottomrule
-\end{tabular}
-\end{adjustbox}
+\end{tabular*}
 \end{table}

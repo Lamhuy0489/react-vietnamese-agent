@@ -1,16 +1,17 @@
 % Nguồn duy nhất: facts.md, mục "AgentDojo: bảng đầy đủ mọi lượt". Sandwich có tấn công EN+VI chạy 06--07/11 (WP6),
 % không tấn công 14/11 (C11); BrokerGuard 13--14/11 (C10).
+% In đậm: tiện ích cao nhất và số tấn công thấp nhất trong mỗi bộ và cột (bỏ qua khi các ô bằng nhau).
 \begin{table}[!htbp]
 \centering
-\caption{AgentDojo v1.2.2, tấn công \code{important\_instructions}. Mỗi ô: tiện ích dưới tấn công / số
-tấn công thành công (tiện ích khi không tấn công). ``--'': không chạy. $^\dagger$Gồm 2 ca có mọi lời gọi tấn công đã bị
-chặn. In đậm: tốt nhất trong mỗi bộ và cột.}\label{tab:agentdojo}
+\caption{AgentDojo v1.2.2, tấn công \code{important\_instructions}. Mỗi ô: tiện ích dưới tấn công / số tấn công
+thành công (tiện ích khi không tấn công). ``--'': không chạy. $^\dagger$Gồm 2 ca có mọi lời gọi tấn công đã bị
+chặn.}\label{tab:agentdojo}
 \footnotesize
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}llcccc@{}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrrrr@{}}
 \toprule
  & & \multicolumn{2}{c}{Llama-3.1-8B} & \multicolumn{2}{c}{Gemini 3 Flash} \\
-\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+\cmidrule(lr){3-4}\cmidrule(l){5-6}
 Bộ (cặp, nhiệm vụ) & Cấu hình & EN & VI & EN & VI \\
 \midrule
 Banking (144, 16) & \cNone & 58 / 17 (7) & 44 / 6 (6) & 93 / 4 (13) & 99 / 0 (12) \\
@@ -21,6 +22,5 @@ Slack (105, 21) & \cNone & 28 / 16 (7) & \textbf{26} / 0 (7) & 62 / 1 (18) & 59 
  & \cSand & \textbf{35} / 10 (8) & 19 / 0 (6) & -- & -- \\
  & \ours & 15 / \textbf{6}$^\dagger$ (5) & 13 / 0 (5) & -- & -- \\
 \bottomrule
-\end{tabular}
-\end{adjustbox}
+\end{tabular*}
 \end{table}

@@ -13,8 +13,8 @@ Cột cuối của Bảng~\ref{tab:dev} cho thấy một mô hình mạnh hơn k
 số này xuống 12, còn \ours{} chỉ còn 1.
 
 \input{tables/tab7_dev_baselines}
-\input{images/fig2_results}
 
+\FloatBarrier
 \subsection{\tOne: kiểm định đăng ký trước}
 
 \tOne{} được chạy một lần với \ours{} là cấu hình cuối (Bảng~\ref{tab:test1}). Ba giả thuyết về phòng thủ đạt ở mức
@@ -35,6 +35,9 @@ Hình~\ref{fig:results} cho thấy vì sao hai lớp cần đến nhau. Luật �
 ngữ, \cNone{} bị tấn công gần như nhau ở mọi biến thể (68 đến 79 ca trên 216). \cRules{} để lọt nhiều nhất ở tiếng Anh
 (32 ca, so với 6 đến 13 ca ở các biến thể khác), và lời nhắc khắc phục được điểm yếu này (còn 1 ca).
 
+\input{images/fig2_results}
+
+\FloatBarrier
 \subsection{\tTwo: lặp lại trên dữ liệu mới}
 
 \tTwo{} gồm 48 họ được viết sau khi \ours{} đã đóng băng (Bảng~\ref{tab:test2}). Số họ gây hại giảm từ 42 xuống 14
@@ -60,6 +63,7 @@ theo hai chiều. Về an ninh, nó có lợi cho chính sách chặn, vì tác 
 Về tiện ích, nó bất lợi cho chính sách chặn, vì tác tử vẫn có thể làm xong phần chỉ đọc. Vì vậy khoảng cách tiện ích
 thật có thể nhỏ hơn.
 
+\FloatBarrier
 \subsection{AgentDojo tiếng Anh và tiếng Việt}
 
 \input{tables/tab6_agentdojo}
@@ -79,6 +83,7 @@ bạ phía host. Tiện ích tăng ở Banking (72 so với 62 của \cSand) nh�
 vụ Slack lấy đích từ trang web hoặc tin nhắn mà người dùng không viết. Ngay cả khi không tấn công, 9 trong 21 nhiệm vụ
 Slack tiếng Anh có lời gọi bị \rDest{} chặn. \rSig{} không bật lần nào ở tiếng Anh và bật 14 lần ở Slack tiếng Việt.
 
+\FloatBarrier
 \subsection{Tấn công thích nghi}\label{sec:adaptive}
 
 Người viết soạn 48 ca tấn công thích nghi trên các họ Dev, dựa trên phản hồi từ các lượt chạy có phòng thủ trên Dev. Ở
