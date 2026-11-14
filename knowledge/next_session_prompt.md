@@ -27,7 +27,7 @@ Việc của phiên này (xem handoff mục "Đang làm" 14/11 16:30):
    "AgentDojo: bảng đầy đủ mọi lượt". Trước khi nói "chưa chạy" phải kiểm kê đĩa (runbook, Bản đồ).
 1. Hỏi owner kết quả biên dịch sau bản rút gọn 14/11 (mục tiêu ≤ 15 trang; lỗi TikZ ở Hình 1 `images/fig1_pipeline.tex`, Bảng 6 tràn).
 2. Owner duyệt phần C10 trong bài (Bảng 6, Mục 6 đoạn cuối, Mục 7, tóm tắt thêm một câu: kiểm độ dài ≤ 250 từ bản EN).
-3. Owner quyết: công bố dữ liệu; tác giả/đơn vị. Đối chiếu Holm 1979 (refs.bib).
+3. Dữ liệu: đã công khai trên GitHub (quyết 14/11, link ở Mục 1). Owner quyết: tác giả/đơn vị. Đối chiếu Holm 1979 (refs.bib).
 4. Khi owner viết bản tiếng Anh: đổi babel sang english, bỏ T5, đổi nhãn Hình 1 theo comment đầu fig1_pipeline.tex, dịch
    nhãn Hình 2, soát số với facts.md, tóm tắt ≤ 250 từ, nhận xét văn phong.
 5. Sau bài báo: chương kết quả Study 2 của luận văn (vẫn giữ D3; dàn ý cuối docs/research/study2_thesis_tables.md).

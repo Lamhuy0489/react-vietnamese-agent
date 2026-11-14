@@ -39,7 +39,7 @@ mục "Bổ sung sau phản biện" (`scripts/paper_cluster_stats_v1.py`, chạy
   08d57bf/07f10c6 kèm câu "chưa có dấu thời gian bên ngoài" vì lịch sử viết lại 11/11), 6 (Test-II là phân tích lặp lại,
   hàng chặn mọi sink, Sandwich trên AgentDojo), 7 (ba lớp vượt qua, hạn chế), 8. Hình 1 nay là TikZ `images/fig1_pipeline.tex`.
 - Chưa biên dịch: owner biên dịch trên Overleaf, báo số trang/lỗi TikZ (Hình 1 mới, dùng `arrows.meta`).
-- Còn mở: công bố dữ liệu; tác giả/đơn vị; Holm 1979 trong refs.bib.
+- Còn mở: tác giả/đơn vị (dữ liệu đã công khai 14/11); Holm 1979 trong refs.bib.
 
 **2026-11-12 20:30: Bài báo ICCIES: `docs/paper/iccies2027/latex/` (Overleaf, LLNCS). `sections/` là bản TIẾNG VIỆT để owner
 đọc; owner tự viết bản tiếng Anh nộp (ICCIES cấm văn bản AI). Bản owner biên dịch lúc 19:53: 14 trang (giới hạn 15).**
