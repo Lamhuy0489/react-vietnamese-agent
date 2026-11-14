@@ -3877,3 +3877,11 @@ Owner duyệt ("duyệt nhé"). `configs/final/final_config_v4.json` sha256
 "BrokerGuard: A Layered Defence with Tool-Broker Enforcement Against Indirect Prompt Injection in Vietnamese LLM Agents"
 (thay "Beyond Model Compliance: ..."). "Layered" bổ nghĩa cho defence (luật + lời nhắc), "enforcement" chỉ phần luật.
 Chính tả Anh-Anh trong bản tiếng Anh (defence, authorisation). Running head: BrokerGuard.
+
+## 2026-11-14 20:30 — Thêm Mệnh đề phạm vi bảo đảm (Mục 4), quy ca lọt về giả định (Mục 7)
+
+- Owner hỏi hàm lượng lý thuyết. Thêm Mệnh đề 1: dưới (i) mọi sink qua broker và có đích, (ii) Ĝ(u) ⊆ G(u), (iii) V ⊆ C kịp
+  thời, BrokerGuard loại H_dest, H_side và rò rỉ nguyên văn. Không phủ H_tamper và giá trị bị biến đổi.
+- Mục 7: 25 ca SL/AL vi phạm (iii); 5 ca (3 US, 1 PT Test-I, 1 CR) vi phạm (ii); 10 PT thuộc H_tamper; AgentDojo đổi mật
+  khẩu và đọc URL vi phạm (i). Tổng 40 = 13 + 27, khớp paper_bypass_causes_v1.json.
+- Rà văn phong: bỏ "Chúng tôi" còn sót ở đóng góp 2, "phiếu năm mục" liệt kê thiếu, bỏ chi tiết Jaccard.

@@ -5,7 +5,8 @@ tử thực hiện hành động trái phép hoặc làm lộ dữ liệu. Đây
 ninh cho tác tử hiện nay hầu như chỉ có tiếng Anh. Bài báo đề xuất \ours, một cơ chế phòng thủ nhiều lớp đặt việc
 cưỡng chế tại Tool Broker, bên ngoài mô hình. Các luật của \ours{} chỉ cho phép gửi tới đích do người dùng viết, chỉ
 cho phép giá trị mật rời tác tử khi người dùng đã viết nguyên văn giá trị đó và che giá trị mật trong câu trả lời cuối.
-Lời nhắc trong prompt và phản hồi từ chối bổ trợ cho các luật. \ours{} không cần tinh chỉnh mô hình và không gọi thêm
+Lời nhắc trong prompt và phản hồi từ chối bổ trợ cho các luật. Bài báo nêu điều kiện mà các luật bảo đảm an toàn và
+quy mọi ca còn lọt qua về một điều kiện bị vi phạm. \ours{} không cần tinh chỉnh mô hình và không gọi thêm
 LLM. Bài báo xây dựng VN-AgentInject, một benchmark tiếng Việt gồm sáu cơ chế tấn công, có nhánh lành tính và năm
 biến thể ngôn ngữ. \ours{} được đóng băng trước khi chạy và được đánh giá một lần trên hai tập kiểm thử niêm phong rời
 nhau. Trên ba mô hình nền mở trọng số, \ours{} giảm tỉ lệ tấn công thành công từ 32,9\% xuống 1,2\% trên tập thứ nhất

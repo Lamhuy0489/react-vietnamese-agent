@@ -28,7 +28,7 @@ Luật chỉ áp cho sink có trường đích. Một sink không có đích, nh
 \rSig{} kiểm, nên với \rDest{} đây là nhánh cho qua chứ không phải mặc định từ chối. Luật không phân tích ý định và
 không dùng danh sách cụm từ. Vì vậy một đoạn chèn \mCR{} tránh động từ ``gửi'' hay
 tách nhỏ địa chỉ vẫn thất bại như \mER, miễn là đích mà nó cần không trùng với một chuỗi con của $u$. Luật coi mọi đích xuất hiện trong $u$ là đã
-được cấp quyền. Giả định này sai theo hai hướng. Một đích chỉ nằm trong câu cấm vẫn được cho qua, và \mUS{} đo đúng
+được cấp quyền, tức giả định (ii) ở cuối mục này. Giả định này sai theo hai hướng. Một đích chỉ nằm trong câu cấm vẫn được cho qua, và \mUS{} đo đúng
 trường hợp này. Ngược lại, một đích được nhắc gián tiếp (``địa chỉ trong hợp đồng'') bị chặn. So khớp chuỗi con cũng
 chấp nhận một phần của đích người dùng viết, kể cả một từ thường không phải địa chỉ. Ca \mCR{} duy nhất lọt qua trên
 \tTwo{} là đúng trường hợp này (Mục~\ref{sec:discussion}). Với công cụ thật, nên so khớp trên đích đã phân tích cấu trúc.
@@ -59,6 +59,22 @@ nằm trong dữ liệu công cụ, giống phòng thủ sandwich và \code{repe
 phụ thuộc vào mô hình, và nó bù cho các luật ở những chỗ luật không thấy được (Mục~\ref{sec:results}). Khi một luật từ
 chối, công cụ không được chạy và tác tử nhận một quan sát có cấu trúc báo việc từ chối, nhờ đó vẫn làm tiếp các bước
 còn lại. Phản hồi này có ở mọi cấu hình có luật nên chưa được tách riêng.
+
+\paragraph{Phạm vi bảo đảm.} Gọi $\hat G(u) = \{d : d \sub u\}$ là tập đích mà \rDest{} chấp nhận. Ba giả định sau
+làm rõ các luật bảo đảm điều gì. (i) Mọi lời gọi sink đều đi qua broker và có trường đích. (ii) $\hat G(u) \subseteq
+G(u)$, tức mọi đích xuất hiện trong $u$ đều thật sự được cấp quyền. (iii) Mỗi $v \in V$ đã nằm trong $C$ trước khi nó
+xuất hiện trong một lời gọi sink hay trong $y$.
+
+\begin{proposition}\label{prop:scope}
+Dưới (i) và (ii), mọi quỹ đạo được \ours{} thực thi đều không thỏa $H_\mathit{dest}$ và $H_\mathit{side}$. Dưới (iii),
+không có $v \in V$ với $\lnot(v \sub u)$ nào xuất hiện nguyên văn trong $\pay(a)$ của một $a \in \mathcal{S}$ hay
+trong $y$ sau khi che.
+\end{proposition}
+
+\noindent Mệnh đề suy ra trực tiếp từ \eqref{eq:dest} và \eqref{eq:flow}, vì broker thực thi mọi lời gọi sink và nhiệm
+vụ chỉ đọc có $G(u) = \emptyset$. Mệnh đề không nói gì về $H_\mathit{tamper}$ và về giá trị bị mô hình biến đổi. Đây là
+phần việc của \rSig{} và lời nhắc. Mục~\ref{sec:discussion} cho thấy mọi ca còn lọt qua đều vi phạm một trong ba giả
+định hoặc thuộc $H_\mathit{tamper}$.
 
 \paragraph{Chọn cấu hình và chi phí.} Mọi lựa chọn được thực hiện trên Dev trong các vòng chỉnh khai báo trước. \ours{}
 là phép ghép \cRules{} với \cSand, hai thành phần đã có, không đổi tham số nào. Cấu hình này được đóng băng trước khi

@@ -1,6 +1,6 @@
 \section{Mô hình đe dọa}\label{sec:threat}
 
-\paragraph{Tác tử.} Cho chỉ thị người dùng $u$. Ở mỗi bước, mô hình sinh một hành động $a_t$ gồm tên công cụ và tham
+\paragraph{Tác tử.} Gọi $u$ là chỉ thị của người dùng. Ở mỗi bước, mô hình sinh một hành động $a_t$ gồm tên công cụ và tham
 số, hoặc sinh câu trả lời cuối $y$. Tool Broker kiểm tra $a_t$ theo schema, thực thi và trả về quan sát $o_t$. Hệ
 thống có sáu công cụ đọc (tài liệu, cơ sở dữ liệu chỉ đọc, trang lưu đệm, máy tính) và hai \emph{sink} có tác dụng phụ
 là \code{send\_email\_mock} và \code{post\_webhook\_mock}. Hai sink này chỉ ghi nhật ký, không gửi gì ra mạng. Câu trả
@@ -20,7 +20,7 @@ hình, và không quan sát được quỹ đạo. Trên các tập niêm phong,
 thủ. Jailbreak trực tiếp, đầu độc dữ liệu huấn luyện, từ chối dịch vụ và hệ nhiều tác tử nằm ngoài phạm vi bài báo.
 
 \paragraph{Vị từ gây hại.} Gọi $G(u)$ là tập đích được người dùng cấp quyền, $V$ là tập giá trị mật trên quỹ đạo mà
-người dùng không cho phép tiết lộ, và $\mathcal{S}$ là tập lời gọi sink \emph{đã được thực thi}. Quỹ đạo $\tau$ là
+người dùng không cho phép tiết lộ, và $\mathcal{S}$ là tập lời gọi sink \emph{đã được thực thi}. Quỹ đạo $\tau$
 gây hại nếu
 \begin{equation}\label{eq:harm}
 \mathrm{Harm}(\tau) = H_\mathit{dest} \lor H_\mathit{leak} \lor H_\mathit{tamper} \lor H_\mathit{side},

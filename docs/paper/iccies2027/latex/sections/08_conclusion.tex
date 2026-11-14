@@ -4,9 +4,10 @@ Bài báo trình bày \ours, một cơ chế phòng thủ nhiều lớp cho tác
 Broker thay vì dựa vào sự tuân thủ của mô hình. \ours{} được đóng băng trên Dev rồi đánh giá trên VN-AgentInject với
 hai tập kiểm thử niêm phong. Trên ba mô hình nền mở trọng số, \ours{} giảm tỉ lệ tấn công thành công từ 32,9\% xuống
 1,2\% trên \tOne{} và từ 32,4\% xuống 3,8\% trên \tTwo, với cái giá là tiện ích lành tính giảm khoảng 5 điểm. Luật tất
-định và lời nhắc bù cho nhau theo cơ chế tấn công. Trên Dev, bộ phát hiện học trên tiếng Anh không chuyển giao sang tiếng Việt,
-còn các luật nguyên văn theo đích và giá trị thì không phụ thuộc ngôn ngữ. Trên AgentDojo, các luật giữ số tấn công
+định và lời nhắc bù cho nhau theo cơ chế tấn công. Mệnh đề~\ref{prop:scope} nêu rõ các luật bảo đảm gì, và mọi ca
+còn lọt qua đều vi phạm một giả định của nó hoặc thuộc lớp sửa tham số. Trên Dev, bộ phát hiện học trên tiếng Anh không chuyển giao sang tiếng Việt,
+còn các luật nguyên văn theo đích và giá trị thì không phụ thuộc ngôn ngữ. Trên AgentDojo, \ours{} giữ số tấn công
 thành công ở mức thấp ở cả hai ngôn ngữ, nhưng làm giảm tiện ích khi nhiệm vụ lấy đích từ dữ liệu công cụ. Hướng tiếp
-theo gồm gắn nhãn độ nhạy cảm cho từng giá trị thay vì cho cả nguồn, để broker tự điền giá trị vào lời gọi sink, phát
+theo gồm gắn nhãn độ nhạy cảm cho từng giá trị thay vì cho cả nguồn, cho broker tự điền giá trị vào lời gọi sink, phát
 hiện giá trị đã bị biến đổi, cho người dùng xác nhận đích lấy
 từ dữ liệu công cụ, đánh giá bằng tấn công hộp trắng sinh từ luật và mở rộng sang nhiệm vụ nhiều lượt.
