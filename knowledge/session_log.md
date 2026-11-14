@@ -527,3 +527,14 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   `\bPlain`, `\bAuth`), bỏ S0/S2, tên công cụ mock, MELON*/Progent*. Không ngôi thứ nhất; không commit/Git/proxy/JSON.
 - Rà soát toàn bài (b57e71c): sửa mâu thuẫn nhánh lành tính Mục 3 và 5, thứ tự CI Wilson Mục 6.3, H4/H5 "không đạt",
   "luật không phụ thuộc ngôn ngữ" chỉ đúng với R-Dest/R-Flow. Chưa biên dịch: owner kiểm số trang trên Overleaf.
+
+## 2026-11-15 rạng sáng — Bản tiếng Anh đầy đủ, rút về 15 trang
+
+- Owner yêu cầu dịch toàn bộ: `latex_en/` nay là bản dịch đầy đủ của bản tiếng Việt đã rà soát (Anh-Anh, không "we",
+  tóm tắt 249 từ). Đã nhắc owner một lần về quy định ICCIES cấm văn bản AI (tự sửa lại câu chữ hoặc kiểm quy định khai báo).
+- Lỗi: script đổi dấu phẩy thập phân phá tọa độ TikZ/pgfplots (Hình 1, 2 bản EN); đã dựng lại hình từ bản VI. Bài học:
+  không regex `\d,\d` trên file hình, chỉ đổi trong bảng/lời văn.
+- Rút gọn (cả EN và VI): Hình 1 yscale 0.8, đoạn chặn mọi sink, AgentDojo, Mục 6.5, bỏ câu Llama bị cắt; bỏ
+  `\FloatBarrier` tiểu mục; trang chỉ có float xếp từ đầu trang; khoảng cách float/list/công thức nhỏ lại.
+- Tài liệu tham khảo 2--3 dòng: venue viết tắt, bỏ pp./publisher, "et al." sau 3 tác giả, DOI dạng `doi:` ngắn bấm được,
+  arXiv bấm được. Bảng 4 EN chỉ ghi phần trăm để vừa bề ngang. Commit cuối 956d93f. Chưa thấy PDF sau các sửa này.

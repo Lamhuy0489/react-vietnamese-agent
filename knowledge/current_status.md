@@ -1,5 +1,8 @@
 # Trạng thái hiện tại
 
+**15/11 00:30: Bản tiếng Anh đầy đủ ở `latex_en/` (dịch từ bản Việt đã rà soát), đã rút gọn để về 15 trang (tài liệu
+tham khảo 2--3 dòng, Hình 1 gọn, bỏ FloatBarrier tiểu mục). Chờ owner biên dịch Overleaf và nộp; hạn 15/11.**
+
 **14/11 23:00: Bài ICCIES (bản tiếng Việt) đã rà soát toàn bài: tiêu đề chốt, Mệnh đề 1 phạm vi bảo đảm, Mục 7 lời thường,
 bảng/hình bố cục mới, bớt mã thí nghiệm trong lời văn. Chờ owner biên dịch Overleaf, kiểm ≤ 15 trang; hạn 15/11.**
 

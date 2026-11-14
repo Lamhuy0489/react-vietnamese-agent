@@ -1,9 +1,17 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-14. Tối 14/11. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
+
+**2026-11-15 00:30: Bản nộp tiếng Anh ở `docs/paper/iccies2027/latex_en/` (dịch đầy đủ, đồng bộ với `latex/`). Hạn nộp
+15/11.** Commit cuối 956d93f. Việc kế:
+1. Owner biên dịch `latex_en/` trên Overleaf, gửi trang cuối: phải ≤ 15 trang (lần trước thừa 4 tài liệu sang trang 16,
+   đã rút tài liệu tham khảo ~20 dòng). Còn thừa thì: bỏ nửa dưới Bảng 4 (CI) hoặc gộp đoạn "Language" Mục 7 vào 6.2.
+2. Kiểm Hình 1 (yscale 0.8, ô cao 0.8 cm) không chồng chữ; Bảng 4 EN không tràn; DOI `doi:` hiển thị đúng.
+3. Owner điền tác giả/đơn vị/e-mail, xóa `\todo`; đối chiếu tác giả ClawGuard; owner tự sửa câu chữ bản EN (quy định AI).
+4. Sửa nội dung thì sửa cả `latex/` và `latex_en/`. Không regex dấu phẩy thập phân trên file hình.
 
 **2026-11-14 23:00: Bản tiếng Việt đã rà soát toàn bài, chờ owner biên dịch Overleaf (hạn 15/11).** Tiêu đề đã chốt
 (decision log 18:00), Mệnh đề 1 ở Mục 4 (20:30), Mục 7 lời thường, bảng/hình bố cục mới, bớt mã trong lời văn
