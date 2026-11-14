@@ -5,15 +5,15 @@ tử thực hiện hành động trái phép hoặc làm lộ dữ liệu. Đây
 ninh cho tác tử hiện nay hầu như chỉ có tiếng Anh. Bài báo đề xuất \ours, một cơ chế phòng thủ nhiều lớp đặt việc
 cưỡng chế tại Tool Broker, bên ngoài mô hình. Các luật của \ours{} chỉ cho phép gửi tới đích do người dùng viết, chỉ
 cho phép giá trị mật rời tác tử khi người dùng đã viết nguyên văn giá trị đó và che giá trị mật trong câu trả lời cuối.
-Lời nhắc trong prompt và phản hồi từ chối bổ trợ cho các luật. Bài báo nêu điều kiện mà các luật bảo đảm an toàn và
-quy mọi ca còn lọt qua về một điều kiện bị vi phạm. \ours{} không cần tinh chỉnh mô hình và không gọi thêm
+Lời nhắc trong prompt và phản hồi từ chối bổ trợ cho các luật. Bài báo nêu các điều kiện để luật bảo đảm an toàn và
+cho thấy mọi ca còn lọt qua đều vi phạm một điều kiện đó hoặc thuộc loại sửa tham số mà luật không bao quát. \ours{} không cần tinh chỉnh mô hình và không gọi thêm
 LLM. Bài báo xây dựng VN-AgentInject, một benchmark tiếng Việt gồm sáu cơ chế tấn công, có nhánh lành tính và năm
 biến thể ngôn ngữ. \ours{} được đóng băng trước khi chạy và được đánh giá một lần trên hai tập kiểm thử niêm phong rời
 nhau. Trên ba mô hình nền mở trọng số, \ours{} giảm tỉ lệ tấn công thành công từ 32,9\% xuống 1,2\% trên tập thứ nhất
 và từ 32,4\% xuống 3,8\% trên tập thứ hai. Cái giá là tiện ích lành tính giảm khoảng 5 điểm phần trăm. Trên tập thứ
 nhất, với cùng tỉ lệ tấn công thành công, \ours{} giữ tiện ích gấp khoảng năm lần so với ước lượng của việc chặn mọi
-lời gọi gửi ra ngoài. Trên AgentDojo, \ours{} giảm số tấn công thành công ở cả tiếng Anh và tiếng Việt, nhưng làm
-giảm tiện ích khi đích nằm trong dữ liệu công cụ. Trên tập phát triển tiếng Việt, bộ phát hiện Prompt Guard~2 huấn
+lời gọi gửi ra ngoài. Trên AgentDojo, \ours{} giữ số tấn công thành công ở mức thấp ở cả tiếng Anh và tiếng Việt, nhưng
+làm giảm tiện ích khi đích nằm trong dữ liệu công cụ. Trên tập phát triển tiếng Việt, bộ phát hiện Prompt Guard~2 huấn
 luyện trên tiếng Anh không làm giảm số tấn công thành công.
 
 \keywords{Chèn lệnh gián tiếp \and Tác tử LLM \and An ninh tác tử \and Reference monitor \and Tiếng Việt}

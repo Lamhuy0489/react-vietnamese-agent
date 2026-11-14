@@ -16,10 +16,10 @@ Guard~2~\cite{meta2025promptguard2} là bộ phân loại sàng lọc đầu và
 lượt chạy gốc với lượt chạy lại có che yêu cầu. Progent~\cite{shi2025progent} áp chính sách đặc quyền lên lời gọi công
 cụ. FIDES~\cite{costa2025fides} gắn nhãn tin cậy và bảo mật cho dữ liệu, lan truyền nhãn qua các lời gọi công cụ và
 chỉ cho phép hành động có hệ quả khi thỏa chính sách. ClawGuard~\cite{zhao2026clawguard} nhờ mô hình suy ra luật truy
-cập từ yêu cầu của người dùng rồi kiểm từng lời gọi công cụ theo các luật đó. CaMeL~\cite{debenedetti2026camel} an toàn theo thiết kế: nó tách luồng điều khiển khỏi dữ liệu không đáng tin bằng
-một trình thông dịch riêng. \ours{} cùng hướng với các hệ này, tức cưỡng chế bên ngoài mô hình và không sửa trọng số. Khác với CaMeL, \ours{} chỉ áp
-luật chuỗi lên quỹ đạo, nên gắn được vào tác tử ReAct sẵn có. Khác với FIDES và ClawGuard, \ours{} không lan truyền nhãn
-cho từng giá trị và không nhờ mô hình sinh luật. Quyền chỉ được suy ra bằng so khớp nguyên văn với $u$, nên các luật
-không phụ thuộc ngôn ngữ. Các tấn công thích nghi đã vượt qua nhiều phòng thủ đã
+cập từ yêu cầu của người dùng rồi kiểm từng lời gọi công cụ theo các luật đó. CaMeL~\cite{debenedetti2026camel} tách luồng điều khiển khỏi dữ liệu không đáng tin bằng một trình thông dịch riêng,
+nên an toàn theo thiết kế. \ours{} cùng hướng với các hệ này, tức cưỡng chế bên ngoài mô hình và không sửa trọng số. Khác với CaMeL, \ours{} chỉ kiểm
+từng lời gọi bằng so khớp chuỗi, nên gắn được vào tác tử ReAct sẵn có. Khác với FIDES và ClawGuard, \ours{} không lan truyền nhãn
+cho từng giá trị và không nhờ mô hình sinh luật. Quyền chỉ được suy ra bằng so khớp nguyên văn với $u$, nên hai luật về
+đích và giá trị mật không phụ thuộc ngôn ngữ. Các tấn công thích nghi đã vượt qua nhiều phòng thủ đã
 công bố~\cite{zhan2025adaptive,nasr2025attacker}, vì vậy một tập tấn công thích nghi được báo cáo riêng
 (Mục~\ref{sec:adaptive}).

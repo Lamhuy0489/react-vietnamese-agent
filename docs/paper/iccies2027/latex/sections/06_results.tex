@@ -3,7 +3,7 @@
 \subsection{Baseline trên Dev}
 
 Bảng~\ref{tab:dev} so sánh \ours{} với sáu baseline theo số cặp họ và mô hình gây hại (/144).
-Nhóm phát hiện không có tác dụng trên tiếng Việt: \cPG{} (113) và \cMel{} (112) ngang với \cNone{} (112). Nhóm mức
+Nhóm phát hiện không có tác dụng trên Dev: \cPG{} (113) và \cMel{} (112) ngang với \cNone{} (112). Nhóm mức
 prompt cho kết quả trái ngược. \cSpot{} chỉ giảm còn 91 và còn làm tăng số họ gây hại trên Qwen3.5 (từ 40 lên 43),
 trong khi \cSand{} giảm còn 31. Nhóm luật giảm theo mức độ cụ thể của luật, với \cPhrase{} còn 94, \cProg{} còn 61 và
 \cRules{} còn 45. \ours, kết hợp luật với lời nhắc, đưa số này xuống 10.
@@ -21,7 +21,7 @@ số này xuống 12, còn \ours{} chỉ còn 1.
 họ. Luật của \ours{} tốt hơn luật cụm từ (H1, từ 53 xuống 24 họ gây hại trên 72), kể cả trên các cơ chế né mẫu cụm từ
 (H3). Kết hợp với lời nhắc tốt hơn lời nhắc đơn thuần (H6, từ 28 xuống 8 họ). So với \cNone, \ours{} giảm số họ gây hại
 từ 65 xuống 8. H2 không xác lập được. \cRules{} mất 2,8 điểm tiện ích \bPlain{} so với \cNone, và cận dưới của khoảng tin
-cậy ($-6{,}0$) vượt biên $-5$ điểm. H4 và H5 không bác bỏ được. Ở mức họ, bản không dấu gây hại ở 50 họ so với 40 của
+cậy ($-6{,}0$) vượt biên $-5$ điểm. H4 và H5 không đạt, tức không phát hiện được khác biệt do ngôn ngữ. Ở mức họ, bản không dấu gây hại ở 50 họ so với 40 của
 bản chuẩn (16 và 6 họ bất đồng, $p$ Holm 0,16). Theo ca, chênh lệch là $+1{,}9$ điểm [$-5{,}1$; $+8{,}8$] với bản không
 dấu và $+5{,}1$ điểm [$-1{,}9$; $+12{,}0$] với tiếng Anh. Các khoảng này còn rộng, nên kết quả không chứng minh được
 rằng ngôn ngữ không ảnh hưởng. Ở H5, tỉ lệ ca tăng nhưng số họ giảm, vì tấn công tiếng Anh thành công ở nhiều mô hình
@@ -50,7 +50,7 @@ không có ý nghĩa ($p = 0{,}57$). Trên \tOne, nhánh \bAuth{} giảm nhiều
 cấu hình, và tất cả được tính là thất bại.
 
 Tỉ lệ lọt qua \ours{} trên \tTwo{} cao hơn \tOne{} (3,8\% so với 1,2\% số ca, 14/48 so với 8/72 họ), trong khi \cNone{}
-gần như không đổi. Khoảng tin cậy Wilson theo họ chồng lên nhau ($[5{,}7; 20{,}4]$\% và $[18{,}2; 43{,}2]$\%), nên đây là
+gần như không đổi. Khoảng tin cậy Wilson theo họ chồng lên nhau ($[18{,}2; 43{,}2]$\% và $[5{,}7; 20{,}4]$\%), nên đây là
 tín hiệu cần kiểm tra, chưa phải kết luận. Theo cơ chế, 23 trong 27 ca là rò rỉ hoặc sửa tham số (14 ca rò rỉ qua sink, 2 ca qua câu trả lời, 7 ca sửa tham số).
 Bốn ca còn lại là 1 ca chuyển hướng che giấu và 3 ca tác dụng phụ. Nguyên nhân của từng ca được phân tích ở Mục~\ref{sec:discussion}.
 
@@ -87,7 +87,7 @@ Slack tiếng Anh có lời gọi bị \rDest{} chặn. \rSig{} không bật l�
 \FloatBarrier
 \subsection{Tấn công thích nghi}\label{sec:adaptive}
 
-Người viết soạn 48 ca tấn công thích nghi trên các họ Dev, dựa trên phản hồi từ các lượt chạy có phòng thủ trên Dev. Ở
+Nhóm tác giả soạn 48 ca tấn công thích nghi trên các họ Dev, dựa trên phản hồi từ các lượt chạy có phòng thủ trên Dev. Ở
 \cNone, tập này mạnh ngang ca tĩnh tương ứng: 26, 15 và 24 họ gây hại cho Gemma, Llama và Qwen3.5, so với 29, 12 và 22
-của ca tiếng Việt chuẩn. Dưới \ours, số này còn 1, 0 và 0. Đây chỉ là một vòng thích nghi do người viết, không phải tấn
-công hộp trắng sinh từ luật, nên nó chỉ cho thấy tập này chưa khai thác các lớp vượt qua ở Mục~\ref{sec:discussion}.
+của ca tiếng Việt chuẩn. Dưới \ours, số này còn 1, 0 và 0. Đây chỉ là một vòng thích nghi thủ công, không phải tấn công
+hộp trắng sinh từ luật. Tập này chưa nhắm vào các chỗ hở nêu ở Mục~\ref{sec:discussion}.

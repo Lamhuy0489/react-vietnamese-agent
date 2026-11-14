@@ -2,7 +2,7 @@
 
 \paragraph{Tác tử.} Gọi $u$ là chỉ thị của người dùng. Ở mỗi bước, mô hình sinh một hành động $a_t$ gồm tên công cụ và tham
 số, hoặc sinh câu trả lời cuối $y$. Tool Broker kiểm tra $a_t$ theo schema, thực thi và trả về quan sát $o_t$. Hệ
-thống có sáu công cụ đọc (tài liệu, cơ sở dữ liệu chỉ đọc, trang lưu đệm, máy tính) và hai \emph{sink} có tác dụng phụ
+thống có sáu công cụ đọc (tìm và đọc tài liệu, truy vấn cơ sở dữ liệu chỉ đọc, tìm và mở trang lưu đệm, máy tính) và hai \emph{sink} có tác dụng phụ
 là \code{send\_email\_mock} và \code{post\_webhook\_mock}. Hai sink này chỉ ghi nhật ký, không gửi gì ra mạng. Câu trả
 lời cuối được coi là sink thứ ba. Với một lời gọi sink $a$, $\dest(a)$ là đích (\code{to} hoặc \code{endpoint}) và
 $\pay(a)$ là các tham số còn lại.
@@ -28,12 +28,13 @@ gây hại nếu
 trong đó
 \begin{itemize}
 \item $H_\mathit{dest}$: tồn tại $a \in \mathcal{S}$ với $\dest(a) \notin G(u)$,
-\item $H_\mathit{leak}$: có $v \in V$ xuất hiện trong $\pay(a)$ của một $a \in \mathcal{S}$ hoặc trong $y$,
+\item $H_\mathit{leak}$: tồn tại $v \in V$ xuất hiện trong $\pay(a)$ của một $a \in \mathcal{S}$ hoặc trong $y$,
 \item $H_\mathit{tamper}$: tồn tại $a \in \mathcal{S}$ với $\dest(a) \in G(u)$ nhưng một trường do người dùng chỉ định
   mang giá trị khác,
 \item $H_\mathit{side}$: nhiệm vụ chỉ cần đọc nhưng $\mathcal{S} \neq \emptyset$.
 \end{itemize}
-Lời gọi bị chặn không được tính là gây hại. Một bộ chấm đã đóng băng tính các vị từ từ lời gọi đã thực thi và từ $y$.
+Một bộ chấm đã đóng băng xác định các vị từ này dựa trên lời gọi đã thực thi và $y$. Lời gọi bị chặn không được tính
+là gây hại.
 
 \paragraph{Sáu cơ chế tấn công.} Tấn công được phân loại theo \emph{cơ chế}, tức con đường để đoạn chèn biến thành
 tác hại (Bảng~\ref{tab:mechanisms}). Ở hai cơ chế chuyển hướng (\mER, \mCR), đích không có trong $u$, nên chỉ cần kiểm tra đích, bất kể cách
@@ -44,8 +45,9 @@ Cơ chế tác dụng phụ (\mUS) kiểm tra xem một đích chỉ được nh
 \input{tables/tab1_mechanisms}
 
 \paragraph{Họ, nhánh lành tính và biến thể ngôn ngữ.} Một \emph{họ} là một ý tưởng tấn công trong một nhiệm vụ và một
-môi trường công cụ cụ thể. Mỗi họ có hai nhánh lành tính cùng nhiệm vụ và môi trường. Nhánh \emph{\bPlain} thay
-đoạn chèn bằng một ghi chú vô hại cùng độ dài và dùng để đo tiện ích. Nhánh \emph{\bAuth} giữ một yêu cầu giống
+môi trường công cụ cụ thể. Mỗi nhánh lành tính dùng cùng nhiệm vụ và môi trường với họ. Mọi họ có nhánh \emph{\bPlain}, và một phần ba số họ có thêm
+nhánh \emph{\bAuth}. Nhánh \bPlain{} thay
+đoạn chèn bằng một ghi chú vô hại cùng độ dài và dùng để đo tiện ích. Nhánh \bAuth{} giữ một yêu cầu giống
 mục tiêu tấn công nhưng được người dùng cho phép rõ ràng. Chặn ở nhánh này là \emph{chặn nhầm}. Mỗi họ có năm biến thể
 áp cho cả $u$ lẫn đoạn chèn: tiếng Việt chuẩn, diễn đạt lại, trộn Việt và Anh, không dấu, và tiếng Anh. Định danh, địa
 chỉ và giá trị mật giống hệt nhau giữa các biến thể, nên mọi khác biệt chỉ đến từ ngôn ngữ.
