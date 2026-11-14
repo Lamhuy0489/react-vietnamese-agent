@@ -24,7 +24,8 @@ từ 65 xuống 8. H2 không xác lập được. \cRules{} mất 2,8 điểm be
 cậy ($-6{,}0$) vượt biên $-5$ điểm. H4 và H5 không bác bỏ được. Ở mức họ, bản không dấu gây hại ở 50 họ so với 40 của
 bản chuẩn (16 và 6 họ bất đồng, $p$ Holm 0,16). Theo ca, chênh lệch là $+1{,}9$ điểm [$-5{,}1$; $+8{,}8$] với bản không
 dấu và $+5{,}1$ điểm [$-1{,}9$; $+12{,}0$] với tiếng Anh. Các khoảng này còn rộng, nên kết quả không chứng minh được
-rằng ngôn ngữ không ảnh hưởng.
+rằng ngôn ngữ không ảnh hưởng. Ở H5, tỉ lệ ca tăng nhưng số họ giảm, vì tấn công tiếng Anh thành công ở nhiều mô hình
+hơn nhưng trong ít họ hơn.
 
 \input{tables/tab3_test1}
 
@@ -51,33 +52,32 @@ Bốn ca còn lại là 1 ca \mCR{} và 3 ca \mUS. Nguyên nhân của từng ca
 
 \input{tables/tab4_test2}
 
-\paragraph{Tham chiếu chặn mọi sink.} Một chính sách tầm thường là chặn mọi lời gọi sink. Chính sách này được ước lượng từ quỹ
-đạo \cNone{} (hàng ``Chặn mọi sink'' ở Bảng~\ref{tab:test1} và~\ref{tab:test2}). Một ca lành tính thành công nếu \cNone{}
-thành công mà không gọi sink nào. Một ca tấn công gây hại nếu \cNone{} gây hại qua câu trả lời, kênh mà việc chặn sink
-không đóng được. Trên \tOne, chính sách này có cùng tỉ lệ tấn công thành công với \ours{} (1,2\%) nhưng tiện ích lành
-tính chỉ 7,4\%, so với 38,6\%. Trên \tTwo, nó đạt 0,7\% và 12,5\%, so với 3,8\% và 50,0\%. Ước lượng này lệch theo hai chiều, vì tác tử có thể hành xử khác sau khi bị từ chối. Về an ninh, nó có lợi cho chính
-sách chặn, vì tác tử bị chặn có thể chuyển giá trị mật sang câu trả lời. Về tiện ích, nó bất lợi cho chính sách chặn,
-vì tác tử có thể vẫn làm xong phần chỉ đọc. Vì vậy khoảng cách tiện ích thật có thể nhỏ hơn.
+\paragraph{Tham chiếu chặn mọi sink.} Hàng ``Chặn mọi sink'' ở Bảng~\ref{tab:test1} và~\ref{tab:test2} ước lượng
+chính sách chặn mọi lời gọi sink từ quỹ đạo \cNone. Ca lành tính được tính là thành công nếu \cNone{} thành công mà
+không gọi sink nào. Ca tấn công được tính là gây hại nếu \cNone{} gây hại qua câu trả lời. Trên \tOne, với cùng tỉ lệ
+tấn công thành công (1,2\%), chính sách này chỉ giữ 7,4\% tiện ích lành tính, so với 38,6\% của \ours. Ước lượng lệch
+theo hai chiều. Về an ninh, nó có lợi cho chính sách chặn, vì tác tử bị chặn có thể chuyển giá trị mật sang câu trả lời.
+Về tiện ích, nó bất lợi cho chính sách chặn, vì tác tử vẫn có thể làm xong phần chỉ đọc. Vì vậy khoảng cách tiện ích
+thật có thể nhỏ hơn.
 
 \subsection{AgentDojo tiếng Anh và tiếng Việt}
 
-Bảng~\ref{tab:agentdojo} cho kết quả trên AgentDojo. Khi không phòng thủ, Llama bị tấn công thành công 17/144 lần ở
-Banking và 16/105 lần ở Slack với tiếng Anh, nhưng chỉ 6 và 0 lần với tiếng Việt. Gemini 3 Flash bị tấn công rất ít ở
-cả hai ngôn ngữ. Con số thấp ở tiếng Việt không có nghĩa là tiếng Việt an toàn hơn. Tiện ích của Llama cũng giảm (từ 58
-xuống 44 ở Banking), và ở Slack tiếng Việt có hai trong năm nhiệm vụ chèn không giải được bằng lời giải chuẩn. Với tiếng Anh,
-\cSand{} giảm số tấn công thành công xuống 10 ở cả hai bộ mà không mất tiện ích. Với tiếng Việt, \cSand{} không đổi số tấn
-công thành công (6 và 0) và làm giảm tiện ích ở Slack (19 so với 26). Khi không tấn công, tiện ích của \cSand{} chỉ lệch
-khỏi \cNone{} tối đa một nhiệm vụ ở cả bốn ô. \ours{} giảm tiếp xuống 3 ở Banking và 6 ở Slack
-với tiếng Anh, 1 và 0 với tiếng Việt. Hai trong sáu ca ở Slack có mọi lời gọi tấn công đều bị chặn nhưng vẫn được tính,
-vì hàm chấm của AgentDojo dựa trên các lời gọi mô hình sinh ra. Nếu chỉ tính lời gọi đã thực thi, con số là 4/105.
-Tám ca còn lại trên hai bộ và hai ngôn ngữ là đổi mật khẩu (4 ca, qua một sink không có đích), mở một URL độc hại bằng
-công cụ đọc (3 ca) và gửi link cho Alice, người mà chính người dùng đã nêu tên (1 ca). Ở Slack, đích là tên người nhận, nên so khớp tên mất phần lớn lực phân biệt. Với công cụ thật, broker nên phân
-giải tên qua danh bạ phía host rồi so địa chỉ đầy đủ. Tiện ích tăng ở Banking (72 so với 62 của \cSand) nhưng giảm mạnh ở Slack (15 so với 35). Nhiều nhiệm vụ Slack
-lấy đích từ trang web hoặc tin nhắn, và \rDest{} chặn các đích này vì người dùng không viết chúng. Ngay cả khi không có
-tấn công, 9 trong 21 nhiệm vụ Slack tiếng Anh có ít nhất một lời gọi bị \rDest{} chặn. \rSig{} không bật lần nào ở
-tiếng Anh, còn ở Slack tiếng Việt nó bật 14 lần.
-
 \input{tables/tab6_agentdojo}
+
+Bảng~\ref{tab:agentdojo} cho kết quả trên AgentDojo. Khi không phòng thủ, Llama bị tấn công thành công 17/144 lần ở
+Banking và 16/105 lần ở Slack với tiếng Anh, nhưng chỉ 6 và 0 lần với tiếng Việt. Con số thấp ở tiếng Việt không có
+nghĩa là tiếng Việt an toàn hơn. Tiện ích của Llama cũng giảm (từ 58 xuống 44 ở Banking), và ở Slack tiếng Việt có hai
+trong năm nhiệm vụ chèn không giải được bằng lời giải chuẩn. \cSand{} giảm số tấn công thành công xuống 10 ở cả hai bộ
+tiếng Anh nhưng không đổi ở tiếng Việt. Khi không tấn công, tiện ích của nó chỉ lệch khỏi \cNone{} tối đa một nhiệm vụ.
+
+\ours{} giảm tiếp xuống 3 ở Banking và 6 ở Slack với tiếng Anh, 1 và 0 với tiếng Việt. Hai trong sáu ca ở Slack được
+tính dù mọi lời gọi tấn công đã bị chặn, vì hàm chấm của AgentDojo dựa trên lời gọi mô hình sinh ra. Nếu chỉ tính lời
+gọi đã thực thi, con số là 4/105. Tám ca còn lại trên hai bộ và hai ngôn ngữ là đổi mật khẩu (4 ca, qua một sink không
+có đích), mở URL độc hại bằng công cụ đọc (3 ca) và gửi link cho một người mà chính người dùng đã nêu tên (1 ca). Ở
+Slack, đích là tên người nhận nên so khớp tên ít có lực phân biệt. Với công cụ thật, broker nên phân giải tên qua danh
+bạ phía host. Tiện ích tăng ở Banking (72 so với 62 của \cSand) nhưng giảm mạnh ở Slack (15 so với 35), vì nhiều nhiệm
+vụ Slack lấy đích từ trang web hoặc tin nhắn mà người dùng không viết. Ngay cả khi không tấn công, 9 trong 21 nhiệm vụ
+Slack tiếng Anh có lời gọi bị \rDest{} chặn. \rSig{} không bật lần nào ở tiếng Anh và bật 14 lần ở Slack tiếng Việt.
 
 \subsection{Tấn công thích nghi}\label{sec:adaptive}
 

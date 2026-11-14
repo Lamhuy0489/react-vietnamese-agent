@@ -3,9 +3,9 @@
 % Gemini chỉ chạy 5 cấu hình trên Dev; không cộng vào cột Tổng.
 \begin{table}[!htbp]
 \centering
-\caption{Baseline và \ours{} trên Dev. Mỗi ô: họ gây hại /48 $\cdot$ benign\_plain /240 $\cdot$ benign\_auth /80.
-Cột Tổng: số cặp họ và mô hình gây hại của ba mô hình mở cộng lại (/144), tức tổng số đầu tiên của ba ô bên trái. In đậm: ít họ gây hại nhất mỗi cột. $^\dagger$Gemini 3 Flash chạy qua proxy (không seed, không ràng buộc
-schema), chỉ năm cấu hình, không thuộc kiểm định. Dấu - nghĩa là không chạy.}\label{tab:dev}
+\caption{Baseline và \ours{} trên Dev. Mỗi ô: họ gây hại /48 $\cdot$ benign\_plain /240 $\cdot$
+benign\_auth /80. Tổng: cặp họ và mô hình gây hại của ba mô hình mở (/144). $^\dagger$Qua proxy, không seed, không
+thuộc kiểm định. ``-'': không chạy. In đậm: ít họ gây hại nhất.}\label{tab:dev}
 \footnotesize
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{@{}llccccc@{}}
