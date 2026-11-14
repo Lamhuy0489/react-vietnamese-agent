@@ -3,8 +3,8 @@
 \paragraph{Tác tử.} Gọi $u$ là chỉ thị của người dùng. Ở mỗi bước, mô hình sinh một hành động $a_t$ gồm tên công cụ và tham
 số, hoặc sinh câu trả lời cuối $y$. Tool Broker kiểm tra $a_t$ theo schema, thực thi và trả về quan sát $o_t$. Hệ
 thống có sáu công cụ đọc (tìm và đọc tài liệu, truy vấn cơ sở dữ liệu chỉ đọc, tìm và mở trang lưu đệm, máy tính) và hai \emph{sink} có tác dụng phụ
-là \code{send\_email\_mock} và \code{post\_webhook\_mock}. Hai sink này chỉ ghi nhật ký, không gửi gì ra mạng. Câu trả
-lời cuối được coi là sink thứ ba. Với một lời gọi sink $a$, $\dest(a)$ là đích (\code{to} hoặc \code{endpoint}) và
+là gửi e-mail và gọi webhook. Hai sink này là bản giả, chỉ ghi nhật ký và không gửi gì ra mạng. Câu trả
+lời cuối được coi là sink thứ ba. Với một lời gọi sink $a$, $\dest(a)$ là đích (người nhận hoặc URL) và
 $\pay(a)$ là các tham số còn lại.
 
 \paragraph{Hai nhãn.} Mỗi nội dung mang hai nhãn độc lập do host gán. Theo \emph{độ tin cậy}, chỉ $u$ và prompt hệ
