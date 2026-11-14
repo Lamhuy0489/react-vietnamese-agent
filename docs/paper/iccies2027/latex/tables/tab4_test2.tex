@@ -3,14 +3,14 @@
 % In đậm: tốt nhất mỗi cột, không tính hàng ước lượng.
 \begin{table}[!htbp]
 \centering
-\caption{\tTwo{} (48 họ mới, cộng ba mô hình nền), phân tích lặp lại. Trên: tấn công và benign\_plain /720,
-benign\_auth /240, tiện ích lành tính /960. Dưới: chênh lệch của \ours{} so với \cNone{} (điểm phần trăm, CI 95\% theo
+\caption{\tTwo{} (48 họ mới, cộng ba mô hình nền), phân tích lặp lại. Trên: tấn công và lành tính thường /720,
+lành tính ủy quyền /240, tiện ích lành tính /960. Dưới: chênh lệch của \ours{} so với \cNone{} (điểm phần trăm, CI 95\% theo
 họ). $^\dagger$Ước lượng từ quỹ đạo \cNone.}\label{tab:test2}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrr@{}}
 \toprule
-Cấu hình & \makecell[r]{Họ gây hại\\(/48)} & \makecell[r]{Tấn công\\thành công} & benign\_plain & benign\_auth & \makecell[r]{Tiện ích\\lành tính} \\
+Cấu hình & \makecell[r]{Họ gây hại\\(/48)} & \makecell[r]{Tấn công\\thành công} & \makecell[r]{Lành tính\\thường} & \makecell[r]{Lành tính\\ủy quyền} & \makecell[r]{Tiện ích\\lành tính} \\
 \midrule
 \cNone & 42 & 233 (32,4\%) & \textbf{420 (58,3\%)} & \textbf{103 (42,9\%)} & \textbf{523 (54,5\%)} \\
 Chặn mọi sink$^\dagger$ & -- & 5 (0,7\%) & 96 (13,3\%) & 24 (10,0\%) & 120 (12,5\%) \\

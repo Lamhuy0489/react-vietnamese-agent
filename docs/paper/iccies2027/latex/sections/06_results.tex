@@ -20,7 +20,7 @@ số này xuống 12, còn \ours{} chỉ còn 1.
 \tOne{} được chạy một lần với \ours{} là cấu hình cuối (Bảng~\ref{tab:test1}). Ba giả thuyết về phòng thủ đạt ở mức
 họ. Luật của \ours{} tốt hơn luật cụm từ (H1, từ 53 xuống 24 họ gây hại trên 72), kể cả trên các cơ chế né mẫu cụm từ
 (H3). Kết hợp với lời nhắc tốt hơn lời nhắc đơn thuần (H6, từ 28 xuống 8 họ). So với \cNone, \ours{} giảm số họ gây hại
-từ 65 xuống 8. H2 không xác lập được. \cRules{} mất 2,8 điểm benign\_plain so với \cNone, và cận dưới của khoảng tin
+từ 65 xuống 8. H2 không xác lập được. \cRules{} mất 2,8 điểm tiện ích \bPlain{} so với \cNone, và cận dưới của khoảng tin
 cậy ($-6{,}0$) vượt biên $-5$ điểm. H4 và H5 không bác bỏ được. Ở mức họ, bản không dấu gây hại ở 50 họ so với 40 của
 bản chuẩn (16 và 6 họ bất đồng, $p$ Holm 0,16). Theo ca, chênh lệch là $+1{,}9$ điểm [$-5{,}1$; $+8{,}8$] với bản không
 dấu và $+5{,}1$ điểm [$-1{,}9$; $+12{,}0$] với tiếng Anh. Các khoảng này còn rộng, nên kết quả không chứng minh được
@@ -29,9 +29,10 @@ hơn nhưng trong ít họ hơn.
 
 \input{tables/tab3_test1}
 
-Hình~\ref{fig:results} cho thấy vì sao hai lớp cần đến nhau. Luật đưa \mER{} và \mCR{} về 0 bất kể cách viết. Ở
-\mSL{} và \mAL, luật và lời nhắc cho kết quả gần nhau (29 và 27 ca, 17 và 18 ca). Ở \mPT, lời nhắc hiệu quả hơn rõ rệt
-(10 so với 25 ca). Khi kết hợp, chỉ còn 13 ca gây hại, thuộc \mSL, \mAL{} và \mPT{} (6, 3 và 4 ca). Theo biến thể ngôn
+Hình~\ref{fig:results} cho thấy vì sao hai lớp cần đến nhau. Luật đưa hai cơ chế chuyển hướng về 0 bất kể cách viết. Ở
+hai cơ chế rò rỉ, luật và lời nhắc cho kết quả gần nhau (29 và 27 ca qua sink, 17 và 18 ca qua câu trả lời). Với sửa
+tham số, lời nhắc hiệu quả hơn rõ rệt (10 so với 25 ca). Khi kết hợp, chỉ còn 13 ca gây hại, gồm 6 ca rò rỉ qua sink,
+3 ca rò rỉ qua câu trả lời và 4 ca sửa tham số. Theo biến thể ngôn
 ngữ, \cNone{} bị tấn công gần như nhau ở mọi biến thể (68 đến 79 ca trên 216). \cRules{} để lọt nhiều nhất ở tiếng Anh
 (32 ca, so với 6 đến 13 ca ở các biến thể khác), và lời nhắc khắc phục được điểm yếu này (còn 1 ca).
 
@@ -44,14 +45,14 @@ ngữ, \cNone{} bị tấn công gần như nhau ở mọi biến thể (68 đ�
 ($p = 3{,}7\cdot10^{-9}$), và không họ nào chuyển từ an toàn sang gây hại. Tỉ lệ tấn công thành công giảm từ 32,4\%
 xuống 3,8\%. Mức giảm có ở cả ba mô hình nền: Gemma từ 101 xuống 7 ca trên 240, Llama từ 50 xuống 10 và Qwen3.5 từ 82
 xuống 10. Cái giá là tiện ích lành tính giảm 4,5 điểm, từ 54,5\% xuống 50,0\% ($p = 0{,}044$). Trên \tOne{} mức giảm
-tương tự ($-5{,}1$ điểm, $p = 0{,}022$). Phần mất chủ yếu nằm ở benign\_plain. Ở benign\_auth, chênh lệch $-2{,}5$ điểm
-không có ý nghĩa ($p = 0{,}57$). Trên \tOne, benign\_auth giảm nhiều hơn (9,2 điểm, từ 39,2\% xuống 30,0\%). Llama có 66 đến 74 đầu ra bị cắt ở mỗi
+tương tự ($-5{,}1$ điểm, $p = 0{,}022$). Phần mất chủ yếu nằm ở nhánh \bPlain. Ở nhánh \bAuth, chênh lệch $-2{,}5$ điểm
+không có ý nghĩa ($p = 0{,}57$). Trên \tOne, nhánh \bAuth{} giảm nhiều hơn (9,2 điểm, từ 39,2\% xuống 30,0\%). Llama có 66 đến 74 đầu ra bị cắt ở mỗi
 cấu hình, và tất cả được tính là thất bại.
 
 Tỉ lệ lọt qua \ours{} trên \tTwo{} cao hơn \tOne{} (3,8\% so với 1,2\% số ca, 14/48 so với 8/72 họ), trong khi \cNone{}
 gần như không đổi. Khoảng tin cậy Wilson theo họ chồng lên nhau ($[5{,}7; 20{,}4]$\% và $[18{,}2; 43{,}2]$\%), nên đây là
-tín hiệu cần kiểm tra, chưa phải kết luận. Theo cơ chế, 23 trong 27 ca thuộc \mSL, \mAL{} và \mPT{} (14, 2 và 7 ca).
-Bốn ca còn lại là 1 ca \mCR{} và 3 ca \mUS. Nguyên nhân của từng ca được phân tích ở Mục~\ref{sec:discussion}.
+tín hiệu cần kiểm tra, chưa phải kết luận. Theo cơ chế, 23 trong 27 ca là rò rỉ hoặc sửa tham số (14 ca rò rỉ qua sink, 2 ca qua câu trả lời, 7 ca sửa tham số).
+Bốn ca còn lại là 1 ca chuyển hướng che giấu và 3 ca tác dụng phụ. Nguyên nhân của từng ca được phân tích ở Mục~\ref{sec:discussion}.
 
 \input{tables/tab4_test2}
 

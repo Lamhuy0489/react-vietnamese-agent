@@ -1,8 +1,8 @@
 \section{Benchmark và giao thức}\label{sec:protocol}
 
 \paragraph{VN-AgentInject.} Benchmark hiện thực mô hình ở Mục~\ref{sec:threat} thành các \emph{ca kiểm thử} chạy
-được. Mọi dữ liệu đều là dữ liệu tổng hợp. Mỗi họ sinh một ca tấn công và một ca benign\_plain cho mỗi biến thể ngôn
-ngữ, và một phần ba số họ có thêm ca benign\_auth. Benchmark có ba tập rời nhau, mỗi tập cân bằng theo cơ chế. Tập
+được. Mọi dữ liệu đều là dữ liệu tổng hợp. Mỗi họ sinh một ca tấn công và một ca \bPlain{} cho mỗi biến thể ngôn
+ngữ, và một phần ba số họ có thêm ca \bAuth. Benchmark có ba tập rời nhau, mỗi tập cân bằng theo cơ chế. Tập
 \textbf{Dev} (48 họ, 560 ca) được dùng cho mọi lựa chọn thiết kế. Tập \textbf{\tOne} (72 họ, 840 ca) là tập niêm phong
 thứ nhất. Tập \textbf{\tTwo} (48 họ mới, 560 ca) được viết sau khi \tOne{} đã chạy. Nó mới đối với \ours{} đã đóng
 băng, nhưng người soạn đã biết kết quả \tOne{} (Mục~\ref{sec:discussion}). Một họ cùng mọi biến thể và nhánh lành tính của nó chỉ nằm trong một tập.

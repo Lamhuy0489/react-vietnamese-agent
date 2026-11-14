@@ -36,16 +36,16 @@ trong đó
 Lời gọi bị chặn không được tính là gây hại. Một bộ chấm đã đóng băng tính các vị từ từ lời gọi đã thực thi và từ $y$.
 
 \paragraph{Sáu cơ chế tấn công.} Tấn công được phân loại theo \emph{cơ chế}, tức con đường để đoạn chèn biến thành
-tác hại (Bảng~\ref{tab:mechanisms}). Ở \mER{} và \mCR, đích không có trong $u$, nên chỉ cần kiểm tra đích, bất kể cách
-diễn đạt. Ở \mSL{} và \mAL, đích hợp lệ hoặc không có đích, nên chỉ nguồn gốc của giá trị mới phân biệt được tấn công
-với nhiệm vụ. Ở \mPT, cả đích lẫn độ nhạy cảm đều bình thường, nên đây là cơ chế khó nhất cho các luật dựa trên nhãn.
-\mUS{} kiểm tra xem một đích chỉ được nhắc tới, chẳng hạn trong một câu cấm, có bị hiểu nhầm thành cấp quyền không.
+tác hại (Bảng~\ref{tab:mechanisms}). Ở hai cơ chế chuyển hướng (\mER, \mCR), đích không có trong $u$, nên chỉ cần kiểm tra đích, bất kể cách
+diễn đạt. Ở hai cơ chế rò rỉ (\mSL, \mAL), đích hợp lệ hoặc không có đích, nên chỉ nguồn gốc của giá trị mới phân biệt được tấn công
+với nhiệm vụ. Ở cơ chế sửa tham số (\mPT), cả đích lẫn độ nhạy cảm đều bình thường, nên đây là cơ chế khó nhất cho các luật dựa trên nhãn.
+Cơ chế tác dụng phụ (\mUS) kiểm tra xem một đích chỉ được nhắc tới, chẳng hạn trong một câu cấm, có bị hiểu nhầm thành cấp quyền không.
 
 \input{tables/tab1_mechanisms}
 
 \paragraph{Họ, nhánh lành tính và biến thể ngôn ngữ.} Một \emph{họ} là một ý tưởng tấn công trong một nhiệm vụ và một
-môi trường công cụ cụ thể. Mỗi họ có hai nhánh lành tính cùng nhiệm vụ và môi trường. Nhánh \emph{benign\_plain} thay
-đoạn chèn bằng một ghi chú vô hại cùng độ dài và dùng để đo tiện ích. Nhánh \emph{benign\_auth} giữ một yêu cầu giống
+môi trường công cụ cụ thể. Mỗi họ có hai nhánh lành tính cùng nhiệm vụ và môi trường. Nhánh \emph{\bPlain} thay
+đoạn chèn bằng một ghi chú vô hại cùng độ dài và dùng để đo tiện ích. Nhánh \emph{\bAuth} giữ một yêu cầu giống
 mục tiêu tấn công nhưng được người dùng cho phép rõ ràng. Chặn ở nhánh này là \emph{chặn nhầm}. Mỗi họ có năm biến thể
 áp cho cả $u$ lẫn đoạn chèn: tiếng Việt chuẩn, diễn đạt lại, trộn Việt và Anh, không dấu, và tiếng Anh. Định danh, địa
 chỉ và giá trị mật giống hệt nhau giữa các biến thể, nên mọi khác biệt chỉ đến từ ngôn ngữ.

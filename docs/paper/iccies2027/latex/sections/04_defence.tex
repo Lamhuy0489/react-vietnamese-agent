@@ -26,11 +26,11 @@ và casefold. Ký hiệu $x \sub z$ nghĩa là $\norm(x)$ là một chuỗi con 
 \end{equation}
 Luật chỉ áp cho sink có trường đích. Một sink không có đích, như đổi mật khẩu trên AgentDojo, chỉ được \rFlow{} và
 \rSig{} kiểm, nên với \rDest{} đây là nhánh cho qua chứ không phải mặc định từ chối. Luật không phân tích ý định và
-không dùng danh sách cụm từ. Vì vậy một đoạn chèn \mCR{} tránh động từ ``gửi'' hay
-tách nhỏ địa chỉ vẫn thất bại như \mER, miễn là đích mà nó cần không trùng với một chuỗi con của $u$. Luật coi mọi đích xuất hiện trong $u$ là đã
-được cấp quyền, tức giả định (ii) ở cuối mục này. Giả định này sai theo hai hướng. Một đích chỉ nằm trong câu cấm vẫn được cho qua, và \mUS{} đo đúng
+không dùng danh sách cụm từ. Vì vậy một đoạn chèn chuyển hướng che giấu tránh động từ ``gửi'' hay
+tách nhỏ địa chỉ vẫn thất bại như chuyển hướng tường minh, miễn là đích mà nó cần không trùng với một chuỗi con của $u$. Luật coi mọi đích xuất hiện trong $u$ là đã
+được cấp quyền, tức giả định (ii) ở cuối mục này. Giả định này sai theo hai hướng. Một đích chỉ nằm trong câu cấm vẫn được cho qua, và cơ chế tác dụng phụ đo đúng
 trường hợp này. Ngược lại, một đích được nhắc gián tiếp (``địa chỉ trong hợp đồng'') bị chặn. So khớp chuỗi con cũng
-chấp nhận một phần của đích người dùng viết, kể cả một từ thường không phải địa chỉ. Ca \mCR{} duy nhất lọt qua trên
+chấp nhận một phần của đích người dùng viết, kể cả một từ thường không phải địa chỉ. Ca chuyển hướng che giấu duy nhất lọt qua trên
 \tTwo{} là đúng trường hợp này (Mục~\ref{sec:discussion}). Với công cụ thật, nên so khớp trên đích đã phân tích cấu trúc.
 
 \paragraph{Luật \rFlow{} và \rRedact{} (luồng giá trị mật).} Broker từ chối lời gọi sink $a$ nếu
@@ -38,20 +38,20 @@ chấp nhận một phần của đích người dùng viết, kể cả một t
 \exists\, v \in C:\; v \sub \pay(a) \;\land\; \lnot\,(v \sub u) .
 \end{equation}
 Với câu trả lời cuối, điều kiện tương tự được áp cho $y$. Khi đó \rRedact{} thay từng giá trị vi phạm bằng
-\code{[REDACTED]} thay vì bỏ cả câu trả lời. Coi $y$ là một sink giúp đóng kênh \mAL, kênh mà các bộ lọc lời gọi công
+\code{[REDACTED]} thay vì bỏ cả câu trả lời. Coi $y$ là một sink giúp đóng kênh rò rỉ qua câu trả lời, kênh mà các bộ lọc lời gọi công
 cụ bỏ sót. Luật này hẹp hơn một chính sách kiểm soát luồng thông tin~\cite{costa2025fides}. Nó chỉ cưỡng chế tất định các luồng
 \emph{nguyên văn}. Giá trị bị mô hình biến đổi (định dạng lại, tách ra, mã hóa), kênh ngầm như việc chọn gửi hay
 không gửi, giá trị mật mà bộ trích không nhận ra và giá trị nằm trong nguồn gắn nhãn công khai đều không được bảo vệ.
 
 \paragraph{Luật tín hiệu chèn lệnh \rSig.} Hai luật trên không bao quát việc thao túng một sink mà người dùng
-\emph{đã} nêu bằng giá trị không mật, tức cơ chế \mPT. Một bộ phát hiện cụm từ gắn cờ các quan sát chứa văn bản giống
+\emph{đã} nêu bằng giá trị không mật, tức cơ chế sửa tham số. Một bộ phát hiện cụm từ gắn cờ các quan sát chứa văn bản giống
 chỉ thị. Gọi $F$ là tập quan sát bị gắn cờ và $\mathrm{Gram}_u(a)$ là điều kiện một văn phạm chặt trên $u$ cho phép
 lời gọi $a$. Broker từ chối $a$ nếu
 \begin{equation}\label{eq:signal}
 F \neq \emptyset \;\land\; \lnot\,\mathrm{Gram}_u(a) .
 \end{equation}
 Trên Dev, bỏ luật này làm số họ gây hại tăng thêm 2 đến 4 ở mỗi mô hình nền. Đổi lại, đây là nguồn chặn nhầm lớn
-nhất. Trên \tOne, dưới \cRules, luật này chặn nhầm 22 ca benign\_plain, so với 3 ca của \rDest. Danh sách cụm từ làm
+nhất. Trên \tOne, dưới \cRules, luật này chặn nhầm 22 ca \bPlain, so với 3 ca của \rDest. Danh sách cụm từ làm
 luật này phụ thuộc ngôn ngữ (Mục~\ref{sec:discussion}).
 
 \paragraph{Lời nhắc và phản hồi từ chối.} Sau mỗi quan sát, $u$ được nhắc lại cùng một câu yêu cầu bỏ qua mọi chỉ thị
