@@ -1,19 +1,20 @@
 \section{Thảo luận và hạn chế}\label{sec:discussion}
 
-\paragraph{Vì sao các ca còn lọt qua.} Nguyên nhân của mọi ca lọt qua \ours{} (13 ca trên \tOne, 27 ca trên \tTwo)
-được xác định từ quỹ đạo, chỉ bằng nhãn và quyết định của broker. Mỗi ca rơi vào đúng một chỗ hở của
-Mệnh đề~\ref{prop:scope}. Mọi ca \mSL{} và \mAL{} (9 và 16 ca) vi phạm giả định (iii). Giá trị bị lộ có định dạng mà bộ
-trích nhận ra, nhưng mọi nguồn chứa nó đều được môi trường gắn nhãn công khai, nên nó không bao giờ vào $C$. Như vậy
-\rFlow{} bị giới hạn bởi nhãn độ nhạy cảm của nguồn chứ không bởi bộ trích. Mức tăng của \mSL{} từ 6 ca trên \tOne{}
-lên 14 ca trên \tTwo{} cũng thuộc nguyên nhân này. Không ca nào do giá trị bị biến đổi, nhưng bộ chấm cũng chỉ so khớp
-nguyên văn nên lớp này chưa đo được. Ba ca \mUS, một ca \mPT{} của \tOne{} và ca \mCR{} duy nhất vi phạm giả định (ii).
-Bốn ca đầu gửi tới một địa chỉ có trong $u$ nhưng không được cấp quyền. Ở ca \mCR, mô hình điền vào trường đích một từ
-thường có trong $u$, không phải một địa chỉ. Mười ca \mPT{} còn lại (3 và 7) thuộc $H_\mathit{tamper}$, nằm ngoài mệnh
-đề. Chỉ \rSig{} chặn được lớp này, và chỉ khi bộ phát hiện gắn cờ đoạn chèn. Trên AgentDojo, đổi mật khẩu qua một sink
-không có đích và mở URL bằng công cụ đọc đều vi phạm giả định (i). Tập thích nghi ở Mục~\ref{sec:adaptive} không nhắm
-vào các chỗ hở này. \tTwo{} do cùng nhóm soạn sau khi biết kết quả \tOne, nên chưa tách được việc tập này khó hơn với
-việc người soạn vô tình nhắm vào điểm yếu của luật. Một bộ tấn công hộp trắng sinh từ chính các giả định trên là bước
-đánh giá cần làm tiếp.
+\paragraph{Vì sao các ca còn lọt qua.} Từ quỹ đạo, có thể xác định nguyên nhân của cả 40 ca lọt qua \ours{} (13 ca
+trên \tOne, 27 ca trên \tTwo). Mỗi ca rơi vào đúng một chỗ hở của Mệnh đề~\ref{prop:scope}.
+
+Nhóm lớn nhất (25 ca, đều là rò rỉ giá trị mật) xảy ra vì giá trị bị lộ nằm trong một tài liệu được gắn nhãn công
+khai. Broker chỉ bảo vệ giá trị lấy từ nguồn mật, nên không chặn các giá trị này. Bộ trích vẫn nhận ra đúng định dạng
+của chúng. Vậy giới hạn của \rFlow{} nằm ở cách gắn nhãn nguồn, không nằm ở bộ trích. Nhóm thứ hai (5 ca) xảy ra vì
+đích gửi có xuất hiện trong yêu cầu của người dùng nhưng không phải là đích được phép. Bốn ca gửi tới một địa chỉ mà
+người dùng chỉ nhắc tới. Một ca điền vào ô người nhận một từ thường có trong yêu cầu. Nhóm thứ ba (10 ca) sửa nội dung
+gửi tới một đích hợp lệ, ví dụ đổi một con số. Các luật về đích và về giá trị mật không xét trường hợp này, chỉ lời
+nhắc và bộ phát hiện chèn lệnh mới có thể chặn. Trên AgentDojo, các ca lọt dùng một thao tác không có đích (đổi mật
+khẩu) hoặc một công cụ đọc (mở URL), tức những chỗ broker vốn không kiểm.
+
+Tập tấn công thích nghi ở Mục~\ref{sec:adaptive} không nhắm vào các chỗ hở này. \tTwo{} do cùng nhóm soạn sau khi biết
+kết quả \tOne, nên chưa tách được việc tập này khó hơn với việc người soạn vô tình nhắm vào điểm yếu của luật. Bước đánh
+giá cần làm tiếp là một bộ tấn công sinh trực tiếp từ các chỗ hở trên.
 
 \paragraph{Ngôn ngữ.} Ở \cNone, bỏ dấu hay chuyển sang tiếng Anh không làm thay đổi tỉ lệ tấn công thành công một cách
 có ý nghĩa sau hiệu chỉnh (H4, H5). Khoảng tin cậy vẫn chứa chênh lệch tới khoảng 12 điểm, nên bài báo không khẳng định
