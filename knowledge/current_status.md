@@ -1,5 +1,7 @@
 # Trạng thái hiện tại
 
+Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
+
 **15/11 18:40: Test-4 đã niêm phong và commit (`a1711a6`, seal `1f9b0070…`); đang chạy mốc trên Dev v4.1.**
 - Test-4 (48 họ tĩnh + 24 ca thích nghi) và hai phiếu nhãn do mã sinh từ spec, owner và Minh rà; bài ghi "sinh tự động
   từ spec, có người rà soát", không báo κ giữa người gắn nhãn (decision log 18:20). Đăng ký trước: H1 (v3 < v1 về ASR,

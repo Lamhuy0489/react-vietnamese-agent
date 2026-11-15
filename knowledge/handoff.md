@@ -5,6 +5,8 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 ## Đang làm
 
+Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
+
 **2026-11-15 18:40: ĐANG CHẠY mốc Dev v4.1 trên Kaggle (6 notebook), v3 bước 1 xong code (`1380ce1`).**
 - Chạy: A0, D2P2 (v1), P2 (Sandwich), PRG (Progent*) × gemma4_12b, llama31_8b, qwen35_9b trên `release_dev4_1`
   (1.960 ca mỗi cấu hình). Notebook và tài khoản: sổ Kaggle mục 15/11 18:36.
