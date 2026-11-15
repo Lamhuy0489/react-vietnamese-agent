@@ -3924,3 +3924,25 @@ Chính tả Anh-Anh trong bản tiếng Anh (defence, authorisation). Running he
   có code v3. Claude chỉ làm hạ tầng và niêm phong.
 - Còn mở: tên phương pháp mới.
 
+## 2026-11-15 16:30 — Giao thức v3: gộp Test cũ vào Dev, Test-4 là tập kiểm định duy nhất
+
+Owner duyệt sau khi rà tính học thuật (dùng lại holdout làm khớp quá mức: Dwork et al., Science 2015; dựng tập test mới:
+Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al. 2019, Tramèr et al., NeurIPS 2020).
+
+- **Dev v4** = Dev v3 (48 họ, `D3_*`) + Test v3 / "Test-I" (72 họ, `T3_*`) + Test-3 / "Test-II" (48 họ, `T4_*`) =
+  168 họ, 1.960 fixture. Thư mục mới `data/adversarial/release_dev4/`, dựng bằng `scripts/build_dev_pool_v4.py`. Các
+  release cũ, `final_config_v1..v4` và runner/evaluator đã ghim không sửa. Trường `split` của mọi dòng là `dev`; nguồn
+  gốc từng họ nằm trong `manifest.json`.
+- **Dev-train / Dev-val** chia theo họ, phân tầng theo cơ chế (7 họ mỗi cơ chế vào Dev-val, 42 họ), thứ tự theo
+  sha256(salt + family_id). Chỉ chọn cấu hình v3 trên Dev-val. Dev-train dùng để phân tích và thiết kế.
+- **Sửa Dev**: được, nhưng chỉ theo quy tắc gắn nhãn viết trước. Owner và Minh gắn nhãn độc lập và báo Cohen's κ. Mỗi
+  sửa đổi ghi errata (họ, trường, lý do). Áp cùng quy tắc cho Test-4. Sửa xong thì chạy lại mốc A0 và v1 trên Dev v4.
+- **Test-4** (48 họ, owner và Minh soạn, mã họ `T5_*`) là tập kiểm định duy nhất. Niêm phong trước khi có code v3.
+  Kiểm tự động: Jaccard 4-gram ≤ 0,2 so với mọi họ Dev v4. **Giả thuyết chính chỉ trên phần tĩnh.** Nhóm thích nghi
+  nhắm vào v1 được báo riêng, vì nó thiên vị v3. Sau khi đóng băng v3: một vòng thích nghi nhắm vào v3 trên họ Dev-val,
+  báo riêng.
+- Trước khi niêm phong Test-4: ước lượng lực thống kê trên Dev (cỡ 48 họ có đủ không), đăng ký trước giả thuyết, cấu
+  hình, chỉ số và phép thử (McNemar mức họ, Holm).
+- Kết quả cũ của v1 trên Test-I/II giữ nguyên, nêu như nghiên cứu trước. v1 (đã đóng băng) và v3 chạy cùng nhau trên
+  Test-4.
+

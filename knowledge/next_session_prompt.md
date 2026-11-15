@@ -20,7 +20,10 @@ Việc của phiên này:
    owner+Minh soạn. Còn hỏi: tên phương pháp, hạn tạp chí, tiến độ soạn Test-4.
 2. Việc Claude làm được ngay, không đợi Test-4: thêm log token và thời gian vào runner (file mới, có test); soạn mô hình
    hình thức và mệnh đề; kiểm CapLite là bài thật trước khi trích.
-3. KHÔNG viết code v3 trước khi Test-4 được niêm phong (hash trong decision log). Không sửa v1, Test cũ, số liệu đã có.
+3. Dev v4 đã dựng (`data/adversarial/release_dev4/`, 168 họ, Dev-val 42; decision log 16:30). Việc kế của Claude:
+   runner và evaluator mới đọc release_dev4 (không sửa run_v3_api_v1.py hay evaluate_v3_v1.py, vì đã ghim), có log
+   token và thời gian; chạy lại mốc A0 và v1 trên Dev v4 (Kaggle); ước lượng lực thống kê cho Test-4.
+4. KHÔNG viết code v3 trước khi Test-4 được niêm phong (hash trong decision log). Không sửa v1, Test cũ, số liệu đã có.
 
 Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng, số đếm và biên soạn.
 ```

@@ -69,20 +69,24 @@ Bảng này chỉ chỉ ra **chỗ cần sửa**. Nó không được dùng làm
 - Có một bảng tách **được chứng minh** (dưới giả định) với **chỉ kiểm thực nghiệm** (độ phủ bộ dò, lời nhắc, R-Signal).
 - Tùy chọn: kiểm mô hình chuyển trạng thái nhỏ bằng property-based test (hypothesis) trên broker thật.
 
-## 5. Giao thức đánh giá (thứ tự là một phần của giao thức)
+## 5. Giao thức đánh giá (thứ tự là một phần của giao thức; decision log 2026-11-15 16:30)
 
-1. Owner duyệt tài liệu này.
-2. **Test-4 được soạn, rà và niêm phong trước khi có code v3.** Owner và Minh soạn, Claude không đọc nội dung. Test-4 gồm:
-   - (a) các họ tĩnh mới theo đúng khung Test-II;
-   - (b) một nhóm tấn công thích nghi có biết luật **v1**, nhắm vào các lỗ hổng ở mục 2.
-   Hash được ghi vào decision log.
-3. Viết và tinh chỉnh v3 **chỉ trên Dev**, rồi đóng băng ở `configs/final/final_config_v3.json`.
-4. Chạy Test-4 một lần với các cấu hình đăng ký trước. Chỉ chạy lại khi lỗi hạ tầng. Giả thuyết được đăng ký trước khi
-   chạy, ví dụ v3 so với v1 về số họ gây hại, và mức tiện ích không kém hơn quá $-5$ điểm.
-5. Sau khi đóng băng: một vòng tấn công thích nghi có biết luật **v3**, trên họ Dev. Kết quả báo riêng, không gộp vào
-   kiểm định.
-6. Chỉ được phát lại offline 40 ca lọt cũ của Test-I/II dưới v3 như một **chẩn đoán hậu kiểm** có ghi nhãn. Không dùng
-   làm kết quả chính, vì các tập này đã được dùng để tìm lỗ hổng.
+0. **Dev v4** = Dev v3 + Test-I + Test-II = 168 họ, 1.960 fixture (`data/adversarial/release_dev4/`, dựng bằng
+   `scripts/build_dev_pool_v4.py`, đã niêm phong). Dev-val có 42 họ (7 mỗi cơ chế, xem `manifest.json`), phần còn lại là
+   Dev-train. Chỉ chọn cấu hình trên Dev-val. Sửa Dev theo quy tắc gắn nhãn viết trước, hai người gắn độc lập (Cohen's κ),
+   có errata. Mỗi lần sửa tạo một bản mới, không ghi đè bản đã niêm phong. Sau đó chạy lại mốc A0 và v1 trên Dev v4.
+1. Owner duyệt tài liệu này (đã duyệt 15/11 15:45).
+2. **Test-4 được soạn, rà và niêm phong trước khi có code v3.** Gồm 48 họ, mã `T5_*`, do owner và Minh soạn. Claude không
+   đọc nội dung.
+   - Phần (a) gồm các họ tĩnh theo khung Test-II. **Giả thuyết chính chỉ dựa trên phần này.**
+   - Phần (b) là nhóm thích nghi nhắm vào v1. Phần này được báo riêng, vì nó thiên vị v3.
+   - Kiểm Jaccard 4-gram ≤ 0,2 so với mọi họ Dev v4.
+   - Trước khi niêm phong: ước lượng lực thống kê trên Dev, đăng ký trước giả thuyết, cấu hình, chỉ số và phép thử
+     (McNemar mức họ, Holm).
+3. Viết và tinh chỉnh v3 **chỉ trên Dev v4**, rồi đóng băng ở `configs/final/final_config_v5.json`.
+4. Chạy Test-4 một lần với v1 (đã đóng băng), v3 và các baseline. Chỉ chạy lại khi lỗi hạ tầng.
+5. Sau khi đóng băng: một vòng tấn công thích nghi nhắm vào **v3**, trên họ Dev-val. Kết quả báo riêng.
+6. Kết quả cũ của v1 trên Test-I và Test-II giữ nguyên, nêu như nghiên cứu trước.
 
 Phạm vi chạy và chỉ số:
 

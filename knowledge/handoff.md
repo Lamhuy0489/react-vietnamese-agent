@@ -5,6 +5,10 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 ## Đang làm
 
+**2026-11-15 16:45: DEV V4 ĐÃ DỰNG (decision log 16:30).** `data/adversarial/release_dev4/` = 168 họ (Dev + Test-I +
+Test-II), Dev-val 42 họ, niêm phong. Test-4 (48 họ `T5_*`) là tập kiểm định duy nhất; giả thuyết chính chỉ trên phần
+tĩnh. Runner/evaluator v3 đã ghim (final_config_v4) nên chưa chạy được split dev4: cần runner/evaluator mới (file mới).
+
 **2026-11-15 15:30: HẠN LÙI, MỞ RỘNG THEO REVIEW HUY (decision log 15:30).** Bản thiết kế nháp
 `docs/project/brokerguard_v3_extension_design.md`. Việc kế:
 1. Owner đã duyệt (decision log 15:45): tạp chí Q4, cần xác nhận = từ chối, bộ trích tất định, Test-4 48 họ do owner+Minh soạn.

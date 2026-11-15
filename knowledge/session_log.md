@@ -547,3 +547,7 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Owner báo hạn lùi và gửi `Review Huy.docx`; quyết mở rộng theo review. Bản thiết kế v3 nháp:
   `docs/project/brokerguard_v3_extension_design.md` (C1 chính sách ý định có cực tính, C2 nhãn theo giá trị, C3 toàn vẹn
   tham số; mô hình hình thức; Test-4 niêm phong trước code; log token/thời gian). Chờ owner duyệt mục 8.
+- 16:30: owner duyệt giao thức gộp: Dev v4 = Dev + Test-I + Test-II (168 họ, 1.960 fixture), Dev-val 42 họ phân tầng,
+  Test-4 48 họ là tập kiểm định duy nhất (giả thuyết chính chỉ phần tĩnh; nhóm thích nghi nhắm v1 báo riêng). Đã dựng và
+  niêm phong `release_dev4` bằng `scripts/build_dev_pool_v4.py` (kiểm seal đầu vào, chỉ đổi split, có test).
+
