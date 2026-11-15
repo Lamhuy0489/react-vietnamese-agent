@@ -5,6 +5,10 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 ## Đang làm
 
+**2026-11-15 17:15: Giao việc cho owner và Minh: `data/adversarial/v3_authoring/AUTHORING_TEST4.md`** (A quy tắc nhãn và
+errata Dev v4, B Test-4 tĩnh 48 họ theo `spec_test4.json`, C 24 ca thích nghi nhắm v1, D niêm phong). Claude viết công cụ
+khi họ bắt đầu: phiếu nhãn CSV và κ, `check_release_test4_v1.py`, kiểm phần C, dựng `release_dev4_1`.
+
 **2026-11-15 16:45: DEV V4 ĐÃ DỰNG (decision log 16:30).** `data/adversarial/release_dev4/` = 168 họ (Dev + Test-I +
 Test-II), Dev-val 42 họ, niêm phong. Test-4 (48 họ `T5_*`) là tập kiểm định duy nhất; giả thuyết chính chỉ trên phần
 tĩnh. Runner/evaluator v3 đã ghim (final_config_v4) nên chưa chạy được split dev4: cần runner/evaluator mới (file mới).
