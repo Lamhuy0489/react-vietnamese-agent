@@ -5,6 +5,8 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 ## Đang làm
 
+**2026-11-15 19:00: v3 bước 1 xong phần code (runner/evaluator Dev v4.1 có đo chi phí).** Test-4 đã niêm phong và commit (`a1711a6`, seal `1f9b0070…`). Mới: `src/react_agent/evaluation/run_metrics_v1.py`, `scripts/run_v3_api_v2.py`, `scripts/evaluate_v3_v2.py`, `scripts/cost_from_traces_v1.py`, `build/kaggle/dev4_chain.sh` (Bản đồ đã thêm dòng). Đã chạy khô (dry run) A0 và D2P2 trên một phần Dev v4.1, test 5/5. **Bước tiếp:** chạy mốc A0, D2P2 (v1), P2, PRG trên Dev v4.1 × 3 mô hình mở trên Kaggle (owner xác nhận tài khoản/quota), rồi viết C1 (bộ trích P(u)). Chưa có code v3. Benchmark vi mô của broker làm cùng code v3.
+
 **2026-11-15 18:15: HOÀN TẤT BIÊN TẬP VÀ DUYỆT 48 HỌ TEST-4 THEO QUY TRÌNH HUMAN-IN-THE-LOOP 100%.**
 Đã hoàn thành xuất sắc toàn bộ quy trình biên tập và kiểm định dữ liệu Test-4:
 1. **Human-in-the-loop 100%:** Toàn bộ 48 họ phần tĩnh (T5_01 đến T5_48) đã được người dùng trực tiếp duyệt qua 6 đợt biên tập, bám sát văn phong đời thường, trực diện thực tế giao việc của người dùng Việt Nam.
