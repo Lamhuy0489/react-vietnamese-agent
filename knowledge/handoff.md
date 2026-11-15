@@ -7,14 +7,18 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
-**2026-11-15 18:40: ĐANG CHẠY mốc Dev v4.1 trên Kaggle (6 notebook), v3 bước 1 xong code (`1380ce1`).**
+**2026-11-15 20:25: ĐANG CHẠY mốc Dev v4.1 trên Kaggle (8 notebook, 7 tài khoản), v3 bước 1 xong code (`1380ce1`).**
 - Chạy: A0, D2P2 (v1), P2 (Sandwich), PRG (Progent*) × gemma4_12b, llama31_8b, qwen35_9b trên `release_dev4_1`
-  (1.960 ca mỗi cấu hình). Notebook và tài khoản: sổ Kaggle mục 15/11 18:36.
-- Theo dõi: `build/kaggle/dev4_progress.sh` (đếm /1960 mỗi cấu hình), log `build/kaggle/dev4_watch.log`, log chuỗi
-  `build/kaggle/dev4_launch_<owner>.log`, log runner `build/kaggle/dev4_<K>_<cfg>_s<i>.log`.
-- Resume (chuỗi chết giữa chừng, notebook còn sống): `CONFIGS="<cfg>" SHARDS=2 build/kaggle/dev4_chain.sh <F> <K> 11`
-  với F trong `build/kaggle/dev4_folder_*`; runner tự bỏ qua ca đã xong. Notebook chết thì bật lại bằng
-  `HF_TOKEN=$(cat ~/.hf_token_r5) CONFIGS="…" SHARDS=2 build/kaggle/dev4_launch.sh OWNER CRED SERVE_KEY K`.
+  (1.960 ca mỗi cấu hình). Notebook và tài khoản: sổ Kaggle mục 15/11 20:25.
+- Tốc độ thật ~4,5–5 ca/phút mỗi notebook (SHARDS=2), tức ~7 giờ một cấu hình: hai cấu hình nối tiếp không vừa
+  phiên 12 giờ. Vì vậy D2P2 của gemma và qwen chuyển sang 2 notebook riêng trên meanalways (cùng SHARDS=2, PAR=1,
+  nên độ trễ vẫn so được); 4 notebook còn lại chạy 2 cấu hình nối tiếp và sẽ được bật lại một lần để chạy nốt.
+- Supervisor `build/kaggle/dev4_supervise.sh` (thay `dev4_watch.sh`, chạy dưới caffeinate): 10 phút một lần ghi
+  tiến độ vào `build/kaggle/dev4_watch.log`; job xong đủ 1960 và đã chấm thì tắt keep-alive; chuỗi chết mà notebook
+  RUNNING thì nối lại (tối đa 3 lần); notebook đã tắt mà còn việc thì push version mới (tối đa 2 lần). Dấu trạng
+  thái ở `build/kaggle/dev4_supervise_marks/`. Nếu supervisor không chạy: `caffeinate -ims build/kaggle/dev4_supervise.sh`.
+- Theo dõi tay: `build/kaggle/dev4_progress.sh`; log chuỗi `build/kaggle/dev4_launch_<owner>[_<K>].log`, log runner
+  `build/kaggle/dev4_<K>_<cfg>_s<i>.log`. Runner tự bỏ qua ca đã có `result.json`.
 - Xong: chấm `scripts/evaluate_v3_v2.py results/rebuild_c/dev4_1_<cfg>_<K>` (chuỗi tự chấm), ghi số vào decision log,
   rồi viết C1 (bộ trích P(u) tất định). Gemini để cuối (owner bật OmniRoute). Chưa có code v3.
 

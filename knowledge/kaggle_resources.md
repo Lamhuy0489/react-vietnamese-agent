@@ -51,6 +51,12 @@ A0/R1/P2 xong 06:42) và `gemma4-12b` (PRG 27 fixture cuối, 09:33–09:43); hu
 hết quota tuần (30 h), oanhlam123456 hết quota từ 08/11. URL dạng `https://www.kaggle.com/code/<owner>/react-vn-vllm-serve-v1-<model>`.
 Không notebook nào còn chạy sau 09:43.
 
+**2026-11-15 20:25 — Dev v4.1, phân lại việc:** ba notebook huylmhuhu, nomtle, lamhuy8904 xếp hàng quá 70 phút nên chuỗi
+dừng lúc 19:47 (ntfy URLError); notebook RUNNING lúc 20:13, chuỗi nối lại. dovuong05 và oanhlam123456 chỉ còn {A0};
+D2P2 chuyển sang meanalways `react-vn-vllm-serve-v1-gemma4-12b` v4 {D2P2} và `…-qwen35-9b` v3 {D2P2} (push 20:19–20:20).
+4 ca D2P2 lỡ chạy trên notebook cũ đã xóa để D2P2 bắt đầu sạch. Supervisor `build/kaggle/dev4_supervise.sh` tự bật lại
+notebook hết 12 giờ. Trạng thái sau lượt: chưa kiểm.
+
 **2026-11-15 18:36 — Dev v4.1 mốc A0/D2P2/P2/PRG (`run_v3_api_v2.py`), 6 notebook serve, private, T4×2** (source `1380ce1`):
 dovuong05 `react-vn-vllm-serve-v1-gemma4-12b` v8 {A0, D2P2}; huylmhuhu `…-gemma4-12b` v1 {P2, PRG}; nomtle
 `…-llama31-8b-ctx16k` v1 {A0, D2P2}; lamhuy8904 `…-llama31-8b-ctx16k` v4 {P2, PRG}; oanhlam123456 `…-qwen35-9b` v4
