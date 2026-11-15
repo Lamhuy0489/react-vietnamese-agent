@@ -538,3 +538,12 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   `\FloatBarrier` tiểu mục; trang chỉ có float xếp từ đầu trang; khoảng cách float/list/công thức nhỏ lại.
 - Tài liệu tham khảo 2--3 dòng: venue viết tắt, bỏ pp./publisher, "et al." sau 3 tác giả, DOI dạng `doi:` ngắn bấm được,
   arXiv bấm được. Bảng 4 EN chỉ ghi phần trăm để vừa bề ngang. Commit cuối 956d93f. Chưa thấy PDF sau các sửa này.
+
+## 2026-11-15 chiều — Baseline Gemini xong, hạn lùi, mở rộng theo Review Huy
+
+- Gemini 3 Flash trên Dev xong 4 baseline (rc=0, 560/560): Sandwich 1·191·64, Spotlight 11·180·55, Progent* 13·184·54,
+  MELON* 22·185·55 (họ /48 · thường /240 · ủy quyền /80); G1 để "--". Đã điền Bảng 2 (VI+EN), Mục 6 thêm câu Sandwich ngang
+  BrokerGuard trên Gemini, Mục 7 "chín cấu hình". Commit cuối e66fa56. Proxy và OmniRoute đã tắt theo lệnh owner.
+- Owner báo hạn lùi và gửi `Review Huy.docx`; quyết mở rộng theo review. Bản thiết kế v3 nháp:
+  `docs/project/brokerguard_v3_extension_design.md` (C1 chính sách ý định có cực tính, C2 nhãn theo giá trị, C3 toàn vẹn
+  tham số; mô hình hình thức; Test-4 niêm phong trước code; log token/thời gian). Chờ owner duyệt mục 8.

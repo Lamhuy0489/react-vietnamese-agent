@@ -3902,3 +3902,15 @@ Chính tả Anh-Anh trong bản tiếng Anh (defence, authorisation). Running he
   không tác dụng trên ba mô hình mở (113 so với 112); owner đồng ý để "--" (15/11 13:00).
 - Trên Gemini, Sandwich ngang BrokerGuard về họ gây hại (1 = 1) và giữ nhiều tiện ích ủy quyền hơn (64 so với 49). Bài ghi
   rõ ở Mục 6; kết luận chính dựa trên ba mô hình mở và Test không đổi.
+
+## 2026-11-15 15:30 — Hạn nộp lùi, mở rộng bài theo Review Huy
+
+- Owner báo hạn nộp đã lùi (ngày mới owner xác nhận sau), nên đổi hướng: mở rộng theo `Review Huy.docx` (root, không commit),
+  được "đổi thoải mái". Ba hướng: (1) cấp quyền theo ý định $P(u)$ và kiểm soát luồng mức giá trị, (2) mô hình hình thức
+  $s_t=(u,C_t,P_t,H_t)$ với ba thuộc tính, (3) tấn công thích nghi biết luật và đánh đổi ASR–tiện ích–chi phí. Reviewer
+  khuyên 1 + 3, 2 vừa đủ.
+- Bản nháp thiết kế: `docs/project/brokerguard_v3_extension_design.md`, chờ owner duyệt mục 8.
+- Giữ nguyên: v1 (D2+P2, `final_config_v1`), Test-I/II/3 và mọi số liệu đã có. Không sửa luật đã đóng băng rồi đo lại trên
+  Test cũ. v3 phải được đánh giá trên **Test-4 niêm phong trước khi có code v3** (owner/Minh soạn; Claude không đọc).
+  Phát lại 40 ca lọt cũ chỉ là chẩn đoán hậu kiểm.
+- Runner hiện không ghi token/thời gian; phải thêm log trước khi chạy Test-4.

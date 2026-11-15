@@ -1,5 +1,9 @@
 # Trạng thái hiện tại
 
+**15/11 15:30: Hạn nộp lùi. Mở rộng bài theo Review Huy: BrokerGuard v3 (chính sách ý định, nhãn theo giá trị, toàn vẹn
+tham số), mô hình hình thức, Test-4 niêm phong mới và đo chi phí. Thiết kế nháp `docs/project/brokerguard_v3_extension_design.md`
+chờ owner duyệt. Gemini Dev đủ 9 cấu hình (G1 không chạy), Bảng 2 đã điền.**
+
 **15/11 00:30: Bản tiếng Anh đầy đủ ở `latex_en/` (dịch từ bản Việt đã rà soát), đã rút gọn để về 15 trang (tài liệu
 tham khảo 2--3 dòng, Hình 1 gọn, bỏ FloatBarrier tiểu mục). Chờ owner biên dịch Overleaf và nộp; hạn 15/11.**
 

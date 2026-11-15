@@ -1,28 +1,26 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-14. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-15. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
 PHẦN CỨNG (bắt buộc): máy hỏng pin, chạy thẳng từ sạc 85 W. Không mở app nặng. Mỗi lúc một tiến trình nặng, nice -n 10.
-Không kill hay khởi động lại OmniRoute. KHÔNG render hình hay biên dịch PDF trên máy: owner biên dịch trên Overleaf.
-Xem PDF owner thả ở root: PyMuPDF (python3 hệ thống) dpi thấp.
+Không tự bật hay khởi động lại OmniRoute (owner bật). KHÔNG render hình hay biên dịch PDF trên máy: owner dùng Overleaf.
 
-Trạng thái (15/11): thí nghiệm đã đóng. Bài ICCIES 2027 (hạn 15/11, LNCS 12–15 trang). Tiêu đề: "BrokerGuard: A Layered
-Defence with Tool-Broker Enforcement Against Indirect Prompt Injection in Vietnamese LLM Agents".
-- `docs/paper/iccies2027/latex_en/` = bản nộp tiếng Anh (Claude dịch theo yêu cầu owner 14/11; owner đã được nhắc quy định
-  ICCIES về văn bản AI). `latex/` = bản tiếng Việt cùng nội dung. Sửa nội dung thì sửa CẢ HAI.
-- Số liệu chỉ từ facts.md. 19 tài liệu (có FIDES, ClawGuard), tài liệu tham khảo dạng gọn (venue viết tắt, et al., doi:).
-- Quy ước: không ngôi thứ nhất; không commit/Git/proxy/JSON; không link repo (chỉ "publicly released"); mã cơ chế chỉ ở
-  Bảng 1/Hình 2/dòng H3; "plain/authorised benign" (macro \bPlain, \bAuth); nhãn hình ngắn; câu ngắn, không chấm phẩy.
-- KHÔNG dùng regex đổi dấu phẩy thập phân trên file hình TikZ/pgfplots (đã phá tọa độ một lần).
-Việc của phiên này (handoff "Đang làm" 15/11 00:30):
-1. Hỏi owner PDF bản EN: ≤ 15 trang? Hình 1 không chồng chữ? Bảng 4 không tràn? Nếu thừa: bỏ nửa dưới Bảng 4 hoặc gộp
-   đoạn "Language" (Mục 7) vào 6.2, sửa cả hai bản.
-2. Owner điền tác giả/đơn vị/e-mail, xóa \todo trước khi nộp; đối chiếu tác giả ClawGuard (arXiv 2604.11790).
-3. Sau khi nộp: chương kết quả Study 2 của luận văn (dàn ý cuối docs/research/study2_thesis_tables.md).
+Trạng thái (15/11 15:30): hạn nộp ICCIES đã lùi. Owner quyết mở rộng bài theo `Review Huy.docx` (root, không commit):
+BrokerGuard v3 = C1 chính sách ý định P(u) có cực tính (tất định), C2 nhãn độ nhạy theo giá trị, C3 toàn vẹn tham số;
+mô hình hình thức s_t=(u,C_t,P_t,H_t) với ba thuộc tính; Test-4 niêm phong mới; đo token/thời gian và đường Pareto.
+Thiết kế nháp: `docs/project/brokerguard_v3_extension_design.md` (decision log 2026-11-15 15:30). Bài hiện tại ở
+`docs/paper/iccies2027/latex_en/` (EN) và `latex/` (VI), sửa cả hai; số liệu chỉ từ facts.md.
+
+Việc của phiên này:
+1. Hỏi owner các quyết định ở mục 8 của bản thiết kế (hạn và nơi nộp mới, tên, kích thước Test-4, "cần xác nhận",
+   có LLM trích hay không). Ghi vào decision log.
+2. Việc Claude làm được ngay, không đợi Test-4: thêm log token và thời gian vào runner (file mới, có test); soạn mô hình
+   hình thức và mệnh đề; kiểm CapLite là bài thật trước khi trích.
+3. KHÔNG viết code v3 trước khi Test-4 được niêm phong (hash trong decision log). Không sửa v1, Test cũ, số liệu đã có.
 
 Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng, số đếm và biên soạn.
 ```
