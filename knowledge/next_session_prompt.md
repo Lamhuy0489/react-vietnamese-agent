@@ -9,16 +9,18 @@ Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 PHẦN CỨNG (bắt buộc): máy hỏng pin, chạy thẳng từ sạc 85 W. Không mở app nặng. Mỗi lúc một tiến trình nặng, nice -n 10.
 Không tự bật hay khởi động lại OmniRoute (owner bật). KHÔNG render hình hay biên dịch PDF trên máy: owner dùng Overleaf.
 
-Trạng thái (15/11 18:40): mở rộng bài thành BrokerGuard v3 cho tạp chí Q4 (thiết kế
+Trạng thái (15/11 23:50): mở rộng bài thành BrokerGuard v3 cho tạp chí Q4 (thiết kế
 `docs/project/brokerguard_v3_extension_design.md`). Dev v4.1 (`data/adversarial/release_dev4_1`, 168 họ, Dev-val 42) là
 tập phát triển duy nhất. Test-4 (`data/adversarial/release_test4`, seal `1f9b0070…`, commit a1711a6) đã niêm phong; đăng
 ký trước ở decision log 2026-11-15 18:20 (H1 cổng: v3 < v1 về ASR, McNemar mức họ). Test-4 do mã sinh từ spec, owner và
 Minh rà; bài phải ghi đúng như vậy và không báo κ giữa người gắn nhãn.
 
 Việc của phiên này:
-1. Kiểm các lượt mốc Dev v4.1 đang chạy trên Kaggle: `build/kaggle/dev4_progress.sh`, `build/kaggle/dev4_watch.log`,
-   `kaggle kernels status` (sổ Kaggle mục 15/11 18:36). Lệnh resume ở handoff "Đang làm". Chấm bằng
-   `scripts/evaluate_v3_v2.py`, ghi số (cả hai cách chấm, chặn nhầm, chi phí) vào decision log.
+1. Kiểm mốc Dev v4.1 (12 notebook, mỗi notebook một cấu hình, sổ Kaggle mục 15/11 23:50): `build/kaggle/dev4_progress.sh`,
+   `build/kaggle/dev4_watch.log`, `kaggle kernels status`. Supervisor `build/kaggle/dev4_supervise.sh` và
+   `build/kaggle/dev4_kaguard.sh` chạy dưới caffeinate; nếu đã tắt mà còn việc thì bật lại (handoff "Đang làm"). Job xong
+   khi đủ 1960 và có `_eval_v2.json` mới hơn mọi ca. Ghi số (hai cách chấm, chặn nhầm, xác nhận, chi phí) vào decision
+   log; xem max_steps/model_error của Qwen trước khi dùng utility cho H2. Giết chuỗi thì giết cả cây tiến trình.
 2. Viết C1: bộ trích chính sách ý định P(u) tất định (cực tính phủ định VI/EN, khớp đích theo token, quyền theo loại hành
    động, ca không rõ = cần xác nhận = từ chối), file mới trong `src/react_agent/security_v3/`, có test; chỉ dùng Dev-train,
    chọn cấu hình trên Dev-val. Rồi C2 (nhãn theo giá trị, R-Flow v2), C3 (ghim tham số), ablation, đóng băng final_config_v5.

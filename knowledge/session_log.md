@@ -562,4 +562,9 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - 18:36: bật 6 notebook (2 mỗi mô hình: A0+D2P2 và P2+PRG; SHARDS=2, PAR=1) bằng `build/kaggle/dev4_launch.sh`; watcher
   `build/kaggle/dev4_watch.sh` chạy dưới `caffeinate`, ghi tiến độ 10 phút một lần vào `build/kaggle/dev4_watch.log` và tắt
   keep-alive khi chuỗi xong. Đã tắt app Antigravity theo lệnh owner.
-
+- 19:47–23:50: ba notebook xếp hàng quá 70 phút nên bước discover hết giờ; nối lại khi RUNNING. Tốc độ thật thấp hơn ước
+  (Llama ~1,8 ca/phút), hai cấu hình nối tiếp không vừa phiên 12 giờ; owner cho xoay tài khoản thoải mái nên chuyển sang
+  mỗi notebook một cấu hình (12 notebook, meanalways dùng 2 slot, 6 tài khoản kia dùng slot thứ hai). Supervisor
+  `build/kaggle/dev4_supervise.sh` thay watcher; `build/kaggle/dev4_kaguard.sh` bật lại keep-alive bỏ cuộc vì URLError.
+  Bài học: giết bash của chuỗi để lại xargs mồ côi chạy tiếp cấu hình sau (đã lỡ 4 ca D2P2, đã xóa), phải giết cả cây
+  tiến trình; zsh không tách từ với `set -- $x`. Số tạm ghi ở hub mục 5. Commit 217c810, d9b10cf.

@@ -51,8 +51,14 @@ Lệnh chạy: [runbook, mục Bản đồ](rebuild_a_runbook.md), dòng "v3: De
 
 ## 5. Đang chạy
 
-- Mốc A0, D2P2, P2, PRG × 3 mô hình mở trên Dev v4.1: [sổ Kaggle](kaggle_resources.md) mục 15/11 18:36.
-- Theo dõi và resume: [bàn giao](handoff.md) mục "Đang làm".
+- Mốc A0, D2P2, P2, PRG × 3 mô hình mở trên Dev v4.1: 12 notebook, mỗi notebook một cấu hình
+  ([sổ Kaggle](kaggle_resources.md) mục 15/11 23:50).
+- Tự động: `build/kaggle/dev4_supervise.sh` (nối lại chuỗi, bật lại notebook hết 12 giờ, tắt keep-alive khi xong) và
+  `build/kaggle/dev4_kaguard.sh` (bật lại keep-alive bỏ cuộc vì lỗi mạng). Theo dõi và resume: [bàn giao](handoff.md) mục "Đang làm".
+- Tốc độ đo được (SHARDS=2): Qwen ~3,2–3,5, Gemma ~2,6–3, Llama ~1,8–2 ca/phút mỗi notebook, tức 10–18 giờ một cấu hình.
+- Số tạm 15/11 23:50 (chỉ phần đã chạy, chưa có benign_auth, không dùng cho bài): ca tấn công gây hại Qwen A0 246/675,
+  Qwen P2 34/702, Gemma A0 345/726; utility benign_plain 50–62 %; chặn nhầm 0; bộ chấm biến đổi chưa thêm ca nào so
+  với nguyên văn. Cần xem max_steps (6–8 %) và model_error (2–3 %) của Qwen trước khi dùng cho H2.
 
 ## 6. Việc tiếp theo
 
