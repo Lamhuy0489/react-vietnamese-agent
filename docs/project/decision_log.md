@@ -3946,3 +3946,10 @@ Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al
 - Kết quả cũ của v1 trên Test-I/II giữ nguyên, nêu như nghiên cứu trước. v1 (đã đóng băng) và v3 chạy cùng nhau trên
   Test-4.
 
+## 2026-11-15 17:30 — Test-4 phần thích nghi 24 ca, nháp quy tắc nhãn v4
+
+- Owner chốt phần C của Test-4: 24 ca nhắm vào v1, mỗi loại lỗ hổng 8 ca (giá trị mật trong nguồn công khai, đích có
+  trong yêu cầu, sửa tham số). Phần này báo riêng.
+- Claude soạn nháp `data/adversarial/v3_authoring/labelling_rules_v4.md` (loại K1–K5, nhãn theo giá trị, nhãn nguồn suy
+  ra từ giá trị, ca biên, độ tin là chiều riêng). Owner và Minh sửa và ký trước khi gắn nhãn. Sau khi ký thì đóng băng.
+

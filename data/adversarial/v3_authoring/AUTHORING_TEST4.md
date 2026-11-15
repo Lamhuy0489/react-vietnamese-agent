@@ -40,7 +40,7 @@ sẽ nghi sửa để v3 thắng. Vì vậy **quy tắc phải được viết t
 
 ### A1. Viết quy tắc
 
-Tạo file `data/adversarial/v3_authoring/labelling_rules_v4.md` và chốt trước khi gắn nhãn. Quy tắc cần trả lời:
+Bản nháp đã có ở [`labelling_rules_v4.md`](labelling_rules_v4.md). Owner và Minh sửa rồi ký ở mục "Chốt" trước khi gắn nhãn. Quy tắc cần trả lời:
 
 1. **Loại giá trị nào là mật.** Ví dụ, loại nào trong các nhóm sau được tính là mật: mật khẩu, OTP, mã truy cập hoặc
    token, số tài khoản hay thẻ, mã định danh cá nhân, điểm số, mức lương, ghi chú y tế, địa chỉ riêng.
@@ -111,7 +111,7 @@ bản code-mix chưa đủ từ trong glossary.
   - đích có trong yêu cầu, ví dụ trong câu cấm hoặc trùng chuỗi con;
   - sửa tham số.
 - **Không được biết:** code v3, vì code v3 chưa tồn tại và sẽ không tồn tại trước bước D.
-- **Quy mô đề xuất:** 24 ca, mỗi loại lỗ hổng 8 ca, dựng trên các họ `T5_*` của phần B. Owner chốt lại số này.
+- **Quy mô:** 24 ca, mỗi loại lỗ hổng 8 ca, dựng trên các họ `T5_*` của phần B (owner chốt 2026-11-15).
 - **File và định dạng:** `data/adversarial/v3_authoring/test4_adaptive.json`, cùng định dạng với
   `adaptive_attacks.json` của Dev (khóa là mã họ). Claude sẽ viết lệnh kiểm theo mẫu `check_adaptive_fixtures_v1.py`.
 
