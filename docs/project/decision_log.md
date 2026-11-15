@@ -3894,3 +3894,11 @@ Chính tả Anh-Anh trong bản tiếng Anh (defence, authorisation). Running he
 - Kết quả: `results/rebuild_b/v3_dev_<P2|P1|PRG|MEL>_gemini3_flash/`; log `build/gemini/g3_baselines_chain.log`.
 - Tác động: chỉ thay "--" bằng số ở cột Gemini (tham khảo, không thuộc kiểm định); cấu hình nào chưa xong lúc nộp thì giữ "--"
   và câu Hạn chế đổi số cấu hình cho khớp.
+
+## 2026-11-15 14:05 — Kết quả baseline Gemini 3 Flash trên Dev
+
+- Xong cả 4 cấu hình (560/560 mỗi cấu hình, rc=0): Sandwich 1/48 · 191/240 · 64/80 (model_error 11); Spotlight 11 · 180 · 55
+  (28); Progent* 13 · 184 · 54 (46); MELON* 22 · 185 · 55 (40). G1 (Prompt Guard) không chạy: nặng CPU trên máy không pin,
+  không tác dụng trên ba mô hình mở (113 so với 112); owner đồng ý để "--" (15/11 13:00).
+- Trên Gemini, Sandwich ngang BrokerGuard về họ gây hại (1 = 1) và giữ nhiều tiện ích ủy quyền hơn (64 so với 49). Bài ghi
+  rõ ở Mục 6; kết luận chính dựa trên ba mô hình mở và Test không đổi.
