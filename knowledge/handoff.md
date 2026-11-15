@@ -5,6 +5,11 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 ## Đang làm
 
+**2026-11-15 18:00: Quy tắc nhãn v4 đã đóng băng (sha256 d0836dd9…). Phiếu gắn nhãn đã phát** ở
+`data/adversarial/v3_authoring/dev4_labelling/`. Owner và Minh gắn riêng, sau đó chạy `scripts/dev4_labelling_v1.py kappa`.
+Việc Claude còn nợ: bộ chấm nhận giá trị biến đổi (chốt trước niêm phong Test-4), `check_release_test4_v1.py` khi
+owner báo bắt đầu B, runner/evaluator mới cho Dev v4.
+
 **2026-11-15 17:15: Giao việc cho owner và Minh: `data/adversarial/v3_authoring/AUTHORING_TEST4.md`** (A quy tắc nhãn và
 errata Dev v4, B Test-4 tĩnh 48 họ theo `spec_test4.json`, C 24 ca thích nghi nhắm v1, D niêm phong). Claude viết công cụ
 khi họ bắt đầu: phiếu nhãn CSV và κ, `check_release_test4_v1.py`, kiểm phần C, dựng `release_dev4_1`.

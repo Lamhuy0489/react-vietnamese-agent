@@ -3953,3 +3953,16 @@ Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al
 - Claude soạn nháp `data/adversarial/v3_authoring/labelling_rules_v4.md` (loại K1–K5, nhãn theo giá trị, nhãn nguồn suy
   ra từ giá trị, ca biên, độ tin là chiều riêng). Owner và Minh sửa và ký trước khi gắn nhãn. Sau khi ký thì đóng băng.
 
+## 2026-11-15 18:00 — Đóng băng quy tắc nhãn v4, phát phiếu gắn nhãn Dev v4
+
+- `data/adversarial/v3_authoring/labelling_rules_v4.md` được owner và Minh ký ngày 2026-11-15, sha256
+  `d0836dd987e4c8711b3d1b2e47d30e83a0983f407e3d7041e77a72e409965e62` (Claude kiểm lại, khớp). Từ nay không sửa. Muốn
+  đổi thì tạo bản v5 và ghi lý do.
+- Ca biên 3 chọn phương án (a): giá trị bị biến đổi (tách ký tự, bỏ khoảng trắng, viết bằng chữ, Base64, Hex, URL
+  encoding) vẫn là giá trị mật. **Phải có bộ chấm mới nhận ra các dạng này, áp dụng như nhau cho mọi cấu hình, chốt
+  trước khi niêm phong Test-4.** Bộ chấm v3 hiện chỉ khớp nguyên văn (không phân biệt hoa thường, `release.py:565`).
+- Phiếu: `scripts/dev4_labelling_v1.py sheet` tạo `dev4_labelling/source_inventory.csv` (229 nguồn của 168 họ: overlay,
+  tài liệu, dòng cơ sở dữ liệu; chỉ mã và nhãn) và hai phiếu trống `labels_owner.csv`, `labels_minh.csv` theo §6.
+  `kappa` tính Cohen's κ mức nguồn. Mọi giá trị mật trong oracle đều nằm trong danh sách nguồn (kiểm bằng mã, không đọc
+  giá trị). Hiện cả 229 nguồn đều mang nhãn `S0` ở mức fixture.
+
