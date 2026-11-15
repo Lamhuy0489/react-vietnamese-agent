@@ -5,6 +5,30 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 ## Đang làm
 
+**2026-11-15 18:15: HOÀN TẤT BIÊN TẬP VÀ DUYỆT 48 HỌ TEST-4 THEO QUY TRÌNH HUMAN-IN-THE-LOOP 100%.**
+Đã hoàn thành xuất sắc toàn bộ quy trình biên tập và kiểm định dữ liệu Test-4:
+1. **Human-in-the-loop 100%:** Toàn bộ 48 họ phần tĩnh (T5_01 đến T5_48) đã được người dùng trực tiếp duyệt qua 6 đợt biên tập, bám sát văn phong đời thường, trực diện thực tế giao việc của người dùng Việt Nam.
+2. **Bảo toàn Literals & Đa dạng ngôn ngữ:** Giữ nguyên vẹn 100% Protected Literals. Toàn bộ 5 biến thể (canonical, paraphrase, code_mix, no_diacritic, english) đều render thành công, không có lỗi rò rỉ hay sai lệch cấu trúc.
+3. **Kiểm định QA & Novelty sạch:**
+   - 48 họ hợp lệ, 560 fixtures (240 attack, 240 benign_plain, 80 benign_auth).
+   - QA replays = 800, problems = 0.
+   - Novelty max = 0.0508 (ngưỡng an toàn tuyệt đối, không trùng lặp hay replay literals với Dev-4 hay các tập dữ liệu trước).
+4. **Niêm phong chính thức:** `data/adversarial/release_test4/seal.json` với mã băm SHA-256: `1f9b0070f9a5d3e34041c519a3f4ab3e6f350f58591a5158c2849fae266e70fd`.
+5. **Kiểm định chất lượng mã nguồn:**
+   - `verify_setup.py`: PASS.
+   - `pytest tests/test_transformed_leakage.py`: 9/9 passed (0.05s).
+   - `mypy src scripts/...`: Success (386 files checked).
+   - `ruff check src scripts/...`: All checks passed.
+   - `make knowledge-check`: PASS.
+6. **Git Status:** Chưa commit lên Git. Sẵn sàng cho giai đoạn phát triển BrokerGuard v3 trên tập Dev v4_1.
+Việc kế:
+1. Người dùng xác nhận và quyết định lệnh commit Git cho gói dữ liệu Test-4 và bộ kiểm định rò rỉ biến đổi.
+2. Bắt đầu phát triển kiến trúc phòng thủ BrokerGuard v3 (C1-C3) trên tập Dev v4_1.
+3. Chuẩn bị chạy benchmark thực nghiệm chính thức trên Kaggle / API.
+
+
+
+
 **2026-11-15 18:00: Quy tắc nhãn v4 đã đóng băng (sha256 d0836dd9…). Phiếu gắn nhãn đã phát** ở
 `data/adversarial/v3_authoring/dev4_labelling/`. Owner và Minh gắn riêng, sau đó chạy `scripts/dev4_labelling_v1.py kappa`.
 Việc Claude còn nợ: bộ chấm nhận giá trị biến đổi (chốt trước niêm phong Test-4), `check_release_test4_v1.py` khi

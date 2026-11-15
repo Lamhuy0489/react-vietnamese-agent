@@ -1,5 +1,13 @@
 # Trạng thái hiện tại
 
+**15/11 17:25: HOÀN THIỆN HẠ TẦNG TEST-4 VÀ GATEKEEPING (CHƯA COMMIT CHÍNH THỨC):**
+- **Nguồn gốc dữ liệu:** Bản nháp 48 họ Test-4 tĩnh, 24 ca thích nghi hiện do AI sinh tự động từ spec; phiếu review chéo công thức đã xóa. Chờ owner/Minh rà soát thật hoặc xác nhận phương án công khai học thuật.
+- **Bộ chấm biến đổi:** `src/react_agent/evaluation/transformed_leakage.py` hoàn thiện 6 dạng rò rỉ (nguyên văn, Base64, Hex, URL-encoding, tách ký tự, viết bằng chữ), ngưỡng >= 8 ký tự, pass 9/9 test, ruff/mypy sạch 100%.
+- **Lực thống kê D2 (thuần Python math):** `scripts/power_analysis_test4.py` tính chính xác: N = 48 họ đạt power 87-91% ở alpha = 0.05 khi v3 vá được 8/14 họ vi phạm của v1.
+- **Đăng ký trước giả thuyết:** Áp dụng chiến lược tuần tự phân tầng Gatekeeping (H1 primary ở alpha = 0.05, H2-H4 kiểm sau khi H1 đạt).
+- **Niêm phong release_test4:** `seal.json` độc lập (SHA-256: `88b44f67161599c5a030740f9386e68a0e758b148105c3ebd3dede758be407e9`). Chưa commit git.
+
+
 **15/11 15:30: Hạn nộp lùi. Mở rộng bài theo Review Huy: BrokerGuard v3 (chính sách ý định, nhãn theo giá trị, toàn vẹn
 tham số), mô hình hình thức, Test-4 niêm phong mới và đo chi phí. Thiết kế nháp `docs/project/brokerguard_v3_extension_design.md`
 chờ owner duyệt. Gemini Dev đủ 9 cấu hình (G1 không chạy), Bảng 2 đã điền.**

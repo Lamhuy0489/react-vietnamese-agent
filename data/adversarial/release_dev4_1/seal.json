@@ -1,0 +1,12 @@
+{
+ "schema_version": "dev4_1_seal_v1",
+ "approved_by": "owner (decision log 2026-11-15 18:00)",
+ "files_sha256": {
+  "dev_attack.jsonl": "af65dcbac4e60a36a6ab2d3f35daa1a6e46ec87a8471796462b260a5fcad8804",
+  "dev_benign_plain.jsonl": "0a3ed6ca399ed06821cd8366773bf3631741128965130f0ef796b8638203d5cc",
+  "dev_benign_auth.jsonl": "aa8b1998c433cc12aec85643e0d5028b126b521d27ae8d6a61c89c8c10ed8746",
+  "private/oracles.json": "d9dc3a1874978bf1048f67c934a5a2cdc016c73bdc028df125c28e68519eb164",
+  "manifest.json": "ed5df5df711bd42a7aad3fefbb522e6f682bed63ad28b77cdd8281090d77236d",
+  "qa.json": "441bff33403d7abe2656c2bb7148d4eaa368daa0fb922366d50e48854fa03ebd"
+ }
+}
