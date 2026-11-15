@@ -7,12 +7,15 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
-**2026-11-15 20:25: ĐANG CHẠY mốc Dev v4.1 trên Kaggle (8 notebook, 7 tài khoản), v3 bước 1 xong code (`1380ce1`).**
+**2026-11-15 23:50: ĐANG CHẠY mốc Dev v4.1 trên Kaggle (12 notebook, mỗi notebook 1 cấu hình, 7 tài khoản), v3 bước 1 xong code (`1380ce1`).**
 - Chạy: A0, D2P2 (v1), P2 (Sandwich), PRG (Progent*) × gemma4_12b, llama31_8b, qwen35_9b trên `release_dev4_1`
-  (1.960 ca mỗi cấu hình). Notebook và tài khoản: sổ Kaggle mục 15/11 20:25.
+  (1.960 ca mỗi cấu hình). Notebook và tài khoản: sổ Kaggle mục 15/11 23:50.
 - Tốc độ thật ~4,5–5 ca/phút mỗi notebook (SHARDS=2), tức ~7 giờ một cấu hình: hai cấu hình nối tiếp không vừa
   phiên 12 giờ. Vì vậy D2P2 của gemma và qwen chuyển sang 2 notebook riêng trên meanalways (cùng SHARDS=2, PAR=1,
   nên độ trễ vẫn so được); 4 notebook còn lại chạy 2 cấu hình nối tiếp và sẽ được bật lại một lần để chạy nốt.
+- 23:50 (owner: xoay tài khoản cho nhanh): Llama chỉ ~1,8–2 ca/phút, nên mọi cấu hình thứ hai (D2P2, PRG) đều
+  chuyển sang notebook riêng; 12 job ghi ở `JOBS` trong supervisor. `build/kaggle/dev4_kaguard.sh` (caffeinate) bật lại
+  keep-alive bỏ cuộc vì URLError khi chuỗi còn chạy.
 - Supervisor `build/kaggle/dev4_supervise.sh` (thay `dev4_watch.sh`, chạy dưới caffeinate): 10 phút một lần ghi
   tiến độ vào `build/kaggle/dev4_watch.log`; job xong đủ 1960 và đã chấm thì tắt keep-alive; chuỗi chết mà notebook
   RUNNING thì nối lại (tối đa 3 lần); notebook đã tắt mà còn việc thì push version mới (tối đa 2 lần). Dấu trạng
