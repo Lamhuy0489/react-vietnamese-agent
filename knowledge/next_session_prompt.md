@@ -1,6 +1,6 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-15. Mở `claude` hoặc Antigravity ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-15. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
@@ -9,21 +9,21 @@ Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 PHẦN CỨNG (bắt buộc): máy hỏng pin, chạy thẳng từ sạc 85 W. Không mở app nặng. Mỗi lúc một tiến trình nặng, nice -n 10.
 Không tự bật hay khởi động lại OmniRoute (owner bật). KHÔNG render hình hay biên dịch PDF trên máy: owner dùng Overleaf.
 
-Trạng thái (15/11 15:30): hạn nộp ICCIES đã lùi. Owner quyết mở rộng bài theo `Review Huy.docx` (root, không commit):
-BrokerGuard v3 = C1 chính sách ý định P(u) có cực tính (tất định), C2 nhãn độ nhạy theo giá trị, C3 toàn vẹn tham số;
-mô hình hình thức s_t=(u,C_t,P_t,H_t) với ba thuộc tính; Test-4 niêm phong mới; đo token/thời gian và đường Pareto.
-Thiết kế nháp: `docs/project/brokerguard_v3_extension_design.md` (decision log 2026-11-15 15:30). Bài hiện tại ở
-`docs/paper/iccies2027/latex_en/` (EN) và `latex/` (VI), sửa cả hai; số liệu chỉ từ facts.md.
+Trạng thái (15/11 18:40): mở rộng bài thành BrokerGuard v3 cho tạp chí Q4 (thiết kế
+`docs/project/brokerguard_v3_extension_design.md`). Dev v4.1 (`data/adversarial/release_dev4_1`, 168 họ, Dev-val 42) là
+tập phát triển duy nhất. Test-4 (`data/adversarial/release_test4`, seal `1f9b0070…`, commit a1711a6) đã niêm phong; đăng
+ký trước ở decision log 2026-11-15 18:20 (H1 cổng: v3 < v1 về ASR, McNemar mức họ). Test-4 do mã sinh từ spec, owner và
+Minh rà; bài phải ghi đúng như vậy và không báo κ giữa người gắn nhãn.
 
 Việc của phiên này:
-1. Owner đã duyệt (decision log 15:45): tạp chí Q4; cần xác nhận = từ chối; bộ trích P(u) tất định; Test-4 48 họ do
-   owner+Minh soạn. Còn hỏi: tên phương pháp, hạn tạp chí, tiến độ soạn Test-4.
-2. Việc Claude làm được ngay, không đợi Test-4: thêm log token và thời gian vào runner (file mới, có test); soạn mô hình
-   hình thức và mệnh đề; kiểm CapLite là bài thật trước khi trích.
-3. Dev v4 đã dựng (`data/adversarial/release_dev4/`, 168 họ, Dev-val 42; decision log 16:30). Việc kế của Claude:
-   runner và evaluator mới đọc release_dev4 (không sửa run_v3_api_v1.py hay evaluate_v3_v1.py, vì đã ghim), có log
-   token và thời gian; chạy lại mốc A0 và v1 trên Dev v4 (Kaggle); ước lượng lực thống kê cho Test-4.
-4. KHÔNG viết code v3 trước khi Test-4 được niêm phong (hash trong decision log). Không sửa v1, Test cũ, số liệu đã có.
+1. Kiểm các lượt mốc Dev v4.1 đang chạy trên Kaggle: `build/kaggle/dev4_progress.sh`, `build/kaggle/dev4_watch.log`,
+   `kaggle kernels status` (sổ Kaggle mục 15/11 18:36). Lệnh resume ở handoff "Đang làm". Chấm bằng
+   `scripts/evaluate_v3_v2.py`, ghi số (cả hai cách chấm, chặn nhầm, chi phí) vào decision log.
+2. Viết C1: bộ trích chính sách ý định P(u) tất định (cực tính phủ định VI/EN, khớp đích theo token, quyền theo loại hành
+   động, ca không rõ = cần xác nhận = từ chối), file mới trong `src/react_agent/security_v3/`, có test; chỉ dùng Dev-train,
+   chọn cấu hình trên Dev-val. Rồi C2 (nhãn theo giá trị, R-Flow v2), C3 (ghim tham số), ablation, đóng băng final_config_v5.
+3. Benchmark vi mô của broker làm cùng code v3. Gemini để cuối, sau khi ba mô hình mở xong.
+4. Không chạy hay đọc Test-4 trước khi đóng băng v3. Không sửa runner/evaluator đã ghim, v1, Test cũ, số liệu đã có.
 
 Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng, số đếm và biên soạn.
 ```

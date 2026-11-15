@@ -5,7 +5,16 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 ## Đang làm
 
-**2026-11-15 19:00: v3 bước 1 xong phần code (runner/evaluator Dev v4.1 có đo chi phí).** Test-4 đã niêm phong và commit (`a1711a6`, seal `1f9b0070…`). Mới: `src/react_agent/evaluation/run_metrics_v1.py`, `scripts/run_v3_api_v2.py`, `scripts/evaluate_v3_v2.py`, `scripts/cost_from_traces_v1.py`, `build/kaggle/dev4_chain.sh` (Bản đồ đã thêm dòng). Đã chạy khô (dry run) A0 và D2P2 trên một phần Dev v4.1, test 5/5. **Bước tiếp:** chạy mốc A0, D2P2 (v1), P2, PRG trên Dev v4.1 × 3 mô hình mở trên Kaggle (owner xác nhận tài khoản/quota), rồi viết C1 (bộ trích P(u)). Chưa có code v3. Benchmark vi mô của broker làm cùng code v3.
+**2026-11-15 18:40: ĐANG CHẠY mốc Dev v4.1 trên Kaggle (6 notebook), v3 bước 1 xong code (`1380ce1`).**
+- Chạy: A0, D2P2 (v1), P2 (Sandwich), PRG (Progent*) × gemma4_12b, llama31_8b, qwen35_9b trên `release_dev4_1`
+  (1.960 ca mỗi cấu hình). Notebook và tài khoản: sổ Kaggle mục 15/11 18:36.
+- Theo dõi: `build/kaggle/dev4_progress.sh` (đếm /1960 mỗi cấu hình), log `build/kaggle/dev4_watch.log`, log chuỗi
+  `build/kaggle/dev4_launch_<owner>.log`, log runner `build/kaggle/dev4_<K>_<cfg>_s<i>.log`.
+- Resume (chuỗi chết giữa chừng, notebook còn sống): `CONFIGS="<cfg>" SHARDS=2 build/kaggle/dev4_chain.sh <F> <K> 11`
+  với F trong `build/kaggle/dev4_folder_*`; runner tự bỏ qua ca đã xong. Notebook chết thì bật lại bằng
+  `HF_TOKEN=$(cat ~/.hf_token_r5) CONFIGS="…" SHARDS=2 build/kaggle/dev4_launch.sh OWNER CRED SERVE_KEY K`.
+- Xong: chấm `scripts/evaluate_v3_v2.py results/rebuild_c/dev4_1_<cfg>_<K>` (chuỗi tự chấm), ghi số vào decision log,
+  rồi viết C1 (bộ trích P(u) tất định). Gemini để cuối (owner bật OmniRoute). Chưa có code v3.
 
 **2026-11-15 18:15: HOÀN TẤT BIÊN TẬP VÀ DUYỆT 48 HỌ TEST-4 THEO QUY TRÌNH HUMAN-IN-THE-LOOP 100%.**
 Đã hoàn thành xuất sắc toàn bộ quy trình biên tập và kiểm định dữ liệu Test-4:

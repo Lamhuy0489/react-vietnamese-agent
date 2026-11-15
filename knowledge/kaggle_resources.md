@@ -51,6 +51,13 @@ A0/R1/P2 xong 06:42) và `gemma4-12b` (PRG 27 fixture cuối, 09:33–09:43); hu
 hết quota tuần (30 h), oanhlam123456 hết quota từ 08/11. URL dạng `https://www.kaggle.com/code/<owner>/react-vn-vllm-serve-v1-<model>`.
 Không notebook nào còn chạy sau 09:43.
 
+**2026-11-15 18:36 — Dev v4.1 mốc A0/D2P2/P2/PRG (`run_v3_api_v2.py`), 6 notebook serve, private, T4×2** (source `1380ce1`):
+dovuong05 `react-vn-vllm-serve-v1-gemma4-12b` v8 {A0, D2P2}; huylmhuhu `…-gemma4-12b` v1 {P2, PRG}; nomtle
+`…-llama31-8b-ctx16k` v1 {A0, D2P2}; lamhuy8904 `…-llama31-8b-ctx16k` v4 {P2, PRG}; oanhlam123456 `…-qwen35-9b` v4
+{A0, D2P2}; buiquocviet `…-qwen35-9b` v5 {P2, PRG}. Script `build/kaggle/dev4_launch.sh`, keep-alive 11 h do chuỗi bật,
+watcher `build/kaggle/dev4_watch.sh` tắt keep-alive khi chuỗi xong. Kết quả `results/rebuild_c/dev4_1_<cfg>_<K>`.
+Trạng thái sau lượt: chưa kiểm.
+
 **2026-11-08 15:47 — Test v3 Tầng 1 (`final_config_v3` `456de8d3…`), 6 notebook serve, private, T4×2:** nomtle `gemma4-12b` v2, `qwen35-9b` v1; dovuong05 `gemma4-12b` v1, `llama31-8b-ctx16k` v2; huylmhuhu `qwen35-9b` v1, `llama31-8b-ctx16k` v5. Chọn 3 tài khoản này vì quota tuần còn nhiều (lamhuy8904, oanhlam123456, buiquocviet đã chạy 18–25 giờ). Script `build/kaggle/test_launch.sh`.
 
 **2026-11-08 02:50 — Dev vòng chỉnh 3 (SAN), 6 notebook serve, private, T4×2, HF token chèn** (source: commit `a5d1332` trở đi):

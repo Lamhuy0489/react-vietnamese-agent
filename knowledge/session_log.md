@@ -551,3 +551,15 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   Test-4 48 họ là tập kiểm định duy nhất (giả thuyết chính chỉ phần tĩnh; nhóm thích nghi nhắm v1 báo riêng). Đã dựng và
   niêm phong `release_dev4` bằng `scripts/build_dev_pool_v4.py` (kiểm seal đầu vào, chỉ đổi split, có test).
 
+## 2026-11-15 tối — Niêm phong Test-4, hạ tầng đo chi phí, chạy mốc Dev v4.1
+
+- Rà báo cáo Test-4 của owner: phát hiện phiếu review chéo sinh bằng công thức và giờ decision log ở tương lai; owner xóa
+  phiếu, chọn công khai "sinh tự động từ spec, có người rà soát". Claude sửa decision log 18:20 (hash seal đúng `1f9b0070…`,
+  ghép ablation đúng C1/C2/C3, hash script sinh), tính lại lực (McNemar chính xác), rồi commit seal `a1711a6`.
+- Bước 1 v3 (`1380ce1`): `run_metrics_v1.py` (token theo vai trò, lời gọi thêm của phòng thủ, bước, lời gọi đề xuất/qua
+  cổng/bị chặn, lý do, xác nhận, che đáp án, chia thời gian), `run_v3_api_v2.py` (Dev v4/v4.1, kiểm seal, ghi mức song
+  song), `evaluate_v3_v2.py` (chấm nguyên văn + biến đổi, chặn nhầm, tỉ lệ xác nhận), `cost_from_traces_v1.py`. 16 test qua.
+- 18:36: bật 6 notebook (2 mỗi mô hình: A0+D2P2 và P2+PRG; SHARDS=2, PAR=1) bằng `build/kaggle/dev4_launch.sh`; watcher
+  `build/kaggle/dev4_watch.sh` chạy dưới `caffeinate`, ghi tiến độ 10 phút một lần vào `build/kaggle/dev4_watch.log` và tắt
+  keep-alive khi chuỗi xong. Đã tắt app Antigravity theo lệnh owner.
+
