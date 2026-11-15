@@ -1,6 +1,7 @@
 # BrokerGuard v3: mở rộng theo Review Huy (bản nháp chờ owner duyệt)
 
-Trạng thái: **nháp 2026-11-15**, chờ owner duyệt mục 8. Nguồn: `Review Huy.docx` (root, không commit) và decision log
+Trạng thái: **owner duyệt 2026-11-15 15:45** (decision log): tạp chí Q4; cần xác nhận = từ chối; bộ trích tất định;
+Test-4 do owner và Minh soạn, 48 họ. Còn mở: tên phương pháp. Nguồn: `Review Huy.docx` (root, không commit) và decision log
 "2026-11-15 15:30 — Hạn nộp lùi, mở rộng bài theo Review Huy". Tài liệu này không đổi `final_config_v1`, D2+P2, Test-I,
 Test-II, Test-3 hay số liệu đã có. Code mới nằm trong file mới. File đã ghim chỉ được import, không sửa.
 

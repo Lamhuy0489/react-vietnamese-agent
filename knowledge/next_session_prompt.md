@@ -16,8 +16,8 @@ Thiết kế nháp: `docs/project/brokerguard_v3_extension_design.md` (decision 
 `docs/paper/iccies2027/latex_en/` (EN) và `latex/` (VI), sửa cả hai; số liệu chỉ từ facts.md.
 
 Việc của phiên này:
-1. Hỏi owner các quyết định ở mục 8 của bản thiết kế (hạn và nơi nộp mới, tên, kích thước Test-4, "cần xác nhận",
-   có LLM trích hay không). Ghi vào decision log.
+1. Owner đã duyệt (decision log 15:45): tạp chí Q4; cần xác nhận = từ chối; bộ trích P(u) tất định; Test-4 48 họ do
+   owner+Minh soạn. Còn hỏi: tên phương pháp, hạn tạp chí, tiến độ soạn Test-4.
 2. Việc Claude làm được ngay, không đợi Test-4: thêm log token và thời gian vào runner (file mới, có test); soạn mô hình
    hình thức và mệnh đề; kiểm CapLite là bài thật trước khi trích.
 3. KHÔNG viết code v3 trước khi Test-4 được niêm phong (hash trong decision log). Không sửa v1, Test cũ, số liệu đã có.

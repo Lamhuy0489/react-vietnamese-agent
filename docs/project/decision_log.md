@@ -3914,3 +3914,13 @@ Chính tả Anh-Anh trong bản tiếng Anh (defence, authorisation). Running he
   Test cũ. v3 phải được đánh giá trên **Test-4 niêm phong trước khi có code v3** (owner/Minh soạn; Claude không đọc).
   Phát lại 40 ca lọt cũ chỉ là chẩn đoán hậu kiểm.
 - Runner hiện không ghi token/thời gian; phải thêm log trước khi chạy Test-4.
+
+## 2026-11-15 15:45 — Owner duyệt các quyết định mục 8 của thiết kế v3
+
+- Nơi nộp: **tạp chí Q4** (không còn giới hạn 15 trang LNCS). Hạn cụ thể owner báo sau.
+- "Cần xác nhận" trong benchmark **tính là từ chối**. Tỉ lệ cần xác nhận được báo riêng như một chi phí tiện ích.
+- Bộ trích $P(u)$ **hoàn toàn tất định**, không gọi thêm LLM.
+- Test-4: **owner và Minh soạn, 48 họ** cùng khung Test-II, cộng một nhóm thích nghi biết luật v1. Niêm phong trước khi
+  có code v3. Claude chỉ làm hạ tầng và niêm phong.
+- Còn mở: tên phương pháp mới.
+

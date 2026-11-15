@@ -7,7 +7,8 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 **2026-11-15 15:30: HẠN LÙI, MỞ RỘNG THEO REVIEW HUY (decision log 15:30).** Bản thiết kế nháp
 `docs/project/brokerguard_v3_extension_design.md`. Việc kế:
-1. Owner duyệt mục 8 (hạn và nơi nộp mới, tên, kích thước Test-4, ngữ nghĩa "cần xác nhận", có LLM trích hay không).
+1. Owner đã duyệt (decision log 15:45): tạp chí Q4, cần xác nhận = từ chối, bộ trích tất định, Test-4 48 họ do owner+Minh soạn.
+   Còn mở: tên phương pháp, hạn tạp chí.
 2. Song song: owner/Minh soạn và niêm phong Test-4 (Claude không đọc); Claude thêm log token/thời gian vào runner (file
    mới), viết mô hình hình thức và mệnh đề, kiểm CapLite thật trước khi trích.
 3. Sau khi Test-4 niêm phong: code v3 trên Dev (C1–C3, file mới), đóng băng `final_config_v3.json`, chạy Test-4 một lần.
