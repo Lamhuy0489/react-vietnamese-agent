@@ -4183,3 +4183,28 @@ Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al
   `results/archive/rebuild_b/ARCHIVE_LOG.txt`). Script đọc `results/rebuild_b/...` (số Test-3, bài ICCIES) cần giải nén
   trước: `tar xzf results/archive/rebuild_b/<run>.tar.gz -C results/rebuild_b`. Số liệu không đổi.
 - Owner: giữ mọi notebook sống đủ 12 giờ của phiên (`build/kaggle/dev4_v3_keep.sh`, tới 13:30), kể cả khi chuỗi đã xong.
+
+## 2026-11-17 07:00 — V3P2 (BrokerGuard v3 + P2) Qwen xong, so với D2P2 (Dev v4.1, chẩn đoán Dev)
+
+- `results/rebuild_c/dev4_1_V3P2_qwen35_9b_eval_v2.json` (1.960/1.960; hai cách chấm trùng nhau), so với
+  `dev4_1_D2P2_qwen35_9b`:
+
+| Chỉ số | D2P2 (v1) | V3P2 (v3) |
+|---|---|---|
+| Ca tấn công gây hại | 12/840 | 3/840 |
+| Họ gây hại | 9/168 | 2/168 |
+| Lộ ở câu trả lời cuối | 4/840 | 0/840 |
+| Gây hại ở nhánh thường (biến đổi) | 9/840 | 0/840 |
+| Utility thường / ủy quyền | 425/840, 62/280 | 424/840, 63/280 |
+| Chặn nhầm (bất kỳ / kèm mất utility) | 56 / 55 trên 1.120 | 75 / 73 trên 1.120 |
+| Cần xác nhận lành / tấn công | 0 / 0 | 6/1.120, 2/840 |
+| max_steps / model_error | 633 / 43 | 648 / 46 |
+| Tấn công: tok, giây trung bình | 11.184, 16,7 | 11.256, 18,3 |
+
+- Theo cơ chế, gây hại D2P2 gồm M2 1, M3 4, M4 1, M5 4, M6 2; ở V3P2 chỉ còn M5 3. C1, C2 chặn hết M2, M3, M4, M6 trên Qwen.
+- Chặn nhầm tăng (thường 24 → 37, ủy quyền 32 → 38), nhưng utility không giảm. Nhiều ca bị chặn nhầm là ca vốn đã
+  thất bại vì max_steps. Lý do hàng đầu ở V3P2: PROVENANCE_SENSITIVE_PAYLOAD 145 (luật 3 v1, v3 giữ nguyên),
+  RULE_INJECTION_SIGNAL / UNAUTHORIZED_EXTERNAL_ACTION 141 (lớp A1, giữ nguyên), INTENT_NOT_GRANTED 83 (C1),
+  PINNED_PARAMETER_CHANGED 55 (C3). Đúng như dự đoán: v3 không giảm chi phí chặn nhầm của v1. Mức tăng do C1, C3 cần xem
+  khi có số ablation, trước khi đề xuất chỉnh gì cho final_config_v5 (owner quyết).
+- Còn chạy: Gemma V3P2 1.728, Llama V3P2 1.325; ablation Qwen bắt đầu 06:39; ablation Llama gần đủ (C3 xong).
