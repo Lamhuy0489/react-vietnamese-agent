@@ -200,9 +200,15 @@ def policy_class(components: frozenset[str]) -> type[BrokerGuardV3Policy]:
     return type(name, (BrokerGuardV3Policy,), {"components": components})
 
 
+# Captured at import, like D2's own binding: runners call ``a6_provenance_v3.activate()``,
+# which replaces ``Phase5Runtime._run_task`` with a wrapper whose globals do not hold the
+# policy names, so binding the live attribute later would silently drop the v3 policy.
+_PHASE5_RUN_TASK = Phase5Runtime._run_task
+
+
 def _bound_task(policy: type[BrokerGuardV3Policy]) -> Any:
     return bind(
-        Phase5Runtime._run_task,
+        _PHASE5_RUN_TASK,
         EmailRuntime=SimpleNamespace(_run_task=bind(
             EmailRuntime._run_task,
             V5Runtime=SimpleNamespace(

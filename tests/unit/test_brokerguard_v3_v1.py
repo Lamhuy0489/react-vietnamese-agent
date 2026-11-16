@@ -107,6 +107,28 @@ def test_runtime_blocks_attack_keeps_benign_and_records_metadata(tmp_path: Path,
     assert meta["intent_profile"] == "intent_policy_v1" and meta["intent_grants"] >= 1
 
 
+def test_runtime_built_after_a6_activation_still_installs_policy(tmp_path: Path, inputs) -> None:  # type: ignore[no-untyped-def]
+    """Runners activate a6_provenance_v3 before building the runtime (run_v3_api_v3.py)."""
+    from react_agent.security_v1 import a6_provenance_v3
+
+    rows, cases = inputs
+    row = rows["BEN_CAND_AGGREGATE_CODE_MIX"]
+    oracle = cases[row.task.task_id].candidate.oracle
+    environment = tmp_path / "environment"
+    a6_provenance_v3.activate()
+    try:
+        runtime = v3.runtime_class(frozenset({"C2", "C3"}))
+        registry = doc_search_v2.apply_e2(prepare_registry(row, CLEAN_ENV, environment),
+                                          environment)
+        runtime(RecordingReplay(oracle.safe_actions, oracle.safe_final), registry
+                ).run_instrumented(row.task, output=tmp_path / "execution",
+                                   source_catalog=fixture_catalog(row),
+                                   security_config=configuration("A1"))
+    finally:
+        a6_provenance_v3.deactivate()
+    meta = json.loads((tmp_path / "execution/run_metadata.json").read_text())["defense_v2"]
+    assert meta["components"] == ["C2", "C3"] and meta["labelled_value_count"] is not None
+
 def _public(policy: v3.BrokerGuardV3Policy, content: str) -> None:
     policy.post(PolicyObservation(artifact_id="ART_P", content=content,
                                   source_type=SourceType.TOOL, sensitivity=Sensitivity.PUBLIC,

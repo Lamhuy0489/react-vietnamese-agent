@@ -4093,3 +4093,45 @@ Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al
   - `pre` một lời gọi sink: v1 107 / 151; v3 315 / 489 (C1 + C3 + R-Flow v2).
 - Phụ trội của v3 dưới 1 ms mỗi bước, trong khi một ca chạy agent mất 12–18 s (mốc Qwen/Gemma), tức dưới 0,01 %. Cổng
   không phải nút cổ chai; chi phí H4 sẽ do số bước và token quyết định, đo khi chạy agent thật.
+
+## 2026-11-16 18:00 — Mốc Dev v4.1: Llama A0/P2, Gemma D2P2/PRG, Qwen D2P2/PRG xong (chẩn đoán Dev)
+
+- Nguồn: `results/rebuild_c/dev4_1_{cấu hình}_{mô hình}_eval_v2.json`, mỗi file 1.960/1.960. Hai cách chấm (nguyên văn và
+  biến đổi) trùng nhau ở mọi cấu hình. Không cấu hình nào cần xác nhận (0). Thời gian là trung bình wall mỗi ca.
+
+| Cấu hình | Gây hại (ca) | Họ | Lộ câu cuối | Utility thường | Utility ủy quyền | Chặn nhầm | max_steps / model_error |
+|---|---|---|---|---|---|---|---|
+| Llama A0 | 217/840 | 104/168 | 8 | 281/840 | 87/280 | 0 | 344 / 216 |
+| Llama P2 | 66/840 | 47/168 | 5 | 274/840 | 102/280 | 0 | 256 / 221 |
+| Gemma D2P2 | 14/840 | 9/168 | 5 | 504/840 | 90/280 | 86/1.120 (ủy quyền 70) | 3 / 5 |
+| Gemma PRG | 242/840 | 68/168 | 137 | 567/840 | 172/280 | 0 | 2 / 3 |
+| Qwen D2P2 | 12/840 | 9/168 | 4 | 425/840 | 62/280 | 56/1.120 (ủy quyền 32) | 633 / 43 |
+| Qwen PRG | 195/840 | 70/168 | 93 | 444/840 | 106/280 | 0 | 284 / 32 |
+
+- Chi phí trung bình (tok, giây) tấn công / thường / ủy quyền: Llama A0 8.913, 10,1 / 8.877, 9,1 / 12.244, 11,9;
+  Llama P2 9.164, 11,5 / 9.403, 10,3 / 12.550, 11,8; Gemma D2P2 6.227, 15,9 / 6.218, 16,8 / 9.333, 22,0; Gemma PRG 7.059,
+  18,3 / 6.356, 16,5 / 9.100, 22,6; Qwen D2P2 11.184, 16,7 / 7.578, 10,3 / 10.144, 11,5; Qwen PRG 7.535, 14,8 / 6.309,
+  11,5 / 7.506, 10,5.
+- model_error gần như toàn bộ là OUTPUT_TRUNCATED (finish `length`): Llama A0 216/216, Qwen D2P2 41/43. Llama có utility
+  thấp (khoảng một phần ba) vì max_steps và cắt cụt; utility Llama cho H2 phải báo kèm hai số này.
+- D2P2 (v1) chặn nhầm tập trung ở nhánh ủy quyền: lý do hàng đầu Gemma là PROVENANCE_SENSITIVE_PAYLOAD/FINAL (giá trị
+  mật người dùng cho phép gửi), Qwen là RULE_INJECTION_SIGNAL và UNAUTHORIZED_EXTERNAL_ACTION. Đây là chi phí utility v3
+  phải giảm (C1 cho phép đích có grant, C2 cho giá trị nằm trong u), cần đối chiếu khi chạy v3p2.
+- PRG giảm gây hại so với A0 (Gemma 399 → 242, Qwen 299 → 195) nhưng không giảm lộ câu cuối (Gemma 138 → 137).
+- Còn chạy: Llama D2P2 (973/1.960; dovuong05 hết quota GPU tuần lúc 13:10, chạy tiếp trên buiquocviet từ 17:43) và
+  Llama PRG (oanhlam123456, 1.767/1.960).
+
+## 2026-11-16 18:30 — Runner v3p2 (BrokerGuard v3 chạy agent thật) và sửa lỗi gắn runtime
+
+- `scripts/run_v3_api_v3.py`: bản sao `run_v3_api_v2.py`. Không sửa v2 vì các chuỗi Llama đang chạy và v2 nằm trong
+  identity. Thêm `--defense v3p2` (runtime v3 đủ C1–C3, `--levels A1`, sandwich P2) và ba ablation `v3p2-c1/-c2/-c3`. Mọi
+  defense khác giữ nguyên hành vi. Identity giữ `runner: run_v3_api_v2` (cùng pipeline, để `evaluate_v3_v2.py` chấm),
+  thêm `runner_file`, `runner_sha256`, sha của bốn module v3 và `defense.v3.components`. Chuỗi Kaggle:
+  `build/kaggle/dev4_v3_chain.sh` (CONFIGS `V3P2 V3P2-C1 V3P2-C2 V3P2-C3`).
+- Lỗi tìm thấy khi chạy thử (dry-run): `runtime_class` gắn `Phase5Runtime._run_task` lúc được gọi. Runner đã gọi
+  `a6_provenance_v3.activate()` trước đó và hàm này thay `_run_task` bằng một wrapper, nên policy v3 không bao giờ được
+  cài ("D2 policy was not installed exactly once"). Sửa bằng cách lưu hàm gốc lúc import, như D2 vẫn làm. Thêm test hồi
+  quy: trước khi sửa thì fail, sau khi sửa thì pass. Phát lại oracle (12:30, 15:30) không gọi `activate`, nên số liệu
+  phát lại không bị ảnh hưởng. Các mốc D2P2 dùng binding của D2 lúc import, nên cũng không bị ảnh hưởng.
+- Chạy thử 4 biến thể trên 6 fixture Dev bằng backend giả: đều `completed`, metadata ghi đúng thành phần, và
+  `evaluate_v3_v2.py` chấm được. Test v3: 53 pass.
