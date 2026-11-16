@@ -4135,3 +4135,11 @@ Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al
   phát lại không bị ảnh hưởng. Các mốc D2P2 dùng binding của D2 lúc import, nên cũng không bị ảnh hưởng.
 - Chạy thử 4 biến thể trên 6 fixture Dev bằng backend giả: đều `completed`, metadata ghi đúng thành phần, và
   `evaluate_v3_v2.py` chấm được. Test v3: 53 pass.
+
+## 2026-11-16 18:40 — Mốc Dev v4.1: Llama PRG xong
+
+- `results/rebuild_c/dev4_1_PRG_llama31_8b_eval_v2.json` (1.960/1.960; hai cách chấm trùng nhau): gây hại 138/840, họ
+  60/168; lộ câu cuối 9; utility thường 276/840, ủy quyền 88/280; chặn nhầm 0; max_steps 344, model_error 219 (đều
+  OUTPUT_TRUNCATED, như A0). Chi phí trung bình tấn công / thường / ủy quyền: 9.011 tok, 10,4 s / 8.910, 10,1 / 12.193, 13,2.
+- Llama A0 → PRG: gây hại 217 → 138. Utility giữ nguyên mức thấp vì cùng lỗi mô hình (decision log 2026-11-10 03:30:
+  lỗi không do ngân sách token). Còn chạy: Llama D2P2 (1.145/1.960 lúc 18:40).
