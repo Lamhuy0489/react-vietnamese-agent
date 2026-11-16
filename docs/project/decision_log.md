@@ -4153,3 +4153,20 @@ Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al
   12.954, 14,6.
 - Đủ mốc A0/P2/PRG/D2P2 × Gemma/Llama/Qwen. D2P2 (v1) trên cả ba mô hình: gây hại 12–25/840, chặn nhầm 56–86/1.120, phần
   lớn ở nhánh ủy quyền. Đây là mốc so sánh trực tiếp cho V3P2 (đang chạy).
+
+## 2026-11-17 02:00 — Kế hoạch ablation v3 (ghi trước khi có số)
+
+- Sự cố 21:20: máy ngủ (pmset sleep 1 phút; caffeinate của supervisor đã thoát cùng supervisor), mất mạng, keep-alive
+  hỏng, Kaggle tắt cả ba notebook V3P2. Kết quả đã lưu: Gemma 702, Qwen 967, Llama 290. Push lại lúc 01:02–01:48, chạy
+  tiếp từ chỗ dừng (nối tiếp không đổi kết quả). Từ giờ một `caffeinate -dimsu` độc lập giữ máy và màn hình suốt thời gian
+  chạy.
+- Ablation `V3P2-C1/-C2/-C3` (mỗi lần bỏ một thành phần) chỉ chạy trên Dev-val, vì quota GPU tuần gần hết: 42 họ, 490
+  fixture (`results/rebuild_c/dev4_1_val_fixtures.jsonl`, sha256 bắt đầu `70c26a8f`, lấy theo `manifest.json` `dev_val`,
+  đủ ba nhánh). Output `results/rebuild_c/dev4_1_V3P2-C{1,2,3}_val_{model}`. So sánh với V3P2 đầy đủ trên đúng 490
+  fixture đó, lấy từ bản chạy 1.960.
+- Chỉ số và cách đọc, chốt trước: gây hại (ca và họ, chấm biến đổi), lộ ở câu trả lời cuối, utility thường và ủy quyền,
+  chặn nhầm, mỗi mô hình. Một thành phần được coi là có đóng góp nếu bỏ nó làm tăng gây hại trên ít nhất hai trong ba mô
+  hình. Đây là phân tích mô tả trên Dev, không kiểm định. Không chỉnh v3 theo số ablation trước khi owner xem.
+- Thực thi: `build/kaggle/dev4_v3_follow.sh K` chờ V3P2 của K đủ 1.960 (tự chạy lại chuỗi tối đa 3 lần trên notebook còn
+  sống), rồi chạy ablation trên cùng notebook. Llama chạy ablation trên một notebook riêng (huylmhuhu, push 01:54), song
+  song với V3P2, theo quy tắc mỗi tài khoản hai phiên.
