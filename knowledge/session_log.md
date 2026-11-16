@@ -593,3 +593,20 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - C3 chỉnh theo lỗi Dev-train: toán hạng phép tính, "đơn vị" = cơ quan, đơn vị viết khác nhau giữa ngôn ngữ, số đọc trước
   động từ gửi, câu "cấm chỉnh sửa". Bài học: giá trị mật Dev cùng một dạng do mã sinh, không được dò theo dạng đó.
 - Owner: pin hỏng vĩnh viễn, phải chạy nhẹ. Đã dừng pytest toàn bộ (gần một giờ); chỉ chạy test module đã đụng.
+
+## 2026-11-16 tối → 17/11 rạng sáng — Mốc Dev v4.1 đủ 12/12, V3P2 chạy bằng mô hình thật, ablation Dev-val
+
+- Mốc Dev v4.1 xong cả 12 cấu hình (decision log 2026-11-16 18:00, 18:40, 20:30). D2P2 (v1) trên ba mô hình: gây hại
+  12–25/840, chặn nhầm 56–86/1.120, phần lớn ở nhánh ủy quyền. Llama: khoảng 1/3 utility, do max_steps và
+  OUTPUT_TRUNCATED; đây là lỗi mô hình, đã chẩn đoán từ 10/11 (nâng ngân sách token không cứu được ca nào). Không sửa riêng
+  cho Llama, vì phải giữ công bằng giữa các mô hình.
+- `scripts/run_v3_api_v3.py` (bản sao v2, thêm v3p2 và ablation). Dry-run bắt được lỗi: `runtime_class` gắn
+  `Phase5Runtime._run_task` sau khi `a6_provenance_v3.activate()` đã vá hàm này, nên policy v3 không được cài. Đã sửa bằng
+  cách lưu hàm gốc lúc import, có test hồi quy (decision log 18:30).
+- Gemma, Qwen, Llama V3P2 chạy từ 18:04–20:29. Lúc khoảng 21:20 máy ngủ (pmset sleep 1 phút; caffeinate của supervisor đã
+  thoát cùng supervisor), mất mạng, Kaggle tắt cả ba notebook (đã có Gemma 702, Qwen 967, Llama 290). Push lại lúc
+  01:02–01:54. Thêm `build/kaggle/dev4_v3_follow.sh` / `dev4_v3_abl_follow.sh` để tự nối lại và tự chạy ablation trên
+  Dev-val (kế hoạch ghi trước, decision log 2026-11-17 02:00).
+- Bài học: (1) luôn giữ một `caffeinate -dimsu` độc lập suốt thời gian theo dõi; (2) script nối tiếp phải nhận chuỗi theo
+  folder notebook, và không tính tiến trình keep-alive (keep-alive chạy 11 giờ); (3) folder ghi lại phải trỏ vào notebook
+  mới push; (4) quota: mỗi tài khoản 2 phiên cùng lúc, phiên đã bật chạy đủ 12 giờ.

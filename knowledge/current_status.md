@@ -2,6 +2,12 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**17/11 02:00: Mốc Dev v4.1 đủ 12/12; V3P2 (BrokerGuard v3 + P2) đang chạy bằng mô hình thật trên ba mô hình, ablation
+C1/C2/C3 trên Dev-val đã lên lịch tự động.** Đã có Gemma 702, Qwen 967, Llama 290 trên 1.960 trước sự cố máy ngủ lúc
+21:20; 4 notebook trên huylmhuhu và buiquocviet (5 tài khoản khác hết quota tuần). Runner `scripts/run_v3_api_v3.py`,
+script nối tiếp `build/kaggle/dev4_v3_follow.sh`, log `build/kaggle/dev4_v3_follow.log`. Chưa có số V3P2; chưa đóng băng
+final_config_v5. D2P2 (v1) để so: gây hại 12–25/840, chặn nhầm 56–86/1.120 (decision log 2026-11-16 20:30).
+
 **16/11 15:30: Runtime BrokerGuard v3 (C1+C2+C3) xong code, 52 test; phát lại oracle trên Dev v4.1: hại Dev-val v1
 25/210 -> v3 2/210, utility bằng v1; ablation nào cũng tăng hại (decision log 15:30). Chưa chạy v3 bằng mô hình thật,
 chưa đóng băng final_config_v5.** Máy: pin hỏng vĩnh viễn, không chạy pytest toàn bộ, mỗi lúc một việc nhẹ.
