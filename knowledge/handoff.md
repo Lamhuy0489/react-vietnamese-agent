@@ -16,8 +16,10 @@ Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
   `build/kaggle/dev4_v3_launch_{owner}_{model}.log` và `dev4_launch_buiquocviet_llama31_8b.log`. Resume khi notebook còn
   RUNNING: `CONFIGS=V3P2 SHARDS=2 build/kaggle/dev4_v3_chain.sh <folder> <K> 11` (folder ghi trong
   `build/kaggle/dev4_folder_<K>_V3P2`).
-- Hết quota GPU tuần (18:05–18:07): dovuong05, lamhuy8904, meanalways, nomtle. Còn: huylmhuhu, buiquocviet (đã có 2
-  phiên), oanhlam123456 (sau Llama PRG). Llama V3P2 và các ablation chờ quota.
+- 20:30: mốc Dev v4.1 đủ 12/12 (decision log 20:30). Llama V3P2 chạy trên notebook Llama còn sống của buiquocviet
+  (folder `vllm_serve_v1_llama31_8b_ctx16k_20261116_174343`, READY 20:29); Gemma V3P2 READY 19:28 trên huylmhuhu.
+- Hết quota GPU tuần: dovuong05, lamhuy8904, meanalways, nomtle, oanhlam123456. Ablation chờ quota (tuần mới) hoặc chạy
+  trên notebook còn sống sau khi V3P2 xong (cùng folder, `CONFIGS="V3P2-C1 V3P2-C2 V3P2-C3"`).
 - Kế tiếp: ghi số V3P2 từng mô hình vào decision log (so với D2P2: gây hại, chặn nhầm ủy quyền); ablation có thể chỉ
   chạy Dev-val nếu thiếu quota; rồi owner duyệt đóng băng `final_config_v5`, mới chạy Test-4.
 

@@ -55,6 +55,7 @@ Không notebook nào còn chạy sau 09:43.
 huylmhuhu `react-vn-vllm-serve-v1-gemma4-12b` v3 (gemma V3P2); buiquocviet `react-vn-vllm-serve-v1-qwen35-9b` v7 (qwen
 V3P2); buiquocviet `react-vn-vllm-serve-v1-llama31-8b-ctx16k` v1 (chạy tiếp Llama D2P2 từ 973/1960 sau khi dovuong05 hết
 quota lúc 13:10). Hết quota GPU tuần lúc 18:05–18:07: dovuong05, lamhuy8904, meanalways, nomtle.
+20:29: Llama V3P2 chạy tiếp trên notebook Llama của buiquocviet (cùng phiên). oanhlam123456 hết quota lúc 20:28.
 
 **2026-11-15 23:50 — Dev v4.1, mỗi notebook một cấu hình (12 notebook):** chuỗi cũ thu về cấu hình đầu: dovuong05 gemma {A0},
 huylmhuhu gemma {P2}, nomtle llama {A0}, lamhuy8904 llama {P2}, oanhlam123456 qwen {A0}, buiquocviet qwen {P2}; meanalways
