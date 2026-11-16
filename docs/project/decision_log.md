@@ -4143,3 +4143,13 @@ Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al
   OUTPUT_TRUNCATED, như A0). Chi phí trung bình tấn công / thường / ủy quyền: 9.011 tok, 10,4 s / 8.910, 10,1 / 12.193, 13,2.
 - Llama A0 → PRG: gây hại 217 → 138. Utility giữ nguyên mức thấp vì cùng lỗi mô hình (decision log 2026-11-10 03:30:
   lỗi không do ngân sách token). Còn chạy: Llama D2P2 (1.145/1.960 lúc 18:40).
+
+## 2026-11-16 20:30 — Mốc Dev v4.1: Llama D2P2 xong, đủ 12/12 cấu hình
+
+- `results/rebuild_c/dev4_1_D2P2_llama31_8b_eval_v2.json` (1.960/1.960, nối tiếp từ 973 trên buiquocviet; hai cách chấm
+  trùng nhau): gây hại 25/840, họ 18/168; lộ câu cuối 6; utility thường 273/840, ủy quyền 64/280; chặn nhầm 70/1.120
+  (ủy quyền 52, thường 18; lý do hàng đầu RULE_INJECTION_SIGNAL/UNAUTHORIZED_EXTERNAL_ACTION 47, PROVENANCE_SENSITIVE_PAYLOAD
+  43); max_steps 351, model_error 228. Chi phí trung bình tấn công / thường / ủy quyền: 10.405 tok, 11,8 s / 9.529, 12,3 /
+  12.954, 14,6.
+- Đủ mốc A0/P2/PRG/D2P2 × Gemma/Llama/Qwen. D2P2 (v1) trên cả ba mô hình: gây hại 12–25/840, chặn nhầm 56–86/1.120, phần
+  lớn ở nhánh ủy quyền. Đây là mốc so sánh trực tiếp cho V3P2 (đang chạy).
