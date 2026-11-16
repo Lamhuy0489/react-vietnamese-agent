@@ -7,6 +7,20 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-16 18:10: v3p2 đang chạy bằng mô hình thật trên Dev v4.1.**
+- Runner `scripts/run_v3_api_v3.py` (bản sao v2 + `--defense v3p2`, `v3p2-c1/-c2/-c3`), chuỗi
+  `build/kaggle/dev4_v3_chain.sh`, launch `build/kaggle/dev4_v3_launch.sh OWNER CRED SERVE_KEY K` (env `CONFIGS="V3P2"
+  SHARDS=2 HF_TOKEN=$(cat ~/.hf_token_r5)`). Output `results/rebuild_c/dev4_1_V3P2_{model}`, chấm `evaluate_v3_v2.py`.
+- Đang chạy: Gemma V3P2 trên huylmhuhu (push 18:04), Qwen V3P2 trên buiquocviet (18:09), Llama D2P2 chạy tiếp trên
+  buiquocviet (READY 17:54, từ 973/1960), Llama PRG trên oanhlam123456. Supervisor cũ không theo dõi ba launch mới; log ở
+  `build/kaggle/dev4_v3_launch_{owner}_{model}.log` và `dev4_launch_buiquocviet_llama31_8b.log`. Resume khi notebook còn
+  RUNNING: `CONFIGS=V3P2 SHARDS=2 build/kaggle/dev4_v3_chain.sh <folder> <K> 11` (folder ghi trong
+  `build/kaggle/dev4_folder_<K>_V3P2`).
+- Hết quota GPU tuần (18:05–18:07): dovuong05, lamhuy8904, meanalways, nomtle. Còn: huylmhuhu, buiquocviet (đã có 2
+  phiên), oanhlam123456 (sau Llama PRG). Llama V3P2 và các ablation chờ quota.
+- Kế tiếp: ghi số V3P2 từng mô hình vào decision log (so với D2P2: gây hại, chặn nhầm ủy quyền); ablation có thể chỉ
+  chạy Dev-val nếu thiếu quota; rồi owner duyệt đóng băng `final_config_v5`, mới chạy Test-4.
+
 **2026-11-16 15:30: v3 runtime xong (C1+C2+C3), chưa nối runner, chưa chạy bằng mô hình thật.**
 - Code: `security_v3/brokerguard_v3_v1.py` (`BrokerGuardV3Runtime`, `runtime_class(components)` cho ablation, thành phần
   tùy chọn `C1A` đã cân nhắc và bỏ), `value_labels_v1.py` (C2), `param_pinning_v1.py` (C3), `intent_policy_v1.py` (C1).

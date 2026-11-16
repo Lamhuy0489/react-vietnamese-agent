@@ -51,6 +51,11 @@ A0/R1/P2 xong 06:42) và `gemma4-12b` (PRG 27 fixture cuối, 09:33–09:43); hu
 hết quota tuần (30 h), oanhlam123456 hết quota từ 08/11. URL dạng `https://www.kaggle.com/code/<owner>/react-vn-vllm-serve-v1-<model>`.
 Không notebook nào còn chạy sau 09:43.
 
+**2026-11-16 18:10 — Dev v4.1 BrokerGuard v3 (V3P2, `run_v3_api_v3.py`, source `09cdc5e`), private, T4×2:**
+huylmhuhu `react-vn-vllm-serve-v1-gemma4-12b` v3 (gemma V3P2); buiquocviet `react-vn-vllm-serve-v1-qwen35-9b` v7 (qwen
+V3P2); buiquocviet `react-vn-vllm-serve-v1-llama31-8b-ctx16k` v1 (chạy tiếp Llama D2P2 từ 973/1960 sau khi dovuong05 hết
+quota lúc 13:10). Hết quota GPU tuần lúc 18:05–18:07: dovuong05, lamhuy8904, meanalways, nomtle.
+
 **2026-11-15 23:50 — Dev v4.1, mỗi notebook một cấu hình (12 notebook):** chuỗi cũ thu về cấu hình đầu: dovuong05 gemma {A0},
 huylmhuhu gemma {P2}, nomtle llama {A0}, lamhuy8904 llama {P2}, oanhlam123456 qwen {A0}, buiquocviet qwen {P2}; meanalways
 gemma v4 {D2P2}, qwen v3 {D2P2}. Mới (push 23:44–23:46): dovuong05 `…-llama31-8b-ctx16k` v5 {D2P2}, oanhlam123456
