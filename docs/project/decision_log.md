@@ -4170,3 +4170,16 @@ Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al
 - Thực thi: `build/kaggle/dev4_v3_follow.sh K` chờ V3P2 của K đủ 1.960 (tự chạy lại chuỗi tối đa 3 lần trên notebook còn
   sống), rồi chạy ablation trên cùng notebook. Llama chạy ablation trên một notebook riêng (huylmhuhu, push 01:54), song
   song với V3P2, theo quy tắc mỗi tài khoản hai phiên.
+
+## 2026-11-17 04:00 — Sự cố đĩa đầy; lưu trữ results/rebuild_b
+
+- 03:20: ổ đĩa đầy (còn 190 MB trên 234 GB; ổ vốn đã dùng 211 GB). Cả 4 chuỗi lỗi `No space left on device`, các
+  script nối tiếp thử lại hết số lần rồi dừng. Notebook vẫn sống. `endpoint.env` của Qwen bị ghi rỗng.
+- Owner dọn cache, nhưng `brew cleanup` gỡ mất `openssl@3`, làm `cryptography` trong `.venv` không nạp được (cần cho
+  discover). Đã cài lại `openssl@3`; `ssl` của Python không bị ảnh hưởng. Dựng lại endpoint Qwen bằng thông báo ntfy
+  cũ. Lúc 03:53 cả 4 chuỗi chạy tiếp từ chỗ dừng (Gemma 1.049, Qwen 1.394, Llama 655, ablation Llama 414).
+- Owner đồng ý nén kết quả cũ: `build/archive_rebuild_b.sh` nén từng thư mục `results/rebuild_b/<run>` thành
+  `results/archive/rebuild_b/<run>.tar.gz`, kiểm số file trong archive bằng bản gốc rồi mới xóa bản gốc (log
+  `results/archive/rebuild_b/ARCHIVE_LOG.txt`). Script đọc `results/rebuild_b/...` (số Test-3, bài ICCIES) cần giải nén
+  trước: `tar xzf results/archive/rebuild_b/<run>.tar.gz -C results/rebuild_b`. Số liệu không đổi.
+- Owner: giữ mọi notebook sống đủ 12 giờ của phiên (`build/kaggle/dev4_v3_keep.sh`, tới 13:30), kể cả khi chuỗi đã xong.
