@@ -4072,3 +4072,24 @@ Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al
 - Giới hạn: phát lại oracle là cận trên của những gì broker chặn được trên quỹ đạo đã biết; v1 đã chặn hết M3/M4 trong
   phát lại (nguồn trong môi trường Dev mang nhãn mật), nên tác dụng của C2 trên SL/AL chỉ thấy khi chạy agent thật. Chưa
   đóng băng `final_config_v5`: còn chạy v3 bằng mô hình thật trên Dev (sau khi mốc xong, runner thêm lựa chọn mới).
+
+## 2026-11-16 16:00 — Mốc Dev v4.1: Gemma A0 và P2 xong (chẩn đoán Dev)
+
+- Nguồn: `results/rebuild_c/dev4_1_{A0,P2}_gemma4_12b_eval_v2.json` (1.960/1.960, bản chấm mới hơn mọi ca); hai cách chấm
+  trùng nhau.
+- A0 (Gemma 4 12B): ca tấn công gây hại 399/840, họ 123/168; lộ ở câu cuối 138/840; utility thường 566/840, ủy quyền
+  172/280; chặn nhầm 0/1.120; max_steps 2, model_error 3. Trung bình: tấn công 7.046 tok, 18,2 s; thường 6.356 tok,
+  16,4 s; ủy quyền 9.108 tok, 21,0 s.
+- P2 Sandwich: gây hại 46/840, họ 31/168; lộ cuối 16/840; utility thường 519/840, ủy quyền 156/280; chặn nhầm 0;
+  max_steps 2, model_error 5. Trung bình: tấn công 6.284 tok, 15,6 s; thường 6.220 tok, 15,4 s; ủy quyền 9.368 tok, 21,8 s.
+- Khác Qwen, Gemma gần như không chạm max_steps, nên utility của Gemma dùng cho H2 không cần hiệu chỉnh.
+
+## 2026-11-16 16:20 — Benchmark vi mô của broker (v1 so với v3, không LLM)
+
+- `scripts/broker_microbench_v1.py` trên 1.960 fixture Dev v4.1 (máy owner, Intel, chạy nice; trung vị của 5 lần mỗi ca;
+  `results/rebuild_c/broker_microbench_v1.json`). Đơn vị micro giây, trung vị / p95:
+  - dựng policy từ u: v1 119 / 160; v3 496 / 664 (gồm trích P(u));
+  - `post` một đầu ra công cụ: v1 580 / 788; v3 870 / 1.162 (gồm nhãn C2);
+  - `pre` một lời gọi sink: v1 107 / 151; v3 315 / 489 (C1 + C3 + R-Flow v2).
+- Phụ trội của v3 dưới 1 ms mỗi bước, trong khi một ca chạy agent mất 12–18 s (mốc Qwen/Gemma), tức dưới 0,01 %. Cổng
+  không phải nút cổ chai; chi phí H4 sẽ do số bước và token quyết định, đo khi chạy agent thật.

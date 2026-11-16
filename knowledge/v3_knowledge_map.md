@@ -71,6 +71,8 @@ C1 bộ trích xong (16/11, decision log 12:30): `src/react_agent/security_v3/in
 2. Runtime v3 C1+C2+C3 xong (decision log 2026-11-16 15:30, `security_v3/brokerguard_v3_v1.py`); phát lại oracle
    Dev-val: hại v1 25/210 -> v3 2/210, utility bằng v1. Còn: thêm lựa chọn v3 vào runner khi mốc xong, chạy v3 + ablation
    bằng mô hình thật trên Dev, rồi đóng băng `final_config_v5`.
+   Mô hình hình thức và Mệnh đề 1–3: [`brokerguard_v3_formal_model.md`](../docs/project/brokerguard_v3_formal_model.md).
+   Benchmark vi mô của broker: phụ trội v3 dưới 1 ms mỗi bước (decision log 2026-11-16 16:20). Gemma A0/P2 xong (16:00).
 3. Chạy Test-4 một lần; vòng thích nghi nhắm vào v3 trên Dev-val; Gemini để cuối.
 
 ## 7. Luật không đổi
