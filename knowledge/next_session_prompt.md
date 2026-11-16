@@ -1,29 +1,29 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-15. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-16. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-PHẦN CỨNG (bắt buộc): máy hỏng pin, chạy thẳng từ sạc 85 W. Không mở app nặng. Mỗi lúc một tiến trình nặng, nice -n 10.
-Không tự bật hay khởi động lại OmniRoute (owner bật). KHÔNG render hình hay biên dịch PDF trên máy: owner dùng Overleaf.
+PHẦN CỨNG (bắt buộc): pin hỏng VĨNH VIỄN, chạy thẳng từ sạc 85 W. Chạy nhẹ: mỗi lúc một việc, nice -n 10, không mở app
+nặng, KHÔNG chạy pytest toàn bộ (~1 giờ) mà chỉ test module đã đụng + lân cận. Không tự bật hay khởi động lại OmniRoute.
+KHÔNG render hình hay biên dịch PDF trên máy: owner dùng Overleaf.
 
-Trạng thái (15/11 23:50): mở rộng bài thành BrokerGuard v3 cho tạp chí Q4 (thiết kế
-`docs/project/brokerguard_v3_extension_design.md`). Dev v4.1 (`data/adversarial/release_dev4_1`, 168 họ, Dev-val 42) là
-tập phát triển duy nhất. Test-4 (`data/adversarial/release_test4`, seal `1f9b0070…`, commit a1711a6) đã niêm phong; đăng
-ký trước ở decision log 2026-11-15 18:20 (H1 cổng: v3 < v1 về ASR, McNemar mức họ). Test-4 do mã sinh từ spec, owner và
-Minh rà; bài phải ghi đúng như vậy và không báo κ giữa người gắn nhãn.
+Trạng thái (16/11 15:30): BrokerGuard v3 cho tạp chí Q4 (thiết kế `docs/project/brokerguard_v3_extension_design.md`).
+Dev v4.1 (`data/adversarial/release_dev4_1`, 168 họ, Dev-val 42) là tập phát triển duy nhất. Test-4 (seal `1f9b0070…`)
+niêm phong; H1 cổng: v3 < v1 về ASR, McNemar mức họ (decision log 2026-11-15 18:20). Mốc Dev v4.1: Qwen A0, P2 xong
+(decision log 2026-11-16 11:15), 10 cấu hình còn chạy. Runtime v3 C1+C2+C3 xong code, 52 test
+(`src/react_agent/security_v3/brokerguard_v3_v1.py`); phát lại oracle Dev-val: hại v1 25/210 -> v3 2/210, utility bằng
+v1 (decision log 2026-11-16 15:30). Chưa nối runner, chưa chạy v3 bằng mô hình thật.
 
 Việc của phiên này:
-1. Kiểm mốc Dev v4.1 (12 notebook, mỗi notebook một cấu hình, sổ Kaggle mục 15/11 23:50): `build/kaggle/dev4_progress.sh`,
-   `build/kaggle/dev4_watch.log`, `kaggle kernels status`. Supervisor `build/kaggle/dev4_supervise.sh` và
-   `build/kaggle/dev4_kaguard.sh` chạy dưới caffeinate; nếu đã tắt mà còn việc thì bật lại (handoff "Đang làm"). Job xong
-   khi đủ 1960 và có `_eval_v2.json` mới hơn mọi ca. Ghi số (hai cách chấm, chặn nhầm, xác nhận, chi phí) vào decision
-   log; xem max_steps/model_error của Qwen trước khi dùng utility cho H2. Giết chuỗi thì giết cả cây tiến trình.
-2. Viết C1: bộ trích chính sách ý định P(u) tất định (cực tính phủ định VI/EN, khớp đích theo token, quyền theo loại hành
-   động, ca không rõ = cần xác nhận = từ chối), file mới trong `src/react_agent/security_v3/`, có test; chỉ dùng Dev-train,
-   chọn cấu hình trên Dev-val. Rồi C2 (nhãn theo giá trị, R-Flow v2), C3 (ghim tham số), ablation, đóng băng final_config_v5.
+1. Kiểm mốc Dev v4.1: `build/kaggle/dev4_progress.sh`, `tail build/kaggle/dev4_watch.log`, `kaggle kernels status`.
+   Supervisor/kaguard dưới caffeinate; tắt mà còn việc thì bật lại (handoff "Đang làm"). Job xong khi đủ 1960 và có
+   `_eval_v2.json` mới hơn mọi ca; ghi số từng cấu hình vào decision log (hai cách chấm, chặn nhầm, xác nhận, chi phí,
+   max_steps/model_error). Giết chuỗi thì giết cả cây.
+2. Khi không còn chuỗi nào gọi `run_v3_api_v2.py`: thêm `--defense v3p2` và `v3p2-c1/-c2/-c3` (chỉ thêm khóa, như handoff),
+   test dry-run, chạy trên Kaggle cùng cách mốc. Rồi đóng băng final_config_v5 (owner duyệt) và chạy Test-4 một lần.
 3. Benchmark vi mô của broker làm cùng code v3. Gemini để cuối, sau khi ba mô hình mở xong.
 4. Không chạy hay đọc Test-4 trước khi đóng băng v3. Không sửa runner/evaluator đã ghim, v1, Test cũ, số liệu đã có.
 

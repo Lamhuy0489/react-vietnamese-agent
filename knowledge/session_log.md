@@ -568,3 +568,28 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   `build/kaggle/dev4_supervise.sh` thay watcher; `build/kaggle/dev4_kaguard.sh` bật lại keep-alive bỏ cuộc vì URLError.
   Bài học: giết bash của chuỗi để lại xargs mồ côi chạy tiếp cấu hình sau (đã lỡ 4 ca D2P2, đã xóa), phải giết cả cây
   tiến trình; zsh không tách từ với `set -- $x`. Số tạm ghi ở hub mục 5. Commit 217c810, d9b10cf.
+
+## 2026-11-16 trưa — Qwen A0/P2 xong, C1 bộ trích P(u)
+
+- Mốc Dev v4.1: supervisor và kaguard vẫn chạy; Qwen A0, P2 đủ 1.960 và đã chấm (decision log 2026-11-16 11:15): gây hại
+  299/840 và 40/840, chặn nhầm 0, hai cách chấm trùng nhau. model_error của Qwen toàn là `OUTPUT_TRUNCATED`; max_steps
+  14–17 %. 10 cấu hình còn chạy (Llama chậm nhất).
+- C1 (`security_v3/intent_policy_v1.py`, 37 test): cực tính phủ định VI/EN có và không dấu, đích khớp nguyên token, quyền
+  theo loại hành động, nhắc tới mà không cấp quyền -> CONFIRM. Chấm offline theo oracle bằng
+  `scripts/intent_policy_dev_eval_v1.py`: utility 100 %, M6 chặn hết (train 105/105, val 35/35; v1 65, 15). Chọn cấu
+  hình mặc định trên Dev-val (decision log 12:30).
+- Bài học: sau khi bỏ dấu, nhiều từ đụng nhau ("example" trong tên miền, "ghi chú", "ban" = bạn/bản, "hàng không",
+  "dung" = dùng/đừng, "ma" = mã/mà); phải kiểm chính tả gốc khi văn bản có dấu và đòi động từ gửi theo sau khi không dấu.
+  Chỉ chỉnh luật theo lỗi Dev-train; val chỉ dùng chọn cấu hình.
+- Chưa nối runtime: `run_v3_api_v2.py` đang được các chuỗi mốc gọi lại, không sửa lúc này.
+
+## 2026-11-16 chiều — Runtime v3 C1+C2+C3, phát lại oracle trên Dev
+
+- Runtime `security_v3/brokerguard_v3_v1.py`: D2 với P(u) thay luật 2 (C1), nhãn theo kiểu giá trị và R-Flow v2 (C2,
+  `value_labels_v1.py`), ghim tham số người dùng nêu (C3, `param_pinning_v1.py`); mỗi thành phần tắt được cho ablation.
+- `scripts/v3_oracle_replay_v1.py` phát lại quỹ đạo oracle qua runtime thật, không LLM, khoảng một phút. Dev-val: hại v1
+  25/210, v3 2/210, utility bằng v1; −C1 7, −C2 6, −C3 13. C1a (P(u) thay anchor A1) tăng utility khi bị tấn công nhưng
+  tăng hại, nên bỏ (decision log 15:30).
+- C3 chỉnh theo lỗi Dev-train: toán hạng phép tính, "đơn vị" = cơ quan, đơn vị viết khác nhau giữa ngôn ngữ, số đọc trước
+  động từ gửi, câu "cấm chỉnh sửa". Bài học: giá trị mật Dev cùng một dạng do mã sinh, không được dò theo dạng đó.
+- Owner: pin hỏng vĩnh viễn, phải chạy nhẹ. Đã dừng pytest toàn bộ (gần một giờ); chỉ chạy test module đã đụng.

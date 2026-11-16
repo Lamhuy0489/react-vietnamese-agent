@@ -2,6 +2,17 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**16/11 15:30: Runtime BrokerGuard v3 (C1+C2+C3) xong code, 52 test; phát lại oracle trên Dev v4.1: hại Dev-val v1
+25/210 -> v3 2/210, utility bằng v1; ablation nào cũng tăng hại (decision log 15:30). Chưa chạy v3 bằng mô hình thật,
+chưa đóng băng final_config_v5.** Máy: pin hỏng vĩnh viễn, không chạy pytest toàn bộ, mỗi lúc một việc nhẹ.
+
+**16/11 12:30: C1 (bộ trích P(u) tất định) xong code và chấm offline trên Dev v4.1; mốc Dev v4.1 vẫn chạy.**
+- Qwen A0 và P2 xong 1.960/1.960 (decision log 2026-11-16 11:15): ca tấn công gây hại A0 299/840, P2 40/840; chặn nhầm 0;
+  max_steps 14–17 % và model_error ~2 % (OUTPUT_TRUNCATED), phải báo kèm khi dùng utility Qwen cho H2. 10 cấu hình còn chạy.
+- C1: `src/react_agent/security_v3/intent_policy_v1.py`, 37 test; `scripts/intent_policy_dev_eval_v1.py` chấm sink theo
+  oracle: utility 100 % (train và val), chặn M6 105/105 train, 35/35 val (v1: 65, 15); cấu hình chọn trên Dev-val là
+  mặc định (decision log 12:30). Chưa nối runtime vì runner `run_v3_api_v2.py` đang phục vụ mốc.
+
 **15/11 23:50: Mốc Dev v4.1 đang chạy trên 12 notebook (mỗi notebook một cấu hình, 7 tài khoản), supervisor tự nối lại và
 bật lại.** Gemma/Qwen dự kiến xong sáng 16/11, Llama A0/P2 trưa 16/11, Llama D2P2/PRG cần thêm một phiên Kaggle. Số tạm
 (chưa đủ, không dùng cho bài) hợp lý: A0 bị hại nhiều, P2 giảm mạnh, chặn nhầm 0. Chi tiết: hub mục 5.

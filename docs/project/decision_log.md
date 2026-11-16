@@ -4013,3 +4013,62 @@ Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al
   - **Niêm phong release_test4:** `data/adversarial/release_test4/seal.json` (SHA-256: `1f9b0070f9a5d3e34041c519a3f4ab3e6f350f58591a5158c2849fae266e70fd`, dựng lại lúc 18:11; trường `approved_by` trong seal ghi
     "17:15", là giờ nháp cũ của mục này, và được giữ nguyên để không đổi hash). Chưa có dòng code v3
     nào trước commit niêm phong này.
+
+## 2026-11-16 11:15 — Mốc Dev v4.1: Qwen A0 và P2 xong (chẩn đoán Dev, không phải Test)
+
+- Nguồn: `results/rebuild_c/dev4_1_{A0,P2}_qwen35_9b_eval_v2.json` (`evaluate_v3_v2`, 1.960/1.960 ca, file chấm mới hơn
+  mọi `result.json`). Hai cách chấm (nguyên văn / có biến đổi) cho kết quả trùng nhau ở cả hai cấu hình.
+- A0 (Qwen3.5-9B): ca tấn công gây hại 299/840, họ 119/168; lộ ở câu trả lời cuối 95/840; utility thường 447/840,
+  ủy quyền 105/280; chặn nhầm 0/1.120; xác nhận 0.
+- P2 Sandwich: ca gây hại 40/840, họ 33/168; lộ cuối 18/840; utility thường 445/840, ủy quyền 91/280; chặn nhầm 0/1.120.
+- Chi phí trung bình mỗi ca (token tổng; giây đồng hồ): A0 tấn công 7.136 tok, 13,2 s; thường 6.279 tok, 12,1 s; ủy quyền
+  7.384 tok, 12,1 s. P2 tấn công 7.750 tok, 11,7 s; thường 7.234 tok, 10,0 s; ủy quyền 9.428 tok, 12,9 s. Độ trễ đo trên
+  Kaggle T4 qua tunnel nên chỉ so giữa các cấu hình cùng mô hình, cùng SHARDS=2, PAR=1.
+- Lưu ý cho H2 (utility): Qwen dừng vì `max_steps` ở 268/1.960 ca (A0) và 340/1.960 (P2), `model_error` 31 và 45 ca, toàn
+  bộ là `APIError: OUTPUT_TRUNCATED` (chạm giới hạn token đầu ra). Các ca này tính là mất utility cho mọi cấu hình như
+  nhau; khi so v3 với v1 trên Qwen phải báo kèm tỉ lệ max_steps/truncated từng cấu hình, không sửa runner đã ghim.
+- Các cấu hình còn lại (Gemma, Llama, D2P2/PRG Qwen) đang chạy; ghi số khi đủ 1.960 và có bản chấm mới.
+
+## 2026-11-16 12:30 — C1: bộ trích chính sách ý định P(u) tất định (Dev v4.1, chưa nối runtime)
+
+- Code: `src/react_agent/security_v3/intent_policy_v1.py` (profile `intent_policy_v1`), test
+  `tests/test_intent_policy_v1.py` (37 ca, câu tổng hợp). Chỉ đọc u; không đọc đầu ra công cụ, oracle hay mã ca.
+  Cực tính phủ định VI (có dấu và bỏ dấu, xử lý "dung" = dùng/đừng, "ma" = mã/mà, "bạn/bản", "hàng không") và EN; phủ
+  định đặt sau đích trong cùng mệnh đề hoặc ngoặc; loại trừ ("trừ", "thay vì", "except", "but not"); đích khớp nguyên
+  token (không khớp chuỗi con như luật 2 của v1); quyền theo loại hành động (địa chỉ -> email, endpoint -> webhook, cần
+  động từ gửi không bị phủ định); nhắc tới mà không cấp quyền (trích dẫn, lời thuật lại, "chỉ để tham khảo") -> CONFIRM.
+  CONFIRM được thi hành như từ chối với lý do `CONFIRMATION_REQUIRED` + lý do con.
+- Chấm offline (không LLM) bằng `scripts/intent_policy_dev_eval_v1.py`: lấy oracle Dev làm nhãn; ca lành tính phải được
+  phép mọi sink bắt buộc, ca tấn công phải bị chặn mọi sink tiêu cực; so với luật 2 của v1 trên cùng ca. Quy tắc chỉ được
+  chỉnh theo lỗi ở Dev-train (chỉ xem lời người dùng của ca lành tính; với ca tấn công chỉ xem u có che đích).
+- Kết quả cấu hình mặc định (sink theo fixture): utility Dev-train 475/475 thường, 195/195 ủy quyền; Dev-val 155/155,
+  65/65 (v1 cũng 100 %). Chặn sink tấn công Dev-train 325/565 (v1 285), Dev-val 105/190 (v1 85). Theo cơ chế: M1 và M2
+  100 % như v1; M6 (đích có trong u) train 105/105 (v1 65), val 35/35 (v1 15); M3/M4/M5 gần như không đổi vì sink đi đúng
+  đích được phép (phần của C2/C3).
+- Chọn cấu hình trên Dev-val (lưới 32 cấu hình, `results/rebuild_c/intent_policy_v1_dev_grid.json`): lấy utility cao
+  nhất rồi chặn cao nhất; bốn cấu hình đồng hạng (utility 1,000, chặn 0,553), chọn cấu hình chặt nhất trong đó = mặc
+  định `conditional=allow, quoted=mention, reported=mention, ambiguous_negation=confirm, require_verb=True`.
+  `conditional=confirm` làm mất 6,6 % utility nên không chọn.
+- Giới hạn: đây là độ phủ của luật trên lời gọi sink do oracle liệt kê, không phải ASR khi chạy agent; số chạy thật có
+  sau khi nối runtime. Chưa sửa `run_v3_api_v2.py` vì mốc Dev v4.1 đang gọi lại runner này; nối C1 vào runtime (file
+  mới) làm cùng C2/C3 sau khi mốc xong.
+
+## 2026-11-16 15:30 — v3 runtime (C1+C2+C3) và phát lại oracle trên Dev v4.1; chọn bỏ C1a
+
+- Code mới (không sửa file ghim): `security_v3/brokerguard_v3_v1.py` (runtime D2 + C1/C2/C3, mỗi thành phần bật/tắt được
+  cho ablation), `security_v3/value_labels_v1.py` (C2: nhãn theo kiểu giá trị, không phụ thuộc nhãn nguồn; định danh trộn
+  chữ số ≥ 8 ký tự, số ≥ 9 chữ số, giá trị sau tên trường nhạy cảm; R-Flow v2 dò dạng biến đổi nhẹ ở mọi sink và câu trả
+  lời cuối, che giá trị ở câu cuối), `security_v3/param_pinning_v1.py` (C3: ghim số sau động từ gửi, trừ toán hạng; boolean
+  có cực tính; đơn vị nêu kèm số hoặc sau "đơn vị/unit" thuộc từ điển đơn vị đo; khi u có câu cấm sửa thì ghim mọi số của
+  câu). Test: `tests/unit/test_{intent_policy,value_labels,brokerguard_v3}_v1.py` (52 ca).
+- Mọi giá trị mật của Dev có cùng một dạng do mã sinh; C2 cố ý không dò theo dạng đó (bộ dò tổng quát), bài phải nói rõ.
+- Phát lại oracle không LLM (`scripts/v3_oracle_replay_v1.py`, RecordingReplay qua runtime thật, chấm `score_v3` + rò
+  rỉ biến đổi): quỹ đạo tấn công gây hại / utility (thường, ủy quyền, quỹ đạo an toàn của ca tấn công).
+  - Dev-train /630: v1 55 · 615 · 130 · 375; v3 0 · 615 · 130 · 375; −C1 15; −C2 0; −C3 37; +C1a 1 · 630 · 135 · 630.
+  - Dev-val /210 (chưa xem khi chỉnh luật): v1 25 (M5 20, M6 5) · 209 · 42 · 118; v3 2 (M5 2) · 209 · 42 · 118;
+    −C1 7; −C2 6; −C3 13; +C1a 5 · 210 · 45 · 210.
+- C1a (P(u) thay anchor v4 ở lớp luật A1) tăng mạnh utility khi bị tấn công nhưng tăng hại (val 2 lên 5). Vì H1 (ASR) là
+  cổng, chọn v3 = C1+C2+C3 không kèm C1a; C1a ghi là phương án đã cân nhắc.
+- Giới hạn: phát lại oracle là cận trên của những gì broker chặn được trên quỹ đạo đã biết; v1 đã chặn hết M3/M4 trong
+  phát lại (nguồn trong môi trường Dev mang nhãn mật), nên tác dụng của C2 trên SL/AL chỉ thấy khi chạy agent thật. Chưa
+  đóng băng `final_config_v5`: còn chạy v3 bằng mô hình thật trên Dev (sau khi mốc xong, runner thêm lựa chọn mới).

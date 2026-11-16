@@ -59,11 +59,18 @@ Lệnh chạy: [runbook, mục Bản đồ](rebuild_a_runbook.md), dòng "v3: De
 - Số tạm 15/11 23:50 (chỉ phần đã chạy, chưa có benign_auth, không dùng cho bài): ca tấn công gây hại Qwen A0 246/675,
   Qwen P2 34/702, Gemma A0 345/726; utility benign_plain 50–62 %; chặn nhầm 0; bộ chấm biến đổi chưa thêm ca nào so
   với nguyên văn. Cần xem max_steps (6–8 %) và model_error (2–3 %) của Qwen trước khi dùng cho H2.
+- 16/11 11:15: Qwen A0 và P2 xong (decision log 2026-11-16 11:15): gây hại A0 299/840, P2 40/840; max_steps 14–17 %,
+  model_error 1,6–2,3 % (đều OUTPUT_TRUNCATED). 10 cấu hình còn chạy.
 
 ## 6. Việc tiếp theo
 
-1. Chấm và ghi số mốc Dev v4.1.
-2. C1 chính sách ý định P(u), rồi C2, C3, ablation, đóng băng `final_config_v5`.
+C1 bộ trích xong (16/11, decision log 12:30): `src/react_agent/security_v3/intent_policy_v1.py`, chấm offline
+`scripts/intent_policy_dev_eval_v1.py` (utility 100 %, M6 chặn 105/105 train, 35/35 val; v1 65 và 15). Chưa nối runtime.
+
+1. Chấm và ghi số mốc Dev v4.1 (Qwen A0, P2 đã ghi, decision log 2026-11-16 11:15).
+2. Runtime v3 C1+C2+C3 xong (decision log 2026-11-16 15:30, `security_v3/brokerguard_v3_v1.py`); phát lại oracle
+   Dev-val: hại v1 25/210 -> v3 2/210, utility bằng v1. Còn: thêm lựa chọn v3 vào runner khi mốc xong, chạy v3 + ablation
+   bằng mô hình thật trên Dev, rồi đóng băng `final_config_v5`.
 3. Chạy Test-4 một lần; vòng thích nghi nhắm vào v3 trên Dev-val; Gemini để cuối.
 
 ## 7. Luật không đổi

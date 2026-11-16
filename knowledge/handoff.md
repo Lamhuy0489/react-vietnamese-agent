@@ -7,6 +7,30 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-16 15:30: v3 runtime xong (C1+C2+C3), chưa nối runner, chưa chạy bằng mô hình thật.**
+- Code: `security_v3/brokerguard_v3_v1.py` (`BrokerGuardV3Runtime`, `runtime_class(components)` cho ablation, thành phần
+  tùy chọn `C1A` đã cân nhắc và bỏ), `value_labels_v1.py` (C2), `param_pinning_v1.py` (C3), `intent_policy_v1.py` (C1).
+- Phát lại oracle: `.venv/bin/python scripts/v3_oracle_replay_v1.py --split {train,val} --runtimes v1 v3 v3-C1 v3-C2
+  v3-C3 v3+C1A` (khoảng một phút, ghi `results/rebuild_c/v3_oracle_replay_v1_{train,val}.json`).
+- Bước kế, khi mốc Dev v4.1 xong (không còn chuỗi nào gọi `run_v3_api_v2.py`): thêm `--defense v3p2` (BrokerGuardV3Runtime +
+  sandwich như d2p2, `--levels A1`) và `v3p2-c1/-c2/-c3` vào runner (chỉ thêm khóa mới, identity ghi sha của 4 file v3),
+  test dry-run, rồi chạy trên Kaggle như mốc. Sau đó đóng băng `final_config_v5` và mới chạy Test-4.
+- Máy: pin hỏng vĩnh viễn. Không chạy pytest toàn bộ (~1 giờ); chỉ test module đã đụng + lân cận
+  (`tests/unit/test_runtime_d2_v1.py`, `test_d3.py`, `test_control_data_policy_v1.py`). mypy toàn repo vấp file chưa
+  track của owner và lỗi phân giải gói có sẵn (`scripts/evaluate_v3_v1.py`); không phải lỗi code mới.
+
+**2026-11-16 12:30: mốc Dev v4.1 VẪN CHẠY (supervisor + kaguard dưới caffeinate); C1 xong code, chưa nối runtime.**
+- Xong: Qwen A0, P2 (số ở decision log 2026-11-16 11:15). Lúc 11:07: Gemma A0 1958, P2 1948, D2P2 1565, PRG 1228;
+  Llama A0 1070, P2 1258, D2P2 930, PRG 522; Qwen D2P2 857, PRG 1108. Supervisor đã relaunch meanalways (Qwen D2P2,
+  Gemma D2P2) và nối lại chuỗi Gemma A0 (dovuong05). Kiểm: `build/kaggle/dev4_progress.sh`, `tail build/kaggle/dev4_watch.log`.
+- C1: `src/react_agent/security_v3/intent_policy_v1.py` + `tests/test_intent_policy_v1.py`; chấm lại bằng
+  `.venv/bin/python scripts/intent_policy_dev_eval_v1.py [--grid]` (ghi `results/rebuild_c/intent_policy_v1_dev_*.json`).
+- Bước kế: (1) ghi số từng cấu hình khi đủ 1960 và có `_eval_v2.json` mới hơn mọi ca; (2) khi mốc xong mới viết runtime v3
+  (file mới, ví dụ `security_v3/runtime_v3_v1.py` + runner mới hoặc cờ mới) dùng P(u) thay luật 2 của D2, CONFIRM ->
+  từ chối với lý do `CONFIRMATION_REQUIRED` + lý do con; (3) C2 nhãn theo giá trị (M3/M4: 0–10/105 chặn ở C1), C3 ghim
+  tham số (M5), dùng `Grant.values` làm ràng buộc.
+- mypy toàn repo vấp các file chưa track của owner (`scripts/test_data_part*.py`, trùng tên module); kiểm trên file đã track.
+
 **2026-11-15 23:50: ĐANG CHẠY mốc Dev v4.1 trên Kaggle (12 notebook, mỗi notebook 1 cấu hình, 7 tài khoản), v3 bước 1 xong code (`1380ce1`).**
 - Chạy: A0, D2P2 (v1), P2 (Sandwich), PRG (Progent*) × gemma4_12b, llama31_8b, qwen35_9b trên `release_dev4_1`
   (1.960 ca mỗi cấu hình). Notebook và tài khoản: sổ Kaggle mục 15/11 23:50.
