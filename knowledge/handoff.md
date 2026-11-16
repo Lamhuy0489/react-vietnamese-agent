@@ -7,6 +7,11 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-17 02:00: V3P2 chạy lại sau sự cố máy ngủ, ablation Dev-val đã lên lịch** (decision log 2026-11-17 02:00).
+- Script nối tiếp `build/kaggle/dev4_v3_follow.sh K [noabl]` đang chạy cho qwen35_9b, gemma4_12b, llama31_8b (noabl), log `build/kaggle/dev4_v3_follow.log`. Ablation Llama: `build/kaggle/dev4_v3_abl_huylmhuhu_llama31_8b.log`.
+- Giữ máy thức: một `caffeinate -dimsu` độc lập (kiểm bằng `pmset -g assertions`). Không để máy ngủ khi đang chạy.
+- Khi xong: chấm `evaluate_v3_v2.py` cho từng output (V3P2 đủ 1.960; ablation `_val_`), so trên 490 fixture Dev-val.
+
 **2026-11-16 18:10: v3p2 đang chạy bằng mô hình thật trên Dev v4.1.**
 - Runner `scripts/run_v3_api_v3.py` (bản sao v2 + `--defense v3p2`, `v3p2-c1/-c2/-c3`), chuỗi
   `build/kaggle/dev4_v3_chain.sh`, launch `build/kaggle/dev4_v3_launch.sh OWNER CRED SERVE_KEY K` (env `CONFIGS="V3P2"
