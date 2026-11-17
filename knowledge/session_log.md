@@ -639,3 +639,9 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   notebook mới và mẹo quota (dừng phiên khi còn khoảng 1–1,6 h, đẩy lại để có thêm 12 h).
 - Bài học: không sửa file `.sh` đang chạy (bash đọc dần, sẽ lệch dòng); đã dừng các launch đang chờ và nối lại bằng chuỗi.
 
+## 2026-11-18 — Test-4 dừng: tài khoản Kaggle mới không có GPU
+
+- 17/11 20:10: cả 4 notebook Test-4 lỗi ô đầu (`nvidia-smi` không có); đã dừng supervisor và chuỗi, không tốn quota.
+- 18/11: so với notebook cũ chạy được: Kaggle ghi máy T4 nhưng cấp image CPU (`kaggle-images/python`, Python 3.13) thay vì
+  image GPU; giờ GPU 0.00h. Notebook thử `gpu-check` trên cả hai tài khoản báo NO_GPU. Nguyên nhân khả dĩ nhất: chưa xác minh
+  số điện thoại. Chờ owner xác minh rồi kiểm lại bằng `gpu-check`; dự phòng: quota tài khoản cũ đặt lại 21/11 07:00 giờ VN.

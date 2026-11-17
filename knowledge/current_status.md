@@ -2,6 +2,10 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**18/11: Test-4 chưa chạy được ca nào.** Hai tài khoản mới (hieu1908, lehung040324) bị Kaggle cấp máy CPU dù chọn T4
+(notebook thử báo NO_GPU, giờ GPU 0.00h); nhiều khả năng chưa xác minh số điện thoại. Chờ owner xác minh, hoặc chờ 7 tài khoản cũ
+có quota lại 21/11 07:00 giờ VN. final_config_v5 và code không đổi.
+
 **17/11 19:35: `final_config_v5` đóng băng (v3 đủ C1–C3, sha `673f7af4…`); Test-4 đang chạy một lần** trên 2 tài khoản
 Kaggle mới (hieu1908, lehung040324), supervisor `build/kaggle/t4_supervise.py`. Ma trận 3 mô hình × {A0, P2, PRG, D2P2,
 V3P2, V3P2-C1/-C2/-C3} × 560 ca + 24 ca thích nghi (báo riêng). Runner `run_v3_api_v4.py`, chấm `evaluate_v3_v3.py`

@@ -7,6 +7,16 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-18 tối: Test-4 VẪN DỪNG, chưa có ca nào; không tiến trình nền nào chạy (trừ caffeinate).** Đã kiểm kỹ: notebook
+trên hieu1908 và lehung040324 được Kaggle ghi `machine_shape: NvidiaTeslaT4` nhưng nhận image CPU `gcr.io/kaggle-images/python`
+(Python 3.13, không có `nvidia-smi`), giờ GPU dùng 0.00h/30h; notebook cũ chạy được (huylmhuhu) dùng image
+`kaggle-private-byod/python`. Notebook thử `<owner>/gpu-check` (script in `nvidia-smi -L || echo NO_GPU`) báo NO_GPU ở cả hai
+tài khoản. Kết luận: chưa xác minh số điện thoại (hoặc Kaggle chưa cập nhật). Bước kế: owner kiểm Settings → Phone
+Verification và ô Accelerator trên web; rồi đẩy lại `gpu-check` (bản trong scratchpad đã mất thì tạo lại: kernel_type script,
+enable_gpu true, push `--accelerator NvidiaTeslaT4`, đọc log `kaggle kernels output`). Có GPU thì xóa `build/kaggle/t4_folder_*`
+cũ, đẩy 4 notebook bằng `t4_launch.sh` (tag/plan trong `t4_tags.json`), bật supervisor, kiểm `kaggle quota` vài phút sau phải
+bắt đầu trừ giờ GPU. Không xác minh được thì chờ 7 tài khoản cũ có quota lại 21/11 07:00 giờ VN.
+
 **2026-11-17 20:10: Test-4 DỪNG, chưa có ca nào.** Cả 4 notebook trên hieu1908 và lehung040324 lỗi ngay ô đầu vì không có
 GPU (`nvidia-smi` không tồn tại); metadata giống notebook cũ chạy được, nên nguyên nhân là tài khoản chưa xác minh số
 điện thoại (Kaggle chỉ cấp GPU/internet khi đã xác minh). Đã dừng supervisor và chuỗi. Owner xác minh xong thì bật lại:
