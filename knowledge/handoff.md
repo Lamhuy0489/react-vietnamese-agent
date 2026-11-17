@@ -7,6 +7,20 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-17 10:40: V3P2 Qwen, Gemma xong (decision log 07:00, 08:30); ablation Llama xong; có thể dừng giữa chừng.**
+- Lúc 10:32: ablation Qwen 444–468/490, Llama V3P2 1.898/1.960 (dự kiến xong khoảng 11:00), ablation Gemma 287–330/490
+  (dự kiến xong khoảng 12:30). Kết quả nằm trên đĩa; chạy lại thì runner bỏ qua ca đã có `result.json`.
+- Dừng an toàn: `pkill -f dev4_v3_follow.sh; pkill -f dev4_v3_abl_follow.sh; pkill -f dev4_v3_keep.sh;
+  pkill -f dev4_v3_chain.sh; pkill -f retry_on_infra_v1.sh; pkill -f run_v3_api_v3.py; pkill -f keepalive_vllm_v1.py`.
+  Ca đang chạy dở bị bỏ, không có `result.json`, nên lần sau sẽ chạy lại.
+- Chạy tiếp ablation Gemma, khi có quota (notebook mới):
+  `HF_TOKEN=$(cat ~/.hf_token_r5) CONFIGS="V3P2-C1 V3P2-C2 V3P2-C3" FIXTURES=results/rebuild_c/dev4_1_val_fixtures.jsonl
+  SHARDS=1 PAR=3 nohup nice -n 10 build/kaggle/dev4_v3_launch.sh <owner> <cred> gemma4_12b gemma4_12b >> build/kaggle/dev4_v3_abl_<owner>_gemma4_12b.log 2>&1 &`.
+  Notebook cũ còn sống thì chạy thẳng `build/kaggle/dev4_v3_chain.sh <folder> gemma4_12b 11` với cùng biến môi trường.
+  Llama V3P2 nếu chưa đủ: `CONFIGS=V3P2 SHARDS=2` với `llama31_8b_ctx16k`/`llama31_8b`. Nhớ bật `caffeinate -dimsu`.
+- Sau đó: chấm `scripts/evaluate_v3_v2.py results/rebuild_c/<output>`, so ablation với V3P2 trên 490 fixture Dev-val
+  theo tiêu chí ghi trước (decision log 2026-11-17 02:00), rồi owner duyệt final_config_v5.
+
 **2026-11-17 02:00: V3P2 chạy lại sau sự cố máy ngủ, ablation Dev-val đã lên lịch** (decision log 2026-11-17 02:00).
 - Script nối tiếp `build/kaggle/dev4_v3_follow.sh K [noabl]` đang chạy cho qwen35_9b, gemma4_12b, llama31_8b (noabl), log `build/kaggle/dev4_v3_follow.log`. Ablation Llama: `build/kaggle/dev4_v3_abl_huylmhuhu_llama31_8b.log`.
 - Giữ máy thức: một `caffeinate -dimsu` độc lập (kiểm bằng `pmset -g assertions`). Không để máy ngủ khi đang chạy.
