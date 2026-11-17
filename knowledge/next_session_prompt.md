@@ -1,12 +1,13 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-17. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-17 12:00. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-PHẦN CỨNG (bắt buộc): pin hỏng VĨNH VIỄN, chạy thẳng từ sạc 85 W. Chạy nhẹ: mỗi lúc một việc, nice -n 10, không mở app
+PHẦN CỨNG (bắt buộc): 17/11 owner mang máy đi sửa pin; đầu phiên hỏi owner đã sửa xong chưa. Chưa xác nhận thì coi như
+pin hỏng, chạy thẳng từ sạc 85 W. Chạy nhẹ: mỗi lúc một việc, nice -n 10, không mở app
 nặng, KHÔNG chạy pytest toàn bộ (~1 giờ) mà chỉ test module đã đụng + lân cận. Không tự bật hay khởi động lại OmniRoute.
 KHÔNG render hình hay biên dịch PDF trên máy: owner dùng Overleaf. Khi có chuỗi Kaggle chạy: giữ một
 `caffeinate -dimsu` độc lập (kiểm `pmset -g assertions`), không để máy ngủ hay tắt màn hình.

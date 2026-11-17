@@ -7,6 +7,10 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-17 12:00: Phiên đóng, máy tắt (owner đi sửa pin).** Không còn tiến trình nền hay lần chạy dở. Mọi script
+`build/kaggle/dev4_v3_*.sh` (launch, chain, follow, abl_follow, keep) và `build/archive_rebuild_b.sh` vẫn nằm trong `build/`
+(gitignored) để dùng lại cho Test-4.
+
 **2026-11-17 11:45: Xong toàn bộ V3P2 và ablation Dev-val.** Bước kế: owner chọn giữ đủ C1–C3 hay bỏ C1 (decision log
 11:45), rồi đóng băng `final_config_v5` (runner `scripts/run_v3_api_v3.py --defense v3p2`, sha các module v3 trong identity),
 chuẩn bị gói Test-4 (chỉ hạ tầng, không đọc nội dung), chạy một lần sau khi quota đặt lại 21/11 07:00 giờ VN (2 phiên mỗi

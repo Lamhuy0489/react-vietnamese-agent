@@ -620,3 +620,11 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   tunnel buiquocviet lỗi khoảng một nửa số lần gọi (đã chuyển Llama sang notebook huylmhuhu), guard keep-alive thiếu
   `SSL_CERT_FILE` (đã sửa). Tăng shard cho ablation (3 shard mỗi cấu hình) thì nhanh gấp khoảng 2,2 lần.
 - Quota: cả 7 tài khoản hết đến 2026-11-21 00:00 UTC (`kaggle quota`).
+
+## 2026-11-17 trưa — Đóng phiên, owner tắt máy đi sửa pin
+
+- Đã dừng hết tiến trình nền (script nối tiếp, guard keep-alive, keep-alive, caffeinate). Notebook Kaggle sẽ tự tắt khi hết
+  keep-alive; không còn lần chạy nào dở. Kết quả đầy đủ ở `results/rebuild_c/dev4_1_V3P2_*` và `dev4_1_V3P2-C*_val_*`
+  (có `_eval_v2.json`), số đã ghi decision log 2026-11-17 07:00–11:45.
+- Việc chờ owner: chọn giữ đủ C1–C3 hay bỏ C1, rồi đóng băng final_config_v5; Test-4 sau khi quota đặt lại 21/11 07:00 giờ VN.
+- Phần cứng: owner mang máy đi sửa pin. Đầu phiên sau hỏi owner một lần đã sửa xong chưa trước khi nới giới hạn chạy nhẹ.
