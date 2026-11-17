@@ -2,6 +2,11 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**17/11 11:45: V3P2 xong cả ba mô hình và ablation Dev-val xong; chờ owner duyệt final_config_v5.** V3P2 so với D2P2:
+gây hại Gemma 14 → 1, Llama 25 → 1, Qwen 12 → 3 (/840); lộ câu cuối về 0; utility giữ nguyên; chặn nhầm tăng (Gemma 86 → 95,
+Llama 70 → 114, Qwen 56 → 75). Ablation: C2, C3 đạt tiêu chí, C1 không đạt (decision log 2026-11-17 07:00, 08:30, 11:30,
+11:45). Quota GPU cả 7 tài khoản hết đến 21/11 07:00 giờ VN; Test-4 chạy sau ngày đó.
+
 **17/11 02:00: Mốc Dev v4.1 đủ 12/12; V3P2 (BrokerGuard v3 + P2) đang chạy bằng mô hình thật trên ba mô hình, ablation
 C1/C2/C3 trên Dev-val đã lên lịch tự động.** Đã có Gemma 702, Qwen 967, Llama 290 trên 1.960 trước sự cố máy ngủ lúc
 21:20; 4 notebook trên huylmhuhu và buiquocviet (5 tài khoản khác hết quota tuần). Runner `scripts/run_v3_api_v3.py`,

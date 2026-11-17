@@ -610,3 +610,13 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Bài học: (1) luôn giữ một `caffeinate -dimsu` độc lập suốt thời gian theo dõi; (2) script nối tiếp phải nhận chuỗi theo
   folder notebook, và không tính tiến trình keep-alive (keep-alive chạy 11 giờ); (3) folder ghi lại phải trỏ vào notebook
   mới push; (4) quota: mỗi tài khoản 2 phiên cùng lúc, phiên đã bật chạy đủ 12 giờ.
+
+## 2026-11-17 sáng — V3P2 ba mô hình và ablation Dev-val xong
+
+- V3P2 so với D2P2 (decision log 07:00, 08:30, 11:30): gây hại giảm mạnh ở cả ba (còn 1–3/840, chỉ M5), lộ câu cuối về 0,
+  utility giữ nguyên, chặn nhầm tăng (Llama nhiều nhất, do C3 khi Llama viết lại giá trị người dùng).
+- Ablation Dev-val (decision log 11:45): C2 và C3 đạt tiêu chí ghi trước, C1 không đạt; chờ owner quyết.
+- Sự cố đêm: đĩa đầy lúc 03:20 (đã nén `results/rebuild_b` có kiểm số file), `brew cleanup` gỡ `openssl@3` (đã cài lại),
+  tunnel buiquocviet lỗi khoảng một nửa số lần gọi (đã chuyển Llama sang notebook huylmhuhu), guard keep-alive thiếu
+  `SSL_CERT_FILE` (đã sửa). Tăng shard cho ablation (3 shard mỗi cấu hình) thì nhanh gấp khoảng 2,2 lần.
+- Quota: cả 7 tài khoản hết đến 2026-11-21 00:00 UTC (`kaggle quota`).

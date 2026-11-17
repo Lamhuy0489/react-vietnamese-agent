@@ -4255,3 +4255,28 @@ Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al
   cũng thất bại ở D2P2 (max_steps, cắt cụt).
 - Tổng hợp ba mô hình (V3P2 so với D2P2): gây hại Gemma 14 → 1, Llama 25 → 1, Qwen 12 → 3; lộ ở câu trả lời cuối về 0 ở cả
   ba; utility giữ nguyên; chặn nhầm Gemma 86 → 95, Llama 70 → 114, Qwen 56 → 75. Mọi ca còn lọt đều là M5 (tamper).
+
+## 2026-11-17 11:45 — Ablation v3 trên Dev-val xong (đọc theo tiêu chí ghi trước lúc 02:00)
+
+- 490 fixture Dev-val (42 họ; 210 ca tấn công), V3P2 đầy đủ lấy từ bản chạy 1.960. Mỗi ô ghi: ca tấn công gây hại
+  (chấm biến đổi) / họ / chặn nhầm trên 280 ca lành. Utility thường/ủy quyền gần như không đổi giữa các biến thể
+  (lệch tối đa 3 ca).
+
+| Biến thể | Gemma | Llama | Qwen |
+|---|---|---|---|
+| V3P2 | 1 / 1 / 22 | 1 / 1 / 32 | 3 / 2 / 21 |
+| bỏ C1 | 1 / 1 / 22 | 2 / 2 / 27 | 3 / 2 / 19 |
+| bỏ C2 | 1 / 1 / 22 | 5 / 4 / 32 (lộ câu cuối 2; M3 3, M4 1) | 4 / 3 / 19 (M4 1) |
+| bỏ C3 | 2 / 2 / 20 | 3 / 1 / 28 | 3 / 2 / 21 |
+
+- Theo tiêu chí (tăng gây hại trên ít nhất hai trong ba mô hình): **C2 có đóng góp** (Llama, Qwen), **C3 có đóng góp**
+  (Gemma, Llama), **C1 không đạt** (chỉ Llama). Với C1, phát lại oracle cho thấy C1 chặn M6, nhưng trong chạy thật các mô
+  hình hiếm khi đề xuất đích M6 mà v1 bỏ lọt (D2P2 chỉ có 1–2 ca M6 trên 840), nên trên Dev-val không đo được lợi ích của
+  C1. Ngược lại, C1 và C3 làm tăng chặn nhầm (Llama 27/28 → 32, Qwen 19 → 21, Gemma 20 → 22).
+- Số rất nhỏ (Dev-val, mỗi ô 0–5 ca): đây là mô tả trên Dev, không phải kiểm định. Không chỉnh v3 theo bảng này trước khi
+  owner xem.
+- Câu hỏi cho owner, trước khi đóng băng final_config_v5:
+  1. giữ v3 đủ C1–C3 (H1 vẫn là cổng; C1 là phần bảo đảm ở Mệnh đề 1), hay
+  2. bỏ C1 để giảm chặn nhầm, chấp nhận mất bảo đảm hình thức về đích.
+  Khuyến nghị: giữ đủ, vì lợi ích của C1 là trường hợp xấu nhất (đích do kẻ tấn công chọn) mà Test-4 có nhóm thích nghi;
+  chi phí chặn nhầm báo kèm như H2.

@@ -11,21 +11,18 @@ nặng, KHÔNG chạy pytest toàn bộ (~1 giờ) mà chỉ test module đã đ
 KHÔNG render hình hay biên dịch PDF trên máy: owner dùng Overleaf. Khi có chuỗi Kaggle chạy: giữ một
 `caffeinate -dimsu` độc lập (kiểm `pmset -g assertions`), không để máy ngủ hay tắt màn hình.
 
-Trạng thái (17/11 02:00): BrokerGuard v3 cho tạp chí Q4. Dev v4.1 (168 họ, Dev-val 42) là tập phát triển duy nhất;
-Test-4 (seal `1f9b0070…`) niêm phong, H1 cổng: v3 < v1 về ASR (decision log 2026-11-15 18:20). Mốc Dev v4.1 đủ 12/12
-(decision log 2026-11-16 18:00, 18:40, 20:30). V3P2 đang chạy bằng mô hình thật (`scripts/run_v3_api_v3.py`,
-`build/kaggle/dev4_v3_chain.sh`); ablation V3P2-C1/-C2/-C3 trên Dev-val (490 fixture) đã ghi kế hoạch trước (decision log
-2026-11-17 02:00) và do `build/kaggle/dev4_v3_follow.sh` / `dev4_v3_abl_follow.sh` tự chạy.
+Trạng thái (17/11 11:45): BrokerGuard v3 cho tạp chí Q4. Dev v4.1 xong: mốc 12/12 và V3P2 ba mô hình (gây hại còn
+1–3/840, chỉ M5; lộ câu cuối 0; utility giữ nguyên; chặn nhầm tăng) và ablation Dev-val (C2, C3 đạt; C1 không đạt), decision
+log 2026-11-17 07:00, 08:30, 11:30, 11:45. Test-4 (seal `1f9b0070…`) niêm phong. Quota GPU hết đến 21/11 07:00 giờ VN.
 
 Việc của phiên này:
-1. Kiểm tiến độ: `tail build/kaggle/dev4_v3_follow.log`, đếm `results/rebuild_c/dev4_1_V3P2_{model}/runs/A1/*/result.json`
-   (đủ 1.960) và `dev4_1_V3P2-C{1,2,3}_val_{model}` (đủ 490), `kaggle kernels status`. Script dừng mà còn thiếu ca thì
-   xem handoff "Đang làm" (folder notebook ghi trong `build/kaggle/dev4_folder_*`).
-2. Chấm `scripts/evaluate_v3_v2.py` từng output, ghi số V3P2 so với D2P2 vào decision log (gây hại ca/họ, lộ câu cuối,
-   utility thường/ủy quyền, chặn nhầm và lý do, max_steps/model_error, chi phí). Ablation đọc theo tiêu chí đã ghi trước.
-3. Báo owner; owner duyệt thì đóng băng final_config_v5, rồi mới chạy Test-4 một lần. Gemini để cuối.
-4. Không chạy hay đọc Test-4 trước khi đóng băng v3. Không sửa runner/evaluator đã ghim (`run_v3_api_v2.py`,
-   `evaluate_v3_v2.py`), v1, Test cũ, số liệu đã có. Không chỉnh v3 theo số ablation trước khi owner xem.
+1. Hỏi owner: giữ đủ C1–C3 hay bỏ C1 (decision log 11:45). Owner duyệt thì đóng băng final_config_v5 (ghi decision log,
+   sha các module v3, runner `run_v3_api_v3.py`, cấu hình chạy Test-4 theo giao thức 2026-11-15 16:30).
+2. Chuẩn bị hạ tầng chạy Test-4 một lần (v1 và v3 cùng chạy, ba mô hình), dry-run bằng backend giả, chưa đọc nội dung Test.
+   Chạy thật sau 21/11 07:00, 2 phiên mỗi tài khoản; giữ `caffeinate -dimsu`, kiểm dung lượng đĩa trước.
+3. Trong lúc chờ quota: viết bài (mô hình hình thức sang LaTeX, bảng Dev), Gemini để cuối.
+4. Không chạy hay đọc Test-4 trước khi đóng băng v3. Không sửa runner/evaluator đã ghim, v1, Test cũ, số liệu đã có.
+   Script đọc `results/rebuild_b` phải giải nén trước (`results/archive/rebuild_b/`).
 
 Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng, số đếm và biên soạn.
 ```
