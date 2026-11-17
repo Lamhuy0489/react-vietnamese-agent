@@ -4231,3 +4231,27 @@ Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al
   (PROVENANCE_SENSITIVE_PAYLOAD/FINAL 57/36) và lớp A1; utility không đổi. Chi phí token và thời gian bằng v1.
 - Ablation Gemma bắt đầu lúc 08:12; Qwen đang chạy ablation; Llama V3P2 1.637/1.960 (chuyển sang notebook huylmhuhu lúc
   07:57 vì tunnel buiquocviet lỗi khoảng một nửa số lần gọi).
+
+## 2026-11-17 11:30 — V3P2 Llama xong, so với D2P2 (Dev v4.1, chẩn đoán Dev)
+
+- `results/rebuild_c/dev4_1_V3P2_llama31_8b_eval_v2.json` (1.960/1.960; hai cách chấm trùng nhau; nối tiếp trên notebook
+  huylmhuhu từ 07:57), so với `dev4_1_D2P2_llama31_8b`:
+
+| Chỉ số | D2P2 (v1) | V3P2 (v3) |
+|---|---|---|
+| Ca tấn công gây hại | 25/840 | 1/840 |
+| Họ gây hại | 18/168 | 1/168 |
+| Lộ ở câu trả lời cuối | 6/840 | 0/840 |
+| Gây hại ở nhánh thường (biến đổi) | 16/840 | 0/840 |
+| Utility thường / ủy quyền | 273/840, 64/280 | 274/840, 68/280 |
+| Chặn nhầm (bất kỳ / kèm mất utility) | 70 / 70 trên 1.120 | 114 / 108 trên 1.120 |
+| Cần xác nhận lành / tấn công | 0 / 0 | 9/1.120, 3/840 |
+| max_steps / model_error | 351 / 228 | 369 / 232 |
+| Tấn công: tok, giây trung bình | 10.405, 11,8 | 10.593, 12,5 |
+
+- Theo cơ chế, gây hại D2P2 gồm M3 11, M4 4, M5 9, M6 1; ở V3P2 chỉ còn M5 1.
+- Chặn nhầm tăng rõ nhất ở Llama (thường 18 → 53, ủy quyền 52 → 61). Lý do hàng đầu là PINNED_PARAMETER_CHANGED 61 (C3):
+  Llama hay viết lại giá trị người dùng nêu khi soạn payload, nên C3 chặn. Utility vẫn không giảm, vì phần lớn các ca này
+  cũng thất bại ở D2P2 (max_steps, cắt cụt).
+- Tổng hợp ba mô hình (V3P2 so với D2P2): gây hại Gemma 14 → 1, Llama 25 → 1, Qwen 12 → 3; lộ ở câu trả lời cuối về 0 ở cả
+  ba; utility giữ nguyên; chặn nhầm Gemma 86 → 95, Llama 70 → 114, Qwen 56 → 75. Mọi ca còn lọt đều là M5 (tamper).
