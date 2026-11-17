@@ -7,6 +7,11 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-17 20:10: Test-4 DỪNG, chưa có ca nào.** Cả 4 notebook trên hieu1908 và lehung040324 lỗi ngay ô đầu vì không có
+GPU (`nvidia-smi` không tồn tại); metadata giống notebook cũ chạy được, nên nguyên nhân là tài khoản chưa xác minh số
+điện thoại (Kaggle chỉ cấp GPU/internet khi đã xác minh). Đã dừng supervisor và chuỗi. Owner xác minh xong thì bật lại:
+đẩy notebook mới bằng `t4_launch.sh` (xem mục dưới) hoặc cho supervisor tự đẩy sau khi xóa `t4_folder_<tag>` cũ.
+
 **2026-11-17 19:35: Test-4 ĐANG CHẠY dưới `final_config_v5` (sha `673f7af4…`, commit `88611e1`).** Owner giữ đủ C1–C3
 (decision log 19:25). Pin đã sửa xong: hết giới hạn chạy nhẹ (pytest toàn bộ được chạy lại).
 - 4 notebook trên 2 tài khoản mới: hieu1908 (qwen, gemma), lehung040324 (llamaA, llamaB); kế hoạch từng tag ở
