@@ -4280,3 +4280,26 @@ Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al
   2. bỏ C1 để giảm chặn nhầm, chấp nhận mất bảo đảm hình thức về đích.
   Khuyến nghị: giữ đủ, vì lợi ích của C1 là trường hợp xấu nhất (đích do kẻ tấn công chọn) mà Test-4 có nhóm thích nghi;
   chi phí chặn nhầm báo kèm như H2.
+
+## 2026-11-17 19:25 — Owner giữ đủ C1–C3; đóng băng final_config_v5 cho Test-4
+
+- Owner duyệt (19:00): giữ BrokerGuard v3 đủ C1, C2, C3. Lý do: (1) tiêu chí ablation lúc 02:00 chỉ là mô tả trên Dev và
+  không cam kết bỏ thành phần nào; bỏ C1 sau khi xem các ô 0–5 ca là chọn theo nhiễu; (2) Dev-val không đủ lực để đo C1,
+  vì mô hình hiếm khi đề xuất đích M6 (D2P2 có 1–2 ca M6 trên 840), còn phát lại oracle cho thấy C1 chặn 35/35 M6
+  trên Dev-val (v1: 15); (3) Test-4 có nhóm thích nghi nhắm đích do kẻ tấn công chọn, và sau đóng băng còn một vòng thích
+  nghi nhắm v3; (4) Mệnh đề 1 (bảo đảm về đích) dựa trên C1; (5) chi phí chặn nhầm (+2–5/280 trên Dev-val) báo dưới H2/H4.
+  H3 (đăng ký trước lúc 2026-11-15 18:20) kiểm −C1, −C2, −C3 trên Test-4, nên câu hỏi về C1 do Test-4 trả lời.
+- Đường chạy Test-4 (file mới, không sửa file đã ghim): `scripts/run_v3_api_v4.py` (bản sao `run_v3_api_v3.py` + `--release
+  test4`, chỉ chạy khi `final_config_v5` khớp và cặp (mô hình, cấu hình) có trong ma trận; `--fixtures` chỉ nhận file 24 ca
+  thích nghi đã ghim), `scripts/evaluate_v3_v3.py` (bản sao `evaluate_v3_v2.py`; chỉ đọc oracle Test-4 sau khi manifest khớp
+  và run mang đúng hash manifest), `src/react_agent/evaluation/final_config_v5.py`, `scripts/freeze_final_config_v5.py`,
+  `tests/test_final_config_v5.py` (10 test). Dry-run Dev bằng backend giả: 5/5 ca, chấm được.
+- Ma trận Test-4: Gemma 4 12B, Llama 3.1 8B, Qwen3.5 9B × A0, P2, PRG, D2P2 (v1), V3P2 (v3), V3P2-C1/-C2/-C3; 560 ca tĩnh,
+  mỗi cặp chạy một lần (chỉ chạy lại khi lỗi hạ tầng). 24 ca thích nghi chạy cùng ma trận, báo riêng. Thứ tự ưu tiên:
+  V3P2, D2P2 (H1, H2), rồi ablation (H3), rồi A0, P2, PRG. Gemini không nằm trong ma trận này.
+- Tài nguyên: thêm 2 tài khoản Kaggle (hieu1908, lehung040324; 30 h GPU mỗi tài khoản); 7 tài khoản cũ hết quota đến
+  2026-11-21 00:00 UTC. Test-4 bắt đầu trên 2 tài khoản mới, phần còn lại sau khi quota đặt lại.
+- 19:40: dry-run Test-4 bằng backend giả bắt lỗi schema: `FixtureV3` chưa nhận `split = test4` và mã họ `T5`. Manifest đầu
+  (sha `f7c0ed90…`) chưa dùng cho lần chạy nào nên đã gỡ; nới `release.py` theo kiểu chỉ thêm (`test4`, `T5`; dữ liệu cũ
+  không đổi), thêm test cả 584 dòng Test-4 hợp lệ, rồi đóng băng lại: **`final_config_v5` sha `673f7af4…`** (425 file).
+  Dry-run lại: 5 ca tĩnh và 2 ca thích nghi chạy và chấm được; output dry-run đã xóa.

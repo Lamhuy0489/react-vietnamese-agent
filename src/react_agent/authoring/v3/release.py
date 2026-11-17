@@ -218,9 +218,10 @@ class SpecRow(StrictRecord):
 
 class FixtureV3(StrictRecord):
     schema_version: Literal["vn_agentinject_fixture_v3"] = "vn_agentinject_fixture_v3"
-    variant_id: str = Field(pattern=r"^(ATK|BPL|BAU)_(P3|D3|T3|T4)_\d{2,3}_[A-Z_]+$")
+    # T5 = Test-4 families (spec_test4), sealed 2026-11-15
+    variant_id: str = Field(pattern=r"^(ATK|BPL|BAU)_(P3|D3|T3|T4|T5)_\d{2,3}_[A-Z_]+$")
     family_id: str
-    split: Literal["pilot", "dev", "test", "test3"]
+    split: Literal["pilot", "dev", "test", "test3", "test4"]
     branch: Branch
     variant_type: Variant
     task: PublicWorkbenchTask
