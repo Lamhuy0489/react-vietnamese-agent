@@ -51,6 +51,10 @@ A0/R1/P2 xong 06:42) và `gemma4-12b` (PRG 27 fixture cuối, 09:33–09:43); hu
 hết quota tuần (30 h), oanhlam123456 hết quota từ 08/11. URL dạng `https://www.kaggle.com/code/<owner>/react-vn-vllm-serve-v1-<model>`.
 Không notebook nào còn chạy sau 09:43.
 
+**2026-11-17 11:00 — quota GPU (`kaggle quota`, đã dùng / còn / giới hạn):** cả 7 tài khoản đều hết (dùng 31–40 h trên 30 h,
+do phiên đã bật chạy vượt quota); đặt lại 2026-11-21 00:00 UTC (07:00 giờ VN thứ Bảy 21/11). TPU 20 h/tuần chưa dùng ở cả 7
+tài khoản (serve hiện tại chỉ chạy GPU T4). Lệnh: `KAGGLE_USERNAME=<owner> KAGGLE_KEY=... .venv/bin/kaggle quota`.
+
 **2026-11-16 18:10 — Dev v4.1 BrokerGuard v3 (V3P2, `run_v3_api_v3.py`, source `09cdc5e`), private, T4×2:**
 huylmhuhu `react-vn-vllm-serve-v1-gemma4-12b` v3 (gemma V3P2); buiquocviet `react-vn-vllm-serve-v1-qwen35-9b` v7 (qwen
 V3P2); buiquocviet `react-vn-vllm-serve-v1-llama31-8b-ctx16k` v1 (chạy tiếp Llama D2P2 từ 973/1960 sau khi dovuong05 hết
