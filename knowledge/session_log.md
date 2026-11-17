@@ -628,3 +628,14 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   (có `_eval_v2.json`), số đã ghi decision log 2026-11-17 07:00–11:45.
 - Việc chờ owner: chọn giữ đủ C1–C3 hay bỏ C1, rồi đóng băng final_config_v5; Test-4 sau khi quota đặt lại 21/11 07:00 giờ VN.
 - Phần cứng: owner mang máy đi sửa pin. Đầu phiên sau hỏi owner một lần đã sửa xong chưa trước khi nới giới hạn chạy nhẹ.
+
+## 2026-11-17 tối — Đóng băng final_config_v5, Test-4 bắt đầu chạy
+
+- Owner: pin đã sửa xong (gỡ giới hạn chạy nhẹ); giữ đủ C1–C3 sau khi xem lập luận học thuật (H3 kiểm ablation trên Test-4).
+- Code mới: `run_v3_api_v4.py` và `evaluate_v3_v3.py` (đường Test-4 có cổng `final_config_v5`), `final_config_v5.py`,
+  `freeze_final_config_v5.py`, 11 test. Dry-run bằng backend giả bắt lỗi schema (`FixtureV3` thiếu `test4`/`T5`); đã gỡ
+  manifest đầu (chưa dùng), sửa, đóng băng lại `673f7af4…` (decision log 19:25, 19:40). Commit `88611e1`.
+- Thêm 2 tài khoản Kaggle (hieu1908, lehung040324). Bật 4 notebook lúc 19:26–19:27; supervisor độc lập lo nối lại, đẩy
+  notebook mới và mẹo quota (dừng phiên khi còn khoảng 1–1,6 h, đẩy lại để có thêm 12 h).
+- Bài học: không sửa file `.sh` đang chạy (bash đọc dần, sẽ lệch dòng); đã dừng các launch đang chờ và nối lại bằng chuỗi.
+

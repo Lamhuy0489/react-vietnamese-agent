@@ -7,6 +7,22 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-17 19:35: Test-4 ĐANG CHẠY dưới `final_config_v5` (sha `673f7af4…`, commit `88611e1`).** Owner giữ đủ C1–C3
+(decision log 19:25). Pin đã sửa xong: hết giới hạn chạy nhẹ (pytest toàn bộ được chạy lại).
+- 4 notebook trên 2 tài khoản mới: hieu1908 (qwen, gemma), lehung040324 (llamaA, llamaB); kế hoạch từng tag ở
+  `build/kaggle/t4_tags.json`. Mỗi model: 8 cấu hình × 560 ca tĩnh + 24 ca thích nghi; output
+  `results/rebuild_c/test4[_adaptive]_<cfg>_<K>`, chấm tự động `_eval_v3.json` khi đủ ca.
+- Supervisor độc lập `build/kaggle/t4_supervise.py` (nohup): tự nối lại chuỗi, đẩy notebook mới khi hết phiên 11,5 h, mẹo
+  quota (còn ≤ 0,5 h × số phiên + 0,6 h thì dừng phiên và đẩy lại). Sự kiện: `tail build/kaggle/t4_supervise.log`; log chuỗi
+  `build/kaggle/t4_chain_<tag>.log`. Giữ `caffeinate -dimsu` độc lập (`pmset -g assertions`).
+- Kiểm tiến độ: `for d in results/rebuild_c/test4_*; do echo "$d $(ls $d/runs/*/*/result.json 2>/dev/null | wc -l)"; done`.
+- Nếu supervisor chết: `nohup nice -n 5 .venv/bin/python build/kaggle/t4_supervise.py > build/kaggle/t4_supervise.out 2>&1 &`
+  (nó đọc notebook hiện tại từ `t4_folder_<tag>` và nối lại; runner bỏ qua ca đã có `result.json`).
+- Dừng an toàn: `pkill -f t4_supervise.py; pkill -f t4_chain.sh; pkill -f t4_launch.sh; pkill -f retry_on_infra_v1.sh;
+  pkill -f run_v3_api_v4.py; pkill -f keepalive_vllm_v1.py`.
+- Quota: 7 tài khoản cũ hết đến 21/11 07:00 giờ VN; supervisor tự dùng khi có quota trở lại.
+- Khi xong: không chỉnh gì theo số Test-4; phân tích theo đăng ký trước (decision log 2026-11-15 18:20): H1 → H2 → H3 → H4.
+
 **2026-11-17 12:00: Phiên đóng, máy tắt (owner đi sửa pin).** Không còn tiến trình nền hay lần chạy dở. Mọi script
 `build/kaggle/dev4_v3_*.sh` (launch, chain, follow, abl_follow, keep) và `build/archive_rebuild_b.sh` vẫn nằm trong `build/`
 (gitignored) để dùng lại cho Test-4.

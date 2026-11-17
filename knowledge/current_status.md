@@ -2,6 +2,11 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**17/11 19:35: `final_config_v5` đóng băng (v3 đủ C1–C3, sha `673f7af4…`); Test-4 đang chạy một lần** trên 2 tài khoản
+Kaggle mới (hieu1908, lehung040324), supervisor `build/kaggle/t4_supervise.py`. Ma trận 3 mô hình × {A0, P2, PRG, D2P2,
+V3P2, V3P2-C1/-C2/-C3} × 560 ca + 24 ca thích nghi (báo riêng). Runner `run_v3_api_v4.py`, chấm `evaluate_v3_v3.py`
+(decision log 2026-11-17 19:25). Pin máy đã sửa.
+
 **17/11 11:45: V3P2 xong cả ba mô hình và ablation Dev-val xong; chờ owner duyệt final_config_v5.** V3P2 so với D2P2:
 gây hại Gemma 14 → 1, Llama 25 → 1, Qwen 12 → 3 (/840); lộ câu cuối về 0; utility giữ nguyên; chặn nhầm tăng (Gemma 86 → 95,
 Llama 70 → 114, Qwen 56 → 75). Ablation: C2, C3 đạt tiêu chí, C1 không đạt (decision log 2026-11-17 07:00, 08:30, 11:30,

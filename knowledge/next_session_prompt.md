@@ -1,29 +1,28 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-17 12:00. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-17 19:40. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-PHẦN CỨNG (bắt buộc): 17/11 owner mang máy đi sửa pin; đầu phiên hỏi owner đã sửa xong chưa. Chưa xác nhận thì coi như
-pin hỏng, chạy thẳng từ sạc 85 W. Chạy nhẹ: mỗi lúc một việc, nice -n 10, không mở app
-nặng, KHÔNG chạy pytest toàn bộ (~1 giờ) mà chỉ test module đã đụng + lân cận. Không tự bật hay khởi động lại OmniRoute.
-KHÔNG render hình hay biên dịch PDF trên máy: owner dùng Overleaf. Khi có chuỗi Kaggle chạy: giữ một
-`caffeinate -dimsu` độc lập (kiểm `pmset -g assertions`), không để máy ngủ hay tắt màn hình.
+PHẦN CỨNG: pin đã sửa xong 17/11 (hết giới hạn chạy nhẹ). Vẫn: không render hình/biên dịch PDF trên máy (owner dùng
+Overleaf), không tự khởi động lại OmniRoute. Khi chuỗi Kaggle chạy: giữ một `caffeinate -dimsu` độc lập (`pmset -g assertions`).
 
-Trạng thái (17/11 11:45): BrokerGuard v3 cho tạp chí Q4. Dev v4.1 xong: mốc 12/12 và V3P2 ba mô hình (gây hại còn
-1–3/840, chỉ M5; lộ câu cuối 0; utility giữ nguyên; chặn nhầm tăng) và ablation Dev-val (C2, C3 đạt; C1 không đạt), decision
-log 2026-11-17 07:00, 08:30, 11:30, 11:45. Test-4 (seal `1f9b0070…`) niêm phong. Quota GPU hết đến 21/11 07:00 giờ VN.
+Trạng thái (17/11 19:35): final_config_v5 đã đóng băng (BrokerGuard v3 đủ C1–C3, sha `673f7af4…`, decision log 19:25).
+Test-4 đang chạy MỘT LẦN: 3 mô hình × {A0, P2, PRG, D2P2, V3P2, V3P2-C1/-C2/-C3} × 560 ca + 24 ca thích nghi, trên
+hieu1908 và lehung040324; supervisor `build/kaggle/t4_supervise.py` (sự kiện `build/kaggle/t4_supervise.log`).
 
 Việc của phiên này:
-1. Hỏi owner: giữ đủ C1–C3 hay bỏ C1 (decision log 11:45). Owner duyệt thì đóng băng final_config_v5 (ghi decision log,
-   sha các module v3, runner `run_v3_api_v3.py`, cấu hình chạy Test-4 theo giao thức 2026-11-15 16:30).
-2. Chuẩn bị hạ tầng chạy Test-4 một lần (v1 và v3 cùng chạy, ba mô hình), dry-run bằng backend giả, chưa đọc nội dung Test.
-   Chạy thật sau 21/11 07:00, 2 phiên mỗi tài khoản; giữ `caffeinate -dimsu`, kiểm dung lượng đĩa trước.
-3. Trong lúc chờ quota: viết bài (mô hình hình thức sang LaTeX, bảng Dev), Gemini để cuối.
-4. Không chạy hay đọc Test-4 trước khi đóng băng v3. Không sửa runner/evaluator đã ghim, v1, Test cũ, số liệu đã có.
-   Script đọc `results/rebuild_b` phải giải nén trước (`results/archive/rebuild_b/`).
+1. Kiểm Test-4: supervisor còn sống không (`pgrep -fl t4_supervise`), `tail build/kaggle/t4_supervise.log`, đếm ca từng
+   output (lệnh trong handoff). Supervisor chết thì bật lại (lệnh trong handoff). Đừng suy notebook còn sống từ file cũ.
+2. Output nào đủ ca mà thiếu `_eval_v3.json` thì chấm `scripts/evaluate_v3_v3.py R`. Đủ hết thì phân tích đúng đăng ký
+   trước (decision log 2026-11-15 18:20): H1 (McNemar mức họ, v3 vs v1, 48 họ tĩnh) là cổng, rồi H2, H3 (Holm), H4; 24 ca
+   thích nghi báo riêng. Ghi số vào decision log. Không chỉnh v3 hay chạy lại theo số Test-4 (chỉ chạy lại khi lỗi hạ tầng).
+3. Sau Test-4: vòng tấn công thích nghi nhắm v3 trên họ Dev-val (owner/Minh soạn, báo riêng); viết bài (mô hình hình
+   thức sang LaTeX, bảng Dev v4.1 và Test-4); Gemini để cuối (cần quyết định riêng, OmniRoute).
+4. Không sửa file đã ghim trong final_config_v5 (src/react_agent, configs, runner/evaluator v4/v3, dữ liệu Test-4): sửa là
+   Test-4 từ chối chạy. Script đọc `results/rebuild_b` phải giải nén trước (`results/archive/rebuild_b/`).
 
 Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng, số đếm và biên soạn.
 ```

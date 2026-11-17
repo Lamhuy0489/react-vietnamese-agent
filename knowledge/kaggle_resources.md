@@ -51,6 +51,13 @@ A0/R1/P2 xong 06:42) và `gemma4-12b` (PRG 27 fixture cuối, 09:33–09:43); hu
 hết quota tuần (30 h), oanhlam123456 hết quota từ 08/11. URL dạng `https://www.kaggle.com/code/<owner>/react-vn-vllm-serve-v1-<model>`.
 Không notebook nào còn chạy sau 09:43.
 
+**2026-11-17 19:26 — Test-4 (final_config_v5 sha `673f7af4…`, runner `run_v3_api_v4.py`, source `88611e1`), private,
+T4×2, trên 2 tài khoản mới (30 h GPU mỗi tài khoản lúc bật):** hieu1908 (`kaggle7.json`) `react-vn-vllm-serve-v1-qwen35-9b` v1
+và `react-vn-vllm-serve-v1-gemma4-12b` v1; lehung040324 (`kaggle8.json`) `react-vn-vllm-serve-v1-llama31-8b-ctx16k` v1
+(llamaA: V3P2, D2P2, A0, P2, PRG) và v2 (llamaB: V3P2-C1/-C2/-C3 và 24 ca thích nghi). Supervisor
+`build/kaggle/t4_supervise.py` tự nối lại, đẩy notebook mới khi hết phiên và áp mẹo quota; notebook đang dùng của từng tag
+nằm ở `build/kaggle/t4_folder_<tag>`, sự kiện ở `build/kaggle/t4_supervise.log`. Trạng thái thật: `kaggle kernels status`.
+
 **2026-11-17 11:00 — quota GPU (`kaggle quota`, đã dùng / còn / giới hạn):** cả 7 tài khoản đều hết (dùng 31–40 h trên 30 h,
 do phiên đã bật chạy vượt quota); đặt lại 2026-11-21 00:00 UTC (07:00 giờ VN thứ Bảy 21/11). TPU 20 h/tuần chưa dùng ở cả 7
 tài khoản (serve hiện tại chỉ chạy GPU T4). Lệnh: `KAGGLE_USERNAME=<owner> KAGGLE_KEY=... .venv/bin/kaggle quota`.
