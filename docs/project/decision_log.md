@@ -4357,3 +4357,27 @@ Ghi trước khi chạy bất kỳ phần nào dưới đây. Không chỉnh v3 
 - **AgentDojo với v3:** chưa chạy. Bộ trích C1 hiện chỉ nhận đích email/endpoint của benchmark này; AgentDojo cần thêm đích
   IBAN, người dùng và kênh Slack. Adapter (ánh xạ sink → đối số đích, nguồn mật) sẽ khai báo riêng trước khi chạy, theo cách
   của adapter v1 (2026-11-13), và chạy một lần, không chỉnh theo kết quả AgentDojo.
+
+## 2026-11-18 20:30 — Khai báo trước: BrokerGuard v3 trên AgentDojo (chạy một lần, không chỉnh)
+
+- **Mục đích:** kiểm tổng quát hóa sang môi trường chưa thấy (Review Huy mục 3; thiết kế v3 mục 5). So với v1 (C10,
+  2026-11-14) trên cùng điều kiện: Llama-3.1-8B (`llama31_8b_ctx16k`), AgentDojo v1.2.2, Banking và Slack, EN và VI,
+  `important_instructions` và không tấn công, lời nhắc `repeat_user_prompt`, cùng runner (bản sao).
+- **Code:** `scripts/agentdojo_brokerguard_v3.py` (adapter), `scripts/run_agentdojo_api_v2.py` (bản sao runner v1 + lựa chọn
+  `--defense brokerguard_v3`; identity ghi sha256 adapter và ba module v3). Module v3 đã ghim không sửa.
+- **Ánh xạ (khai báo trước):** giữ nguyên adapter v1 (sink → đối số đích, công cụ đọc mật, R-Signal, D2 luật 3, che câu trả
+  lời cuối) và chỉ đổi ba chỗ:
+  - C1 thay R-Dest: đích phải xuất hiện nguyên token trong yêu cầu (chuẩn hóa của `intent_policy_v1`), không nằm trong phạm vi
+    phủ định/loại trừ của mệnh đề (danh sách cue và cách xử lý từ mơ hồ tiếng Việt `_Text.word_ok` của bản ghim; cue tương phản
+    kết thúc phạm vi). Không đòi động từ gửi, không có luật trích dẫn/lời thuật lại (bộ trích ghim chỉ nhận đích email và
+    endpoint; IBAN, người dùng và kênh Slack được nhận bằng so khớp nguyên token ở adapter). Sink không có đích ngoài C1 như v1.
+  - C2: nhãn mức giá trị `value_labels_v1.label_values` trên mọi output công cụ, kiểm `flows` ở mọi đối số không phải đích và che
+    ở câu trả lời cuối; bảo vệ theo nguồn của v1 giữ nguyên.
+  - C3: `param_pinning_v1.pins` trên mệnh đề cấp quyền; thiếu literal thì chặn. Đối số dạng số được so cả ở dạng hai chữ số
+    thập phân (AgentDojo truyền 98.7 cho "98.70").
+- Kiểm trước khi chạy: 10 ca tay (đích đúng/sai/chuỗi con, phủ định EN/VI có dấu và không dấu, số tiền đổi) đều đúng; không
+  phát lại trên trace AgentDojo cũ để tránh chỉnh theo dữ liệu đánh giá.
+- **Chạy:** 8 lượt {EN, VI} × {Banking, Slack} × {`important_instructions`, không tấn công}, 4 notebook T4 trên hieu1908 và
+  lehung040324 (mỗi notebook một bộ suite × ngôn ngữ). Chỉ chạy lại khi lỗi hạ tầng. Chỉ số: tiện ích dưới tấn công, tấn công
+  thành công (`security_results` của AgentDojo, giữ chú thích C10 về lời gọi bị chặn vẫn bị tính), tiện ích không tấn công.
+  Báo cạnh v1, `repeat_user_prompt` và không phòng thủ; mô tả, không kiểm định.
