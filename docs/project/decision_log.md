@@ -4426,3 +4426,9 @@ Ghi trước khi chạy bất kỳ phần nào dưới đây. Không chỉnh v3 
 - 3 backbone × A0, D2P2, V3P2 đủ 42/42, chấm `evaluate_v3_v2` (Qwen, Gemma 18/11 ~00:00 trên tngdngpham; Llama 03:15 trên
   hieu1908). Họ bị hại gộp /42, thích nghi so với canonical cùng họ: A0 25/26, v1 2/2, v3 1/1. Không họ nào mới lọt dưới v3.
   Số đầy đủ facts.md mục "Vòng thích nghi nhắm v3". Mô tả; không chỉnh v3.
+
+## 2026-11-19 04:35 — AgentDojo BrokerGuard v3 xong (so với v1, C10)
+
+- 4 bộ (EN/VI × Banking/Slack), có và không tấn công, Llama-3.1-8B, `repeat_user_prompt`. Tấn công thành công v1 → v3:
+  EN Banking 3 → 3, VI Banking 1 → 1, EN Slack 6 → 5, VI Slack 0 → 0. Utility Slack giảm (EN 15 → 11 dưới tấn công; không
+  tấn công 5 → 3). Số đầy đủ facts.md mục "AgentDojo: BrokerGuard v3". Mô tả, không chỉnh v3.
