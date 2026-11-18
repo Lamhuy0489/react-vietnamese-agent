@@ -17,7 +17,7 @@ G1 cần Prompt Guard local cổng 8765. Đừng suy notebook còn sống từ f
 
 Việc của phiên này:
 1. Kiểm kê kết quả trên đĩa; việc nào dở thì resume theo handoff (notebook chết, hết quota: đẩy lại; tài khoản kaggle9.json
-   tngdngpham và kaggle10.json phmkimphng (Dev v4.1 Qwen/Gemma) còn nhiều giờ; 7 tài khoản cũ đặt lại 21/11 07:00 giờ VN). Mục tiêu owner: Test-4 bổ sung xong trong 19/11.
+   tngdngpham và kaggle10.json phmkimphng (Dev v4.1 Qwen/Gemma) còn nhiều giờ; 7 tài khoản cũ đặt lại 21/11 07:00 giờ VN). Mục tiêu owner: Test-4 bổ sung và Dev v4.1 bổ sung xong trong 19/11 (lịch ước tính trong handoff 01:35).
 2. Tổng hợp (chỉ số đếm) vào decision log + facts.md: AgentDojo v3 so với v1 (C10); thích nghi nhắm v3 so với canonical cùng
    họ, báo riêng; baseline bổ sung là mô tả, ngoài H1–H4, McNemar họ gộp so với v3 ghi là khám phá. Dùng lại hàm của
    `scripts/test4_analysis_v1.py`, như `scripts/test4_gemini_ref_v1.py`.

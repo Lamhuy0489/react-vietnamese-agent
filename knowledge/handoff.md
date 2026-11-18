@@ -26,6 +26,12 @@ Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
   Qwen/Gemma chạy trên phmkimphng bằng `RELS=dev4_1 build/kaggle/supp_launch2.sh phmkimphng kaggle10.json <K> <K>`
   (log `build/kaggle/supp_dev_launch_<K>.log`, folder `build/kaggle/supp_dev_folder_<K>`; resume thêm `FOLDER=`). Llama: chuỗi
   hieu1908 gốc chạy Test-4 rồi Dev. Dev ~14 h/mô hình > 12 h notebook: `quota_watch.sh` báo khi notebook ≥ 11 h → đẩy lại.
+- 01:35: Llama cũng tách: hieu1908 chỉ chạy Test-4 (bash cha đã dừng; runner chạy tiếp, xong tự tắt keep-alive).
+  `build/kaggle/supp_llama_dev_follow.sh` (log `supp_llama_dev_follow.log`) chờ "done supp test4" của Qwen và Gemma rồi
+  bật Dev v4.1 Llama trên tngdngpham, 2 notebook chia theo cấu hình: `CONFIGS="R1 D2 P1"` (log
+  `supp_dev_launch_llama31_8b_a.log`) và `CONFIGS="MEL G1"` (`..._b.log`). Không chạy hai tiến trình trên cùng một cấu hình.
+  Ước: Test-4 xong khoảng 05:00–06:00; Dev Llama xong khoảng 13:00; Dev Qwen/Gemma (phmkimphng) khoảng 16:00–17:00 (một lần
+  đẩy lại khi chạm 11 h). G1 Dev phụ thuộc CPU máy (Prompt Guard local), có thể là đuôi cuối.
 - Quota 00:37: hieu1908 còn 10,0 h, lehung040324 10,0 h, tngdngpham 27,9 h. Canh mẹo quota: `build/kaggle/quota_watch.sh`
   (20 phút/lần; ALERT khi tài khoản đang chạy còn < 1,5 h hoặc notebook đang dùng ≥ 11 h).
 - Bài học: zsh không tách từ `$c` (dùng bash); dừng launcher phải giết cả subshell con.
