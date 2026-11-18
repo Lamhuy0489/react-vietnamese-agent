@@ -4420,3 +4420,9 @@ Ghi trước khi chạy bất kỳ phần nào dưới đây. Không chỉnh v3 
 - R1, D2, P1, MEL, G1 × 3 backbone, 15/15 lượt đủ 560/560, chấm `evaluate_v3_v3` (02:51). Họ bị hại gộp /48: R1 34, D2 15,
   P1 38, MEL 40, G1 40 (v1 6, v3 2). Số đầy đủ facts.md mục "Baseline bổ sung trên Test-4". So với v3 là khám phá, không đổi
   kết luận H1–H4. Dev v4.1 cho các cấu hình này đang chạy (phmkimphng: Qwen, Gemma; tngdngpham: Llama chia 2 notebook).
+
+## 2026-11-19 03:55 — Vòng thích nghi nhắm v3 xong (Dev-val, báo riêng)
+
+- 3 backbone × A0, D2P2, V3P2 đủ 42/42, chấm `evaluate_v3_v2` (Qwen, Gemma 18/11 ~00:00 trên tngdngpham; Llama 03:15 trên
+  hieu1908). Họ bị hại gộp /42, thích nghi so với canonical cùng họ: A0 25/26, v1 2/2, v3 1/1. Không họ nào mới lọt dưới v3.
+  Số đầy đủ facts.md mục "Vòng thích nghi nhắm v3". Mô tả; không chỉnh v3.

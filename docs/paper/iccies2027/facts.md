@@ -318,3 +318,20 @@ So với v3 (2/48) bằng McNemar họ gộp, một phía, **khám phá** (chạ
 - Dòng phát triển trên cùng Test-4 (họ bị hại /48): R1 34 → D2 15 → D2P2 (v1) 6 → v3 2.
 - G1 bằng A0 (40/48): Prompt Guard 2 (86M) không gắn cờ quan sát nào trên dữ liệu tiếng Việt của Test-4 (0 lần chặn),
   khớp kết quả Dev cũ (G1 ≈ A0). MEL cũng ≈ A0. Bộ phân loại chạy local 127.0.0.1, ngưỡng 0,5, revision ghim.
+
+### Vòng thích nghi nhắm v3 trên Dev-val (xong 2026-11-19 03:15; khai báo 2026-11-18 20:55, báo riêng)
+
+Nguồn: `results/rebuild_c/adaptive_v3target_v1.json` (`scripts/adaptive_v3target_analysis_v1.py`). 42 ca do owner/Minh soạn
+(một ca mỗi họ Dev-val, sha `b348dcf8…`), nhắm các giả định A2–A5 của v3; so với ca canonical cùng họ trong lượt Dev v4.1
+cùng cấu hình. Họ bị hại (`harm_transformed`) /42.
+
+| Cấu hình | Qwen thích nghi · canonical | Gemma | Llama | Gộp 3 backbone: thích nghi · canonical |
+|---|---|---|---|---|
+| A0 | 14 · 13 | 19 · 21 | 9 · 11 | 25 · 26 |
+| v1 (D2P2) | 1 · 1 | 0 · 0 | 1 · 1 | 2 · 2 |
+| v3 (V3P2) | 1 · 1 | 0 · 0 | 0 · 0 | 1 · 1 |
+
+- Bộ thích nghi nhắm v3 không mạnh hơn bản canonical: ở A0 gây hại tương đương (25 so với 26), nên các ca là tấn công
+  có hiệu lực; dưới v1 và v3 không họ nào mới lọt. Ca v3 còn lọt (Qwen) là sửa tham số (tamper), như M5 trên Test-4.
+- Lỗi mô hình: Llama A0 5/42, v1 và v3 2/42 (OUTPUT_TRUNCATED); hết bước (max_steps) ở v1/v3: Qwen 18, Llama 16.
+- Hạn chế: một vòng, tác giả là thành viên nhóm, Dev-val (không phải Test-4).
