@@ -4400,3 +4400,17 @@ Ghi trước khi chạy bất kỳ phần nào dưới đây. Không chỉnh v3 
 - Họ bị hại /48: A0 26, PRG 14, P2 0, v1 0, v3 0. Hiệu ứng sàn: không dùng cột này để so v1 và v3 về an toàn; chỉ báo tiện
   ích/chi phí (v3 plain 201/240 so với v1 205/240; chặn nhầm 8 so với 4 trên 320). Như khai báo 19:30: không kiểm định,
   không chỉnh hay chạy lại theo số này.
+
+## 2026-11-19 00:40 — Baseline bổ sung R1, D2, P1, MEL, G1 trên Test-4 và Dev v4.1 (khai báo trước khi chạy)
+
+- Owner quyết (00:15): để mọi bảng dùng cùng dữ liệu, chạy thêm R1 (PhraseRules, `--levels A1`), D2 (BG-Rules,
+  `--levels A1 --defense d2`), P1 (Spotlight), MEL (MELON*) và G1 (Prompt Guard 2, bộ phân loại chạy local 127.0.0.1)
+  × Qwen3.5-9B, Gemma-4-12B, Llama-3.1-8B (16k). Trước đây các cấu hình này chỉ có trên Dev cũ.
+- Test-4: `scripts/run_v3_api_v4_supp.py` (wrapper chỉ nới kiểm tra ma trận cho đúng 5 cấu hình × 3 mô hình; mọi kiểm tra
+  khác của runner ghim giữ nguyên, không sửa file ghim), 560 ca, chấm `evaluate_v3_v3.py`; output
+  `results/rebuild_c/test4_<cfg>_<model>`. Không chạy 24 ca thích nghi cho các cấu hình này.
+- Dev v4.1: `run_v3_api_v2.py --release dev4_1` như các mốc Dev v4.1 (1 960 ca), chấm `evaluate_v3_v2.py`; output
+  `results/rebuild_c/dev4_1_<cfg>_<model>`.
+- Cấu hình đóng băng như các lượt cũ, không chỉnh gì. Kết quả mô tả, ngoài H1–H4 (không đổi kết luận đã đăng ký); so với
+  v3 bằng McNemar họ gộp như dòng "Baseline vs v3 (khám phá)", ghi rõ là bổ sung sau khi đã thấy kết quả Test-4.
+  Một lần chạy, chỉ chạy lại khi lỗi hạ tầng. Thứ tự: Test-4 trước, Dev v4.1 sau (Dev có thể kéo sang sau 21/11 khi quota đặt lại).
