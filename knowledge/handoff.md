@@ -22,7 +22,8 @@ Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 3. **Thích nghi nhắm v3** (owner/Minh soạn, 42 ca, sha `b348dcf8…`, decision log 20:55): `build/kaggle/adv3_launch.sh` cho
    qwen35_9b, gemma4_12b trên tài khoản mới tngdngpham (`kaggle9.json`, đẩy 22:22, 30 h) và llama31_8b (lehung040324, chờ
    slot GPU do AgentDojo chiếm, thử lại mỗi 3 phút, tối đa 5 h). Resume qwen/gemma: `nohup build/kaggle/adv3_launch.sh
-   tngdngpham kaggle9.json <K> <K> >> build/kaggle/adv3_launch_<K>.log 2>&1 &` (notebook còn sống thì chạy thẳng hàm `one`). Log `build/kaggle/adv3_launch_<K>.log`; output `results/rebuild_c/dev4_1_adv3_<cfg>_<K>`. Xong: so với bản
+   tngdngpham kaggle9.json <K> <K> >> build/kaggle/adv3_launch_<K>.log 2>&1 &` (notebook còn sống thì chạy thẳng hàm `one`). 23:32: hai notebook tngdngpham vẫn QUEUED sau 70 phút nên discover
+   hết giờ; đang chờ tiếp bằng `build/kaggle/adv3_resume.sh <K> [phút]` (không đẩy lại, chờ discover tới 300 phút). Log `build/kaggle/adv3_launch_<K>.log`; output `results/rebuild_c/dev4_1_adv3_<cfg>_<K>`. Xong: so với bản
    canonical cùng họ trên Dev v4.1, báo riêng.
 Quota 22:25: hieu1908 còn 12,2 h, lehung040324 13,8 h, tngdngpham 30 h; 6 tài khoản cũ 0 h (đặt lại 21/11). Canh đêm:
 `build/kaggle/health_watch.sh` (in ALERT/DONE rồi thoát). Lưu ý: hai notebook cùng tài khoản dùng chung slug; `kaggle kernels delete` xóa mọi phiên bản của slug nên chỉ xóa khi không
