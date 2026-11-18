@@ -7,22 +7,25 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
-**2026-11-18 21:00: ĐANG CHẠY 3 việc (đều resume được; runner bỏ qua ca/cặp đã xong).** Giữ `caffeinate -dimsu` độc lập
+**2026-11-18 22:40: ĐANG CHẠY 3 việc (đều resume được; runner bỏ qua ca/cặp đã xong).** Giữ `caffeinate -dimsu` độc lập
 (`pmset -g assertions`); IPv6 Wi-Fi đang tắt (bật lại khi xong: `networksetup -setv6automatic Wi-Fi`). Quota: `build/kaggle/quota_all.sh`.
 1. **Gemini trên Test-4** (cột tham khảo, decision log 19:30): chuỗi `build/gemini/t4_gemini_chain.sh`, 5 cấu hình song song,
    log `build/gemini/t4_chain.log`. Tiến độ: `for c in V3P2 D2P2 A0 P2 PRG; do find results/rebuild_c/test4_${c}_gemini3_flash
    -name result.json | wc -l; done`. Dừng/resume: `pkill -f t4_gemini_chain.sh; pkill -f run_v3_api_v4_ref.py` rồi
    `CGROUPS="V3P2,D2P2,A0,P2,PRG" PAR=5 INTERVAL=1 nohup build/gemini/t4_gemini_chain.sh >> build/gemini/t4_chain.log 2>&1 &`
-   (OmniRoute phải đang chạy; không tự bật OmniRoute). Xong: thêm số vào facts.md (cột riêng, không kiểm định).
+   (OmniRoute phải đang chạy; không tự bật OmniRoute). 22:20: khoảng 380–394/560 mỗi cấu hình. Xong: thêm số vào facts.md (cột riêng, không kiểm định).
 2. **AgentDojo v3** (decision log 20:20): 4 notebook Llama, hieu1908 EN Banking/Slack, lehung040324 VI Banking/Slack;
    `build/kaggle/ad3_launch.sh OWNER CRED SUITE LANG`, log `build/kaggle/ad3_launch_<lang>_<suite>.log`. Notebook đã lên chỉ cần
    chạy lại runner (lệnh trong `ad3_launch.sh`, endpoint ở `build/kaggle/ad3_folder_<lang>_<suite>`). Kiểm kê: lệnh AgentDojo ở
-   runbook. Xong: so với v1 (C10), `repeat_user_prompt`, không phòng thủ.
+   runbook. 22:20: 4 lượt không tấn công xong (rc=0); lượt tấn công `_ii` đang chạy, dự kiến xong khoảng 01:00.
+   Xong: so với v1 (C10), `repeat_user_prompt`, không phòng thủ.
 3. **Thích nghi nhắm v3** (owner/Minh soạn, 42 ca, sha `b348dcf8…`, decision log 20:55): `build/kaggle/adv3_launch.sh` cho
-   qwen35_9b, gemma4_12b (hieu1908) và llama31_8b (lehung040324), đang chờ slot GPU do AgentDojo chiếm (thử lại mỗi 3 phút,
-   tối đa 5 h). Log `build/kaggle/adv3_launch_<K>.log`; output `results/rebuild_c/dev4_1_adv3_<cfg>_<K>`. Xong: so với bản
+   qwen35_9b, gemma4_12b trên tài khoản mới tngdngpham (`kaggle9.json`, đẩy 22:22, 30 h) và llama31_8b (lehung040324, chờ
+   slot GPU do AgentDojo chiếm, thử lại mỗi 3 phút, tối đa 5 h). Resume qwen/gemma: `nohup build/kaggle/adv3_launch.sh
+   tngdngpham kaggle9.json <K> <K> >> build/kaggle/adv3_launch_<K>.log 2>&1 &` (notebook còn sống thì chạy thẳng hàm `one`). Log `build/kaggle/adv3_launch_<K>.log`; output `results/rebuild_c/dev4_1_adv3_<cfg>_<K>`. Xong: so với bản
    canonical cùng họ trên Dev v4.1, báo riêng.
-Lưu ý: hai notebook cùng tài khoản dùng chung slug; `kaggle kernels delete` xóa mọi phiên bản của slug nên chỉ xóa khi không
+Quota 22:25: hieu1908 còn 12,2 h, lehung040324 13,8 h, tngdngpham 30 h; 6 tài khoản cũ 0 h (đặt lại 21/11). Canh đêm:
+`build/kaggle/health_watch.sh` (in ALERT/DONE rồi thoát). Lưu ý: hai notebook cùng tài khoản dùng chung slug; `kaggle kernels delete` xóa mọi phiên bản của slug nên chỉ xóa khi không
 còn phiên bản nào đang dùng.
 
 **2026-11-18 20:50: Soạn thảo và dựng xong bộ tấn công thích nghi nhắm v3 trên 42 họ Dev-val (adaptive_v3target).**

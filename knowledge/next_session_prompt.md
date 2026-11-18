@@ -9,10 +9,10 @@ Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 PHẦN CỨNG: không render hình/PDF trên máy (owner dùng Overleaf), không tự khởi động lại OmniRoute. IPv6 Wi-Fi đang TẮT
 (tránh địa chỉ trycloudflare chập chờn); bật lại khi không chạy Kaggle: `networksetup -setv6automatic Wi-Fi`.
 
-Trạng thái (18/11 21:00): Test-4 xong (H1 không đạt do hiệu ứng sàn; decision log 18:40; số trong facts.md mục "Bài v3").
+Trạng thái (18/11 22:40): Test-4 xong (H1 không đạt do hiệu ứng sàn; decision log 18:40; số trong facts.md mục "Bài v3").
 Đang chạy (handoff "Đang làm" có lệnh resume): (1) cột Gemini trên Test-4; (2) BrokerGuard v3 trên AgentDojo (Llama,
 EN/VI × Banking/Slack, 4 notebook); (3) vòng thích nghi nhắm v3, 42 ca Dev-val do owner/Minh soạn (sha b348dcf8…),
-3 model × A0/v1/v3, chờ slot GPU. Đã khai báo trước (decision log 19:30, 20:20, 20:55). Đừng suy notebook còn sống từ file
+3 model × A0/v1/v3 (qwen/gemma trên tài khoản mới tngdngpham = kaggle9.json; llama chờ slot lehung040324). Đã khai báo trước (decision log 19:30, 20:20, 20:55). Đừng suy notebook còn sống từ file
 cũ: `build/kaggle/quota_all.sh` và `kaggle kernels status`.
 
 Việc của phiên này:

@@ -669,3 +669,11 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Bài học: (1) `GROUPS` là biến có sẵn của bash (=20), đặt tên biến chuỗi khác; (2) adapter AgentDojo: "cho" bỏ dấu trùng
   "chớ", phải dùng `_Text.word_ok`; số tiền 98.7 vs "98.70"; (3) `kernels delete` xóa mọi phiên bản của slug; (4) chia việc ra
   nhiều notebook (mỗi notebook một model/suite) là cách tăng tốc chính, 2 lượt mỗi notebook được vLLM gộp lô.
+
+## 2026-11-18 (22:40) — Tài khoản Kaggle thứ 10, chuyển vòng thích nghi
+
+- Owner thêm `credential kaggle/kaggle9.json` (tngdngpham, 30 h GPU). Chuyển qwen35_9b, gemma4_12b của vòng thích nghi nhắm v3
+  từ hieu1908 (đang kẹt 2 slot AgentDojo) sang tài khoản này, đẩy 22:22; llama31_8b vẫn chờ lehung040324.
+- Bài học: khi dừng `adv3_launch.sh` đang thử đẩy, phải giết cả các subshell con (`pkill -f "adv3_launch.sh <owner>"`),
+  không chỉ PID cha, nếu không chúng vẫn đẩy được lên tài khoản cũ.
+- AgentDojo v3: 4 lượt không tấn công xong; Gemini Test-4 khoảng 70%. Owner đi ngủ; canh đêm bằng `health_watch.sh`.
