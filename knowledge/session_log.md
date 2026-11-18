@@ -688,3 +688,14 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   (Gemini): không chạy lại.
 - Owner chọn chạy thêm R1, D2, P1, MEL, G1 trên Test-4 và Dev v4.1 (khai báo 00:25; wrapper `run_v3_api_v4_supp.py`,
   `build/kaggle/supp_launch.sh`). Prompt Guard local: tải lần đầu, xet treo nên dùng `HF_HUB_DISABLE_XET=1`.
+
+## 2026-11-19 (04:40) — Đêm: Test-4 bổ sung, thích nghi v3, AgentDojo v3 xong; Dev v4.1 bổ sung đang chạy
+
+- Hai tài khoản mới tngdngpham (kaggle9.json) và phmkimphng (kaggle10.json), mỗi tài khoản 30 h. Chia việc theo notebook để
+  song song: Test-4 bổ sung xong 02:51 (15/15 lượt); Dev v4.1 bổ sung chạy trên phmkimphng (Qwen, Gemma) và tngdngpham
+  (Llama chia 2 notebook theo cấu hình).
+- Kết quả (facts.md): dòng phát triển trên Test-4 R1 34 → D2 15 → v1 6 → v3 2 họ /48; G1 = A0 (Prompt Guard 2 không chặn
+  gì trên tiếng Việt). Thích nghi nhắm v3: A0 25/26, v1 2/2, v3 1/1 (không mạnh hơn canonical). AgentDojo v3: tấn công thành
+  công bằng hoặc ít hơn v1, utility Slack giảm.
+- Bài học: dừng bash cha của chuỗi (kill -9) để runner chạy nốt mà không sang bước sau; tách theo cấu hình để không hai tiến
+  trình cùng ghi một thư mục kết quả; Prompt Guard tải lần đầu cần `HF_HUB_DISABLE_XET=1`.

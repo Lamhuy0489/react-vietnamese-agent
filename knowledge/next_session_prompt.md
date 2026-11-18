@@ -9,18 +9,16 @@ Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 PHẦN CỨNG: không render hình/PDF trên máy (owner dùng Overleaf), không tự khởi động lại OmniRoute. IPv6 Wi-Fi đang TẮT
 (tránh địa chỉ trycloudflare chập chờn); bật lại khi không chạy Kaggle: `networksetup -setv6automatic Wi-Fi`.
 
-Trạng thái (19/11 00:30): Test-4 xong (H1 không đạt do hiệu ứng sàn; decision log 18/11 18:40). Gemini Test-4 xong (cột
-tham khảo, facts.md). Đang chạy, đọc handoff "Đang làm" mục 2026-11-19 00:30 để có lệnh resume:
-(1) AgentDojo v3 (3 bộ có tấn công); (2) thích nghi nhắm v3: Qwen/Gemma xong, Llama chờ slot lehung040324;
-(3) baseline bổ sung R1, D2, P1, MEL, G1 trên Test-4 rồi Dev v4.1 × 3 mô hình (`supp_launch.sh`; decision log 19/11 00:25);
-G1 cần Prompt Guard local cổng 8765. Đừng suy notebook còn sống từ file cũ: `build/kaggle/quota_all.sh`, `kaggle kernels status`.
+Trạng thái (19/11 04:40): Test-4 xong (H1 không đạt do hiệu ứng sàn; decision log 18/11 18:40). Đã xong và ghi facts.md:
+Gemini Test-4 (cột tham khảo), Test-4 bổ sung R1/D2/P1/MEL/G1, thích nghi nhắm v3, AgentDojo v3. Còn chạy: Dev v4.1 bổ sung
+R1/D2/P1/MEL/G1 × 3 mô hình (handoff "Đang làm" mục 2026-11-19 04:40 có lệnh resume). Đừng suy notebook còn sống từ file
+cũ: `build/kaggle/quota_all.sh`, `kaggle kernels status`.
 
 Việc của phiên này:
-1. Kiểm kê kết quả trên đĩa; việc nào dở thì resume theo handoff (notebook chết, hết quota: đẩy lại; tài khoản kaggle9.json
+1. Kiểm kê Dev v4.1 bổ sung (`find results/rebuild_c/dev4_1_{R1,D2,P1,MEL,G1}_* -name result.json`); dở thì resume theo handoff (notebook chết, hết quota: đẩy lại; tài khoản kaggle9.json
    tngdngpham và kaggle10.json phmkimphng (Dev v4.1 Qwen/Gemma) còn nhiều giờ; 7 tài khoản cũ đặt lại 21/11 07:00 giờ VN). Mục tiêu owner: Test-4 bổ sung và Dev v4.1 bổ sung xong trong 19/11 (lịch ước tính trong handoff 01:35).
-2. Tổng hợp (chỉ số đếm) vào decision log + facts.md: AgentDojo v3 so với v1 (C10); thích nghi nhắm v3 so với canonical cùng
-   họ, báo riêng; baseline bổ sung là mô tả, ngoài H1–H4, McNemar họ gộp so với v3 ghi là khám phá. Dùng lại hàm của
-   `scripts/test4_analysis_v1.py`, như `scripts/test4_gemini_ref_v1.py`.
+2. Tổng hợp Dev v4.1 bổ sung (chỉ số đếm) vào facts.md + decision log, cùng dạng bảng Dev v4.1 đã có (A0, P2, PRG, v1);
+   mô tả, ngoài H1–H4.
 3. Viết bài (một bài duy nhất; yêu cầu của thầy ở `Review Huy.docx`): đóng góp là cơ chế v3 + mô hình hình thức; v1 là
    biến thể luật chuỗi; H1 báo trung thực; bảng dòng phát triển R1 → D2 → D2P2 → v3 trên cùng Test-4. Số chỉ lấy từ facts.md.
    Văn phong khách quan, không "chúng tôi". Còn chờ owner trả lời: thư mục bài, ngôn ngữ nháp, tên phương pháp.

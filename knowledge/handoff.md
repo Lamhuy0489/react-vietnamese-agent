@@ -7,6 +7,19 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-19 04:40: XONG gần hết; chỉ còn Dev v4.1 bổ sung đang chạy.**
+- XONG, đã ghi facts.md + decision log: Gemini Test-4 (23:45), Test-4 bổ sung R1/D2/P1/MEL/G1 (03:05), thích nghi nhắm v3
+  (03:55), AgentDojo v3 (04:35). Script tổng hợp: `test4_gemini_ref_v1.py`, `test4_supp_baselines_v1.py`,
+  `adaptive_v3target_analysis_v1.py` (scripts/).
+- ĐANG CHẠY: Dev v4.1 bổ sung R1, D2, P1, MEL, G1 (1 960 ca/cấu hình). Qwen, Gemma trên phmkimphng (`supp_launch2.sh`,
+  log `build/kaggle/supp_dev_launch_<K>.log`, folder `build/kaggle/supp_dev_folder_<K>`); Llama trên tngdngpham chia 2
+  notebook (`CONFIGS="R1 D2 P1"` log `..._llama31_8b_a.log`; `CONFIGS="MEL G1"` log `..._llama31_8b_b.log`; folder
+  `supp_dev_folder_llama31_8b_a|b`). Resume (notebook sống): `FOLDER=<folder> RELS=dev4_1 CONFIGS="..." nohup
+  build/kaggle/supp_launch2.sh OWNER CRED SK K >> <log> 2>&1 &`; notebook chết thì bỏ `FOLDER`. Không chạy hai tiến
+  trình trên cùng một cấu hình. Ước xong khoảng 08:00–10:00. Canh: `build/kaggle/health_watch2.sh`, `build/kaggle/quota_watch.sh`.
+  Xong thì: chấm đã tự chạy (`evaluate_v3_v2.py`); tổng hợp Dev v4.1 bổ sung vào facts.md (bảng Dev cùng danh sách baseline).
+- hieu1908 và lehung040324 đang trống (AgentDojo, thích nghi xong). Prompt Guard local cổng 8765 đang chạy (G1 cần).
+
 **2026-11-19 00:30: ĐANG CHẠY (owner đi ngủ; phiên mới đọc mục này trước).**
 - Gemini Test-4 XONG 23:36 (facts.md "Cột tham khảo Gemini 3 Flash", decision log 23:45). Thích nghi nhắm v3: Qwen, Gemma XONG
   (~00:00, `results/rebuild_c/dev4_1_adv3_<cfg>_<K>`, chưa tổng hợp); Llama chờ slot lehung040324 (`adv3_launch.sh`, thử lại 3 phút).
