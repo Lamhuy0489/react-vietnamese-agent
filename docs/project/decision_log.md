@@ -4358,7 +4358,7 @@ Ghi trước khi chạy bất kỳ phần nào dưới đây. Không chỉnh v3 
   IBAN, người dùng và kênh Slack. Adapter (ánh xạ sink → đối số đích, nguồn mật) sẽ khai báo riêng trước khi chạy, theo cách
   của adapter v1 (2026-11-13), và chạy một lần, không chỉnh theo kết quả AgentDojo.
 
-## 2026-11-18 20:30 — Khai báo trước: BrokerGuard v3 trên AgentDojo (chạy một lần, không chỉnh)
+## 2026-11-18 20:20 — Khai báo trước: BrokerGuard v3 trên AgentDojo (chạy một lần, không chỉnh)
 
 - **Mục đích:** kiểm tổng quát hóa sang môi trường chưa thấy (Review Huy mục 3; thiết kế v3 mục 5). So với v1 (C10,
   2026-11-14) trên cùng điều kiện: Llama-3.1-8B (`llama31_8b_ctx16k`), AgentDojo v1.2.2, Banking và Slack, EN và VI,
