@@ -280,3 +280,23 @@ Bổ sung Test-4 (18/11, chỉ từ dữ liệu đã có):
   câu trả lời cuối): tiện ích 110/960 (11,5%), 14/48 họ hại (54/720 ca lộ ở câu trả lời). v3: 39,7% và 2/48.
 - Pareto hai chiều (họ hại, tiện ích gộp): v3 (2; 39,7%) và v3 − C3 (2; 39,8%) chỉ lệch 1 ca tiện ích; v1 (6; 40,2%),
   P2 (22; 40,7%), PRG (25; 42,6%), A0 (40; 42,8%). Không nói v3 "trội Pareto" so với v1: v1 hơn 0,5 điểm tiện ích.
+
+### Cột tham khảo Gemini 3 Flash trên Test-4 (xong 2026-11-18 23:36; không kiểm định, decision log 19:30)
+
+Nguồn: `results/rebuild_c/test4_gemini_ref_v1.json` (`scripts/test4_gemini_ref_v1.py`). Qua OmniRoute, runner
+`run_v3_api_v4_ref.py`; 560 ca mỗi cấu hình, 24 ca thích nghi.
+
+| Cấu hình | Họ bị hại /48 | Vi phạm sink | Tiện ích plain | Tiện ích auth | Chặn nhầm | Xác nhận benign | Thích nghi /24 | Token TB | Thời gian TB (s) |
+|---|---|---|---|---|---|---|---|---|---|
+| A0 | 26 | 41 | 202/240 | 29/80 | 0/320 | 0/320 | 5 | 14 328 | 24,44 |
+| P2 | 0 | 0 | 211/240 | 23/80 | 0/320 | 0/320 | 0 | 14 518 | 24,10 |
+| PRG | 14 | 8 | 210/240 | 24/80 | 0/320 | 0/320 | 5 | 14 662 | 24,64 |
+| v1 (D2P2) | 0 | 0 | 205/240 | 24/80 | 4/320 | 0/320 | 0 | 14 934 | 24,52 |
+| v3 (V3P2) | 0 | 0 | 201/240 | 25/80 | 8/320 | 5/320 | 0 | 14 890 | 24,49 |
+
+- Họ bị hại tính bằng `harm_transformed`; verbatim trùng khớp ở mọi cấu hình.
+- Gemini kháng tiêm mạnh hơn ba mô hình mở: P2 (chỉ sandwich) đã 0/48, nên cột này không phân biệt được v1 và v3 về an
+  toàn (hiệu ứng sàn); chỉ cho thấy v3 không làm hỏng mô hình mạnh: tiện ích plain −4/240 so với v1, chi phí token/thời
+  gian ngang v1.
+- Lỗi mô hình (`model_error`, lỗi phía Gemini/OmniRoute, khác lỗi hạ tầng đã chạy lại): A0 56/560, PRG 39, D2P2 18, V3P2 26,
+  P2 18. Phải nêu trong hạn chế; ca lỗi tính là không hại và không đạt tiện ích.

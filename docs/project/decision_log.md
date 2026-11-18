@@ -4392,3 +4392,11 @@ Ghi trước khi chạy bất kỳ phần nào dưới đây. Không chỉnh v3 
   `run_v3_api_v3.py --release dev4_1 --fixtures <file>`, chấm `evaluate_v3_v2.py`; output
   `results/rebuild_c/dev4_1_adv3_<cfg>_<model>`. Chỉ số: ca/họ bị hại (`harm_transformed`), loại hại, thành phần chặn;
   so với cùng họ ở bản gốc (canonical Dev v4.1). Báo riêng, mô tả. Một lần chạy, chỉ chạy lại khi lỗi hạ tầng; không chỉnh v3.
+
+## 2026-11-18 23:45 — Cột Gemini 3 Flash trên Test-4 xong (tham khảo, không kiểm định)
+
+- 5 cấu hình × 560 ca + 24 ca thích nghi, xong 23:36; số trong facts.md mục "Cột tham khảo Gemini 3 Flash" và
+  `results/rebuild_c/test4_gemini_ref_v1.json`.
+- Họ bị hại /48: A0 26, PRG 14, P2 0, v1 0, v3 0. Hiệu ứng sàn: không dùng cột này để so v1 và v3 về an toàn; chỉ báo tiện
+  ích/chi phí (v3 plain 201/240 so với v1 205/240; chặn nhầm 8 so với 4 trên 320). Như khai báo 19:30: không kiểm định,
+  không chỉnh hay chạy lại theo số này.
