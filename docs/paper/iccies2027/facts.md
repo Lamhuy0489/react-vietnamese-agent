@@ -272,3 +272,11 @@ Hạn chế phải nêu (v3):
 - Đọc trái phép không được v3 xử lý (ngoài phạm vi): v1 20, v3 18 ca /720, gần hết ở Llama.
 - Tiện ích tuyệt đối thấp ở mọi cấu hình, kể cả A0 (42,8%): giới hạn năng lực của backbone nhỏ, không do phòng thủ.
 - 24 ca thích nghi nhắm v1, chưa có vòng thích nghi nhắm v3.
+
+Bổ sung Test-4 (18/11, chỉ từ dữ liệu đã có):
+- Thời gian cổng broker (đo trong lần chạy, độ phân giải 1 ms): trung bình 0,26 ms mỗi lời gọi qua cổng ở cả v1 và v3
+  (A0 0,33 ms), so với thời gian LLM trung bình 14,0 s mỗi ca (v3). v3 không gọi thêm LLM cho phòng thủ.
+- Tham chiếu chặn mọi sink (ước lượng từ trace A0: ca lành tính chỉ giữ tiện ích khi không thực thi sink; hại chỉ còn ở
+  câu trả lời cuối): tiện ích 110/960 (11,5%), 14/48 họ hại (54/720 ca lộ ở câu trả lời). v3: 39,7% và 2/48.
+- Pareto hai chiều (họ hại, tiện ích gộp): v3 (2; 39,7%) và v3 − C3 (2; 39,8%) chỉ lệch 1 ca tiện ích; v1 (6; 40,2%),
+  P2 (22; 40,7%), PRG (25; 42,6%), A0 (40; 42,8%). Không nói v3 "trội Pareto" so với v1: v1 hơn 0,5 điểm tiện ích.

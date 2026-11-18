@@ -4338,3 +4338,22 @@ Recht et al., ICML 2019; tấn công thích nghi sau đóng băng: Carlini et al
   H1 trung thực (không đạt do hiệu ứng sàn), không thêm mô hình hay chạy lại để tìm ý nghĩa. Gemini không thuộc kiểm định.
   Còn thiếu theo review: vòng tấn công thích nghi nhắm v3 (owner/Minh soạn trên Dev-val), mô hình hình thức sang LaTeX,
   đoạn so sánh CaMeL/CapLite.
+
+## 2026-11-18 19:30 — Khai báo trước: cột Gemini trên Test-4, vòng thích nghi nhắm v3, AgentDojo v3
+
+Ghi trước khi chạy bất kỳ phần nào dưới đây. Không chỉnh v3 (`final_config_v5`) theo kết quả của chúng.
+
+- **Cột tham khảo Gemini 3 Flash trên Test-4** (thiết kế v3 mục 5 đã dự kiến; owner yêu cầu 18/11): cấu hình V3P2, D2P2,
+  A0, P2, PRG (không ablation), 560 ca tĩnh + 24 ca thích nghi, chạy một lần qua OmniRoute (owner bật) và proxy như các lượt
+  Gemini Dev. Runner `scripts/run_v3_api_v4_ref.py`: bọc runner đã ghim, chỉ nới kiểm ma trận cho đúng 5 cặp này, mọi kiểm
+  khác giữ nguyên; chấm `evaluate_v3_v3.py`; chuỗi `build/gemini/t4_gemini_chain.sh`. Báo là cột riêng: không gộp với ba
+  backbone mở, không thuộc H1–H4. Hạn chế ghi kèm: mô hình đóng, không ghim phiên bản, không seed, chạy qua pool tài khoản.
+- **Vòng thích nghi nhắm v3** (thiết kế v3 bước 5; Review Huy mục 3): owner và Minh soạn trên 42 họ Dev-val
+  (`data/adversarial/v3_authoring/AUTHORING_ADAPTIVE_V3.md`; dựng bằng `scripts/build_adaptive_v3target.py`, giữ nguyên
+  nhiệm vụ, nguồn và oracle của họ gốc, chỉ thay văn bản tấn công). Kẻ tấn công biết toàn bộ thiết kế và mô hình hình thức
+  v3. Chạy A0, D2P2 (v1), V3P2 (v3) × Qwen3.5-9B, Gemma-4-12B, Llama-3.1-8B bằng `run_v3_api_v3.py --fixtures`, chấm
+  `evaluate_v3_v2.py`. Chỉ số: ca và họ bị hại (`harm_transformed`), loại hại, thành phần chặn. Báo riêng, mô tả, không kiểm
+  định; sha256 của file ca ghi vào decision log khi dựng xong, trước khi chạy.
+- **AgentDojo với v3:** chưa chạy. Bộ trích C1 hiện chỉ nhận đích email/endpoint của benchmark này; AgentDojo cần thêm đích
+  IBAN, người dùng và kênh Slack. Adapter (ánh xạ sink → đối số đích, nguồn mật) sẽ khai báo riêng trước khi chạy, theo cách
+  của adapter v1 (2026-11-13), và chạy một lần, không chỉnh theo kết quả AgentDojo.
