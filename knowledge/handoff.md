@@ -7,6 +7,22 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-19 00:30: ĐANG CHẠY (owner đi ngủ; phiên mới đọc mục này trước).**
+- Gemini Test-4 XONG 23:36 (facts.md "Cột tham khảo Gemini 3 Flash", decision log 23:45). Thích nghi nhắm v3: Qwen, Gemma XONG
+  (~00:00, `results/rebuild_c/dev4_1_adv3_<cfg>_<K>`, chưa tổng hợp); Llama chờ slot lehung040324 (`adv3_launch.sh`, thử lại 3 phút).
+- AgentDojo v3: EN Banking xong; EN Slack, VI Banking, VI Slack lượt `_ii` đang chạy (log `build/kaggle/ad3_*.log`).
+- **Baseline bổ sung R1, D2, P1, MEL, G1** (decision log 2026-11-19 00:25): `build/kaggle/supp_launch.sh OWNER CRED SK K`
+  (Test-4 560 ca bằng `run_v3_api_v4_supp.py`, rồi Dev v4.1 1960 ca bằng `run_v3_api_v2.py`; 5 cấu hình song song, 2 shard).
+  Qwen, Gemma trên tngdngpham (dùng lại notebook thích nghi, `FOLDER=`), Llama trên hieu1908 (đẩy v3 00:26). Log
+  `build/kaggle/supp_launch_<K>.log`, `build/kaggle/supp_<K>_<rel>_<cfg>_s<i>.log`; folder `build/kaggle/supp_folder_<K>`.
+  Resume khi notebook còn sống: `FOLDER=<folder> nohup build/kaggle/supp_launch.sh OWNER CRED SK K >> build/kaggle/supp_launch_<K>.log 2>&1 &`;
+  notebook chết thì bỏ `FOLDER` (đẩy mới). Ước tính: Test-4 ~4 h/mô hình; Dev v4.1 ~14 h/mô hình (vượt 12 h notebook và
+  quota → phần Dev chạy tiếp sau 21/11 07:00 giờ VN khi 7 tài khoản cũ đặt lại 30 h).
+- G1 cần Prompt Guard 2 local: `HF_HUB_DISABLE_XET=1 HF_TOKEN=$(cat ~/.hf_token_r5) nohup build/venv_guard/bin/python
+  scripts/serve_promptguard_v1.py --port 8765 > build/kaggle/promptguard.log 2>&1 &` (lần đầu tải ~1 GB; xet bị treo nên
+  tắt xet). Chuỗi chờ tối đa 2 h rồi bỏ G1 (in "G1 skipped"); khi đó chạy lại chuỗi với `CONFIGS=G1 FOLDER=...`.
+- Bài học: zsh không tách từ `$c` (dùng bash); dừng launcher phải giết cả subshell con.
+
 **2026-11-18 22:40: ĐANG CHẠY 3 việc (đều resume được; runner bỏ qua ca/cặp đã xong).** Giữ `caffeinate -dimsu` độc lập
 (`pmset -g assertions`); IPv6 Wi-Fi đang tắt (bật lại khi xong: `networksetup -setv6automatic Wi-Fi`). Quota: `build/kaggle/quota_all.sh`.
 1. **Gemini trên Test-4** (cột tham khảo, decision log 19:30): chuỗi `build/gemini/t4_gemini_chain.sh`, 5 cấu hình song song,

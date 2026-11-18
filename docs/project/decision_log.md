@@ -4401,7 +4401,7 @@ Ghi trước khi chạy bất kỳ phần nào dưới đây. Không chỉnh v3 
   ích/chi phí (v3 plain 201/240 so với v1 205/240; chặn nhầm 8 so với 4 trên 320). Như khai báo 19:30: không kiểm định,
   không chỉnh hay chạy lại theo số này.
 
-## 2026-11-19 00:40 — Baseline bổ sung R1, D2, P1, MEL, G1 trên Test-4 và Dev v4.1 (khai báo trước khi chạy)
+## 2026-11-19 00:25 — Baseline bổ sung R1, D2, P1, MEL, G1 trên Test-4 và Dev v4.1 (khai báo trước khi chạy)
 
 - Owner quyết (00:15): để mọi bảng dùng cùng dữ liệu, chạy thêm R1 (PhraseRules, `--levels A1`), D2 (BG-Rules,
   `--levels A1 --defense d2`), P1 (Spotlight), MEL (MELON*) và G1 (Prompt Guard 2, bộ phân loại chạy local 127.0.0.1)

@@ -677,3 +677,14 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Bài học: khi dừng `adv3_launch.sh` đang thử đẩy, phải giết cả các subshell con (`pkill -f "adv3_launch.sh <owner>"`),
   không chỉ PID cha, nếu không chúng vẫn đẩy được lên tài khoản cũ.
 - AgentDojo v3: 4 lượt không tấn công xong; Gemini Test-4 khoảng 70%. Owner đi ngủ; canh đêm bằng `health_watch.sh`.
+
+## 2026-11-19 (00:30) — Gemini Test-4 xong; kiểm tính thống nhất; baseline bổ sung
+
+- Gemini Test-4 xong 23:36: họ bị hại A0 26, PRG 14, P2/v1/v3 0 (hiệu ứng sàn); ghi facts.md, decision log 23:45,
+  `scripts/test4_gemini_ref_v1.py`. Thích nghi nhắm v3 Qwen/Gemma xong trên tngdngpham (notebook bị QUEUED 70 phút, viết
+  `adv3_resume.sh` chờ discover tới 300 phút).
+- Kiểm 58 identity Test-4: cùng final_config_v5, seal, runner, prompt, sinh (temp 0, seed 42, 512 token), evaluator; runtime
+  A0 cho A0/P2/PRG, A1 cho v1/v3 là thiết kế. Lỗi mô hình là OUTPUT_TRUNCATED (mô hình mở, tất định) và OUTPUT_INVALID
+  (Gemini): không chạy lại.
+- Owner chọn chạy thêm R1, D2, P1, MEL, G1 trên Test-4 và Dev v4.1 (khai báo 00:25; wrapper `run_v3_api_v4_supp.py`,
+  `build/kaggle/supp_launch.sh`). Prompt Guard local: tải lần đầu, xet treo nên dùng `HF_HUB_DISABLE_XET=1`.

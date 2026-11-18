@@ -1082,3 +1082,5 @@ fresh guard health check or evidence that either notebook has shut down.
 [receipt](../experiments/manifests/phase5_public_guard_partial_20261002.json).
 
 - 2026-11-18 22:22: tài khoản mới `tngdngpham` (kaggle9.json, 30 h GPU, đặt lại 21/11). Đẩy `react-vn-vllm-serve-v1-qwen35-9b` v1 và `react-vn-vllm-serve-v1-gemma4-12b` v1 cho vòng thích nghi v3 (chuyển từ hieu1908 đang hết slot).
+
+- 2026-11-19 00:26: hieu1908 đẩy `react-vn-vllm-serve-v1-llama31-8b-ctx16k` v3 cho baseline bổ sung (Llama). Notebook thích nghi Qwen/Gemma trên tngdngpham (v1, 22:22) được dùng lại cho baseline bổ sung.

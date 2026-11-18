@@ -9,21 +9,24 @@ Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 PHẦN CỨNG: không render hình/PDF trên máy (owner dùng Overleaf), không tự khởi động lại OmniRoute. IPv6 Wi-Fi đang TẮT
 (tránh địa chỉ trycloudflare chập chờn); bật lại khi không chạy Kaggle: `networksetup -setv6automatic Wi-Fi`.
 
-Trạng thái (18/11 22:40): Test-4 xong (H1 không đạt do hiệu ứng sàn; decision log 18:40; số trong facts.md mục "Bài v3").
-Đang chạy (handoff "Đang làm" có lệnh resume): (1) cột Gemini trên Test-4; (2) BrokerGuard v3 trên AgentDojo (Llama,
-EN/VI × Banking/Slack, 4 notebook); (3) vòng thích nghi nhắm v3, 42 ca Dev-val do owner/Minh soạn (sha b348dcf8…),
-3 model × A0/v1/v3 (qwen/gemma trên tài khoản mới tngdngpham = kaggle9.json; llama chờ slot lehung040324). Đã khai báo trước (decision log 19:30, 20:20, 20:55). Đừng suy notebook còn sống từ file
-cũ: `build/kaggle/quota_all.sh` và `kaggle kernels status`.
+Trạng thái (19/11 00:30): Test-4 xong (H1 không đạt do hiệu ứng sàn; decision log 18/11 18:40). Gemini Test-4 xong (cột
+tham khảo, facts.md). Đang chạy, đọc handoff "Đang làm" mục 2026-11-19 00:30 để có lệnh resume:
+(1) AgentDojo v3 (3 bộ có tấn công); (2) thích nghi nhắm v3: Qwen/Gemma xong, Llama chờ slot lehung040324;
+(3) baseline bổ sung R1, D2, P1, MEL, G1 trên Test-4 rồi Dev v4.1 × 3 mô hình (`supp_launch.sh`; decision log 19/11 00:25);
+G1 cần Prompt Guard local cổng 8765. Đừng suy notebook còn sống từ file cũ: `build/kaggle/quota_all.sh`, `kaggle kernels status`.
 
 Việc của phiên này:
-1. Kiểm kê kết quả trên đĩa của ba việc trên; việc nào dở thì resume theo handoff. Đủ thì tổng hợp (chỉ số đếm) và ghi
-   decision log + facts.md: Gemini là cột riêng, không kiểm định; AgentDojo v3 so với v1 (C10), repeat_user_prompt, không
-   phòng thủ; thích nghi nhắm v3 so với bản canonical cùng họ, báo riêng.
-2. Viết bài (một bài duy nhất, ICCIES chưa nộp; yêu cầu của thầy ở `Review Huy.docx`): đóng góp là cơ chế v3 + mô hình hình
-   thức; v1 là biến thể luật chuỗi; H1 báo trung thực. Số chỉ lấy từ facts.md. Văn phong khách quan, không "chúng tôi".
-3. Mẹo quota (owner): còn khoảng 1 h thì dừng và đẩy lại, mỗi tài khoản 2 notebook; được xóa notebook suy luận nhưng
-   `kernels delete` xóa mọi phiên bản của slug, chỉ xóa khi không phiên bản nào khác đang chạy.
-4. Không chỉnh v3 hay chạy lại theo số Test-4 hoặc các vòng phụ (chỉ chạy lại khi lỗi hạ tầng).
+1. Kiểm kê kết quả trên đĩa; việc nào dở thì resume theo handoff (notebook chết, hết quota: đẩy lại; tài khoản kaggle9.json
+   tngdngpham còn nhiều giờ; 7 tài khoản cũ đặt lại 21/11 07:00 giờ VN). Mục tiêu owner: Test-4 bổ sung xong trong 19/11.
+2. Tổng hợp (chỉ số đếm) vào decision log + facts.md: AgentDojo v3 so với v1 (C10); thích nghi nhắm v3 so với canonical cùng
+   họ, báo riêng; baseline bổ sung là mô tả, ngoài H1–H4, McNemar họ gộp so với v3 ghi là khám phá. Dùng lại hàm của
+   `scripts/test4_analysis_v1.py`, như `scripts/test4_gemini_ref_v1.py`.
+3. Viết bài (một bài duy nhất; yêu cầu của thầy ở `Review Huy.docx`): đóng góp là cơ chế v3 + mô hình hình thức; v1 là
+   biến thể luật chuỗi; H1 báo trung thực; bảng dòng phát triển R1 → D2 → D2P2 → v3 trên cùng Test-4. Số chỉ lấy từ facts.md.
+   Văn phong khách quan, không "chúng tôi". Còn chờ owner trả lời: thư mục bài, ngôn ngữ nháp, tên phương pháp.
+4. Mẹo quota: còn khoảng 1 h thì dừng và đẩy lại, mỗi tài khoản 2 notebook; `kernels delete` xóa mọi phiên bản của slug.
+5. Không chỉnh v3 hay chạy lại theo số Test-4 (chỉ chạy lại khi lỗi hạ tầng). Lỗi mô hình (OUTPUT_TRUNCATED 512 token,
+   Gemini OUTPUT_INVALID) không chạy lại; nêu trong hạn chế, có thể thêm phân tích độ nhạy bỏ ca lỗi.
 
 Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng, số đếm và biên soạn.
 ```
