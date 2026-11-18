@@ -21,6 +21,8 @@ Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 - G1 cần Prompt Guard 2 local: `HF_HUB_DISABLE_XET=1 HF_TOKEN=$(cat ~/.hf_token_r5) nohup build/venv_guard/bin/python
   scripts/serve_promptguard_v1.py --port 8765 > build/kaggle/promptguard.log 2>&1 &` (lần đầu tải ~1 GB; xet bị treo nên
   tắt xet). Chuỗi chờ tối đa 2 h rồi bỏ G1 (in "G1 skipped"); khi đó chạy lại chuỗi với `CONFIGS=G1 FOLDER=...`.
+- Quota 00:37: hieu1908 còn 10,0 h, lehung040324 10,0 h, tngdngpham 27,9 h. Canh mẹo quota: `build/kaggle/quota_watch.sh`
+  (20 phút/lần; ALERT khi tài khoản đang chạy còn < 1,5 h hoặc notebook đang dùng ≥ 11 h).
 - Bài học: zsh không tách từ `$c` (dùng bash); dừng launcher phải giết cả subshell con.
 
 **2026-11-18 22:40: ĐANG CHẠY 3 việc (đều resume được; runner bỏ qua ca/cặp đã xong).** Giữ `caffeinate -dimsu` độc lập
