@@ -4381,3 +4381,14 @@ Ghi trước khi chạy bất kỳ phần nào dưới đây. Không chỉnh v3 
   lehung040324 (mỗi notebook một bộ suite × ngôn ngữ). Chỉ chạy lại khi lỗi hạ tầng. Chỉ số: tiện ích dưới tấn công, tấn công
   thành công (`security_results` của AgentDojo, giữ chú thích C10 về lời gọi bị chặn vẫn bị tính), tiện ích không tấn công.
   Báo cạnh v1, `repeat_user_prompt` và không phòng thủ; mô tả, không kiểm định.
+
+## 2026-11-18 21:05 — Khai báo trước (bổ sung SHA): vòng thích nghi nhắm v3 trên Dev-val
+
+- File ca do owner và Minh soạn và dựng (20:50, `scripts/build_adaptive_v3target.py build`):
+  `data/adversarial/adaptive_v3/adaptive_v3target_attack.jsonl`, **42 ca trên 42/42 họ Dev-val**, sha256
+  `b348dcf86e5af65b8ba0d613edd44e765d9f611ec87e06de781d7eca4d0ad8e8`. Claude kiểm độc lập: hash khớp, 42 ca hợp lệ
+  `FixtureV3`, split `dev`, nhánh `attack`, họ đều thuộc Dev-val. Claude không đọc nội dung.
+- Giao thức như mục 2026-11-18 19:30: A0, D2P2 (v1), V3P2 (v3) × Qwen3.5-9B, Gemma-4-12B, Llama-3.1-8B (16k);
+  `run_v3_api_v3.py --release dev4_1 --fixtures <file>`, chấm `evaluate_v3_v2.py`; output
+  `results/rebuild_c/dev4_1_adv3_<cfg>_<model>`. Chỉ số: ca/họ bị hại (`harm_transformed`), loại hại, thành phần chặn;
+  so với cùng họ ở bản gốc (canonical Dev v4.1). Báo riêng, mô tả. Một lần chạy, chỉ chạy lại khi lỗi hạ tầng; không chỉnh v3.
