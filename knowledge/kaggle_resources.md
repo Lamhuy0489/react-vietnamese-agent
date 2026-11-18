@@ -51,6 +51,11 @@ A0/R1/P2 xong 06:42) và `gemma4-12b` (PRG 27 fixture cuối, 09:33–09:43); hu
 hết quota tuần (30 h), oanhlam123456 hết quota từ 08/11. URL dạng `https://www.kaggle.com/code/<owner>/react-vn-vllm-serve-v1-<model>`.
 Không notebook nào còn chạy sau 09:43.
 
+**2026-11-18 20:25 — AgentDojo v3 (decision log 20:20), private, T4, Llama-3.1-8B 16k:** hieu1908
+`react-vn-vllm-serve-v1-llama31-8b-ctx16k` v1 (EN Banking) và v2 (EN Slack); lehung040324 cùng slug v5 (VI Banking) và v6
+(VI Slack). Endpoint: `build/kaggle/ad3_folder_<lang>_<suite>`. 20:56: `adv3_launch.sh` chờ slot để đẩy qwen35-9b, gemma4-12b
+(hieu1908) và llama31-8b-ctx16k (lehung040324) cho vòng thích nghi nhắm v3; phiên bản thật ghi sau khi đẩy được.
+
 **2026-11-18 11:19–17:58 — Test-4 chạy thật (sau khi 2 tài khoản mới xác minh số điện thoại; `<owner>/gpu-check` v2 in
 `Tesla T4` ở cả hai), private, T4, source `9f890e7`:** hieu1908 `react-vn-vllm-serve-v1-qwen35-9b` v2 (xong 17:19) và
 `react-vn-vllm-serve-v1-gemma4-12b` v2 (xong 17:58); lehung040324 `react-vn-vllm-serve-v1-llama31-8b-ctx16k` v3 (llamaA) và

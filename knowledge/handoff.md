@@ -7,6 +7,31 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-18 21:00: ĐANG CHẠY 3 việc (đều resume được; runner bỏ qua ca/cặp đã xong).** Giữ `caffeinate -dimsu` độc lập
+(`pmset -g assertions`); IPv6 Wi-Fi đang tắt (bật lại khi xong: `networksetup -setv6automatic Wi-Fi`). Quota: `build/kaggle/quota_all.sh`.
+1. **Gemini trên Test-4** (cột tham khảo, decision log 19:30): chuỗi `build/gemini/t4_gemini_chain.sh`, 5 cấu hình song song,
+   log `build/gemini/t4_chain.log`. Tiến độ: `for c in V3P2 D2P2 A0 P2 PRG; do find results/rebuild_c/test4_${c}_gemini3_flash
+   -name result.json | wc -l; done`. Dừng/resume: `pkill -f t4_gemini_chain.sh; pkill -f run_v3_api_v4_ref.py` rồi
+   `CGROUPS="V3P2,D2P2,A0,P2,PRG" PAR=5 INTERVAL=1 nohup build/gemini/t4_gemini_chain.sh >> build/gemini/t4_chain.log 2>&1 &`
+   (OmniRoute phải đang chạy; không tự bật OmniRoute). Xong: thêm số vào facts.md (cột riêng, không kiểm định).
+2. **AgentDojo v3** (decision log 20:20): 4 notebook Llama, hieu1908 EN Banking/Slack, lehung040324 VI Banking/Slack;
+   `build/kaggle/ad3_launch.sh OWNER CRED SUITE LANG`, log `build/kaggle/ad3_launch_<lang>_<suite>.log`. Notebook đã lên chỉ cần
+   chạy lại runner (lệnh trong `ad3_launch.sh`, endpoint ở `build/kaggle/ad3_folder_<lang>_<suite>`). Kiểm kê: lệnh AgentDojo ở
+   runbook. Xong: so với v1 (C10), `repeat_user_prompt`, không phòng thủ.
+3. **Thích nghi nhắm v3** (owner/Minh soạn, 42 ca, sha `b348dcf8…`, decision log 20:55): `build/kaggle/adv3_launch.sh` cho
+   qwen35_9b, gemma4_12b (hieu1908) và llama31_8b (lehung040324), đang chờ slot GPU do AgentDojo chiếm (thử lại mỗi 3 phút,
+   tối đa 5 h). Log `build/kaggle/adv3_launch_<K>.log`; output `results/rebuild_c/dev4_1_adv3_<cfg>_<K>`. Xong: so với bản
+   canonical cùng họ trên Dev v4.1, báo riêng.
+Lưu ý: hai notebook cùng tài khoản dùng chung slug; `kaggle kernels delete` xóa mọi phiên bản của slug nên chỉ xóa khi không
+còn phiên bản nào đang dùng.
+
+**2026-11-18 20:50: Soạn thảo và dựng xong bộ tấn công thích nghi nhắm v3 trên 42 họ Dev-val (adaptive_v3target).**
+- File payload: `data/adversarial/v3_authoring/adaptive_v3target.json` (42 họ, văn phong tự nhiên, giàu ngữ cảnh nghiệp vụ đời thường, nhắm vào các điểm yếu A2–A5 của BrokerGuard v3).
+- Đã dựng và kiểm định thành công: `data/adversarial/adaptive_v3/adaptive_v3target_attack.jsonl`.
+- Số lượng: 42 fixtures trên 42/42 họ Dev-val.
+- Mã băm SHA-256 niêm phong: `b348dcf86e5af65b8ba0d613edd44e765d9f611ec87e06de781d7eca4d0ad8e8`.
+- Bước tiếp theo: Gửi Claude số ca và mã SHA-256 để Claude ghi khai báo trước (preregistration) vào decision log, chuẩn bị lệnh/notebook chạy benchmark trên Kaggle (3 model x A0, v1, v3).
+
 **2026-11-18 18:40: Test-4 XONG, không còn tiến trình nền nào (supervisor, keep-alive đã dừng).** Kết quả và hướng bài:
 decision log 2026-11-18 18:40; số đầy đủ `results/rebuild_c/test4_analysis_v1.json` (chạy lại:
 `.venv/bin/python scripts/test4_analysis_v1.py`). IPv6 Wi-Fi đang tắt (owner tắt để tránh địa chỉ trycloudflare chập chờn);

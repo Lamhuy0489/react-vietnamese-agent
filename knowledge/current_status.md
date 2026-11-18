@@ -2,6 +2,10 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**18/11 21:00: đang chạy 3 việc phân tích phụ** (handoff mục "Đang làm"): cột Gemini trên Test-4, BrokerGuard v3 trên
+AgentDojo (Llama, EN/VI, Banking/Slack), vòng tấn công thích nghi nhắm v3 trên 42 họ Dev-val (owner/Minh soạn, chờ slot GPU).
+Tất cả đã khai báo trước trong decision log (19:30, 20:20, 20:55). Dự kiến xong trước sáng 19/11.
+
 **18/11 18:40: Test-4 XONG (một lần, final_config_v5).** H1 không đạt: v1 6/48 → v3 2/48 họ (gộp 3 mô hình), McNemar
 4–0, p một phía 0,0625, do nền v1 thấp hơn giả định 14/48. H2–H4 chỉ mô tả (tiện ích −0,5 điểm; chặn nhầm 1,9–3,4%; token
 và độ trễ ±1%). 24 ca thích nghi: v3 0/24 cả ba mô hình. Số đầy đủ: `results/rebuild_c/test4_analysis_v1.json`, decision

@@ -658,3 +658,14 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   v1 lọt; M5 sửa số/đơn vị lọt cả v1 lẫn v3. 40 ca vượt v1 cũ (Dev, trong mẫu): v3 còn 2.
 - Owner: ICCIES chưa nộp, chỉ làm một bài. Hướng: đóng góp là cơ chế v3 + mô hình hình thức theo `Review Huy.docx`; v1 là
   biến thể luật chuỗi (bậc ablation), vẫn so sánh; báo H1 trung thực. Không chạy Gemini để tìm ý nghĩa.
+
+## 2026-11-18 (tối) — Chuẩn bị bài, phân tích phụ: Gemini, AgentDojo v3, thích nghi nhắm v3
+
+- Bổ sung facts (thời gian cổng 0,26 ms/lời gọi, tham chiếu chặn mọi sink 11,5% tiện ích, Pareto 2 chiều). Kiểm kê baseline
+  (P1, G1, MEL, SAN đã loại trên Dev cũ) và các phần còn thiếu theo Review Huy.
+- Hạ tầng mới: `build_adaptive_v3target.py` + hướng dẫn soạn; `run_v3_api_v4_ref.py` (cột Gemini); `agentdojo_brokerguard_v3.py`
+  + `run_agentdojo_api_v2.py`; `quota_all.sh`; `ad3_launch.sh`, `adv3_launch.sh`. Khai báo trước 19:30, 20:20, 20:55.
+- Bật: Gemini Test-4 (5 cấu hình song song qua OmniRoute), AgentDojo v3 (4 notebook), thích nghi nhắm v3 (chờ slot).
+- Bài học: (1) `GROUPS` là biến có sẵn của bash (=20), đặt tên biến chuỗi khác; (2) adapter AgentDojo: "cho" bỏ dấu trùng
+  "chớ", phải dùng `_Text.word_ok`; số tiền 98.7 vs "98.70"; (3) `kernels delete` xóa mọi phiên bản của slug; (4) chia việc ra
+  nhiều notebook (mỗi notebook một model/suite) là cách tăng tốc chính, 2 lượt mỗi notebook được vLLM gộp lô.

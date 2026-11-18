@@ -4382,7 +4382,7 @@ Ghi trước khi chạy bất kỳ phần nào dưới đây. Không chỉnh v3 
   thành công (`security_results` của AgentDojo, giữ chú thích C10 về lời gọi bị chặn vẫn bị tính), tiện ích không tấn công.
   Báo cạnh v1, `repeat_user_prompt` và không phòng thủ; mô tả, không kiểm định.
 
-## 2026-11-18 21:05 — Khai báo trước (bổ sung SHA): vòng thích nghi nhắm v3 trên Dev-val
+## 2026-11-18 20:55 — Khai báo trước (bổ sung SHA): vòng thích nghi nhắm v3 trên Dev-val
 
 - File ca do owner và Minh soạn và dựng (20:50, `scripts/build_adaptive_v3target.py build`):
   `data/adversarial/adaptive_v3/adaptive_v3target_attack.jsonl`, **42 ca trên 42/42 họ Dev-val**, sha256
