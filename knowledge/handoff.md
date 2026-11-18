@@ -21,6 +21,11 @@ Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 - G1 cần Prompt Guard 2 local: `HF_HUB_DISABLE_XET=1 HF_TOKEN=$(cat ~/.hf_token_r5) nohup build/venv_guard/bin/python
   scripts/serve_promptguard_v1.py --port 8765 > build/kaggle/promptguard.log 2>&1 &` (lần đầu tải ~1 GB; xet bị treo nên
   tắt xet). Chuỗi chờ tối đa 2 h rồi bỏ G1 (in "G1 skipped"); khi đó chạy lại chuỗi với `CONFIGS=G1 FOLDER=...`.
+- 01:26: tài khoản mới **phmkimphng** (`kaggle10.json`, 30 h). Tách việc: chuỗi Qwen/Gemma trên tngdngpham chỉ còn Test-4
+  (đã dừng bash cha 01:25; runner Test-4 chạy tiếp, xong thì tự tắt keep-alive và ghi "done supp test4"); Dev v4.1 của
+  Qwen/Gemma chạy trên phmkimphng bằng `RELS=dev4_1 build/kaggle/supp_launch2.sh phmkimphng kaggle10.json <K> <K>`
+  (log `build/kaggle/supp_dev_launch_<K>.log`, folder `build/kaggle/supp_dev_folder_<K>`; resume thêm `FOLDER=`). Llama: chuỗi
+  hieu1908 gốc chạy Test-4 rồi Dev. Dev ~14 h/mô hình > 12 h notebook: `quota_watch.sh` báo khi notebook ≥ 11 h → đẩy lại.
 - Quota 00:37: hieu1908 còn 10,0 h, lehung040324 10,0 h, tngdngpham 27,9 h. Canh mẹo quota: `build/kaggle/quota_watch.sh`
   (20 phút/lần; ALERT khi tài khoản đang chạy còn < 1,5 h hoặc notebook đang dùng ≥ 11 h).
 - Bài học: zsh không tách từ `$c` (dùng bash); dừng launcher phải giết cả subshell con.
