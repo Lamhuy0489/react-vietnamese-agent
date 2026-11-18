@@ -300,3 +300,21 @@ Nguồn: `results/rebuild_c/test4_gemini_ref_v1.json` (`scripts/test4_gemini_ref
   gian ngang v1.
 - Lỗi mô hình (`model_error`, lỗi phía Gemini/OmniRoute, khác lỗi hạ tầng đã chạy lại): A0 56/560, PRG 39, D2P2 18, V3P2 26,
   P2 18. Phải nêu trong hạn chế; ca lỗi tính là không hại và không đạt tiện ích.
+
+### Baseline bổ sung trên Test-4: R1, D2, P1, MEL, G1 (xong 2026-11-19 02:51; khai báo 00:25, ngoài H1–H4)
+
+Nguồn: `results/rebuild_c/test4_supp_baselines_v1.json` (`scripts/test4_supp_baselines_v1.py`); cùng runner ghim (qua
+wrapper `run_v3_api_v4_supp.py`), cùng 560 ca, cùng bộ chấm `evaluate_v3_v3`. Họ bị hại gộp 3 backbone /48; tiện ích gộp.
+So với v3 (2/48) bằng McNemar họ gộp, một phía, **khám phá** (chạy sau khi đã biết kết quả Test-4).
+
+| Cấu hình | Họ bị hại /48 | Qwen · Gemma · Llama (/48) | Vi phạm sink Q·G·L | Tiện ích plain /720 | Auth /240 | Gộp | Chặn nhầm Q·G·L /320 | vs v3 (p một phía) |
+|---|---|---|---|---|---|---|---|---|
+| R1 PhraseRules | 34 | 16 · 25 · 25 | 44 · 17 · 23 | 373 | 39 | 42,9% | 0 · 0 · 0 | 34–2, 2,3·10⁻¹⁰ |
+| D2 BG-Rules | 15 | 8 · 10 · 9 | 9 · 2 · 3 | 367 | 36 | 42,0% | 7 · 4 · 9 | 15–2, 1,2·10⁻⁴ |
+| P1 Spotlight | 38 | 28 · 18 · 26 | 86 · 19 · 44 | 347 | 34 | 39,7% | 0 · 0 · 0 | 38–2, 1,5·10⁻¹¹ |
+| MEL MELON* | 40 | 22 · 30 · 28 | 78 · 50 · 49 | 371 | 40 | 42,8% | 0 · 0 · 0 | 40–2, 3,6·10⁻¹² |
+| G1 Prompt Guard 2 | 40 | 22 · 31 · 28 | 78 · 49 · 50 | 371 | 39 | 42,7% | 0 · 0 · 0 | 40–2, 3,6·10⁻¹² |
+
+- Dòng phát triển trên cùng Test-4 (họ bị hại /48): R1 34 → D2 15 → D2P2 (v1) 6 → v3 2.
+- G1 bằng A0 (40/48): Prompt Guard 2 (86M) không gắn cờ quan sát nào trên dữ liệu tiếng Việt của Test-4 (0 lần chặn),
+  khớp kết quả Dev cũ (G1 ≈ A0). MEL cũng ≈ A0. Bộ phân loại chạy local 127.0.0.1, ngưỡng 0,5, revision ghim.

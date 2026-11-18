@@ -4414,3 +4414,9 @@ Ghi trước khi chạy bất kỳ phần nào dưới đây. Không chỉnh v3 
 - Cấu hình đóng băng như các lượt cũ, không chỉnh gì. Kết quả mô tả, ngoài H1–H4 (không đổi kết luận đã đăng ký); so với
   v3 bằng McNemar họ gộp như dòng "Baseline vs v3 (khám phá)", ghi rõ là bổ sung sau khi đã thấy kết quả Test-4.
   Một lần chạy, chỉ chạy lại khi lỗi hạ tầng. Thứ tự: Test-4 trước, Dev v4.1 sau (Dev có thể kéo sang sau 21/11 khi quota đặt lại).
+
+## 2026-11-19 03:05 — Baseline bổ sung trên Test-4 xong (mô tả, ngoài H1–H4)
+
+- R1, D2, P1, MEL, G1 × 3 backbone, 15/15 lượt đủ 560/560, chấm `evaluate_v3_v3` (02:51). Họ bị hại gộp /48: R1 34, D2 15,
+  P1 38, MEL 40, G1 40 (v1 6, v3 2). Số đầy đủ facts.md mục "Baseline bổ sung trên Test-4". So với v3 là khám phá, không đổi
+  kết luận H1–H4. Dev v4.1 cho các cấu hình này đang chạy (phmkimphng: Qwen, Gemma; tngdngpham: Llama chia 2 notebook).
