@@ -51,6 +51,14 @@ A0/R1/P2 xong 06:42) và `gemma4-12b` (PRG 27 fixture cuối, 09:33–09:43); hu
 hết quota tuần (30 h), oanhlam123456 hết quota từ 08/11. URL dạng `https://www.kaggle.com/code/<owner>/react-vn-vllm-serve-v1-<model>`.
 Không notebook nào còn chạy sau 09:43.
 
+**2026-11-18 11:19–17:58 — Test-4 chạy thật (sau khi 2 tài khoản mới xác minh số điện thoại; `<owner>/gpu-check` v2 in
+`Tesla T4` ở cả hai), private, T4, source `9f890e7`:** hieu1908 `react-vn-vllm-serve-v1-qwen35-9b` v2 (xong 17:19) và
+`react-vn-vllm-serve-v1-gemma4-12b` v2 (xong 17:58); lehung040324 `react-vn-vllm-serve-v1-llama31-8b-ctx16k` v3 (llamaA) và
+v4 (llamaB), xong 16:22; notebook phụ cho 24 ca thích nghi trên lehung040324: `react-vn-vllm-serve-v1-gemma4-12b` v1
+(16:23–17:25) và `react-vn-vllm-serve-v1-qwen35-9b` v1 (đẩy 16:51, sẵn sàng 17:45, không còn ca để chạy). Hai bản cùng slug
+chạy song song được (mỗi bản một ntfy topic). Quota lúc 17:53: hieu1908 còn 16,9 h, lehung040324 khoảng 19 h. Không notebook
+nào còn chạy (keep-alive đã dừng). Báo cáo: `results/rebuild_c/test4_analysis_v1.json`, decision log 2026-11-18 18:40.
+
 **2026-11-17 19:26 — Test-4 (final_config_v5 sha `673f7af4…`, runner `run_v3_api_v4.py`, source `88611e1`), private,
 T4×2, trên 2 tài khoản mới (30 h GPU mỗi tài khoản lúc bật):** hieu1908 (`kaggle7.json`) `react-vn-vllm-serve-v1-qwen35-9b` v1
 và `react-vn-vllm-serve-v1-gemma4-12b` v1; lehung040324 (`kaggle8.json`) `react-vn-vllm-serve-v1-llama31-8b-ctx16k` v1

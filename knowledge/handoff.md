@@ -7,6 +7,17 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-18 18:40: Test-4 XONG, không còn tiến trình nền nào (supervisor, keep-alive đã dừng).** Kết quả và hướng bài:
+decision log 2026-11-18 18:40; số đầy đủ `results/rebuild_c/test4_analysis_v1.json` (chạy lại:
+`.venv/bin/python scripts/test4_analysis_v1.py`). IPv6 Wi-Fi đang tắt (owner tắt để tránh địa chỉ trycloudflare chập chờn);
+bật lại: `networksetup -setv6automatic Wi-Fi`.
+Bước tiếp theo:
+1. Viết bài (một bài duy nhất; `Review Huy.docx` là yêu cầu của thầy): mô hình hình thức C1–C3 sang LaTeX (mệnh đề toàn vẹn
+   ghi rõ không bao gồm sửa giá trị số/đơn vị), bảng Test-4 (A0/P2/PRG/v1/v3/ablation), H1 không đạt và lý do hiệu ứng sàn,
+   bằng chứng cơ chế (C1/C2 chặn 4 họ v1 lọt), chi phí, đoạn so sánh CaMeL/CapLite. Số chỉ lấy từ decision log/facts.
+2. Vòng tấn công thích nghi nhắm v3 trên họ Dev-val: owner/Minh soạn, Claude chỉ lo hạ tầng.
+3. Không chỉnh v3 hay chạy lại theo số Test-4; Gemini chỉ chạy nếu owner quyết riêng (phân tích phụ, không kiểm định).
+
 **2026-11-18 tối: Test-4 VẪN DỪNG, chưa có ca nào; không tiến trình nền nào chạy (trừ caffeinate).** Đã kiểm kỹ: notebook
 trên hieu1908 và lehung040324 được Kaggle ghi `machine_shape: NvidiaTeslaT4` nhưng nhận image CPU `gcr.io/kaggle-images/python`
 (Python 3.13, không có `nvidia-smi`), giờ GPU dùng 0.00h/30h; notebook cũ chạy được (huylmhuhu) dùng image

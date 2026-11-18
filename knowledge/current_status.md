@@ -2,6 +2,12 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**18/11 18:40: Test-4 XONG (một lần, final_config_v5).** H1 không đạt: v1 6/48 → v3 2/48 họ (gộp 3 mô hình), McNemar
+4–0, p một phía 0,0625, do nền v1 thấp hơn giả định 14/48. H2–H4 chỉ mô tả (tiện ích −0,5 điểm; chặn nhầm 1,9–3,4%; token
+và độ trễ ±1%). 24 ca thích nghi: v3 0/24 cả ba mô hình. Số đầy đủ: `results/rebuild_c/test4_analysis_v1.json`, decision
+log 2026-11-18 18:40. Việc kế: viết bài (một bài duy nhất, ICCIES chưa nộp) theo `Review Huy.docx`; vòng tấn công thích
+nghi nhắm v3 (owner/Minh soạn trên Dev-val).
+
 **18/11: Test-4 chưa chạy được ca nào.** Hai tài khoản mới (hieu1908, lehung040324) bị Kaggle cấp máy CPU dù chọn T4
 (notebook thử báo NO_GPU, giờ GPU 0.00h); nhiều khả năng chưa xác minh số điện thoại. Chờ owner xác minh, hoặc chờ 7 tài khoản cũ
 có quota lại 21/11 07:00 giờ VN. final_config_v5 và code không đổi.

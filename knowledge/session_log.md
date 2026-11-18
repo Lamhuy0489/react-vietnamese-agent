@@ -645,3 +645,16 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - 18/11: so với notebook cũ chạy được: Kaggle ghi máy T4 nhưng cấp image CPU (`kaggle-images/python`, Python 3.13) thay vì
   image GPU; giờ GPU 0.00h. Notebook thử `gpu-check` trên cả hai tài khoản báo NO_GPU. Nguyên nhân khả dĩ nhất: chưa xác minh
   số điện thoại. Chờ owner xác minh rồi kiểm lại bằng `gpu-check`; dự phòng: quota tài khoản cũ đặt lại 21/11 07:00 giờ VN.
+
+## 2026-11-18 — Test-4 chạy xong; H1 không đạt (hiệu ứng sàn); phân tích và hướng bài báo
+
+- Hai tài khoản mới đã có GPU sau khi owner xác minh số điện thoại (`gpu-check` in `Tesla T4`). Bật 4 notebook 11:19,
+  supervisor `t4_supervise.py`. Llama xong 16:22, Qwen 17:19, Gemma 17:58; 48/48 file `test4_*_eval_v3.json`.
+- Sự cố mạng: một địa chỉ IPv6 của `*.trycloudflare.com` chập chờn làm khoảng 50% lời gọi lỗi hạ tầng (runner xóa và chạy
+  lại ca, không ảnh hưởng kết quả). Owner chạy `networksetup -setv6off Wi-Fi` lúc 14:45: lỗi còn khoảng 1%, tốc độ gấp
+  khoảng 2,3 lần. Chạy thêm 2 notebook phụ trên lehung040324 cho 24 ca thích nghi (Gemma có ích; Qwen lên muộn, bỏ qua hết).
+- Phân tích `scripts/test4_analysis_v1.py` (decision log 2026-11-18 18:40): H1 v1 6/48 → v3 2/48 họ gộp, 4–0, p một phía
+  0,0625: không đạt; H2–H4 mô tả (tiện ích −0,5 điểm, chi phí token/độ trễ ±1%). v3 0 vi phạm sink; C1 và C2 chặn đúng 4 họ
+  v1 lọt; M5 sửa số/đơn vị lọt cả v1 lẫn v3. 40 ca vượt v1 cũ (Dev, trong mẫu): v3 còn 2.
+- Owner: ICCIES chưa nộp, chỉ làm một bài. Hướng: đóng góp là cơ chế v3 + mô hình hình thức theo `Review Huy.docx`; v1 là
+  biến thể luật chuỗi (bậc ablation), vẫn so sánh; báo H1 trung thực. Không chạy Gemini để tìm ý nghĩa.
