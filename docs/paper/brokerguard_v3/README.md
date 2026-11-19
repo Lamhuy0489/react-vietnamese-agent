@@ -15,12 +15,13 @@ tham chiếu và số:
 | | |
 |---|---|
 | Template | Springer LNCS (`llncs.cls` 2.26, `splncs04.bst`), giống bài ICCIES cũ |
-| Độ dài | Tối đa 15 trang kể cả tài liệu tham khảo (owner, 20/11). Ước lượng chưa biên dịch: bản Việt khoảng 14,1 trang, bản Anh khoảng 14,4 trang (Hình Pareto tắt). Cách ước lượng ở mục "Ước lượng trang" bên dưới |
+| Độ dài | Tối đa 15 trang kể cả tài liệu tham khảo (owner, 20/11). Bản Việt biên dịch lần 1 (20/11) khoảng 14,5 trang; sau khi bật Hình Pareto và sửa bảng, ước lượng khoảng 14,85 trang. Bản Anh chưa sửa theo lần góp ý này, ước lượng khoảng 14,6 trang khi tắt Pareto. Cách ước lượng ở mục "Ước lượng trang" |
 | Biên dịch | Overleaf: zip cả thư mục `latex/` (hoặc `latex_en/`), main = `main.tex`, pdfLaTeX. Lỗi font T5 thì đổi sang XeLaTeX (hướng dẫn ở đầu `main.tex`) |
 | Hình | Hình 1 (kiến trúc) và Hình 2 (Pareto, tùy chọn) vẽ bằng TikZ/pgfplots trong `.tex`, Overleaf tự vẽ. Không render hình hay PDF trên máy |
-| Hình Pareto | Tắt mặc định (`\paretofalse` ở `main.tex`) vì số liệu đã có ở Bảng 3. Nếu bản biên dịch còn dưới khoảng 14,6 trang thì đổi thành `\paretotrue`: hình hiện ra và câu ở Mục 7 tự trỏ tới hình (thêm khoảng 0,37 trang) |
+| Hình Pareto | Công tắc `\ifpareto` ở `main.tex` (hình chiếm khoảng 0,37 trang, câu ở Mục 7 tự trỏ tới hình khi bật). Bản Việt: BẬT (owner chọn 20/11 để dùng nửa trang còn trống). Bản Anh: đang tắt; khi sửa bản Anh phải viết gọn thêm khoảng 0,25 trang rồi mới bật |
 | Tiêu đề | BrokerGuard: Intent-Aware Authorisation and Value-Level Flow Control Against Indirect Prompt Injection in Vietnamese LLM Agents (owner có thể đổi) |
 | Tài liệu tham khảo | 19 mục (bản dài 25). Bỏ BIPIA, Nasr 2025, Tramèr 2020, Dwork 2015, Recht 2019, Holm 1979. Giữ FIDES, design patterns và Liu et al. vì phản biện 3 (`phan bien3.md`) coi việc cắt chúng là suy giảm |
+| Cỡ chữ bảng | `llncs.cls` đặt `\footnotesize` bằng `\small`, nên bảng in ở 9 pt, dòng 11 pt. `tabular*` rộng hơn khổ sẽ tràn lề mà `adjustbox` không thu được (Bảng 1 bản 20/11 tràn 1 cm); bảng chữ dùng `tabularx`, bảng số `tabular*` chỉ khi bề rộng tự nhiên đo ở 9 pt nhỏ hơn 346 pt |
 | Kiểm tĩnh | Ngoặc, môi trường, `\ref`, `\cite`, dấu `%` sau số, chấm phẩy, "chúng tôi"/"we" trong lời văn, số liệu hai bản khớp nhau: đã kiểm bằng script (20/11), chưa biên dịch thật |
 
 ## Bản 15 trang: đã cắt gì (20/11)
@@ -37,6 +38,19 @@ Không bỏ kết quả hay luận điểm nào. Những gì bị cắt hoặc c
   vi đo dựng P(u) 496 µs, bỏ tên sáu công cụ đọc, bỏ câu về kiểm tra phát lại (800 lần), bỏ câu về nhãn độ nhạy cảm của
   tập phát triển được gắn lại, bỏ ví dụ "dùng/đừng" khi có dấu, bỏ hướng tiếp theo "nhiều lượt" và "theo dõi biến đổi ngoài (A4)".
 - Muốn lấy lại đoạn nào: `git show 6814b3a:docs/paper/brokerguard_v3/latex/sections/<file>.tex` (hoặc `latex_en/`).
+
+## Góp ý owner lần 1 trên bản 15 trang (20/11, bản Việt; bản Anh làm sau)
+
+- Bảng 3: Q, G, L tách thành ba cột số căn phải dưới nhóm "Mô hình" (dấu chấm giữa làm số không thẳng hàng). Bảng 4: Q, G,
+  L của bộ 1 và hai số của bộ 2 cũng tách cột.
+- Bảng 1 tràn lề: đổi sang `tabularx`, cột mô tả là X, rút vài mô tả ("Như trên, đích được che giấu", "Đổi giá trị người
+  dùng đã nêu", "Đích chỉ được nhắc tới hoặc bị cấm").
+- Tóm tắt, Mục 1, 7, 8, 9: diễn đạt kết quả so với luật so khớp chuỗi theo hướng tích cực nhưng trung thực (chặn thêm bốn
+  trong sáu họ, mỗi họ bởi đúng thành phần, không lọt họ mới, cùng chiều trên ba mô hình; khẳng định thống kê cần tập kiểm
+  thử lớn hơn). Tiêu đề đoạn thảo luận đổi thành "Lực thống kê của kiểm định chính". Sửa câu kết luận cũ nói quá ("mỗi họ
+  mà luật so khớp chuỗi để lọt đều bị chặn", thật ra 4 trong 6 họ).
+- Nửa trang trống: bật Hình Pareto ở bản Việt.
+- Việc còn lại cho bản Anh: làm y hệt các mục trên, viết gọn thêm khoảng 0,25 trang, rồi bật Pareto.
 
 ## Ước lượng trang (không có TeX trên máy)
 

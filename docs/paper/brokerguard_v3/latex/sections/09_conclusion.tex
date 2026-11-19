@@ -1,11 +1,13 @@
-% Số: như tóm tắt (facts.md mục Test-4, AgentDojo v3). Hướng tiếp theo nối với các hạn chế ở Mục 8.
+% Số: như tóm tắt (facts.md mục Test-4: 40, 6, 2 họ, cặp lệch 4/0; AgentDojo v3). Hướng tiếp theo nối với các hạn chế ở
+% Mục 8. 20/11: sửa câu cũ "mỗi họ mà luật so khớp chuỗi để lọt đều bị chặn" (sai: chỉ 4 trong 6 họ, 2 họ sửa số/đơn vị
+% lọt qua cả hai cấu hình).
 \section{Kết luận}\label{sec:conclusion}
 
 Bài báo trình bày \ours, một cơ chế cưỡng chế tại Tool Broker gồm chính sách ý định có cực tính, nhãn độ nhạy cảm mức
 giá trị và ghim tham số, cùng một mô hình hình thức với ba thuộc tính được chứng minh dưới năm giả định. Trên một tập
 kiểm thử tiếng Việt niêm phong trước khi có mã, \ours{} giảm số họ bị hại từ 40 khi không phòng thủ xuống 2 trên 48,
-với tiện ích giảm 3,1 điểm, còn token và độ trễ mỗi ca tăng không quá 1\% so với \strSand. So với cấu hình này (6 họ),
-mức giảm chưa đạt ý nghĩa thống kê do hiệu ứng sàn, nhưng mỗi họ mà luật so khớp chuỗi để lọt đều bị chặn bởi đúng
-thành phần được thiết kế cho nó. Hướng tiếp theo gồm một tập kiểm thử niêm phong khoảng 120 họ để có đủ lực thống kê,
-kiểm hình thức các mệnh đề trên mã, ngữ nghĩa trường cho \pThree, và kênh xác nhận với người dùng cho đích lấy từ dữ
-liệu công cụ.
+với tiện ích giảm 3,1 điểm, còn token và độ trễ mỗi ca tăng không quá 1\% so với \strSand. So với cấu hình này, \ours{}
+chặn thêm bốn trong sáu họ bị hại, mỗi họ bởi đúng thành phần được thiết kế cho nó, và không để lọt họ nào mới. Vì cấu
+hình so sánh đã ở gần mức sàn, hướng tiếp theo trực tiếp nhất là một tập kiểm thử niêm phong khoảng 120 họ để khẳng định
+khác biệt này bằng kiểm định. Các hướng khác gồm kiểm hình thức các mệnh đề trên mã, ngữ nghĩa trường cho \pThree, và
+kênh xác nhận với người dùng cho đích lấy từ dữ liệu công cụ.

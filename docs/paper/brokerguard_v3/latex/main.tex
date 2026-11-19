@@ -64,9 +64,10 @@
 % Ghi chú cho tác giả; xóa trước khi nộp.
 \newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
 \newcommand{\code}[1]{\texttt{#1}}
-% Hình Pareto (images/fig2_pareto.tex, khoảng 1/3 trang) tắt trong bản 15 trang vì số liệu đã có ở Bảng 3.
-% Biên dịch xong mà còn chỗ dưới trang 15 thì đổi \paretofalse thành \paretotrue (lời văn Mục 7 tự trỏ tới hình).
-\newif\ifpareto \paretofalse
+% Hình Pareto (images/fig2_pareto.tex, khoảng 0,37 trang). 20/11: owner chọn bật vì bản biên dịch còn trống nửa trang
+% (ước lượng sau khi bật khoảng 14,85 trang). Nếu bản biên dịch vượt 15 trang thì đổi lại \paretofalse (lời văn Mục 7
+% tự bỏ chỗ trỏ tới hình).
+\newif\ifpareto \paretotrue
 
 % ---- TÊN GỌI (đổi một dòng ở đây là đổi cả bài; ánh xạ sang log ở ../README.md) -------------------
 % Bài mới hoàn toàn: không dùng tên phiên bản (v1, v2, v3, BG-Base, Test-I/II/III). Mã chỉ dùng ở chỗ cần thiết:

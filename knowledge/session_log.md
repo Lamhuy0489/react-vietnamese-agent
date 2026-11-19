@@ -749,3 +749,15 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Bài học: chữ Anh chiếm chỗ hơn chữ Việt khoảng 9\% cùng nội dung, nên bản Anh là bản quyết định giới hạn trang; viết
   lời Anh gọn thay vì dịch sát. `placeins [section]` gây trang trống khi bảng không vừa trang.
 
+## 2026-11-20 (sau) — Sửa bản Việt theo góp ý owner trên bản biên dịch 15 trang
+
+- Owner biên dịch bản Việt: khoảng 14,5 trang (còn trống nửa trang), gửi ảnh Bảng 3 và Bảng 1. Góp ý: Q · G · L nên tách
+  cột (dấu chấm làm số không thẳng hàng); Bảng 1 tràn lề; tóm tắt nói về H1 chưa khéo. Owner yêu cầu sửa bản Việt trước,
+  bản Anh sau.
+- Nguyên nhân tràn: `llncs.cls` có `\let\footnotesize\small`, bảng in ở 9 pt chứ không phải 8 pt; Bảng 1 dùng `tabular*`
+  rộng tự nhiên 379 pt so với khổ 346 pt, `adjustbox` không thu vì `tabular*` khai báo đúng bề ngang trang.
+- Đã sửa bản Việt: Bảng 1 sang `tabularx`; Bảng 3, 4 tách cột số; tóm tắt, Mục 1, 7, 8, 9 diễn đạt lại kết quả so với
+  luật so khớp chuỗi (tích cực, trung thực); sửa câu kết luận nói quá. Owner chọn bật Hình Pareto ở bản Việt (ước lượng
+  14,85 trang). Ước lượng nay tính bảng ở 9 pt, dòng 11 pt và khớp số trang owner đo (14,49 so với khoảng 14,5).
+- Còn lại: bản Anh làm y hệt, viết gọn thêm khoảng 0,25 trang rồi bật Pareto; owner biên dịch lại bản Việt để kiểm.
+

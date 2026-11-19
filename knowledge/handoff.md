@@ -7,6 +7,12 @@ Cập nhật: 2026-11-20. (Trước đó 2026-11-19 tối.) Lộ trình [v2](../
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-20 (sau): BẢN VIỆT ĐÃ SỬA THEO GÓP Ý LẦN 1, BẢN ANH CHƯA.** Owner biên dịch bản Việt: khoảng 14,5 trang. Đã
+sửa bản Việt: Bảng 1 hết tràn lề (`tabularx`), Bảng 3, 4 tách cột Q, G, L, tóm tắt và Mục 1, 7, 8, 9 diễn đạt lại kết
+quả so với luật so khớp chuỗi, bật Hình Pareto (`\paretotrue`, owner chọn; ước lượng khoảng 14,85 trang). Việc kế:
+(1) owner biên dịch lại bản Việt, kiểm ≤ 15 trang (vượt thì `\paretofalse`); (2) làm bản Anh y hệt (danh sách ở README
+của bài, mục "Góp ý owner lần 1"), viết gọn thêm khoảng 0,25 trang rồi bật Pareto. Lưu ý: bảng LNCS in ở 9 pt.
+
 **2026-11-20: BÀI v3 ĐÃ RÚT CÒN TỐI ĐA 15 TRANG (cả `latex/` và `latex_en/`), chờ owner biên dịch lại trên Overleaf.**
 Bản 23 trang owner biên dịch ở `docs/paper/brokerguard_v3/pdf/agent_injection_vn.pdf`; bản dài ở commit `6814b3a`. Đọc
 `docs/paper/brokerguard_v3/README.md` trước (mục "Bản 15 trang: đã cắt gì", "Ước lượng trang", "Việc owner cần làm").
