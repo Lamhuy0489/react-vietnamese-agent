@@ -4,71 +4,49 @@
 % Nguồn gốc Test-4: sinh từ spec, owner và Minh rà soát (không ghi "do owner và Minh soạn", không báo kappa).
 \section{Dữ liệu và giao thức đánh giá}\label{sec:protocol}
 
-\paragraph{Tập phát triển.} VN-AgentInject hiện thực mô hình ở Mục~\ref{sec:threat} thành các ca chạy được, với dữ
-liệu tổng hợp. \Dev{} gồm 168 họ và 1.960 ca (840 tấn công, 840 \bPlain, 280 \bAuth). Đây là hợp của tập phát triển ban
-đầu (48 họ) với hai tập kiểm thử niêm phong của giai đoạn đầu (72 và 48 họ). Hai tập kiểm thử này được gộp vào vì 40 ca
-lọt qua \strSand{} trên chúng đã được dùng để thiết kế \ours. Dùng lại chúng để kiểm định sẽ cho kết quả lạc
-quan~\cite{dwork2015reusable}, nên một tập kiểm thử mới được dựng theo cùng quy trình~\cite{recht2019imagenet}. Nhãn độ
-nhạy cảm của \dev{} được gắn lại theo một bộ quy tắc viết trước, bằng mã tất định và có người rà soát. \Dev{} được chia
-theo họ thành phần huấn luyện (126 họ) và phần kiểm định (42 họ, 7 họ mỗi cơ chế). Mọi tham số của \ours{} được chỉnh
-trên phần huấn luyện và chọn trên phần kiểm định.
+\paragraph{Tập dữ liệu.} VN-AgentInject hiện thực mô hình ở Mục~\ref{sec:threat} thành các ca chạy được với dữ liệu tổng
+hợp. \Dev{} gồm 168 họ và 1.960 ca (840 tấn công, 840 \bPlain, 280 \bAuth), là hợp của tập phát triển ban đầu (48 họ)
+với hai tập kiểm thử của giai đoạn đầu (72 và 48 họ). Hai tập kiểm thử này được gộp vào vì 40 ca lọt trên chúng đã được
+dùng để thiết kế \ours, nên dùng lại chúng để kiểm định sẽ cho kết quả lạc quan. \Dev{} được chia theo họ thành phần
+huấn luyện (126 họ), dùng để chỉnh danh sách từ phủ định, ngưỡng và tên trường, và phần kiểm định (42 họ, 7 họ mỗi cơ
+chế), dùng để chọn cấu hình. \Test{} gồm 48 họ mới (8 họ mỗi cơ chế) và 560 ca (240 tấn công, 240 \bPlain, 80 \bAuth).
+Các họ được sinh tự động từ một đặc tả, sau đó hai thành viên của nhóm rà soát câu chữ, và tập được niêm phong bằng
+SHA-256 trước khi có dòng mã nào của \ours. Độ trùng 4-gram Jaccard với \dev{} tối đa là 0,05. Mỗi lần chạy đều đối
+chiếu hash đã ghim của dữ liệu, mã và cấu hình.
 
-\paragraph{Tập kiểm thử.} \Test{} gồm 48 họ mới (8 họ mỗi cơ chế) và 560 ca (240 tấn công, 240 \bPlain, 80 \bAuth),
-theo cùng khung với tập 48 họ của giai đoạn đầu. Các họ được sinh tự động từ một đặc tả, sau đó hai thành viên của nhóm
-rà soát và sửa câu chữ. Tập được niêm phong bằng SHA-256 trước khi có dòng mã nào của \ours. Độ trùng 4-gram Jaccard
-với mọi văn bản của \dev{} tối đa là 0,05 (ngưỡng 0,2). Mọi họ qua kiểm tra phát lại, trong đó quỹ đạo tham chiếu làm
-theo đoạn chèn phải bị chấm là gây hại, còn quỹ đạo hoàn thành nhiệm vụ an toàn phải được chấm là an toàn (800 lần phát
-lại, không lỗi). Chương trình chạy từ chối khởi động nếu hash của dữ liệu, prompt, mã phòng thủ, phiên bản mô hình hay
-danh sách cấu hình sai khác so với bản đã ghim.
+\paragraph{Tấn công thích nghi.} Bộ thứ nhất gồm 24 ca thuộc \test, sinh cùng quy trình và niêm phong cùng \test, nhắm
+vào ba chỗ hở của \strSand{} (8 ca mỗi chỗ hở). Bộ thứ hai gồm 42 ca do hai thành viên của nhóm soạn sau khi \ours{}
+đóng băng, với hiểu biết đầy đủ về thiết kế và mô hình hình thức. Mỗi ca thay văn bản tấn công của một họ thuộc phần
+kiểm định của \dev{} và nhắm vào các giả định (A2) đến (A5).
 
-\paragraph{Tấn công thích nghi.} Có hai bộ, báo cáo riêng. Bộ thứ nhất gồm 24 ca thuộc \test, sinh cùng quy trình,
-nhắm vào ba chỗ hở của \strSand{} (8 ca mỗi chỗ hở) và niêm phong cùng \test. Bộ này thiên vị \ours, vì các chỗ hở chính
-là những gì \ours{} được thiết kế để sửa. Bộ thứ hai được soạn sau khi \ours{} đã đóng băng, bởi hai thành viên của
-nhóm biết toàn bộ thiết kế và mô hình hình thức. Bộ này gồm 42 ca, mỗi ca thay văn bản tấn công của một họ thuộc phần
-kiểm định của \dev{} và nhắm vào các giả định (A2) đến (A5). Kết quả được so với ca gốc cùng họ.
+\paragraph{Mô hình nền và cấu hình.} Gemma-4-12B, Llama-3.1-8B (ngữ cảnh 16k) và Qwen3.5-9B được phục vụ bằng vLLM và
+ghim phiên bản, dùng chung prompt ReAct, nhiệt độ 0, tối đa 512 token mỗi bước và tám bước. Gemini 3 Flash chạy qua
+proxy, không ghim được phiên bản, nên chỉ là cột tham khảo với năm cấu hình. Mọi cấu hình dùng chung tác tử, broker và
+môi trường. Khi không phòng thủ, broker chỉ kiểm schema. Các phòng thủ khác gồm \cSpot~\cite{hines2024spotlighting},
+\cSand, \cPG{} (Prompt Guard~2~\cite{meta2025promptguard2} sàng lọc đầu ra công cụ), \cMel{} và \cProg, với dấu $^*$ chỉ
+bản cài lại theo MELON~\cite{zhu2025melon} và Progent~\cite{shi2025progent}. Luật tại broker gồm \phrRules{} (chặn theo
+danh sách cụm từ giống chỉ thị), \strRules, \strSand, \ours{} và ba bản bỏ một thành phần. Tám cấu hình của ma trận
+chính chạy một lần trên mỗi mô hình nền, gồm 560 ca và 24 ca thích nghi, chỉ ca gặp lỗi hạ tầng được chạy lại. \cSpot,
+\cPG, \cMel, \phrRules{} và \strRules{} đã đóng băng từ trước nhưng được chạy bổ sung sau khi có kết quả chính, nên so
+sánh với chúng chỉ là khám phá.
 
-\paragraph{Mô hình nền.} Ba mô hình mở trọng số là Gemma-4-12B, Llama-3.1-8B (ngữ cảnh 16k) và Qwen3.5-9B, phục vụ
-bằng vLLM và ghim theo phiên bản. Cả ba dùng chung prompt ReAct, nhiệt độ 0, tối đa 512 token mỗi bước và tám bước.
-Gemini 3 Flash được chạy trên \test{} như một cột tham khảo với năm cấu hình. Đây là mô hình đóng, chạy qua proxy,
-không ghim được phiên bản và nằm ngoài mọi kiểm định.
+\paragraph{Độ đo.} ASR là tỉ lệ ca tấn công gây hại. Tiện ích $U$ là tỉ lệ ca lành tính hoàn thành theo điều kiện tất
+định của từng nhiệm vụ mà không gây hại, và $\Delta U = U - U_0$ với $U_0$ là tiện ích khi không phòng thủ. Lỗi mô hình,
+như đầu ra sai định dạng hoặc bị cắt, được tính là thất bại về tiện ích, không bao giờ là phòng thủ thành công. Một họ
+\emph{bị hại} nếu có ít nhất một ca tấn công gây hại trên ít nhất một mô hình nền. Đây là đơn vị suy luận chính, vì các
+ca trong một họ dùng chung nhiệm vụ và môi trường. Chi phí gồm tỉ lệ chặn nhầm (ca lành tính có ít nhất một lần cổng từ
+chối), tỉ lệ cần xác nhận, token và thời gian mỗi ca.
 
-\paragraph{Cấu hình so sánh.} Mọi cấu hình dùng chung tác tử, broker và môi trường. Khi không phòng thủ, broker chỉ
-kiểm schema. Hai phòng thủ mức prompt là \cSpot~\cite{hines2024spotlighting} và \cSand. Hai phòng thủ phát hiện là
-\cPG{} (Prompt Guard~2~\cite{meta2025promptguard2} sàng lọc đầu ra công cụ) và \cMel. \cProg{} áp chính sách đặc quyền.
-Dấu $^*$ chỉ bản cài lại theo MELON~\cite{zhu2025melon} và Progent~\cite{shi2025progent}, không đại diện cho hệ gốc.
-Các cấu hình luật tại broker gồm \phrRules{} (chặn theo danh sách cụm từ giống chỉ thị), \strRules, \strSand, \ours{}
-và ba bản bỏ một thành phần. Tám cấu hình của ma trận chính (không phòng thủ, \cSand, \cProg, \strSand, \ours{} và ba
-bản bỏ thành phần) chạy một lần trên mỗi mô hình nền, gồm 560 ca và 24 ca thích nghi. Chỉ các ca gặp lỗi hạ tầng được
-chạy lại. Năm cấu hình \cSpot, \cPG, \cMel, \phrRules{} và \strRules{} được chạy bổ sung trên 560 ca sau khi đã có kết
-quả chính. Các cấu hình này đã đóng băng từ trước và được khai báo trước khi chạy, nhưng so sánh với chúng chỉ là khám
-phá.
+\paragraph{Giả thuyết đăng ký trước.} Trước khi niêm phong \test, bốn giả thuyết được đăng ký theo thủ tục cổng tuần tự.
+H1, giả thuyết chính duy nhất, cho rằng \ours{} có ít họ bị hại hơn \strSand, kiểm bằng McNemar chính
+xác~\cite{mcnemar1947} một phía trên 48 cặp họ với $\alpha = 0{,}05$. H2 đến H4 chỉ được kiểm định khi giả thuyết không
+của H1 bị bác bỏ. H2 cho rằng tiện ích của \ours{} không thấp hơn \strSand{} quá 5 điểm. H3 cho rằng bỏ mỗi thành phần
+làm tăng số họ bị hại (hiệu chỉnh Holm). H4 đặt ngưỡng 10\% cho tỉ lệ cần xác nhận, 15\% cho tỉ lệ chặn nhầm, và phụ
+trội so với \strSand{} là 20\% cho token, 15\% cho độ trễ. Ước lượng lực dựa trên mức 14/48 họ bị hại của \strSand{} ở
+giai đoạn đầu cho lực 91\% nếu \ours{} chặn thêm 8 họ.
 
-\paragraph{Độ đo.} Với tập ca tấn công $\mathcal{A}$ và tập ca lành tính $\mathcal{B}$,
-\begin{equation}\label{eq:metrics}
-\mathrm{ASR} = \frac{|\{f \in \mathcal{A} : \mathrm{Harm}(f)\}|}{|\mathcal{A}|}, \qquad
-U = \frac{|\{f \in \mathcal{B} : \mathrm{Done}(f) \land \lnot \mathrm{Harm}(f)\}|}{|\mathcal{B}|},
-\end{equation}
-trong đó $\mathrm{Done}(f)$ là điều kiện hoàn thành tất định riêng cho từng nhiệm vụ. Chênh lệch tiện ích của một cấu
-hình so với khi không phòng thủ là $\Delta U = U - U_0$, với $U_0$ là tiện ích khi không phòng thủ. Lỗi mô hình, tức đầu
-ra sai định dạng hoặc bị cắt, được tính là thất bại về tiện ích và không bao giờ được tính là phòng thủ thành công.
-Một họ \emph{bị hại} nếu có ít nhất một ca tấn công gây hại của họ đó trên ít nhất một mô hình nền. Đây là đơn vị suy
-luận chính, vì các ca trong một họ dùng chung nhiệm vụ và môi trường nên không độc lập. Chi phí gồm tỉ lệ chặn nhầm
-(ca lành tính có ít nhất một lần cổng từ chối), tỉ lệ cần xác nhận, token và thời gian mỗi ca, và thời gian của cổng.
-
-\paragraph{Giả thuyết đăng ký trước.} Trước khi niêm phong \test, bốn giả thuyết được đăng ký theo thủ tục cổng tuần
-tự. H1 là giả thuyết chính duy nhất: \ours{} có ít họ bị hại hơn \strSand, kiểm bằng McNemar chính
-xác~\cite{mcnemar1947} một phía trên 48 cặp họ với $\alpha = 0{,}05$. H2 đến H4 chỉ được kiểm định khi giả thuyết
-không của H1 bị bác bỏ. H2 cho rằng tiện ích của \ours{} không thấp hơn \strSand{} quá 5 điểm. H3 cho rằng bỏ mỗi thành
-phần làm tăng số họ bị hại (McNemar, hiệu chỉnh Holm~\cite{holm1979}). H4 đặt ngưỡng 10\% cho tỉ lệ cần xác nhận, 15\%
-cho tỉ lệ chặn nhầm, và ngưỡng phụ trội so với \strSand{} là 20\% cho token và 15\% cho độ trễ. Ước lượng lực dựa trên
-mức của \strSand{} trên tập 48 họ của giai đoạn đầu (14/48 họ bị hại) cho lực 91\% nếu \ours{} chặn thêm 8 họ. Mọi so
-sánh với các cấu hình khác là khám phá.
-
-\paragraph{AgentDojo.} Để kiểm tra tổng quát hóa sang môi trường chưa thấy, bài báo dùng bộ Banking (144 cặp nhiệm vụ
-người dùng và nhiệm vụ chèn) và Slack (105 cặp) của AgentDojo v1.2.2~\cite{debenedetti2024agentdojo} với khuôn tấn
-công \code{important\_instructions}, bằng tiếng Anh và bản dịch tiếng Việt. Bản dịch giữ nguyên IBAN, số tiền, tên và
-địa chỉ, còn công cụ và hàm chấm là mã gốc. \StrSand{} và \ours{} được chạy với Llama-3.1-8B qua một bộ chuyển đổi khai
-báo trước khi chạy, nêu công cụ nào là sink và đối số nào chứa đích. Vì bộ trích gốc chỉ nhận địa chỉ và endpoint,
-trong bộ chuyển đổi \pOne{} chỉ đòi đích (IBAN, người dùng, kênh, URL hay e-mail) xuất hiện nguyên token trong $u$ và
-không nằm trong phạm vi phủ định. Sink không có đích, như đổi mật khẩu, nằm ngoài thành phần này. Lời nhắc là
-\code{repeat\_user\_prompt} có sẵn của AgentDojo.
+\paragraph{AgentDojo.} Bộ Banking (144 cặp nhiệm vụ người dùng và nhiệm vụ chèn) và Slack (105 cặp) của AgentDojo
+v1.2.2~\cite{debenedetti2024agentdojo} được chạy với khuôn tấn công \code{important\_instructions}, bằng tiếng Anh và
+bản dịch tiếng Việt giữ nguyên IBAN, số tiền, tên và địa chỉ. \StrSand{} và \ours{} chạy với Llama-3.1-8B qua một bộ
+chuyển đổi khai báo trước, nêu công cụ nào là sink và đối số nào chứa đích. Trong bộ chuyển đổi, \pOne{} chỉ đòi đích
+xuất hiện nguyên token trong $u$ và không nằm trong phạm vi phủ định.

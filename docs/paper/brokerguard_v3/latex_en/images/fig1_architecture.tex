@@ -26,7 +26,7 @@
 \draw[arr] (0.75,4.45) -- (0.75,3.0);
 
 % broker frame
-\draw[rounded corners=2pt, line width=0.6pt] (2.0,0.5) rectangle (9.3,5.65);
+\draw[rounded corners=2pt, line width=0.6pt] (2.0,1.3) rectangle (9.3,5.65);
 \node[font=\fontsize{7}{8}\selectfont\bfseries] at (5.65,5.43) {Tool Broker (host side)};
 
 % row 1: state built by C1 and C2
@@ -50,12 +50,7 @@
 \node[newc, gate] at (8.35,2.1) {Needs confirmation\\ = denial};
 
 % legend
-\node[newc, swatch] at (2.3,0.88) {};
-\node[note] at (2.52,0.88) {new component};
-\node[kept, swatch] at (4.3,0.88) {};
-\node[note] at (4.52,0.88) {base rule};
-\node[soft, swatch] at (6.3,0.88) {};
-\node[note] at (6.52,0.88) {model-dependent};
+% (15-page version: no in-figure legend, the caption explains colours and lines; frame bottom raised from 0.5 to 1.3)
 
 % agent <-> broker
 \draw[arr] (1.5,2.75) -- node[lab, above=-1pt] {$a_t$} (2.0,2.75);
@@ -72,12 +67,11 @@
 \draw[arr] (9.3,2.45) -- node[lab, above=-1pt] {$a_t$} (9.75,2.45);
 
 % redacted answer leaves the broker
-\draw[arr] (9.3,1.0) -- (9.95,1.0);
-\node[anchor=west, text=black!65] at (9.98,1.0) {$y$ redacted};
+\draw[arr] (9.3,1.47) -- (9.95,1.47);
+\node[anchor=west, text=black!65] at (9.98,1.47) {$y$ redacted};
 \end{tikzpicture}
 \end{adjustbox}
-\caption{Architecture of \ours. Every call $a_t$ and the final answer $y$ pass through the Tool Broker. The \pOne{}
-(\cOne) is extracted once from $u$, and \pTwo{} (\cTwo) updates the protected set $C_t$ after every observation. Boxes
-with a thick orange border are new components, boxes with a blue border are base rules, and the dashed box depends on
-the model. All checks inside the frame are deterministic.}\label{fig:arch}
+\caption{Architecture of \ours. Every call $a_t$ and the final answer $y$ pass through the Tool Broker. Boxes with a
+thick orange border are new components, boxes with a blue border are base rules, and the dashed box depends on the
+model. All checks inside the frame are deterministic.}\label{fig:arch}
 \end{figure}

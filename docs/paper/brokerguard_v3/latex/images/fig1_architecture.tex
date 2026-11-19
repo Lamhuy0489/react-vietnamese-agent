@@ -26,7 +26,7 @@
 \draw[arr] (0.75,4.45) -- (0.75,3.0);
 
 % khung broker
-\draw[rounded corners=2pt, line width=0.6pt] (2.0,0.5) rectangle (9.3,5.65);
+\draw[rounded corners=2pt, line width=0.6pt] (2.0,1.3) rectangle (9.3,5.65);
 \node[font=\fontsize{7}{8}\selectfont\bfseries] at (5.65,5.43) {Tool Broker (phía host)};
 
 % hàng 1: trạng thái do C1 và C2 dựng
@@ -49,13 +49,7 @@
 \node[kept, gate] at (6.55,2.1) {Báo từ chối,\\ tác tử làm tiếp};
 \node[newc, gate] at (8.35,2.1) {Cần xác nhận\\ = từ chối};
 
-% chú giải
-\node[newc, swatch] at (2.3,0.88) {};
-\node[note] at (2.52,0.88) {thành phần mới};
-\node[kept, swatch] at (4.3,0.88) {};
-\node[note] at (4.52,0.88) {luật nền};
-\node[soft, swatch] at (6.3,0.88) {};
-\node[note] at (6.52,0.88) {phụ thuộc mô hình};
+% (bản 15 trang: bỏ chú giải trong hình, ý nghĩa màu và nét ghi ở chú thích; khung hạ đáy từ 0,5 lên 1,3)
 
 % tác tử <-> broker
 \draw[arr] (1.5,2.75) -- node[lab, above=-1pt] {$a_t$} (2.0,2.75);
@@ -72,12 +66,10 @@
 \draw[arr] (9.3,2.45) -- node[lab, above=-1pt] {$a_t$} (9.75,2.45);
 
 % câu trả lời đã che rời broker
-\draw[arr] (9.3,1.0) -- (9.95,1.0);
-\node[anchor=west, text=black!65] at (9.98,1.0) {$y$ đã che};
+\draw[arr] (9.3,1.47) -- (9.95,1.47);
+\node[anchor=west, text=black!65] at (9.98,1.47) {$y$ đã che};
 \end{tikzpicture}
 \end{adjustbox}
-\caption{Kiến trúc của \ours. Mọi lời gọi $a_t$ và câu trả lời cuối $y$ đều đi qua Tool Broker. \POne{} (\cOne) được
-trích một lần từ $u$, còn \pTwo{} (\cTwo) cập nhật tập giá trị bảo vệ $C_t$ sau mỗi quan sát. Ô viền cam đậm là thành
-phần mới, ô viền xanh là luật nền, ô nét đứt phụ thuộc vào mô hình. Mọi kiểm tra trong khung đều tất
-định.}\label{fig:arch}
+\caption{Kiến trúc của \ours. Mọi lời gọi $a_t$ và câu trả lời cuối $y$ đều đi qua Tool Broker. Ô viền cam đậm là
+thành phần mới, ô viền xanh là luật nền, ô nét đứt phụ thuộc vào mô hình. Mọi kiểm tra trong khung đều tất định.}\label{fig:arch}
 \end{figure}

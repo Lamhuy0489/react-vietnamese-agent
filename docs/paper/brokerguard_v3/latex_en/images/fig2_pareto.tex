@@ -7,6 +7,8 @@
 %   | deny all sinks 110 -> -31.35
 % Colour follows the entity as in Figures 1 and 3: grey = other defences, blue = rules at the broker, orange = BrokerGuard
 % (hollow = one component removed). Marker shapes differ, so the plot reads in black and white. About 10.4 cm wide.
+% 15-page version (2026-11-20): the figure is optional (\paretotrue in main.tex). The legend was removed because it
+% covered the Sandwich label; every point is labelled and the caption explains colours and shapes. Axis height kept.
 \begin{figure}[!htbp]
 \centering
 \begin{adjustbox}{max width=\textwidth}
@@ -20,22 +22,16 @@
   axis x line*=bottom, axis y line*=left,
   tick label style={font=\scriptsize}, label style={font=\scriptsize},
   xmajorgrids, ymajorgrids, grid style={line width=0.2pt, draw=black!12},
-  legend style={font=\tiny, draw=black!20, fill=white, fill opacity=0.9, text opacity=1,
-    at={(0.99,0.56)}, anchor=north east, cells={anchor=west}},
   clip=false,
 ]
 \addplot[only marks, mark=*, mark size=1.8pt, mark options={draw=black!70, fill=black!25}]
   coordinates {(40,0) (40,-0.1042) (38,-3.125) (22,-2.0833) (25,-0.2083)};
-\addlegendentry{Other defences}
 \addplot[only marks, mark=square*, mark size=1.7pt, mark options={draw=bgblue, fill=bgblue}]
   coordinates {(34,0.1042) (15,-0.8333) (6,-2.6042)};
-\addlegendentry{Rules at the broker}
 \addplot[only marks, mark=diamond, mark size=2.6pt, mark options={draw=bgorange, fill=white, line width=0.7pt}]
   coordinates {(4,-2.8125) (6,-2.6042) (2,-3.0208)};
-\addlegendentry{\ours{} without one component}
 \addplot[only marks, mark=diamond*, mark size=3pt, mark options={draw=bgorange!75!black, fill=bgorange}]
   coordinates {(2,-3.125)};
-\addlegendentry{\ours}
 % point labels
 \node[font=\tiny, anchor=north east] at (axis cs:41.2,-0.22) {\NoDef, \cMel, \cPG};
 \node[font=\tiny, anchor=south] at (axis cs:34,0.2) {\PhrRules};
@@ -56,9 +52,7 @@
 \end{axis}
 \end{tikzpicture}
 \end{adjustbox}
-\caption{Trade-off between security and utility on the \test. The horizontal axis gives the number of harmed families,
-the vertical axis $\Delta U$ relative to no defence over 960 benign cases. The top-left corner is best. The rules at the
-broker are \phrRules, \strRules{} and \strSand. The point of \strSand{} coincides with \ours{} without \cTwo{} (\pTwo),
-and \ours{} without \cThree{} (\pThree) retains one more benign case than \ours. The deny-all-sinks reference is
-estimated from trajectories without a defence and lies off the axis.}\label{fig:pareto}
+\caption{Trade-off between security and utility on the \test. The top-left corner is best. Grey circles are other
+defences, blue squares rules at the broker, the orange diamond is \ours{} and hollow diamonds are \ours{} without one
+component. The deny-all-sinks reference lies off the axis.}\label{fig:pareto}
 \end{figure}

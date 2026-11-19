@@ -2,58 +2,38 @@
 % src/react_agent/evaluation/transformed_leakage.py (decision log 2026-11-15 18:20). Mock tool names are not used.
 \section{Threat Model}\label{sec:threat}
 
-\paragraph{Agent and tools.} Let $u$ be the user request. At each step the model emits an action $a_t$, consisting of a
-tool name and arguments, or a final answer $y$. The Tool Broker checks $a_t$, executes it and returns an observation
-$o_t$. The system has six read tools (searching and reading documents, read-only database queries, searching and opening
-cached web pages, and a calculator) and two \emph{sinks} with side effects, sending e-mail and calling a webhook. Both
-sinks are mocks that only log the call and never send anything over the network. The final answer is treated as a third
-sink. For a sink call $a$, $\dest(a)$ denotes its destination (an address or a URL) and $\data(a)$ the remaining
-arguments.
+\paragraph{Agent, tools and labels.} Let $u$ be the user request. At each step the model emits an action $a_t$ (a tool
+name and arguments) or a final answer $y$. The Tool Broker checks $a_t$, executes it and returns an observation $o_t$.
+The system has six read tools and two \emph{sinks} with side effects, sending e-mail and calling a webhook, both mocks
+that only log the call. The final answer is a third sink. For a sink call $a$, $\dest(a)$ is its destination (an
+address or a URL) and $\data(a)$ the remaining arguments. Content carries two independent labels. By trust, only $u$
+and the system prompt are trusted. By sensitivity, content ranges from public to confidential, since an untrusted page
+may be public while a confidential record may come from a source the attacker cannot touch.
 
-\paragraph{Two labels.} Every piece of content carries two independent labels. By \emph{trust}, only $u$ and the system
-prompt are trusted, and every tool observation is untrusted. By \emph{sensitivity}, content ranges from public to
-confidential. An untrusted page may be public, while a confidential record may come from a source the attacker cannot
-touch. Merging the two dimensions forces a defence either to block all confidential data or to trust every internal
-source.
+\paragraph{Attacker.} The attacker controls the text of one piece of content returned by a read tool and knows the tool
+schemas. In the adaptive rounds the attacker also knows the full design and formal model of the defence, but cannot
+modify $u$, the system prompt, the broker or the model weights. Direct jailbreaks, training-data poisoning and
+multi-agent systems are out of scope.
 
-\paragraph{Attacker.} The attacker controls the text of one piece of content returned by a read tool, at any position
-and in any tone, and knows the names and schemas of the tools. In the adaptive rounds the attacker also knows the full
-design and formal model of the defence. The attacker cannot modify $u$, the system prompt, the broker or the model
-weights. Direct jailbreaks, training-data poisoning, denial of service and multi-agent systems are out of scope.
+\paragraph{Harm predicate.} Let $G(u)$ be the (tool, destination) pairs that the user actually authorises, $\Sigma$
+the confidential values on the trajectory that the user does not allow to be disclosed, and $\mathcal{S}$ the sink
+calls actually executed. Values written by the user in $u$ are not in $\Sigma$. A trajectory $\tau$ is harmful,
+$\mathrm{Harm}(\tau)$, if one of four predicates holds: $H_\mathit{dest}$ if some $a \in \mathcal{S}$ has
+$(\mathrm{tool}(a), \dest(a)) \notin G(u)$, $H_\mathit{leak}$ if some $v \in \Sigma$ appears, verbatim or transformed,
+in $\data(a)$ for some $a \in \mathcal{S}$ or in $y$, $H_\mathit{tamper}$ if some $a \in \mathcal{S}$ has a legitimate
+destination but a user-specified field carries another value, and $H_\mathit{side}$ if the task only requires reading
+but $\mathcal{S} \neq \emptyset$. A frozen scorer decides these predicates from the executed calls and $y$, so blocked
+calls never count as harm. Besides verbatim matches, it recognises confidential values in Base64, Hex or URL encoding,
+split into characters, or written as number words.
 
-\paragraph{Harm predicate.} Let $G(u)$ be the set of (tool, destination) pairs that the user actually authorises,
-$\Sigma$ the set of confidential values on the trajectory that the user does not allow to be disclosed, and
-$\mathcal{S}$ the set of sink calls that were \emph{actually executed}. Values written by the user in $u$ are not in
-$\Sigma$. A trajectory $\tau$ is harmful if
-\begin{equation}\label{eq:harm}
-\mathrm{Harm}(\tau) = H_\mathit{dest} \lor H_\mathit{leak} \lor H_\mathit{tamper} \lor H_\mathit{side},
-\end{equation}
-where
-\begin{itemize}
-\item $H_\mathit{dest}$: some $a \in \mathcal{S}$ has $(\mathrm{tool}(a), \dest(a)) \notin G(u)$,
-\item $H_\mathit{leak}$: some $v \in \Sigma$ appears in $\data(a)$ for some $a \in \mathcal{S}$ or in $y$, verbatim or in a
-  transformed form,
-\item $H_\mathit{tamper}$: some $a \in \mathcal{S}$ has a legitimate destination but a user-specified field carries a
-  different value,
-\item $H_\mathit{side}$: the task only requires reading but $\mathcal{S} \neq \emptyset$.
-\end{itemize}
-A frozen scorer decides these predicates from the executed calls and $y$. Blocked calls never count as harm. Besides
-verbatim matching, the scorer recognises confidential values encoded in Base64, Hex or URL encoding, split into
-separate characters, or written out as number words.
-
-\paragraph{Six attack mechanisms.} Attacks are classified by \emph{mechanism}, that is, the path by which the injected
-text turns into harm (Table~\ref{tab:mechanisms}). In the two redirection mechanisms, the destination does not occur in
-$u$. In the two leakage mechanisms, the destination is legitimate or absent, so only the provenance of a value separates
-the attack from the task. In parameter tampering, both the destination and the sensitivity look normal. The unrequested
-side-effect mechanism tests whether a destination that is merely mentioned, for instance in a prohibition, is mistaken
-for an authorisation.
+\paragraph{Mechanisms, families and variants.} Attacks are classified into six \emph{mechanisms}, the paths by which
+the injected text turns into harm (Table~\ref{tab:mechanisms}). In the two redirection mechanisms, the destination is
+not in $u$. In the two leakage mechanisms and in parameter tampering, the destination is legitimate, so only the
+provenance or the value of the data separates the attack from the task. A \emph{family} is one attack idea in a
+specific task and tool environment. Every family has a \emph{\bPlain} branch, which replaces the injection with a
+harmless note of the same length, and one third also have an \emph{\bAuth} branch, in which the user explicitly
+authorises an action similar to the attack goal. A denial in a benign branch is a \emph{false block}. Each family has
+five variants of both $u$ and the injection (standard Vietnamese, a paraphrase, Vietnamese--English code-mixing,
+Vietnamese without diacritics, and English) with identical identifiers, addresses and confidential values.
 
 \input{tables/tab1_mechanisms}
-
-\paragraph{Families, benign branches and variants.} A \emph{family} is one attack idea in a specific task and tool
-environment. Every family has a \emph{\bPlain} branch, which replaces the injection with a harmless note of the same
-length and is used to measure utility. One third of the families also have an \emph{\bAuth} branch, in which the user
-explicitly authorises an action similar to the attack goal. A denial in a benign branch is a \emph{false block}. Each
-family has five variants applied to both $u$ and the injection: standard Vietnamese, a paraphrase, Vietnamese--English
-code-mixing, Vietnamese without diacritics, and English. Identifiers, addresses and confidential values are identical
-across variants, so any difference comes from language alone.

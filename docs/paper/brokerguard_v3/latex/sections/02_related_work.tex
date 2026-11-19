@@ -1,36 +1,28 @@
-% Trước khi viết bản tiếng Anh: đối chiếu từng câu trích với PDF ở ../../iccies2027/refs/.
+% Bản 15 trang: 19 tài liệu. Bỏ BIPIA, Nasr 2025, Tramèr 2020, Dwork 2015, Recht 2019, Holm 1979. Giữ FIDES, design
+% patterns và Liu et al. vì phản biện 3 coi việc cắt các tài liệu này là suy giảm.
 % CapLite (arXiv:2611.17115, 12/11/2026): chỉ dùng mức tóm tắt đã đọc ngày 19/11 (facts.md, "Tài liệu mới được trích").
 \section{Nghiên cứu liên quan}\label{sec:related}
 
-\paragraph{Tấn công và benchmark.} Greshake và cộng sự~\cite{greshake2023indirect} đưa ra khái niệm chèn lệnh gián
-tiếp. BIPIA~\cite{yi2025bipia} đo chèn lệnh gián tiếp vào LLM, còn InjecAgent~\cite{zhan2024injecagent} và
-AgentDojo~\cite{debenedetti2024agentdojo} chuyển trọng tâm sang tác tử dùng công cụ, nơi tấn công dẫn tới hành động.
-Liu và cộng sự~\cite{liu2024formalizing} hình thức hóa tấn công chèn lệnh và phòng thủ. Các bộ dữ liệu này đều bằng
-tiếng Anh, trong khi cơ chế an toàn của LLM yếu hơn ở ngôn ngữ ít tài nguyên~\cite{deng2024multijail}. Tấn công thích
-nghi đã vượt qua nhiều phòng thủ chèn lệnh đã công bố~\cite{zhan2025adaptive,nasr2025attacker}. Kinh nghiệm từ học máy
-đối kháng cho thấy một phòng thủ cần được kiểm bằng tấn công biết rõ thiết kế của nó~\cite{tramer2020adaptive}.
+\paragraph{Tấn công và phòng thủ dựa vào mô hình.} Liu và cộng sự~\cite{liu2024formalizing} hình thức hóa tấn công chèn
+lệnh và phòng thủ, còn InjecAgent~\cite{zhan2024injecagent} và AgentDojo~\cite{debenedetti2024agentdojo} đo tấn công
+trên tác tử dùng công cụ. Các bộ dữ liệu này đều bằng tiếng Anh, trong khi cơ chế an toàn của LLM yếu hơn ở ngôn ngữ ít
+tài nguyên~\cite{deng2024multijail}, và tấn công thích nghi đã vượt qua nhiều phòng thủ đã công
+bố~\cite{zhan2025adaptive}. Spotlighting~\cite{hines2024spotlighting} đánh dấu dữ liệu không đáng tin, lời nhắc kiểu
+sandwich lặp lại yêu cầu sau mỗi quan sát, SecAlign~\cite{chen2025secalign} huấn luyện lại mô hình để tách chỉ thị khỏi
+dữ liệu, Prompt Guard~2~\cite{meta2025promptguard2} sàng lọc đầu vào bằng một bộ phân loại, còn
+MELON~\cite{zhu2025melon} so hành động của lượt chạy gốc với lượt chạy lại có che yêu cầu. Các cách này phụ thuộc vào
+hành vi của mô hình hoặc bộ phân loại trên chính dữ liệu tấn công.
 
-\paragraph{Phòng thủ dựa vào mô hình.} Spotlighting~\cite{hines2024spotlighting} đánh dấu dữ liệu không đáng tin, còn
-lời nhắc kiểu sandwich lặp lại yêu cầu sau mỗi quan sát. SecAlign~\cite{chen2025secalign} huấn luyện lại mô hình để
-tách chỉ thị khỏi dữ liệu. Prompt Guard~2~\cite{meta2025promptguard2} sàng lọc đầu vào bằng một bộ phân loại.
-MELON~\cite{zhu2025melon} so sánh hành động của lượt chạy gốc với lượt chạy lại có che yêu cầu. Hiệu quả của các cách
-này phụ thuộc vào hành vi của mô hình hoặc của bộ phân loại trên chính dữ liệu tấn công.
-
-\paragraph{Cưỡng chế bên ngoài mô hình.} Progent~\cite{shi2025progent} áp chính sách đặc quyền lên lời gọi công cụ.
+\paragraph{Cưỡng chế bên ngoài mô hình.} Progent~\cite{shi2025progent} áp chính sách đặc quyền lên lời gọi công cụ, còn
 ClawGuard~\cite{zhao2026clawguard} nhờ mô hình suy ra luật truy cập từ yêu cầu của người dùng.
-FIDES~\cite{costa2025fides} gắn nhãn tin cậy và bảo mật cho dữ liệu và lan truyền nhãn qua các lời gọi.
+FIDES~\cite{costa2025fides} gắn nhãn tin cậy và bảo mật cho dữ liệu rồi lan truyền nhãn qua các lời gọi.
 CaMeL~\cite{debenedetti2026camel} tách luồng điều khiển khỏi dữ liệu không đáng tin bằng một trình thông dịch riêng và
-gắn capability cho từng giá trị. CapLite~\cite{xu2026caplite}, công bố cùng thời gian với bài báo này, suy chính sách
-từ schema công cụ, cam kết các lời gọi ghi trước khi đọc kết quả công cụ và chỉ nhận một lời gọi ghi khi mọi đối số
-quyết định đối tượng bị tác động có trong yêu cầu của người dùng. Beurer-Kellner và cộng
-sự~\cite{beurerkellner2025patterns} hệ thống hóa các mẫu thiết kế kiểu này.
-
-Như vậy, bản thân việc dùng chính sách có cấu trúc hay chứng minh an toàn chưa phải là đóng góp mới. Điểm khác của
-\ours{} nằm ở cách các thành phần này được đặt vào một tác tử ReAct sẵn có. CaMeL viết lại tác tử thành một trình
-thông dịch, CapLite cố định tập lời gọi ghi trước khi đọc dữ liệu, còn \ours{} giữ nguyên vòng lặp của tác tử và chỉ
-kiểm từng lời gọi tại broker. Chính sách của \ours{} được trích tất định từ $u$ và có xét cực tính phủ định, loại trừ
-trong tiếng Việt có dấu, không dấu và tiếng Anh, trong khi ClawGuard để mô hình viết luật và Progent dựa vào luật viết
-tay. Độ nhạy cảm được gán cho từng giá trị theo kiểu của giá trị ngay tại broker, không lan truyền qua mọi phép tính như
-FIDES. Cách làm này rẻ hơn nhưng chỉ bảo vệ giá trị trong một lớp biến đổi đã nêu rõ (Mục~\ref{sec:formal}). Ngoài ra,
-các thành phần được đánh giá trên một tập tiếng Việt mới, niêm phong trước khi viết mã, và thuộc tính được chứng minh
-được tách khỏi thuộc tính chỉ đo bằng thực nghiệm.
+gắn capability cho từng giá trị. CapLite~\cite{xu2026caplite}, công bố cùng thời gian, suy chính sách từ schema công cụ,
+cam kết các lời gọi ghi trước khi đọc kết quả công cụ và chỉ nhận lời gọi ghi khi các đối số quyết định đối tượng có
+trong yêu cầu. Beurer-Kellner và cộng sự~\cite{beurerkellner2025patterns} hệ thống hóa các mẫu thiết kế kiểu này. Bản
+thân việc dùng chính sách có cấu trúc hay chứng minh an toàn vì vậy chưa phải là đóng góp mới. \ours{} khác ở chỗ giữ
+nguyên vòng lặp ReAct và chỉ kiểm từng lời gọi tại broker, thay vì viết lại tác tử thành trình thông dịch như CaMeL hay
+cố định tập lời gọi ghi trước khi đọc dữ liệu như CapLite. Chính sách được trích tất định từ $u$ và xét cực tính trong
+tiếng Việt có dấu, không dấu và tiếng Anh, trong khi ClawGuard để mô hình viết luật và Progent dựa vào luật viết tay. Độ
+nhạy cảm được gán theo kiểu giá trị ngay tại broker, không lan truyền qua mọi phép tính như FIDES, nên rẻ hơn nhưng chỉ
+bảo vệ giá trị trong một lớp biến đổi đã nêu (Mục~\ref{sec:formal}).

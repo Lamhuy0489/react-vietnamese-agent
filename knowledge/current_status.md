@@ -2,6 +2,11 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**20/11: bài v3 rút còn tối đa 15 trang ở cả hai bản** (`docs/paper/brokerguard_v3/latex/`, `latex_en/`): 5 bảng, Hình 1,
+Hình Pareto tùy chọn (`\paretotrue`), 19 tài liệu; ước lượng bản Việt khoảng 14,1 trang, bản Anh khoảng 14,4 trang (chưa
+biên dịch). Bản 23 trang đã biên dịch ở `pdf/agent_injection_vn.pdf`, bản dài ở commit `6814b3a`. Chờ owner biên dịch
+lại trên Overleaf và góp ý.
+
 **19/11 tối: bài v3 xong bản tiếng Việt (`latex/`) và tiếng Anh (`latex_en/`)** ở `docs/paper/brokerguard_v3/` (LNCS,
 khoảng 20 trang, 6 bảng, 3 hình TikZ/pgfplots, 25 tài liệu). Chưa biên dịch; owner đọc và biên dịch trên Overleaf, rồi
 sửa theo góp ý ở cả hai bản.

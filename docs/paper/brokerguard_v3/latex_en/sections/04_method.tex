@@ -1,88 +1,62 @@
 % Sources: src/react_agent/security_v3/{intent_policy_v1,value_labels_v1,param_pinning_v1,brokerguard_v3_v1}.py;
 % decision log 2026-11-16 12:30 (C1), 15:30 (runtime, C1a rejected), 16:20 (micro-benchmark), 2026-11-17 19:25 (freeze).
-% Numbers: facts.md "Bổ sung cho bài v3" (8 characters, 9 digits; micro-benchmark; C1a 2 -> 5) and Test-4 (0.26 ms).
+% Numbers: facts.md "Bổ sung cho bài v3" (8 characters, 9 digits; micro-benchmark) and Test-4 (0.26 ms). The 15-page
+% version drops the paragraph on the C1a variant (2 -> 5 harmful trajectories on Dev-val); see commit 6814b3a.
 % No attack text is quoted. The cue words are those of the extractor, not of the data.
 \section{The \ours{} Method}\label{sec:method}
 
-The design of \ours{} starts from the view that the model is not a security boundary. An action takes effect only when
-the broker executes it, so the broker acts as a reference monitor at the sinks~\cite{anderson1972}. The only source of
-authority is $u$. Permissions are derived deterministically from $u$, never from tool content and never from the
-judgement of an LLM. Blocking does not end the task either, because a denied call is reported back so that the agent
-can continue with the legitimate part of its work.
-
-Figure~\ref{fig:arch} shows the architecture. The broker keeps four base rules. The \rFlow{} lets a value taken from a
-source labelled confidential leave the agent only if $u$ contains that value verbatim. The \rRedact{} replaces such
-values in the final answer with a redaction marker. The \rSig{} denies every sink after an observation flagged by a
-phrase detector, except calls that match a strict grammar over $u$. Sandwich prompting repeats $u$ after every
-observation, and denial feedback tells the agent which call was blocked. \ours{} replaces the \rDest{} with an \pOne{}
-(\cOne) and adds \pTwo{} (\cTwo) and \pThree{} (\cThree). The configuration made of the base rules and the \rDest, that
-is, \ours{} without its three components, is called \strSand. Removing the prompt layer as well leaves the \strRules.
-These two configurations are the direct points of comparison for \ours{} in Section~\ref{sec:results}.
+\ours{} treats the model as outside the security boundary. An action takes effect only when the broker executes it, so
+the broker acts as a reference monitor at the sinks, and the only source of authority is $u$. A denied call is reported
+back so that the agent can continue with the legitimate part of its work. Figure~\ref{fig:arch} shows the architecture.
+The base rules from the early stage are the \rDest{} (Section~\ref{sec:intro}), the \rFlow{} (a value from a source
+labelled confidential leaves the agent only if $u$ contains it verbatim), the \rRedact{} for the final answer, and the
+\rSig{} (sinks are denied after an observation flagged by a phrase detector, unless the call matches a strict grammar
+over $u$). Sandwich prompting repeats $u$ after every observation. \ours{} replaces the \rDest{} with the \pOne{}
+(\cOne) and adds \pTwo{} (\cTwo) and \pThree{} (\cThree). Keeping the \rDest{} and dropping all three components gives
+\strSand, and dropping the prompt layer as well gives \strRules.
 
 \input{images/fig1_architecture}
 
-\paragraph{Normalisation.} All comparisons use two normalisation functions. The function $\norm(\cdot)$ applies Unicode
-NFKC, removes format characters such as zero-width characters, and casefolds. The function $\kappa(\cdot)$ additionally
-strips Vietnamese diacritics and keeps only letters and digits. The notation $x \sub z$ means that $\kappa(x)$ is a
-substring of $\kappa(z)$, and $V(u)$ denotes the set of values that occur in $u$ in this sense.
+\paragraph{Normalisation.} $\norm(\cdot)$ applies Unicode NFKC, removes format characters and casefolds. $\kappa(\cdot)$
+also strips Vietnamese diacritics and keeps only letters and digits. $x \sub z$ means that $\kappa(x)$ is a substring of
+$\kappa(z)$, and $V(u)$ is the set of values occurring in $u$ in this sense.
 
-\paragraph{\POne{} (\cOne).} The extractor reads only $u$ and returns $P(u) = \{g_i\}$. Each grant $g =
-(\mathrm{tool}, \dest, \pi, \mathrm{pins})$ consists of a tool, a destination, a polarity $\pi \in \{+,-\}$ and the
-pinned values. Destinations are e-mail addresses or endpoints matched as whole tokens after $\norm$, so part of a
-destination or an ordinary word in $u$ no longer counts as a destination. Polarity follows the scope of negation. A
-negated verb (``đừng gửi'', ``do not send'') covers the destinations that follow it in the same clause. Exclusion cues
-(``trừ'', ``thay vì'', ``except'') cover the destinations up to the next comma. Contrast cues (``nhưng'', ``but'') close
-the scope. When $u$ carries diacritics, the original spelling decides whether a word such as ``dung'' means ``dùng''
-(use) or ``đừng'' (do not). When $u$ has no diacritics, such a word counts as a negation only if a sending verb follows
-it. Grants are typed by action. An address authorises only sending e-mail, an endpoint only calling a webhook, and the
-clause must contain a matching sending verb that is not negated. A destination that is only mentioned, appears in a
-quotation or in reported speech, or stands near a negation of unclear scope yields \emph{needs confirmation}. A sink
-call $a$ satisfies the \pOne{} when both of the following conditions hold:
+\paragraph{\POne{} (\cOne).} The extractor reads only $u$ and returns $P(u) = \{g_i\}$, where each grant $g =
+(\mathrm{tool}, \dest, \pi, \mathrm{pins})$ has a tool, a destination, a polarity $\pi \in \{+,-\}$ and pinned values.
+Destinations are e-mail addresses or endpoints matched as whole tokens after $\norm$, so part of a destination or an
+ordinary word in $u$ no longer counts. A negated verb (``đừng gửi'', ``do not send'') covers the destinations after it
+in the same clause, exclusion cues (``trừ'', ``except'') cover those up to the next comma, and contrast cues
+(``nhưng'', ``but'') close the scope. Without diacritics, a word such as ``dung'' counts as a negation only if a sending
+verb follows. The granting clause needs a non-negated sending verb that matches the destination type. A destination
+that is only mentioned, quoted or near a negation of unclear scope yields \emph{needs confirmation}. A sink call $a$
+satisfies the \pOne{} when
 \begin{equation}\label{eq:c1}
 \begin{aligned}
 &\exists\, g \in P(u)\colon\; \pi(g) = {+} \,\land\, \mathrm{tool}(g) = \mathrm{tool}(a) \,\land\, \dest(g) \doteq \dest(a),\\
 &\nexists\, g' \in P(u)\colon\; \pi(g') = {-} \,\land\, \dest(g') \doteq \dest(a),
 \end{aligned}
 \end{equation}
-where $\doteq$ denotes whole-token equality after $\norm$. Sinks without a destination field lie outside this component.
-As an example, take the request ``compile the quarterly report and send it to \code{ketoan@example.com}, not to
-\code{doitac@example.org}''. The extractor returns a positive grant for (e-mail, \code{ketoan@example.com}) and a
-negative grant for \code{doitac@example.org}. A call that sends to the second address is denied, even though the address
-occurs in $u$ and would therefore pass the \rDest.
+where $\doteq$ is whole-token equality after $\norm$. For ``send the report to \code{ketoan@example.com}, not to
+\code{doitac@example.org}'', a call to the second address is denied, although the \rDest{} would let it pass.
 
-\paragraph{\PTwo{} (\cTwo).} The \rFlow{} protects only values that come from sources labelled confidential, so a secret
-inside a source labelled public is never protected. \PTwo{} labels each value in every tool output by its type,
-independently of the source label and of trust. Three types are recognised: identifiers mixing letters and digits with
-at least 8 characters, numbers with at least 9 digits after removing spaces, dots and dashes, and values that follow a
-sensitive field name such as password, OTP, token or account number. Ordinary words and short numbers are never treated
-as protected values. Let $C_t$ be the set of protected values after step $t$, comprising the values protected by the
-\rFlow{} and the values labelled by type. The broker denies a sink call $a$ if
+\paragraph{\PTwo{} (\cTwo).} \PTwo{} labels each value in every tool output by its type, independently of the source
+label and of trust. It recognises identifiers mixing letters and digits with at least 8 characters, numbers with at
+least 9 digits after removing spaces, dots and dashes, and values after a sensitive field name such as password, OTP,
+token or account number. Let $C_t$ be the protected values after step $t$, that is, those protected by the \rFlow{} and
+those labelled by type. The broker denies a sink call $a$ if
 \begin{equation}\label{eq:c2}
 \exists\, v \in C_t \setminus V(u)\colon\; v \sub \data(a) .
 \end{equation}
-Because the comparison uses $\kappa$, the condition still holds when spaces, dots or dashes are added or removed, when
-case changes, or when diacritics are stripped. In the final answer, every $v \in C_t \setminus V(u)$ with $v \sub y$ is
-replaced by \code{[REDACTED]} in every surface form that matches $\kappa(v)$. The detector deliberately does not rely on
-the format that the data generator uses for secrets, so its coverage of other formats remains an empirical question
-(Section~\ref{sec:formal}).
+Since the comparison uses $\kappa$, it survives added or removed spaces, dots and dashes, case changes and stripped
+diacritics. In the final answer, every $v \in C_t \setminus V(u)$ with $v \sub y$ is replaced by \code{[REDACTED]}.
 
 \paragraph{\PThree{} (\cThree).} Parameter tampering keeps the authorised destination and changes a value such as an
-amount, a status, a unit or a code. This component checks a call against the clause of $u$ that authorised it. The
-pinned literals are numbers that follow the sending verb and are not operands of a calculation, units stated with a
-number, Boolean values with their polarity, identifiers written by the user, and every number in a sentence in which
-$u$ declares the values fixed. A call is denied if a pinned literal is missing from $\data(a)$ (compared under $\kappa$)
-or if it carries the opposite of a pinned Boolean. If several grants with the same tool and destination match the call,
-satisfying one of them is enough.
+amount, a status, a unit or a code. \PThree{} pins the literals in the clause of $u$ that authorised the call: numbers
+after the sending verb that are not operands of a calculation, units stated with a number, Booleans with their
+polarity, and identifiers written by the user. A call is denied if a pinned literal is missing from $\data(a)$ under
+$\kappa$, or if it carries the opposite of a pinned Boolean.
 
-\paragraph{Gate and cost.} A sink call is executed only if it passes all four checks: the \rSig, the \pOne, \pThree, and
-the flow check formed by the \rFlow{} together with \pTwo. The order of the checks only affects which reason is logged
-for a denial. A \emph{needs confirmation} result is enforced as a denial and counted separately. Read calls are always
-allowed. \ours{} calls no additional model. Over the 1,960 cases of the \dev, the median time to check a sink call is
-315~$\mu$s (\strSand: 107~$\mu$s), and building $P(u)$ takes 496~$\mu$s per task. In the actual runs, the gate takes
-0.26~ms per call on average, against about 14~s of model time per case.
-
-\paragraph{Development and freezing.} The cue lists, length thresholds, field names and units were tuned only on the
-training part of the \dev, and the configuration was selected on its validation part (Section~\ref{sec:protocol}). A
-variant that used $P(u)$ in place of the strict grammar of the \rSig{} increased utility, but when trajectories of the
-validation part were replayed, the number of harmful trajectories rose from 2 to 5, so the variant was rejected. All
-code, prompts and configurations were then pinned by hash before the \test{} was run.
+\paragraph{Gate and cost.} A sink call is executed only if it passes all four checks: the \rSig, the \pOne, \pThree{}
+and the flow check of the \rFlow{} with \pTwo. \emph{Needs confirmation} is enforced as a denial and counted
+separately, and read calls are always allowed. The gate calls no model. On the \dev, the median check of a sink call
+takes 315~$\mu$s (\strSand: 107~$\mu$s).

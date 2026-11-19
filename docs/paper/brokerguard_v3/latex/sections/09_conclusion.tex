@@ -1,21 +1,11 @@
 % Số: như tóm tắt (facts.md mục Test-4, AgentDojo v3). Hướng tiếp theo nối với các hạn chế ở Mục 8.
 \section{Kết luận}\label{sec:conclusion}
 
-Bài báo trình bày \ours, một cơ chế cưỡng chế tại Tool Broker cho tác tử ReAct dùng công cụ. \ours{} thay luật so khớp
-chuỗi về đích bằng một chính sách ý định có cực tính trích từ yêu cầu của người dùng, gán độ nhạy cảm cho từng giá trị,
-và ghim các giá trị người dùng đã nêu. Ba thành phần nhắm đúng ba chỗ hở đã đo được của luật so khớp chuỗi. Broker được
-đặc tả như một hệ chuyển trạng thái, và ba thuộc tính cấp quyền, bảo mật, toàn vẹn được chứng minh dưới năm giả định,
-mỗi giả định được đo riêng bằng thực nghiệm.
-
-Trên một tập kiểm thử tiếng Việt mới, niêm phong trước khi có mã của phòng thủ, \ours{} giảm số họ bị hại từ 40 khi
-không phòng thủ xuống 2 trên 48. Tiện ích giảm 3,1 điểm so với khi không phòng thủ, còn token và độ trễ mỗi ca tăng
-không quá 1\% so với \strSand. So với cấu hình này (6 họ), mức giảm chưa đạt ý nghĩa thống kê do hiệu ứng sàn. Bằng
-chứng mức ca cho thấy mỗi họ mà luật so khớp chuỗi để lọt đều bị chặn bởi đúng thành phần được thiết kế cho nó. Dưới
-hai vòng tấn công thích nghi, \ours{} không để lọt họ nào ngoài những họ đã lọt với tấn công gốc. Trên AgentDojo,
-\ours{} giữ số tấn công thành công ở mức thấp ở cả tiếng Anh và tiếng Việt, với cái giá là tiện ích ở các nhiệm vụ lấy
-đích từ dữ liệu công cụ.
-
-Các hướng tiếp theo đi thẳng từ những hạn chế đã nêu: một tập kiểm thử niêm phong đủ lớn để có lực thống kê (khoảng 120
-họ), kiểm hình thức các mệnh đề trên mã, ngữ nghĩa trường cho \pThree{} để bắt sửa số và đơn vị, kênh xác nhận với
-người dùng cho đích lấy từ dữ liệu công cụ, theo dõi giá trị qua các phép biến đổi ngoài (A4), và mở rộng sang nhiệm vụ
-nhiều lượt.
+Bài báo trình bày \ours, một cơ chế cưỡng chế tại Tool Broker gồm chính sách ý định có cực tính, nhãn độ nhạy cảm mức
+giá trị và ghim tham số, cùng một mô hình hình thức với ba thuộc tính được chứng minh dưới năm giả định. Trên một tập
+kiểm thử tiếng Việt niêm phong trước khi có mã, \ours{} giảm số họ bị hại từ 40 khi không phòng thủ xuống 2 trên 48,
+với tiện ích giảm 3,1 điểm, còn token và độ trễ mỗi ca tăng không quá 1\% so với \strSand. So với cấu hình này (6 họ),
+mức giảm chưa đạt ý nghĩa thống kê do hiệu ứng sàn, nhưng mỗi họ mà luật so khớp chuỗi để lọt đều bị chặn bởi đúng
+thành phần được thiết kế cho nó. Hướng tiếp theo gồm một tập kiểm thử niêm phong khoảng 120 họ để có đủ lực thống kê,
+kiểm hình thức các mệnh đề trên mã, ngữ nghĩa trường cho \pThree, và kênh xác nhận với người dùng cho đích lấy từ dữ
+liệu công cụ.

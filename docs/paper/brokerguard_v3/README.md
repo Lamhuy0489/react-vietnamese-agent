@@ -1,22 +1,50 @@
 # Bài BrokerGuard v3: mục lục làm việc
 
-Viết ngày 2026-11-19, sửa lần 2 cùng ngày (bỏ tên phiên bản, giảm mã, chống tràn lề). Bài duy nhất của đồ án; bài
-ICCIES cũ ở `../iccies2027/` không nộp. Hai bản song song, cùng cấu trúc, bảng, hình, nhãn tham chiếu và số:
+Viết ngày 2026-11-19, sửa lần 2 cùng ngày (bỏ tên phiên bản, giảm mã, chống tràn lề). **Rút gọn còn tối đa 15 trang ngày
+2026-11-20** theo yêu cầu owner (bản biên dịch 23 trang ở `pdf/agent_injection_vn.pdf`; bản dài nằm ở commit `6814b3a`).
+Bài duy nhất của đồ án; bài ICCIES cũ ở `../iccies2027/` không nộp. Hai bản song song, cùng cấu trúc, bảng, hình, nhãn
+tham chiếu và số:
 
 - `latex/`: bản tiếng Việt để đọc (số kiểu Việt: 32,1\%; 1.960).
-- `latex_en/`: bản tiếng Anh (chính tả Anh-Anh, số kiểu Anh: 32.1\%; 1,960; tóm tắt 248 từ). Font T5 vì Mục 4 trích vài từ
-  phủ định tiếng Việt. Sửa nội dung thì sửa cả hai bản.
+- `latex_en/`: bản tiếng Anh (chính tả Anh-Anh, số kiểu Anh: 32.1\%; 1,960; tóm tắt khoảng 210 từ). Font T5 vì Mục 4 trích
+  vài từ phủ định tiếng Việt. Sửa nội dung thì sửa cả hai bản. Lời văn tiếng Anh viết gọn hơn bản dịch sát vì chữ Anh
+  chiếm chỗ hơn chữ Việt khoảng 9\%.
 
 ## Định dạng và biên dịch
 
 | | |
 |---|---|
 | Template | Springer LNCS (`llncs.cls` 2.26, `splncs04.bst`), giống bài ICCIES cũ |
-| Độ dài | Owner cho phép dài hơn 15 trang (19/11); owner tinh chỉnh và cắt sau khi chốt nơi nộp. Ước lượng hiện tại khoảng 20 trang |
-| Biên dịch | Overleaf: zip cả thư mục `latex/`, main = `main.tex`, pdfLaTeX. Lỗi font T5 thì đổi sang XeLaTeX (hướng dẫn ở đầu `main.tex`) |
-| Hình | Cả ba hình vẽ bằng TikZ/pgfplots trong `.tex`, Overleaf tự vẽ. Không render hình hay PDF trên máy |
+| Độ dài | Tối đa 15 trang kể cả tài liệu tham khảo (owner, 20/11). Ước lượng chưa biên dịch: bản Việt khoảng 14,1 trang, bản Anh khoảng 14,4 trang (Hình Pareto tắt). Cách ước lượng ở mục "Ước lượng trang" bên dưới |
+| Biên dịch | Overleaf: zip cả thư mục `latex/` (hoặc `latex_en/`), main = `main.tex`, pdfLaTeX. Lỗi font T5 thì đổi sang XeLaTeX (hướng dẫn ở đầu `main.tex`) |
+| Hình | Hình 1 (kiến trúc) và Hình 2 (Pareto, tùy chọn) vẽ bằng TikZ/pgfplots trong `.tex`, Overleaf tự vẽ. Không render hình hay PDF trên máy |
+| Hình Pareto | Tắt mặc định (`\paretofalse` ở `main.tex`) vì số liệu đã có ở Bảng 3. Nếu bản biên dịch còn dưới khoảng 14,6 trang thì đổi thành `\paretotrue`: hình hiện ra và câu ở Mục 7 tự trỏ tới hình (thêm khoảng 0,37 trang) |
 | Tiêu đề | BrokerGuard: Intent-Aware Authorisation and Value-Level Flow Control Against Indirect Prompt Injection in Vietnamese LLM Agents (owner có thể đổi) |
-| Kiểm tĩnh | Ngoặc, môi trường, `\ref`, `\cite`, dấu `%` sau số, chấm phẩy trong lời văn: đã kiểm bằng script (19/11), chưa biên dịch thật |
+| Tài liệu tham khảo | 19 mục (bản dài 25). Bỏ BIPIA, Nasr 2025, Tramèr 2020, Dwork 2015, Recht 2019, Holm 1979. Giữ FIDES, design patterns và Liu et al. vì phản biện 3 (`phan bien3.md`) coi việc cắt chúng là suy giảm |
+| Kiểm tĩnh | Ngoặc, môi trường, `\ref`, `\cite`, dấu `%` sau số, chấm phẩy, "chúng tôi"/"we" trong lời văn, số liệu hai bản khớp nhau: đã kiểm bằng script (20/11), chưa biên dịch thật |
+
+## Bản 15 trang: đã cắt gì (20/11)
+
+Không bỏ kết quả hay luận điểm nào. Những gì bị cắt hoặc chuyển chỗ:
+
+- **Bảng và hình.** Bảng chi phí theo mô hình thành hai câu ở Mục 7 (đoạn chi phí). Bảng Gemini (bảng 6a cũ) thành một
+  đoạn văn ("Tổng quát hóa"). Hình theo cơ chế (Hình 3 cũ) và bảng thích nghi gộp thành Bảng 4. Bảng con H1–H4 dưới Bảng 3
+  thành lời văn. Bảng 1 và 2 rút lời trong ô (nguyên nhân lọt nằm ở Mục 1). Hình 1 bỏ chú giải trong hình (chú thích đã
+  nêu màu) và hạ đáy khung. Hình 2 bỏ chú giải (che nhãn Sandwich) và thành tùy chọn.
+- **Bố cục.** Mục 7 dùng tiêu đề đoạn thay tiểu mục. Mục 8 gộp "Chi phí tiện ích" với "Ngôn ngữ", "Mối đe dọa với tính
+  hợp lệ" với "Hạn chế". Bỏ `placeins [section]` (rào ở mỗi mục để lại nửa trang trống ở trang 18 bản 23 trang).
+- **Lời văn.** Bỏ câu lặp số đã có trong bảng, bỏ đoạn về biến thể C1a (2 lên 5 quỹ đạo gây hại trên phần kiểm định), bỏ
+  vi đo dựng P(u) 496 µs, bỏ tên sáu công cụ đọc, bỏ câu về kiểm tra phát lại (800 lần), bỏ câu về nhãn độ nhạy cảm của
+  tập phát triển được gắn lại, bỏ ví dụ "dùng/đừng" khi có dấu, bỏ hướng tiếp theo "nhiều lượt" và "theo dõi biến đổi ngoài (A4)".
+- Muốn lấy lại đoạn nào: `git show 6814b3a:docs/paper/brokerguard_v3/latex/sections/<file>.tex` (hoặc `latex_en/`).
+
+## Ước lượng trang (không có TeX trên máy)
+
+Script ở scratchpad của phiên 20/11 (không lưu): lấy chữ hiển thị của từng đoạn từ nguồn LaTeX, tính độ rộng bằng metric
+font cmr10 (`fontTools` + `cmr10.ttf` của matplotlib), chia cho bề ngang dòng 345,8 pt; cộng tiêu đề mục 40 pt, tiêu đề
+đoạn 12 pt, bảng/hình theo chiều cao đo trên PDF cũ, 25,7 pt mỗi tài liệu. Kiểm trên bản 23 trang: 594 dòng ước lượng so
+với 593 dòng thật, tổng 21,45 trang so với 21,48 trang (không tính chỗ trống do đặt bảng). Sai số còn lại chủ yếu ở chỗ
+trống khi đặt bảng/hình (0–0,5 trang), nên giữ ước lượng dưới khoảng 14,5 trang.
 
 ## Nguồn số liệu
 
@@ -28,25 +56,24 @@ Mọi con số lấy từ [`../iccies2027/facts.md`](../iccies2027/facts.md), ch
 - "Bổ sung cho bài v3" (ASR mức ca, tiện ích dạng số ca, Dev P2/PRG, QA của Test-4, bằng chứng phát triển, chi phí theo
   mô hình, tài liệu mới). ASR mức ca sinh bằng `scripts/paper_v3_case_counts_v1.py`.
 
-Mỗi file bảng và hình có comment đầu file ghi nguồn của từng số. Số nào không có trong facts.md thì không viết.
+Mỗi file bảng và hình có comment đầu file ghi nguồn của từng số. Số nào không có trong facts.md thì không viết. Bản 15
+trang không thêm số mới.
 
 ## Cấu trúc
 
 | File | Nội dung |
 |---|---|
-| `latex/main.tex`, `latex_en/main.tex` | Preamble, macro tên gọi (đổi một dòng là đổi cả bài); bản Việt có tên định lý tiếng Việt |
+| `latex/main.tex`, `latex_en/main.tex` | Preamble, macro tên gọi (đổi một dòng là đổi cả bài), công tắc `\ifpareto`; bản Việt có tên định lý tiếng Việt |
 | `latex_en/` | Bản tiếng Anh: cùng tên file, cùng nhãn `\label` với `latex/` |
 | `latex/sections/00_abstract.tex` … `09_conclusion.tex` | Tóm tắt, giới thiệu, liên quan, mô hình đe dọa, phương pháp, mô hình hình thức, giao thức, kết quả, thảo luận, kết luận |
-| `latex/tables/tab1_mechanisms.tex` | Bảng 1: sáu cơ chế, 40 ca lọt qua luật chuỗi + Sandwich theo nguyên nhân, thành phần xử lý |
+| `latex/tables/tab1_mechanisms.tex` | Bảng 1: sáu cơ chế, số ca lọt qua luật chuỗi + Sandwich ở giai đoạn đầu, thành phần xử lý |
 | `latex/tables/tab2_proven.tex` | Bảng 2: thuộc tính chứng minh và thuộc tính thực nghiệm |
-| `latex/tables/tab3_main.tex` | Bảng 3: 13 cấu hình trên tập kiểm thử và cột tập phát triển, kèm H1–H4 |
-| `latex/tables/tab4_cost.tex` | Bảng 4: token, thời gian, chặn nhầm, xác nhận theo mô hình |
-| `latex/tables/tab5_adaptive.tex` | Bảng 5: hai bộ tấn công thích nghi |
-| `latex/tables/tab6_general.tex` | Bảng 6: (a) Gemini 3 Flash trên tập kiểm thử, (b) AgentDojo |
+| `latex/tables/tab3_main.tex` | Bảng 3: 13 cấu hình trên tập kiểm thử và cột tập phát triển |
+| `latex/tables/tab4_mechres.tex` | Bảng 4: họ bị hại theo cơ chế, ablation, hai bộ tấn công thích nghi |
+| `latex/tables/tab5_agentdojo.tex` | Bảng 5: AgentDojo |
 | `latex/images/fig1_architecture.tex` | Hình 1: kiến trúc (TikZ) |
-| `latex/images/fig2_pareto.tex` | Hình 2: đánh đổi an ninh và tiện ích (pgfplots) |
-| `latex/images/fig3_mechanisms.tex` | Hình 3: họ bị hại theo cơ chế, (a) so với phòng thủ khác, (b) ablation |
-| `latex/refs.bib` | 25 mục, đều được trích; 4 mục mới kiểm ngày 19/11 (CapLite, Dwork 2015, Recht 2019, Tramèr 2020) |
+| `latex/images/fig2_pareto.tex` | Hình 2: đánh đổi an ninh và tiện ích (pgfplots), chỉ hiện khi `\paretotrue` |
+| `latex/refs.bib` | 19 mục, đều được trích (kiểm bằng script 20/11) |
 
 ## Bảng đổi tên (log, decision log → bài báo)
 
@@ -69,14 +96,13 @@ niêm phong cũ được kể là "giai đoạn đầu của nghiên cứu này"
 | Test-4 (`T5_*`) | tập kiểm thử | test set | `\test` |
 | Test v3 / Test-3 | hai tập kiểm thử của giai đoạn đầu (72 và 48 họ) | the two test sets of the early stage | |
 | 24 ca `adaptive_test4` / 42 ca `adaptive_v3target` | bộ thích nghi thứ nhất / thứ hai | first / second adaptive set | |
-| M1…M6 | ER, CR, SL, AL, PT, US (chỉ trong bảng, hình) | như cột trái | `\mER` … |
+| M1…M6 | ER, CR, SL, AL, PT, US (chỉ trong bảng) | như cột trái | `\mER` … |
 
 **Quy tắc dùng mã:** trong lời văn dùng tên đầy đủ. Mã C1–C3 chỉ ở chỗ định nghĩa (Mục 4), trong bảng và hình. H1–H4,
-(A1)–(A5), (G1)–(G4) giữ vì kiểm định và chứng minh tham chiếu tới chúng. Mã cơ chế chỉ trong bảng và hình.
+(A1)–(A5), (G1)–(G4) giữ vì kiểm định và chứng minh tham chiếu tới chúng. Mã cơ chế chỉ trong bảng.
 
 **Chống tràn lề:** mọi bảng và hình bọc trong `adjustbox{max width=\textwidth}` (vừa khổ thì giữ nguyên, rộng hơn thì
-tự thu vừa); Bảng 4 và 6a xoay (chỉ số theo hàng) để vừa khổ không phải co chữ; Hình 3 hai panel xếp dọc;
-`\emergencystretch=3em` để chữ đơn cách không thò ra lề; công thức độ đo tách $\Delta U$ ra lời văn.
+tự thu vừa); `\emergencystretch=3em` để chữ đơn cách không thò ra lề.
 
 ## Quy tắc khi sửa
 
@@ -88,22 +114,23 @@ tự thu vừa); Bảng 4 và 6a xoay (chỉ số theo hàng) để vừa khổ 
 - H1 báo trung thực (không đạt, hiệu ứng sàn). So sánh với baseline là khám phá. Gemini là cột tham khảo, không kiểm định.
 - Tập kiểm thử ghi là "sinh tự động từ đặc tả, hai thành viên rà soát", không báo κ (decision log 2026-11-15 18:20).
 - Mỗi lần sửa số: sửa facts.md trước, rồi bảng, hình, lời văn. Không chạy regex đổi dấu thập phân trên file hình.
+- Giới hạn 15 trang: thêm gì thì bớt tương ứng ở cả hai bản; bản tiếng Anh dài hơn nên là bản quyết định.
 
 ## Việc owner cần làm
 
-1. Tải `latex/` lên Overleaf, biên dịch, báo lỗi nếu có (bài chưa từng được biên dịch).
-2. Đọc bản tiếng Việt, góp ý nội dung và văn phong.
-3. Chốt nơi nộp (tạp chí Q4) và template, tiêu đề, tác giả, đơn vị, email (các ô `\todo` màu đỏ).
-4. Nếu nơi nộp giới hạn trang, ứng viên cắt: Bảng 6a thành một đoạn văn; Bảng 4 thành hai câu; Hình 3b; gộp đoạn
-   "Mối đe dọa với tính hợp lệ" vào "Hạn chế"; bớt ví dụ ở mục C1.
-5. Bản tiếng Anh đã có ở `latex_en/` (19/11). Nếu nơi nộp cấm văn bản do AI sinh, owner tự viết lại lời văn tiếng Anh
-   dựa trên bản này.
+1. Biên dịch cả `latex/` và `latex_en/` trên Overleaf, kiểm số trang (≤ 15 kể cả tài liệu tham khảo) và báo lỗi nếu có.
+   Tải PDF về `pdf/` để phiên sau đọc bằng PyMuPDF.
+2. Nếu còn chỗ (dưới khoảng 14,6 trang), cân nhắc bật Hình Pareto (`\paretotrue`). Nếu vượt 15 trang, ứng viên cắt tiếp:
+   câu ví dụ ở đoạn chính sách ý định (Mục 4), các giá trị $p$ khám phá (Mục 7), đoạn Gemini thành một câu.
+3. Đọc bản tiếng Việt, góp ý nội dung và văn phong.
+4. Chốt nơi nộp (tạp chí Q4) và template, tiêu đề, tác giả, đơn vị, email (các ô `\todo` màu đỏ). Tên tác giả thật có thể
+   thêm vài dòng ở trang 1.
+5. Nếu nơi nộp cấm văn bản do AI sinh, owner tự viết lại lời văn tiếng Anh dựa trên `latex_en/`.
 
 ## Kiểm trước khi nộp
 
-- [ ] Biên dịch không lỗi, không cảnh báo overfull đáng kể (Bảng 4 và 6 rộng nhất).
-- [ ] Tóm tắt 150–250 từ (bản tiếng Anh); 3–5 từ khóa.
+- [ ] Biên dịch không lỗi, không cảnh báo overfull đáng kể, tối đa 15 trang.
+- [ ] Tóm tắt 150–250 từ (bản tiếng Anh, hiện khoảng 210); 3–5 từ khóa.
 - [ ] Xóa mọi `\todo` và định nghĩa `\todo` (bản tiếng Anh không có khối tên định lý tiếng Việt).
-- [ ] Hình đọc được khi in đen trắng (hình dạng điểm, vân sọc, độ dày viền đã có).
-- [ ] Đối chiếu mục UNVERIFIED trong `refs.bib` (Holm 1979).
+- [ ] Hình đọc được khi in đen trắng (hình dạng điểm, độ dày viền, nét đứt đã có).
 - [ ] Kiểm lại quy định về văn bản do AI sinh của nơi nộp.

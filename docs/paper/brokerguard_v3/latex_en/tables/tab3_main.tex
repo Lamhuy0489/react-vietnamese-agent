@@ -3,14 +3,13 @@
 % decimal. ASR rounded half up: 171/720 = 23.75 -> 23.8; 9/720 = 1.25 -> 1.3. Deny-all: 54/720 cases leak via the answer.
 % Log mapping: Phrase rules = R1, String rules = D2, String rules + Sandwich = D2P2 (v1), BrokerGuard = V3P2.
 % Bold: best on security (estimate row excluded). Wrapped in adjustbox max width.
+% 15-page version: the H1--H4 sub-table was dropped, the test results are in the prose of Section 7.
 \begin{table}[!htbp]
 \centering
-\caption{Results on the \test{} (48 families, three backbones) and on the \dev. ``Families'' counts the families harmed on
-at least one backbone. Q, G and L give the harmed families on Qwen3.5, Gemma-4 and Llama-3.1. ASR is computed over 720
-attack cases, $U$ over 960 benign cases, and $\Delta U$ (points) relative to no defence from case counts. The last column
-counts harmed family--backbone pairs on the \dev{} (/504). \StrSand{} is \ours{} without its three components \cOne{}
-(\pOne), \cTwo{} (\pTwo) and \cThree{} (\pThree). $^\dagger$Run after the main results were known. $^\ddagger$Estimated
-from trajectories without a defence. Bottom: pre-registered hypotheses.}\label{tab:main}
+\caption{Results on the \test{} and the \dev. ``Families'' are harmed on at least one backbone, Q $\cdot$ G $\cdot$ L
+on Qwen3.5, Gemma-4 and Llama-3.1. ASR is over 720 attack cases, $U$ over 960 benign cases, $\Delta U$ (points) is
+relative to no defence, and the last column counts harmed family--backbone pairs on the \dev{} (/504). $^\dagger$Run
+after the main results were known. $^\ddagger$Estimated from trajectories with no defence.}\label{tab:main}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{adjustbox}{max width=\textwidth}
@@ -38,21 +37,5 @@ Configuration & Families (/48) & Q $\cdot$ G $\cdot$ L & ASR (\%) & $U$ (\%) & $
 Deny all sinks$^\ddagger$ & 14 & -- & 7.5 & 11.5 & $-31.4$ & -- \\
 \bottomrule
 \end{tabular*}
-\end{adjustbox}
-
-\smallskip
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{3.4cm}%
->{\raggedright\arraybackslash}p{1.45cm}l@{}}
-\toprule
- & Hypothesis & Result & $p$ & Conclusion \\
-\midrule
-H1 & Harmed families: \ours{} $<$ \strSand & $6 \to 2$ (discordant 4/0) & 0.0625 & $H_0$ not rejected \\
-H2 & Utility: \ours{} $\ge$ \strSand{} $-\,5$ points & \bPlain{} $-0.56$, \bAuth{} $-0.42$ points & -- & descriptive \\
-H3 & Removing \cOne, \cTwo, \cThree{} increases harmed families & 4, 6, 2 against 2 & 0.50 / 0.19 / 1 & descriptive \\
-H4 & Confirmation $\le 10\%$, false block $\le 15\%$, tokens $\le +20\%$, latency $\le +15\%$ & at most 0.6\% / 3.4\% /
-  +0.8\% / +0.6\% & -- & descriptive, within thresholds \\
-\bottomrule
-\end{tabularx}
 \end{adjustbox}
 \end{table}

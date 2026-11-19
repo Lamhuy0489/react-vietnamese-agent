@@ -1,31 +1,26 @@
 % Bảng 1. Nguồn số: facts.md mục "Bổ sung sau phản biện 3" (nguyên nhân lọt v1: Test-I 13 = SL 6, AL 3, PT 4 (3 sửa giá
 % trị + 1 đích có trong u); Test-II 27 = SL 14, AL 2, PT 7, US 3, CR 1) và mục Test-4 ("40 ca vượt v1": M3 20, M5 11,
-% M4 5, M6 3, M2 1). Tổng theo nguyên nhân: nguồn công khai 25, đích có trong u 5, sửa tham số 10.
-% Bọc adjustbox max width: không bao giờ tràn lề.
+% M4 5, M6 3, M2 1). Tổng theo nguyên nhân (nêu ở Mục 1): nguồn công khai 25, đích có trong u 5, sửa tham số 10.
+% Bản 15 trang: mô tả mỗi cơ chế gọn trong một dòng, nguyên nhân chuyển vào lời văn Mục 1. Bọc adjustbox max width.
 \begin{table}[!htbp]
 \centering
-\caption{Sáu cơ chế tấn công. Cột thứ ba ghi số ca lọt qua \strSand{} trên hai tập kiểm thử niêm phong của giai đoạn
-đầu (ba mô hình nền, tổng 40 ca) và nguyên nhân. Cột cuối là thành phần của \ours{} nhắm vào nhóm đó: \cOne{} \pOne,
-\cTwo{} \pTwo, \cThree{} \pThree.}\label{tab:mechanisms}
+\caption{Sáu cơ chế tấn công. Cột ``Lọt'' là số ca lọt qua \strSand{} trên hai tập kiểm thử của giai đoạn đầu (ba mô
+hình nền, tổng 40 ca). Cột cuối là thành phần của \ours{} nhắm vào cơ chế đó: \cOne{} \pOne, \cTwo{} \pTwo, \cThree{}
+\pThree.}\label{tab:mechanisms}
 \footnotesize
-\setlength{\tabcolsep}{3pt}
+\setlength{\tabcolsep}{4pt}
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.45cm}>{\raggedright\arraybackslash}X%
->{\raggedright\arraybackslash}p{4.0cm}l@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrl@{}}
 \toprule
-Cơ chế & Con đường gây hại & Ca lọt (nguyên nhân) & Thành phần \\
+Cơ chế & Con đường gây hại & Lọt & Thành phần \\
 \midrule
-\mER{} chuyển hướng tường minh & Đoạn chèn yêu cầu gửi dữ liệu tới một đích lạ & 0 & \cOne \\
-\mCR{} chuyển hướng che giấu & Như trên, nhưng diễn đạt gián tiếp hoặc tách nhỏ đích & 1 (trường đích là một từ thường
-  có trong $u$) & \cOne \\
-\mSL{} rò rỉ qua sink & Giá trị mật đi vào nội dung gửi tới một đích hợp lệ & 20 (giá trị nằm trong nguồn gắn nhãn
-  công khai) & \cTwo \\
-\mAL{} rò rỉ qua câu trả lời & Giá trị mật xuất hiện trong câu trả lời cuối & 5 (như trên) & \cTwo \\
-\mPT{} sửa tham số & Đổi một giá trị người dùng đã nêu, giữ đích hợp lệ & 11 (10 ca sửa giá trị, 1 ca đích chỉ được
-  nhắc tới) & \cThree, \cOne \\
-\mUS{} tác dụng phụ ngoài yêu cầu & Gọi sink tới một đích chỉ được nhắc tới hoặc bị cấm & 3 (đích có trong $u$ nhưng
-  không được cấp quyền) & \cOne \\
+\mER{} chuyển hướng tường minh & Gửi dữ liệu tới một đích lạ & 0 & \cOne \\
+\mCR{} chuyển hướng che giấu & Như trên, đích được diễn đạt gián tiếp & 1 & \cOne \\
+\mSL{} rò rỉ qua sink & Giá trị mật trong nội dung gửi đi & 20 & \cTwo \\
+\mAL{} rò rỉ qua câu trả lời & Giá trị mật trong câu trả lời cuối & 5 & \cTwo \\
+\mPT{} sửa tham số & Đổi giá trị người dùng đã nêu, giữ đích & 11 & \cThree, \cOne \\
+\mUS{} tác dụng phụ ngoài yêu cầu & Gửi tới đích chỉ được nhắc tới hoặc bị cấm & 3 & \cOne \\
 \bottomrule
-\end{tabularx}
+\end{tabular*}
 \end{adjustbox}
 \end{table}

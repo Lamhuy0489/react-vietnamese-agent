@@ -1,37 +1,28 @@
-% Before submission: check every cited claim against the PDFs in ../../iccies2027/refs/.
+% 15-page version: 19 references. Dropped BIPIA, Nasr 2025, Tramèr 2020, Dwork 2015, Recht 2019, Holm 1979. FIDES,
+% design patterns and Liu et al. are kept because review 3 counted their removal as a regression.
 % CapLite (arXiv:2611.17115, 12 Nov 2026): only the abstract-level summary read on 19/11 (facts.md, "Tài liệu mới được trích").
 \section{Related Work}\label{sec:related}
 
-\paragraph{Attacks and benchmarks.} Greshake et al.~\cite{greshake2023indirect} introduced indirect prompt injection.
-BIPIA~\cite{yi2025bipia} measures indirect injection into LLMs, while InjecAgent~\cite{zhan2024injecagent} and
-AgentDojo~\cite{debenedetti2024agentdojo} shift the focus to tool-using agents, where an attack leads to an action. Liu
-et al.~\cite{liu2024formalizing} formalise prompt injection attacks and defences. These benchmarks are all in English,
-whereas the safety behaviour of LLMs is weaker in low-resource languages~\cite{deng2024multijail}. Adaptive attacks have
-broken many published injection defences~\cite{zhan2025adaptive,nasr2025attacker}. Experience from adversarial machine
-learning shows that a defence must be tested by attacks that know its design~\cite{tramer2020adaptive}.
+\paragraph{Attacks and model-based defences.} Liu et al.~\cite{liu2024formalizing} formalise prompt injection attacks
+and defences, and InjecAgent~\cite{zhan2024injecagent} and AgentDojo~\cite{debenedetti2024agentdojo} measure attacks on
+tool-using agents. These benchmarks are in English, whereas LLM safety is weaker in low-resource
+languages~\cite{deng2024multijail}, and adaptive attacks have broken many published defences~\cite{zhan2025adaptive}.
+Spotlighting~\cite{hines2024spotlighting} marks untrusted data, sandwich prompting repeats the request after every
+observation, SecAlign~\cite{chen2025secalign} fine-tunes the model to separate instructions from data, Prompt
+Guard~2~\cite{meta2025promptguard2} screens inputs with a classifier, and MELON~\cite{zhu2025melon} compares the
+actions of a run with those of a re-run with the request masked. All of them depend on how the model or the classifier
+behaves on the attack data.
 
-\paragraph{Model-based defences.} Spotlighting~\cite{hines2024spotlighting} marks untrusted data, and sandwich prompting
-repeats the request after every observation. SecAlign~\cite{chen2025secalign} fine-tunes the model to separate
-instructions from data. Prompt Guard~2~\cite{meta2025promptguard2} screens inputs with a classifier.
-MELON~\cite{zhu2025melon} compares the actions of the original run with those of a re-run in which the request is
-masked. The effectiveness of these approaches depends on how the model or the classifier behaves on the attack data
-itself.
-
-\paragraph{Enforcement outside the model.} Progent~\cite{shi2025progent} applies privilege policies to tool calls.
+\paragraph{Enforcement outside the model.} Progent~\cite{shi2025progent} applies privilege policies to tool calls, and
 ClawGuard~\cite{zhao2026clawguard} lets a model derive access rules from the user request. FIDES~\cite{costa2025fides}
 attaches trust and confidentiality labels to data and propagates them across calls. CaMeL~\cite{debenedetti2026camel}
 separates control flow from untrusted data with a dedicated interpreter and attaches capabilities to every value.
-CapLite~\cite{xu2026caplite}, released concurrently with this work, derives its policy from tool schemas, commits the
-write calls before any tool result is read, and admits a write only if every argument that decides whom or what it
-affects is stated in the user request. Beurer-Kellner et al.~\cite{beurerkellner2025patterns} systematise design
-patterns of this kind.
-
-Structured policies and safety proofs are therefore not new in themselves. What distinguishes \ours{} is how these
-elements are placed in an existing ReAct agent. CaMeL rewrites the agent as an interpreter and CapLite fixes the set of
-write calls before reading data, whereas \ours{} keeps the agent loop unchanged and checks each call at the broker. The
-policy of \ours{} is extracted deterministically from $u$ and accounts for negation and exclusion in Vietnamese with and
-without diacritics and in English, while ClawGuard lets a model write the rules and Progent relies on hand-written
-rules. Sensitivity is assigned to each value by its type at the broker and is not propagated through every computation
-as in FIDES. This is cheaper but protects values only within a stated class of transformations
-(Section~\ref{sec:formal}). Finally, all components are evaluated on a new Vietnamese test set sealed before the code was
-written, and the properties that are proved are kept apart from those that are only measured.
+CapLite~\cite{xu2026caplite}, released concurrently, derives its policy from tool schemas, commits write calls before
+reading tool results, and admits a write only if the arguments that decide what it affects are stated in the request.
+Beurer-Kellner et al.~\cite{beurerkellner2025patterns} systematise such design patterns. Structured policies and safety
+proofs are therefore not new in themselves. \ours{} differs in keeping the ReAct loop unchanged and checking each call
+at the broker, instead of rewriting the agent as an interpreter like CaMeL or fixing the write calls before reading
+data like CapLite. Its policy is extracted deterministically from $u$, with polarity in Vietnamese with and without
+diacritics and in English, whereas ClawGuard lets a model write the rules and Progent relies on hand-written rules.
+Sensitivity is assigned by value type at the broker rather than propagated through every computation as in FIDES,
+which is cheaper but protects values only within a stated class of transformations (Section~\ref{sec:formal}).

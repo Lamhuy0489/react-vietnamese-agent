@@ -3,48 +3,37 @@
 % two sealed sets) is described as part of this study, not as a previous version.
 \section{Introduction}\label{sec:intro}
 
-In the ReAct paradigm~\cite{yao2023react}, an LLM agent interleaves reasoning with tool calls such as document search,
-database queries or sending e-mail. Whatever a tool returns enters the context of the model directly. In indirect prompt
-injection~\cite{greshake2023indirect}, an attacker plants instructions in third-party content that the agent will read.
-If the model follows them, the agent may send data to an unknown destination, leak a confidential value or alter
-content that the user asked it to send. Prompt-level defences depend on whether the model complies, and injection
-classifiers are mostly trained and evaluated on English. Another line of work enforces policy on the host side, between
-the model and the tools, following the reference-monitor principle~\cite{anderson1972}.
+In the ReAct paradigm~\cite{yao2023react}, an LLM agent interleaves reasoning with tool calls, and tool outputs enter
+the model context directly. In indirect prompt injection~\cite{greshake2023indirect}, an attacker plants instructions in
+content the agent will read, to make it send data to an unknown destination, leak a confidential value or alter the
+content to be sent. Prompt-level defences depend on the model complying, and injection classifiers are mostly trained on
+English. Another line of work enforces policy on the host, between the model and the tools, following the
+reference-monitor principle~\cite{anderson1972}.
 
-The simplest way to enforce policy at the Tool Broker is string matching. The broker executes an outgoing call only if
-its destination occurs as a substring of the user request $u$, and lets a value taken from a source labelled
-confidential leave the agent only if $u$ contains that value verbatim. In the early stage of this study, such
-string-matching rules, combined with sandwich prompting, were evaluated on two sealed Vietnamese test sets with three
-open backbones. The attack success rate fell from 32.9\% to 1.2\% on the first set and from 32.4\% to 3.8\% on the
-second. An analysis of all 40 remaining successful attacks reveals three gaps (Table~\ref{tab:mechanisms}). In 25 cases
-a confidential value leaked from a source labelled public, because labels are attached to whole sources rather than to
-individual values. In 5 cases the call went to a destination that appears in $u$ but was not authorised, for example one
-named in a prohibition. The remaining ten cases altered a parameter of a call to a legitimate destination. These cases
-show that the presence of a string in $u$ does not amount to an authorisation, and that the label of a source does not
-determine the sensitivity of each value it contains.
+The simplest enforcement at the Tool Broker is string matching. The broker executes an outgoing call only if its
+destination is a substring of the user request $u$, and lets a value from a source labelled confidential leave the
+agent only if $u$ contains it verbatim. In the early stage of this study, such rules with sandwich prompting cut the
+attack success rate on two sealed Vietnamese test sets, with three open backbones, from 32.9\% to 1.2\% and from
+32.4\% to 3.8\%. The 40 remaining successful attacks reveal three gaps (Table~\ref{tab:mechanisms}). In 25 cases a
+confidential value leaked from a source labelled public, because labels are attached to whole sources. In 5 cases the
+call went to a destination that appears in $u$ but was not authorised, for example in a prohibition. The other ten
+altered a parameter of a call to a legitimate destination.
 
-This paper proposes \ours, an enforcement mechanism at the broker with three deterministic components. The intent
-policy replaces the substring destination rule. It extracts structured grants from $u$, takes the scope of negation and
-exclusion into account in Vietnamese and English, and authorises only destinations that match a whole token. Value-level
-labelling assigns a sensitivity to each value in tool outputs by the type of the value, independently of the source
-label, and checks the flow of these values to every sink and to the final answer. Parameter pinning makes an authorised
-call keep the values that the user stated. The policy is derived from $u$ alone, never from tool content, and does not
-rely on the judgement of an LLM. When authority is unclear, the result is \emph{needs confirmation}. The two test sets of
-the early stage were used to design these components, so they were merged into the development set, and \ours{} is
-evaluated on a new test set.
-
-The paper makes three main contributions.
+The presence of a string in $u$ is thus not an authorisation, and the label of a source says nothing about the
+sensitivity of each value in it. This paper proposes \ours, an enforcement mechanism at the broker with three
+deterministic components that target these gaps. The \pOne{} extracts structured grants from $u$, respects the scope of
+negation and exclusion, and authorises only destinations that match a whole token. \PTwo{} assigns a sensitivity to
+each value in tool outputs by its type, independently of the source label. \PThree{} makes an authorised call keep the
+values the user stated. The policy comes from $u$ alone, not from the judgement of an LLM, and yields \emph{needs
+confirmation} when authority is unclear. The contributions are threefold.
 \begin{enumerate}
-\item \textbf{Method.} \ours{} closes the three measured gaps of string-matching rules without extra LLM calls. The
-  broker check takes less than a millisecond per call (Section~\ref{sec:method}).
-\item \textbf{Formal model.} The broker is specified as a state-transition system. Three propositions on authorisation
-  safety, confidentiality and integrity are proved under five assumptions. The paper separates the properties that are
-  proved from those that are only tested empirically (Section~\ref{sec:formal}).
-\item \textbf{Evaluation.} \ours{} is frozen on the development set and run once on a test set of 48 new attack
-  families, sealed before any \ours{} code was written, with pre-registered hypotheses. The evaluation compares \ours{}
-  with published defences and with simpler rule configurations at the broker, and covers per-component ablations, two
-  rounds of adaptive attacks, token and latency costs, the trade-off between security and utility, AgentDojo in English
-  and Vietnamese, and a reference column with a closed model (Sections~\ref{sec:protocol} and~\ref{sec:results}). The
-  primary hypothesis is not statistically significant, and Section~\ref{sec:discussion} analyses why.
+\item \textbf{Method.} \ours{} closes the three measured gaps without extra LLM calls, checking a call in under a
+  millisecond (Section~\ref{sec:method}).
+\item \textbf{Formal model.} Authorisation safety, confidentiality and integrity are proved under five assumptions and
+  kept apart from the properties that are only measured (Section~\ref{sec:formal}).
+\item \textbf{Evaluation.} \ours{} is frozen and run once on a new test set of 48 families, sealed before any code
+  existed, with pre-registered hypotheses, ablations, two adaptive rounds and AgentDojo in two languages
+  (Sections~\ref{sec:protocol} and~\ref{sec:results}). The primary hypothesis fails because of a floor effect
+  (Section~\ref{sec:discussion}).
 \end{enumerate}
 Data, code and the sealing manifests are publicly released.

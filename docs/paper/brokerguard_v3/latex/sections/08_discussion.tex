@@ -1,58 +1,39 @@
 % Số: facts.md mục Test-4 ("Hạn chế phải nêu (v3)": lực 26%, ~120 họ, đọc trái phép v1 20 / v3 18 ca, tiện ích tuyệt
 % đối thấp; "40 ca vượt v1" trong mẫu 38 -> 2; M3 Test-II 9 cặp so với Test-4 1), mục "Bổ sung cho bài v3" (C1 offline,
 % lý do chặn nhầm), mục baseline bổ sung (Prompt Guard 0 lần chặn), mục AgentDojo v3.
+% Bản 15 trang: gộp "Chi phí tiện ích" với "Ngôn ngữ", gộp "Mối đe dọa với tính hợp lệ" với "Hạn chế".
 \section{Thảo luận}\label{sec:discussion}
 
-\paragraph{Vì sao giả thuyết chính không đạt.} Giả thuyết chính được thiết kế với giả định \strSand{} để lọt khoảng 14
-trong 48 họ, như trên tập 48 họ của giai đoạn đầu. Trên \test, cấu hình này chỉ để lọt 6 họ. Khác biệt nằm chủ yếu ở rò
-rỉ qua sink: ở giai đoạn đầu, cơ chế này có 9 cặp họ và mô hình bị hại dưới \strSand, trên \test{} chỉ còn 1. Với nền
-thấp như vậy, ngay cả khi \ours{} chặn được mọi họ mà \strSand{} để lọt, số cặp lệch vẫn rất nhỏ. Lực của kiểm định ở
-mức nền này chỉ khoảng 26\%, và cần khoảng 120 họ để đạt lực 80\%. Kết quả trên \test{} vì vậy là một hiệu ứng sàn chứ
-không phải bằng chứng rằng hai cấu hình như nhau. Các nguồn khác cho cùng chiều. Trên \dev, số cặp họ và mô hình bị hại
-giảm từ 36 xuống 4. Chấm lại 40 ca từng lọt qua \strSand{} ở giai đoạn đầu cho 38 ca bị hại dưới \strSand{} và 2 dưới
-\ours, cả hai đều là sửa tham số. Tuy vậy, các số này đến từ dữ liệu đã dùng khi phát triển \ours, nên chỉ có giá trị
-chẩn đoán và không thay được kiểm định đăng ký trước. Bài báo không thêm mô hình hay chạy lại để tìm ý nghĩa thống kê
-sau khi đã biết kết quả.
+\paragraph{Vì sao giả thuyết chính không đạt.} H1 được thiết kế với giả định \strSand{} để lọt khoảng 14 trong 48 họ,
+như trên tập 48 họ của giai đoạn đầu. Trên \test, cấu hình này chỉ để lọt 6 họ, chủ yếu vì rò rỉ qua sink giảm từ 9 cặp
+họ và mô hình bị hại xuống 1. Với nền thấp như vậy, ngay cả khi \ours{} chặn được mọi họ mà \strSand{} để lọt, số cặp
+lệch vẫn rất nhỏ. Lực của kiểm định ở mức nền này chỉ khoảng 26\%, và cần khoảng 120 họ để đạt lực 80\%. Kết quả vì vậy
+là một hiệu ứng sàn chứ không phải bằng chứng rằng hai cấu hình như nhau. Các nguồn khác cho cùng chiều. Trên \dev, số
+cặp họ và mô hình bị hại giảm từ 36 xuống 4, còn chấm lại 40 ca từng lọt qua \strSand{} ở giai đoạn đầu cho 38 ca bị
+hại dưới \strSand{} và 2 dưới \ours. Các số này đến từ dữ liệu đã dùng khi phát triển \ours, nên chỉ có giá trị chẩn
+đoán. Bài báo không thêm mô hình hay chạy lại để tìm ý nghĩa thống kê sau khi đã biết kết quả.
 
-\paragraph{Mỗi thành phần đóng góp gì.} Bằng chứng mạnh nhất cho \pOne{} và \pTwo{} là bằng chứng mức ca. Bốn họ mà
-\strSand{} để lọt đều bị cổng của \ours{} chặn trước khi thực thi, và mỗi họ lọt trở lại khi bỏ đúng thành phần đã chặn
-nó. \PTwo{} xử lý đúng chỗ hở lớn nhất của luật so khớp chuỗi, là giá trị mật nằm trong nguồn gắn nhãn công khai. Dưới
-\ours, không giá trị nào lộ ở câu trả lời cuối. Tác dụng của \pOne{} khi chạy thật nhỏ hơn khi chấm offline. Trên các
-lời gọi sink của quỹ đạo tham chiếu thuộc phần kiểm định của \dev, \pOne{} chặn đủ 35 lời gọi tác dụng phụ ngoài yêu
-cầu, so với 15 của \rDest. Nhưng các mô hình hiếm khi tự đề xuất những đích này, nên trên \test{} \pOne{} chỉ tạo khác
-biệt ở 2 họ. \PThree{} chưa có tác dụng đo được trên \test. Hai họ còn lọt là sửa giá trị số hoặc đơn vị. Có hai cách
-giải thích, đều chưa được kiểm từng ca. Hoặc giá trị bị sửa không nằm trong tập literal được ghim, tức (A5) bị vi phạm.
-Hoặc literal vẫn có mặt cạnh một giá trị khác, trường hợp Mệnh đề~\ref{prop:int} không loại trừ. Cả hai đều cho thấy
-\pThree{} cần ngữ nghĩa của trường thay vì chỉ kiểm sự có mặt của literal.
+\paragraph{Mỗi thành phần đóng góp gì.} \PTwo{} xử lý chỗ hở lớn nhất của luật so khớp chuỗi. Tác dụng của \pOne{} khi
+chạy thật nhỏ hơn khi chấm offline. Trên các lời gọi sink của quỹ đạo tham chiếu thuộc phần kiểm định của \dev, \pOne{}
+chặn đủ 35 lời gọi tác dụng phụ ngoài yêu cầu, so với 15 của \rDest, nhưng các mô hình hiếm khi tự đề xuất những đích
+này, nên trên \test{} khác biệt chỉ ở 2 họ. \PThree{} chưa có tác dụng đo được, và hai họ còn lọt có hai cách giải
+thích chưa được kiểm từng ca. Hoặc giá trị bị sửa không nằm trong tập literal được ghim, tức
+(A5) bị vi phạm, hoặc literal vẫn có mặt cạnh một giá trị khác, trường hợp Mệnh đề~\ref{prop:int} không loại trừ. Cả
+hai đều cho thấy \pThree{} cần ngữ nghĩa của trường thay vì chỉ kiểm sự có mặt của literal.
 
-\paragraph{Chi phí tiện ích.} \ours{} không làm tiện ích thấp hơn \strSand{} quá 0,6 điểm ở nhánh nào, nhưng cả hai đều
-thấp hơn khi không phòng thủ khoảng 3 điểm. Một phần nguyên nhân là chặn nhầm. \ours{} chặn nhầm 24 trong 960 ca lành
-tính của \test, so với 19 của \strSand. Trên \dev, lý do chặn nhầm thường gặp là các luật nền (\rFlow{} và \rSig).
-Riêng với Llama-3.1, \pThree{} đứng đầu, vì mô hình này hay viết lại giá trị người dùng đã nêu khi soạn nội dung gửi.
-Tiện ích tuyệt đối thấp ở mọi cấu hình, kể cả khi không phòng thủ (42,8\%), do giới hạn của các mô hình nhỏ như hết
-bước hay đầu ra bị cắt, không do phòng thủ. Trên AgentDojo, chi phí tập trung ở các nhiệm vụ lấy đích từ dữ liệu công
-cụ. Trong benchmark, \emph{cần xác nhận} được thi hành như từ chối. Một triển khai thật có thể hỏi người dùng ở bước
-này, và đây là cách hợp lý để lấy lại tiện ích mà không cấp quyền cho nội dung không đáng tin.
+\paragraph{Tiện ích và ngôn ngữ.} \ours{} không làm tiện ích thấp hơn \strSand{} quá 0,6 điểm ở nhánh nào, nhưng cả hai
+đều thấp hơn khi không phòng thủ khoảng 3 điểm, một phần do chặn nhầm (24 so với 19 trong 960 ca lành tính). Trên \dev,
+lý do chặn nhầm thường gặp là các luật nền, riêng với Llama-3.1 là \pThree, vì mô hình này hay viết lại giá trị người
+dùng đã nêu. Tiện ích tuyệt đối thấp ở mọi cấu hình, kể cả khi không phòng thủ (42,8\%), do giới hạn của các mô hình nhỏ
+như hết bước hay đầu ra bị cắt. Một triển khai thật có thể hỏi người dùng ở bước \emph{cần xác nhận} để lấy lại tiện ích
+mà không cấp quyền cho nội dung không đáng tin. \POne{} phụ thuộc ngôn ngữ vì cực tính dựa trên danh sách từ phủ định,
+loại trừ và tương phản, nên một phủ định ngoài danh sách sẽ làm cổng cho qua một đích lẽ ra bị cấm.
 
-\paragraph{Ngôn ngữ.} \Rdest{} không phụ thuộc ngôn ngữ vì chỉ so khớp chuỗi. \POne{} thì có, vì cực tính dựa trên danh
-sách từ phủ định, loại trừ và tương phản cho tiếng Việt có dấu, không dấu và tiếng Anh. Một ngôn ngữ hay phương ngữ mới
-cần bổ sung danh sách này, và một phủ định ngoài danh sách sẽ làm cổng cho qua một đích lẽ ra bị cấm. Việc trả về
-\emph{cần xác nhận} khi phủ định không rõ phạm vi làm giảm rủi ro này nhưng không loại bỏ được nó. Với phòng thủ phát
-hiện, vấn đề ngôn ngữ còn rõ hơn: \cPG{} không gắn cờ một quan sát nào của \test, tức bộ phân loại này không chuyển
-được sang dữ liệu tiếng Việt của benchmark.
-
-\paragraph{Mối đe dọa với tính hợp lệ.} Về cấu trúc đo, vị từ gây hại và bộ chấm được đóng băng trước khi chạy, nhưng
-dữ liệu là tổng hợp, công cụ là bản giả và mỗi nhiệm vụ chỉ có một lượt. Về tính hợp lệ nội tại, \test{} được sinh từ
-đặc tả bằng mã và được chính nhóm phát triển phòng thủ rà soát. Tập được niêm phong trước khi có mã của \ours, nhưng
-không loại trừ được việc người soạn vô tình chọn các ca hợp với thiết kế. Bộ thích nghi thứ hai do thành viên của nhóm
-soạn, chỉ có một vòng và chạy trên \dev. Năm cấu hình bổ sung được chạy sau khi đã biết kết quả chính. Về tính hợp lệ
-bên ngoài, các mô hình mở chỉ có 8 đến 12 tỉ tham số, Gemini 3 Flash chạy qua proxy và không ghim được phiên bản, còn
-AgentDojo chỉ chạy với một mô hình.
-
-\paragraph{Hạn chế.} Các mệnh đề được chứng minh trên đặc tả, chưa được kiểm hình thức trên mã. Kiểm thử dựa trên thuộc
-tính với một văn phạm sinh yêu cầu và chuỗi lời gọi là bước tiếp theo tự nhiên. Đọc trái phép nằm ngoài phạm vi: dưới
-\ours{} vẫn có 18 trong 720 ca tấn công có lời gọi đọc trái phép, gần như toàn bộ trên Llama-3.1 (\strSand: 20).
-\PTwo{} không theo dõi giá trị qua các phép biến đổi ngoài (A4), như mã hóa hay chia nhỏ qua nhiều lời gọi. Bộ chấm
-biến đổi không tìm thấy ca nào như vậy trên dữ liệu hiện có, nên giả định này chưa thực sự bị thử thách. Cuối cùng, bộ
-dò của \pTwo{} được thiết kế để không phụ thuộc vào dạng giá trị mật của bộ sinh dữ liệu, nhưng độ phủ trên giá trị mật
-thật vẫn phải đo trên dữ liệu thật.
+\paragraph{Tính hợp lệ và hạn chế.} Dữ liệu là tổng hợp, công cụ là bản giả và mỗi nhiệm vụ chỉ có một lượt. \Test{}
+được sinh từ đặc tả bằng mã và được chính nhóm phát triển phòng thủ rà soát, nên dù được niêm phong trước khi có mã của
+\ours, không loại trừ được việc người soạn vô tình chọn các ca hợp với thiết kế. Bộ thích nghi thứ hai do thành viên của
+nhóm soạn, chỉ có một vòng và chạy trên \dev. Các mô hình mở chỉ có 8 đến 12 tỉ tham số, Gemini 3 Flash không ghim
+được phiên bản, và AgentDojo chỉ chạy với một mô hình. Các mệnh đề được chứng minh trên đặc tả, chưa được kiểm hình thức
+trên mã. Đọc trái phép nằm ngoài phạm vi, và dưới \ours{} vẫn có 18 trong 720 ca tấn công có lời gọi đọc trái phép
+(\strSand: 20). \PTwo{} không theo dõi giá trị qua các phép biến đổi ngoài (A4), nhưng bộ chấm biến đổi không tìm thấy
+ca nào như vậy, nên giả định này chưa thực sự bị thử thách.

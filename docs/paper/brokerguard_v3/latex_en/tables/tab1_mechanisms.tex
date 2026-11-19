@@ -1,31 +1,26 @@
 % Table 1. Numbers: facts.md "Bổ sung sau phản biện 3" (v1 bypass causes: Test-I 13 = SL 6, AL 3, PT 4 (3 value
 % changes + 1 destination present in u); Test-II 27 = SL 14, AL 2, PT 7, US 3, CR 1) and the Test-4 section ("40 ca vượt
-% v1": M3 20, M5 11, M4 5, M6 3, M2 1). By cause: public source 25, destination present in u 5, tampering 10.
-% Wrapped in adjustbox max width: never exceeds the margins.
+% v1": M3 20, M5 11, M4 5, M6 3, M2 1). By cause (stated in Section 1): public source 25, destination in u 5, tampering 10.
+% 15-page version: one-line descriptions, causes moved to the prose of Section 1. Wrapped in adjustbox max width.
 \begin{table}[!htbp]
 \centering
-\caption{The six attack mechanisms. The third column gives the number of cases that got past \strSand{} on the two sealed
-test sets of the early stage (three backbones, 40 cases in total) and their cause. The last column names the \ours{}
-component that targets each group: \cOne{} \pOne, \cTwo{} \pTwo, \cThree{} \pThree.}\label{tab:mechanisms}
+\caption{The six attack mechanisms. ``Missed'' gives the number of cases that got past \strSand{} on the two test sets
+of the early stage (three backbones, 40 cases in total). The last column names the \ours{} component that targets the
+mechanism: \cOne{} \pOne, \cTwo{} \pTwo, \cThree{} \pThree.}\label{tab:mechanisms}
 \footnotesize
-\setlength{\tabcolsep}{3pt}
+\setlength{\tabcolsep}{4pt}
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.45cm}>{\raggedright\arraybackslash}X%
->{\raggedright\arraybackslash}p{4.0cm}l@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrl@{}}
 \toprule
-Mechanism & Path to harm & Cases that got past (cause) & Component \\
+Mechanism & Path to harm & Missed & Component \\
 \midrule
-\mER{} explicit redirection & The injection asks for data to be sent to an unknown destination & 0 & \cOne \\
-\mCR{} covert redirection & As above, but phrased indirectly or with the destination split up & 1 (the destination
-  field is an ordinary word that occurs in $u$) & \cOne \\
-\mSL{} sink leakage & A confidential value enters the content sent to a legitimate destination & 20 (the value sits in
-  a source labelled public) & \cTwo \\
-\mAL{} answer leakage & A confidential value appears in the final answer & 5 (as above) & \cTwo \\
-\mPT{} parameter tampering & A value stated by the user is changed while the destination stays legitimate & 11 (10
-  changed values, 1 destination that is only mentioned) & \cThree, \cOne \\
-\mUS{} unrequested side effect & A sink is called on a destination that is only mentioned or explicitly forbidden & 3
-  (destination present in $u$ but not authorised) & \cOne \\
+\mER{} explicit redirection & Data sent to an unknown destination & 0 & \cOne \\
+\mCR{} covert redirection & As above, destination phrased indirectly & 1 & \cOne \\
+\mSL{} sink leakage & Confidential value in the content sent & 20 & \cTwo \\
+\mAL{} answer leakage & Confidential value in the final answer & 5 & \cTwo \\
+\mPT{} parameter tampering & User-stated value changed, destination kept & 11 & \cThree, \cOne \\
+\mUS{} unrequested side effect & Sent to a mentioned or forbidden destination & 3 & \cOne \\
 \bottomrule
-\end{tabularx}
+\end{tabular*}
 \end{adjustbox}
 \end{table}

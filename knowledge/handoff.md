@@ -1,11 +1,20 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-19. (Tối; trước đó 2026-11-15.) Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-20. (Trước đó 2026-11-19 tối.) Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
+
+**2026-11-20: BÀI v3 ĐÃ RÚT CÒN TỐI ĐA 15 TRANG (cả `latex/` và `latex_en/`), chờ owner biên dịch lại trên Overleaf.**
+Bản 23 trang owner biên dịch ở `docs/paper/brokerguard_v3/pdf/agent_injection_vn.pdf`; bản dài ở commit `6814b3a`. Đọc
+`docs/paper/brokerguard_v3/README.md` trước (mục "Bản 15 trang: đã cắt gì", "Ước lượng trang", "Việc owner cần làm").
+Ước lượng: bản Việt khoảng 14,1 trang, bản Anh khoảng 14,4 trang; 5 bảng, Hình 1 và Hình Pareto tùy chọn (`\paretotrue`
+ở `main.tex`, mặc định tắt); 19 tài liệu. Việc kế: (1) owner biên dịch cả hai bản, báo số trang và lỗi (PDF tải về
+`pdf/`, đọc bằng PyMuPDF của python3 hệ thống ở dpi thấp); (2) nếu dưới khoảng 14,6 trang thì cân nhắc bật Pareto, nếu quá
+15 trang thì cắt theo danh sách ứng viên trong README; (3) sửa theo góp ý ở cả hai bản; (4) owner chốt nơi nộp, tiêu đề,
+tác giả. Không chạy thêm thực nghiệm.
 
 **2026-11-19 (tối): BÀI v3 XONG CẢ BẢN TIẾNG VIỆT (`latex/`) VÀ TIẾNG ANH (`latex_en/`), chờ owner đọc và biên dịch.** Thư mục `docs/paper/brokerguard_v3/`
 (đọc `README.md` trước: nguồn số, bảng đổi tên, quy tắc văn phong, việc owner cần làm). Main `latex/main.tex`, LNCS, khoảng

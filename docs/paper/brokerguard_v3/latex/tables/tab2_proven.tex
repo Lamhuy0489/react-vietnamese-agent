@@ -1,31 +1,31 @@
 % Bảng 2. Nguồn: facts.md mục Test-4 (H3 ablation; họ bị hại theo cơ chế: −C1 thêm 1 ER và 1 PT, −C2 thêm 2 SL và 2 AL;
 % lộ câu cuối v3 0/720; hai họ M5 còn lại; nguyên văn = biến đổi) và mục "Bổ sung cho bài v3" (C1 offline Dev-val:
 % tiện ích 155/155 và 65/65, M6 35/35, v1 15). (A1): tests/unit/test_brokerguard_v3_v1.py. Bọc adjustbox max width.
+% Bản 15 trang: lời trong cột "Bằng chứng" rút gọn, mỗi dòng tối đa hai dòng in.
 \begin{table}[!htbp]
 \centering
 \caption{Thuộc tính được chứng minh và thuộc tính chỉ được đo bằng thực nghiệm. Số trên tập phát triển được dùng khi
-thiết kế, số trên tập kiểm thử có sau khi đóng băng. \cOne{} \pOne, \cTwo{} \pTwo, \cThree{} \pThree.}\label{tab:proven}
+thiết kế, số trên tập kiểm thử có sau khi đóng băng.}\label{tab:proven}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.75cm}>{\raggedright\arraybackslash}p{2.2cm}%
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{2.1cm}%
 >{\raggedright\arraybackslash}X@{}}
 \toprule
 Thuộc tính & Trạng thái & Bằng chứng \\
 \midrule
-Mệnh đề~\ref{prop:auth}--\ref{prop:int} & Chứng minh dưới giả định & Mục~\ref{sec:formal} \\
-(A1) trung gian toàn phần & Theo cấu trúc mã, có kiểm thử & Broker là đường duy nhất tới công cụ. Công cụ đọc và sink
-  không có đích nằm ngoài $S$ \\
-(A2) bộ trích đúng & Thực nghiệm & Tập phát triển: mọi sink lành tính được cho phép, chặn đủ 35 sink tác dụng phụ ngoài
-  yêu cầu (\rDest: 15). Tập kiểm thử: bỏ \cOne{} làm lọt thêm 2 họ \\
-(A3) độ phủ nhãn & Thực nghiệm, gián tiếp & Tập kiểm thử: bỏ \cTwo{} làm lọt thêm 4 họ rò rỉ. \ours{} không để lộ giá
-  trị nào ở câu trả lời cuối \\
-(A4) lớp biến đổi & Giới hạn đã nêu & Bộ chấm biến đổi cho cùng kết quả với so khớp nguyên văn ở mọi cấu hình, nên giả
-  định chưa bị thử thách \\
-(A5) literal ghim đủ & Thực nghiệm, chưa đủ & Tập kiểm thử: 2 họ sửa giá trị số hoặc đơn vị lọt qua cả \strSand{} và
-  \ours. Bỏ \cThree{} không làm lọt thêm họ nào \\
-Lời nhắc, \rSig & Chỉ thực nghiệm & Không có bảo đảm. Đo qua ablation và tấn công thích nghi (Mục~\ref{sec:results})
-  \\
+Mệnh đề~\ref{prop:auth}--\ref{prop:int} & Chứng minh & Dưới các giả định (A1)--(A5) \\
+(A1) trung gian & Theo cấu trúc mã & Broker là đường duy nhất tới công cụ, có kiểm thử. Sink không có đích nằm
+  ngoài $S$ \\
+(A2) bộ trích đúng & Thực nghiệm & Tập phát triển: chặn 35/35 sink ngoài yêu cầu (\rDest: 15). Tập kiểm thử: bỏ
+  \cOne{} làm lọt thêm 2 họ \\
+(A3) độ phủ nhãn & Thực nghiệm & Tập kiểm thử: bỏ \cTwo{} làm lọt thêm 4 họ rò rỉ, \ours{} không để lộ giá trị nào ở
+  câu trả lời cuối \\
+(A4) lớp biến đổi & Giới hạn đã nêu & Bộ chấm biến đổi cho cùng kết quả với so khớp nguyên văn, nên giả định chưa bị
+  thử thách \\
+(A5) literal ghim & Thực nghiệm & Chưa đủ: 2 họ sửa giá trị số hoặc đơn vị lọt qua cả \strSand{} và \ours{} trên tập
+  kiểm thử \\
+Lời nhắc, \rSig & Chỉ thực nghiệm & Đo qua ablation và tấn công thích nghi \\
 \bottomrule
 \end{tabularx}
 \end{adjustbox}

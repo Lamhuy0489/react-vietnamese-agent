@@ -732,3 +732,20 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   này". Mã R-Dest/R-Flow/R-Redact/R-Signal bỏ hẳn (thay bằng tên luật); C1–C3 chỉ ở định nghĩa, bảng, hình. Mọi bảng và
   hình bọc `adjustbox{max width=\textwidth}`; Bảng 4, 6a xoay; Hình 3 xếp dọc; `\emergencystretch`; công thức độ đo tách
   ΔU. Làm cả `latex/` và `latex_en/` (tóm tắt EN 249 từ). Bảng đổi tên mới trong README của bài.
+
+## 2026-11-20 — Rút bài v3 còn 15 trang, bớt tài liệu tham khảo
+
+- Owner tải bản biên dịch tiếng Việt về `docs/paper/brokerguard_v3/pdf/agent_injection_vn.pdf`: 23 trang (bảng/hình chiếm
+  khoảng 4,6 trang, Bảng 3 gần 0,9 trang, trang 18 trống nửa trang do `placeins [section]`). Owner yêu cầu tối đa 15
+  trang, giữ phần cần thiết, bớt trích dẫn.
+- Đã rút cả `latex/` và `latex_en/` (cùng nội dung, cùng số, cùng nhãn): bảng chi phí và bảng Gemini thành lời văn; hình
+  theo cơ chế + bảng thích nghi gộp thành Bảng 4 (`tab4_mechres.tex`); bảng con H1–H4 thành lời văn; AgentDojo thành Bảng 5
+  (`tab5_agentdojo.tex`); Mục 7 dùng tiêu đề đoạn; Mục 8 gộp đoạn; bỏ `placeins [section]`; Hình 1 bỏ chú giải trong hình;
+  Hình Pareto thành tùy chọn (`\paretotrue` ở `main.tex`, mặc định tắt). Tài liệu 25 → 19 (bỏ BIPIA, Nasr, Tramèr,
+  Dwork, Recht, Holm; giữ FIDES, design patterns, Liu et al. theo `phan bien3.md`). Không thêm số mới.
+- Ước lượng (chưa biên dịch, không có TeX trên máy): bản Việt khoảng 14,1 trang, bản Anh khoảng 14,4 trang; bật Pareto
+  thêm khoảng 0,37 trang. Cách ước lượng: độ rộng chữ theo metric cmr10 (fontTools + cmr10.ttf của matplotlib ở python3
+  hệ thống), kiểm trên bản 23 trang lệch dưới 0,1 trang. Chi tiết và danh sách đã cắt: README của bài.
+- Bài học: chữ Anh chiếm chỗ hơn chữ Việt khoảng 9\% cùng nội dung, nên bản Anh là bản quyết định giới hạn trang; viết
+  lời Anh gọn thay vì dịch sát. `placeins [section]` gây trang trống khi bảng không vừa trang.
+

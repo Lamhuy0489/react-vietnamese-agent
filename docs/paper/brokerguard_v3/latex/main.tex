@@ -1,4 +1,5 @@
-% BrokerGuard v3 -- Springer LNCS, mục tiêu 15 trang kể cả tài liệu tham khảo.
+% BrokerGuard v3 -- Springer LNCS, tối đa 15 trang kể cả tài liệu tham khảo (bản rút gọn 20/11/2026; bản dài 23 trang
+% ở commit 6814b3a).
 % BẢN TIẾNG VIỆT (19/11/2026). Bản tiếng Anh ở ../latex_en/, cùng cấu trúc, bảng, hình và số; sửa thì sửa cả hai.
 % Mọi con số lấy từ ../../iccies2027/facts.md (mục Test-4, các mục bổ sung 19/11 và "Bổ sung cho bài v3").
 % Overleaf: tải cả thư mục latex/ (zip), main = main.tex, trình biên dịch pdfLaTeX. Hình 1--3 vẽ bằng TikZ/pgfplots,
@@ -19,7 +20,8 @@
 \usepackage{adjustbox}   % max width=\textwidth: hình và bảng không bao giờ tràn lề
 \usepackage{tabularx}    % bảng trải đúng bề ngang trang, cột chữ tự xuống dòng
 \usepackage{makecell}    % tiêu đề cột hai dòng
-\usepackage[section]{placeins} % bảng/hình không trôi sang mục sau
+% Bản 15 trang: bỏ placeins [section]. Rào ở mỗi mục đẩy bảng còn chờ ra trang riêng và để lại nửa trang trống
+% (trang 18 của bản 23 trang). Bảng/hình có thể sang đầu trang của mục kế tiếp.
 \usepackage{pgfplots}    % Hình 2 và 3
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{patterns,arrows.meta}
@@ -62,6 +64,9 @@
 % Ghi chú cho tác giả; xóa trước khi nộp.
 \newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
 \newcommand{\code}[1]{\texttt{#1}}
+% Hình Pareto (images/fig2_pareto.tex, khoảng 1/3 trang) tắt trong bản 15 trang vì số liệu đã có ở Bảng 3.
+% Biên dịch xong mà còn chỗ dưới trang 15 thì đổi \paretofalse thành \paretotrue (lời văn Mục 7 tự trỏ tới hình).
+\newif\ifpareto \paretofalse
 
 % ---- TÊN GỌI (đổi một dòng ở đây là đổi cả bài; ánh xạ sang log ở ../README.md) -------------------
 % Bài mới hoàn toàn: không dùng tên phiên bản (v1, v2, v3, BG-Base, Test-I/II/III). Mã chỉ dùng ở chỗ cần thiết:

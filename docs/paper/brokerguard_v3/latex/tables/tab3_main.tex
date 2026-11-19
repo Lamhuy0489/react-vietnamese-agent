@@ -3,14 +3,13 @@
 % ASR làm tròn nửa lên: 171/720 = 23,75 -> 23,8; 9/720 = 1,25 -> 1,3. Chặn mọi sink: 54/720 ca lộ ở câu trả lời.
 % Ánh xạ log: Luật cụm từ = R1, Luật chuỗi = D2, Luật chuỗi + Sandwich = D2P2 (v1), BrokerGuard = V3P2.
 % In đậm: tốt nhất về an ninh (không tính hàng ước lượng). Bọc adjustbox max width: không bao giờ tràn lề.
+% Bản 15 trang: bảng con H1--H4 bỏ, kết quả kiểm định nằm trong lời văn Mục 7.1 và 7.2.
 \begin{table}[!htbp]
 \centering
-\caption{Kết quả trên \test{} (48 họ, ba mô hình nền) và trên \dev. Cột ``Họ'' là số họ bị hại trên ít nhất một mô
-hình nền. Q, G, L là số họ bị hại trên Qwen3.5, Gemma-4 và Llama-3.1. ASR tính trên 720 ca tấn công, $U$ trên 960 ca
-lành tính, $\Delta U$ (điểm) so với khi không phòng thủ, tính từ số ca. Cột cuối là số cặp họ và mô hình bị hại trên
-\dev{} (/504). \StrSand{} là \ours{} bỏ cả ba thành phần \cOne{} (\pOne), \cTwo{} (\pTwo) và \cThree{} (\pThree).
-$^\dagger$Chạy bổ sung sau khi có kết quả chính. $^\ddagger$Ước lượng từ quỹ đạo khi không phòng thủ. Phần dưới: các
-giả thuyết đăng ký trước.}\label{tab:main}
+\caption{Kết quả trên \test{} và \dev. ``Họ'' là số họ bị hại trên ít nhất một mô hình nền, Q $\cdot$ G $\cdot$ L
+tách theo Qwen3.5, Gemma-4 và Llama-3.1. ASR tính trên 720 ca tấn công, $U$ trên 960 ca lành tính, $\Delta U$ (điểm)
+so với khi không phòng thủ, cột cuối là số cặp họ và mô hình bị hại trên \dev{} (/504). $^\dagger$Chạy bổ sung sau khi
+có kết quả chính. $^\ddagger$Ước lượng từ quỹ đạo khi không phòng thủ.}\label{tab:main}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{adjustbox}{max width=\textwidth}
@@ -37,21 +36,5 @@ Cấu hình & Họ (/48) & Q $\cdot$ G $\cdot$ L & ASR (\%) & $U$ (\%) & $\Delta
 Chặn mọi sink$^\ddagger$ & 14 & -- & 7,5 & 11,5 & $-31{,}4$ & -- \\
 \bottomrule
 \end{tabular*}
-\end{adjustbox}
-
-\smallskip
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{3.4cm}%
->{\raggedright\arraybackslash}p{1.45cm}l@{}}
-\toprule
- & Giả thuyết & Kết quả & $p$ & Kết luận \\
-\midrule
-H1 & Số họ bị hại: \ours{} $<$ \strSand & $6 \to 2$ (cặp lệch 4/0) & 0,0625 & không bác bỏ $H_0$ \\
-H2 & Tiện ích: \ours{} $\ge$ \strSand{} $-\,5$ điểm & \bPlain{} $-0{,}56$, \bAuth{} $-0{,}42$ điểm & -- & mô tả \\
-H3 & Bỏ \cOne, \cTwo, \cThree{} làm tăng số họ bị hại & 4, 6, 2 so với 2 & 0,50 / 0,19 / 1 & mô tả \\
-H4 & Xác nhận $\le 10\%$, chặn nhầm $\le 15\%$, token $\le +20\%$, độ trễ $\le +15\%$ & tối đa 0,6\% / 3,4\% /
-  +0,8\% / +0,6\% & -- & mô tả, trong ngưỡng \\
-\bottomrule
-\end{tabularx}
 \end{adjustbox}
 \end{table}

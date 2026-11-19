@@ -1,22 +1,19 @@
 % LNCS: abstract 150--250 words. No p-values in the abstract. Numbers: facts.md (Test-4: 40, 6, 2 families; ΔU −3.1;
 % H1 not significant; tokens and latency of v3 against v1), adaptive rounds, AgentDojo v3.
-% No version names: the comparison configuration is "string-matching rules" (BrokerGuard without its three components).
+% 15-page version (2026-11-20), condensed from the long version in commit 6814b3a.
 \begin{abstract}
 Instructions planted in content read by a tool-using LLM agent can make it send data to an unknown destination, leak
-confidential values or alter a legitimate action. This paper presents \ours, an enforcement mechanism at the Tool
-Broker, outside the model, with three deterministic components. An intent policy with polarity is extracted from
-the user request, so a destination that is only mentioned or forbidden is not authorised. Value-level labelling assigns
-a sensitivity to each value by its type, independently of its source. Parameter pinning makes an authorised call keep
-the values the user stated. \ours{} makes no additional LLM calls. Modelling the broker as a state-transition system,
-the paper proves authorisation safety, confidentiality and integrity under five explicit assumptions and measures each
-assumption empirically. On 48 new Vietnamese attack families sealed before any \ours{} code existed, with three
-open-weight backbones, the number of harmed families falls from 40 without defence to 2 with \ours, against 6 when the
-three components are replaced by string-matching rules. This reduction is not significant under the pre-registered
-test because of a floor effect. Benign utility falls by 3.1 percentage
-points relative to no defence, while tokens and latency per case stay within 1.4\% of string matching.
-Under two rounds of rule-aware adaptive attacks, no family succeeds beyond those that already succeed with the original
-attacks. On AgentDojo in English and Vietnamese, \ours{} matches the attack success of the string-matching rules but
-lowers utility further on tasks whose destinations come from tool data.
+confidential values or alter a legitimate action. This paper presents \ours, a deterministic enforcement mechanism at
+the Tool Broker that combines an intent policy with polarity extracted from the user request, sensitivity labels for
+individual values and pinning of the values the user stated, without any additional LLM call. Authorisation safety,
+confidentiality and integrity are proved on a state-transition model under five explicit assumptions. On a Vietnamese
+test set of 48 attack families, sealed before any code existed, with three open-weight backbones, the number of harmed
+families falls from 40 without defence to 2, against 6 when the three components are replaced by string-matching
+rules. The latter reduction is not significant under the pre-registered test because of a floor effect. Utility falls
+by 3.1 percentage points relative to no defence, while tokens and latency stay within 1.4\% of string matching. Under
+two rounds of adaptive attacks, no family succeeds beyond those that already succeed with the original attacks. On
+AgentDojo in English and Vietnamese, \ours{} matches the attack success of string matching but lowers utility further
+when destinations come from tool data.
 
 \keywords{Indirect prompt injection \and LLM agents \and Intent-based authorisation \and Information flow control \and
 Vietnamese}

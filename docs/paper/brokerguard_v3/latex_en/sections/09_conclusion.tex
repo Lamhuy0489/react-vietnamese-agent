@@ -1,22 +1,11 @@
 % Numbers as in the abstract (facts.md, Test-4 section, AgentDojo v3). Future work follows the limitations of Section 8.
 \section{Conclusion}\label{sec:conclusion}
 
-This paper presented \ours, an enforcement mechanism at the Tool Broker of tool-using ReAct agents. \ours{} replaces the
-string matching of destinations with an intent policy with polarity extracted from the user request, assigns a
-sensitivity to individual values, and pins the values stated by the user. The three components target exactly the three
-gaps measured for string-matching rules. The broker is specified as a state-transition system, and authorisation safety,
-confidentiality and integrity are proved under five assumptions, each of which is measured empirically.
-
-On a new Vietnamese test set, sealed before the defence code existed, \ours{} reduces the number of harmed families from
-40 without a defence to 2 of 48. Utility falls by 3.1 points relative to no defence, while tokens and latency per case
-increase by at most 1\% relative to \strSand. Against this configuration (6 families), the reduction is not
-statistically significant because of a floor effect. The case-level evidence shows that every family missed by the
-string-matching rules is blocked by exactly the component designed for it. Under two adaptive rounds, \ours{} lets no
-family through beyond those that already get through with the original attacks. On AgentDojo, \ours{} keeps the number
-of successful attacks low in both English and Vietnamese, at the price of utility on tasks whose destinations come from
-tool data.
-
-Future work follows directly from these limitations: a sealed test set large enough for adequate power (about 120
-families), formal verification of the propositions against the code, field-level semantics for \pThree{} to catch
-changed numbers and units, a user-confirmation channel for destinations taken from tool data, tracking of values through
-transformations outside (A4), and multi-turn tasks.
+This paper presented \ours, an enforcement mechanism at the Tool Broker that combines an intent policy with polarity,
+value-level sensitivity labels and parameter pinning, with a formal model in which three properties are proved under
+five assumptions. On a Vietnamese test set sealed before the code existed, \ours{} reduces the harmed families from 40
+with no defence to 2 of 48, losing 3.1 points of utility, while tokens and latency per case rise by at most 1\%
+relative to \strSand. Against this configuration (6 families) the reduction is not significant because of a floor
+effect, but every family missed by the string-matching rules is blocked by exactly the component designed for it.
+Future work comprises a sealed test set of about 120 families for adequate power, formal verification against the
+code, field-level semantics for \pThree, and a user-confirmation channel for destinations taken from tool data.
