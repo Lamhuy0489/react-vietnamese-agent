@@ -3,27 +3,27 @@
 % bài v3" (ASR mức ca, chi phí theo mô hình). Không nêu mã họ Test, không trích văn bản tấn công.
 \section{Kết quả}\label{sec:results}
 
-\subsection{Kết quả chính trên \tThree}\label{sec:main}
+\subsection{Kết quả chính trên tập kiểm thử}\label{sec:main}
 
-Bảng~\ref{tab:main} tổng hợp mười ba cấu hình trên \tThree. Khi không có phòng thủ, 40 trong 48 họ bị hại trên ít
-nhất một mô hình nền, và 32,1\% số ca tấn công thành công. Với \ours, chỉ còn 2 họ bị hại, ứng với 5 trong 720 ca tấn
-công (0,7\%). Số họ bị hại giảm đơn điệu dọc theo dòng phát triển, từ 34 ở \cPhrase{} xuống 15 ở \cRules, 6 ở \base{}
-và 2 ở \ours. Trên \dev, nơi các cấu hình này được phát triển, thứ tự cũng như vậy: số cặp họ và mô hình bị hại giảm
-từ 346 ở \cNone{} xuống 278, 123, 36 và 4.
+Bảng~\ref{tab:main} tổng hợp mười ba cấu hình trên \test. Khi không phòng thủ, 40 trong 48 họ bị hại trên ít nhất một
+mô hình nền, và 32,1\% số ca tấn công thành công. Với \ours, chỉ còn 2 họ bị hại, ứng với 5 trong 720 ca tấn công
+(0,7\%). Khi luật tại broker được làm chặt dần, số họ bị hại giảm đơn điệu, từ 34 với \phrRules{} xuống 15 với
+\strRules, 6 với \strSand{} và 2 với \ours. Trên \dev, nơi các cấu hình này được phát triển, thứ tự cũng như vậy: số
+cặp họ và mô hình bị hại giảm từ 346 khi không phòng thủ xuống 278, 123, 36 và 4.
 
 Hai phòng thủ phát hiện gần như không có tác dụng trên dữ liệu tiếng Việt. \cPG{} không gắn cờ một quan sát nào của
-\tThree, nên kết quả của nó trùng với \cNone. \cMel{} cũng giữ nguyên 40 họ bị hại. \cSpot{} chỉ giảm còn 38 họ trong
-khi mất 3,1 điểm tiện ích. \cSand{} và \cProg{} giảm số họ bị hại xuống 22 và 25, tức vẫn để lọt khoảng một nửa số
-họ.
+\test, nên kết quả của nó trùng với khi không phòng thủ. \cMel{} cũng giữ nguyên 40 họ bị hại. \cSpot{} chỉ giảm còn 38
+họ trong khi mất 3,1 điểm tiện ích. \cSand{} và \cProg{} giảm số họ bị hại xuống 22 và 25, tức vẫn để lọt khoảng một
+nửa số họ.
 
-Giả thuyết chính H1 không được xác nhận. \base{} có 6 họ bị hại, \ours{} có 2. Có 4 họ chỉ bị hại dưới \base{} và
-không họ nào chỉ bị hại dưới \ours, nên kiểm định McNemar chính xác một phía cho $p = 0{,}0625$ (hai phía $0{,}125$).
+Giả thuyết chính H1 không được xác nhận. \StrSand{} có 6 họ bị hại, \ours{} có 2. Có 4 họ chỉ bị hại dưới \strSand{}
+và không họ nào chỉ bị hại dưới \ours, nên kiểm định McNemar chính xác một phía cho $p = 0{,}0625$ (hai phía $0{,}125$).
 Chiều của hiệu ứng giống nhau trên cả ba mô hình (từ 2 xuống 1, từ 2 xuống 1 và từ 3 xuống 1 họ), nhưng mỗi mô hình
 riêng lẻ có quá ít cặp lệch để kết luận. Theo thủ tục cổng, H2 đến H4 chỉ được báo ở dạng mô tả. Tiện ích của \ours{}
-thấp hơn \base{} 0,56 điểm ở nhánh \bPlain{} (720 cặp) và 0,42 điểm ở nhánh \bAuth{} (240 cặp), trong biên 5 điểm của
-H2. Ba bản bỏ thành phần có 4, 6 và 2 họ bị hại, so với 2 của \ours. Các so sánh khám phá với phòng thủ khác cho khác
-biệt lớn, chẳng hạn 40 so với 2 họ với \cNone{} ($p = 3{,}6\cdot10^{-12}$), 22 so với 2 với \cSand{}
-($p = 9{,}5\cdot10^{-7}$) và 15 so với 2 với \cRules{} ($p = 1{,}2\cdot10^{-4}$), chưa hiệu chỉnh đa so sánh.
+thấp hơn \strSand{} 0,56 điểm ở nhánh \bPlain{} (720 cặp) và 0,42 điểm ở nhánh \bAuth{} (240 cặp), trong biên 5 điểm
+của H2. Ba bản bỏ thành phần có 4, 6 và 2 họ bị hại, so với 2 của \ours. Các so sánh khám phá với phòng thủ khác cho khác
+biệt lớn, chẳng hạn 40 so với 2 họ khi không phòng thủ ($p = 3{,}6\cdot10^{-12}$), 22 so với 2 với \cSand{}
+($p = 9{,}5\cdot10^{-7}$) và 15 so với 2 với \strRules{} ($p = 1{,}2\cdot10^{-4}$), chưa hiệu chỉnh đa so sánh.
 
 \input{tables/tab3_main}
 
@@ -31,21 +31,21 @@ biệt lớn, chẳng hạn 40 so với 2 họ với \cNone{} ($p = 3{,}6\cdot10
 
 Hình~\ref{fig:pareto} đặt các cấu hình trên mặt phẳng gồm số họ bị hại và $\Delta U$. Các bản của \ours{} nằm ở đầu
 thấp của trục an ninh, và không cấu hình nào khác vừa ít họ bị hại hơn vừa giữ nhiều tiện ích hơn chúng. Cái giá về
-tiện ích tăng dần dọc dòng phát triển: \cRules{} mất 0,8 điểm, \base{} mất 2,6 điểm và \ours{} mất 3,1 điểm so với
-\cNone. Bước từ \base{} sang \ours{} đổi 4 họ bị hại lấy 5 ca lành tính, tức 0,5 điểm tiện ích. Vì \base{} giữ nhiều
-tiện ích hơn và bản bỏ \cThree{} giữ hơn \ours{} một ca, kết quả không cho phép nói \ours{} trội Pareto so với hai cấu
-hình này. Các phòng thủ dựa vào mô hình nằm ở nửa bên phải của hình. Phát hiện không làm giảm hại, còn lời nhắc giảm
-hại nhưng mất từ 2,1 đến 3,1 điểm tiện ích. Tham chiếu chặn mọi sink vẫn còn 14 họ bị hại, vì giá trị mật lộ qua câu
-trả lời cuối, và chỉ giữ 11,5\% tiện ích.
+tiện ích tăng dần khi luật được làm chặt: \strRules{} mất 0,8 điểm, \strSand{} mất 2,6 điểm và \ours{} mất 3,1 điểm so
+với khi không phòng thủ. Bước từ \strSand{} sang \ours{} đổi 4 họ bị hại lấy 5 ca lành tính, tức 0,5 điểm tiện ích.
+Vì \strSand{} giữ nhiều tiện ích hơn và bản bỏ \pThree{} giữ hơn \ours{} một ca, kết quả không cho phép nói \ours{}
+trội Pareto so với hai cấu hình này. Các phòng thủ dựa vào mô hình nằm ở nửa bên phải của hình. Phát hiện không làm giảm
+hại, còn lời nhắc giảm hại nhưng mất từ 2,1 đến 3,1 điểm tiện ích. Tham chiếu chặn mọi sink vẫn còn 14 họ bị hại, vì
+giá trị mật lộ qua câu trả lời cuối, và chỉ giữ 11,5\% tiện ích.
 
 \input{images/fig2_pareto}
 
-Bảng~\ref{tab:cost} cho chi phí theo từng mô hình nền. So với \base, \ours{} làm số token trung bình mỗi ca thay đổi
+Bảng~\ref{tab:cost} cho chi phí theo từng mô hình nền. So với \strSand, \ours{} làm số token trung bình mỗi ca thay đổi
 không quá 0,8\% và thời gian trung bình mỗi ca thay đổi trong khoảng từ $-1{,}4\%$ đến $+0{,}6\%$. Phần token tăng so
-với \cNone{} đã có sẵn ở \base{} (gộp ba mô hình, 7.565 so với 6.782 token mỗi ca), nên nó đến từ các lớp cũ chứ không
-từ \cOne--\cThree. Tỉ lệ cần xác nhận trên ca lành tính tối đa là 0,6\%, tỉ lệ chặn nhầm từ 1,9\% đến 3,4\%, so với
-1,6\% đến 2,8\% của \base. Mọi số đều dưới ngưỡng của H4. Bản thân cổng chỉ mất trung bình 0,26~ms mỗi lời gọi, trong
-khi thời gian mô hình trung bình khoảng 14~s mỗi ca.
+với khi không phòng thủ đã có sẵn ở \strSand{} (gộp ba mô hình, 7.565 so với 6.782 token mỗi ca), nên nó đến từ các
+luật nền và lời nhắc chứ không từ ba thành phần mới. Tỉ lệ cần xác nhận trên ca lành tính tối đa là 0,6\%, tỉ lệ chặn
+nhầm từ 1,9\% đến 3,4\%, so với 1,6\% đến 2,8\% của \strSand. Mọi số đều dưới ngưỡng của H4. Bản thân cổng chỉ mất
+trung bình 0,26~ms mỗi lời gọi, trong khi thời gian mô hình trung bình khoảng 14~s mỗi ca.
 
 \input{tables/tab4_cost}
 
@@ -54,54 +54,54 @@ khi thời gian mô hình trung bình khoảng 14~s mỗi ca.
 Hình~\ref{fig:mechanisms}a cho số họ bị hại theo cơ chế. Khi không phòng thủ, mỗi cơ chế gây hại ở 5 đến 8 trong 8
 họ. Lời nhắc và chính sách đặc quyền giảm mạnh hai cơ chế chuyển hướng nhưng gần như không tác động tới rò rỉ qua
 sink, nơi cả \cSand{} và \cProg{} vẫn để lọt 8/8 họ. \cProg{} cũng không giảm rò rỉ qua câu trả lời và sửa tham số.
-\base{} còn để lọt 1 họ chuyển hướng tường minh, 1 họ rò rỉ qua sink, 1 họ rò rỉ qua câu trả lời và 3 họ sửa tham số.
-\ours{} chỉ còn 2 họ, đều thuộc cơ chế sửa tham số.
+\StrSand{} còn để lọt 1 họ chuyển hướng tường minh, 1 họ rò rỉ qua sink, 1 họ rò rỉ qua câu trả lời và 3 họ sửa tham
+số. \ours{} chỉ còn 2 họ, đều thuộc cơ chế sửa tham số.
 
 \input{images/fig3_mechanisms}
 
-Hình~\ref{fig:mechanisms}b cho thấy mỗi thành phần chặn loại tấn công mà nó được thiết kế để chặn. Bỏ \cTwo{} làm 2 họ
-rò rỉ qua sink và 2 họ rò rỉ qua câu trả lời lọt trở lại. Bỏ \cOne{} làm lọt 1 họ chuyển hướng tường minh và thêm 1
-họ sửa tham số. Bỏ \cThree{} không làm thay đổi số họ bị hại, chỉ thêm 1 ca bị hại ở mức ca (6 so với 5). Kết quả mức
-ca cũng nhất quán với điều này. Cả 4 họ chỉ bị hại dưới \base{} đều là vi phạm tại sink và đều bị cổng của \ours{} chặn
-trước khi thực thi, 2 họ bởi \cTwo{} và 2 họ bởi \cOne. Khi bỏ đúng thành phần đó, ca tương ứng lại lọt. Xét theo loại
-hại trên 720 ca, số ca vi phạm tại sink giảm từ 136 ở \cNone{} xuống 4 ở \base{} và 0 ở \ours. Số ca lộ ở câu trả lời
-cuối giảm từ 54 xuống 0 ở cả hai cấu hình. Số ca sửa tham số giảm từ 79 xuống 5, cũng như nhau ở \base{} và \ours. Hai
-họ còn lại dưới \ours{} là sửa giá trị số hoặc đơn vị, và cổng của cả hai cấu hình đều cho các lời gọi này qua.
+Hình~\ref{fig:mechanisms}b cho thấy mỗi thành phần chặn loại tấn công mà nó được thiết kế để chặn. Bỏ \pTwo{} làm 2 họ
+rò rỉ qua sink và 2 họ rò rỉ qua câu trả lời lọt trở lại. Bỏ \pOne{} làm lọt 1 họ chuyển hướng tường minh và thêm 1 họ
+sửa tham số. Bỏ \pThree{} không làm thay đổi số họ bị hại, chỉ thêm 1 ca bị hại ở mức ca (6 so với 5). Kết quả mức ca
+cũng nhất quán với điều này. Cả 4 họ chỉ bị hại dưới \strSand{} đều là vi phạm tại sink và đều bị cổng của \ours{} chặn
+trước khi thực thi, 2 họ bởi \pTwo{} và 2 họ bởi \pOne. Khi bỏ đúng thành phần đó, ca tương ứng lại lọt. Xét theo loại
+hại trên 720 ca, số ca vi phạm tại sink giảm từ 136 khi không phòng thủ xuống 4 với \strSand{} và 0 với \ours. Số ca lộ
+ở câu trả lời cuối giảm từ 54 xuống 0 ở cả hai cấu hình. Số ca sửa tham số giảm từ 79 xuống 5, cũng như nhau ở hai cấu
+hình. Hai họ còn lại dưới \ours{} là sửa giá trị số hoặc đơn vị, và cổng của cả hai cấu hình đều cho các lời gọi này
+qua.
 
-Theo biến thể ngôn ngữ, \cNone{} bị hại khá đồng đều, từ 40 đến 51 trên 144 ca mỗi biến thể. Dưới \ours, số ca bị hại
-là 1 ở tiếng Việt chuẩn, 1 ở bản diễn đạt lại, 2 ở bản trộn Việt và Anh, 1 ở bản không dấu và 0 ở tiếng Anh. Với số ca
-nhỏ như vậy, dữ liệu không cho phép kết luận về ảnh hưởng của ngôn ngữ lên \ours.
+Theo biến thể ngôn ngữ, khi không phòng thủ, số ca bị hại khá đồng đều, từ 40 đến 51 trên 144 ca mỗi biến thể. Dưới
+\ours, số ca bị hại là 1 ở tiếng Việt chuẩn, 1 ở bản diễn đạt lại, 2 ở bản trộn Việt và Anh, 1 ở bản không dấu và 0 ở
+tiếng Anh. Với số ca nhỏ như vậy, dữ liệu không cho phép kết luận về ảnh hưởng của ngôn ngữ lên \ours.
 
 \subsection{Tấn công thích nghi}\label{sec:adaptive}
 
-Bảng~\ref{tab:adaptive} cho kết quả của hai bộ tấn công thích nghi. Ở bộ thứ nhất, \cNone{} và \cProg{} bị hại ở 6 đến
-8 trong 24 ca trên mỗi mô hình, \cSand{} và \base{} chỉ bị hại ở 1 ca trên Llama-3.1, còn \ours{} không bị hại ở ca
-nào. Kết quả này phù hợp với thiết kế, nhưng thiên vị \ours{} vì các chỗ hở mà bộ này nhắm tới chính là đầu vào của
-thiết kế. Bộ thứ hai được soạn để vượt qua \ours{} sau khi hệ đã đóng băng. Ở \cNone, bộ này gây hại tương đương tấn
-công gốc (25 so với 26 họ trên 42), nên đây là các tấn công có hiệu lực. Dưới \base{} và \ours, không họ nào lọt mà
-không lọt ở tấn công gốc. Họ duy nhất còn lọt dưới \ours{} (trên Qwen3.5) là sửa tham số, cùng loại với hai họ còn lại
-trên \tThree. Ở bộ này, một phần lớn ca dưới \base{} và \ours{} dừng vì hết tám bước (tới 18 trong 42 ca trên
-Qwen3.5), nên kết quả chỉ có giá trị trong ngân sách bước đó.
+Bảng~\ref{tab:adaptive} cho kết quả của hai bộ tấn công thích nghi. Ở bộ thứ nhất, khi không phòng thủ và với \cProg,
+mỗi mô hình bị hại ở 6 đến 8 trong 24 ca. \cSand{} và \strSand{} chỉ bị hại ở 1 ca trên Llama-3.1, còn \ours{} không bị
+hại ở ca nào. Kết quả này phù hợp với thiết kế, nhưng thiên vị \ours{} vì các chỗ hở mà bộ này nhắm tới chính là đầu vào
+của thiết kế. Bộ thứ hai được soạn để vượt qua \ours{} sau khi hệ đã đóng băng. Khi không phòng thủ, bộ này gây hại
+tương đương tấn công gốc (25 so với 26 họ trên 42), nên đây là các tấn công có hiệu lực. Dưới \strSand{} và \ours, không
+họ nào lọt mà không lọt ở tấn công gốc. Họ duy nhất còn lọt dưới \ours{} (trên Qwen3.5) là sửa tham số, cùng loại với
+hai họ còn lại trên \test. Ở bộ này, một phần lớn ca dưới \strSand{} và \ours{} dừng vì hết tám bước (tới 18 trong 42
+ca trên Qwen3.5), nên kết quả chỉ có giá trị trong ngân sách bước đó.
 
 \input{tables/tab5_adaptive}
 
 \subsection{Tổng quát hóa sang mô hình đóng và AgentDojo}\label{sec:general}
 
-Bảng~\ref{tab:general}a cho cột tham khảo với Gemini 3 Flash trên \tThree. Mô hình này bị hại ở 26 họ khi không phòng
-thủ và 14 họ với \cProg, nhưng không họ nào với \cSand, \base{} hay \ours. Vì riêng lời nhắc đã đưa số họ bị hại về 0,
-cột này không phân biệt được \base{} với \ours{} về an ninh. Cột này chỉ cho thấy \ours{} không làm giảm đáng kể hiệu
-năng của một mô hình mạnh. Tiện ích \bPlain{} là 201/240 so với 205/240 của \base, còn token và thời gian mỗi ca ngang
-nhau. Đổi lại, \ours{}
-chặn nhầm 8 trong 320 ca lành tính (\base: 4) và cần xác nhận ở 5 ca. Lỗi phía mô hình, như đầu ra không hợp lệ, chiếm
-từ 18 đến 56 trong 560 ca tùy cấu hình và được tính là thất bại về tiện ích.
+Bảng~\ref{tab:general}a cho cột tham khảo với Gemini 3 Flash trên \test. Mô hình này bị hại ở 26 họ khi không phòng
+thủ và 14 họ với \cProg, nhưng không họ nào với \cSand, \strSand{} hay \ours. Vì riêng lời nhắc đã đưa số họ bị hại về
+0, cột này không phân biệt được \strSand{} với \ours{} về an ninh. Cột này chỉ cho thấy \ours{} không làm giảm đáng kể
+hiệu năng của một mô hình mạnh. Tiện ích \bPlain{} là 201/240 so với 205/240 của \strSand, còn token và thời gian mỗi
+ca ngang nhau. Đổi lại, \ours{} chặn nhầm 8 trong 320 ca lành tính (\strSand: 4) và cần xác nhận ở 5 ca. Lỗi phía mô
+hình, như đầu ra không hợp lệ, chiếm từ 18 đến 56 trong 560 ca tùy cấu hình và được tính là thất bại về tiện ích.
 
-Trên AgentDojo (Bảng~\ref{tab:general}b), \ours{} cho cùng kết quả với \base{} ở Banking trong cả hai ngôn ngữ. Ở
-Slack tiếng Anh, số tấn công thành công giảm từ 6 xuống 5. Ca mà \base{} để lọt vì tên người nhận xuất hiện như một
-chuỗi con trong $u$ không còn lọt, vì \cOne{} đòi khớp nguyên token. Các tấn công còn thành công gồm đổi mật khẩu qua
+Trên AgentDojo (Bảng~\ref{tab:general}b), \ours{} cho cùng kết quả với \strSand{} ở Banking trong cả hai ngôn ngữ. Ở
+Slack tiếng Anh, số tấn công thành công giảm từ 6 xuống 5. Ca mà \strSand{} để lọt vì tên người nhận xuất hiện như một
+chuỗi con trong $u$ không còn lọt, vì \pOne{} đòi khớp nguyên token. Các tấn công còn thành công gồm đổi mật khẩu qua
 một sink không có đích (3 ca tiếng Anh và 1 ca tiếng Việt ở Banking), mở một URL bằng công cụ đọc (4 ca) và 1 ca khác
 ở Slack tiếng Anh. Hai loại đầu nằm ngoài tập sink $S$ của mô hình hình thức. Cái giá là tiện ích ở Slack giảm thêm,
 dưới tấn công từ 15 xuống 11 ở tiếng Anh, và khi không tấn công từ 5 xuống 3 trong 21 nhiệm vụ ở cả hai ngôn ngữ.
-Nhiều nhiệm vụ Slack lấy đích từ một trang web hay một tin nhắn mà người dùng không viết, và \cOne{} chặt hơn \rDest{}
-với các đích này. \cThree{} không chặn lần nào trên AgentDojo.
+Nhiều nhiệm vụ Slack lấy đích từ một trang web hay một tin nhắn mà người dùng không viết, và \pOne{} chặt hơn \rDest{}
+với các đích này. \PThree{} không chặn lần nào trên AgentDojo.
 
 \input{tables/tab6_general}

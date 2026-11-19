@@ -726,3 +726,9 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Owner yêu cầu thêm bản tiếng Anh tương ứng: `docs/paper/brokerguard_v3/latex_en/` (cùng tên file, nhãn, bảng, hình,
   số; chính tả Anh-Anh; tóm tắt 248 từ; tiêu đề "Intent-Aware Authorisation ..."). Dùng font T5 vì Mục 4 trích từ phủ định
   tiếng Việt (T1 thiếu chữ ư, ừ). Kiểm tĩnh sạch, không có "we/our", không từ sáo.
+- Sửa lần 2 theo owner ("thống nhất, mã chỉ ở chỗ cần thiết, bài mới thì không cần v1/v2, không để hình/bảng tràn lề"):
+  bỏ mọi tên phiên bản và Test-I/II/III; cấu hình D2P2 gọi là "luật chuỗi + Sandwich" (BrokerGuard bỏ cả ba thành phần),
+  D2 là "luật chuỗi", R1 "luật cụm từ", A0 "không phòng thủ"; hai tập niêm phong cũ là "giai đoạn đầu của nghiên cứu
+  này". Mã R-Dest/R-Flow/R-Redact/R-Signal bỏ hẳn (thay bằng tên luật); C1–C3 chỉ ở định nghĩa, bảng, hình. Mọi bảng và
+  hình bọc `adjustbox{max width=\textwidth}`; Bảng 4, 6a xoay; Hình 3 xếp dọc; `\emergencystretch`; công thức độ đo tách
+  ΔU. Làm cả `latex/` và `latex_en/` (tóm tắt EN 249 từ). Bảng đổi tên mới trong README của bài.

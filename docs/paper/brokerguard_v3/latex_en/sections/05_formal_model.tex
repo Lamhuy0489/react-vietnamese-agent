@@ -1,6 +1,7 @@
 % Source: docs/project/brokerguard_v3_formal_model.md (sections 1--6). Evidence in Table 2: facts.md, Test-4 section
 % (ablation by mechanism, case-level mechanism evidence, the two remaining M5 families) and "Bổ sung cho bài v3" (offline C1
 % check on Dev-val). Proposition 3 only guarantees that pinned literals are PRESENT in data(a).
+% Codes kept in this section: (G1)--(G4) and (A1)--(A5), because the proofs and Table 2 refer to them.
 \section{Formal Model}\label{sec:formal}
 
 \paragraph{States and transitions.} The state of the broker after step $t$ is $s_t = (u, P(u), C_t, H_t)$, where $H_t$
@@ -10,7 +11,7 @@ gate function $\mathrm{gate}(s_t, a_t) \in \{\mathsf{allow}, \mathsf{deny}, \mat
 is enforced as $\mathsf{deny}$. For $a_t \in R$ the gate always returns $\mathsf{allow}$. For $a_t \in S$ it returns
 $\mathsf{allow}$ if and only if the following four conditions all hold.
 \begin{enumerate}[label=(G\arabic*), leftmargin=*]
-\item \rSig{} does not deny $a_t$.
+\item The \rSig{} does not deny $a_t$.
 \item $a_t$ satisfies \eqref{eq:c1}. Let $\hat G(u)$ be the set of (tool, destination) pairs that satisfy this
   condition.
 \item For at least one grant $g$ satisfying (G2), every literal $p \in \mathrm{pins}(g)$ has $p \sub \data(a_t)$, and
@@ -18,9 +19,9 @@ $\mathsf{allow}$ if and only if the following four conditions all hold.
 \item Condition \eqref{eq:c2} is false, that is, no $v \in C_t \setminus V(u)$ has $v \sub \data(a_t)$.
 \end{enumerate}
 When the gate allows a call, the broker executes $a_t$, appends $(a_t, o_t)$ to $H_t$ and updates $C_{t+1} = C_t \cup
-L(o_t)$, where $L$ is the labelling function of \rFlow{} and \cTwo. When the gate denies a call, $a_t$ is not executed
-and the agent receives an observation reporting the denial. The final answer is released as $\mathrm{redact}(y, C_t
-\setminus V(u))$.
+L(o_t)$, where $L$ is the labelling function that combines the \rFlow{} and \pTwo. When the gate denies a call, $a_t$ is
+not executed and the agent receives an observation reporting the denial. The final answer is released as
+$\mathrm{redact}(y, C_t \setminus V(u))$.
 
 \paragraph{Assumptions.} The following five assumptions delimit the scope of the propositions.
 \begin{enumerate}[label=(A\arabic*), leftmargin=*]

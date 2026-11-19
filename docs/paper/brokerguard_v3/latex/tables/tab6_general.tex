@@ -1,35 +1,41 @@
 % Bảng 6. (a) facts.md mục "Cột tham khảo Gemini 3 Flash trên Test-4" (họ /48, vi phạm sink, plain /240, auth /80,
-% chặn nhầm /320, xác nhận /320, thích nghi /24, token TB, model_error /560: A0 56, P2 18, PRG 39, D2P2 18, V3P2 26).
-% (b) facts.md mục "AgentDojo: bảng đầy đủ mọi lượt" (NoDef, repeat_user_prompt = Sandwich, KT) và "AgentDojo:
-% BrokerGuard v3". Ô = utility dưới tấn công / tấn công thành công (số chính thức của AgentDojo).
+% chặn nhầm /320, xác nhận /320, thích nghi /24, token TB, model_error /560: A0 56, P2 18, PRG 39, D2P2 18, V3P2 26);
+% xoay (chỉ số theo hàng) để vừa khổ. (b) facts.md mục "AgentDojo: bảng đầy đủ mọi lượt" (NoDef, repeat_user_prompt =
+% Sandwich, KT) và "AgentDojo: BrokerGuard v3". Ô = utility dưới tấn công / tấn công thành công. Bọc adjustbox.
 \begin{table}[!htbp]
 \centering
-\caption{Tổng quát hóa. (a) Gemini 3 Flash trên \tThree, cột tham khảo ngoài kiểm định. Tiện ích tính riêng cho
-nhánh \bPlain{} và \bAuth, chặn nhầm và cần xác nhận tính trên 320 ca lành tính. (b) AgentDojo với Llama-3.1-8B và
+\caption{Tổng quát hóa. (a) Gemini 3 Flash trên \test, cột tham khảo ngoài kiểm định. (b) AgentDojo với Llama-3.1-8B và
 khuôn \code{important\_instructions}. Ô là tiện ích dưới tấn công / số tấn công thành công theo cách chấm của AgentDojo
-(Banking /144, Slack /105). Cột cuối là tiện ích khi không tấn công (Banking /16, Slack /21).}\label{tab:general}
+(Banking /144, Slack /105). Cột cuối là tiện ích khi không tấn công (Banking /16, Slack /21), lần lượt khi không phòng
+thủ, với \strSand{} và với \ours.}\label{tab:general}
 \footnotesize
-\setlength{\tabcolsep}{2.5pt}
-\textit{(a) Gemini 3 Flash trên \tThree}\par\smallskip
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrrrr@{}}
+\setlength{\tabcolsep}{3pt}
+\textit{(a) Gemini 3 Flash trên \test}\par\smallskip
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}Xrrrrr@{}}
 \toprule
-Cấu hình & \makecell[r]{Họ bị\\hại (/48)} & \makecell[r]{Vi phạm\\sink} & \makecell[r]{Thường\\(/240)} &
-  \makecell[r]{Ủy quyền\\(/80)} & \makecell[r]{Chặn\\nhầm} & \makecell[r]{Xác\\nhận} & \makecell[r]{Thích\\nghi (/24)} &
-  \makecell[r]{Token\\mỗi ca} & \makecell[r]{Lỗi mô\\hình (/560)} \\
+Chỉ số & \makecell[r]{Không\\phòng thủ} & \cSand & \cProg & \makecell[r]{Luật chuỗi\\+ Sandwich} & \ours \\
 \midrule
-\cNone & 26 & 41 & 202 & 29 & 0 & 0 & 5 & 14.328 & 56 \\
-\cSand & 0 & 0 & 211 & 23 & 0 & 0 & 0 & 14.518 & 18 \\
-\cProg & 14 & 8 & 210 & 24 & 0 & 0 & 5 & 14.662 & 39 \\
-\base & 0 & 0 & 205 & 24 & 4 & 0 & 0 & 14.934 & 18 \\
-\ours & 0 & 0 & 201 & 25 & 8 & 5 & 0 & 14.890 & 26 \\
+Họ bị hại (/48) & 26 & 0 & 14 & 0 & 0 \\
+Ca vi phạm tại sink & 41 & 0 & 8 & 0 & 0 \\
+Tiện ích \bPlain{} (/240) & 202 & 211 & 210 & 205 & 201 \\
+Tiện ích \bAuth{} (/80) & 29 & 23 & 24 & 24 & 25 \\
+Chặn nhầm (/320) & 0 & 0 & 0 & 4 & 8 \\
+Cần xác nhận (/320) & 0 & 0 & 0 & 0 & 5 \\
+Ca thích nghi gây hại (/24) & 5 & 0 & 5 & 0 & 0 \\
+Token mỗi ca & 14.328 & 14.518 & 14.662 & 14.934 & 14.890 \\
+Lỗi mô hình (/560) & 56 & 18 & 39 & 18 & 26 \\
 \bottomrule
-\end{tabular*}
+\end{tabularx}
+\end{adjustbox}
 
 \medskip
 \textit{(b) AgentDojo, Llama-3.1-8B}\par\smallskip
+\begin{adjustbox}{max width=\textwidth}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llccccc@{}}
 \toprule
-Bộ & Ngôn ngữ & \cNone & \cSand & \base & \ours & \makecell{Không tấn công\\\cNone{} / \base{} / \ours} \\
+Bộ & Ngôn ngữ & \makecell{Không\\phòng thủ} & \cSand & \makecell{Luật chuỗi\\+ Sandwich} & \ours &
+  \makecell{Không\\tấn công} \\
 \midrule
 Banking & tiếng Anh & 58/17 & 62/10 & 72/3 & 72/3 & 7 / 8 / 8 \\
 Banking & tiếng Việt & 44/6 & 45/6 & 54/1 & 54/1 & 6 / 5 / 5 \\
@@ -37,4 +43,5 @@ Slack & tiếng Anh & 28/16 & 35/10 & 15/6 & 11/5 & 7 / 5 / 3 \\
 Slack & tiếng Việt & 26/0 & 19/0 & 13/0 & 12/0 & 7 / 5 / 3 \\
 \bottomrule
 \end{tabular*}
+\end{adjustbox}
 \end{table}

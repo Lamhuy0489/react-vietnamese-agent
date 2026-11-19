@@ -1,26 +1,30 @@
 % Bảng 5. Nguồn: facts.md mục Test-4 (dòng "24 ca thích nghi", ca hại Q/G/L) và mục "Vòng thích nghi nhắm v3 trên
-% Dev-val" (họ bị hại /42, thích nghi · canonical). Bộ 2 chỉ chạy NoDef, BG-Base, BrokerGuard.
+% Dev-val" (họ bị hại /42, thích nghi · canonical). Bộ 2 chỉ chạy không phòng thủ, luật chuỗi + Sandwich, BrokerGuard.
+% Bọc adjustbox max width.
 \begin{table}[!htbp]
 \centering
-\caption{Hai bộ tấn công thích nghi. Bộ 1 gồm 24 ca thuộc \tThree{} nhắm vào chỗ hở của \base. Ô là số ca gây hại trên
+\caption{Hai bộ tấn công thích nghi. Bộ 1 gồm 24 ca thuộc \test{} nhắm vào chỗ hở của \strSand. Ô là số ca gây hại trên
 Qwen3.5 / Gemma-4 / Llama-3.1. Bộ 2 gồm 42 ca soạn sau khi \ours{} đóng băng, trên phần kiểm định của \dev. Ô là số họ
-bị hại với tấn công thích nghi $\cdot$ với tấn công gốc cùng họ.}\label{tab:adaptive}
+bị hại với tấn công thích nghi $\cdot$ với tấn công gốc cùng họ. \cOne{} \pOne, \cTwo{} \pTwo, \cThree{}
+\pThree.}\label{tab:adaptive}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\textwidth}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccc@{}}
 \toprule
  & Bộ 1 (/24) & \multicolumn{4}{c}{Bộ 2 (/42)} \\
 \cmidrule(lr){2-2}\cmidrule(l){3-6}
 Cấu hình & Q / G / L & Qwen3.5 & Gemma-4 & Llama-3.1 & Gộp \\
 \midrule
-\cNone & 8 / 6 / 7 & 14 $\cdot$ 13 & 19 $\cdot$ 21 & 9 $\cdot$ 11 & 25 $\cdot$ 26 \\
+\NoDef & 8 / 6 / 7 & 14 $\cdot$ 13 & 19 $\cdot$ 21 & 9 $\cdot$ 11 & 25 $\cdot$ 26 \\
 \cSand & 0 / 0 / 1 & -- & -- & -- & -- \\
 \cProg & 8 / 6 / 6 & -- & -- & -- & -- \\
-\base & 0 / 0 / 1 & 1 $\cdot$ 1 & 0 $\cdot$ 0 & 1 $\cdot$ 1 & 2 $\cdot$ 2 \\
+\StrSand & 0 / 0 / 1 & 1 $\cdot$ 1 & 0 $\cdot$ 0 & 1 $\cdot$ 1 & 2 $\cdot$ 2 \\
 \textbf{\ours} & \textbf{0 / 0 / 0} & 1 $\cdot$ 1 & 0 $\cdot$ 0 & 0 $\cdot$ 0 & 1 $\cdot$ 1 \\
 \quad bỏ \cOne & 0 / 0 / 0 & -- & -- & -- & -- \\
 \quad bỏ \cTwo & 0 / 0 / 1 & -- & -- & -- & -- \\
 \quad bỏ \cThree & 0 / 0 / 0 & -- & -- & -- & -- \\
 \bottomrule
 \end{tabular*}
+\end{adjustbox}
 \end{table}

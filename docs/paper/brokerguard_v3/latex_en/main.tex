@@ -17,6 +17,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage{xcolor}
 \usepackage{url}
+\usepackage{adjustbox}   % max width=\textwidth: figures and tables never exceed the margins
 \usepackage{tabularx}
 \usepackage{makecell}
 \usepackage[section]{placeins}
@@ -27,6 +28,8 @@
 % grey = other defences. Colour follows the entity in every figure.
 \definecolor{bgblue}{HTML}{2A78D6}
 \definecolor{bgorange}{HTML}{EB6834}
+% Extra stretch so that monospaced words (tool names, e-mail addresses) never stick into the right margin
+\setlength{\emergencystretch}{3em}
 \usepackage{enumitem}
 \setlist{noitemsep, topsep=2pt}
 
@@ -55,38 +58,52 @@
 \newcommand{\code}[1]{\texttt{#1}}
 
 % ---- NAMES (change one line to rename throughout; mapping to the logs in ../README.md) -----------------
-\newcommand{\ours}{\textsc{BrokerGuard}}     % v3 = V3P2: BG-Base + C1 + C2 + C3
-\newcommand{\base}{BG-Base}                  % v1 = D2P2 (final_config_v3), string rules + Sandwich
-\newcommand{\cRules}{BG-Rules}               % D2 = BG-Base without the prompt layer
-\newcommand{\cNone}{NoDef}                   % A0
+% A brand-new paper: no version names (v1, v2, v3, BG-Base, Test-I/II/III). Codes only where needed: C1--C3 in their
+% definitions, tables and figures; H1--H4, (A1)--(A5), (G1)--(G4) for the tests and proofs; mechanism codes only in
+% tables and figures. Prose uses full names. Each name has a mid-sentence form and a capitalised form.
+\newcommand{\ours}{\textsc{BrokerGuard}}     % V3P2 (log: v3)
+\newcommand{\strSand}{string rules + Sandwich} % D2P2 (log: v1, final_config_v3) = BrokerGuard without C1, C2, C3
+\newcommand{\StrSand}{String rules + Sandwich}
+\newcommand{\strRules}{string rules}         % D2 = string rules + Sandwich without the prompt layer
+\newcommand{\StrRules}{String rules}
+\newcommand{\phrRules}{phrase rules}         % R1
+\newcommand{\PhrRules}{Phrase rules}
+\newcommand{\noDef}{no defence}              % A0
+\newcommand{\NoDef}{No defence}
 \newcommand{\cSpot}{Spotlight}               % P1
 \newcommand{\cSand}{Sandwich}                % P2
 \newcommand{\cPG}{PromptGuard}               % G1 (Prompt Guard 2, 86M)
 \newcommand{\cMel}{MELON$^*$}                % MEL (re-implementation)
 \newcommand{\cProg}{Progent$^*$}             % PRG (re-implementation)
-\newcommand{\cPhrase}{PhraseRules}           % R1
-% The three new components
-\newcommand{\cOne}{\textsf{C1}}              % intent policy P(u)
-\newcommand{\cTwo}{\textsf{C2}}              % value-level labels
-\newcommand{\cThree}{\textsf{C3}}            % parameter pinning
-\newcommand{\abl}[1]{\ours$-$\textsf{C#1}}  % ablation without one component
-% Rules kept from BG-Base
-\newcommand{\rDest}{\textsf{R-Dest}}         % D2 rule 2 (replaced by C1)
-\newcommand{\rFlow}{\textsf{R-Flow}}         % D2 rule 3 (source labels)
-\newcommand{\rRedact}{\textsf{R-Redact}}     % D2 rule 4
-\newcommand{\rSig}{\textsf{R-Signal}}        % D2 A1 layer
+% The three components: names in prose, codes in tables and figures
+\newcommand{\pOne}{intent policy}            % C1
+\newcommand{\pTwo}{value-level labelling}    % C2
+\newcommand{\pThree}{parameter pinning}      % C3
+\newcommand{\POne}{Intent policy}
+\newcommand{\PTwo}{Value-level labelling}
+\newcommand{\PThree}{Parameter pinning}
+\newcommand{\cOne}{\textsf{C1}}
+\newcommand{\cTwo}{\textsf{C2}}
+\newcommand{\cThree}{\textsf{C3}}
+% Base rules at the broker (no R-... codes)
+\newcommand{\rDest}{substring destination rule}    % D2 rule 2, replaced by C1
+\newcommand{\rFlow}{source-label flow rule}        % D2 rule 3
+\newcommand{\rRedact}{answer redaction rule}       % D2 rule 4
+\newcommand{\rSig}{injection-signal rule}          % D2 A1 layer
+\newcommand{\Rdest}{Substring destination rule}
+\newcommand{\Rflow}{Source-label flow rule}
+\newcommand{\Rredact}{Answer redaction rule}
+\newcommand{\Rsig}{Injection-signal rule}
 % Attack mechanisms (tables and figures only)
-\newcommand{\mER}{\textsf{ER}}               % M1
-\newcommand{\mCR}{\textsf{CR}}               % M2
-\newcommand{\mSL}{\textsf{SL}}               % M3
-\newcommand{\mAL}{\textsf{AL}}               % M4
-\newcommand{\mPT}{\textsf{PT}}               % M5
-\newcommand{\mUS}{\textsf{US}}               % M6
-% Data sets
-\newcommand{\dev}{Dev}                       % Dev v4.1 (168 families)
-\newcommand{\tOne}{Test-I}                   % "Test v3", now part of Dev
-\newcommand{\tTwo}{Test-II}                  % "Test-3", now part of Dev
-\newcommand{\tThree}{Test-III}               % "Test-4" (T5_*), the only held-out test set of this paper
+\newcommand{\mER}{\textsf{ER}}               % M1 explicit redirection
+\newcommand{\mCR}{\textsf{CR}}               % M2 covert redirection
+\newcommand{\mSL}{\textsf{SL}}               % M3 sink leakage
+\newcommand{\mAL}{\textsf{AL}}               % M4 answer leakage
+\newcommand{\mPT}{\textsf{PT}}               % M5 parameter tampering
+\newcommand{\mUS}{\textsf{US}}               % M6 unrequested side effect
+% Data sets (use with an article: "the \dev")
+\newcommand{\dev}{development set}           % Dev v4.1 (168 families)
+\newcommand{\test}{test set}                 % Test-4 (T5_*), the only held-out test set of this paper
 % Notation
 \newcommand{\sub}{\sqsubseteq}               % x ⊑ z: kappa(x) is a substring of kappa(z)
 \newcommand{\dest}{\mathit{dst}}

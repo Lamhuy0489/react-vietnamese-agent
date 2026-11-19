@@ -1,9 +1,10 @@
-% Figure 1, TikZ (drawn by Overleaf, never rendered locally). Coordinates in cm, total width 11.85 cm < \textwidth 12.2 cm.
-% Check boxes are 1.7 x 0.9 cm with 6.4 pt text: about 14 characters per line, three lines per box (keep labels short).
-% Colour follows the entity as in Figures 2 and 3: thick orange border = new components C1--C3, blue = kept from BG-Base,
-% grey dashed = model-dependent. In black and white the border width and the dash pattern separate the classes.
+% Figure 1, TikZ (drawn by Overleaf, never rendered locally). Coordinates in cm, total width 11.85 cm; wrapped in adjustbox
+% max width so it never exceeds the margins. Check boxes are 1.7 x 0.9 cm with 6.4 pt text: about 14 characters per
+% line, at most three lines per box. Colour follows the entity as in Figures 2 and 3: thick orange border = new
+% components C1--C3, blue = base rules, grey dashed = model-dependent. No R-... rule codes; only C1--C3 are kept.
 \begin{figure}[!htbp]
 \centering
+\begin{adjustbox}{max width=\textwidth}
 \begin{tikzpicture}[
   font=\fontsize{6.4}{7.6}\selectfont,
   box/.style={rounded corners=1pt, align=center, inner sep=1pt},
@@ -37,13 +38,13 @@
 
 % row 2: the four checks before every sink call
 \node[note] at (2.1,4.2) {before every sink call $a_t$: executed only if all four checks pass};
-\node[kept, gate] at (2.95,3.5) {\textsf{R-Signal}\\ flagged observation, deny};
+\node[kept, gate] at (2.95,3.5) {Signal rule\\ deny if flagged};
 \node[newc, gate] at (4.75,3.5) {\textsf{C1}\\ positive grant};
 \node[newc, gate] at (6.55,3.5) {\textsf{C3}\\ pinned values kept};
-\node[newc, gate] at (8.35,3.5) {\textsf{C2} + \textsf{R-Flow}\\ no value of $C_t$ leaves};
+\node[newc, gate] at (8.35,3.5) {\textsf{C2} + flow rule\\ no value of $C_t$ leaves};
 
 % row 3: final answer, prompt layer, feedback, confirmation
-\node[kept, gate] at (2.95,2.1) {\textsf{R-Redact} + \textsf{C2}\\ redact values in $y$};
+\node[kept, gate] at (2.95,2.1) {Redact values\\ in $y$};
 \node[soft, gate] at (4.75,2.1) {Sandwich\\ repeat $u$};
 \node[kept, gate] at (6.55,2.1) {Report denial,\\ agent continues};
 \node[newc, gate] at (8.35,2.1) {Needs confirmation\\ = denial};
@@ -52,7 +53,7 @@
 \node[newc, swatch] at (2.3,0.88) {};
 \node[note] at (2.52,0.88) {new component};
 \node[kept, swatch] at (4.3,0.88) {};
-\node[note] at (4.52,0.88) {kept from \base};
+\node[note] at (4.52,0.88) {base rule};
 \node[soft, swatch] at (6.3,0.88) {};
 \node[note] at (6.52,0.88) {model-dependent};
 
@@ -74,8 +75,9 @@
 \draw[arr] (9.3,1.0) -- (9.95,1.0);
 \node[anchor=west, text=black!65] at (9.98,1.0) {$y$ redacted};
 \end{tikzpicture}
-\caption{Architecture of \ours. Every call $a_t$ and the final answer $y$ pass through the Tool Broker. \cOne{} extracts
-the policy $P(u)$ once from $u$, and \cTwo{} updates the protected set $C_t$ after every observation. Boxes with a thick
-orange border are new components, boxes with a blue border are kept from \base, and the dashed box depends on the model.
-All checks inside the frame are deterministic.}\label{fig:arch}
+\end{adjustbox}
+\caption{Architecture of \ours. Every call $a_t$ and the final answer $y$ pass through the Tool Broker. The \pOne{}
+(\cOne) is extracted once from $u$, and \pTwo{} (\cTwo) updates the protected set $C_t$ after every observation. Boxes
+with a thick orange border are new components, boxes with a blue border are base rules, and the dashed box depends on
+the model. All checks inside the frame are deterministic.}\label{fig:arch}
 \end{figure}

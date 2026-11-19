@@ -12,8 +12,9 @@ không có notebook Kaggle nào chạy. Nếu phải chạy lại Kaggle: tắt 
 Trạng thái (19/11 tối): BÀI v3 ĐÃ VIẾT XONG CẢ HAI BẢN ở docs/paper/brokerguard_v3/ (đọc README.md của thư mục trước:
 nguồn số, bảng đổi tên log -> bài, quy tắc văn phong, việc owner cần làm). latex/ = tiếng Việt, latex_en/ = tiếng Anh
 (cùng tên file, nhãn, bảng, hình, số; 10 mục, 6 bảng, 3 hình TikZ/pgfplots, 25 tài liệu), khoảng 20 trang LNCS, chưa
-biên dịch. Tên trong bài: BrokerGuard = v3 (V3P2),
-BG-Base = v1 (D2P2), Test-III = Test-4, Dev = Dev v4.1.
+biên dịch. Bài mới hoàn toàn: không tên phiên bản; tên trong bài:
+BrokerGuard = V3P2, "luật chuỗi + Sandwich" = D2P2 (BrokerGuard bỏ C1–C3), tập kiểm thử = Test-4, tập phát triển = Dev
+v4.1 (bảng đổi tên trong README của bài). Mọi bảng/hình bọc adjustbox; không để tràn lề.
 
 Việc của phiên này:
 1. Hỏi owner đã biên dịch trên Overleaf chưa và có lỗi gì. Sửa lỗi biên dịch trước (owner dán log hoặc ảnh PDF vào root;

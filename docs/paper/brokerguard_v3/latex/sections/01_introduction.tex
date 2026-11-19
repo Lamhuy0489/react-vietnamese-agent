@@ -1,44 +1,48 @@
 % Số: facts.md (Test v3 và Test-3: 32,9 -> 1,2%, 32,4 -> 3,8%; 40 ca lọt v1 theo nguyên nhân, mục "Bổ sung sau phản
-% biện 3"; vi mô broker, mục "Bổ sung cho bài v3"). Ba đóng góp theo Review Huy: phương pháp, hình thức, thực nghiệm.
+% biện 3"; vi mô broker, mục "Bổ sung cho bài v3"). Bài mới: giai đoạn đầu (luật chuỗi trên hai tập niêm phong) được kể
+% như một phần của chính nghiên cứu này, không gọi là phiên bản trước.
 \section{Giới thiệu}\label{sec:intro}
 
 Trong mô hình ReAct~\cite{yao2023react}, tác tử LLM xen kẽ suy luận với lời gọi công cụ như tìm tài liệu, truy vấn cơ
 sở dữ liệu hay gửi e-mail. Nội dung công cụ trả về đi thẳng vào ngữ cảnh của mô hình. Trong tấn công chèn lệnh gián
-tiếp (IPI)~\cite{greshake2023indirect}, kẻ tấn công cài chỉ thị vào nội dung của bên thứ ba mà tác tử sẽ đọc. Nếu mô
-hình làm theo, tác tử có thể gửi dữ liệu tới một đích lạ, làm lộ giá trị mật hoặc sửa nội dung mà người dùng yêu cầu
-gửi. Phòng thủ mức prompt phụ thuộc vào việc mô hình có tuân theo hay không, còn các bộ phân loại chèn lệnh phần lớn
-được huấn luyện và đánh giá trên tiếng Anh. Một hướng khác đặt việc cưỡng chế ở phía host, giữa mô hình và công cụ, theo nguyên lý
-reference monitor~\cite{anderson1972}.
+tiếp~\cite{greshake2023indirect}, kẻ tấn công cài chỉ thị vào nội dung của bên thứ ba mà tác tử sẽ đọc. Nếu mô hình
+làm theo, tác tử có thể gửi dữ liệu tới một đích lạ, làm lộ giá trị mật hoặc sửa nội dung mà người dùng yêu cầu gửi.
+Phòng thủ mức prompt phụ thuộc vào việc mô hình có tuân theo hay không, còn các bộ phân loại chèn lệnh phần lớn được
+huấn luyện và đánh giá trên tiếng Anh. Một hướng khác đặt việc cưỡng chế ở phía host, giữa mô hình và công cụ, theo
+nguyên lý reference monitor~\cite{anderson1972}.
 
-Phiên bản cơ sở của hệ thống trong bài báo, gọi là \base, đi theo hướng này. Tool Broker chỉ thực thi một lời gọi
-gửi ra ngoài khi đích của nó xuất hiện như một chuỗi con của yêu cầu người dùng $u$, và chỉ cho một giá trị lấy từ
-nguồn gắn nhãn mật rời tác tử khi $u$ chứa nguyên văn giá trị đó. Trên hai tập kiểm thử tiếng Việt niêm phong và ba
-mô hình nền mở, \base{} giảm tỉ lệ tấn công thành công từ 32,9\% xuống 1,2\% và từ 32,4\% xuống 3,8\%. Phân tích cả
-40 ca còn lọt cho thấy ba chỗ hở của luật dựa trên chuỗi (Bảng~\ref{tab:mechanisms}). Có 25 ca làm lộ một giá trị mật
-nằm trong nguồn gắn nhãn công khai, vì nhãn được đặt cho cả nguồn chứ không cho từng giá trị. Có 5 ca gửi tới một đích
-có xuất hiện trong $u$ nhưng không được cấp quyền, chẳng hạn đích nằm trong một câu cấm. Mười ca còn lại sửa tham số
-của một lời gọi tới đích hợp lệ. Các ca này cho thấy sự xuất hiện của một chuỗi trong $u$ không đồng nghĩa với việc
-người dùng đã cấp quyền, và nhãn của một nguồn không xác định được độ nhạy cảm của từng giá trị trong nguồn đó.
+Cách đơn giản nhất để cưỡng chế tại Tool Broker là so khớp chuỗi. Broker chỉ thực thi một lời gọi gửi ra ngoài khi
+đích của nó xuất hiện như một chuỗi con của yêu cầu người dùng $u$, và chỉ cho một giá trị lấy từ nguồn gắn nhãn mật
+rời tác tử khi $u$ chứa nguyên văn giá trị đó. Ở giai đoạn đầu của nghiên cứu này, các luật so khớp chuỗi như vậy, kết
+hợp với lời nhắc kiểu sandwich, được đánh giá trên hai tập kiểm thử tiếng Việt niêm phong với ba mô hình nền mở. Tỉ lệ
+tấn công thành công giảm từ 32,9\% xuống 1,2\% trên tập thứ nhất và từ 32,4\% xuống 3,8\% trên tập thứ hai. Phân tích
+cả 40 ca còn lọt cho thấy ba chỗ hở (Bảng~\ref{tab:mechanisms}). Có 25 ca làm lộ một giá trị mật nằm trong nguồn gắn
+nhãn công khai, vì nhãn được đặt cho cả nguồn chứ không cho từng giá trị. Có 5 ca gửi tới một đích có xuất hiện trong
+$u$ nhưng không được cấp quyền, chẳng hạn đích nằm trong một câu cấm. Mười ca còn lại sửa tham số của một lời gọi tới
+đích hợp lệ. Các ca này cho thấy sự xuất hiện của một chuỗi trong $u$ không đồng nghĩa với việc người dùng đã cấp
+quyền, và nhãn của một nguồn không xác định được độ nhạy cảm của từng giá trị trong nguồn đó.
 
-Bài báo đề xuất \ours, mở rộng \base{} bằng ba thành phần tất định. \cOne{} trích từ $u$ một chính sách ý định $P(u)$
-gồm các quyền có cấu trúc, xét phạm vi phủ định và loại trừ trong tiếng Việt và tiếng Anh, và chỉ cấp quyền cho đích
-khớp nguyên token. \cTwo{} gắn nhãn độ nhạy cảm cho từng giá trị trong đầu ra công cụ theo kiểu của giá trị, độc lập
-với nhãn nguồn, rồi kiểm luồng của các giá trị đó tới mọi sink và câu trả lời cuối. \cThree{} ghim các giá trị người
-dùng đã nêu cho lời gọi được cấp quyền. Chính sách chỉ được suy ra từ $u$, không từ nội dung công cụ, và không dựa vào
-phán đoán của một LLM. Ca không rõ quyền được trả về \emph{cần xác nhận}.
+Bài báo đề xuất \ours, một cơ chế cưỡng chế tại broker gồm ba thành phần tất định. \POne{} thay luật đích theo chuỗi
+con. Thành phần này trích từ $u$ các quyền có cấu trúc, xét phạm vi phủ định và loại trừ trong tiếng Việt và tiếng Anh,
+và chỉ cấp quyền cho đích khớp nguyên token. \PTwo{} gán độ nhạy cảm cho từng giá trị trong đầu ra công cụ theo kiểu
+của giá trị, độc lập với nhãn nguồn, rồi kiểm luồng của các giá trị đó tới mọi sink và câu trả lời cuối. \PThree{} buộc
+lời gọi được cấp quyền giữ các giá trị người dùng đã nêu. Chính sách chỉ được suy ra từ $u$, không từ nội dung công cụ,
+và không dựa vào phán đoán của một LLM. Khi quyền không rõ ràng, kết quả là \emph{cần xác nhận}. Hai tập kiểm thử của
+giai đoạn đầu đã được dùng để thiết kế các thành phần này, nên chúng được gộp vào tập phát triển, và \ours{} được đánh
+giá trên một tập kiểm thử mới.
 
 Bài báo có ba đóng góp chính.
 \begin{enumerate}
-\item \textbf{Phương pháp.} \ours{} xử lý ba chỗ hở đã đo được của luật dựa trên chuỗi mà không gọi thêm LLM. Thời
+\item \textbf{Phương pháp.} \ours{} xử lý ba chỗ hở đã đo được của luật so khớp chuỗi mà không gọi thêm LLM. Thời
   gian kiểm của broker dưới một mili giây mỗi lời gọi (Mục~\ref{sec:method}).
 \item \textbf{Mô hình hình thức.} Broker được đặc tả như một hệ chuyển trạng thái. Ba mệnh đề về an toàn cấp quyền,
   bảo mật và toàn vẹn được chứng minh dưới năm giả định. Bài báo tách rõ thuộc tính được chứng minh với thuộc tính chỉ
   được kiểm tra bằng thực nghiệm (Mục~\ref{sec:formal}).
-\item \textbf{Đánh giá.} \ours{} được đóng băng trên tập phát triển rồi chạy một lần trên \tThree, gồm 48 họ tấn công
-  mới được niêm phong trước khi có dòng mã nào của \ours, với giả thuyết đăng ký trước. Đánh giá gồm dòng phát triển
-  từ luật cụm từ tới \ours, các phòng thủ đã công bố, ablation từng thành phần, hai vòng tấn công thích nghi, chi phí
-  token và độ trễ, đánh đổi giữa an ninh và tiện ích, AgentDojo bằng tiếng Anh và tiếng Việt, và một cột tham khảo với
-  mô hình đóng (Mục~\ref{sec:protocol} và~\ref{sec:results}). Giả thuyết chính chưa đạt ý nghĩa thống kê. Nguyên nhân
-  được phân tích ở Mục~\ref{sec:discussion}.
+\item \textbf{Đánh giá.} \ours{} được đóng băng trên tập phát triển rồi chạy một lần trên một tập kiểm thử gồm 48 họ
+  tấn công mới, niêm phong trước khi có dòng mã nào của \ours, với giả thuyết đăng ký trước. Đánh giá so sánh \ours{}
+  với các phòng thủ đã công bố và với các cấu hình luật đơn giản hơn tại broker, kèm ablation từng thành phần, hai vòng
+  tấn công thích nghi, chi phí token và độ trễ, đánh đổi giữa an ninh và tiện ích, AgentDojo bằng tiếng Anh và tiếng
+  Việt, và một cột tham khảo với mô hình đóng (Mục~\ref{sec:protocol} và~\ref{sec:results}). Giả thuyết chính chưa đạt
+  ý nghĩa thống kê. Nguyên nhân được phân tích ở Mục~\ref{sec:discussion}.
 \end{enumerate}
 Dữ liệu, mã và các manifest niêm phong được công bố công khai.

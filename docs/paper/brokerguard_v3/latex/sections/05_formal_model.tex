@@ -1,6 +1,7 @@
 % Nguồn: docs/project/brokerguard_v3_formal_model.md (mục 1--6). Bằng chứng trong Bảng 2: facts.md mục Test-4 (ablation
-% theo cơ chế, bằng chứng cơ chế mức ca, hai họ M5 còn lại) và mục "Bổ sung cho bài v3" (C1 offline Dev-val).
+% theo cơ chế, bằng chứng cơ chế mức ca, hai họ M5 còn lại) và mục "Bổ sung cho bài v3" (C1 offline trên Dev-val).
 % Mệnh đề 3 chỉ bảo đảm literal ghim CÓ MẶT trong data(a), không bảo đảm không có giá trị khác bên cạnh.
+% Mã giữ lại ở mục này: (G1)--(G4) và (A1)--(A5), vì chứng minh và Bảng 2 tham chiếu tới chúng.
 \section{Mô hình hình thức}\label{sec:formal}
 
 \paragraph{Trạng thái và bước chuyển.} Trạng thái của broker sau bước $t$ là $s_t = (u, P(u), C_t, H_t)$, trong đó
@@ -10,15 +11,15 @@ $\mathrm{gate}(s_t, a_t) \in \{\mathsf{allow}, \mathsf{deny}, \mathsf{confirm}\}
 thi hành như $\mathsf{deny}$. Với $a_t \in R$, cổng luôn trả về $\mathsf{allow}$. Với $a_t \in S$, cổng trả về
 $\mathsf{allow}$ khi và chỉ khi bốn điều kiện sau cùng đúng.
 \begin{enumerate}[label=(G\arabic*), leftmargin=*]
-\item \rSig{} không chặn $a_t$.
+\item \Rsig{} không chặn $a_t$.
 \item $a_t$ thỏa \eqref{eq:c1}. Gọi $\hat G(u)$ là tập cặp (công cụ, đích) thỏa điều kiện này.
 \item Có ít nhất một quyền $g$ thỏa (G2) sao cho mọi literal $p \in \mathrm{pins}(g)$ có $p \sub \data(a_t)$, và
   $\data(a_t)$ không mang boolean ngược với một boolean đã ghim.
 \item Điều kiện \eqref{eq:c2} sai, tức không có $v \in C_t \setminus V(u)$ với $v \sub \data(a_t)$.
 \end{enumerate}
 Khi cổng cho qua, broker thực thi $a_t$, thêm $(a_t, o_t)$ vào $H_t$ và cập nhật $C_{t+1} = C_t \cup L(o_t)$, với $L$
-là hàm gắn nhãn của \rFlow{} và \cTwo. Khi cổng từ chối, $a_t$ không được thực thi và tác tử nhận một quan sát báo từ
-chối. Câu trả lời cuối được phát hành sau phép che $\mathrm{redact}(y, C_t \setminus V(u))$.
+là hàm gắn nhãn kết hợp \rFlow{} và \pTwo. Khi cổng từ chối, $a_t$ không được thực thi và tác tử nhận một quan sát báo
+từ chối. Câu trả lời cuối được phát hành sau phép che $\mathrm{redact}(y, C_t \setminus V(u))$.
 
 \paragraph{Giả định.} Năm giả định sau làm rõ phạm vi của các mệnh đề.
 \begin{enumerate}[label=(A\arabic*), leftmargin=*]
