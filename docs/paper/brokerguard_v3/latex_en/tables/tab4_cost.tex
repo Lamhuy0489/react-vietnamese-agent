@@ -1,0 +1,27 @@
+% Table 4. Source: results/rebuild_c/test4_analysis_v1.json (configs.<cfg>.<model>.cost_all, false_block,
+% confirmation_benign; H4.per_backbone), copied to facts.md "Bổ sung cho bài v3", per-backbone costs.
+% Tokens: Qwen 5597.4 / 7457.6 / 7515.1; Gemma 6161.2 / 5672.3 / 5669.5; Llama 8587.1 / 9565.0 / 9595.9 (A0 / v1 / v3).
+% Seconds: Qwen 11.48 / 11.55; Gemma 16.20 / 16.10; Llama 14.52 / 14.32 (v1 / v3). Δ = v3 relative to v1.
+\begin{table}[!htbp]
+\centering
+\caption{Costs on \tThree{} per backbone (Qwen3.5-9B, Gemma-4-12B, Llama-3.1-8B). Tokens and time are means over 560
+cases, and $\Delta$ is the change of \ours{} relative to \base. False blocks (\base{} $\to$ \ours) and confirmations
+(\ours) are counted over 320 benign cases. Times are comparable only between \base{} and \ours, which ran in the same
+batch. The last row gives the H4 thresholds.}\label{tab:cost}
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrrrr@{}}
+\toprule
+ & \multicolumn{4}{c}{Tokens per case} & \multicolumn{3}{c}{Time per case (s)} & \multicolumn{2}{c}{Benign cases} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-8}\cmidrule(l){9-10}
+Backbone & \cNone & \base & \ours & $\Delta$ & \base & \ours & $\Delta$ & \makecell[r]{False\\blocks} &
+  \makecell[r]{Confir-\\mations} \\
+\midrule
+Qwen3.5 & 5,597 & 7,458 & 7,515 & $+0.77\%$ & 11.48 & 11.55 & $+0.6\%$ & $9 \to 11$ & 2 \\
+Gemma-4 & 6,161 & 5,672 & 5,670 & $-0.05\%$ & 16.20 & 16.10 & $-0.6\%$ & $5 \to 6$ & 1 \\
+Llama-3.1 & 8,587 & 9,565 & 9,596 & $+0.32\%$ & 14.52 & 14.32 & $-1.4\%$ & $5 \to 7$ & 0 \\
+\midrule
+H4 threshold & & & & $\le +20\%$ & & & $\le +15\%$ & $\le 48$ & $\le 32$ \\
+\bottomrule
+\end{tabular*}
+\end{table}

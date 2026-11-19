@@ -1,0 +1,89 @@
+% Hình 1, TikZ (Overleaf tự vẽ, không render trên máy). Tọa độ tính bằng cm, tổng rộng 11,85 cm < \textwidth 12,2 cm.
+% Ô kiểm 1,7 x 0,9 cm, chữ 6,4 pt: tối đa khoảng 14 ký tự mỗi dòng, ba dòng mỗi ô (giữ nhãn ngắn khi sửa).
+% Màu theo thực thể (giống Hình 2, 3): cam viền đậm = thành phần mới C1--C3, xanh = giữ từ BG-Base, xám nét đứt = phụ
+% thuộc mô hình. In đen trắng: phân biệt bằng độ dày viền và nét đứt.
+% Nhãn tiếng Anh cho bản nộp:
+%   User / $u$ (trusted) | LLM agent / (ReAct) | Tool Broker (host side)
+%   C1: extract $P(u)$ from $u$ / (destination, polarity, pinned values) | C2: label each value in $o_t$ / (protected set $C_t$)
+%   before every sink call $a_t$: executed only if all four checks pass
+%   R-Signal / flagged, so deny | C1 / positive grant | C3 / pinned values kept | C2 + R-Flow / no value of $C_t$ leaves
+%   R-Redact + C2 / redact values in $y$ | Sandwich / repeat $u$ | Report denial, / agent continues
+%   Needs confirmation / = denial | Read tools / (untrusted) | Sinks / e-mail, webhook | $y$ redacted
+%   new component | kept from BG-Base | model-dependent
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}[
+  font=\fontsize{6.4}{7.6}\selectfont,
+  box/.style={rounded corners=1pt, align=center, inner sep=1pt},
+  newc/.style={box, draw=bgorange, line width=0.9pt, fill=bgorange!12},
+  kept/.style={box, draw=bgblue, line width=0.45pt, fill=bgblue!10},
+  soft/.style={box, draw=black!55, line width=0.5pt, fill=black!4, dash pattern=on 2pt off 1.3pt},
+  neutral/.style={box, draw=black!60, line width=0.5pt, fill=black!5},
+  arr/.style={-{Stealth[length=3pt]}, line width=0.5pt, draw=black!65},
+  lab/.style={font=\fontsize{6.4}{7}\selectfont},
+  note/.style={font=\fontsize{5.6}{6.6}\selectfont\itshape, text=black!65, anchor=west},
+  gate/.style={minimum width=1.7cm, minimum height=0.9cm, text width=1.6cm},
+  swatch/.style={minimum width=0.34cm, minimum height=0.24cm},
+]
+% cột trái: người dùng và tác tử
+\node[neutral, minimum width=1.5cm, minimum height=0.8cm, text width=1.4cm] at (0.75,4.85)
+  {Người dùng\\ $u$ (đáng tin)};
+\node[neutral, minimum width=1.5cm, minimum height=1.3cm, text width=1.4cm,
+  font=\fontsize{6.6}{7.6}\selectfont\bfseries] at (0.75,2.35) {Tác tử LLM\\ (ReAct)};
+\draw[arr] (0.75,4.45) -- (0.75,3.0);
+
+% khung broker
+\draw[rounded corners=2pt, line width=0.6pt] (2.0,0.5) rectangle (9.3,5.65);
+\node[font=\fontsize{7}{8}\selectfont\bfseries] at (5.65,5.43) {Tool Broker (phía host)};
+
+% hàng 1: trạng thái do C1 và C2 dựng
+\node[newc, minimum width=3.45cm, minimum height=0.66cm, text width=3.35cm] at (3.825,4.8)
+  {\textsf{C1}: trích $P(u)$ từ $u$\\ (đích, cực tính, giá trị ghim)};
+\node[newc, minimum width=3.45cm, minimum height=0.66cm, text width=3.35cm] at (7.475,4.8)
+  {\textsf{C2}: gắn nhãn từng giá trị trong $o_t$\\ (tập bảo vệ $C_t$)};
+\draw[arr] (1.5,4.8) -- (2.1,4.8);
+
+% hàng 2: bốn kiểm tra trước mỗi lời gọi sink
+\node[note] at (2.1,4.2) {trước mỗi lời gọi sink $a_t$: chỉ thực thi khi cả bốn kiểm tra đều qua};
+\node[kept, gate] at (2.95,3.5) {\textsf{R-Signal}\\ quan sát bị gắn cờ thì chặn};
+\node[newc, gate] at (4.75,3.5) {\textsf{C1}\\ đích có quyền dương};
+\node[newc, gate] at (6.55,3.5) {\textsf{C3}\\ giá trị ghim còn nguyên};
+\node[newc, gate] at (8.35,3.5) {\textsf{C2} + \textsf{R-Flow}\\ không lộ giá trị của $C_t$};
+
+% hàng 3: câu trả lời cuối, lời nhắc, phản hồi, xác nhận
+\node[kept, gate] at (2.95,2.1) {\textsf{R-Redact} + \textsf{C2}\\ che giá trị trong $y$};
+\node[soft, gate] at (4.75,2.1) {Sandwich\\ nhắc lại $u$};
+\node[kept, gate] at (6.55,2.1) {Báo từ chối,\\ tác tử làm tiếp};
+\node[newc, gate] at (8.35,2.1) {Cần xác nhận\\ = từ chối};
+
+% chú giải
+\node[newc, swatch] at (2.3,0.88) {};
+\node[note] at (2.52,0.88) {thành phần mới};
+\node[kept, swatch] at (4.3,0.88) {};
+\node[note] at (4.52,0.88) {giữ từ \base};
+\node[soft, swatch] at (6.3,0.88) {};
+\node[note] at (6.52,0.88) {phụ thuộc mô hình};
+
+% tác tử <-> broker
+\draw[arr] (1.5,2.75) -- node[lab, above=-1pt] {$a_t$} (2.0,2.75);
+\draw[arr] (2.0,2.35) -- node[lab, above=-1pt] {$o_t$} (1.5,2.35);
+\draw[arr] (1.5,1.95) -- node[lab, above=-1pt] {$y$} (2.0,1.95);
+
+% cột công cụ
+\node[neutral, minimum width=2.1cm, minimum height=0.8cm, text width=2.0cm] at (10.8,3.95)
+  {Công cụ đọc\\ (không đáng tin)};
+\node[neutral, minimum width=2.1cm, minimum height=0.8cm, text width=2.0cm] at (10.8,2.45)
+  {Sink\\ e-mail, webhook};
+\draw[arr] (9.3,4.15) -- node[lab, above=-1pt] {$a_t$} (9.75,4.15);
+\draw[arr] (9.75,3.75) -- node[lab, above=-1pt] {$o_t$} (9.3,3.75);
+\draw[arr] (9.3,2.45) -- node[lab, above=-1pt] {$a_t$} (9.75,2.45);
+
+% câu trả lời đã che rời broker
+\draw[arr] (9.3,1.0) -- (9.95,1.0);
+\node[anchor=west, text=black!65] at (9.98,1.0) {$y$ đã che};
+\end{tikzpicture}
+\caption{Kiến trúc của \ours. Mọi lời gọi $a_t$ và câu trả lời cuối $y$ đều đi qua Tool Broker. \cOne{} trích chính
+sách $P(u)$ một lần từ $u$, còn \cTwo{} cập nhật tập giá trị bảo vệ $C_t$ sau mỗi quan sát. Ô viền cam đậm là thành
+phần mới, ô viền xanh giữ từ \base, ô nét đứt phụ thuộc vào mô hình. Mọi kiểm tra trong khung đều tất
+định.}\label{fig:arch}
+\end{figure}

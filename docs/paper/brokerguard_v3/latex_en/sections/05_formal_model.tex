@@ -1,0 +1,77 @@
+% Source: docs/project/brokerguard_v3_formal_model.md (sections 1--6). Evidence in Table 2: facts.md, Test-4 section
+% (ablation by mechanism, case-level mechanism evidence, the two remaining M5 families) and "Bổ sung cho bài v3" (offline C1
+% check on Dev-val). Proposition 3 only guarantees that pinned literals are PRESENT in data(a).
+\section{Formal Model}\label{sec:formal}
+
+\paragraph{States and transitions.} The state of the broker after step $t$ is $s_t = (u, P(u), C_t, H_t)$, where $H_t$
+is the history of executed calls and observations. $P(u)$ is built once before the first step and never changes. Let
+$R$ be the set of read tools and $S$ the set of sinks with a destination field. Every proposed call $a_t$ goes through a
+gate function $\mathrm{gate}(s_t, a_t) \in \{\mathsf{allow}, \mathsf{deny}, \mathsf{confirm}\}$, where $\mathsf{confirm}$
+is enforced as $\mathsf{deny}$. For $a_t \in R$ the gate always returns $\mathsf{allow}$. For $a_t \in S$ it returns
+$\mathsf{allow}$ if and only if the following four conditions all hold.
+\begin{enumerate}[label=(G\arabic*), leftmargin=*]
+\item \rSig{} does not deny $a_t$.
+\item $a_t$ satisfies \eqref{eq:c1}. Let $\hat G(u)$ be the set of (tool, destination) pairs that satisfy this
+  condition.
+\item For at least one grant $g$ satisfying (G2), every literal $p \in \mathrm{pins}(g)$ has $p \sub \data(a_t)$, and
+  $\data(a_t)$ carries no Boolean opposite to a pinned one.
+\item Condition \eqref{eq:c2} is false, that is, no $v \in C_t \setminus V(u)$ has $v \sub \data(a_t)$.
+\end{enumerate}
+When the gate allows a call, the broker executes $a_t$, appends $(a_t, o_t)$ to $H_t$ and updates $C_{t+1} = C_t \cup
+L(o_t)$, where $L$ is the labelling function of \rFlow{} and \cTwo. When the gate denies a call, $a_t$ is not executed
+and the agent receives an observation reporting the denial. The final answer is released as $\mathrm{redact}(y, C_t
+\setminus V(u))$.
+
+\paragraph{Assumptions.} The following five assumptions delimit the scope of the propositions.
+\begin{enumerate}[label=(A\arabic*), leftmargin=*]
+\item \emph{Complete mediation.} Every tool call goes through the broker, and every tool with side effects belongs to
+  $S$. The agent has no other channel with side effects.
+\item \emph{Sound extraction.} $\hat G(u) \subseteq G(u)$, that is, the extractor never grants a (tool, destination)
+  pair that the user does not authorise. The converse direction affects only utility.
+\item \emph{Label coverage.} Every value $v \in \Sigma$ that appears in an observation $o_t$ belongs to $C_{t+1}$.
+\item \emph{Transformation class.} If the agent leaks $v$ inside a string $w$, then $v \sub w$. The class covers adding
+  or removing spaces, dots and dashes, changing case, and stripping diacritics. Encodings, numbers written as words and
+  values split across several calls fall outside it.
+\item \emph{Complete pins.} For the grant $g$ that authorises a call $a$, $\mathrm{pins}(g)$ contains every value and
+  Boolean that the user stated for $a$.
+\end{enumerate}
+
+\begin{proposition}[Authorisation safety]\label{prop:auth}
+Under (A1) and (A2), every executed sink call has its (tool, destination) pair in $G(u)$. Hence no trajectory satisfies
+$H_\mathit{dest}$, and a read-only task never satisfies $H_\mathit{side}$.
+\end{proposition}
+\begin{proof}
+By (A1), a sink $a$ is executed only if the gate allows it, so (G2) holds and $(\mathrm{tool}(a), \dest(a)) \in \hat
+G(u)$. By (A2), $\hat G(u) \subseteq G(u)$. A read-only task has $G(u) = \emptyset$, so no sink is executed. \qed
+\end{proof}
+
+\begin{proposition}[Confidentiality]\label{prop:conf}
+Under (A1), (A3) and (A4), no value of $\Sigma$ appears in $\data(a)$ of an executed sink call or in the released final
+answer. Hence no trajectory satisfies $H_\mathit{leak}$ through the forms covered by (A4).
+\end{proposition}
+\begin{proof}
+Suppose that $v \in \Sigma$ appears in $\data(a)$ of a sink $a$ executed at step $t$. Since $v \notin V(u)$, the agent
+can only have obtained $v$ from an earlier observation, so $v \in C_t$ by (A3). By (A4), $v \sub \data(a)$, hence
+condition \eqref{eq:c2} holds and (G4) fails. This contradicts (A1), because the broker executes $a$ only when (G4)
+holds. For the final answer, redaction replaces every surface form matching $\kappa(v)$ before release, so by (A4) no
+form of $v$ remains. \qed
+\end{proof}
+
+\begin{proposition}[Integrity]\label{prop:int}
+Under (A1), (A2) and (A5), every executed sink call contains every value that the user stated for that call, compared
+under $\kappa$, and carries no Boolean opposite to one that the user stated.
+\end{proposition}
+\begin{proof}
+By (A1), a sink $a$ is executed only if (G2) and (G3) hold, so some grant $g$ authorises $a$, every literal of
+$\mathrm{pins}(g)$ occurs in $\data(a)$ and no Boolean is flipped. By (A2), $g$ corresponds to a grant that the user
+actually made. By (A5), $\mathrm{pins}(g)$ contains every value the user stated for $a$. \qed
+\end{proof}
+
+\noindent The three propositions are sufficient conditions under the assumptions, not unconditional guarantees.
+Proposition~\ref{prop:int} does not exclude another value being added next to a pinned literal, and says nothing about
+fields for which the user stated no value. Read calls and sinks without a destination field lie outside $S$, so a read
+tool that fetches a URL chosen by the model can still serve as an exfiltration channel. When a case gets past \ours, the
+formal model identifies which assumption was violated. Table~\ref{tab:proven} separates the properties that are proved
+from those that are only measured.
+
+\input{tables/tab2_proven}

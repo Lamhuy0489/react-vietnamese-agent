@@ -1,0 +1,31 @@
+% Table 2. Sources: facts.md, Test-4 section (H3 ablation; families by mechanism: without C1 one more ER and one more PT,
+% without C2 two more SL and two more AL; final-answer leaks of v3 0/720; the two remaining M5 families; verbatim =
+% transformed) and "Bổ sung cho bài v3" (offline C1 check on Dev-val: utility 155/155 and 65/65, M6 35/35, v1 15).
+% (A1): tests/unit/test_brokerguard_v3_v1.py.
+\begin{table}[!htbp]
+\centering
+\caption{Properties that are proved and properties that are only measured. Development-set numbers were used during
+design, \tThree{} numbers were obtained after freezing.}\label{tab:proven}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.75cm}>{\raggedright\arraybackslash}p{2.2cm}%
+>{\raggedright\arraybackslash}X@{}}
+\toprule
+Property & Status & Evidence \\
+\midrule
+Propositions~\ref{prop:auth}--\ref{prop:int} & Proved under the assumptions & Section~\ref{sec:formal} \\
+(A1) complete mediation & By construction, unit-tested & The broker is the only path to the tools. Read tools and sinks
+  without a destination lie outside $S$ \\
+(A2) sound extraction & Empirical & Development set: every benign sink allowed, all 35 unrequested side-effect calls
+  blocked (\base: 15). \tThree: removing \cOne{} lets 2 more families through \\
+(A3) label coverage & Empirical, indirect & \tThree: removing \cTwo{} lets 4 more leakage families through. \ours{}
+  leaks no value in the final answer \\
+(A4) transformation class & Stated limit & The transformed-leak scorer agrees with verbatim matching for every
+  configuration, so the assumption has not been challenged yet \\
+(A5) complete pins & Empirical, insufficient & \tThree: 2 families with changed numbers or units pass both \base{} and
+  \ours. Removing \cThree{} lets no further family through \\
+Prompt layer, \rSig & Empirical only & No guarantee. Measured through ablations and adaptive attacks
+  (Section~\ref{sec:results}) \\
+\bottomrule
+\end{tabularx}
+\end{table}

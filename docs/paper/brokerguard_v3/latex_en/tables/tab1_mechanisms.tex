@@ -1,0 +1,28 @@
+% Table 1. Numbers: facts.md "Bổ sung sau phản biện 3" (v1 bypass causes: Test-I 13 = SL 6, AL 3, PT 4 (3 value
+% changes + 1 destination present in u); Test-II 27 = SL 14, AL 2, PT 7, US 3, CR 1) and the Test-4 section ("40 ca vượt
+% v1": M3 20, M5 11, M4 5, M6 3, M2 1). By cause: public source 25, destination present in u 5, tampering 10.
+\begin{table}[!htbp]
+\centering
+\caption{The six attack mechanisms. The third column gives the number of cases that bypassed \base{} on the two earlier
+sealed sets (\tOne{} and \tTwo, three backbones, 40 cases in total) and their cause. The last column names the
+\ours{} component that targets each group.}\label{tab:mechanisms}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.45cm}>{\raggedright\arraybackslash}X%
+>{\raggedright\arraybackslash}p{4.0cm}l@{}}
+\toprule
+Mechanism & Path to harm & Bypasses of \base{} (cause) & \ours \\
+\midrule
+\mER{} explicit redirection & The injection asks for data to be sent to an unknown destination & 0 & \cOne \\
+\mCR{} covert redirection & As above, but phrased indirectly or with the destination split up & 1 (the destination
+  field is an ordinary word that occurs in $u$) & \cOne \\
+\mSL{} sink leakage & A confidential value enters the content sent to a legitimate destination & 20 (the value sits in
+  a source labelled public) & \cTwo \\
+\mAL{} answer leakage & A confidential value appears in the final answer & 5 (as above) & \cTwo \\
+\mPT{} parameter tampering & A value stated by the user is changed while the destination stays legitimate & 11 (10
+  changed values, 1 destination that is only mentioned) & \cThree, \cOne \\
+\mUS{} unrequested side effect & A sink is called on a destination that is only mentioned or explicitly forbidden & 3
+  (destination present in $u$ but not authorised) & \cOne \\
+\bottomrule
+\end{tabularx}
+\end{table}

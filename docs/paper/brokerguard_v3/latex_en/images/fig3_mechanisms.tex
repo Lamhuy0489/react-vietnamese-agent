@@ -1,0 +1,50 @@
+% Figure 3, pgfplots (drawn by Overleaf, never rendered locally).
+% Data: facts.md, Test-4 section, table "Họ bị hại theo cơ chế (gộp 3 backbone, mỗi cơ chế /8)":
+%   A0 6 5 8 7 8 6 | P2 2 0 8 4 5 3 | PRG 1 0 8 7 8 1 | v1 1 0 1 1 3 0 | v3 0 0 0 0 2 0
+%   v3-C1 1 0 0 0 3 0 | v3-C2 0 0 2 2 2 0 | v3-C3 0 0 0 0 2 0     (order ER CR SL AL PT US = M1..M6)
+% Colour follows the entity as in Figures 1 and 2: grey = other defences (hatched for Progent*), blue = BG-Base,
+% orange = BrokerGuard, hollow patterned orange = one component removed. Panels aligned on the axis bottom; ~11.6 cm wide.
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}
+\pgfplotsset{
+  mechbar/.style={
+    scale only axis, height=2.4cm,
+    ybar=0.5pt, bar width=2.3pt,
+    ymin=0, ymax=8.6, ytick={0,2,4,6,8},
+    symbolic x coords={ER,CR,SL,AL,PT,US}, xtick=data, enlarge x limits=0.11,
+    axis x line*=bottom, axis y line*=left,
+    tick label style={font=\scriptsize}, label style={font=\scriptsize},
+    ymajorgrids, grid style={line width=0.2pt, draw=black!12},
+    legend style={font=\tiny, draw=none, fill=none, at={(0.5,1.03)}, anchor=south,
+      /tikz/every even column/.append style={column sep=4pt}},
+    legend image code/.code={\draw[##1] (0cm,-0.07cm) rectangle (0.22cm,0.07cm);},
+  },
+}
+% (a) BrokerGuard against the other defences
+\begin{axis}[mechbar, name=pa, width=5.7cm, ylabel={Harmed families (/8)}, legend columns=3]
+\addplot[fill=white, draw=black!75, line width=0.4pt] coordinates {(ER,6) (CR,5) (SL,8) (AL,7) (PT,8) (US,6)};
+\addplot[fill=black!22, draw=none] coordinates {(ER,2) (CR,0) (SL,8) (AL,4) (PT,5) (US,3)};
+\addplot[fill=black!50, draw=none, postaction={pattern=north east lines, pattern color=white}]
+  coordinates {(ER,1) (CR,0) (SL,8) (AL,7) (PT,8) (US,1)};
+\addplot[fill=bgblue, draw=none] coordinates {(ER,1) (CR,0) (SL,1) (AL,1) (PT,3) (US,0)};
+\addplot[fill=bgorange, draw=none] coordinates {(ER,0) (CR,0) (SL,0) (AL,0) (PT,2) (US,0)};
+\legend{\cNone, \cSand, \cProg, \base, \ours}
+\node[anchor=north west, font=\scriptsize\bfseries] at (rel axis cs:0.01,0.99) {(a)};
+\end{axis}
+% (b) BrokerGuard and its ablations
+\begin{axis}[mechbar, at={(pa.south east)}, anchor=south west, xshift=0.85cm, width=4.2cm, legend columns=2]
+\addplot[fill=bgorange, draw=none] coordinates {(ER,0) (CR,0) (SL,0) (AL,0) (PT,2) (US,0)};
+\addplot[fill=white, draw=bgorange, line width=0.5pt, postaction={pattern=north east lines, pattern color=bgorange}]
+  coordinates {(ER,1) (CR,0) (SL,0) (AL,0) (PT,3) (US,0)};
+\addplot[fill=white, draw=bgorange, line width=0.5pt, postaction={pattern=crosshatch dots, pattern color=bgorange}]
+  coordinates {(ER,0) (CR,0) (SL,2) (AL,2) (PT,2) (US,0)};
+\addplot[fill=bgorange!35, draw=bgorange, line width=0.5pt] coordinates {(ER,0) (CR,0) (SL,0) (AL,0) (PT,2) (US,0)};
+\legend{\ours, without \cOne, without \cTwo, without \cThree}
+\node[anchor=north west, font=\scriptsize\bfseries] at (rel axis cs:0.01,0.99) {(b)};
+\end{axis}
+\end{tikzpicture}
+\caption{Harmed families per mechanism on \tThree{} (/8 per mechanism, pooled over three backbones). (a) \ours{}
+against the other defences. (b) \ours{} and its ablations. An empty slot means 0 families. Mechanism names follow
+Table~\ref{tab:mechanisms}.}\label{fig:mechanisms}
+\end{figure}

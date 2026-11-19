@@ -1,0 +1,50 @@
+% Bảng 3. Nguồn: facts.md mục Test-4 (họ /48, Q·G·L, tiện ích, H1--H4), mục baseline bổ sung Test-4 và Dev v4.1, mục
+% "Bổ sung cho bài v3" (ASR /720, tiện ích dạng số ca, Dev P2 111 và PRG 198). ΔU = (k − 411)/960, làm tròn 1 chữ số.
+% ASR làm tròn nửa lên: 171/720 = 23,75 -> 23,8; 9/720 = 1,25 -> 1,3. Chặn mọi sink: 54/720 ca lộ ở câu trả lời.
+% In đậm: tốt nhất về an ninh (không tính hàng ước lượng).
+\begin{table}[!htbp]
+\centering
+\caption{Kết quả trên \tThree{} (48 họ, ba mô hình nền) và trên \dev. Cột ``Họ'' là số họ bị hại trên ít nhất một mô
+hình nền. Q, G, L là số họ bị hại trên Qwen3.5, Gemma-4 và Llama-3.1. ASR tính trên 720 ca tấn công, $U$ trên 960 ca
+lành tính, $\Delta U$ (điểm) so với \cNone{} tính từ số ca. Cột \dev{} là số cặp họ và mô hình bị hại (/504).
+$^\dagger$Chạy bổ sung sau khi có kết quả chính. $^\ddagger$Ước lượng từ quỹ đạo \cNone. Phần dưới: các giả thuyết
+đăng ký trước.}\label{tab:main}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrcrrrr@{}}
+\toprule
+Cấu hình & Họ (/48) & Q $\cdot$ G $\cdot$ L & ASR (\%) & $U$ (\%) & $\Delta U$ & \dev{} (/504) \\
+\midrule
+\cNone & 40 & 24 $\cdot$ 31 $\cdot$ 28 & 32,1 & 42,8 & 0,0 & 346 \\
+\cSpot$^\dagger$ & 38 & 28 $\cdot$ 18 $\cdot$ 26 & 24,3 & 39,7 & $-3{,}1$ & 280 \\
+\cSand & 22 & 13 $\cdot$ 8 $\cdot$ 10 & 6,5 & 40,7 & $-2{,}1$ & 111 \\
+\cPG$^\dagger$ & 40 & 22 $\cdot$ 31 $\cdot$ 28 & 31,7 & 42,7 & $-0{,}1$ & 346 \\
+\cMel$^\dagger$ & 40 & 22 $\cdot$ 30 $\cdot$ 28 & 31,5 & 42,8 & 0,0 & 345 \\
+\cProg & 25 & 16 $\cdot$ 21 $\cdot$ 18 & 23,8 & 42,6 & $-0{,}2$ & 198 \\
+\midrule
+\cPhrase$^\dagger$ & 34 & 16 $\cdot$ 25 $\cdot$ 25 & 16,7 & 42,9 & $+0{,}1$ & 278 \\
+\cRules$^\dagger$ & 15 & 8 $\cdot$ 10 $\cdot$ 9 & 6,8 & 42,0 & $-0{,}8$ & 123 \\
+\base & 6 & 2 $\cdot$ 2 $\cdot$ 3 & 1,3 & 40,2 & $-2{,}6$ & 36 \\
+\textbf{\ours} & \textbf{2} & 1 $\cdot$ 1 $\cdot$ 1 & \textbf{0,7} & 39,7 & $-3{,}1$ & \textbf{4} \\
+\quad bỏ \cOne & 4 & 1 $\cdot$ 3 $\cdot$ 2 & 1,1 & 40,0 & $-2{,}8$ & -- \\
+\quad bỏ \cTwo & 6 & 2 $\cdot$ 2 $\cdot$ 4 & 1,4 & 40,2 & $-2{,}6$ & -- \\
+\quad bỏ \cThree & 2 & 1 $\cdot$ 2 $\cdot$ 1 & 0,8 & 39,8 & $-3{,}0$ & -- \\
+\midrule
+Chặn mọi sink$^\ddagger$ & 14 & -- & 7,5 & 11,5 & $-31{,}4$ & -- \\
+\bottomrule
+\end{tabular*}
+
+\smallskip
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{3.4cm}%
+>{\raggedright\arraybackslash}p{1.45cm}l@{}}
+\toprule
+ & Giả thuyết & Kết quả & $p$ & Kết luận \\
+\midrule
+H1 & Số họ bị hại: \ours{} $<$ \base & $6 \to 2$ (cặp lệch 4/0) & 0,0625 & không bác bỏ $H_0$ \\
+H2 & Tiện ích: \ours{} $\ge$ \base{} $-\,5$ điểm & \bPlain{} $-0{,}56$, \bAuth{} $-0{,}42$ điểm & -- & mô tả \\
+H3 & Bỏ \cOne, \cTwo, \cThree{} làm tăng số họ bị hại & 4, 6, 2 so với 2 & 0,50 / 0,19 / 1 & mô tả \\
+H4 & Xác nhận $\le 10\%$, chặn nhầm $\le 15\%$, token $\le +20\%$, độ trễ $\le +15\%$ & tối đa 0,6\% / 3,4\% /
+  +0,8\% / +0,6\% & -- & mô tả, trong ngưỡng \\
+\bottomrule
+\end{tabularx}
+\end{table}

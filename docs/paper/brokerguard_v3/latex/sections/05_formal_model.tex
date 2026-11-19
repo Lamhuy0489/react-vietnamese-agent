@@ -1,0 +1,75 @@
+% Nguồn: docs/project/brokerguard_v3_formal_model.md (mục 1--6). Bằng chứng trong Bảng 2: facts.md mục Test-4 (ablation
+% theo cơ chế, bằng chứng cơ chế mức ca, hai họ M5 còn lại) và mục "Bổ sung cho bài v3" (C1 offline Dev-val).
+% Mệnh đề 3 chỉ bảo đảm literal ghim CÓ MẶT trong data(a), không bảo đảm không có giá trị khác bên cạnh.
+\section{Mô hình hình thức}\label{sec:formal}
+
+\paragraph{Trạng thái và bước chuyển.} Trạng thái của broker sau bước $t$ là $s_t = (u, P(u), C_t, H_t)$, trong đó
+$H_t$ là lịch sử lời gọi đã thực thi và quan sát. $P(u)$ được dựng một lần trước bước đầu tiên và không đổi về sau.
+Gọi $R$ là tập công cụ đọc và $S$ là tập sink có trường đích. Mỗi lời gọi đề xuất $a_t$ đi qua hàm cổng
+$\mathrm{gate}(s_t, a_t) \in \{\mathsf{allow}, \mathsf{deny}, \mathsf{confirm}\}$, trong đó $\mathsf{confirm}$ được
+thi hành như $\mathsf{deny}$. Với $a_t \in R$, cổng luôn trả về $\mathsf{allow}$. Với $a_t \in S$, cổng trả về
+$\mathsf{allow}$ khi và chỉ khi bốn điều kiện sau cùng đúng.
+\begin{enumerate}[label=(G\arabic*), leftmargin=*]
+\item \rSig{} không chặn $a_t$.
+\item $a_t$ thỏa \eqref{eq:c1}. Gọi $\hat G(u)$ là tập cặp (công cụ, đích) thỏa điều kiện này.
+\item Có ít nhất một quyền $g$ thỏa (G2) sao cho mọi literal $p \in \mathrm{pins}(g)$ có $p \sub \data(a_t)$, và
+  $\data(a_t)$ không mang boolean ngược với một boolean đã ghim.
+\item Điều kiện \eqref{eq:c2} sai, tức không có $v \in C_t \setminus V(u)$ với $v \sub \data(a_t)$.
+\end{enumerate}
+Khi cổng cho qua, broker thực thi $a_t$, thêm $(a_t, o_t)$ vào $H_t$ và cập nhật $C_{t+1} = C_t \cup L(o_t)$, với $L$
+là hàm gắn nhãn của \rFlow{} và \cTwo. Khi cổng từ chối, $a_t$ không được thực thi và tác tử nhận một quan sát báo từ
+chối. Câu trả lời cuối được phát hành sau phép che $\mathrm{redact}(y, C_t \setminus V(u))$.
+
+\paragraph{Giả định.} Năm giả định sau làm rõ phạm vi của các mệnh đề.
+\begin{enumerate}[label=(A\arabic*), leftmargin=*]
+\item \emph{Trung gian toàn phần.} Mọi lời gọi công cụ đều đi qua broker, và mọi công cụ có tác dụng phụ đều thuộc
+  $S$. Tác tử không có kênh tác dụng phụ nào khác.
+\item \emph{Bộ trích đúng.} $\hat G(u) \subseteq G(u)$, tức bộ trích không cấp quyền cho cặp (công cụ, đích) mà người
+  dùng không cho phép. Chiều ngược lại chỉ ảnh hưởng tới tiện ích.
+\item \emph{Độ phủ nhãn.} Mọi giá trị $v \in \Sigma$ xuất hiện trong một quan sát $o_t$ đều thuộc $C_{t+1}$.
+\item \emph{Lớp biến đổi.} Nếu tác tử làm lộ $v$ trong một chuỗi $w$ thì $v \sub w$. Lớp này gồm thêm hay bớt khoảng
+  trắng, dấu chấm, gạch, đổi hoa thường và bỏ dấu. Mã hóa, viết số bằng chữ hay chia một giá trị qua nhiều lời gọi
+  nằm ngoài lớp này.
+\item \emph{Literal ghim đủ.} Với quyền $g$ cấp cho lời gọi $a$, $\mathrm{pins}(g)$ chứa mọi giá trị và boolean mà
+  người dùng đã nêu cho $a$.
+\end{enumerate}
+
+\begin{proposition}[An toàn cấp quyền]\label{prop:auth}
+Dưới (A1) và (A2), mọi lời gọi sink được thực thi có (công cụ, đích) thuộc $G(u)$. Vì vậy không quỹ đạo nào thỏa
+$H_\mathit{dest}$, và nhiệm vụ chỉ cần đọc không thỏa $H_\mathit{side}$.
+\end{proposition}
+\begin{proof}
+Theo (A1), một sink $a$ chỉ được thực thi khi cổng cho qua, nên (G2) đúng và $(\mathrm{tool}(a), \dest(a)) \in \hat
+G(u)$. Theo (A2), $\hat G(u) \subseteq G(u)$. Nhiệm vụ chỉ cần đọc có $G(u) = \emptyset$, nên không sink nào được thực
+thi. \qed
+\end{proof}
+
+\begin{proposition}[Bảo mật]\label{prop:conf}
+Dưới (A1), (A3) và (A4), không giá trị nào của $\Sigma$ xuất hiện trong $\data(a)$ của một sink được thực thi hay
+trong câu trả lời cuối đã phát hành. Vì vậy không quỹ đạo nào thỏa $H_\mathit{leak}$ với các dạng thuộc (A4).
+\end{proposition}
+\begin{proof}
+Giả sử $v \in \Sigma$ xuất hiện trong $\data(a)$ của một sink $a$ được thực thi ở bước $t$. Vì $v \notin V(u)$, tác
+tử chỉ có được $v$ qua một quan sát trước bước $t$, nên theo (A3) $v \in C_t$. Theo (A4), $v \sub \data(a)$, nên điều
+kiện \eqref{eq:c2} đúng và (G4) sai. Điều này mâu thuẫn với (A1), vì broker chỉ thực thi $a$ khi (G4) đúng. Với câu
+trả lời cuối, phép che thay mọi dạng bề mặt khớp $\kappa(v)$ trước khi phát hành, nên theo (A4) không còn dạng nào
+của $v$. \qed
+\end{proof}
+
+\begin{proposition}[Toàn vẹn]\label{prop:int}
+Dưới (A1), (A2) và (A5), mọi lời gọi sink được thực thi chứa mọi giá trị người dùng đã nêu cho lời gọi đó, so ở dạng
+$\kappa$, và không mang boolean ngược với boolean người dùng đã nêu.
+\end{proposition}
+\begin{proof}
+Theo (A1), sink $a$ chỉ được thực thi khi (G2) và (G3) đúng, tức có quyền $g$ cấp cho $a$ mà mọi literal của
+$\mathrm{pins}(g)$ có mặt trong $\data(a)$ và không boolean nào bị đảo. Theo (A2), $g$ ứng với một quyền người dùng
+thật sự cấp. Theo (A5), $\mathrm{pins}(g)$ chứa mọi giá trị người dùng đã nêu cho $a$. \qed
+\end{proof}
+
+\noindent Ba mệnh đề là điều kiện đủ dưới giả định, không phải bảo đảm vô điều kiện. Mệnh đề~\ref{prop:int} không loại
+trừ việc một giá trị khác được thêm cạnh literal đã ghim, và không nói gì về trường mà người dùng không nêu giá trị.
+Lời gọi đọc và sink không có trường đích nằm ngoài $S$, nên một công cụ đọc nhận URL do mô hình chọn vẫn có thể là
+kênh tuồn dữ liệu. Khi một ca lọt qua \ours, mô hình hình thức chỉ ra giả định nào đã bị vi phạm. Bảng~\ref{tab:proven}
+tách thuộc tính được chứng minh với thuộc tính chỉ được đo bằng thực nghiệm.
+
+\input{tables/tab2_proven}

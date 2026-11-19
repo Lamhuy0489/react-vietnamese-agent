@@ -1,0 +1,144 @@
+% BrokerGuard v3 -- Springer LNCS, mục tiêu 15 trang kể cả tài liệu tham khảo.
+% BẢN TIẾNG VIỆT ĐỂ ĐỌC (19/11/2026). Bản tiếng Anh viết sau, cùng cấu trúc, cùng bảng, hình và số.
+% Mọi con số lấy từ ../../iccies2027/facts.md (mục Test-4, các mục bổ sung 19/11 và "Bổ sung cho bài v3").
+% Overleaf: tải cả thư mục latex/ (zip), main = main.tex, trình biên dịch pdfLaTeX. Hình 1--3 vẽ bằng TikZ/pgfplots,
+% Overleaf tự vẽ, không có file ảnh ngoài.
+% Nếu pdfLaTeX báo lỗi font tiếng Việt (T5), đổi sang XeLaTeX và thay 3 dòng fontenc/inputenc/babel
+% bằng: \usepackage{fontspec} \usepackage[vietnamese]{babel}
+\documentclass[runningheads]{llncs}
+
+\usepackage[T5]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{tabularx}    % bảng trải đúng bề ngang trang, cột chữ tự xuống dòng
+\usepackage{makecell}    % tiêu đề cột hai dòng
+\usepackage[section]{placeins} % bảng/hình không trôi sang mục sau
+\usepackage{pgfplots}    % Hình 2 và 3
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{patterns,arrows.meta}
+% Bảng màu phân loại đã kiểm mù màu (xanh/cam ΔE CVD 24,7). Cam = \ours (thành phần mới), xanh = BG-Base,
+% xám = baseline. Màu theo thực thể, giống nhau ở mọi hình.
+\definecolor{bgblue}{HTML}{2A78D6}
+\definecolor{bgorange}{HTML}{EB6834}
+\usepackage{enumitem}
+\setlist{noitemsep, topsep=2pt}
+
+% Đặt bảng/hình gần chỗ nhắc tới, bớt khoảng trắng (không đổi lề, cỡ chữ hay giãn dòng của LNCS)
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{4}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{10pt plus 2pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\g@addto@macro\normalsize{%
+  \setlength{\abovedisplayskip}{4pt plus 2pt minus 1pt}%
+  \setlength{\belowdisplayskip}{4pt plus 2pt minus 1pt}%
+  \setlength{\abovedisplayshortskip}{2pt plus 1pt}%
+  \setlength{\belowdisplayshortskip}{2pt plus 1pt}}
+\makeatother
+
+% Tên môi trường định lý và từ khóa bằng tiếng Việt (bản tiếng Anh: xóa khối này)
+\addto\captionsvietnamese{%
+  \renewcommand{\propositionname}{Mệnh đề}%
+  \renewcommand{\definitionname}{Định nghĩa}%
+  \renewcommand{\proofname}{Chứng minh}}
+\renewcommand{\keywordname}{{\bfseries Từ khóa:}}
+
+% Ghi chú cho tác giả; xóa trước khi nộp.
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+% ---- TÊN GỌI (đổi một dòng ở đây là đổi cả bài; ánh xạ sang log ở ../README.md) -------------------
+\newcommand{\ours}{\textsc{BrokerGuard}}     % v3 = V3P2: BG-Base + C1 + C2 + C3
+\newcommand{\base}{BG-Base}                  % v1 = D2P2 (final_config_v3), luật chuỗi + Sandwich
+\newcommand{\cRules}{BG-Rules}               % D2 = BG-Base không có lời nhắc
+\newcommand{\cNone}{NoDef}                   % A0
+\newcommand{\cSpot}{Spotlight}               % P1
+\newcommand{\cSand}{Sandwich}                % P2
+\newcommand{\cPG}{PromptGuard}               % G1 (Prompt Guard 2, 86M)
+\newcommand{\cMel}{MELON$^*$}                % MEL (cài lại)
+\newcommand{\cProg}{Progent$^*$}             % PRG (cài lại)
+\newcommand{\cPhrase}{PhraseRules}           % R1
+% Ba thành phần mới
+\newcommand{\cOne}{\textsf{C1}}              % chính sách ý định P(u)
+\newcommand{\cTwo}{\textsf{C2}}              % nhãn mức giá trị
+\newcommand{\cThree}{\textsf{C3}}            % ghim tham số
+\newcommand{\abl}[1]{\ours$-$\textsf{C#1}}  % bản bỏ một thành phần
+% Luật giữ từ BG-Base
+\newcommand{\rDest}{\textsf{R-Dest}}         % luật 2 của D2 (bị C1 thay)
+\newcommand{\rFlow}{\textsf{R-Flow}}         % luật 3 của D2 (theo nhãn nguồn)
+\newcommand{\rRedact}{\textsf{R-Redact}}     % luật 4 của D2
+\newcommand{\rSig}{\textsf{R-Signal}}        % lớp A1 của D2
+% Cơ chế tấn công (chỉ dùng trong bảng và hình)
+\newcommand{\mER}{\textsf{ER}}               % M1
+\newcommand{\mCR}{\textsf{CR}}               % M2
+\newcommand{\mSL}{\textsf{SL}}               % M3
+\newcommand{\mAL}{\textsf{AL}}               % M4
+\newcommand{\mPT}{\textsf{PT}}               % M5
+\newcommand{\mUS}{\textsf{US}}               % M6
+% Tập dữ liệu
+\newcommand{\dev}{Dev}                       % Dev v4.1 (168 họ)
+\newcommand{\tOne}{Test-I}                   % "Test v3", nay thuộc Dev
+\newcommand{\tTwo}{Test-II}                  % "Test-3", nay thuộc Dev
+\newcommand{\tThree}{Test-III}               % "Test-4" (T5_*), tập kiểm định duy nhất của bài
+% Ký hiệu
+\newcommand{\sub}{\sqsubseteq}               % x ⊑ z: kappa(x) là chuỗi con của kappa(z)
+\newcommand{\dest}{\mathit{dst}}
+\newcommand{\data}{\mathit{data}}
+\newcommand{\norm}{\nu}
+\newcommand{\bPlain}{lành tính thường}       % benign_plain
+\newcommand{\bAuth}{lành tính ủy quyền}       % benign_auth
+
+% hyperref nạp cuối cùng: trích dẫn, tham chiếu và DOI/URL màu xanh, bấm được
+\usepackage{hyperref}
+\definecolor{linkblue}{HTML}{1F4E9A}
+\hypersetup{colorlinks=true, linkcolor=linkblue, citecolor=linkblue, urlcolor=linkblue}
+\AtBeginDocument{\def\doi#1{\href{https://doi.org/#1}{doi:#1}}}
+
+\begin{document}
+
+% Tiêu đề (tiếng Anh, là tiêu đề nộp). Nghĩa: BrokerGuard: cấp quyền theo ý định và kiểm soát luồng mức giá trị
+% trước tấn công chèn lệnh gián tiếp cho tác tử LLM tiếng Việt.
+\title{BrokerGuard: Intent-Aware Authorisation and Value-Level Flow Control Against Indirect Prompt Injection in
+Vietnamese LLM Agents}
+\titlerunning{BrokerGuard}
+
+\author{\todo{Tác giả 1}\inst{1} \and \todo{Tác giả 2}\inst{1}}
+\authorrunning{\todo{Tác giả} et al.}
+\institute{\todo{Đơn vị, thành phố, quốc gia} \\ \email{\todo{email}}}
+
+\maketitle
+
+\input{sections/00_abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_threat_model}
+\input{sections/04_method}
+\input{sections/05_formal_model}
+\input{sections/06_protocol}
+\input{sections/07_results}
+\input{sections/08_discussion}
+\input{sections/09_conclusion}
+
+% \begin{credits}
+% \subsubsection{\ackname} ...
+% \subsubsection{\discintname} Các tác giả không có xung đột lợi ích.
+% \end{credits}
+
+\bibliographystyle{splncs04}
+\bibliography{refs}
+
+\end{document}

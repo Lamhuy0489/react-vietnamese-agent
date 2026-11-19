@@ -2,6 +2,10 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**19/11 tối: bài v3 xong bản tiếng Việt (`latex/`) và tiếng Anh (`latex_en/`)** ở `docs/paper/brokerguard_v3/` (LNCS,
+khoảng 20 trang, 6 bảng, 3 hình TikZ/pgfplots, 25 tài liệu). Chưa biên dịch; owner đọc và biên dịch trên Overleaf, rồi
+sửa theo góp ý ở cả hai bản.
+
 **19/11 12:15: mọi thực nghiệm XONG.** Đã ghi facts.md + decision log: Gemini Test-4 (cột tham khảo), Test-4 và Dev v4.1
 bổ sung R1/D2/P1/MEL/G1, thích nghi nhắm v3, AgentDojo v3. Dòng phát triển (họ bị hại): Test-4 /48 R1 34 → D2 15 → v1 6 →
 v3 2; Dev v4.1 /504 R1 278 → D2 123 → v1 36 → v3 4. Việc kế: viết bài.

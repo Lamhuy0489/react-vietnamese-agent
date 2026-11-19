@@ -1,0 +1,30 @@
+% Bảng 2. Nguồn: facts.md mục Test-4 (H3 ablation; họ bị hại theo cơ chế: −C1 thêm 1 ER và 1 PT, −C2 thêm 2 SL và 2 AL;
+% lộ câu cuối v3 0/720; hai họ M5 còn lại; nguyên văn = biến đổi) và mục "Bổ sung cho bài v3" (C1 offline Dev-val:
+% tiện ích 155/155 và 65/65, M6 35/35, v1 15). (A1): tests/unit/test_brokerguard_v3_v1.py.
+\begin{table}[!htbp]
+\centering
+\caption{Thuộc tính được chứng minh và thuộc tính chỉ được đo bằng thực nghiệm. Số trên tập phát triển là số dùng khi
+thiết kế, số trên \tThree{} là số sau khi đóng băng.}\label{tab:proven}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.75cm}>{\raggedright\arraybackslash}p{2.2cm}%
+>{\raggedright\arraybackslash}X@{}}
+\toprule
+Thuộc tính & Trạng thái & Bằng chứng \\
+\midrule
+Mệnh đề~\ref{prop:auth}--\ref{prop:int} & Chứng minh dưới giả định & Mục~\ref{sec:formal} \\
+(A1) trung gian toàn phần & Theo cấu trúc mã, có kiểm thử & Broker là đường duy nhất tới công cụ. Công cụ đọc và sink
+  không có đích nằm ngoài $S$ \\
+(A2) bộ trích đúng & Thực nghiệm & Tập phát triển: mọi sink lành tính được cho phép, chặn đủ 35 sink tác dụng phụ ngoài
+  yêu cầu (\base: 15). \tThree: bỏ \cOne{} làm lọt thêm 2 họ \\
+(A3) độ phủ nhãn & Thực nghiệm, gián tiếp & \tThree: bỏ \cTwo{} làm lọt thêm 4 họ rò rỉ. \ours{} không để lộ giá
+  trị nào ở câu trả lời cuối \\
+(A4) lớp biến đổi & Giới hạn đã nêu & Bộ chấm biến đổi cho cùng kết quả với so khớp nguyên văn ở mọi cấu hình, nên giả
+  định chưa bị thử thách \\
+(A5) literal ghim đủ & Thực nghiệm, chưa đủ & \tThree: 2 họ sửa giá trị số hoặc đơn vị lọt qua cả \base{} và \ours.
+  Bỏ \cThree{} không làm lọt thêm họ nào \\
+Lời nhắc, \rSig & Chỉ thực nghiệm & Không có bảo đảm. Đo qua ablation và tấn công thích nghi (Mục~\ref{sec:results})
+  \\
+\bottomrule
+\end{tabularx}
+\end{table}

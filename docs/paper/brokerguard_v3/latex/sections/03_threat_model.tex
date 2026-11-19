@@ -1,0 +1,53 @@
+% Công cụ: docs/tool_contracts.md (6 công cụ đọc + 2 sink giả, không I/O mạng). Bộ chấm biến đổi:
+% src/react_agent/evaluation/transformed_leakage.py (decision log 2026-11-15 18:20). Không nêu tên công cụ giả trong bài.
+\section{Mô hình đe dọa}\label{sec:threat}
+
+\paragraph{Tác tử và công cụ.} Gọi $u$ là yêu cầu của người dùng. Ở mỗi bước, mô hình sinh một hành động $a_t$ gồm tên
+công cụ và tham số, hoặc sinh câu trả lời cuối $y$. Tool Broker kiểm tra $a_t$, thực thi và trả về quan sát $o_t$. Hệ
+thống có sáu công cụ đọc (tìm và đọc tài liệu, truy vấn cơ sở dữ liệu chỉ đọc, tìm và mở trang lưu đệm, máy tính) và
+hai \emph{sink} có tác dụng phụ là gửi e-mail và gọi webhook. Hai sink là bản giả, chỉ ghi nhật ký và không gửi gì ra
+mạng. Câu trả lời cuối được coi là sink thứ ba. Với một lời gọi sink $a$, $\dest(a)$ là đích (địa chỉ hoặc URL) và
+$\data(a)$ là các tham số còn lại.
+
+\paragraph{Hai nhãn.} Mỗi nội dung mang hai nhãn độc lập. Theo \emph{độ tin cậy}, chỉ $u$ và prompt hệ thống là đáng
+tin, mọi quan sát từ công cụ là không đáng tin. Theo \emph{độ nhạy cảm}, nội dung được xếp từ công khai tới mật. Một
+trang không đáng tin có thể là công khai, còn một bản ghi mật có thể đến từ nguồn mà kẻ tấn công không chạm tới. Gộp
+hai chiều làm một sẽ dẫn tới hoặc chặn mọi dữ liệu mật, hoặc tin mọi nguồn nội bộ.
+
+\paragraph{Kẻ tấn công.} Kẻ tấn công kiểm soát văn bản của một nội dung do công cụ đọc trả về, ở bất kỳ vị trí và
+giọng điệu nào. Họ biết tên và schema của công cụ. Trong các vòng thích nghi, họ biết thêm toàn bộ thiết kế và mô hình
+hình thức của phòng thủ. Họ không sửa được $u$, prompt hệ thống, broker hay trọng số mô hình. Jailbreak trực tiếp,
+đầu độc dữ liệu huấn luyện, từ chối dịch vụ và hệ nhiều tác tử nằm ngoài phạm vi bài báo.
+
+\paragraph{Vị từ gây hại.} Gọi $G(u)$ là tập cặp (công cụ, đích) mà người dùng thực sự cho phép, $\Sigma$ là tập giá
+trị mật trên quỹ đạo mà người dùng không cho phép tiết lộ, và $\mathcal{S}$ là tập lời gọi sink \emph{đã được thực
+thi}. Giá trị do chính người dùng viết trong $u$ không thuộc $\Sigma$. Quỹ đạo $\tau$ gây hại nếu
+\begin{equation}\label{eq:harm}
+\mathrm{Harm}(\tau) = H_\mathit{dest} \lor H_\mathit{leak} \lor H_\mathit{tamper} \lor H_\mathit{side},
+\end{equation}
+trong đó
+\begin{itemize}
+\item $H_\mathit{dest}$: tồn tại $a \in \mathcal{S}$ với $(\mathrm{tool}(a), \dest(a)) \notin G(u)$,
+\item $H_\mathit{leak}$: tồn tại $v \in \Sigma$ xuất hiện trong $\data(a)$ của một $a \in \mathcal{S}$ hoặc trong $y$,
+  ở dạng nguyên văn hay dạng biến đổi,
+\item $H_\mathit{tamper}$: tồn tại $a \in \mathcal{S}$ có đích hợp lệ nhưng một trường do người dùng chỉ định mang giá
+  trị khác,
+\item $H_\mathit{side}$: nhiệm vụ chỉ cần đọc nhưng $\mathcal{S} \neq \emptyset$.
+\end{itemize}
+Một bộ chấm đóng băng xác định các vị từ từ lời gọi đã thực thi và $y$. Lời gọi bị chặn không được tính là gây hại.
+Ngoài so khớp nguyên văn, bộ chấm nhận ra giá trị mật ở dạng Base64, Hex, mã hóa URL, tách ký tự và số viết bằng chữ.
+
+\paragraph{Sáu cơ chế tấn công.} Tấn công được phân loại theo \emph{cơ chế}, tức con đường để đoạn chèn biến thành
+tác hại (Bảng~\ref{tab:mechanisms}). Ở hai cơ chế chuyển hướng, đích không có trong $u$. Ở hai cơ chế rò rỉ, đích hợp
+lệ hoặc không có đích, nên chỉ nguồn gốc của giá trị mới phân biệt được tấn công với nhiệm vụ. Ở cơ chế sửa tham số,
+cả đích lẫn độ nhạy cảm đều bình thường. Cơ chế tác dụng phụ ngoài yêu cầu kiểm tra xem một đích chỉ được nhắc tới,
+chẳng hạn trong một câu cấm, có bị coi là đã được cấp quyền không.
+
+\input{tables/tab1_mechanisms}
+
+\paragraph{Họ, nhánh lành tính và biến thể.} Một \emph{họ} là một ý tưởng tấn công trong một nhiệm vụ và một môi
+trường công cụ cụ thể. Mọi họ có nhánh \emph{\bPlain}, thay đoạn chèn bằng một ghi chú vô hại cùng độ dài để đo tiện
+ích. Một phần ba số họ có thêm nhánh \emph{\bAuth}, trong đó người dùng cho phép rõ ràng một hành động giống mục tiêu
+tấn công. Chặn ở các nhánh lành tính là \emph{chặn nhầm}. Mỗi họ có năm biến thể áp cho cả $u$ lẫn đoạn chèn: tiếng
+Việt chuẩn, diễn đạt lại, trộn Việt và Anh, không dấu, và tiếng Anh. Định danh, địa chỉ và giá trị mật giống hệt nhau
+giữa các biến thể, nên mọi khác biệt chỉ đến từ ngôn ngữ.

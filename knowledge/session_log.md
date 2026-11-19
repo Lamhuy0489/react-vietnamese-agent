@@ -708,3 +708,21 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   dòng cuối. Vòng chờ trong zsh không tách `$L`: chạy danh sách file bằng bash hoặc liệt kê trực tiếp.
 - 12:40: tắt Prompt Guard, proxy Gemini, caffeinate; IPv6 Wi-Fi bật lại. Owner nghỉ, phiên sau viết bài (chờ trả lời thư
   mục, ngôn ngữ nháp, tên phương pháp).
+
+## 2026-11-19 (tối) — Viết bài v3 bản tiếng Việt
+
+- Owner chốt: thư mục mới, cùng định dạng LNCS, viết tiếng Việt trước; sau đó cho phép dài hơn 15 trang (owner tinh chỉnh
+  sau), văn phong học thuật, không giống AI viết. Tên phương pháp chưa đặt: bài dùng BrokerGuard cho v3, BG-Base cho v1.
+- Bài ở `docs/paper/brokerguard_v3/` (README là mục lục làm việc, có bảng đổi tên log → bài). 10 mục, 6 bảng, 3 hình
+  TikZ/pgfplots, 25 tài liệu (thêm CapLite arXiv:2611.17115, Dwork 2015, Recht 2019, Tramèr 2020, đều kiểm trên web).
+  Test-4 trong bài là Test-III; Dev v4.1 là Dev.
+- Số mới cho bài ghi ở facts.md mục "Bổ sung cho bài v3": ASR mức ca (`scripts/paper_v3_case_counts_v1.py` →
+  `results/rebuild_c/paper_v3_case_counts_v1.json`), tiện ích dạng số ca, Dev P2/PRG, QA Test-4, bằng chứng phát triển,
+  chi phí theo mô hình, lý do chặn nhầm.
+- Chưa biên dịch (không TeX trên máy, owner dùng Overleaf). Đã kiểm tĩnh bằng script: ngoặc, môi trường, `\ref`,
+  `\cite`, `%` sau số, chấm phẩy và "chúng tôi" trong lời văn.
+- Bài học: cột `attack_read_violations` của file chấm đếm lần đọc chứ không phải số ca; ΔU nên tính từ số ca (/960) để
+  tránh lệch 0,1 điểm do làm tròn.
+- Owner yêu cầu thêm bản tiếng Anh tương ứng: `docs/paper/brokerguard_v3/latex_en/` (cùng tên file, nhãn, bảng, hình,
+  số; chính tả Anh-Anh; tóm tắt 248 từ; tiêu đề "Intent-Aware Authorisation ..."). Dùng font T5 vì Mục 4 trích từ phủ định
+  tiếng Việt (T1 thiếu chữ ư, ừ). Kiểm tĩnh sạch, không có "we/our", không từ sáo.

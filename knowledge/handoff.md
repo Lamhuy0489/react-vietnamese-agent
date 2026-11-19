@@ -1,11 +1,17 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-19. (Tối; trước đó 2026-11-15.) Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
+
+**2026-11-19 (tối): BÀI v3 XONG CẢ BẢN TIẾNG VIỆT (`latex/`) VÀ TIẾNG ANH (`latex_en/`), chờ owner đọc và biên dịch.** Thư mục `docs/paper/brokerguard_v3/`
+(đọc `README.md` trước: nguồn số, bảng đổi tên, quy tắc văn phong, việc owner cần làm). Main `latex/main.tex`, LNCS, khoảng
+20 trang (owner cho phép dài, cắt sau). Số chỉ từ `docs/paper/iccies2027/facts.md` (thêm mục "Bổ sung cho bài v3").
+Việc kế: (1) owner biên dịch cả hai bản trên Overleaf, báo lỗi; (2) sửa theo góp ý, sửa đồng thời hai bản;
+(3) owner chốt nơi nộp, tiêu đề, tác giả, tên phương pháp. Không chạy thêm thực nghiệm.
 
 **2026-11-19 12:15: MỌI THỰC NGHIỆM XONG.** Dev v4.1 bổ sung R1, D2, P1, MEL, G1 × 3 mô hình đủ 1 960/1 960, chấm
 `evaluate_v3_v2`; tổng hợp `scripts/dev4_1_supp_baselines_v1.py` → facts.md mục "Baseline bổ sung trên Dev v4.1", decision

@@ -1,0 +1,61 @@
+% Hình 2, pgfplots (Overleaf tự vẽ, không render trên máy). KHÔNG chạy regex đổi dấu thập phân trên file này: tọa độ
+% dùng dấu chấm, nhãn trục dùng dấu phẩy nhờ /pgf/number format/use comma.
+% Số liệu: facts.md mục Test-4 (họ bị hại /48, tiện ích) và mục "Bổ sung cho bài v3" (tiện ích dạng số ca /960).
+% Delta U = (k - 411)/960*100 điểm, k = số ca lành tính thành công:
+%   NoDef 411 -> 0 | MELON* 411 -> 0 | PromptGuard 410 -> -0.1042 | Progent* 409 -> -0.2083 | Sandwich 391 -> -2.0833
+%   Spotlight 381 -> -3.125 | PhraseRules 412 -> +0.1042 | BG-Rules 403 -> -0.8333 | BG-Base 386 -> -2.6042
+%   BrokerGuard 381 -> -3.125 | -C1 384 -> -2.8125 | -C2 386 -> -2.6042 | -C3 382 -> -3.0208 | chặn mọi sink 110 -> -31.35
+% Màu theo thực thể như Hình 1, 3: xám = phòng thủ khác, xanh = dòng phát triển, cam = BrokerGuard (rỗng = bỏ một thành phần).
+% Hình dạng điểm khác nhau nên đọc được khi in đen trắng. Tổng rộng khoảng 10,4 cm.
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  scale only axis, width=9.4cm, height=4.4cm,
+  xmin=-1.5, xmax=42, ymin=-3.6, ymax=0.6,
+  xtick={0,10,20,30,40}, ytick={-3,-2,-1,0},
+  xlabel={Số họ bị hại trên \tThree{} (/48, gộp ba mô hình nền)},
+  ylabel={$\Delta U$ so với \cNone{} (điểm \%)},
+  axis x line*=bottom, axis y line*=left,
+  tick label style={font=\scriptsize}, label style={font=\scriptsize},
+  xmajorgrids, ymajorgrids, grid style={line width=0.2pt, draw=black!12},
+  /pgf/number format/use comma,
+  legend style={font=\tiny, draw=black!20, fill=white, fill opacity=0.9, text opacity=1,
+    at={(0.99,0.56)}, anchor=north east, cells={anchor=west}},
+  clip=false,
+]
+\addplot[only marks, mark=*, mark size=1.8pt, mark options={draw=black!70, fill=black!25}]
+  coordinates {(40,0) (40,-0.1042) (38,-3.125) (22,-2.0833) (25,-0.2083)};
+\addlegendentry{Phòng thủ khác}
+\addplot[only marks, mark=square*, mark size=1.7pt, mark options={draw=bgblue, fill=bgblue}]
+  coordinates {(34,0.1042) (15,-0.8333) (6,-2.6042)};
+\addlegendentry{Dòng phát triển}
+\addplot[only marks, mark=diamond, mark size=2.6pt, mark options={draw=bgorange, fill=white, line width=0.7pt}]
+  coordinates {(4,-2.8125) (6,-2.6042) (2,-3.0208)};
+\addlegendentry{\ours{} bỏ một thành phần}
+\addplot[only marks, mark=diamond*, mark size=3pt, mark options={draw=bgorange!75!black, fill=bgorange}]
+  coordinates {(2,-3.125)};
+\addlegendentry{\ours}
+% nhãn từng điểm
+\node[font=\tiny, anchor=north east] at (axis cs:41.2,-0.22) {\cNone, \cMel, \cPG};
+\node[font=\tiny, anchor=south] at (axis cs:34,0.2) {\cPhrase};
+\node[font=\tiny, anchor=south] at (axis cs:25,-0.1) {\cProg};
+\node[font=\tiny, anchor=south] at (axis cs:22,-1.97) {\cSand};
+\node[font=\tiny, anchor=south] at (axis cs:38,-3.0) {\cSpot};
+\node[font=\tiny, anchor=west] at (axis cs:15.8,-0.8333) {\cRules};
+\node[font=\tiny, anchor=west] at (axis cs:6.9,-2.55) {\base, bỏ \cTwo};
+\node[font=\tiny, anchor=west] at (axis cs:4.9,-2.86) {bỏ \cOne};
+\node[font=\tiny, anchor=north west] at (axis cs:2.6,-3.17) {\textbf{\ours}, bỏ \cThree};
+% hướng tốt hơn và tham chiếu ngoài trục (mũi tên đặt đúng x = 14 họ)
+\draw[-{Stealth[length=3pt]}, draw=black!45, line width=0.5pt] (axis cs:11,-1.35) -- (axis cs:6.5,-0.55)
+  node[anchor=south, font=\tiny, text=black!60] {tốt hơn};
+\draw[-{Stealth[length=2.5pt]}, draw=black!45, line width=0.5pt] (axis cs:14,-3.0) -- (axis cs:14,-3.55);
+\node[font=\tiny, text=black!60, anchor=west] at (axis cs:14.6,-3.3)
+  {Chặn mọi sink: 14 họ, $\Delta U = -31{,}4$ (ngoài trục)};
+\end{axis}
+\end{tikzpicture}
+\caption{Đánh đổi giữa an ninh và tiện ích trên \tThree. Trục ngang là số họ bị hại, trục dọc là $\Delta U$ so với
+\cNone{} tính trên 960 ca lành tính. Góc trên bên trái là tốt nhất. Dòng phát triển gồm \cPhrase, \cRules{} và \base.
+Điểm của \base{} trùng với \ours{} bỏ \cTwo, còn \ours{} bỏ \cThree{} giữ hơn \ours{} một ca lành tính. Tham chiếu chặn
+mọi sink được ước lượng từ quỹ đạo \cNone{} và nằm ngoài trục.}\label{fig:pareto}
+\end{figure}

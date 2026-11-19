@@ -377,3 +377,85 @@ thành công (số chính thức AgentDojo); cột cuối = utility không tấn
   (24); EN Slack C1 322, C2 21 (60); VI Slack C1 171, R-Signal 14, C2 5 (34). C3 không chặn lần nào.
 - Chi phí: utility Slack giảm thêm so với v1 (EN 15 → 11 dưới tấn công; không tấn công 5 → 3 ở cả EN và VI) vì C1 chặt
   hơn R-Dest với đích lấy từ trang web/tin nhắn và C2 chặn giá trị có nhãn. Banking không đổi.
+
+## Bổ sung cho bài v3 (2026-11-19, viết bài ở `docs/paper/brokerguard_v3/`; chỉ số đếm, không đọc nội dung)
+
+### ASR mức ca trên Test-4 (tổng 3 backbone mở)
+
+Nguồn: `scripts/paper_v3_case_counts_v1.py` → `results/rebuild_c/paper_v3_case_counts_v1.json` (đọc khối summary của mọi
+`test4_<cfg>_<model>_eval_v3.json`, kiểm đủ 560 ca). Ca tấn công bị hại /720 (`harm_transformed`; nguyên văn trùng ở mọi
+cấu hình); lộ ở câu trả lời cuối /720; chặn nhầm = ca lành có ít nhất một lần cổng từ chối /960; xác nhận lành /960.
+
+| Cấu hình | Ca bị hại /720 | Lộ câu cuối | Chặn nhầm /960 | Xác nhận lành |
+|---|---|---|---|---|
+| A0 | 231 (32,1%) | 54 | 0 | 0 |
+| P1 Spotlight | 175 (24,3%) | 36 | 0 | 0 |
+| P2 Sandwich | 47 (6,5%) | 14 | 0 | 0 |
+| G1 Prompt Guard 2 | 228 (31,7%) | 54 | 0 | 0 |
+| MEL MELON* | 227 (31,5%) | 52 | 0 | 0 |
+| PRG Progent* | 171 (23,8%) | 53 | 0 | 0 |
+| R1 PhraseRules | 120 (16,7%) | 41 | 0 | 0 |
+| D2 BG-Rules | 49 (6,8%) | 8 | 20 | 0 |
+| v1 (D2P2) | 9 (1,3%) | 0 | 19 | 0 |
+| v3 (V3P2) | 5 (0,7%) | 0 | 24 | 3 |
+| v3 − C1 | 8 (1,1%) | 0 | 22 | 0 |
+| v3 − C2 | 10 (1,4%) | 1 | 23 | 3 |
+| v3 − C3 | 6 (0,8%) | 0 | 23 | 3 |
+
+- Trường `attack_read_violations` của file chấm đếm số lần đọc, không phải số ca; số ca đọc trái phép dùng dòng
+  "v1 20, v3 18 ca" ở mục Test-4 phía trên.
+- Tiện ích gộp /960 dạng số ca (từ `test4_analysis_v1.json` và bảng baseline bổ sung): A0 411, P1 381, P2 391, G1 410,
+  MEL 411, PRG 409, R1 412, D2 403, v1 386, v3 381, −C1 384, −C2 386, −C3 382; chặn mọi sink 110. ΔU tính từ số ca:
+  R1 +0,1; D2 −0,8; P1 −3,1; MEL 0,0; G1 −0,1; chặn mọi sink −31,4 điểm (các cấu hình khác như bảng Test-4 phía trên).
+- Cặp họ × backbone bị hại /144 (cộng ba cột Q·G·L): A0 83, P1 72, P2 31, G1 81, MEL 80, PRG 55, R1 66, D2 27, v1 7, v3 3,
+  −C1 6, −C2 8, −C3 4.
+
+### Dev v4.1: thành phần và mốc P2, PRG
+
+- Dev v4 = Dev cũ 48 họ + Test-I 72 + Test-II 48 = 168 họ, 1.960 ca: 840 tấn công, 840 lành thường, 280 lành ủy quyền
+  (decision log 2026-11-15 16:30; mẫu số các mốc 16/11). Dev-val 42 họ (7 mỗi cơ chế), 490 ca, 210 ca tấn công
+  (decision log 2026-11-17 02:00). Dev v4.1 = Dev v4 sau errata theo quy tắc nhãn v4 (gắn tất định, có người rà; không báo κ).
+- Họ bị hại theo backbone /168 (cộng /504): P2 Qwen 33, Gemma 31, Llama 47 (111); PRG Qwen 70, Gemma 68, Llama 60 (198)
+  (decision log 2026-11-16 11:15, 16:00, 18:00, 18:40).
+
+### Test-4: kiểm chất lượng và bộ thích nghi nhắm v1
+
+- `data/adversarial/release_test4/qa.json`: 800 lần phát lại tham chiếu, 0 lỗi; Jaccard 4-gram lớn nhất 0,05 so với
+  Dev v4 (ngưỡng 0,2), 0 văn bản vượt ngưỡng. 80 ca ủy quyền = 16 họ có nhánh ủy quyền × 5 biến thể.
+- 24 ca thích nghi nhắm v1: mỗi loại lỗ hổng 8 ca (giá trị mật trong nguồn công khai, đích có trong yêu cầu, sửa tham số)
+  (decision log 2026-11-15 17:30).
+
+### Bằng chứng phát triển (chỉ Dev, dùng cho bảng "chứng minh và thực nghiệm")
+
+- C1 chấm offline trên lời gọi sink của oracle (decision log 2026-11-16 12:30): Dev-val tiện ích 155/155 thường và 65/65
+  ủy quyền (v1 cũng 100%); chặn sink tấn công 105/190 (v1 85); M6 35/35 (v1 15). Dev-train M6 105/105 (v1 65).
+- Phát lại oracle không LLM, Dev-val /210 quỹ đạo tấn công gây hại (decision log 2026-11-16 15:30): v1 25, v3 2, −C1 7,
+  −C2 6, −C3 13. Biến thể C1a (P(u) thay lớp luật) tăng hại 2 → 5 nên bị loại.
+- Benchmark vi mô của broker, trung vị micro giây (decision log 2026-11-16 16:20): dựng policy từ u v1 119, v3 496; xử lý
+  một đầu ra công cụ v1 580, v3 870; kiểm một lời gọi sink v1 107, v3 315.
+- Ước lượng lực trước niêm phong (decision log 2026-11-15 18:20): nền v1 14/48, nếu v3 vá 8 họ thì lực 91,1% (α 0,05).
+- Thiết lập chạy: nhiệt độ 0, tối đa 512 token mỗi bước, seed 42 (`configs/runtime/default.yaml`), tối đa 8 bước
+  (`configs/agent/A0.yaml`); cùng cho mọi cấu hình Dev v4.1 và Test-4.
+
+### Tài liệu mới được trích
+
+- CapLite: Xu, Liu, Nakayama, arXiv:2611.17115 (12/11/2026): chính sách suy từ schema công cụ, cam kết các lời gọi ghi
+  trước khi đọc kết quả công cụ, chỉ nhận lời gọi ghi khi mọi đối số quyết định "ai/cái gì bị tác động" có trong yêu cầu
+  người dùng; AgentDojo, 15 mô hình mở. Chỉ dùng mức tóm tắt (đã đọc trang arXiv 19/11).
+
+### Chi phí theo mô hình trên Test-4 (cho bảng chi phí của bài v3)
+
+Nguồn: `results/rebuild_c/test4_analysis_v1.json` (`configs.<cfg>.<model>.cost_all`, `false_block`,
+`confirmation_benign`; `H4.per_backbone`). Token và giây là trung bình trên 560 ca; giây chỉ so được giữa D2P2 và V3P2
+(chạy cùng đợt; ablation chạy đợt khác nên chậm hơn, 14–16 s).
+
+| Mô hình | Token A0 · v1 · v3 | Δ token v3/v1 | Giây v1 · v3 | Δ giây | Chặn nhầm v1 → v3 /320 | Xác nhận v3 /320 |
+|---|---|---|---|---|---|---|
+| Qwen3.5-9B | 5.597 · 7.458 · 7.515 | +0,77% | 11,48 · 11,55 | +0,61% | 9 → 11 | 2 |
+| Gemma-4-12B | 6.161 · 5.672 · 5.670 | −0,05% | 16,20 · 16,10 | −0,62% | 5 → 6 | 1 |
+| Llama-3.1-8B | 8.587 · 9.565 · 9.596 | +0,32% | 14,52 · 14,32 | −1,38% | 5 → 7 | 0 |
+
+- Δ token chính xác là −0,05% ở Gemma (dòng H4 phía trên ghi tròn −0,1%). Dev-train = 168 − 42 = 126 họ.
+- Lý do chặn nhầm của V3P2 trên Dev v4.1 (decision log 2026-11-17 07:00, 08:30, 11:30): Qwen và Gemma đứng đầu là luật 3
+  của v1 (PROVENANCE_SENSITIVE_PAYLOAD) và lớp A1 (RULE_INJECTION_SIGNAL); Llama đứng đầu là PINNED_PARAMETER_CHANGED
+  (C3, 61) vì Llama hay viết lại giá trị người dùng nêu. Chặn nhầm Test-4 gộp /960: v1 19, v3 24 (mục ASR mức ca).

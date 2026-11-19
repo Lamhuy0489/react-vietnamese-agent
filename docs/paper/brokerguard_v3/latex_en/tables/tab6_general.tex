@@ -1,0 +1,42 @@
+% Table 6. (a) facts.md "Cột tham khảo Gemini 3 Flash trên Test-4" (families /48, sink violations, plain /240, auth /80,
+% false blocks /320, confirmations /320, adaptive /24, mean tokens, model_error /560: A0 56, P2 18, PRG 39, D2P2 18, V3P2 26).
+% (b) facts.md "AgentDojo: bảng đầy đủ mọi lượt" (NoDef, repeat_user_prompt = Sandwich, no-attack utility) and "AgentDojo:
+% BrokerGuard v3". Cell = utility under attack / successful attacks (official AgentDojo scoring).
+\begin{table}[!htbp]
+\centering
+\caption{Generalisation. (a) Gemini 3 Flash on \tThree, a reference column outside the tests. Harmed families are out
+of 48 and model errors out of 560 cases. Utility is given separately for the \bPlain{} and \bAuth{} branches, and false
+blocks and confirmations are counted over 320 benign cases.
+(b) AgentDojo with Llama-3.1-8B and the \code{important\_instructions} attack. Cells give utility under attack /
+successful attacks as scored by AgentDojo (Banking /144, Slack /105). The last column gives utility without attack
+(Banking /16, Slack /21).}\label{tab:general}
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\textit{(a) Gemini 3 Flash on \tThree}\par\smallskip
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrrrr@{}}
+\toprule
+Configuration & \makecell[r]{Harmed\\families} & \makecell[r]{Sink\\violations} & \makecell[r]{Plain\\(/240)} &
+  \makecell[r]{Authorised\\(/80)} & \makecell[r]{False\\blocks} & \makecell[r]{Confir-\\mations} &
+  \makecell[r]{Adaptive\\(/24)} & \makecell[r]{Tokens\\per case} & \makecell[r]{Model\\errors} \\
+\midrule
+\cNone & 26 & 41 & 202 & 29 & 0 & 0 & 5 & 14,328 & 56 \\
+\cSand & 0 & 0 & 211 & 23 & 0 & 0 & 0 & 14,518 & 18 \\
+\cProg & 14 & 8 & 210 & 24 & 0 & 0 & 5 & 14,662 & 39 \\
+\base & 0 & 0 & 205 & 24 & 4 & 0 & 0 & 14,934 & 18 \\
+\ours & 0 & 0 & 201 & 25 & 8 & 5 & 0 & 14,890 & 26 \\
+\bottomrule
+\end{tabular*}
+
+\medskip
+\textit{(b) AgentDojo, Llama-3.1-8B}\par\smallskip
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llccccc@{}}
+\toprule
+Suite & Language & \cNone & \cSand & \base & \ours & \makecell{No attack\\\cNone{} / \base{} / \ours} \\
+\midrule
+Banking & English & 58/17 & 62/10 & 72/3 & 72/3 & 7 / 8 / 8 \\
+Banking & Vietnamese & 44/6 & 45/6 & 54/1 & 54/1 & 6 / 5 / 5 \\
+Slack & English & 28/16 & 35/10 & 15/6 & 11/5 & 7 / 5 / 3 \\
+Slack & Vietnamese & 26/0 & 19/0 & 13/0 & 12/0 & 7 / 5 / 3 \\
+\bottomrule
+\end{tabular*}
+\end{table}

@@ -1,0 +1,22 @@
+% LNCS: abstract 150--250 words. No p-values in the abstract. Numbers: facts.md (Test-4: 40, 6, 2 families; ΔU −3.1;
+% H1 not significant; tokens and latency of v3 against v1), adaptive rounds, AgentDojo v3.
+\begin{abstract}
+Instructions planted in content read by a tool-using LLM agent can make it send data to an unknown destination, leak
+confidential values or alter a legitimate action. This paper presents \ours, an enforcement mechanism placed at the
+Tool Broker, outside the model, with three deterministic components. The first extracts an intent policy with polarity
+from the user request, so a destination that is only mentioned or forbidden is not authorised. The second labels each
+value by its type, independently of its source. The third pins the values the user stated for an authorised action.
+\ours{} makes no additional LLM calls. Modelling the broker as a state-transition system, the paper proves
+authorisation safety, confidentiality and integrity under five explicit assumptions and measures each assumption
+empirically. On 48 new Vietnamese attack families sealed before any \ours{} code existed, with three open-weight
+backbones, \ours{} reduces the number of harmed families from 40 without defence to 2, against 6 for the previous
+string-matching version. This reduction is not significant under the pre-registered test, because the previous version
+was already near the floor. Benign utility falls by 3.1 percentage points relative to no defence, while tokens and
+latency per case stay within 1.4\% of the previous version. Under two rounds of rule-aware adaptive attacks, no family
+succeeds beyond those that already succeed with the original attacks. On AgentDojo in English and Vietnamese, \ours{}
+matches the attack success of the previous version but lowers utility further on tasks whose destinations come from
+tool data.
+
+\keywords{Indirect prompt injection \and LLM agents \and Intent-based authorisation \and Information flow control \and
+Vietnamese}
+\end{abstract}

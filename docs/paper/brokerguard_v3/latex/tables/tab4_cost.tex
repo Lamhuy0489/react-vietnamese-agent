@@ -1,0 +1,27 @@
+% Bảng 4. Nguồn: results/rebuild_c/test4_analysis_v1.json (configs.<cfg>.<model>.cost_all, false_block,
+% confirmation_benign; H4.per_backbone), chép vào facts.md mục "Bổ sung cho bài v3", "Chi phí theo mô hình".
+% Token: Qwen 5597,4 / 7457,6 / 7515,1; Gemma 6161,2 / 5672,3 / 5669,5; Llama 8587,1 / 9565,0 / 9595,9 (A0 / v1 / v3).
+% Giây: Qwen 11,48 / 11,55; Gemma 16,20 / 16,10; Llama 14,52 / 14,32 (v1 / v3). Δ = v3 so với v1.
+\begin{table}[!htbp]
+\centering
+\caption{Chi phí trên \tThree{} theo mô hình nền (Qwen3.5-9B, Gemma-4-12B, Llama-3.1-8B). Token và thời gian là
+trung bình trên 560 ca, $\Delta$ là chênh lệch của \ours{} so với \base. Chặn nhầm (\base{} $\to$ \ours) và cần xác
+nhận (\ours) tính trên 320 ca lành tính. Thời gian chỉ so được giữa \base{} và \ours, vì hai cấu hình này chạy cùng
+đợt. Hàng cuối là ngưỡng của H4.}\label{tab:cost}
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrrrr@{}}
+\toprule
+ & \multicolumn{4}{c}{Token mỗi ca} & \multicolumn{3}{c}{Thời gian mỗi ca (s)} & \multicolumn{2}{c}{Ca lành tính} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-8}\cmidrule(l){9-10}
+Mô hình & \cNone & \base & \ours & $\Delta$ & \base & \ours & $\Delta$ & \makecell[r]{Chặn\\nhầm} &
+  \makecell[r]{Xác\\nhận} \\
+\midrule
+Qwen3.5 & 5.597 & 7.458 & 7.515 & $+0{,}77\%$ & 11,48 & 11,55 & $+0{,}6\%$ & $9 \to 11$ & 2 \\
+Gemma-4 & 6.161 & 5.672 & 5.670 & $-0{,}05\%$ & 16,20 & 16,10 & $-0{,}6\%$ & $5 \to 6$ & 1 \\
+Llama-3.1 & 8.587 & 9.565 & 9.596 & $+0{,}32\%$ & 14,52 & 14,32 & $-1{,}4\%$ & $5 \to 7$ & 0 \\
+\midrule
+Ngưỡng H4 & & & & $\le +20\%$ & & & $\le +15\%$ & $\le 48$ & $\le 32$ \\
+\bottomrule
+\end{tabular*}
+\end{table}

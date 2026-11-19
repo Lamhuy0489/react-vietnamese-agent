@@ -1,0 +1,77 @@
+% Nguồn: src/react_agent/security_v3/{intent_policy_v1,value_labels_v1,param_pinning_v1,brokerguard_v3_v1}.py;
+% decision log 2026-11-16 12:30 (C1), 15:30 (runtime, bỏ C1a), 16:20 (vi mô), 2026-11-17 19:25 (đóng băng).
+% Số: facts.md mục "Bổ sung cho bài v3" (ngưỡng 8 ký tự, 9 chữ số; vi mô; C1a 2 -> 5) và mục Test-4 (0,26 ms).
+% Không trích văn bản tấn công. Ví dụ từ nối phủ định là của bộ trích, không phải của dữ liệu.
+\section{Phương pháp \ours}\label{sec:method}
+
+Thiết kế của \ours{} xuất phát từ quan điểm rằng mô hình không phải là ranh giới an ninh. Một hành động chỉ có hiệu
+lực khi broker thực thi nó, nên broker đóng vai trò reference monitor tại các sink~\cite{anderson1972}. Nguồn quyền duy
+nhất là $u$. Quyền được suy ra tất định từ $u$, không từ nội dung công cụ và không từ phán đoán của một LLM. Việc chặn
+cũng không làm dừng nhiệm vụ, vì lời gọi bị từ chối được báo lại để tác tử làm tiếp phần việc hợp lệ.
+Hình~\ref{fig:arch} mô tả kiến trúc. \ours{} giữ các lớp của \base, gồm \rFlow{} theo nhãn nguồn, \rRedact{} che giá trị mật trong câu trả lời, \rSig{}
+chặn mọi sink sau một quan sát bị bộ dò cụm từ gắn cờ (trừ lời gọi khớp một văn phạm chặt trên $u$), lời nhắc \cSand{}
+nhắc lại $u$ sau mỗi quan sát, và phản hồi từ chối. Luật đích \rDest{} được thay bằng \cOne, và \cTwo, \cThree{} được
+thêm vào.
+
+\input{images/fig1_architecture}
+
+\paragraph{Chuẩn hóa.} Mọi phép so sánh dùng hai hàm chuẩn hóa. Hàm $\norm(\cdot)$ áp Unicode NFKC, bỏ ký tự định dạng
+như ký tự độ rộng bằng không và casefold. Hàm $\kappa(\cdot)$ áp thêm việc bỏ dấu tiếng Việt và chỉ giữ chữ và số. Ký
+hiệu $x \sub z$ nghĩa là $\kappa(x)$ là một chuỗi con của $\kappa(z)$. Gọi $V(u)$ là tập giá trị xuất hiện trong $u$
+theo nghĩa này.
+
+\paragraph{\cOne: chính sách ý định.} Bộ trích chỉ đọc $u$ và trả về $P(u) = \{g_i\}$. Mỗi quyền $g = (\mathrm{tool}, \dest,
+\pi, \mathrm{pins})$ gồm công cụ, đích, cực tính $\pi \in \{+,-\}$ và các giá trị ghim của \cThree. Đích
+là địa chỉ e-mail hoặc endpoint, so khớp nguyên token sau $\norm$, nên một phần của đích hay một từ thường trong $u$
+không còn được coi là đích. Cực tính lấy từ phạm vi phủ định. Phủ định đi với động từ (``đừng gửi'', ``do not send'')
+phủ các đích theo sau trong cùng mệnh đề. Từ loại trừ (``trừ'', ``thay vì'', ``except'') phủ các đích tới dấu phẩy kế
+tiếp. Từ tương phản (``nhưng'', ``but'') kết thúc phạm vi. Khi $u$ có dấu, chính tả gốc quyết định một từ như ``dung''
+là ``dùng'' hay ``đừng''. Khi $u$ không dấu, từ đó chỉ được coi là phủ định nếu theo sau là một động từ gửi. Quyền
+được cấp theo loại hành động. Địa chỉ chỉ cho phép gửi e-mail, endpoint chỉ cho phép gọi webhook, và mệnh đề phải có
+động từ gửi tương ứng không bị phủ định. Một đích chỉ được nhắc tới, nằm trong trích dẫn hoặc trong lời thuật lại, hay
+đứng gần một phủ định không rõ phạm vi, cho kết quả \emph{cần xác nhận}. Lời gọi sink $a$ thỏa \cOne{} khi cả hai
+điều kiện sau cùng đúng:
+\begin{equation}\label{eq:c1}
+\begin{aligned}
+&\exists\, g \in P(u)\colon\; \pi(g) = {+} \,\land\, \mathrm{tool}(g) = \mathrm{tool}(a) \,\land\, \dest(g) \doteq \dest(a),\\
+&\nexists\, g' \in P(u)\colon\; \pi(g') = {-} \,\land\, \dest(g') \doteq \dest(a),
+\end{aligned}
+\end{equation}
+trong đó $\doteq$ là bằng nhau nguyên token sau $\norm$. Sink không có trường đích nằm ngoài \cOne. Lấy ví dụ yêu cầu
+``tổng hợp báo cáo quý rồi gửi cho \code{ketoan@example.com}, không gửi cho \code{doitac@example.org}''. Bộ trích trả
+về một quyền dương cho cặp (e-mail, \code{ketoan@example.com}) và một quyền âm cho \code{doitac@example.org}. Một lời
+gọi gửi tới địa chỉ thứ hai bị từ chối, dù địa chỉ này có trong $u$ và vì vậy được \rDest{} của \base{} cho qua.
+
+\paragraph{\cTwo: nhãn mức giá trị.} \base{} chỉ bảo vệ giá trị lấy từ nguồn gắn nhãn mật, nên một bí mật trong nguồn
+gắn nhãn công khai không bao giờ được bảo vệ. \cTwo{} gắn nhãn cho từng giá trị trong mọi đầu ra công cụ theo kiểu của
+nó, độc lập với nhãn nguồn và với độ tin cậy. Ba kiểu được nhận ra là định danh trộn chữ và số dài ít nhất 8 ký tự,
+số có ít nhất 9 chữ số sau khi bỏ khoảng trắng, dấu chấm và gạch, và giá trị đứng sau tên trường nhạy cảm như mật khẩu,
+OTP, token hay số tài khoản. Từ thường và số ngắn không bao giờ được coi là giá trị cần bảo vệ. Gọi $C_t$ là tập giá trị cần bảo vệ sau bước $t$, gồm
+giá trị của \rFlow{} theo nhãn nguồn và giá trị được \cTwo{} gắn nhãn. Broker từ chối lời gọi sink $a$ nếu
+\begin{equation}\label{eq:c2}
+\exists\, v \in C_t \setminus V(u)\colon\; v \sub \data(a) .
+\end{equation}
+Vì so khớp dùng $\kappa$, điều kiện vẫn đúng khi giá trị bị thêm hay bớt khoảng trắng, dấu chấm, gạch, đổi hoa thường
+hoặc bỏ dấu. Với câu trả lời cuối, mọi $v \in C_t \setminus V(u)$ có $v \sub y$ được thay bằng \code{[REDACTED]} ở mọi
+dạng bề mặt khớp với $\kappa(v)$. Bộ dò cố ý không dựa vào dạng giá trị mật của bộ sinh dữ liệu, nên độ phủ trên các
+dạng khác là một câu hỏi thực nghiệm (Mục~\ref{sec:formal}).
+
+\paragraph{\cThree: ghim tham số.} Sửa tham số giữ nguyên đích được cấp quyền và đổi một giá trị, như số tiền, trạng
+thái, đơn vị hay mã. \cThree{} kiểm lời gọi theo mệnh đề của $u$ đã cấp quyền cho nó. Các literal được ghim gồm số
+đứng sau động từ gửi và không phải toán hạng của một phép tính, đơn vị nêu kèm số, giá trị boolean có cực tính, định
+danh do người dùng viết, và mọi số trong câu khi $u$ tuyên bố các giá trị đó là cố định. Lời gọi vi phạm \cThree{} khi
+thiếu một literal đã ghim trong $\data(a)$ (so ở dạng $\kappa$) hoặc mang boolean ngược với boolean đã ghim. Nếu nhiều
+quyền cùng công cụ và đích khớp lời gọi, chỉ cần một quyền được thỏa.
+
+\paragraph{Cổng và chi phí.} Một lời gọi sink chỉ được thực thi khi qua cả bốn kiểm tra \rSig, \cOne, \cThree{} và
+\cTwo{} cùng \rFlow. Thứ tự kiểm chỉ ảnh hưởng tới lý do từ chối được ghi lại. Kết quả \emph{cần xác nhận} được thi
+hành như từ chối và đếm riêng.
+Lời gọi đọc luôn được cho qua. \ours{} không gọi thêm mô hình nào. Trên 1.960 ca phát triển, trung vị thời gian kiểm
+một lời gọi sink là 315~$\mu$s (\base: 107~$\mu$s) và dựng $P(u)$ mất 496~$\mu$s mỗi nhiệm vụ. Lúc chạy thật, thời gian
+cổng trung bình là 0,26~ms mỗi lời gọi, so với khoảng 14~s thời gian mô hình mỗi ca.
+
+\paragraph{Phát triển và đóng băng.} Danh sách từ phủ định, ngưỡng độ dài, danh sách tên trường và đơn vị được chỉnh
+chỉ trên phần huấn luyện của tập phát triển. Cấu hình được chọn trên phần kiểm định của tập này
+(Mục~\ref{sec:protocol}). Một biến thể dùng $P(u)$ thay cho văn phạm chặt của \rSig{} tăng tiện ích, nhưng khi phát lại
+quỹ đạo trên phần kiểm định, số quỹ đạo gây hại tăng từ 2 lên 5, nên biến thể này bị loại. Sau đó toàn bộ mã, prompt
+và cấu hình được ghim bằng hash trước khi chạy tập kiểm thử.

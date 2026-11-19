@@ -11,6 +11,8 @@ Cập nhật: 2026-11-15 18:40. Phiên sau bắt đầu ở [prompt phiên sau](
   giao thức đánh giá, điểm khác với CaMeL, FIDES, ClawGuard, Progent.
 - Nguồn review: `Review Huy.docx` ở root (không commit). Lỗ hổng v1 đo bằng `scripts/paper_bypass_causes_v1.py`.
 - Bài v1 hiện có: [mục lục bài](../docs/paper/iccies2027/README.md), [số liệu được phép dùng](../docs/paper/iccies2027/facts.md).
+- **Bài v3 (bài duy nhất, 19/11):** [mục lục bài v3](../docs/paper/brokerguard_v3/README.md), LaTeX ở
+  `docs/paper/brokerguard_v3/latex/`; số vẫn lấy từ facts.md ở trên.
 
 ## 2. Quyết định (decision log, ngày 2026-11-15)
 
