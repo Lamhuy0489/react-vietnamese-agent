@@ -706,3 +706,5 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   lỗi hạ tầng. Họ bị hại /504: A0 346, R1 278, D2 123, P1 280, MEL 345, G1 346, v1 36, v3 4 (facts.md, decision log 12:15).
 - Bài học: bộ canh quota nhận "done" theo dòng cuối log thì báo nhầm khi dòng "Terminated" của keepalive in sau; sửa xét 3
   dòng cuối. Vòng chờ trong zsh không tách `$L`: chạy danh sách file bằng bash hoặc liệt kê trực tiếp.
+- 12:40: tắt Prompt Guard, proxy Gemini, caffeinate; IPv6 Wi-Fi bật lại. Owner nghỉ, phiên sau viết bài (chờ trả lời thư
+  mục, ngôn ngữ nháp, tên phương pháp).

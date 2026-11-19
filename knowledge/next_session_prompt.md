@@ -6,8 +6,8 @@ quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên)
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-PHẦN CỨNG: không render hình/PDF trên máy (owner dùng Overleaf), không tự khởi động lại OmniRoute. Nếu IPv6 Wi-Fi còn tắt
-và không chạy Kaggle: `networksetup -setv6automatic Wi-Fi`. Prompt Guard local (127.0.0.1:8765) chỉ cần khi chạy G1.
+PHẦN CỨNG: không render hình/PDF trên máy (owner dùng Overleaf), không tự khởi động lại OmniRoute. IPv6 Wi-Fi đã bật lại
+(19/11); Prompt Guard, proxy Gemini, caffeinate đã tắt. Chạy lại Kaggle thì tắt IPv6 và bật `caffeinate -dimsu` trước.
 
 Trạng thái (19/11 12:15): MỌI THỰC NGHIỆM XONG. Test-4 (H1 không đạt do hiệu ứng sàn; decision log 18/11 18:40), Gemini
 Test-4, Test-4 và Dev v4.1 bổ sung R1/D2/P1/MEL/G1, thích nghi nhắm v3, AgentDojo v3: số đầy đủ trong facts.md. Không còn
