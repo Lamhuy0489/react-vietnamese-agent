@@ -2,6 +2,10 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**19/11 12:15: mọi thực nghiệm XONG.** Đã ghi facts.md + decision log: Gemini Test-4 (cột tham khảo), Test-4 và Dev v4.1
+bổ sung R1/D2/P1/MEL/G1, thích nghi nhắm v3, AgentDojo v3. Dòng phát triển (họ bị hại): Test-4 /48 R1 34 → D2 15 → v1 6 →
+v3 2; Dev v4.1 /504 R1 278 → D2 123 → v1 36 → v3 4. Việc kế: viết bài.
+
 **18/11 22:40: đang chạy 3 việc phân tích phụ (thêm tài khoản tngdngpham, kaggle9.json, 30 h)** (handoff mục "Đang làm"): cột Gemini trên Test-4, BrokerGuard v3 trên
 AgentDojo (Llama, EN/VI, Banking/Slack), vòng tấn công thích nghi nhắm v3 trên 42 họ Dev-val (owner/Minh soạn, chờ slot GPU).
 Tất cả đã khai báo trước trong decision log (19:30, 20:20, 20:55). Dự kiến xong trước sáng 19/11.

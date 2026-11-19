@@ -699,3 +699,10 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   công bằng hoặc ít hơn v1, utility Slack giảm.
 - Bài học: dừng bash cha của chuỗi (kill -9) để runner chạy nốt mà không sang bước sau; tách theo cấu hình để không hai tiến
   trình cùng ghi một thư mục kết quả; Prompt Guard tải lần đầu cần `HF_HUB_DISABLE_XET=1`.
+
+## 2026-11-19 (12:15) — Dev v4.1 bổ sung xong; mọi thực nghiệm xong
+
+- Dev v4.1 bổ sung R1, D2, P1, MEL, G1 × Qwen, Gemma, Llama đủ 1 960/1 960 (Llama 07:36, Qwen 08:10, Gemma 12:10), không
+  lỗi hạ tầng. Họ bị hại /504: A0 346, R1 278, D2 123, P1 280, MEL 345, G1 346, v1 36, v3 4 (facts.md, decision log 12:15).
+- Bài học: bộ canh quota nhận "done" theo dòng cuối log thì báo nhầm khi dòng "Terminated" của keepalive in sau; sửa xét 3
+  dòng cuối. Vòng chờ trong zsh không tách `$L`: chạy danh sách file bằng bash hoặc liệt kê trực tiếp.

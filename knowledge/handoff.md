@@ -7,6 +7,12 @@ Cập nhật: 2026-11-15. (Trước đó 2026-11-13.) Lộ trình [v2](../docs/p
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-19 12:15: MỌI THỰC NGHIỆM XONG.** Dev v4.1 bổ sung R1, D2, P1, MEL, G1 × 3 mô hình đủ 1 960/1 960, chấm
+`evaluate_v3_v2`; tổng hợp `scripts/dev4_1_supp_baselines_v1.py` → facts.md mục "Baseline bổ sung trên Dev v4.1", decision
+log 12:15. Không còn notebook nào chạy. Việc kế: viết bài (chờ owner: thư mục, ngôn ngữ nháp, tên phương pháp); tắt Prompt
+Guard local (cổng 8765) và bật lại IPv6 (`networksetup -setv6automatic Wi-Fi`). Quota còn: phmkimphng ~13 h, tngdngpham
+~13,5 h, hieu1908 5,9 h, lehung040324 2,1 h; 7 tài khoản cũ đặt lại 21/11 07:00 giờ VN.
+
 **2026-11-19 04:40: XONG gần hết; chỉ còn Dev v4.1 bổ sung đang chạy.**
 - XONG, đã ghi facts.md + decision log: Gemini Test-4 (23:45), Test-4 bổ sung R1/D2/P1/MEL/G1 (03:05), thích nghi nhắm v3
   (03:55), AgentDojo v3 (04:35). Script tổng hợp: `test4_gemini_ref_v1.py`, `test4_supp_baselines_v1.py`,

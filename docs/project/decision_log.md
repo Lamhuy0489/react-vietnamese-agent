@@ -4432,3 +4432,10 @@ Ghi trước khi chạy bất kỳ phần nào dưới đây. Không chỉnh v3 
 - 4 bộ (EN/VI × Banking/Slack), có và không tấn công, Llama-3.1-8B, `repeat_user_prompt`. Tấn công thành công v1 → v3:
   EN Banking 3 → 3, VI Banking 1 → 1, EN Slack 6 → 5, VI Slack 0 → 0. Utility Slack giảm (EN 15 → 11 dưới tấn công; không
   tấn công 5 → 3). Số đầy đủ facts.md mục "AgentDojo: BrokerGuard v3". Mô tả, không chỉnh v3.
+
+## 2026-11-19 12:15 — Baseline bổ sung trên Dev v4.1 xong (mô tả)
+
+- R1, D2, P1, MEL, G1 × Qwen3.5-9B, Gemma-4-12B, Llama-3.1-8B đủ 1 960/1 960, chấm `evaluate_v3_v2` (Qwen, Gemma trên
+  phmkimphng, xong 08:10 và 12:10; Llama trên tngdngpham chia 2 notebook, xong 07:36). Họ bị hại gộp /504: A0 346, R1 278,
+  D2 123, P1 280, MEL 345, G1 346, v1 36, v3 4. Số đầy đủ facts.md mục "Baseline bổ sung trên Dev v4.1". Một lần chạy,
+  không có lỗi hạ tầng phải chạy lại; không chỉnh v3.

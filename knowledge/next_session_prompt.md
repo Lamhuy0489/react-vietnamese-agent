@@ -1,30 +1,27 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-18 (tối). Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-19 12:15. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-PHẦN CỨNG: không render hình/PDF trên máy (owner dùng Overleaf), không tự khởi động lại OmniRoute. IPv6 Wi-Fi đang TẮT
-(tránh địa chỉ trycloudflare chập chờn); bật lại khi không chạy Kaggle: `networksetup -setv6automatic Wi-Fi`.
+PHẦN CỨNG: không render hình/PDF trên máy (owner dùng Overleaf), không tự khởi động lại OmniRoute. Nếu IPv6 Wi-Fi còn tắt
+và không chạy Kaggle: `networksetup -setv6automatic Wi-Fi`. Prompt Guard local (127.0.0.1:8765) chỉ cần khi chạy G1.
 
-Trạng thái (19/11 04:40): Test-4 xong (H1 không đạt do hiệu ứng sàn; decision log 18/11 18:40). Đã xong và ghi facts.md:
-Gemini Test-4 (cột tham khảo), Test-4 bổ sung R1/D2/P1/MEL/G1, thích nghi nhắm v3, AgentDojo v3. Còn chạy: Dev v4.1 bổ sung
-R1/D2/P1/MEL/G1 × 3 mô hình (handoff "Đang làm" mục 2026-11-19 04:40 có lệnh resume). Đừng suy notebook còn sống từ file
-cũ: `build/kaggle/quota_all.sh`, `kaggle kernels status`.
+Trạng thái (19/11 12:15): MỌI THỰC NGHIỆM XONG. Test-4 (H1 không đạt do hiệu ứng sàn; decision log 18/11 18:40), Gemini
+Test-4, Test-4 và Dev v4.1 bổ sung R1/D2/P1/MEL/G1, thích nghi nhắm v3, AgentDojo v3: số đầy đủ trong facts.md. Không còn
+notebook nào chạy (kiểm bằng `build/kaggle/quota_all.sh` nếu cần).
 
 Việc của phiên này:
-1. Kiểm kê Dev v4.1 bổ sung (`find results/rebuild_c/dev4_1_{R1,D2,P1,MEL,G1}_* -name result.json`); dở thì resume theo handoff (notebook chết, hết quota: đẩy lại; tài khoản kaggle9.json
-   tngdngpham và kaggle10.json phmkimphng (Dev v4.1 Qwen/Gemma) còn nhiều giờ; 7 tài khoản cũ đặt lại 21/11 07:00 giờ VN). Mục tiêu owner: Test-4 bổ sung và Dev v4.1 bổ sung xong trong 19/11 (lịch ước tính trong handoff 01:35).
-2. Tổng hợp Dev v4.1 bổ sung (chỉ số đếm) vào facts.md + decision log, cùng dạng bảng Dev v4.1 đã có (A0, P2, PRG, v1);
-   mô tả, ngoài H1–H4.
-3. Viết bài (một bài duy nhất; yêu cầu của thầy ở `Review Huy.docx`): đóng góp là cơ chế v3 + mô hình hình thức; v1 là
-   biến thể luật chuỗi; H1 báo trung thực; bảng dòng phát triển R1 → D2 → D2P2 → v3 trên cùng Test-4. Số chỉ lấy từ facts.md.
-   Văn phong khách quan, không "chúng tôi". Còn chờ owner trả lời: thư mục bài, ngôn ngữ nháp, tên phương pháp.
-4. Mẹo quota: còn khoảng 1 h thì dừng và đẩy lại, mỗi tài khoản 2 notebook; `kernels delete` xóa mọi phiên bản của slug.
-5. Không chỉnh v3 hay chạy lại theo số Test-4 (chỉ chạy lại khi lỗi hạ tầng). Lỗi mô hình (OUTPUT_TRUNCATED 512 token,
-   Gemini OUTPUT_INVALID) không chạy lại; nêu trong hạn chế, có thể thêm phân tích độ nhạy bỏ ca lỗi.
+1. Viết bài (một bài duy nhất; yêu cầu của thầy ở `Review Huy.docx`): đóng góp là cơ chế v3 + mô hình hình thức; v1 là
+   biến thể luật chuỗi; H1 báo trung thực; bảng dòng phát triển R1 → D2 → D2P2 → v3 trên cùng Test-4 (và Dev v4.1 làm
+   bảng phụ). Số chỉ lấy từ facts.md. Văn phong khách quan, không "chúng tôi". Hỏi owner trước: thư mục bài, ngôn ngữ
+   nháp, tên phương pháp.
+2. Tùy chọn (owner chưa trả lời): phân tích độ nhạy bỏ ca lỗi mô hình (OUTPUT_TRUNCATED 512 token, Gemini OUTPUT_INVALID);
+   không chạy lại các ca đó.
+3. Không chỉnh v3 hay chạy lại theo số Test-4. Quota: phmkimphng ~13 h, tngdngpham ~13,5 h (đặt lại 21/11); mẹo: còn ~1 h
+   thì dừng và đẩy lại, mỗi tài khoản 2 notebook.
 
 Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng, số đếm và biên soạn.
 ```

@@ -319,6 +319,27 @@ So với v3 (2/48) bằng McNemar họ gộp, một phía, **khám phá** (chạ
 - G1 bằng A0 (40/48): Prompt Guard 2 (86M) không gắn cờ quan sát nào trên dữ liệu tiếng Việt của Test-4 (0 lần chặn),
   khớp kết quả Dev cũ (G1 ≈ A0). MEL cũng ≈ A0. Bộ phân loại chạy local 127.0.0.1, ngưỡng 0,5, revision ghim.
 
+### Baseline bổ sung trên Dev v4.1: R1, D2, P1, MEL, G1 (xong 2026-11-19 12:10; khai báo 00:25, mô tả, trong mẫu với v3)
+
+Nguồn: `results/rebuild_c/dev4_1_supp_baselines_v1.json` (`scripts/dev4_1_supp_baselines_v1.py`); `run_v3_api_v2.py
+--release dev4_1`, 1 960 ca mỗi cấu hình × backbone, chấm `evaluate_v3_v2`; A0, D2P2, V3P2 là các lượt Dev v4.1 đã có.
+Họ bị hại gộp 3 backbone /504 (168 mỗi backbone); ca bị hại /2520; tiện ích plain /2520; chặn nhầm = ca lành có ít nhất
+một lần cổng từ chối, /1120 mỗi backbone. Không kiểm định (Dev v4.1 là dữ liệu phát triển của v3).
+
+| Cấu hình | Họ bị hại /504 | Qwen · Gemma · Llama (/168) | Ca bị hại /2520 | Tiện ích plain /2520 | Chặn nhầm Q·G·L /1120 |
+|---|---|---|---|---|---|
+| A0 | 346 | 119 · 123 · 104 | 915 | 1294 (51,3%) | 0 · 0 · 0 |
+| R1 PhraseRules | 278 | 99 · 104 · 75 | 549 | 1247 (49,5%) | 21 · 26 · 25 |
+| D2 BG-Rules | 123 | 47 · 42 · 34 | 208 | 1237 (49,1%) | 58 · 98 · 86 |
+| P1 Spotlight | 280 | 129 · 76 · 75 | 627 | 1220 (48,4%) | 0 · 0 · 0 |
+| MEL MELON* | 345 | 119 · 122 · 104 | 901 | 1291 (51,2%) | 0 · 0 · 0 |
+| G1 Prompt Guard 2 | 346 | 120 · 122 · 104 | 913 | 1300 (51,6%) | 0 · 0 · 0 |
+| D2P2 (v1) | 36 | 9 · 9 · 18 | 51 | 1202 (47,7%) | 56 · 86 · 70 |
+| V3P2 (v3) | 4 | 2 · 1 · 1 | 5 | 1200 (47,6%) | 75 · 95 · 114 |
+
+- Dòng phát triển trên Dev v4.1 (họ /504): A0 346 → R1 278 → D2 123 → v1 36 → v3 4; cùng thứ tự như Test-4.
+- MEL và G1 ≈ A0 như trên Test-4. P1 giảm hại ở Gemma và Llama nhưng không ở Qwen (129 so với A0 119).
+
 ### Vòng thích nghi nhắm v3 trên Dev-val (xong 2026-11-19 03:15; khai báo 2026-11-18 20:55, báo riêng)
 
 Nguồn: `results/rebuild_c/adaptive_v3target_v1.json` (`scripts/adaptive_v3target_analysis_v1.py`). 42 ca do owner/Minh soạn
