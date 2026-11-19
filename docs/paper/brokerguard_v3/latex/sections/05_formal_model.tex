@@ -5,7 +5,7 @@
 \section{Mô hình hình thức}\label{sec:formal}
 
 Trạng thái của broker sau bước $t$ là $s_t = (u, P(u), C_t, H_t)$, trong đó $H_t$ là lịch sử lời gọi đã thực thi và
-quan sát, còn $P(u)$ được dựng một lần trước bước đầu tiên. Gọi $R$ là tập công cụ đọc và $S$ là tập sink có trường
+quan sát. $P(u)$ được dựng một lần trước bước đầu tiên. Gọi $R$ là tập công cụ đọc và $S$ là tập sink có trường
 đích. Mỗi lời gọi đề xuất $a_t$ đi qua hàm cổng $\mathrm{gate}(s_t, a_t) \in \{\mathsf{allow}, \mathsf{deny},
 \mathsf{confirm}\}$, trong đó $\mathsf{confirm}$ được thi hành như $\mathsf{deny}$. Với $a_t \in R$, cổng luôn trả về
 $\mathsf{allow}$. Với $a_t \in S$, cổng trả về $\mathsf{allow}$ khi và chỉ khi (G1) \rSig{} không chặn $a_t$, (G2) $a_t$
@@ -55,9 +55,9 @@ $\mathrm{pins}(g)$ có mặt trong $\data(a)$ và không boolean nào bị đả
 sự cấp, và theo (A5), $\mathrm{pins}(g)$ chứa mọi giá trị người dùng đã nêu cho $a$. \qed
 \end{proof}
 
-\noindent Ba mệnh đề là điều kiện đủ dưới giả định, không phải bảo đảm vô điều kiện. Mệnh đề~\ref{prop:int} không loại
+\noindent Ba mệnh đề nêu điều kiện đủ dưới các giả định, không phải bảo đảm vô điều kiện. Mệnh đề~\ref{prop:int} không loại
 trừ việc một giá trị khác được thêm cạnh literal đã ghim. Lời gọi đọc và sink không có trường đích nằm ngoài $S$, nên
-một công cụ đọc nhận URL do mô hình chọn vẫn có thể là kênh tuồn dữ liệu. Bảng~\ref{tab:proven} tách thuộc tính được
-chứng minh với thuộc tính chỉ được đo bằng thực nghiệm.
+một công cụ đọc nhận URL do mô hình chọn vẫn có thể trở thành kênh rò rỉ dữ liệu. Bảng~\ref{tab:proven} phân biệt
+thuộc tính được chứng minh với thuộc tính chỉ được kiểm chứng bằng thực nghiệm.
 
 \input{tables/tab2_proven}

@@ -15,10 +15,10 @@ tham chiếu và số:
 | | |
 |---|---|
 | Template | Springer LNCS (`llncs.cls` 2.26, `splncs04.bst`), giống bài ICCIES cũ |
-| Độ dài | Tối đa 15 trang kể cả tài liệu tham khảo (owner, 20/11). Bản Việt biên dịch lần 1 (20/11) khoảng 14,5 trang; sau khi bật Hình Pareto và sửa bảng, ước lượng khoảng 14,85 trang. Bản Anh chưa sửa theo lần góp ý này, ước lượng khoảng 14,6 trang khi tắt Pareto. Cách ước lượng ở mục "Ước lượng trang" |
+| Độ dài | Tối đa 15 trang kể cả tài liệu tham khảo. Bản Việt biên dịch 20/11 (đã bật Pareto) dư 2 dòng sang trang 16; sau lượt soát văn phong và cắt, ước lượng bản Việt khoảng 14,8 trang (bật Pareto), bản Anh khoảng 14,7 trang (tắt Pareto). Ước lượng đã hiệu chỉnh +0,19 trang theo lần biên dịch đó |
 | Biên dịch | Overleaf: zip cả thư mục `latex/` (hoặc `latex_en/`), main = `main.tex`, pdfLaTeX. Lỗi font T5 thì đổi sang XeLaTeX (hướng dẫn ở đầu `main.tex`) |
 | Hình | Hình 1 (kiến trúc) và Hình 2 (Pareto, tùy chọn) vẽ bằng TikZ/pgfplots trong `.tex`, Overleaf tự vẽ. Không render hình hay PDF trên máy |
-| Hình Pareto | Công tắc `\ifpareto` ở `main.tex` (hình chiếm khoảng 0,37 trang, câu ở Mục 7 tự trỏ tới hình khi bật). Bản Việt: BẬT (owner chọn 20/11 để dùng nửa trang còn trống). Bản Anh: đang tắt; khi sửa bản Anh phải viết gọn thêm khoảng 0,25 trang rồi mới bật |
+| Hình Pareto | Công tắc `\ifpareto` ở `main.tex`. Bản Việt: BẬT (owner chọn). Bản Anh: TẮT vì chữ Anh dài hơn khoảng 0,25 trang, bật thì sát 15 trang; chỉ bật khi bản Anh biên dịch ra dưới khoảng 14,6 trang |
 | Tiêu đề | BrokerGuard: Intent-Aware Authorisation and Value-Level Flow Control Against Indirect Prompt Injection in Vietnamese LLM Agents (owner có thể đổi) |
 | Tài liệu tham khảo | 19 mục (bản dài 25). Bỏ BIPIA, Nasr 2025, Tramèr 2020, Dwork 2015, Recht 2019, Holm 1979. Giữ FIDES, design patterns và Liu et al. vì phản biện 3 (`phan bien3.md`) coi việc cắt chúng là suy giảm |
 | Cỡ chữ bảng | `llncs.cls` đặt `\footnotesize` bằng `\small`, nên bảng in ở 9 pt, dòng 11 pt. `tabular*` rộng hơn khổ sẽ tràn lề mà `adjustbox` không thu được (Bảng 1 bản 20/11 tràn 1 cm); bảng chữ dùng `tabularx`, bảng số `tabular*` chỉ khi bề rộng tự nhiên đo ở 9 pt nhỏ hơn 346 pt |
@@ -51,6 +51,21 @@ Không bỏ kết quả hay luận điểm nào. Những gì bị cắt hoặc c
   mà luật so khớp chuỗi để lọt đều bị chặn", thật ra 4 trong 6 họ).
 - Nửa trang trống: bật Hình Pareto ở bản Việt.
 - Việc còn lại cho bản Anh: làm y hệt các mục trên, viết gọn thêm khoảng 0,25 trang, rồi bật Pareto.
+
+## Lượt 2 (20/11): soát văn phong, giữ 15 trang, đồng bộ bản Anh, bỏ chữ đỏ
+
+- Văn phong (bản Việt rồi bản Anh): bớt nối vế bằng "còn" và "tức"; tách câu dài nhiều ngoặc; thay từ dịch sát hoặc
+  khẩu ngữ ("đi thẳng vào", "chạy thật", "chấm offline", "bản giả", "kênh tuồn", "chỗ hở"); "cưỡng chế" thành "thực thi
+  chính sách"; không dùng đại từ "họ" cho kẻ tấn công (trùng thuật ngữ "họ tấn công"). Sửa logic: "không sửa được u,
+  prompt, broker" áp dụng cho mọi kẻ tấn công, không chỉ vòng thích nghi.
+- Cắt để giữ 15 trang (không bỏ kết quả chính): câu theo biến thể ngôn ngữ, số ca cần xác nhận của Gemini, câu token so
+  với khi không phòng thủ, số ca theo loại hại (136, 54, 79) thay bằng câu so sánh hai cấu hình, câu kiểm hash mỗi lần
+  chạy, câu "báo lại lời gọi bị từ chối" (Hình 1 có), câu lực 91\% chuyển từ Mục 6 sang Mục 8. Chú thích Bảng 1, 4, 5 và
+  Hình 2 ngắn lại; Bảng 2 nhãn giả định viết tắt; trục Hình 2 bản Việt 3,6 cm (nhãn BrokerGuard một dòng).
+- Chữ đỏ: khối tác giả thành "Tác giả ẩn danh / Đơn vị ẩn danh" (bản Anh "Anonymous Authors / Anonymous Institution"),
+  bỏ lệnh `\todo`. Nơi nộp không ẩn danh thì điền tên thật.
+- Bản Anh: làm y hệt mọi thay đổi lượt 1 và lượt 2; Bảng 3 tiêu đề hai dòng ("Families (/48)", "Dev. set (/504)") để
+  vừa khổ ở 9 pt.
 
 ## Ước lượng trang (không có TeX trên máy)
 

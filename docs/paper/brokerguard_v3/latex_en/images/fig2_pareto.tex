@@ -8,13 +8,14 @@
 % Colour follows the entity as in Figures 1 and 3: grey = other defences, blue = rules at the broker, orange = BrokerGuard
 % (hollow = one component removed). Marker shapes differ, so the plot reads in black and white. About 10.4 cm wide.
 % 15-page version (2026-11-20): the figure is optional (\paretotrue in main.tex). The legend was removed because it
-% covered the Sandwich label; every point is labelled and the caption explains colours and shapes. Axis height kept.
+% covered the Sandwich label; every point is labelled and the caption explains colours and shapes. Axis 4.0 cm: the
+% two-line BrokerGuard label ends at y = -3.56, above the x axis at -3.6.
 \begin{figure}[!htbp]
 \centering
 \begin{adjustbox}{max width=\textwidth}
 \begin{tikzpicture}
 \begin{axis}[
-  scale only axis, width=9.4cm, height=4.4cm,
+  scale only axis, width=9.4cm, height=4.0cm,
   xmin=-1.5, xmax=42, ymin=-3.6, ymax=0.6,
   xtick={0,10,20,30,40}, ytick={-3,-2,-1,0},
   xlabel={Harmed families on the test set (/48, pooled over three backbones)},
@@ -52,7 +53,6 @@
 \end{axis}
 \end{tikzpicture}
 \end{adjustbox}
-\caption{Trade-off between security and utility on the \test. The top-left corner is best. Grey circles are other
-defences, blue squares rules at the broker, the orange diamond is \ours{} and hollow diamonds are \ours{} without one
-component. The deny-all-sinks reference lies off the axis.}\label{fig:pareto}
+\caption{Trade-off between security and utility on the \test, best at the top left. Grey circles: other defences.
+Blue squares: rules at the broker. Orange diamond: \ours{} (hollow: without one component).}\label{fig:pareto}
 \end{figure}

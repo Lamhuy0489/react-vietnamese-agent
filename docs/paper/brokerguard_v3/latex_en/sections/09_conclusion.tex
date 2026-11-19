@@ -1,11 +1,13 @@
 % Numbers as in the abstract (facts.md, Test-4 section, AgentDojo v3). Future work follows the limitations of Section 8.
+% 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
 \section{Conclusion}\label{sec:conclusion}
 
-This paper presented \ours, an enforcement mechanism at the Tool Broker that combines an intent policy with polarity,
-value-level sensitivity labels and parameter pinning, with a formal model in which three properties are proved under
-five assumptions. On a Vietnamese test set sealed before the code existed, \ours{} reduces the harmed families from 40
-with no defence to 2 of 48, losing 3.1 points of utility, while tokens and latency per case rise by at most 1\%
-relative to \strSand. Against this configuration (6 families) the reduction is not significant because of a floor
-effect, but every family missed by the string-matching rules is blocked by exactly the component designed for it.
-Future work comprises a sealed test set of about 120 families for adequate power, formal verification against the
-code, field-level semantics for \pThree, and a user-confirmation channel for destinations taken from tool data.
+This paper presented \ours, a policy-enforcement mechanism at the Tool Broker that combines an intent policy with
+negation handling, value-level sensitivity labels and parameter pinning, with a formal model in which three properties
+are proved under five assumptions. On a Vietnamese test set sealed before the code was written, \ours{} reduces the
+harmed families from 40 with no defence to 2 of 48. Utility drops by 3.1 points, while tokens and latency per case rise
+by at most 1\% relative to \strSand. Against this configuration, \ours{} blocks four of the six harmed families, each
+with the component designed for it, and lets no new family through. Because the comparison configuration is already
+near the floor, the most direct next step is a sealed test set of about 120 families to confirm this difference
+statistically. Further directions are formal verification of the propositions against the code, field-level semantics
+for \pThree, and a user-confirmation channel for destinations taken from tool data.

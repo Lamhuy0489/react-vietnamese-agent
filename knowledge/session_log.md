@@ -761,3 +761,13 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   14,85 trang). Ước lượng nay tính bảng ở 9 pt, dòng 11 pt và khớp số trang owner đo (14,49 so với khoảng 14,5).
 - Còn lại: bản Anh làm y hệt, viết gọn thêm khoảng 0,25 trang rồi bật Pareto; owner biên dịch lại bản Việt để kiểm.
 
+## 2026-11-20 (tối) — Soát văn phong, giữ 15 trang, đồng bộ bản Anh, bỏ chữ đỏ
+
+- Owner: bản Việt bật Pareto dư 2 dòng sang trang 16; yêu cầu viết tối ưu, chuẩn, mạch lạc, không giống AI, sửa cả bản
+  Anh, bỏ chữ đỏ. Trước đó owner hỏi về tiêu đề, hướng bài, vì sao H1 chưa đạt và v1 là gì (đã giải thích trong chat).
+- Đã làm cả hai bản: soát văn phong (bớt "còn", "tức", câu dài, từ dịch sát; "thực thi chính sách"; sửa logic phạm vi
+  kẻ tấn công), cắt vài câu chi tiết phụ, rút chú thích bảng/hình, khối tác giả ẩn danh. Bản Việt bật Pareto (trục 3,6
+  cm), bản Anh tắt Pareto. Ước lượng đã hiệu chỉnh: Việt khoảng 14,8 trang, Anh khoảng 14,7 trang. Số liệu hai bản khớp.
+- Bài học: soát văn phong theo hướng tách câu làm dài thêm khoảng 12 dòng; phải bù bằng cắt câu trùng với bảng. Hiệu
+  chỉnh ước lượng bằng lần biên dịch thật (+0,19 trang).
+

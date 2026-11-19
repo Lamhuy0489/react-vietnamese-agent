@@ -1,32 +1,28 @@
 % Table 2. Sources: facts.md, Test-4 section (H3 ablation; families by mechanism: without C1 one more ER and one more PT,
 % without C2 two more SL and two more AL; final-answer leaks of v3 0/720; the two remaining M5 families; verbatim =
 % transformed) and "Bổ sung cho bài v3" (offline C1 check on Dev-val: M6 35/35, v1 15). (A1):
-% tests/unit/test_brokerguard_v3_v1.py. 15-page version: shorter evidence, at most two printed lines per row where
-% possible. Wrapped in adjustbox max width.
+% tests/unit/test_brokerguard_v3_v1.py. 15-page version: shorter evidence.
+% 20/11: short assumption labels and a 2.4 cm status column so that most rows take one or two printed lines.
 \begin{table}[!htbp]
 \centering
 \caption{Properties that are proved and properties that are only measured. Development-set numbers were used during
 design, test-set numbers were obtained after freezing.}\label{tab:proven}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{2.2cm}%
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.3cm}>{\raggedright\arraybackslash}p{2.4cm}%
 >{\raggedright\arraybackslash}X@{}}
 \toprule
 Property & Status & Evidence \\
 \midrule
-Propositions~\ref{prop:auth}--\ref{prop:int} & Proved & Under assumptions (A1)--(A5) \\
-(A1) complete mediation & By construction & The broker is the only path to the tools, unit-tested. Sinks without a
-  destination lie outside $S$ \\
-(A2) sound extraction & Empirical & Development set: all 35 unrequested sink calls blocked (\rDest: 15). Test set:
-  without \cOne, 2 more families harmed \\
-(A3) label coverage & Empirical & Test set: without \cTwo, 4 more leakage families harmed. \ours{} leaks no value in
-  final answers \\
-(A4) transformations & Stated limit & Transformed-leak scoring agrees with verbatim matching, so this is untested \\
-(A5) complete pins & Empirical & Insufficient: 2 families with changed numbers or units pass both \strSand{} and
-  \ours \\
-Prompt layer, \rSig & Empirical only & Measured through ablations and adaptive attacks \\
+Props.~\ref{prop:auth}--\ref{prop:int} & Proved & Under assumptions (A1)--(A5) \\
+(A1) mediation & By construction & The broker is the only path to the tools, unit-tested. Sinks without a destination lie
+  outside $S$ \\
+(A2) extraction & Empirical & Development set: 35/35 unrequested sink calls blocked (\rDest: 15). Test set: without
+  \cOne, 2 more families harmed \\
+(A3) coverage & Empirical & Without \cTwo, 4 more leakage families harmed. No value leaks in final answers \\
+(A4) transforms & Stated limit & Transformed-leak scoring agrees with verbatim matching, so this is untested \\
+(A5) pins & Empirical & Insufficient: 2 tampering families pass both \strSand{} and \ours \\
+Other parts & Empirical only & Prompt and \rSig: no guarantee, measured by ablation and adaptive attacks \\
 \bottomrule
 \end{tabularx}
-\end{adjustbox}
 \end{table}

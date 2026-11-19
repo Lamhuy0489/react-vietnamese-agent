@@ -4,37 +4,40 @@
 % Log mapping: Phrase rules = R1, String rules = D2, String rules + Sandwich = D2P2 (v1), BrokerGuard = V3P2.
 % Bold: best on security (estimate row excluded). Wrapped in adjustbox max width.
 % 15-page version: the H1--H4 sub-table was dropped, the test results are in the prose of Section 7.
+% 20/11 (owner feedback): Q, G, L in three right-aligned columns (the dot-separated cell did not align). Natural
+% width at 9 pt about 330 pt against a 346 pt text width (two-row header keeps the columns narrow).
 \begin{table}[!htbp]
 \centering
-\caption{Results on the \test{} and the \dev. ``Families'' are harmed on at least one backbone, Q $\cdot$ G $\cdot$ L
-on Qwen3.5, Gemma-4 and Llama-3.1. ASR is over 720 attack cases, $U$ over 960 benign cases, $\Delta U$ (points) is
-relative to no defence, and the last column counts harmed family--backbone pairs on the \dev{} (/504). $^\dagger$Run
-after the main results were known. $^\ddagger$Estimated from trajectories with no defence.}\label{tab:main}
+\caption{Results on the \test{} and the \dev. ``Families'' are harmed on at least one backbone, and Q, G, L give the
+harmed families on Qwen3.5, Gemma-4 and Llama-3.1. ASR is over 720 attack cases, $U$ over 960 benign cases, $\Delta U$
+(points) is relative to no defence, and the last column counts harmed family--backbone pairs on the \dev.
+$^\dagger$Run after the main results were known. $^\ddagger$Estimated from trajectories with no defence.}\label{tab:main}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrcrrrr@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrrr@{}}
 \toprule
-Configuration & Families (/48) & Q $\cdot$ G $\cdot$ L & ASR (\%) & $U$ (\%) & $\Delta U$ &
-  \makecell[r]{Development\\set (/504)} \\
+ & Families & \multicolumn{3}{c}{Model} & & & & Dev.\ set \\
+\cmidrule(lr){3-5}
+Configuration & (/48) & Q & G & L & ASR (\%) & $U$ (\%) & $\Delta U$ & (/504) \\
 \midrule
-\NoDef & 40 & 24 $\cdot$ 31 $\cdot$ 28 & 32.1 & 42.8 & 0.0 & 346 \\
-\cSpot$^\dagger$ & 38 & 28 $\cdot$ 18 $\cdot$ 26 & 24.3 & 39.7 & $-3.1$ & 280 \\
-\cSand & 22 & 13 $\cdot$ 8 $\cdot$ 10 & 6.5 & 40.7 & $-2.1$ & 111 \\
-\cPG$^\dagger$ & 40 & 22 $\cdot$ 31 $\cdot$ 28 & 31.7 & 42.7 & $-0.1$ & 346 \\
-\cMel$^\dagger$ & 40 & 22 $\cdot$ 30 $\cdot$ 28 & 31.5 & 42.8 & 0.0 & 345 \\
-\cProg & 25 & 16 $\cdot$ 21 $\cdot$ 18 & 23.8 & 42.6 & $-0.2$ & 198 \\
+\NoDef & 40 & 24 & 31 & 28 & 32.1 & 42.8 & 0.0 & 346 \\
+\cSpot$^\dagger$ & 38 & 28 & 18 & 26 & 24.3 & 39.7 & $-3.1$ & 280 \\
+\cSand & 22 & 13 & 8 & 10 & 6.5 & 40.7 & $-2.1$ & 111 \\
+\cPG$^\dagger$ & 40 & 22 & 31 & 28 & 31.7 & 42.7 & $-0.1$ & 346 \\
+\cMel$^\dagger$ & 40 & 22 & 30 & 28 & 31.5 & 42.8 & 0.0 & 345 \\
+\cProg & 25 & 16 & 21 & 18 & 23.8 & 42.6 & $-0.2$ & 198 \\
 \midrule
-\multicolumn{7}{@{}l}{\textit{Rules at the broker}} \\
-\PhrRules$^\dagger$ & 34 & 16 $\cdot$ 25 $\cdot$ 25 & 16.7 & 42.9 & $+0.1$ & 278 \\
-\StrRules$^\dagger$ & 15 & 8 $\cdot$ 10 $\cdot$ 9 & 6.8 & 42.0 & $-0.8$ & 123 \\
-\StrSand & 6 & 2 $\cdot$ 2 $\cdot$ 3 & 1.3 & 40.2 & $-2.6$ & 36 \\
-\textbf{\ours} & \textbf{2} & 1 $\cdot$ 1 $\cdot$ 1 & \textbf{0.7} & 39.7 & $-3.1$ & \textbf{4} \\
-\quad without \cOne & 4 & 1 $\cdot$ 3 $\cdot$ 2 & 1.1 & 40.0 & $-2.8$ & -- \\
-\quad without \cTwo & 6 & 2 $\cdot$ 2 $\cdot$ 4 & 1.4 & 40.2 & $-2.6$ & -- \\
-\quad without \cThree & 2 & 1 $\cdot$ 2 $\cdot$ 1 & 0.8 & 39.8 & $-3.0$ & -- \\
+\multicolumn{9}{@{}l}{\textit{Rules at the broker}} \\
+\PhrRules$^\dagger$ & 34 & 16 & 25 & 25 & 16.7 & 42.9 & $+0.1$ & 278 \\
+\StrRules$^\dagger$ & 15 & 8 & 10 & 9 & 6.8 & 42.0 & $-0.8$ & 123 \\
+\StrSand & 6 & 2 & 2 & 3 & 1.3 & 40.2 & $-2.6$ & 36 \\
+\textbf{\ours} & \textbf{2} & 1 & 1 & 1 & \textbf{0.7} & 39.7 & $-3.1$ & \textbf{4} \\
+\quad without \cOne & 4 & 1 & 3 & 2 & 1.1 & 40.0 & $-2.8$ & -- \\
+\quad without \cTwo & 6 & 2 & 2 & 4 & 1.4 & 40.2 & $-2.6$ & -- \\
+\quad without \cThree & 2 & 1 & 2 & 1 & 0.8 & 39.8 & $-3.0$ & -- \\
 \midrule
-Deny all sinks$^\ddagger$ & 14 & -- & 7.5 & 11.5 & $-31.4$ & -- \\
+Deny all sinks$^\ddagger$ & 14 & -- & -- & -- & 7.5 & 11.5 & $-31.4$ & -- \\
 \bottomrule
 \end{tabular*}
 \end{adjustbox}

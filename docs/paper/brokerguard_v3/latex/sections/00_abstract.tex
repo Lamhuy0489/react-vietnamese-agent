@@ -2,20 +2,21 @@
 % Số: facts.md mục Test-4 (40, 6, 2 họ; cặp lệch 4/0; cùng chiều trên ba mô hình; ΔU −3,1; token và độ trễ v3 so với v1),
 % thích nghi, AgentDojo v3. 20/11 (góp ý owner): nêu kết quả so với luật so khớp chuỗi theo hướng tích cực nhưng trung
 % thực, H1 không đạt được diễn đạt là "cần tập kiểm thử lớn hơn để khẳng định bằng kiểm định đăng ký trước".
+% 20/11 (soát văn phong): tách câu dài, bớt "còn", "cưỡng chế" thành "thực thi chính sách".
 \begin{abstract}
-Tác tử LLM dùng công cụ đọc nội dung từ bên ngoài, và một chỉ thị cài vào nội dung đó có thể khiến tác tử gửi dữ liệu
-tới đích lạ, làm lộ giá trị mật hoặc sửa tham số của một hành động hợp lệ. Bài báo đề xuất \ours, một cơ chế cưỡng chế
-tất định tại Tool Broker, gồm chính sách ý định có cực tính trích từ yêu cầu của người dùng, nhãn độ nhạy cảm cho từng
-giá trị và ghim các giá trị người dùng đã nêu, không gọi thêm LLM nào. Ba thuộc tính cấp quyền, bảo mật và toàn vẹn được
-chứng minh trên một mô hình chuyển trạng thái dưới năm giả định nêu rõ. Trên một tập kiểm thử tiếng Việt gồm 48 họ tấn
-công, niêm phong trước khi có mã, với ba mô hình nền mở trọng số, \ours{} giảm số họ bị tấn công thành công từ 40 khi
-không phòng thủ xuống 2, ít nhất trong các cấu hình được so sánh. Khi ba thành phần được thay bằng luật so khớp chuỗi, còn
-6 họ bị hại. \ours{} chặn thêm bốn họ trong số đó, mỗi họ bởi đúng thành phần được thiết kế cho nó, mà không để lọt họ
-nào mới, và chiều hiệu ứng giống nhau trên cả ba mô hình nền. Vì luật so khớp chuỗi đã ở gần mức sàn, việc khẳng định
-khác biệt này bằng kiểm định đăng ký trước cần một tập kiểm thử lớn hơn. Tiện ích chỉ giảm 3,1 điểm phần trăm so với
-khi không phòng thủ, còn token và độ trễ chênh không quá 1,4\% so với luật so khớp chuỗi. Dưới hai vòng tấn công thích
-nghi, \ours{} không để lọt họ nào ngoài những họ đã lọt với tấn công gốc. Trên AgentDojo bằng tiếng Anh và tiếng Việt,
-\ours{} giữ số tấn công thành công ở mức thấp, đổi lại tiện ích giảm ở các nhiệm vụ lấy đích từ dữ liệu công cụ.
+Một chỉ thị cài vào nội dung mà tác tử LLM đọc qua công cụ có thể khiến tác tử gửi dữ liệu tới đích lạ, làm lộ giá trị
+mật hoặc sửa tham số của một hành động hợp lệ. Bài báo đề xuất \ours, một cơ chế thực thi chính sách tất định đặt tại Tool
+Broker, gồm chính sách ý định có xét phủ định trích từ yêu cầu của người dùng, nhãn độ nhạy cảm cho từng giá trị và phép
+ghim các giá trị người dùng đã nêu, không gọi thêm LLM. Ba thuộc tính cấp quyền, bảo mật và toàn vẹn được chứng minh trên
+một mô hình chuyển trạng thái dưới năm giả định nêu rõ. Trên tập kiểm thử tiếng Việt gồm 48 họ tấn công, niêm phong trước
+khi viết mã, với ba mô hình nền mở trọng số, \ours{} giảm số họ bị tấn công thành công từ 40 khi không phòng thủ xuống 2.
+Khi ba thành phần được thay bằng luật so khớp chuỗi, còn 6 họ bị hại. \ours{} chặn thêm bốn họ trong số đó, mỗi họ bởi
+đúng thành phần được thiết kế cho nó, không để lọt họ mới, và cho cùng chiều hiệu ứng trên cả ba mô hình. Do luật so khớp
+chuỗi đã gần mức sàn, cần một tập kiểm thử lớn hơn để khẳng định khác biệt này bằng kiểm định đăng ký trước. Tiện ích chỉ
+giảm 3,1 điểm phần trăm so với khi không phòng thủ, còn token và độ trễ chênh không quá 1,4\% so với luật so khớp chuỗi.
+Dưới hai vòng tấn công thích nghi, \ours{} không để lọt họ nào ngoài những họ đã lọt với tấn công gốc. Trên AgentDojo
+bằng tiếng Anh và tiếng Việt, số tấn công thành công được giữ ở mức thấp, đổi lại tiện ích giảm ở các nhiệm vụ lấy đích
+từ dữ liệu công cụ.
 
 \keywords{Chèn lệnh gián tiếp \and Tác tử LLM \and Cấp quyền theo ý định \and Kiểm soát luồng thông tin \and Tiếng
 Việt}

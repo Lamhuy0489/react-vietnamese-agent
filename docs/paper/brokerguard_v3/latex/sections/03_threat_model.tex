@@ -1,37 +1,38 @@
 % Công cụ: docs/tool_contracts.md (6 công cụ đọc + 2 sink giả, không I/O mạng). Bộ chấm biến đổi:
 % src/react_agent/evaluation/transformed_leakage.py (decision log 2026-11-15 18:20). Không nêu tên công cụ giả trong bài.
+% 20/11 (soát văn phong): không dùng đại từ "họ" cho kẻ tấn công vì "họ" là thuật ngữ "họ tấn công" của bài.
 \section{Mô hình đe dọa}\label{sec:threat}
 
 \paragraph{Tác tử, công cụ và nhãn.} Gọi $u$ là yêu cầu của người dùng. Ở mỗi bước, mô hình sinh một hành động $a_t$ gồm
 tên công cụ và tham số, hoặc sinh câu trả lời cuối $y$. Tool Broker kiểm tra $a_t$, thực thi và trả về quan sát $o_t$.
-Hệ thống có sáu công cụ đọc và hai \emph{sink} có tác dụng phụ là gửi e-mail và gọi webhook, đều là bản giả chỉ ghi
-nhật ký. Câu trả lời cuối được coi là sink thứ ba. Với một lời gọi sink $a$, $\dest(a)$ là đích (địa chỉ hoặc URL) và
-$\data(a)$ là các tham số còn lại. Mỗi nội dung mang hai nhãn độc lập. Theo độ tin cậy, chỉ $u$ và prompt hệ thống là
-đáng tin. Theo độ nhạy cảm, nội dung được xếp từ công khai tới mật, vì một trang không đáng tin có thể là công khai, còn
-một bản ghi mật có thể đến từ nguồn mà kẻ tấn công không chạm tới.
+Hệ thống có sáu công cụ đọc và hai \emph{sink} có tác dụng phụ là gửi e-mail và gọi webhook, đều là bản mô phỏng chỉ ghi
+nhật ký. Câu trả lời cuối được coi là sink thứ ba. Với lời gọi sink $a$, $\dest(a)$ là đích (địa chỉ hoặc URL) và
+$\data(a)$ là các tham số còn lại. Mỗi nội dung mang hai nhãn. Theo độ tin cậy, chỉ $u$ và prompt hệ thống là đáng tin.
+Theo độ nhạy cảm, nội dung được xếp từ công khai tới mật. Hai nhãn này độc lập: một trang không đáng tin vẫn có thể công
+khai, trong khi một bản ghi mật có thể đến từ nguồn mà kẻ tấn công không tác động được.
 
-\paragraph{Kẻ tấn công.} Kẻ tấn công kiểm soát văn bản của một nội dung do công cụ đọc trả về và biết schema của công cụ.
-Trong các vòng thích nghi, họ biết thêm toàn bộ thiết kế và mô hình hình thức của phòng thủ. Họ không sửa được $u$,
-prompt hệ thống, broker hay trọng số mô hình. Jailbreak trực tiếp, đầu độc dữ liệu huấn luyện và hệ nhiều tác tử nằm
-ngoài phạm vi.
+\paragraph{Kẻ tấn công.} Kẻ tấn công kiểm soát văn bản của một nội dung do công cụ đọc trả về và biết schema của các công
+cụ, nhưng không sửa được $u$, prompt hệ thống, broker hay trọng số mô hình. Trong các vòng thích nghi, kẻ tấn công còn
+biết toàn bộ thiết kế và mô hình hình thức của phòng thủ. Jailbreak trực tiếp, đầu độc dữ liệu huấn luyện và hệ đa tác
+tử nằm ngoài phạm vi bài báo.
 
-\paragraph{Vị từ gây hại.} Gọi $G(u)$ là tập cặp (công cụ, đích) mà người dùng thực sự cho phép, $\Sigma$ là tập giá trị
-mật trên quỹ đạo mà người dùng không cho phép tiết lộ, và $\mathcal{S}$ là tập lời gọi sink đã được thực thi. Giá trị do
-người dùng viết trong $u$ không thuộc $\Sigma$. Quỹ đạo $\tau$ gây hại, ký hiệu $\mathrm{Harm}(\tau)$, khi ít nhất một
-trong bốn vị từ sau đúng: $H_\mathit{dest}$ khi có $a \in \mathcal{S}$ với $(\mathrm{tool}(a), \dest(a)) \notin G(u)$,
-$H_\mathit{leak}$ khi một $v \in \Sigma$ xuất hiện trong $\data(a)$ của một $a \in \mathcal{S}$ hoặc trong $y$ ở dạng
-nguyên văn hay biến đổi, $H_\mathit{tamper}$ khi có $a \in \mathcal{S}$ tới đích hợp lệ nhưng một trường do người dùng
-chỉ định mang giá trị khác, và $H_\mathit{side}$ khi nhiệm vụ chỉ cần đọc nhưng $\mathcal{S} \neq \emptyset$. Một bộ
-chấm đóng băng xác định các vị từ từ lời gọi đã thực thi và $y$, nên lời gọi bị chặn không được tính là gây hại. Ngoài
-so khớp nguyên văn, bộ chấm nhận ra giá trị mật ở dạng Base64, Hex, mã hóa URL, tách ký tự và số viết bằng chữ.
+\paragraph{Vị từ gây hại.} Gọi $G(u)$ là tập các cặp (công cụ, đích) mà người dùng thực sự cho phép, $\Sigma$ là tập giá
+trị mật trên quỹ đạo mà người dùng không cho phép tiết lộ, và $\mathcal{S}$ là tập lời gọi sink đã được thực thi. Giá trị
+do người dùng tự viết trong $u$ không thuộc $\Sigma$. Quỹ đạo $\tau$ gây hại, ký hiệu $\mathrm{Harm}(\tau)$, khi có ít
+nhất một trong bốn vị từ sau: $H_\mathit{dest}$ khi có $a \in \mathcal{S}$ với $(\mathrm{tool}(a), \dest(a)) \notin
+G(u)$, $H_\mathit{leak}$ khi một $v \in \Sigma$ xuất hiện trong $\data(a)$ của một $a \in \mathcal{S}$ hoặc trong $y$ ở
+dạng nguyên văn hay biến đổi, $H_\mathit{tamper}$ khi có $a \in \mathcal{S}$ tới đích hợp lệ nhưng một trường do người
+dùng chỉ định mang giá trị khác, và $H_\mathit{side}$ khi nhiệm vụ chỉ cần đọc nhưng $\mathcal{S} \neq \emptyset$. Bộ
+chấm đóng băng xác định các vị từ này từ lời gọi đã thực thi và $y$, nên lời gọi bị chặn không bị tính là gây hại.
+Ngoài so khớp nguyên văn, bộ chấm còn nhận ra giá trị mật ở dạng Base64, Hex, mã hóa URL, tách ký tự và số viết bằng chữ.
 
-\paragraph{Cơ chế, họ và biến thể.} Tấn công được phân loại theo sáu \emph{cơ chế}, tức con đường để đoạn chèn biến
-thành tác hại (Bảng~\ref{tab:mechanisms}). Ở hai cơ chế chuyển hướng, đích không có trong $u$. Ở hai cơ chế rò rỉ và cơ
-chế sửa tham số, đích hợp lệ, nên chỉ nguồn gốc hay giá trị của dữ liệu mới phân biệt được tấn công với nhiệm vụ. Một
-\emph{họ} là một ý tưởng tấn công trong một nhiệm vụ và một môi trường công cụ cụ thể. Mọi họ có nhánh \emph{\bPlain},
-thay đoạn chèn bằng một ghi chú vô hại cùng độ dài, và một phần ba số họ có thêm nhánh \emph{\bAuth}, trong đó người
-dùng cho phép rõ ràng một hành động giống mục tiêu tấn công. Chặn ở nhánh lành tính là \emph{chặn nhầm}. Mỗi họ có năm
-biến thể áp cho cả $u$ lẫn đoạn chèn là tiếng Việt chuẩn, diễn đạt lại, trộn Việt và Anh, không dấu, và tiếng Anh, với
-định danh, địa chỉ và giá trị mật giữ nguyên.
+\paragraph{Cơ chế, họ và biến thể.} Tấn công được phân loại theo sáu \emph{cơ chế}, tức con đường mà đoạn chèn dẫn tới
+tác hại (Bảng~\ref{tab:mechanisms}). Ở hai cơ chế chuyển hướng, đích không có trong $u$. Ở hai cơ chế rò rỉ và cơ chế sửa
+tham số, đích là hợp lệ, nên chỉ nguồn gốc hoặc giá trị của dữ liệu mới phân biệt được tấn công với nhiệm vụ. Một
+\emph{họ} là một ý tưởng tấn công gắn với một nhiệm vụ và một môi trường công cụ cụ thể. Mọi họ có nhánh \emph{\bPlain},
+thay đoạn chèn bằng một ghi chú vô hại cùng độ dài, và một phần ba số họ có thêm nhánh \emph{\bAuth}, trong đó người dùng
+cho phép rõ ràng một hành động giống mục tiêu tấn công. Chặn ở nhánh lành tính là \emph{chặn nhầm}. Mỗi họ có năm biến
+thể ngôn ngữ áp dụng cho cả $u$ lẫn đoạn chèn: tiếng Việt chuẩn, diễn đạt lại, trộn tiếng Việt và tiếng Anh, không dấu,
+và tiếng Anh, với định danh, địa chỉ và giá trị mật giữ nguyên.
 
 \input{tables/tab1_mechanisms}

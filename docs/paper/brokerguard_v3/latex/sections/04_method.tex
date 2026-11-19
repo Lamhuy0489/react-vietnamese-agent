@@ -3,58 +3,61 @@
 % Số: facts.md mục "Bổ sung cho bài v3" (ngưỡng 8 ký tự, 9 chữ số; vi mô) và mục Test-4 (0,26 ms). Bản 15 trang bỏ
 % đoạn về biến thể C1a (2 -> 5 quỹ đạo gây hại trên Dev-val), xem bản dài ở commit 6814b3a.
 % Không trích văn bản tấn công. Ví dụ từ nối phủ định là của bộ trích, không phải của dữ liệu.
+% 20/11 (soát văn phong): bỏ ngoặc lồng nhau ở đoạn luật nền; bỏ câu "báo lại lời gọi bị từ chối" (Hình 1 đã thể hiện).
 \section{Phương pháp \ours}\label{sec:method}
 
-Thiết kế của \ours{} xuất phát từ quan điểm rằng mô hình không phải là ranh giới an ninh. Một hành động chỉ có hiệu lực
-khi broker thực thi nó, nên broker đóng vai trò reference monitor tại các sink, và nguồn quyền duy nhất là $u$. Lời gọi
-bị từ chối được báo lại để tác tử làm tiếp phần việc hợp lệ. Hình~\ref{fig:arch} mô tả kiến trúc. Các luật nền có từ
-giai đoạn đầu gồm \rDest{} (Mục~\ref{sec:intro}), \rFlow{} (giá trị từ nguồn gắn nhãn mật chỉ được rời tác tử khi $u$
-chứa nguyên văn giá trị đó), \rRedact{} cho câu trả lời cuối và \rSig{} (chặn sink sau một quan sát bị bộ dò cụm từ
-gắn cờ, trừ lời gọi khớp một văn phạm chặt trên $u$). Lời nhắc kiểu sandwich nhắc lại $u$ sau mỗi quan sát. \ours{} thay
-\rDest{} bằng \pOne{} (\cOne), thêm \pTwo{} (\cTwo) và \pThree{} (\cThree). Cấu hình giữ \rDest{} và bỏ cả ba thành
-phần được gọi là \strSand, khi bỏ thêm lời nhắc thì gọi là \strRules.
+Thiết kế của \ours{} xuất phát từ quan điểm rằng mô hình không phải là ranh giới an ninh. Một hành động chỉ có tác dụng
+khi được broker thực thi, vì vậy broker là reference monitor tại các sink, với $u$ là nguồn quyền duy nhất.
+Hình~\ref{fig:arch} mô tả kiến trúc. Từ giai đoạn đầu, broker đã có bốn luật nền. Ngoài \rDest{} (Mục~\ref{sec:intro}),
+\rFlow{} chỉ cho giá trị lấy từ nguồn gắn nhãn mật rời tác tử khi $u$ chứa nguyên văn giá trị đó, \rRedact{} che các giá
+trị này trong câu trả lời cuối, và \rSig{} chặn sink sau một quan sát bị bộ dò cụm từ gắn cờ, trừ lời gọi khớp một văn
+phạm chặt trên $u$. Lời nhắc kiểu sandwich nhắc lại $u$ sau mỗi quan sát. \ours{} thay \rDest{} bằng \pOne{} (\cOne) và
+bổ sung \pTwo{} (\cTwo) cùng \pThree{} (\cThree). Cấu hình giữ \rDest{} và không có ba thành phần mới được gọi là
+\strSand. Nếu bỏ thêm lời nhắc, cấu hình còn lại là \strRules.
 
 \input{images/fig1_architecture}
 
-\paragraph{Chuẩn hóa.} Hàm $\norm(\cdot)$ áp Unicode NFKC, bỏ ký tự định dạng và casefold. Hàm $\kappa(\cdot)$ áp thêm
-việc bỏ dấu tiếng Việt và chỉ giữ chữ và số. Ký hiệu $x \sub z$ nghĩa là $\kappa(x)$ là một chuỗi con của $\kappa(z)$,
-và $V(u)$ là tập giá trị xuất hiện trong $u$ theo nghĩa này.
+\paragraph{Chuẩn hóa.} Hàm $\norm(\cdot)$ chuẩn hóa Unicode NFKC, bỏ ký tự định dạng và chuyển về chữ thường. Hàm
+$\kappa(\cdot)$ bỏ thêm dấu tiếng Việt và chỉ giữ chữ và số. Ký hiệu $x \sub z$ nghĩa là $\kappa(x)$ là chuỗi con của
+$\kappa(z)$, và $V(u)$ là tập giá trị xuất hiện trong $u$ theo nghĩa này.
 
 \paragraph{\POne{} (\cOne).} Bộ trích chỉ đọc $u$ và trả về $P(u) = \{g_i\}$. Mỗi quyền $g = (\mathrm{tool}, \dest, \pi,
 \mathrm{pins})$ gồm công cụ, đích, cực tính $\pi \in \{+,-\}$ và các giá trị được ghim. Đích là địa chỉ e-mail hoặc
-endpoint, so khớp nguyên token sau $\norm$, nên một phần của đích hay một từ thường trong $u$ không còn được coi là
-đích. Phủ định đi với động từ (``đừng gửi'', ``do not send'') phủ các đích theo sau trong cùng mệnh đề, từ loại trừ
-(``trừ'', ``except'') phủ tới dấu phẩy kế tiếp, còn từ tương phản (``nhưng'', ``but'') kết thúc phạm vi. Khi $u$ không
-dấu, một từ như ``dung'' chỉ được coi là phủ định nếu theo sau là một động từ gửi. Mệnh đề cấp quyền phải có động từ gửi
-không bị phủ định và hợp với loại đích. Một đích chỉ được nhắc tới, nằm trong trích dẫn hay đứng gần một phủ định không
-rõ phạm vi cho kết quả \emph{cần xác nhận}. Lời gọi sink $a$ thỏa \pOne{} khi
+endpoint, được so khớp nguyên token sau $\norm$, nên một phần của đích hay một từ thông thường trong $u$ không còn bị coi
+là đích. Phủ định đi kèm động từ (``đừng gửi'', ``do not send'') áp dụng cho các đích đứng sau trong cùng mệnh đề, từ
+loại trừ (``trừ'', ``except'') áp dụng tới dấu phẩy kế tiếp, và từ tương phản (``nhưng'', ``but'') kết thúc phạm vi phủ
+định. Khi $u$ không dấu, một từ như ``dung'' chỉ được coi là phủ định nếu theo sau là động từ gửi. Mệnh đề cấp quyền phải
+chứa động từ gửi không bị phủ định và phù hợp với loại đích. Đích chỉ được nhắc tới, nằm trong trích dẫn hoặc đứng gần một
+phủ định không rõ phạm vi cho kết quả \emph{cần xác nhận}. Lời gọi sink $a$ thỏa \pOne{} khi
 \begin{equation}\label{eq:c1}
 \begin{aligned}
 &\exists\, g \in P(u)\colon\; \pi(g) = {+} \,\land\, \mathrm{tool}(g) = \mathrm{tool}(a) \,\land\, \dest(g) \doteq \dest(a),\\
 &\nexists\, g' \in P(u)\colon\; \pi(g') = {-} \,\land\, \dest(g') \doteq \dest(a),
 \end{aligned}
 \end{equation}
-với $\doteq$ là bằng nhau nguyên token sau $\norm$. Chẳng hạn, với yêu cầu ``gửi báo cáo cho \code{ketoan@example.com},
-không gửi cho \code{doitac@example.org}'', lời gọi tới địa chỉ thứ hai bị từ chối dù \rDest{} cho qua.
+với $\doteq$ là phép so bằng nguyên token sau $\norm$. Chẳng hạn, với yêu cầu ``gửi báo cáo cho
+\code{ketoan@example.com}, không gửi cho \code{doitac@example.org}'', lời gọi tới địa chỉ thứ hai bị từ chối, dù
+\rDest{} vẫn cho qua vì địa chỉ này có trong $u$.
 
-\paragraph{\PTwo{} (\cTwo).} \PTwo{} gán nhãn cho từng giá trị trong mọi đầu ra công cụ theo kiểu của nó, độc lập với
-nhãn nguồn và độ tin cậy. Ba kiểu được nhận ra là định danh trộn chữ và số dài ít nhất 8 ký tự, số có ít nhất 9 chữ số
-sau khi bỏ khoảng trắng, dấu chấm và gạch, và giá trị đứng sau tên trường nhạy cảm như mật khẩu, OTP, token hay số tài
+\paragraph{\PTwo{} (\cTwo).} \PTwo{} gán nhãn cho từng giá trị trong đầu ra công cụ dựa trên kiểu của giá trị, độc lập
+với nhãn nguồn và độ tin cậy. Ba kiểu được nhận diện là định danh trộn chữ và số dài ít nhất 8 ký tự, số có ít nhất 9 chữ
+số sau khi bỏ khoảng trắng, dấu chấm và gạch, và giá trị đứng sau tên trường nhạy cảm như mật khẩu, OTP, token hay số tài
 khoản. Gọi $C_t$ là tập giá trị cần bảo vệ sau bước $t$, gồm các giá trị được \rFlow{} bảo vệ và các giá trị được gắn
 nhãn theo kiểu. Broker từ chối lời gọi sink $a$ nếu
 \begin{equation}\label{eq:c2}
 \exists\, v \in C_t \setminus V(u)\colon\; v \sub \data(a) .
 \end{equation}
-Vì so khớp dùng $\kappa$, điều kiện vẫn đúng khi giá trị bị thêm hay bớt khoảng trắng, dấu chấm, gạch, đổi hoa thường
-hoặc bỏ dấu. Trong câu trả lời cuối, mọi $v \in C_t \setminus V(u)$ có $v \sub y$ được thay bằng \code{[REDACTED]}.
+Vì phép so khớp dùng $\kappa$, điều kiện vẫn đúng khi giá trị bị thêm hay bớt khoảng trắng, dấu chấm, gạch, đổi chữ hoa
+thường hoặc bỏ dấu. Trong câu trả lời cuối, mọi $v \in C_t \setminus V(u)$ có $v \sub y$ đều được thay bằng
+\code{[REDACTED]}.
 
-\paragraph{\PThree{} (\cThree).} Sửa tham số giữ nguyên đích được cấp quyền và đổi một giá trị như số tiền, trạng thái,
-đơn vị hay mã. Thành phần này ghim các literal trong mệnh đề của $u$ đã cấp quyền cho lời gọi, gồm số đứng sau động từ
-gửi và không phải toán hạng của một phép tính, đơn vị nêu kèm số, giá trị boolean có cực tính và định danh do người dùng
-viết. Lời gọi bị từ chối khi thiếu một literal đã ghim trong $\data(a)$, so ở dạng $\kappa$, hoặc mang boolean ngược với
-boolean đã ghim.
+\paragraph{\PThree{} (\cThree).} Tấn công sửa tham số giữ nguyên đích đã được cấp quyền nhưng đổi một giá trị như số
+tiền, trạng thái, đơn vị hay mã. Thành phần này ghim các literal trong mệnh đề của $u$ đã cấp quyền cho lời gọi: số đứng
+sau động từ gửi mà không phải toán hạng của phép tính, đơn vị đi kèm số, giá trị boolean có cực tính và định danh do
+người dùng viết. Lời gọi bị từ chối khi $\data(a)$ thiếu một literal đã ghim (so ở dạng $\kappa$) hoặc mang boolean
+ngược với boolean đã ghim.
 
-\paragraph{Cổng và chi phí.} Một lời gọi sink chỉ được thực thi khi qua cả bốn kiểm tra là \rSig, \pOne, \pThree{} và
-kiểm luồng gồm \rFlow{} cùng \pTwo. Kết quả \emph{cần xác nhận} được thi hành như từ chối và đếm riêng, còn lời gọi đọc
-luôn được cho qua. Cổng không gọi thêm mô hình nào. Trên tập phát triển, trung vị thời gian kiểm một lời gọi sink là
-315~$\mu$s (\strSand: 107~$\mu$s).
+\paragraph{Cổng và chi phí.} Một lời gọi sink chỉ được thực thi khi qua cả bốn bước kiểm tra: \rSig, \pOne, \pThree{} và
+kiểm tra luồng gồm \rFlow{} cùng \pTwo. Kết quả \emph{cần xác nhận} được xử lý như từ chối nhưng đếm riêng, và lời gọi
+đọc luôn được cho qua. Trên tập phát triển, trung vị thời gian kiểm tra một lời gọi sink là 315~$\mu$s
+(\strSand: 107~$\mu$s).

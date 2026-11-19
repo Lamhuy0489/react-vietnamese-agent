@@ -7,6 +7,12 @@ Cập nhật: 2026-11-20. (Trước đó 2026-11-19 tối.) Lộ trình [v2](../
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-20 (tối): CẢ HAI BẢN ĐÃ SOÁT VĂN PHONG VÀ ĐỒNG BỘ, chờ owner biên dịch lại.** Bản Việt bật Pareto, ước
+lượng khoảng 14,8 trang; bản Anh tắt Pareto, khoảng 14,7 trang. Khối tác giả ẩn danh (không còn chữ đỏ). Danh sách thay
+đổi: README của bài, mục "Lượt 2". Việc kế: owner biên dịch cả hai bản, báo số trang; nếu bản Việt vẫn quá 15 trang
+thì `\paretofalse`. Còn phải chốt nơi nộp (ẩn danh hay không, giới hạn trang có tính tài liệu tham khảo không, quy định
+về văn bản do AI hỗ trợ) và liên kết dữ liệu ẩn danh nếu phản biện kín.
+
 **2026-11-20 (sau): BẢN VIỆT ĐÃ SỬA THEO GÓP Ý LẦN 1, BẢN ANH CHƯA.** Owner biên dịch bản Việt: khoảng 14,5 trang. Đã
 sửa bản Việt: Bảng 1 hết tràn lề (`tabularx`), Bảng 3, 4 tách cột Q, G, L, tóm tắt và Mục 1, 7, 8, 9 diễn đạt lại kết
 quả so với luật so khớp chuỗi, bật Hình Pareto (`\paretotrue`, owner chọn; ước lượng khoảng 14,85 trang). Việc kế:

@@ -1,19 +1,22 @@
 % LNCS: abstract 150--250 words. No p-values in the abstract. Numbers: facts.md (Test-4: 40, 6, 2 families; ΔU −3.1;
 % H1 not significant; tokens and latency of v3 against v1), adaptive rounds, AgentDojo v3.
 % 15-page version (2026-11-20), condensed from the long version in commit 6814b3a.
+% 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
 \begin{abstract}
-Instructions planted in content read by a tool-using LLM agent can make it send data to an unknown destination, leak
-confidential values or alter a legitimate action. This paper presents \ours, a deterministic enforcement mechanism at
-the Tool Broker that combines an intent policy with polarity extracted from the user request, sensitivity labels for
-individual values and pinning of the values the user stated, without any additional LLM call. Authorisation safety,
-confidentiality and integrity are proved on a state-transition model under five explicit assumptions. On a Vietnamese
-test set of 48 attack families, sealed before any code existed, with three open-weight backbones, the number of harmed
-families falls from 40 without defence to 2, against 6 when the three components are replaced by string-matching
-rules. The latter reduction is not significant under the pre-registered test because of a floor effect. Utility falls
-by 3.1 percentage points relative to no defence, while tokens and latency stay within 1.4\% of string matching. Under
+Instructions planted in content that an LLM agent reads through its tools can make the agent send data to an unknown
+destination, leak confidential values or alter a legitimate action. This paper proposes \ours, a deterministic
+policy-enforcement mechanism at the Tool Broker that combines an intent policy with negation handling, extracted from the
+user request, sensitivity labels for individual values, and pinning of the values the user stated, without any extra LLM
+call. Authorisation safety, confidentiality and integrity are proved on a state-transition model under five explicit
+assumptions. On a Vietnamese test set of 48 attack families, sealed before any code was written, with three open-weight
+backbones, \ours{} reduces the harmed families from 40 without a defence to 2. When its three components are replaced by
+string-matching rules, 6 families remain harmed. \ours{} blocks four of them, each with the component designed for it,
+lets no new family through, and shows the same direction on all three backbones. Because string matching is already
+near the floor, confirming this difference with the pre-registered test requires a larger test set. Utility drops by
+only 3.1 percentage points relative to no defence, and tokens and latency stay within 1.4\% of string matching. Under
 two rounds of adaptive attacks, no family succeeds beyond those that already succeed with the original attacks. On
-AgentDojo in English and Vietnamese, \ours{} matches the attack success of string matching but lowers utility further
-when destinations come from tool data.
+AgentDojo in English and Vietnamese, attack success stays low, at the cost of utility on tasks whose destinations come
+from tool data.
 
 \keywords{Indirect prompt injection \and LLM agents \and Intent-based authorisation \and Information flow control \and
 Vietnamese}

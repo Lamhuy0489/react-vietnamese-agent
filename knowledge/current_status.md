@@ -2,6 +2,9 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**20/11 (tối): cả hai bản đã soát văn phong, đồng bộ, bỏ chữ đỏ** (Việt bật Pareto ~14,8 trang, Anh tắt Pareto ~14,7
+trang, ước lượng). Chờ owner biên dịch lại.
+
 **20/11 (sau): bản Việt đã sửa theo góp ý lần 1** (Bảng 1 hết tràn, Bảng 3, 4 tách cột, tóm tắt và kết luận diễn đạt
 lại, bật Hình Pareto; ước lượng khoảng 14,85 trang). Bản Anh chưa sửa theo lần này (README của bài, mục "Góp ý owner
 lần 1").

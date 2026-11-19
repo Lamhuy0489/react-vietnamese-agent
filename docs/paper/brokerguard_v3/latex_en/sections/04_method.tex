@@ -3,17 +3,17 @@
 % Numbers: facts.md "Bổ sung cho bài v3" (8 characters, 9 digits; micro-benchmark) and Test-4 (0.26 ms). The 15-page
 % version drops the paragraph on the C1a variant (2 -> 5 harmful trajectories on Dev-val); see commit 6814b3a.
 % No attack text is quoted. The cue words are those of the extractor, not of the data.
+% 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
 \section{The \ours{} Method}\label{sec:method}
 
 \ours{} treats the model as outside the security boundary. An action takes effect only when the broker executes it, so
-the broker acts as a reference monitor at the sinks, and the only source of authority is $u$. A denied call is reported
-back so that the agent can continue with the legitimate part of its work. Figure~\ref{fig:arch} shows the architecture.
-The base rules from the early stage are the \rDest{} (Section~\ref{sec:intro}), the \rFlow{} (a value from a source
-labelled confidential leaves the agent only if $u$ contains it verbatim), the \rRedact{} for the final answer, and the
-\rSig{} (sinks are denied after an observation flagged by a phrase detector, unless the call matches a strict grammar
-over $u$). Sandwich prompting repeats $u$ after every observation. \ours{} replaces the \rDest{} with the \pOne{}
-(\cOne) and adds \pTwo{} (\cTwo) and \pThree{} (\cThree). Keeping the \rDest{} and dropping all three components gives
-\strSand, and dropping the prompt layer as well gives \strRules.
+the broker is the reference monitor at the sinks, with $u$ as the only source of authority. Figure~\ref{fig:arch} shows
+the architecture. Four base rules date from the early stage. Besides the \rDest{} (Section~\ref{sec:intro}), the
+\rFlow{} lets a value from a source labelled confidential leave the agent only if $u$ contains it verbatim, the
+\rRedact{} masks such values in the final answer, and the \rSig{} denies sinks after an observation flagged by a phrase
+detector, unless the call matches a strict grammar over $u$. Sandwich prompting repeats $u$ after every observation.
+\ours{} replaces the \rDest{} with the \pOne{} (\cOne) and adds \pTwo{} (\cTwo) and \pThree{} (\cThree). Keeping the
+\rDest{} and dropping all three components gives \strSand, and dropping the prompt layer as well gives \strRules.
 
 \input{images/fig1_architecture}
 
@@ -53,10 +53,10 @@ diacritics. In the final answer, every $v \in C_t \setminus V(u)$ with $v \sub y
 \paragraph{\PThree{} (\cThree).} Parameter tampering keeps the authorised destination and changes a value such as an
 amount, a status, a unit or a code. \PThree{} pins the literals in the clause of $u$ that authorised the call: numbers
 after the sending verb that are not operands of a calculation, units stated with a number, Booleans with their
-polarity, and identifiers written by the user. A call is denied if a pinned literal is missing from $\data(a)$ under
-$\kappa$, or if it carries the opposite of a pinned Boolean.
+polarity, and identifiers written by the user. A call is denied if $\data(a)$ lacks a pinned literal (compared under
+$\kappa$) or carries the opposite of a pinned Boolean.
 
 \paragraph{Gate and cost.} A sink call is executed only if it passes all four checks: the \rSig, the \pOne, \pThree{}
 and the flow check of the \rFlow{} with \pTwo. \emph{Needs confirmation} is enforced as a denial and counted
-separately, and read calls are always allowed. The gate calls no model. On the \dev, the median check of a sink call
-takes 315~$\mu$s (\strSand: 107~$\mu$s).
+separately, and read calls are always allowed. On the \dev, the median check of a sink call takes 315~$\mu$s
+(\strSand: 107~$\mu$s).
