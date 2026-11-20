@@ -4,37 +4,40 @@
 % Codes kept in this section: (G1)--(G4) and (A1)--(A5), because the proofs and Table 2 refer to them.
 % 20/11 round 3 (style of the reference paper in pdf/): section openers, fewer parentheses, notation moved to Section 5.
 % 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
+% 20/11 (round 3c): notation only where equations need it, the request in words elsewhere, gate conditions as a list, plainer claims.
 \section{Formal Model}\label{sec:formal}
 
-This section states when the checks of Section~\ref{sec:method} suffice to prevent the kinds of harm of
-Section~\ref{sec:threat}. Let $G(u)$ be the tool and destination pairs that the user actually authorises, and $\Sigma$
-the confidential values that the user does not allow to be disclosed. The broker state after step $t$ is $s_t = (u,
-P(u), C_t, H_t)$, where $H_t$ is the history of executed calls and results, and $P(u)$ is built once before the first
-step. Let $R$ be the read tools and $S$ the sinks with a destination field. For each proposed call $a_t$, the gate
-returns allow, deny or confirm, and confirm is enforced as a denial. Read calls are always allowed. For $a_t \in S$ the
-gate allows if and only if (G1) the \rSig{} does not deny $a_t$, (G2) $a_t$ satisfies condition~\eqref{eq:c1}, (G3) for
-some grant $g$ satisfying (G2), every pinned literal of $g$ occurs in $\data(a_t)$ and no Boolean is flipped, and (G4)
-condition~\eqref{eq:c2} is false. Let $\hat G(u)$ be the pairs that satisfy (G2). An allowed call is executed, the call
-and its result $o_t$ are appended to $H_t$, and $C_{t+1} = C_t \cup L(o_t)$, where $L$ combines the \rFlow{} and \pTwo.
-The final answer is released after masking every value of $C_t \setminus V(u)$. Five assumptions delimit the
-propositions.
+This section states when the checks of Section~\ref{sec:method} suffice to prevent the harms of
+Section~\ref{sec:threat}. Let $G$ be the tool and destination pairs that the user actually
+authorises, $\Sigma$ the confidential values that the user does not allow to be disclosed, and $S$ the sinks with a
+destination field. The grants are extracted once, before the first step. For each proposed call $a_t$, the gate
+returns allow, deny or confirm, and confirm is enforced as a denial. Read calls are always allowed, and a call in $S$ is
+allowed if and only if four conditions hold.
+\begin{enumerate}[label=(G\arabic*), leftmargin=*]
+\item The \rSig{} does not deny the call.
+\item Condition~\eqref{eq:c1} holds for the call.
+\item For some grant $g$ satisfying (G2), every pinned literal of $g$ occurs in $\data(a_t)$ and no Boolean is flipped.
+\item Condition~\eqref{eq:c2} is false.
+\end{enumerate}
+Let $\hat G$ be the pairs that satisfy (G2). An allowed call is executed and its result $o_t$ gives $C_{t+1} = C_t \cup
+L(o_t)$, where $L$ combines the \rFlow{} and \pTwo. The final answer is released after masking every value of $C_t
+\setminus V$. Five assumptions delimit the propositions.
 \begin{enumerate}[label=(A\arabic*), leftmargin=*]
 \item \emph{Complete mediation.} Every tool call goes through the broker, and every tool with side effects is in $S$.
-\item \emph{Sound extraction.} $\hat G(u) \subseteq G(u)$. The converse direction affects only utility.
+\item \emph{Sound extraction.} Every pair in $\hat G$ is in $G$. The converse affects only utility.
 \item \emph{Label coverage.} Every value of $\Sigma$ appearing in a result $o_t$ is in $C_{t+1}$.
 \item \emph{Transformation class.} If the agent leaks $v$ inside a string $w$, then $v \sub w$. Encodings, numbers
   written as words and values split across calls are excluded.
 \item \emph{Complete pins.} For the grant $g$ authorising a call $a$, the pinned literals of $g$ include every value
   and Boolean the user stated for $a$.
 \end{enumerate}
-
 \begin{proposition}[Authorisation safety]\label{prop:auth}
-Under (A1) and (A2), every executed sink call has its tool and destination pair in $G(u)$. Hence no trajectory causes
+Under (A1) and (A2), every executed sink call has its tool and destination pair in $G$. Hence no trajectory causes
 redirection, and a read-only task causes no side effect.
 \end{proposition}
 \begin{proof}
-By (A1), a sink $a$ is executed only if the gate allows it, so (G2) holds and the pair of $a$ lies in $\hat G(u)$, which
-is contained in $G(u)$ by (A2). A read-only task has an empty $G(u)$, so no sink is executed. \qed
+By (A1), a sink $a$ is executed only if the gate allows it, so (G2) holds and the pair of $a$ lies in $\hat G$, which
+is contained in $G$ by (A2). A read-only task has an empty $G$, so no sink is executed. \qed
 \end{proof}
 
 \begin{proposition}[Confidentiality]\label{prop:conf}
@@ -42,7 +45,7 @@ Under (A1), (A3) and (A4), no value of $\Sigma$ appears in $\data(a)$ of an exec
 answer. Hence no trajectory causes leakage through the forms covered by (A4).
 \end{proposition}
 \begin{proof}
-Suppose $v \in \Sigma$ appears in $\data(a)$ of a sink $a$ executed at step $t$. Since $v \notin V(u)$, the agent can
+Suppose $v \in \Sigma$ appears in $\data(a)$ of a sink $a$ executed at step $t$. Since $v \notin V$, the agent can
 only have obtained $v$ from an earlier result, so $v \in C_t$ by (A3). By (A4), $v \sub \data(a)$, so \eqref{eq:c2}
 holds and (G4) fails, contradicting (A1). For the final answer, masking replaces every surface form matching $\kappa(v)$
 before release, so by (A4) no form of $v$ remains. \qed

@@ -5,6 +5,7 @@
 % 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
 % 20/11 round 3 (style of the reference paper): section openers, fewer parentheses, Gemini described as Google's closed model.
 % 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
+% 20/11 (round 3c): notation only where equations need it, the request in words elsewhere, gate conditions as a list, plainer claims.
 \section{Data and Evaluation Protocol}\label{sec:protocol}
 
 The evaluation tests \ours{} on data not used in its design, against published defences and simpler rule
@@ -23,7 +24,7 @@ largest 4-gram Jaccard overlap with the \dev{} is 0.05.
 \paragraph{Adaptive attacks.} The first set has 24 cases within the \test, generated and sealed with it and aimed at the
 three weaknesses of \strSand{} with 8 cases each. The second set has 42 cases written by two team members after \ours{}
 was frozen, with full knowledge of its design and formal model. Each replaces the attack text of one family in the
-validation part of the \dev{} and targets assumptions (A2) to (A5).
+validation part of the \dev{} and targets the empirical assumptions of Section~\ref{sec:formal}.
 
 \paragraph{Backbones and configurations.} Gemma-4-12B, Llama-3.1-8B with a 16k context and Qwen3.5-9B are served with
 vLLM, pinned by revision, with the same ReAct prompt, temperature 0, at most 512 tokens per step and at most eight
@@ -57,6 +58,6 @@ each component increases the harmed families, with Holm correction. H4 bounds co
 105 pairs of user and injection tasks respectively, are run with the \code{important\_instructions} attack in English
 and in a Vietnamese translation that keeps IBANs, amounts, names and addresses. \StrSand{} and \ours{} run with
 Llama-3.1-8B through an adapter, declared before running, that states which tools are sinks and which argument holds the
-destination. In the adapter, the \pOne{} only requires the destination to occur as a whole token in $u$ outside any
-negation scope. Sandwich here is the built-in \code{repeat\_user\_prompt} defence of AgentDojo, and utility without
+destination. In the adapter, the \pOne{} only requires the destination to occur as a whole token in the request outside
+any negation scope. Sandwich here is the built-in \code{repeat\_user\_prompt} defence of AgentDojo, and utility without
 attack is measured on 16 Banking and 21 Slack tasks.

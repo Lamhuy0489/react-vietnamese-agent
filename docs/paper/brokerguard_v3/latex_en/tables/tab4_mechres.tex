@@ -6,15 +6,16 @@
 % column of Table 3. Wrapped in adjustbox max width.
 % 20/11 (owner feedback): set-1 Q/G/L and the two set-2 counts in separate right-aligned columns (about 330 pt at
 % 9 pt with tabcolsep 2.5 pt).
+% 20/11 (round 3c): fewer symbols in parentheses (owner).
 \begin{table}[!htbp]
 \centering
-\caption{Harmed families per mechanism on the \test{} and under the two adaptive sets. Set 1 counts cases out of 24, Set 2 counts families out of 42.}\label{tab:mechres}
+\caption{Harmed families per mechanism on the \test, out of 8 each, and under the two adaptive sets. Set 1 counts cases out of 24, Set 2 counts families out of 42.}\label{tab:mechres}
 \footnotesize
 \setlength{\tabcolsep}{2.5pt}
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrrrrrr@{}}
 \toprule
- & \multicolumn{6}{c}{Per mechanism (/8)} & \multicolumn{3}{c}{Set 1 (/24)} & \multicolumn{2}{c}{Set 2 (/42)} \\
+ & \multicolumn{6}{c}{Per mechanism} & \multicolumn{3}{c}{Set 1} & \multicolumn{2}{c}{Set 2} \\
 \cmidrule(lr){2-7}\cmidrule(lr){8-10}\cmidrule(l){11-12}
 Configuration & \mER & \mCR & \mSL & \mAL & \mPT & \mUS & Q & G & L & adaptive & original \\
 \midrule

@@ -87,6 +87,13 @@ Không bỏ kết quả hay luận điểm nào. Những gì bị cắt hoặc c
 - Số trang bản Anh: bản owner biên dịch lúc 05:00 (đã bật Hình 2) đúng 15 trang, trang cuối kín. Lượt 3b cắt khoảng 10
   dòng (câu trùng, chú thích, câu Sandwich lặp ở Mục 4), ước lượng còn khoảng 14,8 trang.
 
+- Lượt 3c (bản Anh, owner hỏi bài chuẩn có nhiều ký hiệu vậy không): so với bài lượng tử, bài đó dày ký hiệu hơn ở
+  phần lý thuyết nhưng phần mở đầu, liên quan, thực nghiệm gần như không có ký hiệu. Đã làm theo: Mục 1, 2, 8, 9 không
+  còn ký hiệu, Mục 3 chỉ định nghĩa $u$, $y$; Mục 4–5 bỏ đối số thừa P(u), V(u), G(u), $\pi(g)$, trạng thái $s_t$, $H_t$,
+  $R$; điều kiện (G1)–(G4) thành danh sách; ngoài Mục 5 gọi giả định bằng tên; tiêu đề Bảng 3, 4 bỏ "(/48)", "(/504)",
+  "(/8)", tổng đưa vào chú thích; Hình 1 bỏ "(protected set $C_t$)"; bớt chữ mạnh ("removes" → "addresses", "far
+  clearer" → "larger", bỏ "only" ở tóm tắt). Số liệu không đổi, ước lượng khoảng 14,8 trang.
+
 ## Ước lượng trang (không có TeX trên máy)
 
 Script ở scratchpad của phiên 20/11 (không lưu): lấy chữ hiển thị của từng đoạn từ nguồn LaTeX, tính độ rộng bằng metric

@@ -4,6 +4,7 @@
 % 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
 % 20/11 round 3 (style of the reference paper in pdf/): section openers, fewer parentheses, notation moved to Section 5.
 % 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
+% 20/11 (round 3c): notation only where equations need it, the request in words elsewhere, gate conditions as a list, plainer claims.
 \section{Introduction}\label{sec:intro}
 
 In the ReAct paradigm~\cite{yao2023react}, an LLM agent interleaves reasoning with tool calls, and tool outputs enter
@@ -14,25 +15,25 @@ are mostly trained on English. A third approach therefore enforces policy outsid
 tools, following the reference-monitor principle~\cite{anderson1972}.
 
 The simplest enforcement at the Tool Broker is string matching. The broker executes an outgoing call only if its
-destination is a substring of the user request $u$, and lets a value from a source labelled confidential leave the agent
-only if $u$ contains it verbatim. In the early stage of this study, such rules combined with sandwich prompting reduced
+destination is a substring of the user request, and lets a value from a source labelled confidential leave the agent
+only if the request contains it verbatim. In the early stage of this study, these rules with sandwich prompting reduced
 the attack success rate on two sealed Vietnamese test sets with three open backbones, from 32.9\% to 1.2\% and from
 32.4\% to 3.8\%. The 40 attacks that still succeeded, however, reveal three weaknesses, summarised in
 Table~\ref{tab:mechanisms}. In 25 cases a confidential value leaked because it sat in a source labelled public: labels
-are attached to whole sources, not to individual values. In 5 cases the call went to a destination that appears in $u$
-but was not authorised, for example one named in a prohibition. The remaining 10 altered a parameter of a call to a
-legitimate destination.
+are attached to whole sources, not to individual values. In 5 cases the call went to a destination that appears in the
+request but was not authorised, for example one named in a prohibition. The remaining 10 altered a parameter of a call
+to a legitimate destination.
 
-These weaknesses show that the presence of a string in $u$ is not enough: a destination in $u$ is not necessarily
-authorised, a source label does not reflect the sensitivity of each value in it, and a call to a legitimate
-destination can still carry a wrong value. This paper therefore proposes \ours, a policy-enforcement mechanism at the
-broker with three deterministic components, one for each weakness. The \pOne{} extracts grants from $u$,
-respects the scope of negation and exclusion, and authorises only destinations that match a whole token. \PTwo{} assigns
-a sensitivity to each value in tool outputs by its type, independently of the source label. \PThree{} requires an
-authorised call to keep the values the user stated. The policy comes from $u$ alone, not from the judgement of an LLM,
-and yields \emph{needs confirmation} when authority is unclear. The paper makes three contributions.
+These weaknesses show that the presence of a string in the request is not enough: a destination in the request is not
+necessarily authorised, a source label does not reflect the sensitivity of each value in it, and a call to a legitimate
+destination can still carry a wrong value. This paper therefore proposes \ours, a broker-side policy-enforcement
+mechanism with three deterministic components, one per weakness. The \pOne{} extracts grants from the request, respects
+the scope of negation and exclusion, and authorises only whole-token destination matches. \PTwo{} assigns a sensitivity
+to each value in tool outputs by its type, independently of the source label. \PThree{} requires an authorised call to
+keep the values the user stated. The policy comes from the request alone, not from the judgement of an LLM, and yields
+\emph{needs confirmation} when authority is unclear. The paper makes three contributions.
 \begin{enumerate}
-\item \textbf{Method.} \ours{} removes the three measured weaknesses of string matching without extra LLM calls,
+\item \textbf{Method.} \ours{} addresses the three measured weaknesses of string matching without extra LLM calls,
   checking a call in under a millisecond.
 \item \textbf{Formal model.} Authorisation safety, confidentiality and integrity are proved under five assumptions and
   kept separate from empirical claims.

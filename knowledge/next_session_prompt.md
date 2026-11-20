@@ -18,7 +18,8 @@ thư mục trước (mục "Lượt 3").
 Việc của phiên này:
 1. Hỏi owner số trang thật của bản Anh và vị trí Hình 2. Nếu Hình 2 để trống cuối trang: dời dòng
    \ifpareto\input{images/fig2_pareto}\fi trong sections/07_results.tex. Nếu quá 15 trang: cắt câu trùng với bảng.
-2. Áp các sửa nhỏ còn lại cho bản Việt (README, mục "Lượt 3"), giữ số liệu khớp bản Anh.
+2. Áp cho bản Việt các sửa nhỏ còn lại và lượt giảm ký hiệu 3c của bản Anh (README, mục "Lượt 3" và "Lượt 3c"),
+   giữ số liệu khớp bản Anh.
 3. Owner còn phải chốt: nơi nộp và template, ẩn danh hay không, tiêu đề, tác giả, quy định về văn bản có AI hỗ trợ.
 
 Văn phong học thuật, khách quan, không "chúng tôi/ta"/"we", không chấm phẩy trong lời văn, không gạch dài. Số chỉ lấy

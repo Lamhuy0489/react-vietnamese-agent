@@ -9,15 +9,15 @@
 % 20/11 (round 3b): caption wording.
 \begin{table}[!htbp]
 \centering
-\caption{Results on the \test{} and the \dev. Q, G and L are Qwen3.5, Gemma-4 and Llama-3.1. $^\dagger$Run after the main results were known.}\label{tab:main}
+\caption{Counts are out of 48 test families and 504 development pairs. Q, G and L are Qwen3.5, Gemma-4 and Llama-3.1. $^\dagger$Run after the main results were known.}\label{tab:main}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrrr@{}}
 \toprule
- & & \multicolumn{3}{c}{Model} & & & & Dev.\ set \\
+  & Harmed & \multicolumn{3}{c}{Model} & & & & Dev.\ set \\
 \cmidrule(lr){3-5}
-Configuration & Families (/48) & Q & G & L & ASR (\%) & $U$ (\%) & $\Delta U$ & (/504) \\
+Configuration & families & Q & G & L & ASR (\%) & $U$ (\%) & $\Delta U$ & pairs \\
 \midrule
 \NoDef & 40 & 24 & 31 & 28 & 32.1 & 42.8 & 0.0 & 346 \\
 \cSpot$^\dagger$ & 38 & 28 & 18 & 26 & 24.3 & 39.7 & $-3.1$ & 280 \\

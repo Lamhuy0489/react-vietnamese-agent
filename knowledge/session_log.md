@@ -782,3 +782,6 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   ước lượng khoảng 14,8 trang. Lint sạch, 19/19 tài liệu được trích, số liệu không đổi so với trước lượt.
 - Bài học: `[H]` đặt ở cuối đoạn trích dẫn sẽ không đưa hình lên khi đoạn đó kết thúc sát cuối trang; phải đặt hình
   sau một đoạn kết thúc sớm trên trang. Kiểm vị trí bằng PDF owner gửi (PyMuPDF) trước khi chọn chỗ.
+- Lượt 3c (cùng ngày): owner xác nhận bản Anh vừa 15 trang, hỏi bài chuẩn có nhiều ký hiệu và "(ký hiệu)" vậy không.
+  So với bài lượng tử: ký hiệu chỉ nên nằm ở phần phương pháp, lý thuyết. Đã giảm ký hiệu bản Anh (Mục 1–3, 6–9 gần như
+  không còn; Mục 4–5 bỏ đối số thừa, điều kiện cổng thành danh sách; bảng bỏ "(/48)"), bớt chữ mạnh. Bản Việt chưa đổi.

@@ -2,6 +2,7 @@
 % max width so it never exceeds the margins. Check boxes are 1.7 x 0.9 cm with 6.4 pt text: about 14 characters per
 % line, at most three lines per box. Colour follows the entity as in Figures 2 and 3: thick orange border = new
 % components C1--C3, blue = base rules, grey dashed = model-dependent. No R-... rule codes; only C1--C3 are kept.
+% 20/11 (round 3c): fewer symbols in parentheses (owner).
 \begin{figure}[!htbp]
 \centering
 \begin{adjustbox}{max width=\textwidth}
@@ -20,7 +21,7 @@
 ]
 % left column: user and agent
 \node[neutral, minimum width=1.5cm, minimum height=0.8cm, text width=1.4cm] at (0.75,4.85)
-  {User\\ $u$ (trusted)};
+  {User\\ $u$, trusted};
 \node[neutral, minimum width=1.5cm, minimum height=1.3cm, text width=1.4cm,
   font=\fontsize{6.6}{7.6}\selectfont\bfseries] at (0.75,2.35) {LLM agent\\ (ReAct)};
 \draw[arr] (0.75,4.45) -- (0.75,3.0);
@@ -31,9 +32,9 @@
 
 % row 1: state built by C1 and C2
 \node[newc, minimum width=3.45cm, minimum height=0.66cm, text width=3.35cm] at (3.825,4.8)
-  {\textsf{C1}: extract $P(u)$ from $u$\\ (destination, polarity, pins)};
+  {\textsf{C1}: extract grants from $u$\\ destination, polarity, pins};
 \node[newc, minimum width=3.45cm, minimum height=0.66cm, text width=3.35cm] at (7.475,4.8)
-  {\textsf{C2}: label each value in $o_t$\\ (protected set $C_t$)};
+  {\textsf{C2}: label each value in $o_t$\\ protected set $C_t$};
 \draw[arr] (1.5,4.8) -- (2.1,4.8);
 
 % row 2: the four checks before every sink call

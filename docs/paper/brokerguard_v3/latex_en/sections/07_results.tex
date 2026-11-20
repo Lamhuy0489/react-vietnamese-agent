@@ -7,6 +7,7 @@
 % 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
 % 20/11 round 3 (style of the reference paper): section openers, fewer parentheses, Gemini described as Google's closed model.
 % 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
+% 20/11 (round 3c): notation only where equations need it, the request in words elsewhere, gate conditions as a list, plainer claims.
 \section{Results}\label{sec:results}
 
 This section reports the main results and pre-registered tests on the \test, then analyses mechanisms, adaptive
@@ -31,7 +32,7 @@ and 3 families to 1. Under the gatekeeping procedure, H2 to H4 are reported desc
 \ours{} is 0.56 points below \strSand{} on 720 paired \bPlain{} cases and 0.42 points below on 240 paired \bAuth{}
 cases, within the 5-point margin of H2. The three ablations have 4, 6 and 2 harmed families against 2 for \ours, with
 one-sided $p$ of 0.50, 0.19 and 1. The exploratory comparisons with the other defences, uncorrected for multiplicity,
-show far clearer differences, for example $p = 3.6\cdot10^{-12}$ against no defence, $9.5\cdot10^{-7}$ against \cSand{}
+show larger differences, for example $p = 3.6\cdot10^{-12}$ against no defence, $9.5\cdot10^{-7}$ against \cSand{}
 and $1.2\cdot10^{-4}$ against \strRules.
 
 \input{tables/tab3_main}
@@ -51,8 +52,8 @@ most 0.6\%, and the false-block rate is 1.9\% to 3.4\%, against 1.6\% to 2.8\% f
 thresholds. The gate takes 0.26~ms per call on average, against about 14~s of model time per case.
 
 \paragraph{Analysis by mechanism.} Table~\ref{tab:mechres} gives the harmed families per mechanism. \cSand{} and
-\cProg{} strongly reduce redirection but still let all 8 sink-leakage families through, and \cProg{} does not reduce
-answer leakage or tampering either. Each component of \ours, in contrast, blocks the attacks it was designed for.
+\cProg{} reduce redirection but still let all 8 sink-leakage families through, and \cProg{} does not reduce
+answer leakage or tampering either. Each component of \ours, in contrast, acts on the mechanisms it was designed for.
 Removing \pTwo{} lets 4 leakage families through again, removing the \pOne{} adds 1 redirection and 1 tampering family,
 and removing \pThree{} adds only one harmful case. At the case level, all 4 families harmed only under \strSand{} were
 sink violations that \ours{} blocked before execution, 2 by \pTwo{} and 2 by the \pOne, and each case passes again once
@@ -75,9 +76,9 @@ completes 201 of the 240 \bPlain{} cases, against 205 for \strSand, and falsely 
 
 Table~\ref{tab:agentdojo} reports the AgentDojo results. \ours{} matches \strSand{} on Banking in both languages. On
 English Slack, successful attacks drop from 6 to 5: by requiring a whole-token match, the \pOne{} blocks the case in
-which the recipient's name appeared only as a substring of $u$. Of the remaining successes, 4 Banking cases, 3 in
+which the recipient's name appeared only as a substring of the request. Of the remaining successes, 4 Banking cases, 3 in
 English and 1 in Vietnamese, change a password through a sink without a destination, 4 cases open a URL with a read
-tool, and 1 other case is on English Slack. The first two kinds lie outside the sink set $S$ of the formal model. The
+tool, and 1 other case is on English Slack. The first two kinds lie outside the sinks covered by the formal model. The
 price is lower utility on Slack, from 15 to 11 under attack in English and from 5 to 3 of the 21 tasks without attack in
 both languages, because many Slack tasks take their destination from a web page or a message that the user did not
 write.

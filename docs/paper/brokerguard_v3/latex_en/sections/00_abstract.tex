@@ -3,6 +3,7 @@
 % 15-page version (2026-11-20), condensed from the long version in commit 6814b3a.
 % 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
 % 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
+% 20/11 (round 3c): notation only where equations need it, the request in words elsewhere, gate conditions as a list, plainer claims.
 \begin{abstract}
 Instructions planted in content that an LLM agent reads through its tools can make the agent send data to an unknown
 destination, leak confidential values or alter a legitimate action. This paper proposes \ours, a deterministic
@@ -14,7 +15,7 @@ any code was written, \ours{} reduces the number of harmed families on three ope
 defence to 2. With string-matching rules in place of the three components, 6 families remain harmed. \ours{} blocks four
 of these, each with the component designed for it, lets no new family through, and shows the same direction on every
 backbone. Because string matching is already near the floor, confirming this difference with the pre-registered test
-requires a larger test set. Utility drops by only 3.1 percentage points relative to no defence, and tokens and latency
+requires a larger test set. Utility drops by 3.1 percentage points relative to no defence, and tokens and latency
 stay within 1.4\% of string matching. In two rounds of adaptive attacks, no family succeeds that does not already
 succeed with the original attack. On AgentDojo in English and Vietnamese, attack success stays low, at the cost of
 utility on tasks whose destinations come from tool data.
