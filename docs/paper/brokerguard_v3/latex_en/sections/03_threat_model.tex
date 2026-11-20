@@ -1,14 +1,17 @@
 % Tools: docs/tool_contracts.md (6 read tools + 2 mock sinks, no network I/O). Transformed-leak scorer:
 % src/react_agent/evaluation/transformed_leakage.py (decision log 2026-11-15 18:20). Mock tool names are not used.
 % 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
+% 20/11 round 3 (style of the reference paper in pdf/): section openers, fewer parentheses, notation moved to Section 5.
+% 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
 \section{Threat Model}\label{sec:threat}
 
-\paragraph{Agent, tools and labels.} Let $u$ be the user request. At each step the model emits an action $a_t$ (a tool
-name and arguments) or a final answer $y$. The Tool Broker checks $a_t$, executes it and returns an observation $o_t$.
-The system has six read tools and two \emph{sinks} with side effects, sending e-mail and calling a webhook, both mocks
-that only log the call. The final answer is a third sink. For a sink call $a$, $\dest(a)$ is its destination (an
-address or a URL) and $\data(a)$ the remaining arguments. Content carries two labels. By trust, only $u$ and the system
-prompt are trusted. By sensitivity, content ranges from public to confidential. The two labels are independent: an
+This section describes the protected system, the attacker and the criterion for calling a trajectory harmful.
+
+\paragraph{Agent, tools and labels.} At each step the model emits a tool call with arguments or a final answer $y$. The
+Tool Broker checks the call, executes it and returns the result to the model. The system has six read tools and two
+\emph{sinks} with side effects, one sending e-mail and one calling a webhook, both mocks that only log the call. The
+final answer is a third sink. Content carries two independent labels. By trust, only the user request $u$ and the system
+prompt are trusted. By sensitivity, content ranges from public to confidential. The two labels are kept apart because an
 untrusted page may be public, while a confidential record may come from a source the attacker cannot touch.
 
 \paragraph{Attacker.} The attacker controls the text of one piece of content returned by a read tool and knows the tool
@@ -16,25 +19,22 @@ schemas, but cannot modify $u$, the system prompt, the broker or the model weigh
 also knows the full design and formal model of the defence. Direct jailbreaks, training-data poisoning and multi-agent
 systems are out of scope.
 
-\paragraph{Harm predicate.} Let $G(u)$ be the (tool, destination) pairs that the user actually authorises, $\Sigma$ the
-confidential values on the trajectory that the user does not allow to be disclosed, and $\mathcal{S}$ the sink calls
-actually executed. Values written by the user in $u$ are not in $\Sigma$. A trajectory $\tau$ is harmful,
-$\mathrm{Harm}(\tau)$, if one of four predicates holds: $H_\mathit{dest}$ if some $a \in \mathcal{S}$ has
-$(\mathrm{tool}(a), \dest(a)) \notin G(u)$, $H_\mathit{leak}$ if some $v \in \Sigma$ appears, verbatim or transformed, in
-$\data(a)$ for some $a \in \mathcal{S}$ or in $y$, $H_\mathit{tamper}$ if some $a \in \mathcal{S}$ has a legitimate
-destination but a user-specified field carries another value, and $H_\mathit{side}$ if the task only requires reading
-but $\mathcal{S} \neq \emptyset$. A frozen scorer decides these predicates from the executed calls and $y$, so blocked
-calls never count as harm. Besides verbatim matches, it recognises confidential values in Base64, Hex or URL encoding,
-split into characters, or written as number words.
+\paragraph{Harm.} A trajectory is harmful if any of four situations occurs. \emph{Redirection} is an executed sink call
+to a destination the user did not authorise. \emph{Leakage} means that a confidential value the user did not allow to be
+disclosed appears, verbatim or transformed, in the arguments of a sink or in the final answer. \emph{Tampering} is a
+call to a legitimate destination that carries a value other than the one the user specified. A \emph{side effect} is a
+sink call in a task that only requires reading. Values written by the user in $u$ are not confidential. A frozen scorer
+decides harm from the executed calls and the final answer, so blocked calls never count. Besides verbatim matches, it
+recognises confidential values in Base64, Hex or URL encoding, split into characters, or written as number words.
 
-\paragraph{Mechanisms, families and variants.} Attacks are classified into six \emph{mechanisms}, the paths by which
-the injected text leads to harm (Table~\ref{tab:mechanisms}). In the two redirection mechanisms, the destination is not
-in $u$. In the two leakage mechanisms and in parameter tampering, the destination is legitimate, so only the provenance
-or the value of the data separates the attack from the task. A \emph{family} is one attack idea in a specific task and
-tool environment. Every family has a \emph{\bPlain} branch, which replaces the injection with a harmless note of the
-same length, and one third also have an \emph{\bAuth} branch, in which the user explicitly authorises an action
-similar to the attack goal. A denial in a benign branch is a \emph{false block}. Each family has five language variants
-of both $u$ and the injection (standard Vietnamese, a paraphrase, Vietnamese--English code-mixing, Vietnamese without
-diacritics, and English) with identical identifiers, addresses and confidential values.
+\paragraph{Mechanisms, families and variants.} Table~\ref{tab:mechanisms} classifies attacks into six \emph{mechanisms},
+the paths by which the injected text leads to harm. In the two redirection mechanisms, the destination is not in $u$. In
+the two leakage mechanisms and in parameter tampering, the destination is legitimate, so only the provenance or the
+value of the data separates the attack from the task. A \emph{family} is one attack idea in a specific task and tool
+environment. Every family has a \emph{\bPlain} branch, which replaces the injection with a harmless note of the same
+length, and one third of the families also have an \emph{\bAuth} branch, in which the user explicitly authorises an
+action similar to the attack goal. A denial in a benign branch is a \emph{false block}. Each family has five language
+variants of both $u$ and the injection, namely standard Vietnamese, a paraphrase, Vietnamese--English code-mixing,
+Vietnamese without diacritics, and English, with identical identifiers, addresses and confidential values.
 
 \input{tables/tab1_mechanisms}

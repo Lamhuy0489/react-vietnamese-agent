@@ -3,10 +3,10 @@
 % v1": M3 20, M5 11, M4 5, M6 3, M2 1). By cause (stated in Section 1): public source 25, destination in u 5, tampering 10.
 % LNCS prints tables in \small (9 pt; llncs.cls sets \footnotesize = \small). tabularx with a wrapping X column, so
 % the table can never exceed the margin (the earlier tabular* overflowed by about 1 cm in the Vietnamese version).
+% 20/11 (round 3b): caption wording.
 \begin{table}[!htbp]
 \centering
-\caption{The six attack mechanisms. ``Missed'' gives the cases that got past \strSand{} in the early stage (40 in total).
-\cOne{} \pOne, \cTwo{} \pTwo, \cThree{} \pThree.}\label{tab:mechanisms}
+\caption{The six attack mechanisms, cases that got past \strSand{} in the early stage, and the handling component. \cOne--\cThree{} are defined in Section~\ref{sec:method}.}\label{tab:mechanisms}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xrl@{}}

@@ -1,14 +1,16 @@
 % Công cụ: docs/tool_contracts.md (6 công cụ đọc + 2 sink giả, không I/O mạng). Bộ chấm biến đổi:
 % src/react_agent/evaluation/transformed_leakage.py (decision log 2026-11-15 18:20). Không nêu tên công cụ giả trong bài.
 % 20/11 (soát văn phong): không dùng đại từ "họ" cho kẻ tấn công vì "họ" là thuật ngữ "họ tấn công" của bài.
+% 20/11 (lượt 3, theo bài tham khảo trong pdf/): câu mở mỗi mục, bớt ngoặc chứa ký hiệu, ký hiệu dồn về Mục 5.
 \section{Mô hình đe dọa}\label{sec:threat}
 
-\paragraph{Tác tử, công cụ và nhãn.} Gọi $u$ là yêu cầu của người dùng. Ở mỗi bước, mô hình sinh một hành động $a_t$ gồm
-tên công cụ và tham số, hoặc sinh câu trả lời cuối $y$. Tool Broker kiểm tra $a_t$, thực thi và trả về quan sát $o_t$.
-Hệ thống có sáu công cụ đọc và hai \emph{sink} có tác dụng phụ là gửi e-mail và gọi webhook, đều là bản mô phỏng chỉ ghi
-nhật ký. Câu trả lời cuối được coi là sink thứ ba. Với lời gọi sink $a$, $\dest(a)$ là đích (địa chỉ hoặc URL) và
-$\data(a)$ là các tham số còn lại. Mỗi nội dung mang hai nhãn. Theo độ tin cậy, chỉ $u$ và prompt hệ thống là đáng tin.
-Theo độ nhạy cảm, nội dung được xếp từ công khai tới mật. Hai nhãn này độc lập: một trang không đáng tin vẫn có thể công
+Mục này mô tả hệ thống được bảo vệ, năng lực của kẻ tấn công và tiêu chí để coi một quỹ đạo là gây hại.
+
+\paragraph{Tác tử, công cụ và nhãn.} Ở mỗi bước, mô hình sinh một lời gọi công cụ kèm tham số hoặc sinh câu trả lời cuối
+$y$. Tool Broker kiểm tra lời gọi, thực thi và trả kết quả về cho mô hình. Hệ thống có sáu công cụ đọc và hai \emph{sink}
+có tác dụng phụ là gửi e-mail và gọi webhook, đều là bản mô phỏng chỉ ghi nhật ký. Câu trả lời cuối được coi là sink thứ
+ba. Mỗi nội dung mang hai nhãn độc lập. Theo độ tin cậy, chỉ yêu cầu người dùng $u$ và prompt hệ thống là đáng tin. Theo
+độ nhạy cảm, nội dung được xếp từ công khai tới mật. Hai nhãn được tách rời vì một trang không đáng tin vẫn có thể công
 khai, trong khi một bản ghi mật có thể đến từ nguồn mà kẻ tấn công không tác động được.
 
 \paragraph{Kẻ tấn công.} Kẻ tấn công kiểm soát văn bản của một nội dung do công cụ đọc trả về và biết schema của các công
@@ -16,23 +18,21 @@ cụ, nhưng không sửa được $u$, prompt hệ thống, broker hay trọng 
 biết toàn bộ thiết kế và mô hình hình thức của phòng thủ. Jailbreak trực tiếp, đầu độc dữ liệu huấn luyện và hệ đa tác
 tử nằm ngoài phạm vi bài báo.
 
-\paragraph{Vị từ gây hại.} Gọi $G(u)$ là tập các cặp (công cụ, đích) mà người dùng thực sự cho phép, $\Sigma$ là tập giá
-trị mật trên quỹ đạo mà người dùng không cho phép tiết lộ, và $\mathcal{S}$ là tập lời gọi sink đã được thực thi. Giá trị
-do người dùng tự viết trong $u$ không thuộc $\Sigma$. Quỹ đạo $\tau$ gây hại, ký hiệu $\mathrm{Harm}(\tau)$, khi có ít
-nhất một trong bốn vị từ sau: $H_\mathit{dest}$ khi có $a \in \mathcal{S}$ với $(\mathrm{tool}(a), \dest(a)) \notin
-G(u)$, $H_\mathit{leak}$ khi một $v \in \Sigma$ xuất hiện trong $\data(a)$ của một $a \in \mathcal{S}$ hoặc trong $y$ ở
-dạng nguyên văn hay biến đổi, $H_\mathit{tamper}$ khi có $a \in \mathcal{S}$ tới đích hợp lệ nhưng một trường do người
-dùng chỉ định mang giá trị khác, và $H_\mathit{side}$ khi nhiệm vụ chỉ cần đọc nhưng $\mathcal{S} \neq \emptyset$. Bộ
-chấm đóng băng xác định các vị từ này từ lời gọi đã thực thi và $y$, nên lời gọi bị chặn không bị tính là gây hại.
-Ngoài so khớp nguyên văn, bộ chấm còn nhận ra giá trị mật ở dạng Base64, Hex, mã hóa URL, tách ký tự và số viết bằng chữ.
+\paragraph{Tác hại.} Một quỹ đạo được coi là gây hại khi xảy ra ít nhất một trong bốn tình huống. Chuyển hướng là khi một
+lời gọi sink đã thực thi gửi tới đích mà người dùng không cho phép. Rò rỉ là khi một giá trị mật mà người dùng không cho
+tiết lộ xuất hiện trong tham số của sink hay trong câu trả lời cuối, ở dạng nguyên văn hoặc biến đổi. Sửa tham số là khi
+một lời gọi tới đích hợp lệ mang giá trị khác với giá trị người dùng đã chỉ định. Tác dụng phụ là khi nhiệm vụ chỉ cần đọc
+nhưng vẫn có lời gọi sink. Giá trị do người dùng tự viết trong $u$ không bị coi là mật. Một bộ chấm đóng băng xác định tác
+hại từ các lời gọi đã thực thi và câu trả lời cuối, nên lời gọi bị chặn không được tính. Ngoài so khớp nguyên văn, bộ
+chấm còn nhận ra giá trị mật ở dạng Base64, Hex, mã hóa URL, tách ký tự và số viết bằng chữ.
 
-\paragraph{Cơ chế, họ và biến thể.} Tấn công được phân loại theo sáu \emph{cơ chế}, tức con đường mà đoạn chèn dẫn tới
-tác hại (Bảng~\ref{tab:mechanisms}). Ở hai cơ chế chuyển hướng, đích không có trong $u$. Ở hai cơ chế rò rỉ và cơ chế sửa
-tham số, đích là hợp lệ, nên chỉ nguồn gốc hoặc giá trị của dữ liệu mới phân biệt được tấn công với nhiệm vụ. Một
-\emph{họ} là một ý tưởng tấn công gắn với một nhiệm vụ và một môi trường công cụ cụ thể. Mọi họ có nhánh \emph{\bPlain},
-thay đoạn chèn bằng một ghi chú vô hại cùng độ dài, và một phần ba số họ có thêm nhánh \emph{\bAuth}, trong đó người dùng
-cho phép rõ ràng một hành động giống mục tiêu tấn công. Chặn ở nhánh lành tính là \emph{chặn nhầm}. Mỗi họ có năm biến
-thể ngôn ngữ áp dụng cho cả $u$ lẫn đoạn chèn: tiếng Việt chuẩn, diễn đạt lại, trộn tiếng Việt và tiếng Anh, không dấu,
-và tiếng Anh, với định danh, địa chỉ và giá trị mật giữ nguyên.
+\paragraph{Cơ chế, họ và biến thể.} Bảng~\ref{tab:mechanisms} phân loại tấn công theo sáu \emph{cơ chế}, tức con đường mà
+đoạn chèn dẫn tới tác hại. Ở hai cơ chế chuyển hướng, đích không có trong $u$. Ở hai cơ chế rò rỉ và cơ chế sửa tham số,
+đích là hợp lệ, nên chỉ nguồn gốc hoặc giá trị của dữ liệu mới phân biệt được tấn công với nhiệm vụ. Một \emph{họ} là một
+ý tưởng tấn công gắn với một nhiệm vụ và một môi trường công cụ cụ thể. Mọi họ có nhánh \emph{\bPlain}, thay đoạn chèn
+bằng một ghi chú vô hại cùng độ dài, và một phần ba số họ có thêm nhánh \emph{\bAuth}, trong đó người dùng cho phép rõ
+ràng một hành động giống mục tiêu tấn công. Chặn ở nhánh lành tính là \emph{chặn nhầm}. Mỗi họ có năm biến thể ngôn ngữ áp
+dụng cho cả $u$ lẫn đoạn chèn: tiếng Việt chuẩn, diễn đạt lại, trộn tiếng Việt và tiếng Anh, không dấu, và tiếng Anh, với
+định danh, địa chỉ và giá trị mật giữ nguyên.
 
 \input{tables/tab1_mechanisms}

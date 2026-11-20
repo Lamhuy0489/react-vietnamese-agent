@@ -7,6 +7,11 @@ Cập nhật: 2026-11-20. (Trước đó 2026-11-19 tối.) Lộ trình [v2](../
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-20 (khuya): LƯỢT 3 XONG Ở BẢN ANH, BẢN VIỆT CÒN VÀI SỬA NHỎ.** Bản Anh: soát câu và từ nối, Hình 2 bật
+với `[H]` ngay sau đoạn "Main results", ước lượng khoảng 14,8 trang. Bản Việt: đã viết lại theo lượt 3, tắt Pareto,
+khoảng 14,7 trang; còn các sửa nhỏ ở README của bài, mục "Lượt 3". Việc kế: owner biên dịch bản Anh, kiểm Hình 2 có
+nằm ở trang 10 và không để trống cuối trang, tổng không quá 15 trang; rồi áp các sửa nhỏ còn lại cho bản Việt.
+
 **2026-11-20 (tối): CẢ HAI BẢN ĐÃ SOÁT VĂN PHONG VÀ ĐỒNG BỘ, chờ owner biên dịch lại.** Bản Việt bật Pareto, ước
 lượng khoảng 14,8 trang; bản Anh tắt Pareto, khoảng 14,7 trang. Khối tác giả ẩn danh (không còn chữ đỏ). Danh sách thay
 đổi: README của bài, mục "Lượt 2". Việc kế: owner biên dịch cả hai bản, báo số trang; nếu bản Việt vẫn quá 15 trang

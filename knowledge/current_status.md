@@ -2,6 +2,9 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**20/11 (khuya): lượt 3.** Bản Anh đã soát câu chữ, bật Hình 2 với `[H]` (ước lượng khoảng 14,8 trang); bản Việt viết
+lại theo lượt 3, tắt Pareto (khoảng 14,7 trang), còn vài sửa nhỏ (README của bài, mục "Lượt 3"). Chờ owner biên dịch.
+
 **20/11 (tối): cả hai bản đã soát văn phong, đồng bộ, bỏ chữ đỏ** (Việt bật Pareto ~14,8 trang, Anh tắt Pareto ~14,7
 trang, ước lượng). Chờ owner biên dịch lại.
 

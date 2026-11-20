@@ -2,62 +2,64 @@
 % theo cơ chế, bằng chứng cơ chế mức ca, hai họ M5 còn lại) và mục "Bổ sung cho bài v3" (C1 offline trên Dev-val).
 % Mệnh đề 3 chỉ bảo đảm literal ghim CÓ MẶT trong data(a), không bảo đảm không có giá trị khác bên cạnh.
 % Mã giữ lại ở mục này: (G1)--(G4) và (A1)--(A5), vì chứng minh và Bảng 2 tham chiếu tới chúng.
+% 20/11 (lượt 3): G(u), Sigma định nghĩa tại đây; vị từ gây hại gọi bằng tên (chuyển hướng, rò rỉ...) thay vì H_dest...; pins bằng lời.
 \section{Mô hình hình thức}\label{sec:formal}
 
-Trạng thái của broker sau bước $t$ là $s_t = (u, P(u), C_t, H_t)$, trong đó $H_t$ là lịch sử lời gọi đã thực thi và
-quan sát. $P(u)$ được dựng một lần trước bước đầu tiên. Gọi $R$ là tập công cụ đọc và $S$ là tập sink có trường
-đích. Mỗi lời gọi đề xuất $a_t$ đi qua hàm cổng $\mathrm{gate}(s_t, a_t) \in \{\mathsf{allow}, \mathsf{deny},
-\mathsf{confirm}\}$, trong đó $\mathsf{confirm}$ được thi hành như $\mathsf{deny}$. Với $a_t \in R$, cổng luôn trả về
-$\mathsf{allow}$. Với $a_t \in S$, cổng trả về $\mathsf{allow}$ khi và chỉ khi (G1) \rSig{} không chặn $a_t$, (G2) $a_t$
-thỏa \eqref{eq:c1}, (G3) có ít nhất một quyền $g$ thỏa (G2) mà mọi literal $p \in \mathrm{pins}(g)$ có $p \sub
-\data(a_t)$ và $\data(a_t)$ không mang boolean ngược với boolean đã ghim, và (G4) điều kiện \eqref{eq:c2} sai. Gọi
-$\hat G(u)$ là tập cặp (công cụ, đích) thỏa (G2). Khi cổng cho qua, broker thực thi $a_t$, thêm $(a_t, o_t)$ vào $H_t$
-và cập nhật $C_{t+1} = C_t \cup L(o_t)$, với $L$ là hàm gắn nhãn kết hợp \rFlow{} và \pTwo. Khi cổng từ chối, tác tử
-nhận một quan sát báo từ chối. Câu trả lời cuối được phát hành sau phép che $\mathrm{redact}(y, C_t \setminus V(u))$.
-Năm giả định sau làm rõ phạm vi của các mệnh đề.
+Mục này xác định khi nào các kiểm tra ở Mục~\ref{sec:method} đủ ngăn các kiểu tác hại ở Mục~\ref{sec:threat}. Gọi
+$G(u)$ là tập cặp công cụ và đích mà người dùng thực sự cho phép, và $\Sigma$ là tập giá trị mật mà người dùng không cho
+tiết lộ. Trạng thái của broker sau bước $t$ là $s_t = (u, P(u), C_t, H_t)$, với $H_t$ là lịch sử lời gọi đã thực thi và
+kết quả. $P(u)$ được dựng một lần trước bước đầu. Gọi $R$ là tập công cụ đọc và $S$ là tập sink có trường đích. Cổng xét
+mỗi lời gọi đề xuất $a_t$ và trả về cho qua, từ chối hoặc cần xác nhận, trong đó cần xác nhận được xử lý như từ chối. Lời
+gọi đọc luôn được cho qua. Với $a_t \in S$, cổng cho qua khi và chỉ khi (G1) \rSig{} không chặn $a_t$, (G2) $a_t$ thỏa
+\eqref{eq:c1}, (G3) có ít nhất một quyền $g$ thỏa (G2) mà mọi literal được ghim của $g$ đều có mặt trong $\data(a_t)$ và
+không boolean nào bị đảo, và (G4) điều kiện \eqref{eq:c2} sai. Gọi $\hat G(u)$ là tập cặp công cụ và đích thỏa (G2). Khi
+cổng cho qua, broker thực thi $a_t$, ghi lời gọi và kết quả $o_t$ vào $H_t$, rồi cập nhật $C_{t+1} = C_t \cup L(o_t)$
+với $L$ là hàm gắn nhãn kết hợp \rFlow{} và \pTwo. Câu trả lời cuối được phát hành sau khi che mọi giá trị của $C_t
+\setminus V(u)$. Năm giả định sau giới hạn phạm vi của các mệnh đề.
 \begin{enumerate}[label=(A\arabic*), leftmargin=*]
 \item \emph{Trung gian toàn phần.} Mọi lời gọi công cụ đều đi qua broker, và mọi công cụ có tác dụng phụ đều thuộc $S$.
 \item \emph{Bộ trích đúng.} $\hat G(u) \subseteq G(u)$. Chiều ngược lại chỉ ảnh hưởng tới tiện ích.
-\item \emph{Độ phủ nhãn.} Mọi giá trị $v \in \Sigma$ xuất hiện trong một quan sát $o_t$ đều thuộc $C_{t+1}$.
+\item \emph{Độ phủ nhãn.} Mọi giá trị của $\Sigma$ xuất hiện trong một kết quả $o_t$ đều thuộc $C_{t+1}$.
 \item \emph{Lớp biến đổi.} Nếu tác tử làm lộ $v$ trong một chuỗi $w$ thì $v \sub w$. Mã hóa, viết số bằng chữ hay chia
   một giá trị qua nhiều lời gọi nằm ngoài lớp này.
-\item \emph{Literal ghim đủ.} Với quyền $g$ cấp cho lời gọi $a$, $\mathrm{pins}(g)$ chứa mọi giá trị và boolean mà
-  người dùng đã nêu cho $a$.
+\item \emph{Literal ghim đủ.} Với quyền $g$ cấp cho lời gọi $a$, các literal được ghim của $g$ gồm mọi giá trị và
+  boolean mà người dùng đã nêu cho $a$.
 \end{enumerate}
 
 \begin{proposition}[An toàn cấp quyền]\label{prop:auth}
-Dưới (A1) và (A2), mọi lời gọi sink được thực thi có (công cụ, đích) thuộc $G(u)$. Vì vậy không quỹ đạo nào thỏa
-$H_\mathit{dest}$, và nhiệm vụ chỉ cần đọc không thỏa $H_\mathit{side}$.
+Dưới (A1) và (A2), mọi lời gọi sink được thực thi có cặp công cụ và đích thuộc $G(u)$. Vì vậy không quỹ đạo nào gây hại
+kiểu chuyển hướng, và nhiệm vụ chỉ cần đọc không gây tác dụng phụ.
 \end{proposition}
 \begin{proof}
-Theo (A1), một sink $a$ chỉ được thực thi khi cổng cho qua, nên (G2) đúng và $(\mathrm{tool}(a), \dest(a)) \in \hat
-G(u) \subseteq G(u)$ theo (A2). Nhiệm vụ chỉ cần đọc có $G(u) = \emptyset$, nên không sink nào được thực thi. \qed
+Theo (A1), một sink $a$ chỉ được thực thi khi cổng cho qua, nên (G2) đúng và cặp công cụ, đích của $a$ thuộc $\hat G(u)$,
+mà $\hat G(u) \subseteq G(u)$ theo (A2). Nhiệm vụ chỉ cần đọc có $G(u)$ rỗng, nên không sink nào được thực thi. \qed
 \end{proof}
 
 \begin{proposition}[Bảo mật]\label{prop:conf}
 Dưới (A1), (A3) và (A4), không giá trị nào của $\Sigma$ xuất hiện trong $\data(a)$ của một sink được thực thi hay trong
-câu trả lời cuối đã phát hành. Vì vậy không quỹ đạo nào thỏa $H_\mathit{leak}$ với các dạng thuộc (A4).
+câu trả lời cuối đã phát hành. Vì vậy không quỹ đạo nào gây hại kiểu rò rỉ ở các dạng thuộc (A4).
 \end{proposition}
 \begin{proof}
 Giả sử $v \in \Sigma$ xuất hiện trong $\data(a)$ của một sink $a$ được thực thi ở bước $t$. Vì $v \notin V(u)$, tác tử
-chỉ có được $v$ qua một quan sát trước bước $t$, nên theo (A3) $v \in C_t$. Theo (A4), $v \sub \data(a)$, nên
+chỉ có được $v$ qua một kết quả trước bước $t$, nên theo (A3) $v \in C_t$. Theo (A4), $v \sub \data(a)$, nên
 \eqref{eq:c2} đúng và (G4) sai, mâu thuẫn với (A1). Với câu trả lời cuối, phép che thay mọi dạng bề mặt khớp
 $\kappa(v)$ trước khi phát hành, nên theo (A4) không còn dạng nào của $v$. \qed
 \end{proof}
 
 \begin{proposition}[Toàn vẹn]\label{prop:int}
-Dưới (A1), (A2) và (A5), mọi lời gọi sink được thực thi chứa mọi giá trị người dùng đã nêu cho lời gọi đó, so ở dạng
-$\kappa$, và không mang boolean ngược với boolean người dùng đã nêu.
+Dưới (A1), (A2) và (A5), mọi lời gọi sink được thực thi chứa mọi giá trị người dùng đã nêu cho lời gọi đó và không mang
+boolean ngược với boolean người dùng đã nêu.
 \end{proposition}
 \begin{proof}
-Theo (A1), sink $a$ chỉ được thực thi khi (G2) và (G3) đúng, tức có quyền $g$ cấp cho $a$ mà mọi literal của
-$\mathrm{pins}(g)$ có mặt trong $\data(a)$ và không boolean nào bị đảo. Theo (A2), $g$ ứng với một quyền người dùng thật
-sự cấp, và theo (A5), $\mathrm{pins}(g)$ chứa mọi giá trị người dùng đã nêu cho $a$. \qed
+Theo (A1), sink $a$ chỉ được thực thi khi (G2) và (G3) đúng, tức có quyền $g$ cấp cho $a$ mà mọi literal được ghim của
+$g$ có mặt trong $\data(a)$ và không boolean nào bị đảo. Theo (A2), $g$ ứng với một quyền người dùng thật sự cấp, và theo
+(A5), các literal được ghim của $g$ gồm mọi giá trị người dùng đã nêu cho $a$. \qed
 \end{proof}
 
-\noindent Ba mệnh đề nêu điều kiện đủ dưới các giả định, không phải bảo đảm vô điều kiện. Mệnh đề~\ref{prop:int} không loại
-trừ việc một giá trị khác được thêm cạnh literal đã ghim. Lời gọi đọc và sink không có trường đích nằm ngoài $S$, nên
-một công cụ đọc nhận URL do mô hình chọn vẫn có thể trở thành kênh rò rỉ dữ liệu. Bảng~\ref{tab:proven} phân biệt
-thuộc tính được chứng minh với thuộc tính chỉ được kiểm chứng bằng thực nghiệm.
+\noindent Ba mệnh đề nêu điều kiện đủ dưới các giả định, không phải bảo đảm vô điều kiện. Mệnh đề~\ref{prop:int} không
+loại trừ việc một giá trị khác được thêm cạnh literal đã ghim. Lời gọi đọc và sink không có trường đích nằm ngoài $S$, nên
+một công cụ đọc nhận URL do mô hình chọn vẫn có thể thành kênh rò rỉ. Bảng~\ref{tab:proven} phân biệt thuộc tính được
+chứng minh với thuộc tính chỉ kiểm chứng bằng thực nghiệm, và các giả định thực nghiệm được kiểm tra ở
+Mục~\ref{sec:results}.
 
 \input{tables/tab2_proven}

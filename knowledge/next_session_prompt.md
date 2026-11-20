@@ -9,20 +9,21 @@ Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 PHẦN CỨNG: không render hình/PDF trên máy (owner dùng Overleaf; đọc PDF owner tải về bằng PyMuPDF của python3 hệ thống ở
 dpi thấp thì được), không tự khởi động lại OmniRoute. Mọi thực nghiệm đã xong, không có notebook Kaggle nào chạy.
 
-Trạng thái (20/11, tối): BÀI v3 ở docs/paper/brokerguard_v3/ (latex/ = tiếng Việt, latex_en/ = tiếng Anh) đã qua hai lượt
-góp ý của owner: bảng tách cột, Bảng 1 hết tràn, H1 diễn đạt tích cực nhưng trung thực, soát văn phong, khối tác giả ẩn
-danh. Bản Việt bật Hình Pareto (ước lượng ~14,8 trang), bản Anh tắt (~14,7 trang). Đọc README.md của thư mục trước (mục
-"Lượt 2", dòng "Cỡ chữ bảng": LNCS in bảng ở 9 pt).
+Trạng thái (20/11, khuya): BÀI v3 ở docs/paper/brokerguard_v3/ (latex/ = tiếng Việt, latex_en/ = tiếng Anh) đã qua ba
+lượt góp ý. Lượt 3: bớt ký hiệu và ngoặc, Gemini chỉ là mô hình đóng của Google, chú thích ngắn, khối tác giả để trống
+tự điền, câu mở và câu nối giữa các mục (tham khảo bài lượng tử trong pdf/). Bản Anh bật Hình 2 với [H] ngay sau đoạn
+"Main results" (ước lượng ~14,8 trang). Bản Việt tắt Pareto (~14,7 trang) và còn vài sửa nhỏ chưa áp. Đọc README.md của
+thư mục trước (mục "Lượt 3").
 
 Việc của phiên này:
-1. Hỏi owner số trang thật của cả hai bản sau khi biên dịch. Bản nào quá 15 trang: tắt Pareto hoặc cắt câu trùng với
-   bảng (không cắt kết quả chính). Đo bề rộng bảng ở 9 pt trước khi đổi bảng.
-2. Sửa nội dung theo góp ý tiếp của owner, ở cả hai bản, giữ số liệu khớp nhau. Văn phong học thuật, khách quan, không
-   "chúng tôi/ta"/"we", không chấm phẩy trong lời văn, không gạch dài, tránh nối vế bằng "còn" lặp lại.
+1. Hỏi owner số trang thật của bản Anh và vị trí Hình 2. Nếu Hình 2 để trống cuối trang: dời dòng
+   \ifpareto\input{images/fig2_pareto}\fi trong sections/07_results.tex. Nếu quá 15 trang: cắt câu trùng với bảng.
+2. Áp các sửa nhỏ còn lại cho bản Việt (README, mục "Lượt 3"), giữ số liệu khớp bản Anh.
 3. Owner còn phải chốt: nơi nộp và template, ẩn danh hay không, tiêu đề, tác giả, quy định về văn bản có AI hỗ trợ.
 
-Không chạy thêm thực nghiệm hay sửa v3 theo số Test-4. Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công
-hay nội dung Test; chỉ hạ tầng, số đếm và biên soạn.
+Văn phong học thuật, khách quan, không "chúng tôi/ta"/"we", không chấm phẩy trong lời văn, không gạch dài. Số chỉ lấy
+từ docs/paper/iccies2027/facts.md. Không chạy thêm thực nghiệm hay sửa v3 theo số Test-4. Claude không viết, đọc hay
+giao việc viết văn bản/prompt tấn công hay nội dung Test; chỉ hạ tầng, số đếm và biên soạn.
 ```
 
 ## Ghi chú dùng

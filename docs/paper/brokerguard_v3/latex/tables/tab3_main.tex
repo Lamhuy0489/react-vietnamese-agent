@@ -8,10 +8,8 @@
 % của LNCS, bề rộng tự nhiên khoảng 330 pt so với khổ 346 pt.
 \begin{table}[!htbp]
 \centering
-\caption{Kết quả trên \test{} và \dev. ``Họ'' là số họ bị hại trên ít nhất một mô hình nền, còn Q, G, L là số họ bị hại
-trên từng mô hình Qwen3.5, Gemma-4 và Llama-3.1. ASR tính trên 720 ca tấn công, $U$ trên 960 ca lành tính, $\Delta U$
-(điểm) so với khi không phòng thủ, cột cuối là số cặp họ và mô hình bị hại trên \dev{} (/504). $^\dagger$Chạy bổ sung sau
-khi có kết quả chính. $^\ddagger$Ước lượng từ quỹ đạo khi không phòng thủ.}\label{tab:main}
+\caption{Kết quả trên \test{} và \dev. Q, G, L là số họ bị hại trên từng mô hình nền. $^\dagger$Chạy bổ sung sau khi có kết
+quả chính.}\label{tab:main}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{adjustbox}{max width=\textwidth}
@@ -37,7 +35,7 @@ Cấu hình & Họ (/48) & Q & G & L & ASR (\%) & $U$ (\%) & $\Delta U$ & triể
 \quad bỏ \cTwo & 6 & 2 & 2 & 4 & 1,4 & 40,2 & $-2{,}6$ & -- \\
 \quad bỏ \cThree & 2 & 1 & 2 & 1 & 0,8 & 39,8 & $-3{,}0$ & -- \\
 \midrule
-Chặn mọi sink$^\ddagger$ & 14 & -- & -- & -- & 7,5 & 11,5 & $-31{,}4$ & -- \\
+Chặn mọi sink, ước tính & 14 & -- & -- & -- & 7,5 & 11,5 & $-31{,}4$ & -- \\
 \bottomrule
 \end{tabular*}
 \end{adjustbox}

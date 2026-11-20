@@ -2,39 +2,41 @@
 % phản biện 3"; broker micro-benchmark, section "Bổ sung cho bài v3"). A brand-new paper: the early stage (string rules on
 % two sealed sets) is described as part of this study, not as a previous version.
 % 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
+% 20/11 round 3 (style of the reference paper in pdf/): section openers, fewer parentheses, notation moved to Section 5.
+% 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
 \section{Introduction}\label{sec:intro}
 
 In the ReAct paradigm~\cite{yao2023react}, an LLM agent interleaves reasoning with tool calls, and tool outputs enter
-the model context directly. In indirect prompt injection~\cite{greshake2023indirect}, an attacker plants instructions in
-content the agent will read, to make it send data to an unknown destination, leak a confidential value or alter the
-content to be sent. Prompt-level defences depend on the model complying, whereas injection classifiers are mostly
-trained on English. Another approach enforces policy on the host, between the model and the tools, following the
-reference-monitor principle~\cite{anderson1972}.
+the model context directly. This opens the way for indirect prompt injection~\cite{greshake2023indirect}: an attacker
+plants instructions in content the agent will read, to make it send data to an unknown destination, leak a confidential
+value or alter the content to be sent. Prompt-level defences depend on the model complying, and injection classifiers
+are mostly trained on English. A third approach therefore enforces policy outside the model, between the model and the
+tools, following the reference-monitor principle~\cite{anderson1972}.
 
 The simplest enforcement at the Tool Broker is string matching. The broker executes an outgoing call only if its
-destination is a substring of the user request $u$, and lets a value from a source labelled confidential leave the
-agent only if $u$ contains it verbatim. In the early stage of this study, such rules with sandwich prompting reduced the
-attack success rate on two sealed Vietnamese test sets, with three open backbones, from 32.9\% to 1.2\% and from 32.4\%
-to 3.8\%. The 40 remaining successful attacks reveal three weaknesses (Table~\ref{tab:mechanisms}). In 25 cases a
-confidential value leaked because it sat in a source labelled public: labels are attached to whole sources, not to
-individual values. In 5 cases the call went to a destination that appears in $u$ but was not authorised, for example
-one named in a prohibition. The other ten altered a parameter of a call to a legitimate destination.
+destination is a substring of the user request $u$, and lets a value from a source labelled confidential leave the agent
+only if $u$ contains it verbatim. In the early stage of this study, such rules combined with sandwich prompting reduced
+the attack success rate on two sealed Vietnamese test sets with three open backbones, from 32.9\% to 1.2\% and from
+32.4\% to 3.8\%. The 40 attacks that still succeeded, however, reveal three weaknesses, summarised in
+Table~\ref{tab:mechanisms}. In 25 cases a confidential value leaked because it sat in a source labelled public: labels
+are attached to whole sources, not to individual values. In 5 cases the call went to a destination that appears in $u$
+but was not authorised, for example one named in a prohibition. The remaining 10 altered a parameter of a call to a
+legitimate destination.
 
-The presence of a string in $u$ is thus not an authorisation, and the label of a source does not reflect the
-sensitivity of each value in it. This paper proposes \ours, a policy-enforcement mechanism at the broker with three
-deterministic components that target these weaknesses. The \pOne{} extracts structured grants from $u$, respects the
-scope of negation and exclusion, and authorises only destinations that match a whole token. \PTwo{} assigns a
-sensitivity to each value in tool outputs by its type, independently of the source label. \PThree{} makes an
-authorised call keep the values the user stated. The policy comes from $u$ alone, not from the judgement of an LLM,
+These weaknesses show that the presence of a string in $u$ is not enough: a destination in $u$ is not necessarily
+authorised, a source label does not reflect the sensitivity of each value in it, and a call to a legitimate
+destination can still carry a wrong value. This paper therefore proposes \ours, a policy-enforcement mechanism at the
+broker with three deterministic components, one for each weakness. The \pOne{} extracts grants from $u$,
+respects the scope of negation and exclusion, and authorises only destinations that match a whole token. \PTwo{} assigns
+a sensitivity to each value in tool outputs by its type, independently of the source label. \PThree{} requires an
+authorised call to keep the values the user stated. The policy comes from $u$ alone, not from the judgement of an LLM,
 and yields \emph{needs confirmation} when authority is unclear. The paper makes three contributions.
 \begin{enumerate}
 \item \textbf{Method.} \ours{} removes the three measured weaknesses of string matching without extra LLM calls,
-  checking a call in under a millisecond (Section~\ref{sec:method}).
+  checking a call in under a millisecond.
 \item \textbf{Formal model.} Authorisation safety, confidentiality and integrity are proved under five assumptions and
-  kept apart from the properties that can only be verified empirically (Section~\ref{sec:formal}).
+  kept separate from empirical claims.
 \item \textbf{Evaluation.} \ours{} is frozen and run once on a new test set of 48 families, sealed before any code was
-  written, with pre-registered hypotheses, ablations, two adaptive rounds and AgentDojo in two languages
-  (Sections~\ref{sec:protocol} and~\ref{sec:results}). The statistical limits of the comparison with string matching
-  are analysed in Section~\ref{sec:discussion}.
+  written, with pre-registered hypotheses, ablations, two adaptive rounds and AgentDojo in two languages.
 \end{enumerate}
 Data, code and the sealing manifests are publicly released.

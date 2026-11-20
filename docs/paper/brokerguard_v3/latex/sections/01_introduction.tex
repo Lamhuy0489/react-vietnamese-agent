@@ -3,39 +3,38 @@
 % phần của chính nghiên cứu này, không gọi là phiên bản trước.
 % 20/11 (soát văn phong): "chỗ hở" thành "điểm yếu" (từ của thầy trong Review Huy), "cưỡng chế" thành "thực thi chính
 % sách", tách câu dài.
+% 20/11 (lượt 3, theo bài tham khảo trong pdf/): câu mở mỗi mục, bớt ngoặc chứa ký hiệu, ký hiệu dồn về Mục 5.
 \section{Giới thiệu}\label{sec:intro}
 
 Trong mô hình ReAct~\cite{yao2023react}, tác tử LLM xen kẽ bước suy luận với lời gọi công cụ, và nội dung công cụ trả về
-được đưa thẳng vào ngữ cảnh của mô hình. Trong tấn công chèn lệnh gián tiếp~\cite{greshake2023indirect}, kẻ tấn công cài
-chỉ thị vào nội dung mà tác tử sẽ đọc nhằm khiến nó gửi dữ liệu tới một đích lạ, làm lộ giá trị mật hoặc sửa nội dung
-cần gửi. Phòng thủ ở mức prompt phụ thuộc vào việc mô hình có tuân theo hay không, trong khi các bộ phân loại chèn lệnh
-phần lớn được huấn luyện trên tiếng Anh. Một hướng tiếp cận khác là thực thi chính sách ở phía host, giữa mô hình và công cụ,
-theo nguyên lý reference monitor~\cite{anderson1972}.
+được đưa thẳng vào ngữ cảnh của mô hình. Điều này mở đường cho tấn công chèn lệnh gián tiếp~\cite{greshake2023indirect}:
+kẻ tấn công cài chỉ thị vào nội dung mà tác tử sẽ đọc nhằm khiến nó gửi dữ liệu tới một đích lạ, làm lộ giá trị mật hoặc
+sửa nội dung cần gửi. Phòng thủ ở mức prompt phụ thuộc vào việc mô hình có tuân theo hay không, trong khi các bộ phân loại
+chèn lệnh phần lớn được huấn luyện trên tiếng Anh. Vì vậy, một hướng khác là thực thi chính sách ở phía host, giữa mô hình
+và công cụ, theo nguyên lý reference monitor~\cite{anderson1972}.
 
 Cách đơn giản nhất để thực thi chính sách tại Tool Broker là so khớp chuỗi. Broker chỉ thực thi một lời gọi gửi ra ngoài
 khi đích của lời gọi là chuỗi con của yêu cầu người dùng $u$, và chỉ cho một giá trị lấy từ nguồn gắn nhãn mật rời khỏi
-tác tử khi $u$ chứa nguyên văn giá trị đó. Ở giai đoạn đầu của nghiên cứu này, các luật như vậy kết hợp với lời nhắc
-kiểu sandwich đã giảm tỉ lệ tấn công thành công trên hai tập kiểm thử tiếng Việt niêm phong, với ba mô hình nền mở, từ
-32,9\% xuống 1,2\% và từ 32,4\% xuống 3,8\%. Phân tích 40 ca còn vượt qua cho thấy ba điểm yếu
-(Bảng~\ref{tab:mechanisms}). Ở 25 ca, giá trị mật bị lộ vì nằm trong một nguồn gắn nhãn công khai: nhãn được đặt cho cả
+tác tử khi $u$ chứa nguyên văn giá trị đó. Ở giai đoạn đầu của nghiên cứu này, các luật như vậy kết hợp với lời nhắc kiểu
+sandwich đã giảm tỉ lệ tấn công thành công trên hai tập kiểm thử tiếng Việt niêm phong, với ba mô hình nền mở, từ 32,9\%
+xuống 1,2\% và từ 32,4\% xuống 3,8\%. Tuy vậy, 40 ca còn vượt qua cho thấy ba điểm yếu, được tổng hợp ở
+Bảng~\ref{tab:mechanisms}. Ở 25 ca, giá trị mật bị lộ vì nằm trong một nguồn gắn nhãn công khai: nhãn được đặt cho cả
 nguồn chứ không cho từng giá trị. Ở 5 ca, lời gọi gửi tới một đích có xuất hiện trong $u$ nhưng không được cấp quyền,
 chẳng hạn đích nằm trong một câu cấm. Mười ca còn lại sửa tham số của một lời gọi tới đích hợp lệ.
 
-Các ca này cho thấy một chuỗi xuất hiện trong $u$ chưa chắc đã được cấp quyền, và nhãn của nguồn không phản ánh độ nhạy
-cảm của từng giá trị bên trong. Bài báo đề xuất \ours, một cơ chế thực thi chính sách tại broker gồm ba thành phần tất
-định nhắm vào ba điểm yếu này. \POne{} trích từ $u$ các quyền có cấu trúc, xét phạm vi phủ định và loại trừ, và chỉ cấp
-quyền cho đích khớp nguyên token. \PTwo{} gán độ nhạy cảm cho từng giá trị trong đầu ra công cụ dựa trên kiểu của giá
-trị, độc lập với nhãn nguồn. \PThree{} buộc lời gọi được cấp quyền phải giữ các giá trị người dùng đã nêu. Chính sách chỉ
-được suy ra từ $u$, không dựa vào phán đoán của LLM, và trả về \emph{cần xác nhận} khi quyền không rõ ràng. Bài báo có ba
-đóng góp chính.
+Ba điểm yếu này cho thấy một chuỗi xuất hiện trong $u$ chưa chắc đã được cấp quyền, và nhãn của nguồn không phản ánh độ
+nhạy cảm của từng giá trị bên trong. Từ đó, bài báo đề xuất \ours, một cơ chế thực thi chính sách tại broker gồm ba thành
+phần tất định, mỗi thành phần nhắm vào một điểm yếu. \POne{} trích từ $u$ các quyền có cấu trúc, xét phạm vi phủ định và
+loại trừ, và chỉ cấp quyền cho đích khớp nguyên token. \PTwo{} gán độ nhạy cảm cho từng giá trị trong đầu ra công cụ dựa
+trên kiểu của giá trị, độc lập với nhãn nguồn. \PThree{} buộc lời gọi được cấp quyền phải giữ các giá trị người dùng đã
+nêu. Chính sách chỉ được suy ra từ $u$, không dựa vào phán đoán của LLM, và trả về \emph{cần xác nhận} khi quyền không rõ
+ràng. Bài báo có ba đóng góp chính.
 \begin{enumerate}
 \item \textbf{Phương pháp.} \ours{} khắc phục ba điểm yếu đã đo được của luật so khớp chuỗi mà không gọi thêm LLM, với
-  thời gian kiểm tra dưới một mili giây mỗi lời gọi (Mục~\ref{sec:method}).
+  thời gian kiểm tra dưới một mili giây mỗi lời gọi.
 \item \textbf{Mô hình hình thức.} Ba mệnh đề về cấp quyền, bảo mật và toàn vẹn được chứng minh dưới năm giả định và được
-  tách bạch với các thuộc tính chỉ kiểm chứng được bằng thực nghiệm (Mục~\ref{sec:formal}).
+  tách bạch với các thuộc tính chỉ kiểm chứng được bằng thực nghiệm.
 \item \textbf{Đánh giá.} \ours{} được đóng băng rồi chạy một lần trên tập kiểm thử mới gồm 48 họ, niêm phong trước khi
-  viết mã, với giả thuyết đăng ký trước, ablation, hai vòng tấn công thích nghi và AgentDojo bằng hai ngôn ngữ
-  (Mục~\ref{sec:protocol} và~\ref{sec:results}). Giới hạn thống kê của phép so với luật so khớp chuỗi được phân tích ở
-  Mục~\ref{sec:discussion}.
+  viết mã, với giả thuyết đăng ký trước, ablation, hai vòng tấn công thích nghi và AgentDojo bằng hai ngôn ngữ.
 \end{enumerate}
 Dữ liệu, mã nguồn và các manifest niêm phong được công bố công khai.

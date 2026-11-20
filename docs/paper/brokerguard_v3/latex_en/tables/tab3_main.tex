@@ -6,20 +6,18 @@
 % 15-page version: the H1--H4 sub-table was dropped, the test results are in the prose of Section 7.
 % 20/11 (owner feedback): Q, G, L in three right-aligned columns (the dot-separated cell did not align). Natural
 % width at 9 pt about 330 pt against a 346 pt text width (two-row header keeps the columns narrow).
+% 20/11 (round 3b): caption wording.
 \begin{table}[!htbp]
 \centering
-\caption{Results on the \test{} and the \dev. ``Families'' are harmed on at least one backbone, and Q, G, L give the
-harmed families on Qwen3.5, Gemma-4 and Llama-3.1. ASR is over 720 attack cases, $U$ over 960 benign cases, $\Delta U$
-(points) is relative to no defence, and the last column counts harmed family--backbone pairs on the \dev.
-$^\dagger$Run after the main results were known. $^\ddagger$Estimated from trajectories with no defence.}\label{tab:main}
+\caption{Results on the \test{} and the \dev. Q, G and L are Qwen3.5, Gemma-4 and Llama-3.1. $^\dagger$Run after the main results were known.}\label{tab:main}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrrr@{}}
 \toprule
- & Families & \multicolumn{3}{c}{Model} & & & & Dev.\ set \\
+ & & \multicolumn{3}{c}{Model} & & & & Dev.\ set \\
 \cmidrule(lr){3-5}
-Configuration & (/48) & Q & G & L & ASR (\%) & $U$ (\%) & $\Delta U$ & (/504) \\
+Configuration & Families (/48) & Q & G & L & ASR (\%) & $U$ (\%) & $\Delta U$ & (/504) \\
 \midrule
 \NoDef & 40 & 24 & 31 & 28 & 32.1 & 42.8 & 0.0 & 346 \\
 \cSpot$^\dagger$ & 38 & 28 & 18 & 26 & 24.3 & 39.7 & $-3.1$ & 280 \\
@@ -37,7 +35,7 @@ Configuration & (/48) & Q & G & L & ASR (\%) & $U$ (\%) & $\Delta U$ & (/504) \\
 \quad without \cTwo & 6 & 2 & 2 & 4 & 1.4 & 40.2 & $-2.6$ & -- \\
 \quad without \cThree & 2 & 1 & 2 & 1 & 0.8 & 39.8 & $-3.0$ & -- \\
 \midrule
-Deny all sinks$^\ddagger$ & 14 & -- & -- & -- & 7.5 & 11.5 & $-31.4$ & -- \\
+Deny all sinks, estimated & 14 & -- & -- & -- & 7.5 & 11.5 & $-31.4$ & -- \\
 \bottomrule
 \end{tabular*}
 \end{adjustbox}

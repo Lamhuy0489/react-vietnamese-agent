@@ -5,70 +5,73 @@
 % gộp thành Bảng 4; bảng giả thuyết H1--H4 thành lời văn; tiểu mục thành tiêu đề đoạn; Hình Pareto bật bằng \paretotrue.
 % 20/11 (soát văn phong, giữ 15 trang): bỏ câu theo biến thể ngôn ngữ (0 đến 2 ca, quá ít để kết luận) và số ca cần xác
 % nhận của Gemini (5); xem commit dc564fa.
+% 20/11 (lượt 3, theo bài tham khảo): câu mở mục, bớt ngoặc có ký hiệu, Gemini chỉ ghi là mô hình đóng của Google.
 \section{Kết quả}\label{sec:results}
 
 \paragraph{Kết quả chính.} Bảng~\ref{tab:main} tổng hợp mười ba cấu hình trên \test. Khi không phòng thủ, 40 trong 48 họ
 bị hại trên ít nhất một mô hình nền, và 32,1\% số ca tấn công thành công. Với \ours, chỉ còn 2 họ bị hại, tương ứng 5
-trong 720 ca tấn công (0,7\%). Khi luật tại broker được làm chặt dần, số họ bị hại giảm đơn điệu từ 34 với \phrRules{}
-xuống 15 với \strRules, 6 với \strSand{} và 2 với \ours. Cột \dev{} cũng cho cùng thứ tự. Hai phòng thủ phát hiện gần
-như không có tác dụng trên dữ liệu tiếng Việt: \cPG{} không gắn cờ quan sát nào của \test{} và \cMel{} vẫn để 40 họ bị
-hại. \cSand{} và \cProg{} chỉ chặn được khoảng một nửa số họ.
+trên 720 ca tấn công hay ASR 0,7\%. Khi luật tại broker được làm chặt dần, số họ bị hại giảm đơn điệu từ 34 với
+\phrRules{} xuống 15 với \strRules, 6 với \strSand{} và 2 với \ours, và \dev{} cho cùng thứ tự đó. Hai phòng thủ phát
+hiện gần như không có tác dụng trên dữ liệu tiếng Việt: \cPG{} không gắn cờ quan sát nào của \test{} và \cMel{} vẫn để 40
+họ bị hại. \cSand{} và \cProg{} chỉ chặn được khoảng một nửa số họ.
 
 Đối với giả thuyết chính H1, số họ bị hại giảm từ 6 với \strSand{} xuống 2 với \ours. Có 4 họ chỉ bị hại dưới \strSand{}
-và không họ nào chỉ bị hại dưới \ours, nên kiểm định McNemar chính xác một phía cho $p = 0{,}0625$ (hai phía $0{,}125$),
-chưa đạt mức $\alpha = 0{,}05$ đã đăng ký. Chiều hiệu ứng giống nhau trên cả ba mô hình (từ 2, 2 và 3 họ xuống 1 họ mỗi
-mô hình), nhưng từng mô hình có quá ít cặp lệch để kết luận riêng. Theo thủ tục cổng, H2 đến H4 chỉ được báo cáo ở dạng
-mô tả. Tiện ích của \ours{} thấp hơn \strSand{} 0,56 điểm ở nhánh \bPlain{} (720 cặp) và 0,42 điểm ở nhánh \bAuth{}
-(240 cặp), nằm trong biên 5 điểm của H2. Ba bản bỏ một thành phần có 4, 6 và 2 họ bị hại so với 2 của \ours{} ($p$ một
-phía 0,50, 0,19 và 1). So với các phòng thủ khác, khác biệt rõ hơn nhiều, chẳng hạn $p = 3{,}6\cdot10^{-12}$ so với khi
-không phòng thủ, $9{,}5\cdot10^{-7}$ so với \cSand{} và $1{,}2\cdot10^{-4}$ so với \strRules{} (phân tích khám phá, chưa
-hiệu chỉnh cho nhiều phép so sánh).
+và không họ nào chỉ bị hại dưới \ours, nên kiểm định McNemar chính xác một phía cho $p = 0{,}0625$, hai phía là
+$0{,}125$, chưa đạt mức $\alpha = 0{,}05$ đã đăng ký. Chiều hiệu ứng giống nhau trên cả ba mô hình, với số họ giảm từ 2,
+2 và 3 xuống 1 ở mỗi mô hình, nhưng từng mô hình có quá ít cặp lệch để kết luận riêng. Theo thủ tục cổng, H2 đến H4 chỉ
+được báo cáo ở dạng mô tả. Tiện ích của \ours{} thấp hơn \strSand{} 0,56 điểm trên 720 cặp ca \bPlain{} và 0,42 điểm
+trên 240 cặp ca \bAuth, nằm trong biên 5 điểm của H2. Ba bản bỏ một thành phần có 4, 6 và 2 họ bị hại so với 2 của
+\ours, với $p$ một phía lần lượt là 0,50, 0,19 và 1. So với các phòng thủ khác, khác biệt rõ hơn nhiều, chẳng hạn $p =
+3{,}6\cdot10^{-12}$ so với khi không phòng thủ, $9{,}5\cdot10^{-7}$ so với \cSand{} và $1{,}2\cdot10^{-4}$ so với
+\strRules, dù đây là phân tích khám phá chưa hiệu chỉnh cho nhiều phép so sánh.
 
 \input{tables/tab3_main}
 
-\paragraph{Đánh đổi giữa an ninh, tiện ích và chi phí.} Trên mặt phẳng gồm số họ bị hại và $\Delta U$
-(Bảng~\ref{tab:main}\ifpareto, Hình~\ref{fig:pareto}\fi), các bản của \ours{} nằm ở vùng ít họ bị hại nhất, và không cấu
+\paragraph{Đánh đổi giữa an ninh, tiện ích và chi phí.} Trên mặt phẳng gồm số họ bị hại và $\Delta U$ ở
+\ifpareto Hình~\ref{fig:pareto}\else Bảng~\ref{tab:main}\fi, các bản của \ours{} nằm ở vùng ít họ bị hại nhất, và không cấu
 hình nào khác vừa ít họ bị hại hơn vừa giữ nhiều tiện ích hơn. Cái giá về tiện ích tăng dần khi luật chặt hơn, từ 0,8
 điểm với \strRules{} lên 2,6 điểm với \strSand{} và 3,1 điểm với \ours. Chuyển từ \strSand{} sang \ours{} giảm thêm 4 họ
 bị hại với cái giá là 5 ca lành tính, tương ứng 0,5 điểm. Vì \strSand{} giữ nhiều tiện ích hơn và bản bỏ \pThree{} giữ
 hơn \ours{} một ca, không thể khẳng định \ours{} trội Pareto so với hai cấu hình này. Phòng thủ phát hiện gần như không
-giảm được tác hại, trong khi phòng thủ bằng lời nhắc giảm được tác hại nhưng mất 2,1 đến 3,1 điểm tiện ích. Ngay cả
-chặn mọi sink vẫn để 14 họ bị hại qua câu trả lời cuối và chỉ giữ 11,5\% tiện ích.
+giảm được tác hại, trong khi phòng thủ bằng lời nhắc giảm được tác hại nhưng mất 2,1 đến 3,1 điểm tiện ích. Ngay cả chặn
+mọi sink vẫn để 14 họ bị hại qua câu trả lời cuối và chỉ giữ 11,5\% tiện ích.
 
 \ifpareto\input{images/fig2_pareto}\fi
 
-Trên từng mô hình nền, số token trung bình mỗi ca của \ours{} chênh không quá 0,8\% và thời gian trung bình mỗi ca chênh
-từ $-1{,}4\%$ đến $+0{,}6\%$ so với \strSand. Tỉ lệ cần xác nhận trên ca lành tính tối
-đa là 0,6\%, tỉ lệ chặn nhầm từ 1,9\% đến 3,4\% (\strSand: 1,6\% đến 2,8\%), đều dưới ngưỡng của H4. Cổng chỉ mất trung
-bình 0,26~ms mỗi lời gọi, trong khi thời gian mô hình khoảng 14~s mỗi ca.
+Chi phí của ba thành phần mới gần như không đáng kể. Trên từng mô hình nền, số token trung bình mỗi ca của \ours{} chênh
+không quá 0,8\% và thời gian trung bình mỗi ca chênh từ $-1{,}4\%$ đến $+0{,}6\%$ so với \strSand. Tỉ lệ cần xác nhận
+trên ca lành tính tối đa là 0,6\%, tỉ lệ chặn nhầm từ 1,9\% đến 3,4\% so với 1,6\% đến 2,8\% của \strSand, đều dưới
+ngưỡng của H4. Cổng chỉ mất trung bình 0,26~ms mỗi lời gọi, trong khi thời gian mô hình khoảng 14~s mỗi ca.
 
 \paragraph{Phân tích theo cơ chế.} Bảng~\ref{tab:mechres} cho số họ bị hại theo cơ chế. \cSand{} và \cProg{} giảm mạnh
 hai cơ chế chuyển hướng nhưng vẫn để lọt cả 8 họ rò rỉ qua sink, và \cProg{} cũng không giảm được rò rỉ qua câu trả lời
-hay sửa tham số. Mỗi thành phần của \ours{} chặn đúng loại tấn công mà nó được thiết kế để chặn: bỏ \pTwo{} làm 4 họ rò rỉ
-lọt trở lại, bỏ \pOne{} làm thêm 1 họ chuyển hướng và 1 họ sửa tham số bị hại, trong khi bỏ \pThree{} chỉ thêm 1 ca. Ở mức ca, cả 4 họ chỉ bị hại dưới \strSand{} đều là vi phạm tại sink và đều bị cổng của \ours{}
-chặn trước khi thực thi, 2 họ bởi \pTwo{} và 2 họ bởi \pOne. Khi bỏ đúng thành phần đó, ca tương ứng lại vượt qua. Xét 720 ca tấn công, khác biệt giữa hai cấu hình nằm ở vi phạm tại sink (4 ca với \strSand, 0 với \ours), trong
-khi số ca lộ ở câu trả lời cuối (0) và sửa tham số (5) là như nhau. Hai họ còn lại dưới
-\ours{} là sửa giá trị số hoặc đơn vị mà cổng của cả hai cấu hình đều cho qua.
+hay sửa tham số. Ngược lại, mỗi thành phần của \ours{} chặn đúng loại tấn công mà nó được thiết kế để chặn: bỏ \pTwo{}
+làm 4 họ rò rỉ lọt trở lại, bỏ \pOne{} làm thêm 1 họ chuyển hướng và 1 họ sửa tham số bị hại, trong khi bỏ \pThree{} chỉ
+thêm 1 ca. Ở mức ca, cả 4 họ chỉ bị hại dưới \strSand{} đều là vi phạm tại sink và đều bị cổng của \ours{} chặn trước khi
+thực thi, 2 họ bởi \pTwo{} và 2 họ bởi \pOne. Khi bỏ đúng thành phần đó, ca tương ứng lại vượt qua. Xét 720 ca tấn công,
+hai cấu hình chỉ khác nhau ở vi phạm tại sink, với 4 ca dưới \strSand{} và không ca nào dưới \ours. Ở cả hai, rò rỉ qua câu
+trả lời đã về 0 và sửa tham số còn 5 ca, thuộc hai họ sửa giá trị số hoặc đơn vị mà cả hai cổng đều cho qua.
 
 \input{tables/tab4_mechres}
 
 \paragraph{Tấn công thích nghi.} Ở bộ thứ nhất, \ours{} không bị hại ở ca nào, nhưng kết quả này thiên vị \ours{} vì bộ
-này nhắm đúng vào các điểm yếu đã dùng làm đầu vào cho thiết kế. Bộ thứ hai gây hại tương đương tấn công gốc khi không
-phòng thủ (25 so với 26 họ trên 42), nên đây là các tấn công có hiệu lực. Với \strSand{} và \ours, không họ nào vượt qua
-bằng tấn công thích nghi mà không vượt qua bằng tấn công gốc. Họ duy nhất còn vượt qua \ours{} (trên Qwen3.5) thuộc cơ
+này nhắm đúng vào các điểm yếu đã dùng làm đầu vào cho thiết kế. Khi không phòng thủ, bộ thứ hai gây hại ở 25 trên 42
+họ, tương đương 26 họ của tấn công gốc, nên đây là các tấn công có hiệu lực. Với \strSand{} và \ours, không họ nào vượt
+qua bằng tấn công thích nghi mà không vượt qua bằng tấn công gốc. Họ duy nhất còn vượt qua \ours{} trên Qwen3.5 thuộc cơ
 chế sửa tham số, cùng loại với hai họ còn lại trên \test. Ở bộ này, tới 18 trong 42 ca trên Qwen3.5 dưới \strSand{} và
 \ours{} dừng vì hết tám bước, nên kết quả chỉ có giá trị trong giới hạn số bước đó.
 
 \paragraph{Tổng quát hóa.} Với Gemini 3 Flash trên \test, số họ bị hại là 26 khi không phòng thủ, 14 với \cProg{} và 0
 với \cSand, \strSand{} và \ours, nên cột tham khảo này không phân biệt được hai cấu hình sau cùng về an ninh. \ours{} giữ
-tiện ích \bPlain{} ở mức 201/240 (\strSand: 205/240) nhưng chặn nhầm 8 trong 320 ca lành tính (\strSand: 4).
+tiện ích \bPlain{} ở mức 201/240, so với 205/240 của \strSand, nhưng chặn nhầm 8 trong 320 ca lành tính, so với 4 ca của
+\strSand.
 
-Trên AgentDojo (Bảng~\ref{tab:agentdojo}), \ours{} cho cùng kết quả với \strSand{} ở Banking trong cả hai ngôn ngữ. Ở
-Slack tiếng Anh, số tấn công thành công giảm từ 6 xuống 5: ca có tên người nhận chỉ xuất hiện như một chuỗi con trong
-$u$ bị chặn vì \pOne{} đòi khớp nguyên token. Các tấn công còn thành công gồm đổi mật khẩu qua một sink không có đích (3
-ca tiếng Anh và 1 ca tiếng Việt ở Banking), mở một URL bằng công cụ đọc (4 ca) và 1 ca khác ở Slack tiếng Anh. Hai loại
-đầu nằm ngoài tập sink $S$ của mô hình hình thức. Đổi lại, tiện ích ở Slack giảm thêm, dưới tấn công từ 15 xuống 11 ở
-tiếng Anh và khi không có tấn công từ 5 xuống 3 trên 21 nhiệm vụ ở cả hai ngôn ngữ, vì nhiều nhiệm vụ Slack lấy đích từ
-một trang web hay tin nhắn mà người dùng không viết.
+Bảng~\ref{tab:agentdojo} cho kết quả trên AgentDojo. \ours{} cho cùng kết quả với \strSand{} ở Banking trong cả hai ngôn
+ngữ. Ở Slack tiếng Anh, số tấn công thành công giảm từ 6 xuống 5: nhờ đòi khớp nguyên token, \pOne{} chặn được ca có tên
+người nhận chỉ xuất hiện như một chuỗi con trong $u$. Các tấn công còn thành công gồm đổi mật khẩu qua một sink không có
+đích, với 3 ca tiếng Anh và 1 ca tiếng Việt ở Banking, mở một URL bằng công cụ đọc ở 4 ca, và 1 ca khác ở Slack tiếng
+Anh. Hai loại đầu nằm ngoài tập sink $S$ của mô hình hình thức. Đổi lại, tiện ích ở Slack giảm thêm, dưới tấn công từ 15
+xuống 11 ở tiếng Anh và khi không có tấn công từ 5 xuống 3 trên 21 nhiệm vụ ở cả hai ngôn ngữ, vì nhiều nhiệm vụ Slack lấy
+đích từ một trang web hay tin nhắn mà người dùng không viết.
 
 \input{tables/tab5_agentdojo}

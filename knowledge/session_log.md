@@ -771,3 +771,14 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Bài học: soát văn phong theo hướng tách câu làm dài thêm khoảng 12 dòng; phải bù bằng cắt câu trùng với bảng. Hiệu
   chỉnh ước lượng bằng lần biên dịch thật (+0,19 trang).
 
+## 2026-11-20 (khuya) — Lượt 3: bớt ký hiệu, chú thích ngắn; bản Anh soát câu chữ, bật Hình 2 với [H]
+
+- Owner (lượt 3): Gemini chỉ là mô hình của Google, bớt ngoặc chứa ký hiệu, khối tác giả để trống tự điền, chú thích
+  ngắn, câu và mục liên kết chặt, tham khảo bài lượng tử trong `pdf/`. Đã viết lại cả hai bản; bản Việt tắt Pareto
+  (khoảng 14,7 trang ước lượng), còn vài sửa nhỏ đã soạn (README của bài, mục "Lượt 3").
+- Owner (lượt 3b): chỉ sửa bản Anh, soát câu và từ nối, bật Hình 2 với `[H]` cho hình lên trên. Bản owner biên dịch lúc
+  05:00 (có Hình 2) đúng 15 trang, trang cuối kín, Hình 2 nằm dưới Bảng 3 ở trang 11. Đã soát câu toàn bài, sửa câu
+  lực kiểm định, chú thích Bảng 1, 3, 5, Hình 2; đặt Hình 2 `[H]` ngay sau đoạn "Main results"; cắt khoảng 10 dòng,
+  ước lượng khoảng 14,8 trang. Lint sạch, 19/19 tài liệu được trích, số liệu không đổi so với trước lượt.
+- Bài học: `[H]` đặt ở cuối đoạn trích dẫn sẽ không đưa hình lên khi đoạn đó kết thúc sát cuối trang; phải đặt hình
+  sau một đoạn kết thúc sớm trên trang. Kiểm vị trí bằng PDF owner gửi (PyMuPDF) trước khi chọn chỗ.

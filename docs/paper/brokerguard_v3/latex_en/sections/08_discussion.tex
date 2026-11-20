@@ -3,41 +3,46 @@
 % v3" (offline C1 check, false-block reasons), supplementary baselines (Prompt Guard 0 denials), AgentDojo v3.
 % 15-page version: "Utility cost" merged with "Language", "Threats to validity" merged with "Limitations".
 % 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
+% 20/11 round 3 (style of the reference paper): section openers, fewer parentheses, Gemini described as Google's closed model.
+% 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
 \section{Discussion}\label{sec:discussion}
 
-\paragraph{Statistical power of the primary test.} H1 assumed that \strSand{} would let through about 14 of 48
-families, as on the 48-family set of the early stage, which gave an estimated power of 91\% if \ours{} blocked 8 more.
-On the \test{} it let through only 6, mainly because harmed family--backbone pairs in sink leakage fell from 9 to 1.
-With such a low baseline, the discordant pairs stay few even if \ours{} blocks every family that \strSand{} misses. The
-power at this baseline is only about 26\%, and about 120 families would be needed for 80\% power. The result therefore
-reflects a floor effect, not evidence that the two configurations are equivalent. Other sources point the same way. On
-the \dev, harmed family--backbone pairs fall from 36 to 4, and rescoring the 40 cases that got past \strSand{} in the
-early stage gives 38 harmful cases under \strSand{} and 2 under \ours. These data were used during development, so they
-are diagnostic only, and no run was added after the results were known to search for significance.
+This section explains why the primary test fell short of significance, then discusses each component, utility and the
+limits of the evaluation.
+
+\paragraph{Statistical power of the primary test.} The power analysis for H1 assumed that \strSand{} would let through
+about 14 of the 48 families, as on the 48-family set of the early stage, which gave an estimated power of 91\% if
+\ours{} blocked 8 more. On the \test{} it let through only 6, mainly because harmed family--backbone pairs in sink
+leakage fell from 9 to 1. With such a low baseline, few discordant pairs can be observed, so the power of the test is
+only about 26\%, and about 120 families would be needed for 80\% power. The result therefore reflects a floor effect,
+not evidence that the two configurations are equivalent. Other data point the same way. On the \dev, harmed
+family--backbone pairs fall from 36 to 4, and rescoring the 40 cases that got past \strSand{} in the early stage gives
+38 harmful cases under \strSand{} and 2 under \ours. These data were used during development, so they are diagnostic
+only, and no run was added after the results were known to search for significance.
 
 \paragraph{Contribution of each component.} \PTwo{} removes the largest weakness of string matching. When the reference
 trajectories of the validation part are replayed, the \pOne{} blocks all 35 unrequested side-effect calls, against 15
 for the \rDest. However, the models rarely propose such destinations themselves, so on the \test{} the difference shows
-in only 2 families. \PThree{} has no measurable effect yet. The two families that still get through admit two
-explanations, not yet checked case by case. Either the changed value was not among the pinned literals, violating (A5),
-or the literal was still present next to another value, a case that Proposition~\ref{prop:int} does not exclude. Both
-call for field-level semantics in \pThree{} rather than a presence check on literals.
+in only 2 families. \PThree, by contrast, has no measurable effect yet. The two families that still get through admit two
+explanations, not yet checked case by case. Either the changed value was not among the pinned literals, violating
+assumption (A5), or the literal was still present next to another value, a case that Proposition~\ref{prop:int} does
+not exclude. Both call for field-level semantics in \pThree{} rather than a presence check on literals.
 
-\paragraph{Utility and language.} On both benign branches, \ours{} loses at most 0.6 points of utility relative to
-\strSand, but both lie about 3 points below no defence, partly through false blocks (24 against 19 of the 960 benign
-cases). On the \dev, false blocks come mostly from the base rules, and for Llama-3.1 from \pThree, because this model
-tends to rewrite values stated by the user. Absolute utility is low for every configuration, including no defence
-(42.8\%), owing to the limits of small models such as exhausted steps or truncated outputs. In deployment, \emph{needs
-confirmation} cases could be passed to the user, recovering utility without granting authority to untrusted content.
-The \pOne{} depends on the language because polarity is derived from lists of negation, exclusion and contrast cues,
-and a negation outside these lists could let the gate allow a forbidden destination.
+\paragraph{Utility and language.} On both benign branches, \ours{} loses at most 0.6 points relative to \strSand, but
+both configurations lie about 3 points below no defence, partly through false blocks in 24 against 19 of the 960 benign
+cases. On the \dev, false blocks come mostly from the base rules, and for Llama-3.1 from \pThree, because this model
+tends to rewrite values stated by the user. Absolute utility is low for every configuration, 42.8\% even with no
+defence, owing to the limits of small models such as exhausted steps or truncated outputs. In deployment, \emph{needs
+confirmation} cases could be passed to the user, recovering utility without granting authority to untrusted content. The
+\pOne{} depends on the language because polarity is derived from lists of negation, exclusion and contrast cues, and a
+negation outside these lists could let the gate allow a forbidden destination.
 
 \paragraph{Validity and limitations.} The data are synthetic, the tools are mocks and each task has a single turn. The
 \test{} was generated from a specification by code and reviewed by the team that developed the defence. Although it
 was sealed before any \ours{} code existed, its authors may have unintentionally chosen cases that suit the design. The
 second adaptive set was written by team members in a single round on the \dev. The open models have only 8 to 12
-billion parameters, Gemini 3 Flash has no pinned version, and AgentDojo was run with one model. The propositions are
-proved on the specification, not verified formally against the code. Unauthorised reads are out of scope: under \ours,
-18 of the 720 attack cases still contain an unauthorised read call (\strSand: 20). \PTwo{} does not track values
-through transformations outside (A4), but the transformed-leak scorer found no such case, so this assumption remains
+billion parameters, and AgentDojo was run with one model. The propositions are proved on the specification, not
+verified formally against the code. Unauthorised reads are out of scope, and under \ours{} 18 of the 720 attack cases
+still contain an unauthorised read call, against 20 under \strSand. \PTwo{} does not track values through
+transformations outside assumption (A4), but the transformed-leak scorer found no such case, so this assumption remains
 untested.

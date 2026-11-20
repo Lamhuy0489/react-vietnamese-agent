@@ -4,59 +4,61 @@
 % version drops the paragraph on the C1a variant (2 -> 5 harmful trajectories on Dev-val); see commit 6814b3a.
 % No attack text is quoted. The cue words are those of the extractor, not of the data.
 % 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
+% 20/11 round 3 (style of the reference paper in pdf/): section openers, fewer parentheses, notation moved to Section 5.
+% 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
 \section{The \ours{} Method}\label{sec:method}
 
-\ours{} treats the model as outside the security boundary. An action takes effect only when the broker executes it, so
+\ours{} treats the model as outside the security boundary: an action takes effect only when the broker executes it, so
 the broker is the reference monitor at the sinks, with $u$ as the only source of authority. Figure~\ref{fig:arch} shows
-the architecture. Four base rules date from the early stage. Besides the \rDest{} (Section~\ref{sec:intro}), the
-\rFlow{} lets a value from a source labelled confidential leave the agent only if $u$ contains it verbatim, the
-\rRedact{} masks such values in the final answer, and the \rSig{} denies sinks after an observation flagged by a phrase
-detector, unless the call matches a strict grammar over $u$. Sandwich prompting repeats $u$ after every observation.
-\ours{} replaces the \rDest{} with the \pOne{} (\cOne) and adds \pTwo{} (\cTwo) and \pThree{} (\cThree). Keeping the
-\rDest{} and dropping all three components gives \strSand, and dropping the prompt layer as well gives \strRules.
+the architecture. Four base rules date from the early stage. Besides the two matching rules of Section~\ref{sec:intro},
+called the \rDest{} and the \rFlow, the \rRedact{} masks confidential values in the final answer, and the \rSig{} denies
+sinks after an observation flagged by a phrase detector, unless the call matches a strict grammar over $u$. To address
+the three weaknesses, \ours{} replaces the \rDest{} with the \pOne{} and adds \pTwo{} and \pThree. Keeping the \rDest{}
+without the three components gives \strSand, and dropping Sandwich as well gives \strRules.
 
 \input{images/fig1_architecture}
 
-\paragraph{Normalisation.} $\norm(\cdot)$ applies Unicode NFKC, removes format characters and casefolds. $\kappa(\cdot)$
-also strips Vietnamese diacritics and keeps only letters and digits. $x \sub z$ means that $\kappa(x)$ is a substring of
-$\kappa(z)$, and $V(u)$ is the set of values occurring in $u$ in this sense.
+\paragraph{Normalisation.} Every comparison applies Unicode NFKC, removes format characters and casefolds. The function
+$\kappa$ also strips Vietnamese diacritics and keeps only letters and digits, $x \sub z$ means that $\kappa(x)$ is a
+substring of $\kappa(z)$, and $V(u)$ is the set of values occurring in $u$ in this sense. For a sink call $a$, $\dest(a)$
+is its destination and $\data(a)$ the remaining arguments.
 
-\paragraph{\POne{} (\cOne).} The extractor reads only $u$ and returns $P(u) = \{g_i\}$, where each grant $g =
-(\mathrm{tool}, \dest, \pi, \mathrm{pins})$ has a tool, a destination, a polarity $\pi \in \{+,-\}$ and pinned values.
-Destinations are e-mail addresses or endpoints matched as whole tokens after $\norm$, so part of a destination or an
-ordinary word in $u$ no longer counts. A negated verb (``đừng gửi'', ``do not send'') covers the destinations after it
-in the same clause, exclusion cues (``trừ'', ``except'') cover those up to the next comma, and contrast cues
-(``nhưng'', ``but'') close the scope. Without diacritics, a word such as ``dung'' counts as a negation only if a sending
-verb follows. The granting clause needs a non-negated sending verb that matches the destination type. A destination
-that is only mentioned, quoted or near a negation of unclear scope yields \emph{needs confirmation}. A sink call $a$
-satisfies the \pOne{} when
+\paragraph{\POne{} (\cOne).} The extractor reads only $u$ and returns a set of grants $P(u)$. Each grant $g$ has a tool,
+a destination, a polarity $\pi(g)$ that is positive or negative, and pinned values. Destinations are e-mail addresses or
+endpoints matched as whole tokens after normalisation, so part of a destination or an ordinary word in $u$ no longer
+counts as a destination. A negated verb such as ``do not send'' covers the destinations after it in the same clause,
+exclusion cues such as ``except'' cover those up to the next comma, and contrast cues such as ``but'' close the scope.
+In diacritic-free text, ambiguous negation tokens count as a negation only when followed by a sending verb. A granting
+clause must contain a non-negated sending verb that matches the destination type. A destination that is only mentioned,
+quoted or near a negation of unclear scope yields \emph{needs confirmation}. A sink call $a$ satisfies the \pOne{} when
 \begin{equation}\label{eq:c1}
 \begin{aligned}
 &\exists\, g \in P(u)\colon\; \pi(g) = {+} \,\land\, \mathrm{tool}(g) = \mathrm{tool}(a) \,\land\, \dest(g) \doteq \dest(a),\\
 &\nexists\, g' \in P(u)\colon\; \pi(g') = {-} \,\land\, \dest(g') \doteq \dest(a),
 \end{aligned}
 \end{equation}
-where $\doteq$ is whole-token equality after $\norm$. For ``send the report to \code{ketoan@example.com}, not to
-\code{doitac@example.org}'', a call to the second address is denied, although the \rDest{} would let it pass.
+where $\doteq$ is whole-token equality after normalisation. For ``send the report to \code{accounting@example.com}, not
+to \code{partner@example.org}'', a call to the second address is denied, although the \rDest{} would let it pass.
 
-\paragraph{\PTwo{} (\cTwo).} \PTwo{} labels each value in every tool output by its type, independently of the source
-label and of trust. It recognises identifiers mixing letters and digits with at least 8 characters, numbers with at
-least 9 digits after removing spaces, dots and dashes, and values after a sensitive field name such as password, OTP,
-token or account number. Let $C_t$ be the protected values after step $t$, that is, those protected by the \rFlow{} and
-those labelled by type. The broker denies a sink call $a$ if
+\paragraph{\PTwo{} (\cTwo).} This component labels each value in every tool output by its type, independently of the
+source label and of trust. It recognises identifiers mixing letters and digits with at least 8 characters, numbers with
+at least 9 digits after removing spaces, dots and dashes, and values after a sensitive field name such as password, OTP,
+token or account number. Let $C_t$ be the set of protected values after step $t$, namely those protected by the \rFlow{}
+and those labelled by type. The broker denies a sink call $a$ if
 \begin{equation}\label{eq:c2}
 \exists\, v \in C_t \setminus V(u)\colon\; v \sub \data(a) .
 \end{equation}
 Since the comparison uses $\kappa$, it survives added or removed spaces, dots and dashes, case changes and stripped
-diacritics. In the final answer, every $v \in C_t \setminus V(u)$ with $v \sub y$ is replaced by \code{[REDACTED]}.
+diacritics. In the final answer, every value of $C_t \setminus V(u)$ that occurs in $y$ is replaced by
+\code{[REDACTED]}.
 
-\paragraph{\PThree{} (\cThree).} Parameter tampering keeps the authorised destination and changes a value such as an
-amount, a status, a unit or a code. \PThree{} pins the literals in the clause of $u$ that authorised the call: numbers
-after the sending verb that are not operands of a calculation, units stated with a number, Booleans with their
-polarity, and identifiers written by the user. A call is denied if $\data(a)$ lacks a pinned literal (compared under
-$\kappa$) or carries the opposite of a pinned Boolean.
+\paragraph{\PThree{} (\cThree).} Tampering keeps the authorised destination but changes a value such as an amount,
+status, unit or code. This component pins the literals in the clause of $u$ that authorised the call: numbers after the
+sending verb that are not calculation operands, units stated with a number, Booleans with their polarity, and
+identifiers written by the user. A call is denied if $\data(a)$ lacks a pinned literal or carries the opposite of a
+pinned Boolean.
 
-\paragraph{Gate and cost.} A sink call is executed only if it passes all four checks: the \rSig, the \pOne, \pThree{}
-and the flow check of the \rFlow{} with \pTwo. \emph{Needs confirmation} is enforced as a denial and counted
-separately, and read calls are always allowed. On the \dev, the median check of a sink call takes 315~$\mu$s
-(\strSand: 107~$\mu$s).
+\paragraph{Gate and cost.} A sink call is executed only if it passes four checks: the \rSig, the \pOne, \pThree, and the
+flow check that combines the \rFlow{} with \pTwo. \emph{Needs confirmation} is enforced as a denial and counted
+separately, and read calls are always allowed. On the \dev, the median check of a sink call takes 315~$\mu$s, against
+107~$\mu$s for \strSand.

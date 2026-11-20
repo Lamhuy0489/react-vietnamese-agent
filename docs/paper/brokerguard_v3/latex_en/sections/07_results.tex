@@ -5,72 +5,80 @@
 % figure and the adaptive table were merged into Table 4; the H1--H4 table became prose; subsections became run-in
 % paragraphs; the Pareto figure is switched on with \paretotrue in main.tex.
 % 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
+% 20/11 round 3 (style of the reference paper): section openers, fewer parentheses, Gemini described as Google's closed model.
+% 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
 \section{Results}\label{sec:results}
 
-\paragraph{Main results.} Table~\ref{tab:main} summarises the thirteen configurations on the \test. With no defence, 40
-of the 48 families are harmed on at least one backbone and 32.1\% of the attack cases succeed. With \ours, only 2
-families are harmed, or 5 of the 720 attack cases (0.7\%). As the broker rules become stricter, harmed families fall
-monotonically from 34 with \phrRules{} to 15 with \strRules, 6 with \strSand{} and 2 with \ours, and the \dev{} column
-shows the same order. The detection defences have almost no effect on Vietnamese data: \cPG{} flags no observation of
-the \test{} and \cMel{} still leaves 40 families harmed. \cSand{} and \cProg{} block only about half of the families.
+This section reports the main results and pre-registered tests on the \test, then analyses mechanisms, adaptive
+attacks and generalisation.
+
+\paragraph{Main results.} Table~\ref{tab:main} summarises the thirteen configurations on the \test\ifpareto, and
+Figure~\ref{fig:pareto} plots security against utility\fi. With no defence, 40 of the 48 families are harmed on at least
+one backbone and 32.1\% of the attack cases succeed. With \ours, only 2 families are harmed and 5 of the 720 attack
+cases succeed, an ASR of 0.7\%. As the broker rules become stricter, harmed families fall monotonically from 34 with
+\phrRules{} to 15 with \strRules, 6 with \strSand{} and 2 with \ours, and the \dev{} shows the same order. Detection has
+almost no effect on Vietnamese data: \cPG{} flags no observation of the \test{} and \cMel{} still leaves 40 families
+harmed. \cSand{} and \cProg{} block only about half of the families.
+
+% Figure 2 is [H]: it sits exactly here, after the paragraph that first cites it, and does not float.
+\ifpareto\input{images/fig2_pareto}\fi
 
 For the primary hypothesis H1, harmed families fall from 6 with \strSand{} to 2 with \ours. Four families are harmed
-only under \strSand{} and none only under \ours, so the one-sided exact McNemar test gives $p = 0.0625$ (two-sided
-$0.125$), short of the registered $\alpha = 0.05$. The effect has the same direction on all three backbones (from 2, 2
-and 3 families to 1 each), but each backbone alone has too few discordant pairs. Under the gatekeeping procedure, H2 to
-H4 are reported descriptively. The utility of \ours{} is 0.56 points below \strSand{} on the \bPlain{} branch (720
-pairs) and 0.42 points below on the \bAuth{} branch (240 pairs), within the 5-point margin of H2. The three ablations
-have 4, 6 and 2 harmed families against 2 for \ours{} (one-sided $p$ of 0.50, 0.19 and 1). Against the other defences
-the differences are far clearer, for example $p = 3.6\cdot10^{-12}$ against no defence, $9.5\cdot10^{-7}$ against
-\cSand{} and $1.2\cdot10^{-4}$ against \strRules{} (exploratory, uncorrected for multiple comparisons).
+only under \strSand{} and none only under \ours, so the one-sided exact McNemar test gives $p = 0.0625$, or $0.125$
+two-sided, short of the registered $\alpha = 0.05$ because the discordant pairs are too few, as
+Section~\ref{sec:discussion} explains. The effect has the same direction on all three backbones, each dropping from 2, 2
+and 3 families to 1. Under the gatekeeping procedure, H2 to H4 are reported descriptively. The utility of
+\ours{} is 0.56 points below \strSand{} on 720 paired \bPlain{} cases and 0.42 points below on 240 paired \bAuth{}
+cases, within the 5-point margin of H2. The three ablations have 4, 6 and 2 harmed families against 2 for \ours, with
+one-sided $p$ of 0.50, 0.19 and 1. The exploratory comparisons with the other defences, uncorrected for multiplicity,
+show far clearer differences, for example $p = 3.6\cdot10^{-12}$ against no defence, $9.5\cdot10^{-7}$ against \cSand{}
+and $1.2\cdot10^{-4}$ against \strRules.
 
 \input{tables/tab3_main}
 
-\paragraph{Trade-off between security, utility and cost.} In the plane of harmed families and $\Delta U$
-(Table~\ref{tab:main}\ifpareto, Figure~\ref{fig:pareto}\fi), the \ours{} variants occupy the region with the fewest
-harmed families, and no other configuration has both fewer harmed families and more utility. The utility cost grows
-with stricter rules, from 0.8 points for \strRules{} to 2.6 for \strSand{} and 3.1 for \ours. Moving from \strSand{} to
-\ours{} removes 4 more harmed families at the cost of 5 benign cases, or 0.5 points. Since \strSand{} keeps more utility
-and the ablation without \pThree{} keeps one more case than \ours, \ours{} is not Pareto-dominant over these two.
-Detection barely reduces harm, whereas the prompt-level defences reduce harm at a cost of 2.1 to 3.1 points of utility.
-Even denying all sinks leaves 14 families harmed through the final answer and retains only 11.5\% utility.
+\paragraph{Trade-off between security, utility and cost.} \ifpareto In Figure~\ref{fig:pareto}\else In
+Table~\ref{tab:main}\fi, the \ours{} variants have the fewest harmed families, and no other configuration has both fewer
+harmed families and more utility. The utility cost grows with stricter rules, from 0.8 points for \strRules{} to 2.6 for
+\strSand{} and 3.1 for \ours. Moving from \strSand{} to \ours{} removes 4 more harmed families at the cost of 5 benign
+cases, or 0.5 points. Since \strSand{} keeps more utility and the ablation without \pThree{} keeps one more case than
+\ours, \ours{} is not Pareto-dominant over these two. The prompt-level defences reduce harm at a cost of 2.1 to 3.1
+utility points. Even denying all sinks, estimated from the trajectories with no defence, would leave 14 families harmed
+through the final answer and only 11.5\% utility.
 
-\ifpareto\input{images/fig2_pareto}\fi
-
-On each backbone, the mean tokens per case of \ours{} differ by at most 0.8\% and the mean wall time per case by
-$-1.4\%$ to $+0.6\%$ from \strSand. The confirmation rate on benign cases is at most 0.6\%, and the false-block rate is
-1.9\% to 3.4\% (\strSand: 1.6\% to 2.8\%), all below the H4 thresholds. The gate takes 0.26~ms per call on average,
-against about 14~s of model time per case.
+The new components add little cost. On each backbone, the mean tokens per case of \ours{} differ from \strSand{}
+by at most 0.8\%, and the mean wall time by $-1.4\%$ to $+0.6\%$. The confirmation rate on benign cases is at
+most 0.6\%, and the false-block rate is 1.9\% to 3.4\%, against 1.6\% to 2.8\% for \strSand, all below the H4
+thresholds. The gate takes 0.26~ms per call on average, against about 14~s of model time per case.
 
 \paragraph{Analysis by mechanism.} Table~\ref{tab:mechres} gives the harmed families per mechanism. \cSand{} and
 \cProg{} strongly reduce redirection but still let all 8 sink-leakage families through, and \cProg{} does not reduce
-answer leakage or tampering either. Each component of \ours{} blocks the attacks it was designed for: removing \pTwo{}
-lets 4 leakage families through again, removing the \pOne{} adds 1 redirection and 1 tampering family, whereas
-removing \pThree{} only adds one harmful case. At the case level, all 4 families harmed only under \strSand{} were sink
-violations that the gate of \ours{} blocked before execution, 2 by \pTwo{} and 2 by the \pOne, and each case gets
-through again when exactly that component is removed. Over the 720 attack cases, the two configurations differ in sink
-violations (4 cases with \strSand, 0 with \ours), while final-answer leaks (0) and tampering (5) are the same. The two
-families still harmed under \ours{} involve changed numbers or units that both gates let through.
+answer leakage or tampering either. Each component of \ours, in contrast, blocks the attacks it was designed for.
+Removing \pTwo{} lets 4 leakage families through again, removing the \pOne{} adds 1 redirection and 1 tampering family,
+and removing \pThree{} adds only one harmful case. At the case level, all 4 families harmed only under \strSand{} were
+sink violations that \ours{} blocked before execution, 2 by \pTwo{} and 2 by the \pOne, and each case passes again once
+that component alone is removed. Over the 720 attack cases, the two configurations differ only in sink violations, with
+4 cases under \strSand{} and none under \ours. In both, answer leakage is zero and 5 tampering cases remain, from the
+two families with changed numbers or units that both gates let through.
 
 \input{tables/tab4_mechres}
 
-\paragraph{Adaptive attacks.} In the first set, \ours{} is harmed in no case, but this favours \ours, because the set
-targets exactly the weaknesses that informed the design. With no defence, the second set is as harmful as the original
-attacks (25 against 26 of 42 families), so the attacks are effective. Under \strSand{} and \ours, no family succeeds
-with the adaptive attack that does not also succeed with the original one. The only family still getting past \ours{}
-(on Qwen3.5) involves parameter tampering, like the two remaining families on the \test. Up to 18 of 42 cases on
-Qwen3.5 under \strSand{} and \ours{} exhaust the eight-step budget, so the results only hold within that budget.
+\paragraph{Adaptive attacks.} No case of the first set harms \ours, but this result favours \ours, since the set targets
+exactly the weaknesses that informed the design. With no defence, the second set harms 25 of the 42 families, close to
+the 26 harmed by the original attacks, so the adaptive attacks are effective. Under \strSand{} and \ours, no family
+succeeds with the adaptive attack without also succeeding with the original one. The only family still getting past
+\ours, on Qwen3.5, involves parameter tampering, like the two remaining families on the \test. Up to 18 of the 42 cases
+on Qwen3.5 under \strSand{} and \ours{} exhaust the eight-step budget, so the results hold only within that budget.
 
 \paragraph{Generalisation.} With Gemini 3 Flash on the \test, 26 families are harmed with no defence, 14 with \cProg{}
-and none with \cSand, \strSand{} or \ours, so this reference column cannot separate the last two on security. \ours{}
-keeps \bPlain{} utility at 201/240 (\strSand: 205/240) but falsely blocks 8 of 320 benign cases (\strSand: 4).
+and none with \cSand, \strSand{} or \ours, so the last two cannot be separated on security. In utility, \ours{}
+completes 201 of the 240 \bPlain{} cases, against 205 for \strSand, and falsely blocks 8 of 320 benign cases, against 4.
 
-On AgentDojo (Table~\ref{tab:agentdojo}), \ours{} matches \strSand{} on Banking in both languages. On English Slack,
-successful attacks drop from 6 to 5: the case in which the recipient's name appeared only as a substring of $u$ is
-blocked because the \pOne{} requires a whole-token match. The remaining successes are password changes through a sink
-without a destination (3 English and 1 Vietnamese case on Banking), opening a URL with a read tool (4 cases) and 1
-other case on English Slack, and the first two kinds lie outside the sink set $S$ of the formal model. In exchange,
-utility on Slack drops further, from 15 to 11 under attack in English and from 5 to 3 of 21 tasks without attack in
+Table~\ref{tab:agentdojo} reports the AgentDojo results. \ours{} matches \strSand{} on Banking in both languages. On
+English Slack, successful attacks drop from 6 to 5: by requiring a whole-token match, the \pOne{} blocks the case in
+which the recipient's name appeared only as a substring of $u$. Of the remaining successes, 4 Banking cases, 3 in
+English and 1 in Vietnamese, change a password through a sink without a destination, 4 cases open a URL with a read
+tool, and 1 other case is on English Slack. The first two kinds lie outside the sink set $S$ of the formal model. The
+price is lower utility on Slack, from 15 to 11 under attack in English and from 5 to 3 of the 21 tasks without attack in
 both languages, because many Slack tasks take their destination from a web page or a message that the user did not
 write.
 

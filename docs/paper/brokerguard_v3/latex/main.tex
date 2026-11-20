@@ -62,10 +62,10 @@
 \renewcommand{\keywordname}{{\bfseries Từ khóa:}}
 
 \newcommand{\code}[1]{\texttt{#1}}
-% Hình Pareto (images/fig2_pareto.tex, khoảng 0,37 trang). 20/11: owner chọn bật vì bản biên dịch còn trống nửa trang
-% (ước lượng sau khi bật khoảng 14,85 trang). Nếu bản biên dịch vượt 15 trang thì đổi lại \paretofalse (lời văn Mục 7
-% tự bỏ chỗ trỏ tới hình).
-\newif\ifpareto \paretotrue
+% Hình Pareto (images/fig2_pareto.tex, khoảng 0,31 trang). 20/11 lượt 3: TẮT ở cả hai bản. Lời văn ít ngoặc, câu nối và
+% chú thích ngắn theo yêu cầu owner cần thêm khoảng 0,3 trang; số liệu của hình đã có ở Bảng 3 và đoạn đánh đổi ở Mục 7.
+% Bản biên dịch còn dưới khoảng 14,6 trang thì đổi \paretofalse thành \paretotrue (Mục 7 tự trỏ tới hình).
+\newif\ifpareto \paretofalse
 
 % ---- TÊN GỌI (đổi một dòng ở đây là đổi cả bài; ánh xạ sang log ở ../README.md) -------------------
 % Bài mới hoàn toàn: không dùng tên phiên bản (v1, v2, v3, BG-Base, Test-I/II/III). Mã chỉ dùng ở chỗ cần thiết:
@@ -83,8 +83,8 @@
 \newcommand{\cSpot}{Spotlight}               % P1
 \newcommand{\cSand}{Sandwich}                % P2
 \newcommand{\cPG}{PromptGuard}               % G1 (Prompt Guard 2, 86M)
-\newcommand{\cMel}{MELON$^*$}                % MEL (cài lại)
-\newcommand{\cProg}{Progent$^*$}             % PRG (cài lại)
+\newcommand{\cMel}{MELON}                    % MEL (cài lại, nêu ở Mục 6)
+\newcommand{\cProg}{Progent}                % PRG (cài lại, nêu ở Mục 6)
 % Ba thành phần: tên trong lời văn, mã trong bảng và hình
 \newcommand{\pOne}{chính sách ý định}        % C1
 \newcommand{\pTwo}{nhãn mức giá trị}         % C2
@@ -138,10 +138,10 @@
 Vietnamese LLM Agents}
 \titlerunning{BrokerGuard}
 
-% Ẩn danh để nộp phản biện kín. Nơi nộp không yêu cầu ẩn danh thì điền tên thật, đơn vị và email.
-\author{Tác giả ẩn danh}
-\authorrunning{Tác giả ẩn danh}
-\institute{Đơn vị ẩn danh}
+% Điền tên tác giả, đơn vị và email trước khi nộp.
+\author{Tác giả 1\inst{1} \and Tác giả 2\inst{1}}
+\authorrunning{Tác giả 1 và cộng sự}
+\institute{Đơn vị, thành phố, quốc gia \\ \email{email}}
 
 \maketitle
 

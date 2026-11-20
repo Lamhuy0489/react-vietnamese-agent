@@ -67,6 +67,26 @@ Không bỏ kết quả hay luận điểm nào. Những gì bị cắt hoặc c
 - Bản Anh: làm y hệt mọi thay đổi lượt 1 và lượt 2; Bảng 3 tiêu đề hai dòng ("Families (/48)", "Dev. set (/504)") để
   vừa khổ ở 9 pt.
 
+## Lượt 3 (20/11): theo bài tham khảo, bớt ký hiệu, chú thích ngắn; bản Anh bật Hình 2 với [H]
+
+- Góp ý owner (tham khảo bài lượng tử trong `pdf/`): Gemini chỉ ghi là mô hình đóng của Google, không "proxy"; bớt ngoặc
+  chứa ký hiệu; tác hại viết bằng lời, ký hiệu dồn về Mục 5; câu mở đầu mục và câu nối giữa các đoạn; chú thích bảng,
+  hình ngắn; khối tác giả là chỗ trống để owner tự điền ("Tác giả 1", "Author 1"); bỏ dấu * sau MELON, Progent (Mục 6
+  nêu là bản cài lại).
+- Bản Việt: viết lại 9 mục, rút chú thích, tắt Pareto (ước lượng khoảng 14,7 trang). Còn vài sửa nhỏ đã soạn nhưng chưa
+  áp vì owner bảo sửa bản Anh trước: câu mở Mục 7 và 8, câu lực kiểm định ở Mục 8, chú thích Bảng 5 nêu ba cấu hình của
+  cột cuối, câu chặn mọi sink nêu là ước tính.
+- Bản Anh (lượt 3b, chỉ sửa bản Anh): soát câu và từ nối toàn bài; câu mở Mục 7 và 8; câu H1 nêu lý do chưa đạt và trỏ
+  tới Mục 8; câu lực kiểm định sửa lại (câu cũ ngụ ý chặn hết vẫn không đủ, sai vì 5 và 0 cặp lệch đã cho p = 0,031);
+  chú thích Bảng 1, 3, 5 và Hình 2 ngắn lại, Bảng 3 nêu Q, G, L là mô hình nào, Bảng 5 nêu lại ba cấu hình của cột "No
+  attack"; câu chặn mọi sink ghi là ước tính từ quỹ đạo khi không phòng thủ.
+- Hình 2 bản Anh: `\paretotrue`, `[H]` (gói `float`), đặt ngay sau đoạn "Main results" để hình lên trang 10, cạnh chỗ
+  trích dẫn đầu tiên, thay vì nằm dưới Bảng 3 ở trang 11. `[H]` không trôi: nếu đoạn trước hình kết thúc sát cuối
+  trang, hình sang trang sau và để trống phần cuối trang. Khi đó dời dòng `\ifpareto\input{images/fig2_pareto}\fi` ở
+  `sections/07_results.tex` lên hoặc xuống một đoạn.
+- Số trang bản Anh: bản owner biên dịch lúc 05:00 (đã bật Hình 2) đúng 15 trang, trang cuối kín. Lượt 3b cắt khoảng 10
+  dòng (câu trùng, chú thích, câu Sandwich lặp ở Mục 4), ước lượng còn khoảng 14,8 trang.
+
 ## Ước lượng trang (không có TeX trên máy)
 
 Script ở scratchpad của phiên 20/11 (không lưu): lấy chữ hiển thị của từng đoạn từ nguồn LaTeX, tính độ rộng bằng metric
