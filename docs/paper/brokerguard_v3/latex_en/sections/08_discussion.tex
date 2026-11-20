@@ -24,13 +24,14 @@ only, and no run was added after the results were known to search for significan
 
 \paragraph{Contribution of each component.} Replaying the reference trajectories of the validation part without a model
 isolates the gate, although these data informed the design. Of the 210 attack trajectories, 25 are harmful under
-\strSand{} and 2 under \ours, and removing the \pOne, \pTwo{} or \pThree{} raises this to 7, 6 and 13. The \pOne{} also
-blocks all 35 unrequested side-effect calls in these trajectories, against 15 for the \rDest. The models rarely propose
-such calls themselves, however, so on the \test{} the difference shows in only 2 families. \PThree{} has no measurable
-effect on the \test{} yet. The two families that still get through admit two explanations, not yet checked case by case.
-Either the changed value was not among the pinned literals, violating the complete-pins assumption, or the literal was
-still present next to another value, a case that Proposition~\ref{prop:int} does not exclude. Both call for field-level
-semantics in \pThree{} rather than a presence check on literals.
+\strSand{} and 2 under \ours, and removing the \pOne, \pTwo{} or \pThree{} raises this to 7, 6 and 13. Scored alone on
+the sink calls of these trajectories, the \pOne{} allows all 155 plain and 65 authorised benign calls, as the \rDest{}
+does, and blocks 105 of the 190 attack calls, against 85, and all 35 unrequested side-effect calls, against 15. The
+models rarely propose such calls themselves, however, so on the \test{} the difference shows in only 2 families.
+\PThree{} has no measurable effect on the \test{} yet. The two families that still get through admit two explanations,
+not yet checked case by case. Either the changed value was not among the pinned literals, violating the complete-pins
+assumption, or the literal was still present next to another value, a case that Proposition~\ref{prop:int} does not
+exclude. Both call for field-level semantics in \pThree{} rather than a presence check on literals.
 
 \paragraph{Utility and language.} On both benign branches, \ours{} loses at most 0.6 points relative to \strSand, but
 both configurations lie about 3 points below no defence, partly through false blocks in 24 against 19 of the 960 benign
@@ -50,8 +51,3 @@ formally against the code. Unauthorised reads are out of scope, and under \ours{
 contain an unauthorised read call, against 20 under \strSand. \PTwo{} does not track values through transformations
 outside the transformation class of Section~\ref{sec:formal}, but the transformed-leak scorer found no such case, so
 this assumption remains untested.
-
-\paragraph{Ethical considerations.} All data are synthetic and contain no personal information, no human participants
-were involved, and the two sinks are mocks without network access, so nothing reached a real service. The
-attack texts target only the tools of this benchmark and are released with the code to support the evaluation of
-defences.

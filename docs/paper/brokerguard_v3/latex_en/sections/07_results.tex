@@ -53,15 +53,15 @@ most 0.6\%, and the false-block rate is 1.9\% to 3.4\%, against 1.6\% to 2.8\% f
 thresholds. The gate takes 0.26~ms per call on average, against about 14~s of model time per case.
 
 \paragraph{Analysis by mechanism.} Table~\ref{tab:mechres} gives the harmed families per mechanism. \cSand{} and
-\cProg{} reduce redirection but still let all 8 sink-leakage families through, and \cProg{} does not reduce
-answer leakage or tampering either. Each component of \ours, in contrast, acts on the mechanisms it was designed for.
-Removing \pTwo{} lets 4 leakage families through again, removing the \pOne{} adds 1 redirection and 1 tampering family,
-and removing \pThree{} adds only one harmful case. At the case level, all 4 families harmed only under \strSand{} were
-sink violations that \ours{} blocked before execution, 2 by \pTwo{} and 2 by the \pOne, and each case passes again once
-that component alone is removed. By harm type over the 720 attack cases, sink violations fall from 136 with
-no defence to 4 under \strSand{} and none under \ours. Final-answer leaks fall from 54 to zero and tampering from 79 to
-5 under both configurations, and these 5 cases come from the two families with changed numbers or units that both
-gates let through.
+\cProg{} reduce redirection but still let all 8 sink-leakage families through, and \cProg{} does not reduce answer
+leakage or tampering either. Each component of \ours, in contrast, acts on the mechanisms it was designed for. Removing
+\pTwo{} lets 4 leakage families through again, removing the \pOne{} adds 1 redirection and 1 tampering family, and
+removing \pThree{} adds only one harmful case. At the case level, all 4 families harmed only under \strSand{} were sink
+violations that \ours{} blocked before execution, 2 by \pTwo{} and 2 by the \pOne, and each case passes again once that
+component alone is removed. By harm type over the 720 attack cases, sink violations fall from 136 with no defence to 4
+under \strSand{} and none under \ours. Final-answer leaks fall from 54 to zero under both configurations, whereas the
+five defences outside the broker leave 14 to 54, and tampering falls from 79 to 5 under both, and these 5 cases come
+from the two families with changed numbers or units that both gates let through.
 
 \input{tables/tab4_mechres}
 
