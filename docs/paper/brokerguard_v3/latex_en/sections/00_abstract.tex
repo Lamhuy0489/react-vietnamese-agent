@@ -1,0 +1,25 @@
+% LNCS: abstract 150--250 words. No p-values in the abstract. Numbers: facts.md (Test-4: 40, 6, 2 families; ΔU −3.1;
+% H1 not significant; tokens and latency of v3 against v1), adaptive rounds, AgentDojo v3.
+% 15-page version (2026-11-20), condensed from the long version in commit 6814b3a.
+% 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
+% 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
+% 20/11 (round 3c): notation only where equations need it, the request in words elsewhere, gate conditions as a list, plainer claims.
+\begin{abstract}
+Instructions planted in content that an LLM agent reads through its tools can make the agent send data to an unknown
+destination, leak confidential values or alter a legitimate action. This paper proposes \ours, a deterministic
+policy-enforcement mechanism at the Tool Broker that combines three components without any extra LLM call: an intent
+policy that is extracted from the user request and handles negation, sensitivity labels for individual values, and
+pinning of the values the user stated. Authorisation safety, confidentiality and integrity are proved on a
+state-transition model under five explicit assumptions. On a Vietnamese test set of 48 attack families, sealed before
+any code was written, \ours{} reduces the number of harmed families on three open-weight backbones from 40 with no
+defence to 2. With string-matching rules in place of the three components, 6 families remain harmed. \ours{} blocks four
+of these, each with the component designed for it, lets no new family through, and shows the same direction on every
+backbone. Because string matching is already near the floor, confirming this difference with the pre-registered test
+requires a larger test set. Utility drops by 3.1 percentage points relative to no defence, and tokens and latency
+stay within 1.4\% of string matching. In two rounds of adaptive attacks, no family succeeds that does not already
+succeed with the original attack. On AgentDojo in English and Vietnamese, attack success stays low, at the cost of
+utility on tasks whose destinations come from tool data.
+
+\keywords{Indirect prompt injection \and LLM agents \and Intent-based authorisation \and Information flow control \and
+Vietnamese}
+\end{abstract}

@@ -1,0 +1,16 @@
+% Numbers as in the abstract (facts.md, Test-4 section, AgentDojo v3). Future work follows the limitations of Section 8.
+% 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
+% 20/11 round 3 (style of the reference paper): section openers, fewer parentheses, Gemini described as Google's closed model.
+% 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
+\section{Conclusion}\label{sec:conclusion}
+
+This paper presented \ours, a policy-enforcement mechanism at the Tool Broker that combines an intent policy with
+negation handling, value-level sensitivity labels and parameter pinning, with a formal model that proves three
+properties under five assumptions. On a Vietnamese test set sealed before the code was written, \ours{} reduces the
+harmed families from 40 of 48 with no defence to 2. Utility drops by 3.1 points, while tokens and latency per case rise
+by at most 1\% relative to \strSand. Against this configuration, \ours{} blocks four of the six harmed families, each
+with the component designed for it, and lets no new family through. These results indicate that deterministic policy
+enforcement at the broker is a practical defence for Vietnamese LLM agents. Because this configuration is already near
+the floor, the most direct next step is a sealed test set of about 120 families to confirm this difference
+statistically. Further directions are formal verification of the propositions against the code, field-level semantics
+for \pThree, and a user-confirmation channel for destinations taken from tool data.

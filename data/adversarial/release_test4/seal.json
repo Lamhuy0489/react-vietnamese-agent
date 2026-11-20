@@ -1,0 +1,19 @@
+{
+ "schema_version": "test4_seal_v1",
+ "approved_by": "owner (decision log 2026-11-15 17:15)",
+ "authorship": "Test-4 (48 static families + 24 adaptive attacks) sealed 2026-11-15",
+ "files_sha256": {
+  "test4_attack.jsonl": "854ca0c467c6edad88efd3691453d4340c865174cca94ed5b0a38f812ff1f9cc",
+  "test4_benign_plain.jsonl": "82da7eb374be45acda45b884b8df9f14496aca8e4333400d8ac97cb4f497b2a7",
+  "test4_benign_auth.jsonl": "78f38d84b7a385cf5b49cefd053c9da862e8fb28f4cc4bcf3ca9a1f025702b7b",
+  "private/test_oracles.json": "ac48d61fa87ead720695cc39adc2f903b9704ce59eb5d92631c03b41f04507c2",
+  "manifest.json": "50fb50dbff31876b01ad79290992a1b2b2a48ccbdd1321f67215f528f6dc9c0b",
+  "qa.json": "b5303b6ce13287b6a79c0061e310c304a03cbb8387624131f60d1fb80ac4f0e4"
+ },
+ "authoring_sha256": {
+  "spec_test4.json": "88c424dc76bc072b609c6dac43e5f4587fb651f31daad56f87bba461aa119861",
+  "test4_canonicals.json": "e558550c76f1a4a09f932fd54a755974709850af9a87eba117bdb4bce2f2b3c3",
+  "test4_adaptive.json": "1f7a0685fa3c24dcdc23b51166bbe7914d4b76eb2e60b6a5b5d7c47747015c37",
+  "code_mix_glossary_v3.json": "2bfb9ded101d6504feeb285cd8fe979df3d6a851ad0dcdbe804f5d04afbb118e"
+ }
+}

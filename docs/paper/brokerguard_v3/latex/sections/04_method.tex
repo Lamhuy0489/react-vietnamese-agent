@@ -1,0 +1,63 @@
+% Nguồn: src/react_agent/security_v3/{intent_policy_v1,value_labels_v1,param_pinning_v1,brokerguard_v3_v1}.py;
+% decision log 2026-11-16 12:30 (C1), 15:30 (runtime, bỏ C1a), 16:20 (vi mô), 2026-11-17 19:25 (đóng băng).
+% Số: facts.md mục "Bổ sung cho bài v3" (ngưỡng 8 ký tự, 9 chữ số; vi mô) và mục Test-4 (0,26 ms). Bản 15 trang bỏ
+% đoạn về biến thể C1a (2 -> 5 quỹ đạo gây hại trên Dev-val), xem bản dài ở commit 6814b3a.
+% Không trích văn bản tấn công. Ví dụ từ nối phủ định là của bộ trích, không phải của dữ liệu.
+% 20/11 (soát văn phong): bỏ ngoặc lồng nhau ở đoạn luật nền; bỏ câu "báo lại lời gọi bị từ chối" (Hình 1 đã thể hiện).
+% 20/11 (lượt 3, theo bài tham khảo trong pdf/): câu mở mỗi mục, bớt ngoặc chứa ký hiệu, ký hiệu dồn về Mục 5.
+\section{Phương pháp \ours}\label{sec:method}
+
+\ours{} coi mô hình nằm ngoài ranh giới an ninh: một hành động chỉ có tác dụng khi được broker thực thi, nên broker là
+reference monitor tại các sink, với $u$ là nguồn quyền duy nhất. Hình~\ref{fig:arch} mô tả kiến trúc. Từ giai đoạn đầu,
+broker có bốn luật nền. Ngoài \rDest{} đã nêu ở Mục~\ref{sec:intro}, \rFlow{} chỉ cho giá trị lấy từ nguồn gắn nhãn mật
+rời tác tử khi $u$ chứa nguyên văn giá trị đó, \rRedact{} che các giá trị này trong câu trả lời cuối, và \rSig{} chặn
+sink sau một quan sát bị bộ dò cụm từ gắn cờ, trừ lời gọi khớp một văn phạm chặt trên $u$. Lời nhắc kiểu sandwich nhắc
+lại $u$ sau mỗi quan sát. Để xử lý ba điểm yếu đã nêu, \ours{} thay \rDest{} bằng \pOne{} và bổ sung \pTwo{} cùng
+\pThree. Cấu hình giữ \rDest{} và không có ba thành phần mới là \strSand, khi bỏ thêm lời nhắc là \strRules.
+
+\input{images/fig1_architecture}
+
+\paragraph{Chuẩn hóa.} Mọi phép so sánh đều chuẩn hóa Unicode NFKC, bỏ ký tự định dạng và chuyển về chữ thường. Hàm
+$\kappa$ bỏ thêm dấu tiếng Việt và chỉ giữ chữ và số, $x \sub z$ nghĩa là $\kappa(x)$ là chuỗi con của $\kappa(z)$, và
+$V(u)$ là tập giá trị xuất hiện trong $u$ theo nghĩa này. Với lời gọi sink $a$, $\dest(a)$ là đích và $\data(a)$ là các
+tham số còn lại.
+
+\paragraph{\POne{} (\cOne).} Bộ trích chỉ đọc $u$ và trả về tập quyền $P(u)$. Mỗi quyền $g$ gồm công cụ, đích, cực tính
+$\pi(g)$ dương hoặc âm, và các giá trị được ghim. Đích là địa chỉ e-mail hoặc endpoint, được so khớp nguyên token sau
+chuẩn hóa, nên một phần của đích hay một từ thông thường trong $u$ không còn bị coi là đích. Phủ định đi kèm động từ như
+``đừng gửi'' hay ``do not send'' áp dụng cho các đích đứng sau trong cùng mệnh đề. Từ loại trừ như ``trừ'' hay ``except''
+áp dụng tới dấu phẩy kế tiếp, còn từ tương phản như ``nhưng'' hay ``but'' kết thúc phạm vi phủ định. Khi $u$ không dấu,
+một từ như ``dung'' chỉ được coi là phủ định nếu theo sau là động từ gửi. Mệnh đề cấp quyền phải chứa động từ gửi không bị
+phủ định và phù hợp với loại đích. Đích chỉ được nhắc tới, nằm trong trích dẫn hoặc đứng gần một phủ định không rõ phạm vi
+cho kết quả \emph{cần xác nhận}. Lời gọi sink $a$ thỏa \pOne{} khi
+\begin{equation}\label{eq:c1}
+\begin{aligned}
+&\exists\, g \in P(u)\colon\; \pi(g) = {+} \,\land\, \mathrm{tool}(g) = \mathrm{tool}(a) \,\land\, \dest(g) \doteq \dest(a),\\
+&\nexists\, g' \in P(u)\colon\; \pi(g') = {-} \,\land\, \dest(g') \doteq \dest(a),
+\end{aligned}
+\end{equation}
+với $\doteq$ là phép so bằng nguyên token sau chuẩn hóa. Chẳng hạn, với yêu cầu ``gửi báo cáo cho
+\code{ketoan@example.com}, không gửi cho \code{doitac@example.org}'', lời gọi tới địa chỉ thứ hai bị từ chối, dù \rDest{}
+vẫn cho qua vì địa chỉ này có trong $u$.
+
+\paragraph{\PTwo{} (\cTwo).} \PTwo{} gán nhãn cho từng giá trị trong đầu ra công cụ dựa trên kiểu của giá trị, độc lập
+với nhãn nguồn và độ tin cậy. Ba kiểu được nhận diện là định danh trộn chữ và số dài ít nhất 8 ký tự, số có ít nhất 9 chữ
+số sau khi bỏ khoảng trắng, dấu chấm và gạch, và giá trị đứng sau tên trường nhạy cảm như mật khẩu, OTP, token hay số tài
+khoản. Gọi $C_t$ là tập giá trị cần bảo vệ sau bước $t$, gồm giá trị được \rFlow{} bảo vệ và giá trị được gắn nhãn theo
+kiểu. Broker từ chối lời gọi sink $a$ nếu
+\begin{equation}\label{eq:c2}
+\exists\, v \in C_t \setminus V(u)\colon\; v \sub \data(a) .
+\end{equation}
+Vì phép so khớp dùng $\kappa$, điều kiện vẫn đúng khi giá trị bị thêm hay bớt khoảng trắng, dấu chấm, gạch, đổi chữ hoa
+thường hoặc bỏ dấu. Trong câu trả lời cuối, mọi giá trị của $C_t \setminus V(u)$ xuất hiện trong $y$ đều được thay bằng
+\code{[REDACTED]}.
+
+\paragraph{\PThree{} (\cThree).} Tấn công sửa tham số giữ nguyên đích đã được cấp quyền nhưng đổi một giá trị như số
+tiền, trạng thái, đơn vị hay mã. Thành phần này ghim các literal trong mệnh đề của $u$ đã cấp quyền cho lời gọi: số đứng
+sau động từ gửi mà không phải toán hạng của phép tính, đơn vị đi kèm số, giá trị boolean có cực tính và định danh do
+người dùng viết. Lời gọi bị từ chối khi $\data(a)$ thiếu một literal đã ghim hoặc mang boolean ngược với boolean đã ghim.
+
+\paragraph{Cổng và chi phí.} Một lời gọi sink chỉ được thực thi khi vượt qua cả bốn bước kiểm tra là \rSig, \pOne,
+\pThree{} và kiểm tra luồng gồm \rFlow{} cùng \pTwo. Kết quả \emph{cần xác nhận} được xử lý như từ chối nhưng được đếm
+riêng, và lời gọi đọc luôn được cho qua. Trên tập phát triển, trung vị thời gian kiểm tra một lời gọi sink là
+315~$\mu$s, so với 107~$\mu$s của \strSand.

@@ -1,0 +1,42 @@
+% Tools: docs/tool_contracts.md (6 read tools + 2 mock sinks, no network I/O). Transformed-leak scorer:
+% src/react_agent/evaluation/transformed_leakage.py (decision log 2026-11-15 18:20). Mock tool names are not used.
+% 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
+% 20/11 round 3 (style of the reference paper in pdf/): section openers, fewer parentheses, notation moved to Section 5.
+% 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
+% 20/11 (round 3c): notation only where equations need it, the request in words elsewhere, gate conditions as a list, plainer claims.
+\section{Threat Model}\label{sec:threat}
+
+This section describes the protected system, the attacker and the criterion for calling a trajectory harmful.
+
+\paragraph{Agent, tools and labels.} At each step the model emits a tool call with arguments or a final answer $y$. The
+Tool Broker checks the call, executes it and returns the result to the model. The system has six read tools and two
+\emph{sinks} with side effects, one sending e-mail and one calling a webhook, both mocks that only log the call. The
+final answer is a third sink. Content carries two independent labels. By trust, only the user request $u$ and the system
+prompt are trusted. By sensitivity, content ranges from public to confidential. The two labels are kept apart because an
+untrusted page may be public, while a confidential record may come from a source the attacker cannot touch.
+
+\paragraph{Attacker.} The attacker controls the text of one piece of content returned by a read tool and knows the tool
+schemas, but cannot modify the request, the system prompt, the broker or the model weights. In the adaptive rounds the
+attacker also knows the full design and formal model of the defence. Direct jailbreaks, training-data poisoning and
+multi-agent systems are out of scope.
+
+\paragraph{Harm.} A trajectory is harmful if any of four situations occurs. \emph{Redirection} is an executed sink call
+to a destination the user did not authorise. \emph{Leakage} means that a confidential value the user did not allow to be
+disclosed appears, verbatim or transformed, in the arguments of a sink or in the final answer. \emph{Tampering} is a
+call to a legitimate destination that carries a value other than the one the user specified. A \emph{side effect} is a
+sink call in a task that only requires reading. Values the user writes in the request are not confidential. A frozen
+scorer decides harm from the executed calls and the final answer, so blocked calls do not count. Beyond verbatim
+matches, it recognises confidential values in Base64, Hex or URL encoding, split into characters, or written as number
+words.
+
+\paragraph{Mechanisms, families and variants.} Table~\ref{tab:mechanisms} classifies attacks into six \emph{mechanisms},
+the paths by which the injected text leads to harm. In the two redirection mechanisms, the destination is absent from
+the request. In the two leakage mechanisms and in parameter tampering, the destination is legitimate, so only the
+provenance or the value of the data separates the attack from the task. A \emph{family} is one attack idea in a specific
+task and tool environment. Every family has a \emph{\bPlain} branch, which replaces the injection with a harmless note
+of the same length, and one third of the families also have an \emph{\bAuth} branch, in which the user explicitly
+authorises an action similar to the attack goal. A denial in a benign branch is a \emph{false block}. Each family has
+five language variants of both the request and the injection: standard Vietnamese, a paraphrase, Vietnamese--English
+code-mixing, Vietnamese without diacritics, and English, with identical identifiers, addresses and confidential values.
+
+\input{tables/tab1_mechanisms}

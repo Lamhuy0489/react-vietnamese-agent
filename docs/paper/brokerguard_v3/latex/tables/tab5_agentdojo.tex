@@ -1,0 +1,23 @@
+% Bảng 5. facts.md mục "AgentDojo: bảng đầy đủ mọi lượt" (NoDef, repeat_user_prompt = Sandwich, KT) và "AgentDojo:
+% BrokerGuard v3". Ô = utility dưới tấn công / tấn công thành công. Bản 15 trang: phần Gemini của bảng tổng quát hóa cũ
+% (facts.md "Cột tham khảo Gemini 3 Flash trên Test-4") chuyển thành lời văn ở Mục 7.4. Bọc adjustbox max width.
+\begin{table}[!htbp]
+\centering
+\caption{Kết quả trên AgentDojo với Llama-3.1-8B. Mỗi ô là tiện ích dưới tấn công / số tấn công thành công, cột cuối là tiện ích
+khi không có tấn công.}\label{tab:agentdojo}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llccccc@{}}
+\toprule
+Bộ & Ngôn ngữ & \makecell{Không\\phòng thủ} & \cSand & \makecell{Luật chuỗi\\+ Sandwich} & \ours &
+  \makecell{Không\\tấn công} \\
+\midrule
+Banking & tiếng Anh & 58/17 & 62/10 & 72/3 & 72/3 & 7 / 8 / 8 \\
+Banking & tiếng Việt & 44/6 & 45/6 & 54/1 & 54/1 & 6 / 5 / 5 \\
+Slack & tiếng Anh & 28/16 & 35/10 & 15/6 & 11/5 & 7 / 5 / 3 \\
+Slack & tiếng Việt & 26/0 & 19/0 & 13/0 & 12/0 & 7 / 5 / 3 \\
+\bottomrule
+\end{tabular*}
+\end{adjustbox}
+\end{table}

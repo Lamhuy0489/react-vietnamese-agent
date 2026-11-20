@@ -1,0 +1,24 @@
+% Table 1. Numbers: facts.md "Bổ sung sau phản biện 3" (v1 bypass causes: Test-I 13 = SL 6, AL 3, PT 4 (3 value
+% changes + 1 destination present in u); Test-II 27 = SL 14, AL 2, PT 7, US 3, CR 1) and the Test-4 section ("40 ca vượt
+% v1": M3 20, M5 11, M4 5, M6 3, M2 1). By cause (stated in Section 1): public source 25, destination in u 5, tampering 10.
+% LNCS prints tables in \small (9 pt; llncs.cls sets \footnotesize = \small). tabularx with a wrapping X column, so
+% the table can never exceed the margin (the earlier tabular* overflowed by about 1 cm in the Vietnamese version).
+% 20/11 (round 3b): caption wording.
+\begin{table}[!htbp]
+\centering
+\caption{The six attack mechanisms, cases that got past \strSand{} in the early stage, and the handling component. \cOne--\cThree{} are defined in Section~\ref{sec:method}.}\label{tab:mechanisms}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xrl@{}}
+\toprule
+Mechanism & Path to harm & Missed & Component \\
+\midrule
+\mER{} explicit redirection & Data sent to an unknown destination & 0 & \cOne \\
+\mCR{} covert redirection & As above, destination disguised & 1 & \cOne \\
+\mSL{} sink leakage & Secret in the content sent & 20 & \cTwo \\
+\mAL{} answer leakage & Secret in the final answer & 5 & \cTwo \\
+\mPT{} parameter tampering & User-stated value changed & 11 & \cThree, \cOne \\
+\mUS{} unrequested side effect & Mentioned or forbidden destination & 3 & \cOne \\
+\bottomrule
+\end{tabularx}
+\end{table}

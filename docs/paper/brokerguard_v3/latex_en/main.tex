@@ -1,0 +1,162 @@
+% BrokerGuard v3 -- Springer LNCS, at most 15 pages including references (condensed 2026-11-20; the 23-page long
+% version is in commit 6814b3a).
+% ENGLISH VERSION (2026-11-19). Same structure, tables, figures and numbers as the Vietnamese reading draft in ../latex/.
+% Every number comes from ../../iccies2027/facts.md (Test-4 sections, the 19/11 supplements and "Bổ sung cho bài v3").
+% British spelling. No first person ("this paper", passive voice, or the system as subject).
+% Overleaf: upload the whole latex_en/ folder (zip), main = main.tex, pdfLaTeX. Figures 1--2 are TikZ/pgfplots code.
+% Check the venue's policy on AI-generated text before submission and revise the prose in the authors' own words.
+\documentclass[runningheads]{llncs}
+
+% Round 4 (owner, 20/11): Times text and math with microtype, as in the reference paper in ../pdf (newtx). The English
+% text has no Vietnamese letters, so T1 suffices. To quote Vietnamese words again, go back to T5 and Computer Modern.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{newtxtext}
+\usepackage[varvw]{newtxmath}  % after amsmath, replaces amssymb
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{adjustbox}   % max width=\textwidth: figures and tables never exceed the margins
+\usepackage{float}       % [H] for Figure 2 (owner, 20/11): it stays exactly where it is input
+\usepackage{tabularx}
+\usepackage{makecell}
+% 15-page version: no placeins [section]. The barrier at every section pushed pending floats onto their own page and left
+% half a page empty (page 18 of the 23-page draft). Floats may now move to the top of the next section's page.
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{patterns,arrows.meta}
+% Colour-blind-checked categorical pair (blue/orange). Orange = BrokerGuard (new components), blue = BG-Base,
+% grey = other defences. Colour follows the entity in every figure.
+\definecolor{bgblue}{HTML}{2A78D6}
+\definecolor{bgorange}{HTML}{EB6834}
+% Extra stretch so that monospaced words (tool names, e-mail addresses) never stick into the right margin
+\setlength{\emergencystretch}{3em}
+\usepackage{enumitem}
+\setlist{noitemsep, topsep=2pt}
+
+% Floats near their first mention, less white space (LNCS margins, font size and spacing unchanged)
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{4}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{10pt plus 2pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\g@addto@macro\normalsize{%
+  \setlength{\abovedisplayskip}{4pt plus 2pt minus 1pt}%
+  \setlength{\belowdisplayskip}{4pt plus 2pt minus 1pt}%
+  \setlength{\abovedisplayshortskip}{2pt plus 1pt}%
+  \setlength{\belowdisplayshortskip}{2pt plus 1pt}}
+\makeatother
+
+\newcommand{\code}[1]{\texttt{#1}}
+% Pareto figure (images/fig2_pareto.tex, about 1/3 page, placement [H] after the Main results paragraph). ON in the
+% English version since round 3b (owner, 20/11); the text was tightened so that the paper stays within 15 pages. If a
+% compile exceeds 15 pages, switch to \paretofalse: Table 3 has the same numbers.
+\newif\ifpareto \paretotrue
+
+% ---- NAMES (change one line to rename throughout; mapping to the logs in ../README.md) -----------------
+% A brand-new paper: no version names (v1, v2, v3, BG-Base, Test-I/II/III). Codes only where needed: C1--C3 in their
+% definitions, tables and figures; H1--H4, (A1)--(A5), (G1)--(G4) for the tests and proofs; mechanism codes only in
+% tables and figures. Prose uses full names. Each name has a mid-sentence form and a capitalised form.
+\newcommand{\ours}{\textsc{BrokerGuard}}     % V3P2 (log: v3)
+\newcommand{\strSand}{string rules + Sandwich} % D2P2 (log: v1, final_config_v3) = BrokerGuard without C1, C2, C3
+\newcommand{\StrSand}{String rules + Sandwich}
+\newcommand{\strRules}{string rules}         % D2 = string rules + Sandwich without the prompt layer
+\newcommand{\StrRules}{String rules}
+\newcommand{\phrRules}{phrase rules}         % R1
+\newcommand{\PhrRules}{Phrase rules}
+\newcommand{\noDef}{no defence}              % A0
+\newcommand{\NoDef}{No defence}
+\newcommand{\cSpot}{Spotlight}               % P1
+\newcommand{\cSand}{Sandwich}                % P2
+\newcommand{\cMel}{MELON}                    % MEL (re-implementation, stated in Section 6)
+\newcommand{\cProg}{Progent}                 % PRG (re-implementation, stated in Section 6)
+% The three components: names in prose, codes in tables and figures
+\newcommand{\pOne}{intent policy}            % C1
+\newcommand{\pTwo}{value-level labelling}    % C2
+\newcommand{\pThree}{parameter pinning}      % C3
+\newcommand{\POne}{Intent policy}
+\newcommand{\PTwo}{Value-level labelling}
+\newcommand{\PThree}{Parameter pinning}
+\newcommand{\cOne}{\textsf{C1}}
+\newcommand{\cTwo}{\textsf{C2}}
+\newcommand{\cThree}{\textsf{C3}}
+% Base rules at the broker (no R-... codes)
+\newcommand{\rDest}{substring destination rule}    % D2 rule 2, replaced by C1
+\newcommand{\rFlow}{source-label flow rule}        % D2 rule 3
+\newcommand{\rRedact}{answer redaction rule}       % D2 rule 4
+\newcommand{\rSig}{injection-signal rule}          % D2 A1 layer
+\newcommand{\Rdest}{Substring destination rule}
+\newcommand{\Rflow}{Source-label flow rule}
+\newcommand{\Rredact}{Answer redaction rule}
+\newcommand{\Rsig}{Injection-signal rule}
+% Attack mechanisms (tables and figures only)
+\newcommand{\mER}{\textsf{ER}}               % M1 explicit redirection
+\newcommand{\mCR}{\textsf{CR}}               % M2 covert redirection
+\newcommand{\mSL}{\textsf{SL}}               % M3 sink leakage
+\newcommand{\mAL}{\textsf{AL}}               % M4 answer leakage
+\newcommand{\mPT}{\textsf{PT}}               % M5 parameter tampering
+\newcommand{\mUS}{\textsf{US}}               % M6 unrequested side effect
+% Data sets (use with an article: "the \dev")
+\newcommand{\dev}{development set}           % Dev v4.1 (168 families)
+\newcommand{\test}{test set}                 % Test-4 (T5_*), the only held-out test set of this paper
+% Notation
+\newcommand{\sub}{\sqsubseteq}               % x ⊑ z: kappa(x) is a substring of kappa(z)
+\newcommand{\dest}{\mathit{dst}}
+\newcommand{\data}{\mathit{data}}
+\newcommand{\norm}{\nu}
+\newcommand{\bPlain}{plain benign}           % benign_plain
+\newcommand{\bAuth}{authorised benign}       % benign_auth
+
+% hyperref last: citations, cross-references, DOIs and URLs in blue and clickable
+\usepackage{hyperref}
+\definecolor{linkblue}{HTML}{1F4E9A}
+\hypersetup{colorlinks=true, linkcolor=linkblue, citecolor=linkblue, urlcolor=linkblue}
+\AtBeginDocument{\def\doi#1{\href{https://doi.org/#1}{doi:#1}}}
+
+\begin{document}
+
+\title{BrokerGuard: Intent-Aware Authorisation and Value-Level Flow Control Against Indirect Prompt Injection in
+Vietnamese LLM Agents}
+\titlerunning{BrokerGuard}
+
+% Authors and affiliation (owner, 20/11). Fill in the e-mail before submission.
+\author{Quang Huy Lam\inst{1} \and Quang Minh Nguyen\inst{1}}
+\authorrunning{Q. H. Lam et al.}
+\institute{Faculty of Information Technology, Hanoi University of Civil Engineering, Hanoi, Vietnam \\
+\email{0212267@st.huce.edu.vn}, \email{0038967@st.huce.edu.vn}}
+
+\maketitle
+
+\input{sections/00_abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_threat_model}
+\input{sections/04_method}
+\input{sections/05_formal_model}
+\input{sections/06_protocol}
+\input{sections/07_results}
+\input{sections/08_discussion}
+\input{sections/09_conclusion}
+
+% LNCS 2.26 statement block. Optional acknowledgements: add \subsubsection{\ackname} ... before the disclosure.
+\begin{credits}
+\subsubsection{\discintname} The authors have no competing interests to declare.
+\end{credits}
+
+\bibliographystyle{splncs04}
+\bibliography{refs}
+
+\end{document}

@@ -1,0 +1,170 @@
+% References for the BrokerGuard v3 paper (docs/paper/brokerguard_v3). Entries copied from
+% ../../iccies2027/latex/refs.bib (checked 2026-11-12 against arXiv/Crossref) plus four new entries checked
+% 2026-11-19: xu2026caplite (arXiv abstract page), dwork2015reusable (Science record, DOI), recht2019imagenet
+% (PMLR/arXiv), tramer2020adaptive (NeurIPS proceedings/arXiv). Compact style: et al. after 3 authors, no pages.
+% 15-page version (2026-11-20): 19 entries. Dropped yi2025bipia, nasr2025attacker, holm1979, dwork2015reusable,
+% recht2019imagenet, tramer2020adaptive (owner asked for fewer citations); they remain in ../../iccies2027/latex/refs.bib
+% and in commit 6814b3a. Kept FIDES, design patterns and Liu et al. (review 3 flagged their removal as a regression).
+
+@inproceedings{yao2023react,
+  author    = {Yao, Shunyu and Zhao, Jeffrey and Yu, Dian and others},
+  title     = {{ReAct}: Synergizing Reasoning and Acting in Language Models},
+  booktitle = {Proc. ICLR},
+  year      = {2023},
+  note      = {\href{https://arxiv.org/abs/2210.03629}{arXiv:2210.03629}}
+}
+
+@inproceedings{greshake2023indirect,
+  author    = {Greshake, Kai and Abdelnabi, Sahar and Mishra, Shailesh and others},
+  title     = {Not What You've Signed Up For: Compromising Real-World {LLM}-Integrated Applications with Indirect Prompt Injection},
+  booktitle = {Proc. AISec},
+  year      = {2023},
+  doi       = {10.1145/3605764.3623985}
+}
+
+@inproceedings{liu2024formalizing,
+  author    = {Liu, Yupei and Jia, Yuqi and Geng, Runpeng and others},
+  title     = {Formalizing and Benchmarking Prompt Injection Attacks and Defenses},
+  booktitle = {Proc. USENIX Security},
+  year      = {2024},
+  note      = {\href{https://arxiv.org/abs/2310.12815}{arXiv:2310.12815}}
+}
+
+@inproceedings{zhan2024injecagent,
+  author    = {Zhan, Qiusi and Liang, Zhixiang and Ying, Zifan and Kang, Daniel},
+  title     = {{InjecAgent}: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents},
+  booktitle = {Findings of ACL},
+  year      = {2024},
+  doi       = {10.18653/v1/2024.findings-acl.624}
+}
+
+@inproceedings{debenedetti2024agentdojo,
+  author    = {Debenedetti, Edoardo and Zhang, Jie and Balunovi{\'c}, Mislav and others},
+  title     = {{AgentDojo}: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for {LLM} Agents},
+  booktitle = {NeurIPS Datasets and Benchmarks},
+  year      = {2024},
+  doi       = {10.52202/079017-2636}
+}
+
+@inproceedings{zhan2025adaptive,
+  author    = {Zhan, Qiusi and Fang, Richard and Panchal, Henil Shalin and Kang, Daniel},
+  title     = {Adaptive Attacks Break Defenses Against Indirect Prompt Injection Attacks on {LLM} Agents},
+  booktitle = {Findings of NAACL},
+  year      = {2025},
+  doi       = {10.18653/v1/2025.findings-naacl.395}
+}
+
+@inproceedings{deng2024multijail,
+  author    = {Deng, Yue and Zhang, Wenxuan and Pan, Sinno Jialin and Bing, Lidong},
+  title     = {Multilingual Jailbreak Challenges in Large Language Models},
+  booktitle = {Proc. ICLR},
+  year      = {2024},
+  note      = {\href{https://arxiv.org/abs/2310.06474}{arXiv:2310.06474}}
+}
+
+@misc{hines2024spotlighting,
+  author        = {Hines, Keegan and Lopez, Gary and Hall, Matthew and others},
+  title         = {Defending Against Indirect Prompt Injection Attacks With Spotlighting},
+  year          = {2024},
+  eprint        = {2403.14720},
+  archivePrefix = {arXiv},
+  howpublished  = {\href{https://arxiv.org/abs/2403.14720}{arXiv:2403.14720}}
+}
+
+@inproceedings{chen2025secalign,
+  author    = {Chen, Sizhe and Zharmagambetov, Arman and Mahloujifar, Saeed and others},
+  title     = {{SecAlign}: Defending Against Prompt Injection with Preference Optimization},
+  booktitle = {Proc. CCS},
+  year      = {2025},
+  doi       = {10.1145/3719027.3744836}
+}
+
+@inproceedings{zhu2025melon,
+  author    = {Zhu, Kaijie and Yang, Xianjun and Wang, Jindong and others},
+  title     = {{MELON}: Provable Defense Against Indirect Prompt Injection Attacks in {AI} Agents},
+  booktitle = {Proc. ICML},
+  year      = {2025},
+  note      = {\href{https://arxiv.org/abs/2502.05174}{arXiv:2502.05174}}
+}
+
+@misc{shi2025progent,
+  author        = {Shi, Tianneng and He, Jingxuan and Wang, Zhun and others},
+  title         = {{Progent}: Securing {AI} Agents with Privilege Control},
+  year          = {2025},
+  eprint        = {2504.11703},
+  archivePrefix = {arXiv},
+  howpublished  = {\href{https://arxiv.org/abs/2504.11703}{arXiv:2504.11703}}
+}
+
+@misc{meta2025promptguard2,
+  author       = {{Meta}},
+  title        = {{Llama Prompt Guard 2} (86{M}) Model Card},
+  year         = {2025},
+  howpublished = {\url{https://huggingface.co/meta-llama/Llama-Prompt-Guard-2-86M}},
+  note         = {Last accessed 2026/11/12}
+}
+
+@inproceedings{debenedetti2026camel,
+  author    = {Debenedetti, Edoardo and Shumailov, Ilia and Fan, Tianqi and others},
+  title     = {Defeating Prompt Injections by Design},
+  booktitle = {Proc. SaTML},
+  year      = {2026},
+  doi       = {10.1109/SaTML68715.2026.00040}
+}
+
+@misc{costa2025fides,
+  author        = {Costa, Manuel and K{\"o}pf, Boris and Kolluri, Aashish and others},
+  title         = {Securing {AI} Agents with Information-Flow Control},
+  year          = {2025},
+  eprint        = {2505.23643},
+  archivePrefix = {arXiv},
+  howpublished  = {\href{https://arxiv.org/abs/2505.23643}{arXiv:2505.23643}}
+}
+
+@misc{beurerkellner2025patterns,
+  author        = {Beurer-Kellner, Luca and Buesser, Beat and Cre{\c{t}}u, Ana-Maria and others},
+  title         = {Design Patterns for Securing {LLM} Agents against Prompt Injections},
+  year          = {2025},
+  eprint        = {2506.08837},
+  archivePrefix = {arXiv},
+  howpublished  = {\href{https://arxiv.org/abs/2506.08837}{arXiv:2506.08837}}
+}
+
+@article{mcnemar1947,
+  author  = {McNemar, Quinn},
+  title   = {Note on the Sampling Error of the Difference Between Correlated Proportions or Percentages},
+  journal = {Psychometrika},
+  volume  = {12},
+  number  = {2},
+  year    = {1947},
+  doi     = {10.1007/BF02295996}
+}
+
+@techreport{anderson1972,
+  author      = {Anderson, James P.},
+  title       = {Computer Security Technology Planning Study},
+  institution = {U.S. Air Force},
+  number      = {ESD-TR-73-51},
+  year        = {1972}
+}
+
+@misc{zhao2026clawguard,
+  author        = {Zhao, Wei and Li, Zhe and Zhang, Peixin and Sun, Jun},
+  title         = {{ClawGuard}: A Runtime Security Framework for Tool-Augmented {LLM} Agents Against Indirect Prompt Injection},
+  year          = {2026},
+  eprint        = {2604.11790},
+  archivePrefix = {arXiv},
+  howpublished  = {\href{https://arxiv.org/abs/2604.11790}{arXiv:2604.11790}}
+}
+
+% ---------------------------------------------------------------- added 2026-11-19
+
+@misc{xu2026caplite,
+  author        = {Xu, Zimo and Liu, Wenzhuo and Nakayama, Hideki},
+  title         = {{CapLite}: Prompt-Injection Defense for Small Language Model Agents without Model-Written Security Artifacts},
+  year          = {2026},
+  eprint        = {2611.17115},
+  archivePrefix = {arXiv},
+  howpublished  = {\href{https://arxiv.org/abs/2611.17115}{arXiv:2611.17115}}
+}
+

@@ -1,0 +1,76 @@
+% Hình 1, vẽ bằng TikZ (Overleaf tự vẽ, không render trên máy). Thay fig1_pipeline.pdf (bản đó vẽ BG-v2).
+% Bố cục chép từ images/src/fig1_pipeline.py, đơn vị cũ nhân 1,2 cm. Tổng rộng 12,0 cm < \textwidth 12,2 cm.
+% Nhãn tiếng Anh cho bản nộp (thay từng nhãn tương ứng):
+%   User / $u$ (trusted) | LLM agent / (ReAct) | Tool Broker (host side)
+%   Schema check · labels · confidential values $C$
+%   before every sink call | R-Dest: destination in $u$ | R-Flow: confidential value in $u$
+%   R-Signal: flagged, so deny sinks | R-Redact: redact confidential values in the answer
+%   Sandwich: repeat $u$ | Denial feedback: agent continues
+%   Read tools (untrusted) | Sinks: e-mail, webhook | $y$ redacted | deterministic check | model-dependent
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}[yscale=0.8,
+  font=\fontsize{6.4}{7.6}\selectfont,
+  box/.style={rounded corners=1pt, line width=0.5pt, align=center, inner sep=1pt},
+  rule/.style={box, draw=bgblue, fill=bgblue!12},
+  soft/.style={box, draw=bgorange, fill=bgorange!10, dash pattern=on 2pt off 1.3pt},
+  neutral/.style={box, draw=black!60, fill=black!5},
+  arr/.style={-{Stealth[length=3pt]}, line width=0.5pt, draw=black!65},
+  lab/.style={font=\fontsize{6.4}{7}\selectfont},
+  note/.style={font=\fontsize{5.4}{6.4}\selectfont\itshape, text=black!65, anchor=west},
+]
+% cột trái: người dùng và tác tử
+\node[neutral, minimum width=1.5cm, minimum height=0.8cm, text width=1.4cm] at (0.75,4.23)
+  {User\\ $u$ (trusted)};
+\node[neutral, minimum width=1.5cm, minimum height=1.2cm, text width=1.4cm,
+  font=\fontsize{6.6}{7.6}\selectfont\bfseries] at (0.75,1.98) {LLM agent\\ (ReAct)};
+\draw[arr] (0.744,3.66) -- (0.744,2.76);
+
+% khung broker
+\draw[rounded corners=2pt, line width=0.6pt] (2.22,0.66) rectangle (9.12,5.46);
+\node[font=\fontsize{7}{8}\selectfont\bfseries] at (5.67,5.22) {Tool Broker (host side)};
+\node[rule, minimum width=6.612cm, minimum height=0.42cm, text width=6.5cm] at (5.67,4.674)
+  {Schema check $\cdot$ labels $\cdot$ confidential values $C$};
+
+\node[note] at (2.33,4.26) {before every sink call};
+\node[rule, minimum width=2.124cm, minimum height=0.8cm, text width=2.0cm] at (3.426,3.6)
+  {\textsf{R-Dest}\\ destination in $u$};
+\node[rule, minimum width=2.124cm, minimum height=0.8cm, text width=2.0cm] at (5.670,3.6)
+  {\textsf{R-Flow}\\ confidential value in $u$};
+\node[rule, minimum width=2.124cm, minimum height=0.8cm, text width=2.0cm] at (7.914,3.6)
+  {\textsf{R-Signal}\\ if flagged, deny sinks};
+
+\node[rule, minimum width=2.124cm, minimum height=0.8cm, text width=2.0cm] at (3.426,2.22)
+  {\textsf{R-Redact}\\ redact confidential\\ values in the answer};
+\node[soft, minimum width=2.124cm, minimum height=0.8cm, text width=2.0cm] at (5.670,2.22)
+  {Sandwich\\ repeat $u$};
+\node[rule, minimum width=2.124cm, minimum height=0.8cm, text width=2.0cm] at (7.914,2.22)
+  {Denial feedback\\ agent continues};
+
+% chú giải
+\node[rule, minimum width=0.336cm, minimum height=0.24cm] at (2.568,1.056) {};
+\node[note, font=\fontsize{5.4}{6.4}\selectfont] at (2.80,1.056) {deterministic check};
+\node[soft, minimum width=0.336cm, minimum height=0.24cm] at (4.968,1.056) {};
+\node[note, font=\fontsize{5.4}{6.4}\selectfont] at (5.20,1.056) {model-dependent};
+
+% tác tử <-> broker
+\draw[arr] (1.5,2.46) -- node[lab, above=-1pt] {$a_t$} (2.22,2.46);
+\draw[arr] (2.22,1.98) -- node[lab, above=-1pt] {$o_t$} (1.5,1.98);
+\draw[arr] (1.5,1.44) -- node[lab, above=-1pt] {$y$} (2.22,1.44);
+
+% cột công cụ
+\node[neutral, minimum width=2.16cm, minimum height=0.8cm, text width=2.06cm] at (10.92,3.69)
+  {Read tools\\ (untrusted)};
+\node[neutral, minimum width=2.16cm, minimum height=0.8cm, text width=2.06cm] at (10.92,2.22)
+  {Sink\\ e-mail, webhook};
+\draw[arr] (9.12,3.90) -- node[lab, above=-1pt] {$a_t$} (9.84,3.90);
+\draw[arr] (9.84,3.42) -- node[lab, above=-1pt] {$o_t$} (9.12,3.42);
+\draw[arr] (9.12,2.22) -- node[lab, above=-1pt] {$a_t$} (9.84,2.22);
+
+% câu trả lời đã che rời broker
+\draw[arr] (9.12,1.02) -- (10.26,1.02);
+\node[anchor=west, text=black!65] at (10.30,1.02) {$y$ redacted};
+\end{tikzpicture}
+\caption{The \ours{} pipeline. Every action $a_t$ and the answer $y$ pass through the Tool Broker. Solid boxes are
+deterministic host-side checks, and the dashed box is the model-dependent layer.}\label{fig:pipeline}
+\end{figure}

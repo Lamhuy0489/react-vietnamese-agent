@@ -32,11 +32,30 @@ Bật notebook: `launch_vllm_serve_v1.py prepare` → `kaggle kernels push -p $F
 | **Study 2: chạy v3 (pilot/Dev)** | `scripts/run_v3_api_v1.py --model-key K --split pilot [--levels A0\|A1 --defense d2]` → `scripts/evaluate_v3_v1.py R` (in tổng hợp, cổng pilot). Chuỗi Kaggle: `build/kaggle/v3_pilot_chain.sh F K` | `results/rebuild_b/v3_<split>_<level\|d2>_<K>{,_eval.json}` |
 | **Study 2: AgentDojo (WP6)** | venv `.venv-agentdojo`; `scripts/run_agentdojo_api_v1.py --model-key K --suite banking\|slack --lang en\|vi --attack none\|important_instructions --defense …`; kiểm bản VI: `.venv-agentdojo/bin/python scripts/agentdojo_vi_v1.py check`; serve key `*_ctx16k`; chuỗi `build/kaggle/agentdojo_chain.sh F K`; giữ notebook sống: `scripts/keepalive_vllm_v1.py --folder F` | `results/rebuild_b/agentdojo_<lang>_<suite>_<attack>_<defense>_<K>/` |
 | **Study 2: phần còn lại (chưa có code)** | theo [kế hoạch](../docs/project/rebuild_b_plan.md) mục 2: `run_v3_api_v1.py`, `evaluate_v3_v1.py`, `run_agentdojo_api_v1.py`, `run_adaptive_search_v1.py`. Tạo file nào thì thêm dòng lệnh thật | `results/rebuild_b/<bộ>_<split>_<defense>_<K>/` |
+| **v3: Dev v4.1 có đo chi phí** | `scripts/run_v3_api_v2.py --model-key K --release dev4_1 [--levels A1 --defense d2p2\|p2\|prg]` (kiểm seal, ghi `metrics.json` mỗi lượt: token theo vai trò, số lời gọi LLM thêm của phòng thủ, số bước, lời gọi bị chặn, lý do, xác nhận, che đáp án, chia thời gian LLM/công cụ/cổng) → `scripts/evaluate_v3_v2.py R` (chấm nguyên văn + biến đổi, chặn nhầm, tỉ lệ xác nhận, phân bố chi phí). Chuỗi Kaggle: `CONFIGS="A0 D2P2 P2 PRG" SHARDS=3 PAR=1 build/kaggle/dev4_chain.sh F K`. Lượt cũ không có token: `scripts/cost_from_traces_v1.py R…` | `results/rebuild_c/dev4_1_<cfg>_<K>{,_eval_v2.json}` |
+| **v3: BrokerGuard v3 Dev (V3P2, ablation)** | `scripts/run_v3_api_v3.py --release dev4_1 --levels A1 --defense v3p2\|v3p2-c1\|v3p2-c2\|v3p2-c3 [--fixtures results/rebuild_c/dev4_1_val_fixtures.jsonl]` → `evaluate_v3_v2.py R`. Chuỗi `build/kaggle/dev4_v3_chain.sh F K` | `results/rebuild_c/dev4_1_V3P2[-Cn][_val]_<K>{,_eval_v2.json}` |
+| **Test-4 (một lần, sau final_config_v5)** | `scripts/run_v3_api_v4.py --model-key K --release test4 <args cấu hình> [--fixtures data/adversarial/adaptive_v3/adaptive_test4_attack.jsonl]` (tự kiểm `configs/final/final_config_v5.json`, ma trận A0 P2 PRG D2P2 V3P2 V3P2-C1/-C2/-C3) → `scripts/evaluate_v3_v3.py R` (chỉ đọc oracle Test-4 khi manifest khớp). Chuỗi `build/kaggle/t4_chain.sh F K 11 "PLAN"`, bật notebook `t4_launch.sh`, supervisor `t4_supervise.py` (tag ở `t4_tags.json`, notebook ở `t4_folder_<tag>`, sự kiện `t4_supervise.log`) | `results/rebuild_c/test4[_adaptive]_<cfg>_<K>{,_eval_v3.json}` |
 | **Study 2: WP8 fixture thích nghi** | owner/Minh đưa `data/adversarial/adaptive_v3/*.jsonl` (FixtureV3 attack Dev); `build/kaggle/wp8_chain.sh F K` (kiểm hash, chạy `run_v3_api_v1.py --fixtures` × A0 D2P2 D2SAN D2P2SAN SAN) → `scripts/wp8_summary_v1.py --output results/rebuild_b/v3_dev_wp8_summary.json` | `results/rebuild_b/v3_dev_<cfg>_adaptive_<K>{,_eval.json}` |
+| **Phân tích Test-4** | `scripts/test4_analysis_v1.py` (H1–H4, baseline, chi phí, 40 ca cũ) | `results/rebuild_c/test4_analysis_v1.json` |
+| **Cột Gemini trên Test-4** | OmniRoute do owner bật (20128); `CGROUPS="V3P2,D2P2,A0,P2,PRG" PAR=5 INTERVAL=1 build/gemini/t4_gemini_chain.sh` (runner `scripts/run_v3_api_v4_ref.py`, chỉ nới ma trận cho 5 cặp Gemini; chấm `evaluate_v3_v3.py`) | `results/rebuild_c/test4[_adaptive]_<cfg>_gemini3_flash`, log `build/gemini/t4_chain.log` |
+| **Thích nghi nhắm v3 (Dev-val)** | owner/Minh: `scripts/build_adaptive_v3target.py worksheet\|build` (hướng dẫn `data/adversarial/v3_authoring/AUTHORING_ADAPTIVE_V3.md`); chạy `build/kaggle/adv3_launch.sh OWNER CRED SK K` (kiểm sha, tự chờ slot, A0/D2P2/V3P2 song song, chấm `evaluate_v3_v2.py`) | `results/rebuild_c/dev4_1_adv3_<cfg>_<K>`, log `build/kaggle/adv3_*.log` |
+| **AgentDojo v3** | `.venv-agentdojo/bin/python scripts/run_agentdojo_api_v2.py --defense brokerguard_v3 ...` (adapter `scripts/agentdojo_brokerguard_v3.py`); `build/kaggle/ad3_launch.sh OWNER CRED SUITE LANG` (một notebook mỗi suite × ngôn ngữ, chạy có và không tấn công) | `results/rebuild_b/agentdojo_<lang>_<suite>_<attack>_brokerguard_v3_llama31_8b`, log `build/kaggle/ad3_*.log` |
+| Quota mọi tài khoản | `build/kaggle/quota_all.sh` (quota GPU và notebook đang chạy) | in ra màn hình |
 | Dry-run pipeline | thêm `--dry-run-dummy --output <scratch>` (CPU, không model) | thư mục tạm, không phải kết quả |
 | Log lượt dài | chuyển hướng `>> build/kaggle/<tên>.log` | `build/kaggle/*.log` |
 
 Lệnh resume đầy đủ của lượt đang dở luôn nằm trong [handoff](handoff.md), mục "Đang làm".
+
+**Trước khi nói "chưa chạy" hay bật lượt mới: kiểm kê kết quả thật trên đĩa.** Tóm tắt (facts.md, handoff, chat cũ)
+có thể thiếu; thư mục kết quả và decision log mới là nguồn. Bài học 14/11: Sandwich VI trên AgentDojo đã chạy từ 07/11
+nhưng facts.md ghi "chỉ EN", bài để trống ô và suýt chạy lại. Lệnh kiểm kê AgentDojo (vài giây):
+
+```bash
+cd results/rebuild_b && for f in agentdojo_*/summary.json; do echo "${f%/summary.json} $(python3 -c "import json,sys;j=json.load(open(sys.argv[1]));print(j['utility'],j.get('attack_success'))" "$f")"; done
+```
+
+Với VN-AgentInject: `ls results/rebuild_b/v3_*_eval.json`. Rồi `grep` tên cấu hình trong `docs/project/decision_log.md`.
+Runner AgentDojo bỏ qua cặp đã có transcript, nên chạy lại chỉ ghi đè `summary.json` (ngày của file đó không phải ngày chạy).
 
 **Lượt dài (> vài phút):** bọc bằng `caffeinate -ims scripts/retry_on_infra_v1.sh 20 120 -- <lệnh>`.
 Runner trả rc=2 khi endpoint không với tới hoặc còn lượt thiếu, nên wrapper tự chạy lại;
@@ -48,6 +67,7 @@ kiểm tra lặp lại qua nhiều lượt chat.
 | Nội dung | File |
 |---|---|
 | Số liệu, quyết định, luật chấp nhận khai báo trước | `docs/project/decision_log.md` |
+| Số liệu được phép đưa vào bài báo (AgentDojo: một bảng đầy đủ mọi lượt) | `docs/paper/iccies2027/facts.md` |
 | Trạng thái ngắn và mốc đã xác minh | `knowledge/current_status.md` |
 | Đang làm, lệnh resume, bước tiếp theo | `knowledge/handoff.md` |
 | Tóm tắt từng phiên | `knowledge/session_log.md` (thêm mục mới ở cuối) |

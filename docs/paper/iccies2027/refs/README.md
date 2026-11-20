@@ -43,3 +43,14 @@ PDF **không commit** (`.gitignore`): repo public, giấy phép từng bài khá
 
 - Các ô "cần kiểm" ở cột Nơi đăng; tên kỷ yếu đầy đủ, số trang, DOI của bài đã đăng hội nghị.
 - Mỗi câu trích trong bài phải được người viết mở PDF đọc đúng đoạn liên quan; không trích theo tóm tắt.
+
+## Kiểm ngày 12/11/2026
+
+- Nơi đăng, trang, DOI tra qua Crossref: Greshake (AISec 2023, 79–90), BIPIA (KDD 2025, 1809–1820), InjecAgent (Findings
+  ACL 2024), AgentDojo (NeurIPS 2024, 82895–82920), SecAlign (CCS 2025), CaMeL (**SaTML 2026**, 587–618), AdaptiveIPI
+  (Findings NAACL 2025), vLLM (SOSP 2023), McNemar (Psychometrika 12(2) 153–157). Đã ghi vào `latex/refs.bib`.
+- Câu trích trong mục Nghiên cứu liên quan đối chiếu với tóm tắt/trang đầu PDF: Greshake, Liu, BIPIA, InjecAgent,
+  AgentDojo, ASB, Deng (ngôn ngữ ít tài nguyên ~3 lần nội dung có hại), StruQ, SecAlign, LlamaFirewall (có PromptGuard 2),
+  MELON (chạy lại có che, so lời gọi công cụ), Progent (chính sách đặc quyền), CaMeL (trình thông dịch Python riêng, không
+  sửa LLM), FIDES (IFC), DesignPatterns, Zhan 2025 (vượt cả 8 phòng thủ), Nasr 2025. Không câu nào vượt nội dung tóm tắt.
+- Còn chưa đối chiếu: Holm 1979 (không có trên Crossref), model card Prompt Guard 2 (thiếu ngày truy cập).

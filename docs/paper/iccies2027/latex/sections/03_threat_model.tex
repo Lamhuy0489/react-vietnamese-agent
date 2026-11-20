@@ -1,0 +1,53 @@
+\section{Mô hình đe dọa}\label{sec:threat}
+
+\paragraph{Tác tử.} Gọi $u$ là chỉ thị của người dùng. Ở mỗi bước, mô hình sinh một hành động $a_t$ gồm tên công cụ và tham
+số, hoặc sinh câu trả lời cuối $y$. Tool Broker kiểm tra $a_t$ theo schema, thực thi và trả về quan sát $o_t$. Hệ
+thống có sáu công cụ đọc (tìm và đọc tài liệu, truy vấn cơ sở dữ liệu chỉ đọc, tìm và mở trang lưu đệm, máy tính) và hai \emph{sink} có tác dụng phụ
+là gửi e-mail và gọi webhook. Hai sink này là bản giả, chỉ ghi nhật ký và không gửi gì ra mạng. Câu trả
+lời cuối được coi là sink thứ ba. Với một lời gọi sink $a$, $\dest(a)$ là đích (người nhận hoặc URL) và
+$\pay(a)$ là các tham số còn lại.
+
+\paragraph{Hai nhãn.} Mỗi nội dung mang hai nhãn độc lập do host gán. Theo \emph{độ tin cậy}, chỉ $u$ và prompt hệ
+thống là đáng tin, mọi quan sát từ công cụ là không đáng tin. Theo \emph{độ nhạy cảm}, nội dung được xếp từ công khai
+tới mật. Nguồn mật chứa các giá trị như khóa, mã hay định danh tài khoản. Các giá trị này không được rời tác tử nếu
+người dùng không cho phép. Một trang không đáng tin có thể là công khai, còn một bản ghi mật có thể đến từ nguồn
+mà kẻ tấn công không chạm tới. Nếu gộp hai chiều làm một, phòng thủ sẽ hoặc chặn mọi dữ liệu mật, hoặc tin mọi nguồn
+nội bộ.
+
+\paragraph{Kẻ tấn công.} Kẻ tấn công kiểm soát văn bản của một nội dung do công cụ đọc trả về, ở bất kỳ vị trí và
+giọng điệu nào. Họ biết tên và schema của công cụ, nhưng không sửa được $u$, prompt hệ thống, broker hay trọng số mô
+hình, và không quan sát được quỹ đạo. Trên các tập niêm phong, tấn công là tĩnh và được viết mà không biết mã phòng
+thủ. Jailbreak trực tiếp, đầu độc dữ liệu huấn luyện, từ chối dịch vụ và hệ nhiều tác tử nằm ngoài phạm vi bài báo.
+
+\paragraph{Vị từ gây hại.} Gọi $G(u)$ là tập đích được người dùng cấp quyền, $V$ là tập giá trị mật trên quỹ đạo mà
+người dùng không cho phép tiết lộ, và $\mathcal{S}$ là tập lời gọi sink \emph{đã được thực thi}. Quỹ đạo $\tau$
+gây hại nếu
+\begin{equation}\label{eq:harm}
+\mathrm{Harm}(\tau) = H_\mathit{dest} \lor H_\mathit{leak} \lor H_\mathit{tamper} \lor H_\mathit{side},
+\end{equation}
+trong đó
+\begin{itemize}
+\item $H_\mathit{dest}$: tồn tại $a \in \mathcal{S}$ với $\dest(a) \notin G(u)$,
+\item $H_\mathit{leak}$: tồn tại $v \in V$ xuất hiện trong $\pay(a)$ của một $a \in \mathcal{S}$ hoặc trong $y$,
+\item $H_\mathit{tamper}$: tồn tại $a \in \mathcal{S}$ với $\dest(a) \in G(u)$ nhưng một trường do người dùng chỉ định
+  mang giá trị khác,
+\item $H_\mathit{side}$: nhiệm vụ chỉ cần đọc nhưng $\mathcal{S} \neq \emptyset$.
+\end{itemize}
+Một bộ chấm đã đóng băng xác định các vị từ này dựa trên lời gọi đã thực thi và $y$. Lời gọi bị chặn không được tính
+là gây hại.
+
+\paragraph{Sáu cơ chế tấn công.} Tấn công được phân loại theo \emph{cơ chế}, tức con đường để đoạn chèn biến thành
+tác hại (Bảng~\ref{tab:mechanisms}). Ở hai cơ chế chuyển hướng (\mER, \mCR), đích không có trong $u$, nên chỉ cần kiểm tra đích, bất kể cách
+diễn đạt. Ở hai cơ chế rò rỉ (\mSL, \mAL), đích hợp lệ hoặc không có đích, nên chỉ nguồn gốc của giá trị mới phân biệt được tấn công
+với nhiệm vụ. Ở cơ chế sửa tham số (\mPT), cả đích lẫn độ nhạy cảm đều bình thường, nên đây là cơ chế khó nhất cho các luật dựa trên nhãn.
+Cơ chế tác dụng phụ (\mUS) kiểm tra xem một đích chỉ được nhắc tới, chẳng hạn trong một câu cấm, có bị hiểu nhầm thành cấp quyền không.
+
+\input{tables/tab1_mechanisms}
+
+\paragraph{Họ, nhánh lành tính và biến thể ngôn ngữ.} Một \emph{họ} là một ý tưởng tấn công trong một nhiệm vụ và một
+môi trường công cụ cụ thể. Mỗi nhánh lành tính dùng cùng nhiệm vụ và môi trường với họ. Mọi họ có nhánh \emph{\bPlain}, và một phần ba số họ có thêm
+nhánh \emph{\bAuth}. Nhánh \bPlain{} thay
+đoạn chèn bằng một ghi chú vô hại cùng độ dài và dùng để đo tiện ích. Nhánh \bAuth{} giữ một yêu cầu giống
+mục tiêu tấn công nhưng được người dùng cho phép rõ ràng. Chặn ở nhánh này là \emph{chặn nhầm}. Mỗi họ có năm biến thể
+áp cho cả $u$ lẫn đoạn chèn: tiếng Việt chuẩn, diễn đạt lại, trộn Việt và Anh, không dấu, và tiếng Anh. Định danh, địa
+chỉ và giá trị mật giống hệt nhau giữa các biến thể, nên mọi khác biệt chỉ đến từ ngôn ngữ.

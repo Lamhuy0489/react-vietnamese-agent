@@ -1,5 +1,114 @@
 # Trạng thái hiện tại
 
+Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
+
+**20/11 (đêm): bản Anh đủ nội dung, đã merge vào main.** Bản Anh dùng Times như bài tham khảo, khoảng 14,7 trang
+(ước lượng); tác giả và đơn vị đã điền. Bản Việt cần đồng bộ (README của bài, mục "Lượt 4").
+
+**20/11 (khuya): lượt 3.** Bản Anh đã soát câu chữ, bật Hình 2 với `[H]` (ước lượng khoảng 14,8 trang); bản Việt viết
+lại theo lượt 3, tắt Pareto (khoảng 14,7 trang), còn vài sửa nhỏ (README của bài, mục "Lượt 3"). Chờ owner biên dịch.
+
+**20/11 (tối): cả hai bản đã soát văn phong, đồng bộ, bỏ chữ đỏ** (Việt bật Pareto ~14,8 trang, Anh tắt Pareto ~14,7
+trang, ước lượng). Chờ owner biên dịch lại.
+
+**20/11 (sau): bản Việt đã sửa theo góp ý lần 1** (Bảng 1 hết tràn, Bảng 3, 4 tách cột, tóm tắt và kết luận diễn đạt
+lại, bật Hình Pareto; ước lượng khoảng 14,85 trang). Bản Anh chưa sửa theo lần này (README của bài, mục "Góp ý owner
+lần 1").
+
+**20/11: bài v3 rút còn tối đa 15 trang ở cả hai bản** (`docs/paper/brokerguard_v3/latex/`, `latex_en/`): 5 bảng, Hình 1,
+Hình Pareto tùy chọn (`\paretotrue`), 19 tài liệu; ước lượng bản Việt khoảng 14,1 trang, bản Anh khoảng 14,4 trang (chưa
+biên dịch). Bản 23 trang đã biên dịch ở `pdf/agent_injection_vn.pdf`, bản dài ở commit `6814b3a`. Chờ owner biên dịch
+lại trên Overleaf và góp ý.
+
+**19/11 tối: bài v3 xong bản tiếng Việt (`latex/`) và tiếng Anh (`latex_en/`)** ở `docs/paper/brokerguard_v3/` (LNCS,
+khoảng 20 trang, 6 bảng, 3 hình TikZ/pgfplots, 25 tài liệu). Chưa biên dịch; owner đọc và biên dịch trên Overleaf, rồi
+sửa theo góp ý ở cả hai bản.
+
+**19/11 12:15: mọi thực nghiệm XONG.** Đã ghi facts.md + decision log: Gemini Test-4 (cột tham khảo), Test-4 và Dev v4.1
+bổ sung R1/D2/P1/MEL/G1, thích nghi nhắm v3, AgentDojo v3. Dòng phát triển (họ bị hại): Test-4 /48 R1 34 → D2 15 → v1 6 →
+v3 2; Dev v4.1 /504 R1 278 → D2 123 → v1 36 → v3 4. Việc kế: viết bài.
+
+**18/11 22:40: đang chạy 3 việc phân tích phụ (thêm tài khoản tngdngpham, kaggle9.json, 30 h)** (handoff mục "Đang làm"): cột Gemini trên Test-4, BrokerGuard v3 trên
+AgentDojo (Llama, EN/VI, Banking/Slack), vòng tấn công thích nghi nhắm v3 trên 42 họ Dev-val (owner/Minh soạn, chờ slot GPU).
+Tất cả đã khai báo trước trong decision log (19:30, 20:20, 20:55). Dự kiến xong trước sáng 19/11.
+
+**18/11 18:40: Test-4 XONG (một lần, final_config_v5).** H1 không đạt: v1 6/48 → v3 2/48 họ (gộp 3 mô hình), McNemar
+4–0, p một phía 0,0625, do nền v1 thấp hơn giả định 14/48. H2–H4 chỉ mô tả (tiện ích −0,5 điểm; chặn nhầm 1,9–3,4%; token
+và độ trễ ±1%). 24 ca thích nghi: v3 0/24 cả ba mô hình. Số đầy đủ: `results/rebuild_c/test4_analysis_v1.json`, decision
+log 2026-11-18 18:40. Việc kế: viết bài (một bài duy nhất, ICCIES chưa nộp) theo `Review Huy.docx`; vòng tấn công thích
+nghi nhắm v3 (owner/Minh soạn trên Dev-val).
+
+**18/11: Test-4 chưa chạy được ca nào.** Hai tài khoản mới (hieu1908, lehung040324) bị Kaggle cấp máy CPU dù chọn T4
+(notebook thử báo NO_GPU, giờ GPU 0.00h); nhiều khả năng chưa xác minh số điện thoại. Chờ owner xác minh, hoặc chờ 7 tài khoản cũ
+có quota lại 21/11 07:00 giờ VN. final_config_v5 và code không đổi.
+
+**17/11 19:35: `final_config_v5` đóng băng (v3 đủ C1–C3, sha `673f7af4…`); Test-4 đang chạy một lần** trên 2 tài khoản
+Kaggle mới (hieu1908, lehung040324), supervisor `build/kaggle/t4_supervise.py`. Ma trận 3 mô hình × {A0, P2, PRG, D2P2,
+V3P2, V3P2-C1/-C2/-C3} × 560 ca + 24 ca thích nghi (báo riêng). Runner `run_v3_api_v4.py`, chấm `evaluate_v3_v3.py`
+(decision log 2026-11-17 19:25). Pin máy đã sửa.
+
+**17/11 11:45: V3P2 xong cả ba mô hình và ablation Dev-val xong; chờ owner duyệt final_config_v5.** V3P2 so với D2P2:
+gây hại Gemma 14 → 1, Llama 25 → 1, Qwen 12 → 3 (/840); lộ câu cuối về 0; utility giữ nguyên; chặn nhầm tăng (Gemma 86 → 95,
+Llama 70 → 114, Qwen 56 → 75). Ablation: C2, C3 đạt tiêu chí, C1 không đạt (decision log 2026-11-17 07:00, 08:30, 11:30,
+11:45). Quota GPU cả 7 tài khoản hết đến 21/11 07:00 giờ VN; Test-4 chạy sau ngày đó. 12:00: phiên đóng, máy tắt (owner sửa pin); không còn lần chạy dở.
+
+**17/11 02:00: Mốc Dev v4.1 đủ 12/12; V3P2 (BrokerGuard v3 + P2) đang chạy bằng mô hình thật trên ba mô hình, ablation
+C1/C2/C3 trên Dev-val đã lên lịch tự động.** Đã có Gemma 702, Qwen 967, Llama 290 trên 1.960 trước sự cố máy ngủ lúc
+21:20; 4 notebook trên huylmhuhu và buiquocviet (5 tài khoản khác hết quota tuần). Runner `scripts/run_v3_api_v3.py`,
+script nối tiếp `build/kaggle/dev4_v3_follow.sh`, log `build/kaggle/dev4_v3_follow.log`. Chưa có số V3P2; chưa đóng băng
+final_config_v5. D2P2 (v1) để so: gây hại 12–25/840, chặn nhầm 56–86/1.120 (decision log 2026-11-16 20:30).
+
+**16/11 15:30: Runtime BrokerGuard v3 (C1+C2+C3) xong code, 52 test; phát lại oracle trên Dev v4.1: hại Dev-val v1
+25/210 -> v3 2/210, utility bằng v1; ablation nào cũng tăng hại (decision log 15:30). Chưa chạy v3 bằng mô hình thật,
+chưa đóng băng final_config_v5.** Máy: pin hỏng vĩnh viễn, không chạy pytest toàn bộ, mỗi lúc một việc nhẹ.
+
+**16/11 12:30: C1 (bộ trích P(u) tất định) xong code và chấm offline trên Dev v4.1; mốc Dev v4.1 vẫn chạy.**
+- Qwen A0 và P2 xong 1.960/1.960 (decision log 2026-11-16 11:15): ca tấn công gây hại A0 299/840, P2 40/840; chặn nhầm 0;
+  max_steps 14–17 % và model_error ~2 % (OUTPUT_TRUNCATED), phải báo kèm khi dùng utility Qwen cho H2. 10 cấu hình còn chạy.
+- C1: `src/react_agent/security_v3/intent_policy_v1.py`, 37 test; `scripts/intent_policy_dev_eval_v1.py` chấm sink theo
+  oracle: utility 100 % (train và val), chặn M6 105/105 train, 35/35 val (v1: 65, 15); cấu hình chọn trên Dev-val là
+  mặc định (decision log 12:30). Chưa nối runtime vì runner `run_v3_api_v2.py` đang phục vụ mốc.
+
+**15/11 23:50: Mốc Dev v4.1 đang chạy trên 12 notebook (mỗi notebook một cấu hình, 7 tài khoản), supervisor tự nối lại và
+bật lại.** Gemma/Qwen dự kiến xong sáng 16/11, Llama A0/P2 trưa 16/11, Llama D2P2/PRG cần thêm một phiên Kaggle. Số tạm
+(chưa đủ, không dùng cho bài) hợp lý: A0 bị hại nhiều, P2 giảm mạnh, chặn nhầm 0. Chi tiết: hub mục 5.
+
+**15/11 18:40: Test-4 đã niêm phong và commit (`a1711a6`, seal `1f9b0070…`); đang chạy mốc trên Dev v4.1.**
+- Test-4 (48 họ tĩnh + 24 ca thích nghi) và hai phiếu nhãn do mã sinh từ spec, owner và Minh rà; bài ghi "sinh tự động
+  từ spec, có người rà soát", không báo κ giữa người gắn nhãn (decision log 18:20). Đăng ký trước: H1 (v3 < v1 về ASR,
+  McNemar mức họ, α = 0,05) là cổng; H2–H4 kiểm sau. Bộ chấm biến đổi `transformed_leakage.py`; lực `power_analysis_test4.py`.
+- Bước 1 của v3 xong code (`1380ce1`): `run_v3_api_v2.py` + `evaluate_v3_v2.py` đo token, bước, chặn, xác nhận, thời gian
+  và chấm hai cách. Đang chạy A0, D2P2, P2, PRG × Gemma/Llama/Qwen trên Dev v4.1 (6 notebook, xem sổ Kaggle 15/11 18:36).
+- Chưa có code v3. Gemini để cuối (owner bật OmniRoute).
+
+**15/11 15:30: Hạn nộp lùi. Mở rộng bài theo Review Huy: BrokerGuard v3 (chính sách ý định, nhãn theo giá trị, toàn vẹn
+tham số), mô hình hình thức, Test-4 niêm phong mới và đo chi phí. Thiết kế nháp `docs/project/brokerguard_v3_extension_design.md`
+chờ owner duyệt. Gemini Dev đủ 9 cấu hình (G1 không chạy), Bảng 2 đã điền.**
+
+**15/11 00:30: Bản tiếng Anh đầy đủ ở `latex_en/` (dịch từ bản Việt đã rà soát), đã rút gọn để về 15 trang (tài liệu
+tham khảo 2--3 dòng, Hình 1 gọn, bỏ FloatBarrier tiểu mục). Chờ owner biên dịch Overleaf và nộp; hạn 15/11.**
+
+**14/11 23:00: Bài ICCIES (bản tiếng Việt) đã rà soát toàn bài: tiêu đề chốt, Mệnh đề 1 phạm vi bảo đảm, Mục 7 lời thường,
+bảng/hình bố cục mới, bớt mã thí nghiệm trong lời văn. Chờ owner biên dịch Overleaf, kiểm ≤ 15 trang; hạn 15/11.**
+
+**14/11 16:30: Phản biện 3 (vòng cuối) đã xử lý: Mục 4, 6, 7, 8 và Bảng 3 sửa theo phân tích nguyên nhân lọt qua
+(chỉ đếm). Chờ owner biên dịch Overleaf, kiểm ≤ 15 trang; hạn 15/11.**
+
+**14/11 14:40: C11 xong: Sandwich trên AgentDojo khi không tấn công giữ tiện ích (EN 7/16, 8/21; VI 5/16, 6/21).
+Bảng 6 đủ mọi ô Llama. Phản biện 2 đã xử lý. Không còn lượt nào chạy. Chờ owner biên dịch Overleaf; hạn 15/11.**
+
+**14/11: C10 xong: BrokerGuard trên AgentDojo (Llama, EN+VI), tấn công thành công EN Banking 3/144, EN Slack 6/105
+(2 ca do hàm chấm), VI 1 và 0; utility Slack giảm (15 so với 35 của Sandwich) vì R-Dest chặn đích lấy từ web/tin nhắn.
+Đã vào facts.md, Bảng 6 và Mục 0, 5–8 của bài. Không còn lượt nào chạy. Chờ owner biên dịch Overleaf; hạn 15/11.**
+
+**13/11: Bài báo ICCIES sau phản biện: bỏ BG-v2, chỉ còn BrokerGuard = D2+P2 (Test-I đăng ký trước, Test-II phân tích lặp lại).
+Thống kê mức family (DEFF 1,5–7,7): Test-II 42→14/48 family, p 3,7·10⁻⁹; utility −4,5 điểm (p 0,044). Tham chiếu chặn mọi sink
+và Sandwich trên AgentDojo đã vào facts.md. Hình 1 vẽ lại bằng TikZ. Chờ owner biên dịch Overleaf; hạn 15/11.**
+
+**12/11 20:30: Bài báo ICCIES: `docs/paper/iccies2027/latex/` (Overleaf), bản tiếng Việt 8 mục, 14 trang khi owner biên dịch.
+BrokerGuard BG-v1 (D2+P2, Test-I) và BG-v2 (D3DEST, Test-II) đều là đóng góp; tên là macro; bảng đổi tên ở README bài báo.
+Owner tự viết bản tiếng Anh. Không render hình/PDF trên máy.**
+
 **10/11 22:00: AgentDojo Gemini không phòng thủ xong cả 8 lượt: Banking EN 93/144, 4/144 (VI 99, 0); Slack EN 62/105, 1/105
 (VI 59, 0). Bảng 2.3b và Bảng 11 bài báo đã đủ (decision log 22:00). Không còn lượt nào đang chạy. Owner quyết 23:00: bỏ 8 lượt có phòng thủ trên Gemini (996 cặp); thí nghiệm đóng.
 Việc chính: bài báo ICCIES 2027 (hạn 15/11).**

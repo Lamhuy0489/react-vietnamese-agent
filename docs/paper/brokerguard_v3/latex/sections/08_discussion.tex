@@ -1,0 +1,42 @@
+% Số: facts.md mục Test-4 ("Hạn chế phải nêu (v3)": lực 26%, ~120 họ, đọc trái phép v1 20 / v3 18 ca, tiện ích tuyệt
+% đối thấp; "40 ca vượt v1" trong mẫu 38 -> 2; M3 Test-II 9 cặp so với Test-4 1), mục "Bổ sung cho bài v3" (C1 offline,
+% lý do chặn nhầm), mục baseline bổ sung (Prompt Guard 0 lần chặn), mục AgentDojo v3.
+% Bản 15 trang: gộp "Chi phí tiện ích" với "Ngôn ngữ", gộp "Mối đe dọa với tính hợp lệ" với "Hạn chế".
+% 20/11 (lượt 3, theo bài tham khảo): câu mở mục, bớt ngoặc có ký hiệu, Gemini chỉ ghi là mô hình đóng của Google.
+\section{Thảo luận}\label{sec:discussion}
+
+\paragraph{Lực thống kê của kiểm định chính.} H1 được thiết kế với giả định \strSand{} để lọt khoảng 14 trong 48 họ, như
+trên tập 48 họ của giai đoạn đầu, khi đó lực ước tính là 91\% nếu \ours{} chặn thêm 8 họ. Trên \test, cấu hình này chỉ để
+lọt 6 họ, chủ yếu do số cặp họ và mô hình bị hại ở cơ chế rò rỉ qua sink giảm từ 9 xuống 1. Với mức nền thấp như vậy, ngay
+cả khi \ours{} chặn được mọi họ mà \strSand{} để lọt, số cặp lệch vẫn rất nhỏ. Lực của kiểm định ở mức nền này chỉ khoảng
+26\%, và cần khoảng 120 họ để đạt lực 80\%. Vì vậy, kết quả phản ánh hiệu ứng sàn chứ không phải bằng chứng rằng hai cấu
+hình tương đương. Các nguồn khác đều cho cùng chiều. Trên \dev, số cặp họ và mô hình bị hại giảm từ 36 xuống 4. Chấm lại
+40 ca từng vượt qua \strSand{} ở giai đoạn đầu cho 38 ca bị hại dưới \strSand{} và 2 ca dưới \ours. Các số này đến từ dữ
+liệu đã dùng khi phát triển nên chỉ có giá trị chẩn đoán, và bài báo không chạy thêm sau khi biết kết quả để tìm ý nghĩa
+thống kê.
+
+\paragraph{Đóng góp của từng thành phần.} \PTwo{} khắc phục điểm yếu lớn nhất của luật so khớp chuỗi. Khi phát lại quỹ
+đạo tham chiếu của phần kiểm định, \pOne{} chặn đủ 35 lời gọi tác dụng phụ ngoài yêu cầu, so với 15 của \rDest. Tuy
+nhiên, mô hình hiếm khi tự đề xuất những đích này, nên trên \test{} khác biệt chỉ thể hiện ở 2 họ. \PThree{} chưa cho thấy
+tác dụng đo được. Hai họ còn vượt qua có hai cách giải thích, chưa được kiểm chứng từng ca. Có thể giá trị bị sửa không
+nằm trong tập literal được ghim, tức giả định (A5) bị vi phạm. Cũng có thể literal vẫn có mặt bên cạnh một giá trị khác,
+trường hợp mà Mệnh đề~\ref{prop:int} không loại trừ. Cả hai khả năng đều cho thấy \pThree{} cần hiểu ngữ nghĩa của từng
+trường thay vì chỉ kiểm tra sự có mặt của literal.
+
+\paragraph{Tiện ích và ngôn ngữ.} Ở cả hai nhánh lành tính, tiện ích của \ours{} không thấp hơn \strSand{} quá 0,6 điểm,
+nhưng cả hai đều thấp hơn khi không phòng thủ khoảng 3 điểm, một phần do chặn nhầm ở 24 so với 19 trên 960 ca lành tính.
+Trên \dev, chặn nhầm chủ yếu do các luật nền, riêng Llama-3.1 chủ yếu do \pThree{} vì mô hình này hay viết lại giá trị
+người dùng đã nêu. Tiện ích tuyệt đối thấp ở mọi cấu hình, kể cả khi không phòng thủ với 42,8\%, do giới hạn của các mô
+hình nhỏ như hết số bước hay đầu ra bị cắt. Khi triển khai thực tế, các trường hợp \emph{cần xác nhận} có thể được chuyển
+cho người dùng quyết định, giúp bớt mất tiện ích mà không trao quyền cho nội dung không đáng tin. \POne{} phụ thuộc vào
+ngôn ngữ vì cực tính được xác định từ danh sách từ phủ định, loại trừ và tương phản. Một cách phủ định nằm ngoài danh sách
+có thể khiến cổng cho qua một đích lẽ ra bị cấm.
+
+\paragraph{Tính hợp lệ và hạn chế.} Dữ liệu là dữ liệu tổng hợp, công cụ là bản mô phỏng và mỗi nhiệm vụ chỉ có một
+lượt. \Test{} được sinh từ đặc tả bằng mã và được chính nhóm phát triển phòng thủ rà soát. Dù tập được niêm phong trước
+khi có mã của \ours, vẫn không loại trừ khả năng người soạn vô tình chọn các ca phù hợp với thiết kế. Bộ thích nghi thứ
+hai do thành viên của nhóm soạn, chỉ có một vòng và chạy trên \dev. Các mô hình mở chỉ có 8 đến 12 tỉ tham số, và
+AgentDojo chỉ chạy với một mô hình. Các mệnh đề được chứng minh trên đặc tả, chưa được kiểm chứng hình thức trên mã nguồn.
+Đọc trái phép nằm ngoài phạm vi, và dưới \ours{} vẫn có 18 trong 720 ca tấn công có lời gọi đọc trái phép, so với 20 ca
+của \strSand. \PTwo{} không theo dõi giá trị qua các phép biến đổi nằm ngoài giả định (A4), nhưng bộ chấm biến đổi không
+tìm thấy ca nào như vậy, nên giả định này chưa thực sự bị thử thách.

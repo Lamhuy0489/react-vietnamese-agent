@@ -1,0 +1,169 @@
+% BrokerGuard v3 -- Springer LNCS, tối đa 15 trang kể cả tài liệu tham khảo (bản rút gọn 20/11/2026; bản dài 23 trang
+% ở commit 6814b3a).
+% BẢN TIẾNG VIỆT (19/11/2026). Bản tiếng Anh ở ../latex_en/, cùng cấu trúc, bảng, hình và số; sửa thì sửa cả hai.
+% Mọi con số lấy từ ../../iccies2027/facts.md (mục Test-4, các mục bổ sung 19/11 và "Bổ sung cho bài v3").
+% Overleaf: tải cả thư mục latex/ (zip), main = main.tex, trình biên dịch pdfLaTeX. Hình 1--3 vẽ bằng TikZ/pgfplots,
+% Overleaf tự vẽ, không có file ảnh ngoài.
+% Nếu pdfLaTeX báo lỗi font tiếng Việt (T5), đổi sang XeLaTeX và thay 3 dòng fontenc/inputenc/babel
+% bằng: \usepackage{fontspec} \usepackage[vietnamese]{babel}
+\documentclass[runningheads]{llncs}
+
+\usepackage[T5]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{adjustbox}   % max width=\textwidth: hình và bảng không bao giờ tràn lề
+\usepackage{tabularx}    % bảng trải đúng bề ngang trang, cột chữ tự xuống dòng
+\usepackage{makecell}    % tiêu đề cột hai dòng
+% Bản 15 trang: bỏ placeins [section]. Rào ở mỗi mục đẩy bảng còn chờ ra trang riêng và để lại nửa trang trống
+% (trang 18 của bản 23 trang). Bảng/hình có thể sang đầu trang của mục kế tiếp.
+\usepackage{pgfplots}    % Hình 2 và 3
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{patterns,arrows.meta}
+% Bảng màu phân loại đã kiểm mù màu (xanh/cam ΔE CVD 24,7). Cam = \ours (thành phần mới), xanh = BG-Base,
+% xám = baseline. Màu theo thực thể, giống nhau ở mọi hình.
+\definecolor{bgblue}{HTML}{2A78D6}
+\definecolor{bgorange}{HTML}{EB6834}
+% Cho phép giãn dòng thêm để chữ đơn cách (tên công cụ, e-mail) không thò ra lề phải
+\setlength{\emergencystretch}{3em}
+\usepackage{enumitem}
+\setlist{noitemsep, topsep=2pt}
+
+% Đặt bảng/hình gần chỗ nhắc tới, bớt khoảng trắng (không đổi lề, cỡ chữ hay giãn dòng của LNCS)
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{4}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{10pt plus 2pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\g@addto@macro\normalsize{%
+  \setlength{\abovedisplayskip}{4pt plus 2pt minus 1pt}%
+  \setlength{\belowdisplayskip}{4pt plus 2pt minus 1pt}%
+  \setlength{\abovedisplayshortskip}{2pt plus 1pt}%
+  \setlength{\belowdisplayshortskip}{2pt plus 1pt}}
+\makeatother
+
+% Tên môi trường định lý và từ khóa bằng tiếng Việt (bản tiếng Anh: xóa khối này)
+\addto\captionsvietnamese{%
+  \renewcommand{\propositionname}{Mệnh đề}%
+  \renewcommand{\definitionname}{Định nghĩa}%
+  \renewcommand{\proofname}{Chứng minh}}
+\renewcommand{\keywordname}{{\bfseries Từ khóa:}}
+
+\newcommand{\code}[1]{\texttt{#1}}
+% Hình Pareto (images/fig2_pareto.tex, khoảng 0,31 trang). 20/11 lượt 3: TẮT ở cả hai bản. Lời văn ít ngoặc, câu nối và
+% chú thích ngắn theo yêu cầu owner cần thêm khoảng 0,3 trang; số liệu của hình đã có ở Bảng 3 và đoạn đánh đổi ở Mục 7.
+% Bản biên dịch còn dưới khoảng 14,6 trang thì đổi \paretofalse thành \paretotrue (Mục 7 tự trỏ tới hình).
+\newif\ifpareto \paretofalse
+
+% ---- TÊN GỌI (đổi một dòng ở đây là đổi cả bài; ánh xạ sang log ở ../README.md) -------------------
+% Bài mới hoàn toàn: không dùng tên phiên bản (v1, v2, v3, BG-Base, Test-I/II/III). Mã chỉ dùng ở chỗ cần thiết:
+% C1--C3 trong định nghĩa, bảng và hình; H1--H4, (A1)--(A5), (G1)--(G4) cho kiểm định và chứng minh; mã cơ chế chỉ
+% trong bảng và hình. Lời văn dùng tên đầy đủ. Mỗi tên có dạng giữa câu (chữ thường) và dạng đầu câu/bảng (chữ hoa).
+\newcommand{\ours}{\textsc{BrokerGuard}}     % V3P2 (log: v3)
+\newcommand{\strSand}{luật chuỗi + Sandwich} % D2P2 (log: v1, final_config_v3) = BrokerGuard bỏ cả C1, C2, C3
+\newcommand{\StrSand}{Luật chuỗi + Sandwich}
+\newcommand{\strRules}{luật chuỗi}           % D2 = luật chuỗi + Sandwich bỏ lời nhắc
+\newcommand{\StrRules}{Luật chuỗi}
+\newcommand{\phrRules}{luật cụm từ}          % R1
+\newcommand{\PhrRules}{Luật cụm từ}
+\newcommand{\noDef}{không phòng thủ}         % A0
+\newcommand{\NoDef}{Không phòng thủ}
+\newcommand{\cSpot}{Spotlight}               % P1
+\newcommand{\cSand}{Sandwich}                % P2
+\newcommand{\cPG}{PromptGuard}               % G1 (Prompt Guard 2, 86M)
+\newcommand{\cMel}{MELON}                    % MEL (cài lại, nêu ở Mục 6)
+\newcommand{\cProg}{Progent}                % PRG (cài lại, nêu ở Mục 6)
+% Ba thành phần: tên trong lời văn, mã trong bảng và hình
+\newcommand{\pOne}{chính sách ý định}        % C1
+\newcommand{\pTwo}{nhãn mức giá trị}         % C2
+\newcommand{\pThree}{ghim tham số}           % C3
+\newcommand{\POne}{Chính sách ý định}
+\newcommand{\PTwo}{Nhãn mức giá trị}
+\newcommand{\PThree}{Ghim tham số}
+\newcommand{\cOne}{\textsf{C1}}
+\newcommand{\cTwo}{\textsf{C2}}
+\newcommand{\cThree}{\textsf{C3}}
+% Các luật nền tại broker (không dùng mã R-...)
+\newcommand{\rDest}{luật đích theo chuỗi con}       % D2 luật 2, bị C1 thay
+\newcommand{\rFlow}{luật luồng theo nhãn nguồn}     % D2 luật 3
+\newcommand{\rRedact}{luật che câu trả lời}         % D2 luật 4
+\newcommand{\rSig}{luật tín hiệu chèn lệnh}         % D2 lớp A1
+\newcommand{\Rdest}{Luật đích theo chuỗi con}
+\newcommand{\Rflow}{Luật luồng theo nhãn nguồn}
+\newcommand{\Rredact}{Luật che câu trả lời}
+\newcommand{\Rsig}{Luật tín hiệu chèn lệnh}
+% Cơ chế tấn công (chỉ dùng trong bảng và hình)
+\newcommand{\mER}{\textsf{ER}}               % M1 chuyển hướng tường minh
+\newcommand{\mCR}{\textsf{CR}}               % M2 chuyển hướng che giấu
+\newcommand{\mSL}{\textsf{SL}}               % M3 rò rỉ qua sink
+\newcommand{\mAL}{\textsf{AL}}               % M4 rò rỉ qua câu trả lời
+\newcommand{\mPT}{\textsf{PT}}               % M5 sửa tham số
+\newcommand{\mUS}{\textsf{US}}               % M6 tác dụng phụ ngoài yêu cầu
+% Tập dữ liệu
+\newcommand{\dev}{tập phát triển}            % Dev v4.1 (168 họ)
+\newcommand{\Dev}{Tập phát triển}
+\newcommand{\test}{tập kiểm thử}             % Test-4 (T5_*), tập kiểm định duy nhất của bài
+\newcommand{\Test}{Tập kiểm thử}
+% Ký hiệu
+\newcommand{\sub}{\sqsubseteq}               % x ⊑ z: kappa(x) là chuỗi con của kappa(z)
+\newcommand{\dest}{\mathit{dst}}
+\newcommand{\data}{\mathit{data}}
+\newcommand{\norm}{\nu}
+\newcommand{\bPlain}{lành tính thường}       % benign_plain
+\newcommand{\bAuth}{lành tính ủy quyền}       % benign_auth
+
+% hyperref nạp cuối cùng: trích dẫn, tham chiếu và DOI/URL màu xanh, bấm được
+\usepackage{hyperref}
+\definecolor{linkblue}{HTML}{1F4E9A}
+\hypersetup{colorlinks=true, linkcolor=linkblue, citecolor=linkblue, urlcolor=linkblue}
+\AtBeginDocument{\def\doi#1{\href{https://doi.org/#1}{doi:#1}}}
+
+\begin{document}
+
+% Tiêu đề (tiếng Anh, là tiêu đề nộp). Nghĩa: BrokerGuard: cấp quyền theo ý định và kiểm soát luồng mức giá trị
+% trước tấn công chèn lệnh gián tiếp cho tác tử LLM tiếng Việt.
+\title{BrokerGuard: Intent-Aware Authorisation and Value-Level Flow Control Against Indirect Prompt Injection in
+Vietnamese LLM Agents}
+\titlerunning{BrokerGuard}
+
+% Tác giả và đơn vị (owner, 20/11). Điền email trước khi nộp.
+\author{Quang Huy Lâm\inst{1} \and Quang Minh Nguyễn\inst{1}}
+\authorrunning{Q. H. Lâm và cộng sự}
+\institute{Khoa Công nghệ Thông tin, Trường Đại học Xây dựng Hà Nội, Hà Nội, Việt Nam \\
+\email{0212267@st.huce.edu.vn}, \email{0038967@st.huce.edu.vn}}
+
+\maketitle
+
+\input{sections/00_abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_threat_model}
+\input{sections/04_method}
+\input{sections/05_formal_model}
+\input{sections/06_protocol}
+\input{sections/07_results}
+\input{sections/08_discussion}
+\input{sections/09_conclusion}
+
+% \begin{credits}
+% \subsubsection{\ackname} ...
+% \subsubsection{\discintname} Các tác giả không có xung đột lợi ích.
+% \end{credits}
+
+\bibliographystyle{splncs04}
+\bibliography{refs}
+
+\end{document}

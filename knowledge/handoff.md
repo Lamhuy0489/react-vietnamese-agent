@@ -1,9 +1,375 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-10. Lúc 12:20. Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-20. (Trước đó 2026-11-19 tối.) Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
+
+Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
+
+**2026-11-20 (đêm): BẢN ANH ĐỦ NỘI DUNG, ĐÃ MERGE VÀO MAIN.** Tác giả, đơn vị, email đã điền ở cả hai bản. Bản Anh:
+Times, Hình 2 `[H]`, thêm nội dung hỗ trợ (README của bài, mục "Lượt 4"), khoảng 14,7 trang ước lượng. Việc kế: owner
+biên dịch bản Anh; đồng bộ bản Việt (phông Times có T5 như `tgtermes`, thêm các phần lượt 3b, 3c, 4, giữ ≤ 15 trang).
+
+**2026-11-20 (khuya, lượt 4): bản Anh đổi sang phông Times (newtx + microtype) và thêm lại nội dung**, ước lượng
+khoảng 14,8 trang (README của bài, mục "Lượt 4"). Chờ owner biên dịch: số trang, vị trí Hình 2 `[H]`.
+
+**2026-11-20 (khuya, 3c): bản Anh đã giảm ký hiệu theo góp ý owner** (README của bài, mục "Lượt 3c"); bản Việt chưa
+đổi, làm theo sau khi owner duyệt bản Anh.
+
+**2026-11-20 (khuya): LƯỢT 3 XONG Ở BẢN ANH, BẢN VIỆT CÒN VÀI SỬA NHỎ.** Bản Anh: soát câu và từ nối, Hình 2 bật
+với `[H]` ngay sau đoạn "Main results", ước lượng khoảng 14,8 trang. Bản Việt: đã viết lại theo lượt 3, tắt Pareto,
+khoảng 14,7 trang; còn các sửa nhỏ ở README của bài, mục "Lượt 3". Việc kế: owner biên dịch bản Anh, kiểm Hình 2 có
+nằm ở trang 10 và không để trống cuối trang, tổng không quá 15 trang; rồi áp các sửa nhỏ còn lại cho bản Việt.
+
+**2026-11-20 (tối): CẢ HAI BẢN ĐÃ SOÁT VĂN PHONG VÀ ĐỒNG BỘ, chờ owner biên dịch lại.** Bản Việt bật Pareto, ước
+lượng khoảng 14,8 trang; bản Anh tắt Pareto, khoảng 14,7 trang. Khối tác giả ẩn danh (không còn chữ đỏ). Danh sách thay
+đổi: README của bài, mục "Lượt 2". Việc kế: owner biên dịch cả hai bản, báo số trang; nếu bản Việt vẫn quá 15 trang
+thì `\paretofalse`. Còn phải chốt nơi nộp (ẩn danh hay không, giới hạn trang có tính tài liệu tham khảo không, quy định
+về văn bản do AI hỗ trợ) và liên kết dữ liệu ẩn danh nếu phản biện kín.
+
+**2026-11-20 (sau): BẢN VIỆT ĐÃ SỬA THEO GÓP Ý LẦN 1, BẢN ANH CHƯA.** Owner biên dịch bản Việt: khoảng 14,5 trang. Đã
+sửa bản Việt: Bảng 1 hết tràn lề (`tabularx`), Bảng 3, 4 tách cột Q, G, L, tóm tắt và Mục 1, 7, 8, 9 diễn đạt lại kết
+quả so với luật so khớp chuỗi, bật Hình Pareto (`\paretotrue`, owner chọn; ước lượng khoảng 14,85 trang). Việc kế:
+(1) owner biên dịch lại bản Việt, kiểm ≤ 15 trang (vượt thì `\paretofalse`); (2) làm bản Anh y hệt (danh sách ở README
+của bài, mục "Góp ý owner lần 1"), viết gọn thêm khoảng 0,25 trang rồi bật Pareto. Lưu ý: bảng LNCS in ở 9 pt.
+
+**2026-11-20: BÀI v3 ĐÃ RÚT CÒN TỐI ĐA 15 TRANG (cả `latex/` và `latex_en/`), chờ owner biên dịch lại trên Overleaf.**
+Bản 23 trang owner biên dịch ở `docs/paper/brokerguard_v3/pdf/agent_injection_vn.pdf`; bản dài ở commit `6814b3a`. Đọc
+`docs/paper/brokerguard_v3/README.md` trước (mục "Bản 15 trang: đã cắt gì", "Ước lượng trang", "Việc owner cần làm").
+Ước lượng: bản Việt khoảng 14,1 trang, bản Anh khoảng 14,4 trang; 5 bảng, Hình 1 và Hình Pareto tùy chọn (`\paretotrue`
+ở `main.tex`, mặc định tắt); 19 tài liệu. Việc kế: (1) owner biên dịch cả hai bản, báo số trang và lỗi (PDF tải về
+`pdf/`, đọc bằng PyMuPDF của python3 hệ thống ở dpi thấp); (2) nếu dưới khoảng 14,6 trang thì cân nhắc bật Pareto, nếu quá
+15 trang thì cắt theo danh sách ứng viên trong README; (3) sửa theo góp ý ở cả hai bản; (4) owner chốt nơi nộp, tiêu đề,
+tác giả. Không chạy thêm thực nghiệm.
+
+**2026-11-19 (tối): BÀI v3 XONG CẢ BẢN TIẾNG VIỆT (`latex/`) VÀ TIẾNG ANH (`latex_en/`), chờ owner đọc và biên dịch.** Thư mục `docs/paper/brokerguard_v3/`
+(đọc `README.md` trước: nguồn số, bảng đổi tên, quy tắc văn phong, việc owner cần làm). Main `latex/main.tex`, LNCS, khoảng
+20 trang (owner cho phép dài, cắt sau). Số chỉ từ `docs/paper/iccies2027/facts.md` (thêm mục "Bổ sung cho bài v3").
+Sửa lần 2 (tối 19/11): bỏ tên phiên bản (v1/v3, BG-Base, Test-I/II/III), mã chỉ ở chỗ cần thiết, mọi bảng/hình bọc
+adjustbox chống tràn lề; bảng đổi tên trong README của bài. Việc kế: (1) owner biên dịch cả hai bản trên Overleaf, báo
+lỗi; (2) sửa theo góp ý, sửa đồng thời hai bản; (3) owner chốt nơi nộp, tiêu đề, tác giả. Không chạy thêm thực nghiệm.
+
+**2026-11-19 12:15: MỌI THỰC NGHIỆM XONG.** Dev v4.1 bổ sung R1, D2, P1, MEL, G1 × 3 mô hình đủ 1 960/1 960, chấm
+`evaluate_v3_v2`; tổng hợp `scripts/dev4_1_supp_baselines_v1.py` → facts.md mục "Baseline bổ sung trên Dev v4.1", decision
+log 12:15. Không còn notebook nào chạy. Việc kế: viết bài (chờ owner: thư mục, ngôn ngữ nháp, tên phương pháp). 12:40: đã tắt
+Prompt Guard (8765), proxy Gemini (8444), caffeinate; IPv6 Wi-Fi bật lại (Automatic); OmniRoute để nguyên. Quota còn: phmkimphng ~13 h, tngdngpham
+~13,5 h, hieu1908 5,9 h, lehung040324 2,1 h; 7 tài khoản cũ đặt lại 21/11 07:00 giờ VN.
+
+**2026-11-19 04:40: XONG gần hết; chỉ còn Dev v4.1 bổ sung đang chạy.**
+- XONG, đã ghi facts.md + decision log: Gemini Test-4 (23:45), Test-4 bổ sung R1/D2/P1/MEL/G1 (03:05), thích nghi nhắm v3
+  (03:55), AgentDojo v3 (04:35). Script tổng hợp: `test4_gemini_ref_v1.py`, `test4_supp_baselines_v1.py`,
+  `adaptive_v3target_analysis_v1.py` (scripts/).
+- ĐANG CHẠY: Dev v4.1 bổ sung R1, D2, P1, MEL, G1 (1 960 ca/cấu hình). Qwen, Gemma trên phmkimphng (`supp_launch2.sh`,
+  log `build/kaggle/supp_dev_launch_<K>.log`, folder `build/kaggle/supp_dev_folder_<K>`); Llama trên tngdngpham chia 2
+  notebook (`CONFIGS="R1 D2 P1"` log `..._llama31_8b_a.log`; `CONFIGS="MEL G1"` log `..._llama31_8b_b.log`; folder
+  `supp_dev_folder_llama31_8b_a|b`). Resume (notebook sống): `FOLDER=<folder> RELS=dev4_1 CONFIGS="..." nohup
+  build/kaggle/supp_launch2.sh OWNER CRED SK K >> <log> 2>&1 &`; notebook chết thì bỏ `FOLDER`. Không chạy hai tiến
+  trình trên cùng một cấu hình. Ước xong khoảng 08:00–10:00. Canh: `build/kaggle/health_watch2.sh`, `build/kaggle/quota_watch.sh`.
+  Xong thì: chấm đã tự chạy (`evaluate_v3_v2.py`); tổng hợp Dev v4.1 bổ sung vào facts.md (bảng Dev cùng danh sách baseline).
+- hieu1908 và lehung040324 đang trống (AgentDojo, thích nghi xong). Prompt Guard local cổng 8765 đang chạy (G1 cần).
+
+**2026-11-19 00:30: ĐANG CHẠY (owner đi ngủ; phiên mới đọc mục này trước).**
+- Gemini Test-4 XONG 23:36 (facts.md "Cột tham khảo Gemini 3 Flash", decision log 23:45). Thích nghi nhắm v3: Qwen, Gemma XONG
+  (~00:00, `results/rebuild_c/dev4_1_adv3_<cfg>_<K>`, chưa tổng hợp); Llama chờ slot lehung040324 (`adv3_launch.sh`, thử lại 3 phút).
+- AgentDojo v3: EN Banking xong; EN Slack, VI Banking, VI Slack lượt `_ii` đang chạy (log `build/kaggle/ad3_*.log`).
+- **Baseline bổ sung R1, D2, P1, MEL, G1** (decision log 2026-11-19 00:25): `build/kaggle/supp_launch.sh OWNER CRED SK K`
+  (Test-4 560 ca bằng `run_v3_api_v4_supp.py`, rồi Dev v4.1 1960 ca bằng `run_v3_api_v2.py`; 5 cấu hình song song, 2 shard).
+  Qwen, Gemma trên tngdngpham (dùng lại notebook thích nghi, `FOLDER=`), Llama trên hieu1908 (đẩy v3 00:26). Log
+  `build/kaggle/supp_launch_<K>.log`, `build/kaggle/supp_<K>_<rel>_<cfg>_s<i>.log`; folder `build/kaggle/supp_folder_<K>`.
+  Resume khi notebook còn sống: `FOLDER=<folder> nohup build/kaggle/supp_launch.sh OWNER CRED SK K >> build/kaggle/supp_launch_<K>.log 2>&1 &`;
+  notebook chết thì bỏ `FOLDER` (đẩy mới). Ước tính: Test-4 ~4 h/mô hình; Dev v4.1 ~14 h/mô hình (vượt 12 h notebook và
+  quota → phần Dev chạy tiếp sau 21/11 07:00 giờ VN khi 7 tài khoản cũ đặt lại 30 h).
+- G1 cần Prompt Guard 2 local: `HF_HUB_DISABLE_XET=1 HF_TOKEN=$(cat ~/.hf_token_r5) nohup build/venv_guard/bin/python
+  scripts/serve_promptguard_v1.py --port 8765 > build/kaggle/promptguard.log 2>&1 &` (lần đầu tải ~1 GB; xet bị treo nên
+  tắt xet). Chuỗi chờ tối đa 2 h rồi bỏ G1 (in "G1 skipped"); khi đó chạy lại chuỗi với `CONFIGS=G1 FOLDER=...`.
+- 01:26: tài khoản mới **phmkimphng** (`kaggle10.json`, 30 h). Tách việc: chuỗi Qwen/Gemma trên tngdngpham chỉ còn Test-4
+  (đã dừng bash cha 01:25; runner Test-4 chạy tiếp, xong thì tự tắt keep-alive và ghi "done supp test4"); Dev v4.1 của
+  Qwen/Gemma chạy trên phmkimphng bằng `RELS=dev4_1 build/kaggle/supp_launch2.sh phmkimphng kaggle10.json <K> <K>`
+  (log `build/kaggle/supp_dev_launch_<K>.log`, folder `build/kaggle/supp_dev_folder_<K>`; resume thêm `FOLDER=`). Llama: chuỗi
+  hieu1908 gốc chạy Test-4 rồi Dev. Dev ~14 h/mô hình > 12 h notebook: `quota_watch.sh` báo khi notebook ≥ 11 h → đẩy lại.
+- 01:35: Llama cũng tách: hieu1908 chỉ chạy Test-4 (bash cha đã dừng; runner chạy tiếp, xong tự tắt keep-alive).
+  `build/kaggle/supp_llama_dev_follow.sh` (log `supp_llama_dev_follow.log`) chờ "done supp test4" của Qwen và Gemma rồi
+  bật Dev v4.1 Llama trên tngdngpham, 2 notebook chia theo cấu hình: `CONFIGS="R1 D2 P1"` (log
+  `supp_dev_launch_llama31_8b_a.log`) và `CONFIGS="MEL G1"` (`..._b.log`). Không chạy hai tiến trình trên cùng một cấu hình.
+  Ước: Test-4 xong khoảng 05:00–06:00; Dev Llama xong khoảng 13:00; Dev Qwen/Gemma (phmkimphng) khoảng 16:00–17:00 (một lần
+  đẩy lại khi chạm 11 h). G1 Dev phụ thuộc CPU máy (Prompt Guard local), có thể là đuôi cuối.
+- Quota 00:37: hieu1908 còn 10,0 h, lehung040324 10,0 h, tngdngpham 27,9 h. Canh mẹo quota: `build/kaggle/quota_watch.sh`
+  (20 phút/lần; ALERT khi tài khoản đang chạy còn < 1,5 h hoặc notebook đang dùng ≥ 11 h).
+- Bài học: zsh không tách từ `$c` (dùng bash); dừng launcher phải giết cả subshell con.
+
+**2026-11-18 22:40: ĐANG CHẠY 3 việc (đều resume được; runner bỏ qua ca/cặp đã xong).** Giữ `caffeinate -dimsu` độc lập
+(`pmset -g assertions`); IPv6 Wi-Fi đang tắt (bật lại khi xong: `networksetup -setv6automatic Wi-Fi`). Quota: `build/kaggle/quota_all.sh`.
+1. **Gemini trên Test-4** (cột tham khảo, decision log 19:30): chuỗi `build/gemini/t4_gemini_chain.sh`, 5 cấu hình song song,
+   log `build/gemini/t4_chain.log`. Tiến độ: `for c in V3P2 D2P2 A0 P2 PRG; do find results/rebuild_c/test4_${c}_gemini3_flash
+   -name result.json | wc -l; done`. Dừng/resume: `pkill -f t4_gemini_chain.sh; pkill -f run_v3_api_v4_ref.py` rồi
+   `CGROUPS="V3P2,D2P2,A0,P2,PRG" PAR=5 INTERVAL=1 nohup build/gemini/t4_gemini_chain.sh >> build/gemini/t4_chain.log 2>&1 &`
+   (OmniRoute phải đang chạy; không tự bật OmniRoute). 22:20: khoảng 380–394/560 mỗi cấu hình. Xong: thêm số vào facts.md (cột riêng, không kiểm định).
+2. **AgentDojo v3** (decision log 20:20): 4 notebook Llama, hieu1908 EN Banking/Slack, lehung040324 VI Banking/Slack;
+   `build/kaggle/ad3_launch.sh OWNER CRED SUITE LANG`, log `build/kaggle/ad3_launch_<lang>_<suite>.log`. Notebook đã lên chỉ cần
+   chạy lại runner (lệnh trong `ad3_launch.sh`, endpoint ở `build/kaggle/ad3_folder_<lang>_<suite>`). Kiểm kê: lệnh AgentDojo ở
+   runbook. 22:20: 4 lượt không tấn công xong (rc=0); lượt tấn công `_ii` đang chạy, dự kiến xong khoảng 01:00.
+   Xong: so với v1 (C10), `repeat_user_prompt`, không phòng thủ.
+3. **Thích nghi nhắm v3** (owner/Minh soạn, 42 ca, sha `b348dcf8…`, decision log 20:55): `build/kaggle/adv3_launch.sh` cho
+   qwen35_9b, gemma4_12b trên tài khoản mới tngdngpham (`kaggle9.json`, đẩy 22:22, 30 h) và llama31_8b (lehung040324, chờ
+   slot GPU do AgentDojo chiếm, thử lại mỗi 3 phút, tối đa 5 h). Resume qwen/gemma: `nohup build/kaggle/adv3_launch.sh
+   tngdngpham kaggle9.json <K> <K> >> build/kaggle/adv3_launch_<K>.log 2>&1 &` (notebook còn sống thì chạy thẳng hàm `one`). 23:32: hai notebook tngdngpham vẫn QUEUED sau 70 phút nên discover
+   hết giờ; đang chờ tiếp bằng `build/kaggle/adv3_resume.sh <K> [phút]` (không đẩy lại, chờ discover tới 300 phút). Log `build/kaggle/adv3_launch_<K>.log`; output `results/rebuild_c/dev4_1_adv3_<cfg>_<K>`. Xong: so với bản
+   canonical cùng họ trên Dev v4.1, báo riêng.
+Quota 22:25: hieu1908 còn 12,2 h, lehung040324 13,8 h, tngdngpham 30 h; 6 tài khoản cũ 0 h (đặt lại 21/11). Canh đêm:
+`build/kaggle/health_watch.sh` (in ALERT/DONE rồi thoát). Lưu ý: hai notebook cùng tài khoản dùng chung slug; `kaggle kernels delete` xóa mọi phiên bản của slug nên chỉ xóa khi không
+còn phiên bản nào đang dùng.
+
+**2026-11-18 20:50: Soạn thảo và dựng xong bộ tấn công thích nghi nhắm v3 trên 42 họ Dev-val (adaptive_v3target).**
+- File payload: `data/adversarial/v3_authoring/adaptive_v3target.json` (42 họ, văn phong tự nhiên, giàu ngữ cảnh nghiệp vụ đời thường, nhắm vào các điểm yếu A2–A5 của BrokerGuard v3).
+- Đã dựng và kiểm định thành công: `data/adversarial/adaptive_v3/adaptive_v3target_attack.jsonl`.
+- Số lượng: 42 fixtures trên 42/42 họ Dev-val.
+- Mã băm SHA-256 niêm phong: `b348dcf86e5af65b8ba0d613edd44e765d9f611ec87e06de781d7eca4d0ad8e8`.
+- Bước tiếp theo: Gửi Claude số ca và mã SHA-256 để Claude ghi khai báo trước (preregistration) vào decision log, chuẩn bị lệnh/notebook chạy benchmark trên Kaggle (3 model x A0, v1, v3).
+
+**2026-11-18 18:40: Test-4 XONG, không còn tiến trình nền nào (supervisor, keep-alive đã dừng).** Kết quả và hướng bài:
+decision log 2026-11-18 18:40; số đầy đủ `results/rebuild_c/test4_analysis_v1.json` (chạy lại:
+`.venv/bin/python scripts/test4_analysis_v1.py`). IPv6 Wi-Fi đang tắt (owner tắt để tránh địa chỉ trycloudflare chập chờn);
+bật lại: `networksetup -setv6automatic Wi-Fi`.
+Bước tiếp theo:
+1. Viết bài (một bài duy nhất; `Review Huy.docx` là yêu cầu của thầy): mô hình hình thức C1–C3 sang LaTeX (mệnh đề toàn vẹn
+   ghi rõ không bao gồm sửa giá trị số/đơn vị), bảng Test-4 (A0/P2/PRG/v1/v3/ablation), H1 không đạt và lý do hiệu ứng sàn,
+   bằng chứng cơ chế (C1/C2 chặn 4 họ v1 lọt), chi phí, đoạn so sánh CaMeL/CapLite. Số chỉ lấy từ decision log/facts.
+2. Vòng tấn công thích nghi nhắm v3 trên họ Dev-val: owner/Minh soạn, Claude chỉ lo hạ tầng.
+3. Không chỉnh v3 hay chạy lại theo số Test-4; Gemini chỉ chạy nếu owner quyết riêng (phân tích phụ, không kiểm định).
+
+**2026-11-18 tối: Test-4 VẪN DỪNG, chưa có ca nào; không tiến trình nền nào chạy (trừ caffeinate).** Đã kiểm kỹ: notebook
+trên hieu1908 và lehung040324 được Kaggle ghi `machine_shape: NvidiaTeslaT4` nhưng nhận image CPU `gcr.io/kaggle-images/python`
+(Python 3.13, không có `nvidia-smi`), giờ GPU dùng 0.00h/30h; notebook cũ chạy được (huylmhuhu) dùng image
+`kaggle-private-byod/python`. Notebook thử `<owner>/gpu-check` (script in `nvidia-smi -L || echo NO_GPU`) báo NO_GPU ở cả hai
+tài khoản. Kết luận: chưa xác minh số điện thoại (hoặc Kaggle chưa cập nhật). Bước kế: owner kiểm Settings → Phone
+Verification và ô Accelerator trên web; rồi đẩy lại `gpu-check` (bản trong scratchpad đã mất thì tạo lại: kernel_type script,
+enable_gpu true, push `--accelerator NvidiaTeslaT4`, đọc log `kaggle kernels output`). Có GPU thì xóa `build/kaggle/t4_folder_*`
+cũ, đẩy 4 notebook bằng `t4_launch.sh` (tag/plan trong `t4_tags.json`), bật supervisor, kiểm `kaggle quota` vài phút sau phải
+bắt đầu trừ giờ GPU. Không xác minh được thì chờ 7 tài khoản cũ có quota lại 21/11 07:00 giờ VN.
+
+**2026-11-17 20:10: Test-4 DỪNG, chưa có ca nào.** Cả 4 notebook trên hieu1908 và lehung040324 lỗi ngay ô đầu vì không có
+GPU (`nvidia-smi` không tồn tại); metadata giống notebook cũ chạy được, nên nguyên nhân là tài khoản chưa xác minh số
+điện thoại (Kaggle chỉ cấp GPU/internet khi đã xác minh). Đã dừng supervisor và chuỗi. Owner xác minh xong thì bật lại:
+đẩy notebook mới bằng `t4_launch.sh` (xem mục dưới) hoặc cho supervisor tự đẩy sau khi xóa `t4_folder_<tag>` cũ.
+
+**2026-11-17 19:35: Test-4 ĐANG CHẠY dưới `final_config_v5` (sha `673f7af4…`, commit `88611e1`).** Owner giữ đủ C1–C3
+(decision log 19:25). Pin đã sửa xong: hết giới hạn chạy nhẹ (pytest toàn bộ được chạy lại).
+- 4 notebook trên 2 tài khoản mới: hieu1908 (qwen, gemma), lehung040324 (llamaA, llamaB); kế hoạch từng tag ở
+  `build/kaggle/t4_tags.json`. Mỗi model: 8 cấu hình × 560 ca tĩnh + 24 ca thích nghi; output
+  `results/rebuild_c/test4[_adaptive]_<cfg>_<K>`, chấm tự động `_eval_v3.json` khi đủ ca.
+- Supervisor độc lập `build/kaggle/t4_supervise.py` (nohup): tự nối lại chuỗi, đẩy notebook mới khi hết phiên 11,5 h, mẹo
+  quota (còn ≤ 0,5 h × số phiên + 0,6 h thì dừng phiên và đẩy lại). Sự kiện: `tail build/kaggle/t4_supervise.log`; log chuỗi
+  `build/kaggle/t4_chain_<tag>.log`. Giữ `caffeinate -dimsu` độc lập (`pmset -g assertions`).
+- Kiểm tiến độ: `for d in results/rebuild_c/test4_*; do echo "$d $(ls $d/runs/*/*/result.json 2>/dev/null | wc -l)"; done`.
+- Nếu supervisor chết: `nohup nice -n 5 .venv/bin/python build/kaggle/t4_supervise.py > build/kaggle/t4_supervise.out 2>&1 &`
+  (nó đọc notebook hiện tại từ `t4_folder_<tag>` và nối lại; runner bỏ qua ca đã có `result.json`).
+- Dừng an toàn: `pkill -f t4_supervise.py; pkill -f t4_chain.sh; pkill -f t4_launch.sh; pkill -f retry_on_infra_v1.sh;
+  pkill -f run_v3_api_v4.py; pkill -f keepalive_vllm_v1.py`.
+- Quota: 7 tài khoản cũ hết đến 21/11 07:00 giờ VN; supervisor tự dùng khi có quota trở lại.
+- Khi xong: không chỉnh gì theo số Test-4; phân tích theo đăng ký trước (decision log 2026-11-15 18:20): H1 → H2 → H3 → H4.
+
+**2026-11-17 12:00: Phiên đóng, máy tắt (owner đi sửa pin).** Không còn tiến trình nền hay lần chạy dở. Mọi script
+`build/kaggle/dev4_v3_*.sh` (launch, chain, follow, abl_follow, keep) và `build/archive_rebuild_b.sh` vẫn nằm trong `build/`
+(gitignored) để dùng lại cho Test-4.
+
+**2026-11-17 11:45: Xong toàn bộ V3P2 và ablation Dev-val.** Bước kế: owner chọn giữ đủ C1–C3 hay bỏ C1 (decision log
+11:45), rồi đóng băng `final_config_v5` (runner `scripts/run_v3_api_v3.py --defense v3p2`, sha các module v3 trong identity),
+chuẩn bị gói Test-4 (chỉ hạ tầng, không đọc nội dung), chạy một lần sau khi quota đặt lại 21/11 07:00 giờ VN (2 phiên mỗi
+tài khoản cùng lúc). Bảng ablation: `scratchpad abl_cmp.py` (logic: lọc bản 1.960 theo `dev4_1_val_fixtures.jsonl`).
+
+**2026-11-17 10:40: V3P2 Qwen, Gemma xong (decision log 07:00, 08:30); ablation Llama xong; có thể dừng giữa chừng.**
+- Lúc 10:32: ablation Qwen 444–468/490, Llama V3P2 1.898/1.960 (dự kiến xong khoảng 11:00), ablation Gemma 287–330/490
+  (dự kiến xong khoảng 12:30). Kết quả nằm trên đĩa; chạy lại thì runner bỏ qua ca đã có `result.json`.
+- Dừng an toàn: `pkill -f dev4_v3_follow.sh; pkill -f dev4_v3_abl_follow.sh; pkill -f dev4_v3_keep.sh;
+  pkill -f dev4_v3_chain.sh; pkill -f retry_on_infra_v1.sh; pkill -f run_v3_api_v3.py; pkill -f keepalive_vllm_v1.py`.
+  Ca đang chạy dở bị bỏ, không có `result.json`, nên lần sau sẽ chạy lại.
+- Chạy tiếp ablation Gemma, khi có quota (notebook mới):
+  `HF_TOKEN=$(cat ~/.hf_token_r5) CONFIGS="V3P2-C1 V3P2-C2 V3P2-C3" FIXTURES=results/rebuild_c/dev4_1_val_fixtures.jsonl
+  SHARDS=1 PAR=3 nohup nice -n 10 build/kaggle/dev4_v3_launch.sh <owner> <cred> gemma4_12b gemma4_12b >> build/kaggle/dev4_v3_abl_<owner>_gemma4_12b.log 2>&1 &`.
+  Notebook cũ còn sống thì chạy thẳng `build/kaggle/dev4_v3_chain.sh <folder> gemma4_12b 11` với cùng biến môi trường.
+  Llama V3P2 nếu chưa đủ: `CONFIGS=V3P2 SHARDS=2` với `llama31_8b_ctx16k`/`llama31_8b`. Nhớ bật `caffeinate -dimsu`.
+- Sau đó: chấm `scripts/evaluate_v3_v2.py results/rebuild_c/<output>`, so ablation với V3P2 trên 490 fixture Dev-val
+  theo tiêu chí ghi trước (decision log 2026-11-17 02:00), rồi owner duyệt final_config_v5.
+
+**2026-11-17 02:00: V3P2 chạy lại sau sự cố máy ngủ, ablation Dev-val đã lên lịch** (decision log 2026-11-17 02:00).
+- Script nối tiếp `build/kaggle/dev4_v3_follow.sh K [noabl]` đang chạy cho qwen35_9b, gemma4_12b, llama31_8b (noabl), log `build/kaggle/dev4_v3_follow.log`. Ablation Llama: `build/kaggle/dev4_v3_abl_huylmhuhu_llama31_8b.log`.
+- Giữ máy thức: một `caffeinate -dimsu` độc lập (kiểm bằng `pmset -g assertions`). Không để máy ngủ khi đang chạy.
+- Khi xong: chấm `evaluate_v3_v2.py` cho từng output (V3P2 đủ 1.960; ablation `_val_`), so trên 490 fixture Dev-val.
+
+**2026-11-16 18:10: v3p2 đang chạy bằng mô hình thật trên Dev v4.1.**
+- Runner `scripts/run_v3_api_v3.py` (bản sao v2 + `--defense v3p2`, `v3p2-c1/-c2/-c3`), chuỗi
+  `build/kaggle/dev4_v3_chain.sh`, launch `build/kaggle/dev4_v3_launch.sh OWNER CRED SERVE_KEY K` (env `CONFIGS="V3P2"
+  SHARDS=2 HF_TOKEN=$(cat ~/.hf_token_r5)`). Output `results/rebuild_c/dev4_1_V3P2_{model}`, chấm `evaluate_v3_v2.py`.
+- Đang chạy: Gemma V3P2 trên huylmhuhu (push 18:04), Qwen V3P2 trên buiquocviet (18:09), Llama D2P2 chạy tiếp trên
+  buiquocviet (READY 17:54, từ 973/1960), Llama PRG trên oanhlam123456. Supervisor cũ không theo dõi ba launch mới; log ở
+  `build/kaggle/dev4_v3_launch_{owner}_{model}.log` và `dev4_launch_buiquocviet_llama31_8b.log`. Resume khi notebook còn
+  RUNNING: `CONFIGS=V3P2 SHARDS=2 build/kaggle/dev4_v3_chain.sh <folder> <K> 11` (folder ghi trong
+  `build/kaggle/dev4_folder_<K>_V3P2`).
+- 20:30: mốc Dev v4.1 đủ 12/12 (decision log 20:30). Llama V3P2 chạy trên notebook Llama còn sống của buiquocviet
+  (folder `vllm_serve_v1_llama31_8b_ctx16k_20261116_174343`, READY 20:29); Gemma V3P2 READY 19:28 trên huylmhuhu.
+- Hết quota GPU tuần: dovuong05, lamhuy8904, meanalways, nomtle, oanhlam123456. Ablation chờ quota (tuần mới) hoặc chạy
+  trên notebook còn sống sau khi V3P2 xong (cùng folder, `CONFIGS="V3P2-C1 V3P2-C2 V3P2-C3"`).
+- Kế tiếp: ghi số V3P2 từng mô hình vào decision log (so với D2P2: gây hại, chặn nhầm ủy quyền); ablation có thể chỉ
+  chạy Dev-val nếu thiếu quota; rồi owner duyệt đóng băng `final_config_v5`, mới chạy Test-4.
+
+**2026-11-16 15:30: v3 runtime xong (C1+C2+C3), chưa nối runner, chưa chạy bằng mô hình thật.**
+- Code: `security_v3/brokerguard_v3_v1.py` (`BrokerGuardV3Runtime`, `runtime_class(components)` cho ablation, thành phần
+  tùy chọn `C1A` đã cân nhắc và bỏ), `value_labels_v1.py` (C2), `param_pinning_v1.py` (C3), `intent_policy_v1.py` (C1).
+- Phát lại oracle: `.venv/bin/python scripts/v3_oracle_replay_v1.py --split {train,val} --runtimes v1 v3 v3-C1 v3-C2
+  v3-C3 v3+C1A` (khoảng một phút, ghi `results/rebuild_c/v3_oracle_replay_v1_{train,val}.json`).
+- Bước kế, khi mốc Dev v4.1 xong (không còn chuỗi nào gọi `run_v3_api_v2.py`): thêm `--defense v3p2` (BrokerGuardV3Runtime +
+  sandwich như d2p2, `--levels A1`) và `v3p2-c1/-c2/-c3` vào runner (chỉ thêm khóa mới, identity ghi sha của 4 file v3),
+  test dry-run, rồi chạy trên Kaggle như mốc. Sau đó đóng băng `final_config_v5` và mới chạy Test-4.
+- Máy: pin hỏng vĩnh viễn. Không chạy pytest toàn bộ (~1 giờ); chỉ test module đã đụng + lân cận
+  (`tests/unit/test_runtime_d2_v1.py`, `test_d3.py`, `test_control_data_policy_v1.py`). mypy toàn repo vấp file chưa
+  track của owner và lỗi phân giải gói có sẵn (`scripts/evaluate_v3_v1.py`); không phải lỗi code mới.
+
+**2026-11-16 12:30: mốc Dev v4.1 VẪN CHẠY (supervisor + kaguard dưới caffeinate); C1 xong code, chưa nối runtime.**
+- Xong: Qwen A0, P2 (số ở decision log 2026-11-16 11:15). Lúc 11:07: Gemma A0 1958, P2 1948, D2P2 1565, PRG 1228;
+  Llama A0 1070, P2 1258, D2P2 930, PRG 522; Qwen D2P2 857, PRG 1108. Supervisor đã relaunch meanalways (Qwen D2P2,
+  Gemma D2P2) và nối lại chuỗi Gemma A0 (dovuong05). Kiểm: `build/kaggle/dev4_progress.sh`, `tail build/kaggle/dev4_watch.log`.
+- C1: `src/react_agent/security_v3/intent_policy_v1.py` + `tests/test_intent_policy_v1.py`; chấm lại bằng
+  `.venv/bin/python scripts/intent_policy_dev_eval_v1.py [--grid]` (ghi `results/rebuild_c/intent_policy_v1_dev_*.json`).
+- Bước kế: (1) ghi số từng cấu hình khi đủ 1960 và có `_eval_v2.json` mới hơn mọi ca; (2) khi mốc xong mới viết runtime v3
+  (file mới, ví dụ `security_v3/runtime_v3_v1.py` + runner mới hoặc cờ mới) dùng P(u) thay luật 2 của D2, CONFIRM ->
+  từ chối với lý do `CONFIRMATION_REQUIRED` + lý do con; (3) C2 nhãn theo giá trị (M3/M4: 0–10/105 chặn ở C1), C3 ghim
+  tham số (M5), dùng `Grant.values` làm ràng buộc.
+- mypy toàn repo vấp các file chưa track của owner (`scripts/test_data_part*.py`, trùng tên module); kiểm trên file đã track.
+
+**2026-11-15 23:50: ĐANG CHẠY mốc Dev v4.1 trên Kaggle (12 notebook, mỗi notebook 1 cấu hình, 7 tài khoản), v3 bước 1 xong code (`1380ce1`).**
+- Chạy: A0, D2P2 (v1), P2 (Sandwich), PRG (Progent*) × gemma4_12b, llama31_8b, qwen35_9b trên `release_dev4_1`
+  (1.960 ca mỗi cấu hình). Notebook và tài khoản: sổ Kaggle mục 15/11 23:50.
+- Tốc độ thật ~4,5–5 ca/phút mỗi notebook (SHARDS=2), tức ~7 giờ một cấu hình: hai cấu hình nối tiếp không vừa
+  phiên 12 giờ. Vì vậy D2P2 của gemma và qwen chuyển sang 2 notebook riêng trên meanalways (cùng SHARDS=2, PAR=1,
+  nên độ trễ vẫn so được); 4 notebook còn lại chạy 2 cấu hình nối tiếp và sẽ được bật lại một lần để chạy nốt.
+- 23:50 (owner: xoay tài khoản cho nhanh): Llama chỉ ~1,8–2 ca/phút, nên mọi cấu hình thứ hai (D2P2, PRG) đều
+  chuyển sang notebook riêng; 12 job ghi ở `JOBS` trong supervisor. `build/kaggle/dev4_kaguard.sh` (caffeinate) bật lại
+  keep-alive bỏ cuộc vì URLError khi chuỗi còn chạy.
+- Supervisor `build/kaggle/dev4_supervise.sh` (thay `dev4_watch.sh`, chạy dưới caffeinate): 10 phút một lần ghi
+  tiến độ vào `build/kaggle/dev4_watch.log`; job xong đủ 1960 và đã chấm thì tắt keep-alive; chuỗi chết mà notebook
+  RUNNING thì nối lại (tối đa 3 lần); notebook đã tắt mà còn việc thì push version mới (tối đa 2 lần). Dấu trạng
+  thái ở `build/kaggle/dev4_supervise_marks/`. Nếu supervisor không chạy: `caffeinate -ims build/kaggle/dev4_supervise.sh`.
+- Theo dõi tay: `build/kaggle/dev4_progress.sh`; log chuỗi `build/kaggle/dev4_launch_<owner>[_<K>].log`, log runner
+  `build/kaggle/dev4_<K>_<cfg>_s<i>.log`. Runner tự bỏ qua ca đã có `result.json`.
+- Xong: chấm `scripts/evaluate_v3_v2.py results/rebuild_c/dev4_1_<cfg>_<K>` (chuỗi tự chấm), ghi số vào decision log,
+  rồi viết C1 (bộ trích P(u) tất định). Gemini để cuối (owner bật OmniRoute). Chưa có code v3.
+
+**2026-11-15 18:15: HOÀN TẤT BIÊN TẬP VÀ DUYỆT 48 HỌ TEST-4 THEO QUY TRÌNH HUMAN-IN-THE-LOOP 100%.**
+Đã hoàn thành xuất sắc toàn bộ quy trình biên tập và kiểm định dữ liệu Test-4:
+1. **Human-in-the-loop 100%:** Toàn bộ 48 họ phần tĩnh (T5_01 đến T5_48) đã được người dùng trực tiếp duyệt qua 6 đợt biên tập, bám sát văn phong đời thường, trực diện thực tế giao việc của người dùng Việt Nam.
+2. **Bảo toàn Literals & Đa dạng ngôn ngữ:** Giữ nguyên vẹn 100% Protected Literals. Toàn bộ 5 biến thể (canonical, paraphrase, code_mix, no_diacritic, english) đều render thành công, không có lỗi rò rỉ hay sai lệch cấu trúc.
+3. **Kiểm định QA & Novelty sạch:**
+   - 48 họ hợp lệ, 560 fixtures (240 attack, 240 benign_plain, 80 benign_auth).
+   - QA replays = 800, problems = 0.
+   - Novelty max = 0.0508 (ngưỡng an toàn tuyệt đối, không trùng lặp hay replay literals với Dev-4 hay các tập dữ liệu trước).
+4. **Niêm phong chính thức:** `data/adversarial/release_test4/seal.json` với mã băm SHA-256: `1f9b0070f9a5d3e34041c519a3f4ab3e6f350f58591a5158c2849fae266e70fd`.
+5. **Kiểm định chất lượng mã nguồn:**
+   - `verify_setup.py`: PASS.
+   - `pytest tests/test_transformed_leakage.py`: 9/9 passed (0.05s).
+   - `mypy src scripts/...`: Success (386 files checked).
+   - `ruff check src scripts/...`: All checks passed.
+   - `make knowledge-check`: PASS.
+6. **Git Status:** Chưa commit lên Git. Sẵn sàng cho giai đoạn phát triển BrokerGuard v3 trên tập Dev v4_1.
+Việc kế:
+1. Người dùng xác nhận và quyết định lệnh commit Git cho gói dữ liệu Test-4 và bộ kiểm định rò rỉ biến đổi.
+2. Bắt đầu phát triển kiến trúc phòng thủ BrokerGuard v3 (C1-C3) trên tập Dev v4_1.
+3. Chuẩn bị chạy benchmark thực nghiệm chính thức trên Kaggle / API.
+
+
+
+
+**2026-11-15 18:00: Quy tắc nhãn v4 đã đóng băng (sha256 d0836dd9…). Phiếu gắn nhãn đã phát** ở
+`data/adversarial/v3_authoring/dev4_labelling/`. Owner và Minh gắn riêng, sau đó chạy `scripts/dev4_labelling_v1.py kappa`.
+Việc Claude còn nợ: bộ chấm nhận giá trị biến đổi (chốt trước niêm phong Test-4), `check_release_test4_v1.py` khi
+owner báo bắt đầu B, runner/evaluator mới cho Dev v4.
+
+**2026-11-15 17:15: Giao việc cho owner và Minh: `data/adversarial/v3_authoring/AUTHORING_TEST4.md`** (A quy tắc nhãn và
+errata Dev v4, B Test-4 tĩnh 48 họ theo `spec_test4.json`, C 24 ca thích nghi nhắm v1, D niêm phong). Claude viết công cụ
+khi họ bắt đầu: phiếu nhãn CSV và κ, `check_release_test4_v1.py`, kiểm phần C, dựng `release_dev4_1`.
+
+**2026-11-15 16:45: DEV V4 ĐÃ DỰNG (decision log 16:30).** `data/adversarial/release_dev4/` = 168 họ (Dev + Test-I +
+Test-II), Dev-val 42 họ, niêm phong. Test-4 (48 họ `T5_*`) là tập kiểm định duy nhất; giả thuyết chính chỉ trên phần
+tĩnh. Runner/evaluator v3 đã ghim (final_config_v4) nên chưa chạy được split dev4: cần runner/evaluator mới (file mới).
+
+**2026-11-15 15:30: HẠN LÙI, MỞ RỘNG THEO REVIEW HUY (decision log 15:30).** Bản thiết kế nháp
+`docs/project/brokerguard_v3_extension_design.md`. Việc kế:
+1. Owner đã duyệt (decision log 15:45): tạp chí Q4, cần xác nhận = từ chối, bộ trích tất định, Test-4 48 họ do owner+Minh soạn.
+   Còn mở: tên phương pháp, hạn tạp chí.
+2. Song song: owner/Minh soạn và niêm phong Test-4 (Claude không đọc); Claude thêm log token/thời gian vào runner (file
+   mới), viết mô hình hình thức và mệnh đề, kiểm CapLite thật trước khi trích.
+3. Sau khi Test-4 niêm phong: code v3 trên Dev (C1–C3, file mới), đóng băng `final_config_v3.json`, chạy Test-4 một lần.
+Không sửa v1, Test cũ hay số liệu đã có. Máy hỏng pin: một tiến trình nặng, không tự bật OmniRoute.
+
+**2026-11-15 14:03: XONG Gemini Dev baseline P2, P1, PRG, MEL (decision log 00:25), đã điền cột Gemini Bảng 2 ở
+`latex/` và `latex_en/` (Sandwich 1·191·64, Spotlight 11·180·55, Progent* 13·184·54, MELON* 22·185·55; G1 để "--",
+owner quyết 15/11 13:00). Số trong facts.md. OmniRoute vẫn do owner quản, không kill.
+
+**2026-11-15 00:30: Bản nộp tiếng Anh ở `docs/paper/iccies2027/latex_en/` (dịch đầy đủ, đồng bộ với `latex/`). Hạn nộp
+15/11.** Commit cuối 956d93f. Việc kế:
+1. Owner biên dịch `latex_en/` trên Overleaf, gửi trang cuối: phải ≤ 15 trang (lần trước thừa 4 tài liệu sang trang 16,
+   đã rút tài liệu tham khảo ~20 dòng). Còn thừa thì: bỏ nửa dưới Bảng 4 (CI) hoặc gộp đoạn "Language" Mục 7 vào 6.2.
+2. Kiểm Hình 1 (yscale 0.8, ô cao 0.8 cm) không chồng chữ; Bảng 4 EN không tràn; DOI `doi:` hiển thị đúng.
+3. Owner điền tác giả/đơn vị/e-mail, xóa `\todo`; đối chiếu tác giả ClawGuard; owner tự sửa câu chữ bản EN (quy định AI).
+4. Sửa nội dung thì sửa cả `latex/` và `latex_en/`. Không regex dấu phẩy thập phân trên file hình.
+
+**2026-11-14 23:00: Bản tiếng Việt đã rà soát toàn bài, chờ owner biên dịch Overleaf (hạn 15/11).** Tiêu đề đã chốt
+(decision log 18:00), Mệnh đề 1 ở Mục 4 (20:30), Mục 7 lời thường, bảng/hình bố cục mới, bớt mã trong lời văn
+(commit cuối c77c4f7). Việc kế:
+1. Owner tải lên `main.tex`, `sections/`, `tables/`, `images/` rồi gửi PDF: kiểm ≤ 15 trang (quá thì rút Mục 6.5 còn hai câu),
+   Bảng 2/5 không tràn, khoảng trắng do FloatBarrier, Hình 1 mới (nhãn ngắn) không chồng chữ.
+2. Owner điền tác giả/đơn vị/e-mail; đối chiếu tác giả ClawGuard (arXiv 2604.11790) với PDF.
+3. `latex_en/` chưa đồng bộ: thiếu Mệnh đề 1, bố cục bảng mới, macro `\bPlain`/`\bAuth`, MELON*/Progent*, Hình 1 nhãn ngắn.
+   Chỉ làm khi owner yêu cầu.
+
+**2026-11-14 16:30: Phản biện 3 (`phan bien3.md`, root, không commit, owner nói là vòng cuối) đã xử lý bằng chữ và đếm**
+(decision log 16:30, facts.md mục "Bổ sung sau phản biện 3"): ca CR = va chạm chuỗi con; mọi SL/AL lọt do nguồn gắn S0;
+bỏ câu MDE 10 điểm; Bảng 3 thêm chặn mọi sink. Giữ 17 tài liệu (owner quyết). Bài dài thêm ~260 chữ: owner kiểm ≤ 15 trang.
+
+**2026-11-14 14:40: C11 XONG, không còn lượt nào chạy.** Tiện ích Sandwich khi không tấn công: EN Banking 7/16,
+EN Slack 8/21, VI Banking 5/16, VI Slack 6/21. Đã điền facts.md (bảng AgentDojo đầy đủ) và Bảng 6. Keepalive đã tắt,
+notebook dovuong05 tự dừng. Việc kế: owner biên dịch Overleaf, kiểm ≤ 15 trang, Bảng 6, Hình 1.
+- **Trước khi nói "chưa chạy": kiểm kê đĩa** (lệnh ở runbook, Bản đồ).
+- **Sửa bài theo `phan bien2.md` (root, không commit): 6 việc ĐÃ LÀM 14/11 (`647c520`), Hình 2a bỏ (`0e7e01a`):**
+  1. Test-II theo cơ chế (đã đếm, khớp 27 ca/14 họ): BrokerGuard ER 0, CR 1, SL 14, AL 2, PT 7, US 3 ca
+     (họ: CR 1, SL 6, AL 2, PT 3, US 2); NoDef 36/22/70/30/49/26. Câu Mục 7 "mọi ca lọt thuộc SL/AL/PT" chỉ đúng Test-I.
+     Nêu tỉ lệ lọt Test-II gấp ~3 lần Test-I là tín hiệu (CI Wilson họ chồng lấn), không phải kết luận.
+  2. Mục 4 phạm vi: R-Dest chỉ áp sink có đích (sink không đích chỉ R-Flow, R-Signal); "đọc không bị chặn" là giả định,
+     công cụ đọc nhận URL là kênh tuồn ra; adapter Slack so khớp tên người nhận. KHÔNG sửa code (đã đóng băng).
+  3. AgentDojo báo song song 6/105 (hàm chấm) và 4/105 (lời gọi đã thực thi).
+  4. Chặn mọi sink: lệch hai chiều (an ninh có lợi cho chặn, tiện ích bất lợi cho chặn → "gấp năm lần" có thể phóng đại).
+  5. Holm: tính p mức họ cho H2/H4/H5 nếu `scripts/paper_cluster_stats_v1.py` hỗ trợ, không thì ghi rõ ∗ là sau Holm.
+  6. Nhỏ: "độc lập" → "rời nhau" (tóm tắt); benign_auth Test-I −9,2 điểm; định nghĩa Done(f); trích Anderson 1972.
+  Không làm: chạy thật chặn mọi sink, PromptGuard∘dịch, ablation phản hồi, ρ/DEFF, OSF. Giữ bài ≤ 15 trang.
+
+**2026-11-14 10:30: C10 XONG (BrokerGuard trên AgentDojo, Llama-3.1-8B, 8/8 lượt, 0 lỗi; decision log 14/11).**
+- Tấn công thành công / utility dưới tấn công: EN Banking 3/72 (none 17/58, repeat 10/62); EN Slack 6/15 (16/28, 10/35);
+  VI Banking 1/54 (6/44); VI Slack 0/13 (0/26). Số và phân tích ca lọt ở `docs/paper/iccies2027/facts.md` mục C10.
+- 2/6 ca EN Slack là lời gọi đã bị chặn nhưng hàm chấm AgentDojo vẫn tính (`security_from_traces`); bài báo chú thích.
+- Đã cập nhật bài (bản tiếng Việt): tóm tắt, Mục 5, 6, 7, 8, Bảng 6 (thêm hàng Sandwich và BrokerGuard). Chưa biên dịch.
+- Soát lại: `nice -n 10 python3 scripts/agentdojo_bg_audit_v1.py` → `results/rebuild_b/agentdojo_brokerguard_audit_llama31_8b.json`.
+
+**2026-11-13: Bài báo ICCIES sau phản biện (`phan bien.md` ở root, không commit). Một cấu hình duy nhất: BrokerGuard = D2+P2
+(macro `\cRulesS` = `\ours`); BG-v2/D3DEST đã bỏ khỏi bài (decision log 13/11). Suy luận mức family; số mới ở `facts.md`
+mục "Bổ sung sau phản biện" (`scripts/paper_cluster_stats_v1.py`, chạy lại: `nice -n 10 python3 scripts/paper_cluster_stats_v1.py`).**
+- Đã sửa bản tiếng Việt: tóm tắt (không p), Mục 1, 4 (phạm vi bảo đảm, không IFC), 5 (thống kê theo family, commit niêm phong
+  08d57bf/07f10c6 kèm câu "chưa có dấu thời gian bên ngoài" vì lịch sử viết lại 11/11), 6 (Test-II là phân tích lặp lại,
+  hàng chặn mọi sink, Sandwich trên AgentDojo), 7 (ba lớp vượt qua, hạn chế), 8. Hình 1 nay là TikZ `images/fig1_pipeline.tex`.
+- Chưa biên dịch: owner biên dịch trên Overleaf, báo số trang/lỗi TikZ (Hình 1 mới, dùng `arrows.meta`).
+- Còn mở: tác giả/đơn vị (dữ liệu đã công khai 14/11); Holm 1979 trong refs.bib.
+
+**2026-11-12 20:30: Bài báo ICCIES: `docs/paper/iccies2027/latex/` (Overleaf, LLNCS). `sections/` là bản TIẾNG VIỆT để owner
+đọc; owner tự viết bản tiếng Anh nộp (ICCIES cấm văn bản AI). Bản owner biên dịch lúc 19:53: 14 trang (giới hạn 15).**
+- Đã làm 12/11: tiêu đề "Beyond Model Compliance: ..."; khung BrokerGuard hai phiên bản (BG-v1 = D2+P2 xác nhận Test-I,
+  BG-v2 = D3DEST xác nhận Test-II, BG-Rules = D2); M1–M6 → ER/CR/SL/AL/PT/US; tên là macro trong `main.tex`.
+- 7 bảng + Hình 1 (PDF, `images/src/fig1_pipeline.py`) + Hình 2 (pgfplots `images/fig2_results.tex`); Gemini là cột
+  cuối bảng baseline Dev (không gộp, không kiểm định). Ký hiệu chuỗi con: `dest(a) ∈ Sub(u)`.
+- Văn phong: câu ngắn, không chấm phẩy trong lời văn, không gạch dài; link xanh bấm được (hyperref cuối preamble).
+- refs.bib 23 mục, Crossref đã kiểm; Prompt Guard 2 model card truy cập 12/11 (HTTP 200); còn Holm 1979 chưa đối chiếu.
+- Bước tiếp: owner biên dịch lại, kiểm trang/bảng (đặt PDF vào root repo để Claude xem bằng PyMuPDF, không dùng Read
+  PDF vì thiếu poppler). Owner quyết: chạy Gemini cho baseline Dev thiếu (đề xuất chỉ Sandwich, OmniRoute đang tắt) hay
+  không; công bố dữ liệu; tác giả/đơn vị. Sau đó owner viết bản tiếng Anh.
+- KHÔNG render hình/PDF trên máy (owner sợ sập nguồn); hình mới vẽ bằng TikZ/pgfplots.
 
 **2026-11-10 23:30: ICCIES cấm bài chứa văn bản do AI sinh (trang how-to-submit). Bản thảo `sections/` do Claude soạn chỉ dùng làm
 dàn ý; owner tự viết lời văn nộp. Chờ owner quyết cách làm. 20 PDF tham khảo + link: `docs/paper/iccies2027/refs/README.md`.**

@@ -1,0 +1,29 @@
+% Bản 15 trang: 19 tài liệu. Bỏ BIPIA, Nasr 2025, Tramèr 2020, Dwork 2015, Recht 2019, Holm 1979. Giữ FIDES, design
+% patterns và Liu et al. vì phản biện 3 coi việc cắt các tài liệu này là suy giảm.
+% CapLite (arXiv:2611.17115, 12/11/2026): chỉ dùng mức tóm tắt đã đọc ngày 19/11 (facts.md, "Tài liệu mới được trích").
+% 20/11 (lượt 3, theo bài tham khảo trong pdf/): câu mở mỗi mục, bớt ngoặc chứa ký hiệu, ký hiệu dồn về Mục 5.
+\section{Nghiên cứu liên quan}\label{sec:related}
+
+\paragraph{Tấn công và phòng thủ dựa vào mô hình.} Liu và cộng sự~\cite{liu2024formalizing} hình thức hóa tấn công chèn
+lệnh và các phòng thủ. InjecAgent~\cite{zhan2024injecagent} và AgentDojo~\cite{debenedetti2024agentdojo} đo lường tấn
+công trên tác tử dùng công cụ. Các bộ dữ liệu này đều bằng tiếng Anh, trong khi cơ chế an toàn của LLM yếu hơn ở các
+ngôn ngữ ít tài nguyên~\cite{deng2024multijail}, và tấn công thích nghi đã vượt qua nhiều phòng thủ đã công
+bố~\cite{zhan2025adaptive}. Về phía phòng thủ, Spotlighting~\cite{hines2024spotlighting} đánh dấu dữ liệu không đáng tin,
+lời nhắc kiểu sandwich lặp lại yêu cầu sau mỗi quan sát, và SecAlign~\cite{chen2025secalign} huấn luyện lại mô hình để
+tách chỉ thị khỏi dữ liệu. Prompt Guard~2~\cite{meta2025promptguard2} sàng lọc đầu vào bằng một bộ phân loại, trong khi
+MELON~\cite{zhu2025melon} so sánh hành động của lượt chạy gốc với lượt chạy lại có che yêu cầu. Các cách này đều phụ
+thuộc vào hành vi của mô hình hoặc bộ phân loại trên dữ liệu tấn công, điều mà một cơ chế đặt tại broker có thể tránh.
+
+\paragraph{Thực thi chính sách bên ngoài mô hình.} Progent~\cite{shi2025progent} áp chính sách đặc quyền lên lời gọi
+công cụ. ClawGuard~\cite{zhao2026clawguard} dùng mô hình để suy ra luật truy cập từ yêu cầu của người dùng.
+FIDES~\cite{costa2025fides} gắn nhãn tin cậy và bảo mật cho dữ liệu rồi lan truyền nhãn qua các lời gọi.
+CaMeL~\cite{debenedetti2026camel} tách luồng điều khiển khỏi dữ liệu không đáng tin bằng một trình thông dịch riêng và
+gắn capability cho từng giá trị. CapLite~\cite{xu2026caplite}, công bố cùng thời điểm, suy chính sách từ schema công cụ,
+cam kết trước các lời gọi ghi rồi mới đọc kết quả công cụ, và chỉ chấp nhận lời gọi ghi khi các đối số quyết định đối
+tượng có trong yêu cầu. Beurer-Kellner và cộng sự~\cite{beurerkellner2025patterns} hệ thống hóa các mẫu thiết kế theo
+hướng này. Do đó, bản thân việc dùng chính sách có cấu trúc hay chứng minh an toàn chưa phải là đóng góp mới. Điểm khác
+của \ours{} là giữ nguyên vòng lặp ReAct và chỉ kiểm tra từng lời gọi tại broker, thay vì viết lại tác tử thành trình
+thông dịch như CaMeL hay cố định tập lời gọi ghi trước khi đọc dữ liệu như CapLite. Chính sách được trích tất định từ $u$
+và xét phủ định trong tiếng Việt có dấu, không dấu và tiếng Anh, trong khi ClawGuard để mô hình viết luật và Progent dựa
+vào luật viết tay. Độ nhạy cảm được gán cho từng giá trị theo kiểu ngay tại broker thay vì lan truyền qua mọi phép tính
+như FIDES. Cách làm này rẻ hơn nhưng chỉ bảo vệ giá trị trong một lớp biến đổi đã nêu rõ ở Mục~\ref{sec:formal}.

@@ -1,0 +1,31 @@
+\section{Giới thiệu}\label{sec:intro}
+
+Trong mô hình ReAct~\cite{yao2023react}, tác tử LLM xen kẽ suy luận với lời gọi công cụ như tìm tài liệu, truy vấn cơ
+sở dữ liệu hay gửi e-mail. Nội dung công cụ trả về đi thẳng vào ngữ cảnh của mô hình. Trong tấn công chèn lệnh gián
+tiếp (IPI)~\cite{greshake2023indirect}, kẻ tấn công cài chỉ thị vào nội dung của bên thứ ba mà tác tử sẽ đọc. Nếu mô
+hình làm theo, tác tử có thể gửi dữ liệu tới một đích lạ, làm lộ giá trị mật hoặc sửa dữ liệu mà người dùng yêu cầu gửi.
+
+Các benchmark cho tác tử như BIPIA~\cite{yi2025bipia}, InjecAgent~\cite{zhan2024injecagent} và
+AgentDojo~\cite{debenedetti2024agentdojo} gần như chỉ dùng tiếng Anh. Văn bản tiếng Việt hay bị bỏ dấu và trộn thuật
+ngữ tiếng Anh, còn các bộ phân loại chèn lệnh chủ yếu được huấn luyện trên tiếng Anh. Phòng thủ mức prompt như
+spotlighting~\cite{hines2024spotlighting} lại phụ thuộc vào việc mô hình có tuân theo hay không. Vì vậy bài báo đặt
+các luật cưỡng chế ở phía host, giữa mô hình và công cụ, nơi chúng không phụ thuộc vào sự tuân thủ của mô hình. Lời
+nhắc trong prompt chỉ là lớp bổ trợ cho các luật.
+
+Bài báo có bốn đóng góp.
+\begin{enumerate}
+\item \textbf{Mô hình đe dọa theo cơ chế.} Hai nhãn độc lập là độ tin cậy và độ nhạy cảm, bốn vị từ gây hại, sáu cơ
+  chế tấn công và hai nhánh lành tính để đo chặn nhầm (Mục~\ref{sec:threat}).
+\item \textbf{Cơ chế phòng thủ \ours.} Các luật về đích gửi và luồng giá trị mật được đặt tại Tool Broker, kết hợp với
+  lời nhắc và phản hồi từ chối, không cần tinh chỉnh mô hình. Luật và lời nhắc bù cho nhau theo cơ chế tấn công. Một
+  mệnh đề nêu rõ các luật bảo đảm gì và dưới giả định nào, và mọi ca còn lọt qua đều vi phạm một giả định của mệnh đề hoặc thuộc loại sửa tham số
+  (Mục~\ref{sec:defence} và~\ref{sec:discussion}).
+\item \textbf{VN-AgentInject và AgentDojo-VI.} VN-AgentInject được đánh giá theo giao thức niêm phong. Tập kiểm
+  thử, cấu hình phòng thủ và giả thuyết được khóa bằng hash trước khi chạy, và mỗi tập kiểm thử chỉ chạy một lần. AgentDojo-VI là bản dịch tiếng
+  Việt của AgentDojo, dùng để kiểm tra bên ngoài (Mục~\ref{sec:protocol}).
+  Dữ liệu, mã và các manifest niêm phong được công bố công khai.
+\item \textbf{Kết quả thực nghiệm.} Trên ba mô hình nền mở trọng số, \ours{} giảm tỉ lệ tấn công thành công từ
+  32,9\% xuống 1,2\% trên \tOne{} và từ 32,4\% xuống 3,8\% trên \tTwo, một tập được viết sau khi \ours{} đã đóng
+  băng. Tiện ích lành tính giảm khoảng 5 điểm phần trăm. Kết quả được đối chiếu với sáu baseline và Gemini 3 Flash
+  trên Dev, và với AgentDojo bằng tiếng Anh và tiếng Việt (Mục~\ref{sec:results}).
+\end{enumerate}

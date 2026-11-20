@@ -1,0 +1,24 @@
+% Bảng 1. Nguồn số: facts.md mục "Bổ sung sau phản biện 3" (nguyên nhân lọt v1: Test-I 13 = SL 6, AL 3, PT 4 (3 sửa giá
+% trị + 1 đích có trong u); Test-II 27 = SL 14, AL 2, PT 7, US 3, CR 1) và mục Test-4 ("40 ca vượt v1": M3 20, M5 11,
+% M4 5, M6 3, M2 1). Tổng theo nguyên nhân (nêu ở Mục 1): nguồn công khai 25, đích có trong u 5, sửa tham số 10.
+% LNCS in bảng ở cỡ \small (9 pt, llncs.cls đặt \footnotesize = \small). Bản 20/11 tràn lề vì tabular* rộng 379 pt so
+% với khổ 346 pt; nay dùng tabularx, cột mô tả là X (tự xuống dòng nếu cần, không thể tràn lề).
+\begin{table}[!htbp]
+\centering
+\caption{Sáu cơ chế tấn công, số ca vượt qua \strSand{} ở giai đoạn đầu và thành phần xử lý. \cOne, \cTwo{} và \cThree{}
+được định nghĩa ở Mục~\ref{sec:method}.}\label{tab:mechanisms}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xrl@{}}
+\toprule
+Cơ chế & Con đường gây hại & Lọt & Thành phần \\
+\midrule
+\mER{} chuyển hướng tường minh & Gửi dữ liệu tới một đích lạ & 0 & \cOne \\
+\mCR{} chuyển hướng che giấu & Như trên, đích được che giấu & 1 & \cOne \\
+\mSL{} rò rỉ qua sink & Giá trị mật trong nội dung gửi đi & 20 & \cTwo \\
+\mAL{} rò rỉ qua câu trả lời & Giá trị mật trong câu trả lời cuối & 5 & \cTwo \\
+\mPT{} sửa tham số & Đổi giá trị người dùng đã nêu & 11 & \cThree, \cOne \\
+\mUS{} tác dụng phụ ngoài yêu cầu & Đích chỉ được nhắc tới hoặc bị cấm & 3 & \cOne \\
+\bottomrule
+\end{tabularx}
+\end{table}

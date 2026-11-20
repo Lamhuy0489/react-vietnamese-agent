@@ -1,0 +1,27 @@
+% Table 2. Sources: facts.md, Test-4 section (H3 ablation; families by mechanism: without C1 one more ER and one more PT,
+% without C2 two more SL and two more AL; final-answer leaks of v3 0/720; the two remaining M5 families; verbatim =
+% transformed) and "Bổ sung cho bài v3" (offline C1 check on Dev-val: M6 35/35, v1 15). (A1):
+% tests/unit/test_brokerguard_v3_v1.py. 15-page version: shorter evidence.
+% 20/11: short assumption labels and a 2.4 cm status column so that most rows take one or two printed lines.
+% 20/11 (round 3c): fewer symbols in parentheses (owner).
+\begin{table}[!htbp]
+\centering
+\caption{Properties that are proved and properties that are only verified empirically.}\label{tab:proven}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.3cm}>{\raggedright\arraybackslash}p{2.4cm}%
+>{\raggedright\arraybackslash}X@{}}
+\toprule
+Property & Status & Evidence \\
+\midrule
+Props.~\ref{prop:auth}--\ref{prop:int} & Proved & Under assumptions (A1)--(A5) \\
+(A1) mediation & By construction & The broker is the only path to the tools, unit-tested. Sinks without a destination are not covered \\
+(A2) extraction & Empirical & Development set: 35/35 unrequested sink calls blocked (\rDest: 15). Test set: without
+  \cOne, 2 more families harmed \\
+(A3) coverage & Empirical & Without \cTwo, 4 more leakage families harmed. No value leaks in final answers \\
+(A4) transforms & Stated limit & Transformed-leak scoring agrees with verbatim matching, so this is untested \\
+(A5) pins & Empirical & Insufficient: 2 tampering families pass both \strSand{} and \ours \\
+Other parts & Empirical only & Prompt and \rSig: no guarantee, measured by ablation and adaptive attacks \\
+\bottomrule
+\end{tabularx}
+\end{table}

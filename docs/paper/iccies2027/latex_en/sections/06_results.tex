@@ -1,0 +1,96 @@
+\section{Results}\label{sec:results}
+
+\subsection{Baselines on Dev}
+
+Table~\ref{tab:dev} compares \ours{} with six baselines by the number of harmful family--model pairs (/144). The
+detection group has no effect on Dev: \cPG{} (113) and \cMel{} (112) are on par with \cNone{} (112). The prompt-level
+group gives mixed results. \cSpot{} only reduces the count to 91 and even increases the number of harmful families on
+Qwen3.5 (from 40 to 43), whereas \cSand{} reduces it to 31. The rule group improves with the specificity of the rules,
+with \cPhrase{} at 94, \cProg{} at 61 and \cRules{} at 45. \ours, which combines rules with the reminder, brings the
+count down to 10.
+
+The last column of Table~\ref{tab:dev} shows that a stronger model does not replace a defence. Under \cNone, Gemini 3
+Flash is attacked less often than the open models (22/48 families compared with 34 to 40) but is still compromised in
+almost half of the families. \cRules{} reduces this to 12, and \ours{} to only 1. \cSand{} alone also reaches 1 family and keeps more
+\bAuth{} utility (64 versus 49), so on this model the reminder is enough against the static attacks.
+
+\input{tables/tab7_dev_baselines}
+
+\subsection{\tOne: Pre-registered Tests}
+
+\tOne{} was run once with \ours{} as the final configuration (Table~\ref{tab:test1}). Three defence hypotheses hold at
+the family level. The rules of \ours{} outperform phrase rules (H1, from 53 to 24 harmful families out of 72), including
+on the mechanisms that evade phrase patterns (H3). Combining them with the reminder outperforms the reminder alone (H6,
+from 28 to 8 families). Compared with \cNone, \ours{} reduces the number of harmful families from 65 to 8. H2 is not
+established. \cRules{} loses 2.8 points of \bPlain{} utility relative to \cNone, and the lower confidence bound
+($-6.0$) crosses the $-5$ point margin. H4 and H5 are not supported, that is, no language effect is detected. At the
+family level, the variant without diacritics is harmful in 50 families compared with 40 for standard Vietnamese (16 and
+6 discordant families, Holm $p$ 0.16). By case, the difference is $+1.9$ points [$-5.1$, $+8.8$] without diacritics and
+$+5.1$ points [$-1.9$, $+12.0$] for English. These intervals are still wide, so the results do not show that language
+has no effect. In H5, the case rate rises while the family count falls, because English attacks succeed on more
+models but in fewer families.
+
+\input{tables/tab3_test1}
+
+Figure~\ref{fig:results} shows why the two layers need each other. The rules bring both redirection mechanisms to zero
+regardless of wording. For the two leak mechanisms, rules and reminder perform similarly (29 and 27 cases through a
+sink, 17 and 18 through the answer). For parameter tampering, the reminder is clearly more effective (10 compared with
+25 cases). Combined, only 13 harmful cases remain: 6 sink leaks, 3 answer leaks and 4 parameter tamperings. By language
+variant, \cNone{} is attacked almost equally in every variant (68 to 79 cases out of 216). \cRules{} lets the most
+attacks through in English (32 cases, compared with 6 to 13 in the other variants), and the reminder fixes this
+weakness (1 case left).
+
+\input{images/fig2_results}
+
+\subsection{\tTwo: Replication on New Data}
+
+\tTwo{} consists of 48 families written after \ours{} was frozen (Table~\ref{tab:test2}). The number of harmful
+families falls from 42 to 14 ($p = 3.7\cdot10^{-9}$), and no family switches from safe to harmful. The attack success
+rate falls from 32.4\% to 3.8\%. The reduction holds on all three backbones: Gemma from 101 to 7 cases out of 240,
+Llama from 50 to 10 and Qwen3.5 from 82 to 10. The cost is a 4.5-point drop in benign utility, from 54.5\% to 50.0\%
+($p = 0.044$). On \tOne{} the drop is similar ($-5.1$ points, $p = 0.022$). Most of the loss is in the \bPlain{}
+counterparts. In the \bAuth{} counterparts, the $-2.5$ point difference is not significant ($p = 0.57$). On \tOne, the
+\bAuth{} counterparts drop more (9.2 points, from 39.2\% to 30.0\%).
+
+The bypass rate of \ours{} is higher on \tTwo{} than on \tOne{} (3.8\% versus 1.2\% of cases, 14/48 versus 8/72
+families), while \cNone{} is almost unchanged. The family-level Wilson intervals overlap ($[18.2, 43.2]$\% and
+$[5.7, 20.4]$\%), so this is a signal to investigate, not a conclusion. By mechanism, 23 of the 27 cases are leaks or
+parameter tampering (14 sink leaks, 2 answer leaks, 7 parameter tamperings). The other four are 1 covert redirection
+and 3 unrequested side effects. The cause of each case is analysed in Section~\ref{sec:discussion}.
+
+\input{tables/tab4_test2}
+
+\paragraph{Block-all-sinks reference.} The ``Block all sinks'' rows estimate, from \cNone{} trajectories, a policy
+that blocks every sink call. A benign case succeeds if \cNone{} succeeded without any sink call, and an attack case is
+harmful if \cNone{} caused harm through the answer. On \tOne, at the same attack success rate (1.2\%), this policy keeps
+only 7.4\% of benign utility, compared with 38.6\% for \ours. The estimate favours blocking on security, because a
+blocked agent might move the value into its answer, and disfavours it on utility, because the agent could still finish
+the read-only part.
+
+\subsection{AgentDojo in English and Vietnamese}
+
+\input{tables/tab6_agentdojo}
+
+Table~\ref{tab:agentdojo} reports the AgentDojo results. Without defence, Llama is successfully attacked 17/144 times
+on Banking and 16/105 times on Slack in English, but only 6 and 0 times in Vietnamese. The lower count in Vietnamese
+does not mean that Vietnamese is safer. Llama's utility also drops (from 58 to 44 on Banking), and in Vietnamese Slack
+two of the five injection tasks cannot be solved by the reference solution. \cSand{} reduces successful attacks to 10
+on both English suites but makes no difference in Vietnamese. Without attacks, its utility differs from \cNone{} by at
+most one task.
+
+\ours{} reduces successful attacks further, to 3 on Banking and 6 on Slack in English, and 1 and 0 in Vietnamese. Two
+of the six Slack cases are counted even though every attack call was blocked, because AgentDojo's scoring function
+relies on the calls the model generated. Counting only executed calls, the figure is 4/105. The remaining eight cases
+across the two suites and two languages are password changes (4 cases, through a sink without a destination), opening a
+malicious URL with a read tool (3 cases) and sending a link to a person the user had named (1 case). On Slack,
+destinations are names, so a real deployment should resolve them through a host-side directory. Utility rises on Banking (72 versus 62 for \cSand) but falls sharply on
+Slack (15 versus 35), because many Slack tasks take their destination from a web page or a message that the user did not
+write. Even without attacks, 9 of the 21 English Slack tasks have calls blocked by \rDest. \rSig{} never fires in
+English and fires 14 times on Vietnamese Slack.
+
+\subsection{Adaptive Attacks}\label{sec:adaptive}
+
+The authors also wrote 48 adaptive cases on Dev families, using feedback from defended Dev runs. Under \cNone{} they
+are as strong as the static cases (26, 15 and 24 harmful families versus 29, 12 and 22), and under \ours{} they drop to
+1, 0 and 0. This is one round of manual adaptation, not a white-box attack, and it does not target the gaps in
+Section~\ref{sec:discussion}.

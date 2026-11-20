@@ -22,6 +22,20 @@ Chưa khẳng định mọi URL vẫn mở được với tài khoản khác.
 
 ## Mốc hiện hành — đọc mục này trước
 
+**2026-11-14 12:33 — C11 Sandwich trên AgentDojo (private, T4×2):** dovuong05
+[react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/dovuong05/react-vn-vllm-serve-v1-llama31-8b-ctx16k)
+**v4**, source commit `b291911`, script `build/kaggle/c11_launch.sh` (log `build/kaggle/c11_chain.log`). READY 12:44,
+xong 14:40, keepalive đã tắt nên notebook tự dừng sau 30 phút idle. Kết quả:
+`results/rebuild_b/agentdojo_<lang>_<suite>_none_repeat_user_prompt_llama31_8b/`.
+
+**2026-11-13 18:12 — C10 BrokerGuard trên AgentDojo (private, T4×2):** meanalways
+[react-vn-vllm-serve-v1-llama31-8b-ctx16k](https://www.kaggle.com/code/meanalways/react-vn-vllm-serve-v1-llama31-8b-ctx16k)
+v1, source commit `87d0f94`, script `build/kaggle/c10_launch.sh` (log `build/kaggle/c10_chain.log`, thư mục serve ghi ở
+`build/kaggle/c10_endpoint`). Hết quota tuần (30 h) lúc 18:12: nomtle, dovuong05, huylmhuhu. Kết quả:
+`results/rebuild_b/agentdojo_<lang>_<suite>_<attack>_brokerguard_llama31_8b/`.
+Session 1 mất tunnel 13/11 ~23:33; session thứ hai của meanalways (bật 18:45, `build/kaggle/c10_launch3.sh`,
+`c10_endpoint2`) chạy nốt 4 lượt VI. **Xong 14/11 03:05, 8/8 lượt, 0 lỗi; keep-alive đã dừng, hai session tự tắt.**
+
 **2026-11-09 21:07 — Test-3 serve (private, T4×2), chờ niêm phong:** lamhuy8904 `llama31-8b-ctx16k` v3 và `gemma4-12b` v3
 (bật cùng lúc khi còn ~1 h quota, [bài học](kaggle_lessons.md)), meanalways `qwen35-9b` v2 (owner: quota thoải mái).
 Script `build/kaggle/t3_serve.sh` (bật + keep-alive 12 h, chưa chạy runner); log `build/kaggle/t3_logs/`.
@@ -36,6 +50,55 @@ A0/R1/P2 xong 06:42) và `gemma4-12b` (PRG 27 fixture cuối, 09:33–09:43); hu
 (02:58, xong 07:18); dovuong05 `gemma4-12b` v4 và nomtle `qwen35-9b` v2 trước đó; buiquocviet `gemma4-12b` v6 chạy PRG tới 06:28 rồi
 hết quota tuần (30 h), oanhlam123456 hết quota từ 08/11. URL dạng `https://www.kaggle.com/code/<owner>/react-vn-vllm-serve-v1-<model>`.
 Không notebook nào còn chạy sau 09:43.
+
+**2026-11-18 20:25 — AgentDojo v3 (decision log 20:20), private, T4, Llama-3.1-8B 16k:** hieu1908
+`react-vn-vllm-serve-v1-llama31-8b-ctx16k` v1 (EN Banking) và v2 (EN Slack); lehung040324 cùng slug v5 (VI Banking) và v6
+(VI Slack). Endpoint: `build/kaggle/ad3_folder_<lang>_<suite>`. 20:56: `adv3_launch.sh` chờ slot để đẩy qwen35-9b, gemma4-12b
+(hieu1908) và llama31-8b-ctx16k (lehung040324) cho vòng thích nghi nhắm v3; phiên bản thật ghi sau khi đẩy được.
+
+**2026-11-18 11:19–17:58 — Test-4 chạy thật (sau khi 2 tài khoản mới xác minh số điện thoại; `<owner>/gpu-check` v2 in
+`Tesla T4` ở cả hai), private, T4, source `9f890e7`:** hieu1908 `react-vn-vllm-serve-v1-qwen35-9b` v2 (xong 17:19) và
+`react-vn-vllm-serve-v1-gemma4-12b` v2 (xong 17:58); lehung040324 `react-vn-vllm-serve-v1-llama31-8b-ctx16k` v3 (llamaA) và
+v4 (llamaB), xong 16:22; notebook phụ cho 24 ca thích nghi trên lehung040324: `react-vn-vllm-serve-v1-gemma4-12b` v1
+(16:23–17:25) và `react-vn-vllm-serve-v1-qwen35-9b` v1 (đẩy 16:51, sẵn sàng 17:45, không còn ca để chạy). Hai bản cùng slug
+chạy song song được (mỗi bản một ntfy topic). Quota lúc 17:53: hieu1908 còn 16,9 h, lehung040324 khoảng 19 h. Không notebook
+nào còn chạy (keep-alive đã dừng). Báo cáo: `results/rebuild_c/test4_analysis_v1.json`, decision log 2026-11-18 18:40.
+
+**2026-11-17 19:26 — Test-4 (final_config_v5 sha `673f7af4…`, runner `run_v3_api_v4.py`, source `88611e1`), private,
+T4×2, trên 2 tài khoản mới (30 h GPU mỗi tài khoản lúc bật):** hieu1908 (`kaggle7.json`) `react-vn-vllm-serve-v1-qwen35-9b` v1
+và `react-vn-vllm-serve-v1-gemma4-12b` v1; lehung040324 (`kaggle8.json`) `react-vn-vllm-serve-v1-llama31-8b-ctx16k` v1
+(llamaA: V3P2, D2P2, A0, P2, PRG) và v2 (llamaB: V3P2-C1/-C2/-C3 và 24 ca thích nghi). Supervisor
+`build/kaggle/t4_supervise.py` tự nối lại, đẩy notebook mới khi hết phiên và áp mẹo quota; notebook đang dùng của từng tag
+nằm ở `build/kaggle/t4_folder_<tag>`, sự kiện ở `build/kaggle/t4_supervise.log`. Trạng thái thật: `kaggle kernels status`.
+
+**2026-11-17 11:00 — quota GPU (`kaggle quota`, đã dùng / còn / giới hạn):** cả 7 tài khoản đều hết (dùng 31–40 h trên 30 h,
+do phiên đã bật chạy vượt quota); đặt lại 2026-11-21 00:00 UTC (07:00 giờ VN thứ Bảy 21/11). TPU 20 h/tuần chưa dùng ở cả 7
+tài khoản (serve hiện tại chỉ chạy GPU T4). Lệnh: `KAGGLE_USERNAME=<owner> KAGGLE_KEY=... .venv/bin/kaggle quota`.
+
+**2026-11-16 18:10 — Dev v4.1 BrokerGuard v3 (V3P2, `run_v3_api_v3.py`, source `09cdc5e`), private, T4×2:**
+huylmhuhu `react-vn-vllm-serve-v1-gemma4-12b` v3 (gemma V3P2); buiquocviet `react-vn-vllm-serve-v1-qwen35-9b` v7 (qwen
+V3P2); buiquocviet `react-vn-vllm-serve-v1-llama31-8b-ctx16k` v1 (chạy tiếp Llama D2P2 từ 973/1960 sau khi dovuong05 hết
+quota lúc 13:10). Hết quota GPU tuần lúc 18:05–18:07: dovuong05, lamhuy8904, meanalways, nomtle.
+20:29: Llama V3P2 chạy tiếp trên notebook Llama của buiquocviet (cùng phiên). oanhlam123456 hết quota lúc 20:28.
+2026-11-17 01:02–01:54 (sau khi máy ngủ làm cả ba notebook tắt lúc khoảng 21:20): buiquocviet qwen35-9b v8 và llama31-8b-ctx16k v2 (V3P2), huylmhuhu gemma4-12b v4 (V3P2) và llama31-8b-ctx16k v7 (ablation V3P2-C1/-C2/-C3 trên Dev-val). Hai tài khoản này đều đã chạy đủ 2 phiên; năm tài khoản còn lại hết quota tuần.
+
+**2026-11-15 23:50 — Dev v4.1, mỗi notebook một cấu hình (12 notebook):** chuỗi cũ thu về cấu hình đầu: dovuong05 gemma {A0},
+huylmhuhu gemma {P2}, nomtle llama {A0}, lamhuy8904 llama {P2}, oanhlam123456 qwen {A0}, buiquocviet qwen {P2}; meanalways
+gemma v4 {D2P2}, qwen v3 {D2P2}. Mới (push 23:44–23:46): dovuong05 `…-llama31-8b-ctx16k` v5 {D2P2}, oanhlam123456
+`…-llama31-8b-ctx16k` v3 {PRG}, nomtle `…-gemma4-12b` v4 {PRG}, lamhuy8904 `…-qwen35-9b` v2 {PRG}. Trạng thái sau lượt: chưa kiểm.
+
+**2026-11-15 20:25 — Dev v4.1, phân lại việc:** ba notebook huylmhuhu, nomtle, lamhuy8904 xếp hàng quá 70 phút nên chuỗi
+dừng lúc 19:47 (ntfy URLError); notebook RUNNING lúc 20:13, chuỗi nối lại. dovuong05 và oanhlam123456 chỉ còn {A0};
+D2P2 chuyển sang meanalways `react-vn-vllm-serve-v1-gemma4-12b` v4 {D2P2} và `…-qwen35-9b` v3 {D2P2} (push 20:19–20:20).
+4 ca D2P2 lỡ chạy trên notebook cũ đã xóa để D2P2 bắt đầu sạch. Supervisor `build/kaggle/dev4_supervise.sh` tự bật lại
+notebook hết 12 giờ. Trạng thái sau lượt: chưa kiểm.
+
+**2026-11-15 18:36 — Dev v4.1 mốc A0/D2P2/P2/PRG (`run_v3_api_v2.py`), 6 notebook serve, private, T4×2** (source `1380ce1`):
+dovuong05 `react-vn-vllm-serve-v1-gemma4-12b` v8 {A0, D2P2}; huylmhuhu `…-gemma4-12b` v1 {P2, PRG}; nomtle
+`…-llama31-8b-ctx16k` v1 {A0, D2P2}; lamhuy8904 `…-llama31-8b-ctx16k` v4 {P2, PRG}; oanhlam123456 `…-qwen35-9b` v4
+{A0, D2P2}; buiquocviet `…-qwen35-9b` v5 {P2, PRG}. Script `build/kaggle/dev4_launch.sh`, keep-alive 11 h do chuỗi bật,
+watcher `build/kaggle/dev4_watch.sh` tắt keep-alive khi chuỗi xong. Kết quả `results/rebuild_c/dev4_1_<cfg>_<K>`.
+Trạng thái sau lượt: chưa kiểm.
 
 **2026-11-08 15:47 — Test v3 Tầng 1 (`final_config_v3` `456de8d3…`), 6 notebook serve, private, T4×2:** nomtle `gemma4-12b` v2, `qwen35-9b` v1; dovuong05 `gemma4-12b` v1, `llama31-8b-ctx16k` v2; huylmhuhu `qwen35-9b` v1, `llama31-8b-ctx16k` v5. Chọn 3 tài khoản này vì quota tuần còn nhiều (lamhuy8904, oanhlam123456, buiquocviet đã chạy 18–25 giờ). Script `build/kaggle/test_launch.sh`.
 
@@ -1017,3 +1080,9 @@ no cached result or terminal proof. Journal remains blocked. This is not a
 fresh guard health check or evidence that either notebook has shut down.
 [Report](../docs/evaluation/phase5_public_guard_partial_20261002.md) and
 [receipt](../experiments/manifests/phase5_public_guard_partial_20261002.json).
+
+- 2026-11-18 22:22: tài khoản mới `tngdngpham` (kaggle9.json, 30 h GPU, đặt lại 21/11). Đẩy `react-vn-vllm-serve-v1-qwen35-9b` v1 và `react-vn-vllm-serve-v1-gemma4-12b` v1 cho vòng thích nghi v3 (chuyển từ hieu1908 đang hết slot).
+
+- 2026-11-19 00:26: hieu1908 đẩy `react-vn-vllm-serve-v1-llama31-8b-ctx16k` v3 cho baseline bổ sung (Llama). Notebook thích nghi Qwen/Gemma trên tngdngpham (v1, 22:22) được dùng lại cho baseline bổ sung.
+
+- 2026-11-19 01:26: tài khoản mới `phmkimphng` (kaggle10.json, 30 h GPU). Đẩy `react-vn-vllm-serve-v1-qwen35-9b` v1 và `react-vn-vllm-serve-v1-gemma4-12b` v1 cho Dev v4.1 baseline bổ sung (R1, D2, P1, MEL, G1).

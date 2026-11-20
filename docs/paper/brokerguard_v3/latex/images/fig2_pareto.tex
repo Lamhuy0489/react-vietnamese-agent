@@ -1,0 +1,60 @@
+% Hình 2, pgfplots (Overleaf tự vẽ, không render trên máy). KHÔNG chạy regex đổi dấu thập phân trên file này: tọa độ
+% dùng dấu chấm, nhãn trục dùng dấu phẩy nhờ /pgf/number format/use comma. Bọc adjustbox max width: không tràn lề.
+% Số liệu: facts.md mục Test-4 (họ bị hại /48, tiện ích) và mục "Bổ sung cho bài v3" (tiện ích dạng số ca /960).
+% Delta U = (k - 411)/960*100 điểm, k = số ca lành tính thành công:
+%   không phòng thủ 411 -> 0 | MELON* 411 -> 0 | PromptGuard 410 -> -0.1042 | Progent* 409 -> -0.2083
+%   Sandwich 391 -> -2.0833 | Spotlight 381 -> -3.125 | luật cụm từ 412 -> +0.1042 | luật chuỗi 403 -> -0.8333
+%   luật chuỗi + Sandwich 386 -> -2.6042 | BrokerGuard 381 -> -3.125 | bỏ C1 384 -> -2.8125 | bỏ C2 386 -> -2.6042
+%   bỏ C3 382 -> -3.0208 | chặn mọi sink 110 -> -31.35
+% Màu theo thực thể như Hình 1, 3: xám = phòng thủ khác, xanh = luật tại broker, cam = BrokerGuard (rỗng = bỏ một thành
+% phần). Hình dạng điểm khác nhau nên đọc được khi in đen trắng. Rộng khoảng 10,4 cm.
+% Bản 15 trang (20/11): hình là tùy chọn (\paretotrue ở main.tex). Bỏ chú giải vì chú giải cũ che nhãn Sandwich; mỗi
+% điểm đã có nhãn, ý nghĩa màu và hình dạng ghi trong chú thích hình. 20/11: trục 3,6 cm, nhãn BrokerGuard một dòng,
+% chú thích hai dòng (bản tiếng Việt bật hình).
+\begin{figure}[!htbp]
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tikzpicture}
+\begin{axis}[
+  scale only axis, width=9.4cm, height=3.6cm,
+  xmin=-1.5, xmax=42, ymin=-3.6, ymax=0.6,
+  xtick={0,10,20,30,40}, ytick={-3,-2,-1,0},
+  xlabel={Số họ bị hại trên tập kiểm thử (/48, gộp ba mô hình nền)},
+  ylabel={$\Delta U$ so với khi không phòng thủ (điểm \%)},
+  axis x line*=bottom, axis y line*=left,
+  tick label style={font=\scriptsize}, label style={font=\scriptsize},
+  xmajorgrids, ymajorgrids, grid style={line width=0.2pt, draw=black!12},
+  /pgf/number format/use comma,
+  clip=false,
+]
+\addplot[only marks, mark=*, mark size=1.8pt, mark options={draw=black!70, fill=black!25}]
+  coordinates {(40,0) (40,-0.1042) (38,-3.125) (22,-2.0833) (25,-0.2083)};
+\addplot[only marks, mark=square*, mark size=1.7pt, mark options={draw=bgblue, fill=bgblue}]
+  coordinates {(34,0.1042) (15,-0.8333) (6,-2.6042)};
+\addplot[only marks, mark=diamond, mark size=2.6pt, mark options={draw=bgorange, fill=white, line width=0.7pt}]
+  coordinates {(4,-2.8125) (6,-2.6042) (2,-3.0208)};
+\addplot[only marks, mark=diamond*, mark size=3pt, mark options={draw=bgorange!75!black, fill=bgorange}]
+  coordinates {(2,-3.125)};
+% nhãn từng điểm
+\node[font=\tiny, anchor=north east] at (axis cs:41.2,-0.22) {\NoDef, \cMel, \cPG};
+\node[font=\tiny, anchor=south] at (axis cs:34,0.2) {\PhrRules};
+\node[font=\tiny, anchor=south] at (axis cs:25,-0.1) {\cProg};
+\node[font=\tiny, anchor=south] at (axis cs:22,-1.97) {\cSand};
+\node[font=\tiny, anchor=south] at (axis cs:38,-3.0) {\cSpot};
+\node[font=\tiny, anchor=west] at (axis cs:15.8,-0.8333) {\StrRules};
+\node[font=\tiny, anchor=west] at (axis cs:6.9,-2.55) {\StrSand, bỏ \cTwo};
+\node[font=\tiny, anchor=west] at (axis cs:4.9,-2.86) {bỏ \cOne};
+% một dòng: trục 3,6 cm thì nhãn hai dòng chạm trục hoành; nhãn kết thúc ở x khoảng 12, trước mũi tên x = 14
+\node[font=\tiny, anchor=west, inner sep=1pt] at (axis cs:2.9,-3.24) {\textbf{\ours}, bỏ \cThree};
+% hướng tốt hơn và tham chiếu ngoài trục (mũi tên đặt đúng x = 14 họ)
+\draw[-{Stealth[length=3pt]}, draw=black!45, line width=0.5pt] (axis cs:11,-1.35) -- (axis cs:6.5,-0.55)
+  node[anchor=south, font=\tiny, text=black!60] {tốt hơn};
+\draw[-{Stealth[length=2.5pt]}, draw=black!45, line width=0.5pt] (axis cs:14,-3.0) -- (axis cs:14,-3.55);
+\node[font=\tiny, text=black!60, anchor=west] at (axis cs:14.6,-3.3)
+  {Chặn mọi sink: 14 họ, $\Delta U = -31{,}4$ (ngoài trục)};
+\end{axis}
+\end{tikzpicture}
+\end{adjustbox}
+\caption{Đánh đổi an ninh và tiện ích trên \test. Tròn xám: phòng thủ khác. Vuông xanh: luật tại broker. Thoi cam: \ours, thoi
+rỗng: bỏ một thành phần.}\label{fig:pareto}
+\end{figure}

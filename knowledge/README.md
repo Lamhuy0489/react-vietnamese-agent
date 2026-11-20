@@ -9,6 +9,7 @@ memory của agent đang được benchmark. Không cần tài khoản hoặc gr
 ## Bắt đầu phiên làm việc
 
 1. [Prompt cho phiên sau](next_session_prompt.md): khối cần dán vào chat mới.
+   **BrokerGuard v3:** [bản đồ tri thức v3](v3_knowledge_map.md), trang trung tâm nối dữ liệu, quyết định, công cụ và việc tiếp theo.
 2. [Tóm tắt hiện tại](current_status.md), [bàn giao](handoff.md), [nhật ký phiên](session_log.md).
 3. [Lộ trình v2](../docs/project/roadmap_v2_rebuild.md) và
    [runbook mức A, mục "Bản đồ"](rebuild_a_runbook.md): chạy ở đâu, lưu ở đâu.

@@ -440,3 +440,364 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   liệu tham khảo từ arXiv vào `docs/paper/iccies2027/refs/` (không commit), lập `refs/README.md`.
 - 23:30: tải thêm 10 PDF (tổng 20), kiểm trang đầu từng file, `refs/README.md` có link arXiv. Đọc quy định ICCIES: cấm văn bản
   do AI sinh; ghi vào README bài báo, handoff và prompt phiên sau. Chờ owner quyết cách viết.
+
+## 2026-11-12 — Bài báo ICCIES: project LaTeX, bản tiếng Việt, rút gọn
+
+- Dựng `docs/paper/iccies2027/latex/` (LLNCS v2.26 từ CTAN) cho Overleaf; `sections/` cũ đổi thành `outline/`.
+- `refs.bib` 23 mục: nơi đăng, trang, DOI tra Crossref (CaMeL đã đăng SaTML 2026); câu trích đối chiếu tóm tắt PDF.
+- Owner yêu cầu viết bản tiếng Việt để đọc (bản nộp tiếng Anh owner tự viết). Owner thấy 19 trang trên Overleaf → rút gọn:
+  6 bảng, Hình 1 pipeline, Hình 2 (matplotlib, bảng màu đã kiểm CVD), 5 công thức; tên đổi bằng macro.
+- Owner chọn tiêu đề "Beyond Model Compliance: ...". Sửa hai lỗi số so với dàn ý cũ (thứ tự H4/H5; lời nhắc không mạnh hơn
+  luật ở SL/AL). Không biên dịch được trên máy (tải tectonic bị chặn).
+
+## 2026-11-12 tối — Bài báo: BrokerGuard v1/v2, bố cục, văn phong
+
+- Owner biên dịch trên Overleaf (12 rồi 14 trang); Claude xem PDF bằng PyMuPDF. Sửa bảng tràn lề (adjustbox, rút gọn
+  cột giả thuyết), khoảng trắng (bỏ placeins, gộp bảng Test-I/Test-II, 7 bảng), Hình 2 chuyển sang pgfplots.
+- Owner: D2+P2 và D3DEST đều là đóng góp → BrokerGuard BG-v1/BG-v2; D2 có cả lớp tín hiệu rộng A1 (R-Signal∀), đã sửa mô tả.
+- Gemini thành cột cuối bảng baseline Dev; đề xuất (chưa quyết) chạy thêm Sandwich trên Gemini, không chạy PromptGuard/MELON.
+- Viết lại bản tiếng Việt: câu ngắn, bỏ chấm phẩy và gạch dài; ký hiệu Sub(); link xanh bấm được; model card Prompt Guard 2
+  truy cập 12/11. Owner dặn: không render hình/PDF trên máy.
+
+## 2026-11-13 — Bài báo: phản biện, bỏ BG-v2, thống kê mức family
+
+- Owner hỏi bỏ BG-v2 chỉ giữ v1; đọc phản biện `phan bien.md` (root, không commit; có dấu hiệu do AI viết). Kiểm từng ý với
+  code và bài: A1 (29/12/22 là ca canonical), A4 (số 22 là của D2, không phải D2+P2), C5 (R-Dest so chuỗi con) đúng.
+- `scripts/paper_cluster_stats_v1.py` (6 giây, nice 10): family-level McNemar, hoán vị, DEFF, deny-all từ trace NoDef.
+  Test-II NoDef→BrokerGuard 42→14/48 family, p 3,7·10⁻⁹; utility −4,5 điểm, p 0,044. Deny-all Test-I 1,2% hại, 7,4% utility.
+- Sửa bài (bản tiếng Việt): bỏ BG-v2, BrokerGuard = D2+P2; Hình 1 vẽ lại bằng TikZ (`images/fig1_pipeline.tex`), xóa PDF cũ
+  và `tab2_ablation`; Bảng Test-I p mức family; Bảng Test-II có hàng chặn mọi sink; Mục 4 phạm vi bảo đảm (không IFC);
+  Mục 7 ba lớp vượt qua và hạn chế mới; tóm tắt không có p. Chưa biên dịch (owner biên dịch trên Overleaf).
+- Owner hỏi C10 (AgentDojo có phòng thủ): khả thi qua Kaggle + runner local, cần code pipeline element, ánh xạ sink khai báo
+  trước, khoảng nửa ngày + vài giờ chạy; chưa làm.
+
+## 2026-11-13 tối → 14/11 — C10: BrokerGuard trên AgentDojo, cập nhật bài
+
+- Adapter `scripts/agentdojo_brokerguard_v1.py` (luật D2 đóng băng + `repeat_user_prompt`), khai báo trước ở decision log.
+  Chạy qua đêm trên Kaggle meanalways với hai session T4 (session 1 mất tunnel ~23:33, session 2 chạy nốt VI), máy giữ thức
+  bằng `caffeinate -dims`, supervisor tự chạy lại job. Xong 03:05, 8/8 lượt, 0 lỗi.
+- Kết quả: EN Banking 72/3, EN Slack 15/6, VI Banking 54/1, VI Slack 13/0 (utility/ASR). Ca lọt: đổi mật khẩu (sink không
+  đích), mở URL bằng công cụ đọc, gửi cho Alice do người dùng nêu; 2 ca EN Slack là lời gọi đã bị chặn nhưng vẫn được chấm
+  thành công (hàm chấm theo trace). R-Signal chỉ bật ở VI. Utility Slack giảm do R-Dest.
+- Script soát `scripts/agentdojo_bg_audit_v1.py`. Cập nhật facts.md, Bảng 6, tóm tắt và Mục 5–8, decision log 14/11.
+
+
+## 2026-11-14 — Bài báo: rút gọn sau khi owner báo 16 trang
+
+- Bỏ Bảng tab0_versions (trùng lời văn), thu Hình 2 (cao 4,4 → 3,4 cm), bỏ 7 tài liệu không cần thiết (23 → 16 trích dẫn:
+  liu2024formalizing, zhang2025asb, chen2025struq, chennabasappa2025llamafirewall, costa2025fides, beurerkellner2025patterns,
+  kwon2023vllm; vẫn còn trong refs.bib). Viết gọn Mục 1–8 (khoảng 13% chữ), định nghĩa một lần ba đơn vị đếm (ca, cặp họ
+  và mô hình, họ) ở Mục 5, gộp hai đoạn AgentDojo. Số liệu không đổi. Chưa biên dịch: owner kiểm số trang trên Overleaf.
+
+## 2026-11-14 trưa — Phản biện 2, chuẩn bị C11
+
+- Đọc `phan bien2.md`: người phản biện xác nhận đúng hướng, tái dựng khớp mọi p; còn đòi sửa lời văn (phạm vi R-Dest, đọc là
+  kênh tuồn ra, Test-II lọt nhiều hơn, lệch hai chiều của chặn mọi sink, Holm trộn đơn vị). Owner đồng ý 6 việc (handoff).
+- Đếm Test-II theo cơ chế từ file eval (chỉ đếm): 4/27 ca BrokerGuard nằm ngoài SL/AL/PT (CR 1, US 3).
+- Owner muốn chạy Sandwich VI trên AgentDojo (C11): đã khai báo decision log, viết `build/kaggle/c11_launch.sh`; hoãn vì
+  pin tụt (56%), chờ 100%.
+
+
+## 2026-11-14 chiều — C11 xong
+
+- C11 chạy trên dovuong05 v4 (READY 12:44, xong 14:40). Chỉ 4 lượt không tấn công là mới; hai lượt VI có tấn công đã có từ
+  07/11 (đính chính ở decision log). Tiện ích Sandwich khi không tấn công: EN Banking 7/16, EN Slack 8/21, VI Banking 5/16,
+  VI Slack 6/21, gần bằng none (7, 7, 6, 7).
+- Đã điền Bảng 6 (mọi ô Llama đủ) và facts.md. Lời văn Mục 6 không cần đổi. Keepalive đã tắt.
+- Ghi tri thức: quy tắc kiểm kê đĩa trước khi nói "chưa chạy" (runbook, Bản đồ; memory).
+
+## 2026-11-14 chiều muộn — Phản biện 3 (vòng cuối)
+
+- Đọc `phan bien3.md`: số liệu tái dựng đúng hết; còn ca CR mâu thuẫn Mục 4, MDE 10 điểm sai, đề nghị phân rã nguyên nhân.
+- `scripts/paper_bypass_causes_v1.py` (chỉ đếm từ nhãn và quyết định broker): CR = va chạm chuỗi con (từ thường có trong u);
+  mọi SL/AL lọt (Test-I 9, Test-II 16) do nguồn chứa giá trị gắn S0 nên không vào C; PT 10 tamper; US 3 + PT 1 đích có trong u.
+- Sửa Mục 4 (điều kiện CR, nhãn nguồn, complete mediation), 5 (Test-II mới với mã nhưng người soạn biết Test-I), 6 (CI thay
+  MDE, hai số AgentDojo), 7 (viết lại đoạn đầu theo số đo), 8 (nhãn theo giá trị), Bảng 3 (chặn mọi sink, chú thích H5).
+- Owner giữ 17 tài liệu. Bài dài thêm khoảng 260 chữ, owner kiểm số trang trên Overleaf.
+
+## 2026-11-14 tối — Tiêu đề, mệnh đề phạm vi, bố cục và rà soát toàn bài
+
+- Chốt tiêu đề "BrokerGuard: A Layered Defence with Tool-Broker Enforcement Against Indirect Prompt Injection in
+  Vietnamese LLM Agents". Rà tính mới: thêm FIDES và ClawGuard (19 tài liệu). Dữ liệu đã công khai, bài không ghi link.
+- Mục 4 thêm Mệnh đề 1 (phạm vi bảo đảm, giả định i–iii); Mục 7 quy 40 ca lọt về giả định bị vi phạm hoặc sửa tham số,
+  viết bằng lời thường. Tóm tắt và đóng góp 2 nói đúng phạm vi (sửa tham số nằm ngoài mệnh đề).
+- Bảng kiểu tràn ngang (tabular*), chữ trái số phải, in đậm tốt nhất, chú thích ngắn, `\FloatBarrier` mỗi tiểu mục;
+  Hình 2 nhỏ lại; Hình 1 nhãn ngắn, chữ 6,4 pt.
+- Bớt mã trong lời văn: tên cơ chế bằng chữ (mã chỉ còn ở Bảng 1, Hình 2, dòng H3), "lành tính thường/ủy quyền" (macro
+  `\bPlain`, `\bAuth`), bỏ S0/S2, tên công cụ mock, MELON*/Progent*. Không ngôi thứ nhất; không commit/Git/proxy/JSON.
+- Rà soát toàn bài (b57e71c): sửa mâu thuẫn nhánh lành tính Mục 3 và 5, thứ tự CI Wilson Mục 6.3, H4/H5 "không đạt",
+  "luật không phụ thuộc ngôn ngữ" chỉ đúng với R-Dest/R-Flow. Chưa biên dịch: owner kiểm số trang trên Overleaf.
+
+## 2026-11-15 rạng sáng — Bản tiếng Anh đầy đủ, rút về 15 trang
+
+- Owner yêu cầu dịch toàn bộ: `latex_en/` nay là bản dịch đầy đủ của bản tiếng Việt đã rà soát (Anh-Anh, không "we",
+  tóm tắt 249 từ). Đã nhắc owner một lần về quy định ICCIES cấm văn bản AI (tự sửa lại câu chữ hoặc kiểm quy định khai báo).
+- Lỗi: script đổi dấu phẩy thập phân phá tọa độ TikZ/pgfplots (Hình 1, 2 bản EN); đã dựng lại hình từ bản VI. Bài học:
+  không regex `\d,\d` trên file hình, chỉ đổi trong bảng/lời văn.
+- Rút gọn (cả EN và VI): Hình 1 yscale 0.8, đoạn chặn mọi sink, AgentDojo, Mục 6.5, bỏ câu Llama bị cắt; bỏ
+  `\FloatBarrier` tiểu mục; trang chỉ có float xếp từ đầu trang; khoảng cách float/list/công thức nhỏ lại.
+- Tài liệu tham khảo 2--3 dòng: venue viết tắt, bỏ pp./publisher, "et al." sau 3 tác giả, DOI dạng `doi:` ngắn bấm được,
+  arXiv bấm được. Bảng 4 EN chỉ ghi phần trăm để vừa bề ngang. Commit cuối 956d93f. Chưa thấy PDF sau các sửa này.
+
+## 2026-11-15 chiều — Baseline Gemini xong, hạn lùi, mở rộng theo Review Huy
+
+- Gemini 3 Flash trên Dev xong 4 baseline (rc=0, 560/560): Sandwich 1·191·64, Spotlight 11·180·55, Progent* 13·184·54,
+  MELON* 22·185·55 (họ /48 · thường /240 · ủy quyền /80); G1 để "--". Đã điền Bảng 2 (VI+EN), Mục 6 thêm câu Sandwich ngang
+  BrokerGuard trên Gemini, Mục 7 "chín cấu hình". Commit cuối e66fa56. Proxy và OmniRoute đã tắt theo lệnh owner.
+- Owner báo hạn lùi và gửi `Review Huy.docx`; quyết mở rộng theo review. Bản thiết kế v3 nháp:
+  `docs/project/brokerguard_v3_extension_design.md` (C1 chính sách ý định có cực tính, C2 nhãn theo giá trị, C3 toàn vẹn
+  tham số; mô hình hình thức; Test-4 niêm phong trước code; log token/thời gian). Chờ owner duyệt mục 8.
+- 16:30: owner duyệt giao thức gộp: Dev v4 = Dev + Test-I + Test-II (168 họ, 1.960 fixture), Dev-val 42 họ phân tầng,
+  Test-4 48 họ là tập kiểm định duy nhất (giả thuyết chính chỉ phần tĩnh; nhóm thích nghi nhắm v1 báo riêng). Đã dựng và
+  niêm phong `release_dev4` bằng `scripts/build_dev_pool_v4.py` (kiểm seal đầu vào, chỉ đổi split, có test).
+
+## 2026-11-15 tối — Niêm phong Test-4, hạ tầng đo chi phí, chạy mốc Dev v4.1
+
+- Rà báo cáo Test-4 của owner: phát hiện phiếu review chéo sinh bằng công thức và giờ decision log ở tương lai; owner xóa
+  phiếu, chọn công khai "sinh tự động từ spec, có người rà soát". Claude sửa decision log 18:20 (hash seal đúng `1f9b0070…`,
+  ghép ablation đúng C1/C2/C3, hash script sinh), tính lại lực (McNemar chính xác), rồi commit seal `a1711a6`.
+- Bước 1 v3 (`1380ce1`): `run_metrics_v1.py` (token theo vai trò, lời gọi thêm của phòng thủ, bước, lời gọi đề xuất/qua
+  cổng/bị chặn, lý do, xác nhận, che đáp án, chia thời gian), `run_v3_api_v2.py` (Dev v4/v4.1, kiểm seal, ghi mức song
+  song), `evaluate_v3_v2.py` (chấm nguyên văn + biến đổi, chặn nhầm, tỉ lệ xác nhận), `cost_from_traces_v1.py`. 16 test qua.
+- 18:36: bật 6 notebook (2 mỗi mô hình: A0+D2P2 và P2+PRG; SHARDS=2, PAR=1) bằng `build/kaggle/dev4_launch.sh`; watcher
+  `build/kaggle/dev4_watch.sh` chạy dưới `caffeinate`, ghi tiến độ 10 phút một lần vào `build/kaggle/dev4_watch.log` và tắt
+  keep-alive khi chuỗi xong. Đã tắt app Antigravity theo lệnh owner.
+- 19:47–23:50: ba notebook xếp hàng quá 70 phút nên bước discover hết giờ; nối lại khi RUNNING. Tốc độ thật thấp hơn ước
+  (Llama ~1,8 ca/phút), hai cấu hình nối tiếp không vừa phiên 12 giờ; owner cho xoay tài khoản thoải mái nên chuyển sang
+  mỗi notebook một cấu hình (12 notebook, meanalways dùng 2 slot, 6 tài khoản kia dùng slot thứ hai). Supervisor
+  `build/kaggle/dev4_supervise.sh` thay watcher; `build/kaggle/dev4_kaguard.sh` bật lại keep-alive bỏ cuộc vì URLError.
+  Bài học: giết bash của chuỗi để lại xargs mồ côi chạy tiếp cấu hình sau (đã lỡ 4 ca D2P2, đã xóa), phải giết cả cây
+  tiến trình; zsh không tách từ với `set -- $x`. Số tạm ghi ở hub mục 5. Commit 217c810, d9b10cf.
+
+## 2026-11-16 trưa — Qwen A0/P2 xong, C1 bộ trích P(u)
+
+- Mốc Dev v4.1: supervisor và kaguard vẫn chạy; Qwen A0, P2 đủ 1.960 và đã chấm (decision log 2026-11-16 11:15): gây hại
+  299/840 và 40/840, chặn nhầm 0, hai cách chấm trùng nhau. model_error của Qwen toàn là `OUTPUT_TRUNCATED`; max_steps
+  14–17 %. 10 cấu hình còn chạy (Llama chậm nhất).
+- C1 (`security_v3/intent_policy_v1.py`, 37 test): cực tính phủ định VI/EN có và không dấu, đích khớp nguyên token, quyền
+  theo loại hành động, nhắc tới mà không cấp quyền -> CONFIRM. Chấm offline theo oracle bằng
+  `scripts/intent_policy_dev_eval_v1.py`: utility 100 %, M6 chặn hết (train 105/105, val 35/35; v1 65, 15). Chọn cấu
+  hình mặc định trên Dev-val (decision log 12:30).
+- Bài học: sau khi bỏ dấu, nhiều từ đụng nhau ("example" trong tên miền, "ghi chú", "ban" = bạn/bản, "hàng không",
+  "dung" = dùng/đừng, "ma" = mã/mà); phải kiểm chính tả gốc khi văn bản có dấu và đòi động từ gửi theo sau khi không dấu.
+  Chỉ chỉnh luật theo lỗi Dev-train; val chỉ dùng chọn cấu hình.
+- Chưa nối runtime: `run_v3_api_v2.py` đang được các chuỗi mốc gọi lại, không sửa lúc này.
+
+## 2026-11-16 chiều — Runtime v3 C1+C2+C3, phát lại oracle trên Dev
+
+- Runtime `security_v3/brokerguard_v3_v1.py`: D2 với P(u) thay luật 2 (C1), nhãn theo kiểu giá trị và R-Flow v2 (C2,
+  `value_labels_v1.py`), ghim tham số người dùng nêu (C3, `param_pinning_v1.py`); mỗi thành phần tắt được cho ablation.
+- `scripts/v3_oracle_replay_v1.py` phát lại quỹ đạo oracle qua runtime thật, không LLM, khoảng một phút. Dev-val: hại v1
+  25/210, v3 2/210, utility bằng v1; −C1 7, −C2 6, −C3 13. C1a (P(u) thay anchor A1) tăng utility khi bị tấn công nhưng
+  tăng hại, nên bỏ (decision log 15:30).
+- C3 chỉnh theo lỗi Dev-train: toán hạng phép tính, "đơn vị" = cơ quan, đơn vị viết khác nhau giữa ngôn ngữ, số đọc trước
+  động từ gửi, câu "cấm chỉnh sửa". Bài học: giá trị mật Dev cùng một dạng do mã sinh, không được dò theo dạng đó.
+- Owner: pin hỏng vĩnh viễn, phải chạy nhẹ. Đã dừng pytest toàn bộ (gần một giờ); chỉ chạy test module đã đụng.
+
+## 2026-11-16 tối → 17/11 rạng sáng — Mốc Dev v4.1 đủ 12/12, V3P2 chạy bằng mô hình thật, ablation Dev-val
+
+- Mốc Dev v4.1 xong cả 12 cấu hình (decision log 2026-11-16 18:00, 18:40, 20:30). D2P2 (v1) trên ba mô hình: gây hại
+  12–25/840, chặn nhầm 56–86/1.120, phần lớn ở nhánh ủy quyền. Llama: khoảng 1/3 utility, do max_steps và
+  OUTPUT_TRUNCATED; đây là lỗi mô hình, đã chẩn đoán từ 10/11 (nâng ngân sách token không cứu được ca nào). Không sửa riêng
+  cho Llama, vì phải giữ công bằng giữa các mô hình.
+- `scripts/run_v3_api_v3.py` (bản sao v2, thêm v3p2 và ablation). Dry-run bắt được lỗi: `runtime_class` gắn
+  `Phase5Runtime._run_task` sau khi `a6_provenance_v3.activate()` đã vá hàm này, nên policy v3 không được cài. Đã sửa bằng
+  cách lưu hàm gốc lúc import, có test hồi quy (decision log 18:30).
+- Gemma, Qwen, Llama V3P2 chạy từ 18:04–20:29. Lúc khoảng 21:20 máy ngủ (pmset sleep 1 phút; caffeinate của supervisor đã
+  thoát cùng supervisor), mất mạng, Kaggle tắt cả ba notebook (đã có Gemma 702, Qwen 967, Llama 290). Push lại lúc
+  01:02–01:54. Thêm `build/kaggle/dev4_v3_follow.sh` / `dev4_v3_abl_follow.sh` để tự nối lại và tự chạy ablation trên
+  Dev-val (kế hoạch ghi trước, decision log 2026-11-17 02:00).
+- Bài học: (1) luôn giữ một `caffeinate -dimsu` độc lập suốt thời gian theo dõi; (2) script nối tiếp phải nhận chuỗi theo
+  folder notebook, và không tính tiến trình keep-alive (keep-alive chạy 11 giờ); (3) folder ghi lại phải trỏ vào notebook
+  mới push; (4) quota: mỗi tài khoản 2 phiên cùng lúc, phiên đã bật chạy đủ 12 giờ.
+
+## 2026-11-17 sáng — V3P2 ba mô hình và ablation Dev-val xong
+
+- V3P2 so với D2P2 (decision log 07:00, 08:30, 11:30): gây hại giảm mạnh ở cả ba (còn 1–3/840, chỉ M5), lộ câu cuối về 0,
+  utility giữ nguyên, chặn nhầm tăng (Llama nhiều nhất, do C3 khi Llama viết lại giá trị người dùng).
+- Ablation Dev-val (decision log 11:45): C2 và C3 đạt tiêu chí ghi trước, C1 không đạt; chờ owner quyết.
+- Sự cố đêm: đĩa đầy lúc 03:20 (đã nén `results/rebuild_b` có kiểm số file), `brew cleanup` gỡ `openssl@3` (đã cài lại),
+  tunnel buiquocviet lỗi khoảng một nửa số lần gọi (đã chuyển Llama sang notebook huylmhuhu), guard keep-alive thiếu
+  `SSL_CERT_FILE` (đã sửa). Tăng shard cho ablation (3 shard mỗi cấu hình) thì nhanh gấp khoảng 2,2 lần.
+- Quota: cả 7 tài khoản hết đến 2026-11-21 00:00 UTC (`kaggle quota`).
+
+## 2026-11-17 trưa — Đóng phiên, owner tắt máy đi sửa pin
+
+- Đã dừng hết tiến trình nền (script nối tiếp, guard keep-alive, keep-alive, caffeinate). Notebook Kaggle sẽ tự tắt khi hết
+  keep-alive; không còn lần chạy nào dở. Kết quả đầy đủ ở `results/rebuild_c/dev4_1_V3P2_*` và `dev4_1_V3P2-C*_val_*`
+  (có `_eval_v2.json`), số đã ghi decision log 2026-11-17 07:00–11:45.
+- Việc chờ owner: chọn giữ đủ C1–C3 hay bỏ C1, rồi đóng băng final_config_v5; Test-4 sau khi quota đặt lại 21/11 07:00 giờ VN.
+- Phần cứng: owner mang máy đi sửa pin. Đầu phiên sau hỏi owner một lần đã sửa xong chưa trước khi nới giới hạn chạy nhẹ.
+
+## 2026-11-17 tối — Đóng băng final_config_v5, Test-4 bắt đầu chạy
+
+- Owner: pin đã sửa xong (gỡ giới hạn chạy nhẹ); giữ đủ C1–C3 sau khi xem lập luận học thuật (H3 kiểm ablation trên Test-4).
+- Code mới: `run_v3_api_v4.py` và `evaluate_v3_v3.py` (đường Test-4 có cổng `final_config_v5`), `final_config_v5.py`,
+  `freeze_final_config_v5.py`, 11 test. Dry-run bằng backend giả bắt lỗi schema (`FixtureV3` thiếu `test4`/`T5`); đã gỡ
+  manifest đầu (chưa dùng), sửa, đóng băng lại `673f7af4…` (decision log 19:25, 19:40). Commit `88611e1`.
+- Thêm 2 tài khoản Kaggle (hieu1908, lehung040324). Bật 4 notebook lúc 19:26–19:27; supervisor độc lập lo nối lại, đẩy
+  notebook mới và mẹo quota (dừng phiên khi còn khoảng 1–1,6 h, đẩy lại để có thêm 12 h).
+- Bài học: không sửa file `.sh` đang chạy (bash đọc dần, sẽ lệch dòng); đã dừng các launch đang chờ và nối lại bằng chuỗi.
+
+## 2026-11-18 — Test-4 dừng: tài khoản Kaggle mới không có GPU
+
+- 17/11 20:10: cả 4 notebook Test-4 lỗi ô đầu (`nvidia-smi` không có); đã dừng supervisor và chuỗi, không tốn quota.
+- 18/11: so với notebook cũ chạy được: Kaggle ghi máy T4 nhưng cấp image CPU (`kaggle-images/python`, Python 3.13) thay vì
+  image GPU; giờ GPU 0.00h. Notebook thử `gpu-check` trên cả hai tài khoản báo NO_GPU. Nguyên nhân khả dĩ nhất: chưa xác minh
+  số điện thoại. Chờ owner xác minh rồi kiểm lại bằng `gpu-check`; dự phòng: quota tài khoản cũ đặt lại 21/11 07:00 giờ VN.
+
+## 2026-11-18 — Test-4 chạy xong; H1 không đạt (hiệu ứng sàn); phân tích và hướng bài báo
+
+- Hai tài khoản mới đã có GPU sau khi owner xác minh số điện thoại (`gpu-check` in `Tesla T4`). Bật 4 notebook 11:19,
+  supervisor `t4_supervise.py`. Llama xong 16:22, Qwen 17:19, Gemma 17:58; 48/48 file `test4_*_eval_v3.json`.
+- Sự cố mạng: một địa chỉ IPv6 của `*.trycloudflare.com` chập chờn làm khoảng 50% lời gọi lỗi hạ tầng (runner xóa và chạy
+  lại ca, không ảnh hưởng kết quả). Owner chạy `networksetup -setv6off Wi-Fi` lúc 14:45: lỗi còn khoảng 1%, tốc độ gấp
+  khoảng 2,3 lần. Chạy thêm 2 notebook phụ trên lehung040324 cho 24 ca thích nghi (Gemma có ích; Qwen lên muộn, bỏ qua hết).
+- Phân tích `scripts/test4_analysis_v1.py` (decision log 2026-11-18 18:40): H1 v1 6/48 → v3 2/48 họ gộp, 4–0, p một phía
+  0,0625: không đạt; H2–H4 mô tả (tiện ích −0,5 điểm, chi phí token/độ trễ ±1%). v3 0 vi phạm sink; C1 và C2 chặn đúng 4 họ
+  v1 lọt; M5 sửa số/đơn vị lọt cả v1 lẫn v3. 40 ca vượt v1 cũ (Dev, trong mẫu): v3 còn 2.
+- Owner: ICCIES chưa nộp, chỉ làm một bài. Hướng: đóng góp là cơ chế v3 + mô hình hình thức theo `Review Huy.docx`; v1 là
+  biến thể luật chuỗi (bậc ablation), vẫn so sánh; báo H1 trung thực. Không chạy Gemini để tìm ý nghĩa.
+
+## 2026-11-18 (tối) — Chuẩn bị bài, phân tích phụ: Gemini, AgentDojo v3, thích nghi nhắm v3
+
+- Bổ sung facts (thời gian cổng 0,26 ms/lời gọi, tham chiếu chặn mọi sink 11,5% tiện ích, Pareto 2 chiều). Kiểm kê baseline
+  (P1, G1, MEL, SAN đã loại trên Dev cũ) và các phần còn thiếu theo Review Huy.
+- Hạ tầng mới: `build_adaptive_v3target.py` + hướng dẫn soạn; `run_v3_api_v4_ref.py` (cột Gemini); `agentdojo_brokerguard_v3.py`
+  + `run_agentdojo_api_v2.py`; `quota_all.sh`; `ad3_launch.sh`, `adv3_launch.sh`. Khai báo trước 19:30, 20:20, 20:55.
+- Bật: Gemini Test-4 (5 cấu hình song song qua OmniRoute), AgentDojo v3 (4 notebook), thích nghi nhắm v3 (chờ slot).
+- Bài học: (1) `GROUPS` là biến có sẵn của bash (=20), đặt tên biến chuỗi khác; (2) adapter AgentDojo: "cho" bỏ dấu trùng
+  "chớ", phải dùng `_Text.word_ok`; số tiền 98.7 vs "98.70"; (3) `kernels delete` xóa mọi phiên bản của slug; (4) chia việc ra
+  nhiều notebook (mỗi notebook một model/suite) là cách tăng tốc chính, 2 lượt mỗi notebook được vLLM gộp lô.
+
+## 2026-11-18 (22:40) — Tài khoản Kaggle thứ 10, chuyển vòng thích nghi
+
+- Owner thêm `credential kaggle/kaggle9.json` (tngdngpham, 30 h GPU). Chuyển qwen35_9b, gemma4_12b của vòng thích nghi nhắm v3
+  từ hieu1908 (đang kẹt 2 slot AgentDojo) sang tài khoản này, đẩy 22:22; llama31_8b vẫn chờ lehung040324.
+- Bài học: khi dừng `adv3_launch.sh` đang thử đẩy, phải giết cả các subshell con (`pkill -f "adv3_launch.sh <owner>"`),
+  không chỉ PID cha, nếu không chúng vẫn đẩy được lên tài khoản cũ.
+- AgentDojo v3: 4 lượt không tấn công xong; Gemini Test-4 khoảng 70%. Owner đi ngủ; canh đêm bằng `health_watch.sh`.
+
+## 2026-11-19 (00:30) — Gemini Test-4 xong; kiểm tính thống nhất; baseline bổ sung
+
+- Gemini Test-4 xong 23:36: họ bị hại A0 26, PRG 14, P2/v1/v3 0 (hiệu ứng sàn); ghi facts.md, decision log 23:45,
+  `scripts/test4_gemini_ref_v1.py`. Thích nghi nhắm v3 Qwen/Gemma xong trên tngdngpham (notebook bị QUEUED 70 phút, viết
+  `adv3_resume.sh` chờ discover tới 300 phút).
+- Kiểm 58 identity Test-4: cùng final_config_v5, seal, runner, prompt, sinh (temp 0, seed 42, 512 token), evaluator; runtime
+  A0 cho A0/P2/PRG, A1 cho v1/v3 là thiết kế. Lỗi mô hình là OUTPUT_TRUNCATED (mô hình mở, tất định) và OUTPUT_INVALID
+  (Gemini): không chạy lại.
+- Owner chọn chạy thêm R1, D2, P1, MEL, G1 trên Test-4 và Dev v4.1 (khai báo 00:25; wrapper `run_v3_api_v4_supp.py`,
+  `build/kaggle/supp_launch.sh`). Prompt Guard local: tải lần đầu, xet treo nên dùng `HF_HUB_DISABLE_XET=1`.
+
+## 2026-11-19 (04:40) — Đêm: Test-4 bổ sung, thích nghi v3, AgentDojo v3 xong; Dev v4.1 bổ sung đang chạy
+
+- Hai tài khoản mới tngdngpham (kaggle9.json) và phmkimphng (kaggle10.json), mỗi tài khoản 30 h. Chia việc theo notebook để
+  song song: Test-4 bổ sung xong 02:51 (15/15 lượt); Dev v4.1 bổ sung chạy trên phmkimphng (Qwen, Gemma) và tngdngpham
+  (Llama chia 2 notebook theo cấu hình).
+- Kết quả (facts.md): dòng phát triển trên Test-4 R1 34 → D2 15 → v1 6 → v3 2 họ /48; G1 = A0 (Prompt Guard 2 không chặn
+  gì trên tiếng Việt). Thích nghi nhắm v3: A0 25/26, v1 2/2, v3 1/1 (không mạnh hơn canonical). AgentDojo v3: tấn công thành
+  công bằng hoặc ít hơn v1, utility Slack giảm.
+- Bài học: dừng bash cha của chuỗi (kill -9) để runner chạy nốt mà không sang bước sau; tách theo cấu hình để không hai tiến
+  trình cùng ghi một thư mục kết quả; Prompt Guard tải lần đầu cần `HF_HUB_DISABLE_XET=1`.
+
+## 2026-11-19 (12:15) — Dev v4.1 bổ sung xong; mọi thực nghiệm xong
+
+- Dev v4.1 bổ sung R1, D2, P1, MEL, G1 × Qwen, Gemma, Llama đủ 1 960/1 960 (Llama 07:36, Qwen 08:10, Gemma 12:10), không
+  lỗi hạ tầng. Họ bị hại /504: A0 346, R1 278, D2 123, P1 280, MEL 345, G1 346, v1 36, v3 4 (facts.md, decision log 12:15).
+- Bài học: bộ canh quota nhận "done" theo dòng cuối log thì báo nhầm khi dòng "Terminated" của keepalive in sau; sửa xét 3
+  dòng cuối. Vòng chờ trong zsh không tách `$L`: chạy danh sách file bằng bash hoặc liệt kê trực tiếp.
+- 12:40: tắt Prompt Guard, proxy Gemini, caffeinate; IPv6 Wi-Fi bật lại. Owner nghỉ, phiên sau viết bài (chờ trả lời thư
+  mục, ngôn ngữ nháp, tên phương pháp).
+
+## 2026-11-19 (tối) — Viết bài v3 bản tiếng Việt
+
+- Owner chốt: thư mục mới, cùng định dạng LNCS, viết tiếng Việt trước; sau đó cho phép dài hơn 15 trang (owner tinh chỉnh
+  sau), văn phong học thuật, không giống AI viết. Tên phương pháp chưa đặt: bài dùng BrokerGuard cho v3, BG-Base cho v1.
+- Bài ở `docs/paper/brokerguard_v3/` (README là mục lục làm việc, có bảng đổi tên log → bài). 10 mục, 6 bảng, 3 hình
+  TikZ/pgfplots, 25 tài liệu (thêm CapLite arXiv:2611.17115, Dwork 2015, Recht 2019, Tramèr 2020, đều kiểm trên web).
+  Test-4 trong bài là Test-III; Dev v4.1 là Dev.
+- Số mới cho bài ghi ở facts.md mục "Bổ sung cho bài v3": ASR mức ca (`scripts/paper_v3_case_counts_v1.py` →
+  `results/rebuild_c/paper_v3_case_counts_v1.json`), tiện ích dạng số ca, Dev P2/PRG, QA Test-4, bằng chứng phát triển,
+  chi phí theo mô hình, lý do chặn nhầm.
+- Chưa biên dịch (không TeX trên máy, owner dùng Overleaf). Đã kiểm tĩnh bằng script: ngoặc, môi trường, `\ref`,
+  `\cite`, `%` sau số, chấm phẩy và "chúng tôi" trong lời văn.
+- Bài học: cột `attack_read_violations` của file chấm đếm lần đọc chứ không phải số ca; ΔU nên tính từ số ca (/960) để
+  tránh lệch 0,1 điểm do làm tròn.
+- Owner yêu cầu thêm bản tiếng Anh tương ứng: `docs/paper/brokerguard_v3/latex_en/` (cùng tên file, nhãn, bảng, hình,
+  số; chính tả Anh-Anh; tóm tắt 248 từ; tiêu đề "Intent-Aware Authorisation ..."). Dùng font T5 vì Mục 4 trích từ phủ định
+  tiếng Việt (T1 thiếu chữ ư, ừ). Kiểm tĩnh sạch, không có "we/our", không từ sáo.
+- Sửa lần 2 theo owner ("thống nhất, mã chỉ ở chỗ cần thiết, bài mới thì không cần v1/v2, không để hình/bảng tràn lề"):
+  bỏ mọi tên phiên bản và Test-I/II/III; cấu hình D2P2 gọi là "luật chuỗi + Sandwich" (BrokerGuard bỏ cả ba thành phần),
+  D2 là "luật chuỗi", R1 "luật cụm từ", A0 "không phòng thủ"; hai tập niêm phong cũ là "giai đoạn đầu của nghiên cứu
+  này". Mã R-Dest/R-Flow/R-Redact/R-Signal bỏ hẳn (thay bằng tên luật); C1–C3 chỉ ở định nghĩa, bảng, hình. Mọi bảng và
+  hình bọc `adjustbox{max width=\textwidth}`; Bảng 4, 6a xoay; Hình 3 xếp dọc; `\emergencystretch`; công thức độ đo tách
+  ΔU. Làm cả `latex/` và `latex_en/` (tóm tắt EN 249 từ). Bảng đổi tên mới trong README của bài.
+
+## 2026-11-20 — Rút bài v3 còn 15 trang, bớt tài liệu tham khảo
+
+- Owner tải bản biên dịch tiếng Việt về `docs/paper/brokerguard_v3/pdf/agent_injection_vn.pdf`: 23 trang (bảng/hình chiếm
+  khoảng 4,6 trang, Bảng 3 gần 0,9 trang, trang 18 trống nửa trang do `placeins [section]`). Owner yêu cầu tối đa 15
+  trang, giữ phần cần thiết, bớt trích dẫn.
+- Đã rút cả `latex/` và `latex_en/` (cùng nội dung, cùng số, cùng nhãn): bảng chi phí và bảng Gemini thành lời văn; hình
+  theo cơ chế + bảng thích nghi gộp thành Bảng 4 (`tab4_mechres.tex`); bảng con H1–H4 thành lời văn; AgentDojo thành Bảng 5
+  (`tab5_agentdojo.tex`); Mục 7 dùng tiêu đề đoạn; Mục 8 gộp đoạn; bỏ `placeins [section]`; Hình 1 bỏ chú giải trong hình;
+  Hình Pareto thành tùy chọn (`\paretotrue` ở `main.tex`, mặc định tắt). Tài liệu 25 → 19 (bỏ BIPIA, Nasr, Tramèr,
+  Dwork, Recht, Holm; giữ FIDES, design patterns, Liu et al. theo `phan bien3.md`). Không thêm số mới.
+- Ước lượng (chưa biên dịch, không có TeX trên máy): bản Việt khoảng 14,1 trang, bản Anh khoảng 14,4 trang; bật Pareto
+  thêm khoảng 0,37 trang. Cách ước lượng: độ rộng chữ theo metric cmr10 (fontTools + cmr10.ttf của matplotlib ở python3
+  hệ thống), kiểm trên bản 23 trang lệch dưới 0,1 trang. Chi tiết và danh sách đã cắt: README của bài.
+- Bài học: chữ Anh chiếm chỗ hơn chữ Việt khoảng 9\% cùng nội dung, nên bản Anh là bản quyết định giới hạn trang; viết
+  lời Anh gọn thay vì dịch sát. `placeins [section]` gây trang trống khi bảng không vừa trang.
+
+## 2026-11-20 (sau) — Sửa bản Việt theo góp ý owner trên bản biên dịch 15 trang
+
+- Owner biên dịch bản Việt: khoảng 14,5 trang (còn trống nửa trang), gửi ảnh Bảng 3 và Bảng 1. Góp ý: Q · G · L nên tách
+  cột (dấu chấm làm số không thẳng hàng); Bảng 1 tràn lề; tóm tắt nói về H1 chưa khéo. Owner yêu cầu sửa bản Việt trước,
+  bản Anh sau.
+- Nguyên nhân tràn: `llncs.cls` có `\let\footnotesize\small`, bảng in ở 9 pt chứ không phải 8 pt; Bảng 1 dùng `tabular*`
+  rộng tự nhiên 379 pt so với khổ 346 pt, `adjustbox` không thu vì `tabular*` khai báo đúng bề ngang trang.
+- Đã sửa bản Việt: Bảng 1 sang `tabularx`; Bảng 3, 4 tách cột số; tóm tắt, Mục 1, 7, 8, 9 diễn đạt lại kết quả so với
+  luật so khớp chuỗi (tích cực, trung thực); sửa câu kết luận nói quá. Owner chọn bật Hình Pareto ở bản Việt (ước lượng
+  14,85 trang). Ước lượng nay tính bảng ở 9 pt, dòng 11 pt và khớp số trang owner đo (14,49 so với khoảng 14,5).
+- Còn lại: bản Anh làm y hệt, viết gọn thêm khoảng 0,25 trang rồi bật Pareto; owner biên dịch lại bản Việt để kiểm.
+
+## 2026-11-20 (tối) — Soát văn phong, giữ 15 trang, đồng bộ bản Anh, bỏ chữ đỏ
+
+- Owner: bản Việt bật Pareto dư 2 dòng sang trang 16; yêu cầu viết tối ưu, chuẩn, mạch lạc, không giống AI, sửa cả bản
+  Anh, bỏ chữ đỏ. Trước đó owner hỏi về tiêu đề, hướng bài, vì sao H1 chưa đạt và v1 là gì (đã giải thích trong chat).
+- Đã làm cả hai bản: soát văn phong (bớt "còn", "tức", câu dài, từ dịch sát; "thực thi chính sách"; sửa logic phạm vi
+  kẻ tấn công), cắt vài câu chi tiết phụ, rút chú thích bảng/hình, khối tác giả ẩn danh. Bản Việt bật Pareto (trục 3,6
+  cm), bản Anh tắt Pareto. Ước lượng đã hiệu chỉnh: Việt khoảng 14,8 trang, Anh khoảng 14,7 trang. Số liệu hai bản khớp.
+- Bài học: soát văn phong theo hướng tách câu làm dài thêm khoảng 12 dòng; phải bù bằng cắt câu trùng với bảng. Hiệu
+  chỉnh ước lượng bằng lần biên dịch thật (+0,19 trang).
+
+## 2026-11-20 (khuya) — Lượt 3: bớt ký hiệu, chú thích ngắn; bản Anh soát câu chữ, bật Hình 2 với [H]
+
+- Owner (lượt 3): Gemini chỉ là mô hình của Google, bớt ngoặc chứa ký hiệu, khối tác giả để trống tự điền, chú thích
+  ngắn, câu và mục liên kết chặt, tham khảo bài lượng tử trong `pdf/`. Đã viết lại cả hai bản; bản Việt tắt Pareto
+  (khoảng 14,7 trang ước lượng), còn vài sửa nhỏ đã soạn (README của bài, mục "Lượt 3").
+- Owner (lượt 3b): chỉ sửa bản Anh, soát câu và từ nối, bật Hình 2 với `[H]` cho hình lên trên. Bản owner biên dịch lúc
+  05:00 (có Hình 2) đúng 15 trang, trang cuối kín, Hình 2 nằm dưới Bảng 3 ở trang 11. Đã soát câu toàn bài, sửa câu
+  lực kiểm định, chú thích Bảng 1, 3, 5, Hình 2; đặt Hình 2 `[H]` ngay sau đoạn "Main results"; cắt khoảng 10 dòng,
+  ước lượng khoảng 14,8 trang. Lint sạch, 19/19 tài liệu được trích, số liệu không đổi so với trước lượt.
+- Bài học: `[H]` đặt ở cuối đoạn trích dẫn sẽ không đưa hình lên khi đoạn đó kết thúc sát cuối trang; phải đặt hình
+  sau một đoạn kết thúc sớm trên trang. Kiểm vị trí bằng PDF owner gửi (PyMuPDF) trước khi chọn chỗ.
+- Lượt 3c (cùng ngày): owner xác nhận bản Anh vừa 15 trang, hỏi bài chuẩn có nhiều ký hiệu và "(ký hiệu)" vậy không.
+  So với bài lượng tử: ký hiệu chỉ nên nằm ở phần phương pháp, lý thuyết. Đã giảm ký hiệu bản Anh (Mục 1–3, 6–9 gần như
+  không còn; Mục 4–5 bỏ đối số thừa, điều kiện cổng thành danh sách; bảng bỏ "(/48)"), bớt chữ mạnh. Bản Việt chưa đổi.
+- Lượt 4 (cùng ngày): owner hỏi vì sao chữ khác bài lượng tử. Cùng LNCS, cùng cỡ 10 pt; khác phông (bài lượng tử dùng
+  newtx Times + microtype). Bản Anh đổi sang Times, phần dư khoảng 0,8 trang dùng để thêm lại lộ trình, đoạn phát triển
+  và đóng băng, loại hại, biến thể ngôn ngữ, số phát lại Dev-val theo thành phần, đạo đức, Disclosure of Interests.
+  Ước lượng khoảng 14,8 trang. Owner đã sửa lại tóm tắt về "3.1 percentage points" trên Overleaf và điền tên tác giả ở
+  Overleaf (repo vẫn để chỗ trống).
+
+## 2026-11-20 (đêm) — Bản Anh: tác giả, phần nội dung hỗ trợ; merge vào main
+
+- Owner điền tác giả: Quang Huy Lam, Quang Minh Nguyen, Khoa CNTT, Trường Đại học Xây dựng Hà Nội, email hai người;
+  dòng đầu trang "Q. H. Lam et al." (bản Việt "Q. H. Lâm và cộng sự"). Owner bỏ đoạn đạo đức và link GitHub, muốn
+  thêm nội dung có lợi cho bài: thêm C1 chấm riêng trên lời gọi sink phát lại Dev-val (cho qua 155/155 và 65/65 lời gọi
+  lành, chặn 105/190 lời gọi tấn công so với 85, 35/35 M6 so với 15) và câu năm phòng thủ ngoài broker để lộ 14 đến 54
+  ca ở câu trả lời cuối. Ước lượng bản Anh khoảng 14,7 trang (Times).
+- Kiểm: không commit nào có dòng đồng tác giả Claude; GitHub chỉ ghi một người đóng góp (owner). Merge nhánh
+  `study2/d3-dev` vào `main` theo yêu cầu owner.
+- Việc kế: owner biên dịch bản Anh; đồng bộ bản Việt (đổi phông Times có T5, thêm các phần lượt 3b, 3c, 4).

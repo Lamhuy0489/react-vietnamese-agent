@@ -1,0 +1,23 @@
+% Table 5. facts.md "AgentDojo: bảng đầy đủ mọi lượt" (NoDef, repeat_user_prompt = Sandwich, no-attack utility) and
+% "AgentDojo: BrokerGuard v3". Cell = utility under attack / successful attacks. 15-page version: the Gemini part of the
+% old generalisation table (facts.md "Cột tham khảo Gemini 3 Flash trên Test-4") became prose in Section 7.
+% 20/11 (round 3b): caption wording.
+\begin{table}[!htbp]
+\centering
+\caption{AgentDojo with Llama-3.1-8B. Cells give utility under attack / successful attacks, the last column utility without attack for no defence, \strSand{} and \ours.}\label{tab:agentdojo}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llccccc@{}}
+\toprule
+Suite & Language & \makecell{No\\defence} & \cSand & \makecell{String rules\\+ Sandwich} & \ours &
+  \makecell{No\\attack} \\
+\midrule
+Banking & English & 58/17 & 62/10 & 72/3 & 72/3 & 7 / 8 / 8 \\
+Banking & Vietnamese & 44/6 & 45/6 & 54/1 & 54/1 & 6 / 5 / 5 \\
+Slack & English & 28/16 & 35/10 & 15/6 & 11/5 & 7 / 5 / 3 \\
+Slack & Vietnamese & 26/0 & 19/0 & 13/0 & 12/0 & 7 / 5 / 3 \\
+\bottomrule
+\end{tabular*}
+\end{adjustbox}
+\end{table}

@@ -1,0 +1,28 @@
+% Bảng 2. Nguồn: facts.md mục Test-4 (H3 ablation; họ bị hại theo cơ chế: −C1 thêm 1 ER và 1 PT, −C2 thêm 2 SL và 2 AL;
+% lộ câu cuối v3 0/720; hai họ M5 còn lại; nguyên văn = biến đổi) và mục "Bổ sung cho bài v3" (C1 offline Dev-val:
+% tiện ích 155/155 và 65/65, M6 35/35, v1 15). (A1): tests/unit/test_brokerguard_v3_v1.py. Bọc adjustbox max width.
+% Bản 15 trang: lời trong cột "Bằng chứng" rút gọn. 20/11: nhãn giả định viết tắt, cột trạng thái rộng 2,4 cm để
+% mỗi ô một dòng (bảng in ở 9 pt).
+\begin{table}[!htbp]
+\centering
+\caption{Thuộc tính được chứng minh và thuộc tính chỉ kiểm chứng bằng thực nghiệm.}\label{tab:proven}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.3cm}>{\raggedright\arraybackslash}p{2.4cm}%
+>{\raggedright\arraybackslash}X@{}}
+\toprule
+Thuộc tính & Trạng thái & Bằng chứng \\
+\midrule
+Mệnh đề~\ref{prop:auth}--\ref{prop:int} & Chứng minh & Dưới các giả định (A1)--(A5) \\
+(A1) trung gian & Theo cấu trúc mã & Broker là đường duy nhất tới công cụ, có kiểm thử. Sink không có đích nằm ngoài $S$ \\
+(A2) bộ trích & Thực nghiệm & Tập phát triển: chặn 35/35 sink ngoài yêu cầu (\rDest: 15). Tập kiểm thử: bỏ \cOne{}
+  làm lọt thêm 2 họ \\
+(A3) phủ nhãn & Thực nghiệm & Bỏ \cTwo{} làm lọt thêm 4 họ rò rỉ, không giá trị nào lộ ở câu trả lời cuối \\
+(A4) biến đổi & Giới hạn đã nêu & Bộ chấm biến đổi cho cùng kết quả với so khớp nguyên văn, nên chưa bị thử thách \\
+(A5) ghim đủ & Thực nghiệm & Chưa đủ: 2 họ sửa số hoặc đơn vị lọt qua cả \strSand{} và \ours \\
+Phần còn lại & Chỉ thực nghiệm & Lời nhắc và \rSig: không có bảo đảm, đo qua ablation và tấn công thích nghi \\
+\bottomrule
+\end{tabularx}
+\end{adjustbox}
+\end{table}

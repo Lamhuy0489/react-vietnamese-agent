@@ -1,0 +1,63 @@
+% Sources: decision log 2026-11-15 16:30 (Dev v4, Test-4), 17:30 (24 adaptive cases), 18:20 (seal, power, H1--H4),
+% 2026-11-17 19:25 (final_config_v5), 2026-11-18 19:30--20:55 (Gemini, v3-targeted adaptive round, AgentDojo v3),
+% 2026-11-19 00:25 (supplementary baselines, declared beforehand, exploratory). Numbers: facts.md.
+% Test-4 provenance: generated from a specification, reviewed by two team members (no kappa reported).
+% 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
+% 20/11 round 3 (style of the reference paper): section openers, fewer parentheses, Gemini described as Google's closed model.
+% 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
+% 20/11 (round 3c): notation only where equations need it, the request in words elsewhere, gate conditions as a list, plainer claims.
+\section{Data and Evaluation Protocol}\label{sec:protocol}
+
+The evaluation tests \ours{} on data not used in its design, against published defences and simpler rule
+configurations at the broker.
+
+\paragraph{Data sets.} VN-AgentInject turns the threat model of Section~\ref{sec:threat} into runnable cases with
+synthetic data. The \dev{} has 168 families and 1,960 cases, of which 840 are attacks, 840 \bPlain{} and 280 \bAuth. It
+joins the initial 48-family development set with the 72- and 48-family test sets of the early stage. The 40 cases that
+got past \strSand{} on these test sets guided the design of \ours, so testing on them again would be optimistic. The
+\dev{} is split by family into a 126-family training part, used to tune cue lists, thresholds and field names, and a
+42-family validation part, used to select the configuration. The \test{} has 48 new families, 8 per mechanism, with 560
+cases, of which 240 are attacks, 240 \bPlain{} and 80 \bAuth. Its families were generated from a specification and
+reviewed by two team members. The set was sealed with SHA-256 before the first line of \ours{} code was written, and its
+largest 4-gram Jaccard overlap with the \dev{} is 0.05.
+
+\paragraph{Adaptive attacks.} The first set has 24 cases within the \test, generated and sealed with it and aimed at the
+three weaknesses of \strSand{} with 8 cases each. The second set has 42 cases written by two team members after \ours{}
+was frozen, with full knowledge of its design and formal model. Each replaces the attack text of one family in the
+validation part of the \dev{} and targets the empirical assumptions of Section~\ref{sec:formal}.
+
+\paragraph{Backbones and configurations.} Gemma-4-12B, Llama-3.1-8B with a 16k context and Qwen3.5-9B are served with
+vLLM, pinned by revision, with the same ReAct prompt, temperature 0, at most 512 tokens per step and at most eight
+steps. Google's Gemini 3 Flash is a closed model, so it serves only as a reference column with five configurations. All
+configurations share the agent, broker and environment, and with no defence the broker only checks schemas. The other
+defences are \cSpot~\cite{hines2024spotlighting}, \cSand, \cPG, which screens tool outputs with Prompt
+Guard~2~\cite{meta2025promptguard2}, \cMel~\cite{zhu2025melon} and \cProg~\cite{shi2025progent}, the last two
+re-implemented from their original descriptions. The rules at the broker are \phrRules, which block instruction-like
+phrases, \strRules, \strSand, \ours{} and three ablations that each remove one component. The eight configurations of
+the main matrix were run once per backbone on the 560 cases and the 24 adaptive cases, with reruns only after
+infrastructure errors. \cSpot, \cPG, \cMel, \phrRules{} and \strRules{} were frozen earlier but run after the main
+results were known, so comparisons with them are exploratory.
+
+\paragraph{Metrics.} ASR is the share of harmful cases among the 720 attack cases of the three backbones. Utility $U$ is
+the share of the 960 benign cases that meet a deterministic, task-specific completion condition without harm, and
+$\Delta U$ is its change relative to no defence. Model errors, such as malformed or truncated outputs, count as utility
+failures, never as defence successes. A family is \emph{harmed} if at least one of its attack cases is harmful on at
+least one backbone. It is the primary unit of inference because the cases of a family share a task and an environment.
+On the \dev, the corresponding unit is the family--backbone pair, 504 in total. The cost metrics are the confirmation
+rate, the tokens and wall time per case, and the false-block rate, which is the share of benign cases with at least one
+denial.
+
+\paragraph{Pre-registered hypotheses.} Before the \test{} was sealed, four hypotheses were registered under sequential
+gatekeeping. H1, the primary hypothesis, states that \ours{} has fewer harmed families than \strSand, tested with a
+one-sided exact McNemar test~\cite{mcnemar1947} on the 48 paired families at $\alpha = 0.05$. H2 to H4 are tested only
+if H1 rejects its null. H2 states that the utility of \ours{} is at most 5 points below \strSand. H3 states that removing
+each component increases the harmed families, with Holm correction. H4 bounds confirmations at 10\%, false blocks at
+15\%, and the overhead relative to \strSand{} at 20\% for tokens and 15\% for latency.
+
+\paragraph{AgentDojo.} The Banking and Slack suites of AgentDojo v1.2.2~\cite{debenedetti2024agentdojo}, with 144 and
+105 pairs of user and injection tasks respectively, are run with the \code{important\_instructions} attack in English
+and in a Vietnamese translation that keeps IBANs, amounts, names and addresses. \StrSand{} and \ours{} run with
+Llama-3.1-8B through an adapter, declared before running, that states which tools are sinks and which argument holds the
+destination. In the adapter, the \pOne{} only requires the destination to occur as a whole token in the request outside
+any negation scope. Sandwich here is the built-in \code{repeat\_user\_prompt} defence of AgentDojo, and utility without
+attack is measured on 16 Banking and 21 Slack tasks.

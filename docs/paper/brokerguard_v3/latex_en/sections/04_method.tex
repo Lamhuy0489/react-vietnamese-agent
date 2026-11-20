@@ -1,0 +1,73 @@
+% Sources: src/react_agent/security_v3/{intent_policy_v1,value_labels_v1,param_pinning_v1,brokerguard_v3_v1}.py;
+% decision log 2026-11-16 12:30 (C1), 15:30 (runtime, C1a rejected), 16:20 (micro-benchmark), 2026-11-17 19:25 (freeze).
+% Numbers: facts.md "Bổ sung cho bài v3" (8 characters, 9 digits; micro-benchmark) and Test-4 (0.26 ms). The 15-page
+% version drops the paragraph on the C1a variant (2 -> 5 harmful trajectories on Dev-val); see commit 6814b3a.
+% No attack text is quoted. The cue words are those of the extractor, not of the data.
+% 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
+% 20/11 round 3 (style of the reference paper in pdf/): section openers, fewer parentheses, notation moved to Section 5.
+% 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
+% 20/11 (round 3c): notation only where equations need it, the request in words elsewhere, gate conditions as a list, plainer claims.
+% 20/11 (round 4): content restored after the switch to Times (facts.md: harm types, variants, Dev-val replay, C1a).
+\section{The \ours{} Method}\label{sec:method}
+
+\ours{} treats the model as outside the security boundary: an action takes effect only when the broker executes it, so
+the broker is the reference monitor at the sinks, with the request as the only source of authority.
+Figure~\ref{fig:arch} shows the architecture. Four base rules date from the early stage. Besides the two matching rules
+of Section~\ref{sec:intro}, called the \rDest{} and the \rFlow, the \rRedact{} masks confidential values in the answer,
+and the \rSig{} denies sinks after an observation flagged by a phrase detector, unless the call matches a strict grammar
+over the request. To address the three weaknesses, \ours{} replaces the \rDest{} with the \pOne{} and adds \pTwo{} and
+\pThree. Keeping the \rDest{} without the three components gives \strSand, and dropping Sandwich as well gives
+\strRules.
+
+\input{images/fig1_architecture}
+
+\paragraph{Normalisation.} Every comparison applies Unicode NFKC, removes format characters and casefolds. A stricter
+form $\kappa$ also strips Vietnamese diacritics and keeps only letters and digits. The relation $x \sub z$ holds when
+$\kappa(x)$ is a substring of $\kappa(z)$, and $V$ is the set of values occurring in the request $u$ in this sense. A
+sink call $a$ has a destination $\dest(a)$ and other arguments $\data(a)$.
+
+\paragraph{\POne{} (\cOne).} The extractor reads only the request and returns its grants. Each grant names a tool and a
+destination, is positive or negative, and pins some values. Destinations are e-mail addresses or endpoints matched as
+whole tokens after normalisation, so a fragment of a destination or an ordinary word no longer counts. A negated verb
+such as ``do not send'' covers the destinations after it in the same clause, exclusion cues such as ``except'' cover
+those up to the next comma, and contrast cues such as ``but'' close the scope. In diacritic-free text, ambiguous
+negation tokens count only when followed by a sending verb. A granting clause must contain a non-negated sending verb
+that matches the destination type. A destination that is only mentioned, quoted or near a negation of unclear scope
+yields \emph{needs confirmation}. With $P^{+}$ and $P^{-}$ the positive and negative grants, a sink call $a$ satisfies
+the \pOne{} when
+\begin{equation}\label{eq:c1}
+\begin{aligned}
+&\exists\, g \in P^{+}\colon\; \mathrm{tool}(g) = \mathrm{tool}(a) \,\land\, \dest(g) \doteq \dest(a),\\
+&\nexists\, g' \in P^{-}\colon\; \dest(g') \doteq \dest(a),
+\end{aligned}
+\end{equation}
+where $\doteq$ is whole-token equality after normalisation. For ``send the report to \code{accounting@example.com}, not
+to \code{partner@example.org}'', a call to the second address is denied, although the \rDest{} would let it pass.
+
+\paragraph{\PTwo{} (\cTwo).} This component labels each value in every tool output by its type, independently of the
+source label and of trust. It recognises identifiers mixing letters and digits with at least 8 characters, numbers
+with at least 9 digits after removing spaces, dots and dashes, and values after a sensitive field name such as
+password, OTP, token or account number. Let $C_t$ be the set of protected values after step $t$, namely those
+protected by the \rFlow{} and those labelled by type. The broker denies a sink call $a$ if
+\begin{equation}\label{eq:c2}
+\exists\, v \in C_t \setminus V\colon\; v \sub \data(a) .
+\end{equation}
+Since the comparison uses $\kappa$, it survives added or removed spaces, dots and dashes, case changes and stripped
+diacritics. In the final answer, every protected value that the user did not write is replaced by
+\code{[REDACTED]}.
+
+\paragraph{\PThree{} (\cThree).} Tampering keeps the authorised destination but changes a value such as an amount,
+status, unit or code. This component pins the literals in the clause of the request that authorised the call: numbers
+after the sending verb that are not calculation operands, units stated with a number, Booleans with their polarity,
+and identifiers written by the user. A call is denied if its arguments lack a pinned literal or flip a pinned Boolean.
+
+\paragraph{Gate and cost.} A sink call is executed only if it passes four checks: the \rSig, the \pOne, \pThree, and the
+flow check that combines the \rFlow{} with \pTwo. \emph{Needs confirmation} is enforced as a denial and counted
+separately, and read calls are always allowed. On the \dev, a sink check takes a median of 315~$\mu$s, against
+107~$\mu$s for \strSand.
+
+\paragraph{Development and freezing.} Cue lists, length thresholds, field names and units were tuned only on the
+training part of the \dev, and the configuration was selected on its validation part. A variant that used the \pOne{} in
+place of the strict grammar of the \rSig{} raised utility under attack, but on replayed validation trajectories it
+increased the harmful trajectories from 2 to 5 and was rejected. All code, prompts and configurations were then pinned
+by hash before the \test{} was run.

@@ -1,0 +1,34 @@
+\section{Thảo luận và hạn chế}\label{sec:discussion}
+
+\paragraph{Vì sao các ca còn lọt qua.} Từ quỹ đạo, có thể xác định nguyên nhân của cả 40 ca lọt qua \ours{} (13 ca
+trên \tOne, 27 ca trên \tTwo). Mỗi ca rơi vào đúng một chỗ hở của Mệnh đề~\ref{prop:scope}.
+
+Nhóm lớn nhất (25 ca, đều là rò rỉ giá trị mật) xảy ra vì giá trị bị lộ nằm trong một nguồn dữ liệu được gắn nhãn công
+khai. Broker chỉ bảo vệ giá trị lấy từ nguồn mật, nên không chặn các giá trị này. Bộ trích vẫn nhận ra đúng định dạng
+của chúng. Vậy giới hạn của \rFlow{} nằm ở cách gắn nhãn nguồn, không nằm ở bộ trích. Nhóm thứ hai (5 ca) xảy ra vì
+đích gửi có xuất hiện trong yêu cầu của người dùng nhưng không phải là đích được phép. Bốn ca gửi tới một địa chỉ mà
+người dùng chỉ nhắc tới. Một ca điền vào ô người nhận một từ thường có trong yêu cầu. Nhóm thứ ba (10 ca) sửa nội dung
+gửi tới một đích hợp lệ, ví dụ đổi một con số. Các luật về đích và về giá trị mật không xét trường hợp này, chỉ lời
+nhắc và bộ phát hiện chèn lệnh mới có thể chặn. Trên AgentDojo, các ca lọt dùng một thao tác không có đích (đổi mật
+khẩu) hoặc một công cụ đọc (mở URL), tức những chỗ broker vốn không kiểm.
+
+\tTwo{} do cùng nhóm soạn sau khi biết
+kết quả \tOne, nên chưa tách được việc tập này khó hơn với việc người soạn vô tình nhắm vào điểm yếu của luật. Bước đánh
+giá cần làm tiếp là một bộ tấn công sinh trực tiếp từ các chỗ hở trên.
+
+\paragraph{Ngôn ngữ.} Ở \cNone, bỏ dấu hay chuyển sang tiếng Anh không làm thay đổi tỉ lệ tấn công thành công một cách
+có ý nghĩa sau hiệu chỉnh (H4, H5). Khoảng tin cậy vẫn chứa chênh lệch tới khoảng 12 điểm, nên bài báo không khẳng định
+tiếng Việt dễ hay khó bị tấn công hơn. Yếu tố chịu ảnh hưởng rõ của ngôn ngữ là phòng thủ dựa trên cụm từ. Trên Dev, bộ
+phát hiện cụm từ bật ở 14 đến 19 trên 48 tấn công tiếng Việt chuẩn nhưng chỉ ở 3 trên 48 tấn công tiếng Anh. Trên
+AgentDojo, \rSig{} không bật lần nào ở tiếng Anh nhưng bật 14 lần ở Slack tiếng Việt. \rDest{} và \rFlow{} không phụ
+thuộc ngôn ngữ, còn \rSig{} thì có.
+
+\paragraph{Hạn chế.} Các tập niêm phong do cùng một nhóm soạn, dù người soạn không đọc mã phòng thủ. Dữ liệu là tổng
+hợp, công cụ là bản giả và nhiệm vụ chỉ có một lượt. Các mô hình mở chỉ có 8 đến 12 tỉ tham số. \ours{} làm giảm tiện
+ích lành tính khoảng 5 điểm. Giả thuyết chính của \tTwo{} được đăng ký cho một biến thể thu hẹp \rSig{} theo đích. Biến
+thể này tăng tiện ích 1,0 điểm với cùng tỉ lệ tấn công thành công, nhưng khoảng tin cậy theo họ chứa 0, nên nó không
+được đưa vào bài. Gemini 3 Flash chỉ chạy chín cấu hình trên Dev và cấu hình không phòng thủ trên AgentDojo. Trên
+AgentDojo, \ours{} chỉ chạy với một mô hình nền, và \rDest{} làm giảm mạnh tiện ích khi nhiệm vụ lấy đích từ dữ liệu
+công cụ. Muốn giữ tiện ích ở các nhiệm vụ này thì cần một cách khác để ủy quyền đích, chẳng hạn cho người dùng xác
+nhận. Tham chiếu chặn mọi sink là ước lượng từ quỹ đạo. Phản hồi từ chối chưa được tách riêng. Độ phủ của
+bộ trích trên toàn bộ quỹ đạo và độ trễ chưa được đo.

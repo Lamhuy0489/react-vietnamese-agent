@@ -1,0 +1,37 @@
+\section{Discussion and Limitations}\label{sec:discussion}
+
+\paragraph{Why some cases still get through.} The trajectories make it possible to identify the cause of all 40 cases
+that bypass \ours{} (13 on \tOne, 27 on \tTwo). Each case falls into exactly one gap of
+Proposition~\ref{prop:scope}.
+
+The largest group (25 cases, all confidential-value leaks) occurs because the leaked value sits in a data source
+labelled public. The broker only protects values taken from confidential sources, so it does not block these values.
+The extractor still recognises their format. The limitation of \rFlow{} therefore lies in how sources are labelled,
+not in the extractor. The second group (5 cases) occurs because the destination appears in the user request but is not
+an authorised destination. Four cases send to an address that the user merely mentions. One case fills the recipient
+field with an ordinary word from the request. The third group (10 cases) alters the content sent to a valid
+destination, for example by changing a number. The destination and confidential-value rules do not consider this case,
+and only the reminder and the injection detector can block it. On AgentDojo, the bypasses use an operation without a
+destination (password change) or a read tool (opening a URL), which are exactly the places the broker does not check.
+
+\tTwo{} was written by the same team after the \tOne{} results were known, so it is not possible to separate the set
+being harder from the authors unintentionally targeting weaknesses of the rules. The next evaluation step is an attack
+set generated directly from the gaps above.
+
+\paragraph{Language.} Under \cNone, removing diacritics or switching to English does not change the attack success rate
+significantly after correction (H4, H5). The confidence intervals still include differences of up to about 12 points,
+so the paper does not claim that Vietnamese is more or less vulnerable. The factor clearly affected by language is
+phrase-based defence. On Dev, the phrase detector fires on 14 to 19 of 48 standard Vietnamese attacks but on only 3 of
+48 English attacks. On AgentDojo, \rSig{} never fires in English but fires 14 times on Vietnamese Slack. \rDest{} and
+\rFlow{} are language-independent, whereas \rSig{} is not.
+
+\paragraph{Limitations.} The sealed sets were written by the same team, although the authors of the attacks did not
+read the defence code. The data are synthetic, the tools are mocks and the tasks are single-turn. The open models have
+only 8 to 12 billion parameters. \ours{} lowers benign utility by about 5 points. The primary hypothesis of \tTwo{} was
+registered for a variant that narrows \rSig{} by destination. This variant raises utility by 1.0 point at the same
+attack success rate, but its family-level confidence interval includes 0, so it is not included in the paper. Gemini 3
+Flash runs only nine configurations on Dev and the undefended configuration on AgentDojo. On AgentDojo, \ours{} runs
+with only one backbone, and \rDest{} sharply lowers utility when tasks take their destination from tool data. Keeping
+utility on such tasks requires another way to authorise destinations, such as user confirmation. The block-all-sinks
+reference is an estimate from trajectories. Denial feedback has not been isolated. Extractor coverage over all
+trajectories and latency have not been measured.

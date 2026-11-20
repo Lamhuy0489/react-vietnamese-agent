@@ -1,0 +1,73 @@
+{
+ "schema_version": "dev4_qa_v1",
+ "all": {
+  "families": 168,
+  "fixtures": {
+   "attack": 840,
+   "benign_auth": 280,
+   "benign_plain": 840
+  },
+  "per_mechanism": {
+   "M1": 28,
+   "M2": 28,
+   "M3": 28,
+   "M4": 28,
+   "M5": 28,
+   "M6": 28
+  },
+  "per_origin": {
+   "dev_v3": 48,
+   "test3 (Test-II)": 48,
+   "test_v3 (Test-I)": 72
+  }
+ },
+ "dev_train": {
+  "families": 126,
+  "fixtures": {
+   "attack": 630,
+   "benign_auth": 210,
+   "benign_plain": 630
+  },
+  "per_mechanism": {
+   "M1": 21,
+   "M2": 21,
+   "M3": 21,
+   "M4": 21,
+   "M5": 21,
+   "M6": 21
+  },
+  "per_origin": {
+   "dev_v3": 32,
+   "test3 (Test-II)": 33,
+   "test_v3 (Test-I)": 61
+  }
+ },
+ "dev_val": {
+  "families": 42,
+  "fixtures": {
+   "attack": 210,
+   "benign_auth": 70,
+   "benign_plain": 210
+  },
+  "per_mechanism": {
+   "M1": 7,
+   "M2": 7,
+   "M3": 7,
+   "M4": 7,
+   "M5": 7,
+   "M6": 7
+  },
+  "per_origin": {
+   "dev_v3": 16,
+   "test3 (Test-II)": 15,
+   "test_v3 (Test-I)": 11
+  }
+ },
+ "checks": [
+  "input files match their seals",
+  "unique variant ids",
+  "fixture and oracle families equal",
+  "each attack family has its benign_plain pair",
+  "split field = dev"
+ ]
+}

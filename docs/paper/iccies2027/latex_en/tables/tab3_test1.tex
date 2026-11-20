@@ -1,0 +1,39 @@
+% Test-I = "Test v3" trong log/luận văn. Nguồn: facts.md (bảng Test v3, H1--H6 và mục "Bổ sung sau phản biện").
+% 13/11: H1, H3, H6 ở mức họ (scripts/paper_cluster_stats_v1.py). 14/11 (phản biện 2, mục 4.6): H2, H4, H5 cũng ở mức họ
+% (scripts/paper_cluster_stats_h245_v1.py). Holm trên sáu p mức họ: H1 6x, H6 5x, H3 4x, H4 3x, H2 2x (đơn điệu), H5 1x.
+% In đậm: tốt nhất mỗi cột, không tính hàng ước lượng (owner bỏ câu này khỏi chú thích 14/11).
+\begin{table}[!htbp]
+\centering
+\caption{\tOne{} (72 families, summed over three backbones). Top: harmful family--model pairs (/216), harmful attack
+cases (/1,080), successful benign cases (/1,080 and /360). Bottom: six pre-registered hypotheses, tested at the family
+level, Holm-adjusted $p$. $^\dagger$Estimated from \cNone{} trajectories.}\label{tab:test1}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrr@{}}
+\toprule
+Configuration & \makecell[r]{Harmful\\family $\times$ model} & \makecell[r]{Harmful cases\\(ASR)} & \makecell[r]{Plain\\benign} & \makecell[r]{Authorised\\benign} \\
+\midrule
+\cNone & 138 & 355 (32.9\%) & \textbf{489 (45.3\%)} & \textbf{141 (39.2\%)} \\
+\cPhrase & 109 & 200 (18.5\%) & 468 (43.3\%) & 128 (35.6\%) \\
+\cProg & 75 & 212 (19.6\%) & 488 (45.2\%) & \textbf{141 (39.2\%)} \\
+\cSand & 47 & 61 (5.6\%) & 472 (43.7\%) & 124 (34.4\%) \\
+\cRules & 49 & 72 (6.7\%) & 459 (42.5\%) & 118 (32.8\%) \\
+\textbf{\ours} & \textbf{11} & \textbf{13 (1.2\%)} & 448 (41.5\%) & 108 (30.0\%) \\
+Block all sinks$^\dagger$ & -- & 13 (1.2\%) & 95 (8.8\%) & 12 (3.3\%) \\
+\bottomrule
+\end{tabular*}
+
+\smallskip
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xrrl@{}}
+\toprule
+ & Hypothesis & Cases (harmful families) & Holm $p$ & Result \\
+\midrule
+H1 & ASR: \cRules{} $<$ \cPhrase & 18.5\%$\to$6.7\% (53$\to$24) & $1.1\cdot10^{-8}$ & met \\
+H2 & Utility: \cRules{} $\ge$ \cNone{}$-5$ & 45.3\%$\to$42.5\% & 0.16 & not met \\
+H3 & ASR (\mCR, \mSL, \mAL): \cRules{} $<$ \cPhrase & 23.5\%$\to$8.5\% (28$\to$15) & $4.8\cdot10^{-4}$ & met \\
+H4 & ASR \cNone: no diacritics $\ne$ standard & 31.5\%$\to$33.3\% (40$\to$50) & 0.16 & not met \\
+H5 & ASR \cNone: English $\ne$ standard & 31.5\%$\to$36.6\% (40$\to$39) & 1.00 & not met \\
+H6 & ASR: \ours{} $<$ \cSand & 5.6\%$\to$1.2\% (28$\to$8) & $4.8\cdot10^{-6}$ & met \\
+\bottomrule
+\end{tabularx}
+\end{table}

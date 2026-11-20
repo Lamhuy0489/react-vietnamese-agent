@@ -1,0 +1,76 @@
+% Figure 1, TikZ (drawn by Overleaf, never rendered locally). Coordinates in cm, total width 11.85 cm; wrapped in adjustbox
+% max width so it never exceeds the margins. Check boxes are 1.7 x 0.9 cm with 6.4 pt text: about 14 characters per
+% line, at most three lines per box. Colour follows the entity as in Figures 2 and 3: thick orange border = new
+% components C1--C3, blue = base rules, grey dashed = model-dependent. No R-... rule codes; only C1--C3 are kept.
+% 20/11 (round 3c): fewer symbols in parentheses (owner).
+\begin{figure}[!htbp]
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tikzpicture}[
+  font=\fontsize{6.4}{7.6}\selectfont,
+  box/.style={rounded corners=1pt, align=center, inner sep=1pt},
+  newc/.style={box, draw=bgorange, line width=0.9pt, fill=bgorange!12},
+  kept/.style={box, draw=bgblue, line width=0.45pt, fill=bgblue!10},
+  soft/.style={box, draw=black!55, line width=0.5pt, fill=black!4, dash pattern=on 2pt off 1.3pt},
+  neutral/.style={box, draw=black!60, line width=0.5pt, fill=black!5},
+  arr/.style={-{Stealth[length=3pt]}, line width=0.5pt, draw=black!65},
+  lab/.style={font=\fontsize{6.4}{7}\selectfont},
+  note/.style={font=\fontsize{5.6}{6.6}\selectfont\itshape, text=black!65, anchor=west},
+  gate/.style={minimum width=1.7cm, minimum height=0.9cm, text width=1.6cm},
+  swatch/.style={minimum width=0.34cm, minimum height=0.24cm},
+]
+% left column: user and agent
+\node[neutral, minimum width=1.5cm, minimum height=0.8cm, text width=1.4cm] at (0.75,4.85)
+  {User\\ $u$, trusted};
+\node[neutral, minimum width=1.5cm, minimum height=1.3cm, text width=1.4cm,
+  font=\fontsize{6.6}{7.6}\selectfont\bfseries] at (0.75,2.35) {LLM agent\\ (ReAct)};
+\draw[arr] (0.75,4.45) -- (0.75,3.0);
+
+% broker frame
+\draw[rounded corners=2pt, line width=0.6pt] (2.0,1.3) rectangle (9.3,5.65);
+\node[font=\fontsize{7}{8}\selectfont\bfseries] at (5.65,5.43) {Tool Broker (host side)};
+
+% row 1: state built by C1 and C2
+\node[newc, minimum width=3.45cm, minimum height=0.66cm, text width=3.35cm] at (3.825,4.8)
+  {\textsf{C1}: extract grants from $u$\\ destination, polarity, pins};
+\node[newc, minimum width=3.45cm, minimum height=0.66cm, text width=3.35cm] at (7.475,4.8)
+  {\textsf{C2}: label each value in $o_t$\\ protected set $C_t$};
+\draw[arr] (1.5,4.8) -- (2.1,4.8);
+
+% row 2: the four checks before every sink call
+\node[note] at (2.1,4.2) {before every sink call $a_t$: executed only if all four checks pass};
+\node[kept, gate] at (2.95,3.5) {Signal rule\\ deny if flagged};
+\node[newc, gate] at (4.75,3.5) {\textsf{C1}\\ positive grant};
+\node[newc, gate] at (6.55,3.5) {\textsf{C3}\\ pinned values kept};
+\node[newc, gate] at (8.35,3.5) {\textsf{C2} + flow rule\\ no value of $C_t$ leaves};
+
+% row 3: final answer, prompt layer, feedback, confirmation
+\node[kept, gate] at (2.95,2.1) {Redact values\\ in $y$};
+\node[soft, gate] at (4.75,2.1) {Sandwich\\ repeat $u$};
+\node[kept, gate] at (6.55,2.1) {Report denial,\\ agent continues};
+\node[newc, gate] at (8.35,2.1) {Needs confirmation\\ = denial};
+
+% legend
+% (15-page version: no in-figure legend, the caption explains colours and lines; frame bottom raised from 0.5 to 1.3)
+
+% agent <-> broker
+\draw[arr] (1.5,2.75) -- node[lab, above=-1pt] {$a_t$} (2.0,2.75);
+\draw[arr] (2.0,2.35) -- node[lab, above=-1pt] {$o_t$} (1.5,2.35);
+\draw[arr] (1.5,1.95) -- node[lab, above=-1pt] {$y$} (2.0,1.95);
+
+% tool column
+\node[neutral, minimum width=2.1cm, minimum height=0.8cm, text width=2.0cm] at (10.8,3.95)
+  {Read tools\\ (untrusted)};
+\node[neutral, minimum width=2.1cm, minimum height=0.8cm, text width=2.0cm] at (10.8,2.45)
+  {Sinks\\ e-mail, webhook};
+\draw[arr] (9.3,4.15) -- node[lab, above=-1pt] {$a_t$} (9.75,4.15);
+\draw[arr] (9.75,3.75) -- node[lab, above=-1pt] {$o_t$} (9.3,3.75);
+\draw[arr] (9.3,2.45) -- node[lab, above=-1pt] {$a_t$} (9.75,2.45);
+
+% redacted answer leaves the broker
+\draw[arr] (9.3,1.47) -- (9.95,1.47);
+\node[anchor=west, text=black!65] at (9.98,1.47) {$y$ redacted};
+\end{tikzpicture}
+\end{adjustbox}
+\caption{Architecture of \ours. Boxes with an orange border are new components, boxes with a blue border are base rules, and dashed boxes depend on the model.}\label{fig:arch}
+\end{figure}

@@ -1,0 +1,16 @@
+% Số: như tóm tắt (facts.md mục Test-4: 40, 6, 2 họ, cặp lệch 4/0; AgentDojo v3). Hướng tiếp theo nối với các hạn chế ở
+% Mục 8. 20/11: sửa câu cũ "mỗi họ mà luật so khớp chuỗi để lọt đều bị chặn" (sai: chỉ 4 trong 6 họ, 2 họ sửa số/đơn vị
+% lọt qua cả hai cấu hình).
+% 20/11 (lượt 3, theo bài tham khảo): câu mở mục, bớt ngoặc có ký hiệu, Gemini chỉ ghi là mô hình đóng của Google.
+\section{Kết luận}\label{sec:conclusion}
+
+Bài báo trình bày \ours, một cơ chế thực thi chính sách tại Tool Broker gồm chính sách ý định có xét phủ định, nhãn độ
+nhạy cảm mức giá trị và phép ghim tham số, cùng một mô hình hình thức với ba thuộc tính được chứng minh dưới năm giả định.
+Trên tập kiểm thử tiếng Việt niêm phong trước khi viết mã, \ours{} giảm số họ bị hại từ 40 khi không phòng thủ xuống 2
+trên 48. Tiện ích giảm 3,1 điểm, trong khi token và độ trễ mỗi ca tăng không quá 1\% so với \strSand. So với cấu hình
+này, \ours{} chặn thêm bốn trong sáu họ bị hại, mỗi họ bởi đúng thành phần được thiết kế cho nó, và không để lọt họ nào
+mới. Kết quả cho thấy thực thi chính sách tất định tại broker là một hướng phòng thủ khả thi cho tác tử LLM tiếng Việt. Vì
+cấu hình so sánh đã ở gần mức sàn, hướng
+tiếp theo trực tiếp nhất là một tập kiểm thử niêm phong khoảng 120 họ để khẳng định khác biệt này bằng kiểm định. Các
+hướng khác gồm kiểm chứng hình thức các mệnh đề trên mã nguồn, bổ sung ngữ nghĩa trường cho \pThree{} và kênh xác nhận
+với người dùng cho đích lấy từ dữ liệu công cụ.

@@ -1,0 +1,13 @@
+{
+  "release": "release_test4",
+  "split": "test4",
+  "families_count": 48,
+  "fixtures_count": 560,
+  "branch_counts": {
+    "attack": 240,
+    "benign_plain": 240,
+    "benign_auth": 80
+  },
+  "spec": "spec_test4.json",
+  "canonicals": "test4_canonicals.json"
+}

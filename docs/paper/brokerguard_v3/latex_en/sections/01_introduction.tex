@@ -1,0 +1,47 @@
+% Numbers: facts.md (Test v3 and Test-3: 32.9 -> 1.2%, 32.4 -> 3.8%; the 40 v1 bypasses by cause, section "Bổ sung sau
+% phản biện 3"; broker micro-benchmark, section "Bổ sung cho bài v3"). A brand-new paper: the early stage (string rules on
+% two sealed sets) is described as part of this study, not as a previous version.
+% 20/11: synchronised with the Vietnamese version after owner feedback (round 1 and language pass).
+% 20/11 round 3 (style of the reference paper in pdf/): section openers, fewer parentheses, notation moved to Section 5.
+% 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
+% 20/11 (round 3c): notation only where equations need it, the request in words elsewhere, gate conditions as a list, plainer claims.
+% 20/11 (round 4): content restored after the switch to Times (facts.md: harm types, variants, Dev-val replay, C1a).
+\section{Introduction}\label{sec:intro}
+
+In the ReAct paradigm~\cite{yao2023react}, an LLM agent interleaves reasoning with tool calls, and tool outputs enter
+the model context directly. This enables indirect prompt injection~\cite{greshake2023indirect}: an attacker
+plants instructions in content the agent will read, to make it send data to an unknown destination, leak a confidential
+value or alter the content to be sent. Prompt-level defences depend on the model complying, and injection classifiers
+are mostly trained on English. A third approach therefore enforces policy outside the model, between the model and the
+tools, following the reference-monitor principle~\cite{anderson1972}.
+
+The simplest enforcement at the Tool Broker is string matching. The broker executes an outgoing call only if its
+destination is a substring of the user request, and lets a value from a source labelled confidential leave the agent
+only if the request contains it verbatim. In the early stage of this study, these rules with sandwich prompting reduced
+the attack success rate on two sealed Vietnamese test sets with three open backbones, from 32.9\% to 1.2\% and from
+32.4\% to 3.8\%. The 40 attacks that still succeeded, however, reveal three weaknesses, summarised in
+Table~\ref{tab:mechanisms}. In 25 cases a confidential value leaked because it sat in a source labelled public: labels
+are attached to whole sources, not to individual values. In 5 cases the call went to a destination that appears in the
+request but was not authorised, for example one named in a prohibition. The remaining 10 altered a parameter of a call
+to a legitimate destination.
+
+These weaknesses show that the presence of a string in the request is not enough: a destination in the request is not
+necessarily authorised, a source label does not reflect the sensitivity of each value in it, and a call to a legitimate
+destination can still carry a wrong value. This paper therefore proposes \ours, a broker-side policy-enforcement
+mechanism with three deterministic components, one per weakness. The \pOne{} extracts grants from the request, respects
+the scope of negation and exclusion, and authorises only whole-token destination matches. \PTwo{} assigns a sensitivity
+to each value in tool outputs by its type, independently of the source label. \PThree{} requires an authorised call to
+keep the values the user stated. The policy comes from the request alone, not from the judgement of an LLM, and yields
+\emph{needs confirmation} when authority is unclear. The paper makes three contributions.
+\begin{enumerate}
+\item \textbf{Method.} \ours{} addresses the three measured weaknesses of string matching without extra LLM calls,
+  checking a call in under a millisecond.
+\item \textbf{Formal model.} Authorisation safety, confidentiality and integrity are proved under five assumptions and
+  kept separate from empirical claims.
+\item \textbf{Evaluation.} \ours{} is frozen and run once on a new test set of 48 families, sealed before any code was
+  written, with pre-registered hypotheses, ablations, two adaptive rounds and AgentDojo in two languages.
+\end{enumerate}
+Sections~\ref{sec:related} and~\ref{sec:threat} review related work and state the threat model,
+Sections~\ref{sec:method} and~\ref{sec:formal} present \ours{} and its formal model, Sections~\ref{sec:protocol}
+to~\ref{sec:discussion} cover the evaluation, and Section~\ref{sec:conclusion} concludes. Data, code and the sealing
+manifests are publicly released.
