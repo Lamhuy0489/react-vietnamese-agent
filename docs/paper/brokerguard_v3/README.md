@@ -94,6 +94,21 @@ Không bỏ kết quả hay luận điểm nào. Những gì bị cắt hoặc c
   "(/8)", tổng đưa vào chú thích; Hình 1 bỏ "(protected set $C_t$)"; bớt chữ mạnh ("removes" → "addresses", "far
   clearer" → "larger", bỏ "only" ở tóm tắt). Số liệu không đổi, ước lượng khoảng 14,8 trang.
 
+## Lượt 4 (20/11, bản Anh): phông Times như bài lượng tử, thêm lại nội dung
+
+- Nguyên nhân chữ khác bài lượng tử: cùng `llncs.cls` 2.26, cùng khổ Letter, vùng chữ và cỡ 10 pt; bài lượng tử dùng
+  `newtxtext` + `newtxmath` (Times) và `microtype`, bài mình dùng Computer Modern mặc định (T5, phông VNR10). Một dòng
+  đầy chứa khoảng 85,6 ký tự với Times so với 78,3 với Computer Modern.
+- Bản Anh đổi sang `T1` + `newtxtext` + `newtxmath[varvw]` + `microtype` (bỏ `amssymb`, newtxmath thay thế). Bản Anh
+  không còn chữ tiếng Việt có dấu nên không cần T5. Bản Việt giữ T5; muốn Times phải thử `tgtermes` trên Overleaf.
+- Thêm lại (số từ facts.md): câu lộ trình cuối Mục 1; đoạn "Development and freezing" cuối Mục 4 (biến thể bị loại vì
+  2 → 5 quỹ đạo gây hại); câu theo loại hại ở Mục 7 (136, 54, 79 khi không phòng thủ); đoạn "Language variants" (40–51
+  trên 144 khi không phòng thủ; 1, 1, 2, 1, 0 với BrokerGuard); đoạn "Contribution of each component" dùng số phát lại
+  Dev-val (25, 2, 7, 6, 13 trên 210); đoạn "Ethical considerations"; khối `credits` với "Disclosure of Interests" (mẫu
+  LNCS 2.26, owner xác nhận nội dung, có thể thêm lời cảm ơn).
+- Ước lượng theo độ rộng Times New Roman: khoảng 14,8 trang (đã hiệu chỉnh, hơi dè dặt). Nếu quá 15 trang, bỏ trước
+  đoạn "Ethical considerations" hoặc "Language variants", hoặc `\paretofalse`.
+
 ## Ước lượng trang (không có TeX trên máy)
 
 Script ở scratchpad của phiên 20/11 (không lưu): lấy chữ hiển thị của từng đoạn từ nguồn LaTeX, tính độ rộng bằng metric

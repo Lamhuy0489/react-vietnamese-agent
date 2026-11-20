@@ -16,7 +16,7 @@ tự điền, câu mở và câu nối giữa các mục (tham khảo bài lư�
 thư mục trước (mục "Lượt 3").
 
 Việc của phiên này:
-1. Hỏi owner số trang thật của bản Anh và vị trí Hình 2. Nếu Hình 2 để trống cuối trang: dời dòng
+1. Hỏi owner số trang thật của bản Anh (đã đổi sang Times, thêm lại nội dung ở lượt 4) và vị trí Hình 2. Nếu Hình 2 để trống cuối trang: dời dòng
    \ifpareto\input{images/fig2_pareto}\fi trong sections/07_results.tex. Nếu quá 15 trang: cắt câu trùng với bảng.
 2. Áp cho bản Việt các sửa nhỏ còn lại và lượt giảm ký hiệu 3c của bản Anh (README, mục "Lượt 3" và "Lượt 3c"),
    giữ số liệu khớp bản Anh.

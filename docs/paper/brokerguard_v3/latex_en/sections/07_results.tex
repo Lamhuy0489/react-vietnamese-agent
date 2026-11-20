@@ -8,6 +8,7 @@
 % 20/11 round 3 (style of the reference paper): section openers, fewer parentheses, Gemini described as Google's closed model.
 % 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
 % 20/11 (round 3c): notation only where equations need it, the request in words elsewhere, gate conditions as a list, plainer claims.
+% 20/11 (round 4): content restored after the switch to Times (facts.md: harm types, variants, Dev-val replay, C1a).
 \section{Results}\label{sec:results}
 
 This section reports the main results and pre-registered tests on the \test, then analyses mechanisms, adaptive
@@ -57,11 +58,17 @@ answer leakage or tampering either. Each component of \ours, in contrast, acts o
 Removing \pTwo{} lets 4 leakage families through again, removing the \pOne{} adds 1 redirection and 1 tampering family,
 and removing \pThree{} adds only one harmful case. At the case level, all 4 families harmed only under \strSand{} were
 sink violations that \ours{} blocked before execution, 2 by \pTwo{} and 2 by the \pOne, and each case passes again once
-that component alone is removed. Over the 720 attack cases, the two configurations differ only in sink violations, with
-4 cases under \strSand{} and none under \ours. In both, answer leakage is zero and 5 tampering cases remain, from the
-two families with changed numbers or units that both gates let through.
+that component alone is removed. By harm type over the 720 attack cases, sink violations fall from 136 with
+no defence to 4 under \strSand{} and none under \ours. Final-answer leaks fall from 54 to zero and tampering from 79 to
+5 under both configurations, and these 5 cases come from the two families with changed numbers or units that both
+gates let through.
 
 \input{tables/tab4_mechres}
+
+\paragraph{Language variants.} With no defence, between 40 and 51 of the 144 attack cases per language variant are
+harmful, the most for standard Vietnamese and the fewest for English. Under \ours, 1 case is harmful for standard
+Vietnamese, 1 for the paraphrase, 2 for code-mixing, 1 for text without diacritics and none for English. These counts
+are too small to show an effect of language on \ours.
 
 \paragraph{Adaptive attacks.} No case of the first set harms \ours, but this result favours \ours, since the set targets
 exactly the weaknesses that informed the design. With no defence, the second set harms 25 of the 42 families, close to

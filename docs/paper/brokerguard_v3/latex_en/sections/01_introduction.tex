@@ -5,6 +5,7 @@
 % 20/11 round 3 (style of the reference paper in pdf/): section openers, fewer parentheses, notation moved to Section 5.
 % 20/11 (round 3b, English only): wording and connectives pass, Figure 2 on with [H].
 % 20/11 (round 3c): notation only where equations need it, the request in words elsewhere, gate conditions as a list, plainer claims.
+% 20/11 (round 4): content restored after the switch to Times (facts.md: harm types, variants, Dev-val replay, C1a).
 \section{Introduction}\label{sec:intro}
 
 In the ReAct paradigm~\cite{yao2023react}, an LLM agent interleaves reasoning with tool calls, and tool outputs enter
@@ -40,4 +41,7 @@ keep the values the user stated. The policy comes from the request alone, not fr
 \item \textbf{Evaluation.} \ours{} is frozen and run once on a new test set of 48 families, sealed before any code was
   written, with pre-registered hypotheses, ablations, two adaptive rounds and AgentDojo in two languages.
 \end{enumerate}
-Data, code and the sealing manifests are publicly released.
+Sections~\ref{sec:related} and~\ref{sec:threat} review related work and state the threat model,
+Sections~\ref{sec:method} and~\ref{sec:formal} present \ours{} and its formal model, Sections~\ref{sec:protocol}
+to~\ref{sec:discussion} cover the evaluation, and Section~\ref{sec:conclusion} concludes. Data, code and the sealing
+manifests are publicly released.

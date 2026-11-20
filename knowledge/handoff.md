@@ -7,6 +7,9 @@ Cập nhật: 2026-11-20. (Trước đó 2026-11-19 tối.) Lộ trình [v2](../
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-20 (khuya, lượt 4): bản Anh đổi sang phông Times (newtx + microtype) và thêm lại nội dung**, ước lượng
+khoảng 14,8 trang (README của bài, mục "Lượt 4"). Chờ owner biên dịch: số trang, vị trí Hình 2 `[H]`.
+
 **2026-11-20 (khuya, 3c): bản Anh đã giảm ký hiệu theo góp ý owner** (README của bài, mục "Lượt 3c"); bản Việt chưa
 đổi, làm theo sau khi owner duyệt bản Anh.
 

@@ -7,15 +7,18 @@
 % Check the venue's policy on AI-generated text before submission and revise the prose in the authors' own words.
 \documentclass[runningheads]{llncs}
 
-% T5 (not T1): Section 4 quotes Vietnamese cue words (e.g. ``đừng gửi''), whose letters exist only in T5. English text is
-% unaffected. If T5 fonts fail, switch to XeLaTeX: \usepackage{fontspec} \usepackage[english]{babel}.
-\usepackage[T5]{fontenc}
+% Round 4 (owner, 20/11): Times text and math with microtype, as in the reference paper in ../pdf (newtx). The English
+% text has no Vietnamese letters, so T1 suffices. To quote Vietnamese words again, go back to T5 and Computer Modern.
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{multirow}
-\usepackage{amsmath,amssymb}
+\usepackage{amsmath}
+\usepackage{newtxtext}
+\usepackage[varvw]{newtxmath}  % after amsmath, replaces amssymb
+\usepackage{microtype}
 \usepackage{xcolor}
 \usepackage{url}
 \usepackage{adjustbox}   % max width=\textwidth: figures and tables never exceed the margins
@@ -147,10 +150,10 @@ Vietnamese LLM Agents}
 \input{sections/08_discussion}
 \input{sections/09_conclusion}
 
-% \begin{credits}
-% \subsubsection{\ackname} ...
-% \subsubsection{\discintname} The authors have no competing interests to declare.
-% \end{credits}
+% LNCS 2.26 statement block. Optional acknowledgements: add \subsubsection{\ackname} ... before the disclosure.
+\begin{credits}
+\subsubsection{\discintname} The authors have no competing interests to declare.
+\end{credits}
 
 \bibliographystyle{splncs04}
 \bibliography{refs}
