@@ -10,7 +10,7 @@
 This section states when the checks of Section~\ref{sec:method} suffice to prevent the harms of
 Section~\ref{sec:threat}. Let $G$ be the tool and destination pairs that the user actually
 authorises, $\Sigma$ the confidential values that the user does not allow to be disclosed, and $S$ the sinks with a
-destination field. The grants are extracted once, before the first step. For each proposed call $a_t$, the gate
+destination field. Grants are extracted once, before the first step. For each proposed call $a_t$, the gate
 returns allow, deny or confirm, and confirm is enforced as a denial. Read calls are always allowed, and a call in $S$ is
 allowed if and only if four conditions hold.
 \begin{enumerate}[label=(G\arabic*), leftmargin=*]
@@ -63,7 +63,7 @@ literals include every value the user stated for $a$. \qed
 
 \noindent The propositions give sufficient conditions under the assumptions, not unconditional guarantees.
 Proposition~\ref{prop:int} does not exclude another value being added next to a pinned literal. Read calls and sinks
-without a destination field lie outside $S$, so a read tool that fetches a URL chosen by the model can still leak data.
+without a destination field lie outside $S$, so a read tool fetching a URL chosen by the model can still leak data.
 Table~\ref{tab:proven} separates the proved properties from those verified only empirically, and
 Section~\ref{sec:results} tests the empirical assumptions.
 

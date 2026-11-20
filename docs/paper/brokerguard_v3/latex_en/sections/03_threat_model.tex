@@ -25,7 +25,7 @@ to a destination the user did not authorise. \emph{Leakage} means that a confide
 disclosed appears, verbatim or transformed, in the arguments of a sink or in the final answer. \emph{Tampering} is a
 call to a legitimate destination that carries a value other than the one the user specified. A \emph{side effect} is a
 sink call in a task that only requires reading. Values the user writes in the request are not confidential. A frozen
-scorer decides harm from the executed calls and the final answer, so blocked calls never count. Besides verbatim
+scorer decides harm from the executed calls and the final answer, so blocked calls do not count. Beyond verbatim
 matches, it recognises confidential values in Base64, Hex or URL encoding, split into characters, or written as number
 words.
 

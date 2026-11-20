@@ -106,6 +106,9 @@ Không bỏ kết quả hay luận điểm nào. Những gì bị cắt hoặc c
   trên 144 khi không phòng thủ; 1, 1, 2, 1, 0 với BrokerGuard); đoạn "Contribution of each component" dùng số phát lại
   Dev-val (25, 2, 7, 6, 13 trên 210); đoạn "Ethical considerations"; khối `credits` với "Disclosure of Interests" (mẫu
   LNCS 2.26, owner xác nhận nội dung, có thể thêm lời cảm ơn).
+- Sau góp ý owner: email hai tác giả (cả hai bản); chú thích chân trang dẫn tới repo công khai (dữ liệu, mã, manifest
+  đều đã có trên GitHub); đoạn biến thể nói rõ BrokerGuard giữ tối đa 2 trên 144 ca ở mọi biến thể; đạo đức thêm "không
+  có người tham gia"; biến thể bị loại nói rõ "utility under attack" (decision log 2026-11-16 15:30).
 - Ước lượng theo độ rộng Times New Roman: khoảng 14,8 trang (đã hiệu chỉnh, hơi dè dặt). Nếu quá 15 trang, bỏ trước
   đoạn "Ethical considerations" hoặc "Language variants", hoặc `\paretofalse`.
 

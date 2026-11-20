@@ -63,9 +63,11 @@ and identifiers written by the user. A call is denied if its arguments lack a pi
 
 \paragraph{Gate and cost.} A sink call is executed only if it passes four checks: the \rSig, the \pOne, \pThree, and the
 flow check that combines the \rFlow{} with \pTwo. \emph{Needs confirmation} is enforced as a denial and counted
-separately, and read calls are always allowed. On the \dev, the median check of a sink call takes 315~$\mu$s, against
+separately, and read calls are always allowed. On the \dev, a sink check takes a median of 315~$\mu$s, against
 107~$\mu$s for \strSand.
 
-\paragraph{Development and freezing.} Cue lists, length thresholds, field names and units were tuned only on the training part of the \dev, and the configuration was selected on its validation part. A variant that used the \pOne{} in place of the strict grammar of the \rSig{} raised
-utility, but on replayed validation trajectories it increased the harmful trajectories from 2 to 5 and was rejected.
-All code, prompts and configurations were then pinned by hash before the \test{} was run.
+\paragraph{Development and freezing.} Cue lists, length thresholds, field names and units were tuned only on the
+training part of the \dev, and the configuration was selected on its validation part. A variant that used the \pOne{} in
+place of the strict grammar of the \rSig{} raised utility under attack, but on replayed validation trajectories it
+increased the harmful trajectories from 2 to 5 and was rejected. All code, prompts and configurations were then pinned
+by hash before the \test{} was run.

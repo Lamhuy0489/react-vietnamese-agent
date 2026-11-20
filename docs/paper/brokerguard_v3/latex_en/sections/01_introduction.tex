@@ -9,7 +9,7 @@
 \section{Introduction}\label{sec:intro}
 
 In the ReAct paradigm~\cite{yao2023react}, an LLM agent interleaves reasoning with tool calls, and tool outputs enter
-the model context directly. This opens the way for indirect prompt injection~\cite{greshake2023indirect}: an attacker
+the model context directly. This enables indirect prompt injection~\cite{greshake2023indirect}: an attacker
 plants instructions in content the agent will read, to make it send data to an unknown destination, leak a confidential
 value or alter the content to be sent. Prompt-level defences depend on the model complying, and injection classifiers
 are mostly trained on English. A third approach therefore enforces policy outside the model, between the model and the
@@ -44,4 +44,4 @@ keep the values the user stated. The policy comes from the request alone, not fr
 Sections~\ref{sec:related} and~\ref{sec:threat} review related work and state the threat model,
 Sections~\ref{sec:method} and~\ref{sec:formal} present \ours{} and its formal model, Sections~\ref{sec:protocol}
 to~\ref{sec:discussion} cover the evaluation, and Section~\ref{sec:conclusion} concludes. Data, code and the sealing
-manifests are publicly released.
+manifests are publicly released.\footnote{\url{https://github.com/Lamhuy0489/react-vietnamese-agent}}
