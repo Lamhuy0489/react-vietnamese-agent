@@ -7,6 +7,10 @@ Cập nhật: 2026-11-20. (Trước đó 2026-11-19 tối.) Lộ trình [v2](../
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-20 (đêm): BẢN ANH ĐỦ NỘI DUNG, ĐÃ MERGE VÀO MAIN.** Tác giả, đơn vị, email đã điền ở cả hai bản. Bản Anh:
+Times, Hình 2 `[H]`, thêm nội dung hỗ trợ (README của bài, mục "Lượt 4"), khoảng 14,7 trang ước lượng. Việc kế: owner
+biên dịch bản Anh; đồng bộ bản Việt (phông Times có T5 như `tgtermes`, thêm các phần lượt 3b, 3c, 4, giữ ≤ 15 trang).
+
 **2026-11-20 (khuya, lượt 4): bản Anh đổi sang phông Times (newtx + microtype) và thêm lại nội dung**, ước lượng
 khoảng 14,8 trang (README của bài, mục "Lượt 4"). Chờ owner biên dịch: số trang, vị trí Hình 2 `[H]`.
 

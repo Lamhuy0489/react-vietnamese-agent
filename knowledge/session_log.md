@@ -790,3 +790,14 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   và đóng băng, loại hại, biến thể ngôn ngữ, số phát lại Dev-val theo thành phần, đạo đức, Disclosure of Interests.
   Ước lượng khoảng 14,8 trang. Owner đã sửa lại tóm tắt về "3.1 percentage points" trên Overleaf và điền tên tác giả ở
   Overleaf (repo vẫn để chỗ trống).
+
+## 2026-11-20 (đêm) — Bản Anh: tác giả, phần nội dung hỗ trợ; merge vào main
+
+- Owner điền tác giả: Quang Huy Lam, Quang Minh Nguyen, Khoa CNTT, Trường Đại học Xây dựng Hà Nội, email hai người;
+  dòng đầu trang "Q. H. Lam et al." (bản Việt "Q. H. Lâm và cộng sự"). Owner bỏ đoạn đạo đức và link GitHub, muốn
+  thêm nội dung có lợi cho bài: thêm C1 chấm riêng trên lời gọi sink phát lại Dev-val (cho qua 155/155 và 65/65 lời gọi
+  lành, chặn 105/190 lời gọi tấn công so với 85, 35/35 M6 so với 15) và câu năm phòng thủ ngoài broker để lộ 14 đến 54
+  ca ở câu trả lời cuối. Ước lượng bản Anh khoảng 14,7 trang (Times).
+- Kiểm: không commit nào có dòng đồng tác giả Claude; GitHub chỉ ghi một người đóng góp (owner). Merge nhánh
+  `study2/d3-dev` vào `main` theo yêu cầu owner.
+- Việc kế: owner biên dịch bản Anh; đồng bộ bản Việt (đổi phông Times có T5, thêm các phần lượt 3b, 3c, 4).
