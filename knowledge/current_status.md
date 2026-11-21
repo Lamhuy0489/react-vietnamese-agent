@@ -2,6 +2,9 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**22/11: kế hoạch v2** `docs/project/app_design_v2.md`: ứng dụng web có tài khoản, vai trò, giao diện kiểu NotebookLM,
+thay Gradio. Chưa có code.
+
 **21/11 (tối): demo BrokerGuard Chat M0–M3 có code** (nhánh `deploy/demo-v1`): chạy được `--dry-run`, 21 test demo,
 full pytest xanh. Chờ owner: Gmail App Password và `.env.demo` để thử thư thật, tài liệu injection cho M4.
 

@@ -7,6 +7,12 @@ Cập nhật: 2026-11-21. (Trước đó 2026-11-20 đêm.) Lộ trình [v2](../
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-22: KẾ HOẠCH v2 (ỨNG DỤNG WEB HOÀN CHỈNH) ĐÃ VIẾT** ở [app_design_v2.md](../docs/project/app_design_v2.md),
+decision log 2026-11-22. FastAPI + React/Vite/TS, đăng nhập và 4 vai trò, bố cục 3 cột kiểu NotebookLM, quá trình xử lý
+qua SSE, lịch sử hội thoại, sáng/tối, không emoji. Chưa có code. Bước tiếp theo: owner duyệt kế hoạch (và mockup nếu
+muốn), rồi W1 (auth, db, roles) và W3 (khung frontend, giao Gemini qua proxy 8045). Chạy thử v1 với Gemini 21/11: 5 câu
+chạy được, outbox giữ 2 thư chờ, chặn 1 địa chỉ ngoài allowlist. `.env.demo` đã điền (Gmail gửi, allowlist 2 địa chỉ).
+
 **2026-11-21 (tối): DEMO M0–M3 CÓ CODE, CHẠY ĐƯỢC Ở `--dry-run`.** Nhánh `deploy/demo-v1` (đã push, chưa PR). Lõi
 `src/react_agent/demo/` (session trên runtime A0 và BrokerGuard v3 không sửa, trace_view, outbox, gmail_sender), UI Gradio
 `demo/app.py`, `scripts/run_demo_app.py`, kho sạch `data/demo/` (10 tài liệu), `docs/demo/README.md`, `requirements-demo.txt`.

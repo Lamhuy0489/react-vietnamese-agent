@@ -4451,3 +4451,16 @@ Ghi trước khi chạy bất kỳ phần nào dưới đây. Không chỉnh v3 
 - Phạm vi: không sửa file pinned, không dùng dữ liệu Dev/Test, không sinh số liệu cho bài, mỗi tin nhắn là một task độc lập.
   Tài liệu chứa injection cho kịch bản demo do owner/Minh viết.
 - Ảnh hưởng: không đổi research contract hay kết quả đã đăng ký. Thêm code mới ở `src/react_agent/demo/`.
+
+## 2026-11-22 — Demo v2: ứng dụng web hoàn chỉnh thay Gradio
+
+- Owner: giao diện Gradio chưa đạt. Cần ứng dụng hoàn chỉnh có tài khoản và vai trò, bố cục kiểu NotebookLM, chat như với
+  trợ lý AI, hiện quá trình xử lý, lịch sử hội thoại, sáng/tối, không dùng emoji/biểu tượng, không theo kiểu "AI".
+  Kế hoạch: [app_design_v2.md](app_design_v2.md).
+- Chọn FastAPI + React/Vite/TypeScript, SQLite, argon2id, SSE đọc trace. 4 vai trò (Quản trị, Người trình diễn, Biên
+  soạn, Người xem). Chỉ Quản trị và Người trình diễn được gửi thư thật. Không tự đăng ký công khai.
+- "Quá trình xử lý" chỉ gồm hành động quan sát được và quyết định cổng, không có chain-of-thought (bất biến dự án).
+- Lõi `react_agent.demo` và các ràng buộc v1 giữ nguyên. Không sửa `pyproject.toml` (seal `release_v2`). Gradio giữ tới
+  khi v2 nghiệm thu.
+- Phát hiện khi chạy thử v1 với Gemini: C2 coi email dạng `staff012@...` là mã định danh và chặn thư lành. Đã đổi email
+  liên hệ trong 6 tài liệu demo công khai. Không sửa BrokerGuard.

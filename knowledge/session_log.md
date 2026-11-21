@@ -823,3 +823,13 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   `~/.antigravity_tools/gui_config.json.bak-20261121`); (2) `agy_cli` bản tự cập nhật 21/11 18:58 lỗi
   `invalid stream chunk: : ping` với proxy, đường OAuth thì Google đòi xác minh tài khoản trên trình duyệt. Chưa sửa được
   CLI; thay bằng script gọi thẳng proxy (chat completions, không stream).
+
+## 2026-11-22 — Chạy demo v1 với Gemini, kế hoạch ứng dụng web v2
+
+- Owner điền thông tin Gmail; Claude ghi `.env.demo` (0600, gitignore), tạo `build/gemini/ca_bundle.pem`, thử đăng nhập
+  SMTP thành công. Owner bật OmniRoute; Claude bật proxy 8444 và app Gradio.
+- Lần chạy đầu: thư lành bị C2 chặn (`staff012` trong email liên hệ là mã định danh). Đổi email liên hệ 6 tài liệu công
+  khai; chạy lại 5 câu: gửi thư V3 và A0 vào hộp chờ, hỏi CSDL đúng, địa chỉ ngoài allowlist bị chặn, câu hỏi mã truy cập
+  thì Gemini không gọi tool. Câu trả lời của agent nói "đã gửi" dù thư còn chờ: cần ghi rõ trạng thái hộp thư trong chat.
+- Owner chê Gradio, yêu cầu ứng dụng hoàn chỉnh: viết `docs/project/app_design_v2.md` (D1–D11, bố cục, vai trò, design
+  tokens sáng/tối, API, thư mục, W1–W6) và decision log.
