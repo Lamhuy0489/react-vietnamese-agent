@@ -7,6 +7,13 @@ Cập nhật: 2026-11-21. (Trước đó 2026-11-20 đêm.) Lộ trình [v2](../
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-21 (sau): KẾ HOẠCH TRIỂN KHAI v1 ĐÃ VIẾT** ở [deployment_plan_v1.md](../docs/project/deployment_plan_v1.md),
+nhánh `deploy/demo-v1`, decision log 2026-11-21. Owner chốt Gradio + Gmail thật. Mail thật theo mô hình hộp thư chờ:
+agent vẫn gọi `send_email_mock`, lớp demo gửi SMTP sau khi BrokerGuard cho qua, người dùng xác nhận và địa chỉ có trong
+allowlist (BrokerGuard nhận sink theo tên tool, nên không được thêm tool tên mới). Chưa có code. Bước tiếp theo: M0 (tạo
+`.env.demo.example`, thêm `!.env.demo.example` vào `.gitignore`, nhóm phụ thuộc `demo`), rồi M1 lõi `src/react_agent/demo/`.
+Owner cần: Gmail gửi có 2FA + App Password, danh sách địa chỉ nhận.
+
 **2026-11-21: BÀI v3 CHỐT, MAIN ĐỦ (PR #8 đã merge, commit `4e70b5c`).** Owner xác nhận phần bài đã xong. Giai đoạn
 kế: **triển khai thực tế hệ thống** (BrokerGuard v3 chạy như một dịch vụ/demo dùng được, không phải thực nghiệm mới).
 Phần bài còn lại để sau: đọc phản biện và sửa theo phản biện. Các bản phản biện owner để ở root, chưa commit:

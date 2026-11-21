@@ -2,6 +2,9 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**21/11 (sau): kế hoạch triển khai v1** (Gradio, RAG, Gmail thật qua hộp thư chờ) ở
+`docs/project/deployment_plan_v1.md`, nhánh `deploy/demo-v1`. Chưa có code, kế tiếp M0 → M1.
+
 **21/11: bài v3 chốt, `main` đủ (PR #8).** Giai đoạn kế: triển khai thực tế hệ thống. Để sau: sửa bài theo phản biện
 (`phan bien*.md`, `Review Huy.docx` ở root, chưa commit) và đồng bộ bản Việt.
 

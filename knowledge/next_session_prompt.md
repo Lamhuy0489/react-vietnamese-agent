@@ -6,25 +6,26 @@ quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên)
 ```text
 Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 
-PHẦN CỨNG: không render hình/PDF trên máy (owner dùng Overleaf; đọc PDF owner tải về bằng PyMuPDF của python3 hệ thống ở
-dpi thấp thì được), không tự khởi động lại OmniRoute. Mọi thực nghiệm đã xong, không có notebook Kaggle nào chạy.
+PHẦN CỨNG: không render hình/PDF trên máy, không tự khởi động lại OmniRoute. Mọi thực nghiệm đã xong, không có notebook
+Kaggle nào chạy.
 
-Trạng thái (21/11): BÀI v3 ĐÃ CHỐT, main đủ (PR #8 merge, commit 4e70b5c). Bài ở docs/paper/brokerguard_v3/ (latex/ =
-tiếng Việt, latex_en/ = tiếng Anh). Giai đoạn hiện tại: TRIỂN KHAI THỰC TẾ HỆ THỐNG BrokerGuard v3 (dịch vụ/demo dùng
-được, không phải thực nghiệm mới).
+Trạng thái (21/11): bài v3 đã chốt (main đủ, PR #8, #9). Giai đoạn hiện tại: TRIỂN KHAI THỰC TẾ "BrokerGuard Chat",
+nhánh deploy/demo-v1. Đọc docs/project/deployment_plan_v1.md (quyết định Q1–Q10, bước M0–M5) và decision log 2026-11-21.
+Owner đã chốt: giao diện Gradio, gửi mail thật qua Gmail SMTP + App Password theo mô hình hộp thư chờ (agent vẫn gọi
+send_email_mock không đổi; lớp demo gửi sau khi BrokerGuard cho qua + người dùng bấm xác nhận + allowlist + hạn mức,
+DEMO_EMAIL_LIVE mặc định 0). Không thêm tool gửi mail tên mới vì BrokerGuard nhận sink theo tên.
 
 Việc của phiên này:
-1. Hỏi owner phạm vi triển khai: ai dùng, model và nơi chạy (Kaggle, OmniRoute, máy local), giao diện (API, web demo,
-   CLI), dữ liệu demo (chỉ dữ liệu tổng hợp), quy mô. Đề xuất phương án khuyến nghị.
-2. Lập kế hoạch, ghi quyết định vào docs/project/decision_log.md, rồi mới viết code dưới src/react_agent/ kèm test.
-   Giữ các bất biến trong AGENTS.md (mọi tool qua Tool Broker, mock không gọi mạng, không dùng dữ liệu Test).
+1. M0: .env.demo.example (chỉ tên biến), thêm !.env.demo.example vào .gitignore, nhóm phụ thuộc demo (gradio,
+   python-dotenv) trong pyproject.toml, chuyển khóa OmniRoute viết cứng trong scripts/run_gemini_smoke.py sang env.
+2. M1: lõi src/react_agent/demo/ (config, corpus, session, trace_view) kèm tests/demo/, chạy được A0 và v3 với
+   --dry-run-dummy. Không sửa file pinned (final_config_v5 phải còn khớp hash).
+3. Hỏi owner đã có Gmail gửi (2FA, App Password) và danh sách địa chỉ nhận chưa, để làm M2.
+Trước khi xong: ruff, mypy src scripts, pytest, verify_setup.
 
-Để sau (owner chưa yêu cầu làm ngay): sửa bài theo phản biện. Các bản phản biện ở root, chưa commit: phan bien.md,
-phan bien2.md, phan bien3.md, Review Huy.docx. Gộp vào đó việc đồng bộ bản Việt với bản Anh (phông Times có T5,
-lượt 3b, 3c, 4), ≤ 15 trang, số chỉ lấy từ docs/paper/iccies2027/facts.md.
-
+Để sau: sửa bài theo phản biện (phan bien*.md, Review Huy.docx ở root, chưa commit) và đồng bộ bản Việt.
 Commit và PR không ghi Claude là đồng tác giả. Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay
-nội dung Test; chỉ hạ tầng, số đếm và biên soạn.
+nội dung Test (tài liệu injection cho demo do owner/Minh viết); chỉ hạ tầng, số đếm và biên soạn.
 ```
 
 ## Ghi chú dùng

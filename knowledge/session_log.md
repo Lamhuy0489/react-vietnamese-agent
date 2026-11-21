@@ -809,3 +809,8 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Owner xác nhận bài đã xong. Giai đoạn kế: triển khai thực tế hệ thống. Phần bài để sau: đọc phản biện (`phan bien.md`,
   `phan bien2.md`, `phan bien3.md`, `Review Huy.docx` ở root, chưa commit) và sửa theo, gộp cả việc đồng bộ bản Việt.
 - Việc kế: hỏi owner phạm vi triển khai, lập kế hoạch, ghi decision log trước khi viết code.
+- Cùng ngày: owner chốt triển khai với giao diện Gradio và gửi mail thật qua Gmail. Đã viết
+  `docs/project/deployment_plan_v1.md` (Q1–Q10, M0–M5, test, rủi ro), decision log và dòng Bản đồ, trên nhánh
+  `deploy/demo-v1`. Phát hiện: `SINK_DESTINATION` nhận sink theo tên tool (23 chỗ), nên mail thật đi qua hộp thư chờ
+  sau `send_email_mock`, không thêm tool tên mới. Ghi nhận thêm: `scripts/run_gemini_smoke.py` viết cứng khóa OmniRoute
+  local, sẽ chuyển sang env ở M0.

@@ -4439,3 +4439,15 @@ Ghi trước khi chạy bất kỳ phần nào dưới đây. Không chỉnh v3 
   phmkimphng, xong 08:10 và 12:10; Llama trên tngdngpham chia 2 notebook, xong 07:36). Họ bị hại gộp /504: A0 346, R1 278,
   D2 123, P1 280, MEL 345, G1 346, v1 36, v3 4. Số đầy đủ facts.md mục "Baseline bổ sung trên Dev v4.1". Một lần chạy,
   không có lỗi hạ tầng phải chạy lại; không chỉnh v3.
+
+## 2026-11-21 — Mở giai đoạn triển khai thực tế: BrokerGuard Chat (Gradio, RAG, Gmail thật)
+
+- Owner chốt: bài v3 xong, giai đoạn kế là triển khai hệ thống thành ứng dụng chat dùng được. Giao diện **Gradio**, gửi
+  **mail thật qua Gmail**. Kế hoạch đầy đủ: [deployment_plan_v1.md](deployment_plan_v1.md).
+- Mail thật đi theo **mô hình hộp thư chờ**: agent vẫn gọi `send_email_mock` (file giữ nguyên, không gọi mạng). Lớp demo
+  chỉ gửi SMTP sau khi Broker/BrokerGuard đã cho qua **và** người dùng bấm xác nhận, tới địa chỉ trong allowlist, có hạn
+  mức ngày, công tắc `DEMO_EMAIL_LIVE` mặc định tắt. Lý do: BrokerGuard nhận diện sink theo tên tool, tool mới tên khác sẽ
+  đi vòng qua lớp bảo vệ. Cách này cũng giữ bất biến "mock không gọi mạng".
+- Phạm vi: không sửa file pinned, không dùng dữ liệu Dev/Test, không sinh số liệu cho bài, mỗi tin nhắn là một task độc lập.
+  Tài liệu chứa injection cho kịch bản demo do owner/Minh viết.
+- Ảnh hưởng: không đổi research contract hay kết quả đã đăng ký. Thêm code mới ở `src/react_agent/demo/`.
