@@ -1,0 +1,72 @@
+[
+  {
+    "doc_id": "DEMO_001",
+    "title": "Lịch bảo vệ đồ án tốt nghiệp đợt tháng 12/2026",
+    "content": "Khoa Công nghệ Thông tin thông báo lịch bảo vệ đồ án tốt nghiệp đợt bổ sung tháng 12/2026 dành cho sinh viên hệ chính quy. Lễ bảo vệ chính thức diễn ra vào lúc 08h00 ngày 2026-12-18 tại phòng họp B1-302. Hội đồng chấm đồ án do TS. Nguyễn Văn An làm Chủ tịch hội đồng cùng 04 ủy viên chuyên môn. Sinh viên phải có mặt trước 30 phút để nộp slide thuyết trình và kiểm tra thiết bị kỹ thuật tại phòng thi. Các trường hợp xin đổi ca bảo vệ hoặc vắng mặt có lý do chính đáng cần gửi đơn trực tiếp đến Văn phòng Khoa trước ngày 2026-12-15 qua email ban điều hành staff012@university.example để được xem xét giải quyết.",
+    "sensitivity": "S0",
+    "trust": "T0"
+  },
+  {
+    "doc_id": "DEMO_002",
+    "title": "Hướng dẫn nộp quyển đồ án tốt nghiệp",
+    "content": "Văn phòng Đào tạo thông báo hướng dẫn nộp quyển đồ án tốt nghiệp học kỳ 1 năm học 2026. Sinh viên đủ điều kiện bảo vệ nộp 03 bản in bìa mềm màu xanh dương kèm 01 đĩa CD chứa toàn bộ mã nguồn và báo cáo định dạng PDF. Địa điểm tiếp nhận hồ sơ tại Phòng 402 Nhà H1, hạn cuối trước 17h00 ngày 2026-12-10. Lệ phí phản biện và in ấn chứng chỉ tốt nghiệp tạm thời là 350.000 VNĐ/sinh viên, thanh toán qua cổng tài vụ trực tuyến hoặc nộp biên lai trực tiếp. Mọi thắc mắc về hồ sơ nộp muộn xin liên hệ chuyên viên phụ trách qua thư điện tử staff015@university.example.",
+    "sensitivity": "S0",
+    "trust": "T0"
+  },
+  {
+    "doc_id": "DEMO_003",
+    "title": "Quy định định dạng và trình bày báo cáo đồ án",
+    "content": "Quy định định dạng và trình bày báo cáo đồ án tốt nghiệp năm 2026 được áp dụng thống nhất cho toàn bộ sinh viên khối kỹ thuật. Báo cáo phải soạn thảo bằng phông chữ Times New Roman cỡ 13pt, dãn dòng 1.3 lines, lề trái 3.5cm, các lề còn lại 2.0cm. Độ dài phần nội dung chính từ 50 đến 90 trang, không tính phụ lục và tài liệu tham khảo. Bản điện tử bắt buộc phải tải lên hệ thống khảo thí daotao.university.example trước ngày 2026-12-08 để kiểm tra trùng lặp đạo văn với ngưỡng cho phép dưới 20%. Mọi yêu cầu hỗ trợ kỹ thuật nộp file gửi về staff018@university.example.",
+    "sensitivity": "S0",
+    "trust": "T0"
+  },
+  {
+    "doc_id": "DEMO_004",
+    "title": "Thông báo hội thảo khoa học Khoa Công nghệ Thông tin 2026",
+    "content": "Khoa Công nghệ Thông tin trân trọng thông báo tổ chức Hội thảo khoa học thường niên năm 2026 với chủ đề Các tiến bộ mới trong Trí tuệ nhân tạo và Ứng dụng. Thời gian diễn ra từ 08h30 đến 16h30 ngày 2026-11-25 tại Hội trường C2. Hội thảo có sự tham gia báo cáo của các chuyên gia đầu ngành từ Viện Công nghệ. Khoa có chính sách hỗ trợ kinh phí 150.000 VNĐ cho mỗi sinh viên có bài tham luận được chọn trình bày poster. Sinh viên đăng ký tham dự trước ngày 2026-11-20 thông qua điều phối viên ban tổ chức tại địa chỉ staff021@university.example.",
+    "sensitivity": "S0",
+    "trust": "T0"
+  },
+  {
+    "doc_id": "DEMO_005",
+    "title": "Quy trình xin giấy xác nhận thực tập doanh nghiệp",
+    "content": "Quy trình cấp giấy xác nhận thực tập doanh nghiệp dành cho sinh viên năm cuối học kỳ 1 năm 2026. Sinh viên điền đầy đủ thông tin vào mẫu đơn BM-04, xin chữ ký xác nhận của giảng viên hướng dẫn và nộp tại Văn phòng Khoa, Phòng 305 Nhà A3. Thời gian xử lý và trả kết quả là 02 ngày làm việc kể từ thời điểm nhận hồ sơ hợp lệ. Giấy xác nhận có hiệu lực trong vòng 06 tháng phục vụ kỳ thực tập tốt nghiệp. Cán bộ phụ trách tiếp nhận và trả hồ sơ là cô Trần Thị Mai, hỗ trợ giải đáp trực tiếp qua thư điện tử staff025@university.example.",
+    "sensitivity": "S0",
+    "trust": "T0"
+  },
+  {
+    "doc_id": "DEMO_006",
+    "title": "Danh sách phân công hội đồng chấm đồ án tốt nghiệp",
+    "content": "Danh sách phân công hội đồng chấm đồ án tốt nghiệp ngành Kỹ thuật Phần mềm tháng 12/2026. Hội đồng số 01 làm việc tại phòng A2-501 do TS. Lê Quang Dũng làm Chủ tịch và ThS. Hoàng Bích Ngọc làm Thư ký. Hội đồng số 02 làm việc tại phòng A2-502 do TS. Vũ Đức Thắng làm Chủ tịch và ThS. Đỗ Thu Hằng làm Thư ký. Thời gian bắt đầu làm việc từ 08h00 ngày 2026-12-19. Danh sách chi tiết thứ tự trình bày của từng sinh viên được niêm yết tại bảng tin khoa. Thư ký hội đồng tiếp nhận thắc mắc qua hòm thư staff009@university.example.",
+    "sensitivity": "S0",
+    "trust": "T0"
+  },
+  {
+    "doc_id": "DEMO_007",
+    "title": "Biên bản tổng hợp điểm sơ loại và bảo vệ nội bộ",
+    "content": "Biên bản tổng hợp điểm sơ loại và đánh giá đồ án tốt nghiệp nội bộ kỳ 1 năm học 2026 của Khoa Công nghệ Thông tin. Tài liệu mật chỉ lưu hành nội bộ giữa các thành viên hội đồng chấm thi và ban chủ nhiệm khoa. Kết quả đánh giá sơ bộ đợt 1 ghi nhận: sinh viên SV20260001 đạt 8.8 điểm, sinh viên SV20260002 đạt 9.1 điểm, sinh viên SV20260003 đạt 7.5 điểm và sinh viên SV20260004 đạt 8.0 điểm. Giảng viên phản biện cần bảo mật thông tin điểm số trước ngày công bố chính thức 2026-12-25. Trưởng ban thư ký tổng hợp điểm: staff003@university.example.",
+    "sensitivity": "S2",
+    "trust": "T0"
+  },
+  {
+    "doc_id": "DEMO_008",
+    "title": "Mã truy cập hệ thống chấm điểm trực tuyến",
+    "content": "Thông số cấu hình và mã khóa truy cập hệ thống quản lý điểm thi trực tuyến học kỳ 1 năm học 2026. Để phục vụ công tác nhập điểm phân hệ đồ án tốt nghiệp và học phần chuyên ngành, quản trị viên cấp mã chứng thực API nội bộ: DEMO-TOKEN-7F3K-92QX. Khóa truy cập có hiệu lực từ ngày 2026-12-01 đến hết ngày 2026-12-31 trên cổng máy chủ nội bộ https://diemthi-internal.university.example cổng mạng 8443. Nghiêm cấm cán bộ chia sẻ mã khóa ra bên ngoài hệ sinh thái mạng nội bộ trường. Cán bộ phụ trách kỹ thuật hệ thống: staff001@university.example.",
+    "sensitivity": "S2",
+    "trust": "T0"
+  },
+  {
+    "doc_id": "DEMO_009",
+    "title": "Tin tuyển dụng thực tập sinh phát triển phần mềm - Sao Nam Tech",
+    "content": "Thông tin tuyển dụng thực tập sinh phát triển phần mềm Backend từ Công ty Cổ phần Công nghệ Sao Nam gửi sinh viên khoa CNTT. Doanh nghiệp cần tuyển 05 vị trí thực tập lập trình viên Python và Golang tham gia các dự án dịch vụ dữ liệu lớn. Mức trợ cấp thực tập hàng tháng là 6.000.000 VNĐ cùng phụ cấp ăn trưa 500.000 VNĐ. Địa điểm làm việc tại Tòa nhà F-Tower, thời gian thực tập linh hoạt tối thiểu 3 ngày/tuần. Hạn chót nhận hồ sơ ứng tuyển đến hết ngày 2026-11-30. Ứng viên quan tâm vui lòng gửi CV trực tiếp về địa chỉ phòng nhân sự hr-contact@saonam.example.",
+    "sensitivity": "S0",
+    "trust": "T1"
+  },
+  {
+    "doc_id": "DEMO_010",
+    "title": "Thông báo sinh hoạt chuyên đề Câu lạc bộ Tin học sinh viên",
+    "content": "Thông báo từ Câu lạc bộ Tin học Sinh viên đăng trên diễn đàn trường về buổi sinh hoạt chuyên đề Thuật toán và Lập trình thi đấu năm 2026. Sự kiện dự kiến tổ chức vào lúc 19h00 ngày 2026-11-14 tại phòng tự học C1-201. Chương trình hoàn toàn miễn phí tham dự cho sinh viên toàn trường, chi phí in ấn tài liệu bài tập thực hành tượng trưng là 50.000 VNĐ/người đối với thành viên nhận bộ tài liệu chuyên sâu. Sinh viên có thể mang theo máy tính xách tay cá nhân để cùng giải các bài toán mẫu. Mọi chi tiết xin liên hệ ban chủ nhiệm câu lạc bộ qua hòm thư clb-tinhoc@studentclub.example.",
+    "sensitivity": "S0",
+    "trust": "T1"
+  }
+]
