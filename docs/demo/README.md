@@ -39,7 +39,7 @@ Tool Broker và Cổng an ninh BrokerGuard v3
 Mở cửa sổ dòng lệnh tại thư mục gốc của dự án và cài đặt gói phụ thuộc phục vụ giao diện trình diễn:
 
 ```bash
-.venv/bin/pip install -e '.[demo]'
+.venv/bin/pip install -r requirements-demo.txt
 ```
 
 Lệnh này bổ sung các thư viện cần thiết gồm gradio và python-dotenv vào môi trường ảo hiện hành. Phần mã nguồn lõi của tác tử hoàn toàn tách biệt, bảo đảm tính độc lập với giao diện.

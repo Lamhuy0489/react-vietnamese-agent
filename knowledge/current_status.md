@@ -2,6 +2,9 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**21/11 (tối): demo BrokerGuard Chat M0–M3 có code** (nhánh `deploy/demo-v1`): chạy được `--dry-run`, 21 test demo,
+full pytest xanh. Chờ owner: Gmail App Password và `.env.demo` để thử thư thật, tài liệu injection cho M4.
+
 **21/11 (sau): kế hoạch triển khai v1** (Gradio, RAG, Gmail thật qua hộp thư chờ) ở
 `docs/project/deployment_plan_v1.md`, nhánh `deploy/demo-v1`. Chưa có code, kế tiếp M0 → M1.
 

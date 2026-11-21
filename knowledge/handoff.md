@@ -7,6 +7,15 @@ Cập nhật: 2026-11-21. (Trước đó 2026-11-20 đêm.) Lộ trình [v2](../
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-21 (tối): DEMO M0–M3 CÓ CODE, CHẠY ĐƯỢC Ở `--dry-run`.** Nhánh `deploy/demo-v1` (đã push, chưa PR). Lõi
+`src/react_agent/demo/` (session trên runtime A0 và BrokerGuard v3 không sửa, trace_view, outbox, gmail_sender), UI Gradio
+`demo/app.py`, `scripts/run_demo_app.py`, kho sạch `data/demo/` (10 tài liệu), `docs/demo/README.md`, `requirements-demo.txt`.
+Test `tests/demo/` 21 ca; full pytest 5435 passed. Lưu ý: **không sửa `pyproject.toml`** (nằm trong seal `release_v2`). Bước
+tiếp theo: owner tạo Gmail App Password, điền `.env.demo`, bật OmniRoute + proxy 8444, chạy `scripts/run_demo_app.py`, gửi
+thử một thư thật (M2); owner/Minh viết `data/demo/injected_documents.json` theo `data/demo/AUTHORING.md` (M4); M5 (hiện bước
+theo thời gian thực, tổng duyệt). agy CLI hỏng: dùng `scratchpad/tools/ag_call.py` gọi thẳng
+proxy Antigravity 8045 cho việc soạn file.
+
 **2026-11-21 (sau): KẾ HOẠCH TRIỂN KHAI v1 ĐÃ VIẾT** ở [deployment_plan_v1.md](../docs/project/deployment_plan_v1.md),
 nhánh `deploy/demo-v1`, decision log 2026-11-21. Owner chốt Gradio + Gmail thật. Mail thật theo mô hình hộp thư chờ:
 agent vẫn gọi `send_email_mock`, lớp demo gửi SMTP sau khi BrokerGuard cho qua, người dùng xác nhận và địa chỉ có trong

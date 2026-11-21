@@ -1,6 +1,6 @@
 # Kế hoạch triển khai thực tế v1: BrokerGuard Chat (giao diện chat, RAG, Gmail thật)
 
-Cập nhật: 2026-11-21. Trạng thái: **kế hoạch, chưa có code.** Quyết định gốc: [decision log 2026-11-21](decision_log.md).
+Cập nhật: 2026-11-21. Trạng thái (21/11): **M0–M3 có code và test, chạy được ở `--dry-run`; M2 chưa thử Gmail thật; M4 chờ tài liệu injection của nhóm; M5 chưa làm.** Quyết định gốc: [decision log 2026-11-21](decision_log.md).
 Nhánh: `deploy/demo-v1`.
 
 ## 1. Mục tiêu
@@ -76,8 +76,8 @@ Code đặt ở `src/react_agent/demo/` (lõi typed, có test) và `scripts/run_
 | `data/demo/` | Kho demo (track): `documents/documents.json`, `database/seed.json` → build `university.db`, `cached_pages/pages.json`, `scenarios.md` (câu lệnh mẫu để diễn) |
 | `tests/demo/` | Test (mục 6) |
 
-Phụ thuộc: thêm nhóm tùy chọn `demo = ["gradio>=5,<6", "python-dotenv>=1,<2"]` vào `pyproject.toml` (cài bằng
-`.venv/bin/pip install -e '.[demo]'`). Lõi `react_agent` không import gradio. Chỉ `demo/app.py` import.
+Phụ thuộc: `requirements-demo.txt` (gradio 5, python-dotenv), cài bằng `.venv/bin/pip install -r requirements-demo.txt`.
+Không sửa `pyproject.toml` vì file này nằm trong seal của `release_v2`. Lõi `react_agent` không import gradio. Chỉ `demo/app.py` import.
 
 ## 5. Các bước làm (mỗi bước có tiêu chí nghiệm thu)
 

@@ -814,3 +814,12 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   `deploy/demo-v1`. Phát hiện: `SINK_DESTINATION` nhận sink theo tên tool (23 chỗ), nên mail thật đi qua hộp thư chờ
   sau `send_email_mock`, không thêm tool tên mới. Ghi nhận thêm: `scripts/run_gemini_smoke.py` viết cứng khóa OmniRoute
   local, sẽ chuyển sang env ở M0.
+- Cùng ngày (tối): làm M0–M3 trên `deploy/demo-v1`. Claude viết lõi `src/react_agent/demo/` và test. Gemini 3.8 Flash qua proxy
+  Antigravity soạn kho `data/demo/`, `app.py`, `run_demo_app.py`, `docs/demo/README.md`; Claude review, sửa (lỗi kiểu, nút bị
+  khóa khi lỗi, khung xem trước), chạy app `--dry-run` qua gradio_client. Kiểm: 425 file của `final_config_v5` khớp hash
+  (có test), full pytest 5435 passed. Sự cố: sửa `pyproject.toml` làm hỏng seal `release_v2`, đã hoàn lại, phụ thuộc chuyển
+  sang `requirements-demo.txt`.
+- agy: (1) proxy Antigravity Tools 8045 bị tắt (`proxy.enabled=false`), đã bật kèm auto_start (bản sao lưu
+  `~/.antigravity_tools/gui_config.json.bak-20261121`); (2) `agy_cli` bản tự cập nhật 21/11 18:58 lỗi
+  `invalid stream chunk: : ping` với proxy, đường OAuth thì Google đòi xác minh tài khoản trên trình duyệt. Chưa sửa được
+  CLI; thay bằng script gọi thẳng proxy (chat completions, không stream).
