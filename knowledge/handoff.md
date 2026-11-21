@@ -1,11 +1,19 @@
 # Bàn giao phiên làm việc
 
-Cập nhật: 2026-11-20. (Trước đó 2026-11-19 tối.) Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
+Cập nhật: 2026-11-21. (Trước đó 2026-11-20 đêm.) Lộ trình [v2](../docs/project/roadmap_v2_rebuild.md), rebuild A.
 **R4 security Test xong.** PR #4 đã merge, tag `phase5-closure` đã gắn. Tiếp theo: RQ3 robustness.
 
 ## Đang làm
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
+
+**2026-11-21: BÀI v3 CHỐT, MAIN ĐỦ (PR #8 đã merge, commit `4e70b5c`).** Owner xác nhận phần bài đã xong. Giai đoạn
+kế: **triển khai thực tế hệ thống** (BrokerGuard v3 chạy như một dịch vụ/demo dùng được, không phải thực nghiệm mới).
+Phần bài còn lại để sau: đọc phản biện và sửa theo phản biện. Các bản phản biện owner để ở root, chưa commit:
+`phan bien.md`, `phan bien2.md`, `phan bien3.md`, `Review Huy.docx`. Bản Việt vẫn chưa đồng bộ với bản Anh (phông
+Times, lượt 3b, 3c, 4), gộp vào lượt sửa theo phản biện. Bước tiếp theo: hỏi owner phạm vi triển khai (đối tượng dùng,
+model và nơi chạy, giao diện, quy mô) rồi lập kế hoạch và ghi quyết định vào `docs/project/decision_log.md` trước khi viết
+code. Lệnh resume: không có tiến trình hay notebook nào đang chạy.
 
 **2026-11-20 (đêm): BẢN ANH ĐỦ NỘI DUNG, ĐÃ MERGE VÀO MAIN.** Tác giả, đơn vị, email đã điền ở cả hai bản. Bản Anh:
 Times, Hình 2 `[H]`, thêm nội dung hỗ trợ (README của bài, mục "Lượt 4"), khoảng 14,7 trang ước lượng. Việc kế: owner

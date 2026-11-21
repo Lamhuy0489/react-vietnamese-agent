@@ -2,6 +2,9 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**21/11: bài v3 chốt, `main` đủ (PR #8).** Giai đoạn kế: triển khai thực tế hệ thống. Để sau: sửa bài theo phản biện
+(`phan bien*.md`, `Review Huy.docx` ở root, chưa commit) và đồng bộ bản Việt.
+
 **20/11 (đêm): bản Anh đủ nội dung, đã merge vào main.** Bản Anh dùng Times như bài tham khảo, khoảng 14,7 trang
 (ước lượng); tác giả và đơn vị đã điền. Bản Việt cần đồng bộ (README của bài, mục "Lượt 4").
 
