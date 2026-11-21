@@ -801,3 +801,11 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
 - Kiểm: không commit nào có dòng đồng tác giả Claude; GitHub chỉ ghi một người đóng góp (owner). Merge nhánh
   `study2/d3-dev` vào `main` theo yêu cầu owner.
 - Việc kế: owner biên dịch bản Anh; đồng bộ bản Việt (đổi phông Times có T5, thêm các phần lượt 3b, 3c, 4).
+
+## 2026-11-21 — Merge PR #8, chốt bài, chuyển sang triển khai
+
+- Nhánh `study2/d3-dev` còn một commit chưa vào `main` (f574bea, thêm thầy hướng dẫn là tác giả thứ ba). Tạo PR #8 và
+  merge theo yêu cầu owner (`4e70b5c`). PR #3, #5 cũ vẫn mở, không liên quan bài.
+- Owner xác nhận bài đã xong. Giai đoạn kế: triển khai thực tế hệ thống. Phần bài để sau: đọc phản biện (`phan bien.md`,
+  `phan bien2.md`, `phan bien3.md`, `Review Huy.docx` ở root, chưa commit) và sửa theo, gộp cả việc đồng bộ bản Việt.
+- Việc kế: hỏi owner phạm vi triển khai, lập kế hoạch, ghi decision log trước khi viết code.
