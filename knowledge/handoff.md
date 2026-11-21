@@ -7,6 +7,10 @@ Cập nhật: 2026-11-21. (Trước đó 2026-11-20 đêm.) Lộ trình [v2](../
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-22 (cuối phiên): MỌI DỊCH VỤ ĐÃ TẮT.** Lệnh bật lại khi làm tiếp: `open -a "Antigravity Tools"` (proxy 8045
+cho Gemini viết code), owner bật OmniRoute rồi Claude bật proxy 8444 (lệnh trong `docs/demo/README.md` mục 4) khi cần chạy
+agent thật, `make webapp-serve` (8000) và `make webapp-dev` (5173). Việc kế: W2.
+
 **2026-11-22 (sau): WEBAPP W1 + KHUNG W3 XONG** ở `webapp/` (backend FastAPI `brokerguard_api`, frontend React/Vite/TS),
 xem [webapp/README.md](../webapp/README.md). Đăng nhập argon2id, phiên cookie HttpOnly, CSRF, khóa sau 5 lần sai, mã mời,
 4 vai trò; giao diện sáng/tối, Login/Invite/Home/Conversation 3 cột chạy bằng dữ liệu mẫu. `make webapp-test` xanh (11 test

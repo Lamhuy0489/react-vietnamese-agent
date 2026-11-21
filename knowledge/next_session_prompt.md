@@ -1,6 +1,6 @@
 # Prompt cho phiên sau
 
-Cập nhật: 2026-11-21. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
+Cập nhật: 2026-11-22. Mở `claude` ở root repo rồi dán khối dưới đây. `CLAUDE.md` tự nạp
 quy trình phiên chuẩn (thứ tự đọc, Bản đồ, việc cuối phiên), nên khối này chỉ nêu việc cụ thể.
 
 ```text
@@ -13,6 +13,10 @@ Trạng thái (22/11): bài v3 đã chốt. Đang làm ứng dụng demo BrokerG
 webapp/ (đọc webapp/README.md và docs/project/app_design_v2.md). Đã có W1 (đăng nhập argon2id, phiên, CSRF, khóa, mã mời,
 4 vai trò) và khung W3 (React/Vite/TS, sáng/tối, Login/Invite/Home/Conversation 3 cột chạy bằng src/mocks). Lõi agent:
 src/react_agent/demo/ (session, trace_view, outbox, gmail_sender); .env.demo đã điền. Không sửa pyproject.toml gốc (seal).
+
+Đầu phiên: mọi dịch vụ đang tắt. Bật khi cần: open -a "Antigravity Tools" (proxy 8045 để giao Gemini), make webapp-serve
+(8000) + make webapp-dev (5173). Chạy agent thật thì owner bật OmniRoute, Claude bật proxy 8444 theo docs/demo/README.md.
+Tắt hết khi owner kết thúc phiên.
 
 Việc của phiên này:
 1. Hỏi owner góp ý giao diện (owner chạy create-admin, make webapp-build, make webapp-serve, mở 127.0.0.1:8000).

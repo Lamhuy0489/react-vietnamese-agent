@@ -839,3 +839,5 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   `webapp/frontend` (Vite React TS; Gemini viết 2 phần song song theo một bản đặc tả chung, ~36k token; Claude sửa 3 lỗi
   TS, token bóng đổ). Test bắt lỗi rollback làm mất bộ đếm đăng nhập sai, đã sửa. Kiểm traversal SPA: không lộ file.
   Makefile: `webapp-install|build|test|serve|dev`.
+- Kết thúc phiên 22/11: theo yêu cầu owner đã tắt webapp (8000), app Gradio (7860), proxy Gemini (8444, đã tắt từ trước)
+  và Antigravity Tools (8045). OmniRoute đã tắt. Không còn tiến trình demo nào chạy. Mai làm tiếp W2.
