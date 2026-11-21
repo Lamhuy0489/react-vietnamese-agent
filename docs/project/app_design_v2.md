@@ -1,6 +1,7 @@
 # Kế hoạch v2: BrokerGuard Workspace (ứng dụng web hoàn chỉnh)
 
-Cập nhật: 2026-11-22. Trạng thái: **kế hoạch, chưa có code.** Thay giao diện Gradio của
+Cập nhật: 2026-11-22. Trạng thái (22/11): **W1 xong (auth, vai trò, CSRF, khóa tài khoản, 11 test). Khung W3 xong (giao diện sáng/tối, đăng
+nhập, trang chủ, màn hình hội thoại 3 cột với dữ liệu mẫu). Tiếp theo W2.** Thay giao diện Gradio của
 [kế hoạch v1](deployment_plan_v1.md). Lõi `src/react_agent/demo/` (session, trace, outbox, Gmail) giữ nguyên và
 được dùng lại. Quyết định gốc: [decision log 2026-11-22](decision_log.md).
 
@@ -155,31 +156,18 @@ Cổng gửi thật vẫn nằm trong `Outbox.confirm` của lõi. API chỉ th�
 
 ## 7. Cấu trúc thư mục
 
+Ứng dụng nằm riêng trong `webapp/` ở gốc repo, tách khỏi mã nghiên cứu `src/react_agent/`. Chi tiết và lệnh chạy:
+[webapp/README.md](../../webapp/README.md).
+
 ```
-src/react_agent/demo/            lõi (đã có): session, trace_view, outbox, gmail_sender, corpus, config
-src/react_agent/webapp/
-  main.py                        tạo app FastAPI, phục vụ web/dist, middleware bảo mật
-  db.py                          sqlite3, migration đơn giản theo version
-  auth.py                        argon2, phiên, CSRF, giới hạn đăng nhập sai
-  roles.py                       vai trò và bảng quyền (mục 4)
-  routes/                        auth.py, conversations.py, turns.py, sources.py, outbox.py, admin.py
-  events.py                      đọc trace khi runtime đang chạy, phát SSE
-  schemas.py                     model pydantic của API
-web/                             React + Vite + TypeScript
-  src/theme/tokens.css           design tokens sáng/tối (mục 5)
-  src/components/                thành phần dùng chung
-  src/features/                  auth, conversations, chat, sources, outbox, admin
-  src/api/                       client gọi API, SSE
-  public/fonts/                  Be Vietnam Pro, JetBrains Mono (tự host)
-scripts/run_webapp.py            build check, chạy uvicorn 127.0.0.1:8000
-scripts/webapp_admin.py          create-admin, reset-password, create-invite
-tests/webapp/                    test API, quyền, SSE, bảo mật
-results/webapp/                  app.db, log (không track)
+webapp/backend/    FastAPI, package brokerguard_api, manage.py, tests/, pyproject.toml riêng (chỉ cấu hình tool)
+webapp/frontend/   React + Vite + TypeScript: theme/, api/, components/, features/, pages/, mocks/
+results/webapp/    app.db, log (không track)
 ```
 
-Phụ thuộc Python thêm vào `requirements-demo.txt`: `fastapi`, `uvicorn`, `argon2-cffi`. **Không sửa `pyproject.toml`**
-(nằm trong seal `release_v2`). Phụ thuộc frontend ghi trong `web/package.json` + `package-lock.json`. `web/node_modules`
-và `web/dist` không track.
+Phụ thuộc Python: `webapp/backend/requirements.txt` (gồm `requirements-demo.txt`). **Không sửa `pyproject.toml` ở gốc**
+(nằm trong seal `release_v2`). Lệnh: `make webapp-install|webapp-build|webapp-serve|webapp-dev|webapp-test`.
+`node_modules/` và `dist/` không track.
 
 ## 8. Các bước làm
 

@@ -9,18 +9,19 @@ Tiếp tục đồ án theo quy trình phiên trong CLAUDE.md.
 PHẦN CỨNG: không render hình/PDF trên máy, không tự khởi động lại OmniRoute. Mọi thực nghiệm đã xong, không có notebook
 Kaggle nào chạy.
 
-Trạng thái (22/11): bài v3 đã chốt. Đang làm ứng dụng demo trên nhánh deploy/demo-v1. v1 (Gradio, lõi
-src/react_agent/demo/) chạy được với Gemini; .env.demo đã điền (Gmail gửi, allowlist). Owner muốn thay Gradio bằng ứng
-dụng web hoàn chỉnh: đọc docs/project/app_design_v2.md (bố cục kiểu NotebookLM, 4 vai trò, design tokens sáng/tối, API,
-W1–W6) và decision log 2026-11-22.
+Trạng thái (22/11): bài v3 đã chốt. Đang làm ứng dụng demo BrokerGuard Workspace trên nhánh deploy/demo-v1, thư mục
+webapp/ (đọc webapp/README.md và docs/project/app_design_v2.md). Đã có W1 (đăng nhập argon2id, phiên, CSRF, khóa, mã mời,
+4 vai trò) và khung W3 (React/Vite/TS, sáng/tối, Login/Invite/Home/Conversation 3 cột chạy bằng src/mocks). Lõi agent:
+src/react_agent/demo/ (session, trace_view, outbox, gmail_sender); .env.demo đã điền. Không sửa pyproject.toml gốc (seal).
 
 Việc của phiên này:
-1. Hỏi owner đã duyệt app_design_v2.md chưa (vai trò, màu, bố cục); sửa theo góp ý.
-2. W1: src/react_agent/webapp/ (main, db, auth argon2id, roles), scripts/webapp_admin.py create-admin, tests/webapp/.
-   Thêm fastapi, uvicorn, argon2-cffi vào requirements-demo.txt (không sửa pyproject.toml: seal release_v2).
-3. W3 song song: giao Gemini qua proxy Antigravity 8045 (script ag_call gọi thẳng chat completions, agy -p đang lỗi)
-   dựng web/ React + Vite + TS theo tokens mục 5; Claude review, chạy lint/build.
-Không hiện chain-of-thought, chỉ hành động và quyết định cổng. Không emoji/biểu tượng trong giao diện.
+1. Hỏi owner góp ý giao diện (owner chạy create-admin, make webapp-build, make webapp-serve, mở 127.0.0.1:8000).
+2. W2: routers conversations, turns (chạy DemoSession trong thread), events SSE (đọc trace_security.jsonl khi đang chạy),
+   sources, outbox (send chỉ admin/presenter, ghi audit); lưu messages vào SQLite; test quyền và SSE. Nối frontend bỏ mocks.
+3. Ghi rõ trạng thái thư trong câu trả lời (thư còn chờ xác nhận, không phải "đã gửi").
+Giao việc giao diện cho Gemini qua proxy Antigravity 8045 (scratchpad tools/ag_call.py; nếu proxy tắt: open -a
+"Antigravity Tools"); agy -p đang lỗi. Luôn review, build và test phần Gemini viết. Không emoji/biểu tượng, không
+chain-of-thought.
 
 Để sau: sửa bài theo phản biện (phan bien*.md, Review Huy.docx ở root, chưa commit) và đồng bộ bản Việt.
 Commit và PR không ghi Claude là đồng tác giả. Claude không viết, đọc hay giao việc viết văn bản/prompt tấn công hay

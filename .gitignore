@@ -50,3 +50,7 @@ configs/models/gemini_omniroute.yaml
 scripts/run_gemini_smoke.py
 scripts/setup_omniroute_pool.py
 
+
+# BrokerGuard Workspace
+node_modules/
+webapp/frontend/node_modules/

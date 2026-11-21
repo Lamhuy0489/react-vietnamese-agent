@@ -833,3 +833,9 @@ làm, việc còn dở. Chỉ ghi các dữ kiện đã xác minh. Không ghi cr
   thì Gemini không gọi tool. Câu trả lời của agent nói "đã gửi" dù thư còn chờ: cần ghi rõ trạng thái hộp thư trong chat.
 - Owner chê Gradio, yêu cầu ứng dụng hoàn chỉnh: viết `docs/project/app_design_v2.md` (D1–D11, bố cục, vai trò, design
   tokens sáng/tối, API, thư mục, W1–W6) và decision log.
+- Cùng ngày (sau): owner duyệt kế hoạch v2, yêu cầu tách frontend/backend ra thư mục chuẩn. Tạo `webapp/backend`
+  (FastAPI `brokerguard_api`: settings, db SQLite + migration, security argon2id/phiên/CSRF/khóa/mã mời, roles, routers/auth,
+  main với header bảo mật + phục vụ SPA; `manage.py`; pyproject riêng chỉ cấu hình tool vì pyproject gốc bị seal) và
+  `webapp/frontend` (Vite React TS; Gemini viết 2 phần song song theo một bản đặc tả chung, ~36k token; Claude sửa 3 lỗi
+  TS, token bóng đổ). Test bắt lỗi rollback làm mất bộ đếm đăng nhập sai, đã sửa. Kiểm traversal SPA: không lộ file.
+  Makefile: `webapp-install|build|test|serve|dev`.

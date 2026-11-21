@@ -7,6 +7,13 @@ Cập nhật: 2026-11-21. (Trước đó 2026-11-20 đêm.) Lộ trình [v2](../
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**2026-11-22 (sau): WEBAPP W1 + KHUNG W3 XONG** ở `webapp/` (backend FastAPI `brokerguard_api`, frontend React/Vite/TS),
+xem [webapp/README.md](../webapp/README.md). Đăng nhập argon2id, phiên cookie HttpOnly, CSRF, khóa sau 5 lần sai, mã mời,
+4 vai trò; giao diện sáng/tối, Login/Invite/Home/Conversation 3 cột chạy bằng dữ liệu mẫu. `make webapp-test` xanh (11 test
+backend, build TS). Gemini (proxy 8045) viết frontend, Claude sửa và review. Bước tiếp theo: owner tạo tài khoản quản trị
+(`manage.py create-admin`), `make webapp-serve`, duyệt giao diện; rồi W2 (API hội thoại, SSE, outbox thật). Lưu ý: app
+Antigravity Tools có lúc tự tắt, mở lại bằng `open -a "Antigravity Tools"`.
+
 **2026-11-22: KẾ HOẠCH v2 (ỨNG DỤNG WEB HOÀN CHỈNH) ĐÃ VIẾT** ở [app_design_v2.md](../docs/project/app_design_v2.md),
 decision log 2026-11-22. FastAPI + React/Vite/TS, đăng nhập và 4 vai trò, bố cục 3 cột kiểu NotebookLM, quá trình xử lý
 qua SSE, lịch sử hội thoại, sáng/tối, không emoji. Chưa có code. Bước tiếp theo: owner duyệt kế hoạch (và mockup nếu

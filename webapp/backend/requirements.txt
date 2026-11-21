@@ -1,0 +1,7 @@
+# BrokerGuard Workspace backend (install into the repo .venv):
+#   .venv/bin/pip install -r webapp/backend/requirements.txt
+-r ../../requirements-demo.txt
+fastapi>=0.110,<1
+uvicorn>=0.29,<1
+argon2-cffi>=23,<26
+httpx>=0.27,<1

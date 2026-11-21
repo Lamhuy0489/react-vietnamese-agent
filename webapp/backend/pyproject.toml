@@ -1,0 +1,19 @@
+# Tool configuration for the BrokerGuard Workspace backend only (not a package build).
+# The repository root pyproject.toml is sealed by release_v2 and must not change.
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers"
+testpaths = ["tests"]
+pythonpath = [".", "../../src"]
+
+[tool.ruff]
+extend = "../../pyproject.toml"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101", "S105", "S106"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+mypy_path = ["../../src"]
+files = ["brokerguard_api", "manage.py"]

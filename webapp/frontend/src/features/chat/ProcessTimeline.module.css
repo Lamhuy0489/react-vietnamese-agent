@@ -1,0 +1,175 @@
+.container {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--surface);
+  overflow: hidden;
+  font-family: var(--font-sans);
+  margin: 4px 0 10px 0;
+}
+
+.toggleBar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: var(--surface-2);
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 500;
+  transition: background-color 150ms ease;
+}
+
+.toggleBar:hover {
+  background-color: var(--border);
+}
+
+.toggleBar:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.barTitle {
+  font-family: var(--font-sans);
+}
+
+.toggleHint {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.stepsBody {
+  padding: 12px;
+  border-top: 1px solid var(--border);
+  background-color: var(--surface);
+}
+
+.stepList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stepItem {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--bg);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stepDenied {
+  border-left: 3px solid var(--deny);
+}
+
+.stepHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.stepTitleRow {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.stepIndex {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.stepSentence {
+  word-break: break-word;
+}
+
+.decisionBadge {
+  flex-shrink: 0;
+}
+
+.denyReason {
+  font-size: 12px;
+  color: var(--deny);
+  background-color: var(--deny-soft);
+  padding: 4px 8px;
+  border-radius: var(--radius);
+  line-height: 1.4;
+}
+
+.paramsWrap,
+.resultWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metaLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.inlineButton {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 11px;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.inlineButton:hover {
+  color: var(--text);
+}
+
+.monoBox {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 8px;
+  color: var(--text);
+  overflow-x: auto;
+}
+
+.truncateBox {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.maxLinesBox {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.expandedBox {
+  white-space: pre-wrap;
+  word-break: break-word;
+}

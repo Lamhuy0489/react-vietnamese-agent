@@ -66,3 +66,19 @@ phase2-v11-validate:
 
 phase2-v11-preflight: phase2-v11-validate
 	$(PYTHON) scripts/preflight_clean_worker.py
+
+# BrokerGuard Workspace (webapp/): docs/project/app_design_v2.md, webapp/README.md
+WEBAPP_PY = PYTHONPATH=src:webapp/backend .venv/bin/python
+.PHONY: webapp-install webapp-build webapp-test webapp-serve webapp-dev
+webapp-install:
+	.venv/bin/pip install -r webapp/backend/requirements.txt
+	cd webapp/frontend && npm ci
+webapp-build:
+	cd webapp/frontend && npm run build
+webapp-test:
+	cd webapp/backend && ../../.venv/bin/python -m pytest -q && ../../.venv/bin/ruff check . && ../../.venv/bin/mypy
+	cd webapp/frontend && npm run build && npx oxlint src
+webapp-serve:
+	$(WEBAPP_PY) -m uvicorn brokerguard_api.main:create_app --factory --host 127.0.0.1 --port 8000
+webapp-dev:
+	cd webapp/frontend && npm run dev

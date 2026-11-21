@@ -1,0 +1,41 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.neutral {
+  background-color: var(--surface-2);
+  color: var(--text-muted);
+}
+
+.accent {
+  background-color: var(--accent-soft);
+  color: var(--accent);
+}
+
+.allow {
+  background-color: var(--allow-soft);
+  color: var(--allow);
+}
+
+.deny {
+  background-color: var(--deny-soft);
+  color: var(--deny);
+}
+
+.pending {
+  background-color: var(--pending-soft);
+  color: var(--pending);
+}
+
+.s2 {
+  background-color: var(--s2-soft);
+  color: var(--s2);
+}

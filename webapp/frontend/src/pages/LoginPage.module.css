@@ -1,0 +1,78 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+}
+
+.themeToggleWrap {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 360px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 32px 28px;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.brand {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.description {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.errorBanner {
+  font-size: 13px;
+  color: var(--deny);
+  background-color: var(--deny-soft);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  line-height: 1.4;
+}
+
+.submitBtn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.inviteLink {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.inviteLink:hover {
+  text-decoration: underline;
+}

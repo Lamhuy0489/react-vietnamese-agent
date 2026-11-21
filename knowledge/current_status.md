@@ -2,6 +2,9 @@
 
 Hub: [bản đồ tri thức v3](v3_knowledge_map.md).
 
+**22/11 (sau): webapp W1 + khung W3** ở `webapp/` (đăng nhập, vai trò, giao diện sáng/tối với dữ liệu mẫu). Chờ owner
+duyệt giao diện, rồi W2.
+
 **22/11: kế hoạch v2** `docs/project/app_design_v2.md`: ứng dụng web có tài khoản, vai trò, giao diện kiểu NotebookLM,
 thay Gradio. Chưa có code.
 

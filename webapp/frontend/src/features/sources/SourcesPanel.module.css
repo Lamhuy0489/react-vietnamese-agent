@@ -1,0 +1,159 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: var(--font-sans);
+  background-color: var(--surface);
+}
+
+.panelHeader {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.headingRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.count {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.searchWrap {
+  margin-top: 2px;
+}
+
+.filterWrap {
+  margin-top: 2px;
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.empty {
+  padding: 32px 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.sourceItem {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: border-color 150ms ease;
+  width: 100%;
+}
+
+.sourceItem:hover {
+  border-color: var(--accent);
+}
+
+.sourceItem:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.itemTitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.itemMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.itemBadges {
+  display: flex;
+  gap: 6px;
+}
+
+.readNotice {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Preview view inside panel */
+.previewHeader {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.previewContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.previewBadges {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.previewTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 4px 0;
+  line-height: 1.4;
+}
+
+.docIdTag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.previewBody {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.previewPre {
+  font-family: inherit;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
